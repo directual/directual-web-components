@@ -203,6 +203,10 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
             return match
         }
         let match = true
+
+        console.log("actionCond")
+        console.log(actionCond)
+
         actionCond.forEach(cond => {
             if (typeof cond.fieldValue == 'object' && cond.fieldValue) { cond.fieldValue = cond.fieldValue.id }
             if (cond.target == 'id' && (!auth || auth.user !== cond.checkValue)) {
@@ -222,8 +226,10 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 // console.log(`user is authorised!`)
                 match = false
             }
+            console.log(`user id ${auth && auth.user} is not in ${cond.checkValue}`)
+            console.log('cond.target = ' + cond.target)
             if (cond.target == 'id_not_in' && (!auth || !auth.user || compareRoleArrays(auth.user, cond.checkValue))) {
-                // console.log(`user id ${auth && auth.user} is in ${cond.checkValue}`)
+                console.log(`user id ${auth && auth.user} is in ${cond.checkValue}`)
                 match = false
             }
             if (cond.target == 'role' && (!auth || !auth.role || (!compareRoleArrays(auth.role, cond.checkValue)))) {
@@ -285,9 +291,17 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
             }
             if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type != 'const') {
+                
+                console.log("checkValue")
+                console.log(object[cond.value])
+
                 typeof object[cond.value] != 'object' ? cond.checkValue = object[cond.value] :
                     object[cond.value] ? cond.checkValue = (object[cond.value].id || (typeof object[cond.value].value == 'object' && object[cond.value].value ? object[cond.value].value.id : object[cond.value].value) || null) : cond.checkValue = null // раньше тут было .id, а не .value проверить!
-            }
+            
+                if (Array.isArray(_.get(object[cond.value],"value")) && typeof _.get(object[cond.value],"value[0]") == 'object') {
+                    cond.checkValue = _.get(object[cond.value],"value").map(i=> i.id)
+                }
+                }
         })
         return eConds
     }

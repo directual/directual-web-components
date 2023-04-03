@@ -3314,109 +3314,18 @@ const App = (props) => {
     }
 
     let exampleTable = {
-        "sl": "manageParticipationRequests",
+        "sl": "get",
         "pageSize": "10",
         "headerField": null,
         "params": {
-            "cardListLayout": "grid",
-            "cardHeaderComment": "",
-            "deleteField": "",
-            "cardBodyText": "",
-            "cardImage": false,
-            "cardImageField": "",
-            "cardImageType": "none",
-            "cardImageSize": 100,
-            "objectView": {},
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "Age",
+                        "fieldSysName": "date",
                         "fetch": [],
-                        "sysName": "Age",
-                        "name": "Возраст",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "cat_id",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "cat_id",
-                        "name": "Категория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "Categories"
-                    },
-                    {
-                        "fieldSysName": "email",
-                        "fetch": [],
-                        "sysName": "email",
-                        "name": " Электропочта",
-                        "dataType": "string",
-                        "format": "email",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "firstName",
-                        "fetch": [],
-                        "sysName": "firstName",
-                        "name": "Имя",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "group_id",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "title",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "group_id",
-                        "name": "Группа",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "groups"
-                    },
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "isApproved",
-                        "fetch": [],
-                        "sysName": "isApproved",
-                        "name": "Заявка одобрена",
-                        "dataType": "boolean",
+                        "sysName": "date",
+                        "name": "Дата",
+                        "dataType": "date",
                         "format": "",
                         "formatOptions": {
                             "customOptionLabel": "My option",
@@ -3425,10 +3334,10 @@ const App = (props) => {
                                 "value": "value",
                                 "button": "One more"
                             },
-                            "dateLocale": "en-gb",
+                            "dateLocale": "ru",
                             "booleanOptions": [
-                                "Заявка одобрена",
-                                "Заявка не одобрена"
+                                "True",
+                                "False"
                             ],
                             "validWeekDays": {
                                 "mon": true,
@@ -3449,96 +3358,14 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "lastName",
+                        "fieldSysName": "description",
                         "fetch": [],
-                        "sysName": "lastName",
-                        "name": "Фамилия",
+                        "sysName": "description",
+                        "name": "Описание",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
-                    },
-                    {
-                        "fieldSysName": "phone",
-                        "fetch": [],
-                        "sysName": "phone",
-                        "name": "Номер телефона",
-                        "dataType": "string",
-                        "format": "phone",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "school",
-                        "fetch": [],
-                        "sysName": "school",
-                        "name": "Школа",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "weight",
-                        "fetch": [],
-                        "sysName": "weight",
-                        "name": "Вес, кг.",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    }
-                ],
-                "writeFields": [
-                    {
-                        "fieldSysName": "Age",
-                        "fetch": [],
-                        "sysName": "Age",
-                        "name": "Возраст",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "cat_id",
-                        "fetch": [],
-                        "sysName": "cat_id",
-                        "name": "Категория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "Categories"
-                    },
-                    {
-                        "fieldSysName": "email",
-                        "fetch": [],
-                        "sysName": "email",
-                        "name": " Электропочта",
-                        "dataType": "string",
-                        "format": "email",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "firstName",
-                        "fetch": [],
-                        "sysName": "firstName",
-                        "name": "Имя",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "group_id",
-                        "fetch": [],
-                        "sysName": "group_id",
-                        "name": "Группа",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "groups"
                     },
                     {
                         "fieldSysName": "id",
@@ -3551,142 +3378,145 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "isApproved",
+                        "fieldSysName": "name",
                         "fetch": [],
-                        "sysName": "isApproved",
-                        "name": "Заявка одобрена",
-                        "dataType": "boolean",
+                        "sysName": "name",
+                        "name": "Название",
+                        "dataType": "string",
                         "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "telegramId",
+                        "fetch": [
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
                             },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "Заявка одобрена",
-                                "Заявка не одобрена"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
+                            {
+                                "fieldSysName": "telegramId",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "telegramId",
+                        "name": "ТГ ID ",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "users",
+                        "fetch": [
+                            {
+                                "fieldSysName": "department",
+                                "condition": null,
+                                "fetch": [
+                                    {
+                                        "fieldSysName": "department_name",
+                                        "condition": null,
+                                        "fetch": []
+                                    }
+                                ]
                             },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "lastName",
-                        "fetch": [],
-                        "sysName": "lastName",
-                        "name": "Фамилия",
-                        "dataType": "string",
+                            {
+                                "fieldSysName": "department_id",
+                                "condition": null,
+                                "fetch": [
+                                    {
+                                        "fieldSysName": "departmentName",
+                                        "condition": null,
+                                        "fetch": [
+                                            {
+                                                "fieldSysName": "department_name",
+                                                "condition": null,
+                                                "fetch": []
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "fieldSysName": "firstName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "lastName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "secondName",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "users",
+                        "name": "Записавшиеся сотрудники",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "phone",
-                        "fetch": [],
-                        "sysName": "phone",
-                        "name": "Номер телефона",
-                        "dataType": "string",
-                        "format": "phone",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "school",
-                        "fetch": [],
-                        "sysName": "school",
-                        "name": "Школа",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "weight",
-                        "fetch": [],
-                        "sysName": "weight",
-                        "name": "Вес, кг.",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
+                        "link": "WebUser"
                     }
                 ],
+                "writeFields": [],
                 "fields": {
-                    "Age": {
-                        "id": "Age",
-                        "content": "Возраст",
+                    "date": {
+                        "id": "date",
+                        "content": "Дата",
                         "type": "field",
-                        "dataType": "number",
+                        "dataType": "date",
                         "format": "",
-                        "formatOptions": {},
-                        "write": true,
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "ru",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "cat_id": {
-                        "id": "cat_id",
-                        "content": "Категория",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "Categories",
-                        "actions": []
-                    },
-                    "email": {
-                        "id": "email",
-                        "content": " Электропочта",
+                    "description": {
+                        "id": "description",
+                        "content": "Описание",
                         "type": "field",
                         "dataType": "string",
-                        "format": "email",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "firstName": {
-                        "id": "firstName",
-                        "content": "Имя",
-                        "type": "field",
-                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "",
-                        "actions": []
-                    },
-                    "group_id": {
-                        "id": "group_id",
-                        "content": "Группа",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "groups",
                         "actions": []
                     },
                     "id": {
@@ -3696,107 +3526,52 @@ const App = (props) => {
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "isApproved": {
-                        "id": "isApproved",
-                        "content": "Заявка одобрена",
-                        "type": "field",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "Заявка одобрена",
-                                "Заявка не одобрена"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "lastName": {
-                        "id": "lastName",
-                        "content": "Фамилия",
+                    "name": {
+                        "id": "name",
+                        "content": "Название",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "phone": {
-                        "id": "phone",
-                        "content": "Номер телефона",
+                    "telegramId": {
+                        "id": "telegramId",
+                        "content": "ТГ ID ",
                         "type": "field",
-                        "dataType": "string",
-                        "format": "phone",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "school": {
-                        "id": "school",
-                        "content": "Школа",
-                        "type": "field",
-                        "dataType": "string",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
-                        "link": "",
+                        "link": "WebUser",
                         "actions": []
                     },
-                    "weight": {
-                        "id": "weight",
-                        "content": "Вес, кг.",
+                    "users": {
+                        "id": "users",
+                        "content": "Записавшиеся сотрудники",
                         "type": "field",
-                        "dataType": "decimal",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
-                        "link": "",
+                        "link": "WebUser",
                         "actions": []
                     },
-                    "action__20811664026153868": {
-                        "content": "Одобрить заявку",
-                        "id": "action__20811664026153868",
+                    "action__45091680187185964": {
+                        "content": "Добавить мероприятие",
+                        "id": "action__45091680187185964",
                         "type": "action",
                         "actions": []
                     }
                 },
                 "fieldParams": {
-                    "Age": {
+                    "date": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -3804,16 +3579,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "cat_id": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": true,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "quickSearchSL": "manageCategories"
-                    },
-                    "email": {
+                    "description": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -3821,7 +3587,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "firstName": {
+                    "name": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -3830,100 +3596,188 @@ const App = (props) => {
                         "clickable": false
                     },
                     "id": {
-                        "include": true,
+                        "include": false,
                         "disableEditing": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "lastName": {
+                    "users": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
-                        "clickable": false
+                        "clickable": false,
+                        "configureLinkedCard": {
+                            "fields": {
+                                "id": {
+                                    "id": "id",
+                                    "content": "username",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "id",
+                                    "format": null,
+                                    "formatOptions": {}
+                                },
+                                "department": {
+                                    "id": "department",
+                                    "content": "Департамент",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "link",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "department_id": {
+                                    "id": "department_id",
+                                    "content": "Отдел",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "link",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "firstName": {
+                                    "id": "firstName",
+                                    "content": "Имя",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": {}
+                                },
+                                "lastName": {
+                                    "id": "lastName",
+                                    "content": "Фамилия",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": {}
+                                },
+                                "secondName": {
+                                    "id": "secondName",
+                                    "content": "Отчество",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "telegramId": {
+                                    "id": "telegramId",
+                                    "content": "Айди тг",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "number",
+                                    "format": "positiveNum",
+                                    "formatOptions": null
+                                }
+                            },
+                            "fieldParams": {
+                                "id": {
+                                    "include": false,
+                                    "disableEditing": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "department": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "department_id": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "firstName": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "lastName": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "secondName": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "telegramId": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                }
+                            },
+                            "fieldOrder": [
+                                "id",
+                                "department",
+                                "department_id",
+                                "firstName",
+                                "lastName",
+                                "secondName",
+                                "telegramId"
+                            ]
+                        }
                     },
-                    "phone": {
+                    "telegramId": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "school": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "weight": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "test": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "test1": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "test2": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "test3": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "test4": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "isApproved": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "group_id": {
-                        "include": false,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": true,
-                        "fileImageSize": 200,
-                        "clickable": false
+                        "clickable": true,
+                        "configureLinkedCard": {
+                            "fields": {
+                                "telegramId": {
+                                    "id": "telegramId",
+                                    "content": "Айди тг",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "number",
+                                    "format": "positiveNum",
+                                    "formatOptions": null
+                                },
+                                "id": {
+                                    "id": "id",
+                                    "content": "username",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "id",
+                                    "format": null,
+                                    "formatOptions": {}
+                                }
+                            },
+                            "fieldParams": {
+                                "telegramId": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "id": {
+                                    "include": false,
+                                    "disableEditing": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                }
+                            },
+                            "fieldOrder": [
+                                "telegramId",
+                                "id"
+                            ]
+                        }
                     }
                 },
                 "columns": {
@@ -3931,18 +3785,13 @@ const App = (props) => {
                         "id": "tab-1",
                         "title": "New section",
                         "fieldIds": [
-                            "action__20811664026153868",
+                            "name",
+                            "date",
+                            "description",
+                            "action__45091680187185964",
+                            "users",
                             "id",
-                            "firstName",
-                            "lastName",
-                            "weight",
-                            "cat_id",
-                            "group_id",
-                            "Age",
-                            "phone",
-                            "school",
-                            "email",
-                            "isApproved"
+                            "telegramId"
                         ]
                     }
                 },
@@ -3951,41 +3800,196 @@ const App = (props) => {
                 ],
                 "actions": [
                     {
-                        "sysName": "",
-                        "id": "20811664026153868",
-                        "name": "Одобрить заявку",
+                        "sysName": "record",
+                        "id": "45091680187185964",
+                        "name": "Добавить мероприятие",
                         "displayAs": "button",
-                        "buttonIcon": "done",
-                        "buttonType": "accent",
-                        "closePopup": true,
-                        "showMessage": false,
-                        "conditionals": [
-                            {
-                                "id": "80731664026828877",
-                                "target": "field",
-                                "value": "false",
-                                "field": "isApproved"
-                            }
-                        ],
+                        "buttonIcon": "plus",
+                        "buttonTitle": "Записаться на мероприятие",
+                        "closePopup": false,
+                        "showMessage": true,
+                        "web3": false,
+                        "SLtype": "other",
+                        "fields": {
+                            "readFields": [
+                                {
+                                    "fieldSysName": "comment",
+                                    "fetch": [],
+                                    "sysName": "comment",
+                                    "name": "comment",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "event_id",
+                                    "fetch": [],
+                                    "sysName": "event_id",
+                                    "name": "event_id",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "events"
+                                },
+                                {
+                                    "fieldSysName": "id",
+                                    "fetch": [],
+                                    "sysName": "id",
+                                    "name": "id",
+                                    "dataType": "id",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "presence",
+                                    "fetch": [],
+                                    "sysName": "presence",
+                                    "name": "presence",
+                                    "dataType": "boolean",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "status",
+                                    "fetch": [],
+                                    "sysName": "status",
+                                    "name": "Статус добавления",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": null
+                                },
+                                {
+                                    "fieldSysName": "tgIDstring",
+                                    "fetch": [],
+                                    "sysName": "tgIDstring",
+                                    "name": "Вывод айди ТГ",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": null
+                                },
+                                {
+                                    "fieldSysName": "user_id",
+                                    "fetch": [],
+                                    "sysName": "user_id",
+                                    "name": "user_id",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "WebUser"
+                                }
+                            ],
+                            "writeFields": [
+                                {
+                                    "fieldSysName": "comment",
+                                    "fetch": [],
+                                    "sysName": "comment",
+                                    "name": "comment",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "event_id",
+                                    "fetch": [],
+                                    "sysName": "event_id",
+                                    "name": "event_id",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "events"
+                                },
+                                {
+                                    "fieldSysName": "id",
+                                    "fetch": [],
+                                    "sysName": "id",
+                                    "name": "id",
+                                    "dataType": "id",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "presence",
+                                    "fetch": [],
+                                    "sysName": "presence",
+                                    "name": "presence",
+                                    "dataType": "boolean",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "status",
+                                    "fetch": [],
+                                    "sysName": "status",
+                                    "name": "Статус добавления",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": null
+                                },
+                                {
+                                    "fieldSysName": "tgIDstring",
+                                    "fetch": [],
+                                    "sysName": "tgIDstring",
+                                    "name": "Вывод айди ТГ",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": null
+                                },
+                                {
+                                    "fieldSysName": "user_id",
+                                    "fetch": [],
+                                    "sysName": "user_id",
+                                    "name": "user_id",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "WebUser"
+                                }
+                            ]
+                        },
+                        "callFrom": "main",
                         "formMapping": [
                             {
-                                "id": "69301664026812440",
-                                "target": "id",
+                                "id": "38891680187579774",
+                                "target": "user_id",
+                                "type": "user",
+                                "value": null
+                            },
+                            {
+                                "id": "76411680187677993",
+                                "target": "event_id",
                                 "type": "objectField",
                                 "value": "id"
                             },
                             {
-                                "id": "31481664026822038",
-                                "target": "isApproved",
+                                "id": "33411680288913437",
+                                "target": "status",
                                 "type": "const",
-                                "value": "true"
+                                "value": "added"
+                            },
+                            {
+                                "id": "48461680534546957",
+                                "target": "tgIDstring",
+                                "type": "objectField",
+                                "value": "telegramId"
                             }
-                        ]
+                        ],
+                        "resultMessage": "<p>Мероприятие успешно добавлено</p>\n<meta http-equiv=\"refresh\" content=\"2;URL=https://learning-platform-like.directual.app/all-events?tab=tab_1680302132962\"/>",
+                        "conditionals": []
                     }
                 ]
             },
             "fields": {
-                "Age": {
+                "date": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -3993,78 +3997,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "cat_id": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": true,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "quickSearchSL": "manageCategories",
-                    "searchData": [
-                        {
-                            "key": "7d161299-9963-4b77-ad5e-38af198185c3",
-                            "value": "Детская – девушки 45–60 кг."
-                        },
-                        {
-                            "key": "8ddbb070-9d4b-46f3-bb7a-48da8ffda620",
-                            "value": "Мужчины основная 80–88 кг."
-                        },
-                        {
-                            "key": "71327121-ccca-481e-9ca4-3ca444945b78",
-                            "value": "Женщины основная до 60 кг."
-                        },
-                        {
-                            "key": "09772231-0da1-4124-b28e-b2b9976e2704",
-                            "value": "Детская – девушки до 45 кг."
-                        },
-                        {
-                            "key": "0ace751b-e96a-4b77-b3b0-af93e07774d1",
-                            "value": "Мужчины основная 70–80 кг."
-                        },
-                        {
-                            "key": "60e53fa3-4edd-4243-bebb-57a3ee4ebc8e",
-                            "value": "Ветераны 50+ абс."
-                        },
-                        {
-                            "key": "fbb71be3-871a-4c7e-8a88-54f2a573a4e7",
-                            "value": "Детская – юноши 45–58 кг."
-                        },
-                        {
-                            "key": "f1bc5f60-395d-4046-bad6-d0575f4b0430",
-                            "value": "Мужчины основная 88–98 кг."
-                        },
-                        {
-                            "key": "3822aef8-80d9-4942-b2db-edd8622a673a",
-                            "value": "Мужчины основная 60–70 кг."
-                        },
-                        {
-                            "key": "b23facb9-c64f-466c-8dcb-6ebf5418e1b6",
-                            "value": "Мужчины основная абс."
-                        },
-                        {
-                            "key": "a66017b0-e241-4de9-9f53-2cab7157d5f5",
-                            "value": "Детская – юноши до 45 кг."
-                        },
-                        {
-                            "key": "15246736-4ade-4b3d-abb2-a4ad13250d74",
-                            "value": "Женщины основная 60–70 кг."
-                        },
-                        {
-                            "key": "a1adf576-63d9-4fc2-8eb8-d1a131098814",
-                            "value": "Мужчины основная до 60 кг."
-                        },
-                        {
-                            "key": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
-                            "value": "Женщины основная абс."
-                        },
-                        {
-                            "key": "cf986d0b-3c4e-4651-8b22-779596f23056",
-                            "value": "Ветераны 50+ до 70 кг."
-                        }
-                    ]
-                },
-                "email": {
+                "description": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -4072,7 +4005,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "firstName": {
+                "name": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -4081,138 +4014,261 @@ const App = (props) => {
                     "clickable": false
                 },
                 "id": {
-                    "include": true,
+                    "include": false,
                     "disableEditing": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "lastName": {
+                "users": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "phone": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "school": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "weight": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "test": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "test1": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "test2": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "test3": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "test4": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "isApproved": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "group_id": {
-                    "include": false,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": true,
                     "fileImageSize": 200,
                     "clickable": false,
-                    "searchData": [
-                        {
-                            "key": "2734591a-ab1e-4d4f-900e-9e0ce9bbad93",
-                            "value": "Мужчины основная"
+                    "configureLinkedCard": {
+                        "fields": {
+                            "id": {
+                                "id": "id",
+                                "content": "username",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "id",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "department": {
+                                "id": "department",
+                                "content": "Департамент",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "link",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "department_id": {
+                                "id": "department_id",
+                                "content": "Отдел",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "link",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "firstName": {
+                                "id": "firstName",
+                                "content": "Имя",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "lastName": {
+                                "id": "lastName",
+                                "content": "Фамилия",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "secondName": {
+                                "id": "secondName",
+                                "content": "Отчество",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "telegramId": {
+                                "id": "telegramId",
+                                "content": "Айди тг",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "number",
+                                "format": "positiveNum",
+                                "formatOptions": null
+                            }
                         },
-                        {
-                            "key": "fa62b3a7-1a6f-40de-8aae-72821e303abb",
-                            "value": "Женщины основная"
+                        "fieldParams": {
+                            "id": {
+                                "include": false,
+                                "disableEditing": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "department": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "department_id": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "firstName": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "lastName": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "secondName": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "telegramId": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
                         },
-                        {
-                            "key": "325e679d-ba72-42da-9216-b3550b9c9ef6",
-                            "value": "Детская – юноши"
+                        "fieldOrder": [
+                            "id",
+                            "department",
+                            "department_id",
+                            "firstName",
+                            "lastName",
+                            "secondName",
+                            "telegramId"
+                        ]
+                    }
+                },
+                "telegramId": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": true,
+                    "configureLinkedCard": {
+                        "fields": {
+                            "telegramId": {
+                                "id": "telegramId",
+                                "content": "Айди тг",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "number",
+                                "format": "positiveNum",
+                                "formatOptions": null
+                            },
+                            "id": {
+                                "id": "id",
+                                "content": "username",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "id",
+                                "format": null,
+                                "formatOptions": {}
+                            }
                         },
-                        {
-                            "key": "e8529bc4-68a1-44c7-96c5-e87a12321feb",
-                            "value": "Детская – девушки"
+                        "fieldParams": {
+                            "telegramId": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "id": {
+                                "include": false,
+                                "disableEditing": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
                         },
-                        {
-                            "key": "9b3867b4-2494-404e-8034-83e5c3a9c6fe",
-                            "value": "Ветераны 50+"
-                        }
-                    ]
+                        "fieldOrder": [
+                            "telegramId",
+                            "id"
+                        ]
+                    }
                 }
             },
             "tableParams": {
                 "readFields": [
                     {
-                        "fieldSysName": "Age",
+                        "fieldSysName": "date",
                         "fetch": [],
-                        "sysName": "Age",
-                        "name": "Возраст",
-                        "dataType": "number",
+                        "sysName": "date",
+                        "name": "Дата",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "ru",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "description",
+                        "fetch": [],
+                        "sysName": "description",
+                        "name": "Описание",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "cat_id",
+                        "fieldSysName": "id",
+                        "fetch": [],
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "name",
+                        "fetch": [],
+                        "sysName": "name",
+                        "name": "Название",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "telegramId",
                         "fetch": [
                             {
                                 "fieldSysName": "id",
@@ -4220,293 +4276,122 @@ const App = (props) => {
                                 "fetch": []
                             },
                             {
-                                "fieldSysName": "name",
+                                "fieldSysName": "telegramId",
                                 "condition": null,
                                 "fetch": []
                             }
                         ],
-                        "sysName": "cat_id",
-                        "name": "Категория",
-                        "dataType": "link",
+                        "sysName": "telegramId",
+                        "name": "ТГ ID ",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "link": "Categories"
+                        "link": "WebUser"
                     },
                     {
-                        "fieldSysName": "email",
-                        "fetch": [],
-                        "sysName": "email",
-                        "name": " Электропочта",
-                        "dataType": "string",
-                        "format": "email",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "firstName",
-                        "fetch": [],
-                        "sysName": "firstName",
-                        "name": "Имя",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "isApproved",
-                        "fetch": [],
-                        "sysName": "isApproved",
-                        "name": "Заявка одобрена",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
+                        "fieldSysName": "users",
+                        "fetch": [
+                            {
+                                "fieldSysName": "department",
+                                "condition": null,
+                                "fetch": [
+                                    {
+                                        "fieldSysName": "department_name",
+                                        "condition": null,
+                                        "fetch": []
+                                    }
+                                ]
                             },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "Заявка одобрена",
-                                "Заявка не одобрена"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
+                            {
+                                "fieldSysName": "department_id",
+                                "condition": null,
+                                "fetch": [
+                                    {
+                                        "fieldSysName": "departmentName",
+                                        "condition": null,
+                                        "fetch": [
+                                            {
+                                                "fieldSysName": "department_name",
+                                                "condition": null,
+                                                "fetch": []
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "lastName",
-                        "fetch": [],
-                        "sysName": "lastName",
-                        "name": "Фамилия",
-                        "dataType": "string",
+                            {
+                                "fieldSysName": "firstName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "lastName",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "secondName",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "users",
+                        "name": "Записавшиеся сотрудники",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "phone",
-                        "fetch": [],
-                        "sysName": "phone",
-                        "name": "Номер телефона",
-                        "dataType": "string",
-                        "format": "phone",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "school",
-                        "fetch": [],
-                        "sysName": "school",
-                        "name": "Школа",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "weight",
-                        "fetch": [],
-                        "sysName": "weight",
-                        "name": "Вес, кг.",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
+                        "link": "WebUser"
                     }
                 ],
-                "writeFields": [
-                    {
-                        "fieldSysName": "Age",
-                        "fetch": [],
-                        "sysName": "Age",
-                        "name": "Возраст",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "cat_id",
-                        "fetch": [],
-                        "sysName": "cat_id",
-                        "name": "Категория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "Categories"
-                    },
-                    {
-                        "fieldSysName": "email",
-                        "fetch": [],
-                        "sysName": "email",
-                        "name": " Электропочта",
-                        "dataType": "string",
-                        "format": "email",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "firstName",
-                        "fetch": [],
-                        "sysName": "firstName",
-                        "name": "Имя",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "isApproved",
-                        "fetch": [],
-                        "sysName": "isApproved",
-                        "name": "Заявка одобрена",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "Заявка одобрена",
-                                "Заявка не одобрена"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "lastName",
-                        "fetch": [],
-                        "sysName": "lastName",
-                        "name": "Фамилия",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "phone",
-                        "fetch": [],
-                        "sysName": "phone",
-                        "name": "Номер телефона",
-                        "dataType": "string",
-                        "format": "phone",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "school",
-                        "fetch": [],
-                        "sysName": "school",
-                        "name": "Школа",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "weight",
-                        "fetch": [],
-                        "sysName": "weight",
-                        "name": "Вес, кг.",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    }
-                ],
+                "writeFields": [],
                 "fields": {
-                    "Age": {
-                        "id": "Age",
-                        "content": "Возраст",
-                        "dataType": "number",
+                    "date": {
+                        "id": "date",
+                        "content": "Дата",
+                        "dataType": "date",
                         "format": "",
-                        "formatOptions": {},
-                        "write": true,
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "ru",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
                         "read": true,
                         "link": ""
                     },
-                    "cat_id": {
-                        "id": "cat_id",
-                        "content": "Категория",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "Categories"
-                    },
-                    "email": {
-                        "id": "email",
-                        "content": " Электропочта",
-                        "dataType": "string",
-                        "format": "email",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "firstName": {
-                        "id": "firstName",
-                        "content": "Имя",
+                    "description": {
+                        "id": "description",
+                        "content": "Описание",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": ""
                     },
@@ -4516,98 +4401,39 @@ const App = (props) => {
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": ""
                     },
-                    "isApproved": {
-                        "id": "isApproved",
-                        "content": "Заявка одобрена",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "Заявка одобрена",
-                                "Заявка не одобрена"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "lastName": {
-                        "id": "lastName",
-                        "content": "Фамилия",
+                    "name": {
+                        "id": "name",
+                        "content": "Название",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
                         "link": ""
                     },
-                    "phone": {
-                        "id": "phone",
-                        "content": "Номер телефона",
-                        "dataType": "string",
-                        "format": "phone",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "school": {
-                        "id": "school",
-                        "content": "Школа",
-                        "dataType": "string",
+                    "telegramId": {
+                        "id": "telegramId",
+                        "content": "ТГ ID ",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
-                        "link": ""
+                        "link": "WebUser"
                     },
-                    "weight": {
-                        "id": "weight",
-                        "content": "Вес, кг.",
-                        "dataType": "decimal",
+                    "users": {
+                        "id": "users",
+                        "content": "Записавшиеся сотрудники",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
-                        "link": ""
+                        "link": "WebUser"
                     }
                 },
                 "fieldParams": {
-                    "Age": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "cat_id": {
+                    "date": {
                         "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -4615,15 +4441,15 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "email": {
-                        "include": false,
+                    "description": {
+                        "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
                         "colorCode": false,
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "firstName": {
+                    "name": {
                         "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -4639,7 +4465,7 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "lastName": {
+                    "users": {
                         "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -4647,72 +4473,8 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "phone": {
+                    "telegramId": {
                         "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "school": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "weight": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "test": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "test1": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "test2": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "test3": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "test4": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "isApproved": {
-                        "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
                         "colorCode": false,
@@ -4721,138 +4483,21 @@ const App = (props) => {
                     }
                 },
                 "fieldOrder": [
-                    "lastName",
-                    "firstName",
-                    "cat_id",
-                    "isApproved",
-                    "weight",
-                    "school",
-                    "Age",
-                    "email",
-                    "phone",
-                    "id"
+                    "name",
+                    "date",
+                    "description",
+                    "users",
+                    "id",
+                    "telegramId"
                 ]
             },
-            "actions": [
-                {
-                    "sysName": "",
-                    "id": "20811664026153868",
-                    "name": "Одобрить заявку",
-                    "displayAs": "button",
-                    "buttonIcon": "done",
-                    "buttonType": "accent",
-                    "closePopup": true,
-                    "showMessage": false,
-                    "conditionals": [
-                        {
-                            "id": "80731664026828877",
-                            "target": "field",
-                            "value": "false",
-                            "field": "isApproved",
-                            "fieldValue": "false"
-                        }
-                    ],
-                    "formMapping": [
-                        {
-                            "id": "69301664026812440",
-                            "target": "id",
-                            "type": "objectField",
-                            "value": "id"
-                        },
-                        {
-                            "id": "31481664026822038",
-                            "target": "isApproved",
-                            "type": "const",
-                            "value": "true"
-                        }
-                    ]
-                }
-            ],
             "filterParams": {
+                "isSorting": true,
                 "isFiltering": true,
                 "filterFields": {
-                    "cat_id": {
+                    "date": {
                         "active": true,
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "name": "Категория",
-                        "linkDirectory": [
-                            {
-                                "id": "7d161299-9963-4b77-ad5e-38af198185c3",
-                                "text": "Детская – девушки 45–60 кг."
-                            },
-                            {
-                                "id": "8ddbb070-9d4b-46f3-bb7a-48da8ffda620",
-                                "text": "Мужчины основная 80–88 кг."
-                            },
-                            {
-                                "id": "71327121-ccca-481e-9ca4-3ca444945b78",
-                                "text": "Женщины основная до 60 кг."
-                            },
-                            {
-                                "id": "09772231-0da1-4124-b28e-b2b9976e2704",
-                                "text": "Детская – девушки до 45 кг."
-                            },
-                            {
-                                "id": "0ace751b-e96a-4b77-b3b0-af93e07774d1",
-                                "text": "Мужчины основная 70–80 кг."
-                            },
-                            {
-                                "id": "60e53fa3-4edd-4243-bebb-57a3ee4ebc8e",
-                                "text": "Ветераны 50+ абс."
-                            },
-                            {
-                                "id": "fbb71be3-871a-4c7e-8a88-54f2a573a4e7",
-                                "text": "Детская – юноши 45–58 кг."
-                            },
-                            {
-                                "id": "f1bc5f60-395d-4046-bad6-d0575f4b0430",
-                                "text": "Мужчины основная 88–94 кг."
-                            },
-                            {
-                                "id": "3822aef8-80d9-4942-b2db-edd8622a673a",
-                                "text": "Мужчины основная 60–70 кг."
-                            },
-                            {
-                                "id": "b23facb9-c64f-466c-8dcb-6ebf5418e1b6",
-                                "text": "Мужчины основная абс."
-                            },
-                            {
-                                "id": "a66017b0-e241-4de9-9f53-2cab7157d5f5",
-                                "text": "Детская – юноши до 45 кг."
-                            },
-                            {
-                                "id": "15246736-4ade-4b3d-abb2-a4ad13250d74",
-                                "text": "Женщины основная 60–70 кг."
-                            },
-                            {
-                                "id": "a1adf576-63d9-4fc2-8eb8-d1a131098814",
-                                "text": "Мужчины основная до 60 кг."
-                            },
-                            {
-                                "id": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
-                                "text": "Женщины основная абс."
-                            }
-                        ]
-                    },
-                    "lastName": {
-                        "active": true,
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "name": "Фамилия"
-                    },
-                    "firstName": {
-                        "active": true,
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "name": "Имя"
-                    },
-                    "isApproved": {
-                        "active": true,
-                        "dataType": "boolean",
+                        "dataType": "date",
                         "format": "",
                         "formatOptions": {
                             "customOptionLabel": "My option",
@@ -4861,10 +4506,10 @@ const App = (props) => {
                                 "value": "value",
                                 "button": "One more"
                             },
-                            "dateLocale": "en-gb",
+                            "dateLocale": "ru",
                             "booleanOptions": [
-                                "Заявка одобрена",
-                                "Заявка не одобрена"
+                                "True",
+                                "False"
                             ],
                             "validWeekDays": {
                                 "mon": true,
@@ -4882,103 +4527,223 @@ const App = (props) => {
                             "timeFormat": " HH:mm",
                             "isUTC": "false"
                         },
-                        "name": "Заявка одобрена"
+                        "name": "Дата"
+                    },
+                    "users": {
+                        "active": false,
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "name": "Записавшиеся сотрудники",
+                        "textsearch": "fulltext"
                     }
                 }
-            }
+            },
+            "actions": [
+                {
+                    "sysName": "record",
+                    "id": "45091680187185964",
+                    "name": "Добавить мероприятие",
+                    "displayAs": "button",
+                    "buttonIcon": "plus",
+                    "buttonTitle": "Записаться на мероприятие",
+                    "closePopup": false,
+                    "showMessage": true,
+                    "web3": false,
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "comment",
+                                "fetch": [],
+                                "sysName": "comment",
+                                "name": "comment",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "event_id",
+                                "fetch": [],
+                                "sysName": "event_id",
+                                "name": "event_id",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "events"
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "presence",
+                                "fetch": [],
+                                "sysName": "presence",
+                                "name": "presence",
+                                "dataType": "boolean",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "status",
+                                "fetch": [],
+                                "sysName": "status",
+                                "name": "Статус добавления",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": null
+                            },
+                            {
+                                "fieldSysName": "tgIDstring",
+                                "fetch": [],
+                                "sysName": "tgIDstring",
+                                "name": "Вывод айди ТГ",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": null
+                            },
+                            {
+                                "fieldSysName": "user_id",
+                                "fetch": [],
+                                "sysName": "user_id",
+                                "name": "user_id",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "WebUser"
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "comment",
+                                "fetch": [],
+                                "sysName": "comment",
+                                "name": "comment",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "event_id",
+                                "fetch": [],
+                                "sysName": "event_id",
+                                "name": "event_id",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "events"
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "presence",
+                                "fetch": [],
+                                "sysName": "presence",
+                                "name": "presence",
+                                "dataType": "boolean",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "status",
+                                "fetch": [],
+                                "sysName": "status",
+                                "name": "Статус добавления",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": null
+                            },
+                            {
+                                "fieldSysName": "tgIDstring",
+                                "fetch": [],
+                                "sysName": "tgIDstring",
+                                "name": "Вывод айди ТГ",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": null
+                            },
+                            {
+                                "fieldSysName": "user_id",
+                                "fetch": [],
+                                "sysName": "user_id",
+                                "name": "user_id",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "WebUser"
+                            }
+                        ]
+                    },
+                    "callFrom": "main",
+                    "formMapping": [
+                        {
+                            "id": "38891680187579774",
+                            "target": "user_id",
+                            "type": "user",
+                            "value": null
+                        },
+                        {
+                            "id": "76411680187677993",
+                            "target": "event_id",
+                            "type": "objectField",
+                            "value": "id"
+                        },
+                        {
+                            "id": "33411680288913437",
+                            "target": "status",
+                            "type": "const",
+                            "value": "added"
+                        },
+                        {
+                            "id": "48461680534546957",
+                            "target": "tgIDstring",
+                            "type": "objectField",
+                            "value": "telegramId"
+                        }
+                    ],
+                    "resultMessage": "<p>Мероприятие успешно добавлено</p>\n<meta http-equiv=\"refresh\" content=\"2;URL=https://learning-platform-like.directual.app/all-events?tab=tab_1680302132962\"/>",
+                    "conditionals": [
+                        {
+                            "id": "54961680535620564",
+                            "target": "id_not_in",
+                            "value": "users",
+                            "type": "objectField"
+                        }
+                    ]
+                }
+            ]
         },
-        "tableTitle": "Управление заявками",
+        "tableTitle": "  ",
         "actions": null,
         "headers": [
             {
-                "sysName": "Age",
-                "name": "Возраст",
-                "dataType": "number",
-                "id": "67461662292221257",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "cat_id",
-                "name": "Категория",
-                "dataType": "link",
-                "id": "88291663411323412",
-                "link": "Categories",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 8,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "email",
-                "name": " Электропочта",
-                "dataType": "string",
-                "id": "81671662292185465",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 7,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": "email",
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "firstName",
-                "name": "Имя",
-                "dataType": "string",
-                "id": "83811662292152973",
+                "sysName": "date",
+                "name": "Дата",
+                "dataType": "date",
+                "id": "66861678643907663",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -4992,7 +4757,34 @@ const App = (props) => {
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {},
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "ru",
+                    "booleanOptions": [
+                        "True",
+                        "False"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD/MM/Y",
+                    "timeFormat": " HH:mm",
+                    "isUTC": "false"
+                },
                 "groupName": null,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
@@ -5003,18 +4795,18 @@ const App = (props) => {
                 "array": false
             },
             {
-                "sysName": "group_id",
-                "name": "Группа",
-                "dataType": "link",
-                "id": "19601676719259100",
-                "link": "groups",
+                "sysName": "description",
+                "name": "Описание",
+                "dataType": "string",
+                "id": "69471678643940795",
+                "link": "",
                 "group": "0",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 12,
+                "order": 3,
                 "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
@@ -5022,8 +4814,8 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
                 "arrayLink": false,
                 "typeVariable": {},
                 "json": false,
@@ -5059,65 +4851,10 @@ const App = (props) => {
                 "array": false
             },
             {
-                "sysName": "isApproved",
-                "name": "Заявка одобрена",
-                "dataType": "boolean",
-                "id": "80091664026426867",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 9,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "Заявка одобрена",
-                        "Заявка не одобрена"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
-                    "timeFormat": " HH:mm",
-                    "isUTC": "false"
-                },
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "lastName",
-                "name": "Фамилия",
+                "sysName": "name",
+                "name": "Название",
                 "dataType": "string",
-                "id": "33031662292146402",
+                "id": "18701678643900338",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -5142,84 +4879,56 @@ const App = (props) => {
                 "array": false
             },
             {
-                "sysName": "phone",
-                "name": "Номер телефона",
-                "dataType": "string",
-                "id": "39111662292175533",
-                "link": "",
+                "sysName": "telegramId",
+                "name": "ТГ ID ",
+                "dataType": "arrayLink",
+                "id": "16521680532881671",
+                "link": "WebUser",
                 "group": "0",
-                "tags": "",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 9,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "users",
+                "name": "Записавшиеся сотрудники",
+                "dataType": "arrayLink",
+                "id": "80561680188472572",
+                "link": "WebUser",
+                "group": "0",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 5,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": "phone",
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "school",
-                "name": "Школа",
-                "dataType": "string",
-                "id": "78291662292194098",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 6,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {},
+                "formatOptions": null,
                 "groupName": null,
-                "linkOrArrayLinkType": false,
+                "linkOrArrayLinkType": true,
                 "linkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "weight",
-                "name": "Вес, кг.",
-                "dataType": "decimal",
-                "id": "84471662292164433",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
+                "arrayLink": true,
                 "typeVariable": {},
                 "json": false,
                 "indexExists": false,
@@ -5228,39 +4937,66 @@ const App = (props) => {
         ],
         "data": [
             {
-                "weight": 74,
-                "group_id": {
-                    "id": "2734591a-ab1e-4d4f-900e-9e0ce9bbad93",
-                    "title": "Мужчины основная"
-                },
-                "email": "ovod-gogol@yandex.ru",
-                "cat_id": {
-                    "name": "Мужчины основная 70–80 кг.",
-                    "id": "0ace751b-e96a-4b77-b3b0-af93e07774d1"
-                },
-                "isApproved": "",
-                "lastName": "Меженин",
-                "firstName": "Геннадий",
-                "id": "45f25f6a-d005-4dd3-99db-823a1cec99d5",
-                "Age": 32,
-                "phone": "89629594744",
-                "school": ""
+                "name": "Проверка номер 2 ",
+                "description": "Пупупуппупупупу",
+                "users": [],
+                "id": "fc3a9724-8179-4149-a32c-78026c408256",
+                "date": 1680642000000
             },
             {
-                "weight": 74,
-                "group_id": {
-                    "id": "2734591a-ab1e-4d4f-900e-9e0ce9bbad93",
-                    "title": "Мужчины основная"
-                },
-                "email": "agnaryarlson@gmail.com",
-                "lastName": "Меженин",
-                "firstName": "Геннадий",
-                "id": "40aa9578-e8ac-4b9f-a0c3-e19fe348f1f5",
-                "Age": 34,
-                "phone": "79629594744",
-                "cat_id": "",
-                "isApproved": "",
-                "school": ""
+                "description": "авава",
+                "date": 1680796200000,
+                "name": "вава",
+                "id": "734bca80-293d-44a2-a24d-cc1c4b9106a0"
+            },
+            {
+                "name": "Пупуппупупупупу",
+                "description": "ОООООООООООО",
+                "users": [],
+                "id": "c01f23c3-8896-4324-967e-56bd9cb35059",
+                "date": 1680901200000
+            },
+            {
+                "name": "Проверка",
+                "description": "Я того маму ",
+                "users": [
+                    {
+                        "department_id": {
+                            "departmentName": {
+                                "department_name": "Маркетинг"
+                            }
+                        },
+                        "department": {
+                            "department_name": "IT-департамент"
+                        },
+                        "lastName": "Пузырев",
+                        "firstName": "Слава",
+                        "id": "puzyrcult"
+                    }
+                ],
+                "id": "a93b3931-508c-4ee1-a33d-ebf687dce431",
+                "date": 1681074000000
+            },
+            {
+                "name": "аааааааааа",
+                "description": "вааааааа",
+                "users": [
+                    {
+                        "department_id": {
+                            "departmentName": {
+                                "department_name": "Маркетинг"
+                            }
+                        },
+                        "department": {
+                            "department_name": "IT-департамент"
+                        },
+                        "lastName": "Пузырев",
+                        "firstName": "Слава",
+                        "id": "puzyrcult"
+                    }
+                ],
+                "id": "6338299c-5b73-45aa-bfa6-f8b8ddaed553",
+                "date": 1681333200000
             }
         ],
         "totalPages": 1,
@@ -5268,91 +5004,179 @@ const App = (props) => {
         "error": null,
         "fieldScheme": [
             [
-                "Age",
-                99132583
+                "date",
+                99192198
             ],
             [
-                "cat_id.id",
-                99019611
-            ],
-            [
-                "cat_id.name",
-                99019611
-            ],
-            [
-                "email",
-                99132583
-            ],
-            [
-                "firstName",
-                99132583
-            ],
-            [
-                "group_id.id",
-                99181943
-            ],
-            [
-                "group_id.title",
-                99181943
+                "description",
+                99192198
             ],
             [
                 "id",
-                99132583
+                99192198
             ],
             [
-                "isApproved",
-                99132583
+                "name",
+                99192198
             ],
             [
-                "lastName",
-                99132583
+                "telegramId.id",
+                99190671
             ],
             [
-                "phone",
-                99132583
+                "telegramId.telegramId",
+                99190671
             ],
             [
-                "school",
-                99132583
+                "users.department.department_name",
+                99192197
             ],
             [
-                "weight",
-                99132583
+                "users.department_id.departmentName.department_name",
+                99192197
+            ],
+            [
+                "users.firstName",
+                99190671
+            ],
+            [
+                "users.id",
+                99190671
+            ],
+            [
+                "users.lastName",
+                99190671
+            ],
+            [
+                "users.secondName",
+                99190671
             ]
         ],
-        "writeFields": [
-            "Age",
-            "cat_id",
-            "email",
-            "firstName",
-            "group_id",
-            "id",
-            "isApproved",
-            "lastName",
-            "phone",
-            "school",
-            "weight"
-        ],
+        "writeFields": [],
         "structures": {
-            "99019611": {
-                "networkID": 9312,
-                "sysName": "Categories",
-                "name": "Категории",
-                "id": 99019611,
-                "dateCreated": "2021-09-05T12:37:13Z",
+            "99190671": {
+                "networkID": 16262,
+                "sysName": "WebUser",
+                "name": "App users",
+                "id": 99190671,
+                "dateCreated": "2023-03-10T11:33:23Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"isDelete\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"23961630845476759\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Название категории\",\"id\":\"34241630845441302\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"group_id\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"47221678788306495\",\"link\":\"groups\",\"group\":\"1678788261660\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"main_referee\",\"dataType\":\"link\",\"name\":\"Главний рефери\",\"id\":\"55501679046567740\",\"link\":\"referee\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"carpet\",\"dataType\":\"link\",\"name\":\"Ковер\",\"id\":\"55541679046550810\",\"link\":\"carpets\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"weight_TO\",\"dataType\":\"decimal\",\"name\":\"Вес ДО, кг.\",\"id\":\"57871678788289145\",\"link\":\"\",\"group\":\"1678788261660\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"finished\",\"dataType\":\"string\",\"name\":\"Статус\",\"id\":\"65291664057944655\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"categories_ids\",\"dataType\":\"arrayLink\",\"name\":\"Участники\",\"id\":\"67681663424563696\",\"link\":\"participation_requests\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"side_referees\",\"dataType\":\"arrayLink\",\"name\":\"Боковые судьи\",\"id\":\"78481679046591808\",\"link\":\"referee\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"participants\",\"dataType\":\"number\",\"name\":\"Количество участников\",\"id\":\"83591630845451672\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"youtubeLiveStream\",\"dataType\":\"string\",\"name\":\"Live-видео\",\"id\":\"88621662968088719\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"youTube\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"weight_FROM\",\"dataType\":\"decimal\",\"name\":\"Вес ОТ, кг.\",\"id\":\"94481678788268597\",\"link\":\"\",\"group\":\"1678788261660\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"noVideo\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"98401664061649455\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false}]",
-                "jsonGroupSettings": "[{\"name\":\"распределение\",\"id\":1678788261660,\"order\":0}]",
+                "jsonObject": "[{\"sysName\":\"userpic\",\"dataType\":\"file\",\"name\":\"User pic\",\"id\":\"1\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":\"Contacts\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"phone\",\"dataType\":\"string\",\"name\":\"Phone\",\"id\":\"10\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"dateCreated\",\"dataType\":\"string\",\"name\":\"dateCreated\",\"id\":\"11\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"password\",\"dataType\":\"string\",\"name\":\"Одноразовый код\",\"id\":\"12\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"username\",\"id\":\"13\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"employment_date\",\"dataType\":\"date\",\"name\":\"Дата трудоустройства\",\"id\":\"16971678800030643\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"active\",\"dataType\":\"boolean\",\"name\":\"Работает\",\"id\":\"19631678799951313\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"isBlocked\",\"dataType\":\"boolean\",\"name\":\"Block user\",\"id\":\"2\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"secondName\",\"dataType\":\"string\",\"name\":\"Отчество\",\"id\":\"20071678802969155\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"gender\",\"dataType\":\"string\",\"name\":\"Gender\",\"id\":\"3\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"lastName\",\"dataType\":\"string\",\"name\":\"Фамилия\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"redirect\",\"dataType\":\"string\",\"name\":\"Редирект\",\"id\":\"42221678827008564\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"activeColor\",\"dataType\":\"string\",\"name\":\"Цвет\",\"id\":\"43691679932768915\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"department_id\",\"dataType\":\"link\",\"name\":\"Отдел\",\"id\":\"47431678799999605\",\"link\":\"employees_group\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"firstName\",\"dataType\":\"string\",\"name\":\"Имя\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"events\",\"dataType\":\"arrayLink\",\"name\":\"Список мероприятий\",\"id\":\"51921680188144676\",\"link\":\"events\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":20,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"username\",\"dataType\":\"string\",\"name\":\"username\",\"id\":\"55021678799992548\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"systemMessage\",\"dataType\":\"string\",\"name\":\"System message\",\"id\":\"56921641637265680\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"role\",\"dataType\":\"array\",\"name\":\"Роль\",\"id\":\"6\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":true},{\"sysName\":\"notif_Email\",\"dataType\":\"boolean\",\"name\":\"Notify me by Email\",\"id\":\"61231639915065277\",\"link\":\"\",\"group\":\"1639915049523\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Yes\",\"No\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"apiResponseStatus\",\"dataType\":\"boolean\",\"name\":\"Статус ответа Апи\",\"id\":\"67421678804944175\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"isAuthorization\",\"dataType\":\"boolean\",\"name\":\"isAuthorization\",\"id\":\"7\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"department\",\"dataType\":\"link\",\"name\":\"Департамент\",\"id\":\"72431679326880490\",\"link\":\"employees_departments\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"telegramId\",\"dataType\":\"number\",\"name\":\"Айди тг\",\"id\":\"76011678803746742\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"dateLastActivity\",\"dataType\":\"string\",\"name\":\"dateLastActivity\",\"id\":\"8\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"secret\",\"dataType\":\"string\",\"name\":\"secret\",\"id\":\"81131636839496227\",\"link\":\"\",\"group\":\"1636839487957\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"email\",\"dataType\":\"string\",\"name\":\"Email\",\"id\":\"9\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"comment\",\"dataType\":\"string\",\"name\":\"Комментарий\",\"id\":\"92081678800025148\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"post\",\"dataType\":\"string\",\"name\":\"Должность\",\"id\":\"92441678800018655\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"apiResponse\",\"dataType\":\"json\",\"name\":\"Ответ Апи\",\"id\":\"93241678804459642\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"array\":false},{\"sysName\":\"birthday\",\"dataType\":\"date\",\"name\":\"Дата рождения\",\"id\":\"97571678800034408\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false}]",
+                "jsonGroupSettings": "[{\"name\":\"Ненужные\",\"id\":-502807437,\"order\":0},{\"name\":\"Notifications\",\"id\":1639915049523,\"order\":1},{\"name\":\"Password restoring\",\"id\":1636839487957,\"order\":2},{\"name\":\"System fields (LEGACY)\",\"id\":-1776115286,\"order\":3}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"firstName\"},{\"sysName\":\"lastName\"}]",
+                "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2023-03-30T15:49:12Z",
+                "createBy": 0,
+                "changedBy": 17163,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "innerIDField": {
+                    "sysName": "id",
+                    "name": "username",
+                    "dataType": "id",
+                    "id": "13",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "arrayLink": false,
+                    "typeVariable": {},
+                    "json": false,
+                    "indexExists": false,
+                    "array": false
+                },
+                "objectIDSysName": "id",
+                "folderId": null
+            },
+            "99192197": {
+                "networkID": 16262,
+                "sysName": "employees_departments",
+                "name": "employees_departments",
+                "id": 99192197,
+                "dateCreated": "2023-03-12T17:47:28Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"employees_users\",\"dataType\":\"arrayLink\",\"name\":\"Сотрудники\",\"id\":\"26851678643323268\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"department_name\",\"dataType\":\"string\",\"name\":\"Департамент\",\"id\":\"35671678802719846\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"department_name\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": false,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2023-03-30T06:37:00Z",
+                "createBy": 17163,
+                "changedBy": 17163,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "innerIDField": {
+                    "sysName": "id",
+                    "name": "id",
+                    "dataType": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "arrayLink": false,
+                    "typeVariable": {},
+                    "json": false,
+                    "indexExists": false,
+                    "array": false
+                },
+                "objectIDSysName": "id",
+                "folderId": 33743412
+            },
+            "99192198": {
+                "networkID": 16262,
+                "sysName": "events",
+                "name": "events",
+                "id": 99192198,
+                "dateCreated": "2023-03-12T17:56:52Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"telegramId\",\"name\":\"ТГ ID \",\"dataType\":\"arrayLink\",\"id\":\"16521680532881671\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"array\":false},{\"sysName\":\"name\",\"name\":\"Название\",\"dataType\":\"string\",\"id\":\"18701678643900338\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"DateNotification2\",\"name\":\"Уведомление за час\",\"dataType\":\"date\",\"id\":\"54341680532034234\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"telegramIdString\",\"name\":\"ТГ ID записавшихся сотрудников\",\"dataType\":\"string\",\"id\":\"63071680533395508\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"date\",\"name\":\"Дата\",\"dataType\":\"date\",\"id\":\"66861678643907663\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"description\",\"name\":\"Описание\",\"dataType\":\"string\",\"id\":\"69471678643940795\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"users\",\"name\":\"Записавшиеся сотрудники\",\"dataType\":\"arrayLink\",\"id\":\"80561680188472572\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"array\":false},{\"sysName\":\"DateNotification1\",\"name\":\"Уведомление за день\",\"dataType\":\"date\",\"id\":\"90061680531871387\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"zoomLink\",\"name\":\"Ссылка на встречу в зуме\",\"dataType\":\"string\",\"id\":\"94821680302007720\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"created_by\",\"name\":\"Создатель\",\"dataType\":\"arrayLink\",\"id\":\"95371678643967421\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"array\":false}]",
+                "jsonGroupSettings": null,
                 "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2023-03-17T16:31:55Z",
-                "createBy": 21,
-                "changedBy": 1,
+                "dateChanged": "2023-04-03T15:23:53Z",
+                "createBy": 17163,
+                "changedBy": 17163,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "innerIDField": {
@@ -5384,454 +5208,14 @@ const App = (props) => {
                     "array": false
                 },
                 "objectIDSysName": "id",
-                "folderId": 33657238
-            },
-            "99132583": {
-                "networkID": 9312,
-                "sysName": "participation_requests",
-                "name": "✅ Заявки на участие",
-                "id": 99132583,
-                "dateCreated": "2022-09-04T11:48:32Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"lastName\",\"name\":\"Фамилия\",\"dataType\":\"string\",\"id\":\"33031662292146402\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"firstName\",\"name\":\"Имя\",\"dataType\":\"string\",\"id\":\"83811662292152973\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"weight\",\"name\":\"Вес, кг.\",\"dataType\":\"decimal\",\"id\":\"84471662292164433\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Age\",\"name\":\"Возраст\",\"dataType\":\"number\",\"id\":\"67461662292221257\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"phone\",\"name\":\"Номер телефона\",\"dataType\":\"string\",\"id\":\"39111662292175533\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"phone\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"school\",\"name\":\"Школа\",\"dataType\":\"string\",\"id\":\"78291662292194098\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"email\",\"name\":\" Электропочта\",\"dataType\":\"string\",\"id\":\"81671662292185465\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"email\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"cat_id\",\"name\":\"Категория\",\"dataType\":\"link\",\"id\":\"88291663411323412\",\"link\":\"Categories\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isApproved\",\"name\":\"Заявка одобрена\",\"dataType\":\"boolean\",\"id\":\"80091664026426867\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Заявка одобрена\",\"Заявка не одобрена\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"sportsman_id\",\"name\":\"Участник\",\"dataType\":\"link\",\"id\":\"30231664026513855\",\"link\":\"sportsmen\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"approve_text\",\"name\":\"Статус заявки\",\"dataType\":\"string\",\"id\":\"11281664046632054\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"group_id\",\"name\":\"Группа\",\"dataType\":\"link\",\"id\":\"19601676719259100\",\"link\":\"groups\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"legal_consent\",\"name\":\"Согласие\",\"dataType\":\"json\",\"id\":\"63181677670602816\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"checkboxes\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"consent\",\"label\":\"Даю согласие на обработку персональных данных\"}]},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"is_absolute\",\"name\":\"Регистрация в абсолютную категорию\",\"dataType\":\"boolean\",\"id\":\"61221679146585221\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да, регистрация в абсолютную категорию\",\"Нет, регистрация в свою категорию\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"absolute_gender\",\"name\":\"Абсолютная категория\",\"dataType\":\"boolean\",\"id\":\"23551679146623183\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Мужская\",\"Женская\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"lastName\"},{\"sysName\":\"firstName\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2023-03-18T13:39:01Z",
-                "createBy": 21,
-                "changedBy": 1,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "innerIDField": {
-                    "sysName": "id",
-                    "name": "id",
-                    "dataType": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "typeVariable": {},
-                    "json": false,
-                    "indexExists": false,
-                    "array": false
-                },
-                "objectIDSysName": "id",
-                "folderId": 33657238
-            },
-            "99181943": {
-                "networkID": 9312,
-                "sysName": "groups",
-                "name": "Группы участников",
-                "id": 99181943,
-                "dateCreated": "2023-02-18T11:19:33Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"title\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"18031676719177678\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": false,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2023-02-18T11:19:45Z",
-                "createBy": 1,
-                "changedBy": 1,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "innerIDField": {
-                    "sysName": "id",
-                    "name": "id",
-                    "dataType": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "typeVariable": {},
-                    "json": false,
-                    "indexExists": false,
-                    "array": false
-                },
-                "objectIDSysName": "id",
-                "folderId": 33738333
+                "folderId": 33743412
             }
         },
         "isSuccessWrite": false,
         "writeError": null,
         "writeResponse": null,
-        "fileds": [
-            {
-                "sysName": "Age",
-                "name": "Возраст",
-                "dataType": "number",
-                "id": "67461662292221257",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "cat_id",
-                "name": "Категория",
-                "dataType": "link",
-                "id": "88291663411323412",
-                "link": "Categories",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 8,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "email",
-                "name": " Электропочта",
-                "dataType": "string",
-                "id": "81671662292185465",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 7,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": "email",
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "firstName",
-                "name": "Имя",
-                "dataType": "string",
-                "id": "83811662292152973",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "group_id",
-                "name": "Группа",
-                "dataType": "link",
-                "id": "19601676719259100",
-                "link": "groups",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 12,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "id",
-                "name": "id",
-                "dataType": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "isApproved",
-                "name": "Заявка одобрена",
-                "dataType": "boolean",
-                "id": "80091664026426867",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 9,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "Заявка одобрена",
-                        "Заявка не одобрена"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
-                    "timeFormat": " HH:mm",
-                    "isUTC": "false"
-                },
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "lastName",
-                "name": "Фамилия",
-                "dataType": "string",
-                "id": "33031662292146402",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "phone",
-                "name": "Номер телефона",
-                "dataType": "string",
-                "id": "39111662292175533",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": "phone",
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "school",
-                "name": "Школа",
-                "dataType": "string",
-                "id": "78291662292194098",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 6,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "weight",
-                "name": "Вес, кг.",
-                "dataType": "decimal",
-                "id": "84471662292164433",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
-            }
-        ],
-        "quickSearch": "true",
+        "fileds": [],
+        "quickSearch": "false",
         "httpParams": {},
         "cardCustomHtml": null,
         "cardCustomLayout": null
@@ -5841,7 +5225,7 @@ const App = (props) => {
         isAuth: true,
         role: "admin",
         token: "a256c0c6-6aa1-4706-afad-521d0d37e3f3",
-        user: "manager"
+        user: "puzyrcult"
     }
 
     let exampleForm = {
@@ -6140,7 +5524,7 @@ const App = (props) => {
         profilePicture: 'https://images.unsplash.com/photo-1574158622682-e40e69881006?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
         firstName: 'Jack',
         lastName: 'Russel',
-        email: 'jack@directual.com',
+        email: 'puzyrcult',
         role: 'admin',
         socialGoogle: 'jack@directual.com'
     }
@@ -6174,7 +5558,7 @@ const App = (props) => {
 
 
     const exampleTabs = [
-        { key: '1', title: 'Table', content: <FpsTable data={exampleTable} locale='FRA'/> },
+        { key: '1', title: 'Table', content: <FpsTable data={exampleTable} auth={authExample} locale='FRA'/> },
         { key: '2', title: 'Tab 2', content: <div>Tab content 2</div> },
     ]
 
