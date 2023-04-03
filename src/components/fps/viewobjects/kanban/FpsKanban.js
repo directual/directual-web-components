@@ -328,6 +328,9 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
             if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type != 'const') {
                 typeof object[cond.value] != 'object' ? cond.checkValue = object[cond.value] :
                     object[cond.value] ? cond.checkValue = (object[cond.value].id || (typeof object[cond.value].value == 'object' && object[cond.value].value ? object[cond.value].value.id : object[cond.value].value) || null) : cond.checkValue = null // раньше тут было .id, а не .value проверить!
+                if (Array.isArray(_.get(object[cond.value], "value")) && typeof _.get(object[cond.value], "value[0]") == 'object') {
+                    cond.checkValue = _.get(object[cond.value], "value").map(i => i.id)
+                }
             }
         })
         return eConds

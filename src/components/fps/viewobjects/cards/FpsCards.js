@@ -165,8 +165,8 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         }
         const dqlParams = { dql: currentDQL, sort: currentSort }
         sendMsg({ ...saveModel })
-        const isDelayedRefresh = currentDQL || _.get(currentSort,'field') || currentPage
-        isDelayedRefresh && setTimeout(()=> {
+        const isDelayedRefresh = currentDQL || _.get(currentSort, 'field') || currentPage
+        isDelayedRefresh && setTimeout(() => {
             onEvent({ dql: currentDQL, sort: currentSort, _id: id }, { page: currentPage }, { reqParam1: "true" })
             removeUrlParam(id + '_id')
         }, 2000)
@@ -175,11 +175,11 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     const submitAction = (mapping, sl, options) => {
         console.log('submitting action...')
 
-        const isDelayedRefresh = currentDQL || _.get(currentSort,'field') || currentPage
+        const isDelayedRefresh = currentDQL || _.get(currentSort, 'field') || currentPage
 
         function submitDelayedAction() {
             sendMsg(mapping, sl, undefined, options)
-            setTimeout(()=> {
+            setTimeout(() => {
                 onEvent({ dql: currentDQL, sort: currentSort, _id: id }, { page: currentPage }, { reqParam1: "true" })
             }, 2000)
         }
@@ -288,6 +288,9 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
             if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type != 'const') {
                 typeof object[cond.value] != 'object' ? cond.checkValue = object[cond.value] :
                     object[cond.value] ? cond.checkValue = (object[cond.value].id || (typeof object[cond.value].value == 'object' && object[cond.value].value ? object[cond.value].value.id : object[cond.value].value) || null) : cond.checkValue = null // раньше тут было .id, а не .value проверить!
+                if (Array.isArray(_.get(object[cond.value], "value")) && typeof _.get(object[cond.value], "value[0]") == 'object') {
+                    cond.checkValue = _.get(object[cond.value], "value").map(i => i.id)
+                }
             }
         })
         return eConds
