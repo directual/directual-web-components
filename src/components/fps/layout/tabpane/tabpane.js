@@ -26,7 +26,8 @@ export default function TabsPane({ tabs, loading, currentTabKey, fpsTabs, fixedS
         if (!currentTabKey && urlTab && saveTabToURL && tabs.filter(i => i.key == urlTab).length) { setCurrentTab(urlTab) }
     }, []);
 
-    return (<div>
+    return (<div style={{height: "100%"}}
+    >
         {/* <Button
             onClick={() => addUrlParam({ key: 'param1', value: '123' })}
         >

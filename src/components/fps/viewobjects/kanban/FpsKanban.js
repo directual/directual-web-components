@@ -93,7 +93,12 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
         if (sl === "") { sl = undefined }
         // костылек для даты
         for (const prop in msg) {
-            if (typeof msg[prop] == 'number' && msg[prop] > 1000000000000) { msg[prop] = moment(msg[prop]) }
+            if (typeof msg[prop] == 'number' && msg[prop] > 1000000000000) { 
+                const dataType = data.headers.filter(i=> i.sysName == prop) &&
+                    data.headers.filter(i=> i.sysName == prop)[0] &&
+                    data.headers.filter(i=> i.sysName == prop)[0].dataType
+                if (dataType == 'date') { msg[prop] = moment(msg[prop]) } 
+            }
         }
         let cloneData = _.isArray(msg) ? { _array_: [...msg] } : msg
         const message =
