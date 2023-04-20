@@ -53,17 +53,17 @@ export default function FileUpload(props) {
     }
 
     const saveFiles = (newFiles) => {
-        console.log("files")
-        console.log(files)
-        console.log("newFiles")
-        console.log(newFiles)
+        // console.log("files")
+        // console.log(files)
+        // console.log("newFiles")
+        // console.log(newFiles)
 
         let resultFileList = Array.isArray(files) ? [...files] : files.split(",").length  > 0 ? files.split(",") : [ files ]
 
         if (newFiles.length == 0) { props.onChange && props.onChange(null); return undefined }
 
         newFiles.forEach((file, i) => {
-            resultFileList.push('https://api.directual.com/fileUploaded/' + file.finalFileName)
+            resultFileList.push('https://api.directual.com/fileUploaded/' + ( file.finalFileName || file.file ))
         })
         const resultFileString = resultFileList.join(",")
         setFiles(resultFileList)

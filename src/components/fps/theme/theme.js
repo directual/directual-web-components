@@ -214,7 +214,7 @@ const customThemeColors = {
         '--menu-border-color': "#aaaaaa",
         '--menu-item': "#999999",
         '--menu-item-hover': "#333333",
-        '--menu-item-selected': "#058efc",
+        '--menu-item-selected': "#4ad5c8",
         '--menu-group': "#333333",
 
         // Button regular
