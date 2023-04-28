@@ -138,7 +138,7 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
                 }
             }
             if (exp.type == "multiOptions") {
-                return "(" + Object.keys(exp.value).map(i => { return "('" + fieldName + "' like '" + i + "')" }).join(" OR ") + ")"
+                return "(" + Object.keys(exp.value).map(i => { return "('" + fieldName + "' = '" + i + "')" }).join(" OR ") + ")"
             }
         }
         return (Object.keys(filters || {}) || []).filter(i => {
