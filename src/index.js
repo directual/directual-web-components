@@ -8,6 +8,7 @@ import {
 import FpsLogin from './components/fps/FpsLogin'
 import CodeInput from './components/fps/dataentry/codeinput/codeinput'
 import FpsCards from './components/fps/viewobjects/cards/FpsCards'
+import FpsChart from './components/fps/FpsChart'
 import FpsHtml, { FpsMarkdown } from './components/fps/FpsHtml'
 import FpsButton from './components/fps/button/FpsButton'
 import FpsHint from './components/fps/hint/FpsHint'
@@ -116,5 +117,6 @@ export {
   SplitPane,
   RichText,
   FpsMarkdown,
-  Chart
+  Chart,
+  FpsChart
 }

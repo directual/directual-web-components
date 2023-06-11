@@ -23,7 +23,7 @@ export default function FpsChart(props) {
   )
 }
 
-FpsHtml.settings = {
+FpsChart.settings = {
   icon: iconHtml,
   name: "Chart",
   sysName: 'iconChart',
