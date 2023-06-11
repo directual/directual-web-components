@@ -25,8 +25,8 @@ export default function FpsChart(props) {
 
 FpsChart.settings = {
   icon: iconHtml,
-  name: "Chart",
-  sysName: 'iconChart',
+  name: "iconChart",
+  sysName: 'FpsChart',
   form: [
     { name: 'API-endpoint', sysName: 'sl', type: 'api-endpoint' },
     { name: 'Chart data', sysName: 'chart-data', type: 'chart-data' },
