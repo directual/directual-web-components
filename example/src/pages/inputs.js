@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {
     Button, Input, InputGroup, ComponentDetails, CodeSnippet, FileUpload,
-    Checkbox, Markdown, DropFiles, Map
+    Checkbox, Markdown, DropFiles, Map, Colorpicker
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 
@@ -24,152 +24,158 @@ Some *emphasis* and <strong>strong</strong>!`;
 
     const testFields = [
         {
-          "structName": "alfaWebHookData",
-          "fields": [
-            {
-              "sysName": "id",
-              "name": "id",
-              "dataType": "id",
-              "link": ""
-            },
-            {
-              "sysName": "body",
-              "name": "body",
-              "dataType": "json",
-              "link": ""
-            },
-            {
-              "sysName": "headers",
-              "name": "headers",
-              "dataType": "json",
-              "link": ""
-            },
-            {
-              "sysName": "urlData",
-              "name": "urlData",
-              "dataType": "json",
-              "link": ""
-            },
-            {
-              "sysName": "@who",
-              "name": "who changed",
-              "dataType": "string",
-              "link": ""
-            },
-            {
-              "sysName": "@dateCreated",
-              "name": "date created",
-              "dataType": "date",
-              "link": ""
-            },
-            {
-              "sysName": "@dateChanged",
-              "name": "date changed",
-              "dataType": "date",
-              "link": ""
-            },
-            {
-              "sysName": "GlobalVar",
-              "name": "Global Constants (2)",
-              "dataType": "link",
-              "link": "GlobalVars",
-              "vars": "global"
-            },
-            {
-              "sysName": "ContextVar",
-              "name": "Context Variables (3)",
-              "dataType": "link",
-              "link": "ContextVars",
-              "vars": "context"
-            }
-          ]
+            "structName": "alfaWebHookData",
+            "fields": [
+                {
+                    "sysName": "id",
+                    "name": "id",
+                    "dataType": "id",
+                    "link": ""
+                },
+                {
+                    "sysName": "body",
+                    "name": "body",
+                    "dataType": "json",
+                    "link": ""
+                },
+                {
+                    "sysName": "headers",
+                    "name": "headers",
+                    "dataType": "json",
+                    "link": ""
+                },
+                {
+                    "sysName": "urlData",
+                    "name": "urlData",
+                    "dataType": "json",
+                    "link": ""
+                },
+                {
+                    "sysName": "@who",
+                    "name": "who changed",
+                    "dataType": "string",
+                    "link": ""
+                },
+                {
+                    "sysName": "@dateCreated",
+                    "name": "date created",
+                    "dataType": "date",
+                    "link": ""
+                },
+                {
+                    "sysName": "@dateChanged",
+                    "name": "date changed",
+                    "dataType": "date",
+                    "link": ""
+                },
+                {
+                    "sysName": "GlobalVar",
+                    "name": "Global Constants (2)",
+                    "dataType": "link",
+                    "link": "GlobalVars",
+                    "vars": "global"
+                },
+                {
+                    "sysName": "ContextVar",
+                    "name": "Context Variables (3)",
+                    "dataType": "link",
+                    "link": "ContextVars",
+                    "vars": "context"
+                }
+            ]
         },
         {
-          "structName": "ContextVars",
-          "fields": [
-            {
-              "sysName": "orderId",
-              "name": "",
-              "dataType": "string",
-              "link": ""
-            },
-            {
-              "sysName": "job_id",
-              "name": "",
-              "dataType": "link",
-              "link": "Jobs"
-            },
-            {
-              "sysName": "status",
-              "name": "",
-              "dataType": "string",
-              "link": ""
-            }
-          ]
+            "structName": "ContextVars",
+            "fields": [
+                {
+                    "sysName": "orderId",
+                    "name": "",
+                    "dataType": "string",
+                    "link": ""
+                },
+                {
+                    "sysName": "job_id",
+                    "name": "",
+                    "dataType": "link",
+                    "link": "Jobs"
+                },
+                {
+                    "sysName": "status",
+                    "name": "",
+                    "dataType": "string",
+                    "link": ""
+                }
+            ]
         },
         {
-          "structName": "GlobalVars",
-          "fields": [
-            {
-              "sysName": "jobPrice",
-              "name": "",
-              "dataType": "string"
-            },
-            {
-              "sysName": "luxaryJobPrice",
-              "name": "",
-              "dataType": "string"
-            }
-          ]
+            "structName": "GlobalVars",
+            "fields": [
+                {
+                    "sysName": "jobPrice",
+                    "name": "",
+                    "dataType": "string"
+                },
+                {
+                    "sysName": "luxaryJobPrice",
+                    "name": "",
+                    "dataType": "string"
+                }
+            ]
         },
         {
-          "structName": "ContextVars",
-          "fields": [
-            {
-              "sysName": "orderId",
-              "name": "",
-              "dataType": "string",
-              "link": ""
-            },
-            {
-              "sysName": "job_id",
-              "name": "",
-              "dataType": "link",
-              "link": "Jobs"
-            },
-            {
-              "sysName": "status",
-              "name": "",
-              "dataType": "string",
-              "link": ""
-            }
-          ]
+            "structName": "ContextVars",
+            "fields": [
+                {
+                    "sysName": "orderId",
+                    "name": "",
+                    "dataType": "string",
+                    "link": ""
+                },
+                {
+                    "sysName": "job_id",
+                    "name": "",
+                    "dataType": "link",
+                    "link": "Jobs"
+                },
+                {
+                    "sysName": "status",
+                    "name": "",
+                    "dataType": "string",
+                    "link": ""
+                }
+            ]
         }
-      ]
+    ]
 
-      const [dateFormat,setDateFormat] = useState('D MMM, YYYY')
-      const [timeFormat,setTimeFormat] = useState('HH:mm')
-      const [dateLocale,setDateLocale] = useState(null)
+    const [dateFormat, setDateFormat] = useState('D MMM, YYYY')
+    const [timeFormat, setTimeFormat] = useState('HH:mm')
+    const [dateLocale, setDateLocale] = useState(null)
 
-      const [error,setError] = useState('error')
+    const [error, setError] = useState('error')
 
-      const testData = { data: [
-        {
-            latitude: 35.786868,
-            longitude: -121.252865,
-            id: 'pointer1',
-            title: 'Pointer 1',
-            image: 'https://api.directual.com/fileUploaded/dev/f13801f2-c52e-463b-9904-8eb36c1f82a7.jpg',
-            text: 'pointer description pointer description pointer description pointer description pointer description pointer description description pointer description pointer description pointer description pointer description',
-            link: 'https://www.mapbox.com/'
-        }
-    ]}
+    const testData = {
+        data: [
+            {
+                latitude: 35.786868,
+                longitude: -121.252865,
+                id: 'pointer1',
+                title: 'Pointer 1',
+                image: 'https://api.directual.com/fileUploaded/dev/f13801f2-c52e-463b-9904-8eb36c1f82a7.jpg',
+                text: 'pointer description pointer description pointer description pointer description pointer description pointer description description pointer description pointer description pointer description pointer description',
+                link: 'https://www.mapbox.com/'
+            }
+        ]
+    }
 
     return (
         <React.Fragment>
             <h1>Data entry</h1>
 
-            <Input debug type='textarea' autoWidth minWidth={140} maxWidth={500} rows='auto' />
+            <Colorpicker defaultValue="#AAABBB" onChange={val => console.log(val)} />
+
+            <Input type='color' defaultValue="#AAABBB" label='choose the color' />
+
+            {/* <Input debug type='textarea' autoWidth minWidth={140} maxWidth={500} rows='auto' /> */}
 
             {/* <Map
                 label='This is my map'
@@ -224,37 +230,37 @@ Some *emphasis* and <strong>strong</strong>!`;
             <br />
 
             <Input type='multiselect'
-            locale="FRA"
-            defaultValue={['id','хуе-мое']}
-            options ={[
-                {
-                    "key": "id",
-                    "value": "id"
-                },
-                {
-                    "key": "api_version",
-                    "value": ""
-                },
-                {
-                    "key": "release_date",
-                    "value": "Release date"
-                },
-                {
-                    "key": "updates",
-                    "value": "Updates"
-                },
-                {
-                    "key": "ui_version",
-                    "value": ""
-                },
-                null
-            ]} />
+                locale="FRA"
+                defaultValue={['id', 'хуе-мое']}
+                options={[
+                    {
+                        "key": "id",
+                        "value": "id"
+                    },
+                    {
+                        "key": "api_version",
+                        "value": ""
+                    },
+                    {
+                        "key": "release_date",
+                        "value": "Release date"
+                    },
+                    {
+                        "key": "updates",
+                        "value": "Updates"
+                    },
+                    {
+                        "key": "ui_version",
+                        "value": ""
+                    },
+                    null
+                ]} />
 
 
-            <Input type='markdown' edit example/>
+            <Input type='markdown' edit example />
 
             <h2 style={{ marginBottom: 24, marginTop: 12 }}>Special platform selects</h2>
-{/*
+            {/*
             <CodeSnippet code=
                 {`<Input
 label='Structure field'
@@ -336,7 +342,7 @@ type='structurefield' />`} />
                 timeFormat={timeFormat}
                 defaultValue={testDefValue}
                 onChange={setTestDefValue}
-                />
+            />
             <Button onClick={() => setTestDefValue(`2020-12-29T22:17:50.000Z`)}>push me</Button>
 
             {/* <Input type='optionsHandler'
@@ -357,7 +363,7 @@ type='structurefield' />`} />
                 nomargin
                 type='checkboxGroup' /> */}
 
-            <Input type='phone' label='phone' locale="FRA"/>
+            <Input type='phone' label='phone' locale="FRA" />
             <Input type='email' label='email' />
             <Input type='password' label='password' />
 

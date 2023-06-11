@@ -48,6 +48,8 @@ import { RichText } from './components/fps/richTextEditor/richTextEditor'
 import { Tags } from './components/fps/tags/Tags'
 import { Tree } from './components/fps/tree/tree'
 import Stopwatch from './components/fps/media/stopwatch'
+import Colorpicker from './components/fps/dataentry/colorpicker/colorpicker'
+import Chart from './components/fps/chart/chart'
 
 import FpsTheme, { SetTheme } from './components/fps/theme/theme'
 
@@ -56,6 +58,7 @@ export {
   Fps400,
   Fps500,
   FpsBlocked,
+  Colorpicker,
   FpsButton,
   FpsIsEmpty,
   ComponentWrapper,
@@ -112,5 +115,6 @@ export {
   FpsLayout,
   SplitPane,
   RichText,
-  FpsMarkdown
+  FpsMarkdown,
+  Chart
 }

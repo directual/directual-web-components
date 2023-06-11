@@ -15,6 +15,7 @@
     "directual-web-components": "file:..",
     "moment": "^2.26.0",
     "react": "file:../node_modules/react",
+    "react-color": "^2.19.3",
     "react-dom": "file:../node_modules/react-dom",
     "react-router-dom": "^5.2.0",
     "react-scripts": "file:../node_modules/react-scripts"

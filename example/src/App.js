@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {
     FpsCards, FpsForm, MainMenu, FpsTable, FpsTheme,
-    FpsWrapper, ContentWrapper, SignIn, Media, CodeSnippet,
+    FpsWrapper, ContentWrapper, SignIn, Media, CodeSnippet, Chart,
     Dnd, Profile, TabsPane, Stopwatch, Button, SignUp, RestorePass, FpsKanban
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
@@ -68,8 +68,8 @@ function MainMenuWrapper(props) {
                 { name: "Cards", group: 'Components', route: "/cards", icon: "cards", link: <Link to="/cards">Cards view</Link> },
                 { name: "Table", group: 'Components', route: "/table", icon: "database" },
                 { name: "Kanban", group: 'Components', route: "/kanban", icon: "kanban" },
-                { name: "Chat (soon)", group: 'Components', route: "/chat", icon: "bubble", disabled: true },
-                { name: "Comments (soon)", group: 'Components', route: "/comments", icon: "version", disabled: true },
+                { name: "Chart", group: 'Components', route: "/chart", icon: "chart" },
+                { name: "Comments (soon)", group: 'Components', route: "/comments", icon: "version", hidden: true },
                 { name: "Design system", subheader: true },
                 { name: "Typography", route: "/system-typography", icon: "paragraph", link: <Link to="/system-typography">Typography</Link> },
                 { name: "Directual Icons", route: "/system-icons", icon: "babai", link: <Link to="/system-icons">Directual icons</Link> },
@@ -30354,6 +30354,9 @@ const App = (props) => {
                         <Route exact path="/kanban">
                             <FpsKanban locale='ESP' data={kanbanData} auth={authExample} />
                         </Route>
+                        <Route exact path="/chart">
+                            <Chart />
+                        </Route>
                         <Route exact path="/profile">
                             <Profile
                                 width={600}
@@ -30385,11 +30388,6 @@ const App = (props) => {
                         </Route>
                         <Route exact path="/cards">
                             <FpsCards locale="ESP" data={cardActions} auth={authExample} currentBP='mobile' />
-                            <hr />
-                            {/* <FpsCards data={newCardActions} currentBP='desktop' /> */}
-                            {/* <FpsCards data={exampleTable} /> */}
-                            {/* <br /><br />
-              <FpsCards data={exampleTable2} /> */}
                         </Route>
                         <Route exact path="/theme">
                             <h1>Theme management</h1>

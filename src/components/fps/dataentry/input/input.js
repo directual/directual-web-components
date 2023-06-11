@@ -3,6 +3,7 @@ import styles from './input.module.css'
 import Radio from '../radio/radio'
 import Select from '../select/select'
 import Datepicker from '../datepicker/datepicker'
+import Colorpicker from '../colorpicker/colorpicker'
 import Slider from '../slider/slider'
 import Checkbox from '../checkbox/checkbox'
 import StructureField from '../structurefield/structurefield'
@@ -28,7 +29,10 @@ export default function Input(props) {
     const [defVal, setDefVal] = useState(props.defaultValue || props.value)
     const inputEl = useRef(null);
     const [lines, setLines] = useState(1)
+    const [showColor, setShowColor] = useState(false)
     const lang = props.locale ? props.locale.length == 3 ? props.locale : 'ENG' : 'ENG'
+    const pickerRef = useRef(null);
+
 
     const checkValue = () => {
         // console.log('checking...');
@@ -409,9 +413,25 @@ export default function Input(props) {
         const max = props.maxWidth || 100000
         const textWidth = inputEl.current ? getTextWidth(value, getCanvasFont(inputEl.current)) + 67 : 0
         let resultWidth = min
-        if (textWidth > min) {resultWidth = textWidth}
-        if (textWidth > max) {resultWidth = max}
+        if (textWidth > min) { resultWidth = textWidth }
+        if (textWidth > max) { resultWidth = max }
         return resultWidth
+    }
+
+    useOutsideAlerter(pickerRef);
+
+    function useOutsideAlerter(ref) {
+        useEffect(() => {
+            function handleClickOutside(event) {
+                if (ref.current && !ref.current.contains(event.target) && !inputEl.current.contains(event.target)) {
+                    setShowColor(false)
+                }
+            }
+            document.addEventListener("mousedown", handleClickOutside);
+            return () => {
+                document.removeEventListener("mousedown", handleClickOutside);
+            };
+        }, [ref]);
     }
 
     return (
@@ -456,10 +476,10 @@ export default function Input(props) {
                 props.type != 'decimal' &&
                 props.type != 'json' &&
                 props.type != 'optionsHandler' &&
-                <div className={`${styles.field_wrapper} ${(props.addonAfter || props.addonBefore || props.preSelect || (props.type == 'color' || props.type == 'colour')) && styles.hor}`}>
+                <div className={`${styles.field_wrapper} ${(props.addonAfter || props.addonBefore || props.preSelect || (props.type == 'color' || props.type == 'colour' || props.type == 'colorpicker')) && styles.hor}`}>
                     {props.addonBefore &&
                         <div className={styles.addonBefore}>{props.addonBefore}</div>}
-                    {(props.type == 'color' || props.type == 'colour') &&
+                    {(props.type == 'color' || props.type == 'colour' || props.type == 'colorpicker') &&
                         <div className={styles.addonBefore} style={{ backgroundColor: value }}>&nbsp;</div>}
                     {props.preSelect &&
                         <div className={`${styles.addonBefore} ${styles.preSelect}`}>
@@ -469,6 +489,13 @@ export default function Input(props) {
                         </div>}
                     <div className={styles.field_wrapper_additional}>
                         {props.icon && <div className={`${styles.input_icon_wrapper} icon icon-${props.icon}`} />}
+
+                        {showColor && (props.type == 'color' || props.type == 'colour' || props.type == 'colorpicker') && <div ref={pickerRef}>
+                            <Colorpicker 
+                                onChange={handleChange}
+                                defaultValue={value}
+                                sketch />
+                            </div>}
 
                         <input
                             disabled={props.disabled}
@@ -481,21 +508,25 @@ export default function Input(props) {
                             {`${styles.field} 
                             ${props.icon && styles.icon}
                             ${props.addonAfter && styles.addonAfterInput}
-                            ${(props.addonBefore || props.preSelect || (props.type == 'color' || props.type == 'colour')) && styles.addonBeforeInput}
+                            ${(props.addonBefore || props.preSelect || (props.type == 'color' || props.type == 'colour' || props.type == 'colorpicker')) && styles.addonBeforeInput}
                             ${props.code && styles.code} 
                             ${warningMsg.type && styles[warningMsg.type]}
                             ${props.disabled && styles.disabled}`}
                             onClick={e => e.stopPropagation()}
                             type="text"
+                            onFocus={e => setShowColor(true)}
                             onKeyPress={e => { e.key == 'Enter' ? props.onPressEnter(value) : undefined }}
                             onChange={e => { !props.copy ? handleChange(e.target.value) : undefined; }}
                             value={value || ''}
-                            onBlur={e => props.onBlur ? props.onBlur(e.target.value) : checkValue(e)}
+                            onBlur={e => {
+                                //setShowColor(false)
+                                props.onBlur ? props.onBlur(e.target.value) : checkValue(e)
+                            }}
                             placeholder={`${props.placeholder ? props.placeholder : ''}`}
                         />
                         {value && !props.disabled && !props.copy &&
                             <div className={`${styles.clear} icon icon-close`}
-                            onClick={() => { clearValue(); props.onClear() }}></div>}
+                                onClick={() => { clearValue(); props.onClear() }}></div>}
                         {value && props.copy &&
                             <div className={`${styles.clear} icon icon-copy`}
                                 onClick={value => copyValue(value)}></div>}
