@@ -29,6 +29,8 @@ FpsChart.settings = {
   sysName: 'FpsChart',
   form: [
     { name: 'API-endpoint', sysName: 'sl', type: 'api-endpoint' },
+    { name: 'Chart title', sysName: 'tableTitle', type: 'input' },
+    { name: 'Page size', sysName: 'pageSize', type: 'number' },
     { name: 'Chart data', sysName: 'chart-data', type: 'chart-data' },
   ]
 }
