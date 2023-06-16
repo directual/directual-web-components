@@ -521,3 +521,13 @@ div.tableTitle.mobile h2 {
 .openAI_input input:focus {
   background-position: calc(100% + 1px) center;
 }
+.pupka {
+  display: flex;
+  align-items: center;
+}
+.pipka {
+  width: 10px;
+  height: 10px;
+  border-radius: 20px;
+  margin-right: 5px;
+}

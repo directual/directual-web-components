@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {
     FpsCards, FpsForm, MainMenu, FpsTable, FpsTheme,
     FpsWrapper, ContentWrapper, SignIn, Media, CodeSnippet, Chart,
-    Dnd, Profile, TabsPane, Stopwatch, Button, SignUp, RestorePass, FpsKanban
+    Dnd, Profile, TabsPane, Stopwatch, Button, SignUp, RestorePass, FpsKanban, FpsChart
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 import {
@@ -30300,6 +30300,304 @@ const App = (props) => {
         socialGoogle: 'jack@directual.com'
     }
 
+    const chartData = {
+        "sl": "data",
+        "pageSize": "12",
+        "headerField": null,
+        "params": {
+            "cardListLayout": "grid",
+            "cardHeaderComment": "",
+            "deleteField": "",
+            "cardBodyText": "",
+            "cardImage": false,
+            "cardImageField": "",
+            "cardImageType": "none",
+            "cardImageSize": 100,
+            "objectView": {},
+            "chart_type": "bar",
+            "x_axis": "period",
+            "chart_lines": [
+                {
+                    "id": "23551686947760103",
+                    "color": "#731FF2",
+                    "line_data": "a",
+                    "line_label": "fffff"
+                },
+                {
+                    "id": "53211686947765270",
+                    "color": "#F21F22",
+                    "line_data": "b",
+                    "line_label": "sdf"
+                }
+            ]
+        },
+        "tableTitle": "",
+        "actions": null,
+        "headers": [
+            {
+                "sysName": "a",
+                "dataType": "number",
+                "name": "",
+                "id": "67891686503932743",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "array": false
+            },
+            {
+                "sysName": "b",
+                "dataType": "decimal",
+                "name": "",
+                "id": "27931686503933228",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "array": false
+            },
+            {
+                "sysName": "period",
+                "dataType": "string",
+                "name": "",
+                "id": "65531686503932167",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "array": false
+            }
+        ],
+        "data": [
+            {
+                "period": "2023-06-27",
+                "b": 16,
+                "a": 18,
+                "period_formatted": "2023-06-27",
+                "fffff": 18,
+                "sdf": 16
+            },
+            {
+                "a": 13,
+                "period": "2023-06-26",
+                "b": 14,
+                "period_formatted": "2023-06-26",
+                "fffff": 13,
+                "sdf": 14
+            },
+            {
+                "period": "2023-06-25",
+                "a": 12,
+                "b": 17,
+                "period_formatted": "2023-06-25",
+                "fffff": 12,
+                "sdf": 17
+            },
+            {
+                "period": "2023-06-24",
+                "a": 17,
+                "b": 22,
+                "period_formatted": "2023-06-24",
+                "fffff": 17,
+                "sdf": 22
+            },
+            {
+                "a": 16,
+                "b": 18,
+                "period": "2023-06-23",
+                "period_formatted": "2023-06-23",
+                "fffff": 16,
+                "sdf": 18
+            },
+            {
+                "b": 16,
+                "a": 12,
+                "period": "2023-06-22",
+                "period_formatted": "2023-06-22",
+                "fffff": 12,
+                "sdf": 16
+            },
+            {
+                "period": "2023-06-21",
+                "a": 16,
+                "b": 18,
+                "period_formatted": "2023-06-21",
+                "fffff": 16,
+                "sdf": 18
+            },
+            {
+                "period": "2023-06-20",
+                "a": 22,
+                "b": 24,
+                "period_formatted": "2023-06-20",
+                "fffff": 22,
+                "sdf": 24
+            },
+            {
+                "a": 22,
+                "b": 24,
+                "period": "2023-06-19",
+                "period_formatted": "2023-06-19",
+                "fffff": 22,
+                "sdf": 24
+            },
+            {
+                "a": 16,
+                "b": 14,
+                "period": "2023-06-18",
+                "period_formatted": "2023-06-18",
+                "fffff": 16,
+                "sdf": 14
+            },
+            {
+                "period": "2023-06-17",
+                "b": 12,
+                "a": 19,
+                "period_formatted": "2023-06-17",
+                "fffff": 19,
+                "sdf": 12
+            },
+            {
+                "period": "2023-06-16",
+                "b": 12,
+                "a": 9,
+                "period_formatted": "2023-06-16",
+                "fffff": 9,
+                "sdf": 12
+            }
+        ],
+        "totalPages": 3,
+        "pageNumber": 0,
+        "error": null,
+        "fieldScheme": [
+            [
+                "a",
+                99227831
+            ],
+            [
+                "b",
+                99227831
+            ],
+            [
+                "period",
+                99227831
+            ]
+        ],
+        "writeFields": [],
+        "structures": {
+            "99227831": {
+                "networkID": 17660,
+                "sysName": "data",
+                "name": "data",
+                "id": 99227831,
+                "dateCreated": "2023-06-11T17:18:31Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"period\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"65531686503932167\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"a\",\"dataType\":\"number\",\"name\":\"\",\"id\":\"67891686503932743\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"b\",\"dataType\":\"decimal\",\"name\":\"\",\"id\":\"27931686503933228\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"@who\",\"dataType\":\"string\",\"name\":\"who changed\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"@dateCreated\",\"dataType\":\"date\",\"name\":\"date created\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"@dateChanged\",\"dataType\":\"date\",\"name\":\"date changed\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": null,
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2023-06-11T17:19:26Z",
+                "createBy": 21,
+                "changedBy": 21,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "indexExists": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "arrayLink": false,
+                    "typeVariable": {},
+                    "json": false,
+                    "array": false
+                },
+                "objectIDSysName": "id",
+                "folderId": null
+            }
+        },
+        "isSuccessWrite": false,
+        "writeError": null,
+        "writeResponse": null,
+        "fileds": [],
+        "quickSearch": "false",
+        "httpParams": {},
+        "cardCustomHtml": null,
+        "cardCustomLayout": null
+    }
 
     let basicTheme = {
         colorScheme: localStorage.getItem('dd-theme-color') || 'classic',
@@ -30355,7 +30653,7 @@ const App = (props) => {
                             <FpsKanban locale='ESP' data={kanbanData} auth={authExample} />
                         </Route>
                         <Route exact path="/chart">
-                            <Chart />
+                            <FpsChart data={chartData}/>
                         </Route>
                         <Route exact path="/profile">
                             <Profile

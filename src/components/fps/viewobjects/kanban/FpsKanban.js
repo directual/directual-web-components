@@ -450,9 +450,7 @@ FpsKanban.settings = {
     form: [
         { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
         { name: 'Kanban title', sysName: 'tableTitle', type: 'input' },
-        // { name: 'Kanban parameters', sysName: 'params', type: 'kanban-params' },
         { name: 'Max objects quantity', sysName: 'pageSize', type: 'number' },
-        // { name: 'Quick search', sysName: 'quickSearch', type: 'turn_on_off' },
         { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
     ]
 }

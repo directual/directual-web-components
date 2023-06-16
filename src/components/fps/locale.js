@@ -57,7 +57,8 @@ export const dict = {
         dropOne: "Drop a file here, or click to select one",
         uploading: "Uploading files...",
         select: "Select the value",
-        numbersOnly: "numbers only"
+        numbersOnly: "numbers only",
+        chartLines: "Show chart lines"
     },
 
 
@@ -120,7 +121,8 @@ export const dict = {
         dropOne: "Legen Sie hier eine Datei ab oder klicken Sie, um eine auszuwählen",
         uploading: "Dateien werden hochgeladen...",
         select: "Wählen Sie den Wert aus",
-        numbersOnly: "nur Zahlen"
+        numbersOnly: "nur Zahlen",
+        chartLines: "Diagrammlinien anzeigen"
     },
 
 
@@ -183,7 +185,8 @@ export const dict = {
         dropOne: "Suelte un archivo aquí, o haga clic para seleccionar uno",
         uploading: "Subiendo archivos...",
         select: "Seleccione el valor",
-        numbersOnly: "solo numeros"
+        numbersOnly: "solo numeros",
+        chartLines: "Mostrar líneas de gráfico"
     },
 
 
@@ -246,7 +249,8 @@ export const dict = {
         dropOne: "Déposez un fichier ici ou cliquez pour en sélectionner un",
         uploading: "Téléchargement de fichiers...",
         select: "Sélectionnez la valeur",
-        numbersOnly: "chiffres uniquement"
+        numbersOnly: "chiffres uniquement",
+        chartLines: "Afficher les lignes du graphique"
     },
 
 
@@ -309,7 +313,8 @@ export const dict = {
         dropOne: "Перетащите файл сюда или кликните, чтобы загрузить",
         uploading: "Идет загрузка...",
         select: "Выберите значение",
-        numbersOnly: "только цифры"
+        numbersOnly: "только цифры",
+        chartLines: "Показать значения"
     },
 
     JPN: {
@@ -371,6 +376,7 @@ export const dict = {
         dropOne: "ここにファイルをドロップするか、クリックしてファイルを選択します",
         uploading: "ファイルをアップロードしています...",
         select: "値を選択",
-        numbersOnly: "数字のみ"
+        numbersOnly: "数字のみ",
+        chartLines: "チャート線を表示"
     }
 }

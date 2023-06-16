@@ -333,6 +333,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
     return (
         <ComponentWrapper currentBP={currentBP}>
+
             {data.writeError && data.writeError != 'dql is not allowed for write' && <Hint title={dict[lang].form.error} error>{data.writeError}</Hint>}
             {showObject &&
                 <React.Fragment>
@@ -423,7 +424,6 @@ FpsCards.settings = {
         { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
         { name: 'List title', sysName: 'tableTitle', type: 'input' },
         { name: 'Page size', sysName: 'pageSize', type: 'number' },
-        // { name: 'Quick search', sysName: 'quickSearch', type: 'turn_on_off' },
         { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
     ]
 }

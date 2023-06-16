@@ -9,6 +9,7 @@ import { FormSection } from '../../dataentry/form/FpsForm'
 import _ from 'lodash'
 
 export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters, onFilter, currentDQL,
+    chartFilters, displayChartFilters, updateChartFilters, chartLines, clearChartFilters,
     onSearch, loading, searchValue, currentBP, displayFilters, lang, dict, performFiltering, params }) {
     const [showSearch, setShowSearch] = useState(search)
     //const [showFilters, setShowFilters] = useState(false)
@@ -26,17 +27,23 @@ export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters,
 
     return (
         <React.Fragment>
-            {(displayFilters || tableQuickSearch || tableTitle) &&
+            {(displayFilters || tableQuickSearch || tableTitle || displayChartFilters) &&
                 <div className={`${styles.tableTitle} ${styles[currentBP]}`}>
                     {tableTitle && <div className={styles.tableTitleWrapper}>
                         <h2><span>{tableTitle}</span></h2>
                     </div>}
 
-                    {displayFilters && //!tableQuickSearch &&
+                    {(displayFilters || displayChartFilters) && //!tableQuickSearch &&
                         <NewFilters
                             tableFilters={tableFilters}
                             dict={dict[lang]}
+                            chartLines={chartLines}
+                            displayFilters={displayFilters}
                             currentBP={currentBP}
+                            chartFilters={chartFilters}
+                            displayChartFilters={displayChartFilters}
+                            clearChartFilters={clearChartFilters}
+                            updateChartFilters={updateChartFilters}
                             tableTitle={tableTitle}
                             alignRight={currentBP != 'mobile' && tableTitle}
                             performFiltering={performFiltering}
@@ -74,7 +81,8 @@ export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters,
     )
 }
 
-function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOptions, alignRight, currentBP, tableTitle }) {
+function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOptions, alignRight, currentBP, tableTitle,
+    chartFilters, displayChartFilters, updateChartFilters, displayFilters, chartLines, clearChartFilters }) {
 
 
     const defaultFilters = {
@@ -85,6 +93,7 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
         filters: {}
     }
 
+
     const [filters, setFilters] = useState(defaultFilters)
     const [openAI, setOpenAI] = useState('')
 
@@ -92,6 +101,7 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
         performFiltering(openAI ? openAI : composeDQL(saveFilters.filters), saveFilters.sort)
         setFilters(saveFilters)
     }
+
 
     const saveAIFilters = (dql) => {
         console.log("saveAIFilters")
@@ -150,6 +160,16 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
     //currentBP = 'mobile'
     const showFilters = (tableFilters && tableFilters.filterFields && Object.keys(tableFilters.filterFields || {}).filter(i => tableFilters.filterFields[i].active)) || []
 
+    const getdefaultChartFilters = () => {
+        const defaultFilters = {};
+        (chartLines || []).forEach(i => {
+            _.set(defaultFilters, [i.line_data], true)
+        })
+        return defaultFilters
+    }
+
+    const defaultChartFilters = getdefaultChartFilters()
+
     return <div ref={filtersWrapper} className={styles.newFilters}>
         <ActionPanel alignRight={alignRight} margin={currentBP == 'mobile' && tableTitle ? { top: 8, bottom: 0 } : null}>
             {_.get(tableFilters, "filteringType") == "openai" && <div>
@@ -159,30 +179,55 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
                     alignRight={alignRight}
                 />
             </div>}
+            {displayChartFilters && <React.Fragment>
+                <FilterField
+                    currentBP={currentBP}
+                    alignRight={alignRight}
+                    chartFilters={chartFilters}
+                    active={JSON.stringify(chartFilters) !== JSON.stringify(defaultChartFilters)}
+                    dict={dict}
+                    chartLines={chartLines}
+                    saveChartFilters={updateChartFilters}
+                    filters={filters}
+                    field={{
+                        name: _.get(dict, 'chartLines') || 'Show chart lines',
+                        type: 'chartLines',
+                        options: (chartLines || []).map(i => {
+                            return {
+                                value: i.line_data, label: <span className={styles.pupka}><span
+                                    style={{ backgroundColor: i.color }}
+                                    className={styles.pipka} /> {i.line_label || i.line_data}</span>
+                            }
+                        })
+                    }}
+                />
+                <Button icon='filterClear' disabled={JSON.stringify(chartFilters) == JSON.stringify(defaultChartFilters)}
+                    onClick={clearChartFilters} />
+            </React.Fragment>}
 
             {tableFilters && tableFilters.isFiltering && tableFilters.filterFields
-                && _.get(tableFilters, "filteringType") !== "openai" && 
-                    showFilters.map(filterField => <FilterField
-                        active={_.get(filters, `filters[${filterField}].value`) ||
-                            _.get(filters, `filters[${filterField}].valueFrom`) ||
-                            _.get(filters, `filters[${filterField}].valueTo`)}
-                        filters={filters}
-                        saveFilters={saveFilters}
-                        currentBP={currentBP}
-                        alignRight={alignRight}
-                        dict={dict}
-                        key={filterField}
-                        field={{
-                            id: filterField,
-                            name: tableFilters.filterFields[filterField].name,
-                            type: tableFilters.filterFields[filterField].dataType,
-                            textsearch: tableFilters.filterFields[filterField].textsearch,
-                            format: tableFilters.filterFields[filterField].format,
-                            formatOptions: tableFilters.filterFields[filterField].formatOptions,
-                            options: (_.get(tableFilters, `filterFields[${filterField}].linkDirectory`) || [])
-                                .map(i => { return { value: i.id, label: i.text } })
-                        }}
-                    />)}
+                && _.get(tableFilters, "filteringType") !== "openai" &&
+                showFilters.map(filterField => <FilterField
+                    active={_.get(filters, `filters[${filterField}].value`) ||
+                        _.get(filters, `filters[${filterField}].valueFrom`) ||
+                        _.get(filters, `filters[${filterField}].valueTo`)}
+                    filters={filters}
+                    saveFilters={saveFilters}
+                    currentBP={currentBP}
+                    alignRight={alignRight}
+                    dict={dict}
+                    key={filterField}
+                    field={{
+                        id: filterField,
+                        name: tableFilters.filterFields[filterField].name,
+                        type: tableFilters.filterFields[filterField].dataType,
+                        textsearch: tableFilters.filterFields[filterField].textsearch,
+                        format: tableFilters.filterFields[filterField].format,
+                        formatOptions: tableFilters.filterFields[filterField].formatOptions,
+                        options: (_.get(tableFilters, `filterFields[${filterField}].linkDirectory`) || [])
+                            .map(i => { return { value: i.id, label: i.text } })
+                    }}
+                />)}
 
             {tableFilters.isSorting &&
                 <FilterField
@@ -199,7 +244,7 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
                         type: 'sort',
                     }}
                 />}
-            <Button icon='filterClear' disabled={JSON.stringify(filters) == JSON.stringify(defaultFilters) && !openAI} onClick={clearFilters} />
+            {displayFilters && <Button icon='filterClear' disabled={JSON.stringify(filters) == JSON.stringify(defaultFilters) && !openAI} onClick={clearFilters} />}
         </ActionPanel>
     </div>
 }
@@ -220,9 +265,9 @@ function OpenAI({ saveAIFilters, openAI, alignRight }) {
             type='string'
             defaultValue={value}
             onChange={setValue}
-            onPressEnter={()=>value && saveAIFilters(value)}
-            onBlur={()=>value && saveAIFilters(value)}
-            onClear={()=>saveAIFilters('')}
+            onPressEnter={() => value && saveAIFilters(value)}
+            onBlur={() => value && saveAIFilters(value)}
+            onClear={() => saveAIFilters('')}
             nomargin
             autoWidth minWidth={300} maxWidth={600}
             className={!value ? styles.openAI_input : null}
@@ -230,7 +275,8 @@ function OpenAI({ saveAIFilters, openAI, alignRight }) {
     </div>
 }
 
-function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters, dict, alignRight, currentBP }) {
+function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters, dict, alignRight, currentBP,
+    saveChartFilters, chartFilters }) {
 
     const filterWrapper = useRef(null);
 
@@ -269,6 +315,17 @@ function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters
             active={active}
             title={renderFilterName(field)} overflowVisible>
             <div className={styles.filterWrapper}>
+
+                {(_.get(field, 'type') == 'chartLines') &&
+                    <Input type="checkboxGroup"
+                        nomargin
+                        nowrap
+                        onChange={saveChartFilters}
+                        defaultValue={chartFilters}
+                        options={field.options || []}
+                    />
+                }
+
                 {(_.get(field, 'type') == 'link' || _.get(field, 'type') == 'arrayLink') &&
                     _.get(field, 'textsearch') !== 'fulltext' &&
                     <Input type="checkboxGroup"
