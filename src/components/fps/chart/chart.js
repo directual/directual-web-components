@@ -2,17 +2,25 @@ import React, { useState, useEffect, useRef } from 'react'
 //import styles from './chart.module.css'
 import {
     LineChart, Line, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
-    AreaChart, Area, BarChart, Bar, ScatterChart, Scatter
+    AreaChart, Area, BarChart, Bar, ScatterChart, Scatter, PieChart, Pie, Cell
 } from 'recharts';
 import _ from 'lodash'
 import moment from 'moment';
 import styles from './chart.module.css'
 
-export default function Chart({ data, lang, globalLoading, chartFilters }) {
+export default function Chart({ data, lang, globalLoading, chartFilters, resetChartFilters }) {
 
-    const chartParams = _.get(data, "params") || {}
+    const [chartParams, setChartParams] = useState(_.get(data, "params") || {})
+
     const chartHolder = useRef(null)
     const [layoutWidth, setLayoutWidth] = useState(null)
+
+    useEffect(() => {
+        if (chartParams !== _.get(data, "params") && _.get(data, "params")) {
+            setChartParams(_.get(data, "params"));
+            resetChartFilters()
+        }
+    }, [data])
 
     useEffect(() => {
         if (chartHolder.current && chartHolder.current.offsetWidth != layoutWidth) {
@@ -62,21 +70,35 @@ export default function Chart({ data, lang, globalLoading, chartFilters }) {
                 _.set(result, `${line.line_data}`, array)
             })
             return result
-        } else {
-
-            let data = [...d]
-            d.forEach(dataLine => {
-                if (_.get(chartParams, 'x_axis_format')) {
-                    dataLine[chartParams.x_axis + "_formatted"] = moment(dataLine[chartParams.x_axis]).locale(momentLocale[lang]).format(_.get(chartParams, 'x_axis_format'))
-                } else { dataLine[chartParams.x_axis + "_formatted"] = dataLine[chartParams.x_axis] }
-                (chartParams.chart_lines || []).forEach(userLine => {
-                    if (userLine.line_data && userLine.line_label) {
-                        dataLine[userLine.line_label || userLine.line_data] = dataLine[userLine.line_data]
-                    }
-                })
-            })
-            return _.orderBy(data, [chartParams.x_axis], ['asc'])
         }
+
+        if (chartParams.chart_type == 'pie') {
+            let data = ([...d] || []).length ? ([...d] || [])[0] : null
+            if (!data) { return null }
+            console.log(data)
+            const result = (chartParams.chart_lines || []).map(i => {
+                console.log(i)
+                return { 
+                    value: data[i.line_data], 
+                    name: i.line_name || i.line_data
+                }
+            })
+            console.log(result)
+            return result
+        }
+
+        let data = [...d]
+        d.forEach(dataLine => {
+            if (_.get(chartParams, 'x_axis_format')) {
+                dataLine[chartParams.x_axis + "_formatted"] = moment(dataLine[chartParams.x_axis]).locale(momentLocale[lang]).format(_.get(chartParams, 'x_axis_format'))
+            } else { dataLine[chartParams.x_axis + "_formatted"] = dataLine[chartParams.x_axis] }
+            (chartParams.chart_lines || []).forEach(userLine => {
+                if (userLine.line_data && userLine.line_label) {
+                    dataLine[userLine.line_label || userLine.line_data] = dataLine[userLine.line_data]
+                }
+            })
+        })
+        return _.orderBy(data, [chartParams.x_axis], ['asc'])
     }
 
     const chartData = transformData(_.get(data, "data") || [])
@@ -137,6 +159,40 @@ export default function Chart({ data, lang, globalLoading, chartFilters }) {
 
     let renderChart = null
 
+    const chartDataTest = [
+        { name: "A", value: 400 },
+        { name: "B", value: 300 },
+        { name: "C", value: 300 },
+        { name: "D", value: 200 }
+    ]
+
+    const RADIAN = Math.PI / 180;
+    const renderCustomizedLabel = ({
+        cx,
+        cy,
+        midAngle,
+        innerRadius,
+        outerRadius,
+        percent,
+        index
+    }) => {
+        const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+        const x = cx + radius * Math.cos(-midAngle * RADIAN);
+        const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+        return (
+            <text
+                x={x}
+                y={y}
+                fill="white"
+                textAnchor={x > cx ? "start" : "end"}
+                dominantBaseline="central"
+            >
+                {`${(percent * 100).toFixed(0)}%`}
+            </text>
+        );
+    };
+
     switch (chartParams.chart_type) {
         case 'line':
             renderChart = <LineChart
@@ -147,7 +203,7 @@ export default function Chart({ data, lang, globalLoading, chartFilters }) {
                 {chartParams.show_grid && <CartesianGrid strokeDasharray={chartParams.chart_strokeDasharray || "0 0"} fill={chartParams.chart_gridFill} />}
                 <XAxis dataKey={chartParams.x_axis + "_formatted"} />
                 <YAxis />
-                <Tooltip />
+                {chartParams.show_tooltip && <Tooltip />}
                 {chartParams.show_legend && <Legend />}
                 {(chartParams.chart_lines || []).map(line => <Line
                     dot={line.line_dot ? { stroke: line.color, strokeWidth: line.dot_width || 1 } : false}
@@ -168,8 +224,7 @@ export default function Chart({ data, lang, globalLoading, chartFilters }) {
                 {chartParams.show_grid && <CartesianGrid strokeDasharray={chartParams.chart_strokeDasharray || "0 0"} fill={chartParams.chart_gridFill} />}
                 <XAxis dataKey={chartParams.x_axis + "_formatted"} />
                 <YAxis />
-                <Tooltip />
-
+                {chartParams.show_tooltip && <Tooltip />}
                 {chartParams.show_legend && <Legend />}
 
                 <defs>
@@ -203,7 +258,7 @@ export default function Chart({ data, lang, globalLoading, chartFilters }) {
                 {chartParams.show_grid && <CartesianGrid strokeDasharray={chartParams.chart_strokeDasharray || "0 0"} fill={chartParams.chart_gridFill} />}
                 <XAxis dataKey={chartParams.x_axis + "_formatted"} />
                 <YAxis />
-                <Tooltip />
+                {chartParams.show_tooltip && <Tooltip />}
                 {chartParams.show_legend && <Legend />}
                 {(chartParams.chart_lines || []).map(line => <Bar
                     strokeWidth={line.line_width || 1}
@@ -222,7 +277,7 @@ export default function Chart({ data, lang, globalLoading, chartFilters }) {
                 <XAxis dataKey={chartParams.x_axis} type='number' name={chartParams.x_axis_name} unit={chartParams.x_axis_units} />
                 <YAxis dataKey={chartParams.y_axis} type='number' name={chartParams.y_axis_name} unit={chartParams.y_axis_units} />
                 {chartParams.z_axis && <ZAxis range={[0, 500]} dataKey={chartParams.z_axis} type='number' name={chartParams.z_axis_name} unit={chartParams.z_axis_units} />}
-                <Tooltip />
+                {chartParams.show_tooltip && <Tooltip />}
                 {chartParams.show_legend && <Legend />}
                 {(chartParams.chart_lines || []).map(line => <Scatter
                     hide={!chartFilters[line.line_data]}
@@ -233,6 +288,36 @@ export default function Chart({ data, lang, globalLoading, chartFilters }) {
                     name={line.line_label || line.line_data || line.scatter_data_field + " – " + line.line_data}
                 />)}
             </ScatterChart>
+            break;
+        case 'pie':
+            renderChart = <PieChart
+                width={layoutWidth - 16}
+                height={chartParams.chart_height || 300}
+            >
+                {chartParams.show_tooltip && <Tooltip />}
+                {chartParams.show_legend && <Legend />}
+                <Pie
+                    data={chartData}
+                    cx={chartParams.pie_cx || '50%'}
+                    cy={chartParams.pie_cy || '50%'}
+                    labelLine={chartParams.pie_label == 'names'}
+                    label={chartParams.pie_label == 'names' ? true :
+                        chartParams.pie_label == 'shares' ? renderCustomizedLabel :
+                            false}
+                    outerRadius={chartParams.pie_outerRadius || 100}
+                    innerRadius={chartParams.pie_innerRadius || 0}
+                    dataKey="value"
+                    paddingAngle={chartParams.pie_paddingAngle || 0}
+                    startAngle={chartParams.pie_startAngle || 0}
+                    endAngle={chartParams.pie_endAngle || 360}
+                >
+
+                    {(chartParams.chart_lines || []).map((segment, index) => <Cell
+                        key={`cell-${index}`}
+                        fill={segment.color}
+                    />)}
+                </Pie>
+            </PieChart>
             break;
         default:
             renderChart = <div>unknown chart type</div>

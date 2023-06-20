@@ -385,10 +385,10 @@ function FpsChart({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
   const reset = () => {
     setLoading(true)
-    setTimeout(() => setLoading(false), 100)
+    setTimeout(() => { setLoading(false) }, 100)
   }
 
-  useEffect(reset,[])
+  useEffect(reset, [])
 
   return (
     <ComponentWrapper currentBP={currentBP}>
@@ -403,12 +403,12 @@ function FpsChart({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         clearChartFilters={value => {
           resetChartFilters()
           setLoading(true)
-          setTimeout(()=>setLoading(false),100)
+          setTimeout(() => setLoading(false), 100)
         }}
         updateChartFilters={value => {
           setChartFilters(value)
           setLoading(true)
-          setTimeout(()=>setLoading(false),100)
+          setTimeout(() => setLoading(false), 100)
         }}
         displayFilters={_.get(data.params, 'chartFilters.isFiltering')}
         performFiltering={dqlService}
@@ -429,6 +429,7 @@ function FpsChart({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
       {loading ?
         <Chart
           data={data}
+          resetChartFilters={resetChartFilters}
           submit={submit}
           auth={auth}
           chartFilters={chartFilters}

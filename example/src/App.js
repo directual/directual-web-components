@@ -30301,7 +30301,7 @@ const App = (props) => {
     }
 
     const chartData = {
-        "sl": "scatter",
+        "sl": "pie",
         "pageSize": "30",
         "headerField": null,
         "params": {
@@ -30314,80 +30314,65 @@ const App = (props) => {
             "cardImageType": "none",
             "cardImageSize": 100,
             "objectView": {},
-            "chart_type": "scatter",
-            "x_axis": "x",
-            "y_axis": "y",
-            "z_axis": "z",
+            "chart_type": "pie",
+            "show_legend": true,
+            "show_tooltip": true,
+            "pie_label": "names",
+            "pie_startAngle": 0,
+            "pie_endAngle": 180,
+            "pie_paddingAngle": 5,
+            "pie_cx": null,
+            "pie_cy": null,
+            "pie_innerRadius": 30,
             "chart_lines": [
                 {
-                    "id": "93581687260740044",
-                    "color": "#F21F22",
-                    "scatter_data_field": "type",
-                    "line_data": "A",
-                    "line_label": "AAAA"
+                    "id": "29741687279762813",
+                    "color": "#FFBB28",
+                    "line_data": "segm1",
+                    "line_name": "Segm 1"
                 },
                 {
-                    "id": "93611687260743925",
+                    "id": "52421687280183951",
+                    "color": "#00C49F",
+                    "line_name": "Segm 2",
+                    "line_data": "segm2"
+                },
+                {
+                    "id": "78791687280194527",
                     "color": "#3FCA52",
-                    "scatter_data_field": "type",
-                    "line_data": "B",
-                    "line_label": "BBBB"
+                    "line_name": "Segm 3",
+                    "line_data": "segm3"
+                },
+                {
+                    "id": "67441687280197286",
+                    "color": "#F2901F",
+                    "line_name": "Segm 4",
+                    "line_data": "segm4"
                 }
-            ],
-            "filter_lines": true,
-            "show_legend": true,
-            "show_grid": true
+            ]
         },
-        "tableTitle": "",
+        "tableTitle": "Pie chart",
         "actions": null,
         "headers": [
             {
-                "sysName": "type",
-                "dataType": "string",
-                "name": "",
-                "id": "67051687245748810",
-                "link": null,
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "array": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false
-            },
-            {
-                "sysName": "x",
-                "dataType": "number",
-                "name": "",
-                "id": "93191687245747147",
+                "sysName": "segm1",
+                "dataType": "decimal",
+                "name": "Segm 1",
+                "id": "63911687278502539",
                 "link": "",
                 "group": "0",
-                "tags": null,
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 1,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
-                "format": "positiveNum",
-                "formatOptions": null,
+                "format": null,
+                "formatOptions": {},
                 "groupName": null,
                 "array": false,
                 "linkOrArrayLinkType": false,
@@ -30398,24 +30383,24 @@ const App = (props) => {
                 "json": false
             },
             {
-                "sysName": "y",
+                "sysName": "segm2",
                 "dataType": "number",
-                "name": "",
-                "id": "67911687245747623",
+                "name": "Segm 2",
+                "id": "77701687278503386",
                 "link": "",
                 "group": "0",
-                "tags": null,
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 2,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
                 "array": false,
                 "linkOrArrayLinkType": false,
@@ -30426,24 +30411,52 @@ const App = (props) => {
                 "json": false
             },
             {
-                "sysName": "z",
-                "dataType": "decimal",
-                "name": "",
-                "id": "35431687245748248",
+                "sysName": "segm3",
+                "dataType": "number",
+                "name": "Segm 3",
+                "id": "46391687278504161",
                 "link": "",
                 "group": "0",
-                "tags": null,
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 3,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "segm4",
+                "dataType": "number",
+                "name": "Segm 4",
+                "id": "46531687278504874",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
                 "groupName": null,
                 "array": false,
                 "linkOrArrayLinkType": false,
@@ -30456,34 +30469,10 @@ const App = (props) => {
         ],
         "data": [
             {
-                "x": 12,
-                "y": 3,
-                "type": "A",
-                "z": 10
-            },
-            {
-                "x": 18,
-                "y": 4,
-                "type": "B",
-                "z": 20
-            },
-            {
-                "x": 4,
-                "y": 3,
-                "type": "A",
-                "z": 5.5
-            },
-            {
-                "x": 22,
-                "y": 3,
-                "type": "B",
-                "z": 50
-            },
-            {
-                "x": 8,
-                "y": 16,
-                "type": "B",
-                "z": 4
+                "segm2": 48,
+                "segm3": 200,
+                "segm1": 120.5,
+                "segm4": 10
             }
         ],
         "totalPages": 1,
@@ -30491,33 +30480,33 @@ const App = (props) => {
         "error": null,
         "fieldScheme": [
             [
-                "type",
-                99229280
+                "segm1",
+                99229338
             ],
             [
-                "x",
-                99229280
+                "segm2",
+                99229338
             ],
             [
-                "y",
-                99229280
+                "segm3",
+                99229338
             ],
             [
-                "z",
-                99229280
+                "segm4",
+                99229338
             ]
         ],
         "writeFields": [],
         "structures": {
-            "99229280": {
+            "99229338": {
                 "networkID": 17660,
-                "sysName": "scatter",
-                "name": "scatter",
-                "id": 99229280,
-                "dateCreated": "2023-06-20T07:22:14Z",
+                "sysName": "pie",
+                "name": "pie",
+                "id": 99229338,
+                "dateCreated": "2023-06-20T16:18:15Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"z\",\"name\":\"\",\"dataType\":\"decimal\",\"id\":\"35431687245748248\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"type\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"67051687245748810\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"y\",\"name\":\"\",\"dataType\":\"number\",\"id\":\"67911687245747623\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"x\",\"name\":\"\",\"dataType\":\"number\",\"id\":\"93191687245747147\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"segm3\",\"dataType\":\"number\",\"name\":\"Segm 3\",\"id\":\"46391687278504161\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"segm4\",\"dataType\":\"number\",\"name\":\"Segm 4\",\"id\":\"46531687278504874\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"segm1\",\"dataType\":\"decimal\",\"name\":\"Segm 1\",\"id\":\"63911687278502539\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"segm2\",\"dataType\":\"number\",\"name\":\"Segm 2\",\"id\":\"77701687278503386\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false}]",
                 "jsonGroupSettings": null,
                 "jsonViewIdSettings": null,
                 "jsonSettings": null,
@@ -30525,7 +30514,7 @@ const App = (props) => {
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2023-06-20T07:22:51Z",
+                "dateChanged": "2023-06-20T16:30:20Z",
                 "createBy": 21,
                 "changedBy": 21,
                 "_settings": null,
