@@ -383,15 +383,17 @@ function FpsChart({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     }
   }, [showObject])
 
-  useEffect(() => {
+  const reset = () => {
     setLoading(true)
     setTimeout(() => setLoading(false), 100)
-  }, [])
+  }
+
+  useEffect(reset,[])
 
   return (
     <ComponentWrapper currentBP={currentBP}>
       {data.writeError && data.writeError != 'dql is not allowed for write' && <Hint title={dict[lang].form.error} error>{data.writeError}</Hint>}
-
+      {/* <Button icon='reset' onClick={reset}>Reset chart</Button> */}
 
       <TableTitle
         tableFilters={_.get(data.params, 'chartFilters') || {}}

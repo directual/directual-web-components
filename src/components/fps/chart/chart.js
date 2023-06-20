@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 //import styles from './chart.module.css'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, 
-    AreaChart, Area, BarChart, Bar } from 'recharts';
+import {
+    LineChart, Line, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
+    AreaChart, Area, BarChart, Bar, ScatterChart, Scatter
+} from 'recharts';
 import _ from 'lodash'
 import moment from 'moment';
 import styles from './chart.module.css'
@@ -38,19 +40,43 @@ export default function Chart({ data, lang, globalLoading, chartFilters }) {
     }
 
     const transformData = (d) => {
-        let data = [...d]
-        d.forEach(dataLine => {
-            if (_.get(chartParams, 'x_axis_format')) {
-                dataLine[chartParams.x_axis + "_formatted"] = moment(dataLine[chartParams.x_axis]).locale(momentLocale[lang]).format(_.get(chartParams, 'x_axis_format'))
-            } else { dataLine[chartParams.x_axis + "_formatted"] = dataLine[chartParams.x_axis] }
-            (chartParams.chart_lines || []).forEach(userLine => {
-                if (userLine.line_data && userLine.line_label) {
-                    dataLine[userLine.line_label || userLine.line_data] = dataLine[userLine.line_data]
-                }
+
+        if (chartParams.chart_type == 'scatter') {
+            let data = [...d]
+            let result = {};
+            (chartParams.chart_lines || []).forEach(line => {
+                let array = _.get(result, `${line.line_data}`) || []
+
+                const filteredData = data.filter(i => i[line.scatter_data_field] == line.line_data) || []
+                array = _.concat(array, filteredData.map(i => {
+                    return chartParams.z_axis ?
+                        {
+                            x: i[chartParams.x_axis],
+                            y: i[chartParams.y_axis],
+                            z: i[chartParams.z_axis]
+                        } : {
+                            x: i[chartParams.x_axis],
+                            y: i[chartParams.y_axis]
+                        }
+                }))
+                _.set(result, `${line.line_data}`, array)
             })
-        })
-        //return data
-        return _.orderBy(data, [chartParams.x_axis], ['asc'])
+            return result
+        } else {
+
+            let data = [...d]
+            d.forEach(dataLine => {
+                if (_.get(chartParams, 'x_axis_format')) {
+                    dataLine[chartParams.x_axis + "_formatted"] = moment(dataLine[chartParams.x_axis]).locale(momentLocale[lang]).format(_.get(chartParams, 'x_axis_format'))
+                } else { dataLine[chartParams.x_axis + "_formatted"] = dataLine[chartParams.x_axis] }
+                (chartParams.chart_lines || []).forEach(userLine => {
+                    if (userLine.line_data && userLine.line_label) {
+                        dataLine[userLine.line_label || userLine.line_data] = dataLine[userLine.line_data]
+                    }
+                })
+            })
+            return _.orderBy(data, [chartParams.x_axis], ['asc'])
+        }
     }
 
     const chartData = transformData(_.get(data, "data") || [])
@@ -186,6 +212,27 @@ export default function Chart({ data, lang, globalLoading, chartFilters }) {
                     fill={line.color}
                 />)}
             </BarChart>
+            break;
+        case 'scatter':
+            renderChart = <ScatterChart
+                width={layoutWidth - 16}
+                height={chartParams.chart_height || 300}
+            >
+                {chartParams.show_grid && <CartesianGrid strokeDasharray={chartParams.chart_strokeDasharray || "0 0"} fill={chartParams.chart_gridFill} />}
+                <XAxis dataKey={chartParams.x_axis} type='number' name={chartParams.x_axis_name} unit={chartParams.x_axis_units} />
+                <YAxis dataKey={chartParams.y_axis} type='number' name={chartParams.y_axis_name} unit={chartParams.y_axis_units} />
+                {chartParams.z_axis && <ZAxis range={[0, 500]} dataKey={chartParams.z_axis} type='number' name={chartParams.z_axis_name} unit={chartParams.z_axis_units} />}
+                <Tooltip />
+                {chartParams.show_legend && <Legend />}
+                {(chartParams.chart_lines || []).map(line => <Scatter
+                    hide={!chartFilters[line.line_data]}
+                    fill={line.color}
+                    shape={line.scatter_shape || 'circle'}
+                    line={line.scatter_line}
+                    data={chartData[line.line_data]}
+                    name={line.line_label || line.line_data || line.scatter_data_field + " – " + line.line_data}
+                />)}
+            </ScatterChart>
             break;
         default:
             renderChart = <div>unknown chart type</div>
