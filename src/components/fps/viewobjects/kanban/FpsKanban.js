@@ -101,8 +101,9 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
             }
         }
         let cloneData = _.isArray(msg) ? { _array_: [...msg] } : msg
-        const message =
-            { ...cloneData, _id: 'form_' + id, _sl_name: sl, _options: options, dql: currentDQL, sort: currentSort }
+        const message = 
+            { //...{ dql: currentDQL, sort: currentSort }, 
+                ...cloneData, _id: 'form_' + id, _sl_name: sl, _options: options }
         console.log('vvv')
         console.log(message)
         console.log(pageInfo)

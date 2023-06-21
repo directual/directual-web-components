@@ -54,8 +54,8 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         console.log(dql)
         setCurrentDQL(dql)
         setCurrentSort(sort)
-        // console.log('=== S O R T I N G ! ===')
-        // console.log(sort)
+        console.log('=== S O R T I N G ! ===')
+        console.log(sort)
         const page = 0 // dql || _.get(sort,'field') ? currentPage : 0
         sendMsg({ dql, sort }, null, { page })
     }
@@ -86,15 +86,16 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         if (sl === "") { sl = undefined }
         // костылек для даты
         for (const prop in msg) {
-            if (typeof msg[prop] == 'number' && msg[prop] > 1000000000000) { 
-                const dataType = data.headers.filter(i=> i.sysName == prop) &&
-                    data.headers.filter(i=> i.sysName == prop)[0] &&
-                    data.headers.filter(i=> i.sysName == prop)[0].dataType
-                if (dataType == 'date') { msg[prop] = moment(msg[prop]) } 
+            if (typeof msg[prop] == 'number' && msg[prop] > 1000000000000) {
+                const dataType = data.headers.filter(i => i.sysName == prop) &&
+                    data.headers.filter(i => i.sysName == prop)[0] &&
+                    data.headers.filter(i => i.sysName == prop)[0].dataType
+                if (dataType == 'date') { msg[prop] = moment(msg[prop]) }
             }
         }
         const message =
-            { ...msg, _id: 'form_' + id, _sl_name: sl, _options: options, dql: currentDQL, sort: currentSort }
+            { //...{ dql: currentDQL, sort: currentSort }, 
+            ...msg, _id: 'form_' + id, _sl_name: sl, _options: options }
         console.log(message)
         console.log(pageInfo)
         setLoading(true)
@@ -130,6 +131,8 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     }
 
     const refresh = (skipLoading) => {
+        console.log("refresh")
+        console.log(skipLoading)
         !skipLoading && setLoading(true)
         !skipLoading && setCurrentDQL('')
         !skipLoading && setCurrentSort({})
@@ -169,7 +172,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         }
         const dqlParams = { dql: currentDQL, sort: currentSort }
         sendMsg({ ...saveModel })
-        const isDelayedRefresh = false // currentDQL || _.get(currentSort, 'field') || currentPage
+        const isDelayedRefresh = currentDQL || _.get(currentSort, 'field') || currentPage
         isDelayedRefresh && setTimeout(() => {
             onEvent({ dql: currentDQL, sort: currentSort, _id: id }, { page: currentPage }, { reqParam1: "true" })
             removeUrlParam(id + '_id')
@@ -178,8 +181,9 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
     const submitAction = (mapping, sl, options) => {
         console.log('submitting action...')
+        //sendMsg(mapping, sl, undefined, options)
 
-        const isDelayedRefresh = false // currentDQL || _.get(currentSort, 'field') || currentPage
+        const isDelayedRefresh =  currentDQL || _.get(currentSort, 'field') || currentPage
 
         function submitDelayedAction() {
             sendMsg(mapping, sl, undefined, options)
