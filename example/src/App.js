@@ -28305,8 +28305,8 @@ const App = (props) => {
     }
 
     let exampleTable = {
-        "sl": "getAllCertRequests",
-        "pageSize": "10",
+        "sl": "adminPaidApps",
+        "pageSize": "20",
         "headerField": null,
         "params": {
             "cardListLayout": "grid",
@@ -28321,122 +28321,287 @@ const App = (props) => {
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "certOption",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "title",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "certOption",
-                        "name": "Certificate level",
-                        "dataType": "link",
+                        "fieldSysName": "Automatic_downgrade",
+                        "fetch": [],
+                        "sysName": "Automatic_downgrade",
+                        "name": "",
+                        "dataType": "boolean",
                         "format": "",
                         "formatOptions": {},
-                        "link": "cert_types"
+                        "link": ""
                     },
                     {
-                        "fieldSysName": "certPrice",
+                        "fieldSysName": "balance",
                         "fetch": [],
-                        "sysName": "certPrice",
-                        "name": "Certificate Price",
+                        "sysName": "balance",
+                        "name": "Credits",
                         "dataType": "decimal",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "date_requested",
-                        "fetch": [],
-                        "sysName": "date_requested",
-                        "name": "Date requested",
-                        "dataType": "date",
+                        "fieldSysName": "comments",
+                        "fetch": [
+                            {
+                                "fieldSysName": "date",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "files",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "text",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "user_id",
+                                "condition": null,
+                                "fetch": [
+                                    {
+                                        "fieldSysName": "firstName",
+                                        "condition": null,
+                                        "fetch": []
+                                    },
+                                    {
+                                        "fieldSysName": "lastName",
+                                        "condition": null,
+                                        "fetch": []
+                                    },
+                                    {
+                                        "fieldSysName": "userpic",
+                                        "condition": null,
+                                        "fetch": []
+                                    }
+                                ]
+                            }
+                        ],
+                        "sysName": "comments",
+                        "name": "Comments",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
+                        "link": "admin_comments"
+                    },
+                    {
+                        "fieldSysName": "date_trial_ended",
+                        "fetch": [],
+                        "sysName": "date_trial_ended",
+                        "name": "",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD MMM, Y",
+                            "timeFormat": "",
+                            "isUTC": "false"
+                        },
                         "link": ""
+                    },
+                    {
+                        "fieldSysName": "date_trial_started",
+                        "fetch": [],
+                        "sysName": "date_trial_started",
+                        "name": "",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD MMM, Y",
+                            "timeFormat": "",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "events",
+                        "fetch": [
+                            {
+                                "fieldSysName": "date",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "messagee",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "type",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "events",
+                        "name": "App events",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "appEvents"
                     },
                     {
                         "fieldSysName": "id",
                         "fetch": [],
                         "sysName": "id",
-                        "name": "id",
+                        "name": "App id",
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "indiPriceBasic",
+                        "fieldSysName": "isDowngraded",
                         "fetch": [],
-                        "sysName": "indiPriceBasic",
+                        "sysName": "isDowngraded",
                         "name": "",
-                        "dataType": "decimal",
+                        "dataType": "boolean",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "indiPriceGold",
+                        "fieldSysName": "isTrial",
                         "fetch": [],
-                        "sysName": "indiPriceGold",
+                        "sysName": "isTrial",
                         "name": "",
-                        "dataType": "decimal",
+                        "dataType": "boolean",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "projects",
+                        "fieldSysName": "is_blocked",
                         "fetch": [],
-                        "sysName": "projects",
-                        "name": "Projects description",
+                        "sysName": "is_blocked",
+                        "name": "is_blocked",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "is_cancelled",
+                        "fetch": [],
+                        "sysName": "is_cancelled",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "is_hidden",
+                        "fetch": [],
+                        "sysName": "is_hidden",
+                        "name": "is_hidden",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "is_sandbox",
+                        "fetch": [],
+                        "sysName": "is_sandbox",
+                        "name": "is_sandbox",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "legacy_billing",
+                        "fetch": [],
+                        "sysName": "legacy_billing",
+                        "name": "",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "name",
+                        "fetch": [],
+                        "sysName": "name",
+                        "name": "App name",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "next_billing_date",
+                        "fetch": [],
+                        "sysName": "next_billing_date",
+                        "name": "",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "status",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "title",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "status",
-                        "name": "Status",
-                        "dataType": "link",
+                        "fieldSysName": "next_payment",
+                        "fetch": [],
+                        "sysName": "next_payment",
+                        "name": "",
+                        "dataType": "decimal",
                         "format": "",
                         "formatOptions": {},
-                        "link": "cert_statuses"
+                        "link": ""
                     },
                     {
-                        "fieldSysName": "user_id",
+                        "fieldSysName": "owner_id",
                         "fetch": [
                             {
-                                "fieldSysName": "first_name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
                                 "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "last_name",
                                 "condition": null,
                                 "fetch": []
                             },
@@ -28444,41 +28609,298 @@ const App = (props) => {
                                 "fieldSysName": "wallet_balance",
                                 "condition": null,
                                 "fetch": []
+                            },
+                            {
+                                "fieldSysName": "wallet_transactions",
+                                "condition": null,
+                                "fetch": [
+                                    {
+                                        "fieldSysName": "balance",
+                                        "condition": null,
+                                        "fetch": []
+                                    },
+                                    {
+                                        "fieldSysName": "comment",
+                                        "condition": null,
+                                        "fetch": []
+                                    },
+                                    {
+                                        "fieldSysName": "date",
+                                        "condition": null,
+                                        "fetch": []
+                                    },
+                                    {
+                                        "fieldSysName": "type",
+                                        "condition": null,
+                                        "fetch": []
+                                    }
+                                ]
                             }
                         ],
-                        "sysName": "user_id",
-                        "name": "User",
+                        "sysName": "owner_id",
+                        "name": "Owner",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "link": "Cloud_users"
+                    },
+                    {
+                        "fieldSysName": "paddle_subscription_id",
+                        "fetch": [],
+                        "sysName": "paddle_subscription_id",
+                        "name": "Paddle ID",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "paddle_subscription_status",
+                        "fetch": [],
+                        "sysName": "paddle_subscription_status",
+                        "name": "Paddle Status",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "plan_id",
+                        "fetch": [
+                            {
+                                "fieldSysName": "description",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "price",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "plan_id",
+                        "name": "Billing plan",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "Tariff"
+                    },
+                    {
+                        "fieldSysName": "sysName",
+                        "fetch": [],
+                        "sysName": "sysName",
+                        "name": "System name",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "team_id",
+                        "fetch": [
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "is_hidden",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "owner_id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "tariff_id",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "team_id",
+                        "name": "Team",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "Teams"
+                    },
+                    {
+                        "fieldSysName": "trialType",
+                        "fetch": [],
+                        "sysName": "trialType",
+                        "name": "trial type (pro,startup)",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
                     }
                 ],
                 "writeFields": [
                     {
-                        "fieldSysName": "certOption",
+                        "fieldSysName": "Automatic_downgrade",
                         "fetch": [],
-                        "sysName": "certOption",
-                        "name": "Certificate level",
-                        "dataType": "link",
+                        "sysName": "Automatic_downgrade",
+                        "name": "",
+                        "dataType": "boolean",
                         "format": "",
                         "formatOptions": {},
-                        "link": "cert_types"
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "comments",
+                        "fetch": [],
+                        "sysName": "comments",
+                        "name": "Comments",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "admin_comments"
+                    },
+                    {
+                        "fieldSysName": "date_trial_ended",
+                        "fetch": [],
+                        "sysName": "date_trial_ended",
+                        "name": "",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD MMM, Y",
+                            "timeFormat": "",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "date_trial_started",
+                        "fetch": [],
+                        "sysName": "date_trial_started",
+                        "name": "",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD MMM, Y",
+                            "timeFormat": "",
+                            "isUTC": "false"
+                        },
+                        "link": ""
                     },
                     {
                         "fieldSysName": "id",
                         "fetch": [],
                         "sysName": "id",
-                        "name": "id",
+                        "name": "App id",
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "indiPriceBasic",
+                        "fieldSysName": "isDowngraded",
                         "fetch": [],
-                        "sysName": "indiPriceBasic",
+                        "sysName": "isDowngraded",
+                        "name": "",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "isTrial",
+                        "fetch": [],
+                        "sysName": "isTrial",
+                        "name": "",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "legacy_billing",
+                        "fetch": [],
+                        "sysName": "legacy_billing",
+                        "name": "",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "next_billing_date",
+                        "fetch": [],
+                        "sysName": "next_billing_date",
+                        "name": "",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "next_payment",
+                        "fetch": [],
+                        "sysName": "next_payment",
                         "name": "",
                         "dataType": "decimal",
                         "format": "",
@@ -28486,42 +28908,42 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "indiPriceGold",
+                        "fieldSysName": "paddle_subscription_id",
                         "fetch": [],
-                        "sysName": "indiPriceGold",
-                        "name": "",
-                        "dataType": "decimal",
+                        "sysName": "paddle_subscription_id",
+                        "name": "Paddle ID",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "trialType",
+                        "fetch": [],
+                        "sysName": "trialType",
+                        "name": "trial type (pro,startup)",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
-                    },
-                    {
-                        "fieldSysName": "status",
-                        "fetch": [],
-                        "sysName": "status",
-                        "name": "Status",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "cert_statuses"
                     }
                 ],
                 "fields": {
-                    "certOption": {
-                        "id": "certOption",
-                        "content": "Certificate level",
+                    "Automatic_downgrade": {
+                        "id": "Automatic_downgrade",
+                        "content": "",
                         "type": "field",
-                        "dataType": "link",
+                        "dataType": "boolean",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
                         "read": true,
-                        "link": "cert_types",
+                        "link": "",
                         "actions": []
                     },
-                    "certPrice": {
-                        "id": "certPrice",
-                        "content": "Certificate Price",
+                    "balance": {
+                        "id": "balance",
+                        "content": "Credits",
                         "type": "field",
                         "dataType": "decimal",
                         "format": "",
@@ -28530,20 +28952,110 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
-                    "date_requested": {
-                        "id": "date_requested",
-                        "content": "Date requested",
+                    "comments": {
+                        "id": "comments",
+                        "content": "Comments",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "admin_comments",
+                        "actions": []
+                    },
+                    "date_trial_ended": {
+                        "id": "date_trial_ended",
+                        "content": "",
                         "type": "field",
                         "dataType": "date",
                         "format": "",
-                        "formatOptions": {},
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD MMM, Y",
+                            "timeFormat": "",
+                            "isUTC": "false"
+                        },
+                        "write": true,
                         "read": true,
                         "link": "",
+                        "actions": []
+                    },
+                    "date_trial_started": {
+                        "id": "date_trial_started",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD MMM, Y",
+                            "timeFormat": "",
+                            "isUTC": "false"
+                        },
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "events": {
+                        "id": "events",
+                        "content": "App events",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "appEvents",
                         "actions": []
                     },
                     "id": {
                         "id": "id",
-                        "content": "id",
+                        "content": "App id",
                         "type": "field",
                         "dataType": "id",
                         "format": "",
@@ -28553,11 +29065,11 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
-                    "indiPriceBasic": {
-                        "id": "indiPriceBasic",
+                    "isDowngraded": {
+                        "id": "isDowngraded",
                         "content": "",
                         "type": "field",
-                        "dataType": "decimal",
+                        "dataType": "boolean",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
@@ -28565,11 +29077,11 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
-                    "indiPriceGold": {
-                        "id": "indiPriceGold",
+                    "isTrial": {
+                        "id": "isTrial",
                         "content": "",
                         "type": "field",
-                        "dataType": "decimal",
+                        "dataType": "boolean",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
@@ -28577,32 +29089,100 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
-                    "projects": {
-                        "id": "projects",
-                        "content": "Projects description",
+                    "is_blocked": {
+                        "id": "is_blocked",
+                        "content": "is_blocked",
+                        "type": "field",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "is_cancelled": {
+                        "id": "is_cancelled",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "is_hidden": {
+                        "id": "is_hidden",
+                        "content": "is_hidden",
+                        "type": "field",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "is_sandbox": {
+                        "id": "is_sandbox",
+                        "content": "is_sandbox",
+                        "type": "field",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "legacy_billing": {
+                        "id": "legacy_billing",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "name": {
+                        "id": "name",
+                        "content": "App name",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": "",
+                        "link": null,
                         "actions": []
                     },
-                    "status": {
-                        "id": "status",
-                        "content": "Status",
+                    "next_billing_date": {
+                        "id": "next_billing_date",
+                        "content": "",
                         "type": "field",
-                        "dataType": "link",
+                        "dataType": "date",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
                         "read": true,
-                        "link": "cert_statuses",
+                        "link": "",
                         "actions": []
                     },
-                    "user_id": {
-                        "id": "user_id",
-                        "content": "User",
+                    "next_payment": {
+                        "id": "next_payment",
+                        "content": "",
+                        "type": "field",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "owner_id": {
+                        "id": "owner_id",
+                        "content": "Owner",
                         "type": "field",
                         "dataType": "link",
                         "format": "",
@@ -28610,34 +29190,517 @@ const App = (props) => {
                         "read": true,
                         "link": "Cloud_users",
                         "actions": []
+                    },
+                    "paddle_subscription_id": {
+                        "id": "paddle_subscription_id",
+                        "content": "Paddle ID",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": null,
+                        "actions": []
+                    },
+                    "paddle_subscription_status": {
+                        "id": "paddle_subscription_status",
+                        "content": "Paddle Status",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null,
+                        "actions": []
+                    },
+                    "plan_id": {
+                        "id": "plan_id",
+                        "content": "Billing plan",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "Tariff",
+                        "actions": []
+                    },
+                    "sysName": {
+                        "id": "sysName",
+                        "content": "System name",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null,
+                        "actions": []
+                    },
+                    "team_id": {
+                        "id": "team_id",
+                        "content": "Team",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "Teams",
+                        "actions": []
+                    },
+                    "trialType": {
+                        "id": "trialType",
+                        "content": "trial type (pro,startup)",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "action__18121640850623776": {
+                        "content": "Add comment",
+                        "id": "action__18121640850623776",
+                        "type": "action",
+                        "actions": []
+                    },
+                    "action__91601640880768005": {
+                        "content": "Downgrade to FREE",
+                        "id": "action__91601640880768005",
+                        "type": "action",
+                        "actions": []
+                    },
+                    "action__38151666722551950": {
+                        "content": "Change plan",
+                        "id": "action__38151666722551950",
+                        "type": "action",
+                        "actions": []
                     }
                 },
                 "fieldParams": {
-                    "certOption": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": true,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "certPrice": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
                     "id": {
                         "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "name": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "displayAsHint": false
+                    },
+                    "owner_id": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": true,
+                        "configureLinkedCard": {
+                            "fields": {
+                                "id": {
+                                    "id": "id",
+                                    "content": "id",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "id",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "wallet_balance": {
+                                    "id": "wallet_balance",
+                                    "content": "",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "decimal",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "wallet_transactions": {
+                                    "id": "wallet_transactions",
+                                    "content": "",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "arrayLink",
+                                    "format": null,
+                                    "formatOptions": null
+                                }
+                            },
+                            "fieldParams": {
+                                "country": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "first_name": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "id": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "last_name": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "wallet_balance": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "wallet_transactions": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                }
+                            },
+                            "fieldOrder": [
+                                "id",
+                                "first_name",
+                                null,
+                                null,
+                                "wallet_balance",
+                                "wallet_transactions"
+                            ]
+                        }
+                    },
+                    "plan_id": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": true,
+                        "quickSearchSL": "adminChangeTariff",
                         "disableEditing": true,
+                        "configureLinkedCard": {
+                            "fields": {
+                                "description": {
+                                    "id": "description",
+                                    "content": "description",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "id": {
+                                    "id": "id",
+                                    "content": "id",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "id",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "name": {
+                                    "id": "name",
+                                    "content": "name",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "price": {
+                                    "id": "price",
+                                    "content": "price",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "decimal",
+                                    "format": null,
+                                    "formatOptions": null
+                                }
+                            },
+                            "fieldParams": {
+                                "description": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "id": {
+                                    "include": true,
+                                    "disableEditing": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "name": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "price": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                }
+                            },
+                            "fieldOrder": [
+                                "id",
+                                "description",
+                                "name",
+                                "price"
+                            ]
+                        }
+                    },
+                    "stat_get": {
+                        "include": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "indiPriceBasic": {
+                    "stat_post": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "stat_proc": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "stat_sync": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "stat_users": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "sysName": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "is_sandbox": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "paddle_subscription_id": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "paddle_subscription_status": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "comments": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": true,
+                        "configureLinkedCard": {
+                            "fields": {
+                                "date": {
+                                    "id": "date",
+                                    "content": "Date",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "date",
+                                    "format": null,
+                                    "formatOptions": {
+                                        "customOptionLabel": "My option",
+                                        "keyValue": {
+                                            "key": "key",
+                                            "value": "value",
+                                            "button": "One more"
+                                        },
+                                        "dateLocale": "en-gb",
+                                        "booleanOptions": [
+                                            "True",
+                                            "False"
+                                        ],
+                                        "validWeekDays": {
+                                            "mon": true,
+                                            "thu": true,
+                                            "tue": true,
+                                            "sun": true,
+                                            "fri": true,
+                                            "sat": true,
+                                            "wed": true
+                                        },
+                                        "customOptionPlaceholder": "Describe your option",
+                                        "range": {},
+                                        "customOptionType": "textarea",
+                                        "dateFormat": "DD MMM, Y,",
+                                        "timeFormat": "HH:mm",
+                                        "isUTC": "false"
+                                    }
+                                },
+                                "files": {
+                                    "id": "files",
+                                    "content": "",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "file",
+                                    "format": "multipleImages",
+                                    "formatOptions": null
+                                },
+                                "text": {
+                                    "id": "text",
+                                    "content": "Comment",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": "markdown",
+                                    "formatOptions": null
+                                },
+                                "user_id": {
+                                    "id": "user_id",
+                                    "content": "User",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "link",
+                                    "format": null,
+                                    "formatOptions": null
+                                }
+                            },
+                            "fieldParams": {
+                                "date": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "files": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "text": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "user_id": {
+                                    "include": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                }
+                            },
+                            "fieldOrder": [
+                                "date",
+                                "text",
+                                "user_id",
+                                "files"
+                            ]
+                        },
+                        "sortArrayLink": true,
+                        "veiwOption": "table",
+                        "cartView": {
+                            "image": false
+                        },
+                        "tableView": {
+                            "deleteOn": true,
+                            "columns": [
+                                {
+                                    "id": "1640850599314",
+                                    "field": "text"
+                                },
+                                {
+                                    "id": "1640850605607",
+                                    "field": "date"
+                                },
+                                {
+                                    "id": "1640850608476",
+                                    "field": "user_id"
+                                }
+                            ]
+                        },
+                        "sortByField": "date",
+                        "sortDirection": "desc",
+                        "subHeader": "Comment: "
+                    },
+                    "UsageHistory_ids": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "balance": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "is_blocked": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "is_cancelled": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "events": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "veiwOption": "table",
+                        "tableView": {
+                            "columns": [
+                                {
+                                    "id": "1640857708576",
+                                    "field": "type"
+                                },
+                                {
+                                    "id": "1640857715527",
+                                    "field": "messagee"
+                                },
+                                {
+                                    "id": "1640857719405",
+                                    "field": "date"
+                                }
+                            ]
+                        },
+                        "sortArrayLink": true,
+                        "sortByField": "date",
+                        "sortDirection": "desc"
+                    },
+                    "isDowngraded": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -28645,7 +29708,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "indiPriceGold": {
+                    "next_billing_date": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -28653,7 +29716,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "projects": {
+                    "next_payment": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -28661,15 +29724,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "status": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": true,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "sync_message": {
+                    "legacy_billing": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -28677,7 +29732,103 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "sync_result": {
+                    "team_id": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": true,
+                        "configureLinkedCard": {
+                            "fields": {
+                                "id": {
+                                    "id": "id",
+                                    "content": "id",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "id",
+                                    "format": null,
+                                    "formatOptions": {}
+                                },
+                                "is_hidden": {
+                                    "id": "is_hidden",
+                                    "content": "is_hidden",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "boolean",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "name": {
+                                    "id": "name",
+                                    "content": "Team name",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "string",
+                                    "format": null,
+                                    "formatOptions": null
+                                },
+                                "owner_id": {
+                                    "id": "owner_id",
+                                    "content": "Owner",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "link",
+                                    "format": null,
+                                    "formatOptions": {}
+                                },
+                                "tariff_id": {
+                                    "id": "tariff_id",
+                                    "content": "Tariff",
+                                    "type": "field",
+                                    "read": true,
+                                    "dataType": "link",
+                                    "format": null,
+                                    "formatOptions": null
+                                }
+                            },
+                            "fieldParams": {
+                                "id": {
+                                    "include": true,
+                                    "disableEditing": true,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "is_hidden": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "name": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "owner_id": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                },
+                                "tariff_id": {
+                                    "include": true,
+                                    "disableEditing": false,
+                                    "fileImageFormat": "square",
+                                    "fileImageSize": 200
+                                }
+                            },
+                            "fieldOrder": [
+                                "name",
+                                "owner_id",
+                                "tariff_id",
+                                "id",
+                                "is_hidden"
+                            ]
+                        }
+                    },
+                    "is_hidden": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -28685,7 +29836,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "user_id": {
+                    "date_trial_ended": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -28693,7 +29844,31 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "date_requested": {
+                    "date_trial_started": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "isTrial": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "trialType": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "Automatic_downgrade": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -28705,118 +29880,947 @@ const App = (props) => {
                 "columns": {
                     "tab-1": {
                         "id": "tab-1",
-                        "title": "New section",
+                        "title": "App info",
                         "fieldIds": [
-                            "user_id",
-                            "certOption",
-                            "certPrice",
                             "id",
-                            "projects",
-                            "status",
-                            "date_requested"
+                            "name",
+                            "owner_id",
+                            "sysName",
+                            "is_sandbox",
+                            "is_blocked",
+                            "is_cancelled",
+                            "isDowngraded",
+                            "next_billing_date",
+                            "next_payment",
+                            "legacy_billing",
+                            "team_id",
+                            "is_hidden",
+                            "Automatic_downgrade"
                         ]
                     },
-                    "85191681754177938": {
-                        "id": "85191681754177938",
-                        "title": "Personal offer",
+                    "78721633090718330": {
+                        "id": "78721633090718330",
+                        "title": "Billing",
                         "fieldIds": [
-                            "indiPriceBasic",
-                            "indiPriceGold"
+                            "plan_id",
+                            "action__38151666722551950",
+                            "action__91601640880768005",
+                            "balance",
+                            "paddle_subscription_id",
+                            "paddle_subscription_status",
+                            "action__39991633095320582",
+                            "action__82541633095309885"
+                        ]
+                    },
+                    "85421633090729272": {
+                        "id": "85421633090729272",
+                        "title": "Trial",
+                        "fieldIds": [
+                            "isTrial",
+                            "date_trial_started",
+                            "date_trial_ended",
+                            "trialType"
+                        ]
+                    },
+                    "36061633090983107": {
+                        "id": "36061633090983107",
+                        "title": "Timeline and Comments",
+                        "fieldIds": [
+                            "events",
+                            "comments",
+                            "action__18121640850623776"
                         ]
                     }
                 },
                 "columnOrder": [
                     "tab-1",
-                    "85191681754177938"
+                    "85421633090729272",
+                    "36061633090983107",
+                    "78721633090718330"
                 ],
-                "actions": []
+                "actions": [
+                    {
+                        "sysName": "adminAddComments",
+                        "id": "18121640850623776",
+                        "name": "Add comment",
+                        "displayAs": "form",
+                        "buttonIcon": "bubble",
+                        "buttonType": "accent",
+                        "showMessage": true,
+                        "closePopup": false,
+                        "resultMessage": "Added!",
+                        "resultButton": "Add another comment",
+                        "SLtype": "other",
+                        "fields": {
+                            "readFields": [
+                                {
+                                    "fieldSysName": "id",
+                                    "fetch": [],
+                                    "sysName": "id",
+                                    "name": "id",
+                                    "dataType": "id",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                }
+                            ],
+                            "writeFields": [
+                                {
+                                    "fieldSysName": "app_id",
+                                    "fetch": [],
+                                    "sysName": "app_id",
+                                    "name": "",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "Apps"
+                                },
+                                {
+                                    "fieldSysName": "files",
+                                    "fetch": [],
+                                    "sysName": "files",
+                                    "name": "",
+                                    "dataType": "file",
+                                    "format": "multipleImages",
+                                    "formatOptions": {},
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "text",
+                                    "fetch": [],
+                                    "sysName": "text",
+                                    "name": "Comment",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": null
+                                },
+                                {
+                                    "fieldSysName": "user_id",
+                                    "fetch": [],
+                                    "sysName": "user_id",
+                                    "name": "User",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "WebUser"
+                                }
+                            ]
+                        },
+                        "formFields": [
+                            {
+                                "id": "54491640850662767",
+                                "field": {
+                                    "fieldSysName": "text",
+                                    "fetch": [],
+                                    "sysName": "text",
+                                    "name": "Comment",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": null
+                                }
+                            },
+                            {
+                                "id": "11531640850663589",
+                                "field": {
+                                    "fieldSysName": "files",
+                                    "fetch": [],
+                                    "sysName": "files",
+                                    "name": "",
+                                    "dataType": "file",
+                                    "format": "multipleImages",
+                                    "formatOptions": {},
+                                    "link": ""
+                                }
+                            }
+                        ],
+                        "formMapping": [
+                            {
+                                "id": "27851640850669233",
+                                "target": "user_id",
+                                "type": "user",
+                                "value": null
+                            },
+                            {
+                                "id": "11371640850675500",
+                                "target": "app_id",
+                                "type": "objectField",
+                                "value": "id"
+                            }
+                        ],
+                        "conditionals": [
+                            {
+                                "id": "71261640850684734",
+                                "target": "role",
+                                "value": "god,padavan"
+                            }
+                        ]
+                    },
+                    {
+                        "sysName": "adminChangeApp",
+                        "id": "91601640880768005",
+                        "name": "Downgrade to FREE",
+                        "displayAs": "button",
+                        "buttonIcon": "arrowDown",
+                        "buttonType": "danger",
+                        "closePopup": true,
+                        "showMessage": false,
+                        "SLtype": "other",
+                        "fields": {
+                            "readFields": [
+                                {
+                                    "fieldSysName": "id",
+                                    "fetch": [],
+                                    "sysName": "id",
+                                    "name": "id",
+                                    "dataType": "id",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                }
+                            ],
+                            "writeFields": [
+                                {
+                                    "fieldSysName": "action",
+                                    "fetch": [],
+                                    "sysName": "action",
+                                    "name": "",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": null
+                                },
+                                {
+                                    "fieldSysName": "app_id",
+                                    "fetch": [],
+                                    "sysName": "app_id",
+                                    "name": "App ID",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "Apps"
+                                }
+                            ]
+                        },
+                        "formMapping": [
+                            {
+                                "id": "83751640880908553",
+                                "target": "action",
+                                "type": "const",
+                                "value": "downgrade_free"
+                            },
+                            {
+                                "id": "41981641039763998",
+                                "target": "app_id",
+                                "type": "objectField",
+                                "value": "id"
+                            }
+                        ]
+                    },
+                    {
+                        "sysName": "adminChangeApp",
+                        "id": "38151666722551950",
+                        "name": "Change plan",
+                        "displayAs": "form",
+                        "SLtype": "other",
+                        "fields": {
+                            "readFields": [
+                                {
+                                    "fieldSysName": "id",
+                                    "fetch": [],
+                                    "sysName": "id",
+                                    "name": "id",
+                                    "dataType": "id",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                }
+                            ],
+                            "writeFields": [
+                                {
+                                    "fieldSysName": "Billing_date",
+                                    "fetch": [],
+                                    "sysName": "Billing_date",
+                                    "name": "Billing date",
+                                    "dataType": "date",
+                                    "format": "",
+                                    "formatOptions": {
+                                        "customOptionLabel": "My option",
+                                        "keyValue": {
+                                            "key": "key",
+                                            "value": "value",
+                                            "button": "One more"
+                                        },
+                                        "dateLocale": "en-gb",
+                                        "booleanOptions": [
+                                            "True",
+                                            "False"
+                                        ],
+                                        "validWeekDays": {
+                                            "mon": true,
+                                            "thu": true,
+                                            "tue": true,
+                                            "sun": true,
+                                            "fri": true,
+                                            "sat": true,
+                                            "wed": true
+                                        },
+                                        "customOptionPlaceholder": "Describe your option",
+                                        "range": {},
+                                        "customOptionType": "textarea",
+                                        "dateFormat": "DD/MM/Y",
+                                        "timeFormat": " ",
+                                        "isUTC": "true"
+                                    },
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "Plan",
+                                    "fetch": [],
+                                    "sysName": "Plan",
+                                    "name": "Plan",
+                                    "dataType": "json",
+                                    "format": "radioOptions",
+                                    "formatOptions": {
+                                        "customOptionLabel": "My option",
+                                        "keyValue": {
+                                            "key": "key",
+                                            "value": "value",
+                                            "button": "One more"
+                                        },
+                                        "dateLocale": "en-gb",
+                                        "booleanOptions": [
+                                            "True",
+                                            "False"
+                                        ],
+                                        "validWeekDays": {
+                                            "mon": true,
+                                            "thu": true,
+                                            "tue": true,
+                                            "sun": true,
+                                            "fri": true,
+                                            "sat": true,
+                                            "wed": true
+                                        },
+                                        "customOptionPlaceholder": "Describe your option",
+                                        "range": {},
+                                        "customOptionType": "textarea",
+                                        "dateFormat": "DD/MM/Y",
+                                        "timeFormat": " HH:mm",
+                                        "isUTC": "false",
+                                        "multipleChoice": [
+                                            {
+                                                "value": "Startup-monthly",
+                                                "label": "Startup-monthly"
+                                            },
+                                            {
+                                                "value": "Startup-yearly",
+                                                "label": "Startup-yearly"
+                                            },
+                                            {
+                                                "value": "Pro-monthly",
+                                                "label": "Pro-monthly"
+                                            },
+                                            {
+                                                "value": "Pro-yearly",
+                                                "label": "Pro-yearly"
+                                            },
+                                            {
+                                                "value": "Business-monthly",
+                                                "label": "Business-monthly"
+                                            },
+                                            {
+                                                "value": "Business-yearly",
+                                                "label": "Business-yearly"
+                                            },
+                                            {
+                                                "value": "Business-DEV",
+                                                "label": "Business-DEV"
+                                            }
+                                        ]
+                                    },
+                                    "link": ""
+                                },
+                                {
+                                    "fieldSysName": "action",
+                                    "fetch": [],
+                                    "sysName": "action",
+                                    "name": "",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": null
+                                },
+                                {
+                                    "fieldSysName": "app_id",
+                                    "fetch": [],
+                                    "sysName": "app_id",
+                                    "name": "App ID",
+                                    "dataType": "link",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": "Apps"
+                                }
+                            ]
+                        },
+                        "formFields": [
+                            {
+                                "id": "69691666722566468",
+                                "field": {
+                                    "fieldSysName": "Plan",
+                                    "fetch": [],
+                                    "sysName": "Plan",
+                                    "name": "Plan",
+                                    "dataType": "json",
+                                    "format": "radioOptions",
+                                    "formatOptions": {
+                                        "customOptionLabel": "My option",
+                                        "keyValue": {
+                                            "key": "key",
+                                            "value": "value",
+                                            "button": "One more"
+                                        },
+                                        "dateLocale": "en-gb",
+                                        "booleanOptions": [
+                                            "True",
+                                            "False"
+                                        ],
+                                        "validWeekDays": {
+                                            "mon": true,
+                                            "thu": true,
+                                            "tue": true,
+                                            "sun": true,
+                                            "fri": true,
+                                            "sat": true,
+                                            "wed": true
+                                        },
+                                        "customOptionPlaceholder": "Describe your option",
+                                        "range": {},
+                                        "customOptionType": "textarea",
+                                        "dateFormat": "DD/MM/Y",
+                                        "timeFormat": " HH:mm",
+                                        "isUTC": "false",
+                                        "multipleChoice": [
+                                            {
+                                                "value": "Startup-monthly",
+                                                "label": "Startup-monthly"
+                                            },
+                                            {
+                                                "value": "Startup-yearly",
+                                                "label": "Startup-yearly"
+                                            },
+                                            {
+                                                "value": "Pro-monthly",
+                                                "label": "Pro-monthly"
+                                            },
+                                            {
+                                                "value": "Pro-yearly",
+                                                "label": "Pro-yearly"
+                                            },
+                                            {
+                                                "value": "Business-monthly",
+                                                "label": "Business-monthly"
+                                            },
+                                            {
+                                                "value": "Business-yearly",
+                                                "label": "Business-yearly"
+                                            },
+                                            {
+                                                "value": "Business-DEV",
+                                                "label": "Business-DEV"
+                                            }
+                                        ]
+                                    },
+                                    "link": ""
+                                }
+                            },
+                            {
+                                "id": "68691666722685132",
+                                "field": {
+                                    "fieldSysName": "Billing_date",
+                                    "fetch": [],
+                                    "sysName": "Billing_date",
+                                    "name": "Billing date",
+                                    "dataType": "date",
+                                    "format": "",
+                                    "formatOptions": {
+                                        "customOptionLabel": "My option",
+                                        "keyValue": {
+                                            "key": "key",
+                                            "value": "value",
+                                            "button": "One more"
+                                        },
+                                        "dateLocale": "en-gb",
+                                        "booleanOptions": [
+                                            "True",
+                                            "False"
+                                        ],
+                                        "validWeekDays": {
+                                            "mon": true,
+                                            "thu": true,
+                                            "tue": true,
+                                            "sun": true,
+                                            "fri": true,
+                                            "sat": true,
+                                            "wed": true
+                                        },
+                                        "customOptionPlaceholder": "Describe your option",
+                                        "range": {},
+                                        "customOptionType": "textarea",
+                                        "dateFormat": "DD/MM/Y",
+                                        "timeFormat": " ",
+                                        "isUTC": "true"
+                                    },
+                                    "link": ""
+                                }
+                            }
+                        ],
+                        "buttonIcon": "money",
+                        "buttonType": "accent",
+                        "formMapping": [
+                            {
+                                "id": "42131666722688653",
+                                "target": "action",
+                                "type": "const",
+                                "value": "change_plan"
+                            },
+                            {
+                                "id": "99011666722716592",
+                                "target": "app_id",
+                                "type": "objectField",
+                                "value": "id"
+                            }
+                        ],
+                        "showMessage": true,
+                        "closePopup": false,
+                        "resultMessage": "Changed!"
+                    }
+                ]
             },
             "fields": {
-                "certOption": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": true,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "searchData": [
-                        {
-                            "key": "gold",
-                            "value": "🏆 Gold"
-                        },
-                        {
-                            "key": "basic",
-                            "value": "👨‍💻 Basic"
-                        }
-                    ]
-                },
-                "certPrice": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
                 "id": {
                     "include": false,
-                    "disableEditing": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "indiPriceBasic": {
+                "name": {
                     "include": true,
-                    "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "indiPriceGold": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "projects": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "status": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": true,
                     "fileImageSize": 200,
                     "clickable": false,
-                    "searchData": [
-                        {
-                            "key": "new",
-                            "value": "New"
-                        },
-                        {
-                            "key": "declined",
-                            "value": "Declined"
-                        },
-                        {
-                            "key": "approved",
-                            "value": "Approved"
-                        },
-                        {
-                            "key": "revoked",
-                            "value": "Revoked"
-                        }
-                    ]
+                    "displayAsHint": false
                 },
-                "sync_message": {
+                "owner_id": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": true,
+                    "configureLinkedCard": {
+                        "fields": {
+                            "id": {
+                                "id": "id",
+                                "content": "id",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "id",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "wallet_balance": {
+                                "id": "wallet_balance",
+                                "content": "",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "decimal",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "wallet_transactions": {
+                                "id": "wallet_transactions",
+                                "content": "",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "arrayLink",
+                                "format": null,
+                                "formatOptions": null
+                            }
+                        },
+                        "fieldParams": {
+                            "country": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "first_name": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "id": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "last_name": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "wallet_balance": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "wallet_transactions": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
+                        },
+                        "fieldOrder": [
+                            "id",
+                            "first_name",
+                            null,
+                            null,
+                            "wallet_balance",
+                            "wallet_transactions"
+                        ]
+                    }
+                },
+                "plan_id": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": true,
+                    "quickSearchSL": "adminChangeTariff",
+                    "disableEditing": true,
+                    "configureLinkedCard": {
+                        "fields": {
+                            "description": {
+                                "id": "description",
+                                "content": "description",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "id": {
+                                "id": "id",
+                                "content": "id",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "id",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "name": {
+                                "id": "name",
+                                "content": "name",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "price": {
+                                "id": "price",
+                                "content": "price",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "decimal",
+                                "format": null,
+                                "formatOptions": null
+                            }
+                        },
+                        "fieldParams": {
+                            "description": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "id": {
+                                "include": true,
+                                "disableEditing": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "name": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "price": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
+                        },
+                        "fieldOrder": [
+                            "id",
+                            "description",
+                            "name",
+                            "price"
+                        ]
+                    }
+                },
+                "stat_get": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "stat_post": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "stat_proc": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "stat_sync": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "stat_users": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "sysName": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "is_sandbox": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "paddle_subscription_id": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "paddle_subscription_status": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "comments": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": true,
+                    "configureLinkedCard": {
+                        "fields": {
+                            "date": {
+                                "id": "date",
+                                "content": "Date",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "date",
+                                "format": null,
+                                "formatOptions": {
+                                    "customOptionLabel": "My option",
+                                    "keyValue": {
+                                        "key": "key",
+                                        "value": "value",
+                                        "button": "One more"
+                                    },
+                                    "dateLocale": "en-gb",
+                                    "booleanOptions": [
+                                        "True",
+                                        "False"
+                                    ],
+                                    "validWeekDays": {
+                                        "mon": true,
+                                        "thu": true,
+                                        "tue": true,
+                                        "sun": true,
+                                        "fri": true,
+                                        "sat": true,
+                                        "wed": true
+                                    },
+                                    "customOptionPlaceholder": "Describe your option",
+                                    "range": {},
+                                    "customOptionType": "textarea",
+                                    "dateFormat": "DD MMM, Y,",
+                                    "timeFormat": "HH:mm",
+                                    "isUTC": "false"
+                                }
+                            },
+                            "files": {
+                                "id": "files",
+                                "content": "",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "file",
+                                "format": "multipleImages",
+                                "formatOptions": null
+                            },
+                            "text": {
+                                "id": "text",
+                                "content": "Comment",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": "markdown",
+                                "formatOptions": null
+                            },
+                            "user_id": {
+                                "id": "user_id",
+                                "content": "User",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "link",
+                                "format": null,
+                                "formatOptions": null
+                            }
+                        },
+                        "fieldParams": {
+                            "date": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "files": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "text": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "user_id": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
+                        },
+                        "fieldOrder": [
+                            "date",
+                            "text",
+                            "user_id",
+                            "files"
+                        ]
+                    },
+                    "sortArrayLink": true,
+                    "veiwOption": "table",
+                    "cartView": {
+                        "image": false
+                    },
+                    "tableView": {
+                        "deleteOn": true,
+                        "columns": [
+                            {
+                                "id": "1640850599314",
+                                "field": "text"
+                            },
+                            {
+                                "id": "1640850605607",
+                                "field": "date"
+                            },
+                            {
+                                "id": "1640850608476",
+                                "field": "user_id"
+                            }
+                        ]
+                    },
+                    "sortByField": "date",
+                    "sortDirection": "desc",
+                    "subHeader": "Comment: "
+                },
+                "UsageHistory_ids": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "balance": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "is_blocked": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "is_cancelled": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "events": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "veiwOption": "table",
+                    "tableView": {
+                        "columns": [
+                            {
+                                "id": "1640857708576",
+                                "field": "type"
+                            },
+                            {
+                                "id": "1640857715527",
+                                "field": "messagee"
+                            },
+                            {
+                                "id": "1640857719405",
+                                "field": "date"
+                            }
+                        ]
+                    },
+                    "sortArrayLink": true,
+                    "sortByField": "date",
+                    "sortDirection": "desc"
+                },
+                "isDowngraded": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -28824,7 +30828,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "sync_result": {
+                "next_billing_date": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -28832,7 +30836,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "user_id": {
+                "next_payment": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -28840,7 +30844,151 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "date_requested": {
+                "legacy_billing": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "team_id": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": true,
+                    "configureLinkedCard": {
+                        "fields": {
+                            "id": {
+                                "id": "id",
+                                "content": "id",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "id",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "is_hidden": {
+                                "id": "is_hidden",
+                                "content": "is_hidden",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "boolean",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "name": {
+                                "id": "name",
+                                "content": "Team name",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": null
+                            },
+                            "owner_id": {
+                                "id": "owner_id",
+                                "content": "Owner",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "link",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "tariff_id": {
+                                "id": "tariff_id",
+                                "content": "Tariff",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "link",
+                                "format": null,
+                                "formatOptions": null
+                            }
+                        },
+                        "fieldParams": {
+                            "id": {
+                                "include": true,
+                                "disableEditing": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "is_hidden": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "name": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "owner_id": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "tariff_id": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
+                        },
+                        "fieldOrder": [
+                            "name",
+                            "owner_id",
+                            "tariff_id",
+                            "id",
+                            "is_hidden"
+                        ]
+                    }
+                },
+                "is_hidden": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "date_trial_ended": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "date_trial_started": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "isTrial": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "trialType": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "Automatic_downgrade": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -28852,122 +31000,277 @@ const App = (props) => {
             "tableParams": {
                 "readFields": [
                     {
-                        "fieldSysName": "certOption",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "title",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "certOption",
-                        "name": "Certificate level",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "cert_types"
-                    },
-                    {
-                        "fieldSysName": "certPrice",
+                        "fieldSysName": "balance",
                         "fetch": [],
-                        "sysName": "certPrice",
-                        "name": "Certificate Price",
+                        "sysName": "balance",
+                        "name": "Credits",
                         "dataType": "decimal",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "date_requested",
-                        "fetch": [],
-                        "sysName": "date_requested",
-                        "name": "Date requested",
-                        "dataType": "date",
+                        "fieldSysName": "comments",
+                        "fetch": [
+                            {
+                                "fieldSysName": "date",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "files",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "text",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "user_id",
+                                "condition": null,
+                                "fetch": [
+                                    {
+                                        "fieldSysName": "firstName",
+                                        "condition": null,
+                                        "fetch": []
+                                    },
+                                    {
+                                        "fieldSysName": "lastName",
+                                        "condition": null,
+                                        "fetch": []
+                                    },
+                                    {
+                                        "fieldSysName": "userpic",
+                                        "condition": null,
+                                        "fetch": []
+                                    }
+                                ]
+                            }
+                        ],
+                        "sysName": "comments",
+                        "name": "Comments",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
+                        "link": "admin_comments"
+                    },
+                    {
+                        "fieldSysName": "date_trial_ended",
+                        "fetch": [],
+                        "sysName": "date_trial_ended",
+                        "name": "",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD MMM, Y",
+                            "timeFormat": "",
+                            "isUTC": "false"
+                        },
                         "link": ""
+                    },
+                    {
+                        "fieldSysName": "date_trial_started",
+                        "fetch": [],
+                        "sysName": "date_trial_started",
+                        "name": "",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD MMM, Y",
+                            "timeFormat": "",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "events",
+                        "fetch": [
+                            {
+                                "fieldSysName": "date",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "messagee",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "type",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "events",
+                        "name": "App events",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "appEvents"
                     },
                     {
                         "fieldSysName": "id",
                         "fetch": [],
                         "sysName": "id",
-                        "name": "id",
+                        "name": "App id",
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "indiPriceBasic",
+                        "fieldSysName": "isDowngraded",
                         "fetch": [],
-                        "sysName": "indiPriceBasic",
+                        "sysName": "isDowngraded",
                         "name": "",
-                        "dataType": "decimal",
+                        "dataType": "boolean",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "indiPriceGold",
+                        "fieldSysName": "isTrial",
                         "fetch": [],
-                        "sysName": "indiPriceGold",
+                        "sysName": "isTrial",
                         "name": "",
-                        "dataType": "decimal",
+                        "dataType": "boolean",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "projects",
+                        "fieldSysName": "is_blocked",
                         "fetch": [],
-                        "sysName": "projects",
-                        "name": "Projects description",
+                        "sysName": "is_blocked",
+                        "name": "is_blocked",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "is_cancelled",
+                        "fetch": [],
+                        "sysName": "is_cancelled",
+                        "name": "",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "is_hidden",
+                        "fetch": [],
+                        "sysName": "is_hidden",
+                        "name": "is_hidden",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "is_sandbox",
+                        "fetch": [],
+                        "sysName": "is_sandbox",
+                        "name": "is_sandbox",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "legacy_billing",
+                        "fetch": [],
+                        "sysName": "legacy_billing",
+                        "name": "",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "name",
+                        "fetch": [],
+                        "sysName": "name",
+                        "name": "App name",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "next_billing_date",
+                        "fetch": [],
+                        "sysName": "next_billing_date",
+                        "name": "",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "status",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "title",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "status",
-                        "name": "Status",
-                        "dataType": "link",
+                        "fieldSysName": "next_payment",
+                        "fetch": [],
+                        "sysName": "next_payment",
+                        "name": "",
+                        "dataType": "decimal",
                         "format": "",
                         "formatOptions": {},
-                        "link": "cert_statuses"
+                        "link": ""
                     },
                     {
-                        "fieldSysName": "user_id",
+                        "fieldSysName": "owner_id",
                         "fetch": [
                             {
-                                "fieldSysName": "first_name",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
                                 "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "last_name",
                                 "condition": null,
                                 "fetch": []
                             },
@@ -28975,100 +31278,421 @@ const App = (props) => {
                                 "fieldSysName": "wallet_balance",
                                 "condition": null,
                                 "fetch": []
+                            },
+                            {
+                                "fieldSysName": "wallet_transactions",
+                                "condition": null,
+                                "fetch": [
+                                    {
+                                        "fieldSysName": "balance",
+                                        "condition": null,
+                                        "fetch": []
+                                    },
+                                    {
+                                        "fieldSysName": "comment",
+                                        "condition": null,
+                                        "fetch": []
+                                    },
+                                    {
+                                        "fieldSysName": "date",
+                                        "condition": null,
+                                        "fetch": []
+                                    },
+                                    {
+                                        "fieldSysName": "type",
+                                        "condition": null,
+                                        "fetch": []
+                                    }
+                                ]
                             }
                         ],
-                        "sysName": "user_id",
-                        "name": "User",
+                        "sysName": "owner_id",
+                        "name": "Owner",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "link": "Cloud_users"
+                    },
+                    {
+                        "fieldSysName": "paddle_subscription_id",
+                        "fetch": [],
+                        "sysName": "paddle_subscription_id",
+                        "name": "Paddle ID",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "paddle_subscription_status",
+                        "fetch": [],
+                        "sysName": "paddle_subscription_status",
+                        "name": "Paddle Status",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "plan_id",
+                        "fetch": [
+                            {
+                                "fieldSysName": "description",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "price",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "plan_id",
+                        "name": "Billing plan",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "Tariff"
+                    },
+                    {
+                        "fieldSysName": "sysName",
+                        "fetch": [],
+                        "sysName": "sysName",
+                        "name": "System name",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "team_id",
+                        "fetch": [
+                            {
+                                "fieldSysName": "id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "is_hidden",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "name",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "owner_id",
+                                "condition": null,
+                                "fetch": []
+                            },
+                            {
+                                "fieldSysName": "tariff_id",
+                                "condition": null,
+                                "fetch": []
+                            }
+                        ],
+                        "sysName": "team_id",
+                        "name": "Team",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "Teams"
+                    },
+                    {
+                        "fieldSysName": "trialType",
+                        "fetch": [],
+                        "sysName": "trialType",
+                        "name": "trial type (pro,startup)",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
                     }
                 ],
                 "writeFields": [
                     {
-                        "fieldSysName": "certOption",
+                        "fieldSysName": "comments",
                         "fetch": [],
-                        "sysName": "certOption",
-                        "name": "Certificate level",
-                        "dataType": "link",
+                        "sysName": "comments",
+                        "name": "Comments",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "link": "cert_types"
+                        "link": "admin_comments"
+                    },
+                    {
+                        "fieldSysName": "date_trial_ended",
+                        "fetch": [],
+                        "sysName": "date_trial_ended",
+                        "name": "",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD MMM, Y",
+                            "timeFormat": "",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "date_trial_started",
+                        "fetch": [],
+                        "sysName": "date_trial_started",
+                        "name": "",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD MMM, Y",
+                            "timeFormat": "",
+                            "isUTC": "false"
+                        },
+                        "link": ""
                     },
                     {
                         "fieldSysName": "id",
                         "fetch": [],
                         "sysName": "id",
-                        "name": "id",
+                        "name": "App id",
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "indiPriceBasic",
+                        "fieldSysName": "isDowngraded",
                         "fetch": [],
-                        "sysName": "indiPriceBasic",
+                        "sysName": "isDowngraded",
                         "name": "",
-                        "dataType": "decimal",
+                        "dataType": "boolean",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "indiPriceGold",
+                        "fieldSysName": "isTrial",
                         "fetch": [],
-                        "sysName": "indiPriceGold",
+                        "sysName": "isTrial",
                         "name": "",
-                        "dataType": "decimal",
+                        "dataType": "boolean",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "status",
+                        "fieldSysName": "legacy_billing",
                         "fetch": [],
-                        "sysName": "status",
-                        "name": "Status",
-                        "dataType": "link",
+                        "sysName": "legacy_billing",
+                        "name": "",
+                        "dataType": "boolean",
                         "format": "",
                         "formatOptions": {},
-                        "link": "cert_statuses"
-                    }
-                ],
-                "fields": {
-                    "certOption": {
-                        "id": "certOption",
-                        "content": "Certificate level",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "cert_types"
-                    },
-                    "certPrice": {
-                        "id": "certPrice",
-                        "content": "Certificate Price",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
                         "link": ""
                     },
-                    "date_requested": {
-                        "id": "date_requested",
-                        "content": "Date requested",
+                    {
+                        "fieldSysName": "next_billing_date",
+                        "fetch": [],
+                        "sysName": "next_billing_date",
+                        "name": "",
                         "dataType": "date",
                         "format": "",
                         "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "next_payment",
+                        "fetch": [],
+                        "sysName": "next_payment",
+                        "name": "",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "paddle_subscription_id",
+                        "fetch": [],
+                        "sysName": "paddle_subscription_id",
+                        "name": "Paddle ID",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "trialType",
+                        "fetch": [],
+                        "sysName": "trialType",
+                        "name": "trial type (pro,startup)",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    }
+                ],
+                "fields": {
+                    "balance": {
+                        "id": "balance",
+                        "content": "Credits",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
                         "read": true,
                         "link": ""
                     },
+                    "comments": {
+                        "id": "comments",
+                        "content": "Comments",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "admin_comments"
+                    },
+                    "date_trial_ended": {
+                        "id": "date_trial_ended",
+                        "content": "",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD MMM, Y",
+                            "timeFormat": "",
+                            "isUTC": "false"
+                        },
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "date_trial_started": {
+                        "id": "date_trial_started",
+                        "content": "",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD MMM, Y",
+                            "timeFormat": "",
+                            "isUTC": "false"
+                        },
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "events": {
+                        "id": "events",
+                        "content": "App events",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "appEvents"
+                    },
                     "id": {
                         "id": "id",
-                        "content": "id",
+                        "content": "App id",
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
@@ -29076,73 +31700,177 @@ const App = (props) => {
                         "read": true,
                         "link": ""
                     },
-                    "indiPriceBasic": {
-                        "id": "indiPriceBasic",
+                    "isDowngraded": {
+                        "id": "isDowngraded",
                         "content": "",
-                        "dataType": "decimal",
+                        "dataType": "boolean",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
                         "read": true,
                         "link": ""
                     },
-                    "indiPriceGold": {
-                        "id": "indiPriceGold",
+                    "isTrial": {
+                        "id": "isTrial",
                         "content": "",
-                        "dataType": "decimal",
+                        "dataType": "boolean",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
                         "read": true,
                         "link": ""
                     },
-                    "projects": {
-                        "id": "projects",
-                        "content": "Projects description",
+                    "is_blocked": {
+                        "id": "is_blocked",
+                        "content": "is_blocked",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "is_cancelled": {
+                        "id": "is_cancelled",
+                        "content": "",
+                        "dataType": "string",
+                        "format": "color",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "is_hidden": {
+                        "id": "is_hidden",
+                        "content": "is_hidden",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "is_sandbox": {
+                        "id": "is_sandbox",
+                        "content": "is_sandbox",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "legacy_billing": {
+                        "id": "legacy_billing",
+                        "content": "",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "name": {
+                        "id": "name",
+                        "content": "App name",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": ""
+                        "link": null
                     },
-                    "status": {
-                        "id": "status",
-                        "content": "Status",
-                        "dataType": "link",
+                    "next_billing_date": {
+                        "id": "next_billing_date",
+                        "content": "",
+                        "dataType": "date",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
                         "read": true,
-                        "link": "cert_statuses"
+                        "link": ""
                     },
-                    "user_id": {
-                        "id": "user_id",
-                        "content": "User",
+                    "next_payment": {
+                        "id": "next_payment",
+                        "content": "",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "owner_id": {
+                        "id": "owner_id",
+                        "content": "Owner",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
                         "link": "Cloud_users"
+                    },
+                    "paddle_subscription_id": {
+                        "id": "paddle_subscription_id",
+                        "content": "Paddle ID",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": null
+                    },
+                    "paddle_subscription_status": {
+                        "id": "paddle_subscription_status",
+                        "content": "Paddle Status",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null
+                    },
+                    "plan_id": {
+                        "id": "plan_id",
+                        "content": "Billing plan",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "Tariff"
+                    },
+                    "sysName": {
+                        "id": "sysName",
+                        "content": "System name",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null
+                    },
+                    "team_id": {
+                        "id": "team_id",
+                        "content": "Team",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "Teams"
+                    },
+                    "trialType": {
+                        "id": "trialType",
+                        "content": "trial type (pro,startup)",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
                     }
                 },
                 "fieldParams": {
-                    "certOption": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "certPrice": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
                     "id": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "name": {
                         "include": false,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -29150,7 +31878,71 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "indiPriceBasic": {
+                    "owner_id": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "plan_id": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "stat_get": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "stat_post": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "stat_proc": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "stat_sync": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "stat_users": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "sysName": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "is_sandbox": {
                         "include": false,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -29158,7 +31950,7 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "indiPriceGold": {
+                    "paddle_subscription_id": {
                         "include": false,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -29166,7 +31958,7 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "projects": {
+                    "paddle_subscription_status": {
                         "include": false,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -29174,7 +31966,31 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "status": {
+                    "comments": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "UsageHistory_ids": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "balance": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "is_blocked": {
                         "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -29182,7 +31998,24 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "sync_message": {
+                    "is_cancelled": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40,
+                        "colorRow": true
+                    },
+                    "events": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "isDowngraded": {
                         "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -29190,7 +32023,7 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "sync_result": {
+                    "next_billing_date": {
                         "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -29198,7 +32031,7 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "user_id": {
+                    "next_payment": {
                         "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -29206,8 +32039,56 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "date_requested": {
+                    "legacy_billing": {
                         "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "team_id": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "is_hidden": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "date_trial_ended": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "date_trial_started": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "isTrial": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "trialType": {
+                        "include": false,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
                         "colorCode": false,
@@ -29216,112 +32097,738 @@ const App = (props) => {
                     }
                 },
                 "fieldOrder": [
-                    "user_id",
-                    "certOption",
-                    "certPrice",
-                    "status",
+                    "name",
+                    "sysName",
+                    "is_hidden",
+                    "plan_id",
+                    "paddle_subscription_id",
+                    "paddle_subscription_status",
+                    "is_sandbox",
+                    "legacy_billing",
+                    "owner_id",
                     "id",
-                    "indiPriceBasic",
-                    "indiPriceGold",
-                    "date_requested",
-                    "projects"
+                    "next_billing_date",
+                    "next_payment",
+                    "comments",
+                    "balance",
+                    "is_blocked",
+                    "isDowngraded",
+                    "is_cancelled",
+                    "events",
+                    "team_id",
+                    "isTrial",
+                    "trialType",
+                    "date_trial_ended",
+                    "date_trial_started"
                 ]
             },
+            "actions": [
+                {
+                    "sysName": "adminAddComments",
+                    "id": "18121640850623776",
+                    "name": "Add comment",
+                    "displayAs": "form",
+                    "buttonIcon": "bubble",
+                    "buttonType": "accent",
+                    "showMessage": true,
+                    "closePopup": false,
+                    "resultMessage": "Added!",
+                    "resultButton": "Add another comment",
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "app_id",
+                                "fetch": [],
+                                "sysName": "app_id",
+                                "name": "",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "Apps"
+                            },
+                            {
+                                "fieldSysName": "files",
+                                "fetch": [],
+                                "sysName": "files",
+                                "name": "",
+                                "dataType": "file",
+                                "format": "multipleImages",
+                                "formatOptions": {},
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "text",
+                                "fetch": [],
+                                "sysName": "text",
+                                "name": "Comment",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": null
+                            },
+                            {
+                                "fieldSysName": "user_id",
+                                "fetch": [],
+                                "sysName": "user_id",
+                                "name": "User",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "WebUser"
+                            }
+                        ]
+                    },
+                    "formFields": [
+                        {
+                            "id": "54491640850662767",
+                            "field": {
+                                "fieldSysName": "text",
+                                "fetch": [],
+                                "sysName": "text",
+                                "name": "Comment",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": null
+                            }
+                        },
+                        {
+                            "id": "11531640850663589",
+                            "field": {
+                                "fieldSysName": "files",
+                                "fetch": [],
+                                "sysName": "files",
+                                "name": "",
+                                "dataType": "file",
+                                "format": "multipleImages",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        }
+                    ],
+                    "formMapping": [
+                        {
+                            "id": "27851640850669233",
+                            "target": "user_id",
+                            "type": "user",
+                            "value": null
+                        },
+                        {
+                            "id": "11371640850675500",
+                            "target": "app_id",
+                            "type": "objectField",
+                            "value": "id"
+                        }
+                    ],
+                    "conditionals": [
+                        {
+                            "id": "71261640850684734",
+                            "target": "role",
+                            "value": "god,padavan"
+                        }
+                    ]
+                },
+                {
+                    "sysName": "adminChangeApp",
+                    "id": "91601640880768005",
+                    "name": "Downgrade to FREE",
+                    "displayAs": "button",
+                    "buttonIcon": "arrowDown",
+                    "buttonType": "danger",
+                    "closePopup": true,
+                    "showMessage": false,
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "action",
+                                "fetch": [],
+                                "sysName": "action",
+                                "name": "",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": null
+                            },
+                            {
+                                "fieldSysName": "app_id",
+                                "fetch": [],
+                                "sysName": "app_id",
+                                "name": "App ID",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "Apps"
+                            }
+                        ]
+                    },
+                    "formMapping": [
+                        {
+                            "id": "83751640880908553",
+                            "target": "action",
+                            "type": "const",
+                            "value": "downgrade_free"
+                        },
+                        {
+                            "id": "41981641039763998",
+                            "target": "app_id",
+                            "type": "objectField",
+                            "value": "id"
+                        }
+                    ]
+                },
+                {
+                    "sysName": "adminChangeApp",
+                    "id": "38151666722551950",
+                    "name": "Change plan",
+                    "displayAs": "form",
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "Billing_date",
+                                "fetch": [],
+                                "sysName": "Billing_date",
+                                "name": "Billing date",
+                                "dataType": "date",
+                                "format": "",
+                                "formatOptions": {
+                                    "customOptionLabel": "My option",
+                                    "keyValue": {
+                                        "key": "key",
+                                        "value": "value",
+                                        "button": "One more"
+                                    },
+                                    "dateLocale": "en-gb",
+                                    "booleanOptions": [
+                                        "True",
+                                        "False"
+                                    ],
+                                    "validWeekDays": {
+                                        "mon": true,
+                                        "thu": true,
+                                        "tue": true,
+                                        "sun": true,
+                                        "fri": true,
+                                        "sat": true,
+                                        "wed": true
+                                    },
+                                    "customOptionPlaceholder": "Describe your option",
+                                    "range": {},
+                                    "customOptionType": "textarea",
+                                    "dateFormat": "DD/MM/Y",
+                                    "timeFormat": " ",
+                                    "isUTC": "true"
+                                },
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "Plan",
+                                "fetch": [],
+                                "sysName": "Plan",
+                                "name": "Plan",
+                                "dataType": "json",
+                                "format": "radioOptions",
+                                "formatOptions": {
+                                    "customOptionLabel": "My option",
+                                    "keyValue": {
+                                        "key": "key",
+                                        "value": "value",
+                                        "button": "One more"
+                                    },
+                                    "dateLocale": "en-gb",
+                                    "booleanOptions": [
+                                        "True",
+                                        "False"
+                                    ],
+                                    "validWeekDays": {
+                                        "mon": true,
+                                        "thu": true,
+                                        "tue": true,
+                                        "sun": true,
+                                        "fri": true,
+                                        "sat": true,
+                                        "wed": true
+                                    },
+                                    "customOptionPlaceholder": "Describe your option",
+                                    "range": {},
+                                    "customOptionType": "textarea",
+                                    "dateFormat": "DD/MM/Y",
+                                    "timeFormat": " HH:mm",
+                                    "isUTC": "false",
+                                    "multipleChoice": [
+                                        {
+                                            "value": "Startup-monthly",
+                                            "label": "Startup-monthly"
+                                        },
+                                        {
+                                            "value": "Startup-yearly",
+                                            "label": "Startup-yearly"
+                                        },
+                                        {
+                                            "value": "Pro-monthly",
+                                            "label": "Pro-monthly"
+                                        },
+                                        {
+                                            "value": "Pro-yearly",
+                                            "label": "Pro-yearly"
+                                        },
+                                        {
+                                            "value": "Business-monthly",
+                                            "label": "Business-monthly"
+                                        },
+                                        {
+                                            "value": "Business-yearly",
+                                            "label": "Business-yearly"
+                                        },
+                                        {
+                                            "value": "Business-DEV",
+                                            "label": "Business-DEV"
+                                        }
+                                    ]
+                                },
+                                "link": ""
+                            },
+                            {
+                                "fieldSysName": "action",
+                                "fetch": [],
+                                "sysName": "action",
+                                "name": "",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": null
+                            },
+                            {
+                                "fieldSysName": "app_id",
+                                "fetch": [],
+                                "sysName": "app_id",
+                                "name": "App ID",
+                                "dataType": "link",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": "Apps"
+                            }
+                        ]
+                    },
+                    "formFields": [
+                        {
+                            "id": "69691666722566468",
+                            "field": {
+                                "fieldSysName": "Plan",
+                                "fetch": [],
+                                "sysName": "Plan",
+                                "name": "Plan",
+                                "dataType": "json",
+                                "format": "radioOptions",
+                                "formatOptions": {
+                                    "customOptionLabel": "My option",
+                                    "keyValue": {
+                                        "key": "key",
+                                        "value": "value",
+                                        "button": "One more"
+                                    },
+                                    "dateLocale": "en-gb",
+                                    "booleanOptions": [
+                                        "True",
+                                        "False"
+                                    ],
+                                    "validWeekDays": {
+                                        "mon": true,
+                                        "thu": true,
+                                        "tue": true,
+                                        "sun": true,
+                                        "fri": true,
+                                        "sat": true,
+                                        "wed": true
+                                    },
+                                    "customOptionPlaceholder": "Describe your option",
+                                    "range": {},
+                                    "customOptionType": "textarea",
+                                    "dateFormat": "DD/MM/Y",
+                                    "timeFormat": " HH:mm",
+                                    "isUTC": "false",
+                                    "multipleChoice": [
+                                        {
+                                            "value": "Startup-monthly",
+                                            "label": "Startup-monthly"
+                                        },
+                                        {
+                                            "value": "Startup-yearly",
+                                            "label": "Startup-yearly"
+                                        },
+                                        {
+                                            "value": "Pro-monthly",
+                                            "label": "Pro-monthly"
+                                        },
+                                        {
+                                            "value": "Pro-yearly",
+                                            "label": "Pro-yearly"
+                                        },
+                                        {
+                                            "value": "Business-monthly",
+                                            "label": "Business-monthly"
+                                        },
+                                        {
+                                            "value": "Business-yearly",
+                                            "label": "Business-yearly"
+                                        },
+                                        {
+                                            "value": "Business-DEV",
+                                            "label": "Business-DEV"
+                                        }
+                                    ]
+                                },
+                                "link": ""
+                            }
+                        },
+                        {
+                            "id": "68691666722685132",
+                            "field": {
+                                "fieldSysName": "Billing_date",
+                                "fetch": [],
+                                "sysName": "Billing_date",
+                                "name": "Billing date",
+                                "dataType": "date",
+                                "format": "",
+                                "formatOptions": {
+                                    "customOptionLabel": "My option",
+                                    "keyValue": {
+                                        "key": "key",
+                                        "value": "value",
+                                        "button": "One more"
+                                    },
+                                    "dateLocale": "en-gb",
+                                    "booleanOptions": [
+                                        "True",
+                                        "False"
+                                    ],
+                                    "validWeekDays": {
+                                        "mon": true,
+                                        "thu": true,
+                                        "tue": true,
+                                        "sun": true,
+                                        "fri": true,
+                                        "sat": true,
+                                        "wed": true
+                                    },
+                                    "customOptionPlaceholder": "Describe your option",
+                                    "range": {},
+                                    "customOptionType": "textarea",
+                                    "dateFormat": "DD/MM/Y",
+                                    "timeFormat": " ",
+                                    "isUTC": "true"
+                                },
+                                "link": ""
+                            }
+                        }
+                    ],
+                    "buttonIcon": "money",
+                    "buttonType": "accent",
+                    "formMapping": [
+                        {
+                            "id": "42131666722688653",
+                            "target": "action",
+                            "type": "const",
+                            "value": "change_plan"
+                        },
+                        {
+                            "id": "99011666722716592",
+                            "target": "app_id",
+                            "type": "objectField",
+                            "value": "id"
+                        }
+                    ],
+                    "showMessage": true,
+                    "closePopup": false,
+                    "resultMessage": "Changed!"
+                }
+            ],
             "filterParams": {
                 "isFiltering": true,
-                "isSorting": false,
                 "filterFields": {
-                    "certOption": {
+                    "id": {
                         "active": true,
-                        "dataType": "link",
+                        "dataType": "id",
                         "format": "",
                         "formatOptions": {},
-                        "name": "Certificate level",
-                        "linkDirectory": [
-                            {
-                                "id": "gold",
-                                "text": "🏆 Gold"
-                            },
-                            {
-                                "id": "basic",
-                                "text": "👨‍💻 Basic"
-                            }
-                        ]
+                        "name": "App id"
                     },
-                    "user_id": {
+                    "owner_id": {
                         "active": true,
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "name": "User",
+                        "name": "Owner",
                         "textsearch": "fulltext"
                     },
-                    "status": {
+                    "sysName": {
+                        "active": true,
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "name": "System name"
+                    },
+                    "legacy_billing": {
+                        "active": true,
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "name": "legacy_billing"
+                    },
+                    "team_id": {
                         "active": true,
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "name": "Status",
+                        "name": "Team",
+                        "textsearch": "fulltext"
+                    },
+                    "is_hidden": {
+                        "active": true,
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "name": "is_hidden"
+                    },
+                    "plan_id": {
+                        "active": true,
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "name": "Billing plan",
                         "linkDirectory": [
                             {
-                                "id": "new",
-                                "text": "New"
+                                "id": "FREE",
+                                "text": "Free"
                             },
                             {
-                                "id": "declined",
-                                "text": "Declined"
+                                "id": "Business-monthly",
+                                "text": "Business"
                             },
                             {
-                                "id": "approved",
-                                "text": "Approved"
+                                "id": "Business-yearly",
+                                "text": "Business"
                             },
                             {
-                                "id": "revoked",
-                                "text": "Revoked"
+                                "id": "Pro-monthly",
+                                "text": "Pro"
+                            },
+                            {
+                                "id": "Pro-yearly",
+                                "text": "Pro"
+                            },
+                            {
+                                "id": "Startup-monthly",
+                                "text": "Startup"
+                            },
+                            {
+                                "id": "Startup-yearly",
+                                "text": "Startup"
+                            },
+                            {
+                                "id": "Pro-sandbox",
+                                "text": "Pro-sandbox"
                             }
                         ]
+                    },
+                    "trialType": {
+                        "active": true,
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "name": "trial type (pro,startup)"
                     }
-                }
+                },
+                "isSorting": true
             }
         },
-        "tableTitle": "Approved requests",
+        "tableTitle": "",
         "actions": null,
         "headers": [
             {
-                "sysName": "certOption",
-                "dataType": "link",
-                "name": "Certificate level",
-                "id": "76051681744033311",
-                "link": "cert_types",
-                "group": "0",
-                "tags": "",
+                "sysName": "Automatic_downgrade",
+                "dataType": "boolean",
+                "name": "",
+                "id": "98981687328025298",
+                "link": "",
+                "group": "1683803887851",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "balance",
+                "dataType": "decimal",
+                "name": "Credits",
+                "id": "20731633354617743",
+                "link": "",
+                "group": "1623707015468",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 22,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "comments",
+                "dataType": "arrayLink",
+                "name": "Comments",
+                "id": "44101633194013799",
+                "link": "admin_comments",
+                "group": "1633095201028",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 1,
                 "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "date_trial_ended",
+                "dataType": "date",
+                "name": "",
+                "id": "52821683804754338",
+                "link": "",
+                "group": "1683803887851",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {},
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "en-gb",
+                    "booleanOptions": [
+                        "True",
+                        "False"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD MMM, Y",
+                    "timeFormat": "",
+                    "isUTC": "false"
+                },
                 "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
                 "indexExists": false,
                 "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "arrayLink": false,
-                "linkType": true,
-                "array": false
+                "json": false
             },
             {
-                "sysName": "certPrice",
-                "dataType": "decimal",
-                "name": "Certificate Price",
-                "id": "42721681744044441",
+                "sysName": "date_trial_started",
+                "dataType": "date",
+                "name": "",
+                "id": "37981683803928426",
                 "link": "",
-                "group": "0",
+                "group": "1683803887851",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
@@ -29333,48 +32840,75 @@ const App = (props) => {
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {},
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "en-gb",
+                    "booleanOptions": [
+                        "True",
+                        "False"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD MMM, Y",
+                    "timeFormat": "",
+                    "isUTC": "false"
+                },
                 "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
                 "indexExists": false,
                 "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "array": false
+                "json": false
             },
             {
-                "sysName": "date_requested",
-                "dataType": "date",
-                "name": "Date requested",
-                "id": "73931681801864593",
-                "link": "",
-                "group": "0",
-                "tags": "",
+                "sysName": "events",
+                "dataType": "arrayLink",
+                "name": "App events",
+                "id": "67551637607379984",
+                "link": "appEvents",
+                "group": "1633095201028",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 7,
+                "order": 2,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {},
+                "formatOptions": null,
                 "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
                 "indexExists": false,
                 "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "array": false
+                "json": false
             },
             {
                 "sysName": "id",
                 "dataType": "id",
-                "name": "id",
+                "name": "App id",
                 "id": "0",
                 "link": "",
                 "group": "0",
@@ -29391,105 +32925,49 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
                 "indexExists": false,
                 "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "array": false
+                "json": false
             },
             {
-                "sysName": "indiPriceBasic",
-                "dataType": "decimal",
+                "sysName": "isDowngraded",
+                "dataType": "boolean",
                 "name": "",
-                "id": "71641681744207670",
+                "id": "26051647940518677",
                 "link": "",
-                "group": "0",
-                "tags": "",
+                "group": "1683803887851",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 6,
+                "order": 1,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {},
+                "formatOptions": null,
                 "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
                 "indexExists": false,
                 "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "array": false
+                "json": false
             },
             {
-                "sysName": "indiPriceGold",
-                "dataType": "decimal",
+                "sysName": "isTrial",
+                "dataType": "boolean",
                 "name": "",
-                "id": "54551681744176877",
+                "id": "41181683803882995",
                 "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "array": false
-            },
-            {
-                "sysName": "projects",
-                "dataType": "string",
-                "name": "Projects description",
-                "id": "96511681744091621",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "array": false
-            },
-            {
-                "sysName": "status",
-                "dataType": "link",
-                "name": "Status",
-                "id": "37721681744114802",
-                "link": "cert_statuses",
-                "group": "1681744116679",
+                "group": "1683803887851",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
@@ -29503,21 +32981,413 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
                 "indexExists": false,
                 "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "arrayLink": false,
-                "linkType": true,
-                "array": false
+                "json": false
             },
             {
-                "sysName": "user_id",
+                "sysName": "is_blocked",
+                "dataType": "boolean",
+                "name": "is_blocked",
+                "id": "82901633095583058",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 10,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "is_cancelled",
+                "dataType": "string",
+                "name": "",
+                "id": "95451637666256272",
+                "link": "",
+                "group": "1623707015468",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 23,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "color",
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "is_hidden",
+                "dataType": "boolean",
+                "name": "is_hidden",
+                "id": "10251637661442776",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 11,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "is_sandbox",
+                "dataType": "boolean",
+                "name": "is_sandbox",
+                "id": "47331625209998636",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 9,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "legacy_billing",
+                "dataType": "boolean",
+                "name": "",
+                "id": "67651647899758711",
+                "link": "",
+                "group": "1623707015468",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 29,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "name",
+                "dataType": "string",
+                "name": "App name",
+                "id": "13661623706989350",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "next_billing_date",
+                "dataType": "date",
+                "name": "",
+                "id": "39091647335092236",
+                "link": "",
+                "group": "1623707015468",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 27,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "next_payment",
+                "dataType": "decimal",
+                "name": "",
+                "id": "23671647335096237",
+                "link": "",
+                "group": "1623707015468",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 28,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "owner_id",
                 "dataType": "link",
-                "name": "User",
-                "id": "15091681744077341",
+                "name": "Owner",
+                "id": "41841623707118206",
                 "link": "Cloud_users",
                 "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "paddle_subscription_id",
+                "dataType": "string",
+                "name": "Paddle ID",
+                "id": "13631633089941494",
+                "link": null,
+                "group": "1623707015468",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 18,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "paddle_subscription_status",
+                "dataType": "string",
+                "name": "Paddle Status",
+                "id": "99931633090832671",
+                "link": null,
+                "group": "1623707015468",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 19,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "plan_id",
+                "dataType": "link",
+                "name": "Billing plan",
+                "id": "74161623707026653",
+                "link": "Tariff",
+                "group": "1623707015468",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "sysName",
+                "dataType": "string",
+                "name": "System name",
+                "id": "27541623706978377",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "team_id",
+                "dataType": "link",
+                "name": "Team",
+                "id": "94291623707210181",
+                "link": "Teams",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 7,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "trialType",
+                "dataType": "string",
+                "name": "trial type (pro,startup)",
+                "id": "64401683803952185",
+                "link": "",
+                "group": "1683803887851",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
@@ -29531,116 +33401,10180 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
                 "indexExists": false,
                 "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "arrayLink": false,
-                "linkType": true,
-                "array": false
+                "json": false
             }
         ],
         "data": [
             {
-                "certOption": {
-                    "id": "gold",
-                    "title": "🏆 Gold"
+                "name": "evidpo-lms",
+                "is_blocked": false,
+                "owner_id": {
+                    "wallet_balance": 0,
+                    "id": "edueduedoo@gmail.com",
+                    "wallet_transactions": [
+                        {
+                            "balance": 0.01,
+                            "id": "61de4a29-65ce-4271-9e62-9f42e7b66d15",
+                            "date": 1686058424000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -159.18,
+                            "id": "439afb90-7df0-4a01-8654-105233881346",
+                            "date": 1685625980000,
+                            "comment": "On-demand resource consumption. App evidpo (13775), period 2023-05",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -214.5,
+                            "id": "6d96d22e-864c-4dae-a126-d3db5a8be069",
+                            "date": 1685005210000,
+                            "comment": "App evidpo (13775), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 322.36,
+                            "id": "b7d0a6c2-422a-4519-a25a-e69ec953eb6a",
+                            "date": 1683018162000,
+                            "comment": "Adding funds via Tinkoff 26756.0 ₽ → 322.36 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 71.33,
+                            "id": "0ed03c71-8f99-44f8-83ee-a01b70023736",
+                            "date": 1680537356000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 373.68,
+                            "id": "8879bee9-c36e-46bd-bba4-a5c26bed316b",
+                            "date": 1686058428000,
+                            "comment": "Adding funds via Tinkoff 30268.08 ₽ → 373.68 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 35,
+                            "id": "02a6c8a9-fc96-47fd-8f43-2c10d8afa006",
+                            "date": 1679661163000,
+                            "comment": "App evidpo  plan upgrade (Pro-monthly → Business-monthly) partial refund",
+                            "type": "app_payment_upgrade_refund"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "30dfb8e3-d2dd-425f-8fb0-b78d025a68e2",
+                            "date": 1667984495000,
+                            "comment": "App evidpo (13775), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 40,
+                            "id": "16c08278-0ad8-43e8-9ca5-b532de6f8ac0",
+                            "date": 1660027829000,
+                            "comment": "Adding funds via Tinkoff 2560.0 ₽ → 40.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -90,
+                            "id": "03bdb95b-213f-49ed-8313-e05c1f3ba48e",
+                            "date": 1669910764000,
+                            "comment": "On-demand resource consumption. App evidpo (13775), period 2022-11",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -69.5,
+                            "id": "9f904645-5c59-4ac8-9717-10dce408fe26",
+                            "date": 1670662834000,
+                            "comment": "App evidpo (13775), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 214.5,
+                            "id": "702c0897-85ff-4970-b5e4-b2e1faed1b8e",
+                            "date": 1680503485000,
+                            "comment": "Adding funds via Tinkoff 16731.0 ₽ → 214.50 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 316,
+                            "id": "ae14470a-560d-426a-a776-6349ce06f6c5",
+                            "date": 1676275011000,
+                            "comment": "Adding funds via Tinkoff 22726.0 ₽ → 316 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 63.14,
+                            "id": "75f3033f-55c2-4d7d-9b3a-9592c466333a",
+                            "date": 1668790541000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 50,
+                            "id": "a649fb37-7d9e-43c7-90e1-0e06bb12bb77",
+                            "date": 1666111213000,
+                            "comment": "Promo-code WELCOME",
+                            "type": "promo"
+                        },
+                        {
+                            "balance": -35.14,
+                            "id": "34909304-bb7a-490e-bcce-b41e75263cda",
+                            "date": 1667309828000,
+                            "comment": "On-demand resource consumption. App evidpo (13775), period 2022-10",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -246.76,
+                            "id": "c6e4b557-7fc2-43cb-9585-ecf2fbb0e6ed",
+                            "date": 1675516497000,
+                            "comment": "On-demand resource consumption. App evidpo (13775), period 2023-01",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "e28f07ab-8e16-4bf6-9bbc-57a7f6b6468a",
+                            "date": 1660027940000,
+                            "comment": "Update app evidpo, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -214.5,
+                            "id": "2716c720-53f3-4fc3-9b06-39531fa4ae5a",
+                            "date": 1682413319000,
+                            "comment": "App evidpo (13775), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 34.5,
+                            "id": "f4ba883a-c1a6-4131-a510-520237769f81",
+                            "date": 1679661167000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "b8fe8394-648b-4bd3-b737-3eae00221831",
+                            "date": 1665306060000,
+                            "comment": "App evidpo (13775), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "9ce2a1d9-5ff6-4946-8fa8-e420b28406b0",
+                            "date": 1662714043000,
+                            "comment": "App evidpo (13775), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -123.89,
+                            "id": "64e8a092-58c6-447d-b318-5a2a2890159b",
+                            "date": 1672911298000,
+                            "comment": "On-demand resource consumption. App evidpo (13775), period 2022-12",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 90,
+                            "id": "5e921769-47c5-4720-8cd6-37b395e45a95",
+                            "date": 1670591874000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 69.5,
+                            "id": "46798947-992c-44a3-bf50-66ce89514617",
+                            "date": 1670662839000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -69.5,
+                            "id": "65c5b839-dfb1-4bd1-9174-8a096a4ff588",
+                            "date": 1673341256000,
+                            "comment": "App evidpo (13775), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -107.87,
+                            "id": "ffd00091-9f64-491e-8d46-171533f5fc5d",
+                            "date": 1682972892000,
+                            "comment": "On-demand resource consumption. App evidpo (13775), period 2023-04",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 38,
+                            "id": "352f3da8-e8d5-4e75-9401-f701967360f5",
+                            "date": 1665049185000,
+                            "comment": "Adding funds via Tinkoff 2432.0 ₽ → 38.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 194,
+                            "id": "21627324-77d8-4952-9004-ec3a73f6f09e",
+                            "date": 1673852727000,
+                            "comment": "Adding funds via Tinkoff 13343.0 ₽ → 194 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -69.5,
+                            "id": "5209a524-01ad-4c87-9d73-4f38e7fbf400",
+                            "date": 1676019658000,
+                            "comment": "App evidpo (13775), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -363.63,
+                            "id": "a53a1d89-fac6-4705-8368-1ca706137f30",
+                            "date": 1677685115000,
+                            "comment": "On-demand resource consumption. App evidpo (13775), period 2023-02",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 363.28,
+                            "id": "6f100d16-ff0e-4385-900b-64e2ba072137",
+                            "date": 1678367759000,
+                            "comment": "Adding funds via Tinkoff 27245.0 ₽ → 363.28 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -71.33,
+                            "id": "eaffa553-4139-4024-a4bb-b523c007d196",
+                            "date": 1680537352000,
+                            "comment": "On-demand resource consumption. App evidpo (13775), period 2023-03",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -214.5,
+                            "id": "e4886615-d2fa-4548-9ef1-996af139587e",
+                            "date": 1679734828000,
+                            "comment": "App evidpo (13775), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -69.5,
+                            "id": "b9d67654-1350-489b-b08b-394b8b1a3ec2",
+                            "date": 1678438835000,
+                            "comment": "App evidpo (13775), license payment, plan Pro",
+                            "type": "app_payment"
+                        }
+                    ]
                 },
-                "id": "5a8b6305-c70e-4b55-894b-c444a079572c",
-                "indiPriceBasic": "",
-                "indiPriceGold": "",
-                "status": ""
+                "next_billing_date": 1687690009257,
+                "trialType": "skip",
+                "sysName": "evidpo",
+                "plan_id": {
+                    "price": 429,
+                    "name": "Business",
+                    "description": "Great for high loaded, business-critical, enterprise-grade apps",
+                    "id": "Business-monthly"
+                },
+                "id": "13775",
+                "is_hidden": false,
+                "is_sandbox": false,
+                "next_payment": 214.5,
+                "isTrial": "",
+                "events": [
+                    {
+                        "type": "block_off",
+                        "messagee": "App is UNBLOCKED",
+                        "date": 1661341161000,
+                        "id": "fc62eda6-f1f5-443f-8625-882e7ef224b4"
+                    },
+                    {
+                        "messagee": "License payment -214.5 D-coins, plan Business",
+                        "type": "billing_regular",
+                        "date": 1679734828000,
+                        "id": "e0a0574a-6f70-42a4-b7f1-281168b1d006"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 35.14",
+                        "date": 1667309828000,
+                        "id": "e6251cb3-6839-4cdd-a0cc-f5778d1c198a"
+                    },
+                    {
+                        "type": "app_created",
+                        "messagee": "App is created",
+                        "date": 1659258273000,
+                        "id": "b7d3aeeb-2149-4860-9e2e-0aa5a17973eb"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "date": 1662714342000,
+                        "id": "1a4bcb7a-41da-4560-91c0-a604aae3556b"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1670582809000,
+                        "messagee": "App plan updated FREE → Pro-monthly",
+                        "id": "dc5ab528-96ce-4a15-a8f7-74e2d93e95e7"
+                    },
+                    {
+                        "date": 1670576443000,
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "id": "6955217b-7d10-45f4-93b5-1542d44dfbc1"
+                    },
+                    {
+                        "date": 1665306060000,
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "id": "79fc72b9-a730-40f7-beb0-307802de3e5f"
+                    },
+                    {
+                        "type": "block_off",
+                        "messagee": "App is UNBLOCKED",
+                        "date": 1670582711000,
+                        "id": "bbe72999-770a-4b62-9a35-9a10f94f20ec"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1667984495000,
+                        "type": "billing_regular",
+                        "id": "7c361794-ddc2-4360-8c4b-4eb617df7670"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 107.87",
+                        "date": 1682972892000,
+                        "id": "c8f38a95-b834-410c-ac09-a24c5c9511a0"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 71.33",
+                        "date": 1680537352000,
+                        "id": "296881a3-f307-4846-897a-6cfe5713fdf5"
+                    },
+                    {
+                        "messagee": "License payment -214.5 D-coins, plan Business",
+                        "type": "billing_regular",
+                        "date": 1682413318000,
+                        "id": "76d72c25-f3aa-4624-9973-3283ba875da0"
+                    },
+                    {
+                        "date": 1679661207000,
+                        "type": "plan_update",
+                        "messagee": "App plan updated Pro-monthly → Business-monthly",
+                        "id": "344bf782-6ac9-44a7-8822-adafe0783dc0"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 123.89",
+                        "date": 1672911297000,
+                        "id": "d3382571-ba7b-418c-b8ae-e822cb503b48"
+                    },
+                    {
+                        "date": 1685005210000,
+                        "messagee": "License payment -214.5 D-coins, plan Business",
+                        "type": "billing_regular",
+                        "id": "5b86f8a8-68a9-4e35-8128-4302886e0462"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1670578004000,
+                        "messagee": "App plan updated Startup-monthly → FREE",
+                        "id": "2593d40b-8844-4ff0-aea6-f5a3add8dcc0"
+                    },
+                    {
+                        "messagee": "License payment -69.5 D-coins, plan Pro",
+                        "date": 1678438836000,
+                        "type": "billing_regular",
+                        "id": "77ea4eeb-5afd-48c4-b496-595d853ad57b"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1669910764000,
+                        "messagee": "On-demand charged $ 192.76",
+                        "id": "de3aa625-9ddd-4a7b-b561-6bcc6304ffd6"
+                    },
+                    {
+                        "messagee": "App is BLOCKED",
+                        "type": "block_on",
+                        "date": 1670578115000,
+                        "id": "e9d4db27-888d-4921-9b4f-e26b6bb46419"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1675516496000,
+                        "messagee": "On-demand charged $ 246.76",
+                        "id": "3ddb83e2-cf3f-4c08-9b9e-31263afa4c38"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1660027941000,
+                        "messagee": "App plan updated FREE → Startup-monthly",
+                        "id": "439586b4-225d-417c-9c98-e5a1e7712805"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1677685115000,
+                        "messagee": "On-demand charged $ 363.63",
+                        "id": "28228ab4-e221-4e3f-a3bd-64c9e0460a5a"
+                    },
+                    {
+                        "date": 1670662834000,
+                        "messagee": "License payment -69.5 D-coins, plan Pro",
+                        "type": "billing_regular",
+                        "id": "ad8d5bae-9f1f-402b-8e24-ab83d49653da"
+                    },
+                    {
+                        "messagee": "License payment -69.5 D-coins, plan Pro",
+                        "date": 1676019658000,
+                        "type": "billing_regular",
+                        "id": "f9abb661-7389-469d-a273-0ab838a8cf5e"
+                    },
+                    {
+                        "date": 1673341256000,
+                        "messagee": "License payment -69.5 D-coins, plan Pro",
+                        "type": "billing_regular",
+                        "id": "999f6050-d462-40d8-8eeb-e1cd05de3f7a"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1685625980000,
+                        "messagee": "On-demand charged $ 159.18",
+                        "id": "0a6ef014-2041-4e45-bb27-a373ce55b7e0"
+                    }
+                ],
+                "comments": [],
+                "Automatic_downgrade": "",
+                "date_trial_ended": "",
+                "date_trial_started": "",
+                "isDowngraded": "",
+                "legacy_billing": "",
+                "paddle_subscription_id": ""
             },
             {
-                "certOption": {
-                    "id": "basic",
-                    "title": "👨‍💻 Basic"
+                "name": "Конфигуратор ТКП Connective PLM",
+                "is_blocked": false,
+                "team_id": {
+                    "name": "Connective Team",
+                    "owner_id": "m.garifullin.f@gmail.com",
+                    "tariff_id": "team_monthly",
+                    "id": "8ea29006-5b45-44de-b20d-2a24a6922459",
+                    "is_hidden": false
                 },
-                "projects": "test",
-                "id": "pavel@directual.com",
-                "indiPriceBasic": "",
-                "indiPriceGold": "",
-                "status": ""
+                "isDowngraded": "",
+                "owner_id": {
+                    "wallet_balance": -682.94,
+                    "id": "m.garifullin.f@gmail.com",
+                    "wallet_transactions": [
+                        {
+                            "balance": -159.96,
+                            "id": "99995f00-2c59-4e77-82d9-6eafc157f60c",
+                            "date": 1682972791000,
+                            "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2023-04",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -82.78,
+                            "id": "1d8d9114-f7b4-4830-82bf-b932a4184a74",
+                            "date": 1680537346000,
+                            "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2023-03",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "83dbc309-6b7d-44bc-be30-1b447315148a",
+                            "date": 1677330008000,
+                            "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -116.2,
+                            "id": "a17c8c45-5473-4e1a-8b07-ea71db29fa74",
+                            "date": 1685625985000,
+                            "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2023-05",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -33.35,
+                            "id": "3c6d6607-b120-4cf9-86d6-0d9c9868ff93",
+                            "date": 1675516716000,
+                            "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2023-01",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "63e6cc02-2d77-4d24-a2af-5c2519b0aa3a",
+                            "date": 1674651608000,
+                            "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "cc39c6ae-05e0-4ea0-8ad3-0ba78df4d9e3",
+                            "date": 1671973236000,
+                            "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "a89463eb-4f81-4e55-b99e-41777d02ccb1",
+                            "date": 1656162004000,
+                            "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "a1c41424-d2a6-4f69-982c-4d555903ca07",
+                            "date": 1664110829000,
+                            "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -3.65,
+                            "id": "9636aac2-226e-426e-9753-53ab3ecbb454",
+                            "date": 1677685271000,
+                            "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2023-02",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "0ee6f93b-916e-412b-9cdf-4e911c678750",
+                            "date": 1653499444000,
+                            "comment": "Team  Connective Team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -72.17,
+                            "id": "44cd15ef-326c-46dd-8ea0-55fdc5f12f02",
+                            "date": 1672911309000,
+                            "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2022-12",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 300,
+                            "id": "85f6dc4b-bf9c-4eac-a69f-1f837a9ef7e4",
+                            "date": 1653499358000,
+                            "comment": "Promo-code ZQA0375H4CXR",
+                            "type": "promo"
+                        },
+                        {
+                            "balance": 433.17,
+                            "id": "a417cee9-50bb-4d95-90d4-9feeabd5607b",
+                            "date": 1679560192000,
+                            "comment": "Wire transfer from ООО «КОННЕКТИВ ПЛМ», 32487.750000 ₽ → 433.17 D-coins",
+                            "type": "bank_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "787173c5-77b8-4a22-8457-aed3b4b475f0",
+                            "date": 1648739458000,
+                            "comment": "Create app moviesappis, plan Startup-monthly",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "314af1d9-3bb2-4f1e-b04f-b3922c012108",
+                            "date": 1669381226000,
+                            "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "3885b6a0-8997-4bc9-a9d2-c11644868613",
+                            "date": 1651395633000,
+                            "comment": "App moviesappis (12680), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -7.3,
+                            "id": "050d3c58-bce0-4604-a266-5387fee35b65",
+                            "date": 1662047123000,
+                            "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2022-08",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 100,
+                            "id": "178d9e4e-1c6e-481c-8658-0a7293b54abb",
+                            "date": 1657608399000,
+                            "comment": "Promo-code PRODUCTHUNT",
+                            "type": "promo"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "69fb2c12-7831-4432-ab79-98b6dd91b551",
+                            "date": 1648567835000,
+                            "comment": "Update app sump, plan Startup-monthly (previous plan: )",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "86746e7c-1423-49cd-8c7e-b261a8da15fc",
+                            "date": 1651065340000,
+                            "comment": "Create app connectiveconfiguratortcp, plan Startup-monthly",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "dbc5b90d-7b69-4b0e-935e-5029468fb0a2",
+                            "date": 1679749205000,
+                            "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": 120,
+                            "id": "e275cbcf-d293-4cb3-9f8f-5b626ad9d94a",
+                            "date": 1648567750000,
+                            "comment": "Promo-code ZEROCODER",
+                            "type": "promo"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "c36219c3-5168-4411-9f66-a2e47eea7e7d",
+                            "date": 1658754004000,
+                            "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "f702e985-824f-43e4-a1d9-417dab4c4d73",
+                            "date": 1661432403000,
+                            "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": 330.49,
+                            "id": "76305202-d2fe-4cf8-a611-ee3fd1145665",
+                            "date": 1671200593000,
+                            "comment": "Wire transfer from ООО «КОННЕКТИВ ПЛМ», 21151.360000 ₽ → 330.49 D-coins",
+                            "type": "bank_payment"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "6be73dc7-4a54-4f66-8399-2c85be499dc7",
+                            "date": 1685019605000,
+                            "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "b368b8c5-c2c4-4601-9c00-30c4c78ec878",
+                            "date": 1682427607000,
+                            "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": 150,
+                            "id": "dcf16790-971c-4487-8747-42a2c26603d4",
+                            "date": 1662017378000,
+                            "comment": "Promo-code 0FDZ3CZHNCDI",
+                            "type": "promo"
+                        },
+                        {
+                            "balance": -19.16,
+                            "id": "121e8228-ea49-4ef8-a6ab-18957d1f58aa",
+                            "date": 1664619194000,
+                            "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2022-09",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 100,
+                            "id": "3cb12f18-7f19-405a-8749-5f14ce0ad00f",
+                            "date": 1667300478000,
+                            "comment": "Promo-code YQD2AH1CQ5MI",
+                            "type": "promo"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "87d2033f-c057-4e1d-ba75-f9e52c71c564",
+                            "date": 1666702803000,
+                            "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -19.9,
+                            "id": "4144341a-05e4-45e4-94e3-5ebcf17a9017",
+                            "date": 1667309842000,
+                            "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2022-10",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "c334076c-c3cd-44d4-8d6b-f003769eef02",
+                            "date": 1651309215000,
+                            "comment": "App sump (12477), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -103.13,
+                            "id": "96197574-d89b-4fa9-b6c0-abb37c79ea5c",
+                            "date": 1669910794000,
+                            "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2022-11",
+                            "type": "ondemand"
+                        }
+                    ]
+                },
+                "next_billing_date": 1653645983345,
+                "trialType": "skip",
+                "sysName": "connectiveconfiguratortcp",
+                "plan_id": {
+                    "price": 0,
+                    "name": "Pro-sandbox",
+                    "description": "Sandbox for Team plan",
+                    "id": "Pro-sandbox"
+                },
+                "id": "12947",
+                "is_hidden": false,
+                "is_sandbox": true,
+                "next_payment": "",
+                "isTrial": "",
+                "events": [
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1677685271000,
+                        "messagee": "On-demand charged $ 3.65",
+                        "id": "dc7bbca8-29ad-4f2f-a047-bd97ba8063d2"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1654074095000,
+                        "messagee": "App plan updated Pro-sandbox → FREE",
+                        "id": "afa33d41-ccf3-486c-91ba-940aa0ca1636"
+                    },
+                    {
+                        "date": 1685625985000,
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 116.2",
+                        "id": "f392b347-33f2-45ba-8edd-66a638610002"
+                    },
+                    {
+                        "messagee": "On-demand charged $ 159.96",
+                        "type": "billing_ondemand",
+                        "date": 1682972791000,
+                        "id": "fbf9694a-122a-4c37-bd66-0ba65a8b2af7"
+                    },
+                    {
+                        "type": "block_off",
+                        "messagee": "App is UNBLOCKED",
+                        "date": 1654079416000,
+                        "id": "885e1054-5b98-403a-9d9c-7052d9ec399e"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 103.13",
+                        "date": 1669910794000,
+                        "id": "3134f3de-f5c5-4291-b475-f71de42d656c"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1680537346000,
+                        "messagee": "On-demand charged $ 82.78",
+                        "id": "88b49b09-7241-4c1d-b3f6-25ab63e7733b"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1675516716000,
+                        "messagee": "On-demand charged $ 33.35",
+                        "id": "f45c5224-1d5c-41d4-90b4-3a0be5c7d2d6"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1653642084000,
+                        "messagee": "App plan updated Startup-monthly → FREE",
+                        "id": "7df6260c-3fec-421c-91e0-22faf4469ef7"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1667309842000,
+                        "messagee": "On-demand charged $ 19.9",
+                        "id": "0f8d5351-b95f-4804-a2fb-da3d68f62f46"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1654071081000,
+                        "messagee": "App plan updated FREE → Pro-sandbox",
+                        "id": "40564cea-786d-4a88-8f77-590cb7dbecdf"
+                    },
+                    {
+                        "messagee": "App is downgraded to FREE",
+                        "type": "billing_regular",
+                        "date": 1653642084000,
+                        "id": "0c7434bc-aa58-4980-9c27-7c42528e6e3d"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 19.16",
+                        "date": 1664619194000,
+                        "id": "62e51099-52a3-4049-b553-b4852c6a0c6e"
+                    },
+                    {
+                        "date": 1662047122000,
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 7.3",
+                        "id": "44a9fd0a-33c6-4db5-b4be-aea3f433ee8f"
+                    },
+                    {
+                        "messagee": "App is downgraded to FREE",
+                        "date": 1654074100000,
+                        "type": "billing_regular",
+                        "id": "62b85fc1-3f73-4566-abbb-a3f6d119ec0f"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 72.17",
+                        "date": 1672911309000,
+                        "id": "a5d6d07d-a71e-4ccb-8436-7e2ff8b97a38"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1654079478000,
+                        "messagee": "App plan updated FREE → Pro-sandbox",
+                        "id": "c8e75856-7971-4202-899f-c385ee1e3abf"
+                    }
+                ],
+                "comments": [],
+                "Automatic_downgrade": "",
+                "date_trial_ended": "",
+                "date_trial_started": "",
+                "legacy_billing": "",
+                "paddle_subscription_id": ""
+            },
+            {
+                "name": "[PROD] Korzinanadom",
+                "is_blocked": true,
+                "paddle_subscription_status": "active",
+                "owner_id": {
+                    "wallet_balance": -1108.03,
+                    "id": "b.kholmatov@bsl.dev",
+                    "wallet_transactions": [
+                        {
+                            "balance": -377,
+                            "id": "4a29b37b-53b4-4434-a6e7-874c50de6a28",
+                            "date": 1652691754000,
+                            "comment": "App korzinanadom-dev (6283), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -377,
+                            "id": "f8eca74e-bbf4-45a8-839c-d9b1f071f83f",
+                            "date": 1650635191000,
+                            "comment": "App korzinanadom-dev (6283), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -45.46,
+                            "id": "f59d0d39-e049-4f4e-83db-8c9ad5a8c7ce",
+                            "date": 1651503569000,
+                            "comment": "On-demand resource consumption. App korzinanadom-dev (6283), period 2022-04",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -308.57,
+                            "id": "06246e42-9205-4fb4-b751-b50e54801075",
+                            "date": 1648980867000,
+                            "comment": "On-demand resource consumption. App korzinanadom-dev (6283), period 2022-03",
+                            "type": "ondemand"
+                        }
+                    ]
+                },
+                "date_trial_started": 1684281600000,
+                "next_billing_date": 1685539313007,
+                "trialType": "startup",
+                "sysName": "korzinanadom-dev",
+                "plan_id": {
+                    "price": 0,
+                    "name": "Free",
+                    "description": "Perfect for learning the basics of Directual",
+                    "id": "FREE"
+                },
+                "paddle_subscription_id": "7729669",
+                "id": "6283",
+                "is_hidden": false,
+                "is_sandbox": false,
+                "next_payment": "",
+                "date_trial_ended": 1685539313006,
+                "isTrial": true,
+                "events": [
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 493.58",
+                        "date": 1646125108000,
+                        "id": "cfa84665-600d-4eaa-bb57-10d673364cc6"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1653582785000,
+                        "messagee": "App plan updated Business-monthly → FREE",
+                        "id": "306f7148-f41c-4b2b-9054-133402ba76c2"
+                    },
+                    {
+                        "messagee": "License payment -377 D-coins, plan Business",
+                        "date": 1652691767000,
+                        "type": "billing_regular",
+                        "id": "364c2466-7cb7-4ce9-ac15-f97ea09653a0"
+                    },
+                    {
+                        "messagee": "License payment -429 D-coins, plan Business",
+                        "date": 1650635191000,
+                        "type": "billing_regular",
+                        "id": "7fe7268b-76f0-401a-8718-cb9f94f09ff0"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1643703233000,
+                        "messagee": "On-demand billing FAILED, sum $ 412.94",
+                        "id": "9822c744-9cd0-4c9f-a1ec-87e459b97fb8"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1644140763000,
+                        "messagee": "On-demand charged $ 412.94",
+                        "id": "1803fed2-8fde-417c-bbf2-ec43a624377a"
+                    },
+                    {
+                        "date": 1686594898000,
+                        "type": "block",
+                        "messagee": "App is blocked",
+                        "id": "4e5b5500-f6aa-4f7d-8704-7f7f9519f504"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 305.11",
+                        "date": 1641055400000,
+                        "id": "08db8fd3-82f1-451a-9d36-8a91c2fba04e"
+                    },
+                    {
+                        "messagee": "App is BLOCKED",
+                        "type": "block_on",
+                        "date": 1660390603000,
+                        "id": "ec845c1b-1ce2-489f-9261-e5795570f85e"
+                    },
+                    {
+                        "type": "plan_update",
+                        "messagee": "App plan updated FREE → Startup-monthly",
+                        "date": 1684333863000,
+                        "id": "90957a3d-1145-4506-9caa-356f2928cf6c"
+                    },
+                    {
+                        "date": 1651503569000,
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 45.46",
+                        "id": "3cb2bb3a-5725-45a9-ac8e-ee7459fb4c95"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1648980867000,
+                        "messagee": "On-demand charged $ 308.57",
+                        "id": "522c6aba-32a6-4313-a7c9-a50bda3e7ef6"
+                    }
+                ],
+                "comments": [
+                    {
+                        "user_id": {
+                            "lastName": "Ershov",
+                            "firstName": "Pavel"
+                        },
+                        "date": 1653582774000,
+                        "text": "Проект умер, Долгов говорит вырубать их нахой",
+                        "id": "9a18bd6e-9d29-4fe4-8f56-b801897a3811"
+                    }
+                ],
+                "Automatic_downgrade": "",
+                "isDowngraded": "",
+                "legacy_billing": ""
+            },
+            {
+                "name": "lass",
+                "is_blocked": false,
+                "team_id": {
+                    "name": "Polytell",
+                    "owner_id": "donchenko.pavel@gmail.com",
+                    "tariff_id": "team_monthly",
+                    "id": "f7c404cc-92c5-4e37-bb1b-bd52abc5b1a8",
+                    "is_hidden": false
+                },
+                "isDowngraded": "",
+                "paddle_subscription_status": "active",
+                "owner_id": {
+                    "wallet_balance": 160.5,
+                    "id": "donchenko.pavel@gmail.com",
+                    "wallet_transactions": [
+                        {
+                            "balance": 214.5,
+                            "id": "8adaccf3-a4f3-4b1a-b265-1451d9503b3f",
+                            "date": 1686747841000,
+                            "comment": "Affiliate reward for donchenko.pavel@gmail.com transaction (app lass, -429 D-coins)",
+                            "type": "affiliate"
+                        },
+                        {
+                            "balance": 462.195,
+                            "id": "ad7d599c-133a-4867-aa51-8d0448890807",
+                            "date": 1686636299000,
+                            "comment": "Wire transfer from ИП Насоновский Сергей Николаевич, 38824.380000 ₽ → 462.195 D-coins",
+                            "type": "bank_payment"
+                        },
+                        {
+                            "balance": -193.7,
+                            "id": "2248c3d1-e6b9-4ff7-a0c0-7f48a65e1238",
+                            "date": 1685625970000,
+                            "comment": "On-demand resource consumption. App lass (8909), period 2023-05",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "f4d2f487-2240-48d6-ba5c-3c854ce8ff68",
+                            "date": 1684069205000,
+                            "comment": "Team Polytell, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": 214.5,
+                            "id": "4eecdb30-11e9-4e76-ba59-6bd20cae43cf",
+                            "date": 1683903022000,
+                            "comment": "Affiliate reward for donchenko.pavel@gmail.com transaction (app lass, -429 D-coins)",
+                            "type": "affiliate"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "b23c9e48-1502-481e-8753-5c743e00ca26",
+                            "date": 1681477204000,
+                            "comment": "Team Polytell, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -458.73,
+                            "id": "83948434-2899-4960-8c34-8ef4ff01cd42",
+                            "date": 1680537332000,
+                            "comment": "On-demand resource consumption. App lass (8909), period 2023-03",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "7455e24a-f0a3-4f33-b0ba-bcc9c3ba2ea9",
+                            "date": 1679475640000,
+                            "comment": "App lass (8909), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 65.25,
+                            "id": "b1ea4a5d-58a5-40a0-bc3c-5ee8144270e7",
+                            "date": 1677685144000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 69.5,
+                            "id": "cf3561ae-43ec-4c84-8add-8a3c2901c9b2",
+                            "date": 1664733516000,
+                            "comment": "Affiliate reward for nikos@defender.ru transaction (app defender, -139 D-coins)",
+                            "type": "affiliate"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "99c4b48d-832b-450a-ad41-c5907f7f3747",
+                            "date": 1658480466000,
+                            "comment": "App lass (8909), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "4539becc-b94b-4fe4-a380-5bfada94d80a",
+                            "date": 1663837244000,
+                            "comment": "App lass (8909), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -291.64,
+                            "id": "f29dada6-3559-4c9d-92e6-57408b13fd7f",
+                            "date": 1682972781000,
+                            "comment": "On-demand resource consumption. App lass (8909), period 2023-04",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "033dafbe-7077-421e-bea1-1333db2c8c6f",
+                            "date": 1663156732000,
+                            "comment": "Team  Polytell, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "5bc384a4-cd20-4431-9367-f663aa15ed9b",
+                            "date": 1686747608000,
+                            "comment": "Team Polytell, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": 19.5,
+                            "id": "5aaca74d-5ff2-4900-8c6d-3e92cde70e8d",
+                            "date": 1664732869000,
+                            "comment": "Affiliate reward for nikos@defender.ru transaction (app defender, -39 D-coins)",
+                            "type": "affiliate"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "87aca4a7-1c1a-4a0f-bc04-e98b94beca3c",
+                            "date": 1671022811000,
+                            "comment": "Team Polytell, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -73.54,
+                            "id": "442ee78b-e237-4f96-870f-20d162ab748b",
+                            "date": 1664619154000,
+                            "comment": "On-demand resource consumption. App lass (8909), period 2022-09",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "98e457ce-049d-40a9-89ec-9ab5043b372e",
+                            "date": 1673701209000,
+                            "comment": "Team Polytell, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": 100,
+                            "id": "1f009798-e06f-4488-914c-ffb442fc406b",
+                            "date": 1662580545000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 268.5,
+                            "id": "e702152b-615a-4f52-b763-77d4d6d24570",
+                            "date": 1677056440000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 28.86,
+                            "id": "f542aee3-d606-401f-bdc3-594e315fd8c9",
+                            "date": 1663156732000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -397.32,
+                            "id": "8ce7bce3-03e6-4b46-8ae1-6e6aa558f8dc",
+                            "date": 1648980601000,
+                            "comment": "On-demand resource consumption. App lass (8909), period 2022-03",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -47.35,
+                            "id": "656cc26f-599c-462c-ba82-fbbedf18c32e",
+                            "date": 1675516565000,
+                            "comment": "On-demand resource consumption. App lass (8909), period 2023-01",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "a8eed9cd-25ef-4830-b9d2-17ea21213856",
+                            "date": 1677056433000,
+                            "comment": "App lass (8909), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "66ec6301-605c-4e60-aa6b-a51012b3a7b0",
+                            "date": 1650704435000,
+                            "comment": "App lass (8909), license payment, plan Free",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 950,
+                            "id": "4fc79627-1a8e-43a9-bbb7-fc80b48c0399",
+                            "date": 1681306549000,
+                            "comment": "Wire transfer from ИП Насоновский Сергей Николаевич, 77900 ₽ → 950 D-coins",
+                            "type": "bank_payment"
+                        },
+                        {
+                            "balance": 214.5,
+                            "id": "752f73c5-1129-418b-bc8a-147cf4c6d4de",
+                            "date": 1681306603000,
+                            "comment": "Affiliate reward for donchenko.pavel@gmail.com transaction (app lass, -429 D-coins)",
+                            "type": "affiliate"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "a00ca563-3ce5-45da-aa9b-66070f2a258b",
+                            "date": 1665752408000,
+                            "comment": "Team Polytell, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "0b188eab-241b-4eb3-b044-b4ca487bb30c",
+                            "date": 1678798819000,
+                            "comment": "Team Polytell, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "6e0a5aca-a7f4-48ce-be6b-65e3e1688f8b",
+                            "date": 1653296497000,
+                            "comment": "App lass (8909), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "7972be0d-6692-4849-bd2d-0c4e15070b5d",
+                            "date": 1651962769000,
+                            "comment": "Update app lass, plan Business-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -56.06,
+                            "id": "13e33c86-f7aa-436c-80be-cd49d3bb9c77",
+                            "date": 1662047061000,
+                            "comment": "On-demand resource consumption. App lass (8909), period 2022-08",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -61.85,
+                            "id": "cc2294eb-a68b-4a60-bc18-26d188d24335",
+                            "date": 1667309732000,
+                            "comment": "On-demand resource consumption. App lass (8909), period 2022-10",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 337.37,
+                            "id": "a2e957d7-638b-40a0-9934-96d0c10b94fd",
+                            "date": 1683902997000,
+                            "comment": "Wire transfer from ИП Насоновский Сергей Николаевич, 26651.84 ₽ → 337.37 D-coins",
+                            "type": "bank_payment"
+                        },
+                        {
+                            "balance": -19.92,
+                            "id": "ddb7b1ce-ae25-4767-b7a4-415873e113fa",
+                            "date": 1654081815000,
+                            "comment": "On-demand resource consumption. App lass (8909), period 2022-05",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -39.55,
+                            "id": "7bb6eae8-1386-4e28-83bf-fea0e1f41e0d",
+                            "date": 1656666888000,
+                            "comment": "On-demand resource consumption. App lass (8909), period 2022-06",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -7.14,
+                            "id": "9e2a3f25-0109-4953-bda8-e0e9caf291dd",
+                            "date": 1659359379000,
+                            "comment": "On-demand resource consumption. App lass (8909), period 2022-07",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "597293ea-2168-4edc-b0fb-e7db2b5fbf9c",
+                            "date": 1669107627000,
+                            "comment": "App lass (8909), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 214.5,
+                            "id": "c222cc89-7235-4ba2-9565-e8386f420467",
+                            "date": 1664733712000,
+                            "comment": "Affiliate reward for donchenko.pavel@gmail.com transaction (app lass, -429 D-coins)",
+                            "type": "affiliate"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "97693d5b-b3d5-4e30-bd59-5509ea670e53",
+                            "date": 1682154110000,
+                            "comment": "App lass (8909), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -10.065,
+                            "id": "4eb1aa9d-808c-4128-9932-6946ed0e852e",
+                            "date": 1664733735000,
+                            "comment": "Affiliate reward for nikos@defender.ru transaction (app defender, 20.13 D-coins)",
+                            "type": "affiliate"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "40ef1e3b-3de4-44b0-b77b-27349218611a",
+                            "date": 1668430815000,
+                            "comment": "Team Polytell, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": 214.5,
+                            "id": "1302b58c-f321-457f-b9d8-d71b3f69b318",
+                            "date": 1672134413000,
+                            "comment": "Affiliate reward for donchenko.pavel@gmail.com transaction (app lass, -429 D-coins)",
+                            "type": "affiliate"
+                        },
+                        {
+                            "balance": 214.5,
+                            "id": "f113048b-1a1e-476b-a9bb-2d4f30ec331a",
+                            "date": 1681306625000,
+                            "comment": "Affiliate reward for donchenko.pavel@gmail.com transaction (app lass, -429 D-coins)",
+                            "type": "affiliate"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "2851c242-f392-4b49-bb09-406d24a014fe",
+                            "date": 1666429224000,
+                            "comment": "App lass (8909), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "a1e34873-73b8-40f5-a5bb-d498b2f24e0f",
+                            "date": 1684746009000,
+                            "comment": "App lass (8909), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 594,
+                            "id": "0faebb95-4041-449f-a142-9aab6644ec18",
+                            "date": 1667249051000,
+                            "comment": "Affiliate reward for nikos@defender.ru transaction (app defender, -1188 D-coins)",
+                            "type": "affiliate"
+                        },
+                        {
+                            "balance": 1000,
+                            "id": "be636005-7da8-4a8d-933f-ff0ca6bb92f9",
+                            "date": 1651838230000,
+                            "comment": "Promo-code AIUYW2GTX1OR",
+                            "type": "promo"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "d3293e32-f42a-4745-befb-a889a28d7d52",
+                            "date": 1671699645000,
+                            "comment": "App lass (8909), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 780.69,
+                            "id": "364e4af8-e675-45ab-ab83-55ebc01ab29f",
+                            "date": 1672133746000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "e04eaccd-486f-49ca-ac3c-a9387f756744",
+                            "date": 1649548800000,
+                            "comment": "App def (10240) license payment",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "55643645-2d54-4037-ba3a-92e515c0028c",
+                            "date": 1655888434000,
+                            "comment": "App lass (8909), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 214.5,
+                            "id": "d5894976-f291-4653-a458-90a1b427bd28",
+                            "date": 1672134465000,
+                            "comment": "Affiliate reward for donchenko.pavel@gmail.com transaction (app lass, -429 D-coins)",
+                            "type": "affiliate"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "eb69f834-68c0-48ac-9588-61c462dcf493",
+                            "date": 1674378037000,
+                            "comment": "App lass (8909), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -68.27,
+                            "id": "746a8968-c155-4635-90df-fc12ad10906c",
+                            "date": 1669910821000,
+                            "comment": "On-demand resource consumption. App lass (8909), period 2022-11",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 317.78,
+                            "id": "af3a2c87-e90e-4986-aee1-74e66e88b8a4",
+                            "date": 1675516569000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -216.43,
+                            "id": "2617ab42-db87-4cab-9016-06bc6639a898",
+                            "date": 1672911162000,
+                            "comment": "On-demand resource consumption. App lass (8909), period 2022-12",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 214.5,
+                            "id": "239cb39b-9b4d-4fdc-8ac6-5dd1fced11b1",
+                            "date": 1675516620000,
+                            "comment": "Affiliate reward for donchenko.pavel@gmail.com transaction (app lass, -429 D-coins)",
+                            "type": "affiliate"
+                        },
+                        {
+                            "balance": 255.67,
+                            "id": "a7abc026-4e58-4b65-8c3a-24d3dbe73a0a",
+                            "date": 1664733521000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 766,
+                            "id": "021295ca-d491-4e94-8f32-f0eda914d6a4",
+                            "date": 1651837507000,
+                            "comment": "Wire transfer",
+                            "type": "bank_payment"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "e0264ca6-2293-4a1d-890f-ec77f17ec444",
+                            "date": 1676379608000,
+                            "comment": "Team Polytell, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "32265104-3941-4da9-a95f-319542654f8a",
+                            "date": 1661158832000,
+                            "comment": "App lass (8909), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -65.25,
+                            "id": "7aad9da6-523e-40e6-bb47-e05f7b614ff0",
+                            "date": 1677685139000,
+                            "comment": "On-demand resource consumption. App lass (8909), period 2023-02",
+                            "type": "ondemand"
+                        }
+                    ]
+                },
+                "next_billing_date": 1687428649584,
+                "trialType": "skip",
+                "sysName": "lass",
+                "plan_id": {
+                    "price": 429,
+                    "name": "Business",
+                    "description": "Great for high loaded, business-critical, enterprise-grade apps",
+                    "id": "Business-monthly"
+                },
+                "paddle_subscription_id": "11019757",
+                "id": "8909",
+                "is_hidden": false,
+                "is_sandbox": false,
+                "next_payment": 429,
+                "isTrial": "",
+                "events": [
+                    {
+                        "messagee": "On-demand charged $ 68.27",
+                        "type": "billing_ondemand",
+                        "date": 1669910821000,
+                        "id": "9cd4ba81-44dd-4b31-b4a8-ca432b712847"
+                    },
+                    {
+                        "messagee": "License payment -429 D-coins, plan Business",
+                        "date": 1669107627000,
+                        "type": "billing_regular",
+                        "id": "7664ee44-587a-4118-bf24-04717a5b3a7e"
+                    },
+                    {
+                        "messagee": "License payment -429 D-coins, plan Business",
+                        "type": "billing_regular",
+                        "date": 1682154110000,
+                        "id": "ce0b113c-6f0a-4653-8547-04270d7cac25"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1682972781000,
+                        "messagee": "On-demand charged $ 291.64",
+                        "id": "a648b691-8ae3-4415-baa6-ce313c348a2d"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 73.54",
+                        "date": 1664619154000,
+                        "id": "9c565ae8-b17e-4f74-953d-a2a544ba514e"
+                    },
+                    {
+                        "date": 1667309732000,
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 61.85",
+                        "id": "ef419fd5-0e8e-4f3c-b7ef-036ccc8b490a"
+                    },
+                    {
+                        "messagee": "License payment -429 D-coins, plan Business",
+                        "date": 1677056433000,
+                        "type": "billing_regular",
+                        "id": "0a42f090-725c-4f03-b587-1c85fac7251b"
+                    },
+                    {
+                        "type": "tariff_changed",
+                        "date": 1643347975000,
+                        "messagee": "Tariff has been changed Free (FREE) → Pro (Pro-monthly)",
+                        "id": "8f807c98-23cb-4574-8368-49db69968628"
+                    },
+                    {
+                        "date": 1685625970000,
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 193.7",
+                        "id": "71ed8cc3-8bb1-47f1-9389-c4bb58cb5932"
+                    },
+                    {
+                        "date": 1661158835000,
+                        "messagee": "License payment -139 D-coins, plan Business",
+                        "type": "billing_regular",
+                        "id": "fe312ccf-b547-4658-9bca-aafd2a3a69e0"
+                    },
+                    {
+                        "date": 1655888434000,
+                        "messagee": "License payment -139 D-coins, plan Business",
+                        "type": "billing_regular",
+                        "id": "ec3aa31f-3787-45ff-b395-d26334c332a4"
+                    },
+                    {
+                        "date": 1642668289000,
+                        "type": "tariff_changed",
+                        "messagee": "Tariff has been changed Pro (Pro-monthly) → Free (FREE)",
+                        "id": "d96df401-775e-42c0-8f71-f72595fbbad2"
+                    },
+                    {
+                        "messagee": "License payment -429 D-coins, plan Business",
+                        "type": "billing_regular",
+                        "date": 1684746009000,
+                        "id": "afba9f4c-a5a0-4e87-ad73-e765469a536a"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1643701537000,
+                        "messagee": "On-demand charged $ 147.87",
+                        "id": "182b01db-7d0b-473e-bef5-e4bbd1f4b1b0"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1659359379000,
+                        "messagee": "On-demand charged $ 7.14",
+                        "id": "add2742a-b16f-4bff-bee6-7fea9560a863"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Free",
+                        "type": "billing_regular",
+                        "date": 1650704448000,
+                        "id": "f54a6879-2839-4042-b052-5bfa959bcad3"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1672911161000,
+                        "messagee": "On-demand charged $ 216.43",
+                        "id": "4fea6cc7-5003-4451-8813-73e1595b1c04"
+                    },
+                    {
+                        "date": 1642224312000,
+                        "type": "tariff_changed",
+                        "messagee": "Tariff has been changed Pro (Pro-monthly) → Free (FREE)",
+                        "id": "22ea0a8b-d803-4e1b-a7e2-f4e31455c35a"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 397.32",
+                        "date": 1648980601000,
+                        "id": "c773f990-0011-4990-a6cf-2e777296c6f9"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1680537332000,
+                        "messagee": "On-demand charged $ 458.73",
+                        "id": "264d3f7f-7627-4320-8e9c-8932cb72295d"
+                    },
+                    {
+                        "messagee": "License payment -429 D-coins, plan Business",
+                        "type": "billing_regular",
+                        "date": 1663837244000,
+                        "id": "21251fb4-2367-49ec-a37d-4c94f1319bae"
+                    },
+                    {
+                        "type": "tariff_changed",
+                        "messagee": "Tariff has been changed Pro (Pro-monthly) → Free (FREE)",
+                        "date": 1642946899000,
+                        "id": "6b8f00f9-586a-4973-9da7-dd1e371bd023"
+                    },
+                    {
+                        "messagee": "License payment -429 D-coins, plan Business",
+                        "date": 1666429224000,
+                        "type": "billing_regular",
+                        "id": "efc1d845-1aff-4add-afdc-58a5d2af0229"
+                    },
+                    {
+                        "messagee": "License payment -429 D-coins, plan Business",
+                        "date": 1674378037000,
+                        "type": "billing_regular",
+                        "id": "b5a2d657-4b94-4ba9-a59d-fa65876c06f2"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 47.35",
+                        "date": 1675516565000,
+                        "id": "3c62bcd3-352c-45a3-8b3c-cb5b1fda35ac"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1662047061000,
+                        "messagee": "On-demand charged $ 56.06",
+                        "id": "24fb3ad5-6f9a-43e2-8841-b7a8544153e2"
+                    },
+                    {
+                        "type": "tariff_changed",
+                        "date": 1642667869000,
+                        "messagee": "Tariff has been changed Free (FREE) → Pro (Pro-monthly)",
+                        "id": "75a8327d-c997-489c-a0a2-dafe169a3051"
+                    },
+                    {
+                        "date": 1642428972000,
+                        "type": "tariff_changed",
+                        "messagee": "Tariff has been changed Free (FREE) → Pro (Pro-monthly)",
+                        "id": "3d8e24bf-e72f-482a-b4a4-b79ed02a5371"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 19.92",
+                        "date": 1654081815000,
+                        "id": "cda44ebf-e59b-4e4b-a546-38ba7dd79160"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Business",
+                        "type": "billing_regular",
+                        "date": 1653296519000,
+                        "id": "6adb3234-403c-4d6b-958b-7411e684e292"
+                    },
+                    {
+                        "type": "tariff_changed",
+                        "messagee": "Tariff has been changed Free (FREE) → Pro (Pro-monthly)",
+                        "date": 1642915289000,
+                        "id": "7c5fab07-40fa-4adf-a2e4-139933646ef1"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1656666888000,
+                        "messagee": "On-demand charged $ 39.55",
+                        "id": "d58e2a8c-6561-4404-8ff6-2786625ce530"
+                    },
+                    {
+                        "type": "tariff_changed",
+                        "date": 1642429009000,
+                        "messagee": "Tariff has been changed Pro (Pro-monthly) → Free (FREE)",
+                        "id": "62db6196-f550-410f-bdb5-b74ad3b2c2b3"
+                    },
+                    {
+                        "messagee": "License payment -429 D-coins, plan Business",
+                        "date": 1671699647000,
+                        "type": "billing_regular",
+                        "id": "5200d065-0456-425f-9966-129cb38eb3bf"
+                    },
+                    {
+                        "date": 1679475640000,
+                        "messagee": "License payment -429 D-coins, plan Business",
+                        "type": "billing_regular",
+                        "id": "31e5cca8-e73a-4108-a60c-b1d752f53add"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1677685139000,
+                        "messagee": "On-demand charged $ 65.25",
+                        "id": "a2ece617-06a5-407d-8513-048927bb6da9"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Business",
+                        "type": "billing_regular",
+                        "date": 1658480466000,
+                        "id": "54425786-2b3d-4fc2-92cb-55a1b33cb483"
+                    }
+                ],
+                "comments": [],
+                "Automatic_downgrade": "",
+                "date_trial_ended": "",
+                "date_trial_started": "",
+                "legacy_billing": ""
+            },
+            {
+                "name": "Zerocoder",
+                "team_id": {
+                    "name": "Zerocoder",
+                    "owner_id": "leonid.byakov@gmail.com",
+                    "tariff_id": "team_monthly",
+                    "id": "d533e2e8-3aef-4e3e-a232-f86c49f04f46",
+                    "is_hidden": false
+                },
+                "paddle_subscription_status": "active",
+                "owner_id": {
+                    "wallet_balance": -1769.16,
+                    "id": "leonid.byakov@gmail.com",
+                    "wallet_transactions": [
+                        {
+                            "balance": -905.18,
+                            "id": "739300e9-35c9-400d-ba91-28d784fa22b1",
+                            "date": 1685625959000,
+                            "comment": "On-demand resource consumption. App hh_send_message (2894), period 2023-05",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "436ea4ce-5b8a-4aac-af15-c74917247ce1",
+                            "date": 1683896407000,
+                            "comment": "Team Zerocoder, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": 600,
+                            "id": "e2e90794-2c45-49d4-a730-272cd1d7a081",
+                            "date": 1683183200000,
+                            "comment": "Wire transfer from ООО Зерокодер, 49800 ₽ → 600 D-coins",
+                            "type": "bank_payment"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "2775a9de-d8d6-4986-89b9-c0e62722a66b",
+                            "date": 1659690033000,
+                            "comment": "App hh_send_message (2894), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "dd35cd57-068a-4168-bebc-a78fd7ca4504",
+                            "date": 1657011618000,
+                            "comment": "App hh_send_message (2894), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "1f9e8594-8192-4cc2-9f3f-7f2c16f7fdc5",
+                            "date": 1652518855000,
+                            "comment": "App hh_send_message (2894), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "3fc03e5b-7f6e-4ec4-bca4-ae3625d41a4d",
+                            "date": 1673528421000,
+                            "comment": "Team Zerocoder, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": 383,
+                            "id": "3212b4fe-636a-48ed-9922-15e68f442c55",
+                            "date": 1658391351000,
+                            "comment": "Adding funds via Tinkoff 24512.0 ₽ → 383.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 1400,
+                            "id": "31748785-cd79-4d12-b468-a5522e7e5128",
+                            "date": 1683180237000,
+                            "comment": "Wire transfer from ИП МИХАЛЕВ ВАДИМ ЕВГЕНЬЕВИЧ, 116200 ₽ → 1400 D-coins",
+                            "type": "bank_payment"
+                        },
+                        {
+                            "balance": 100,
+                            "id": "53a0e5a2-d64e-4a9b-8d74-aa069342a5eb",
+                            "date": 1657607500000,
+                            "comment": "Promo-code PRODUCTHUNT",
+                            "type": "promo"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "a2b3c6c0-b483-4ae3-9635-16d9de3f7d7a",
+                            "date": 1662987607000,
+                            "comment": "Team Zerocoder, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": 664.19,
+                            "id": "ec79d9f5-9692-49a4-a927-7a0fee86e9a8",
+                            "date": 1655811984000,
+                            "comment": "Adding funds via Tinkoff 45829.0 ₽ → 664.19 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "c4634421-fa59-4745-9dc9-be4ce3989c19",
+                            "date": 1684400411000,
+                            "comment": "App hh_send_message (2894), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -60.2,
+                            "id": "fa50bd09-8004-4344-ab42-47d87e4a7e6a",
+                            "date": 1672911326000,
+                            "comment": "On-demand resource consumption. App hh_send_message (2894), period 2022-12",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "5728a71a-ad1a-4e58-bf52-8ecb3b177615",
+                            "date": 1655214165000,
+                            "comment": "Team Zerocoder, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": 315,
+                            "id": "68fc384f-edb9-473d-9860-08e3203fcfed",
+                            "date": 1682973314000,
+                            "comment": "on-demand consumption discount",
+                            "type": "manual"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "7c228bc2-4a5c-4a9e-961f-309137310d56",
+                            "date": 1660309205000,
+                            "comment": "Team Zerocoder, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -372.17,
+                            "id": "94fcba7c-a2bb-4cda-baed-6a416671cd46",
+                            "date": 1648979995000,
+                            "comment": "On-demand resource consumption. App hh_send_message (2894), period 2022-03",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -480.49,
+                            "id": "a179cc81-db2a-4392-b68d-b4175225f4e9",
+                            "date": 1646092800000,
+                            "comment": "On-demand resource consumption. App  hh_send_message (2894), period 2022-02",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "c3ae0570-e39c-40b9-9517-595b1e2da9a0",
+                            "date": 1650635339000,
+                            "comment": "App hh_send_message (2894), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "a1af7130-2a90-4e30-91f5-7298f2809884",
+                            "date": 1681808433000,
+                            "comment": "App hh_send_message (2894), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 429,
+                            "id": "5a685016-339e-42d6-a4af-d99b1b72765e",
+                            "date": 1650884228000,
+                            "comment": "Adding funds via Tinkoff 34320.0 ₽ → 429.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "c4ddddcf-39e2-416e-8005-f78b3e506238",
+                            "date": 1686574807000,
+                            "comment": "Team Zerocoder, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "1fb0ead9-6cd0-45e7-854c-8eec06a05012",
+                            "date": 1681304503000,
+                            "comment": "Team Zerocoder, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": 483,
+                            "id": "ce57b775-1c25-4c1d-9b7d-3500f80fd94e",
+                            "date": 1661421452000,
+                            "comment": "Adding funds via Tinkoff 30912.0 ₽ → 483.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 193,
+                            "id": "eec55985-5547-4615-b358-957e9505f263",
+                            "date": 1669797061000,
+                            "comment": "Adding funds via Tinkoff 12350.0 ₽ → 193 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "05d23aff-eb40-4689-b94a-6c11fa244ea4",
+                            "date": 1678626005000,
+                            "comment": "Team Zerocoder, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": 1000,
+                            "id": "dace3cb9-1538-4894-b540-3a0c19a043a8",
+                            "date": 1652361469000,
+                            "comment": "Promo-code EJHEHNRBPGB9",
+                            "type": "promo"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "df4f19b7-4492-4cb1-8811-d24d0431426a",
+                            "date": 1652366799000,
+                            "comment": "Team  Zerocoder, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -171.14,
+                            "id": "7b1fdd03-897f-4c2c-92c1-c1eb33ce76d0",
+                            "date": 1654081233000,
+                            "comment": "On-demand resource consumption. App hh_send_message (2894), period 2022-05",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "d2b1383a-e433-4f64-83b2-fc31553c24e4",
+                            "date": 1662368417000,
+                            "comment": "App hh_send_message (2894), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "d910160c-5ada-49bd-a062-68765a0ad12e",
+                            "date": 1668258009000,
+                            "comment": "Team Zerocoder, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": 250.1,
+                            "id": "fef84322-866c-42d0-b129-3071fba9d6bd",
+                            "date": 1666941899000,
+                            "comment": "Adding funds via Tinkoff 16005.0 ₽ → 250.10 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "bddf504b-65d8-42af-8b13-4493596eaf5c",
+                            "date": 1667638820000,
+                            "comment": "App hh_send_message (2894), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "14f47b27-8e47-4aa8-a853-e7c560f4f063",
+                            "date": 1687078849000,
+                            "comment": "App hh_send_message (2894), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "efc86bd6-2e54-4094-9510-a18bdcc02406",
+                            "date": 1650205023000,
+                            "comment": "Adding funds via Tinkoff 80.0 ₽ → 1.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "75e0dc22-a360-4092-b2c2-b7c947af4f59",
+                            "date": 1670230865000,
+                            "comment": "App hh_send_message (2894), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "ebc5d231-c370-45eb-871d-7b10c0a16001",
+                            "date": 1670850006000,
+                            "comment": "Team Zerocoder, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -3.07,
+                            "id": "2083d69a-c680-4bb7-8845-01fbaf262602",
+                            "date": 1662047162000,
+                            "comment": "On-demand resource consumption. App hh_send_message (2894), period 2022-08",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 852.65,
+                            "id": "6186dbd7-945d-45e5-ad48-811b0cbe8111",
+                            "date": 1649832241000,
+                            "comment": "Adding funds via Tinkoff 68212.0 ₽ → 852.65 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "898af1f0-e6bd-4b6c-8543-e8fc0fa33619",
+                            "date": 1672909238000,
+                            "comment": "App hh_send_message (2894), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "5201310a-9afc-42cc-918e-a9b2f9988278",
+                            "date": 1679130033000,
+                            "comment": "App hh_send_message (2894), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "4fbde6e0-b22a-40fb-a85f-43837551b6c2",
+                            "date": 1657630804000,
+                            "comment": "Team Zerocoder, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "8610ad58-154f-40d2-81a7-193bbe05e378",
+                            "date": 1675587661000,
+                            "comment": "App hh_send_message (2894), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "8a0bda78-21aa-4d14-beb9-4df1115d5d78",
+                            "date": 1676206808000,
+                            "comment": "Team Zerocoder, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "cdedef86-369c-40c6-a90d-35760b9e102e",
+                            "date": 1654419616000,
+                            "comment": "App hh_send_message (2894), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -528.05,
+                            "id": "04bb750f-0360-454f-aa9f-3e4b1be4e711",
+                            "date": 1651503538000,
+                            "comment": "On-demand resource consumption. App hh_send_message (2894), period 2022-04",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 639.18,
+                            "id": "ae3748df-5fa5-4354-b6a7-f5624f2901ab",
+                            "date": 1676527679000,
+                            "comment": "Adding funds via Tinkoff 46660.0 ₽ → 639.18 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -101.25,
+                            "id": "a24b6981-ab5a-404e-bf2e-476fb9a2452f",
+                            "date": 1677685128000,
+                            "comment": "On-demand resource consumption. App hh_send_message (2894), period 2023-02",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "86a862e7-c7f2-4968-9a3f-5368d5486150",
+                            "date": 1678006827000,
+                            "comment": "App hh_send_message (2894), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 80.71,
+                            "id": "2cba2956-df57-4934-8f90-3585369712f6",
+                            "date": 1679057465000,
+                            "comment": "App hh_send_message  plan upgrade (Pro-monthly → Business-monthly) partial refund",
+                            "type": "app_payment_upgrade_refund"
+                        },
+                        {
+                            "balance": -115.43,
+                            "id": "e5d14e3e-afb2-4b00-9c4a-ee6e26ea5b35",
+                            "date": 1680537340000,
+                            "comment": "On-demand resource consumption. App hh_send_message (2894), period 2023-03",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "61223c27-8d32-4807-b592-ebcc4b2cd187",
+                            "date": 1665579611000,
+                            "comment": "Team Zerocoder, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -1262.01,
+                            "id": "17299cd6-00d3-4738-806b-41be7a16c275",
+                            "date": 1682972775000,
+                            "comment": "On-demand resource consumption. App hh_send_message (2894), period 2023-04",
+                            "type": "ondemand"
+                        }
+                    ]
+                },
+                "next_billing_date": 1689671209626,
+                "trialType": "skip",
+                "sysName": "hh_send_message",
+                "plan_id": {
+                    "price": 139,
+                    "name": "Pro",
+                    "description": "Includes advanced features for developing and scaling your app",
+                    "id": "Pro-monthly"
+                },
+                "paddle_subscription_id": "8277015",
+                "id": "2894",
+                "is_hidden": false,
+                "is_sandbox": false,
+                "next_payment": 139,
+                "events": [
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1670230869000,
+                        "type": "billing_regular",
+                        "id": "e2d14c73-1c9b-4fe5-a5dd-631035cf78e5"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1672911326000,
+                        "messagee": "On-demand charged $ 60.2",
+                        "id": "966128b2-0410-48a2-81a7-a669e8975d8e"
+                    },
+                    {
+                        "messagee": "License payment -429 D-coins, plan Business",
+                        "type": "billing_regular",
+                        "date": 1681808440000,
+                        "id": "e8b4db7f-1419-4546-98e5-bb46e04ad711"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1675587663000,
+                        "type": "billing_regular",
+                        "id": "f2acc8d6-8087-4360-8923-38ab54f341a5"
+                    },
+                    {
+                        "date": 1680537340000,
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 115.43",
+                        "id": "25aacab2-b8b7-48a5-801f-9afcc844dc99"
+                    },
+                    {
+                        "date": 1652518871000,
+                        "messagee": "License payment -429 D-coins, plan Business",
+                        "type": "billing_regular",
+                        "id": "72c73ac4-09bf-40a8-9838-20496b387e58"
+                    },
+                    {
+                        "date": 1662047162000,
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 3.07",
+                        "id": "1ac8a330-12f1-45ca-99d9-63399ae755eb"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1646124689000,
+                        "messagee": "On-demand billing FAILED, sum $ 480.49",
+                        "id": "4e117e92-8471-4a86-90dc-a818b95ebc1a"
+                    },
+                    {
+                        "date": 1664960809000,
+                        "type": "plan_update",
+                        "messagee": "App plan updated FREE → Pro-monthly",
+                        "id": "62546901-2d3a-48a0-97a5-ea5275b52c31"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1646210240000,
+                        "messagee": "On-demand billing FAILED, sum $ 480.49",
+                        "id": "f96348ed-98c5-4da8-a853-6967b6074e81"
+                    },
+                    {
+                        "type": "plan_update",
+                        "messagee": "App plan updated Pro-monthly → Business-monthly",
+                        "date": 1679057304000,
+                        "id": "7047313b-219e-4a13-b7c7-3d3886caadb5"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 171.14",
+                        "date": 1654081223000,
+                        "id": "c5290d8f-7ffd-404f-9787-1cbf0f755b9c"
+                    },
+                    {
+                        "date": 1686577094000,
+                        "type": "plan_update",
+                        "messagee": "App plan updated Business-monthly → Pro-monthly",
+                        "id": "aa5e2774-ec10-4ad9-a223-dbd6efc0db8a"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1685625959000,
+                        "messagee": "On-demand charged $ 905.18",
+                        "id": "71c5a030-d573-46ef-8c85-e519ba3e4aa0"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "type": "billing_regular",
+                        "date": 1672909242000,
+                        "id": "3170314c-b6ce-4a48-a3b4-f2e93afb9ff7"
+                    },
+                    {
+                        "messagee": "License payment -429 D-coins, plan Business",
+                        "type": "billing_regular",
+                        "date": 1684400411000,
+                        "id": "5ea3c2c6-09cd-4efc-b95d-8dc19237d707"
+                    },
+                    {
+                        "messagee": "License payment -429 D-coins, plan Business",
+                        "date": 1659690034000,
+                        "type": "billing_regular",
+                        "id": "c93b5b7a-e141-4031-86fb-f75af8d08b5f"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Business",
+                        "type": "billing_regular",
+                        "date": 1679130036000,
+                        "id": "056d0e36-a415-4422-a771-829763c99b52"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1662368421000,
+                        "type": "billing_regular",
+                        "id": "4d439092-f759-489a-95de-bc14c684c96d"
+                    },
+                    {
+                        "date": 1648979995000,
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 372.17",
+                        "id": "1415445d-4adc-4862-b549-050fcef31b2e"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1677685127000,
+                        "messagee": "On-demand charged $ 101.25",
+                        "id": "7e3fba94-c5e1-4835-b055-8cc7ae493bfd"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 1262.01",
+                        "date": 1682972775000,
+                        "id": "21699895-2305-480c-ba87-0c862870362b"
+                    },
+                    {
+                        "messagee": "License payment -429 D-coins, plan Business",
+                        "date": 1650635340000,
+                        "type": "billing_regular",
+                        "id": "1f84f57d-85c7-4480-8796-033bfe2b9ead"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1661423051000,
+                        "messagee": "App plan updated Business-monthly → Pro-monthly",
+                        "id": "22282e11-0c23-48a2-9272-c774aa74aeea"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1651503538000,
+                        "messagee": "On-demand charged $ 528.05",
+                        "id": "a7def59a-e5b6-4cd5-ba8b-ac98364c6fa8"
+                    },
+                    {
+                        "date": 1687078849000,
+                        "messagee": "License payment -429 D-coins, plan Pro",
+                        "type": "billing_regular",
+                        "id": "72e7fde2-3a20-4803-9e88-dc4f61227f59"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1643699706000,
+                        "messagee": "On-demand charged $ 221.11",
+                        "id": "e7cb51f5-c4fd-4dbc-a256-bf613272d2ed"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 352.89",
+                        "date": 1641044842000,
+                        "id": "adc28840-f7b6-4edb-9e92-82f6e441ca18"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1678006834000,
+                        "type": "billing_regular",
+                        "id": "321bd132-e354-4e23-b50b-af80834fb4e8"
+                    },
+                    {
+                        "messagee": "License payment -429 D-coins, plan Business",
+                        "type": "billing_regular",
+                        "date": 1657011624000,
+                        "id": "1a1f5f07-5163-4375-9897-faa01d21844e"
+                    },
+                    {
+                        "type": "plan_update",
+                        "messagee": "App plan updated Pro-monthly → FREE",
+                        "date": 1664960426000,
+                        "id": "fa424532-8ed2-4556-b3c7-d0fe7e6e1eac"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1667638826000,
+                        "type": "billing_regular",
+                        "id": "8a6a2776-6c56-48a1-a591-74260e2c9553"
+                    },
+                    {
+                        "messagee": "License payment -429 D-coins, plan Business",
+                        "date": 1654419638000,
+                        "type": "billing_regular",
+                        "id": "48fa40fa-d69d-43dc-921c-dd896112fc02"
+                    }
+                ],
+                "comments": [],
+                "Automatic_downgrade": "",
+                "date_trial_ended": "",
+                "date_trial_started": "",
+                "isDowngraded": "",
+                "isTrial": "",
+                "legacy_billing": ""
+            },
+            {
+                "name": "directual-site",
+                "is_blocked": false,
+                "team_id": {
+                    "name": "Dream team",
+                    "owner_id": "pavel@directual.com",
+                    "tariff_id": "team_monthly",
+                    "id": "1aef6239-b432-4086-8bd6-05664eafd2b0",
+                    "is_hidden": false
+                },
+                "paddle_subscription_status": "active",
+                "owner_id": {
+                    "wallet_balance": 10799,
+                    "id": "pavel@directual.com",
+                    "wallet_transactions": [
+                        {
+                            "balance": -39,
+                            "id": "140b8031-f8fe-4133-8d65-f3f184aaa08c",
+                            "date": 1686214845000,
+                            "comment": "App mentor (14637), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "9c6762fe-d565-4295-830e-ad16d08f84a6",
+                            "date": 1685523926000,
+                            "comment": "App bootcamps (9660), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "90b3d567-fb78-4b58-8d85-e7eafa6a0a56",
+                            "date": 1685523824000,
+                            "comment": "App bot-snapshot (13174), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "bbe3aca1-4fa1-4daa-b306-6149e138b82c",
+                            "date": 1685523923000,
+                            "comment": "App hey-hoy (15027), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "24fa5c2c-08a6-4e3a-8e9b-ab5743e3ff7f",
+                            "date": 1684068500000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "bd69ea3e-5b6c-4199-a301-d147ce3a979d",
+                            "date": 1683898531000,
+                            "comment": "Update app test-free-app, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "18c30e3a-b2aa-493a-af51-f21376b89adb",
+                            "date": 1683905279000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "62e47227-c8a0-49cf-bbe1-21fe396bd887",
+                            "date": 1685523708000,
+                            "comment": "App temaplate-crm (4083), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 2,
+                            "id": "e2de3266-edf9-43cc-a86a-61d832fdbf39",
+                            "date": 1683723151000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6dbb1a9e-1458-4110-924f-9ef4a6e5f4fd",
+                            "date": 1683623036000,
+                            "comment": "App nft (14644), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "da7e6db1-49ba-465e-b894-99bc161f1874",
+                            "date": 1687332419000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 0.1,
+                            "id": "0b2f2409-3529-46e9-8e84-06b825a60a11",
+                            "date": 1684170287000,
+                            "comment": "Adding funds via Tinkoff 7.9 ₽ → 0.10 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -162,
+                            "id": "0dc29b14-8f3f-4543-9cfd-3d9a712863ee",
+                            "date": 1655214165000,
+                            "comment": "Team Dream team, plan team_monthly, 3 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "4b1ab802-7f2a-4653-85d9-19d98a3f4e1f",
+                            "date": 1685624428000,
+                            "comment": "Team Dream team, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "292703c3-d614-4d91-b047-9dc413085589",
+                            "date": 1683536435000,
+                            "comment": "App mentor (14637), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "75f2b4e1-bf00-4444-9c29-caa6202e86ae",
+                            "date": 1684244446000,
+                            "comment": "Pro-trial 1 month period. Create app trial-final, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "84e97e6f-249a-4689-88b8-656263f4fa48",
+                            "date": 1685523782000,
+                            "comment": "App basic-template (11264), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0,
+                            "id": "92eca7c0-2abf-4c9f-985e-6ba19f5f8707",
+                            "date": 1683905287000,
+                            "comment": "App pro-trial (17387), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "da668477-1c78-4f67-80d0-b84114e96315",
+                            "date": 1684226291000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 0.02,
+                            "id": "a1b0104f-b78d-4a53-9c7a-5ec1ba768946",
+                            "date": 1684242645000,
+                            "comment": "Adding funds via Tinkoff 1.58 ₽ → 0.02 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "17865bd1-254a-4303-9c3f-8c330b504371",
+                            "date": 1683900763000,
+                            "comment": "Pro-trial 1 month period. Create app pro-trial, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "aa5c1d63-edeb-477a-9642-a05caafc23c1",
+                            "date": 1659358817000,
+                            "comment": "Team My new team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "07bea367-e19a-4a4b-9a63-c5e2c73f0675",
+                            "date": 1682946005000,
+                            "comment": "Team Dream team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": 1.58,
+                            "id": "124c25ee-0eb9-4c67-b0e3-542417150d12",
+                            "date": 1684242461000,
+                            "comment": "Adding funds via Tinkoff 124.82 ₽ → 1.58 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -5,
+                            "id": "2cf23f24-925e-4671-8a7a-282aabcf5942",
+                            "date": 1681817674000,
+                            "comment": "Request for 👨‍💻 Basic level certification",
+                            "type": "certification"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "dd6bef14-adaa-4984-8ec0-94cafd63b901",
+                            "date": 1685523689000,
+                            "comment": "App React-boilerplate (2950), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "cb7d2578-4dc7-4bc9-8e21-b3262c3af636",
+                            "date": 1685523694000,
+                            "comment": "App final-fps-test (6238), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -5,
+                            "id": "d0b2d04e-9571-4a26-be15-bae47cb35f8e",
+                            "date": 1681817492000,
+                            "comment": "Request for 👨‍💻 Basic level certification",
+                            "type": "certification"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "d023de83-2d21-4ce7-a639-5ad17cd52f81",
+                            "date": 1683724297000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "4a69b3b9-58bc-4719-862e-6ed90d5b5780",
+                            "date": 1657616442000,
+                            "comment": "App directual-site (1822), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0,
+                            "id": "ad10745a-bacc-42e1-9556-a81755ee74b5",
+                            "date": 1683904090000,
+                            "comment": "App pro-trial (17387), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -5,
+                            "id": "a527b9b6-fdd5-4bfd-9a02-c0ee9d1fdc2f",
+                            "date": 1681816275000,
+                            "comment": "Request for 👨‍💻 Basic level certification",
+                            "type": "certification"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "715c0215-5dff-4aa4-a3a2-571723fcc4b8",
+                            "date": 1684247097000,
+                            "comment": "Create app business8, plan Business-monthly",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 1.54,
+                            "id": "d3400554-ceb7-4b7e-a494-b3b21252fb05",
+                            "date": 1683905035000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 0.02,
+                            "id": "fdc86bc5-e780-48f3-8874-d9e995048be1",
+                            "date": 1684075266000,
+                            "comment": "Adding funds via Tinkoff 1.58 ₽ → 0.02 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6143d6b9-d54f-4eb7-9dc0-6479eb44d755",
+                            "date": 1685523669000,
+                            "comment": "App gdfvfbvsgdvb (3074), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "2ad955da-d609-4439-9ead-ae6414da0e74",
+                            "date": 1685523741000,
+                            "comment": "App students (8750), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -2,
+                            "id": "735ceadd-1b41-4038-8170-d70cf84244c3",
+                            "date": 1681290141000,
+                            "comment": "App directual-site (1822), license payment, plan Pro-sandbox",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "42bc300e-d4e0-4650-b2a9-6346114f3594",
+                            "date": 1680944533000,
+                            "comment": "App mentor (14637), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "c5c2757d-ca9d-4bd6-bf64-4ca434c06e12",
+                            "date": 1684314068000,
+                            "comment": "App tuishou (9312), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "1321cd97-0877-4ec7-8e5f-64c228976c9d",
+                            "date": 1685523694000,
+                            "comment": "App Generate_data_Directual_academy (2595), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0,
+                            "id": "fe47663e-8b6d-4291-8b20-d06cdb072d06",
+                            "date": 1680354007000,
+                            "comment": "Team My new team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -2,
+                            "id": "9432f0a2-f668-4692-b016-88eb26a07e29",
+                            "date": 1678611627000,
+                            "comment": "App directual-site (1822), license payment, plan Pro-sandbox",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "48163b09-6873-4ed2-bc50-58a56d25243d",
+                            "date": 1685523891000,
+                            "comment": "App tuishou-alfa (9544), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "8b265175-3b92-4c07-bb6d-531dbb4a1fdc",
+                            "date": 1678352470000,
+                            "comment": "App nft (14644), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "68b84f89-df8f-47ca-b729-633f12357cd1",
+                            "date": 1685523743000,
+                            "comment": "App web-plugins (10926), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "011316cb-a196-4a97-8abf-2dec57429262",
+                            "date": 1685523906000,
+                            "comment": "App test-app-0011 (15231), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "8b70675c-6135-4601-8f70-015211e2addd",
+                            "date": 1678266063000,
+                            "comment": "App mentor (14637), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6f273187-2034-4998-8f4f-a9c50394d6c4",
+                            "date": 1683898220000,
+                            "comment": "Update app vtb-demo, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "134508f2-353b-4529-9272-3228516797e4",
+                            "date": 1682946005000,
+                            "comment": "Team My new team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -2,
+                            "id": "bc07a5d1-2222-49f4-8535-f30555e979b4",
+                            "date": 1676192453000,
+                            "comment": "App directual-site (1822), license payment, plan Pro-sandbox",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "09b7d8ea-e372-455f-b87c-a16279d990c8",
+                            "date": 1675933246000,
+                            "comment": "App nft (14644), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.85,
+                            "id": "e54dedac-0f93-4658-a66b-fabb65b2c5ff",
+                            "date": 1684152323000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "be46534c-a569-4b4e-aaee-c6d91ca45d94",
+                            "date": 1683723850000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "80c8923f-e310-4470-82e9-b45f6ba84cfa",
+                            "date": 1644356410000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 0.3,
+                            "id": "dc41bfc4-2a7e-4991-b473-02cbbb252181",
+                            "date": 1684170105000,
+                            "comment": "Adding funds via Tinkoff 23.7 ₽ → 0.30 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -2,
+                            "id": "9ab6a75a-7944-447a-960c-919ac5a26f6c",
+                            "date": 1673427650000,
+                            "comment": "App directual-site (1822), license payment, plan Pro-sandbox",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -1000,
+                            "id": "70e24705-a5fc-4dee-9238-e8662a16ee91",
+                            "date": 1655895947000,
+                            "comment": "Promo-code NOWAR",
+                            "type": "promo"
+                        },
+                        {
+                            "date": 1686503138000,
+                            "type": "manual",
+                            "balance": 3000,
+                            "id": "ea3e492d-1bf7-4e36-84f9-219df37f3c86"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "3e9b9067-1130-4217-af29-7ac11a62d0a7",
+                            "date": 1681030841000,
+                            "comment": "App nft (14644), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "type": "manual",
+                            "date": 1684316245000,
+                            "balance": 0,
+                            "id": "2b867b64-2bcd-4824-96cf-5a7711ddcc5f"
+                        },
+                        {
+                            "balance": -2,
+                            "id": "1b0445f9-aa47-48cb-bac7-f061c7339411",
+                            "date": 1673341235000,
+                            "comment": "App directual-site (1822), license payment, plan Pro-sandbox",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "06dfce97-9c81-4085-806d-0b867d435288",
+                            "date": 1679994045000,
+                            "comment": "App masters (10818), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "02066ad2-0a4c-4a3d-84cb-a8a6517788ab",
+                            "date": 1682672469000,
+                            "comment": "App masters (10818), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "date": 1684244365000,
+                            "type": "manual",
+                            "balance": 2,
+                            "id": "71ae64f5-483e-47f3-8d3b-b2c07b3ad3f3"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "c85d20da-4f52-4a82-9fa9-b82fe0d77784",
+                            "date": 1684078899000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "a79bad51-97a5-40dd-a636-7b224fa8c843",
+                            "date": 1655024420000,
+                            "comment": "App directual-site (1822), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "5b6aa040-7046-49ff-86fd-aaed48d41ba5",
+                            "date": 1652376443000,
+                            "comment": "Update app tg-demo, plan Business-monthly (previous plan: )",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "4576a903-4e6a-475b-9d87-27663117256a",
+                            "date": 1686834006000,
+                            "comment": "Team test one, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "18a3c686-917c-4885-9a98-f08acb961723",
+                            "date": 1683920349000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "726bda7e-791a-4886-8094-8efa502c4606",
+                            "date": 1662037204000,
+                            "comment": "Team My new team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "1bed972f-5c10-4104-beb0-ab991264869f",
+                            "date": 1685523840000,
+                            "comment": "App japanapp (10884), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -1,
+                            "type": "manual",
+                            "date": 1684236475000,
+                            "id": "9221d51f-b7cf-4c3b-9e24-96e0bbc8c919"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "c010e6da-c0aa-4240-9a31-9647084f6bad",
+                            "date": 1673254849000,
+                            "comment": "App nft (14644), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "1864a9f5-7e41-4dc9-9e3b-441dd77e0962",
+                            "date": 1684245372000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -5,
+                            "id": "c3865731-88b6-45ba-b508-0ec38ba72485",
+                            "date": 1681828339000,
+                            "comment": "Request for 👨‍💻 Basic level certification",
+                            "type": "certification"
+                        },
+                        {
+                            "balance": 100,
+                            "id": "359583b7-efeb-4908-9d37-3ee35de1ea33",
+                            "date": 1644274149000,
+                            "comment": "Promo-code ZEROCODER",
+                            "type": "promo"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "bc9049e7-5246-4e58-91df-847f7d34139d",
+                            "date": 1686992451000,
+                            "comment": "App tuishou (9312), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "d20c6d2d-8070-45b9-ac35-efa651d2104a",
+                            "date": 1685523926000,
+                            "comment": "App bootcamp-marketplace (10547), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "90cab7c7-c644-4dde-866c-0a3eef2917ab",
+                            "date": 1653317346000,
+                            "comment": "Create app showcase-store, plan Startup-monthly",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "545f6a63-47c0-468b-9ad6-dc5feed386e9",
+                            "date": 1675846878000,
+                            "comment": "App mentor (14637), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "date": 1652376382000,
+                            "type": "test",
+                            "balance": 998,
+                            "id": "dd94ba83-e6d6-4664-a17a-a9c83c37b739"
+                        },
+                        {
+                            "balance": -162,
+                            "id": "e6eef191-8ce7-4112-b5fa-ca261e1d8924",
+                            "date": 1656680403000,
+                            "comment": "Team Dream team, plan team_monthly, 3 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "5d8c6235-a262-4db6-885c-b4adf9f7a90a",
+                            "date": 1685523924000,
+                            "comment": "App test-free-app (15428), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "d15d11df-ce69-4636-8ebc-910627654ebb",
+                            "date": 1644400149000,
+                            "comment": "Refund",
+                            "type": "paddle_refund"
+                        },
+                        {
+                            "balance": -162,
+                            "id": "45983980-0c49-4a5f-9887-21d21f850684",
+                            "date": 1680354007000,
+                            "comment": "Team Dream team, plan team_monthly, 3 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "b2f73237-8e26-4d24-a01b-cda4f4fc1a56",
+                            "date": 1684170286000,
+                            "comment": "Team  test one, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": 0,
+                            "id": "f2a837d0-3ad6-4041-917f-ba40669db18d",
+                            "date": 1684170005000,
+                            "comment": "Adding funds via Tinkoff 7.9 ₽ → 0.10 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "91751717-5c9e-4500-87a7-086d8bc7bd60",
+                            "date": 1684245434000,
+                            "comment": "Adding funds via Tinkoff 79.0 ₽ → 1.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "ce11d63f-62a2-4db9-ac93-aa337bac9d23",
+                            "date": 1685523730000,
+                            "comment": "App jj (10594), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.38,
+                            "id": "e7c04527-1c35-4c9e-bf3f-20f4bd8a309e",
+                            "date": 1683551068000,
+                            "comment": "Adding funds via Tinkoff 30.0 ₽ → 0.38 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "ad7f2671-951b-468f-8342-7dfac07d9895",
+                            "date": 1660294836000,
+                            "comment": "App tg-demo (11488), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -262.09,
+                            "id": "93ef9601-b0be-4955-b4d3-2bde8e548334",
+                            "date": 1648979934000,
+                            "comment": "On-demand resource consumption. App directual-site, period 2022-03",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6f200bc2-7dcc-4037-8d6b-7ab070899a3f",
+                            "date": 1685523725000,
+                            "comment": "App test-bot (4456), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 500,
+                            "date": 1651420946000,
+                            "type": "test",
+                            "id": "73295450-38e7-454f-8144-2043c3b2e137"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "acdf07b4-259d-40d9-b48e-2a79c5e2d7ae",
+                            "date": 1644357471000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "b3af1e91-c51d-4d8f-9456-37fd550e04ef",
+                            "date": 1684151839000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "752f527f-113f-4620-9ae3-6eecacb080e3",
+                            "date": 1685523868000,
+                            "comment": "App password-reset (10996), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "f87ef7af-8ab7-4f4a-bf77-d781bbf6ae77",
+                            "date": 1654775846000,
+                            "comment": "Update app mktplace, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "f06832e7-41ca-4b73-b549-e32f60993a50",
+                            "date": 1681722068000,
+                            "comment": "App tuishou (9312), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "ea573ffd-4574-4538-b1a9-809f35553454",
+                            "date": 1685523775000,
+                            "comment": "App directual-groupbot (6470), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "169f63c3-63e7-4927-a851-af0d6ebc29b7",
+                            "date": 1684073795000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "0a9b8030-5ec3-4daf-86ec-032b4867c8d8",
+                            "date": 1685523869000,
+                            "comment": "App sessionid (7498), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -162,
+                            "id": "d3eed4a3-6323-45f9-af5c-916f3cfb7824",
+                            "date": 1659358817000,
+                            "comment": "Team Dream team, plan team_monthly, 3 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6962f0e0-da3b-4513-bad9-611e8bbad1ab",
+                            "date": 1673168433000,
+                            "comment": "App mentor (14637), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0,
+                            "id": "2a1cebcd-8099-4ea5-9d30-efed1c700c1d",
+                            "date": 1657616454000,
+                            "comment": "App tg-demo (11488), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "3b6f85a1-f924-4bab-be16-c517980f070f",
+                            "date": 1685523640000,
+                            "comment": "App telegram_ibot (2882), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "46fc1f44-5bc3-4205-aa37-1a4e6002ccb1",
+                            "date": 1658566887000,
+                            "comment": "App showcase-store (13182), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "50bc7c6a-ec52-416b-ba4c-c534238b65ab",
+                            "date": 1660035640000,
+                            "comment": "App mktplace (13236), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "0ead59b1-6455-4cf5-8d61-4acf7ce72d98",
+                            "date": 1684080695000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "e13f1ae5-a0e5-4195-b1b4-5a2380776a65",
+                            "date": 1684068025000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "5262f5d7-6167-45b6-b1ec-7886e5d713e8",
+                            "date": 1683547267000,
+                            "comment": "Adding funds via Tinkoff 79.0 ₽ → 1.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "0527b296-d480-40a4-9625-14b711a218d9",
+                            "date": 1685264413000,
+                            "comment": "App masters (10818), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0,
+                            "id": "9c824f0a-fb8d-4ed7-8e50-250d10451d05",
+                            "date": 1680784621000,
+                            "comment": "Update app vtb-demo, plan Business-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -5.87,
+                            "id": "b9dd3cdb-0e38-42e5-b747-f8398acba926",
+                            "date": 1682973188000,
+                            "comment": "On-demand resource consumption. App tuishou (9312), period 2023-04",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -162,
+                            "id": "0c08d7be-ee02-470b-9590-b7fad1c9de12",
+                            "date": 1651421012000,
+                            "comment": "Team  Dream team, plan team_monthly, 3 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "a44344d5-a069-4f44-8ecd-1c80d83be93c",
+                            "date": 1685523811000,
+                            "comment": "App ZerocodeCRM (3973), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -2,
+                            "id": "8b2b4dee-a490-4f97-830c-413cd99843d6",
+                            "date": 1673168419000,
+                            "comment": "App directual-site (1822), license payment, plan Pro-sandbox",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -2,
+                            "id": "2caf55e1-59a4-4831-990d-dbbcacc94c49",
+                            "date": 1673514052000,
+                            "comment": "App directual-site (1822), license payment, plan Pro-sandbox",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "d39d273c-3add-491f-b4ec-aa74aed935ef",
+                            "date": 1684133272000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "type": "manual",
+                            "balance": 1,
+                            "date": 1684242451000,
+                            "id": "ea21f8b3-f213-4f13-b3fe-b39d9a1229b3"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "e17c4e54-5ad2-46c8-8795-360eef384256",
+                            "date": 1685624429000,
+                            "comment": "Team My new team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "5559e6e7-e261-4626-9d31-57829feb7b27",
+                            "date": 1650634892000,
+                            "comment": "App directual-site (1822), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "59e0cd81-718c-465c-9e99-9c6623a40d60",
+                            "date": 1683737537000,
+                            "comment": "Update app nft, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "b949f63c-8a0d-40ba-b01b-5d575f218af5",
+                            "date": 1685523729000,
+                            "comment": "App tanera (6082), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 4500,
+                            "type": "test",
+                            "date": 1666861717000,
+                            "id": "2fedf56a-3403-4bfc-ab34-9d46bff6ae10"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6275e200-2363-46f7-852f-af4dffd2c13a",
+                            "date": 1661245232000,
+                            "comment": "App showcase-store (13182), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "date": 1687332512000,
+                            "type": "manual",
+                            "balance": 10000,
+                            "id": "35d8b94a-3bc9-4f28-ad0f-52cdce687c72"
+                        },
+                        {
+                            "balance": 214.5,
+                            "id": "dd6d5abb-acb8-434d-8b20-acb566b49549",
+                            "date": 1664732285000,
+                            "comment": "Affiliate reward for pavel@directual.com transaction (app tg-demo, -429 D-coins)",
+                            "type": "affiliate"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "fa84092d-819c-475e-8075-a620f1c16ebd",
+                            "date": 1684333930000,
+                            "comment": "Pro-trial 1 month period. Create app another-trial, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "2ea982e9-ebac-41f9-8081-39c5fd15ca38",
+                            "date": 1685523724000,
+                            "comment": "App test-webuser (4284), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "9433d35c-b0c3-4016-90a3-ce48e065b296",
+                            "date": 1660294832000,
+                            "comment": "App directual-site (1822), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "22c7fea6-1241-427c-97fc-b2bfce7e65db",
+                            "date": 1683918752000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "d8ed055d-08a3-4921-adb1-daa946859040",
+                            "date": 1665997255000,
+                            "comment": "App tuishou (9312), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -2,
+                            "id": "194302af-a0ab-4c07-9d55-fa68761d4daa",
+                            "date": 1673254834000,
+                            "comment": "App directual-site (1822), license payment, plan Pro-sandbox",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.14,
+                            "id": "6a8b87b6-7264-4965-9991-5e2ad071f57b",
+                            "date": 1684247098000,
+                            "comment": "Adding funds via Tinkoff 11.06 ₽ → 0.14 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 0.03,
+                            "id": "5ea9eb9b-0ccf-4334-84ad-23ea38a332a7",
+                            "date": 1684076215000,
+                            "comment": "Adding funds via Tinkoff 2.37 ₽ → 0.03 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "bb306214-a535-428e-9695-ee3c7639d29e",
+                            "date": 1684077882000,
+                            "comment": "Adding funds via Tinkoff 79.0 ₽ → 1.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "2f17b8e1-8868-49f0-b3cd-04424d083983",
+                            "date": 1683573262000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "ee4dbba2-fe9c-4923-8f3b-1383b21505a3",
+                            "date": 1685523693000,
+                            "comment": "App dev (6829), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "11e3c94f-580f-4fe4-b754-031a334ebbd1",
+                            "date": 1685523716000,
+                            "comment": "App trial-transfer (17465), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.02,
+                            "id": "dcfd5f63-c1bf-4378-b949-616310a35cdc",
+                            "date": 1684078685000,
+                            "comment": "Adding funds via Tinkoff 1.58 ₽ → 0.02 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 0.02,
+                            "id": "205a6a9f-f4af-460a-a34e-a2a80bd711a0",
+                            "date": 1684078971000,
+                            "comment": "Adding funds via Tinkoff 1.58 ₽ → 0.02 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "5c386115-b4a1-4bba-889d-8205cbb304ef",
+                            "date": 1685523734000,
+                            "comment": "App new-fps-layout (6166), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "bc6e5ee1-ec97-4d97-9540-ba2a8576ea11",
+                            "date": 1684148680000,
+                            "comment": "Adding funds via Tinkoff 79.0 ₽ → 1.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 0,
+                            "id": "cae3e00b-14ba-4d76-a759-163c1024122f",
+                            "date": 1684169729000,
+                            "comment": "Adding funds via Tinkoff 31.6 ₽ → 0.40 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "type": "manual",
+                            "balance": -3,
+                            "date": 1684236551000,
+                            "id": "e13b376e-3a05-4633-9536-e41c24aec5d7"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "159e8ed5-72c4-4419-b8e3-bfbbdbdc3a86",
+                            "date": 1685523831000,
+                            "comment": "App how-to-auth (5022), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "f93f6991-8a45-4b3d-ac53-78da7d2134ea",
+                            "date": 1657357292000,
+                            "comment": "App mktplace (13236), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "type": "manual",
+                            "balance": 2,
+                            "date": 1684242206000,
+                            "id": "6f02322a-e1a4-4b57-ae68-ab860948c8cc"
+                        },
+                        {
+                            "type": "manual",
+                            "balance": 427,
+                            "date": 1684247017000,
+                            "id": "933286f9-20c6-4c52-b33d-ccf0ced4071f"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "91281bb1-5fb7-4ef2-b674-9b3bf3afa597",
+                            "date": 1685523732000,
+                            "comment": "App my-app-as (7510), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.02,
+                            "id": "d34e14fd-12fc-440b-8db2-cd8e26792a95",
+                            "date": 1684242793000,
+                            "comment": "Adding funds via Tinkoff 1.58 ₽ → 0.02 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -733,
+                            "date": 1684152261000,
+                            "id": "7237a3d8-0181-4232-8934-16dea8867d6b"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "b42a4530-422e-4024-ae9d-9cb2b2077506",
+                            "date": 1684243885000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "2fd52c39-2982-41c4-8c1c-51844b158df1",
+                            "date": 1684243912000,
+                            "comment": "Pro-trial 1 month period. Create app trial-pro, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "be2b0eb5-a47f-4923-be51-9a0d6f3bd40d",
+                            "date": 1684245246000,
+                            "comment": "Pro-trial 1 month period. Create app finalization, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "type": "manual",
+                            "balance": 0.8,
+                            "date": 1684245289000,
+                            "id": "d1a2ee43-0c6b-4d8e-b505-cfb82a5ef5f0"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "c7b31635-fb86-42ca-aeb2-c046b8d5b290",
+                            "date": 1684246780000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "4cb1441d-85a8-4a60-a52b-73c748c9adaf",
+                            "date": 1679043645000,
+                            "comment": "App tuishou (9312), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "8c59f39c-65e1-4408-9831-b55908598cff",
+                            "date": 1684520577000,
+                            "comment": "Pro-trial 1 month period. Create app wushu-tournament, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "84b6dcdc-dcf9-4dee-99e5-f065dbc729a9",
+                            "date": 1685523960000,
+                            "comment": "App testfiles (9337), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "27523c8c-2474-4472-848c-84bfb57ce214",
+                            "date": 1684245434000,
+                            "comment": "Pro-trial 1 month period. Create app trial-rus, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "e4bd61d1-6c9b-442a-9dcc-746a8cb2a0eb",
+                            "date": 1684245372000,
+                            "comment": "Pro-trial 1 month period. Create app final-pro, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "type": "manual",
+                            "date": 1684248375000,
+                            "balance": 100,
+                            "id": "75bfa1eb-2533-46c6-82b4-5f58652e2cbd"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "89612a9e-b1dc-4225-93f7-72536e1095a1",
+                            "date": 1684248399000,
+                            "comment": "Pro-trial 1 month period. Create app pro100, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "balance": 0,
+                            "id": "03d290c3-b853-49d5-8e79-ec106b2f37d1",
+                            "date": 1662037204000,
+                            "comment": "Team Dream team, plan team_monthly, 3 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": 40,
+                            "type": "manual",
+                            "date": 1684247398000,
+                            "id": "0dbed471-e0f2-4aac-b718-45f6ba7e805f"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "19deb0d5-1b49-49a6-ba9c-b1d584d7955e",
+                            "date": 1685524232000,
+                            "comment": "App talkbank-test (13120), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "b096f74d-3ae1-4f99-ad29-c838eca294fe",
+                            "date": 1684247404000,
+                            "comment": "Update app trial-s-1, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 3.48,
+                            "id": "23568e8d-9d03-402c-9663-3159c994e37a",
+                            "date": 1682766893000,
+                            "comment": "Removing developer seats for team Dream team (3 → 2 seats)",
+                            "type": "team_payment"
+                        },
+                        {
+                            "date": 1684248510000,
+                            "type": "manual",
+                            "balance": 200,
+                            "id": "81084acd-b1ba-4404-b74b-b86c04a288cf"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "1b9f8a32-4a2a-4d98-8e10-462d9aaa348f",
+                            "date": 1644400264000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6faf59b5-6e92-4cc3-a6cb-b64505a848dc",
+                            "date": 1685523714000,
+                            "comment": "App hello-there (4337), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "471ee407-9d31-4ee3-9a4e-de81e63fdc7a",
+                            "date": 1684248562000,
+                            "comment": "Pro-trial 1 month period. Create app pro101, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "7bb59e25-e2d3-420f-ac8f-c7b6b4b9d50f",
+                            "date": 1684242293000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "bebb9537-2214-431a-a14e-fdd48fd1c804",
+                            "date": 1662714348000,
+                            "comment": "App mktplace (13236), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "311fdcd6-a96c-4768-b50c-aa555263b85f",
+                            "date": 1685523721000,
+                            "comment": "App dev-pipeline (6948), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "982a8784-02f5-46d4-9b65-06476c5655fd",
+                            "date": 1685523763000,
+                            "comment": "App productstar (5925), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "c3d779c4-780d-4039-8705-0111fbed8449",
+                            "date": 1684853165000,
+                            "comment": "Pro-trial 1 month period. Create app chatbot, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "b8cb5693-8aff-46bd-afb2-510d8e1a227c",
+                            "date": 1644273870000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "d9ab6ab8-c27f-4603-88a2-9537072138ae",
+                            "date": 1684858136000,
+                            "comment": "Pro-trial 1 month period. Create app chatbot, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "a41c3649-89ee-4cc9-acd1-619d40fd74e7",
+                            "date": 1685090008000,
+                            "comment": "Pro-trial 1 month period. Create app chatbot, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "64ade616-862d-4e10-a4d0-6133b867fb4c",
+                            "date": 1685097091000,
+                            "comment": "Pro-trial 1 month period. Create app chatbot, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "2771d150-07f5-41ce-be29-aff64c73bd1f",
+                            "date": 1655024501000,
+                            "comment": "App tg-demo (11488), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "type": "manual",
+                            "date": 1684248329000,
+                            "balance": 100,
+                            "id": "8fa3f5e5-836e-4712-b994-2684ca4a9a34"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "cc226983-703f-4dfe-9fd3-8dbe5df7e513",
+                            "date": 1685437210000,
+                            "comment": "App trial-free2 (17441), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "abe62430-4fb5-49e1-832c-eed30650eab9",
+                            "date": 1685523682000,
+                            "comment": "App 0qode-workshop (2868), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "1bc722bd-965b-4d8e-adf0-36bb2be81f22",
+                            "date": 1685523716000,
+                            "comment": "App import-v6 (6912), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "8db87812-3d3b-4000-bdd5-13f83a250b4b",
+                            "date": 1644356576000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "0b581bfa-4a38-4026-87f8-509f5a1ef0b8",
+                            "date": 1685523721000,
+                            "comment": "App approval-system (4575), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 40.06,
+                            "id": "205f8546-c751-4bf1-af0a-d1e700d60e88",
+                            "date": 1683573747000,
+                            "comment": "Removing developer seats for team Dream team (2 → 1 seats)",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "1b6dccc9-acaf-433c-9e9e-fb2a2d5e064c",
+                            "date": 1685523721000,
+                            "comment": "App nocode (3799), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "4b92dc76-515f-4675-b9bf-a085c92d48d1",
+                            "date": 1685523730000,
+                            "comment": "App showcase-imdb (11306), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "f69a7e95-a4d2-40a1-9b8c-5c42d026f5b0",
+                            "date": 1683636247000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "a5b6d8b6-8d24-4f74-b430-8d8a935342b1",
+                            "date": 1685523725000,
+                            "comment": "App test-limit (14027), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6611de13-335d-499c-9d35-dc8428c6f539",
+                            "date": 1685523716000,
+                            "comment": "App crm-demo (6033), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "e7be1926-8d18-4e51-84e7-d74bbe1a7c53",
+                            "date": 1685523764000,
+                            "comment": "App my-team-app (12983), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "7a5400fd-bc2d-4aba-824d-352ce8caed60",
+                            "date": 1685523811000,
+                            "comment": "App dashboard (9674), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "f2e2eb6b-2fa6-4971-8892-ed0362da3aaa",
+                            "date": 1685523725000,
+                            "comment": "App new-library (5420), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "42ca11a6-6a90-44f8-a99a-4a4a00b126d9",
+                            "date": 1685523759000,
+                            "comment": "App fpsform-test (13181), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "e14a96ca-be6f-4284-9bad-6162ab4d9f0e",
+                            "date": 1656680403000,
+                            "comment": "Team My new team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "08c8bd56-a2f5-4b47-8fde-aab7496eb839",
+                            "date": 1685523807000,
+                            "comment": "App showcase-attractions (11307), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "5a605485-b484-4824-8b08-bf102c197029",
+                            "date": 1685523761000,
+                            "comment": "App my-fitrst-template (16565), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "bf95df1e-a4bb-4a56-ab5e-6e315fb89415",
+                            "date": 1685523745000,
+                            "comment": "App airtable (6419), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "85f0b010-d9f5-48b0-83b3-df5f378d15d5",
+                            "date": 1685523779000,
+                            "comment": "App weather-app (7813), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "a6c0b456-5c79-4aa5-9934-05360e7736e5",
+                            "date": 1685523770000,
+                            "comment": "App my-sandbox (7767), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "08c60309-8278-4e34-83f8-c9059a187f95",
+                            "date": 1655974840000,
+                            "comment": "App showcase-store (13182), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "56383ce8-908d-4333-8d97-8431aec04981",
+                            "date": 1684069872000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "435b9c2c-bc51-4073-a39c-f8cb5d2f9550",
+                            "date": 1685523764000,
+                            "comment": "App draftbit (9988), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "3c25d8ae-0a57-4bf4-a328-cafca23877c7",
+                            "date": 1685523807000,
+                            "comment": "App webhook-parsing (8084), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "b97da617-c60a-4879-914c-b92303724ac8",
+                            "date": 1651423035000,
+                            "comment": "Team  My new team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "5b2d0a58-1862-4360-838c-a2a6ba767b20",
+                            "date": 1685523804000,
+                            "comment": "App code-redemption (15029), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "0ec7d205-b454-42d3-beee-ea5bead27b8b",
+                            "date": 1684246982000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "ae97318c-f28e-426b-b996-36a1e256392c",
+                            "date": 1685523768000,
+                            "comment": "App mig (11537), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "0eda0c60-a4c1-4c8f-ad61-4a694aab1949",
+                            "date": 1655214068000,
+                            "comment": "Team My new team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "ffa5fc79-40e9-4c40-9cb1-d0ea4643081c",
+                            "date": 1685523824000,
+                            "comment": "App tg-demo (11488), license payment, plan Startup",
+                            "type": "app_payment"
+                        }
+                    ]
+                },
+                "next_billing_date": 1683886516241,
+                "balance": 300,
+                "trialType": "skip",
+                "sysName": "directual-site",
+                "plan_id": {
+                    "price": 0,
+                    "name": "Pro-sandbox",
+                    "description": "Sandbox for Team plan",
+                    "id": "Pro-sandbox"
+                },
+                "paddle_subscription_id": "7783322",
+                "id": "1822",
+                "is_hidden": false,
+                "is_sandbox": true,
+                "next_payment": "",
+                "isTrial": "",
+                "events": [
+                    {
+                        "type": "plan_update",
+                        "date": 1661420026000,
+                        "messagee": "App plan updated FREE → Pro-sandbox",
+                        "id": "ebcc7c63-26f0-4151-bc03-a49faa040aed"
+                    },
+                    {
+                        "messagee": "License payment -2 D-coins, plan Pro-sandbox",
+                        "date": 1673254840000,
+                        "type": "billing_regular",
+                        "id": "f4d3d80d-f371-4f30-b2b3-f5069565663c"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1655024479000,
+                        "type": "billing_regular",
+                        "id": "4be03bcd-9340-49fd-bd46-c46538e68211"
+                    },
+                    {
+                        "messagee": "License payment -2 D-coins, plan Pro-sandbox",
+                        "type": "billing_regular",
+                        "date": 1678611627000,
+                        "id": "ef7e04df-7251-4344-99f4-57acacbf932d"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1641047642000,
+                        "messagee": "On-demand charged $ 0",
+                        "id": "7dc93e2a-a3dc-4484-b0af-597bb8058147"
+                    },
+                    {
+                        "messagee": "License payment -2 D-coins, plan Pro-sandbox",
+                        "type": "billing_regular",
+                        "date": 1673168426000,
+                        "id": "3cbcac41-473e-4c00-95c1-ff7db6ee103b"
+                    },
+                    {
+                        "date": 1650635132000,
+                        "messagee": "License payment -1 D-coins, plan Pro",
+                        "id": "b2ac70fe-3f51-43c9-9023-eea5494d408c"
+                    },
+                    {
+                        "type": "tariff_changed",
+                        "messagee": "Tariff has been changed Pro (Pro-monthly) → Pro (Pro-monthly)",
+                        "date": 1641034087000,
+                        "id": "ad8a54a9-01f1-42af-93b3-c9be33c3cf00"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "type": "billing_regular",
+                        "date": 1660294836000,
+                        "id": "42fbc087-27fc-48c2-89ad-5175528564f9"
+                    },
+                    {
+                        "messagee": "License payment -2 D-coins, plan Pro-sandbox",
+                        "type": "billing_regular",
+                        "date": 1673514064000,
+                        "id": "814a9767-5165-4824-ba56-42b58b9809cf"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1641047439000,
+                        "messagee": "On-demand charged $ 0",
+                        "id": "924725fd-7f7e-41ac-bc09-f139d3e2ed94"
+                    },
+                    {
+                        "date": 1673427664000,
+                        "messagee": "License payment -2 D-coins, plan Pro-sandbox",
+                        "type": "billing_regular",
+                        "id": "e37da875-d495-476d-a666-dd7fff3928aa"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1657616454000,
+                        "type": "billing_regular",
+                        "id": "09566315-15e5-4614-9eb5-14bfeab6c506"
+                    },
+                    {
+                        "date": 1681290146000,
+                        "messagee": "License payment -2 D-coins, plan Pro-sandbox",
+                        "type": "billing_regular",
+                        "id": "c5e3f7a0-a943-4121-87aa-47d2d9abde6f"
+                    },
+                    {
+                        "date": 1673341242000,
+                        "messagee": "License payment -2 D-coins, plan Pro-sandbox",
+                        "type": "billing_regular",
+                        "id": "5d436885-f0a8-42d1-83ad-54ed17efb691"
+                    },
+                    {
+                        "messagee": "License payment -2 D-coins, plan Pro-sandbox",
+                        "type": "billing_regular",
+                        "date": 1676192463000,
+                        "id": "f9f14f64-2e28-44fd-ab27-f62751417673"
+                    },
+                    {
+                        "type": "tariff_changed",
+                        "messagee": "Tariff has been changed Pro (Pro-monthly) → Pro (Pro-monthly)",
+                        "date": 1641047669000,
+                        "id": "d249ff7a-d610-4a54-926b-0272ffa47fa9"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 262.09",
+                        "date": 1648979934000,
+                        "id": "ec5f3c90-39a6-4a7f-9e5d-b12b535f1b80"
+                    },
+                    {
+                        "type": "plan_update",
+                        "messagee": "App plan updated Pro-monthly → FREE",
+                        "date": 1661419979000,
+                        "id": "8b974b69-efba-4296-8931-bd36ecd1776e"
+                    }
+                ],
+                "comments": [],
+                "Automatic_downgrade": "",
+                "date_trial_ended": "",
+                "date_trial_started": "",
+                "isDowngraded": "",
+                "legacy_billing": ""
+            },
+            {
+                "name": "RVPN PROD",
+                "is_blocked": false,
+                "isDowngraded": "",
+                "owner_id": {
+                    "wallet_balance": 15,
+                    "id": "alche.my.devmail@gmail.com",
+                    "wallet_transactions": [
+                        {
+                            "balance": -39,
+                            "id": "f25c2c29-3326-4f8c-9baf-9fe966b97d70",
+                            "date": 1684918809000,
+                            "comment": "App rvpnprod (13230), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -6.32,
+                            "id": "33097648-e96f-4426-926f-fe7826ac8ec6",
+                            "date": 1682973166000,
+                            "comment": "On-demand resource consumption. App rvpnprod (13230), period 2023-04",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "b91e2532-1369-4c9b-932d-ec69c73f8ac4",
+                            "date": 1682326852000,
+                            "comment": "App rvpnprod (13230), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 152,
+                            "id": "ac094de4-d119-4ddb-bd25-65580c64c73d",
+                            "date": 1668977496000,
+                            "comment": "Adding funds via Tinkoff 9728.0 ₽ → 152.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "ee94541b-560f-4967-ba81-2807aa3af6f1",
+                            "date": 1676883637000,
+                            "comment": "App rvpnprod (13230), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "76a65ce4-d28e-4d01-b5b9-bc6015282635",
+                            "date": 1659085234000,
+                            "comment": "App rvpnprod (13230), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "48ebf86b-adac-4eff-9a46-c4189008cb10",
+                            "date": 1653657842000,
+                            "comment": "Update app rvpn, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -10.29,
+                            "id": "a718d283-30e3-4d20-b236-cdb0eb0c67ca",
+                            "date": 1685626043000,
+                            "comment": "On-demand resource consumption. App rvpnprod (13230), period 2023-05",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "8f816adb-10bc-4d38-b3e9-1d84c7b66ff1",
+                            "date": 1661761546000,
+                            "comment": "App rvpnprod (13230), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "e181002d-8085-4d8c-b7e7-46677eaea6b0",
+                            "date": 1656320441000,
+                            "comment": "App rvpn (13213), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 15,
+                            "id": "836d4780-bece-413f-9632-b71060185ae6",
+                            "date": 1686223460000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 49.29,
+                            "id": "e549534f-d7b0-432e-a1bb-5f336da204ab",
+                            "date": 1686223338000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 51.74,
+                            "id": "6949ca2f-a948-4252-971c-2d64b0a02d8b",
+                            "date": 1683276210000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "45527870-a661-4de4-9341-58162a5ff8d1",
+                            "date": 1668977120000,
+                            "comment": "Adding funds via Tinkoff 64.0 ₽ → 1.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "0134c5f8-f363-49fe-bd5f-71bacf612f47",
+                            "date": 1674205242000,
+                            "comment": "App rvpnprod (13230), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 29,
+                            "id": "7fd32157-c3e0-4399-8675-ac117278558e",
+                            "date": 1679667643000,
+                            "comment": "Adding funds via Tinkoff 2262.0 ₽ → 29.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "472264ff-2535-4366-9fb3-bbd06e2bd9d7",
+                            "date": 1656579629000,
+                            "comment": "App rvpnprod (13230), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 120,
+                            "id": "80ec893f-dd61-496b-ab8e-8efaa229b897",
+                            "date": 1653657709000,
+                            "comment": "Promo-code ZEROCODER",
+                            "type": "promo"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "b66d6c19-435c-45fd-b47e-679504270ddf",
+                            "date": 1668978266000,
+                            "comment": "Update app rvpnprod, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "59544d5c-b13f-4d81-bafe-666a583bd679",
+                            "date": 1658912438000,
+                            "comment": "App rvpn (13213), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "9e4e0ab9-fb6b-4c8d-93c2-8addc200b11b",
+                            "date": 1671559306000,
+                            "comment": "Update app rvpnprod, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "12e23a33-1d5b-454d-95d1-32262e42a90d",
+                            "date": 1653838369000,
+                            "comment": "Create app rvpnprod, plan Startup-monthly",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 40,
+                            "id": "bfc8ffcd-83da-4497-89f0-1ad76fcfd2af",
+                            "date": 1668978241000,
+                            "comment": "Adding funds via Tinkoff 2560.0 ₽ → 40.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "048372d6-fa8d-43df-b6b6-cfe1c132f588",
+                            "date": 1679667842000,
+                            "comment": "Update app rvpnprod, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -8.09,
+                            "id": "41977221-3445-4401-b827-66f0642f9d7a",
+                            "date": 1680537442000,
+                            "comment": "On-demand resource consumption. App rvpnprod (13230), period 2023-03",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 100,
+                            "id": "88050437-063e-4b6b-95c7-9ad8779e2d51",
+                            "date": 1671559278000,
+                            "comment": "Adding funds via Tinkoff 6900.0 ₽ → 100.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -5.81,
+                            "id": "1b881e67-5121-4865-9141-20f32c402b0a",
+                            "date": 1672911631000,
+                            "comment": "On-demand resource consumption. App rvpnprod (13230), period 2022-12",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 40,
+                            "id": "2a10de25-3833-4253-a726-f25f19f6e10a",
+                            "date": 1679667826000,
+                            "comment": "Adding funds via Tinkoff 3120.0 ₽ → 40.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -6.52,
+                            "id": "e73470c9-cc98-4cd5-ab93-a8b4e3b9771b",
+                            "date": 1677685246000,
+                            "comment": "On-demand resource consumption. App rvpnprod (13230), period 2023-02",
+                            "type": "ondemand"
+                        }
+                    ]
+                },
+                "next_billing_date": 1687616643585,
+                "trialType": "skip",
+                "sysName": "rvpnprod",
+                "plan_id": {
+                    "price": 39,
+                    "name": "Startup",
+                    "description": "Ideal for building an MVP or an internal app",
+                    "id": "Startup-monthly"
+                },
+                "id": "13230",
+                "is_hidden": false,
+                "is_sandbox": false,
+                "next_payment": 39,
+                "isTrial": "",
+                "events": [
+                    {
+                        "type": "plan_update",
+                        "date": 1671526844000,
+                        "messagee": "App plan updated Startup-monthly → FREE",
+                        "id": "9ae541f6-7409-4319-9ceb-c554bf3343b5"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1674205242000,
+                        "type": "billing_regular",
+                        "id": "17a15fc1-4d24-46b2-8e46-47cd55677933"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1671559307000,
+                        "messagee": "App plan updated FREE → Startup-monthly",
+                        "id": "3b70289b-ff44-4b34-bfc5-035ed760058f"
+                    },
+                    {
+                        "messagee": "App is downgraded to FREE",
+                        "date": 1671526843000,
+                        "type": "billing_regular",
+                        "id": "af09b2fa-9678-4837-8854-533d614ea189"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1679667843000,
+                        "messagee": "App plan updated FREE → Startup-monthly",
+                        "id": "f33f8eea-8cd8-4e7f-a1f5-fc26b8fdd086"
+                    },
+                    {
+                        "date": 1679302831000,
+                        "messagee": "App is downgraded to FREE",
+                        "type": "billing_regular",
+                        "id": "f14bd703-09b4-4be0-b3be-66ddc0b8c5dd"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1684918809000,
+                        "type": "billing_regular",
+                        "id": "5aca4ab5-fff0-4275-b1e7-08c3caeae1d4"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1682326852000,
+                        "type": "billing_regular",
+                        "id": "bf191ff1-d889-47d9-bb1f-4e79e4c8f25a"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 10.29",
+                        "date": 1685626042000,
+                        "id": "e29d8940-dbc4-43e5-8166-5437b1414c17"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "date": 1676883637000,
+                        "id": "ae8d83df-75a5-45d4-94c2-040e5479dc5a"
+                    },
+                    {
+                        "date": 1653838372000,
+                        "type": "app_created",
+                        "messagee": "App is created",
+                        "id": "04f64bc7-ccc5-4680-a613-dd26f65e1208"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1656579628000,
+                        "type": "billing_regular",
+                        "id": "9bf54167-50ec-473a-89d2-f2f4a97c5ae3"
+                    },
+                    {
+                        "type": "block_off",
+                        "messagee": "App is UNBLOCKED",
+                        "date": 1669014243000,
+                        "id": "41fb5646-fd9f-4e11-9060-e68d111fc76b"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1664442061000,
+                        "messagee": "App plan updated Startup-monthly → FREE",
+                        "id": "934de8df-4bf8-4577-9b01-37eedb8aecea"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1679302834000,
+                        "messagee": "App plan updated Startup-monthly → FREE",
+                        "id": "5f63cd10-2160-498b-a631-aa17864cc531"
+                    },
+                    {
+                        "date": 1661761546000,
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "id": "3d1432d6-113e-41ee-a30e-15ce6974882f"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1672911630000,
+                        "messagee": "On-demand charged $ 5.81",
+                        "id": "6b3013be-3c73-4df6-bf69-6c047c7ae664"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 6.52",
+                        "date": 1677685246000,
+                        "id": "f2b6a0d5-9aca-4f07-9a74-0ddaa7d3ffcd"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1659085235000,
+                        "type": "billing_regular",
+                        "id": "f9fbfa53-28c5-4ad7-bc71-c329a64b3325"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1682973166000,
+                        "messagee": "On-demand charged $ 6.32",
+                        "id": "3d140349-5030-45e1-9b8e-adfda558a16b"
+                    },
+                    {
+                        "type": "block",
+                        "messagee": "App is blocked by admin",
+                        "id": "23ab5f9d-0d86-408e-8280-5642168d4302"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1680537442000,
+                        "messagee": "On-demand charged $ 8.09",
+                        "id": "4c7c9a43-033a-49b9-a39d-b8249f694262"
+                    },
+                    {
+                        "type": "block",
+                        "messagee": "App is unblocked by admin",
+                        "id": "8339df83-11c6-4e2a-8029-2afccac9601b"
+                    },
+                    {
+                        "date": 1668848085000,
+                        "messagee": "App is BLOCKED",
+                        "type": "block_on",
+                        "id": "01a4980c-e7a3-4c3f-9333-f21b06a45a59"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1668978266000,
+                        "messagee": "App plan updated FREE → Startup-monthly",
+                        "id": "88e3f02d-e0c5-4518-836b-f797687dd629"
+                    }
+                ],
+                "comments": [],
+                "Automatic_downgrade": "",
+                "date_trial_ended": "",
+                "date_trial_started": "",
+                "legacy_billing": "",
+                "paddle_subscription_id": ""
+            },
+            {
+                "name": "masters",
+                "is_blocked": false,
+                "owner_id": {
+                    "wallet_balance": 10799,
+                    "id": "pavel@directual.com",
+                    "wallet_transactions": [
+                        {
+                            "balance": -39,
+                            "id": "140b8031-f8fe-4133-8d65-f3f184aaa08c",
+                            "date": 1686214845000,
+                            "comment": "App mentor (14637), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "9c6762fe-d565-4295-830e-ad16d08f84a6",
+                            "date": 1685523926000,
+                            "comment": "App bootcamps (9660), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "90b3d567-fb78-4b58-8d85-e7eafa6a0a56",
+                            "date": 1685523824000,
+                            "comment": "App bot-snapshot (13174), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "bbe3aca1-4fa1-4daa-b306-6149e138b82c",
+                            "date": 1685523923000,
+                            "comment": "App hey-hoy (15027), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "24fa5c2c-08a6-4e3a-8e9b-ab5743e3ff7f",
+                            "date": 1684068500000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "bd69ea3e-5b6c-4199-a301-d147ce3a979d",
+                            "date": 1683898531000,
+                            "comment": "Update app test-free-app, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "18c30e3a-b2aa-493a-af51-f21376b89adb",
+                            "date": 1683905279000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "62e47227-c8a0-49cf-bbe1-21fe396bd887",
+                            "date": 1685523708000,
+                            "comment": "App temaplate-crm (4083), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 2,
+                            "id": "e2de3266-edf9-43cc-a86a-61d832fdbf39",
+                            "date": 1683723151000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6dbb1a9e-1458-4110-924f-9ef4a6e5f4fd",
+                            "date": 1683623036000,
+                            "comment": "App nft (14644), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "da7e6db1-49ba-465e-b894-99bc161f1874",
+                            "date": 1687332419000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 0.1,
+                            "id": "0b2f2409-3529-46e9-8e84-06b825a60a11",
+                            "date": 1684170287000,
+                            "comment": "Adding funds via Tinkoff 7.9 ₽ → 0.10 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -162,
+                            "id": "0dc29b14-8f3f-4543-9cfd-3d9a712863ee",
+                            "date": 1655214165000,
+                            "comment": "Team Dream team, plan team_monthly, 3 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "4b1ab802-7f2a-4653-85d9-19d98a3f4e1f",
+                            "date": 1685624428000,
+                            "comment": "Team Dream team, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "292703c3-d614-4d91-b047-9dc413085589",
+                            "date": 1683536435000,
+                            "comment": "App mentor (14637), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "75f2b4e1-bf00-4444-9c29-caa6202e86ae",
+                            "date": 1684244446000,
+                            "comment": "Pro-trial 1 month period. Create app trial-final, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "84e97e6f-249a-4689-88b8-656263f4fa48",
+                            "date": 1685523782000,
+                            "comment": "App basic-template (11264), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0,
+                            "id": "92eca7c0-2abf-4c9f-985e-6ba19f5f8707",
+                            "date": 1683905287000,
+                            "comment": "App pro-trial (17387), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "da668477-1c78-4f67-80d0-b84114e96315",
+                            "date": 1684226291000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 0.02,
+                            "id": "a1b0104f-b78d-4a53-9c7a-5ec1ba768946",
+                            "date": 1684242645000,
+                            "comment": "Adding funds via Tinkoff 1.58 ₽ → 0.02 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "17865bd1-254a-4303-9c3f-8c330b504371",
+                            "date": 1683900763000,
+                            "comment": "Pro-trial 1 month period. Create app pro-trial, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "aa5c1d63-edeb-477a-9642-a05caafc23c1",
+                            "date": 1659358817000,
+                            "comment": "Team My new team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "07bea367-e19a-4a4b-9a63-c5e2c73f0675",
+                            "date": 1682946005000,
+                            "comment": "Team Dream team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": 1.58,
+                            "id": "124c25ee-0eb9-4c67-b0e3-542417150d12",
+                            "date": 1684242461000,
+                            "comment": "Adding funds via Tinkoff 124.82 ₽ → 1.58 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -5,
+                            "id": "2cf23f24-925e-4671-8a7a-282aabcf5942",
+                            "date": 1681817674000,
+                            "comment": "Request for 👨‍💻 Basic level certification",
+                            "type": "certification"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "dd6bef14-adaa-4984-8ec0-94cafd63b901",
+                            "date": 1685523689000,
+                            "comment": "App React-boilerplate (2950), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "cb7d2578-4dc7-4bc9-8e21-b3262c3af636",
+                            "date": 1685523694000,
+                            "comment": "App final-fps-test (6238), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -5,
+                            "id": "d0b2d04e-9571-4a26-be15-bae47cb35f8e",
+                            "date": 1681817492000,
+                            "comment": "Request for 👨‍💻 Basic level certification",
+                            "type": "certification"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "d023de83-2d21-4ce7-a639-5ad17cd52f81",
+                            "date": 1683724297000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "4a69b3b9-58bc-4719-862e-6ed90d5b5780",
+                            "date": 1657616442000,
+                            "comment": "App directual-site (1822), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0,
+                            "id": "ad10745a-bacc-42e1-9556-a81755ee74b5",
+                            "date": 1683904090000,
+                            "comment": "App pro-trial (17387), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -5,
+                            "id": "a527b9b6-fdd5-4bfd-9a02-c0ee9d1fdc2f",
+                            "date": 1681816275000,
+                            "comment": "Request for 👨‍💻 Basic level certification",
+                            "type": "certification"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "715c0215-5dff-4aa4-a3a2-571723fcc4b8",
+                            "date": 1684247097000,
+                            "comment": "Create app business8, plan Business-monthly",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 1.54,
+                            "id": "d3400554-ceb7-4b7e-a494-b3b21252fb05",
+                            "date": 1683905035000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 0.02,
+                            "id": "fdc86bc5-e780-48f3-8874-d9e995048be1",
+                            "date": 1684075266000,
+                            "comment": "Adding funds via Tinkoff 1.58 ₽ → 0.02 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6143d6b9-d54f-4eb7-9dc0-6479eb44d755",
+                            "date": 1685523669000,
+                            "comment": "App gdfvfbvsgdvb (3074), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "2ad955da-d609-4439-9ead-ae6414da0e74",
+                            "date": 1685523741000,
+                            "comment": "App students (8750), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -2,
+                            "id": "735ceadd-1b41-4038-8170-d70cf84244c3",
+                            "date": 1681290141000,
+                            "comment": "App directual-site (1822), license payment, plan Pro-sandbox",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "42bc300e-d4e0-4650-b2a9-6346114f3594",
+                            "date": 1680944533000,
+                            "comment": "App mentor (14637), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "c5c2757d-ca9d-4bd6-bf64-4ca434c06e12",
+                            "date": 1684314068000,
+                            "comment": "App tuishou (9312), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "1321cd97-0877-4ec7-8e5f-64c228976c9d",
+                            "date": 1685523694000,
+                            "comment": "App Generate_data_Directual_academy (2595), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0,
+                            "id": "fe47663e-8b6d-4291-8b20-d06cdb072d06",
+                            "date": 1680354007000,
+                            "comment": "Team My new team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -2,
+                            "id": "9432f0a2-f668-4692-b016-88eb26a07e29",
+                            "date": 1678611627000,
+                            "comment": "App directual-site (1822), license payment, plan Pro-sandbox",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "48163b09-6873-4ed2-bc50-58a56d25243d",
+                            "date": 1685523891000,
+                            "comment": "App tuishou-alfa (9544), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "8b265175-3b92-4c07-bb6d-531dbb4a1fdc",
+                            "date": 1678352470000,
+                            "comment": "App nft (14644), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "68b84f89-df8f-47ca-b729-633f12357cd1",
+                            "date": 1685523743000,
+                            "comment": "App web-plugins (10926), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "011316cb-a196-4a97-8abf-2dec57429262",
+                            "date": 1685523906000,
+                            "comment": "App test-app-0011 (15231), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "8b70675c-6135-4601-8f70-015211e2addd",
+                            "date": 1678266063000,
+                            "comment": "App mentor (14637), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6f273187-2034-4998-8f4f-a9c50394d6c4",
+                            "date": 1683898220000,
+                            "comment": "Update app vtb-demo, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "134508f2-353b-4529-9272-3228516797e4",
+                            "date": 1682946005000,
+                            "comment": "Team My new team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -2,
+                            "id": "bc07a5d1-2222-49f4-8535-f30555e979b4",
+                            "date": 1676192453000,
+                            "comment": "App directual-site (1822), license payment, plan Pro-sandbox",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "09b7d8ea-e372-455f-b87c-a16279d990c8",
+                            "date": 1675933246000,
+                            "comment": "App nft (14644), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.85,
+                            "id": "e54dedac-0f93-4658-a66b-fabb65b2c5ff",
+                            "date": 1684152323000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "be46534c-a569-4b4e-aaee-c6d91ca45d94",
+                            "date": 1683723850000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "80c8923f-e310-4470-82e9-b45f6ba84cfa",
+                            "date": 1644356410000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 0.3,
+                            "id": "dc41bfc4-2a7e-4991-b473-02cbbb252181",
+                            "date": 1684170105000,
+                            "comment": "Adding funds via Tinkoff 23.7 ₽ → 0.30 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -2,
+                            "id": "9ab6a75a-7944-447a-960c-919ac5a26f6c",
+                            "date": 1673427650000,
+                            "comment": "App directual-site (1822), license payment, plan Pro-sandbox",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -1000,
+                            "id": "70e24705-a5fc-4dee-9238-e8662a16ee91",
+                            "date": 1655895947000,
+                            "comment": "Promo-code NOWAR",
+                            "type": "promo"
+                        },
+                        {
+                            "date": 1686503138000,
+                            "type": "manual",
+                            "balance": 3000,
+                            "id": "ea3e492d-1bf7-4e36-84f9-219df37f3c86"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "3e9b9067-1130-4217-af29-7ac11a62d0a7",
+                            "date": 1681030841000,
+                            "comment": "App nft (14644), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "type": "manual",
+                            "date": 1684316245000,
+                            "balance": 0,
+                            "id": "2b867b64-2bcd-4824-96cf-5a7711ddcc5f"
+                        },
+                        {
+                            "balance": -2,
+                            "id": "1b0445f9-aa47-48cb-bac7-f061c7339411",
+                            "date": 1673341235000,
+                            "comment": "App directual-site (1822), license payment, plan Pro-sandbox",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "06dfce97-9c81-4085-806d-0b867d435288",
+                            "date": 1679994045000,
+                            "comment": "App masters (10818), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "02066ad2-0a4c-4a3d-84cb-a8a6517788ab",
+                            "date": 1682672469000,
+                            "comment": "App masters (10818), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "date": 1684244365000,
+                            "type": "manual",
+                            "balance": 2,
+                            "id": "71ae64f5-483e-47f3-8d3b-b2c07b3ad3f3"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "c85d20da-4f52-4a82-9fa9-b82fe0d77784",
+                            "date": 1684078899000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "a79bad51-97a5-40dd-a636-7b224fa8c843",
+                            "date": 1655024420000,
+                            "comment": "App directual-site (1822), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "5b6aa040-7046-49ff-86fd-aaed48d41ba5",
+                            "date": 1652376443000,
+                            "comment": "Update app tg-demo, plan Business-monthly (previous plan: )",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "4576a903-4e6a-475b-9d87-27663117256a",
+                            "date": 1686834006000,
+                            "comment": "Team test one, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "18a3c686-917c-4885-9a98-f08acb961723",
+                            "date": 1683920349000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "726bda7e-791a-4886-8094-8efa502c4606",
+                            "date": 1662037204000,
+                            "comment": "Team My new team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "1bed972f-5c10-4104-beb0-ab991264869f",
+                            "date": 1685523840000,
+                            "comment": "App japanapp (10884), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -1,
+                            "type": "manual",
+                            "date": 1684236475000,
+                            "id": "9221d51f-b7cf-4c3b-9e24-96e0bbc8c919"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "c010e6da-c0aa-4240-9a31-9647084f6bad",
+                            "date": 1673254849000,
+                            "comment": "App nft (14644), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "1864a9f5-7e41-4dc9-9e3b-441dd77e0962",
+                            "date": 1684245372000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -5,
+                            "id": "c3865731-88b6-45ba-b508-0ec38ba72485",
+                            "date": 1681828339000,
+                            "comment": "Request for 👨‍💻 Basic level certification",
+                            "type": "certification"
+                        },
+                        {
+                            "balance": 100,
+                            "id": "359583b7-efeb-4908-9d37-3ee35de1ea33",
+                            "date": 1644274149000,
+                            "comment": "Promo-code ZEROCODER",
+                            "type": "promo"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "bc9049e7-5246-4e58-91df-847f7d34139d",
+                            "date": 1686992451000,
+                            "comment": "App tuishou (9312), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "d20c6d2d-8070-45b9-ac35-efa651d2104a",
+                            "date": 1685523926000,
+                            "comment": "App bootcamp-marketplace (10547), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "90cab7c7-c644-4dde-866c-0a3eef2917ab",
+                            "date": 1653317346000,
+                            "comment": "Create app showcase-store, plan Startup-monthly",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "545f6a63-47c0-468b-9ad6-dc5feed386e9",
+                            "date": 1675846878000,
+                            "comment": "App mentor (14637), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "date": 1652376382000,
+                            "type": "test",
+                            "balance": 998,
+                            "id": "dd94ba83-e6d6-4664-a17a-a9c83c37b739"
+                        },
+                        {
+                            "balance": -162,
+                            "id": "e6eef191-8ce7-4112-b5fa-ca261e1d8924",
+                            "date": 1656680403000,
+                            "comment": "Team Dream team, plan team_monthly, 3 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "5d8c6235-a262-4db6-885c-b4adf9f7a90a",
+                            "date": 1685523924000,
+                            "comment": "App test-free-app (15428), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "d15d11df-ce69-4636-8ebc-910627654ebb",
+                            "date": 1644400149000,
+                            "comment": "Refund",
+                            "type": "paddle_refund"
+                        },
+                        {
+                            "balance": -162,
+                            "id": "45983980-0c49-4a5f-9887-21d21f850684",
+                            "date": 1680354007000,
+                            "comment": "Team Dream team, plan team_monthly, 3 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -54,
+                            "id": "b2f73237-8e26-4d24-a01b-cda4f4fc1a56",
+                            "date": 1684170286000,
+                            "comment": "Team  test one, plan team_monthly, 1 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": 0,
+                            "id": "f2a837d0-3ad6-4041-917f-ba40669db18d",
+                            "date": 1684170005000,
+                            "comment": "Adding funds via Tinkoff 7.9 ₽ → 0.10 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "91751717-5c9e-4500-87a7-086d8bc7bd60",
+                            "date": 1684245434000,
+                            "comment": "Adding funds via Tinkoff 79.0 ₽ → 1.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "ce11d63f-62a2-4db9-ac93-aa337bac9d23",
+                            "date": 1685523730000,
+                            "comment": "App jj (10594), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.38,
+                            "id": "e7c04527-1c35-4c9e-bf3f-20f4bd8a309e",
+                            "date": 1683551068000,
+                            "comment": "Adding funds via Tinkoff 30.0 ₽ → 0.38 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "ad7f2671-951b-468f-8342-7dfac07d9895",
+                            "date": 1660294836000,
+                            "comment": "App tg-demo (11488), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -262.09,
+                            "id": "93ef9601-b0be-4955-b4d3-2bde8e548334",
+                            "date": 1648979934000,
+                            "comment": "On-demand resource consumption. App directual-site, period 2022-03",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6f200bc2-7dcc-4037-8d6b-7ab070899a3f",
+                            "date": 1685523725000,
+                            "comment": "App test-bot (4456), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 500,
+                            "date": 1651420946000,
+                            "type": "test",
+                            "id": "73295450-38e7-454f-8144-2043c3b2e137"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "acdf07b4-259d-40d9-b48e-2a79c5e2d7ae",
+                            "date": 1644357471000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "b3af1e91-c51d-4d8f-9456-37fd550e04ef",
+                            "date": 1684151839000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "752f527f-113f-4620-9ae3-6eecacb080e3",
+                            "date": 1685523868000,
+                            "comment": "App password-reset (10996), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "f87ef7af-8ab7-4f4a-bf77-d781bbf6ae77",
+                            "date": 1654775846000,
+                            "comment": "Update app mktplace, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "f06832e7-41ca-4b73-b549-e32f60993a50",
+                            "date": 1681722068000,
+                            "comment": "App tuishou (9312), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "ea573ffd-4574-4538-b1a9-809f35553454",
+                            "date": 1685523775000,
+                            "comment": "App directual-groupbot (6470), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "169f63c3-63e7-4927-a851-af0d6ebc29b7",
+                            "date": 1684073795000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "0a9b8030-5ec3-4daf-86ec-032b4867c8d8",
+                            "date": 1685523869000,
+                            "comment": "App sessionid (7498), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -162,
+                            "id": "d3eed4a3-6323-45f9-af5c-916f3cfb7824",
+                            "date": 1659358817000,
+                            "comment": "Team Dream team, plan team_monthly, 3 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6962f0e0-da3b-4513-bad9-611e8bbad1ab",
+                            "date": 1673168433000,
+                            "comment": "App mentor (14637), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0,
+                            "id": "2a1cebcd-8099-4ea5-9d30-efed1c700c1d",
+                            "date": 1657616454000,
+                            "comment": "App tg-demo (11488), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "3b6f85a1-f924-4bab-be16-c517980f070f",
+                            "date": 1685523640000,
+                            "comment": "App telegram_ibot (2882), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "46fc1f44-5bc3-4205-aa37-1a4e6002ccb1",
+                            "date": 1658566887000,
+                            "comment": "App showcase-store (13182), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "50bc7c6a-ec52-416b-ba4c-c534238b65ab",
+                            "date": 1660035640000,
+                            "comment": "App mktplace (13236), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "0ead59b1-6455-4cf5-8d61-4acf7ce72d98",
+                            "date": 1684080695000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "e13f1ae5-a0e5-4195-b1b4-5a2380776a65",
+                            "date": 1684068025000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "5262f5d7-6167-45b6-b1ec-7886e5d713e8",
+                            "date": 1683547267000,
+                            "comment": "Adding funds via Tinkoff 79.0 ₽ → 1.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "0527b296-d480-40a4-9625-14b711a218d9",
+                            "date": 1685264413000,
+                            "comment": "App masters (10818), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0,
+                            "id": "9c824f0a-fb8d-4ed7-8e50-250d10451d05",
+                            "date": 1680784621000,
+                            "comment": "Update app vtb-demo, plan Business-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -5.87,
+                            "id": "b9dd3cdb-0e38-42e5-b747-f8398acba926",
+                            "date": 1682973188000,
+                            "comment": "On-demand resource consumption. App tuishou (9312), period 2023-04",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -162,
+                            "id": "0c08d7be-ee02-470b-9590-b7fad1c9de12",
+                            "date": 1651421012000,
+                            "comment": "Team  Dream team, plan team_monthly, 3 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "a44344d5-a069-4f44-8ecd-1c80d83be93c",
+                            "date": 1685523811000,
+                            "comment": "App ZerocodeCRM (3973), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -2,
+                            "id": "8b2b4dee-a490-4f97-830c-413cd99843d6",
+                            "date": 1673168419000,
+                            "comment": "App directual-site (1822), license payment, plan Pro-sandbox",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -2,
+                            "id": "2caf55e1-59a4-4831-990d-dbbcacc94c49",
+                            "date": 1673514052000,
+                            "comment": "App directual-site (1822), license payment, plan Pro-sandbox",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "d39d273c-3add-491f-b4ec-aa74aed935ef",
+                            "date": 1684133272000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "type": "manual",
+                            "balance": 1,
+                            "date": 1684242451000,
+                            "id": "ea21f8b3-f213-4f13-b3fe-b39d9a1229b3"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "e17c4e54-5ad2-46c8-8795-360eef384256",
+                            "date": 1685624429000,
+                            "comment": "Team My new team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "5559e6e7-e261-4626-9d31-57829feb7b27",
+                            "date": 1650634892000,
+                            "comment": "App directual-site (1822), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "59e0cd81-718c-465c-9e99-9c6623a40d60",
+                            "date": 1683737537000,
+                            "comment": "Update app nft, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "b949f63c-8a0d-40ba-b01b-5d575f218af5",
+                            "date": 1685523729000,
+                            "comment": "App tanera (6082), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 4500,
+                            "type": "test",
+                            "date": 1666861717000,
+                            "id": "2fedf56a-3403-4bfc-ab34-9d46bff6ae10"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6275e200-2363-46f7-852f-af4dffd2c13a",
+                            "date": 1661245232000,
+                            "comment": "App showcase-store (13182), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "date": 1687332512000,
+                            "type": "manual",
+                            "balance": 10000,
+                            "id": "35d8b94a-3bc9-4f28-ad0f-52cdce687c72"
+                        },
+                        {
+                            "balance": 214.5,
+                            "id": "dd6d5abb-acb8-434d-8b20-acb566b49549",
+                            "date": 1664732285000,
+                            "comment": "Affiliate reward for pavel@directual.com transaction (app tg-demo, -429 D-coins)",
+                            "type": "affiliate"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "fa84092d-819c-475e-8075-a620f1c16ebd",
+                            "date": 1684333930000,
+                            "comment": "Pro-trial 1 month period. Create app another-trial, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "2ea982e9-ebac-41f9-8081-39c5fd15ca38",
+                            "date": 1685523724000,
+                            "comment": "App test-webuser (4284), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "9433d35c-b0c3-4016-90a3-ce48e065b296",
+                            "date": 1660294832000,
+                            "comment": "App directual-site (1822), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "22c7fea6-1241-427c-97fc-b2bfce7e65db",
+                            "date": 1683918752000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "d8ed055d-08a3-4921-adb1-daa946859040",
+                            "date": 1665997255000,
+                            "comment": "App tuishou (9312), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -2,
+                            "id": "194302af-a0ab-4c07-9d55-fa68761d4daa",
+                            "date": 1673254834000,
+                            "comment": "App directual-site (1822), license payment, plan Pro-sandbox",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.14,
+                            "id": "6a8b87b6-7264-4965-9991-5e2ad071f57b",
+                            "date": 1684247098000,
+                            "comment": "Adding funds via Tinkoff 11.06 ₽ → 0.14 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 0.03,
+                            "id": "5ea9eb9b-0ccf-4334-84ad-23ea38a332a7",
+                            "date": 1684076215000,
+                            "comment": "Adding funds via Tinkoff 2.37 ₽ → 0.03 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "bb306214-a535-428e-9695-ee3c7639d29e",
+                            "date": 1684077882000,
+                            "comment": "Adding funds via Tinkoff 79.0 ₽ → 1.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "2f17b8e1-8868-49f0-b3cd-04424d083983",
+                            "date": 1683573262000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "ee4dbba2-fe9c-4923-8f3b-1383b21505a3",
+                            "date": 1685523693000,
+                            "comment": "App dev (6829), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "11e3c94f-580f-4fe4-b754-031a334ebbd1",
+                            "date": 1685523716000,
+                            "comment": "App trial-transfer (17465), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.02,
+                            "id": "dcfd5f63-c1bf-4378-b949-616310a35cdc",
+                            "date": 1684078685000,
+                            "comment": "Adding funds via Tinkoff 1.58 ₽ → 0.02 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 0.02,
+                            "id": "205a6a9f-f4af-460a-a34e-a2a80bd711a0",
+                            "date": 1684078971000,
+                            "comment": "Adding funds via Tinkoff 1.58 ₽ → 0.02 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "5c386115-b4a1-4bba-889d-8205cbb304ef",
+                            "date": 1685523734000,
+                            "comment": "App new-fps-layout (6166), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "bc6e5ee1-ec97-4d97-9540-ba2a8576ea11",
+                            "date": 1684148680000,
+                            "comment": "Adding funds via Tinkoff 79.0 ₽ → 1.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 0,
+                            "id": "cae3e00b-14ba-4d76-a759-163c1024122f",
+                            "date": 1684169729000,
+                            "comment": "Adding funds via Tinkoff 31.6 ₽ → 0.40 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "type": "manual",
+                            "balance": -3,
+                            "date": 1684236551000,
+                            "id": "e13b376e-3a05-4633-9536-e41c24aec5d7"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "159e8ed5-72c4-4419-b8e3-bfbbdbdc3a86",
+                            "date": 1685523831000,
+                            "comment": "App how-to-auth (5022), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "f93f6991-8a45-4b3d-ac53-78da7d2134ea",
+                            "date": 1657357292000,
+                            "comment": "App mktplace (13236), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "type": "manual",
+                            "balance": 2,
+                            "date": 1684242206000,
+                            "id": "6f02322a-e1a4-4b57-ae68-ab860948c8cc"
+                        },
+                        {
+                            "type": "manual",
+                            "balance": 427,
+                            "date": 1684247017000,
+                            "id": "933286f9-20c6-4c52-b33d-ccf0ced4071f"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "91281bb1-5fb7-4ef2-b674-9b3bf3afa597",
+                            "date": 1685523732000,
+                            "comment": "App my-app-as (7510), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.02,
+                            "id": "d34e14fd-12fc-440b-8db2-cd8e26792a95",
+                            "date": 1684242793000,
+                            "comment": "Adding funds via Tinkoff 1.58 ₽ → 0.02 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -733,
+                            "date": 1684152261000,
+                            "id": "7237a3d8-0181-4232-8934-16dea8867d6b"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "b42a4530-422e-4024-ae9d-9cb2b2077506",
+                            "date": 1684243885000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "2fd52c39-2982-41c4-8c1c-51844b158df1",
+                            "date": 1684243912000,
+                            "comment": "Pro-trial 1 month period. Create app trial-pro, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "be2b0eb5-a47f-4923-be51-9a0d6f3bd40d",
+                            "date": 1684245246000,
+                            "comment": "Pro-trial 1 month period. Create app finalization, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "type": "manual",
+                            "balance": 0.8,
+                            "date": 1684245289000,
+                            "id": "d1a2ee43-0c6b-4d8e-b505-cfb82a5ef5f0"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "c7b31635-fb86-42ca-aeb2-c046b8d5b290",
+                            "date": 1684246780000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "4cb1441d-85a8-4a60-a52b-73c748c9adaf",
+                            "date": 1679043645000,
+                            "comment": "App tuishou (9312), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "8c59f39c-65e1-4408-9831-b55908598cff",
+                            "date": 1684520577000,
+                            "comment": "Pro-trial 1 month period. Create app wushu-tournament, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "84b6dcdc-dcf9-4dee-99e5-f065dbc729a9",
+                            "date": 1685523960000,
+                            "comment": "App testfiles (9337), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "27523c8c-2474-4472-848c-84bfb57ce214",
+                            "date": 1684245434000,
+                            "comment": "Pro-trial 1 month period. Create app trial-rus, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "e4bd61d1-6c9b-442a-9dcc-746a8cb2a0eb",
+                            "date": 1684245372000,
+                            "comment": "Pro-trial 1 month period. Create app final-pro, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "type": "manual",
+                            "date": 1684248375000,
+                            "balance": 100,
+                            "id": "75bfa1eb-2533-46c6-82b4-5f58652e2cbd"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "89612a9e-b1dc-4225-93f7-72536e1095a1",
+                            "date": 1684248399000,
+                            "comment": "Pro-trial 1 month period. Create app pro100, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "balance": 0,
+                            "id": "03d290c3-b853-49d5-8e79-ec106b2f37d1",
+                            "date": 1662037204000,
+                            "comment": "Team Dream team, plan team_monthly, 3 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": 40,
+                            "type": "manual",
+                            "date": 1684247398000,
+                            "id": "0dbed471-e0f2-4aac-b718-45f6ba7e805f"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "19deb0d5-1b49-49a6-ba9c-b1d584d7955e",
+                            "date": 1685524232000,
+                            "comment": "App talkbank-test (13120), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "b096f74d-3ae1-4f99-ad29-c838eca294fe",
+                            "date": 1684247404000,
+                            "comment": "Update app trial-s-1, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 3.48,
+                            "id": "23568e8d-9d03-402c-9663-3159c994e37a",
+                            "date": 1682766893000,
+                            "comment": "Removing developer seats for team Dream team (3 → 2 seats)",
+                            "type": "team_payment"
+                        },
+                        {
+                            "date": 1684248510000,
+                            "type": "manual",
+                            "balance": 200,
+                            "id": "81084acd-b1ba-4404-b74b-b86c04a288cf"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "1b9f8a32-4a2a-4d98-8e10-462d9aaa348f",
+                            "date": 1644400264000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6faf59b5-6e92-4cc3-a6cb-b64505a848dc",
+                            "date": 1685523714000,
+                            "comment": "App hello-there (4337), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "471ee407-9d31-4ee3-9a4e-de81e63fdc7a",
+                            "date": 1684248562000,
+                            "comment": "Pro-trial 1 month period. Create app pro101, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "7bb59e25-e2d3-420f-ac8f-c7b6b4b9d50f",
+                            "date": 1684242293000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "bebb9537-2214-431a-a14e-fdd48fd1c804",
+                            "date": 1662714348000,
+                            "comment": "App mktplace (13236), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "311fdcd6-a96c-4768-b50c-aa555263b85f",
+                            "date": 1685523721000,
+                            "comment": "App dev-pipeline (6948), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "982a8784-02f5-46d4-9b65-06476c5655fd",
+                            "date": 1685523763000,
+                            "comment": "App productstar (5925), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "c3d779c4-780d-4039-8705-0111fbed8449",
+                            "date": 1684853165000,
+                            "comment": "Pro-trial 1 month period. Create app chatbot, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "b8cb5693-8aff-46bd-afb2-510d8e1a227c",
+                            "date": 1644273870000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "d9ab6ab8-c27f-4603-88a2-9537072138ae",
+                            "date": 1684858136000,
+                            "comment": "Pro-trial 1 month period. Create app chatbot, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "a41c3649-89ee-4cc9-acd1-619d40fd74e7",
+                            "date": 1685090008000,
+                            "comment": "Pro-trial 1 month period. Create app chatbot, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "balance": -1,
+                            "id": "64ade616-862d-4e10-a4d0-6133b867fb4c",
+                            "date": 1685097091000,
+                            "comment": "Pro-trial 1 month period. Create app chatbot, plan Pro-monthly",
+                            "type": "trial"
+                        },
+                        {
+                            "balance": -429,
+                            "id": "2771d150-07f5-41ce-be29-aff64c73bd1f",
+                            "date": 1655024501000,
+                            "comment": "App tg-demo (11488), license payment, plan Business",
+                            "type": "app_payment"
+                        },
+                        {
+                            "type": "manual",
+                            "date": 1684248329000,
+                            "balance": 100,
+                            "id": "8fa3f5e5-836e-4712-b994-2684ca4a9a34"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "cc226983-703f-4dfe-9fd3-8dbe5df7e513",
+                            "date": 1685437210000,
+                            "comment": "App trial-free2 (17441), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "abe62430-4fb5-49e1-832c-eed30650eab9",
+                            "date": 1685523682000,
+                            "comment": "App 0qode-workshop (2868), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "1bc722bd-965b-4d8e-adf0-36bb2be81f22",
+                            "date": 1685523716000,
+                            "comment": "App import-v6 (6912), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "8db87812-3d3b-4000-bdd5-13f83a250b4b",
+                            "date": 1644356576000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "0b581bfa-4a38-4026-87f8-509f5a1ef0b8",
+                            "date": 1685523721000,
+                            "comment": "App approval-system (4575), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 40.06,
+                            "id": "205f8546-c751-4bf1-af0a-d1e700d60e88",
+                            "date": 1683573747000,
+                            "comment": "Removing developer seats for team Dream team (2 → 1 seats)",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "1b6dccc9-acaf-433c-9e9e-fb2a2d5e064c",
+                            "date": 1685523721000,
+                            "comment": "App nocode (3799), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "4b92dc76-515f-4675-b9bf-a085c92d48d1",
+                            "date": 1685523730000,
+                            "comment": "App showcase-imdb (11306), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "f69a7e95-a4d2-40a1-9b8c-5c42d026f5b0",
+                            "date": 1683636247000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "a5b6d8b6-8d24-4f74-b430-8d8a935342b1",
+                            "date": 1685523725000,
+                            "comment": "App test-limit (14027), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6611de13-335d-499c-9d35-dc8428c6f539",
+                            "date": 1685523716000,
+                            "comment": "App crm-demo (6033), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "e7be1926-8d18-4e51-84e7-d74bbe1a7c53",
+                            "date": 1685523764000,
+                            "comment": "App my-team-app (12983), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "7a5400fd-bc2d-4aba-824d-352ce8caed60",
+                            "date": 1685523811000,
+                            "comment": "App dashboard (9674), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "f2e2eb6b-2fa6-4971-8892-ed0362da3aaa",
+                            "date": 1685523725000,
+                            "comment": "App new-library (5420), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "42ca11a6-6a90-44f8-a99a-4a4a00b126d9",
+                            "date": 1685523759000,
+                            "comment": "App fpsform-test (13181), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "e14a96ca-be6f-4284-9bad-6162ab4d9f0e",
+                            "date": 1656680403000,
+                            "comment": "Team My new team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "08c8bd56-a2f5-4b47-8fde-aab7496eb839",
+                            "date": 1685523807000,
+                            "comment": "App showcase-attractions (11307), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "5a605485-b484-4824-8b08-bf102c197029",
+                            "date": 1685523761000,
+                            "comment": "App my-fitrst-template (16565), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "bf95df1e-a4bb-4a56-ab5e-6e315fb89415",
+                            "date": 1685523745000,
+                            "comment": "App airtable (6419), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "85f0b010-d9f5-48b0-83b3-df5f378d15d5",
+                            "date": 1685523779000,
+                            "comment": "App weather-app (7813), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "a6c0b456-5c79-4aa5-9934-05360e7736e5",
+                            "date": 1685523770000,
+                            "comment": "App my-sandbox (7767), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "08c60309-8278-4e34-83f8-c9059a187f95",
+                            "date": 1655974840000,
+                            "comment": "App showcase-store (13182), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "56383ce8-908d-4333-8d97-8431aec04981",
+                            "date": 1684069872000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "435b9c2c-bc51-4073-a39c-f8cb5d2f9550",
+                            "date": 1685523764000,
+                            "comment": "App draftbit (9988), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "3c25d8ae-0a57-4bf4-a328-cafca23877c7",
+                            "date": 1685523807000,
+                            "comment": "App webhook-parsing (8084), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "b97da617-c60a-4879-914c-b92303724ac8",
+                            "date": 1651423035000,
+                            "comment": "Team  My new team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "5b2d0a58-1862-4360-838c-a2a6ba767b20",
+                            "date": 1685523804000,
+                            "comment": "App code-redemption (15029), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "0ec7d205-b454-42d3-beee-ea5bead27b8b",
+                            "date": 1684246982000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "ae97318c-f28e-426b-b996-36a1e256392c",
+                            "date": 1685523768000,
+                            "comment": "App mig (11537), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -108,
+                            "id": "0eda0c60-a4c1-4c8f-ad61-4a694aab1949",
+                            "date": 1655214068000,
+                            "comment": "Team My new team, plan team_monthly, 2 developer seats",
+                            "type": "team_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "ffa5fc79-40e9-4c40-9cb1-d0ea4643081c",
+                            "date": 1685523824000,
+                            "comment": "App tg-demo (11488), license payment, plan Startup",
+                            "type": "app_payment"
+                        }
+                    ]
+                },
+                "next_billing_date": 1687959487886,
+                "trialType": "skip",
+                "sysName": "masters",
+                "plan_id": {
+                    "price": 39,
+                    "name": "Startup",
+                    "description": "Ideal for building an MVP or an internal app",
+                    "id": "Startup-monthly"
+                },
+                "id": "10818",
+                "is_hidden": false,
+                "is_sandbox": false,
+                "next_payment": 39,
+                "isTrial": "",
+                "is_cancelled": "#ffd1d1",
+                "events": [
+                    {
+                        "type": "plan_update",
+                        "date": 1674913087000,
+                        "messagee": "App plan updated FREE → Startup-monthly",
+                        "id": "8c9f0752-ae7d-45cd-ae6e-7fccd83dea24"
+                    },
+                    {
+                        "date": 1685264411000,
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "id": "b65bf638-8674-41b5-9f72-086ffab408b1"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1673450842000,
+                        "messagee": "App plan updated Pro-sandbox → FREE",
+                        "id": "cbb70cbe-0743-4c03-95e0-57682ce71b2a"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1677574836000,
+                        "type": "billing_regular",
+                        "id": "8a6b1bf2-63cb-4f05-a460-e32ef94d61de"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1682672469000,
+                        "type": "billing_regular",
+                        "id": "2c75e5fb-f781-48c3-bad6-a630f7833729"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1679994045000,
+                        "type": "billing_regular",
+                        "id": "bcd2344a-937f-44d1-98c5-1c224434403b"
+                    }
+                ],
+                "Automatic_downgrade": "",
+                "comments": "",
+                "date_trial_ended": "",
+                "date_trial_started": "",
+                "isDowngraded": "",
+                "legacy_billing": "",
+                "paddle_subscription_id": ""
+            },
+            {
+                "name": "ModaPogoda",
+                "is_blocked": false,
+                "team_id": "Code world team 2",
+                "isDowngraded": "",
+                "paddle_subscription_status": "active",
+                "owner_id": {
+                    "wallet_balance": -120.45,
+                    "id": "u@modapogoda.ru",
+                    "wallet_transactions": [
+                        {
+                            "balance": -39,
+                            "id": "d8636c40-2764-4852-8a75-2b51558a84f6",
+                            "date": 1685524015000,
+                            "comment": "App mp-test (10289), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "5f7b6967-9f3d-4d22-bfb3-46071f5f1f44",
+                            "date": 1685523768000,
+                            "comment": "App mp-bot-test (10314), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -30,
+                            "id": "a569e306-a84f-4fdd-9698-1511a39838fc",
+                            "date": 1685264411000,
+                            "comment": "App mp (5283), license payment, plan Startup (legacy)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -67,
+                            "id": "17772ef9-8280-458e-b552-c5cf0430cded",
+                            "date": 1682972900000,
+                            "comment": "On-demand resource consumption. App mp (5283), period 2023-04",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -30,
+                            "id": "b3892e09-2b14-480c-9290-f9a6765036c6",
+                            "date": 1679994035000,
+                            "comment": "App mp (5283), license payment, plan Startup (legacy)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 300,
+                            "id": "476f6bb0-7df1-41f5-80d7-a1a0777b4a4d",
+                            "date": 1677652731000,
+                            "comment": "Wire transfer from Модапогода, 22500 ₽ → 300 D-coins",
+                            "type": "bank_payment"
+                        },
+                        {
+                            "balance": -30,
+                            "id": "51f9003f-c235-4f0d-b748-8aaac9ccc0de",
+                            "date": 1677574836000,
+                            "comment": "App mp (5283), license payment, plan Startup (legacy)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -79.06,
+                            "id": "280dada8-d537-4af3-9633-7921ca358b06",
+                            "date": 1675516551000,
+                            "comment": "On-demand resource consumption. App mp (5283), period 2023-01",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -30,
+                            "id": "08905103-e7f3-4e36-95f1-fea84aca8f9a",
+                            "date": 1675069239000,
+                            "comment": "App mp (5283), license payment, plan Startup (legacy)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -78.56,
+                            "id": "e0672af3-1276-4990-b0e3-19d6d66423b1",
+                            "date": 1685625999000,
+                            "comment": "On-demand resource consumption. App mp (5283), period 2023-05",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -30,
+                            "id": "d32f2158-9c67-4c31-bb86-5f87f8fcdafd",
+                            "date": 1656579624000,
+                            "comment": "App mp (5283), license payment, plan Startup (legacy)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -30,
+                            "id": "b396ef90-c52b-462c-bb7b-efbe2e888649",
+                            "date": 1652518829000,
+                            "comment": "App mp (5283), license payment, plan Startup (legacy)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -30,
+                            "id": "5cf99bc8-44eb-4043-831e-679bcee96dec",
+                            "date": 1653901210000,
+                            "comment": "App mp (5283), license payment, plan Startup (legacy)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 100,
+                            "id": "2645ad25-b238-4829-83e4-fc9f8cb59638",
+                            "date": 1648557280000,
+                            "comment": "Promo-code N4ZDSLXWP14I",
+                            "type": "promo"
+                        },
+                        {
+                            "balance": -68.49,
+                            "id": "3e09b7d1-c602-4011-a7d9-078f104b1643",
+                            "date": 1680537363000,
+                            "comment": "On-demand resource consumption. App mp (5283), period 2023-03",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -30,
+                            "id": "499343b6-fd81-4499-8e6c-8e92d77b0d9a",
+                            "date": 1667120422000,
+                            "comment": "App mp (5283), license payment, plan Startup (legacy)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -34.07,
+                            "id": "381dbe85-06c1-45a0-a17f-21f1db45de47",
+                            "date": 1651503611000,
+                            "comment": "On-demand resource consumption. App mp (5283), period 2022-04",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 100,
+                            "id": "f4cf325f-e71f-41af-8975-60f18a519f67",
+                            "date": 1658134855000,
+                            "comment": "Promo-code 2T1JWBB21EMI",
+                            "type": "promo"
+                        },
+                        {
+                            "balance": -30,
+                            "id": "0220bfde-8665-4129-ae03-cd2ce167efe3",
+                            "date": 1682672460000,
+                            "comment": "App mp (5283), license payment, plan Startup (legacy)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -34.94,
+                            "id": "877d54bd-e1cc-4b86-a907-464208303d60",
+                            "date": 1659359347000,
+                            "comment": "On-demand resource consumption. App mp (5283), period 2022-07",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -68.07,
+                            "id": "0e2459ae-77a1-482d-abc5-44a6f63765f0",
+                            "date": 1677685133000,
+                            "comment": "On-demand resource consumption. App mp (5283), period 2023-02",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -30,
+                            "id": "b3af246c-3f55-416e-90fb-ab1e5e6db83f",
+                            "date": 1672390845000,
+                            "comment": "App mp (5283), license payment, plan Startup (legacy)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -52.2,
+                            "id": "4a0a0ff9-cc62-4bc0-97b0-ada30f035685",
+                            "date": 1654081660000,
+                            "comment": "On-demand resource consumption. App mp (5283), period 2022-05",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 250,
+                            "id": "3cc85a19-8796-4178-9d92-4630b36f5648",
+                            "date": 1683302934000,
+                            "comment": "Wire transfer from ООО МодаПогода, 20750 ₽ → 250 D-coins",
+                            "type": "bank_payment"
+                        },
+                        {
+                            "balance": -38.34,
+                            "id": "950eb46b-f506-4989-a340-c2ed8ef6dec6",
+                            "date": 1656666895000,
+                            "comment": "On-demand resource consumption. App mp (5283), period 2022-06",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -37.1,
+                            "id": "a34c2e50-ebbc-4737-a63f-eb5eb99df5eb",
+                            "date": 1648980128000,
+                            "comment": "On-demand resource consumption. App mp, period 2022-03",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -30,
+                            "id": "bace8ea0-9655-475c-907c-46f71aec8803",
+                            "date": 1650635339000,
+                            "comment": "App mp (5283), license payment, plan Startup (legacy)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -30,
+                            "id": "8e9c6282-58dc-488e-bfbe-42a114a67353",
+                            "date": 1659171635000,
+                            "comment": "App mp (5283), license payment, plan Startup (legacy)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "4f4fc849-cc0f-497e-a022-1f87960cdd1c",
+                            "date": 1685523710000,
+                            "comment": "App mp-tg (6928), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -30,
+                            "id": "a5919d72-a064-4d13-bc7b-9f040c74ed71",
+                            "date": 1661850047000,
+                            "comment": "App mp (5283), license payment, plan Startup (legacy)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -46.35,
+                            "id": "fae5c74a-ef49-45da-a066-b354f4c633f2",
+                            "date": 1662047079000,
+                            "comment": "On-demand resource consumption. App mp (5283), period 2022-08",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -30,
+                            "id": "4a62b269-e3d7-4700-adf1-3d7cf5f5414a",
+                            "date": 1664528443000,
+                            "comment": "App mp (5283), license payment, plan Startup (legacy)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 250,
+                            "id": "d6011282-6406-4044-98c6-ce958ceb5271",
+                            "date": 1648547036000,
+                            "comment": "Пополнение по счету No 118533432 от 29 марта 2022 г.",
+                            "type": "bank_transfer"
+                        },
+                        {
+                            "balance": -44.01,
+                            "id": "223e0e93-4a06-4935-ba67-2d20c9f0ecc2",
+                            "date": 1664619173000,
+                            "comment": "On-demand resource consumption. App mp (5283), period 2022-09",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 250,
+                            "id": "1850579b-084a-42ce-99d8-b02cfc9f2fb9",
+                            "date": 1665043349000,
+                            "comment": "Wire transfer from ООО \"Модапогода, 16000 ₽ → 250 D-coins",
+                            "type": "bank_payment"
+                        },
+                        {
+                            "balance": -30,
+                            "id": "ca55505d-f462-4ee2-9d56-4ac0f3d53167",
+                            "date": 1669798845000,
+                            "comment": "App mp (5283), license payment, plan Startup (legacy)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -58.04,
+                            "id": "4d52f300-2383-440b-8334-f9d05f1b3d79",
+                            "date": 1667309801000,
+                            "comment": "On-demand resource consumption. App mp (5283), period 2022-10",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -48.79,
+                            "id": "ee65001a-3058-475a-ab8d-5fea837f9eb9",
+                            "date": 1672911568000,
+                            "comment": "On-demand resource consumption. App mp (5283), period 2022-12",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -48.43,
+                            "id": "11f8a335-54aa-4e41-9068-641f3507fc77",
+                            "date": 1669910856000,
+                            "comment": "On-demand resource consumption. App mp (5283), period 2022-11",
+                            "type": "ondemand"
+                        }
+                    ]
+                },
+                "next_billing_date": 1687947388161,
+                "trialType": "skip",
+                "sysName": "mp",
+                "plan_id": {
+                    "price": 30,
+                    "name": "Startup (legacy)",
+                    "description": "Legacy plan. Startup, monthly payments",
+                    "id": "Startup"
+                },
+                "paddle_subscription_id": "6791951",
+                "id": "5283",
+                "is_hidden": false,
+                "is_sandbox": false,
+                "next_payment": 30,
+                "isTrial": "",
+                "events": [
+                    {
+                        "date": 1661850047000,
+                        "type": "billing_regular",
+                        "messagee": "License payment -30 D-coins, plan Startup (legacy)",
+                        "id": "8af5df82-d270-40d0-950b-ef7acd2f9fdd"
+                    },
+                    {
+                        "type": "block_off",
+                        "messagee": "App is UNBLOCKED",
+                        "date": 1650359546000,
+                        "id": "7c6b6ade-d6c7-4682-99b8-dc5a9c0f5b2b"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 48.79",
+                        "date": 1672911568000,
+                        "id": "99280025-1095-4249-adec-15b7c32c0517"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 58.04",
+                        "date": 1667309801000,
+                        "id": "a3ac6d80-26eb-4943-bf78-71bcf5a7b900"
+                    },
+                    {
+                        "type": "billing_regular",
+                        "date": 1652518859000,
+                        "messagee": "License payment -30 D-coins, plan Startup (legacy)",
+                        "id": "7dcd4f71-9d66-4a6b-a9d4-346741232cf8"
+                    },
+                    {
+                        "date": 1646124893000,
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand billing FAILED, sum $ 37.21",
+                        "id": "6cc1d91e-6b57-45cc-a157-ef4ff9e3dfe1"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1651503611000,
+                        "messagee": "On-demand charged $ 34.07",
+                        "id": "e5a42fe5-4b8f-4a21-b285-e2ba23707ed9"
+                    },
+                    {
+                        "type": "billing_regular",
+                        "messagee": "License payment -30 D-coins, plan Startup (legacy)",
+                        "date": 1659171635000,
+                        "id": "51c247fc-37b9-421d-9942-78882402f5c6"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 36.06",
+                        "date": 1643701561000,
+                        "id": "f117f104-e455-4d00-b5ce-bd17ea3c6ef0"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1677685133000,
+                        "messagee": "On-demand charged $ 68.07",
+                        "id": "d93e599d-6e8f-4749-8c6a-3a1a8a53de00"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1675516551000,
+                        "messagee": "On-demand charged $ 79.06",
+                        "id": "ddc022a1-8537-41ee-8d46-1707ad617030"
+                    },
+                    {
+                        "date": 1656579628000,
+                        "type": "billing_regular",
+                        "messagee": "License payment -30 D-coins, plan Startup (legacy)",
+                        "id": "0137903d-a28c-4eea-891e-9fc2e2ff234c"
+                    },
+                    {
+                        "date": 1650635339000,
+                        "type": "billing_regular",
+                        "messagee": "License payment -30 D-coins, plan Startup (legacy)",
+                        "id": "d53d6ac2-a354-4ddf-ab0c-a89922ba0783"
+                    },
+                    {
+                        "date": 1682672469000,
+                        "type": "billing_regular",
+                        "messagee": "License payment -30 D-coins, plan Startup (legacy)",
+                        "id": "e911b08d-fd56-40b5-b039-914a62650016"
+                    },
+                    {
+                        "date": 1653901260000,
+                        "type": "billing_regular",
+                        "messagee": "License payment -30 D-coins, plan Startup (legacy)",
+                        "id": "8248e4b9-7623-44e6-b0d1-658d30eca08e"
+                    },
+                    {
+                        "date": 1667120424000,
+                        "type": "billing_regular",
+                        "messagee": "License payment -30 D-coins, plan Startup (legacy)",
+                        "id": "fa5646b4-8551-4b2b-880c-97175372d22f"
+                    },
+                    {
+                        "date": 1677574836000,
+                        "type": "billing_regular",
+                        "messagee": "License payment -30 D-coins, plan Startup (legacy)",
+                        "id": "5e757787-ce21-4ae4-bac6-02506f0d8181"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1664619173000,
+                        "messagee": "On-demand charged $ 44.01",
+                        "id": "7b9a5c2e-5b7b-4157-b5d5-5b1347d693ce"
+                    },
+                    {
+                        "date": 1685264411000,
+                        "type": "billing_regular",
+                        "messagee": "License payment -30 D-coins, plan Startup (legacy)",
+                        "id": "099ad192-4a87-4f1f-8f82-bb8327b38c75"
+                    },
+                    {
+                        "date": 1679994045000,
+                        "type": "billing_regular",
+                        "messagee": "License payment -30 D-coins, plan Startup (legacy)",
+                        "id": "910c0b61-75bc-467a-bf07-07730f58c69a"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 46.35",
+                        "date": 1662047078000,
+                        "id": "87925ff7-abe7-4169-9b57-b355782ed644"
+                    },
+                    {
+                        "date": 1672390848000,
+                        "type": "billing_regular",
+                        "messagee": "License payment -30 D-coins, plan Startup (legacy)",
+                        "id": "f3ae1a88-1d54-4617-9570-d99f1c7c9001"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1656666895000,
+                        "messagee": "On-demand charged $ 38.34",
+                        "id": "b7d68096-252c-438f-b004-fad05e66da6c"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 67",
+                        "date": 1682972900000,
+                        "id": "44845b3a-61ce-4f9b-ba4a-357bf56df895"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 52.2",
+                        "date": 1654081660000,
+                        "id": "e383f00a-5dc1-45df-b59b-04887479cc8d"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 68.49",
+                        "date": 1680537363000,
+                        "id": "85ddd619-41aa-4318-8763-e5a2f2a5e1fa"
+                    },
+                    {
+                        "date": 1664528447000,
+                        "type": "billing_regular",
+                        "messagee": "License payment -30 D-coins, plan Startup (legacy)",
+                        "id": "7eb041b0-439b-42ef-8d76-bd8893c6c667"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1685625999000,
+                        "messagee": "On-demand charged $ 78.56",
+                        "id": "f6fa4770-c7c3-49e5-b054-b831581039a8"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 37.1",
+                        "date": 1648980127000,
+                        "id": "1f6c1976-3f2b-4d75-9e6c-26712af11883"
+                    },
+                    {
+                        "date": 1675069239000,
+                        "type": "billing_regular",
+                        "messagee": "License payment -30 D-coins, plan Startup (legacy)",
+                        "id": "18fe73af-c5ce-4f82-b0e4-41c1b769ca24"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 42.53",
+                        "date": 1641055589000,
+                        "id": "9a6530f5-aff1-4c44-806c-7f6054614c50"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 48.43",
+                        "date": 1669910856000,
+                        "id": "3934a16d-9fd7-45fb-bc7f-c99f6bbb3989"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 34.94",
+                        "date": 1659359347000,
+                        "id": "4958af86-7b86-4a48-b03c-00a077277901"
+                    },
+                    {
+                        "date": 1669798845000,
+                        "type": "billing_regular",
+                        "messagee": "License payment -30 D-coins, plan Startup (legacy)",
+                        "id": "b8fb7a27-f280-468a-aefd-42ecb4eef059"
+                    }
+                ],
+                "comments": [],
+                "Automatic_downgrade": "",
+                "date_trial_ended": "",
+                "date_trial_started": "",
+                "legacy_billing": ""
+            },
+            {
+                "name": "kale-care",
+                "is_blocked": false,
+                "isDowngraded": "",
+                "owner_id": {
+                    "wallet_balance": 0.3,
+                    "id": "kadyrovadel.i@yandex.ru",
+                    "wallet_transactions": [
+                        {
+                            "balance": -139,
+                            "id": "9edc19e4-17cf-4d86-8564-80d3dbe56fe0",
+                            "date": 1669107628000,
+                            "comment": "App kale-care (11750), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 88,
+                            "id": "6f69748d-1de6-499e-910b-b95b246d8d83",
+                            "date": 1667359602000,
+                            "comment": "Adding funds via Tinkoff 5632.0 ₽ → 88.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "42c0e99b-f2e0-40d0-8387-23146c1d8da7",
+                            "date": 1666429224000,
+                            "comment": "App kale-care (11750), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -88.13,
+                            "id": "06deb76f-eb6b-46c1-aa9e-82ec5d135dd3",
+                            "date": 1667309705000,
+                            "comment": "On-demand resource consumption. App kale-care (11750), period 2022-10",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 70,
+                            "id": "d4f2267a-2dad-4733-9a3f-4d6f9bc80f94",
+                            "date": 1664770278000,
+                            "comment": "Adding funds via Tinkoff 4480.0 ₽ → 70.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 140,
+                            "id": "502ce0fb-39e3-4c11-9005-8a7dec3ab42a",
+                            "date": 1669373637000,
+                            "comment": "Adding funds via Tinkoff 8960.0 ₽ → 140.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 140,
+                            "id": "26ade22c-5a19-47ba-b161-2d69e7c4bc06",
+                            "date": 1673222695000,
+                            "comment": "Adding funds via Tinkoff 9520.0 ₽ → 140.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "bb810705-465a-48e6-9f22-25df1dd0ae4e",
+                            "date": 1674378037000,
+                            "comment": "App kale-care (11750), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 12,
+                            "id": "9d2bdec3-26d1-4b22-8fe0-9264959dad39",
+                            "date": 1681901733000,
+                            "comment": "Adding funds via Tinkoff 996.0 ₽ → 12.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -68.82,
+                            "id": "9de65834-9f89-4ecc-b260-963071aee0fd",
+                            "date": 1664619165000,
+                            "comment": "On-demand resource consumption. App kale-care (11750), period 2022-09",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 100,
+                            "id": "5add9ae1-703b-4129-81d4-0e85ccb51266",
+                            "date": 1657775474000,
+                            "comment": "Promo-code ZE2N8Z88H0K9",
+                            "type": "promo"
+                        },
+                        {
+                            "balance": 137,
+                            "id": "2f6936ee-6ea2-4131-862b-4517b448f2af",
+                            "date": 1664166149000,
+                            "comment": "Adding funds via Tinkoff 8768.0 ₽ → 137.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 137,
+                            "id": "fc111fd9-4130-4fe7-b245-3b2310894706",
+                            "date": 1666583035000,
+                            "comment": "Adding funds via Tinkoff 8768.0 ₽ → 137.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "a1e69c6c-6d3a-402d-81b0-99262ebab727",
+                            "date": 1663837244000,
+                            "comment": "App kale-care (11750), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 70,
+                            "id": "841f079b-8b97-4a32-9a58-ed67a1ca7a9c",
+                            "date": 1661410054000,
+                            "comment": "Adding funds via Tinkoff 4480.0 ₽ → 70.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 100,
+                            "id": "aa4674d8-bdb8-4cfb-b7c3-9c1882058969",
+                            "date": 1657550002000,
+                            "comment": "Promo-code PRODUCTHUNT",
+                            "type": "promo"
+                        },
+                        {
+                            "balance": 139,
+                            "id": "29c8c795-7299-4f53-9536-239503420ade",
+                            "date": 1655953642000,
+                            "comment": "Adding funds via Tinkoff 9591.0 ₽ → 139.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 108,
+                            "id": "a1b0254e-752e-4d88-98fb-c685d64da314",
+                            "date": 1685665932000,
+                            "comment": "Adding funds via Tinkoff 8748.0 ₽ → 108.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 139,
+                            "id": "f7aca96f-39b1-44ee-8926-fe18ef81fe94",
+                            "date": 1685332565000,
+                            "comment": "Adding funds via Tinkoff 11259.0 ₽ → 139.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "9a39d210-1dcd-4148-b683-1e9f82fb78f2",
+                            "date": 1655888434000,
+                            "comment": "App kale-care (11750), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -108.68,
+                            "id": "cbc6a834-e467-48f8-af13-eb3611f70980",
+                            "date": 1685625992000,
+                            "comment": "On-demand resource consumption. App kale-care (11750), period 2023-05",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "803aaa6b-e692-497b-aa32-6849e034d032",
+                            "date": 1658480466000,
+                            "comment": "App kale-care (11750), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 55,
+                            "id": "96b265e8-02e2-419c-96d8-e31db529c6e1",
+                            "date": 1656863025000,
+                            "comment": "Adding funds via Tinkoff 3300.0 ₽ → 55.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 140,
+                            "id": "2bb03511-b894-4f45-825a-568c55f7edc8",
+                            "date": 1674537068000,
+                            "comment": "Adding funds via Tinkoff 9660.0 ₽ → 140.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 145,
+                            "id": "e6466895-b8f5-412e-81f1-74e820029e4e",
+                            "date": 1679480942000,
+                            "comment": "Adding funds via Tinkoff 11310.0 ₽ → 145.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -54.9,
+                            "id": "ecb31304-a0fe-41bb-9421-a2c14240b11f",
+                            "date": 1656666878000,
+                            "comment": "On-demand resource consumption. App kale-care (11750), period 2022-06",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 100,
+                            "id": "c9793085-aba4-42b5-bf0a-f7b334971de8",
+                            "date": 1658149541000,
+                            "comment": "Promo-code LR49EMMZEHFR",
+                            "type": "promo"
+                        },
+                        {
+                            "balance": 140,
+                            "id": "c56d9baf-2b16-4fce-83e9-a1ced3326ab8",
+                            "date": 1682318237000,
+                            "comment": "Adding funds via Tinkoff 11620.0 ₽ → 140.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -87.14,
+                            "id": "c1217dc4-94d3-460f-9176-2dc51f72437c",
+                            "date": 1659359329000,
+                            "comment": "On-demand resource consumption. App kale-care (11750), period 2022-07",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "e46bf196-698b-4166-97a3-1b0a2791cb03",
+                            "date": 1682154110000,
+                            "comment": "App kale-care (11750), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "9ec48f8a-c44b-4e6e-8bba-fe15508ff48d",
+                            "date": 1661158834000,
+                            "comment": "App kale-care (11750), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 55,
+                            "id": "4460f05e-4f59-47c4-8172-ea50eba64aa8",
+                            "date": 1662353299000,
+                            "comment": "Adding funds via Tinkoff 3520.0 ₽ → 55.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -19.64,
+                            "id": "6a0b8963-e311-42f5-8199-3343ab8246a9",
+                            "date": 1669910898000,
+                            "comment": "On-demand resource consumption. App kale-care (11750), period 2022-11",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -1.93,
+                            "id": "11451626-2f60-467e-92ee-1be34dec0dad",
+                            "date": 1675517052000,
+                            "comment": "On-demand resource consumption. App kale-care (11750), period 2023-01",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 20,
+                            "id": "0f524345-22d4-4d80-83ef-acd966bc0a52",
+                            "date": 1670212395000,
+                            "comment": "Adding funds via Tinkoff 1280.0 ₽ → 20.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "7ac4f5a5-2458-4688-86d0-4e44b8d0c7da",
+                            "date": 1671699647000,
+                            "comment": "App kale-care (11750), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 1,
+                            "id": "eaa8cc75-de29-4819-b138-e4f815f6f4ea",
+                            "date": 1676532428000,
+                            "comment": "Adding funds via Tinkoff 73.0 ₽ → 1.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -2.37,
+                            "id": "0259490d-c07e-4c79-9e9e-cb3a07df3436",
+                            "date": 1672911655000,
+                            "comment": "On-demand resource consumption. App kale-care (11750), period 2022-12",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "8e833f3a-758b-4872-a033-69adc681ca1e",
+                            "date": 1677056433000,
+                            "comment": "App kale-care (11750), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 140,
+                            "id": "af506b55-7275-41e9-8607-c8172f4010b3",
+                            "date": 1677558553000,
+                            "comment": "Adding funds via Tinkoff 10500.0 ₽ → 140.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -7.83,
+                            "id": "f0083921-c060-4112-b588-93a138bc6bf6",
+                            "date": 1677685237000,
+                            "comment": "On-demand resource consumption. App kale-care (11750), period 2023-02",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -56.98,
+                            "id": "58c69b1f-9d95-4b1f-a22e-df0f25cc4c5d",
+                            "date": 1662047049000,
+                            "comment": "On-demand resource consumption. App kale-care (11750), period 2022-08",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 7,
+                            "id": "379d597c-dd0d-4781-9614-66d52db82005",
+                            "date": 1678333471000,
+                            "comment": "Adding funds via Tinkoff 525.0 ₽ → 7.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "0a530180-cb61-46a9-8d56-7f1d9ec99a18",
+                            "date": 1679475640000,
+                            "comment": "App kale-care (11750), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -16.48,
+                            "id": "6786c455-6d81-460d-b719-b2cf9ea6c814",
+                            "date": 1680537427000,
+                            "comment": "On-demand resource consumption. App kale-care (11750), period 2023-03",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -29.8,
+                            "id": "fa3c4615-db7a-47f8-ae53-e03744f4cc01",
+                            "date": 1682973036000,
+                            "comment": "On-demand resource consumption. App kale-care (11750), period 2023-04",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 28,
+                            "id": "2c26a2bd-f4a6-4bca-a8d9-934563158280",
+                            "date": 1683189923000,
+                            "comment": "Adding funds via Tinkoff 2324.0 ₽ → 28.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "2b4963a0-711a-4ab1-98a0-a4a4163199b2",
+                            "date": 1684746009000,
+                            "comment": "App kale-care (11750), license payment, plan Pro",
+                            "type": "app_payment"
+                        }
+                    ]
+                },
+                "next_billing_date": 1687428703746,
+                "trialType": "skip",
+                "sysName": "kale-care",
+                "plan_id": {
+                    "price": 139,
+                    "name": "Pro",
+                    "description": "Includes advanced features for developing and scaling your app",
+                    "id": "Pro-monthly"
+                },
+                "paddle_subscription_id": "11350235",
+                "id": "11750",
+                "is_hidden": false,
+                "is_sandbox": false,
+                "next_payment": 139,
+                "isTrial": "",
+                "is_cancelled": "#ffd1d1",
+                "events": [
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 16.48",
+                        "date": 1680537427000,
+                        "id": "73c3697e-9549-4440-96d8-d86d6fffcc85"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1674378037000,
+                        "type": "billing_regular",
+                        "id": "e17d15ea-2ae3-4cf7-b5ba-88d61c2345d9"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 77.15",
+                        "date": 1648980876000,
+                        "id": "fc941d34-f264-45bf-b66b-ce77d4bfbdd3"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1666429224000,
+                        "type": "billing_regular",
+                        "id": "cdb00b4b-1b02-4826-897f-c344c983cccb"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1661158835000,
+                        "type": "billing_regular",
+                        "id": "9058946a-dc0a-42df-8163-733c1cbfabe8"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 29.8",
+                        "date": 1682973035000,
+                        "id": "2769414d-fd1e-49a2-b30f-82ad49ef67dc"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1677056433000,
+                        "type": "billing_regular",
+                        "id": "5198d5e0-345d-4513-9f0c-8e69e9036086"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 108.68",
+                        "date": 1685625992000,
+                        "id": "f315ec3f-1006-4ce5-97a9-0dc062802fb5"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 54.9",
+                        "date": 1656666878000,
+                        "id": "558b7a11-5599-4c9e-8b93-df5802b34abb"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "type": "billing_regular",
+                        "date": 1653296518000,
+                        "id": "5b07db28-7f07-49da-9e88-e55a36513f8b"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1659359329000,
+                        "messagee": "On-demand charged $ 87.14",
+                        "id": "9d09e34d-1ccb-42bf-b923-0c519b18b2d1"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 1.93",
+                        "date": 1675517052000,
+                        "id": "ce49243b-98d5-4b1e-800b-ad2edc3b67ab"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "type": "billing_regular",
+                        "date": 1650704447000,
+                        "id": "d57ffbfb-7493-4ba3-abf8-d956f0732188"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 19.64",
+                        "date": 1669910897000,
+                        "id": "9a52f68d-b9b1-4743-bfa9-c1090c0be1f2"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "type": "billing_regular",
+                        "date": 1682154110000,
+                        "id": "a0aff568-c806-4ced-8607-7816ad6203e2"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 88.13",
+                        "date": 1667309705000,
+                        "id": "39db4dd2-4063-4fc5-9ac1-7ac6136f7a79"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 7.83",
+                        "date": 1677685237000,
+                        "id": "aacf593c-29f2-4897-bbfe-73bdb8041057"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "type": "billing_regular",
+                        "date": 1684746009000,
+                        "id": "43ae1e9d-c7ea-4d61-b963-ff89dc07432c"
+                    },
+                    {
+                        "type": "block_off",
+                        "messagee": "App is UNBLOCKED",
+                        "date": 1653635656000,
+                        "id": "3ec1db27-9431-42c7-8500-70ccc5140601"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1679475640000,
+                        "type": "billing_regular",
+                        "id": "64944ed3-6313-44e4-80ec-dacbb84baee5"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 143.66",
+                        "date": 1651503560000,
+                        "id": "bd08ec2f-164a-4193-97b4-6c7db9800833"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1672911655000,
+                        "messagee": "On-demand charged $ 2.37",
+                        "id": "11663622-02f8-4ec1-aea7-380cf8b66ca5"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "type": "billing_regular",
+                        "date": 1658480466000,
+                        "id": "2420ae3c-6370-4904-bca3-c3af0e6b64af"
+                    },
+                    {
+                        "messagee": "On-demand charged $ 137.52",
+                        "type": "billing_ondemand",
+                        "date": 1654081322000,
+                        "id": "1c545dd7-5f69-4fcf-b245-cb46fd152cac"
+                    },
+                    {
+                        "type": "tariff_changed",
+                        "date": 1644060923000,
+                        "messagee": "Tariff has been changed Free (FREE) → Startup (Startup-monthly)",
+                        "id": "36fa6a5b-12c7-454f-8059-8404abf311c5"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1671699647000,
+                        "type": "billing_regular",
+                        "id": "2973b7ad-1c8f-4fbf-aadd-5988eee934b2"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "type": "billing_regular",
+                        "date": 1663837244000,
+                        "id": "090db8a5-b255-41e3-90e1-133bc35d28f0"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1669107627000,
+                        "type": "billing_regular",
+                        "id": "b800798f-b856-49c8-a7da-fcd457b25620"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1655888434000,
+                        "type": "billing_regular",
+                        "id": "aebd6f7f-b291-44b7-b046-95733bfba411"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 68.82",
+                        "date": 1664619165000,
+                        "id": "2601a65e-887f-49ed-bd58-4728aee1e305"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 56.98",
+                        "date": 1662047049000,
+                        "id": "4d26be54-b00b-4cc5-89f3-be99fbf2ead1"
+                    }
+                ],
+                "comments": [],
+                "Automatic_downgrade": "",
+                "date_trial_ended": "",
+                "date_trial_started": "",
+                "legacy_billing": ""
+            },
+            {
+                "name": "NY Commercial Real Estate",
+                "team_id": {
+                    "name": "AppSumo Tier 2",
+                    "owner_id": "bestadstrategy@gmail.com",
+                    "tariff_id": "AppSumo_tier2_2t",
+                    "id": "99e674a2-e618-46b7-b877-a5e557c1f307",
+                    "is_hidden": false
+                },
+                "owner_id": {
+                    "wallet_balance": 0,
+                    "id": "bestadstrategy@gmail.com",
+                    "wallet_transactions": []
+                },
+                "next_billing_date": 1686048669798,
+                "trialType": "skip",
+                "sysName": "nycommercial",
+                "plan_id": {
+                    "price": 0,
+                    "name": "Pro-AppSumo",
+                    "description": "Special AppSumo plan",
+                    "id": "Pro-sandbox-AppSumo"
+                },
+                "id": "17330",
+                "is_hidden": false,
+                "is_sandbox": true,
+                "next_payment": "",
+                "isTrial": "",
+                "events": [
+                    {
+                        "type": "app_created",
+                        "date": 1683370269000,
+                        "messagee": "App is created",
+                        "id": "9b8a35af-1e8c-42ce-a71e-9d63d9398d9e"
+                    },
+                    {
+                        "type": "plan_update",
+                        "messagee": "App plan updated FREE → Pro-sandbox-AppSumo",
+                        "date": 1683370269000,
+                        "id": "83aaccdb-0a3c-4be5-a876-2ca4028903d6"
+                    }
+                ],
+                "Automatic_downgrade": "",
+                "comments": "",
+                "date_trial_ended": "",
+                "date_trial_started": "",
+                "isDowngraded": "",
+                "legacy_billing": "",
+                "paddle_subscription_id": ""
+            },
+            {
+                "name": "rusgroup-enrgotrade-test",
+                "is_blocked": false,
+                "isDowngraded": "",
+                "owner_id": {
+                    "wallet_balance": 22.04,
+                    "id": "ftm.rusgroup-energotrade@yandex.ru",
+                    "wallet_transactions": [
+                        {
+                            "balance": 0,
+                            "id": "3194fd88-a653-48e6-8b9f-aa21b1f3e897",
+                            "date": 1685610181000,
+                            "comment": "Adding funds via Tinkoff 3159.0 ₽ → 39.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "94cc3cbe-8aee-4914-9f33-8a8ed7a4475a",
+                            "date": 1685532209000,
+                            "comment": "Update app rusgroup-enrgotrade-test, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "1390239f-4adf-49f2-b22c-d0c41d452dd9",
+                            "date": 1685533463000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 0,
+                            "id": "b274562c-f241-490a-b185-44dd018210c0",
+                            "date": 1685610184000,
+                            "comment": "Adding funds via Tinkoff 3159.0 ₽ → 39.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 100,
+                            "id": "0f3f3df5-4e2e-49f3-8261-cc8b7100975b",
+                            "date": 1685528536000,
+                            "comment": "Promo-code PRODUCTHUNT",
+                            "type": "promo"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "131b658d-ed1c-41ff-8cea-94a3a368e64d",
+                            "date": 1685533022000,
+                            "comment": "Update app rusgroup-enrgotrade-live, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "81ef18dc-36b5-40ea-9d24-95a8fe355245",
+                            "date": 1685529382000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "4926d763-483c-4a39-96aa-dc3655e38170",
+                            "date": 1685531695000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "c589521c-3027-4ccb-8b12-9ae99f563e4e",
+                            "date": 1685533415000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 0,
+                            "id": "23a962da-2681-4282-b522-7ca3b0b13715",
+                            "date": 1685610056000,
+                            "comment": "App rusgroup-enrgotrade-test (17240), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0,
+                            "id": "490282ae-535a-46c8-8b19-d3585b70c0c8",
+                            "date": 1685610175000,
+                            "comment": "App rusgroup-enrgotrade-live (17241), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0,
+                            "id": "7570aa2a-1d27-4c92-b604-07912eb5795e",
+                            "date": 1685610177000,
+                            "comment": "Adding funds via Tinkoff 1373.76 ₽ → 16.96 D-coins",
+                            "type": "tinkoff"
+                        }
+                    ]
+                },
+                "date_trial_started": 1684281600000,
+                "next_billing_date": 1688131320059,
+                "trialType": "startup",
+                "sysName": "rusgroup-enrgotrade-test",
+                "plan_id": {
+                    "price": 39,
+                    "name": "Startup",
+                    "description": "Ideal for building an MVP or an internal app",
+                    "id": "Startup-monthly"
+                },
+                "id": "17240",
+                "is_hidden": false,
+                "is_sandbox": false,
+                "next_payment": 39,
+                "date_trial_ended": 1685539320058,
+                "events": [
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "date": 1685610177000,
+                        "id": "3fd997a0-37f9-499e-b7b2-9c0a7bb20aab"
+                    },
+                    {
+                        "date": 1684333943000,
+                        "type": "plan_update",
+                        "messagee": "App plan updated FREE → Startup-monthly",
+                        "id": "77b7c1b4-6d31-4179-9445-c4017d79dad8"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1685527834000,
+                        "messagee": "App plan updated Startup-monthly → FREE",
+                        "id": "5a68a88e-1a87-41c4-83c2-5d141c196235"
+                    },
+                    {
+                        "type": "app_created",
+                        "messagee": "App is created",
+                        "date": 1682608587000,
+                        "id": "ab8737cd-0658-4ba5-abda-909e7239de54"
+                    },
+                    {
+                        "date": 1687259838000,
+                        "type": "app_downgrade",
+                        "messagee": "Downgrade has been cancelled by app owner.",
+                        "id": "2f145fc9-8f5f-42cd-9097-40837f5c830b"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1685527577000,
+                        "messagee": "App plan updated Startup-monthly → FREE",
+                        "id": "05fe31e1-0dc6-4254-82b2-8569d2659809"
+                    },
+                    {
+                        "messagee": "App is downgraded to FREE and blocked",
+                        "type": "billing_regular",
+                        "date": 1685523874000,
+                        "id": "d23aefd8-d925-45e6-bf76-fb3edca4183b"
+                    },
+                    {
+                        "messagee": "Trial period (startup) ended",
+                        "type": "trial",
+                        "date": 1685523962000,
+                        "id": "8091ba13-5def-40ac-a2a6-f2c13e8a7bdc"
+                    },
+                    {
+                        "type": "block",
+                        "messagee": "App is unblocked by admin",
+                        "date": 1685533069000,
+                        "id": "faadae96-35c3-4d0a-9abb-516d29a19626"
+                    }
+                ],
+                "comments": [],
+                "Automatic_downgrade": "",
+                "isTrial": "",
+                "legacy_billing": "",
+                "paddle_subscription_id": ""
+            },
+            {
+                "name": "Leadsplitter",
+                "is_blocked": false,
+                "owner_id": {
+                    "wallet_balance": 0,
+                    "id": "bagdaer@gmail.com",
+                    "wallet_transactions": [
+                        {
+                            "balance": -63.7,
+                            "id": "acbce8ea-fb65-4b97-aa98-47605cdda3c3",
+                            "date": 1685626015000,
+                            "comment": "On-demand resource consumption. App dentalbase (12200), period 2023-05",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 169.81,
+                            "id": "9a92369a-e9b6-4142-a298-2a00c482dfff",
+                            "date": 1683627067000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "f0f39ac1-339c-4fba-adc2-8a10962850dd",
+                            "date": 1683536435000,
+                            "comment": "App dentalbase (12200), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 39,
+                            "id": "cf3fe49c-cfcb-4e43-9737-0b36ce0fa5c5",
+                            "date": 1682413324000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 184.66,
+                            "id": "20df08cc-c71d-4c66-9428-480cbba378b0",
+                            "date": 1681039986000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "1eda7f15-a74c-4326-98cd-0ead9a6817fa",
+                            "date": 1680944552000,
+                            "comment": "App dentalbase (12200), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 139,
+                            "id": "9bf4d3b8-dea6-47d3-8475-e32c3bdbd960",
+                            "date": 1686214857000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -45.66,
+                            "id": "de41bf82-5b76-48be-a626-5c9f51f55901",
+                            "date": 1680537384000,
+                            "comment": "On-demand resource consumption. App dntl (12422), period 2023-03",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "13aa73b1-1a17-477a-93bc-4b68da6d9438",
+                            "date": 1686214845000,
+                            "comment": "App dentalbase (12200), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 54.8,
+                            "id": "a25862d4-865c-48c0-ae84-8571b1aefd5e",
+                            "date": 1680537376000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 110.52,
+                            "id": "ad3a3972-51df-4689-8345-2662758aabe6",
+                            "date": 1672911323000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 264.43,
+                            "id": "240b7979-9321-4074-90dd-2adb760cc651",
+                            "date": 1675850871000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 0.83,
+                            "id": "e78778cd-7342-4c8a-924d-37c52dd0e096",
+                            "date": 1669910916000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 39,
+                            "id": "338978cc-43aa-406e-ba12-54781ac7114d",
+                            "date": 1661441382000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -12.65,
+                            "id": "2bdc4dbb-d970-49c9-9fc4-9cca97900fb4",
+                            "date": 1669910905000,
+                            "comment": "On-demand resource consumption. App dntl (12422), period 2022-11",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "2125bcff-591c-4489-933f-e1aa7a7cf737",
+                            "date": 1671440428000,
+                            "comment": "App dentalbase (12200), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 4.33,
+                            "id": "2374bbe6-f978-4ddc-8c8c-dc5965563c00",
+                            "date": 1669910848000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 63.28,
+                            "id": "14a830dc-9c75-47eb-986c-ee4a7b4fbb35",
+                            "date": 1669910843000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 139,
+                            "id": "91f715b3-6644-41e4-b181-00ca362ea92c",
+                            "date": 1678266071000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -67.79,
+                            "id": "100e5966-00d4-4a64-80e0-43a3b44c28ae",
+                            "date": 1669910838000,
+                            "comment": "On-demand resource consumption. App dentalbase (12200), period 2022-11",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 39,
+                            "id": "57a49f1f-0994-4206-8246-612c7b57f390",
+                            "date": 1679734834000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "90db2e4c-b2e9-4da1-b11a-27aa6cdaba46",
+                            "date": 1679734828000,
+                            "comment": "App dntl (12422), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 2.17,
+                            "id": "ac2378ce-0185-4f30-8dcf-a9f778f7162c",
+                            "date": 1669366842000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "782620ec-9ee7-4c2f-a436-84fc4548d45a",
+                            "date": 1674118838000,
+                            "comment": "App dentalbase (12200), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -63.12,
+                            "id": "d7a54f07-84d6-48a3-a4e5-933d43ffd1fe",
+                            "date": 1682972906000,
+                            "comment": "On-demand resource consumption. App dntl (12422), period 2023-04",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 39,
+                            "id": "026c813a-9068-4267-8191-3ad8a73b8418",
+                            "date": 1674118847000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -54.58,
+                            "id": "d46a2187-0834-4340-b5a0-ea4c94c4556f",
+                            "date": 1685626026000,
+                            "comment": "On-demand resource consumption. App dntl (12422), period 2023-05",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "d49b21af-c970-4efe-9949-59d558b5e6e2",
+                            "date": 1664096454000,
+                            "comment": "App dntl (12422), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 12.08,
+                            "id": "186ac5d4-603b-46a2-bf78-e67e6ccc8001",
+                            "date": 1669910910000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "f2d06afe-a0b8-49ca-a50a-ca919492aa18",
+                            "date": 1675933246000,
+                            "comment": "App dentalbase (12200), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -30.81,
+                            "id": "ab5679fa-ad49-4acf-94bf-401cc30793a1",
+                            "date": 1682972961000,
+                            "comment": "On-demand resource consumption. App dentalbase (12200), period 2023-04",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 39,
+                            "id": "4ef71fc4-cde7-43aa-aec8-bab77c2adf54",
+                            "date": 1661441377000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -1.7,
+                            "id": "f755fedf-10b1-46e6-a9ce-37fd88afd8fe",
+                            "date": 1667309875000,
+                            "comment": "On-demand resource consumption. App dntl (12422), period 2022-10",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "21051105-1a33-4aa8-82c4-52f7c1300b62",
+                            "date": 1674637234000,
+                            "comment": "App dntl (12422), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "266e86bf-f5e9-42dc-b79c-a2185f0ca85e",
+                            "date": 1671958841000,
+                            "comment": "App dntl (12422), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 46.92,
+                            "id": "f05b6b9a-82ba-44dc-b9c1-482969655039",
+                            "date": 1677685176000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6249a84c-9979-4330-b175-2cc737284513",
+                            "date": 1666688426000,
+                            "comment": "App dntl (12422), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "fc5ff838-9a2d-47b8-a8e1-eac6409c3408",
+                            "date": 1661441377000,
+                            "comment": "Update app dntl, plan Startup-monthly (previous plan: )",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 39,
+                            "id": "a2557310-87b4-4de6-b350-b3a244d496ca",
+                            "date": 1666688432000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 14.3,
+                            "id": "9998eefb-f6cf-4f88-b13c-1a8950ff6439",
+                            "date": 1675850871000,
+                            "comment": "App dentalbase  plan upgrade (Startup-monthly → Pro-monthly) partial refund",
+                            "type": "app_payment_upgrade_refund"
+                        },
+                        {
+                            "balance": 26.86,
+                            "id": "0a647daa-ba7d-4ea8-a4da-d1df2dd7976b",
+                            "date": 1677685221000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 39.06,
+                            "id": "7a67fbfb-15b8-4bfa-b49d-b1e18dc2cfed",
+                            "date": 1671440434000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "9521508c-e9c9-4d63-b417-eca0f81ef55a",
+                            "date": 1669366828000,
+                            "comment": "App dntl (12422), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "922a5ddf-3a9f-4757-9d5b-3c176b39b11b",
+                            "date": 1685005210000,
+                            "comment": "App dntl (12422), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -71.52,
+                            "id": "7a542f48-4c5f-4c34-ad9c-cf3b9496d31d",
+                            "date": 1672911318000,
+                            "comment": "On-demand resource consumption. App dentalbase (12200), period 2022-12",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "73cb42d3-7bf4-48f2-8387-b01ac4a863ea",
+                            "date": 1668853738000,
+                            "comment": "Update app dentalbase, plan Startup-monthly (previous plan: )",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 1.7,
+                            "id": "234cee77-7a28-4f05-bdc0-67ef00168ff1",
+                            "date": 1667309882000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -27.23,
+                            "id": "8c21c517-7329-4288-a55a-c0e3652025a0",
+                            "date": 1672911585000,
+                            "comment": "On-demand resource consumption. App dntl (12422), period 2022-12",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 27.23,
+                            "id": "0f0c9342-5040-48e8-b141-b48c63b3c5d1",
+                            "date": 1672911590000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -206.17,
+                            "id": "dcbb85a9-5603-4e0f-8e12-663cc56b6554",
+                            "date": 1675516527000,
+                            "comment": "On-demand resource consumption. App dentalbase (12200), period 2023-01",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -19.26,
+                            "id": "7dcbc674-f10a-4ef8-b6b0-0e204d983ee7",
+                            "date": 1675516919000,
+                            "comment": "On-demand resource consumption. App dntl (12422), period 2023-01",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 54.58,
+                            "id": "d04cac64-34e3-48d1-ba34-05a836d10d7a",
+                            "date": 1685626032000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 124.7,
+                            "id": "928da578-88cc-4292-9d87-2f428811f99b",
+                            "date": 1675933253000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 39,
+                            "id": "bfa5ee14-9d91-4db2-9d0f-6157f6089cb2",
+                            "date": 1685005218000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "34ba388b-983c-4559-8fb5-9d6b7c6d652c",
+                            "date": 1677315632000,
+                            "comment": "App dntl (12422), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 39,
+                            "id": "4f9021f4-b172-4d17-bf9b-360a23917068",
+                            "date": 1677315637000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -46.92,
+                            "id": "4ddd1d24-0f7c-4ec9-a602-a107d3848159",
+                            "date": 1677685171000,
+                            "comment": "On-demand resource consumption. App dentalbase (12200), period 2023-02",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6cf08dfa-4234-43f7-9cc1-2cbe64f57c78",
+                            "date": 1682413318000,
+                            "comment": "App dntl (12422), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 39,
+                            "id": "8025acd3-1121-4f26-a3ca-00afc67310af",
+                            "date": 1668853738000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -26.86,
+                            "id": "7bf8bc6e-e8b4-40c5-9f38-ad2d4c3951d3",
+                            "date": 1677685217000,
+                            "comment": "On-demand resource consumption. App dntl (12422), period 2023-02",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 63.7,
+                            "id": "bd79309b-0207-4137-92a1-a4db47630b5c",
+                            "date": 1685626020000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 36.69,
+                            "id": "ae068696-f704-402a-a859-c2845eb479e1",
+                            "date": 1669366836000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "e0f6e7b6-314c-4a36-b4b5-7796c5689530",
+                            "date": 1678266063000,
+                            "comment": "App dentalbase (12200), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 63.12,
+                            "id": "ac7eadbf-c544-4994-83cc-859cc9aef207",
+                            "date": 1682972911000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -54.8,
+                            "id": "37d42e95-e1f1-4acc-9aff-7e81f162528a",
+                            "date": 1680537371000,
+                            "comment": "On-demand resource consumption. App dentalbase (12200), period 2023-03",
+                            "type": "ondemand"
+                        }
+                    ]
+                },
+                "next_billing_date": 1688812140261,
+                "trialType": "skip",
+                "sysName": "dentalbase",
+                "plan_id": {
+                    "price": 139,
+                    "name": "Pro",
+                    "description": "Includes advanced features for developing and scaling your app",
+                    "id": "Pro-monthly"
+                },
+                "id": "12200",
+                "is_hidden": false,
+                "is_sandbox": false,
+                "next_payment": 139,
+                "isTrial": "",
+                "events": [
+                    {
+                        "messagee": "App is BLOCKED",
+                        "type": "block_on",
+                        "date": 1668848033000,
+                        "id": "2220d340-7625-4644-9b97-b73d654bd677"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 206.17",
+                        "date": 1675516527000,
+                        "id": "09589d74-a07c-4184-a6a6-b47f3970cc2c"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1671440428000,
+                        "type": "billing_regular",
+                        "id": "4c267015-e38c-4e98-bbbd-bd37067690ef"
+                    },
+                    {
+                        "type": "block_off",
+                        "messagee": "App is UNBLOCKED",
+                        "date": 1668853836000,
+                        "id": "c2b957ed-7afc-41b2-804d-e4354936729e"
+                    },
+                    {
+                        "messagee": "On-demand charged $ 46.92",
+                        "type": "billing_ondemand",
+                        "date": 1677685169000,
+                        "id": "2ebab197-6bef-435f-802e-b38443bad389"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1672911318000,
+                        "messagee": "On-demand charged $ 71.52",
+                        "id": "93c1a135-478c-4066-8b4a-9be543da561a"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "type": "billing_regular",
+                        "date": 1675933245000,
+                        "id": "5c9aa2bc-a9db-4b64-ad39-34dfe522fc45"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1682972961000,
+                        "messagee": "On-demand charged $ 30.81",
+                        "id": "287b15db-0fb0-493f-9c78-78e918ed657b"
+                    },
+                    {
+                        "messagee": "On-demand charged $ 67.79",
+                        "type": "billing_ondemand",
+                        "date": 1669910838000,
+                        "id": "4a89a5b6-739c-4c7c-a56b-7be118e3122a"
+                    },
+                    {
+                        "type": "plan_update",
+                        "messagee": "App plan updated Startup-monthly → Pro-monthly",
+                        "date": 1675851178000,
+                        "id": "3197a26e-9e1b-4d7a-b1b6-b228eabdb546"
+                    },
+                    {
+                        "date": 1683536435000,
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "type": "billing_regular",
+                        "id": "1b0da2ba-bd16-4f55-9487-42bd1c715fe9"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "type": "billing_regular",
+                        "date": 1686214847000,
+                        "id": "4fa4aa3f-0ef5-44cf-9697-892831a73af2"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1680944553000,
+                        "type": "billing_regular",
+                        "id": "7161b4fd-4819-4c2b-b078-e79c8d9da472"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1678266063000,
+                        "type": "billing_regular",
+                        "id": "50c4d309-bf36-45d0-81b0-5f0d8b286986"
+                    },
+                    {
+                        "date": 1668853740000,
+                        "type": "app_created",
+                        "messagee": "App is created",
+                        "id": "230e4349-3ea3-450b-8f7a-982e1de4a775"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1680537371000,
+                        "messagee": "On-demand charged $ 54.8",
+                        "id": "72315a48-aaf5-414a-859a-85848aa2ecdf"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 63.7",
+                        "date": 1685626015000,
+                        "id": "63e70fbc-813e-4337-8cd3-082e9b4d41da"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1674118838000,
+                        "type": "billing_regular",
+                        "id": "1ca6cf45-0c14-44bf-84eb-e30ad1077a98"
+                    }
+                ],
+                "comments": [],
+                "Automatic_downgrade": "",
+                "date_trial_ended": "",
+                "date_trial_started": "",
+                "isDowngraded": "",
+                "legacy_billing": "",
+                "paddle_subscription_id": ""
+            },
+            {
+                "name": "Seldon Clients Bot",
+                "paddle_subscription_status": "active",
+                "owner_id": {
+                    "wallet_balance": 37.17,
+                    "id": "seldon.integrations@gmail.com",
+                    "wallet_transactions": [
+                        {
+                            "balance": 37.17,
+                            "id": "8e976b42-993b-4aa0-a632-f3def7951c01",
+                            "date": 1686819663000,
+                            "comment": "Adding funds via Tinkoff 3196.62 ₽ → 37.17 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "0896e6e8-f1b3-4965-b1ac-411fbc75cd1d",
+                            "date": 1673536132000,
+                            "comment": "Update app seldonclientsbot, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6e374e23-52bc-42cd-9f1e-858a9b7ad8e8",
+                            "date": 1669021230000,
+                            "comment": "App seldonfin (14453), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 195,
+                            "id": "a8eaf749-81a9-41f1-b22c-62ae47191ddb",
+                            "date": 1666357179000,
+                            "comment": "Adding funds via Tinkoff 12480.0 ₽ → 195.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "3aa47e61-42c7-496e-b687-4db38160e56e",
+                            "date": 1658394755000,
+                            "comment": "App seldonclientsbot (10517), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0,
+                            "id": "49e67eb9-1387-4568-a75f-9770377ee9f3",
+                            "date": 1685524012000,
+                            "comment": "App verboxlogin (14510), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "025efbb7-2bb9-4874-94de-75b2880c2814",
+                            "date": 1666342909000,
+                            "comment": "App seldonclientsbot (10517), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "43033931-9af5-4483-bf92-755631fb3981",
+                            "date": 1653210058000,
+                            "comment": "App seldonclientsbot (10517), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "1633825d-70e2-45bc-90d9-c3f13a060d6c",
+                            "date": 1650635341000,
+                            "comment": "App seldonclientsbot (10517), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "b0076915-0a1c-450a-852f-090662416c84",
+                            "date": 1666342909000,
+                            "comment": "App seldonapitorgi (10598), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 80,
+                            "id": "33f2bf0a-8737-4d26-971a-0bb2938b2d89",
+                            "date": 1676368512000,
+                            "comment": "Adding funds via Tinkoff 5840.0 ₽ → 80.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 195,
+                            "id": "508b731e-d3a2-4af2-9f67-f8e135b78c93",
+                            "date": 1657018379000,
+                            "comment": "Adding funds via Tinkoff 11700.0 ₽ → 195.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "45f51339-e693-4527-aad3-fec5cd4461b8",
+                            "date": 1645401600000,
+                            "comment": "App seldonclientsbot (10517) license payment, plan Startup-monthly",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 87.51,
+                            "id": "2f96ffb7-ce7b-46fe-ac1c-bd5f5d536050",
+                            "date": 1684325075000,
+                            "comment": "Adding funds via Tinkoff 6913.29 ₽ → 87.51 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "8b6eb857-4880-4782-aef0-910ba130f899",
+                            "date": 1666361194000,
+                            "comment": "Update app seldonfin, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -17.07,
+                            "id": "1329ef8b-f893-4804-a17b-b16c41482444",
+                            "date": 1680537418000,
+                            "comment": "On-demand resource consumption. App seldonclientsbot (10517), period 2023-03",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -11.04,
+                            "id": "d16da9fb-dd94-42ee-ad2c-270b0ba99a05",
+                            "date": 1682973044000,
+                            "comment": "On-demand resource consumption. App seldonclientsbot (10517), period 2023-04",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -2.4,
+                            "id": "106f0d36-7975-4eb8-8d31-8ffeb5bc5ea2",
+                            "date": 1675517043000,
+                            "comment": "On-demand resource consumption. App seldonclientsbot (10517), period 2023-01",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "7f015892-eb53-42af-a844-31f27bea18a7",
+                            "date": 1661072446000,
+                            "comment": "App seldonclientsbot (10517), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6858f7e7-241f-4f35-972c-b23d8b800782",
+                            "date": 1663750918000,
+                            "comment": "App seldonclientsbot (10517), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6c0e5402-62b2-4ecd-b043-5fffa26e02a0",
+                            "date": 1673536163000,
+                            "comment": "Update app seldonfin, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 90,
+                            "id": "7356e87a-09a8-4750-bc08-32d08adfb1db",
+                            "date": 1679313051000,
+                            "comment": "Adding funds via Tinkoff 7020.0 ₽ → 90.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 197,
+                            "id": "a02128f9-cb0a-4405-a52a-e0b68628eef7",
+                            "date": 1673536070000,
+                            "comment": "Adding funds via Tinkoff 13593.0 ₽ → 197.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "ee8e22b1-3d6c-4f91-83c7-48860333c4b2",
+                            "date": 1676192464000,
+                            "comment": "App seldonclientsbot (10517), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "2d438465-179b-4a2b-b406-04c4aab4eb72",
+                            "date": 1655802031000,
+                            "comment": "App seldonclientsbot (10517), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "5e249eca-c443-43ef-ba72-3f31041309b8",
+                            "date": 1647820800000,
+                            "comment": "App seldonclientsbot (10517) license payment, plan Startup-monthly",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "c25610cf-359e-4cdb-981e-00e9bb5f20ef",
+                            "date": 1669021230000,
+                            "comment": "App seldonclientsbot (10517), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "ed7f2d31-52da-43b2-bec2-49aefd67e42e",
+                            "date": 1676368638000,
+                            "comment": "Update app seldonfin, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "3cf87a09-66cc-437e-8013-b7e4941695d5",
+                            "date": 1678611627000,
+                            "comment": "App seldonclientsbot (10517), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -1.01,
+                            "id": "d407a688-c72c-413f-ae9f-2b944ab3f8c4",
+                            "date": 1669910943000,
+                            "comment": "On-demand resource consumption. App seldonfin (14453), period 2022-11",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "0c1948f4-8b6b-4ed2-ac02-856900883a3f",
+                            "date": 1678784428000,
+                            "comment": "App seldonfin (14453), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6e84830a-9a29-4804-9f9d-47148a4ad734",
+                            "date": 1681290144000,
+                            "comment": "App seldonclientsbot (10517), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 39,
+                            "id": "ca9ea3ea-af81-40bf-a2b4-dbb8b2d7ecb6",
+                            "date": 1666361091000,
+                            "comment": "Adding funds via Tinkoff 2496.0 ₽ → 39.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 37.17,
+                            "id": "a9b339e8-b982-484a-9a5f-f25dcb684df0",
+                            "date": 1686819662000,
+                            "comment": "Adding funds via Tinkoff 3196.62 ₽ → 37.17 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "2e09230e-2f30-41ad-a438-b8f659ae5cfe",
+                            "date": 1681462833000,
+                            "comment": "App seldonfin (14453), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 90,
+                            "id": "f0585123-d04e-4f2e-8ce5-139c00225a1e",
+                            "date": 1682317518000,
+                            "comment": "Adding funds via Tinkoff 7470.0 ₽ → 90.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "d5d246c8-2457-4931-a645-51c6b2c302aa",
+                            "date": 1684054855000,
+                            "comment": "App seldonfin (14453), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 130,
+                            "id": "489af77d-9c8a-4f98-ab97-9a9a4e615261",
+                            "date": 1684325121000,
+                            "comment": "Adding funds via Tinkoff 10270.0 ₽ → 130.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "7eb21d05-a09b-4cb9-b13b-8b60bdaebef0",
+                            "date": 1683882032000,
+                            "comment": "App seldonclientsbot (10517), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "f5aa3038-5fe6-4c6f-b826-0c6474dc80e9",
+                            "date": 1684325069000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "8c319aa8-b07a-4365-9a22-71783753ee29",
+                            "date": 1669021230000,
+                            "comment": "App seldonapitorgi (10598), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6ffa78bc-9eb5-4ac1-841f-ad60eabe68d6",
+                            "date": 1684325456000,
+                            "comment": "Update app seldon-basis-metrika, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -6,
+                            "id": "bff67217-1ec8-4666-a1e8-d8068da2c0f7",
+                            "date": 1677685254000,
+                            "comment": "On-demand resource consumption. App seldonclientsbot (10517), period 2023-02",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -11.17,
+                            "id": "b82247d5-3e9a-44b0-8012-6eee5a2cbb11",
+                            "date": 1685626035000,
+                            "comment": "On-demand resource consumption. App seldonclientsbot (10517), period 2023-05",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "bfe6e813-ed8a-48e8-b13b-7282f787edcf",
+                            "date": 1686819652000,
+                            "comment": "App seldonfin (14453), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "934aa76f-5118-4d4f-a254-fab3965feb95",
+                            "date": 1686819652000,
+                            "comment": "App seldonclientsbot (10517), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "4a9f54f3-67ba-452b-a2cf-108a54bc209c",
+                            "date": 1686819652000,
+                            "comment": "App seldon-basis-metrika (16108), license payment, plan Startup",
+                            "type": "app_payment"
+                        }
+                    ]
+                },
+                "next_billing_date": 1689433733727,
+                "trialType": "skip",
+                "sysName": "seldonclientsbot",
+                "plan_id": {
+                    "price": 39,
+                    "name": "Startup",
+                    "description": "Ideal for building an MVP or an internal app",
+                    "id": "Startup-monthly"
+                },
+                "paddle_subscription_id": "9717591",
+                "id": "10517",
+                "is_hidden": false,
+                "is_sandbox": false,
+                "next_payment": 39,
+                "isTrial": "",
+                "events": [
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 11.17",
+                        "date": 1685626035000,
+                        "id": "39fa0da2-1cba-4f0c-b831-cfbdc5c6cb14"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1683882032000,
+                        "type": "billing_regular",
+                        "id": "bdafcd75-ff50-4018-bd04-46c15b5e9eed"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "date": 1669021230000,
+                        "id": "99b43e6b-6890-49cc-ac73-6a0150dd773f"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "date": 1678611627000,
+                        "id": "e39ec961-d962-4605-b0e7-93bf0da5b58c"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1673254516000,
+                        "messagee": "App plan updated Startup-monthly → FREE",
+                        "id": "ce0adcad-257d-4ff9-9603-6864699571b3"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1682973044000,
+                        "messagee": "On-demand charged $ 11.04",
+                        "id": "a10c9eb0-a91f-42dd-a11f-4bcdac1322ed"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1675517042000,
+                        "messagee": "On-demand charged $ 2.4",
+                        "id": "603ddfd3-e08d-43ff-b69d-87b28ef951e3"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1681290146000,
+                        "type": "billing_regular",
+                        "id": "f57e6730-2e1d-4cf9-8c8b-aa40277a80d7"
+                    },
+                    {
+                        "date": 1680537418000,
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 17.07",
+                        "id": "4ad23528-95fb-4de1-b553-ad9593de1072"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1650635340000,
+                        "type": "billing_regular",
+                        "id": "996dc47b-6eba-4c0d-bcf5-f60c2502e643"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "date": 1655802032000,
+                        "id": "aa8e464c-8840-41b9-927a-9bd357eb2832"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1673536133000,
+                        "messagee": "App plan updated FREE → Startup-monthly",
+                        "id": "b6f9d6b7-3be3-4ff6-b63e-8c2565298ed3"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "date": 1661072446000,
+                        "id": "7a038d1c-fbb0-4e8d-bfde-a0d02909a2a8"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1666343865000,
+                        "type": "billing_regular",
+                        "id": "b8c81fa3-aa07-4e03-887c-19b6de1fad53"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 6",
+                        "date": 1677685254000,
+                        "id": "2512b5cd-451b-4a23-a2e0-63be3495e622"
+                    },
+                    {
+                        "date": 1663753237000,
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "id": "ad5be612-ede0-4e32-a283-d384ea092e01"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1676192464000,
+                        "type": "billing_regular",
+                        "id": "04b70f65-2262-412d-a176-169283bcc897"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "date": 1658394762000,
+                        "id": "9764768e-0b43-4239-be33-bbb7893bd141"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1671613715000,
+                        "type": "billing_regular",
+                        "id": "c4b91d06-3728-43df-a9fc-de8f8f17095e"
+                    },
+                    {
+                        "date": 1653210103000,
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "id": "51329f57-e6b8-4ea7-b94b-f4a247b830a3"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1686819652000,
+                        "type": "billing_regular",
+                        "id": "6628aaf2-6588-47e5-ba5f-b351ff539c09"
+                    }
+                ],
+                "comments": [],
+                "Automatic_downgrade": "",
+                "date_trial_ended": "",
+                "date_trial_started": "",
+                "isDowngraded": "",
+                "legacy_billing": ""
+            },
+            {
+                "name": "Oracle Card Deck",
+                "is_blocked": true,
+                "isDowngraded": "",
+                "owner_id": {
+                    "wallet_balance": 0,
+                    "id": "m.panfilov@ratio.digital",
+                    "wallet_transactions": [
+                        {
+                            "balance": -73.4,
+                            "id": "188949ef-4447-47cd-8029-139c6eace3be",
+                            "date": 1685626007000,
+                            "comment": "On-demand resource consumption. App oracl-card-deck (16359), period 2023-05",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "79699aad-1978-44b4-a5e5-8fcf7e5ad52d",
+                            "date": 1686637115000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "0d81e47e-bc59-44b6-bcf1-0dc86434eb71",
+                            "date": 1684659610000,
+                            "comment": "App oracl-card-deck (16359), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 50,
+                            "id": "8b404b81-c3b4-4efe-885c-57922b7e68ac",
+                            "date": 1683014827000,
+                            "comment": "Adding funds via Tinkoff 4150.0 ₽ → 50.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 100,
+                            "id": "9644cc8b-ef22-42ff-a5ea-a14b85dd5954",
+                            "date": 1678793388000,
+                            "comment": "Adding funds via Tinkoff 7600.0 ₽ → 100.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "cb0aa4a1-9792-42b3-aefd-6c591ec22e12",
+                            "date": 1682067658000,
+                            "comment": "App oracl-card-deck (16359), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 101.09,
+                            "id": "02b0d1c6-7a8e-46b6-a02d-9f0d19de68b2",
+                            "date": 1686637118000,
+                            "comment": "Adding funds via Tinkoff 8491.56 ₽ → 101.09 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "ae67bee8-3293-489a-86e5-d36228629695",
+                            "date": 1679395777000,
+                            "comment": "Update app oracl-card-deck, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -60.7,
+                            "id": "d23fdfe1-09d7-4856-867f-dabfb49813b2",
+                            "date": 1682972940000,
+                            "comment": "On-demand resource consumption. App oracl-card-deck (16359), period 2023-04",
+                            "type": "ondemand"
+                        }
+                    ]
+                },
+                "next_billing_date": 1687344579010,
+                "trialType": "skip",
+                "sysName": "oracl-card-deck",
+                "plan_id": {
+                    "price": 0,
+                    "name": "Free",
+                    "description": "Perfect for learning the basics of Directual",
+                    "id": "FREE"
+                },
+                "id": "16359",
+                "is_hidden": false,
+                "is_sandbox": false,
+                "next_payment": 39,
+                "events": [
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1682972939000,
+                        "messagee": "On-demand charged $ 60.7",
+                        "id": "5be130f2-56de-45b3-892a-d9198a62c8ce"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1679395778000,
+                        "messagee": "App plan updated FREE → Startup-monthly",
+                        "id": "cccc7a86-6d82-4ee6-b9fd-e95243b9aac5"
+                    },
+                    {
+                        "date": 1678804375000,
+                        "type": "app_created",
+                        "messagee": "App is created",
+                        "id": "9e0f1d5e-e546-4401-94b6-045cd2c46056"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1687330328000,
+                        "messagee": "App plan updated Startup-monthly → FREE",
+                        "id": "39811ec0-5cd5-48a8-9374-da3a7af910e5"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1682067658000,
+                        "type": "billing_regular",
+                        "id": "5cc08a80-048f-40f7-8631-77b5896e5e58"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1684659610000,
+                        "type": "billing_regular",
+                        "id": "acaad206-6fb5-4632-bdbf-d223345a0fe2"
+                    },
+                    {
+                        "messagee": "App is downgraded to FREE and blocked",
+                        "date": 1687330328000,
+                        "type": "billing_regular",
+                        "id": "21df30fa-f3d2-40c7-b22c-74501e147fa8"
+                    },
+                    {
+                        "messagee": "On-demand charged $ 73.4",
+                        "type": "billing_ondemand",
+                        "date": 1685626007000,
+                        "id": "b534a553-ef00-4fbe-993c-0d5dbacd8562"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1687330328000,
+                        "messagee": "App plan updated Startup-monthly → FREE",
+                        "id": "d5e67fa9-b9a3-41c5-838b-586d2fba34f6"
+                    }
+                ],
+                "comments": [],
+                "Automatic_downgrade": "",
+                "date_trial_ended": "",
+                "date_trial_started": "",
+                "isTrial": "",
+                "legacy_billing": "",
+                "paddle_subscription_id": ""
+            },
+            {
+                "name": "Молоко из Кузьмино CRM",
+                "is_blocked": false,
+                "isDowngraded": true,
+                "owner_id": {
+                    "wallet_balance": 5.36,
+                    "id": "av.volgin@gmail.com",
+                    "wallet_transactions": [
+                        {
+                            "balance": 243,
+                            "id": "44df8682-2f02-460d-a52b-cfe2624dd94e",
+                            "date": 1686945719000,
+                            "comment": "Скидка на первый on-demand платеж",
+                            "type": "manual"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "e39b9d9a-66ee-437f-9c3e-4cb2d629134a",
+                            "date": 1686733254000,
+                            "comment": "App kuzmino (17388), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -270.64,
+                            "id": "51530991-8446-48b0-a626-1d9cac3d2f3a",
+                            "date": 1685625964000,
+                            "comment": "On-demand resource consumption. App kuzmino (17388), period 2023-05",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 100,
+                            "id": "7245cacb-87dc-4910-8d8e-65f8aa8c91b5",
+                            "date": 1684075681000,
+                            "comment": "Adding funds via Tinkoff 7900.0 ₽ → 100.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "2a31a819-4d98-4068-ad45-d3b4b6b88970",
+                            "date": 1684075711000,
+                            "comment": "Update app kuzmino, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 50,
+                            "id": "4d895546-0749-4188-bff4-bbe04d326214",
+                            "date": 1684304865000,
+                            "comment": "Promo-code Welcome",
+                            "type": "promo"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "36de5ccd-ead6-4cfc-ae21-2ba7237ffcd1",
+                            "date": 1685523916000,
+                            "comment": "App avolgintest (17427), license payment, plan Startup",
+                            "type": "app_payment"
+                        }
+                    ]
+                },
+                "next_billing_date": 1689346111961,
+                "trialType": "skip",
+                "sysName": "kuzmino",
+                "plan_id": {
+                    "price": 39,
+                    "name": "Startup",
+                    "description": "Ideal for building an MVP or an internal app",
+                    "id": "Startup-monthly"
+                },
+                "id": "17388",
+                "is_hidden": false,
+                "is_sandbox": false,
+                "next_payment": 39,
+                "events": [
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1686733254000,
+                        "type": "billing_regular",
+                        "id": "e6a54408-0867-41c0-90c6-3d1e1ebfc5b4"
+                    },
+                    {
+                        "date": 1686936769000,
+                        "type": "block",
+                        "messagee": "App is blocked",
+                        "id": "952aad28-5dd1-4770-a1ea-462d286aab80"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1685625964000,
+                        "messagee": "On-demand charged $ 270.64",
+                        "id": "f5cd87f5-9c1c-4ab3-b0af-0a8ed91e3188"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1686936770000,
+                        "messagee": "App plan updated Startup-monthly → FREE",
+                        "id": "67aa6766-00ed-4808-a60a-0cdcea92d430"
+                    },
+                    {
+                        "type": "plan_update",
+                        "messagee": "App plan updated FREE → Startup-monthly",
+                        "date": 1686945765000,
+                        "id": "0450d471-b3a6-4ecb-b783-4f525a45821a"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1684075711000,
+                        "messagee": "App plan updated FREE → Startup-monthly",
+                        "id": "5cb7884e-54a2-438e-8c79-c2259ce82cca"
+                    },
+                    {
+                        "type": "app_created",
+                        "messagee": "App is created",
+                        "date": 1683912064000,
+                        "id": "7ca576eb-e171-4e2c-bf37-3b729bf8dbfe"
+                    }
+                ],
+                "comments": [],
+                "Automatic_downgrade": "",
+                "date_trial_ended": "",
+                "date_trial_started": "",
+                "isTrial": "",
+                "legacy_billing": "",
+                "paddle_subscription_id": ""
+            },
+            {
+                "name": "Dentlap",
+                "isDowngraded": "",
+                "owner_id": {
+                    "wallet_balance": 0,
+                    "id": "bagdaer@gmail.com",
+                    "wallet_transactions": [
+                        {
+                            "balance": -63.7,
+                            "id": "acbce8ea-fb65-4b97-aa98-47605cdda3c3",
+                            "date": 1685626015000,
+                            "comment": "On-demand resource consumption. App dentalbase (12200), period 2023-05",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 169.81,
+                            "id": "9a92369a-e9b6-4142-a298-2a00c482dfff",
+                            "date": 1683627067000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "f0f39ac1-339c-4fba-adc2-8a10962850dd",
+                            "date": 1683536435000,
+                            "comment": "App dentalbase (12200), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 39,
+                            "id": "cf3fe49c-cfcb-4e43-9737-0b36ce0fa5c5",
+                            "date": 1682413324000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 184.66,
+                            "id": "20df08cc-c71d-4c66-9428-480cbba378b0",
+                            "date": 1681039986000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "1eda7f15-a74c-4326-98cd-0ead9a6817fa",
+                            "date": 1680944552000,
+                            "comment": "App dentalbase (12200), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 139,
+                            "id": "9bf4d3b8-dea6-47d3-8475-e32c3bdbd960",
+                            "date": 1686214857000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -45.66,
+                            "id": "de41bf82-5b76-48be-a626-5c9f51f55901",
+                            "date": 1680537384000,
+                            "comment": "On-demand resource consumption. App dntl (12422), period 2023-03",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "13aa73b1-1a17-477a-93bc-4b68da6d9438",
+                            "date": 1686214845000,
+                            "comment": "App dentalbase (12200), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 54.8,
+                            "id": "a25862d4-865c-48c0-ae84-8571b1aefd5e",
+                            "date": 1680537376000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 110.52,
+                            "id": "ad3a3972-51df-4689-8345-2662758aabe6",
+                            "date": 1672911323000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 264.43,
+                            "id": "240b7979-9321-4074-90dd-2adb760cc651",
+                            "date": 1675850871000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 0.83,
+                            "id": "e78778cd-7342-4c8a-924d-37c52dd0e096",
+                            "date": 1669910916000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 39,
+                            "id": "338978cc-43aa-406e-ba12-54781ac7114d",
+                            "date": 1661441382000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -12.65,
+                            "id": "2bdc4dbb-d970-49c9-9fc4-9cca97900fb4",
+                            "date": 1669910905000,
+                            "comment": "On-demand resource consumption. App dntl (12422), period 2022-11",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "2125bcff-591c-4489-933f-e1aa7a7cf737",
+                            "date": 1671440428000,
+                            "comment": "App dentalbase (12200), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 4.33,
+                            "id": "2374bbe6-f978-4ddc-8c8c-dc5965563c00",
+                            "date": 1669910848000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 63.28,
+                            "id": "14a830dc-9c75-47eb-986c-ee4a7b4fbb35",
+                            "date": 1669910843000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 139,
+                            "id": "91f715b3-6644-41e4-b181-00ca362ea92c",
+                            "date": 1678266071000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -67.79,
+                            "id": "100e5966-00d4-4a64-80e0-43a3b44c28ae",
+                            "date": 1669910838000,
+                            "comment": "On-demand resource consumption. App dentalbase (12200), period 2022-11",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 39,
+                            "id": "57a49f1f-0994-4206-8246-612c7b57f390",
+                            "date": 1679734834000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "90db2e4c-b2e9-4da1-b11a-27aa6cdaba46",
+                            "date": 1679734828000,
+                            "comment": "App dntl (12422), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 2.17,
+                            "id": "ac2378ce-0185-4f30-8dcf-a9f778f7162c",
+                            "date": 1669366842000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "782620ec-9ee7-4c2f-a436-84fc4548d45a",
+                            "date": 1674118838000,
+                            "comment": "App dentalbase (12200), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -63.12,
+                            "id": "d7a54f07-84d6-48a3-a4e5-933d43ffd1fe",
+                            "date": 1682972906000,
+                            "comment": "On-demand resource consumption. App dntl (12422), period 2023-04",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 39,
+                            "id": "026c813a-9068-4267-8191-3ad8a73b8418",
+                            "date": 1674118847000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -54.58,
+                            "id": "d46a2187-0834-4340-b5a0-ea4c94c4556f",
+                            "date": 1685626026000,
+                            "comment": "On-demand resource consumption. App dntl (12422), period 2023-05",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "d49b21af-c970-4efe-9949-59d558b5e6e2",
+                            "date": 1664096454000,
+                            "comment": "App dntl (12422), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 12.08,
+                            "id": "186ac5d4-603b-46a2-bf78-e67e6ccc8001",
+                            "date": 1669910910000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "f2d06afe-a0b8-49ca-a50a-ca919492aa18",
+                            "date": 1675933246000,
+                            "comment": "App dentalbase (12200), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -30.81,
+                            "id": "ab5679fa-ad49-4acf-94bf-401cc30793a1",
+                            "date": 1682972961000,
+                            "comment": "On-demand resource consumption. App dentalbase (12200), period 2023-04",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 39,
+                            "id": "4ef71fc4-cde7-43aa-aec8-bab77c2adf54",
+                            "date": 1661441377000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -1.7,
+                            "id": "f755fedf-10b1-46e6-a9ce-37fd88afd8fe",
+                            "date": 1667309875000,
+                            "comment": "On-demand resource consumption. App dntl (12422), period 2022-10",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "21051105-1a33-4aa8-82c4-52f7c1300b62",
+                            "date": 1674637234000,
+                            "comment": "App dntl (12422), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "266e86bf-f5e9-42dc-b79c-a2185f0ca85e",
+                            "date": 1671958841000,
+                            "comment": "App dntl (12422), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 46.92,
+                            "id": "f05b6b9a-82ba-44dc-b9c1-482969655039",
+                            "date": 1677685176000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6249a84c-9979-4330-b175-2cc737284513",
+                            "date": 1666688426000,
+                            "comment": "App dntl (12422), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "fc5ff838-9a2d-47b8-a8e1-eac6409c3408",
+                            "date": 1661441377000,
+                            "comment": "Update app dntl, plan Startup-monthly (previous plan: )",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 39,
+                            "id": "a2557310-87b4-4de6-b350-b3a244d496ca",
+                            "date": 1666688432000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 14.3,
+                            "id": "9998eefb-f6cf-4f88-b13c-1a8950ff6439",
+                            "date": 1675850871000,
+                            "comment": "App dentalbase  plan upgrade (Startup-monthly → Pro-monthly) partial refund",
+                            "type": "app_payment_upgrade_refund"
+                        },
+                        {
+                            "balance": 26.86,
+                            "id": "0a647daa-ba7d-4ea8-a4da-d1df2dd7976b",
+                            "date": 1677685221000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 39.06,
+                            "id": "7a67fbfb-15b8-4bfa-b49d-b1e18dc2cfed",
+                            "date": 1671440434000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "9521508c-e9c9-4d63-b417-eca0f81ef55a",
+                            "date": 1669366828000,
+                            "comment": "App dntl (12422), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "922a5ddf-3a9f-4757-9d5b-3c176b39b11b",
+                            "date": 1685005210000,
+                            "comment": "App dntl (12422), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -71.52,
+                            "id": "7a542f48-4c5f-4c34-ad9c-cf3b9496d31d",
+                            "date": 1672911318000,
+                            "comment": "On-demand resource consumption. App dentalbase (12200), period 2022-12",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "73cb42d3-7bf4-48f2-8387-b01ac4a863ea",
+                            "date": 1668853738000,
+                            "comment": "Update app dentalbase, plan Startup-monthly (previous plan: )",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 1.7,
+                            "id": "234cee77-7a28-4f05-bdc0-67ef00168ff1",
+                            "date": 1667309882000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -27.23,
+                            "id": "8c21c517-7329-4288-a55a-c0e3652025a0",
+                            "date": 1672911585000,
+                            "comment": "On-demand resource consumption. App dntl (12422), period 2022-12",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 27.23,
+                            "id": "0f0c9342-5040-48e8-b141-b48c63b3c5d1",
+                            "date": 1672911590000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -206.17,
+                            "id": "dcbb85a9-5603-4e0f-8e12-663cc56b6554",
+                            "date": 1675516527000,
+                            "comment": "On-demand resource consumption. App dentalbase (12200), period 2023-01",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -19.26,
+                            "id": "7dcbc674-f10a-4ef8-b6b0-0e204d983ee7",
+                            "date": 1675516919000,
+                            "comment": "On-demand resource consumption. App dntl (12422), period 2023-01",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 54.58,
+                            "id": "d04cac64-34e3-48d1-ba34-05a836d10d7a",
+                            "date": 1685626032000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 124.7,
+                            "id": "928da578-88cc-4292-9d87-2f428811f99b",
+                            "date": 1675933253000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 39,
+                            "id": "bfa5ee14-9d91-4db2-9d0f-6157f6089cb2",
+                            "date": 1685005218000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "34ba388b-983c-4559-8fb5-9d6b7c6d652c",
+                            "date": 1677315632000,
+                            "comment": "App dntl (12422), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 39,
+                            "id": "4f9021f4-b172-4d17-bf9b-360a23917068",
+                            "date": 1677315637000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -46.92,
+                            "id": "4ddd1d24-0f7c-4ec9-a602-a107d3848159",
+                            "date": 1677685171000,
+                            "comment": "On-demand resource consumption. App dentalbase (12200), period 2023-02",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "6cf08dfa-4234-43f7-9cc1-2cbe64f57c78",
+                            "date": 1682413318000,
+                            "comment": "App dntl (12422), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 39,
+                            "id": "8025acd3-1121-4f26-a3ca-00afc67310af",
+                            "date": 1668853738000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -26.86,
+                            "id": "7bf8bc6e-e8b4-40c5-9f38-ad2d4c3951d3",
+                            "date": 1677685217000,
+                            "comment": "On-demand resource consumption. App dntl (12422), period 2023-02",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 63.7,
+                            "id": "bd79309b-0207-4137-92a1-a4db47630b5c",
+                            "date": 1685626020000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": 36.69,
+                            "id": "ae068696-f704-402a-a859-c2845eb479e1",
+                            "date": 1669366836000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "e0f6e7b6-314c-4a36-b4b5-7796c5689530",
+                            "date": 1678266063000,
+                            "comment": "App dentalbase (12200), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 63.12,
+                            "id": "ac7eadbf-c544-4994-83cc-859cc9aef207",
+                            "date": 1682972911000,
+                            "comment": "Payment from Credit card or Paypal",
+                            "type": "paddle_payment"
+                        },
+                        {
+                            "balance": -54.8,
+                            "id": "37d42e95-e1f1-4acc-9aff-7e81f162528a",
+                            "date": 1680537371000,
+                            "comment": "On-demand resource consumption. App dentalbase (12200), period 2023-03",
+                            "type": "ondemand"
+                        }
+                    ]
+                },
+                "next_billing_date": 1687687716660,
+                "trialType": "skip",
+                "sysName": "dntl",
+                "plan_id": {
+                    "price": 39,
+                    "name": "Startup",
+                    "description": "Ideal for building an MVP or an internal app",
+                    "id": "Startup-monthly"
+                },
+                "id": "12422",
+                "is_hidden": false,
+                "is_sandbox": false,
+                "next_payment": 39,
+                "isTrial": "",
+                "events": [
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1664096456000,
+                        "type": "billing_regular",
+                        "id": "21cad9f7-626d-4d71-8db2-a8e5f2e12a20"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 26.86",
+                        "date": 1677685217000,
+                        "id": "e5cb5121-63f6-4391-b367-a29403c207d1"
+                    },
+                    {
+                        "date": 1680537384000,
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 45.66",
+                        "id": "6ebb9efe-1f79-4eeb-9d69-23cf2e58d976"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1667309875000,
+                        "messagee": "On-demand charged $ 1.7",
+                        "id": "8e7fdb89-aeca-4c27-810e-3a8e4ccc2c5d"
+                    },
+                    {
+                        "date": 1685005210000,
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "id": "ca4997f5-08eb-4c40-b5bb-73fb26a92687"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "date": 1671958841000,
+                        "id": "569d7f2d-6f0d-4d6c-aabe-f0bd7939bef4"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1685626026000,
+                        "messagee": "On-demand charged $ 54.58",
+                        "id": "21a7f395-8e15-4476-a8b4-6500f22a855c"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1677315631000,
+                        "type": "billing_regular",
+                        "id": "531f7807-e87b-4c2a-85db-59d60ca5acbe"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1666688426000,
+                        "type": "billing_regular",
+                        "id": "b8e99cf4-3c94-4f2e-aeb4-6c16afec067d"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 12.65",
+                        "date": 1669910905000,
+                        "id": "8db80aed-5707-4a73-b4f3-a41048624901"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1682972906000,
+                        "messagee": "On-demand charged $ 63.12",
+                        "id": "6075a7a3-159d-4daa-b933-4f9fcd5876f3"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1679734827000,
+                        "type": "billing_regular",
+                        "id": "bd93aad0-dfc9-498b-bc31-f55f0ecb8922"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "date": 1682413318000,
+                        "id": "0fd1bf81-d0b4-4689-98ca-a967845e904d"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 19.26",
+                        "date": 1675516919000,
+                        "id": "903a301a-b3eb-4afa-976b-afd2eb6cac51"
+                    },
+                    {
+                        "type": "app_created",
+                        "date": 1661441379000,
+                        "messagee": "App is created",
+                        "id": "50fc8507-1fba-46b2-945c-cbcf6a69becc"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1674637234000,
+                        "type": "billing_regular",
+                        "id": "a0ff7399-7f00-4d3d-a80d-2a9a8379dc9a"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1672911585000,
+                        "messagee": "On-demand charged $ 27.23",
+                        "id": "59472f3f-c6ea-4217-a2aa-3ec6e34e35c9"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1669366829000,
+                        "type": "billing_regular",
+                        "id": "d7832f17-5acd-4ea0-ae2a-92a4bfb6d516"
+                    }
+                ],
+                "comments": [],
+                "Automatic_downgrade": "",
+                "date_trial_ended": "",
+                "date_trial_started": "",
+                "legacy_billing": "",
+                "paddle_subscription_id": ""
+            },
+            {
+                "name": "Бизнес для Бизнеса",
+                "isDowngraded": "",
+                "owner_id": {
+                    "wallet_balance": 29.79,
+                    "id": "okda@mail.ru",
+                    "wallet_transactions": [
+                        {
+                            "balance": -39,
+                            "id": "ef15d193-74db-4daf-86c1-7fccd4d65d36",
+                            "date": 1683623009000,
+                            "comment": "App orel (12955), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -9.9,
+                            "id": "e48aa22a-6427-4faf-bae4-53de2b86ffa7",
+                            "date": 1685626049000,
+                            "comment": "On-demand resource consumption. App orel (12955), period 2023-05",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 50,
+                            "id": "7e551ffd-ce03-48c9-8ee9-80ca6b18d66c",
+                            "date": 1683529691000,
+                            "comment": "Adding funds via Tinkoff 1975.0 ₽ → 50.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 70,
+                            "id": "5690910a-7872-4d9f-9785-f1a98b3670ef",
+                            "date": 1681052383000,
+                            "comment": "Adding funds via Tinkoff 2870.0 ₽ → 70.00 D-coins (NPO bonus)",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -12.1,
+                            "id": "d93a0d4e-14e5-488c-a65a-5dd9bce9e9bb",
+                            "date": 1680537435000,
+                            "comment": "On-demand resource consumption. App orel (12955), period 2023-03",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -1.73,
+                            "id": "c44c1d9d-a5fe-4a8b-ab48-8c91f15e0dfe",
+                            "date": 1677685298000,
+                            "comment": "On-demand resource consumption. App orel (12955), period 2023-02",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 0.01,
+                            "id": "b4586b67-b2f3-4715-9f9f-67477532e2a5",
+                            "date": 1686077079000,
+                            "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "8958a462-e9d5-4927-832c-32adff270722",
+                            "date": 1675933246000,
+                            "comment": "App orel (12955), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "7f5f5ab0-b50c-4a1a-b377-b2eb53103a65",
+                            "date": 1673254849000,
+                            "comment": "App orel (12955), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -8.07,
+                            "id": "678f80f3-f8e8-401b-adbf-1768a490cda2",
+                            "date": 1656666903000,
+                            "comment": "On-demand resource consumption. App orel (12955), period 2022-06",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "883b68c0-1c9a-4dce-a3f8-cb32f2dd6f23",
+                            "date": 1686301251000,
+                            "comment": "App orel (12955), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -7.55,
+                            "id": "025418b4-e64f-412a-ae4a-2b2a7d5df405",
+                            "date": 1682973059000,
+                            "comment": "On-demand resource consumption. App orel (12955), period 2023-04",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -1.71,
+                            "id": "47af4236-9d18-4be9-aa7e-0f65346c19b3",
+                            "date": 1675517061000,
+                            "comment": "On-demand resource consumption. App orel (12955), period 2023-01",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "fbb83f5c-b0ea-4372-a997-d4fd0b3a0a34",
+                            "date": 1657357292000,
+                            "comment": "App orel (12955), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -1.16,
+                            "id": "5c4ac8aa-aebf-46f8-a4e0-e893aa4c8270",
+                            "date": 1662047197000,
+                            "comment": "On-demand resource consumption. App orel (12955), period 2022-08",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": 50,
+                            "id": "96fca8ea-b03d-48e5-91b5-4a4cc2008e95",
+                            "date": 1651232815000,
+                            "comment": "Promo-code welcome",
+                            "type": "promo"
+                        },
+                        {
+                            "balance": 60,
+                            "id": "0538a48c-5004-44bb-a475-5999ef183dff",
+                            "date": 1656875126000,
+                            "comment": "Adding funds via Tinkoff 1800.0 ₽ → 30.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "27808d2f-489e-4091-b7f2-aa7832761693",
+                            "date": 1670576443000,
+                            "comment": "App orel (12955), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "150df12e-e6ff-4e75-9596-0fccbb49212c",
+                            "date": 1652088373000,
+                            "comment": "Update app orel, plan Startup-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 40,
+                            "id": "bcee8d37-35fa-47a5-b922-d45582d24dfb",
+                            "date": 1667578249000,
+                            "comment": "Adding funds via Tinkoff 1280.0 ₽ → 40.0 D-coins (NPO x2 bonus)",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 28,
+                            "id": "df371dbb-3235-4525-9b8a-1fb68fc7cd3a",
+                            "date": 1653585358000,
+                            "comment": "Adding funds via Tinkoff 1932.0 ₽ → 28.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 100,
+                            "id": "c45d9261-0aa1-46f2-9ec5-f1aaa72dae27",
+                            "date": 1658731800000,
+                            "comment": "Promo-code HJBE7OF4UNMI",
+                            "type": "promo"
+                        },
+                        {
+                            "balance": 40,
+                            "id": "d03d4f99-a9ea-45a5-8bfc-d991f8e13ad2",
+                            "date": 1686077161000,
+                            "comment": "Adding funds via Tinkoff 1620.0 ₽ → 40.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "58f4d5e4-64b4-41a6-b58e-05582fad5a26",
+                            "date": 1681030842000,
+                            "comment": "App orel (12955), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "de57f869-7e09-4bb7-9942-667c8e8387f9",
+                            "date": 1667984495000,
+                            "comment": "App orel (12955), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 28,
+                            "id": "f681904d-0870-4fe8-88a2-8652ad48f4d8",
+                            "date": 1653585358000,
+                            "comment": "Adding funds via Tinkoff 1932.0 ₽ → 28.0 D-coins (бонус для НКО)",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "44bd6010-4f0d-49fe-a8aa-5bf4c8bafb26",
+                            "date": 1654765295000,
+                            "comment": "App orel (12955), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "59b05bd6-3ca7-4dd2-9688-0e9e3d01df04",
+                            "date": 1662714358000,
+                            "comment": "App orel (12955), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 30,
+                            "id": "df608c72-32b7-4776-b164-8b24158ce341",
+                            "date": 1673120224000,
+                            "comment": "Adding funds via Tinkoff 1020.0 ₽ → 30.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 30,
+                            "id": "8383a2d6-20b5-49e2-8bea-2bdb2c069d32",
+                            "date": 1678286944000,
+                            "comment": "Adding funds via Tinkoff 1125.0 ₽ → 30.00 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "9735a0ea-88f3-48a6-97bf-9be5d68422f9",
+                            "date": 1660035642000,
+                            "comment": "App orel (12955), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "613bbc6d-52f1-4802-bd09-ae6167a968fb",
+                            "date": 1665306059000,
+                            "comment": "App orel (12955), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -39,
+                            "id": "febf921c-a5b5-4159-8e20-65dbbf461ca0",
+                            "date": 1678352470000,
+                            "comment": "App orel (12955), license payment, plan Startup",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 40,
+                            "id": "65dedb43-5ed7-4fd4-af8f-b343b720e9fd",
+                            "date": 1670439940000,
+                            "comment": "Adding funds via Tinkoff 1280.0 ₽ → 40.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 52,
+                            "id": "a1551b05-a2e1-4dcd-8b9b-9b9c45096b71",
+                            "date": 1675693138000,
+                            "comment": "Adding funds via Tinkoff 1820.0 ₽ → 52.0 D-coins",
+                            "type": "tinkoff"
+                        }
+                    ]
+                },
+                "next_billing_date": 1688897372067,
+                "trialType": "skip",
+                "sysName": "orel",
+                "plan_id": {
+                    "price": 39,
+                    "name": "Startup",
+                    "description": "Ideal for building an MVP or an internal app",
+                    "id": "Startup-monthly"
+                },
+                "id": "12955",
+                "is_hidden": false,
+                "is_sandbox": false,
+                "next_payment": 39,
+                "isTrial": "",
+                "events": [
+                    {
+                        "date": 1675517061000,
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 1.71",
+                        "id": "b69ebef7-a66f-4657-a63f-d51af0679cbe"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1667984495000,
+                        "type": "billing_regular",
+                        "id": "c2545c67-c461-4b70-906d-8b0663232734"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "date": 1660035642000,
+                        "id": "cfb194a4-2fdb-4dc8-bb05-e747fad85796"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1682973059000,
+                        "messagee": "On-demand charged $ 7.55",
+                        "id": "c88ec32d-a894-4ded-8954-4faf790d359e"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "date": 1657357292000,
+                        "type": "billing_regular",
+                        "id": "9b6fde72-eccc-4ddb-9b5b-8cff0bc24fcd"
+                    },
+                    {
+                        "date": 1681030841000,
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "id": "8395d4d7-7fb7-4784-bb6c-687654ff9aed"
+                    },
+                    {
+                        "date": 1683623016000,
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "id": "5567cd14-034c-435b-8c2a-519d17e928fa"
+                    },
+                    {
+                        "date": 1662714358000,
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "id": "377d2da2-4d9e-4ba9-8d02-446523c0d801"
+                    },
+                    {
+                        "date": 1654765305000,
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "id": "09ad6970-6c87-48ad-89c2-3819cecf4319"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "date": 1675933245000,
+                        "id": "634c3eaa-6200-4778-b168-d6333654979b"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 12.1",
+                        "date": 1680537435000,
+                        "id": "3731693e-0cd2-42d2-bc34-351a73d3680c"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "date": 1678352470000,
+                        "id": "a5e25295-01a6-4447-914d-e6d508c3cad1"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 8.07",
+                        "date": 1656666903000,
+                        "id": "cce4c6ca-ccdb-42ad-bfcb-9a02b704f9d7"
+                    },
+                    {
+                        "date": 1670576443000,
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "id": "4296c5b9-4b4d-43af-860f-d7a9f3048026"
+                    },
+                    {
+                        "date": 1685626049000,
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 9.9",
+                        "id": "b7759f23-7f42-4461-97de-257d9054310f"
+                    },
+                    {
+                        "date": 1665306059000,
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "id": "7c3c5037-0cd3-474a-812d-3567d6a68289"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "messagee": "On-demand charged $ 1.73",
+                        "date": 1677685298000,
+                        "id": "9412d630-5a0f-4363-aba2-59158380e739"
+                    },
+                    {
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "date": 1686301251000,
+                        "id": "2dc891a3-71dc-409e-8296-ae64c03ce1c7"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1662047197000,
+                        "messagee": "On-demand charged $ 1.16",
+                        "id": "3f0fb965-1542-46cd-91a5-2882ee562844"
+                    },
+                    {
+                        "date": 1673254849000,
+                        "messagee": "License payment -39 D-coins, plan Startup",
+                        "type": "billing_regular",
+                        "id": "debc386a-3a35-48c3-bfbe-eb320cb8edfb"
+                    }
+                ],
+                "comments": [],
+                "Automatic_downgrade": "",
+                "date_trial_ended": "",
+                "date_trial_started": "",
+                "legacy_billing": "",
+                "paddle_subscription_id": ""
+            },
+            {
+                "name": "harvester",
+                "is_blocked": false,
+                "team_id": {
+                    "name": "Nikita Dolgov team",
+                    "owner_id": "n.dolgov@directual.com",
+                    "tariff_id": "team_monthly",
+                    "id": "370620d6-e18a-4bc6-8b3d-c432f7c391d5",
+                    "is_hidden": false
+                },
+                "owner_id": {
+                    "wallet_balance": 129.84,
+                    "id": "sbatsov@harvester.so",
+                    "wallet_transactions": [
+                        {
+                            "balance": -139,
+                            "id": "597a90b6-3c64-4da2-9cbd-4e33da28e6c9",
+                            "date": 1687265567000,
+                            "comment": "App harvester (13006), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -17.94,
+                            "id": "38a133b7-6994-43c4-b119-27f1f5646f00",
+                            "date": 1685955656000,
+                            "comment": "App harvester (13006), license payment, plan Pro. 05 June – 09 June.",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "46ac9cc0-858a-42ed-9e1b-1d12fc020cfc",
+                            "date": 1680685236000,
+                            "comment": "App harvester (13006), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "5a706870-9c5e-428f-95a3-537f2abecd23",
+                            "date": 1678006837000,
+                            "comment": "App harvester (13006), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "f7ea2afa-bdd2-4d27-94af-72107104c449",
+                            "date": 1675587663000,
+                            "comment": "App harvester (13006), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 417,
+                            "id": "b074add4-390f-4170-8aaf-721963d19af3",
+                            "date": 1674564495000,
+                            "comment": "Adding funds via Tinkoff 28773.0 ₽ → 417.0 D-coins",
+                            "type": "tinkoff"
+                        },
+                        {
+                            "balance": 650,
+                            "id": "89fad12e-42f6-4f83-bc75-e0db240f13aa",
+                            "date": 1686726741000,
+                            "comment": "Wire transfer from ООО \"Юникорн Гудс\", 55250 ₽ → 650 D-coins",
+                            "type": "bank_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "26b39935-875e-46b2-9485-0adeeb453af9",
+                            "date": 1654419690000,
+                            "comment": "App harvester (13006), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 200,
+                            "id": "97ab0026-76a8-4eab-a869-0ac9841a19e0",
+                            "date": 1675756536000,
+                            "comment": "Wire transfer from ООО \"БМП Индастриал\" , 13800 ₽ → 200 D-coins",
+                            "type": "bank_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "12303f3d-00d5-4444-a4f2-5f4f8723a338",
+                            "date": 1651739178000,
+                            "comment": "Update app harvester, plan Pro-monthly (previous plan: Free)",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "e59139e0-3ae8-4dbe-8546-def2265baf76",
+                            "date": 1670230876000,
+                            "comment": "App harvester (13006), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -7.22,
+                            "id": "31d6b6f1-2988-41df-b890-71521cb25e35",
+                            "date": 1685626058000,
+                            "comment": "On-demand resource consumption. App harvester (13006), period 2023-05",
+                            "type": "ondemand"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "0bac33dd-ecd2-4e06-a1b2-0bfdde2b6ad6",
+                            "date": 1672909265000,
+                            "comment": "App harvester (13006), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "f1f92c3d-36a4-4518-bb0e-8f9dc7d8be48",
+                            "date": 1657011624000,
+                            "comment": "App harvester (13006), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "cfbbd13b-3a3a-4847-ae36-06a31c91e962",
+                            "date": 1667638826000,
+                            "comment": "App harvester (13006), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 139,
+                            "id": "044617d3-9569-4dd4-834d-244308bb6496",
+                            "date": 1651672234000,
+                            "comment": "Wire transfer",
+                            "type": "bank_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "29e75c80-c6cf-44a0-b1b0-3284eeff8a60",
+                            "date": 1662368429000,
+                            "comment": "App harvester (13006), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "43d4f235-bd36-40bb-8ecc-acc24fbfa634",
+                            "date": 1683277235000,
+                            "comment": "App harvester (13006), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": -139,
+                            "id": "ff464239-e7af-4e14-b14c-dcf396a19775",
+                            "date": 1659690034000,
+                            "comment": "App harvester (13006), license payment, plan Pro",
+                            "type": "app_payment"
+                        },
+                        {
+                            "balance": 556,
+                            "id": "5607305a-dc74-4d0c-bb5b-199a0bcab781",
+                            "date": 1664798704000,
+                            "comment": "Wire transfer from ООО \"БМП\", 35584 ₽ → 556 D-coins",
+                            "type": "bank_payment"
+                        }
+                    ]
+                },
+                "next_billing_date": 1689843765265,
+                "trialType": "skip",
+                "sysName": "harvester",
+                "plan_id": {
+                    "price": 139,
+                    "name": "Pro",
+                    "description": "Includes advanced features for developing and scaling your app",
+                    "id": "Pro-monthly"
+                },
+                "id": "13006",
+                "is_hidden": false,
+                "is_sandbox": false,
+                "next_payment": 139,
+                "isTrial": "",
+                "events": [
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1680685236000,
+                        "type": "billing_regular",
+                        "id": "a1afe3e0-918c-47db-a1b9-7c225e84ff07"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1654419705000,
+                        "type": "billing_regular",
+                        "id": "fe364107-b497-4b71-994a-70c9b97b46a6"
+                    },
+                    {
+                        "type": "block_off",
+                        "messagee": "App is UNBLOCKED",
+                        "date": 1651650398000,
+                        "id": "1fa8e55f-4338-46f5-a533-6d011d1b5b0e"
+                    },
+                    {
+                        "date": 1686319537000,
+                        "type": "block",
+                        "messagee": "App is blocked",
+                        "id": "8e89838d-2b05-45af-b183-8edc1e69cb45"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1685955658000,
+                        "type": "billing_regular",
+                        "id": "bdb63632-d9d4-4453-8639-25fab0c622b5"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1675587664000,
+                        "type": "billing_regular",
+                        "id": "d0bfa590-f1d7-45c1-a565-293e861ec5a0"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1685626057000,
+                        "messagee": "On-demand charged $ 7.22",
+                        "id": "61125816-e0b1-442f-a435-4fad9867acb7"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "type": "billing_regular",
+                        "date": 1687265567000,
+                        "id": "a8a38ada-8e8b-49ce-b946-9f4b0de58146"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "type": "billing_regular",
+                        "date": 1662368429000,
+                        "id": "dfc4e260-32f6-4266-bdec-85dd443d6ae0"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1659690034000,
+                        "type": "billing_regular",
+                        "id": "ed4b4ffa-5356-490a-99d9-8e1d22a490de"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "type": "billing_regular",
+                        "date": 1657011624000,
+                        "id": "6b9bf4f5-cd3e-4fc3-8bd1-0bcf15a1b15e"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1683277235000,
+                        "type": "billing_regular",
+                        "id": "269b0e23-5058-49c4-b8b1-59df5ed33725"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1672909265000,
+                        "type": "billing_regular",
+                        "id": "e36f5933-be95-4ecb-b116-03f76a362672"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "type": "billing_regular",
+                        "date": 1670230876000,
+                        "id": "a1b5b431-ea00-45fb-99c0-3e2587033562"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1664960565000,
+                        "messagee": "App plan updated FREE → Pro-monthly",
+                        "id": "60eb096f-7d96-4a98-a528-2db816492d30"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1687265476000,
+                        "messagee": "App plan updated FREE → Pro-monthly",
+                        "id": "a7fe364d-9843-47df-b9de-3cfc87f8e604"
+                    },
+                    {
+                        "type": "plan_update",
+                        "date": 1664960433000,
+                        "messagee": "App plan updated Pro-monthly → FREE",
+                        "id": "fa3ac66e-a4d0-4a24-b226-e93c81fb7fb0"
+                    },
+                    {
+                        "type": "plan_update",
+                        "messagee": "App plan updated Pro-monthly → FREE",
+                        "date": 1686319537000,
+                        "id": "030f63cc-893b-42ab-b73c-36fd9c0fc126"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1678006837000,
+                        "type": "billing_regular",
+                        "id": "3e02b9ba-953e-4e88-b4aa-037d6281d2f9"
+                    },
+                    {
+                        "messagee": "License payment -139 D-coins, plan Pro",
+                        "date": 1667638826000,
+                        "type": "billing_regular",
+                        "id": "e302d0b9-eda3-4093-87b0-7b657d2c4a9b"
+                    }
+                ],
+                "comments": [],
+                "Automatic_downgrade": "",
+                "date_trial_ended": "",
+                "date_trial_started": "",
+                "isDowngraded": "",
+                "legacy_billing": "",
+                "paddle_subscription_id": ""
+            },
+            {
+                "name": "Leadzer",
+                "team_id": {
+                    "name": "AppSumo Tier 2",
+                    "owner_id": "jimbosky35@gmail.com",
+                    "tariff_id": "AppSumo_tier2_2t",
+                    "id": "6da4f081-03b0-45bc-a465-6391248076c8",
+                    "is_hidden": false
+                },
+                "owner_id": {
+                    "wallet_balance": 452,
+                    "id": "jimbosky35@gmail.com",
+                    "wallet_transactions": [
+                        {
+                            "balance": -452,
+                            "id": "7e6fcebf-1d2f-458f-a299-e0bf52c22212",
+                            "date": 1685625950000,
+                            "comment": "On-demand resource consumption. App leadzer-crm (17507), period 2023-05. -$9,036; discount 95%",
+                            "type": "ondemand"
+                        }
+                    ]
+                },
+                "next_billing_date": 1716175620562,
+                "trialType": "skip",
+                "sysName": "leadzer-crm",
+                "plan_id": {
+                    "price": 0,
+                    "name": "Pro-AppSumo",
+                    "description": "Special AppSumo plan",
+                    "id": "Pro-sandbox-AppSumo"
+                },
+                "id": "17507",
+                "is_hidden": false,
+                "is_sandbox": true,
+                "next_payment": "",
+                "isTrial": "",
+                "events": [
+                    {
+                        "date": 1684553220000,
+                        "type": "app_created",
+                        "messagee": "App is created",
+                        "id": "ed83e498-407d-41d6-ae79-9e5f93395626"
+                    },
+                    {
+                        "type": "plan_update",
+                        "messagee": "App plan updated FREE → Pro-sandbox-AppSumo",
+                        "date": 1684553220000,
+                        "id": "c4ec59b9-4552-43dd-9942-f20685bb369f"
+                    },
+                    {
+                        "type": "billing_ondemand",
+                        "date": 1685625949000,
+                        "messagee": "On-demand charged $ 9036.43",
+                        "id": "ef287a50-7ff9-4c18-ba2a-6197e6daa15a"
+                    }
+                ],
+                "Automatic_downgrade": "",
+                "comments": "",
+                "date_trial_ended": "",
+                "date_trial_started": "",
+                "isDowngraded": "",
+                "legacy_billing": "",
+                "paddle_subscription_id": ""
             }
         ],
-        "totalPages": 1,
+        "totalPages": 777,
         "pageNumber": 0,
         "error": null,
         "fieldScheme": [
             [
-                "certOption.id",
-                99213632
+                "Automatic_downgrade",
+                1395053
             ],
             [
-                "certOption.title",
-                99213632
+                "balance",
+                1395053
             ],
             [
-                "certPrice",
-                99212194
+                "comments.date",
+                99033830
             ],
             [
-                "date_requested",
-                99212194
+                "comments.files",
+                99033830
+            ],
+            [
+                "comments.text",
+                99033830
+            ],
+            [
+                "comments.user_id.firstName",
+                17682
+            ],
+            [
+                "comments.user_id.lastName",
+                17682
+            ],
+            [
+                "comments.user_id.userpic",
+                17682
+            ],
+            [
+                "date_trial_ended",
+                1395053
+            ],
+            [
+                "date_trial_started",
+                1395053
+            ],
+            [
+                "events.date",
+                99050194
+            ],
+            [
+                "events.messagee",
+                99050194
+            ],
+            [
+                "events.type",
+                99050194
             ],
             [
                 "id",
-                99212194
+                1395053
             ],
             [
-                "indiPriceBasic",
-                99212194
+                "isDowngraded",
+                1395053
             ],
             [
-                "indiPriceGold",
-                99212194
+                "isTrial",
+                1395053
             ],
             [
-                "projects",
-                99212194
+                "is_blocked",
+                1395053
             ],
             [
-                "status.id",
-                99213633
+                "is_cancelled",
+                1395053
             ],
             [
-                "status.title",
-                99213633
+                "is_hidden",
+                1395053
             ],
             [
-                "user_id.first_name",
+                "is_sandbox",
+                1395053
+            ],
+            [
+                "legacy_billing",
+                1395053
+            ],
+            [
+                "name",
+                1395053
+            ],
+            [
+                "next_billing_date",
+                1395053
+            ],
+            [
+                "next_payment",
+                1395053
+            ],
+            [
+                "owner_id.id",
                 1282551
             ],
             [
-                "user_id.id",
+                "owner_id.wallet_balance",
                 1282551
             ],
             [
-                "user_id.last_name",
-                1282551
+                "owner_id.wallet_transactions.balance",
+                99034345
             ],
             [
-                "user_id.wallet_balance",
-                1282551
+                "owner_id.wallet_transactions.comment",
+                99034345
+            ],
+            [
+                "owner_id.wallet_transactions.date",
+                99034345
+            ],
+            [
+                "owner_id.wallet_transactions.type",
+                99034345
+            ],
+            [
+                "paddle_subscription_id",
+                1395053
+            ],
+            [
+                "paddle_subscription_status",
+                1395053
+            ],
+            [
+                "plan_id.description",
+                1294700
+            ],
+            [
+                "plan_id.id",
+                1294700
+            ],
+            [
+                "plan_id.name",
+                1294700
+            ],
+            [
+                "plan_id.price",
+                1294700
+            ],
+            [
+                "sysName",
+                1395053
+            ],
+            [
+                "team_id.id",
+                1395054
+            ],
+            [
+                "team_id.is_hidden",
+                1395054
+            ],
+            [
+                "team_id.name",
+                1395054
+            ],
+            [
+                "team_id.owner_id",
+                1395054
+            ],
+            [
+                "team_id.tariff_id",
+                1395054
+            ],
+            [
+                "trialType",
+                1395053
             ]
         ],
         "writeFields": [
-            "certOption",
+            "Automatic_downgrade",
+            "comments",
+            "date_trial_ended",
+            "date_trial_started",
             "id",
-            "indiPriceBasic",
-            "indiPriceGold",
-            "status"
+            "isDowngraded",
+            "isTrial",
+            "legacy_billing",
+            "next_billing_date",
+            "next_payment",
+            "paddle_subscription_id",
+            "trialType"
         ],
         "structures": {
+            "17682": {
+                "networkID": 1822,
+                "sysName": "WebUser",
+                "name": "App users",
+                "id": 17682,
+                "dateCreated": "2018-08-24T09:51:34Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"role\",\"name\":\"role\",\"dataType\":\"string\",\"id\":\"1\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"firstName\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"11091633193856259\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isAuthorization\",\"name\":\"isAuthorization\",\"dataType\":\"boolean\",\"id\":\"2\",\"link\":\"\",\"group\":\"1633193869317\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"lastName\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"27051633193856853\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"dateLastActivity\",\"name\":\"dateLastActivity\",\"dataType\":\"string\",\"id\":\"3\",\"link\":\"\",\"group\":\"1633193869317\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"email\",\"name\":\"email\",\"dataType\":\"string\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"userpic\",\"name\":\"\",\"dataType\":\"file\",\"id\":\"49631633193892687\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"phone\",\"name\":\"phone\",\"dataType\":\"string\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"dateCreated\",\"name\":\"dateCreated\",\"dataType\":\"string\",\"id\":\"6\",\"link\":\"\",\"group\":\"1633193869317\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"password\",\"name\":\"password\",\"dataType\":\"string\",\"id\":\"7\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"8\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
+                "jsonGroupSettings": "[{\"name\":\"legacy fields\",\"id\":1633193869317,\"order\":0}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"firstName\"},{\"sysName\":\"lastName\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": false,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2021-10-02T16:58:26Z",
+                "createBy": null,
+                "changedBy": 21,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "objectIDSysName": "id",
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "8",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": null,
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": null,
+                    "groupName": null,
+                    "array": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "arrayLink": false,
+                    "indexExists": false,
+                    "typeVariable": {},
+                    "json": false
+                },
+                "folderId": 0
+            },
             "1282551": {
+                "networkID": 1822,
+                "sysName": "Cloud_users",
+                "name": "👨🏻 Cloud users",
                 "id": 1282551,
                 "dateCreated": "2019-10-05T15:17:37Z",
                 "hidden": false,
                 "dateHidden": null,
-                "networkID": 1822,
-                "name": "👨🏻 Cloud users",
-                "sysName": "Cloud_users",
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":true,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"note\",\"name\":\"Note\",\"dataType\":\"string\",\"id\":\"34591570383079323\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"first_name\",\"name\":\"First name\",\"dataType\":\"string\",\"id\":\"23971570288647049\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"last_name\",\"name\":\"Last name\",\"dataType\":\"string\",\"id\":\"81941570288646826\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"locale\",\"name\":\"locale\",\"dataType\":\"string\",\"id\":\"47031570379144750\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"source\",\"name\":\"Source\",\"dataType\":\"string\",\"id\":\"92371570288676773\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"request_id\",\"name\":\"Request ID\",\"dataType\":\"link\",\"id\":\"23691571997337572\",\"link\":\"Requests\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[\"\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":true,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ip\",\"name\":\"ip\",\"dataType\":\"string\",\"id\":\"70561588673350213\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"country\",\"name\":\"Country\",\"dataType\":\"link\",\"id\":\"37101588673355053\",\"link\":\"CountriesISO\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"social_register\",\"name\":\"social_register\",\"dataType\":\"boolean\",\"id\":\"71461588678509868\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"register_date\",\"name\":\"Register date\",\"dataType\":\"date\",\"id\":\"36551588868841568\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"country_id\",\"name\":\"Country link (ISO)\",\"dataType\":\"link\",\"id\":\"31401588873548829\",\"link\":\"CountriesISO\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"raw_id\",\"name\":\"Raw ID\",\"dataType\":\"link\",\"id\":\"39691642000254942\",\"link\":\"cloud_users_ids\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"last_activity_date\",\"name\":\"Last activity date\",\"dataType\":\"date\",\"id\":\"96951570962621002\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"apps\",\"name\":\"Apps\",\"dataType\":\"arrayLink\",\"id\":\"80561587152006234\",\"link\":\"AppInfo\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"number_of_sl\",\"name\":\"Number of SLs\",\"dataType\":\"number\",\"id\":\"41141570962898360\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"number_of_structures\",\"name\":\"Number of structures\",\"dataType\":\"number\",\"id\":\"70371570962891170\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"number_of_scenarios\",\"name\":\"Number of scenarios\",\"dataType\":\"number\",\"id\":\"71201570962890259\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"logged_in\",\"name\":\"Have logged in\",\"dataType\":\"boolean\",\"id\":\"42361570962605801\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"number_of_apps\",\"name\":\"Number of apps\",\"dataType\":\"number\",\"id\":\"41911570383626553\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"today_stat_id\",\"name\":\"Today stat link\",\"dataType\":\"link\",\"id\":\"42431587908594891\",\"link\":\"Dashboard_data\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"team_ids\",\"name\":\"Teams\",\"dataType\":\"arrayLink\",\"id\":\"26441632905559721\",\"link\":\"Teams\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"current_team_plans\",\"name\":\"Current team plans\",\"dataType\":\"arrayLink\",\"id\":\"45021632906172898\",\"link\":\"TeamTariffs\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"isLTD_user\",\"name\":\"LTD user\",\"dataType\":\"boolean\",\"id\":\"13531632918815271\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"Paid_app_plan_user\",\"name\":\"Paid app plan user\",\"dataType\":\"boolean\",\"id\":\"22421632918830874\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"current_app_plans\",\"name\":\"Current app plans\",\"dataType\":\"arrayLink\",\"id\":\"54321632918865581\",\"link\":\"Tariff\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"creditCardIsLinked\",\"name\":\"CreditCardIsLinked?\",\"dataType\":\"boolean\",\"id\":\"42541642072780075\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"mailchimp_tags\",\"name\":\"Mailchimp labels\",\"dataType\":\"string\",\"id\":\"97421570379132976\",\"link\":null,\"group\":\"1570379125072\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"mailchimp_segments\",\"name\":\"Mailchimp Segments\",\"dataType\":\"array\",\"id\":\"84981587457354001\",\"link\":\"\",\"group\":\"1570379125072\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":true},{\"sysName\":\"is_country_synced\",\"name\":\"is_country_synced\",\"dataType\":\"boolean\",\"id\":\"31991605527320825\",\"link\":\"\",\"group\":\"1570379125072\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"app_description\",\"name\":\"App description\",\"dataType\":\"string\",\"id\":\"72461572603438535\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"customer_type\",\"name\":\"Customer type\",\"dataType\":\"string\",\"id\":\"93281572603437791\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"utm_source\",\"name\":\"utm_source\",\"dataType\":\"string\",\"id\":\"91131588673287122\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"utm_medium\",\"name\":\"utm_medium\",\"dataType\":\"string\",\"id\":\"27621588673319861\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"utm_campaign\",\"name\":\"utm_campaign\",\"dataType\":\"string\",\"id\":\"85671588673320381\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"survey_ids\",\"name\":\"Surveys\",\"dataType\":\"arrayLink\",\"id\":\"27581591180002769\",\"link\":\"Surveys\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"ref\",\"name\":\"ref\",\"dataType\":\"string\",\"id\":\"68451626349155030\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"storage\",\"name\":\"Survey storage\",\"dataType\":\"json\",\"id\":\"86371627198748459\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"survey_step_1_raw\",\"name\":\"Which describes you best\",\"dataType\":\"string\",\"id\":\"24041632732046851\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"survey_step_2_raw\",\"name\":\"Whom do you want to build apps for\",\"dataType\":\"string\",\"id\":\"57151632732047604\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"survey_step_3_raw\",\"name\":\"How did you know about Directual\",\"dataType\":\"string\",\"id\":\"98341632732048278\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"survey_is_aborted\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"75331632901439193\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"notifications_account\",\"name\":\"Notify about Account\",\"dataType\":\"boolean\",\"id\":\"49381572378982097\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"notifications_academy\",\"name\":\"Notify about Academy\",\"dataType\":\"boolean\",\"id\":\"97951572378981844\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"notifications_blog\",\"name\":\"Notify about Blog\",\"dataType\":\"boolean\",\"id\":\"20211572378981407\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"unsubscribed\",\"name\":\"unsubscribed\",\"dataType\":\"boolean\",\"id\":\"20361600521081143\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"unsibscribed_reason\",\"name\":\"unsibscribed_reason\",\"dataType\":\"string\",\"id\":\"87491600521243757\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"admin_notification_text\",\"name\":\"admin_notification_text\",\"dataType\":\"string\",\"id\":\"21331602224278958\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"whom_to_alert\",\"name\":\"\",\"dataType\":\"arrayLink\",\"id\":\"61381602224446180\",\"link\":\"TUser\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"MailerLite_id\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"73551663229204538\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"MailerLite_MAIN\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"28941663229219515\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"MailerLite_Onboarding\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"16811663229232291\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"email_hash\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"40581588875619696\",\"link\":\"\",\"group\":\"1588875605532\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"gravatar\",\"name\":\"Gravatar\",\"dataType\":\"string\",\"id\":\"89411588875620336\",\"link\":\"\",\"group\":\"1588875605532\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"gravatar_pic\",\"name\":\" \",\"dataType\":\"file\",\"id\":\"77261619116355317\",\"link\":\"\",\"group\":\"1588875605532\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"is_suspended\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"97901644220993828\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"paddle_id\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"69331644221263888\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"paddle_status\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"99591644221269393\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"is_failed\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"10721644221276956\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"update_url\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"44161644221281677\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"basic_promo_code\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"62581644246255699\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"wallet_transactions\",\"name\":\"\",\"dataType\":\"arrayLink\",\"id\":\"53431648999094908\",\"link\":\"appwallet\",\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"wallet_balance\",\"name\":\"\",\"dataType\":\"decimal\",\"id\":\"60951648999103921\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"paid_apps_ids\",\"name\":\"\",\"dataType\":\"arrayLink\",\"id\":\"96621663160984409\",\"link\":\"Apps\",\"group\":\"1644221182856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"array\":false},{\"sysName\":\"tinkoff_rebill_id\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"97601678722478382\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"sent_to_partner\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"82171680675432429\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":true,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"note\",\"name\":\"Note\",\"dataType\":\"string\",\"id\":\"34591570383079323\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"first_name\",\"name\":\"First name\",\"dataType\":\"string\",\"id\":\"23971570288647049\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"last_name\",\"name\":\"Last name\",\"dataType\":\"string\",\"id\":\"81941570288646826\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"locale\",\"name\":\"locale\",\"dataType\":\"string\",\"id\":\"47031570379144750\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"source\",\"name\":\"Source\",\"dataType\":\"string\",\"id\":\"92371570288676773\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"request_id\",\"name\":\"Request ID\",\"dataType\":\"link\",\"id\":\"23691571997337572\",\"link\":\"Requests\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[\"\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":true},{\"sysName\":\"ip\",\"name\":\"ip\",\"dataType\":\"string\",\"id\":\"70561588673350213\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"country\",\"name\":\"Country\",\"dataType\":\"link\",\"id\":\"37101588673355053\",\"link\":\"CountriesISO\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"social_register\",\"name\":\"social_register\",\"dataType\":\"boolean\",\"id\":\"71461588678509868\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"register_date\",\"name\":\"Register date\",\"dataType\":\"date\",\"id\":\"36551588868841568\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"country_id\",\"name\":\"Country link (ISO)\",\"dataType\":\"link\",\"id\":\"31401588873548829\",\"link\":\"CountriesISO\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"raw_id\",\"name\":\"Raw ID\",\"dataType\":\"link\",\"id\":\"39691642000254942\",\"link\":\"cloud_users_ids\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"isBlocked\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"42921686321097973\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"last_activity_date\",\"name\":\"Last activity date\",\"dataType\":\"date\",\"id\":\"96951570962621002\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"apps\",\"name\":\"Apps\",\"dataType\":\"arrayLink\",\"id\":\"80561587152006234\",\"link\":\"AppInfo\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"number_of_sl\",\"name\":\"Number of SLs\",\"dataType\":\"number\",\"id\":\"41141570962898360\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"number_of_structures\",\"name\":\"Number of structures\",\"dataType\":\"number\",\"id\":\"70371570962891170\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"number_of_scenarios\",\"name\":\"Number of scenarios\",\"dataType\":\"number\",\"id\":\"71201570962890259\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"logged_in\",\"name\":\"Have logged in\",\"dataType\":\"boolean\",\"id\":\"42361570962605801\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"number_of_apps\",\"name\":\"Number of apps\",\"dataType\":\"number\",\"id\":\"41911570383626553\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"today_stat_id\",\"name\":\"Today stat link\",\"dataType\":\"link\",\"id\":\"42431587908594891\",\"link\":\"Dashboard_data\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"team_ids\",\"name\":\"Teams\",\"dataType\":\"arrayLink\",\"id\":\"26441632905559721\",\"link\":\"Teams\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"current_team_plans\",\"name\":\"Current team plans\",\"dataType\":\"arrayLink\",\"id\":\"45021632906172898\",\"link\":\"TeamTariffs\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"isLTD_user\",\"name\":\"LTD user\",\"dataType\":\"boolean\",\"id\":\"13531632918815271\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"Paid_app_plan_user\",\"name\":\"Paid app plan user\",\"dataType\":\"boolean\",\"id\":\"22421632918830874\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"current_app_plans\",\"name\":\"Current app plans\",\"dataType\":\"arrayLink\",\"id\":\"54321632918865581\",\"link\":\"Tariff\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"creditCardIsLinked\",\"name\":\"CreditCardIsLinked?\",\"dataType\":\"boolean\",\"id\":\"42541642072780075\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"mailchimp_tags\",\"name\":\"Mailchimp labels\",\"dataType\":\"string\",\"id\":\"97421570379132976\",\"link\":null,\"group\":\"1570379125072\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"mailchimp_segments\",\"name\":\"Mailchimp Segments\",\"dataType\":\"array\",\"id\":\"84981587457354001\",\"link\":\"\",\"group\":\"1570379125072\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":true,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"is_country_synced\",\"name\":\"is_country_synced\",\"dataType\":\"boolean\",\"id\":\"31991605527320825\",\"link\":\"\",\"group\":\"1570379125072\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"app_description\",\"name\":\"App description\",\"dataType\":\"string\",\"id\":\"72461572603438535\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"customer_type\",\"name\":\"Customer type\",\"dataType\":\"string\",\"id\":\"93281572603437791\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"utm_source\",\"name\":\"utm_source\",\"dataType\":\"string\",\"id\":\"91131588673287122\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"utm_medium\",\"name\":\"utm_medium\",\"dataType\":\"string\",\"id\":\"27621588673319861\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"utm_campaign\",\"name\":\"utm_campaign\",\"dataType\":\"string\",\"id\":\"85671588673320381\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"survey_ids\",\"name\":\"Surveys\",\"dataType\":\"arrayLink\",\"id\":\"27581591180002769\",\"link\":\"Surveys\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"ref\",\"name\":\"ref\",\"dataType\":\"string\",\"id\":\"68451626349155030\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"storage\",\"name\":\"Survey storage\",\"dataType\":\"json\",\"id\":\"86371627198748459\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"indexExists\":false},{\"sysName\":\"survey_step_1_raw\",\"name\":\"Which describes you best\",\"dataType\":\"string\",\"id\":\"24041632732046851\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"survey_step_2_raw\",\"name\":\"Whom do you want to build apps for\",\"dataType\":\"string\",\"id\":\"57151632732047604\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"survey_step_3_raw\",\"name\":\"How did you know about Directual\",\"dataType\":\"string\",\"id\":\"98341632732048278\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"survey_is_aborted\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"75331632901439193\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"notifications_account\",\"name\":\"Notify about Account\",\"dataType\":\"boolean\",\"id\":\"49381572378982097\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"notifications_academy\",\"name\":\"Notify about Academy\",\"dataType\":\"boolean\",\"id\":\"97951572378981844\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"notifications_blog\",\"name\":\"Notify about Blog\",\"dataType\":\"boolean\",\"id\":\"20211572378981407\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"unsubscribed\",\"name\":\"unsubscribed\",\"dataType\":\"boolean\",\"id\":\"20361600521081143\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"unsibscribed_reason\",\"name\":\"unsibscribed_reason\",\"dataType\":\"string\",\"id\":\"87491600521243757\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"admin_notification_text\",\"name\":\"admin_notification_text\",\"dataType\":\"string\",\"id\":\"21331602224278958\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"whom_to_alert\",\"name\":\"\",\"dataType\":\"arrayLink\",\"id\":\"61381602224446180\",\"link\":\"TUser\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"MailerLite_id\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"73551663229204538\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"MailerLite_MAIN\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"28941663229219515\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"MailerLite_Onboarding\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"16811663229232291\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"email_hash\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"40581588875619696\",\"link\":\"\",\"group\":\"1588875605532\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"gravatar\",\"name\":\"Gravatar\",\"dataType\":\"string\",\"id\":\"89411588875620336\",\"link\":\"\",\"group\":\"1588875605532\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"gravatar_pic\",\"name\":\" \",\"dataType\":\"file\",\"id\":\"77261619116355317\",\"link\":\"\",\"group\":\"1588875605532\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"is_suspended\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"97901644220993828\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"is_failed\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"10721644221276956\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"basic_promo_code\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"62581644246255699\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"wallet_transactions\",\"name\":\"\",\"dataType\":\"arrayLink\",\"id\":\"53431648999094908\",\"link\":\"appwallet\",\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"wallet_balance\",\"name\":\"\",\"dataType\":\"decimal\",\"id\":\"60951648999103921\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"paid_apps_ids\",\"name\":\"\",\"dataType\":\"arrayLink\",\"id\":\"96621663160984409\",\"link\":\"Apps\",\"group\":\"1644221182856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"sent_to_partner\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"82171680675432429\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"paddle_id\",\"name\":\"paddle id\",\"dataType\":\"string\",\"id\":\"69331644221263888\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"paddle_status\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"99591644221269393\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"update_url\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"44161644221281677\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"paddle_cancel_url\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"27901682774248073\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"paddle_method\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"78841682873134749\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"paddle_card_type\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"46161682873174727\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"paddle_digits\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"26711682873142482\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"paddle_date_expiry\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"94461682873159773\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"tinkoff_rebill_id\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"97601678722478382\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"tinkoff_status\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"11351683570594828\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"tinkoff_digits\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"13861682873811387\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"tinkoff_card_type\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"34471682873837848\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"tinkoff_date_expiry\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"24521682873848595\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"tinkoff_update_url\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"63031682874690044\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":20,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"tinkoff_cancel_url\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"36191682874701304\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":21,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"default_method\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"59911682875603989\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":22,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false}]",
                 "jsonGroupSettings": "[{\"id\":1570381436668,\"name\":\"CRM\",\"order\":2},{\"id\":1588875605532,\"name\":\"Gravatar\",\"order\":4},{\"id\":1570288674389,\"name\":\"Cloud usage\",\"order\":0},{\"id\":1572378880897,\"name\":\"Notifications settings\",\"order\":3},{\"id\":1570379125072,\"name\":\"Mailchimp\",\"order\":1},{\"id\":1644221182856,\"name\":\"Billing\",\"order\":5}]",
                 "jsonViewIdSettings": "[{\"sysName\":\"first_name\"},{\"sysName\":\"last_name\"},{\"sysName\":\"country\"}]",
                 "jsonSettings": null,
@@ -29648,7 +43582,7 @@ const App = (props) => {
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2023-04-05T06:17:45Z",
+                "dateChanged": "2023-06-09T14:31:45Z",
                 "createBy": 21,
                 "changedBy": 1,
                 "_settings": null,
@@ -29674,33 +43608,85 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": null,
                     "groupName": null,
+                    "array": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "arrayLink": false,
                     "indexExists": false,
                     "typeVariable": {},
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "arrayLink": false,
-                    "linkType": false,
-                    "array": false
+                    "json": false
                 },
                 "folderId": 667556
             },
-            "99212194": {
-                "id": 99212194,
-                "dateCreated": "2023-04-12T11:31:59Z",
+            "1294700": {
+                "networkID": 1822,
+                "sysName": "Tariff",
+                "name": "💰 Tariffs",
+                "id": 1294700,
+                "dateCreated": "2020-02-27T12:54:30Z",
                 "hidden": false,
                 "dateHidden": null,
-                "networkID": 1822,
-                "name": "Certification request",
-                "sysName": "certification_request",
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"user_id\",\"dataType\":\"link\",\"name\":\"User\",\"id\":\"15091681744077341\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"sync_message\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"15981681745730781\",\"link\":\"\",\"group\":\"1681744116679\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"status\",\"dataType\":\"link\",\"name\":\"Status\",\"id\":\"37721681744114802\",\"link\":\"cert_statuses\",\"group\":\"1681744116679\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"certPrice\",\"dataType\":\"decimal\",\"name\":\"Certificate Price\",\"id\":\"42721681744044441\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"indiPriceGold\",\"dataType\":\"decimal\",\"name\":\"\",\"id\":\"54551681744176877\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"indiPriceBasic\",\"dataType\":\"decimal\",\"name\":\"\",\"id\":\"71641681744207670\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"date_requested\",\"dataType\":\"date\",\"name\":\"Date requested\",\"id\":\"73931681801864593\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"certOption\",\"dataType\":\"link\",\"name\":\"Certificate level\",\"id\":\"76051681744033311\",\"link\":\"cert_types\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"sync_result\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"95431681745714838\",\"link\":\"\",\"group\":\"1681744116679\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"projects\",\"dataType\":\"string\",\"name\":\"Projects description\",\"id\":\"96511681744091621\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
-                "jsonGroupSettings": "[{\"name\":\"Request processing\",\"id\":1681744116679,\"order\":0}]",
-                "jsonViewIdSettings": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"7\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"price\",\"dataType\":\"decimal\",\"name\":\"price\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"visible\",\"dataType\":\"boolean\",\"name\":\"visible\",\"id\":\"2\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"settings\",\"dataType\":\"json\",\"name\":\"settings\",\"id\":\"3\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"description\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"name\",\"id\":\"6\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"is_default\",\"dataType\":\"boolean\",\"name\":\"is_default\",\"id\":\"1\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"paddle_id\",\"dataType\":\"string\",\"name\":\"paddle_id\",\"id\":\"77771590089291447\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"available_for_admin\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"97171633096560133\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2023-04-18T07:11:17Z",
+                "dateChanged": "2021-10-04T15:06:16Z",
+                "createBy": 0,
+                "changedBy": 21,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "objectIDSysName": "id",
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "7",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": null,
+                    "groupName": null,
+                    "array": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "arrayLink": false,
+                    "indexExists": false,
+                    "typeVariable": {},
+                    "json": false
+                },
+                "folderId": 33664904
+            },
+            "1395053": {
+                "networkID": 1822,
+                "sysName": "Apps",
+                "name": "📱 Apps",
+                "id": 1395053,
+                "dateCreated": "2021-06-14T21:39:39Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"App id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"sysName\",\"name\":\"System name\",\"dataType\":\"string\",\"id\":\"27541623706978377\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"name\",\"name\":\"App name\",\"dataType\":\"string\",\"id\":\"13661623706989350\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"description\",\"name\":\"Description\",\"dataType\":\"string\",\"id\":\"38791623706999272\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"owner_id\",\"name\":\"Owner\",\"dataType\":\"link\",\"id\":\"41841623707118206\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"developer_ids\",\"name\":\"Developers\",\"dataType\":\"arrayLink\",\"id\":\"54301623707131642\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"isTeam\",\"name\":\"Team app\",\"dataType\":\"boolean\",\"id\":\"68981623707196589\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"team_id\",\"name\":\"Team\",\"dataType\":\"link\",\"id\":\"94291623707210181\",\"link\":\"Teams\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"isLegacy\",\"name\":\"Legacy app\",\"dataType\":\"boolean\",\"id\":\"30351623746607632\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"is_sandbox\",\"name\":\"is_sandbox\",\"dataType\":\"boolean\",\"id\":\"47331625209998636\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"is_blocked\",\"name\":\"is_blocked\",\"dataType\":\"boolean\",\"id\":\"82901633095583058\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"is_hidden\",\"name\":\"is_hidden\",\"dataType\":\"boolean\",\"id\":\"10251637661442776\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"new_billing\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"75171645533130519\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"new_billing_plan\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"91761645533150600\",\"link\":\"Tariff\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"previous_owner_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"50981666709963736\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"plan_id\",\"name\":\"Billing plan\",\"dataType\":\"link\",\"id\":\"74161623707026653\",\"link\":\"Tariff\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"previous_plan_id\",\"name\":\"Previous plan\",\"dataType\":\"link\",\"id\":\"75791641032667863\",\"link\":\"Tariff\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"change_plan_request_ids\",\"name\":\"Plan change requests\",\"dataType\":\"arrayLink\",\"id\":\"76611623707045935\",\"link\":\"ChangeTariffRequests\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"merchant_event_ids\",\"name\":\"Paddle events\",\"dataType\":\"arrayLink\",\"id\":\"46441623707088217\",\"link\":\"MerchantEvent\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"stat_get\",\"name\":\"Stat | GET\",\"dataType\":\"number\",\"id\":\"94951623707229504\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"stat_users\",\"name\":\"Stat | Users\",\"dataType\":\"number\",\"id\":\"76861623707270662\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"stat_post\",\"name\":\"Stat | POST\",\"dataType\":\"number\",\"id\":\"37551623707296997\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"stat_proc\",\"name\":\"Stat | Proc exec\",\"dataType\":\"number\",\"id\":\"16611623707312286\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"stat_sync\",\"name\":\"Stat | SYNC Proc exec\",\"dataType\":\"number\",\"id\":\"87341623707329117\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"stat_http\",\"name\":\"Stat | HTTP requests\",\"dataType\":\"number\",\"id\":\"32051667244802942\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"is_excess\",\"name\":\"Excess plan\",\"dataType\":\"boolean\",\"id\":\"40361623748858552\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"🔥 hit limits\",\" OK\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"color\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"79011623748876085\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"color_get\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"26091623775679245\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"color_post\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"89081623775692061\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"color_proc\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"92601623775698497\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"color_sync\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"45481623775706832\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"color_users\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"86811623775714205\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"color_http\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"30261667244970378\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"paddle_subscription_id\",\"name\":\"Paddle ID\",\"dataType\":\"string\",\"id\":\"13631633089941494\",\"link\":null,\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"paddle_subscription_status\",\"name\":\"Paddle Status\",\"dataType\":\"string\",\"id\":\"99931633090832671\",\"link\":null,\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"paddle_update_date\",\"name\":\"\",\"dataType\":\"date\",\"id\":\"26191633364756662\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":20,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"reports\",\"name\":\"Billing reports\",\"dataType\":\"arrayLink\",\"id\":\"71551633353882284\",\"link\":\"UsageHistory\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":21,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"balance\",\"name\":\"Credits\",\"dataType\":\"decimal\",\"id\":\"20731633354617743\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":22,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"is_cancelled\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"95451637666256272\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":23,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"forecast_bill\",\"name\":\"Forecast bill, $\",\"dataType\":\"decimal\",\"id\":\"63341640954051997\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":24,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"next_ondemand_billing_date\",\"name\":\"\",\"dataType\":\"date\",\"id\":\"54391647334223782\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":25,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"next_ondemand_payment\",\"name\":\"\",\"dataType\":\"decimal\",\"id\":\"50071647334246527\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":26,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"next_billing_date\",\"name\":\"\",\"dataType\":\"date\",\"id\":\"39091647335092236\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":27,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"next_payment\",\"name\":\"\",\"dataType\":\"decimal\",\"id\":\"23671647335096237\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":28,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"legacy_billing\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"67651647899758711\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":29,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"raw_app_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"12131623746301658\",\"link\":\"AppInfo\",\"group\":\"1623746295898\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"raw_usage_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"96391623747858362\",\"link\":\"UsageHistory\",\"group\":\"1623746295898\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"hidden_messaged\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"99061676539646225\",\"link\":\"\",\"group\":\"1623746295898\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"admin_requests_ids\",\"name\":\"Admin actions\",\"dataType\":\"arrayLink\",\"id\":\"85821633095205778\",\"link\":\"admin_app_change_requests\",\"group\":\"1633095201028\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"comments\",\"name\":\"Comments\",\"dataType\":\"arrayLink\",\"id\":\"44101633194013799\",\"link\":\"admin_comments\",\"group\":\"1633095201028\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"events\",\"name\":\"App events\",\"dataType\":\"arrayLink\",\"id\":\"67551637607379984\",\"link\":\"appEvents\",\"group\":\"1633095201028\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"free_alert_counter\",\"name\":\"Free alert counter\",\"dataType\":\"number\",\"id\":\"30071661159016438\",\"link\":\"\",\"group\":\"1633095201028\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"isTrial\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"41181683803882995\",\"link\":\"\",\"group\":\"1683803887851\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"isDowngraded\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"26051647940518677\",\"link\":\"\",\"group\":\"1683803887851\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"date_trial_started\",\"name\":\"\",\"dataType\":\"date\",\"id\":\"37981683803928426\",\"link\":\"\",\"group\":\"1683803887851\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD MMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"trialType\",\"name\":\"trial type (pro,startup)\",\"dataType\":\"string\",\"id\":\"64401683803952185\",\"link\":\"\",\"group\":\"1683803887851\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"date_trial_ended\",\"name\":\"\",\"dataType\":\"date\",\"id\":\"52821683804754338\",\"link\":\"\",\"group\":\"1683803887851\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD MMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"Automatic_downgrade\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"98981687328025298\",\"link\":\"\",\"group\":\"1683803887851\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false}]",
+                "jsonGroupSettings": "[{\"name\":\"Billing\",\"id\":1623707015468,\"order\":0},{\"name\":\"Trial\",\"id\":1683803887851,\"order\":1},{\"name\":\"ADMIN\",\"id\":1633095201028,\"order\":2},{\"name\":\"RAW_data\",\"id\":1623746295898,\"order\":3}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"sysName\"},{\"sysName\":\"id\"},{\"sysName\":\"owner_id\"},{\"sysName\":\"plan_id\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2023-06-21T06:14:02Z",
                 "createBy": 1,
                 "changedBy": 21,
                 "_settings": null,
@@ -29709,7 +43695,7 @@ const App = (props) => {
                 "innerIDField": {
                     "sysName": "id",
                     "dataType": "id",
-                    "name": "id",
+                    "name": "App id",
                     "id": "0",
                     "link": "",
                     "group": "0",
@@ -29726,35 +43712,35 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
+                    "array": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "arrayLink": false,
                     "indexExists": false,
                     "typeVariable": {},
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "arrayLink": false,
-                    "linkType": false,
-                    "array": false
+                    "json": false
                 },
-                "folderId": 33746744
+                "folderId": 667556
             },
-            "99213632": {
-                "id": 99213632,
-                "dateCreated": "2023-04-17T17:54:00Z",
+            "1395054": {
+                "networkID": 1822,
+                "sysName": "Teams",
+                "name": "👯‍♀️ Teams",
+                "id": 1395054,
+                "dateCreated": "2021-06-14T21:40:01Z",
                 "hidden": false,
                 "dateHidden": null,
-                "networkID": 1822,
-                "name": "cert types",
-                "sysName": "cert_types",
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"title\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"83291681754044086\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Team name\",\"id\":\"49891623744256310\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"Team description\",\"id\":\"21131623744262431\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"sandbox_apps\",\"dataType\":\"arrayLink\",\"name\":\"Sandboxes\",\"id\":\"16631623744100433\",\"link\":\"Apps\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"delivered_apps\",\"dataType\":\"arrayLink\",\"name\":\"Delivered apps\",\"id\":\"74141623744117071\",\"link\":\"Apps\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"team_members\",\"dataType\":\"arrayLink\",\"name\":\"Team members\",\"id\":\"95891623744134608\",\"link\":\"teamMembers\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[\"user_id\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"indexExists\":true,\"array\":false},{\"sysName\":\"current_seats\",\"dataType\":\"number\",\"name\":\"Seats\",\"id\":\"47131623744230708\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"tariff_id\",\"dataType\":\"link\",\"name\":\"Tariff\",\"id\":\"68551624452382828\",\"link\":\"TeamTariffs\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"is_hidden\",\"dataType\":\"boolean\",\"name\":\"is_hidden\",\"id\":\"65821624887275053\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"owner_id\",\"dataType\":\"link\",\"name\":\"Owner\",\"id\":\"26901644253517429\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"next_billing_date\",\"dataType\":\"date\",\"name\":\"\",\"id\":\"84501644759078788\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"next_payment\",\"dataType\":\"decimal\",\"name\":\"\",\"id\":\"13691644759089872\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false}]",
                 "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
-                "indexEnabled": false,
+                "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2023-04-17T17:54:10Z",
-                "createBy": 21,
-                "changedBy": 21,
+                "dateChanged": "2022-02-23T20:24:02Z",
+                "createBy": 1,
+                "changedBy": 3527,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "objectIDSysName": "id",
@@ -29778,35 +43764,35 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
+                    "array": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "arrayLink": false,
                     "indexExists": false,
                     "typeVariable": {},
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "arrayLink": false,
-                    "linkType": false,
-                    "array": false
+                    "json": false
                 },
-                "folderId": 33754113
+                "folderId": 667556
             },
-            "99213633": {
-                "id": 99213633,
-                "dateCreated": "2023-04-17T17:54:20Z",
+            "99033830": {
+                "networkID": 1822,
+                "sysName": "admin_comments",
+                "name": "Admin comments",
+                "id": 99033830,
+                "dateCreated": "2021-10-02T16:37:50Z",
                 "hidden": false,
                 "dateHidden": null,
-                "networkID": 1822,
-                "name": "cert statuses",
-                "sysName": "cert_statuses",
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"title\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"70861681754065322\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"app_id\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"34331633193766936\",\"link\":\"Apps\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"date\",\"dataType\":\"date\",\"name\":\"Date\",\"id\":\"38001633193719054\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD MMM, Y,\",\"timeFormat\":\"HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"text\",\"dataType\":\"string\",\"name\":\"Comment\",\"id\":\"60041633193741409\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"user_id\",\"dataType\":\"link\",\"name\":\"User\",\"id\":\"67911633193701811\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"files\",\"dataType\":\"file\",\"name\":\"\",\"id\":\"73621633193726412\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"multipleImages\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false}]",
                 "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
+                "jsonViewIdSettings": null,
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
-                "indexEnabled": false,
+                "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2023-04-17T17:54:31Z",
+                "dateChanged": "2021-12-30T08:35:35Z",
                 "createBy": 21,
-                "changedBy": 21,
+                "changedBy": 1,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "objectIDSysName": "id",
@@ -29830,15 +43816,119 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
+                    "array": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "arrayLink": false,
                     "indexExists": false,
                     "typeVariable": {},
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "arrayLink": false,
-                    "linkType": false,
-                    "array": false
+                    "json": false
                 },
-                "folderId": 33754113
+                "folderId": 667556
+            },
+            "99034345": {
+                "networkID": 1822,
+                "sysName": "appwallet",
+                "name": "🪙 Wallet Transactions",
+                "id": 99034345,
+                "dateCreated": "2021-10-04T13:35:54Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"balance\",\"dataType\":\"decimal\",\"name\":\"balance\",\"id\":\"17881633354558295\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"period\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"21831670405117574\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"receipt\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"22031644176668353\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"user_id\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"24421633360151131\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"type\",\"dataType\":\"link\",\"name\":\"Transaction type\",\"id\":\"34331644178252191\",\"link\":\"transaction_types\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"comment\",\"dataType\":\"string\",\"name\":\"comment\",\"id\":\"40211633354569149\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"parent_affiliate_trans_id\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"47871664733203199\",\"link\":\"appwallet\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"cash\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"48671686254411681\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"app_id\",\"dataType\":\"link\",\"name\":\"app_id\",\"id\":\"51971633354577141\",\"link\":\"Apps\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"affiliate_user_id\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"57701664731840784\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"promo\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"59651644249885512\",\"link\":\"promo_codes\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"tinkoff_order_id\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"86121683551357702\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"merchant_event_id\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"91791644274810120\",\"link\":\"MerchantEvent\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"affiliate_transaction_id\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"93701664633122070\",\"link\":\"appwallet\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"date\",\"dataType\":\"date\",\"name\":\"date\",\"id\":\"96991644174902603\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"type\"},{\"sysName\":\"balance\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2023-06-08T20:00:18Z",
+                "createBy": 2853,
+                "changedBy": 1,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "objectIDSysName": "id",
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "array": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "arrayLink": false,
+                    "indexExists": false,
+                    "typeVariable": {},
+                    "json": false
+                },
+                "folderId": 33575450
+            },
+            "99050194": {
+                "networkID": 1822,
+                "sysName": "appEvents",
+                "name": "🛎 App events",
+                "id": 99050194,
+                "dateCreated": "2021-11-22T18:54:46Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"type\",\"name\":\"Event type\",\"dataType\":\"string\",\"id\":\"86601637607299210\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"messagee\",\"name\":\"Message\",\"dataType\":\"string\",\"id\":\"94561637607302351\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"app_id\",\"name\":\"App\",\"dataType\":\"link\",\"id\":\"71461637607315982\",\"link\":\"Apps\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"date\",\"name\":\"\",\"dataType\":\"date\",\"id\":\"91151637607332419\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD MMM, Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"messagee\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": false,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2021-12-30T09:52:10Z",
+                "createBy": 1,
+                "changedBy": 1,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "objectIDSysName": "id",
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "array": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "arrayLink": false,
+                    "indexExists": false,
+                    "typeVariable": {},
+                    "json": false
+                },
+                "folderId": 667556
             }
         },
         "isSuccessWrite": false,
@@ -29846,37 +43936,175 @@ const App = (props) => {
         "writeResponse": null,
         "fileds": [
             {
-                "sysName": "certOption",
-                "dataType": "link",
-                "name": "Certificate level",
-                "id": "76051681744033311",
-                "link": "cert_types",
-                "group": "0",
-                "tags": "",
+                "sysName": "Automatic_downgrade",
+                "dataType": "boolean",
+                "name": "",
+                "id": "98981687328025298",
+                "link": "",
+                "group": "1683803887851",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "comments",
+                "dataType": "arrayLink",
+                "name": "Comments",
+                "id": "44101633194013799",
+                "link": "admin_comments",
+                "group": "1633095201028",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 1,
                 "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "date_trial_ended",
+                "dataType": "date",
+                "name": "",
+                "id": "52821683804754338",
+                "link": "",
+                "group": "1683803887851",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {},
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "en-gb",
+                    "booleanOptions": [
+                        "True",
+                        "False"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD MMM, Y",
+                    "timeFormat": "",
+                    "isUTC": "false"
+                },
                 "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
                 "indexExists": false,
                 "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": true,
+                "json": false
+            },
+            {
+                "sysName": "date_trial_started",
+                "dataType": "date",
+                "name": "",
+                "id": "37981683803928426",
+                "link": "",
+                "group": "1683803887851",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "en-gb",
+                    "booleanOptions": [
+                        "True",
+                        "False"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD MMM, Y",
+                    "timeFormat": "",
+                    "isUTC": "false"
+                },
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
                 "arrayLink": false,
-                "linkType": true,
-                "array": false
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
             },
             {
                 "sysName": "id",
                 "dataType": "id",
-                "name": "id",
+                "name": "App id",
                 "id": "0",
                 "link": "",
                 "group": "0",
@@ -29893,77 +44121,49 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
                 "indexExists": false,
                 "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "array": false
+                "json": false
             },
             {
-                "sysName": "indiPriceBasic",
-                "dataType": "decimal",
+                "sysName": "isDowngraded",
+                "dataType": "boolean",
                 "name": "",
-                "id": "71641681744207670",
+                "id": "26051647940518677",
                 "link": "",
-                "group": "0",
-                "tags": "",
+                "group": "1683803887851",
+                "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 6,
+                "order": 1,
                 "linkIndexFieldSysName": [],
-                "defaultValue": "",
+                "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {},
+                "formatOptions": null,
                 "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
                 "indexExists": false,
                 "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "array": false
+                "json": false
             },
             {
-                "sysName": "indiPriceGold",
-                "dataType": "decimal",
+                "sysName": "isTrial",
+                "dataType": "boolean",
                 "name": "",
-                "id": "54551681744176877",
+                "id": "41181683803882995",
                 "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "array": false
-            },
-            {
-                "sysName": "status",
-                "dataType": "link",
-                "name": "Status",
-                "id": "37721681744114802",
-                "link": "cert_statuses",
-                "group": "1681744116679",
+                "group": "1683803887851",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
@@ -29977,16 +44177,156 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
                 "indexExists": false,
                 "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": true,
+                "json": false
+            },
+            {
+                "sysName": "legacy_billing",
+                "dataType": "boolean",
+                "name": "",
+                "id": "67651647899758711",
+                "link": "",
+                "group": "1623707015468",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 29,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
                 "arrayLink": false,
-                "linkType": true,
-                "array": false
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "next_billing_date",
+                "dataType": "date",
+                "name": "",
+                "id": "39091647335092236",
+                "link": "",
+                "group": "1623707015468",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 27,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "next_payment",
+                "dataType": "decimal",
+                "name": "",
+                "id": "23671647335096237",
+                "link": "",
+                "group": "1623707015468",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 28,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "paddle_subscription_id",
+                "dataType": "string",
+                "name": "Paddle ID",
+                "id": "13631633089941494",
+                "link": null,
+                "group": "1623707015468",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 18,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
+            },
+            {
+                "sysName": "trialType",
+                "dataType": "string",
+                "name": "trial type (pro,startup)",
+                "id": "64401683803952185",
+                "link": "",
+                "group": "1683803887851",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "array": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false
             }
         ],
-        "quickSearch": "false",
+        "quickSearch": "true",
         "httpParams": {},
         "cardCustomHtml": null,
         "cardCustomLayout": null

@@ -95,7 +95,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
             }
         }
         const message =
-            { ...msg, _id: 'form_' + id, _sl_name: sl, _options: options }
+            { ...msg, _id: 'form_' + id, _sl_name: sl, _options: options, dql: currentDQL, sort: currentSort }
         console.log(message)
         console.log(pageInfo)
         setLoading(true)
@@ -170,7 +170,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         }
         const dqlParams = { dql: currentDQL, sort: currentSort }
         sendMsg({ ...saveModel })
-        const isDelayedRefresh = currentDQL || _.get(currentSort, 'field') || currentPage
+        const isDelayedRefresh = false // currentDQL || _.get(currentSort, 'field') || currentPage
         isDelayedRefresh && setTimeout(() => {
             onEvent({ dql: currentDQL, sort: currentSort, _id: id }, { page: currentPage }, { reqParam1: "true" })
             removeUrlParam(id + '_id')
@@ -180,7 +180,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     const submitAction = (mapping, sl, options) => {
         console.log('submitting action...')
 
-        const isDelayedRefresh = currentDQL || _.get(currentSort, 'field') || currentPage
+        const isDelayedRefresh = false // currentDQL || _.get(currentSort, 'field') || currentPage
 
         function submitDelayedAction() {
             sendMsg(mapping, sl, undefined, options)
