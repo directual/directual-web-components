@@ -17,7 +17,7 @@ export default function TypoPage() {
         color: '#8ae3da',
         selectable: true,
         data: [
-            { id: 1, text: 'Hello world', clickable: true, selected: true, },
+            { id: 1, text: 'Hello world', clickable: true },
             { id: 2, text: 'Goodbye world Goodbye world Goodbye world Goodbye world', clickable: true },
             { id: 3, text: 'Huyak world', clickable: true, }
         ]
@@ -37,6 +37,11 @@ export default function TypoPage() {
             <Tags 
                 //disabled
                 tags={exampleTags}
+                selectedTags={{
+                    '1': true,
+                    '2': false,
+                    '3': true
+                }}
                 style={{ marginBottom: 24, marginTop: 12 }}
                 onSort={newSorting => {console.log('sort tags'); console.log(newSorting)}}
                 onDelete={tagId => {console.log('delete tag: ' + tagId)}}
