@@ -9,7 +9,10 @@
     align-items: center;
     font-size: var(--text-small-size);
     background-color: var(--label);
-    color: var(--label-text) !important;
+    color: var(--label-text);
+    &:hover {
+        color: var(--label-text);
+    }
     border-radius: 12px;
     padding: 4px 9px;
     margin: 2px;
@@ -43,6 +46,16 @@
     .text {
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+    .seleced {
+        opacity: .5;
+        cursor: pointer;
+        //transition: .5s;
+        margin-left: -3px;
+        flex-shrink: 0;
+        &:hover {
+            opacity: 1;
+        }
     }
     .delete {
         opacity: .5;

@@ -7,35 +7,55 @@ export function Tags(props) {
     const addButton = props.tags ? props.tags.addButton : false
     return (
         <React.Fragment>
-            <div 
+            <div
                 style={props.style}
                 className={styles.tagList}>
-                {tagList.map(tag => <Tag 
-                    tag={tag} 
+                {tagList.map(tag => <Tag
+                    tag={tag}
+                    tags={props.tags}
                     maxWidth={props.tags && props.tags.maxWidth}
-                    key={tag.id} 
-                    onDelete={id => { !props.disabled && tag.deletable && props.onDelete && props.onDelete(id) } }
-                    onClick={id => { !props.disabled && tag.clickable && props.onClick && props.onClick(id) } }
-                    />)}
-                {addButton && 
-                <div 
-                    onClick={!props.disabled && props.onAdd}
-                    className={`${styles.tag} ${props.disabled ? styles.disabled : styles.clickable} icon icon-plus small ${styles.addButton}`}>
-                    {props.tags.addText || 'Add'}</div>}
+                    onResetSelect={id => { props.onResetSelect && props.onResetSelect(id) }}
+                    key={tag.id}
+                    onDelete={id => { !props.disabled && tag.deletable && props.onDelete && props.onDelete(id) }}
+                    onClick={id => { !props.disabled && tag.clickable && props.onClick && props.onClick(id) }}
+                />)}
+                {addButton &&
+                    <div
+                        onClick={!props.disabled && props.onAdd}
+                        className={`${styles.tag} ${props.disabled ? styles.disabled : styles.clickable} icon icon-plus small ${styles.addButton}`}>
+                        {props.tags.addText || 'Add'}</div>}
             </div>
             {/* <pre className='dd-debug'>{JSON.stringify(props.tags.data, 0, 1)}</pre> */}
         </React.Fragment>
     )
 }
 
-function Tag({ tag, onDelete, maxWidth, onClick }) {
+function Tag({ tag, onDelete, maxWidth, onClick, onResetSelect, tags }) {
     return (
-        <a 
+        <a
             href={tag.clickLink}
+            style={{ 
+                backgroundColor: (tag.selected && tags.selectedColor) || tag.color || tags.color || undefined, 
+                maxWidth: maxWidth || 'none'
+            }}
             onClick={e => { e.preventDefault(); onClick(tag.id) }}
-            className={`${styles.tag} ${tag.clickable ? styles.clickable : ''}`} style={{maxWidth: maxWidth || 'none'}}>
-            <span className={styles.text}>{tag.text || tag.id}</span>
-            {tag.deletable && <span onClick={e => {e.preventDefault(); e.stopPropagation(); onDelete(tag.id) }} className={`icon icon-close small ${styles.delete}`} />}
+            className={`${styles.tag} ${tag.clickable ? styles.clickable : ''}`}>
+            {tags.selectable && tag.selected && <span 
+                 style={{ 
+                    color: (tag.selected && tags.selectedTextColor) || tag.textColor || tags.textColor || undefined, 
+                }}
+                onClick={e => { e.preventDefault(); e.stopPropagation(); onResetSelect(tag.id) }} className={`icon icon-close small ${styles.seleced}`} />}
+            <span 
+                className={styles.text}
+                style={{ 
+                    color: (tag.selected && tags.selectedTextColor) || tag.textColor || tags.textColor || undefined, 
+                }}
+            >{tag.text || tag.id}</span>
+            {tag.deletable && <span
+                 style={{ 
+                    color: (tag.selected && tags.selectedTextColor) || tag.textColor || tags.textColor || undefined, 
+                }}
+            onClick={e => { e.preventDefault(); e.stopPropagation(); onDelete(tag.id) }} className={`icon icon-close small ${styles.delete}`} />}
         </a>
     )
 }

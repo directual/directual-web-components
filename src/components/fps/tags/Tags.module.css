@@ -8,7 +8,7 @@
   align-items: center;
   font-size: var(--text-small-size);
   background-color: var(--label);
-  color: var(--label-text) !important;
+  color: var(--label-text);
   border-radius: 12px;
   padding: 4px 9px;
   margin: 2px;
@@ -16,6 +16,9 @@
   text-overflow: ellipsis;
   cursor: default;
   overflow: hidden;
+}
+.tag:hover {
+  color: var(--label-text);
 }
 .tag.disabled {
   cursor: not-allowed;
@@ -41,6 +44,15 @@
 .tag .text {
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.tag .seleced {
+  opacity: 0.5;
+  cursor: pointer;
+  margin-left: -3px;
+  flex-shrink: 0;
+}
+.tag .seleced:hover {
+  opacity: 1;
 }
 .tag .delete {
   opacity: 0.5;

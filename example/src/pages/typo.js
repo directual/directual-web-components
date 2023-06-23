@@ -9,12 +9,17 @@ export default function TypoPage() {
     const exampleTags =
     {
         maxWidth: 300,
-        addButton: true,
+        addButton: false,
         addText: 'Add scenario',
+        selectedColor: '#f700ff',
+        selectedTextColor: '#fff',
+        textColor: '#333',
+        color: '#8ae3da',
+        selectable: true,
         data: [
-            { id: 1, text: 'Hello world', deletable: false, clickable: true },
-            { id: 2, text: 'Goodbye world Goodbye world Goodbye world Goodbye world', deletable: true },
-            { id: 3, text: 'Huyak world', deletable: true, clickable: true, clickLink:'https://ya.ru' },
+            { id: 1, text: 'Hello world', clickable: true, selected: true, },
+            { id: 2, text: 'Goodbye world Goodbye world Goodbye world Goodbye world', clickable: true },
+            { id: 3, text: 'Huyak world', clickable: true, }
         ]
     }
     const exampleTags2 =
@@ -36,6 +41,7 @@ export default function TypoPage() {
                 onSort={newSorting => {console.log('sort tags'); console.log(newSorting)}}
                 onDelete={tagId => {console.log('delete tag: ' + tagId)}}
                 onClick={tagId => {console.log('click tag: ' + tagId)}}
+                onResetSelect={tagId => {console.log('reset select tag: ' + tagId)}}
                 onAdd={() => {console.log('Add tag!')}}
             />
             <Tags 
