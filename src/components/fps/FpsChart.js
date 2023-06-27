@@ -477,7 +477,6 @@ FpsChart.settings = {
   sysName: 'FpsChart',
   isLegacy: false,
   isMarketplace: true,
-  plugins: ['openai'],
   form: [
     { name: 'API-endpoint', sysName: 'sl', type: 'api-endpoint' },
     { name: 'Chart title', sysName: 'tableTitle', type: 'input' },
