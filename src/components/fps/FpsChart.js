@@ -439,7 +439,7 @@ function FpsChart({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
           globalLoading={true}
           lang={lang}
         />
-        // <div style={{minHeight: _.get(data,'params.chart_height') || 300}} /> 
+        // <div style={{minHeight: _.get(data,'params.chart_height') || 300}} />
         : <Chart
           data={data}
           chartFilters={chartFilters}
@@ -471,17 +471,20 @@ function FpsChart({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
   )
 }
 
-// FpsChart.settings = {
-//   icon: iconChart,
-//   name: "Chart",
-//   sysName: 'FpsChart',
-//   form: [
-//     { name: 'API-endpoint', sysName: 'sl', type: 'api-endpoint' },
-//     { name: 'Chart title', sysName: 'tableTitle', type: 'input' },
-//     { name: 'Page size', sysName: 'pageSize', type: 'number' },
-//     { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
-//   ]
-// }
+FpsChart.settings = {
+  icon: iconChart,
+  name: "Chart",
+  sysName: 'FpsChart',
+  isLegacy: false,
+  isMarketplace: true,
+  plugins: ['openai'],
+  form: [
+    { name: 'API-endpoint', sysName: 'sl', type: 'api-endpoint' },
+    { name: 'Chart title', sysName: 'tableTitle', type: 'input' },
+    { name: 'Page size', sysName: 'pageSize', type: 'number' },
+    { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
+  ]
+}
 export default FpsChart
 
 
