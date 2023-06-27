@@ -9,8 +9,8 @@ export default function Colorpicker(props) {
     useEffect(() => { setColor(props.defaultValue) }, [props.defaultValue])
 
     const setColorHandler = value => {
-        let val = value.hex ? value.hex : value
-        if (value.rgb.a != 1) {
+        let val = value ? (value.hex ? value.hex : value) : null
+        if (_.get(value,"rgb.a") != 1 && _.get(value,"rgb")) {
             val = 'rgba(' + value.rgb.r + "," + value.rgb.g + "," + value.rgb.b + "," + value.rgb.a + ")"
         }
         props.onChange && props.onChange(val)
