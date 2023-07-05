@@ -97,9 +97,11 @@ Stopwatch.settings = {
     icon: icon,
     name: 'Timer',
     sysName: 'FpsTimer',
+    isLegacy: false,
+    isMarketplace: true,
     form: [
         { name: 'Direction', sysName: 'direction', type: 'timer_direction' },
-        { name: 'Start from, minutes', sysName: 'min', type: 'number positive' },
-        { name: 'Start from, seconds', sysName: 'sec', type: 'number positive' },
+        { name: 'Start from, minutes', sysName: 'min', type: 'number' },
+        { name: 'Start from, seconds', sysName: 'sec', type: 'number' },
     ]
 }
