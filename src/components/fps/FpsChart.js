@@ -485,5 +485,3 @@ FpsChart.settings = {
   ]
 }
 export default FpsChart
-
-

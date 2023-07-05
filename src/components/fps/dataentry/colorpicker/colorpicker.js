@@ -4,9 +4,9 @@ import styles from './colorpicker.module.css'
 
 export default function Colorpicker(props) {
 
-    const [color, setColor] = useState(props.defaultValue)
+    const [color, setColor] = useState(props.defaultValue || {})
 
-    useEffect(() => { setColor(props.defaultValue) }, [props.defaultValue])
+    useEffect(() => { setColor(props.defaultValue || {}) }, [props.defaultValue])
 
     const setColorHandler = value => {
         let val = value ? (value.hex ? value.hex : value) : null

@@ -173,7 +173,7 @@ Some *emphasis* and <strong>strong</strong>!`;
 
             <Colorpicker defaultValue="#AAABBB" onChange={val => console.log(val)} />
 
-            <Input type='color' defaultValue="#AAABBB" label='choose the color' />
+            <Input type='color' defaultValue={null} label='choose the color' />
 
             {/* <Input debug type='textarea' autoWidth minWidth={140} maxWidth={500} rows='auto' /> */}
 
