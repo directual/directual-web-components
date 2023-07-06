@@ -160,9 +160,9 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
     }
 
     const submit = (model, multiple) => {
-        console.log('SUBMIT')
-        console.log(`multiple ${multiple ? 'multiple' : 'single'}`)
-        console.log()
+        // console.log('SUBMIT')
+        // console.log(`multiple ${multiple ? 'multiple' : 'single'}`)
+        // console.log()
         if (multiple) {
             sendMsg(model)
 
@@ -170,7 +170,7 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
             if (saveModel) {
                 for (const field in saveModel) {
                     console.log(field)
-                    if (saveModel[field] && typeof saveModel[field] == 'object' && _.get(data, "params.data.fields[field].dataType") != 'date') {
+                    if (saveModel[field] && typeof saveModel[field] == 'object' && _.get(data,`params.data.fields[${field}].dataType`) != 'date') {
                         // console.log('removing links')
                         delete saveModel[field]
                     }  // removing links
@@ -178,7 +178,7 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
                         // console.log(`removing ${field} as a field not for writing`)
                         delete saveModel[field]
                     } // removing fields not for writing
-                    if (data.params.data.fields[field] && _.get(data, "params.data.fields[field].dataType") == 'date' && typeof saveModel[field] == 'number') {
+                    if (data.params.data.fields[field] && _.get(data,`params.data.fields[${field}].dataType`) == 'date' && typeof saveModel[field] == 'number') {
                         saveModel[field] = moment(saveModel[field])
                     }
                 }
