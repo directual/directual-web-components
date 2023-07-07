@@ -262,6 +262,7 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
                 {chartParams.show_legend && <Legend />}
                 {(chartParams.chart_lines || []).map(line => <Bar
                     strokeWidth={line.line_width || 1}
+                    stackId={line.line_stackedID}
                     dataKey={line.line_label || line.line_data}
                     hide={!chartFilters[line.line_data]}
                     fill={line.color}
