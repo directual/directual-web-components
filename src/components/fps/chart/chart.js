@@ -18,7 +18,7 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
     useEffect(() => {
         if (chartParams !== _.get(data, "params") && _.get(data, "params")) {
             setChartParams(_.get(data, "params"));
-            resetChartFilters()
+            resetChartFilters && resetChartFilters()
         }
     }, [data])
 

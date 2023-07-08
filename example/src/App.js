@@ -34457,8 +34457,8 @@ const App = (props) => {
     }
 
     const chartData = {
-        "sl": "pie",
-        "pageSize": "30",
+        "sl": "charts",
+        "pageSize": "15",
         "headerField": null,
         "params": {
             "cardListLayout": "grid",
@@ -34470,79 +34470,52 @@ const App = (props) => {
             "cardImageType": "none",
             "cardImageSize": 100,
             "objectView": {},
-            "chart_type": "pie",
-            "show_legend": true,
-            "show_tooltip": true,
-            "pie_label": "names",
-            "pie_startAngle": 0,
-            "pie_endAngle": 180,
-            "pie_paddingAngle": 5,
-            "pie_cx": null,
-            "pie_cy": null,
-            "pie_innerRadius": 30,
+            "chart_type": "bar",
+            "show_grid": true,
+            "chart_strokeDasharray": "3 3",
+            "x_axis": "day",
+            "x_axis_format": "MMM DD",
             "chart_lines": [
                 {
-                    "id": "29741687279762813",
-                    "color": "#FFBB28",
-                    "line_data": "segm1",
-                    "line_name": "Segm 1"
+                    "id": "46351688806958485",
+                    "color": "#7ed321",
+                    "line_data": "tea_cups",
+                    "line_label": "🫖 Tea cups",
+                    "line_stackedID": "a",
+                    "line_dot": true,
+                    "line_width": 3
                 },
                 {
-                    "id": "52421687280183951",
-                    "color": "#00C49F",
-                    "line_name": "Segm 2",
-                    "line_data": "segm2"
+                    "id": "20401688806976761",
+                    "color": "#4581eb",
+                    "line_data": "coffee_cups",
+                    "line_label": "☕️ Coffee cups",
+                    "line_stackedID": "a",
+                    "line_dot": true,
+                    "line_width": 3
                 },
                 {
-                    "id": "78791687280194527",
-                    "color": "#3FCA52",
-                    "line_name": "Segm 3",
-                    "line_data": "segm3"
-                },
-                {
-                    "id": "67441687280197286",
-                    "color": "#F2901F",
-                    "line_name": "Segm 4",
-                    "line_data": "segm4"
+                    "id": "98841688806995895",
+                    "color": "#d13f50",
+                    "line_data": "whiskey_glasses",
+                    "line_label": "🥃 Whiskey glasses",
+                    "line_dot": true,
+                    "line_width": 3
                 }
-            ]
+            ],
+            "paging_is_on": true,
+            "show_legend": true,
+            "show_tooltip": true,
+            "filter_lines": true
         },
-        "tableTitle": "Pie chart",
+        "tableTitle": "Beverage consumption statistics",
         "actions": null,
         "headers": [
             {
-                "sysName": "segm1",
-                "dataType": "decimal",
-                "name": "Segm 1",
-                "id": "63911687278502539",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "array": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false
-            },
-            {
-                "sysName": "segm2",
+                "sysName": "coffee_cups",
                 "dataType": "number",
-                "name": "Segm 2",
-                "id": "77701687278503386",
+                "name": "",
+                "id": "27881688757041175",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -34558,19 +34531,47 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "array": false,
-                "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "indexExists": false,
                 "typeVariable": {},
-                "json": false
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "indexExists": false,
+                "array": false
             },
             {
-                "sysName": "segm3",
+                "sysName": "day",
+                "dataType": "string",
+                "name": "",
+                "id": "36551688757035272",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "tea_cups",
                 "dataType": "number",
-                "name": "Segm 3",
-                "id": "46391687278504161",
+                "name": "",
+                "id": "64901688757048476",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -34586,19 +34587,19 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "array": false,
-                "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "indexExists": false,
                 "typeVariable": {},
-                "json": false
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "indexExists": false,
+                "array": false
             },
             {
-                "sysName": "segm4",
+                "sysName": "whiskey_glasses",
                 "dataType": "number",
-                "name": "Segm 4",
-                "id": "46531687278504874",
+                "name": "",
+                "id": "17731688757054436",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -34614,63 +34615,207 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "array": false,
-                "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "indexExists": false,
                 "typeVariable": {},
-                "json": false
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "indexExists": false,
+                "array": false
             }
         ],
         "data": [
             {
-                "segm2": 48,
-                "segm3": 200,
-                "segm1": 120.5,
-                "segm4": 10
+                "coffee_cups": 374,
+                "tea_cups": 677,
+                "whiskey_glasses": 481,
+                "day": "2023-05-21",
+                "day_formatted": "May 21",
+                "🫖 Tea cups": 677,
+                "☕️ Coffee cups": 374,
+                "🥃 Whiskey glasses": 481
+            },
+            {
+                "coffee_cups": 488,
+                "tea_cups": 837,
+                "whiskey_glasses": 492,
+                "day": "2023-04-18",
+                "day_formatted": "Apr 18",
+                "🫖 Tea cups": 837,
+                "☕️ Coffee cups": 488,
+                "🥃 Whiskey glasses": 492
+            },
+            {
+                "coffee_cups": 135,
+                "tea_cups": 756,
+                "whiskey_glasses": 300,
+                "day": "2023-05-22",
+                "day_formatted": "May 22",
+                "🫖 Tea cups": 756,
+                "☕️ Coffee cups": 135,
+                "🥃 Whiskey glasses": 300
+            },
+            {
+                "coffee_cups": 648,
+                "tea_cups": 184,
+                "whiskey_glasses": 306,
+                "day": "2023-06-04",
+                "day_formatted": "Jun 04",
+                "🫖 Tea cups": 184,
+                "☕️ Coffee cups": 648,
+                "🥃 Whiskey glasses": 306
+            },
+            {
+                "coffee_cups": 398,
+                "tea_cups": 808,
+                "whiskey_glasses": 151,
+                "day": "2023-05-10",
+                "day_formatted": "May 10",
+                "🫖 Tea cups": 808,
+                "☕️ Coffee cups": 398,
+                "🥃 Whiskey glasses": 151
+            },
+            {
+                "coffee_cups": 627,
+                "tea_cups": 480,
+                "whiskey_glasses": 232,
+                "day": "2023-05-24",
+                "day_formatted": "May 24",
+                "🫖 Tea cups": 480,
+                "☕️ Coffee cups": 627,
+                "🥃 Whiskey glasses": 232
+            },
+            {
+                "coffee_cups": 341,
+                "tea_cups": 60,
+                "whiskey_glasses": 487,
+                "day": "2023-05-31",
+                "day_formatted": "May 31",
+                "🫖 Tea cups": 60,
+                "☕️ Coffee cups": 341,
+                "🥃 Whiskey glasses": 487
+            },
+            {
+                "coffee_cups": 559,
+                "tea_cups": 849,
+                "whiskey_glasses": 26,
+                "day": "2023-05-09",
+                "day_formatted": "May 09",
+                "🫖 Tea cups": 849,
+                "☕️ Coffee cups": 559,
+                "🥃 Whiskey glasses": 26
+            },
+            {
+                "coffee_cups": 535,
+                "tea_cups": 263,
+                "whiskey_glasses": 43,
+                "day": "2023-05-05",
+                "day_formatted": "May 05",
+                "🫖 Tea cups": 263,
+                "☕️ Coffee cups": 535,
+                "🥃 Whiskey glasses": 43
+            },
+            {
+                "coffee_cups": 618,
+                "tea_cups": 279,
+                "whiskey_glasses": 128,
+                "day": "2023-04-13",
+                "day_formatted": "Apr 13",
+                "🫖 Tea cups": 279,
+                "☕️ Coffee cups": 618,
+                "🥃 Whiskey glasses": 128
+            },
+            {
+                "coffee_cups": 689,
+                "tea_cups": 256,
+                "whiskey_glasses": 87,
+                "day": "2023-05-06",
+                "day_formatted": "May 06",
+                "🫖 Tea cups": 256,
+                "☕️ Coffee cups": 689,
+                "🥃 Whiskey glasses": 87
+            },
+            {
+                "coffee_cups": 88,
+                "tea_cups": 472,
+                "whiskey_glasses": 471,
+                "day": "2023-04-25",
+                "day_formatted": "Apr 25",
+                "🫖 Tea cups": 472,
+                "☕️ Coffee cups": 88,
+                "🥃 Whiskey glasses": 471
+            },
+            {
+                "coffee_cups": 486,
+                "tea_cups": 412,
+                "whiskey_glasses": 352,
+                "day": "2023-04-15",
+                "day_formatted": "Apr 15",
+                "🫖 Tea cups": 412,
+                "☕️ Coffee cups": 486,
+                "🥃 Whiskey glasses": 352
+            },
+            {
+                "coffee_cups": 659,
+                "tea_cups": 313,
+                "whiskey_glasses": 162,
+                "day": "2023-04-17",
+                "day_formatted": "Apr 17",
+                "🫖 Tea cups": 313,
+                "☕️ Coffee cups": 659,
+                "🥃 Whiskey glasses": 162
+            },
+            {
+                "coffee_cups": 532,
+                "tea_cups": 104,
+                "whiskey_glasses": 4,
+                "day": "2023-04-06",
+                "day_formatted": "Apr 06",
+                "🫖 Tea cups": 104,
+                "☕️ Coffee cups": 532,
+                "🥃 Whiskey glasses": 4
             }
         ],
-        "totalPages": 1,
+        "totalPages": 5,
         "pageNumber": 0,
         "error": null,
         "fieldScheme": [
             [
-                "segm1",
-                99229338
+                "coffee_cups",
+                99232716
             ],
             [
-                "segm2",
-                99229338
+                "day",
+                99232716
             ],
             [
-                "segm3",
-                99229338
+                "tea_cups",
+                99232716
             ],
             [
-                "segm4",
-                99229338
+                "whiskey_glasses",
+                99232716
             ]
         ],
         "writeFields": [],
         "structures": {
-            "99229338": {
-                "networkID": 17660,
-                "sysName": "pie",
-                "name": "pie",
-                "id": 99229338,
-                "dateCreated": "2023-06-20T16:18:15Z",
+            "99232716": {
+                "networkID": 17743,
+                "sysName": "daily_beverage_consumption",
+                "name": "Daily beverage consumption",
+                "id": 99232716,
+                "dateCreated": "2023-07-07T19:04:56Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"segm3\",\"dataType\":\"number\",\"name\":\"Segm 3\",\"id\":\"46391687278504161\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"segm4\",\"dataType\":\"number\",\"name\":\"Segm 4\",\"id\":\"46531687278504874\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"segm1\",\"dataType\":\"decimal\",\"name\":\"Segm 1\",\"id\":\"63911687278502539\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"segm2\",\"dataType\":\"number\",\"name\":\"Segm 2\",\"id\":\"77701687278503386\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"whiskey_glasses\",\"dataType\":\"number\",\"name\":\"\",\"id\":\"17731688757054436\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"coffee_cups\",\"dataType\":\"number\",\"name\":\"\",\"id\":\"27881688757041175\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"day\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"36551688757035272\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"tea_cups\",\"dataType\":\"number\",\"name\":\"\",\"id\":\"64901688757048476\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"array\":false}]",
                 "jsonGroupSettings": null,
-                "jsonViewIdSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"day\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2023-06-20T16:30:20Z",
+                "dateChanged": "2023-07-07T19:11:30Z",
                 "createBy": 21,
                 "changedBy": 21,
                 "_settings": null,
@@ -34696,13 +34841,13 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
-                    "array": false,
-                    "linkOrArrayLinkType": false,
                     "linkType": false,
                     "arrayLink": false,
-                    "indexExists": false,
                     "typeVariable": {},
-                    "json": false
+                    "json": false,
+                    "linkOrArrayLinkType": false,
+                    "indexExists": false,
+                    "array": false
                 },
                 "folderId": null
             }
