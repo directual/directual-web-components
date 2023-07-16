@@ -19,7 +19,7 @@ export default function TabsPane({ tabs, loading, currentTabKey, fpsTabs, fixedS
         saveTabToURL && addUrlParam({ key: 'tab', value: tabClicked })
     }
 
-    useEffect(()=> {setCurrentTab(currentTabKey)}, [currentTabKey])
+    useEffect(()=> {currentTabKey && currentTabKey != currentTab && setCurrentTab(currentTabKey)}, [currentTabKey])
 
     useEffect(function onFirstMount() {
         const queryString = typeof window !== 'undefined' ? window.location.search : '';
