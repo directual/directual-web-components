@@ -208,7 +208,11 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
                 }
             })
         })
-        return _.orderBy(data, [chartParams.x_axis], ['asc'])
+        return chartParams.layoutVertical ? data : _.reverse(data)
+        // if (chartParams.x_axis_format) { return _.orderBy(data, [chartParams.x_axis], ['asc']) }
+        // else {
+        //     return data
+        // }
     }
 
     const chartData = transformData(_.get(data, "data") || [])
