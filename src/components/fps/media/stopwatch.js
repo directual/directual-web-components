@@ -96,7 +96,7 @@ export default function Stopwatch(props) {
 Stopwatch.settings = {
     icon: icon,
     name: 'Timer',
-    sysName: 'Stopwatch',
+    sysName: 'FpsTimer',
     isLegacy: false,
     isMarketplace: true,
     form: [
