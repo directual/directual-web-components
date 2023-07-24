@@ -7,6 +7,7 @@ import {
 import _ from 'lodash'
 import moment from 'moment';
 import styles from './chart.module.css'
+import SomethingWentWrong from '../SomethingWentWrong/SomethingWentWrong';
 
 export default function Chart({ data, lang, globalLoading, chartFilters, resetChartFilters }) {
 
@@ -198,21 +199,28 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
         }
 
         let data = [...d]
+
+        if (chartParams.chart_type == "line" && _.get(chartParams, 'lines_from_data') == "from_data" && _.get(chartParams, 'line_labels')) {
+            d.forEach(dataLine => {
+                dataLine[dataLine[_.get(chartParams, 'line_labels')]] = dataLine[_.get(chartParams, 'chart_lines[0].line_data')]
+            })
+
+        }
+
+
         d.forEach(dataLine => {
-            if (_.get(chartParams, 'x_axis_format')) {
-                dataLine[chartParams.x_axis + "_formatted"] = moment(dataLine[chartParams.x_axis]).locale(momentLocale[lang]).format(_.get(chartParams, 'x_axis_format'))
-            } else { dataLine[chartParams.x_axis + "_formatted"] = dataLine[chartParams.x_axis] }
+            // if (_.get(chartParams, 'x_axis_format')) {
+            //     dataLine[chartParams.x_axis + "_formatted"] = moment(dataLine[chartParams.x_axis]).locale(momentLocale[lang]).format(_.get(chartParams, 'x_axis_format'))
+            // } else { dataLine[chartParams.x_axis + "_formatted"] = dataLine[chartParams.x_axis] }
             (chartParams.chart_lines || []).forEach(userLine => {
                 if (userLine.line_data && userLine.line_label) {
                     dataLine[userLine.line_label || userLine.line_data] = dataLine[userLine.line_data]
                 }
             })
         })
+
+
         return chartParams.layoutVertical ? data : _.reverse(data)
-        // if (chartParams.x_axis_format) { return _.orderBy(data, [chartParams.x_axis], ['asc']) }
-        // else {
-        //     return data
-        // }
     }
 
     const chartData = transformData(_.get(data, "data") || [])
@@ -273,13 +281,6 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
 
     let renderChart = null
 
-    const chartDataTest = [
-        { name: "A", value: 400 },
-        { name: "B", value: 300 },
-        { name: "C", value: 300 },
-        { name: "D", value: 200 }
-    ]
-
     const RADIAN = Math.PI / 180;
     const renderCustomizedLabel = ({
         cx,
@@ -312,7 +313,14 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
     ]
 
     const usersColorsPalette = _.get(chartParams, 'pie_colors') ? _.get(chartParams, 'pie_colors').split(",") : []
-    const colorsPalette = _.concat(usersColorsPalette, defaultColorsPalette)
+    const usersColorsPalette2 = _.get(chartParams, 'lines_colors') ? _.get(chartParams, 'lines_colors').split(",") : []
+    const colorsPalette = _.concat(usersColorsPalette, usersColorsPalette2, defaultColorsPalette)
+
+    const tickFormatter = tick => {
+        return _.get(chartParams, 'x_axis_format') ? moment(tick).locale(momentLocale[lang]).format(_.get(chartParams, 'x_axis_format')) : tick
+    }
+
+
 
     switch (chartParams.chart_type) {
         case 'line':
@@ -337,23 +345,47 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
                         <XAxis type="number" orientation="bottom" xAxisId="first" stroke={chartParams.left_axis_color || "#333333"} />
                         {chartParams.biAxial && <XAxis type="number" orientation="top" xAxisId="second" stroke={chartParams.right_axis_color || "#333333"} />}
                     </React.Fragment> : <React.Fragment>
-                        <XAxis dataKey={chartParams.x_axis + "_formatted"} type="category" xAxisId="first" />
+                        <XAxis
+                            //dataKey={chartParams.x_axis + "_formatted"} 
+                            dataKey={chartParams.x_axis}
+                            scale={_.get(chartParams, 'x_axis_format') ? 'time' : 'auto'}
+                            tickFormatter={tickFormatter}
+                            type="category" xAxisId="first" />
                         <YAxis type="number" orientation="left" yAxisId="first" stroke={chartParams.left_axis_color || "#333333"} />
                         {chartParams.biAxial && <YAxis type="number" orientation="right" yAxisId="second" stroke={chartParams.right_axis_color || "#333333"} />}
                     </React.Fragment>}
 
-                {chartParams.show_tooltip && <Tooltip />}
+                {chartParams.show_tooltip && <Tooltip labelFormatter={tickFormatter} />}
                 {chartParams.show_legend && <Legend />}
-                {(chartParams.chart_lines || []).map(line => <Line
-                    yAxisId={(chartParams.biAxial && line.secondAxis && !chartParams.layoutVertical) ? "second" : "first"}
-                    xAxisId={(chartParams.biAxial && line.secondAxis && chartParams.layoutVertical) ? "second" : "first"}
-                    dot={line.line_dot ? { stroke: line.color, strokeWidth: line.dot_width || 1 } : false}
-                    type={line.line_type || "monotone"}
-                    strokeWidth={line.line_width || 1}
-                    dataKey={line.line_label || line.line_data}
-                    hide={!chartFilters[line.line_data]}
-                    stroke={line.color}
-                />)}
+
+                {chartParams.chart_type == "line" && _.get(chartParams, 'lines_from_data') == "from_data" && _.get(chartParams, 'line_labels') ?
+                    (Object.keys(_.groupBy(_.get(data, "data"), _.get(chartParams, 'line_labels'))) || []).map((line, index) => {
+                        return <Line
+                            yAxisId={"first"}
+                            connectNulls={_.get(chartParams, 'connectNulls')}
+                            xAxisId={"first"}
+                            dot={_.get(chartParams, 'chart_lines[0]').line_dot ? { stroke: _.get(chartParams, 'chart_lines[0]').color, strokeWidth: _.get(chartParams, 'chart_lines[0]').dot_width || 1 } : false}
+                            type={_.get(chartParams, 'chart_lines[0]').line_type || "monotone"}
+                            strokeWidth={_.get(chartParams, 'chart_lines[0]').line_width || 1}
+                            dataKey={line}
+                            hide={!chartFilters[_.get(chartParams, 'chart_lines[0]').line_data]}
+                            stroke={colorsPalette[index]}
+                        />
+                    })
+                    :
+                    (chartParams.chart_lines || []).map(line => {
+                        return <Line
+                            yAxisId={(chartParams.biAxial && line.secondAxis && !chartParams.layoutVertical) ? "second" : "first"}
+                            connectNulls={_.get(chartParams, 'connectNulls')}
+                            xAxisId={(chartParams.biAxial && line.secondAxis && chartParams.layoutVertical) ? "second" : "first"}
+                            dot={line.line_dot ? { stroke: line.color, strokeWidth: line.dot_width || 1 } : false}
+                            type={line.line_type || "monotone"}
+                            strokeWidth={line.line_width || 1}
+                            dataKey={line.line_label || line.line_data}
+                            hide={!chartFilters[line.line_data]}
+                            stroke={line.color}
+                        />
+                    })}
             </LineChart>
             break;
         case 'area':
@@ -444,6 +476,7 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
                     xAxisId={(chartParams.biAxial && line.secondAxis && chartParams.layoutVertical) ? "second" : "first"}
                     strokeWidth={line.line_width || 1}
                     stackId={line.line_stackedID}
+                    maxBarSize={100}
                     dataKey={line.line_label || line.line_data}
                     hide={!chartFilters[line.line_data]}
                     fill={line.color}
@@ -521,6 +554,8 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
         default:
             renderChart = <div>unknown chart type</div>
     }
+
+    if (!_.get(data, "data") || _.get(data, "data").length == 0) { return <SomethingWentWrong message='no data' icon='chart' /> }
 
     return <div ref={chartHolder} className={styles.chartHolder}
         style={
