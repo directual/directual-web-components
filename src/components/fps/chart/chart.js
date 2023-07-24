@@ -200,18 +200,17 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
 
         let data = [...d]
 
-        if (chartParams.chart_type == "line" && _.get(chartParams, 'lines_from_data') == "from_data" && _.get(chartParams, 'line_labels')) {
+        if ((chartParams.chart_type == "line" || chartParams.chart_type == "area") && _.get(chartParams, 'lines_from_data') == "from_data" && _.get(chartParams, 'line_labels')) {
             d.forEach(dataLine => {
                 dataLine[dataLine[_.get(chartParams, 'line_labels')]] = dataLine[_.get(chartParams, 'chart_lines[0].line_data')]
             })
 
         }
 
-
         d.forEach(dataLine => {
-            // if (_.get(chartParams, 'x_axis_format')) {
-            //     dataLine[chartParams.x_axis + "_formatted"] = moment(dataLine[chartParams.x_axis]).locale(momentLocale[lang]).format(_.get(chartParams, 'x_axis_format'))
-            // } else { dataLine[chartParams.x_axis + "_formatted"] = dataLine[chartParams.x_axis] }
+            if (_.get(chartParams, 'x_axis_format')) {
+                dataLine[chartParams.x_axis + "_formatted"] = moment(dataLine[chartParams.x_axis]).locale(momentLocale[lang]).format(_.get(chartParams, 'x_axis_format'))
+            } else { dataLine[chartParams.x_axis + "_formatted"] = dataLine[chartParams.x_axis] }
             (chartParams.chart_lines || []).forEach(userLine => {
                 if (userLine.line_data && userLine.line_label) {
                     dataLine[userLine.line_label || userLine.line_data] = dataLine[userLine.line_data]
@@ -346,9 +345,8 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
                         {chartParams.biAxial && <XAxis type="number" orientation="top" xAxisId="second" stroke={chartParams.right_axis_color || "#333333"} />}
                     </React.Fragment> : <React.Fragment>
                         <XAxis
-                            //dataKey={chartParams.x_axis + "_formatted"} 
                             dataKey={chartParams.x_axis}
-                            scale={_.get(chartParams, 'x_axis_format') ? 'time' : 'auto'}
+                            scale={_.get(chartParams, 'x_axis_scale') || 'auto'}
                             tickFormatter={tickFormatter}
                             type="category" xAxisId="first" />
                         <YAxis type="number" orientation="left" yAxisId="first" stroke={chartParams.left_axis_color || "#333333"} />
@@ -368,7 +366,7 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
                             type={_.get(chartParams, 'chart_lines[0]').line_type || "monotone"}
                             strokeWidth={_.get(chartParams, 'chart_lines[0]').line_width || 1}
                             dataKey={line}
-                            hide={!chartFilters[_.get(chartParams, 'chart_lines[0]').line_data]}
+                            hide={!chartFilters[line]}
                             stroke={colorsPalette[index]}
                         />
                     })
@@ -410,7 +408,11 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
                         <XAxis type="number" orientation="bottom" xAxisId="first" stroke={chartParams.left_axis_color || "#333333"} />
                         {chartParams.biAxial && <XAxis type="number" orientation="top" xAxisId="second" stroke={chartParams.right_axis_color || "#333333"} />}
                     </React.Fragment> : <React.Fragment>
-                        <XAxis dataKey={chartParams.x_axis + "_formatted"} type="category" xAxisId="first" />
+                        <XAxis
+                            dataKey={chartParams.x_axis}
+                            scale={_.get(chartParams, 'x_axis_scale') || 'auto'}
+                            tickFormatter={tickFormatter}
+                            type="category" xAxisId="first" />
                         <YAxis type="number" orientation="left" yAxisId="first" stroke={chartParams.left_axis_color || "#333333"} />
                         {chartParams.biAxial && <YAxis type="number" orientation="right" yAxisId="second" stroke={chartParams.right_axis_color || "#333333"} />}
                     </React.Fragment>}
@@ -418,27 +420,54 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
                 {chartParams.show_legend && <Legend />}
 
                 <defs>
-                    {(chartParams.chart_lines || []).map(line =>
-                        <linearGradient id={"gradient_" + line.line_data} x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor={line.color} stopOpacity={0.8} />
-                            <stop offset="95%" stopColor={line.color} stopOpacity={0} />
-                        </linearGradient>
-                    )}
+                    {_.get(chartParams, 'lines_from_data') == "from_data" && _.get(chartParams, 'line_labels') ?
+                        (Object.keys(_.groupBy(_.get(data, "data"), _.get(chartParams, 'line_labels'))) || []).map((line, index) => {
+                            return <linearGradient id={"gradient_" + line} x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor={colorsPalette[index]} stopOpacity={0.8} />
+                                <stop offset="95%" stopColor={colorsPalette[index]} stopOpacity={0} />
+                            </linearGradient>
+                        })
+                        :
+                        (chartParams.chart_lines || []).map(line => {
+                            return <linearGradient id={"gradient_" + line.line_data} x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor={line.color} stopOpacity={0.8} />
+                                <stop offset="95%" stopColor={line.color} stopOpacity={0} />
+                            </linearGradient>
+                        })}
                 </defs>
 
-                {(chartParams.chart_lines || []).map(line => <React.Fragment>
-                    <Area
-                        dot={line.line_dot ? { stroke: line.color, strokeWidth: line.dot_width || 1 } : false}
-                        yAxisId={(chartParams.biAxial && line.secondAxis && !chartParams.layoutVertical) ? "second" : "first"}
-                        xAxisId={(chartParams.biAxial && line.secondAxis && chartParams.layoutVertical) ? "second" : "first"}
-                        type={line.line_type || "monotone"}
-                        strokeWidth={line.line_width || 1}
-                        dataKey={line.line_label || line.line_data}
-                        hide={!chartFilters[line.line_data]}
-                        stroke={line.color}
-                        fillOpacity={1}
-                        fill={`url(#gradient_${line.line_data})`}
-                    /></React.Fragment>)}
+                {_.get(chartParams, 'lines_from_data') == "from_data" && _.get(chartParams, 'line_labels') ?
+                    (Object.keys(_.groupBy(_.get(data, "data"), _.get(chartParams, 'line_labels'))) || []).map((line, index) => {
+                        return <Area
+                            yAxisId={"first"}
+                            connectNulls={_.get(chartParams, 'connectNulls')}
+                            xAxisId={"first"}
+                            dot={_.get(chartParams, 'chart_lines[0]').line_dot ? { stroke: _.get(chartParams, 'chart_lines[0]').color, strokeWidth: _.get(chartParams, 'chart_lines[0]').dot_width || 1 } : false}
+                            type={_.get(chartParams, 'chart_lines[0]').line_type || "monotone"}
+                            strokeWidth={_.get(chartParams, 'chart_lines[0]').line_width || 1}
+                            dataKey={line}
+                            hide={!chartFilters[line]}
+                            stroke={colorsPalette[index]}
+                            fillOpacity={1}
+                            fill={`url(#gradient_${line})`}
+                        />
+                    })
+                    :
+                    (chartParams.chart_lines || []).map(line => {
+                        return <Area
+                            yAxisId={(chartParams.biAxial && line.secondAxis && !chartParams.layoutVertical) ? "second" : "first"}
+                            connectNulls={_.get(chartParams, 'connectNulls')}
+                            xAxisId={(chartParams.biAxial && line.secondAxis && chartParams.layoutVertical) ? "second" : "first"}
+                            dot={line.line_dot ? { stroke: line.color, strokeWidth: line.dot_width || 1 } : false}
+                            type={line.line_type || "monotone"}
+                            strokeWidth={line.line_width || 1}
+                            dataKey={line.line_label || line.line_data}
+                            hide={!chartFilters[line.line_data]}
+                            stroke={line.color}
+                            fillOpacity={1}
+                            fill={`url(#gradient_${line.line_data})`}
+                        />
+                    })}
             </AreaChart>
             break;
         case 'bar':
@@ -561,10 +590,6 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
         style={
             {
                 height: chartParams.chart_height || 300,
-                // marginTop: chartMargins.top,
-                // marginBottom: chartMargins.bottom,
-                // marginLeft: chartMargins.left,
-                // marginRight: chartMargins.right
             }}
     >
         {globalLoading ?

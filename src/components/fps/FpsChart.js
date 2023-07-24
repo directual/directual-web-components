@@ -184,7 +184,7 @@ function FpsChart({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
       }
       const dqlParams = { dql: currentDQL, sort: currentSort }
       sendMsg({ ...saveModel })
-      const isDelayedRefresh =  currentDQL || _.get(currentSort, 'field') || currentPage
+      const isDelayedRefresh = currentDQL || _.get(currentSort, 'field') || currentPage
       isDelayedRefresh && setTimeout(() => {
         onEvent({ dql: currentDQL, sort: currentSort, _id: id }, { page: currentPage }, { reqParam1: "true" })
         removeUrlParam(id + '_id')
@@ -209,7 +209,7 @@ function FpsChart({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
       }
       const dqlParams = { dql: currentDQL, sort: currentSort }
       sendMsg({ ...saveModel })
-      const isDelayedRefresh =  currentDQL || _.get(currentSort, 'field') || currentPage
+      const isDelayedRefresh = currentDQL || _.get(currentSort, 'field') || currentPage
       isDelayedRefresh && setTimeout(() => {
         onEvent({ dql: currentDQL, sort: currentSort, _id: id }, { page: currentPage }, { reqParam1: "true" })
         removeUrlParam(id + '_id')
@@ -350,9 +350,32 @@ function FpsChart({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
   const [chartFilters, setChartFilters] = useState({})
 
+  const defaultColorsPalette = [
+    '#731FF2', '#3FCA52', '#F2901F', '#F21FCF', '#F21F22', '#8B572A', "#0088FE", "#00C49F", "#FFBB28", "#FF8042"
+  ]
+  const usersColorsPalette = _.get(data.params, 'pie_colors') ? _.get(data.params, 'pie_colors').split(",") : []
+  const usersColorsPalette2 = _.get(data.params, 'lines_colors') ? _.get(data.params, 'lines_colors').split(",") : []
+  const colorsPalette = _.concat(usersColorsPalette, usersColorsPalette2, defaultColorsPalette)
+
+  const composeChartLinesForFiltering = () => {
+    const fromData = ((data.params.chart_type == "line" || data.params.chart_type == "area") &&
+      _.get(data.params, 'lines_from_data') == "from_data"
+      && _.get(data.params, 'line_labels')) ? true : false
+    if (fromData) {
+      return (Object.keys(_.groupBy(_.get(data, "data"), _.get(data.params, 'line_labels'))) || []).map((i, index) => {
+        return {
+          line_data: i,
+          color: colorsPalette[index]
+        }
+      })
+    } else {
+      return _.get(data, 'params.chart_lines')
+    }
+  }
+
   const resetChartFilters = () => {
     const defaultFilters = {};
-    (_.get(data, 'params.chart_lines') || []).forEach(i => {
+    (composeChartLinesForFiltering() || []).forEach(i => {
       _.set(defaultFilters, [i.line_data], true)
     })
     setChartFilters(defaultFilters)
@@ -390,6 +413,8 @@ function FpsChart({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
   useEffect(reset, [])
 
+
+
   return (
     <ComponentWrapper currentBP={currentBP}>
       {data.writeError && data.writeError != 'dql is not allowed for write' && <Hint title={dict[lang].form.error} error>{data.writeError}</Hint>}
@@ -398,7 +423,7 @@ function FpsChart({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
       <TableTitle
         tableFilters={_.get(data.params, 'chartFilters') || {}}
         chartFilters={chartFilters}
-        chartLines={_.get(data, 'params.chart_lines')}
+        chartLines={composeChartLinesForFiltering()}
         displayChartFilters={_.get(data.params, 'filter_lines')}
         clearChartFilters={value => {
           resetChartFilters()
@@ -410,6 +435,7 @@ function FpsChart({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
           setLoading(true)
           setTimeout(() => setLoading(false), 100)
         }}
+
         displayFilters={_.get(data.params, 'chartFilters.isFiltering')}
         performFiltering={dqlService}
         params={data.params}
