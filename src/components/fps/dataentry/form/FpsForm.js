@@ -220,7 +220,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
       }
 
       // костылек для масивов ссылок:
-      if (Array.isArray(getFieldVal) && typeof getFieldVal[0] == 'string' ) {
+      if (Array.isArray(getFieldVal) && typeof getFieldVal[0] == 'string') {
         return getFieldVal.join(",")
       }
 
@@ -334,9 +334,14 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
   // чекаем надо ли спрятать кнопку сабмита
   const wf = (_.get(data, 'params.data.writeFields') || [])
     .filter(f => (_.get(data, `params.fields.${f.sysName}.include`) || _.get(data, `params.fields.${f.sysName}.defaultValueOn`)) && !_.get(data, `params.fields.${f.sysName}.disableEditing`))
+  const wf_noHinned = (_.get(data, 'params.data.writeFields') || [])
+    .filter(f => (_.get(data, `params.fields.${f.sysName}.include`)) && !_.get(data, `params.fields.${f.sysName}.disableEditing`))
   let idInclude = false;
   _.get(data, 'params.data.writeFields').forEach(f => { if (f.sysName == 'id') { idInclude = true } })
   const isEditable = (idInclude || !data.params.useEditing) && wf.length > 0
+
+  // console.log(wf_noHinned)
+
   // console.log('wf')
   // console.log(wf.length > 0)
   // console.log('isEditable')
@@ -347,7 +352,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
     <ComponentWrapper>
       {/* <Button icon='refresh' onClick={resubmit}>refresh</Button> */}
       {formName && <h2 className={styles.form_header}>{formName}</h2>}
-      <div style={{ maxWidth: formWidth, marginBottom: 12 }}>
+      <div style={{ maxWidth: formWidth, marginBottom: formDesc ? 12 : 0 }}>
         {formDesc && showForm && (
           <Markdown value={formDesc} />
         )}</div>
@@ -361,19 +366,25 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
 
       {/* Standard response processing: */}
       {!showForm && !loading && !getResultAnswer().sync && <React.Fragment>
-        {isSuccessWrite && <Hint title={resultTitle} ok><div dangerouslySetInnerHTML={{ __html: resultMessage }} /></Hint>}
+        {isSuccessWrite && <Hint 
+          margin={{ top: wf_noHinned.length > 0 ? 24 : 0, bottom: 0 }}
+          title={resultTitle} ok><div dangerouslySetInnerHTML={{ __html: resultMessage }} /></Hint>}
       </React.Fragment>}
 
 
       {/* Sync response processing: */}
       {!showForm && !data.error && !loading && getResultAnswer().sync && <React.Fragment>
         {data.response && !getResultAnswer().isSuccess && <React.Fragment>
-          <Hint title={getResultAnswer().answerTitle} error>
+          <Hint
+            margin={{ top: wf_noHinned.length > 0 ? 24 : 0, bottom: 0 }} 
+            title={getResultAnswer().answerTitle} error>
             <div dangerouslySetInnerHTML={{ __html: getResultAnswer().answerText }} />
           </Hint>
         </React.Fragment>}
         {data.response && getResultAnswer().isSuccess &&
-          <Hint title={getResultAnswer().answerTitle} ok>
+          <Hint 
+            margin={{ top: wf_noHinned.length > 0 ? 24 : 0, bottom: 0 }}
+            title={getResultAnswer().answerTitle} ok>
             {data.params.result.isLink ? getResultAnswer().answerText :
               <div dangerouslySetInnerHTML={{ __html: getResultAnswer().answerText }} />}
           </Hint>}
@@ -390,7 +401,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
             && data.params.data.columns[section].fieldIds.length > 0
             &&
             <div //style={{ marginBottom: 38 }} 
-              className={`${styles.marginBottom38} ${checkSectionConditionals(data.params.data.columns[section].cond, data.params.data.columns[section].condOperator) ?
+              className={`${styles.marginBottom38_disable} ${checkSectionConditionals(data.params.data.columns[section].cond, data.params.data.columns[section].condOperator) ?
                 '' : styles.hideSection}`}>
               {data.params.data.columnOrder.length > 1 && data.params.data.columns[section].display &&
                 <FormSection title=
@@ -419,7 +430,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
           )}
 
           {(!data.error || data.error == 'dql is not allowed for write') && isEditable &&  // dql это КОСТЫЛЬ — убрать когда пофиксим на API
-            <ActionPanel>
+            <ActionPanel margin={{ top: wf_noHinned.length > 0 ? 38 : 0, bottom: 0 }}>
               <Button accent disabled={!isValid}>{formButton}</Button>
             </ActionPanel>}
 

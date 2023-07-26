@@ -382,6 +382,8 @@ function FpsChart({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     setRerender(true)
   }
 
+  const [updateData,setUpdateData] = useState({})
+
   // get direct link ID
   useEffect(() => {
     const queryString = typeof window !== 'undefined' ? window.location.search : '';
@@ -411,7 +413,12 @@ function FpsChart({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     setTimeout(() => { setLoading(false) }, 100)
   }
 
-  useEffect(reset, [])
+  useEffect(()=>{
+    if (JSON.stringify(data.data) !== JSON.stringify(updateData)) {
+      reset()
+      setUpdateData(data.data)
+    }
+  }, [data])
 
 
 

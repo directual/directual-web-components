@@ -21889,7 +21889,7 @@ const App = (props) => {
     }
 
     let exampleForm = {
-        "sl": "test",
+        "sl": "adminSurveyFilters",
         "formName": "",
         "formDesc": "",
         "formButton": "",
@@ -21902,29 +21902,8 @@ const App = (props) => {
                 "resultMessageField": null,
                 "isSuccessField": null
             },
-            "useEditing": true,
             "data": {
                 "readFields": [
-                    {
-                        "fieldSysName": "file",
-                        "fetch": [],
-                        "sysName": "file",
-                        "name": "",
-                        "dataType": "file",
-                        "format": "multipleFiles",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "files",
-                        "fetch": [],
-                        "sysName": "files",
-                        "name": "",
-                        "dataType": "file",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
                     {
                         "fieldSysName": "id",
                         "fetch": [],
@@ -21938,59 +21917,111 @@ const App = (props) => {
                 ],
                 "writeFields": [
                     {
-                        "fieldSysName": "file",
+                        "fieldSysName": "from",
                         "fetch": [],
-                        "sysName": "file",
-                        "name": "",
-                        "dataType": "file",
-                        "format": "multipleFiles",
-                        "formatOptions": {},
+                        "sysName": "from",
+                        "name": "From",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD MMM, Y",
+                            "timeFormat": "",
+                            "isUTC": "true"
+                        },
                         "link": ""
                     },
                     {
-                        "fieldSysName": "files",
+                        "fieldSysName": "survey_1",
                         "fetch": [],
-                        "sysName": "files",
-                        "name": "",
-                        "dataType": "file",
+                        "sysName": "survey_1",
+                        "name": "Question 1 filter (Which describes you best)",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
-                        "link": ""
+                        "link": "survey_step1"
                     },
                     {
-                        "fieldSysName": "id",
+                        "fieldSysName": "survey_2",
                         "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
+                        "sysName": "survey_2",
+                        "name": "Question 2 filter (Which describes you best)",
+                        "dataType": "arrayLink",
                         "format": "",
                         "formatOptions": {},
+                        "link": "survey_step2"
+                    },
+                    {
+                        "fieldSysName": "survey_3",
+                        "fetch": [],
+                        "sysName": "survey_3",
+                        "name": "Question 3 filter (How did you know about Directual)",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "survey_step2"
+                    },
+                    {
+                        "fieldSysName": "to",
+                        "fetch": [],
+                        "sysName": "to",
+                        "name": "To",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD MMM, Y",
+                            "timeFormat": "",
+                            "isUTC": "true"
+                        },
                         "link": ""
                     }
                 ],
                 "fields": {
-                    "file": {
-                        "id": "file",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "file",
-                        "format": "multipleFiles",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "files": {
-                        "id": "files",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "file",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
                     "id": {
                         "id": "id",
                         "content": "id",
@@ -21998,21 +22029,154 @@ const App = (props) => {
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
+                        "link": ""
+                    },
+                    "from": {
+                        "id": "from",
+                        "content": "From",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD MMM, Y",
+                            "timeFormat": "",
+                            "isUTC": "true"
+                        },
+                        "write": true,
+                        "link": ""
+                    },
+                    "survey_1": {
+                        "id": "survey_1",
+                        "content": "Question 1 filter (Which describes you best)",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "link": "survey_step1"
+                    },
+                    "survey_2": {
+                        "id": "survey_2",
+                        "content": "Question 2 filter (Which describes you best)",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "link": "survey_step2"
+                    },
+                    "survey_3": {
+                        "id": "survey_3",
+                        "content": "Question 3 filter (How did you know about Directual)",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "link": "survey_step2"
+                    },
+                    "to": {
+                        "id": "to",
+                        "content": "To",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD MMM, Y",
+                            "timeFormat": "",
+                            "isUTC": "true"
+                        },
+                        "write": true,
                         "link": ""
                     }
                 },
                 "fieldParams": {
-                    "file": {
-                        "include": true,
+                    "from": {
+                        "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "files": {
-                        "include": true,
+                    "survey_1": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "defaultValueOn": true,
+                        "defaultValue": "reset_everything"
+                    },
+                    "survey_2": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "survey_3": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "to": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "users_count": {
+                        "include": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
@@ -22031,8 +22195,11 @@ const App = (props) => {
                         "id": "tab-1",
                         "title": "New section",
                         "fieldIds": [
-                            "files",
-                            "file",
+                            "from",
+                            "survey_1",
+                            "survey_2",
+                            "survey_3",
+                            "to",
                             "id"
                         ]
                     }
@@ -22042,15 +22209,45 @@ const App = (props) => {
                 ]
             },
             "fields": {
-                "file": {
-                    "include": true,
+                "from": {
+                    "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "files": {
-                    "include": true,
+                "survey_1": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "defaultValueOn": true,
+                    "defaultValue": "reset_everything"
+                },
+                "survey_2": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "survey_3": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "to": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "users_count": {
+                    "include": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
@@ -22063,14 +22260,18 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 }
+            },
+            "resultScreen": {
+                "disableResubmit": true,
+                "successMessage": "Resetting stats..."
             }
         },
         "fileds": [
             {
-                "sysName": "file",
-                "name": "",
-                "dataType": "file",
-                "id": "79471679736193693",
+                "sysName": "from",
+                "name": "From",
+                "dataType": "date",
+                "id": "15231689344219273",
                 "link": "",
                 "group": "0",
                 "tags": null,
@@ -22083,22 +22284,133 @@ const App = (props) => {
                 "defaultValue": null,
                 "constraints": null,
                 "synthetic": false,
-                "format": "multipleFiles",
-                "formatOptions": null,
+                "format": null,
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "en-gb",
+                    "booleanOptions": [
+                        "True",
+                        "False"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD MMM, Y",
+                    "timeFormat": "",
+                    "isUTC": "true"
+                },
                 "groupName": null,
+                "indexExists": false,
+                "json": false,
+                "typeVariable": {},
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
                 "array": false
             },
             {
-                "sysName": "files",
-                "name": "",
-                "dataType": "file",
-                "id": "29051679736194177",
+                "sysName": "survey_1",
+                "name": "Question 1 filter (Which describes you best)",
+                "dataType": "arrayLink",
+                "id": "95921689345130773",
+                "link": "survey_step1",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "json": false,
+                "typeVariable": {},
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
+                "array": false
+            },
+            {
+                "sysName": "survey_2",
+                "name": "Question 2 filter (Which describes you best)",
+                "dataType": "arrayLink",
+                "id": "48191689345146760",
+                "link": "survey_step2",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "json": false,
+                "typeVariable": {},
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
+                "array": false
+            },
+            {
+                "sysName": "survey_3",
+                "name": "Question 3 filter (How did you know about Directual)",
+                "dataType": "arrayLink",
+                "id": "72871689345166484",
+                "link": "survey_step2",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "json": false,
+                "typeVariable": {},
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
+                "array": false
+            },
+            {
+                "sysName": "to",
+                "name": "To",
+                "dataType": "date",
+                "id": "71261689344219765",
                 "link": "",
                 "group": "0",
                 "tags": null,
@@ -22112,55 +22424,48 @@ const App = (props) => {
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "en-gb",
+                    "booleanOptions": [
+                        "True",
+                        "False"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD MMM, Y",
+                    "timeFormat": "",
+                    "isUTC": "true"
+                },
                 "groupName": null,
+                "indexExists": false,
+                "json": false,
+                "typeVariable": {},
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "id",
-                "name": "id",
-                "dataType": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false,
                 "array": false
             }
         ],
         "error": null,
         "isSuccessWrite": false,
         "response": null,
-        "data": [
-            {
-                "files": "https://api.directual.com/fileUploaded/check-file-upload/5b39c7bf-1d2b-43ea-a80c-488f1e8e5fe5.png",
-                "file": "https://api.directual.com/fileUploaded/check-file-upload/90ad2abe-830f-4f3e-b48d-8cc72a4b8e15.png,https://api.directual.com/fileUploaded/check-file-upload/5b39c7bf-1d2b-43ea-a80c-488f1e8e5fe5.png",
-                "id": "1"
-            }
-        ],
+        "data": [],
         "httpParams": {}
     }
 
