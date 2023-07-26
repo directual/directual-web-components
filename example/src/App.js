@@ -22915,7 +22915,7 @@ const App = (props) => {
 
     const chartData = {
         "sl": "archiveSumScore",
-        "pageSize": "200",
+        "pageSize": "400",
         "headerField": null,
         "params": {
             "cardListLayout": "grid",
@@ -22927,7 +22927,7 @@ const App = (props) => {
             "cardImageType": "none",
             "cardImageSize": 100,
             "objectView": {},
-            "chart_type": "area",
+            "chart_type": "line",
             "lines_from_data": "from_data",
             "chart_lines": [
                 {
@@ -22938,7 +22938,7 @@ const App = (props) => {
                     "line_type": "monotone"
                 }
             ],
-            "lines_colors": "#417505,#ff3e00,#50e3c2",
+            "lines_colors": "",
             "line_labels": "sportsman",
             "x_axis": "time",
             "x_axis_format": "HH:mm",
@@ -22946,13 +22946,15 @@ const App = (props) => {
             "chart_strokeDasharray": "3 3",
             "show_tooltip": true,
             "show_brush": true,
-            "brush_color": "#159172",
+            "brush_color": "#801b00",
             "show_legend": true,
             "connectNulls": true,
             "filter_lines": true,
-            "x_axis_scale": "time"
+            "x_axis_scale": "time",
+            "chart_height": 450,
+            "chart_margins": "0 0 60 0"
         },
-        "tableTitle": "",
+        "tableTitle": "Динамика встречи",
         "actions": null,
         "headers": [
             {
@@ -22976,11 +22978,11 @@ const App = (props) => {
                 "formatOptions": {},
                 "groupName": null,
                 "typeVariable": {},
-                "json": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": true,
                 "linkType": true,
                 "arrayLink": false,
-                "indexExists": false,
+                "json": false,
                 "array": false
             },
             {
@@ -23004,11 +23006,11 @@ const App = (props) => {
                 "formatOptions": {},
                 "groupName": null,
                 "typeVariable": {},
-                "json": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "indexExists": false,
+                "json": false,
                 "array": false
             },
             {
@@ -23032,11 +23034,11 @@ const App = (props) => {
                 "formatOptions": {},
                 "groupName": null,
                 "typeVariable": {},
-                "json": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "indexExists": false,
+                "json": false,
                 "array": false
             },
             {
@@ -23060,11 +23062,11 @@ const App = (props) => {
                 "formatOptions": {},
                 "groupName": null,
                 "typeVariable": {},
-                "json": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": true,
                 "linkType": true,
                 "arrayLink": false,
-                "indexExists": false,
+                "json": false,
                 "array": false
             },
             {
@@ -23088,11 +23090,11 @@ const App = (props) => {
                 "formatOptions": {},
                 "groupName": null,
                 "typeVariable": {},
-                "json": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "indexExists": false,
+                "json": false,
                 "array": false
             },
             {
@@ -23143,62 +23145,2274 @@ const App = (props) => {
                 },
                 "groupName": null,
                 "typeVariable": {},
-                "json": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "indexExists": false,
+                "json": false,
                 "array": false
             }
         ],
         "data": [
             {
-                "sportsman": "green",
-                "time": 1689653280000,
-                "sum_score": 12,
-                "id": "974be4b1-92cb-4caa-a985-ee61c258f9ab",
-                "green": 12,
-                "time_formatted": "07:08"
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 55,
+                "id": "8dd1643d-f4a7-4b8f-9155-59e5c8fc445e",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679847567000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 55,
+                "time_formatted": "19:19"
             },
             {
-                "sum_score": 9,
-                "sportsman": "green",
-                "time": 1689653160000,
-                "id": "53ff7aa0-30e2-4107-bb3d-28aabfad3f02",
-                "green": 9,
-                "time_formatted": "07:06"
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 43,
+                "id": "1a0c9849-4a8f-4598-bd80-937ff9e6d79d",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679847456000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 43,
+                "time_formatted": "19:17"
             },
             {
-                "time": 1689652980000,
-                "sportsman": "red",
-                "sum_score": 10,
-                "id": "2982e5c6-46b8-4bbc-b328-884fd858615f",
-                "red": 10,
-                "time_formatted": "07:03"
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 42,
+                "id": "e6106502-53bc-4935-aa75-606272f2e6a0",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679847327000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 42,
+                "time_formatted": "19:15"
             },
             {
-                "sportsman": "red",
-                "sum_score": 10,
-                "time": 1689652920000,
-                "id": "aa222c10-6ab0-47f1-8b99-f18c8a66ec1d",
-                "red": 10,
-                "time_formatted": "07:02"
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 92,
+                "id": "17b01786-c276-4963-9778-bd77ddcdcd0d",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679847309000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 92,
+                "time_formatted": "19:15"
             },
             {
-                "time": 1689652800000,
-                "sportsman": "red",
-                "sum_score": 12,
-                "id": "4db0f596-db23-4b0a-a650-8c3dfd97df51",
-                "red": 12,
-                "time_formatted": "07:00"
+                "sportsman_id": "c5a8ab3e40e3afffcdb55792cf9e646d",
+                "sum_score": 7,
+                "id": "69125ca1-d629-4cc5-9f98-f390d00f3826",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679847281000,
+                "sportsman": "Мартынова (реф. Задоренко)",
+                "Мартынова (реф. Задоренко)": 7,
+                "time_formatted": "19:14"
             },
             {
-                "time": 1689649800000,
-                "sportsman": "green",
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 53,
+                "id": "fbadb9d3-f901-42e6-82b2-f2f45c7b7a33",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679847269000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 53,
+                "time_formatted": "19:14"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 52,
+                "id": "71af5487-d30a-49eb-84b7-a6064dbeae1b",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679847257000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 52,
+                "time_formatted": "19:14"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 91,
+                "id": "d4607c65-20bd-49d7-8537-f4e206eecae7",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679847237000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 91,
+                "time_formatted": "19:13"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 62,
+                "id": "4a6a7af5-d41c-4c97-b8cd-b241b5128e03",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679847221000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 62,
+                "time_formatted": "19:13"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 61,
+                "id": "01eaefbb-8ea8-4bc9-b2e0-639e820e6775",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679847211000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 61,
+                "time_formatted": "19:13"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 60,
+                "id": "6da678c0-47ed-4ad6-ad65-386b130d69b1",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679847205000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 60,
+                "time_formatted": "19:13"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 41,
+                "id": "fca6fbcc-2f5a-4234-8511-eb838b80ccf1",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679847188000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 41,
+                "time_formatted": "19:13"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 90,
+                "id": "a9af9182-c70c-47c8-89dd-d685382eb9be",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679847179000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 90,
+                "time_formatted": "19:12"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 40,
+                "id": "5ba04fed-8018-4272-b1c6-889f8192d743",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679847168000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 40,
+                "time_formatted": "19:12"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 38,
+                "id": "37a25b39-b238-4cf6-9951-29ffc3c1afda",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679847161000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 38,
+                "time_formatted": "19:12"
+            },
+            {
+                "sportsman_id": "c5a8ab3e40e3afffcdb55792cf9e646d",
+                "sum_score": 6,
+                "id": "0db954f9-ab84-46c0-8086-dd4caa74dced",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679847149000,
+                "sportsman": "Мартынова (реф. Задоренко)",
+                "Мартынова (реф. Задоренко)": 6,
+                "time_formatted": "19:12"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 34,
+                "id": "36799853-86ff-40ba-83b5-04433b0e4bf7",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679847090000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 34,
+                "time_formatted": "19:11"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 89,
+                "id": "90bf7df6-85e7-4a7e-ac08-dbdc0073481a",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679847072000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 89,
+                "time_formatted": "19:11"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 59,
+                "id": "10462fad-9eae-4ad8-923d-efd6839db987",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679847047000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 59,
+                "time_formatted": "19:10"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 51,
+                "id": "1854a8a6-8b39-4a5a-83fa-5d0c1896ed62",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679847035000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 51,
+                "time_formatted": "19:10"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 49,
+                "id": "6c79a9e4-268a-4c9a-97ea-eac790603297",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679847016000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 49,
+                "time_formatted": "19:10"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 48,
+                "id": "439aaa13-5b15-4f83-b61b-9f3608e0b159",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846992000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 48,
+                "time_formatted": "19:09"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 47,
+                "id": "cffe6a34-30d2-4700-a9f5-35445e0c8029",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846982000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 47,
+                "time_formatted": "19:09"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 46,
+                "id": "0e088d8d-7dc8-4bbd-88a4-fce150b40502",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846973000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 46,
+                "time_formatted": "19:09"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 88,
+                "id": "d8361ad7-e572-43cb-b906-d695a0162b22",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846959000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 88,
+                "time_formatted": "19:09"
+            },
+            {
+                "sportsman_id": "cc65d1a13c3d7e394a4f2f940ea88b1a",
+                "sum_score": 22,
+                "id": "e5e15d65-078a-4301-ad20-9955f68791f9",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846944000,
+                "sportsman": "Оксана (реф. Задоренко)",
+                "Оксана (реф. Задоренко)": 22,
+                "time_formatted": "19:09"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 32,
+                "id": "1a68ffe5-6254-474c-b70b-26bb52870ccd",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846930000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 32,
+                "time_formatted": "19:08"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 36,
+                "id": "2c17d546-4c7b-4a45-a8b0-d3be568a46fd",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846909000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 36,
+                "time_formatted": "19:08"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 35,
+                "id": "ad80d3c8-61df-4d66-ba5b-d407c0422666",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846902000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 35,
+                "time_formatted": "19:08"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 57,
+                "id": "bceaf148-6619-403f-b04b-506f4ca6d77e",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846882000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 57,
+                "time_formatted": "19:08"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 56,
+                "id": "f01fdbf0-09e1-43a3-a720-24e73262ac6a",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846873000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 56,
+                "time_formatted": "19:07"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 55,
+                "id": "35ce731a-ef5d-4069-b0b7-ebf1deab7abb",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846858000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 55,
+                "time_formatted": "19:07"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 54,
+                "id": "7b10d6bf-7c5c-4e58-a44c-2f51e957ade6",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846836000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 54,
+                "time_formatted": "19:07"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 53,
+                "id": "b0ac0336-1ebd-465f-9902-a98199f1db08",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846827000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 53,
+                "time_formatted": "19:07"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 86,
+                "id": "9a33468a-e567-439c-b9d2-0e2965e3a32b",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846812000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 86,
+                "time_formatted": "19:06"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 34,
+                "id": "55c25166-6a27-456f-938a-52ddb48d77b1",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846796000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 34,
+                "time_formatted": "19:06"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 33,
+                "id": "cae42fb3-a54f-437b-b884-8361c76c7ee5",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846777000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 33,
+                "time_formatted": "19:06"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 31,
+                "id": "27f8811a-73ad-4ff1-985b-ae69569390a4",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846758000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 31,
+                "time_formatted": "19:05"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 30,
+                "id": "e9b7232b-c36b-4181-905a-43b37c2d1f33",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846745000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 30,
+                "time_formatted": "19:05"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 51,
+                "id": "29c1671f-8116-4dc5-ad60-bbb808eb5232",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846732000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 51,
+                "time_formatted": "19:05"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 44,
+                "id": "32e50add-9bdb-4823-82c2-cbfc76963845",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846711000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 44,
+                "time_formatted": "19:05"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 85,
+                "id": "0c37feab-29dd-485f-89c0-62f5ede1d38c",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846687000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 85,
+                "time_formatted": "19:04"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 84,
+                "id": "289f3bad-756e-40ab-8957-87074d723978",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846675000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 84,
+                "time_formatted": "19:04"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 29,
+                "id": "1a9c3423-a342-491a-a49f-1b8291bb1e29",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846650000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 29,
+                "time_formatted": "19:04"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 27,
+                "id": "825052bf-268e-4046-b583-986bede8a2e6",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846630000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 27,
+                "time_formatted": "19:03"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 43,
+                "id": "f6391d04-d28c-496c-924f-9a25176548c9",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846601000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 43,
+                "time_formatted": "19:03"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 32,
+                "id": "7f02a03b-2d64-4a66-90cb-a1b7dab2815f",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846592000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 32,
+                "time_formatted": "19:03"
+            },
+            {
+                "sportsman_id": "cc65d1a13c3d7e394a4f2f940ea88b1a",
+                "sum_score": 21,
+                "id": "9f4acce4-3210-4777-8c30-5066a708443c",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846560000,
+                "sportsman": "Оксана (реф. Задоренко)",
+                "Оксана (реф. Задоренко)": 21,
+                "time_formatted": "19:02"
+            },
+            {
+                "sportsman_id": "cc65d1a13c3d7e394a4f2f940ea88b1a",
+                "sum_score": 20,
+                "id": "157de3b7-a400-4afb-89de-b51c8d4c61df",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846527000,
+                "sportsman": "Оксана (реф. Задоренко)",
+                "Оксана (реф. Задоренко)": 20,
+                "time_formatted": "19:02"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 42,
+                "id": "0123f798-977b-415b-af12-52553c6f4726",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846513000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 42,
+                "time_formatted": "19:01"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 38,
+                "id": "d562a1f8-e743-4724-893d-4e8178d799e1",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846502000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 38,
+                "time_formatted": "19:01"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 37,
+                "id": "f4355267-713a-48d7-9929-467fb6f23fa8",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846488000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 37,
+                "time_formatted": "19:01"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 48,
+                "id": "65c6174a-3cf9-4edd-822d-7f7f7fc5276f",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846474000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 48,
+                "time_formatted": "19:01"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 83,
+                "id": "d579b94b-8bbb-4563-8786-cd6ebfff9771",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846455000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 83,
+                "time_formatted": "19:00"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 82,
+                "id": "8f3acc4c-7f7d-49ce-a8e4-b13d6b6739c7",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846436000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 82,
+                "time_formatted": "19:00"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 35,
+                "id": "f1f46d0c-cb52-4a68-87c2-c4f519c3cf24",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846405000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 35,
+                "time_formatted": "19:00"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 34,
+                "id": "0037d9bb-a703-4b16-8b90-f69e0448289f",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846393000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 34,
+                "time_formatted": "18:59"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 26,
+                "id": "e347034a-2266-4c2b-95c4-5aef2a115310",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846379000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 26,
+                "time_formatted": "18:59"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 25,
+                "id": "d5f7aec0-aa73-4e94-8b9a-482f229db9a4",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846365000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 25,
+                "time_formatted": "18:59"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 31,
+                "id": "91a0351e-1d8a-446f-b67f-4735e9b0fbda",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846342000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 31,
+                "time_formatted": "18:59"
+            },
+            {
+                "sportsman_id": "c5a8ab3e40e3afffcdb55792cf9e646d",
                 "sum_score": 5,
-                "id": "720c16f9-e831-4b39-9271-74d538c6a711",
-                "green": 5,
-                "time_formatted": "06:10"
+                "id": "0a8ebe5b-c4db-4cd2-9f1b-1f8dfc68b0b9",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846333000,
+                "sportsman": "Мартынова (реф. Задоренко)",
+                "Мартынова (реф. Задоренко)": 5,
+                "time_formatted": "18:58"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 47,
+                "id": "339038de-0cf7-4817-84eb-938698402870",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846318000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 47,
+                "time_formatted": "18:58"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 46,
+                "id": "4b07459d-697c-40a7-83d9-a9d65c61d210",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846309000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 46,
+                "time_formatted": "18:58"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 24,
+                "id": "e8663a23-4ceb-455c-b08a-3eb05ee7aab2",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846256000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 24,
+                "time_formatted": "18:57"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 22,
+                "id": "8323a0d5-297d-486f-bbee-66c9b2de791a",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846243000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 22,
+                "time_formatted": "18:57"
+            },
+            {
+                "sportsman_id": "c5a8ab3e40e3afffcdb55792cf9e646d",
+                "sum_score": 4,
+                "id": "8ef95877-17d2-4bf9-866f-31f953094119",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846228000,
+                "sportsman": "Мартынова (реф. Задоренко)",
+                "Мартынова (реф. Задоренко)": 4,
+                "time_formatted": "18:57"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 33,
+                "id": "6409b941-47c9-447e-9c10-6f23fdd22e72",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846214000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 33,
+                "time_formatted": "18:56"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 31,
+                "id": "19293e39-e80d-4241-bc2c-fe46acf19027",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846205000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 31,
+                "time_formatted": "18:56"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 30,
+                "id": "6748681b-9232-440f-8a62-9179bec6f33e",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846193000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 30,
+                "time_formatted": "18:56"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 21,
+                "id": "6ab44110-ef3e-4b21-9dd1-a8a37de0d228",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846175000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 21,
+                "time_formatted": "18:56"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 81,
+                "id": "59a0c03d-55ba-456c-a986-b056a356e75b",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846160000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 81,
+                "time_formatted": "18:56"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 80,
+                "id": "fb8cddd0-222b-4e65-bf9e-4d764971eb48",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846144000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 80,
+                "time_formatted": "18:55"
+            },
+            {
+                "sportsman_id": "cc65d1a13c3d7e394a4f2f940ea88b1a",
+                "sum_score": 19,
+                "id": "d01a0521-c310-4b9b-bd7c-9f0413470211",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846124000,
+                "sportsman": "Оксана (реф. Задоренко)",
+                "Оксана (реф. Задоренко)": 19,
+                "time_formatted": "18:55"
+            },
+            {
+                "sportsman_id": "cc65d1a13c3d7e394a4f2f940ea88b1a",
+                "sum_score": 16,
+                "id": "da08ce2e-fdb7-4392-9300-200414cdcf60",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846112000,
+                "sportsman": "Оксана (реф. Задоренко)",
+                "Оксана (реф. Задоренко)": 16,
+                "time_formatted": "18:55"
+            },
+            {
+                "sportsman_id": "cc65d1a13c3d7e394a4f2f940ea88b1a",
+                "sum_score": 15,
+                "id": "0162d429-27a4-4629-b802-91fdf9a59915",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846103000,
+                "sportsman": "Оксана (реф. Задоренко)",
+                "Оксана (реф. Задоренко)": 15,
+                "time_formatted": "18:55"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 20,
+                "id": "e51ec87b-2947-4064-8bf0-7257850892d3",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846090000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 20,
+                "time_formatted": "18:54"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 30,
+                "id": "2d836647-9bdb-4f19-92a8-0460e41b1c9e",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846055000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 30,
+                "time_formatted": "18:54"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 29,
+                "id": "4e1b5036-0924-4ee7-a998-764b860d0990",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846049000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 29,
+                "time_formatted": "18:54"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 29,
+                "id": "00f19bd8-74e5-4d49-9896-1140e36f2cc0",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846017000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 29,
+                "time_formatted": "18:53"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 45,
+                "id": "4f20fd3b-19c5-4982-ada0-98fb1fb4da44",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679846005000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 45,
+                "time_formatted": "18:53"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 43,
+                "id": "50444012-9741-4229-bc70-83fb904da702",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845993000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 43,
+                "time_formatted": "18:53"
+            },
+            {
+                "sportsman_id": "cc65d1a13c3d7e394a4f2f940ea88b1a",
+                "sum_score": 14,
+                "id": "7dfdb25c-6fac-4f9f-8131-1af497b5b54f",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845971000,
+                "sportsman": "Оксана (реф. Задоренко)",
+                "Оксана (реф. Задоренко)": 14,
+                "time_formatted": "18:52"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 16,
+                "id": "ed4d1782-a2f1-4cf8-9079-d6008a837c53",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845958000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 16,
+                "time_formatted": "18:52"
+            },
+            {
+                "sportsman_id": "c5a8ab3e40e3afffcdb55792cf9e646d",
+                "sum_score": 2,
+                "id": "b7855b6c-be98-48f0-a42b-65a303f3ae16",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845943000,
+                "sportsman": "Мартынова (реф. Задоренко)",
+                "Мартынова (реф. Задоренко)": 2,
+                "time_formatted": "18:52"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 42,
+                "id": "c9fe70b5-6c5d-42d3-9abe-116ac9ac3784",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845924000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 42,
+                "time_formatted": "18:52"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 38,
+                "id": "ddca3e40-f812-460d-bdad-1fa2096d7ae9",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845914000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 38,
+                "time_formatted": "18:51"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 28,
+                "id": "666f8573-39ac-4714-96aa-742d740e5170",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845882000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 28,
+                "time_formatted": "18:51"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 27,
+                "id": "dacc8e71-c49f-47ad-abeb-8768aec7b66c",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845864000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 27,
+                "time_formatted": "18:51"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 78,
+                "id": "02c85990-58f6-4538-a0a9-69add3631cf1",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845841000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 78,
+                "time_formatted": "18:50"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 37,
+                "id": "0a44c251-f266-4125-bb70-9865dcf8f351",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845821000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 37,
+                "time_formatted": "18:50"
+            },
+            {
+                "sportsman_id": "cc65d1a13c3d7e394a4f2f940ea88b1a",
+                "sum_score": 13,
+                "id": "26dbde73-e884-48a4-85c6-36cbacb4983d",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845802000,
+                "sportsman": "Оксана (реф. Задоренко)",
+                "Оксана (реф. Задоренко)": 13,
+                "time_formatted": "18:50"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 15,
+                "id": "f1400c38-0790-4270-a409-5f5e47ad9879",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845773000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 15,
+                "time_formatted": "18:49"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 27,
+                "id": "da4feab1-7cca-4dd7-9624-8221eaa195e7",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845742000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 27,
+                "time_formatted": "18:49"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 25,
+                "id": "87f9178e-80f8-499b-87e6-e5e98f73b426",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845732000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 25,
+                "time_formatted": "18:48"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 35,
+                "id": "f5427bde-24a9-458e-b26e-5472c43b99c0",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845719000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 35,
+                "time_formatted": "18:48"
+            },
+            {
+                "sportsman_id": "cc65d1a13c3d7e394a4f2f940ea88b1a",
+                "sum_score": 12,
+                "id": "c79243b1-9231-4cf4-b74b-55092f12e9f0",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845708000,
+                "sportsman": "Оксана (реф. Задоренко)",
+                "Оксана (реф. Задоренко)": 12,
+                "time_formatted": "18:48"
+            },
+            {
+                "sportsman_id": "c5a8ab3e40e3afffcdb55792cf9e646d",
+                "sum_score": 3,
+                "id": "a0c648f6-50ac-4f25-987b-3ac665983483",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845698000,
+                "sportsman": "Мартынова (реф. Задоренко)",
+                "Мартынова (реф. Задоренко)": 3,
+                "time_formatted": "18:48"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 77,
+                "id": "457c1e36-99b4-4f4f-a5ac-b68b77ef6e69",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845687000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 77,
+                "time_formatted": "18:48"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 76,
+                "id": "1765f401-e8e8-4875-99b2-08d7514a6ebc",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845666000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 76,
+                "time_formatted": "18:47"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 74,
+                "id": "a3534bdd-45ed-46bc-99b5-c89bc6dc36bb",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845651000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 74,
+                "time_formatted": "18:47"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 33,
+                "id": "867c6369-85a3-42dd-8efb-e0975276c899",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845632000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 33,
+                "time_formatted": "18:47"
+            },
+            {
+                "sportsman_id": "cc65d1a13c3d7e394a4f2f940ea88b1a",
+                "sum_score": 11,
+                "id": "02405f24-9cc1-453c-b31f-b84208436860",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845620000,
+                "sportsman": "Оксана (реф. Задоренко)",
+                "Оксана (реф. Задоренко)": 11,
+                "time_formatted": "18:47"
+            },
+            {
+                "sportsman_id": "c5a8ab3e40e3afffcdb55792cf9e646d",
+                "sum_score": 2,
+                "id": "f19bf278-ced6-486b-8322-0fb024009374",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845613000,
+                "sportsman": "Мартынова (реф. Задоренко)",
+                "Мартынова (реф. Задоренко)": 2,
+                "time_formatted": "18:46"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 13,
+                "id": "ffbc4541-ac11-407b-b0a6-42628873f724",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845598000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 13,
+                "time_formatted": "18:46"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 12,
+                "id": "33701d21-00e6-4d44-a880-238d04e9943f",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845582000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 12,
+                "time_formatted": "18:46"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 24,
+                "id": "ee5ff84b-6367-4099-a455-4c6ad41c0523",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845559000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 24,
+                "time_formatted": "18:45"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 73,
+                "id": "63fa55ff-ecee-436d-8e51-6ae3320137ec",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845546000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 73,
+                "time_formatted": "18:45"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 70,
+                "id": "8987e3fb-c276-4949-aa84-7590b9ae2225",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845535000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 70,
+                "time_formatted": "18:45"
+            },
+            {
+                "sportsman_id": "cc65d1a13c3d7e394a4f2f940ea88b1a",
+                "sum_score": 10,
+                "id": "6383b74e-b334-4c67-bf2b-03b2cc26ba7e",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845516000,
+                "sportsman": "Оксана (реф. Задоренко)",
+                "Оксана (реф. Задоренко)": 10,
+                "time_formatted": "18:45"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 32,
+                "id": "910b6252-74c8-4b72-8f5d-3acd597df65a",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845464000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 32,
+                "time_formatted": "18:44"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 31,
+                "id": "562c089b-ad94-4a9f-8ac9-de76b9ac4962",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845455000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 31,
+                "time_formatted": "18:44"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 27,
+                "id": "3c327082-5a5c-4410-bdb6-50068d3577a4",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845442000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 27,
+                "time_formatted": "18:44"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 26,
+                "id": "10f3e21d-d9f9-434f-814e-996caaf15301",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845431000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 26,
+                "time_formatted": "18:43"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 24,
+                "id": "728a2d3f-237e-4b37-a26c-803361dd7f5b",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845416000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 24,
+                "time_formatted": "18:43"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 22,
+                "id": "1f40663d-1ee4-4e85-ac5b-069e1027e9e4",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845396000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 22,
+                "time_formatted": "18:43"
+            },
+            {
+                "sportsman_id": "c5a8ab3e40e3afffcdb55792cf9e646d",
+                "sum_score": 1,
+                "id": "3ad7ab00-acc8-416d-b3c0-8e124b642577",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845374000,
+                "sportsman": "Мартынова (реф. Задоренко)",
+                "Мартынова (реф. Задоренко)": 1,
+                "time_formatted": "18:42"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 69,
+                "id": "8c861f67-348b-48b7-8524-7e46dad84467",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845333000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 69,
+                "time_formatted": "18:42"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 68,
+                "id": "efc21c1b-8a67-4383-b2ee-76fb9f9b785f",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845315000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 68,
+                "time_formatted": "18:41"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 21,
+                "id": "34c0115d-4267-46ff-a73d-d5e500fe13f9",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845305000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 21,
+                "time_formatted": "18:41"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 19,
+                "id": "06369c31-8a6d-4dc6-96c6-acf4b354d6f8",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845294000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 19,
+                "time_formatted": "18:41"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 18,
+                "id": "a40f282c-ee95-4194-b05b-c6883b0b4107",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845282000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 18,
+                "time_formatted": "18:41"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 67,
+                "id": "6dfb3c7c-99cd-4ba6-9b39-95127d11dd33",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845277000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 67,
+                "time_formatted": "18:41"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 17,
+                "id": "a5944998-bec9-4ebe-b576-c5ecf182758b",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845274000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 17,
+                "time_formatted": "18:41"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 66,
+                "id": "899d2379-e3ea-41a9-a187-6cefd2777e34",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845244000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 66,
+                "time_formatted": "18:40"
+            },
+            {
+                "sportsman_id": "cc65d1a13c3d7e394a4f2f940ea88b1a",
+                "sum_score": 8,
+                "id": "a21870e9-0617-4f50-a4c8-09a6c84785cb",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845230000,
+                "sportsman": "Оксана (реф. Задоренко)",
+                "Оксана (реф. Задоренко)": 8,
+                "time_formatted": "18:40"
+            },
+            {
+                "sportsman_id": "cc65d1a13c3d7e394a4f2f940ea88b1a",
+                "sum_score": 7,
+                "id": "26b62fe2-d3cf-4470-b5cc-8dd42f934209",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845215000,
+                "sportsman": "Оксана (реф. Задоренко)",
+                "Оксана (реф. Задоренко)": 7,
+                "time_formatted": "18:40"
+            },
+            {
+                "sportsman_id": "cc65d1a13c3d7e394a4f2f940ea88b1a",
+                "sum_score": 6,
+                "id": "7718e231-cea5-43e3-ad23-333c35b1766a",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845206000,
+                "sportsman": "Оксана (реф. Задоренко)",
+                "Оксана (реф. Задоренко)": 6,
+                "time_formatted": "18:40"
+            },
+            {
+                "sportsman_id": "cc65d1a13c3d7e394a4f2f940ea88b1a",
+                "sum_score": 5,
+                "id": "0325c7bc-b53e-4992-94fb-ba54ca9903d7",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845194000,
+                "sportsman": "Оксана (реф. Задоренко)",
+                "Оксана (реф. Задоренко)": 5,
+                "time_formatted": "18:39"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 65,
+                "id": "890544eb-5bcd-47b3-8c94-7ce25cb39f0d",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845172000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 65,
+                "time_formatted": "18:39"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 64,
+                "id": "110b0d73-c419-4e85-a621-77f3ea949623",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845164000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 64,
+                "time_formatted": "18:39"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 63,
+                "id": "48bf44ce-4c88-479b-bc16-781cc1e04b32",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845145000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 63,
+                "time_formatted": "18:39"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 16,
+                "id": "61719119-be3b-4518-b3e4-97bb7e39e4bd",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845131000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 16,
+                "time_formatted": "18:38"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 12,
+                "id": "f088d146-a0c0-49d2-962f-6d91ee3c7d4a",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845118000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 12,
+                "time_formatted": "18:38"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 11,
+                "id": "3f9267f8-11af-488c-b199-aaee25df55f9",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845099000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 11,
+                "time_formatted": "18:38"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 10,
+                "id": "66983b66-3b5f-46a0-80e7-2167151b01a3",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845087000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 10,
+                "time_formatted": "18:38"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 61,
+                "id": "b0798d9b-740d-464c-a85c-a1de5d25e3b5",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845068000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 61,
+                "time_formatted": "18:37"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 60,
+                "id": "c97ac894-d2ad-468b-8592-db6b9056b7a7",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845059000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 60,
+                "time_formatted": "18:37"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 58,
+                "id": "2d1ff52f-15c2-4094-8208-e1b53a1fc2fa",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845044000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 58,
+                "time_formatted": "18:37"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 57,
+                "id": "b993d4d8-17fa-4459-bf6b-c6bc33c9a2fa",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845022000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 57,
+                "time_formatted": "18:37"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 9,
+                "id": "ae2ef0a5-437c-4de7-96ca-1943b6fad2d2",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845009000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 9,
+                "time_formatted": "18:36"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 7,
+                "id": "f6de31b8-ce30-4ea5-9595-08546f4429df",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679845000000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 7,
+                "time_formatted": "18:36"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 6,
+                "id": "6fe77e8d-9184-4066-a1d3-6a1bb2756ae2",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844992000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 6,
+                "time_formatted": "18:36"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 7,
+                "id": "5d582661-17c0-4742-8764-232856441205",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844981000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 7,
+                "time_formatted": "18:36"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 8,
+                "id": "a9801a1e-3121-498a-8b85-d2a3da1c2dd2",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844962000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 8,
+                "time_formatted": "18:36"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 7,
+                "id": "18bd0bdd-37bc-40d0-8902-90853a38b727",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844951000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 7,
+                "time_formatted": "18:35"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 6,
+                "id": "ffe2ac68-3985-41b4-831d-3a9fac2d7f2b",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844940000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 6,
+                "time_formatted": "18:35"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 56,
+                "id": "c7ff4786-3862-41c9-a41d-b9f8b1f6d217",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844911000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 56,
+                "time_formatted": "18:35"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 54,
+                "id": "c2953697-e38a-4f50-956b-822ba6184925",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844900000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 54,
+                "time_formatted": "18:35"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 51,
+                "id": "e1f1e62a-0d66-4c7a-a748-2d1eb1b0c3d6",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844887000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 51,
+                "time_formatted": "18:34"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 48,
+                "id": "1c882465-4903-44ff-af53-8a902edc9fc9",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844874000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 48,
+                "time_formatted": "18:34"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 4,
+                "id": "b184bb1e-ad42-46ba-9f99-1ae6b1e3563b",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844866000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 4,
+                "time_formatted": "18:34"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 25,
+                "id": "77c5a52c-19bd-4438-8245-b53cb930b959",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844837000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 25,
+                "time_formatted": "18:33"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 24,
+                "id": "d688885a-ffa3-4b45-978f-8dcfe8e11974",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844823000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 24,
+                "time_formatted": "18:33"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 23,
+                "id": "a6f528f5-7a2d-4931-826a-cde47facf835",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844818000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 23,
+                "time_formatted": "18:33"
+            },
+            {
+                "sportsman_id": "7c79bf9040cb097c085ff32ca7acd60e",
+                "sum_score": 5,
+                "id": "85a7a2b6-676d-4066-8424-65512c17e807",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844793000,
+                "sportsman": "Епикова (реф. Задоренко)",
+                "Епикова (реф. Задоренко)": 5,
+                "time_formatted": "18:33"
+            },
+            {
+                "sportsman_id": "7c79bf9040cb097c085ff32ca7acd60e",
+                "sum_score": 4,
+                "id": "12ce86b4-1bd9-4bb2-9de7-9a78358f7429",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844784000,
+                "sportsman": "Епикова (реф. Задоренко)",
+                "Епикова (реф. Задоренко)": 4,
+                "time_formatted": "18:33"
+            },
+            {
+                "sportsman_id": "7c79bf9040cb097c085ff32ca7acd60e",
+                "sum_score": 3,
+                "id": "b70fcf18-e8f4-43b7-85e1-55071c3f50f2",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844770000,
+                "sportsman": "Епикова (реф. Задоренко)",
+                "Епикова (реф. Задоренко)": 3,
+                "time_formatted": "18:32"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 47,
+                "id": "01d391b4-e2ab-4fc5-81f2-fcbd147ee251",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844758000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 47,
+                "time_formatted": "18:32"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 44,
+                "id": "3d8f4482-bc98-4994-8c57-8ef89974ae63",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844680000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 44,
+                "time_formatted": "18:31"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 22,
+                "id": "ebaf472b-acc8-4db5-9093-60ba31769a9c",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844666000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 22,
+                "time_formatted": "18:31"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 22,
+                "id": "e5de25e9-094d-4d1e-936e-c7d2a807a410",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844658000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 22,
+                "time_formatted": "18:30"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 21,
+                "id": "7f81a858-f268-477c-ae9a-78b3605ae4f6",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844646000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 21,
+                "time_formatted": "18:30"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 20,
+                "id": "fc8972cb-1110-4f69-ae8f-b33c6a5ea07f",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844635000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 20,
+                "time_formatted": "18:30"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 17,
+                "id": "3ad8170c-c8bc-4017-8500-fbaf1b1e02de",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844609000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 17,
+                "time_formatted": "18:30"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 15,
+                "id": "f7d58393-ff9e-4b67-b197-df0dfb0dddab",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844597000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 15,
+                "time_formatted": "18:29"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 14,
+                "id": "6bf64750-c25b-4049-b673-65e454a192a6",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844588000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 14,
+                "time_formatted": "18:29"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 43,
+                "id": "85fe05a5-15ab-47fe-8963-e6dc6ee35033",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844566000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 43,
+                "time_formatted": "18:29"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 41,
+                "id": "55d4ed75-5211-4846-8953-18ef7fa74465",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844554000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 41,
+                "time_formatted": "18:29"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 39,
+                "id": "11be6471-81c5-4ffd-9238-952496dad2c2",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844545000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 39,
+                "time_formatted": "18:29"
+            },
+            {
+                "sportsman_id": "7c79bf9040cb097c085ff32ca7acd60e",
+                "sum_score": 1,
+                "id": "d93fb94e-f1ce-4bb4-9a28-28b831321d44",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844492000,
+                "sportsman": "Епикова (реф. Задоренко)",
+                "Епикова (реф. Задоренко)": 1,
+                "time_formatted": "18:28"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 5,
+                "id": "f3237f9e-d721-4020-9ba7-4d753bd8d50b",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844476000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 5,
+                "time_formatted": "18:27"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 13,
+                "id": "ef5f258c-f35b-462c-9140-6758de012ba5",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844458000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 13,
+                "time_formatted": "18:27"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 12,
+                "id": "c4031020-93c8-4268-bb6e-b4be0538fad9",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844445000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 12,
+                "time_formatted": "18:27"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 35,
+                "id": "65e5e749-9643-4e07-8f21-316112e3e612",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844437000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 35,
+                "time_formatted": "18:27"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 11,
+                "id": "0851d9de-856b-4830-9d59-85c1fec817d7",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844430000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 11,
+                "time_formatted": "18:27"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 2,
+                "id": "999e4881-1f60-4b4d-b760-aa6ab382157a",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844418000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 2,
+                "time_formatted": "18:26"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 36,
+                "id": "70453a63-6718-4482-b818-45519575f2f6",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844392000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 36,
+                "time_formatted": "18:26"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 35,
+                "id": "d88e560f-eaef-4d54-864b-446bcd5cbc55",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844381000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 35,
+                "time_formatted": "18:26"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 32,
+                "id": "e9ab2305-395a-4320-87fd-76912ba28d6b",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844346000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 32,
+                "time_formatted": "18:25"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 20,
+                "id": "075c31c1-7aae-4762-a0d3-40ca6cea2ada",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844333000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 20,
+                "time_formatted": "18:25"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 19,
+                "id": "33b3b751-3981-4226-97de-6fda9d7ec347",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844322000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 19,
+                "time_formatted": "18:25"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 18,
+                "id": "bb562cbc-9fcf-4d89-9b54-469448975e0e",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844311000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 18,
+                "time_formatted": "18:25"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 17,
+                "id": "5c12bfdd-3c0f-45ab-b088-809c1bdc3b50",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844300000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 17,
+                "time_formatted": "18:25"
+            },
+            {
+                "sportsman_id": "cc65d1a13c3d7e394a4f2f940ea88b1a",
+                "sum_score": 4,
+                "id": "0a523577-3a8d-4407-a490-7e03611ff7b6",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844278000,
+                "sportsman": "Оксана (реф. Задоренко)",
+                "Оксана (реф. Задоренко)": 4,
+                "time_formatted": "18:24"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 31,
+                "id": "b13f0ef5-542c-4039-9b61-c5620b5739af",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844211000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 31,
+                "time_formatted": "18:23"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 30,
+                "id": "918f2a04-f2b8-4dca-810e-3e0876beb94f",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844201000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 30,
+                "time_formatted": "18:23"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 29,
+                "id": "69e47882-e019-4500-a203-9f94a2eba303",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844191000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 29,
+                "time_formatted": "18:23"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 28,
+                "id": "2b262eee-d655-43ba-8316-a341e9174cdf",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844184000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 28,
+                "time_formatted": "18:23"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 26,
+                "id": "2f4b17d8-5629-4d44-87d6-19eeeb62de29",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844175000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 26,
+                "time_formatted": "18:22"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 25,
+                "id": "4bff51a8-dbca-424f-86d4-325d03419443",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844165000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 25,
+                "time_formatted": "18:22"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 23,
+                "id": "fe8edda1-d73d-442c-8a45-b22be167e881",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844155000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 23,
+                "time_formatted": "18:22"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 21,
+                "id": "50285528-680d-455b-b209-997e0f6d0b29",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844129000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 21,
+                "time_formatted": "18:22"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 19,
+                "id": "17ec64c2-d0ba-4a4e-80a0-7de586bf0b7c",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844121000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 19,
+                "time_formatted": "18:22"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 10,
+                "id": "75abea6b-84d7-4834-b165-f78d59f7c929",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844091000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 10,
+                "time_formatted": "18:21"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 15,
+                "id": "faea3b93-116c-4fab-bda2-921ddddd3b1d",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844078000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 15,
+                "time_formatted": "18:21"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 11,
+                "id": "dc501f10-d608-4b2f-bc91-f9873bf2577e",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844065000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 11,
+                "time_formatted": "18:21"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 9,
+                "id": "f78349fd-82dc-4b35-b634-dcfce7885aa7",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844053000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 9,
+                "time_formatted": "18:20"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 4,
+                "id": "8e847688-4b2d-448d-b308-ab90f593c9e1",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844037000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 4,
+                "time_formatted": "18:20"
+            },
+            {
+                "sportsman_id": "9e9ed0a9247dd85d2f86c3653b137a16",
+                "sum_score": 2,
+                "id": "3198d765-aa04-4887-a5b0-909a29d56cfd",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679844017000,
+                "sportsman": "Беркалова (реф. Задоренко)",
+                "Беркалова (реф. Задоренко)": 2,
+                "time_formatted": "18:20"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 18,
+                "id": "42f77623-cfc3-4c74-b560-778068d3e0e9",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843991000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 18,
+                "time_formatted": "18:19"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 17,
+                "id": "da642f1e-975d-415d-9a79-25887b15528d",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843978000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 17,
+                "time_formatted": "18:19"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 16,
+                "id": "83e14157-57a4-4de6-92af-ef1fb8efcd8a",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843969000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 16,
+                "time_formatted": "18:19"
+            },
+            {
+                "sportsman_id": "cc65d1a13c3d7e394a4f2f940ea88b1a",
+                "sum_score": 2,
+                "id": "a39da3e3-3ae9-4d6c-9019-ab9ee73a5246",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843960000,
+                "sportsman": "Оксана (реф. Задоренко)",
+                "Оксана (реф. Задоренко)": 2,
+                "time_formatted": "18:19"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 8,
+                "id": "e2b6ef7a-a1fc-4742-a69c-b58ee6239710",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843945000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 8,
+                "time_formatted": "18:19"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 6,
+                "id": "1b5a8357-438b-4968-ba5e-05e4042a64c8",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843935000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 6,
+                "time_formatted": "18:18"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 5,
+                "id": "713205d8-9e49-4b11-9f67-64402a6915f3",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843920000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 5,
+                "time_formatted": "18:18"
+            },
+            {
+                "sportsman_id": "98f3fac7a15a52b9d5e690e614451eb3",
+                "sum_score": 2,
+                "id": "203cb529-41a1-4a6f-a54b-101f80cff896",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843915000,
+                "sportsman": "Балицкая (реф. Задоренко)",
+                "Балицкая (реф. Задоренко)": 2,
+                "time_formatted": "18:18"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 9,
+                "id": "091d6dea-9edc-4cf5-8188-367bbc0fadde",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843901000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 9,
+                "time_formatted": "18:18"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 8,
+                "id": "32560767-2430-435c-ac19-c1cd8f699fd1",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843888000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 8,
+                "time_formatted": "18:18"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 7,
+                "id": "76e23394-b126-441a-8ec3-da8aa84dd453",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843879000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 7,
+                "time_formatted": "18:17"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 5,
+                "id": "0c82b6ca-eb5c-4da4-8073-3cc44fbb5f91",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843872000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 5,
+                "time_formatted": "18:17"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 4,
+                "id": "e1ddc21e-8329-487f-b515-482dbc2c6b18",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843864000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 4,
+                "time_formatted": "18:17"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 3,
+                "id": "1d64e24d-7d96-43f1-839e-98df2bfdd490",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843855000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 3,
+                "time_formatted": "18:17"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 2,
+                "id": "1097abf3-c306-4a91-94ee-59d7ddabaaed",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843846000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 2,
+                "time_formatted": "18:17"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 14,
+                "id": "b0383c69-98d5-4f53-93a1-7d0923e0cee8",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843831000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 14,
+                "time_formatted": "18:17"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 11,
+                "id": "62f53dab-5f16-4c98-a997-66775d8b1af8",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843823000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 11,
+                "time_formatted": "18:17"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 10,
+                "id": "77696f5d-818a-4838-928d-91f2162807f4",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843814000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 10,
+                "time_formatted": "18:16"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 9,
+                "id": "4d08a73c-132c-4dcb-9c38-cb494865a212",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843801000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 9,
+                "time_formatted": "18:16"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 8,
+                "id": "0a799bfd-f711-469c-ad69-ade288dc3ccd",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843786000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 8,
+                "time_formatted": "18:16"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 6,
+                "id": "a48a9dbb-abcf-4c7a-8c64-78d0a086ccc9",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843775000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 6,
+                "time_formatted": "18:16"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 5,
+                "id": "b598603f-c4f3-4500-a1d6-6ff50657e109",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843766000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 5,
+                "time_formatted": "18:16"
+            },
+            {
+                "sportsman_id": "bedef03a9ef95e7afc828363b53ea675",
+                "sum_score": 1,
+                "id": "ed5c356f-0247-4114-9a69-031ee960c36b",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843758000,
+                "sportsman": "Плиска (реф. Задоренко)",
+                "Плиска (реф. Задоренко)": 1,
+                "time_formatted": "18:15"
+            },
+            {
+                "sportsman_id": "5adef42c1aaf4ea0d25390b07cdb8cc8",
+                "sum_score": 1,
+                "id": "33a7482f-42b5-4a34-8a7b-ba3454733c18",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843747000,
+                "sportsman": "Истратенкова (реф. Задоренко)",
+                "Истратенкова (реф. Задоренко)": 1,
+                "time_formatted": "18:15"
+            },
+            {
+                "sportsman_id": "cc65d1a13c3d7e394a4f2f940ea88b1a",
+                "sum_score": 3,
+                "id": "7c1b5793-6188-41c7-9f0b-bdfd4d2bf514",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843728000,
+                "sportsman": "Оксана (реф. Задоренко)",
+                "Оксана (реф. Задоренко)": 3,
+                "time_formatted": "18:15"
+            },
+            {
+                "sportsman_id": "cc65d1a13c3d7e394a4f2f940ea88b1a",
+                "sum_score": 2,
+                "id": "822eaa99-0f1d-4c69-be3b-58a6dd8ac15f",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843720000,
+                "sportsman": "Оксана (реф. Задоренко)",
+                "Оксана (реф. Задоренко)": 2,
+                "time_formatted": "18:15"
+            },
+            {
+                "sportsman_id": "65e40047626996c7cfac8d4315cf3de3",
+                "sum_score": 1,
+                "id": "b291fe99-463b-4b3a-9eaa-fc984b378112",
+                "category": "ac7a609b-0796-42c7-a5a8-fe7b6489e85f",
+                "time": 1679843688000,
+                "sportsman": "Юрьева  (реф. Задоренко)",
+                "Юрьева  (реф. Задоренко)": 1,
+                "time_formatted": "18:14"
             }
         ],
         "totalPages": 1,
@@ -23240,7 +25454,7 @@ const App = (props) => {
                 "dateCreated": "2023-07-18T13:44:09Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"json\":false,\"array\":false},{\"sysName\":\"time\",\"dataType\":\"date\",\"name\":\"Время\",\"id\":\"35401689687907901\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"json\":false,\"array\":false},{\"sysName\":\"sportsman\",\"dataType\":\"string\",\"name\":\"Протокол\",\"id\":\"49661689687873605\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"json\":false,\"array\":false},{\"sysName\":\"sum_score\",\"dataType\":\"decimal\",\"name\":\"Баллы\",\"id\":\"50221689687899714\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"json\":false,\"array\":false},{\"sysName\":\"category\",\"dataType\":\"link\",\"name\":\"Категория\",\"id\":\"77191689687852890\",\"link\":\"archive__categories\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"json\":false,\"array\":false},{\"sysName\":\"sportsman_id\",\"dataType\":\"link\",\"name\":\"Протокол\",\"id\":\"92261689687867096\",\"link\":\"archive__protocol\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"json\":false,\"array\":false}]",
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"time\",\"name\":\"Время\",\"dataType\":\"date\",\"id\":\"35401689687907901\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"sportsman\",\"name\":\"Протокол\",\"dataType\":\"string\",\"id\":\"49661689687873605\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"sum_score\",\"name\":\"Баллы\",\"dataType\":\"decimal\",\"id\":\"50221689687899714\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"category\",\"name\":\"Категория\",\"dataType\":\"link\",\"id\":\"77191689687852890\",\"link\":\"archive__categories\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"sportsman_id\",\"name\":\"Протокол\",\"dataType\":\"link\",\"id\":\"92261689687867096\",\"link\":\"archive__protocol\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"scores_before_ids\",\"name\":\"\",\"dataType\":\"arrayLink\",\"id\":\"99911690203635383\",\"link\":\"archive__points\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false}]",
                 "jsonGroupSettings": null,
                 "jsonViewIdSettings": null,
                 "jsonSettings": null,
@@ -23248,11 +25462,12 @@ const App = (props) => {
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2023-07-18T16:21:32Z",
+                "dateChanged": "2023-07-24T13:00:52Z",
                 "createBy": 21,
-                "changedBy": 21,
+                "changedBy": 1,
                 "_settings": null,
                 "_nativeIndexSettings": null,
+                "objectIDSysName": "id",
                 "innerIDField": {
                     "sysName": "id",
                     "name": "id",
@@ -23274,14 +25489,13 @@ const App = (props) => {
                     "formatOptions": {},
                     "groupName": null,
                     "typeVariable": {},
-                    "json": false,
+                    "indexExists": false,
                     "linkOrArrayLinkType": false,
                     "linkType": false,
                     "arrayLink": false,
-                    "indexExists": false,
+                    "json": false,
                     "array": false
                 },
-                "objectIDSysName": "id",
                 "folderId": 33730974
             }
         },
