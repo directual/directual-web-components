@@ -148,28 +148,28 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/rubik/v26/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-WYi1UA.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/rubik/v28/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-WYi1UA.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Rubik';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/rubik/v26/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-B4i1UA.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/rubik/v28/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-B4i1UA.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Rubik';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/rubik/v26/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-4I-1UA.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/rubik/v28/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-4I-1UA.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Rubik';
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/rubik/v26/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-ro-1UA.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/rubik/v28/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-ro-1UA.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Ubuntu';
@@ -414,21 +414,21 @@
   font-style: normal;
   font-weight: 100;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/kanit/v13/nKKX-Go6G5tXcr72GwU.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/kanit/v15/nKKX-Go6G5tXcr72GwU.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Kanit';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/kanit/v13/nKKZ-Go6G5tXcoaS.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/kanit/v15/nKKZ-Go6G5tXcoaS.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Kanit';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/kanit/v13/nKKU-Go6G5tXcr4uPiWg.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/kanit/v15/nKKU-Go6G5tXcr4uPiWg.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Noto Serif JP';
@@ -559,8 +559,8 @@
 }
 @font-face {
   font-family: 'directual-icons';
-  src: url('https://api.directual.com/fileUploaded/directual-site/f5030777-b3c1-4c84-b664-1294170e334b.eot');
-  src: url('https://api.directual.com/fileUploaded/directual-site/f5030777-b3c1-4c84-b664-1294170e334b.eot') format('embedded-opentype'), url('https://api.directual.com/fileUploaded/directual-site/a917c625-d77a-42d0-b0af-596de4c6db6d.woff') format('woff'), url('https://api.directual.com/fileUploaded/directual-site/ad3c3bcc-7a2a-4c39-bad1-4b360d7ad7c6.ttf') format('truetype'), url('https://api.directual.com/fileUploaded/directual-site/7ca257a2-759c-4c8c-b5bb-519199390268.svg') format('svg');
+  src: url('https://api.directual.com/fileUploaded/directual-site/ac60431e-1b97-4729-8352-bb5cc230ba0b.eot');
+  src: url('https://api.directual.com/fileUploaded/directual-site/ac60431e-1b97-4729-8352-bb5cc230ba0b.eot') format('embedded-opentype'), url('https://api.directual.com/fileUploaded/directual-site/afe97d2b-cac9-4edb-aee2-eda26740cbe1.woff') format('woff'), url('https://api.directual.com/fileUploaded/directual-site/afe97d2b-cac9-4edb-aee2-eda26740cbe1.woff') format('truetype'), url('https://api.directual.com/fileUploaded/directual-site/4a7aaa25-3d51-4fba-8ab2-130f94db031e.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -991,6 +991,9 @@
 }
 :global .icon-marketplace:before {
   content: '\e989';
+}
+:global .icon-ai:before {
+  content: '\e98b';
 }
 /*-- VARIABLES --*/
 :root {

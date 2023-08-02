@@ -306,7 +306,7 @@ export default function Input(props) {
             { key: 'facebook', value: 'facebook', icon: 'facebook' },
             { key: 'marketplace', value: 'marketplace', icon: 'marketplace' },
             { key: 'twitter', value: 'twitter', icon: 'twitter' },
-
+            { key: 'ai', value: 'ai', icon: 'ai' },
             { key: 'money', value: 'money', icon: 'money' },
             { key: 'idea', value: 'idea', icon: 'idea' },
             { key: 'star', value: 'star', icon: 'star' },
