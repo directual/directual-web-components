@@ -22,7 +22,7 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
 
     // Gathers current structure info:
     const getStructure = (obj, tableFieldScheme, tableStructures) => {
-        console.log("getStructure")
+        // console.log("getStructure")
         const structure = {}
         for (const field in obj) {
             if (typeof obj[field] !== 'object') {
@@ -45,7 +45,7 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
                 tableStructures[structure.id].jsonObject
             )
         }
-        console.log(structure)
+        // console.log(structure)
         return structure
     }
 
@@ -200,11 +200,24 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
 
         let data = [...d]
 
-        if ((chartParams.chart_type == "line" || chartParams.chart_type == "area") && _.get(chartParams, 'lines_from_data') == "from_data" && _.get(chartParams, 'line_labels')) {
-            d.forEach(dataLine => {
+        if ((chartParams.chart_type == "line" || chartParams.chart_type == "area" || chartParams.chart_type == "bar")
+            && _.get(chartParams, 'lines_from_data') == "from_data" && _.get(chartParams, 'line_labels')) {
+
+            let newData = [] 
+
+            data.forEach(dataLine => {
                 dataLine[dataLine[_.get(chartParams, 'line_labels')]] = dataLine[_.get(chartParams, 'chart_lines[0].line_data')]
             })
-
+            const union = _.unionBy(data, 'period')
+            union.forEach(i => {
+                const items = data.filter(j => j.period == i.period) || []
+                let newItem = { period: i.period }
+                items.forEach(i2 => {
+                    newItem = {...newItem, ...i, ...i2 }
+                })
+                newData.push(newItem)
+            })
+            return chartParams.layoutVertical ? newData : _.reverse(newData)
         }
 
         d.forEach(dataLine => {
@@ -296,7 +309,7 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
 
         return (
             <text
-                x={x}
+                x={x > cx ? x - 12 : x + 12}
                 y={y}
                 fill="white"
                 textAnchor={x > cx ? "start" : "end"}
@@ -319,6 +332,15 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
         return _.get(chartParams, 'x_axis_format') ? moment(tick).locale(momentLocale[lang]).format(_.get(chartParams, 'x_axis_format')) : tick
     }
 
+    // console.log("chartData")
+    // console.log(chartData)
+    const union = _.unionBy(chartData, 'period')
+    union.forEach(i => {
+        const items = chartData.filter(j => j.period == i.period) || []
+        items.forEach(i2 => {
+            i = { ...i, ...i2 }
+        })
+    })
 
 
     switch (chartParams.chart_type) {
@@ -416,7 +438,7 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
                         <YAxis type="number" orientation="left" yAxisId="first" stroke={chartParams.left_axis_color || "#333333"} />
                         {chartParams.biAxial && <YAxis type="number" orientation="right" yAxisId="second" stroke={chartParams.right_axis_color || "#333333"} />}
                     </React.Fragment>}
-                {chartParams.show_tooltip && <Tooltip />}
+                {chartParams.show_tooltip && <Tooltip labelFormatter={tickFormatter} />}
                 {chartParams.show_legend && <Legend />}
 
                 <defs>
@@ -485,7 +507,7 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
             >
                 {chartParams.show_grid && <CartesianGrid strokeDasharray={chartParams.chart_strokeDasharray || "0 0"} fill={chartParams.chart_gridFill} />}
 
-                {chartParams.layoutVertical ?
+                {/* {chartParams.layoutVertical ?
                     <React.Fragment>
                         <YAxis dataKey={chartParams.x_axis + "_formatted"} type="category" yAxisId="first" orientation="left" />
                         <XAxis type="number" orientation="bottom" xAxisId="first" stroke={chartParams.left_axis_color || "#333333"} />
@@ -494,22 +516,54 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
                         <XAxis dataKey={chartParams.x_axis + "_formatted"} type="category" xAxisId="first" />
                         <YAxis type="number" orientation="left" yAxisId="first" stroke={chartParams.left_axis_color || "#333333"} />
                         {chartParams.biAxial && <YAxis type="number" orientation="right" yAxisId="second" stroke={chartParams.right_axis_color || "#333333"} />}
+                    </React.Fragment>} */}
+
+                {chartParams.layoutVertical ?
+                    <React.Fragment>
+                        <YAxis dataKey={chartParams.x_axis + "_formatted"} type="category" yAxisId="first" orientation="left" />
+                        <XAxis type="number" orientation="bottom" xAxisId="first" stroke={chartParams.left_axis_color || "#333333"} />
+                        {chartParams.biAxial && <XAxis type="number" orientation="top" xAxisId="second" stroke={chartParams.right_axis_color || "#333333"} />}
+                    </React.Fragment> : <React.Fragment>
+                        <XAxis
+                            dataKey={chartParams.x_axis}
+                            scale={_.get(chartParams, 'x_axis_scale') || 'auto'}
+                            tickFormatter={tickFormatter}
+                            type="category"
+                            xAxisId="first" />
+                        <YAxis type="number" orientation="left" yAxisId="first" stroke={chartParams.left_axis_color || "#333333"} />
+                        {chartParams.biAxial && <YAxis type="number" orientation="right" yAxisId="second" stroke={chartParams.right_axis_color || "#333333"} />}
                     </React.Fragment>}
 
 
                 {chartParams.show_brush && <Brush dataKey={chartParams.x_axis + "_formatted"} height={30} stroke={chartParams.brush_color || "#8884d8"} />}
-                {chartParams.show_tooltip && <Tooltip />}
+                {chartParams.show_tooltip && <Tooltip labelFormatter={tickFormatter} />}
                 {chartParams.show_legend && <Legend />}
-                {(chartParams.chart_lines || []).map(line => <Bar
-                    yAxisId={(chartParams.biAxial && line.secondAxis && !chartParams.layoutVertical) ? "second" : "first"}
-                    xAxisId={(chartParams.biAxial && line.secondAxis && chartParams.layoutVertical) ? "second" : "first"}
-                    strokeWidth={line.line_width || 1}
-                    stackId={line.line_stackedID}
-                    maxBarSize={100}
-                    dataKey={line.line_label || line.line_data}
-                    hide={!chartFilters[line.line_data]}
-                    fill={line.color}
-                />)}
+
+                {chartParams.chart_type == "bar" && _.get(chartParams, 'lines_from_data') == "from_data" && _.get(chartParams, 'line_labels') ?
+                    (Object.keys(_.groupBy(_.get(data, "data"), _.get(chartParams, 'line_labels'))) || []).map((line, index) => {
+                        return <Bar
+                            yAxisId={"first"}
+                            key={index}
+                            xAxisId={"first"}
+                            dataKey={line}
+                            stackId={_.get(chartParams, 'chart_lines[0]').line_stackedID}
+                            maxBarSize={100}
+                            hide={!chartFilters[line]}
+                            fill={colorsPalette[index]}
+                        />
+                    })
+                    :
+                    (chartParams.chart_lines || []).map(line => {
+                        return <Bar
+                            yAxisId={(chartParams.biAxial && line.secondAxis && !chartParams.layoutVertical) ? "second" : "first"}
+                            xAxisId={(chartParams.biAxial && line.secondAxis && chartParams.layoutVertical) ? "second" : "first"}
+                            maxBarSize={100}
+                            dataKey={line.line_label || line.line_data}
+                            hide={!chartFilters[line.line_data]}
+                            fill={line.color}
+                            stackId={line.line_stackedID}
+                        />
+                    })}
             </BarChart>
             break;
         case 'scatter':

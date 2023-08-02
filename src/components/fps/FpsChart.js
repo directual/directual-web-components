@@ -358,7 +358,8 @@ function FpsChart({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
   const colorsPalette = _.concat(usersColorsPalette, usersColorsPalette2, defaultColorsPalette)
 
   const composeChartLinesForFiltering = () => {
-    const fromData = ((_.get(data,"params.chart_type") == "line" || _.get(data,"params.chart_type") == "area") &&
+    const fromData = ((_.get(data,"params.chart_type") == "line" || _.get(data,"params.chart_type") == "area"
+      || _.get(data,"params.chart_type") == "bar") &&
       _.get(data.params, 'lines_from_data') == "from_data"
       && _.get(data.params, 'line_labels')) ? true : false
     if (fromData) {
