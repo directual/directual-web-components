@@ -386,7 +386,7 @@ export function ObjectCard(props) {
                         field={field}
                         formatDate={formatDate}
                         object={object}
-                        setModel={value => { setModel(value); }}
+                    setModel={value => { setModel(value); }}
                         setLinkedObject={setLinkedObject}
                         setShowLinkedObject={setShowLinkedObject}
                         getStructure={getStructure}
