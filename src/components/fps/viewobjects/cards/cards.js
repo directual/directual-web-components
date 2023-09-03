@@ -12,6 +12,7 @@ import Loader from '../../loader/loader'
 
 export function Cards({
   data,
+  cardsData,
   onExpand,
   edenrichConds,
   loading,
@@ -43,7 +44,8 @@ export function Cards({
 
   // обогащаем поля теми, что не пришли по данным, но мы их можем писать:
   function enrichTableDataWithWriteFields(data) {
-    const saveData = data.data ? [...data.data] : []
+    const saveData = cardsData ? [...cardsData] : []
+    //const saveData = data.data ? [...data.data] : []
     saveData.forEach((field) => {
       data.writeFields &&
         data.writeFields.forEach((writeField) => {

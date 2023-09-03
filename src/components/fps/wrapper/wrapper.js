@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styles from './wrapper.module.css'
 import { SetTheme } from '../theme/theme'
 import { dict } from '../locale'
@@ -23,6 +23,12 @@ export function ContentWrapper(props) {
     const [currentTheme, setCurrentTheme] = useState(props.themeName)
     useEffect(() => { setCurrentTheme(props.themeName) }, [props.themeName])
 
+    const scrollDiv = useRef(null);
+
+    const scrollHandler = () => {
+        console.log("scroll")
+    }
+
     const [logoUrl, setlogoUrl] = useState('https://api.alfa.directual.com/fileUploaded/directual-site/8b09feb3-0e52-45cc-b776-b0a7f9fc4a0e.svg')
 
     useEffect(() => {
@@ -42,7 +48,9 @@ export function ContentWrapper(props) {
         <React.Fragment>
             <SetTheme themeName={currentTheme} />
             <div className={styles.outer_content_wrapper}>
-                <div className={styles.content_wrapper} id={props.id || undefined}>
+                <div className={styles.content_wrapper} id={props.id || undefined} 
+                    //ref={scrollDiv} onScroll={scrollHandler}
+                    >
                     {props.children}
                 </div>
             </div>

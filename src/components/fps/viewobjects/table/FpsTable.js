@@ -8,6 +8,7 @@ import React, { useState, useEffect } from 'react'
 import { ComponentWrapper } from '../../wrapper/wrapper'
 import moment from 'moment'
 import { Paging } from '../paging/paging'
+import { LazyLoading } from '../paging/lazyLoading'
 import Button from '../../button/button'
 import { dict } from '../../locale'
 import { addUrlParam, removeUrlParam, clearURL } from '../../queryParams'
@@ -35,6 +36,8 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     const [currentSort, setCurrentSort] = useState({})
 
     const [showObject, setShowObject] = useState()
+
+    const [cardsData, setCardsData] = useState(_.get(data, "data") || [])
 
     const tableTitle = data.tableTitle || null
     const writeFields = data.writeFields || []
@@ -94,8 +97,9 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
             }
         }
         const message =
-            { //...{ dql: currentDQL, sort: currentSort }, 
-            ...msg, _id: 'form_' + id, _sl_name: sl, _options: options }
+        { //...{ dql: currentDQL, sort: currentSort }, 
+            ...msg, _id: 'form_' + id, _sl_name: sl, _options: options
+        }
         console.log(message)
         console.log(pageInfo)
         setLoading(true)
@@ -141,8 +145,10 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         !skipLoading && removeUrlParam(id + '_dql')
     }
 
+    const [lazyLoadingHandler, setLazyLoadingHandler] = useState(false)
+
     function setPage(page) {
-        // alert('set page')
+        if (_.get(data, "params.lazyLoading")) { setLazyLoadingHandler(true) }
         let prom = onEvent({ dql: currentDQL, sort: currentSort, _id: id }, { page: page }, { reqParam1: "true" })
         page !== 0 ? addUrlParam({ key: id + '_page', value: page }) : removeUrlParam(id + '_page')
         if (prom && prom.finally) {
@@ -157,7 +163,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         if (saveModel) {
             for (const field in saveModel) {
                 console.log(field)
-                if (saveModel[field] && typeof saveModel[field] == 'object' && _.get(data,`params.data.fields[${field}].dataType`) != 'date') {
+                if (saveModel[field] && typeof saveModel[field] == 'object' && _.get(data, `params.data.fields[${field}].dataType`) != 'date') {
                     // console.log('removing links')
                     delete saveModel[field]
                 }  // removing links
@@ -165,7 +171,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                     // console.log(`removing ${field} as a field not for writing`)
                     delete saveModel[field]
                 } // removing fields not for writing
-                if (data.params.data.fields[field] && _.get(data,`params.data.fields[${field}].dataType`) == 'date' && typeof saveModel[field] == 'number') {
+                if (data.params.data.fields[field] && _.get(data, `params.data.fields[${field}].dataType`) == 'date' && typeof saveModel[field] == 'number') {
                     saveModel[field] = moment(saveModel[field])
                 }
             }
@@ -183,7 +189,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         console.log('submitting action...')
         //sendMsg(mapping, sl, undefined, options)
 
-        const isDelayedRefresh =  currentDQL || _.get(currentSort, 'field') || currentPage
+        const isDelayedRefresh = currentDQL || _.get(currentSort, 'field') || currentPage
 
         function submitDelayedAction() {
             sendMsg(mapping, sl, undefined, options)
@@ -317,6 +323,10 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
     // get direct link ID
     useEffect(() => {
+        if (lazyLoadingHandler) {
+            setLazyLoadingHandler(false)
+            setCardsData([...cardsData, ...data.data])
+        }
         const queryString = typeof window !== 'undefined' ? window.location.search : '';
         const urlParams = new URLSearchParams(queryString);
         const currentID = urlParams && urlParams.get(id + '_id')
@@ -407,6 +417,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
             <Table
                 currentBP={currentBP}
                 data={data}
+                cardsData={cardsData}
                 dict={dict}
                 lang={lang}
                 largeFont={largeFont}
@@ -429,8 +440,16 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 loading={loading}
                 setLoading={value => setLoading(value)}
             />
-
-            {totalPages > 0 && tableHeaders.length != 0 &&
+            {_.get(data, "params.lazyLoading") ?
+                <LazyLoading
+                    setPage={setPage}
+                    pageSize={pageSize}
+                    totalPages={totalPages}
+                    currentPage={currentPage}
+                    setLoading={setLoading}
+                    loading={loading}
+                /> :
+                totalPages > 0 && tableHeaders.length != 0 &&
                 <div className={styles.pagination}>
                     <Paging
                         setPage={setPage}

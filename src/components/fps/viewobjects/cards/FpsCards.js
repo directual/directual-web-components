@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styles from './cards.module.css'
 import { ObjectCard } from '../objectCard/objectCard'
 import { TableTitle } from '../tableTitle/TableTitle'
@@ -9,6 +9,7 @@ import Hint from '../../hint/hint'
 import { ComponentWrapper } from '../../wrapper/wrapper'
 import moment from 'moment'
 import { Paging } from '../paging/paging'
+import { LazyLoading } from '../paging/lazyLoading'
 import Button from '../../button/button'
 import { dict } from '../../locale'
 import { addUrlParam, removeUrlParam, clearURL } from '../../queryParams'
@@ -26,6 +27,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     const dqlService = debounce(performFiltering, 600);
     const searchService = debounce(search, 600);
 
+
     const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
 
     const [loading, setLoading] = useState(false)
@@ -36,6 +38,8 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     const [currentSort, setCurrentSort] = useState({})
 
     const [showObject, setShowObject] = useState()
+
+    const [cardsData,setCardsData] = useState(_.get(data,"data") || [])
 
     const tableTitle = data.tableTitle || null
     const writeFields = data.writeFields || []
@@ -87,16 +91,17 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         if (sl === "") { sl = undefined }
         // костылек для даты
         for (const prop in msg) {
-            if (typeof msg[prop] == 'number' && msg[prop] > 1000000000000) { 
-                const dataType = data.headers.filter(i=> i.sysName == prop) &&
-                    data.headers.filter(i=> i.sysName == prop)[0] &&
-                    data.headers.filter(i=> i.sysName == prop)[0].dataType
-                if (dataType == 'date') { msg[prop] = moment(msg[prop]) } 
+            if (typeof msg[prop] == 'number' && msg[prop] > 1000000000000) {
+                const dataType = data.headers.filter(i => i.sysName == prop) &&
+                    data.headers.filter(i => i.sysName == prop)[0] &&
+                    data.headers.filter(i => i.sysName == prop)[0].dataType
+                if (dataType == 'date') { msg[prop] = moment(msg[prop]) }
             }
         }
         const message =
-            { //...{ dql: currentDQL, sort: currentSort }, 
-                ...msg, _id: 'form_' + id, _sl_name: sl, _options: options }
+        { //...{ dql: currentDQL, sort: currentSort }, 
+            ...msg, _id: 'form_' + id, _sl_name: sl, _options: options
+        }
         console.log(message)
         console.log(pageInfo)
         setLoading(true)
@@ -140,8 +145,11 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         !skipLoading && removeUrlParam(id + '_dql')
     }
 
+    const [lazyLoadingHandler,setLazyLoadingHandler] = useState(false)
+
     function setPage(page) {
         // alert('set page')
+        if (_.get(data, "params.lazyLoading")) {setLazyLoadingHandler(true)}
         let prom = onEvent({ dql: currentDQL, sort: currentSort, _id: id }, { page: page }, { reqParam1: "true" })
         page !== 0 ? addUrlParam({ key: id + '_page', value: page }) : removeUrlParam(id + '_page')
         if (prom && prom.finally) {
@@ -156,7 +164,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         if (saveModel) {
             for (const field in saveModel) {
                 console.log(field)
-                if (saveModel[field] && typeof saveModel[field] == 'object' && _.get(data,`params.data.fields[${field}].dataType`) !== 'date') {
+                if (saveModel[field] && typeof saveModel[field] == 'object' && _.get(data, `params.data.fields[${field}].dataType`) !== 'date') {
                     // console.log('removing links')
                     delete saveModel[field]
                 }  // removing links
@@ -164,7 +172,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                     // console.log(`removing ${field} as a field not for writing`)
                     delete saveModel[field]
                 } // removing fields not for writing
-                if (data.params.data.fields[field] && _.get(data,`params.data.fields[${field}].dataType`) == 'date' && typeof saveModel[field] == 'number') {
+                if (data.params.data.fields[field] && _.get(data, `params.data.fields[${field}].dataType`) == 'date' && typeof saveModel[field] == 'number') {
                     saveModel[field] = moment(saveModel[field])
                 }
             }
@@ -181,7 +189,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     const submitAction = (mapping, sl, options) => {
         console.log('submitting action...')
 
-        const isDelayedRefresh =  currentDQL || _.get(currentSort, 'field') || currentPage
+        const isDelayedRefresh = currentDQL || _.get(currentSort, 'field') || currentPage
 
         function submitDelayedAction() {
             sendMsg(mapping, sl, undefined, options)
@@ -309,6 +317,10 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
     // get direct link ID
     useEffect(() => {
+        if (lazyLoadingHandler) {
+            setLazyLoadingHandler(false)
+            setCardsData([...cardsData, ...data.data])
+        }
         const queryString = typeof window !== 'undefined' ? window.location.search : '';
         const urlParams = new URLSearchParams(queryString);
         const currentID = urlParams && urlParams.get(id + '_id')
@@ -330,7 +342,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         }
     }, [showObject])
 
-    // return <div>test</div>
+    
 
     return (
         <ComponentWrapper currentBP={currentBP}>
@@ -384,6 +396,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 dict={dict}
                 lang={lang}
                 data={data}
+                cardsData={cardsData}
                 params={data.params}
                 searchValue={searchValue}
                 checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
@@ -400,8 +413,17 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 loading={loading}
                 setLoading={value => setLoading(value)}
             />
+            {_.get(data, "params.lazyLoading") ?
+                <LazyLoading
+                    setPage={setPage}
+                    pageSize={pageSize}
+                    totalPages={totalPages}
+                    currentPage={currentPage}
+                    setLoading={setLoading}
+                    loading={loading}
+                /> :
 
-            {totalPages > 0 && tableHeaders.length != 0 &&
+                totalPages > 0 && tableHeaders.length != 0 &&
                 <div className={styles.pagination}>
                     <Paging
                         setPage={setPage}

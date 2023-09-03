@@ -364,6 +364,7 @@ export function Table({
     data,
     onExpand,
     loading,
+    cardsData,
     searchValue,
     auth,
     dict,
@@ -388,7 +389,7 @@ export function Table({
 
     // обогащаем поля теми, что не пришли по данным, но мы их можем писать:
     function enrichTableDataWithWriteFields(data) {
-        let saveData = data.data ? [...data.data] : []
+        let saveData = cardsData ? [...cardsData] : []
         saveData.forEach(field => {
             data.writeFields && data.writeFields.forEach(writeField => {
                 if (!field[writeField]) { field[writeField] = '' }
