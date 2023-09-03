@@ -11,21 +11,6 @@ import Media from '../../media/media'
 import _ from 'lodash'
 import Map from '../map/map'
 
-import 'codemirror/lib/codemirror.css';
-import 'codemirror/theme/night.css';
-import 'codemirror/theme/dracula.css';
-
-import 'codemirror/mode/xml/xml';
-import 'codemirror/mode/javascript/javascript';
-import 'codemirror/mode/css/css';
-
-import 'codemirror/addon/edit/closebrackets';
-import 'codemirror/addon/edit/closetag';
-// import 'codemirror/addon/hint/css-hint';
-// import 'codemirror/addon/hint/html-hint';
-
-import { Controlled as CodeMirror } from 'react-codemirror2';
-
 export function InputForm(props) {
     // console.log('== InputForm == ' + props.field.content)
     // console.log(props.field)
@@ -246,21 +231,6 @@ function FieldHTML({ field, locale, onChange, placeholder, editingOn, defaultVal
     if (editingOn) return <div className={styles.htmlPreview}>
         {!preview ? <div onClick={() => setPreview(true)} className={`${styles.htmlShowPreview} icon icon-view small`}>Show preview</div> :
             <div onClick={() => setPreview(false)} className={`${styles.htmlHidePreview} icon icon-hide small`}>Hide preview</div>}
-        {/* <div className='input_label'>{field.content || field.id}</div>
-        <CodeMirror
-            value={cmValue}
-            options={{
-                mode: 'xml',
-                theme: 'dracula',
-                lineNumbers: true,
-            }}
-            onBeforeChange={(editor, cm_data, value) => {
-                setCmValue(value);
-            }}
-            onChange={(editor, cm_data, value) => {
-                onChange(value)
-            }}
-        /> */}
         {preview ?
             <div style={{paddingTop:20}}
                 dangerouslySetInnerHTML={{ __html: defaultValue || (field.defaultValueOn && field.defaultValue) }}
