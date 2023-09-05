@@ -45,13 +45,17 @@
     flex-shrink: 0;
   }
   &:hover {
-    .drag {
+    .drag, .up {
       display: block;
       opacity: 0.2;
       &:hover {
         opacity: 0.9;
       }
     }
+  }
+  .up {
+    opacity: 0;
+    display: none;
   }
   .drag {
     opacity: 0;

@@ -2232,62 +2232,118 @@ export default function LayoutPage() {
     const oneLevelOptions = [
         {
             "id": "root",
-            "icon": "folder",
+            "icon": "application",
             "value": "All scenarios"
         },
         {
-            "id": "trash",
-            "icon": "delete",
-            "value": "Deleted"
+            "id": "33649724",
+            "name": "Logs",
+            "parentID": "root",
+            "icon": "folder",
+            "isFolder": true
+        },
+        {
+            "id": "3364972c",
+            "name": "Logs2",
+            "parentID": "root",
+            "icon": "folder",
+            "isFolder": true
+        },
+        {
+            "id": "33649721",
+            "name": "Home",
+            "parentID": "3364972c",
+            "icon": "application",
+            "isFolder": false
+        },
+        {
+            "id": "3364972a",
+            "name": "Profile",
+            "parentID": "root",
+            "icon": "application",
+            "isFolder": false
+        },
+        {
+            "id": "3364972a1",
+            "name": "Profile2",
+            "parentID": "root",
+            "icon": "application",
+            "isFolder": false
+        },
+        {
+            "id": "3364972aa",
+            "name": "Profile123",
+            "parentID": "3364972c",
+            "icon": "application",
+            "isFolder": false
+        },
+        {
+            "id": "3364972aaa",
+            "name": "Profile1234",
+            "parentID": "3364972c",
+            "icon": "application",
+            "isFolder": false
+        },
+        {
+            "id": "3364972b",
+            "name": "All users",
+            "parentID": "33649724",
+            "icon": "application",
+            "isFolder": false
         }
     ]
 
-    const [options, setOptions] = useState(defaultOptions)
+    const [options, setOptions] = useState(oneLevelOptions)
     const [selectedID, setSelectedID] = useState('root')
+    const [tree,setTree] = useState(null)
 
-
+    // console.log("tree")
+    // console.log(tree)
 
     const [loading, setLoading] = useState(false)
 
-    return <TabsPane fpsTabs saveTabToURL tabs={exampleTabs} hideSingleTab fixedScroll={false} />
+    //return <TabsPane fpsTabs saveTabToURL tabs={exampleTabs} hideSingleTab fixedScroll={false} />
 
     // return <FpsLayout layout={layoutExample} />
 
-    return <div>
+    return <div style={{width:300}}>
         <Button onClick={()=>setLoading(!loading)}>loader...</Button><br />
         <Tree
             draggable
             options={options}
+            currentTree={tree}
+            submitTree={setTree}
+            rootName = 'Main menu'
             selectedID={selectedID}
             loading={loading}
-            host='http://ya.ru/'
+            //host='http://ya.ru/'
             onCheck={setSelectedID}
             move={(id, to) => {
-                const saveOptions = [...options]
-                console.log('saveOptions')
-                console.log(saveOptions)
-                const element = saveOptions.filter(i => i.id == id)[0]
-                const index = saveOptions.indexOf(element)
-                console.log(element)
-                console.log(index)
-                if (index == -1) { return }
-                element.parentID = to
-                saveOptions.splice(index,1)
-                saveOptions.splice(index,0,element)
-                console.log('saveOptions modified')
-                console.log(saveOptions)
-                setOptions(saveOptions)
+                // const saveOptions = [...options]
+                // console.log('saveOptions')
+                // console.log(saveOptions)
+                // const element = saveOptions.filter(i => i.id == id)[0]
+                // const index = saveOptions.indexOf(element)
+                // console.log(element)
+                // console.log(index)
+                // if (index == -1) { return }
+                // element.parentID = to
+                // saveOptions.splice(index,1)
+                // saveOptions.splice(index,0,element)
+                // console.log('saveOptions modified')
+                // console.log(saveOptions)
+                // setOptions(saveOptions)
             } }
         />
         <br />
-        <Tree
-            //draggable
-            oneLevel
+        {/* <Tree
+            draggable
+            //oneLevel
             options={oneLevelOptions}
             //selectedID={selectedID}
             loading={loading}
             onCheck={setSelectedID}
-        />
+        /> */}
     </div>
 }
 

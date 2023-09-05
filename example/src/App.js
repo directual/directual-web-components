@@ -3951,17 +3951,84 @@ const App = (props) => {
     }
 
     let kanbanData = {
-        "sl": "getFinancialReport",
+        "sl": "getKanban",
         "pageSize": "10",
         "headerField": null,
         "params": {
+            "cardHeaderComment": "",
+            "cardBodyText": "",
+            "cardImage": false,
+            "cardImageField": "",
+            "cardImageType": "none",
+            "cardImageSize": 100,
+            "objectView": {},
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "_report_ts",
+                        "fieldSysName": "arrival_date",
                         "fetch": [],
-                        "sysName": "_report_ts",
-                        "name": "report create time",
+                        "sysName": "arrival_date",
+                        "name": "Date of Arrival",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "back_wheel_part",
+                        "fetch": [],
+                        "sysName": "back_wheel_part",
+                        "name": "Back Wheel Part",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "bicycle_part",
+                        "fetch": [],
+                        "sysName": "bicycle_part",
+                        "name": "Choose Bicycle Part",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "biycle_problem_message",
+                        "fetch": [],
+                        "sysName": "biycle_problem_message",
+                        "name": "Problem Message",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "choose_wheel",
+                        "fetch": [],
+                        "sysName": "choose_wheel",
+                        "name": "Choose Wheel",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "client",
+                        "fetch": [],
+                        "sysName": "client",
+                        "name": "Client",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "date_created",
+                        "fetch": [],
+                        "sysName": "date_created",
+                        "name": "Date Created",
                         "dataType": "date",
                         "format": "",
                         "formatOptions": {
@@ -3988,57 +4055,20 @@ const App = (props) => {
                             "customOptionPlaceholder": "Describe your option",
                             "range": {},
                             "customOptionType": "textarea",
-                            "dateFormat": "DD MMM, Y",
+                            "dateFormat": "DD/MM/Y",
                             "timeFormat": "",
                             "isUTC": "false"
                         },
                         "link": ""
                     },
                     {
-                        "fieldSysName": "balance___sum",
+                        "fieldSysName": "front_wheel_part",
                         "fetch": [],
-                        "sysName": "balance___sum",
-                        "name": "sum(balance)",
-                        "dataType": "decimal",
+                        "sysName": "front_wheel_part",
+                        "name": "Front Wheel Part",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "bool",
-                        "fetch": [],
-                        "sysName": "bool",
-                        "name": "Ще не вмерла?",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "Скоро",
-                                "Очень скоро"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
-                        },
                         "link": ""
                     },
                     {
@@ -4052,27 +4082,47 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "id___count",
+                        "fieldSysName": "max_arrival_time",
                         "fetch": [],
-                        "sysName": "id___count",
-                        "name": "count(id)",
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "period",
-                        "fetch": [],
-                        "sysName": "period",
-                        "name": "period",
+                        "sysName": "max_arrival_time",
+                        "name": "Latest arrival time",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "type",
+                        "fieldSysName": "message",
+                        "fetch": [],
+                        "sysName": "message",
+                        "name": "Message",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "min_arrival_time",
+                        "fetch": [],
+                        "sysName": "min_arrival_time",
+                        "name": "Earliest arrival time",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "payment_method",
+                        "fetch": [],
+                        "sysName": "payment_method",
+                        "name": "Payment Method",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "status",
                         "fetch": [
                             {
                                 "fieldSysName": "id",
@@ -4080,25 +4130,145 @@ const App = (props) => {
                                 "fetch": []
                             },
                             {
-                                "fieldSysName": "title",
+                                "fieldSysName": "status",
                                 "condition": null,
                                 "fetch": []
                             }
                         ],
-                        "sysName": "type",
-                        "name": "type",
+                        "sysName": "status",
+                        "name": "Status",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "transaction_types"
+                        "link": "kanban_columns"
+                    },
+                    {
+                        "fieldSysName": "time_interval",
+                        "fetch": [],
+                        "sysName": "time_interval",
+                        "name": "Time Interval",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "uploads_images_array_link",
+                        "fetch": [],
+                        "sysName": "uploads_images_array_link",
+                        "name": "Images",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "appointments_images"
+                    },
+                    {
+                        "fieldSysName": "weight",
+                        "fetch": [],
+                        "sysName": "weight",
+                        "name": "Weight",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
                     }
                 ],
-                "writeFields": [],
-                "fields": {
-                    "_report_ts": {
-                        "id": "_report_ts",
-                        "content": "report create time",
-                        "type": "field",
+                "writeFields": [
+                    {
+                        "fieldSysName": "@dateChanged",
+                        "fetch": [],
+                        "sysName": "@dateChanged",
+                        "name": "date changed",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "@dateCreated",
+                        "fetch": [],
+                        "sysName": "@dateCreated",
+                        "name": "date created",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "@who",
+                        "fetch": [],
+                        "sysName": "@who",
+                        "name": "who changed",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "arrival_date",
+                        "fetch": [],
+                        "sysName": "arrival_date",
+                        "name": "Date of Arrival",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "back_wheel_part",
+                        "fetch": [],
+                        "sysName": "back_wheel_part",
+                        "name": "Back Wheel Part",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "bicycle_part",
+                        "fetch": [],
+                        "sysName": "bicycle_part",
+                        "name": "Choose Bicycle Part",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "biycle_problem_message",
+                        "fetch": [],
+                        "sysName": "biycle_problem_message",
+                        "name": "Problem Message",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "choose_wheel",
+                        "fetch": [],
+                        "sysName": "choose_wheel",
+                        "name": "Choose Wheel",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "client",
+                        "fetch": [],
+                        "sysName": "client",
+                        "name": "Client",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "date_created",
+                        "fetch": [],
+                        "sysName": "date_created",
+                        "name": "Date Created",
                         "dataType": "date",
                         "format": "",
                         "formatOptions": {
@@ -4112,55 +4282,6 @@ const App = (props) => {
                             "booleanOptions": [
                                 "True",
                                 "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD MMM, Y",
-                            "timeFormat": "",
-                            "isUTC": "false"
-                        },
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "balance___sum": {
-                        "id": "balance___sum",
-                        "content": "sum(balance)",
-                        "type": "field",
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "bool": {
-                        "id": "bool",
-                        "content": "Ще не вмерла?",
-                        "type": "field",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "Скоро",
-                                "Очень скоро"
                             ],
                             "validWeekDays": {
                                 "mon": true,
@@ -4175,248 +4296,189 @@ const App = (props) => {
                             "range": {},
                             "customOptionType": "textarea",
                             "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
+                            "timeFormat": "",
                             "isUTC": "false"
                         },
-                        "read": true,
-                        "link": "",
-                        "actions": []
+                        "link": ""
                     },
-                    "id": {
-                        "id": "id",
-                        "content": "id",
-                        "type": "field",
+                    {
+                        "fieldSysName": "front_wheel_part",
+                        "fetch": [],
+                        "sysName": "front_wheel_part",
+                        "name": "Front Wheel Part",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "id",
+                        "fetch": [],
+                        "sysName": "id",
+                        "name": "id",
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
+                        "link": ""
                     },
-                    "id___count": {
-                        "id": "id___count",
-                        "content": "count(id)",
-                        "type": "field",
-                        "dataType": "number",
+                    {
+                        "fieldSysName": "max_arrival_time",
+                        "fetch": [],
+                        "sysName": "max_arrival_time",
+                        "name": "Latest arrival time",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
+                        "link": ""
                     },
-                    "period": {
-                        "id": "period",
-                        "content": "period",
+                    {
+                        "fieldSysName": "message",
+                        "fetch": [],
+                        "sysName": "message",
+                        "name": "Message",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "min_arrival_time",
+                        "fetch": [],
+                        "sysName": "min_arrival_time",
+                        "name": "Earliest arrival time",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "payment_method",
+                        "fetch": [],
+                        "sysName": "payment_method",
+                        "name": "Payment Method",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "status",
+                        "fetch": [],
+                        "sysName": "status",
+                        "name": "Status",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "kanban_columns"
+                    },
+                    {
+                        "fieldSysName": "time_interval",
+                        "fetch": [],
+                        "sysName": "time_interval",
+                        "name": "Time Interval",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "uploads_images_array_link",
+                        "fetch": [],
+                        "sysName": "uploads_images_array_link",
+                        "name": "Images",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "appointments_images"
+                    },
+                    {
+                        "fieldSysName": "weight",
+                        "fetch": [],
+                        "sysName": "weight",
+                        "name": "Weight",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    }
+                ],
+                "fields": {
+                    "arrival_date": {
+                        "id": "arrival_date",
+                        "content": "Date of Arrival",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "type": {
-                        "id": "type",
-                        "content": "type",
+                    "back_wheel_part": {
+                        "id": "back_wheel_part",
+                        "content": "Back Wheel Part",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "bicycle_part": {
+                        "id": "bicycle_part",
+                        "content": "Choose Bicycle Part",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "biycle_problem_message": {
+                        "id": "biycle_problem_message",
+                        "content": "Problem Message",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "choose_wheel": {
+                        "id": "choose_wheel",
+                        "content": "Choose Wheel",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "client": {
+                        "id": "client",
+                        "content": "Client",
                         "type": "field",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
-                        "link": "transaction_types",
+                        "link": "WebUser",
                         "actions": []
-                    }
-                },
-                "fieldParams": {
-                    "id": {
-                        "include": false,
-                        "disableEditing": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
                     },
-                    "_report_ts": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "balance___sum": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "bool": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "id___count": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "period": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "type": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    }
-                },
-                "columns": {
-                    "tab-1": {
-                        "id": "tab-1",
-                        "title": "New section",
-                        "fieldIds": [
-                            "id",
-                            "_report_ts",
-                            "balance___sum",
-                            "bool",
-                            "id___count",
-                            "period",
-                            "type"
-                        ]
-                    }
-                },
-                "columnOrder": [
-                    "tab-1"
-                ],
-                "actions": []
-            },
-            "fields": {
-                "id": {
-                    "include": false,
-                    "disableEditing": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "_report_ts": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "balance___sum": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "bool": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "id___count": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "period": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "type": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                }
-            },
-            "filterParams": {
-                "isFiltering": true,
-                "filterFields": {
-                    "type": {
-                        "active": true,
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "name": "type",
-                        "linkDirectory": [
-                            {
-                                "id": "paddle_payment",
-                                "text": "💹 Paddle"
-                            },
-                            {
-                                "id": "tinkoff",
-                                "text": "💹 Tinkoff"
-                            },
-                            {
-                                "id": "app_payment",
-                                "text": "🔥 App Payment"
-                            },
-                            {
-                                "id": "promo",
-                                "text": "🆓 Promo"
-                            },
-                            {
-                                "id": "ondemand",
-                                "text": "🔥 On-demand Payment"
-                            },
-                            {
-                                "id": "team_payment",
-                                "text": "🔥 Team Payment"
-                            },
-                            {
-                                "id": "crypto",
-                                "text": "💹 Crypto"
-                            },
-                            {
-                                "id": "test",
-                                "text": "test"
-                            },
-                            {
-                                "id": "bank_payment",
-                                "text": "💹 Wire payment"
-                            },
-                            {
-                                "id": "app_payment_upgrade_refund",
-                                "text": "⬆️ App upgrade refund"
-                            }
-                        ]
-                    },
-                    "_report_ts": {
-                        "active": true,
+                    "date_created": {
+                        "id": "date_created",
+                        "content": "Date Created",
+                        "type": "field",
                         "dataType": "date",
                         "format": "",
                         "formatOptions": {
@@ -4443,72 +4505,570 @@ const App = (props) => {
                             "customOptionPlaceholder": "Describe your option",
                             "range": {},
                             "customOptionType": "textarea",
-                            "dateFormat": "DD MMM, Y",
+                            "dateFormat": "DD/MM/Y",
                             "timeFormat": "",
                             "isUTC": "false"
                         },
-                        "name": "report create time"
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "front_wheel_part": {
+                        "id": "front_wheel_part",
+                        "content": "Front Wheel Part",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "id": {
+                        "id": "id",
+                        "content": "id",
+                        "type": "field",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "max_arrival_time": {
+                        "id": "max_arrival_time",
+                        "content": "Latest arrival time",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "message": {
+                        "id": "message",
+                        "content": "Message",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "min_arrival_time": {
+                        "id": "min_arrival_time",
+                        "content": "Earliest arrival time",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "payment_method": {
+                        "id": "payment_method",
+                        "content": "Payment Method",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "status": {
+                        "id": "status",
+                        "content": "Status",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "kanban_columns",
+                        "actions": []
+                    },
+                    "time_interval": {
+                        "id": "time_interval",
+                        "content": "Time Interval",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "uploads_images_array_link": {
+                        "id": "uploads_images_array_link",
+                        "content": "Images",
+                        "type": "field",
+                        "dataType": "arrayLink",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "appointments_images",
+                        "actions": []
+                    },
+                    "weight": {
+                        "id": "weight",
+                        "content": "Weight",
+                        "type": "field",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "@dateChanged": {
+                        "id": "@dateChanged",
+                        "content": "date changed",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "@dateCreated": {
+                        "id": "@dateCreated",
+                        "content": "date created",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "@who": {
+                        "id": "@who",
+                        "content": "who changed",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "action__46951693334766477": {
+                        "id": "action__46951693334766477",
+                        "content": "New action",
+                        "type": "action",
+                        "actions": []
                     }
                 },
-                "isSorting": true
+                "fieldParams": {
+                    "arrival_date": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "back_wheel_part": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "bicycle_part": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "biycle_problem_message": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "choose_wheel": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "client": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "date_created": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "front_wheel_part": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "id": {
+                        "include": false,
+                        "disableEditing": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "max_arrival_time": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "message": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "min_arrival_time": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "payment_method": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "status": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "time_interval": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "uploads_images_array_link": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "weight": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "@dateChanged": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "@dateCreated": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "@who": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    }
+                },
+                "columns": {
+                    "tab-1": {
+                        "id": "tab-1",
+                        "title": "New section",
+                        "fieldIds": [
+                            "arrival_date",
+                            "back_wheel_part",
+                            "bicycle_part",
+                            "biycle_problem_message",
+                            "choose_wheel",
+                            "client",
+                            "date_created",
+                            "front_wheel_part",
+                            "id",
+                            "max_arrival_time",
+                            "message",
+                            "min_arrival_time",
+                            "payment_method",
+                            "status",
+                            "time_interval",
+                            "uploads_images_array_link",
+                            "weight",
+                            "@dateChanged",
+                            "@dateCreated",
+                            "@who",
+                            "action__46951693334766477"
+                        ]
+                    }
+                },
+                "columnOrder": [
+                    "tab-1"
+                ],
+                "actions": []
+            },
+            "fields": {
+                "arrival_date": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "back_wheel_part": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "bicycle_part": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "biycle_problem_message": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "choose_wheel": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "client": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "date_created": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "front_wheel_part": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "id": {
+                    "include": false,
+                    "disableEditing": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "max_arrival_time": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "message": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "min_arrival_time": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "payment_method": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "status": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "time_interval": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "uploads_images_array_link": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "weight": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "@dateChanged": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "@dateCreated": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "@who": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                }
             },
             "kanbanParams": {
-                "columnField": "type",
-                "columnsStruct": "transaction_types",
-                "sortField": "balance___sum",
+                "columnField": "status",
+                "columnsStruct": "kanban_columns",
                 "columns": [
                     {
-                        "id": "paddle_payment",
-                        "name": "💹 Paddle"
+                        "id": "1",
+                        "name": "To Do"
                     },
                     {
-                        "id": "tinkoff",
-                        "name": "💹 Tinkoff"
+                        "id": "2",
+                        "name": "In Progress"
                     },
                     {
-                        "id": "app_payment",
-                        "name": "🔥 App Payment"
-                    },
-                    {
-                        "id": "promo",
-                        "name": "🆓 Promo"
-                    },
-                    {
-                        "id": "ondemand",
-                        "name": "🔥 On-demand Payment"
-                    },
-                    {
-                        "id": "team_payment",
-                        "name": "🔥 Team Payment"
-                    },
-                    {
-                        "id": "crypto",
-                        "name": "💹 Crypto"
-                    },
-                    {
-                        "id": "test",
-                        "name": ""
-                    },
-                    {
-                        "id": "bank_payment",
-                        "name": "💹 Wire payment"
-                    },
-                    {
-                        "id": "app_payment_upgrade_refund",
-                        "name": "⬆️ App upgrade refund"
+                        "id": "3",
+                        "name": "Completed"
                     }
                 ],
-                "columnsVisibility": {}
-            }
+                "columnsVisibility": {},
+                "sortField": "weight",
+                "userIDfield": null
+            },
+            "actions": [
+                {
+                    "sysName": "",
+                    "id": "46951693334766477",
+                    "name": "New action"
+                }
+            ]
         },
-        "tableTitle": "kanban",
+        "tableTitle": "",
         "actions": null,
         "headers": [
             {
-                "sysName": "_report_ts",
-                "name": "report create time",
-                "dataType": "date",
-                "id": "6",
+                "sysName": "arrival_date",
+                "dataType": "string",
+                "name": "Date of Arrival",
+                "id": "16131692638537162",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -4516,7 +5076,177 @@ const App = (props) => {
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 5,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "back_wheel_part",
+                "dataType": "string",
+                "name": "Back Wheel Part",
+                "id": "92211692638522018",
+                "link": "",
+                "group": "1692638412820",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "bicycle_part",
+                "dataType": "string",
+                "name": "Choose Bicycle Part",
+                "id": "67561692638644338",
+                "link": "",
+                "group": "1692638633142",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "biycle_problem_message",
+                "dataType": "string",
+                "name": "Problem Message",
+                "id": "62471692638653105",
+                "link": "",
+                "group": "1692638633142",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "choose_wheel",
+                "dataType": "string",
+                "name": "Choose Wheel",
+                "id": "58441692638381014",
+                "link": "",
+                "group": "1692638412820",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "client",
+                "dataType": "link",
+                "name": "Client",
+                "id": "88971692557371477",
+                "link": "WebUser",
+                "group": "0",
+                "tags": "",
+                "indexing": true,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [
+                    "role"
+                ],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": true,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "date_created",
+                "dataType": "date",
+                "name": "Date Created",
+                "id": "62221692977312800",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
                 "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
@@ -4546,26 +5276,26 @@ const App = (props) => {
                     "customOptionPlaceholder": "Describe your option",
                     "range": {},
                     "customOptionType": "textarea",
-                    "dateFormat": "DD MMM, Y",
+                    "dateFormat": "DD/MM/Y",
                     "timeFormat": "",
                     "isUTC": "false"
                 },
                 "groupName": null,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "linkType": false,
-                "json": false,
                 "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
                 "array": false
             },
             {
-                "sysName": "balance___sum",
-                "name": "sum(balance)",
-                "dataType": "decimal",
-                "id": "1",
+                "sysName": "front_wheel_part",
+                "dataType": "string",
+                "name": "Front Wheel Part",
+                "id": "43731692638513352",
                 "link": "",
-                "group": "0",
+                "group": "1692638412820",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
@@ -4579,74 +5309,19 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "linkType": false,
-                "json": false,
                 "indexExists": false,
-                "array": false
-            },
-            {
-                "sysName": "bool",
-                "name": "Ще не вмерла?",
-                "dataType": "boolean",
-                "id": "81091670421684945",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 6,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "Скоро",
-                        "Очень скоро"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
-                    "timeFormat": " HH:mm",
-                    "isUTC": "false"
-                },
-                "groupName": null,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
                 "typeVariable": {},
-                "linkType": false,
                 "json": false,
-                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
                 "array": false
             },
             {
                 "sysName": "id",
-                "name": "id",
                 "dataType": "id",
-                "id": "5",
+                "name": "id",
+                "id": "0",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -4662,19 +5337,103 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "linkType": false,
-                "json": false,
                 "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
                 "array": false
             },
             {
-                "sysName": "id___count",
-                "name": "count(id)",
-                "dataType": "number",
-                "id": "2",
+                "sysName": "max_arrival_time",
+                "dataType": "string",
+                "name": "Latest arrival time",
+                "id": "77471692638668493",
+                "link": "",
+                "group": "1692638633142",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "message",
+                "dataType": "string",
+                "name": "Message",
+                "id": "44951692638527107",
+                "link": "",
+                "group": "1692638412820",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "min_arrival_time",
+                "dataType": "string",
+                "name": "Earliest arrival time",
+                "id": "50521692638659436",
+                "link": "",
+                "group": "1692638633142",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "payment_method",
+                "dataType": "string",
+                "name": "Payment Method",
+                "id": "14281692638467603",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -4690,27 +5449,55 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "linkType": false,
-                "json": false,
                 "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
                 "array": false
             },
             {
-                "sysName": "period",
-                "name": "period",
+                "sysName": "status",
+                "dataType": "link",
+                "name": "Status",
+                "id": "80061693332942643",
+                "link": "kanban_columns",
+                "group": "1693332936503",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "time_interval",
                 "dataType": "string",
-                "id": "3",
+                "name": "Time Interval",
+                "id": "19021692638553575",
                 "link": "",
-                "group": "0",
+                "group": "1692638412820",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 3,
+                "order": 4,
                 "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
@@ -4718,20 +5505,20 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "linkType": false,
-                "json": false,
                 "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
                 "array": false
             },
             {
-                "sysName": "type",
-                "name": "type",
-                "dataType": "link",
-                "id": "4",
-                "link": "transaction_types",
+                "sysName": "uploads_images_array_link",
+                "dataType": "arrayLink",
+                "name": "Images",
+                "id": "18281692638740800",
+                "link": "appointments_images",
                 "group": "0",
                 "tags": "",
                 "indexing": false,
@@ -4746,244 +5533,297 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "linkOrArrayLinkType": true,
-                "arrayLink": false,
-                "typeVariable": {},
-                "linkType": true,
-                "json": false,
                 "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
+                "array": false
+            },
+            {
+                "sysName": "weight",
+                "dataType": "decimal",
+                "name": "Weight",
+                "id": "31311693332958118",
+                "link": "",
+                "group": "1693332936503",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
                 "array": false
             }
         ],
         "data": [
             {
-                "_report_ts": 1670406206068,
-                "balance___sum": 83.72,
-                "id___count": 5,
-                "id": "6390603eaaea0bbf565bf2da",
-                "type": {
-                    "id": "paddle_payment",
-                    "title": "💹 Paddle"
-                },
-                "period": "12-2022"
+                "uploads_images_array_link": [
+                    "1ef8322f-d6fd-4e66-8b4b-77ee91450e57"
+                ],
+                "bicycle_part": "Andet",
+                "min_arrival_time": "10:00",
+                "biycle_problem_message": "Our Electric Cargo bike needs to have its brakes and gears cleaned and adjusted. The pads on the hydraulic brakes needs replacing. If possible the hydralic arm between the front and rear part of the bike needs welding.",
+                "payment_method": "MobilePay",
+                "id": "bf75b49b-cc95-4402-a004-9cd9b449a05d",
+                "client": "kasper_rud@hotmail.com",
+                "arrival_date": "24-08-2023",
+                "max_arrival_time": "14:30"
             },
             {
-                "_report_ts": 1670406206068,
-                "balance___sum": 97,
-                "id___count": 3,
-                "id": "6390603eaaea0bbf565bf2db",
-                "type": {
-                    "id": "tinkoff",
-                    "title": "💹 Tinkoff"
-                },
-                "period": "12-2022"
+                "time_interval": "8,12",
+                "uploads_images_array_link": [
+                    "0ba17b88-b3b8-4b10-b645-c57c08695208"
+                ],
+                "back_wheel_part": "Slange på baghjul - 450 kr.",
+                "payment_method": "MobilePay",
+                "id": "37b29869-e7f9-4a99-8d6f-a3799662f821",
+                "client": "j.dalby@hotmail.com",
+                "arrival_date": "22-08-2023",
+                "choose_wheel": "Baghjul",
+                "message": "Cyklen står i forhaven MBK Comanche"
             },
             {
-                "_report_ts": 1670406206068,
-                "balance___sum": 0.84,
-                "id___count": 1,
-                "id": "6390603eaaea0bbf565bf2dc",
-                "type": {
-                    "id": "crypto",
-                    "title": "💹 Crypto"
-                },
-                "period": "11-2022"
+                "uploads_images_array_link": [
+                    ""
+                ],
+                "bicycle_part": "Gear og kæde",
+                "min_arrival_time": "09:00",
+                "biycle_problem_message": "Mine cykel gear bliver ved med at hoppe ud af det gear man er i så den kan kun kører i 1, mangler luft i hjulene ",
+                "payment_method": "Kontant",
+                "id": "574be768-5f62-400c-8e85-ac37b342032b",
+                "client": "amalie.lodberg@icloud.com",
+                "arrival_date": "22-08-2023",
+                "max_arrival_time": "10:00"
             },
             {
-                "_report_ts": 1670406206068,
-                "balance___sum": 1104.18,
-                "id___count": 16,
-                "id": "6390603eaaea0bbf565bf2dd",
-                "type": {
-                    "id": "paddle_payment",
-                    "title": "💹 Paddle"
-                },
-                "period": "11-2022"
+                "uploads_images_array_link": [
+                    "7bf84d48-0404-4134-970e-c4f3a258ffc1",
+                    "21fc7c6d-63e6-43ae-957c-617dec891b26"
+                ],
+                "bicycle_part": "Andet",
+                "min_arrival_time": "10:00",
+                "biycle_problem_message": "Både hjul, bremser og kæde skal tjekkes igennem. Dæk er helt flade. Det er to specialdesignet cargo cykler. Billederne er inden de blev brugt",
+                "payment_method": "MobilePay",
+                "id": "4be37981-4c64-43fe-8cc9-8906bc87e585",
+                "client": "amalie.norgaard@wmglobal.com",
+                "arrival_date": "28-08-2023",
+                "max_arrival_time": "15:00"
             },
             {
-                "_report_ts": 1670406206068,
-                "balance___sum": -433.56,
-                "id___count": 13,
-                "id": "6390603eaaea0bbf565bf2de",
-                "type": {
-                    "id": "ondemand",
-                    "title": "🔥 On-demand Payment"
-                },
-                "period": "11-2022"
+                "uploads_images_array_link": [
+                    ""
+                ],
+                "bicycle_part": "Andet",
+                "min_arrival_time": "10:30",
+                "biycle_problem_message": "Jeg kan ikke skrue mit styr fast efter jeg forsøgte at hæve styret. Kilen der normalt skal komme med op på frempinden sidder fast i bunden og er rusten. Resten af udstyret virker fuldkommen intakt. ",
+                "payment_method": "MobilePay",
+                "id": "ab66fe13-216a-412a-abb3-128533ba9df8",
+                "client": "michellaholstkontakt@gmail.com",
+                "arrival_date": "23-08-2023",
+                "max_arrival_time": "15:00"
             },
             {
-                "_report_ts": 1670406206068,
-                "balance___sum": -1146.19,
-                "id___count": 13,
-                "id": "6390603eaaea0bbf565bf2df",
-                "type": {
-                    "id": "team_payment",
-                    "title": "🔥 Team Payment"
-                },
-                "period": "11-2022"
+                "uploads_images_array_link": [
+                    ""
+                ],
+                "bicycle_part": "Andet",
+                "min_arrival_time": "12:00",
+                "biycle_problem_message": "Sco elcykel trækker ikke køre i hug har fået nyt batteri",
+                "payment_method": "MobilePay",
+                "id": "1e361e1e-4dc5-43e3-98db-c222e54b243e",
+                "client": "reimannsren@gmail.com",
+                "arrival_date": "24-08-2023",
+                "max_arrival_time": "12:00"
             },
             {
-                "_report_ts": 1670406206068,
-                "balance___sum": -7736.5,
-                "id___count": 132,
-                "id": "6390603eaaea0bbf565bf2e0",
-                "type": {
-                    "id": "app_payment",
-                    "title": "🔥 App Payment"
-                },
-                "period": "11-2022"
+                "uploads_images_array_link": [
+                    ""
+                ],
+                "bicycle_part": "Andet",
+                "min_arrival_time": "17:15",
+                "biycle_problem_message": "Forhjulet er muligvis punkteret og så binder batteriet så jeg ikke kan få det ud og det er sket før. ",
+                "payment_method": "MobilePay",
+                "id": "d4052ac9-6d72-4677-a2c2-487d8e6089bc",
+                "client": "rikke_harms@hotmail.com",
+                "arrival_date": "23-08-2023",
+                "max_arrival_time": "20:00"
             },
             {
-                "_report_ts": 1670406206068,
-                "balance___sum": 1351.78125,
-                "id___count": 20,
-                "id": "6390603eaaea0bbf565bf2e1",
-                "type": {
-                    "id": "tinkoff",
-                    "title": "💹 Tinkoff"
-                },
-                "period": "11-2022"
+                "time_interval": "0",
+                "uploads_images_array_link": [
+                    ""
+                ],
+                "back_wheel_part": "Dæk og slange på baghjul - 750 kr.",
+                "id": "7a37a716-b796-4b95-a841-ff0803ab3bec",
+                "client": "kattenpuk@hotmail.com",
+                "arrival_date": "01-09-2023",
+                "choose_wheel": "Baghjul"
             },
             {
-                "_report_ts": 1670406206068,
-                "balance___sum": -1405.5,
-                "id___count": 26,
-                "id": "6390603eaaea0bbf565bf2e2",
-                "type": {
-                    "id": "app_payment",
-                    "title": "🔥 App Payment"
-                },
-                "period": "12-2022"
+                "time_interval": "0",
+                "uploads_images_array_link": [
+                    ""
+                ],
+                "front_wheel_part": "Dæk og slange på forhjul - 750 kr.",
+                "id": "f77dc505-8283-4899-92c4-512c4b2cd202",
+                "client": "alextasha1370@gmail.com",
+                "arrival_date": "26-08-2023",
+                "choose_wheel": "Forhjul"
             },
             {
-                "_report_ts": 1670406206068,
-                "balance___sum": 3975,
-                "id___count": 44,
-                "id": "6390603eaaea0bbf565bf2e3",
-                "type": {
-                    "id": "promo",
-                    "title": "🆓 Promo"
-                },
-                "period": "11-2022"
+                "time_interval": "8,12",
+                "uploads_images_array_link": [
+                    ""
+                ],
+                "back_wheel_part": "Slange på baghjul - 450 kr.",
+                "payment_method": "MobilePay",
+                "id": "71b39b3c-75ad-4d78-bd19-4d722e0c4fb0",
+                "client": "sanne.johansen@icloud.com",
+                "arrival_date": "24-08-2023",
+                "choose_wheel": "Baghjul"
             }
         ],
-        "totalPages": 9,
+        "totalPages": 7,
         "pageNumber": 0,
         "error": null,
         "fieldScheme": [
             [
-                "_report_ts",
-                99155789
+                "arrival_date",
+                99243887
             ],
             [
-                "balance___sum",
-                99155789
+                "back_wheel_part",
+                99243887
             ],
             [
-                "bool",
-                99155789
+                "bicycle_part",
+                99243887
+            ],
+            [
+                "biycle_problem_message",
+                99243887
+            ],
+            [
+                "choose_wheel",
+                99243887
+            ],
+            [
+                "client",
+                99243887
+            ],
+            [
+                "date_created",
+                99243887
+            ],
+            [
+                "front_wheel_part",
+                99243887
             ],
             [
                 "id",
-                99155789
+                99243887
             ],
             [
-                "id___count",
-                99155789
+                "max_arrival_time",
+                99243887
             ],
             [
-                "period",
-                99155789
+                "message",
+                99243887
             ],
             [
-                "type.id",
-                99155990
+                "min_arrival_time",
+                99243887
             ],
             [
-                "type.title",
-                99155990
+                "payment_method",
+                99243887
+            ],
+            [
+                "status.id",
+                99245426
+            ],
+            [
+                "status.status",
+                99245426
+            ],
+            [
+                "time_interval",
+                99243887
+            ],
+            [
+                "uploads_images_array_link",
+                99243887
+            ],
+            [
+                "weight",
+                99243887
             ]
         ],
-        "writeFields": [],
+        "writeFields": [
+            "@dateChanged",
+            "@dateCreated",
+            "@who",
+            "arrival_date",
+            "back_wheel_part",
+            "bicycle_part",
+            "biycle_problem_message",
+            "choose_wheel",
+            "client",
+            "date_created",
+            "front_wheel_part",
+            "id",
+            "max_arrival_time",
+            "message",
+            "min_arrival_time",
+            "payment_method",
+            "status",
+            "time_interval",
+            "uploads_images_array_link",
+            "weight"
+        ],
         "structures": {
-            "99155789": {
-                "id": 99155789,
-                "dateCreated": "2022-12-07T09:39:25Z",
+            "99243887": {
+                "networkID": 18213,
+                "sysName": "appointments",
+                "name": "appointments (FORM)",
+                "id": 99243887,
+                "dateCreated": "2023-08-20T18:45:20Z",
                 "hidden": false,
                 "dateHidden": null,
-                "networkID": 1822,
-                "name": "Report [Full report]",
-                "sysName": "report_554374085_for_struct_appwallet",
-                "jsonObject": "[{\"sysName\":\"balance___sum\",\"name\":\"sum(balance)\",\"dataType\":\"decimal\",\"id\":\"1\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"id___count\",\"name\":\"count(id)\",\"dataType\":\"number\",\"id\":\"2\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"period\",\"name\":\"period\",\"dataType\":\"string\",\"id\":\"3\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"type\",\"name\":\"type\",\"dataType\":\"link\",\"id\":\"4\",\"link\":\"transaction_types\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"_report_ts\",\"name\":\"report create time\",\"dataType\":\"date\",\"id\":\"6\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD MMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"bool\",\"name\":\"Ще не вмерла?\",\"dataType\":\"boolean\",\"id\":\"81091670421684945\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Скоро\",\"Очень скоро\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"payment_method\",\"name\":\"Payment Method\",\"dataType\":\"string\",\"id\":\"14281692638467603\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"arrival_date\",\"name\":\"Date of Arrival\",\"dataType\":\"string\",\"id\":\"16131692638537162\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"uploads_images_array_link\",\"name\":\"Images\",\"dataType\":\"arrayLink\",\"id\":\"18281692638740800\",\"link\":\"appointments_images\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"time_interval\",\"name\":\"Time Interval\",\"dataType\":\"string\",\"id\":\"19021692638553575\",\"link\":\"\",\"group\":\"1692638412820\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"weight\",\"name\":\"Weight\",\"dataType\":\"decimal\",\"id\":\"31311693332958118\",\"link\":\"\",\"group\":\"1693332936503\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"front_wheel_part\",\"name\":\"Front Wheel Part\",\"dataType\":\"string\",\"id\":\"43731692638513352\",\"link\":\"\",\"group\":\"1692638412820\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"message\",\"name\":\"Message\",\"dataType\":\"string\",\"id\":\"44951692638527107\",\"link\":\"\",\"group\":\"1692638412820\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"min_arrival_time\",\"name\":\"Earliest arrival time\",\"dataType\":\"string\",\"id\":\"50521692638659436\",\"link\":\"\",\"group\":\"1692638633142\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"choose_wheel\",\"name\":\"Choose Wheel\",\"dataType\":\"string\",\"id\":\"58441692638381014\",\"link\":\"\",\"group\":\"1692638412820\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"date_created\",\"name\":\"Date Created\",\"dataType\":\"date\",\"id\":\"62221692977312800\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"biycle_problem_message\",\"name\":\"Problem Message\",\"dataType\":\"string\",\"id\":\"62471692638653105\",\"link\":\"\",\"group\":\"1692638633142\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"bicycle_part\",\"name\":\"Choose Bicycle Part\",\"dataType\":\"string\",\"id\":\"67561692638644338\",\"link\":\"\",\"group\":\"1692638633142\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"max_arrival_time\",\"name\":\"Latest arrival time\",\"dataType\":\"string\",\"id\":\"77471692638668493\",\"link\":\"\",\"group\":\"1692638633142\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"status\",\"name\":\"Status\",\"dataType\":\"link\",\"id\":\"80061693332942643\",\"link\":\"kanban_columns\",\"group\":\"1693332936503\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"client\",\"name\":\"Client\",\"dataType\":\"link\",\"id\":\"88971692557371477\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[\"role\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":true},{\"sysName\":\"back_wheel_part\",\"name\":\"Back Wheel Part\",\"dataType\":\"string\",\"id\":\"92211692638522018\",\"link\":\"\",\"group\":\"1692638412820\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false}]",
+                "jsonGroupSettings": "[{\"id\":1692638412820,\"name\":\"Wheel service\",\"order\":0},{\"id\":1692638633142,\"name\":\"Repair or overhaul\",\"order\":1},{\"id\":1693332936503,\"name\":\"Kanban\",\"order\":2}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"client\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2022-12-07T14:06:41Z",
-                "createBy": null,
-                "changedBy": 3527,
+                "dateChanged": "2023-08-29T18:16:31Z",
+                "createBy": 8272,
+                "changedBy": 8272,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "objectIDSysName": "id",
                 "innerIDField": {
                     "sysName": "id",
-                    "name": "id",
                     "dataType": "id",
-                    "id": "5",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "linkOrArrayLinkType": false,
-                    "arrayLink": false,
-                    "typeVariable": {},
-                    "linkType": false,
-                    "json": false,
-                    "indexExists": false,
-                    "array": false
-                },
-                "folderId": 33576258
-            },
-            "99155990": {
-                "id": 99155990,
-                "dateCreated": "2022-12-07T13:05:44Z",
-                "hidden": false,
-                "dateHidden": null,
-                "networkID": 1822,
-                "name": "Transaction types",
-                "sysName": "transaction_types",
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"title\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"11991670418438514\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": false,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2022-12-07T13:12:52Z",
-                "createBy": 3527,
-                "changedBy": 3527,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
                     "name": "id",
-                    "dataType": "id",
                     "id": "0",
                     "link": "",
                     "group": "0",
@@ -5000,21 +5840,663 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
-                    "linkOrArrayLinkType": false,
-                    "arrayLink": false,
-                    "typeVariable": {},
-                    "linkType": false,
-                    "json": false,
                     "indexExists": false,
+                    "typeVariable": {},
+                    "json": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "arrayLink": false,
                     "array": false
                 },
-                "folderId": 33575450
+                "folderId": 33770298
+            },
+            "99245426": {
+                "networkID": 18213,
+                "sysName": "kanban_columns",
+                "name": "Kanban Columns",
+                "id": 99245426,
+                "dateCreated": "2023-08-29T18:12:17Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"status\",\"dataType\":\"string\",\"name\":\"Status\",\"id\":\"39921693332754786\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": "[{\"sysName\":\"status\"}]",
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": false,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2023-08-29T18:12:48Z",
+                "createBy": 8272,
+                "changedBy": 8272,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "objectIDSysName": "id",
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "indexExists": false,
+                    "typeVariable": {},
+                    "json": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "arrayLink": false,
+                    "array": false
+                },
+                "folderId": 33770298
             }
         },
         "isSuccessWrite": false,
         "writeError": null,
         "writeResponse": null,
-        "fileds": [],
+        "fileds": [
+            {
+                "sysName": "@dateChanged",
+                "dataType": "string",
+                "name": "@dateChanged",
+                "id": "",
+                "link": "",
+                "group": "",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": null,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "@dateCreated",
+                "dataType": "string",
+                "name": "@dateCreated",
+                "id": "",
+                "link": "",
+                "group": "",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": null,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "@who",
+                "dataType": "string",
+                "name": "@who",
+                "id": "",
+                "link": "",
+                "group": "",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": null,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "arrival_date",
+                "dataType": "string",
+                "name": "Date of Arrival",
+                "id": "16131692638537162",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "back_wheel_part",
+                "dataType": "string",
+                "name": "Back Wheel Part",
+                "id": "92211692638522018",
+                "link": "",
+                "group": "1692638412820",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "bicycle_part",
+                "dataType": "string",
+                "name": "Choose Bicycle Part",
+                "id": "67561692638644338",
+                "link": "",
+                "group": "1692638633142",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "biycle_problem_message",
+                "dataType": "string",
+                "name": "Problem Message",
+                "id": "62471692638653105",
+                "link": "",
+                "group": "1692638633142",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "choose_wheel",
+                "dataType": "string",
+                "name": "Choose Wheel",
+                "id": "58441692638381014",
+                "link": "",
+                "group": "1692638412820",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "client",
+                "dataType": "link",
+                "name": "Client",
+                "id": "88971692557371477",
+                "link": "WebUser",
+                "group": "0",
+                "tags": "",
+                "indexing": true,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [
+                    "role"
+                ],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": true,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "date_created",
+                "dataType": "date",
+                "name": "Date Created",
+                "id": "62221692977312800",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "en-gb",
+                    "booleanOptions": [
+                        "True",
+                        "False"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD/MM/Y",
+                    "timeFormat": "",
+                    "isUTC": "false"
+                },
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "front_wheel_part",
+                "dataType": "string",
+                "name": "Front Wheel Part",
+                "id": "43731692638513352",
+                "link": "",
+                "group": "1692638412820",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "max_arrival_time",
+                "dataType": "string",
+                "name": "Latest arrival time",
+                "id": "77471692638668493",
+                "link": "",
+                "group": "1692638633142",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "message",
+                "dataType": "string",
+                "name": "Message",
+                "id": "44951692638527107",
+                "link": "",
+                "group": "1692638412820",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "min_arrival_time",
+                "dataType": "string",
+                "name": "Earliest arrival time",
+                "id": "50521692638659436",
+                "link": "",
+                "group": "1692638633142",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "payment_method",
+                "dataType": "string",
+                "name": "Payment Method",
+                "id": "14281692638467603",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "status",
+                "dataType": "link",
+                "name": "Status",
+                "id": "80061693332942643",
+                "link": "kanban_columns",
+                "group": "1693332936503",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "time_interval",
+                "dataType": "string",
+                "name": "Time Interval",
+                "id": "19021692638553575",
+                "link": "",
+                "group": "1692638412820",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "uploads_images_array_link",
+                "dataType": "arrayLink",
+                "name": "Images",
+                "id": "18281692638740800",
+                "link": "appointments_images",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "linkType": false,
+                "arrayLink": true,
+                "array": false
+            },
+            {
+                "sysName": "weight",
+                "dataType": "decimal",
+                "name": "Weight",
+                "id": "31311693332958118",
+                "link": "",
+                "group": "1693332936503",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            }
+        ],
         "quickSearch": null,
         "httpParams": {},
         "cardCustomHtml": null,

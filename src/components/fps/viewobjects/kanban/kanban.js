@@ -333,8 +333,8 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading,
         }
     }, [])
 
-    // console.log('columns')
-    // console.log(columns)
+    console.log('columns')
+    console.log(columns)
 
     return (<React.Fragment>
         {/* <Button small icon='refresh'

@@ -36,12 +36,18 @@
 .treeElement .noShrink {
   flex-shrink: 0;
 }
-.treeElement:hover .drag {
+.treeElement:hover .drag,
+.treeElement:hover .up {
   display: block;
   opacity: 0.2;
 }
-.treeElement:hover .drag:hover {
+.treeElement:hover .drag:hover,
+.treeElement:hover .up:hover {
   opacity: 0.9;
+}
+.treeElement .up {
+  opacity: 0;
+  display: none;
 }
 .treeElement .drag {
   opacity: 0;
