@@ -39,7 +39,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
     const [showObject, setShowObject] = useState()
 
-    const [cardsData,setCardsData] = useState(_.get(data,"data") || [])
+    const [cardsData, setCardsData] = useState(_.get(data, "data") || [])
 
     const tableTitle = data.tableTitle || null
     const writeFields = data.writeFields || []
@@ -145,11 +145,11 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         !skipLoading && removeUrlParam(id + '_dql')
     }
 
-    const [lazyLoadingHandler,setLazyLoadingHandler] = useState(false)
+    const [lazyLoadingHandler, setLazyLoadingHandler] = useState(false)
 
     function setPage(page) {
         // alert('set page')
-        if (_.get(data, "params.lazyLoading")) {setLazyLoadingHandler(true)}
+        if (_.get(data, "params.lazyLoading")) { setLazyLoadingHandler(true) }
         let prom = onEvent({ dql: currentDQL, sort: currentSort, _id: id }, { page: page }, { reqParam1: "true" })
         page !== 0 ? addUrlParam({ key: id + '_page', value: page }) : removeUrlParam(id + '_page')
         if (prom && prom.finally) {
@@ -221,35 +221,35 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         actionCond.forEach(cond => {
             if (typeof cond.fieldValue == 'object' && cond.fieldValue) { cond.fieldValue = cond.fieldValue.id }
             if (cond.target == 'id' && (!auth || auth.user !== cond.checkValue)) {
-                // console.log(auth.user + ' != ' + cond.checkValue)
-                // console.log('ID does not match');
+                console.log(auth.user + ' != ' + cond.checkValue)
+                console.log('ID does not match');
                 match = false
             }
             if (cond.target == 'id_in' && (!auth || !auth.user || !compareRoleArrays(auth.user, cond.checkValue))) {
-                // console.log(`user id ${auth && auth.user} is not in ${cond.checkValue}`)
+                console.log(`user id ${auth && auth.user} is not in ${cond.checkValue}`)
                 match = false
             }
             if (cond.target == 'isAutn' && (!auth || !auth.user)) {
-                // console.log(`user is not authorised!`)
+                console.log(`user is not authorised!`)
                 match = false
             }
             if (cond.target == 'isNotAuth' && auth.user) {
-                // console.log(`user is authorised!`)
+                console.log(`user is authorised!`)
                 match = false
             }
             if (cond.target == 'id_not_in' && (!auth || !auth.user || compareRoleArrays(auth.user, cond.checkValue))) {
-                // console.log(`user id ${auth && auth.user} is in ${cond.checkValue}`)
+                console.log(`user id ${auth && auth.user} is in ${cond.checkValue}`)
                 match = false
             }
             if (cond.target == 'role' && (!auth || !auth.role || (!compareRoleArrays(auth.role, cond.checkValue)))) {
-                // console.log('Role does not match');
+                console.log('Role does not match');
                 match = false
             }
             if ((cond.target == 'field' || cond.target == 'linkedField') && (!cond.fieldValue ||
                 cond.fieldValue.toString().toLowerCase() != cond.value.toString().toLowerCase())) {
-                // console.log(cond.fieldValue + ' != ' + cond.value);
+                console.log(cond.fieldValue + ' != ' + cond.value);
                 // console.log(cond)
-                // console.log('Field is wrong');
+                console.log('Field is wrong');
                 if (cond.value == 'false' && typeof cond.fieldValue == 'undefined') { match = true } else { match = false }
             }
         })
@@ -285,14 +285,18 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
             }
             if (cond.target == 'field') {
                 if (typeof object[cond.field] == 'object') {
-                    if (object[cond.field].value) {
-                        if (typeof object[cond.field].value == object || parseJson(object[cond.field].value) == 'object') {
-                            cond.fieldValue = (parseJson(object[cond.field].value) || {}).id
-                        } else {
-                            cond.fieldValue = object[cond.field].value
-                        }
+                    if (Array.isArray(object[cond.field].value) && typeof object[cond.field].value[0] == 'string') {
+                        cond.fieldValue = object[cond.field].value[0]
                     } else {
-                        cond.fieldValue = object[cond.field].id
+                        if (object[cond.field].value) {
+                            if (typeof object[cond.field].value == object || parseJson(object[cond.field].value) == 'object') {
+                                cond.fieldValue = (parseJson(object[cond.field].value) || {}).id
+                            } else {
+                                cond.fieldValue = object[cond.field].value
+                            }
+                        } else {
+                            cond.fieldValue = object[cond.field].id
+                        }
                     }
                 } else { cond.fieldValue = object[cond.field] }
 
@@ -342,7 +346,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         }
     }, [showObject])
 
-    
+
 
     return (
         <ComponentWrapper currentBP={currentBP}>

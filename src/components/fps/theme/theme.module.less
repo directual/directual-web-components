@@ -17,13 +17,14 @@
 
 // FONTS
 
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Merriweather:wght@300;400;700;900&family=Montserrat:wght@300;400;700;900&family=Oswald:wght@300;400;700&family=Rubik:wght@300;400;700;900&family=Ubuntu:wght@300;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cuprum:wght@400;500;700&family=Nunito:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Alice&family=Bitter:wght@100;300;500;800&family=Fira+Sans:wght@100;200;400;700&family=Gabriela&family=Orelega+One&family=Philosopher:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;500;700&family=Comfortaa:wght@300;500;700&family=Kanit:wght@100;400;700&family=Noto+Serif+JP&family=Poppins:wght@300;400;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Merriweather:wght@300;400;700;900&family=Montserrat:wght@300;400;700;900&family=Oswald:wght@300;400;700;900&family=Rubik:wght@300;400;700;900&family=Ubuntu:wght@300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cuprum:wght@400;700&family=Nunito:wght@300;400;700;900&family=Playfair+Display:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alice&family=Bitter:wght@300;400;700;900&family=Fira+Sans:wght@300;400;700;900&family=Gabriela&family=Orelega+One&family=Philosopher:wght@300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;700;900&family=Comfortaa:wght@300;400;700;900&family=Kanit:wght@300;400;700;900&family=Noto+Serif+JP&family=Poppins:wght@300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Arimo:wght@400;700&family=Open+Sans:wght@300;400;700;800&family=Yanone+Kaffeesatz:wght@300;400;700&display=swap');
 
 :root {
   --headers-font-family: 'Montserrat', sans-serif;
@@ -114,14 +115,14 @@
 
 @font-face {
   font-family: 'directual-icons';
-  src: url('https://api.directual.com/fileUploaded/directual-site/ac60431e-1b97-4729-8352-bb5cc230ba0b.eot');
-  src: url('https://api.directual.com/fileUploaded/directual-site/ac60431e-1b97-4729-8352-bb5cc230ba0b.eot')
+  src: url('https://api.directual.com/fileUploaded/directual-site/b7593486-2f48-471c-8f62-13cb1eb7887a.eot');
+  src: url('https://api.directual.com/fileUploaded/directual-site/b7593486-2f48-471c-8f62-13cb1eb7887a.eot')
       format('embedded-opentype'),
-    url('https://api.directual.com/fileUploaded/directual-site/afe97d2b-cac9-4edb-aee2-eda26740cbe1.woff')
+    url('https://api.directual.com/fileUploaded/directual-site/ccd40943-347e-40f7-93e2-0e53795bb2c4.woff')
       format('woff'),
-    url('https://api.directual.com/fileUploaded/directual-site/afe97d2b-cac9-4edb-aee2-eda26740cbe1.woff')
+    url('https://api.directual.com/fileUploaded/directual-site/5e76ebe2-8315-4b19-8ef6-f322413e0733.ttf')
       format('truetype'),
-    url('https://api.directual.com/fileUploaded/directual-site/4a7aaa25-3d51-4fba-8ab2-130f94db031e.svg')
+    url('https://api.directual.com/fileUploaded/directual-site/c2528fa6-a263-4a55-b2b1-50a2b5382b1f.svg')
       format('svg');
   font-weight: normal;
   font-style: normal;
@@ -141,6 +142,15 @@
   }
   .small.icon:before {
     font-size: calc(var(--h2-font-size) / 1.5);
+  }
+  .large.icon:before {
+    font-size: 44px;
+  }
+  .veryLarge.icon:before {
+    font-size: 56px;
+  }
+  .verySmall.icon:before {
+    font-size: calc(var(--h2-font-size) / 2.5);
   }
   .small.icon {
     width: auto;
@@ -563,6 +573,9 @@
   .icon-ai:before {
     content: '\e98b';
   }
+  .icon-arrowRightTop:before {
+    content: '\e98c';
+  }
 }
 
 // COLOR SCHEME
@@ -571,8 +584,9 @@
 :root {
   // Main Menu
   --menu-bgr: #ffffff;
-  --menu-border-color: #eeeeee;
+  --menu-border-color: #dddddd;
   --menu-item: #999999;
+  --menu-item-selected-bgr: #eeeeee;
   --menu-item-hover: #333333;
   --menu-item-selected: #058efc;
   --menu-group: #333333;

@@ -129,7 +129,9 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
   eidtID = urlParams.get('@editObject') || eidtID; // если задаем в URL, приоритет выше
 
   if (data.params.editObject == "url") {
-    console.log("URL " + pathName)
+    // console.log("URL " + pathName)
+    // console.log("queryString")
+    // console.log(queryString)
     const params = pathName.split('/')
     eidtID = params.length ? params[params.length - 1] : null
   }

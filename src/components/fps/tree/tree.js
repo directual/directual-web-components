@@ -5,10 +5,16 @@ import styles from './tree.module.css'
 
 export function Tree(props) {
 
-    const { options, draggable, onCheck, loading, move, oneLevel, host, submitTree, currentTree, rootName } = props
+    // console.log("TREE PROPS")
+    // console.log(props)
+
+    const { draggable, counter, onCheck, menuConfig, loading, move, oneLevel, 
+        host, submitTree, currentTree, rootName, rootID } = props
+
+    const options = props.options || []
 
     const defaultTree = {
-        id: 'root',
+        id: rootID || 'root',
         icon: 'folder',
         name: rootName || 'Root',
         isFolder: true,
@@ -17,19 +23,64 @@ export function Tree(props) {
 
     const trashFolder = options.filter(i => i.id == 'trash').length > 0 ? options.filter(i => i.id == 'trash')[0] : null
 
-    const [tree, setTree] = useState(props.defaultTree || defaultTree)
-    const [isOpenned, setIsOppened] = useState({ root: true })
+    const [tree, setTree] = useState(_.cloneDeep(currentTree))
+    const [isOpenned, setIsOppened] = useState({ [rootID || 'root']: true })
     const [selectedID, setSelectedID] = useState(props.selectedID)
     const [localLoading, setLocalLoading] = useState(true) // костыль под beautiful-dnd, чтобы DOM-дерево успело подгрузиться
 
+    // console.log("tree")
+    // console.log(tree)
+
     const saveTree = (treeSave) => {
         // console.log("saveTree")
+        // console.log(treeSave)
+        // console.log('aga2')
+        // if (JSON.stringify(treeSave) !== JSON.stringify(tree)) {
+        // console.log('aga3')
         setTree(treeSave)
         submitTree && submitTree(treeSave)
+        // }
+        setLocalLoading(false)
+        //peredernut();
     }
 
-    useEffect(() => !currentTree && composeTree(options), [options])
-    useEffect(() => expandTree(), [tree])
+    function peredernut() {
+        setLocalLoading(true)
+        setTimeout(() => {
+            setLocalLoading(false)
+        }, 200)
+    }
+
+    useEffect(() => {
+        setLocalLoading(loading)
+    }, [loading])
+
+    useEffect(() => !currentTree ? composeTree(options) : undefined, [options])
+    useEffect(() => {
+        // console.log("===== try reseting tree ====== " + rootID)
+        // console.log(currentTree)
+        // console.log(tree)
+        // console.log(JSON.stringify(currentTree) !== JSON.stringify(tree))
+        if (JSON.stringify(currentTree) !== JSON.stringify(tree) && currentTree && JSON.stringify(currentTree) !== "{}") {
+            // console.log('=== reset tree! === '  + rootID)
+            setTree(_.cloneDeep(currentTree));
+            peredernut();
+        }
+        if (JSON.stringify(currentTree) == "{}") {
+            saveTree({
+                "id": rootID || "root",
+                "icon": "folder",
+                "name": rootName || "Main menu",
+                "isFolder": true,
+                "children": []
+            })
+        }
+        if (currentTree && localLoading) { setLocalLoading(false) }
+    }, [currentTree, counter])
+    useEffect(() => {
+        tree && JSON.stringify(tree) !== "{}" ? expandTree() : undefined;
+        // setLocalLoading(false)
+    }, [tree])
     useEffect(() => {
         if (props.selectedID != selectedID) {
             setSelectedID(props.selectedID)
@@ -42,8 +93,17 @@ export function Tree(props) {
     }
 
     function composeTree(options) {
-        // console.log('====composeTree=====')
-        // console.log(options)
+        if (!options || !options.length) {
+            options = [{
+                "id": rootID || 'root',
+                "name": rootName || 'Root',
+                "parentID": "null",
+                "icon": "folder",
+                "isFolder": true
+            }]
+        }
+        console.log('====composeTree=====')
+        console.log(options)
         function collectChildren(folder) {
             let children = (options || []).filter(i => {
                 return i.parentID == folder
@@ -63,9 +123,9 @@ export function Tree(props) {
                 }
             })
         }
-        let treeSave = { ...tree }
-        treeSave.children = collectChildren(tree.id)
-        // console.log(treeSave)
+        let treeSave = tree && JSON.stringify(tree) != "{}" ? { ...tree } : { ...defaultTree }
+        treeSave.children = collectChildren(treeSave.id)
+        // setLocalLoading(false)
         saveTree(treeSave)
     }
 
@@ -92,11 +152,12 @@ export function Tree(props) {
     // бля я мозг сломал, пока это писал
     const dndChild = (id, destination) => {
 
-        console.log("dndChild")
-        console.log(tree)
+        // console.log("dndChild")
+        // console.log(tree)
+        // console.log(id + " => " + destination)
 
         const removeElement = (children, setNewChildren, setElement) => {
-            children.forEach((child,index) => {
+            children.forEach((child, index) => {
                 if (child.id == id) {
                     setElement(child)
                     children.splice(index, 1) // remove element
@@ -119,8 +180,8 @@ export function Tree(props) {
         })
 
         const addElement = (children, setNewChildren, parentID, element) => {
-            children.forEach((child,index) => {
-                child.children.length && addElement(child.children, (newChildren) => {
+            (children || []).forEach((child, index) => {
+                addElement(child.children, (newChildren) => {
                     child.children = newChildren;
                 }, child.id, element)
             })
@@ -128,19 +189,20 @@ export function Tree(props) {
                 children.splice(0, 0, element) // add element
             }
             setNewChildren(children)
+             
         }
 
         addElement(tree.children, newChildren => {
             const copyTree = { ...tree }
             copyTree.children = newChildren;
             saveTree(copyTree)
-        }, 'root', element)
+        }, rootID || 'root', element)
 
     }
 
     const onDragEnd = (result) => {
-        console.log('========onDragEnd=========')
-        console.log(result)
+        // console.log('========onDragEnd=========')
+        // console.log(result)
         if (!result.destination) { return }
         const ID = result.draggableId.substring(5)
         const to = result.destination.droppableId.substring(7)
@@ -195,17 +257,30 @@ export function Tree(props) {
         })
     }
 
-    const moveUp = (id) => moveChild(id,'up')
-    const moveDown = (id) =>  moveChild(id,'down')
+    const moveUp = (id) => moveChild(id, 'up')
+    const moveDown = (id) => moveChild(id, 'down')
+
+    // console.log(tree)
 
     return <div className={styles.treeWrapper}>
+        {/* counter: {counter}<br />
+        currentTree:
+        <pre style={{fontSize:10}}>
+            {JSON.stringify(currentTree,0,3)}
+        </pre>
+        tree:
+        <pre style={{fontSize:10}}>
+            {JSON.stringify(tree,0,3)}
+        </pre> */}
         {loading || localLoading ? <Loader>Loading tree...</Loader> : <DragDropContext onDragEnd={onDragEnd}>
             <Folder
                 root
                 host={host}
                 key={tree.id}
+                emptyMessage={props.emptyMessage}
                 draggable={draggable}
                 tree={tree}
+                menuConfig={menuConfig}
                 moveUp={moveUp}
                 moveDown={moveDown}
                 selectedID={selectedID}
@@ -243,7 +318,7 @@ function PlainFolder({ folder, setSelectedID, selectedID }) {
 }
 
 
-function Folder({ root, tree, isOpenned, setIsOppened, host, selectedID, setSelectedID, draggable, index, folderLength, moveUp, moveDown }) {
+function Folder({ root, emptyMessage, menuConfig, tree, isOpenned, setIsOppened, host, selectedID, setSelectedID, draggable, index, folderLength, moveUp, moveDown }) {
     return <Droppable droppableId={`folder_${tree.id}`} type="tree">
         {(provided, snapshot) => (<div
             ref={provided.innerRef}
@@ -272,7 +347,7 @@ function Folder({ root, tree, isOpenned, setIsOppened, host, selectedID, setSele
                                 e.stopPropagation()
                                 setIsOppened({ ...isOpenned, [tree.id]: !isOpenned[tree.id] })
                             }} />}
-                        <div className={`${styles.treeElementName} icon icon-${tree.icon}`}><span>{tree.name}</span></div>
+                        <div className={`${styles.treeElementName} icon icon-${tree.icon}`}><span>{_.get(menuConfig,`[${tree.id}].name`) || tree.name}</span></div>
                         {draggable && index != 0 && !root && <div className={`${styles.noShrink} ${styles.up} icon icon-up`}
                             onClick={e => {
                                 e.stopPropagation()
@@ -285,11 +360,11 @@ function Folder({ root, tree, isOpenned, setIsOppened, host, selectedID, setSele
                                 moveDown(tree.id)
                             }
                             } />}
-                        {draggable && !isOpenned[tree.id] && !root && <div {...provided.dragHandleProps} className={`${styles.noShrink} ${styles.drag} icon icon-details`} onClick={e => e.stopPropagation()} />}
+                        {/* {draggable && !isOpenned[tree.id] && !root && <div {...provided.dragHandleProps} className={`${styles.noShrink} ${styles.drag} icon icon-details`} onClick={e => e.stopPropagation()} />} */}
                     </div>
                     {isOpenned[tree.id] &&
                         <div className={`${styles.folderContent} ${root ? styles.noMargin : ''}`}>
-                            {!tree.children.length && <div className={styles.empty}>folder is empty</div>}
+                            {!tree.children.length && <div className={styles.empty}>{emptyMessage || "folder is empty"}</div>}
                             {tree.children.map((child, index) => {
                                 // console.log("tree.children")
                                 // console.log(tree.children)
@@ -298,6 +373,7 @@ function Folder({ root, tree, isOpenned, setIsOppened, host, selectedID, setSele
                                     return <Folder
                                         key={child.id}
                                         index={index}
+                                        menuConfig={menuConfig}
                                         moveUp={moveUp}
                                         moveDown={moveDown}
                                         folderLength={tree.children.length}
@@ -312,6 +388,7 @@ function Folder({ root, tree, isOpenned, setIsOppened, host, selectedID, setSele
                                 } else {
                                     return <Element
                                         element={child}
+                                        menuConfig={menuConfig}
                                         index={index}
                                         folderLength={tree.children.length}
                                         moveUp={moveUp}
@@ -358,6 +435,7 @@ function Folder({ root, tree, isOpenned, setIsOppened, host, selectedID, setSele
                                                 index={index}
                                                 folderLength={tree.children.length}
                                                 draggable={draggable}
+                                                menuConfig={menuConfig}
                                                 moveUp={moveUp}
                                                 moveDown={moveDown}
                                                 tree={child}
@@ -370,6 +448,7 @@ function Folder({ root, tree, isOpenned, setIsOppened, host, selectedID, setSele
                                             return <Element
                                                 element={child}
                                                 index={index}
+                                                menuConfig={menuConfig}
                                                 moveUp={moveUp}
                                                 moveDown={moveDown}
                                                 folderLength={tree.children.length}
@@ -388,7 +467,7 @@ function Folder({ root, tree, isOpenned, setIsOppened, host, selectedID, setSele
     </Droppable>
 }
 
-function Element({ element, host, selectedID, setSelectedID, draggable, index, folderLength, moveUp, moveDown }) {
+function Element({ element, menuConfig, host, selectedID, setSelectedID, draggable, index, folderLength, moveUp, moveDown }) {
     // console.log(element)
     return <Draggable draggableId={`drag_${element.id}`} type="tree">
         {(provided, snapshot) => (<div>
@@ -403,7 +482,7 @@ function Element({ element, host, selectedID, setSelectedID, draggable, index, f
                 ref={provided.innerRef}
                 href={host ? `${host}${element.sysName}` : null}
             >
-                <div className={`${styles.treeElementName} icon icon-${element.icon}`}><span>{element.name}</span></div>
+                <div className={`${styles.treeElementName} icon icon-${element.icon}`}><span>{_.get(menuConfig,`[${element.id}].name`) || element.name}</span></div>
                 {draggable && index != 0 && <div className={`${styles.noShrink} ${styles.up} icon icon-up`}
                     onClick={e => {
                         e.stopPropagation()

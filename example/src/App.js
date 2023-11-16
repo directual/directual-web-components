@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import {
-    FpsCards, FpsForm, MainMenu, FpsTable, FpsTheme,
+    FpsCards, FpsForm, MainMenu, NewMainMenu, FpsTable, FpsTheme,
     FpsWrapper, ContentWrapper, SignIn, Media, CodeSnippet, Chart,
-    Dnd, Profile, TabsPane, Stopwatch, Button, SignUp, RestorePass, FpsKanban, FpsChart
+    Dnd, Profile, TabsPane, Stopwatch, Button, SignUp, RestorePass, FpsKanban, FpsChart, NewMobileTabs
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 import {
@@ -23,8 +23,431 @@ import LayoutPage from './pages/layout'
 import PlatformPage from './pages/platform'
 
 
+const newMenuEexample = {
+    "mainMenu": {
+        "id": "rootMenu",
+        "icon": "folder",
+        "name": "Main menu",
+        "isFolder": true,
+        "children": [
+            {
+                "id": "group_1699967261238",
+                "name": "New group",
+                "children": [
+                    {
+                        "id": "item__1699966605560",
+                        "name": "New page",
+                        "children": [],
+                        "isFolder": false,
+                        "icon": "application"
+                    },
+                    {
+                        "id": "item__1699966611883",
+                        "name": "New page",
+                        "children": [],
+                        "isFolder": false,
+                        "icon": "application"
+                    },
+                    {
+                        "id": "item__1699966620076",
+                        "name": "New page",
+                        "children": [],
+                        "isFolder": false,
+                        "icon": "application"
+                    },
+                    {
+                        "id": "item__1699966629619",
+                        "name": "New page",
+                        "children": [],
+                        "isFolder": false,
+                        "icon": "application"
+                    }
+                ],
+                "isFolder": true,
+                "icon": "folder"
+            },
+            {
+                "id": "item__1699967278240",
+                "name": "New page",
+                "children": [],
+                "isFolder": false,
+                "icon": "application"
+            },
+            {
+                "id": "item__1699967279686",
+                "name": "New page",
+                "children": [],
+                "isFolder": false,
+                "icon": "application"
+            },
+            {
+                "id": "item__1699967280997",
+                "name": "New page",
+                "children": [],
+                "isFolder": false,
+                "icon": "application"
+            },
+            {
+                "id": "item__1699967282230",
+                "name": "New page",
+                "children": [],
+                "isFolder": false,
+                "icon": "application"
+            },
+            {
+                "id": "item__1699967283620",
+                "name": "New page",
+                "children": [],
+                "isFolder": false,
+                "icon": "application"
+            },
+            {
+                "id": "item__1699967285090",
+                "name": "New page",
+                "children": [],
+                "isFolder": false,
+                "icon": "application"
+            },
+            {
+                "id": "item__1699967286486",
+                "name": "New page",
+                "children": [],
+                "isFolder": false,
+                "icon": "application"
+            },
+            {
+                "id": "item__1699967287802",
+                "name": "New page",
+                "children": [],
+                "isFolder": false,
+                "icon": "application"
+            },
+            {
+                "id": "item__1699967289329",
+                "name": "New page",
+                "children": [],
+                "isFolder": false,
+                "icon": "application"
+            },
+            {
+                "id": "group_1699967291905",
+                "name": "New group",
+                "children": [
+                    {
+                        "id": "item__1699967290586",
+                        "name": "New page",
+                        "children": [],
+                        "isFolder": false,
+                        "icon": "application"
+                    },
+                    {
+                        "id": "item__1699967293366",
+                        "name": "New page",
+                        "children": [],
+                        "isFolder": false,
+                        "icon": "application"
+                    }
+                ],
+                "isFolder": true,
+                "icon": "folder"
+            },
+            {
+                "id": "item__1699970170936",
+                "name": "New page",
+                "children": [],
+                "isFolder": false,
+                "icon": "application"
+            }
+        ]
+    },
+    "mobileMenuOption": "side_right",
+    "mobileMenu": {
+        "id": "rootMobileMenu",
+        "icon": "folder",
+        "name": "Mobile menu (tabs)",
+        "isFolder": true,
+        "children": [
+            {
+                "id": "item__1699616429571",
+                "name": "New page",
+                "children": [],
+                "isFolder": false,
+                "icon": "application"
+            },
+            {
+                "id": "item__1699617677112",
+                "name": "New page",
+                "children": [],
+                "isFolder": false,
+                "icon": "application"
+            },
+            {
+                "id": "item__1699617695042",
+                "name": "New page",
+                "children": [],
+                "isFolder": false,
+                "icon": "application"
+            },
+            {
+                "id": "item__1699879618452",
+                "name": "New page",
+                "children": [],
+                "isFolder": false,
+                "icon": "application"
+            }
+        ]
+    },
+    "menuConfig": {
+        "item__1697885764944": {
+            "linkToPage": "/profile",
+            "name": "Profile",
+            "iconType": "custom_icon",
+            "menuRemixIcon": {
+                "Content": "M22 17.0022C21.999 19.8731 19.9816 22.2726 17.2872 22.8616L16.6492 20.9476C17.8532 20.7511 18.8765 20.0171 19.4649 19H17C15.8954 19 15 18.1046 15 17V13C15 11.8954 15.8954 11 17 11H19.9381C19.446 7.05369 16.0796 4 12 4C7.92038 4 4.55399 7.05369 4.06189 11H7C8.10457 11 9 11.8954 9 13V17C9 18.1046 8.10457 19 7 19H4C2.89543 19 2 18.1046 2 17V12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12V12.9987V13V17V17.0013V17.0022ZM20 17V13H17V17H20ZM4 13V17H7V13H4Z",
+                "Category": "Business",
+                "id": "customer-service-line"
+            },
+            "menuRemixIconSize": 30,
+            "addLabel": "add_label",
+            "menuLabel": "counter",
+            "menuIconCustom": "https://api.directual.com/fileUploaded/directual-site/e/home.svg",
+            "menuCustomIconSize": 22,
+            "menuIconCustomSelected": "https://api.directual.com/fileUploaded/directual-site/e/home1.svg"
+        },
+        "item__1697889115436": {
+            "linkToPage": "/all-users",
+            "name": "All Users",
+            "iconType": "directual_icon",
+            "menuDirectualIconSet": "user"
+        },
+        "item__1697889123670": {
+            "linkToPage": "/home",
+            "name": "Home",
+            "iconType": "remix_icon",
+            "menuRemixIcon": {
+                "Content": "M21 19.9997C21 20.552 20.5523 20.9997 20 20.9997H4C3.44772 20.9997 3 20.552 3 19.9997V9.48882C3 9.18023 3.14247 8.88893 3.38606 8.69947L11.3861 2.47725C11.7472 2.19639 12.2528 2.19639 12.6139 2.47725L20.6139 8.69947C20.8575 8.88893 21 9.18023 21 9.48882V19.9997ZM19 18.9997V9.97791L12 4.53346L5 9.97791V18.9997H19Z",
+                "Category": "Buildings",
+                "id": "home-line"
+            }
+        },
+        "group_1697889131112": {
+            "name": "Administrator pages",
+            "iconType": "remix_icon",
+            "menuRemixIcon": {
+                "Content": "M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 12.792C10.117 12.4062 9.5 11.5252 9.5 10.5C9.5 9.11929 10.6193 8 12 8C13.3807 8 14.5 9.11929 14.5 10.5C14.5 11.5252 13.883 12.4062 13 12.792V16H11V12.792Z",
+                "Category": "Others",
+                "id": "door-lock-line"
+            },
+            "hideByDefault": true
+        },
+        "group_1697889573211": {
+            "name": "Hey there"
+        },
+        "item__1697889581068": {
+            "linkToPage": "/profile",
+            "name": "Profile",
+            "iconType": "remix_icon",
+            "menuRemixIcon": {
+                "Content": "M12 17C14.2091 17 16 15.2091 16 13H14C14 14.1046 13.1046 15 12 15 10.8954 15 10 14.1046 10 13H8C8 15.2091 9.79086 17 12 17ZM6.5 2C4.01472 2 2 4.01472 2 6.5 2 7.85729 2.60121 9.07332 3.54934 9.89751 3.19384 10.8656 3 11.911 3 13 3 17.9706 7.02944 22 12 22 16.9706 22 21 17.9706 21 13 21 11.911 20.8062 10.8656 20.4507 9.89751 21.3988 9.07332 22 7.85729 22 6.5 22 4.01472 19.9853 2 17.5 2 15.8737 2 14.4505 2.8624 13.6601 4.15297 13.1215 4.05246 12.5665 4 12 4 11.4335 4 10.8785 4.05246 10.3399 4.15297 9.5495 2.8624 8.12635 2 6.5 2ZM4 6.5C4 5.11929 5.11929 4 6.5 4 7.58033 4 8.50304 4.68577 8.8517 5.64896L9.1696 6.52718 10.0675 6.26991C10.6801 6.09435 11.3282 6 12 6 12.6718 6 13.3199 6.09435 13.9325 6.26991L14.8304 6.52718 15.1483 5.64896C15.497 4.68577 16.4197 4 17.5 4 18.8807 4 20 5.11929 20 6.5 20 7.43301 19.4894 8.24804 18.7275 8.67859L17.9141 9.13832 18.3176 9.98107C18.7547 10.8939 19 11.9169 19 13 19 16.866 15.866 20 12 20 8.13401 20 5 16.866 5 13 5 11.9169 5.24529 10.8939 5.6824 9.98107L6.08595 9.13832 5.27248 8.6786C4.51064 8.24805 4 7.43301 4 6.5Z",
+                "Category": "User & Faces",
+                "id": "bear-smile-line"
+            }
+        },
+        "item__1697889582464": {
+            "linkToType": "external",
+            "linkToURL": "https://directual.com",
+            "linkToURLNewWindow": true,
+            "name": "Documentation",
+            "iconType": "remix_icon",
+            "menuRemixIcon": {
+                "Content": "M3 18.5V5C3 3.34315 4.34315 2 6 2H20C20.5523 2 21 2.44772 21 3V21C21 21.5523 20.5523 22 20 22H6.5C4.567 22 3 20.433 3 18.5ZM19 20V17H6.5C5.67157 17 5 17.6716 5 18.5C5 19.3284 5.67157 20 6.5 20H19ZM10 4H6C5.44772 4 5 4.44772 5 5V15.3368C5.45463 15.1208 5.9632 15 6.5 15H19V4H17V12L13.5 10L10 12V4Z",
+                "Category": "Document",
+                "id": "book-mark-line"
+            },
+            "menuRemixIconColor": "#bd10e0",
+            "menuRemixIconColorSelected": "#7ed321",
+            "menuRemixIconSize": 32
+        },
+        "rootMenu": {
+            "logoOption": "ai",
+            "logoGenerationSettings": {
+                "signSize": 23.6,
+                "logoTextSize": 12,
+                "scaleSign": 1.2,
+                "moveSign": -1,
+                "moveHorSign": -1.7,
+                "lineSpacing": 0.83,
+                "titleLetterSpacing": 0.4,
+                "subtitleLetterSpacing": 1,
+                "titleY": 3,
+                "subtitleY": 25.1,
+                "logoSubtitleSize": 6
+            },
+            "logoTitle": "NATIONAL\nGEOGRAPHIC",
+            "googleFont": {
+                "id": "Arya",
+                "subsets": [
+                    "devanagari",
+                    "latin",
+                    "latin-ext"
+                ],
+                "category": "sans-serif",
+                "family": "Arya",
+                "variants": [
+                    "regular",
+                    "700"
+                ],
+                "selectedStyle": "regular"
+            },
+            "addSign": true,
+            "remixIcon": {
+                "Category": "Logos",
+                "Content": "M21.6634 9.98693L21.6354 9.91531L18.9164 2.82092C18.8612 2.68178 18.7634 2.56365 18.6371 2.48339C18.5098 2.40304 18.3607 2.36419 18.2104 2.37219C18.0601 2.38019 17.9159 2.43464 17.7979 2.52804C17.6809 2.62181 17.5966 2.75012 17.5569 2.89466L15.7187 8.52049H8.28157L6.44336 2.89466C6.40366 2.75012 6.31934 2.62181 6.20241 2.52804C6.08487 2.43402 5.94083 2.37915 5.79052 2.37114C5.64021 2.36313 5.49116 2.40238 5.36429 2.48339C5.2374 2.56332 5.13921 2.68153 5.08388 2.82092L2.36183 9.92462L2.33379 9.99524C1.94304 11.0184 1.895 12.1407 2.19691 13.1934C2.49882 14.2462 3.13436 15.1725 4.00794 15.833L4.01832 15.8402L4.04221 15.8589L8.18917 18.9632L10.2393 20.5159L11.4856 21.4599C11.6319 21.5705 11.8104 21.6304 11.9939 21.6304C12.1774 21.6304 12.3559 21.5705 12.5023 21.4599L13.7486 20.5159L15.7997 18.9632L19.9706 15.8402L19.9819 15.8319C20.8585 15.1721 21.4966 14.245 21.7999 13.1906C22.1033 12.1362 22.0553 11.0117 21.6634 9.98693Z",
+                "id": "gitlab-fill"
+            },
+            "signColor": "#e35079",
+            "generatedLogo": "<div><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\"><link href=\"https://fonts.googleapis.com/css2?family=Arya:wght@400;700&amp;display=swap\" rel=\"stylesheet\"><svg width=\"190\" height=\"51\" viewBox=\"0 0 95 26\"><radialGradient id=\"grad_rad0\"><stop offset=\"20%\" stop-color=\"#f12711\"></stop><stop offset=\"100%\" stop-color=\"#f5af19\"></stop></radialGradient><path transform=\"scale(1.2) translate(-1.7, -1)\" fill=\"url(#grad_rad0)\" d=\"M21.6634 9.98693L21.6354 9.91531L18.9164 2.82092C18.8612 2.68178 18.7634 2.56365 18.6371 2.48339C18.5098 2.40304 18.3607 2.36419 18.2104 2.37219C18.0601 2.38019 17.9159 2.43464 17.7979 2.52804C17.6809 2.62181 17.5966 2.75012 17.5569 2.89466L15.7187 8.52049H8.28157L6.44336 2.89466C6.40366 2.75012 6.31934 2.62181 6.20241 2.52804C6.08487 2.43402 5.94083 2.37915 5.79052 2.37114C5.64021 2.36313 5.49116 2.40238 5.36429 2.48339C5.2374 2.56332 5.13921 2.68153 5.08388 2.82092L2.36183 9.92462L2.33379 9.99524C1.94304 11.0184 1.895 12.1407 2.19691 13.1934C2.49882 14.2462 3.13436 15.1725 4.00794 15.833L4.01832 15.8402L4.04221 15.8589L8.18917 18.9632L10.2393 20.5159L11.4856 21.4599C11.6319 21.5705 11.8104 21.6304 11.9939 21.6304C12.1774 21.6304 12.3559 21.5705 12.5023 21.4599L13.7486 20.5159L15.7997 18.9632L19.9706 15.8402L19.9819 15.8319C20.8585 15.1721 21.4966 14.245 21.7999 13.1906C22.1033 12.1362 22.0553 11.0117 21.6634 9.98693Z\"></path><text font-family=\"Arya\" font-weight=\"400\" font-style=\"normal\" letter-spacing=\"0.4\" font-size=\"12\" fill=\"rgba(0,0,0,.8)\" x=\"28.32\" y=\"3\"><tspan x=\"28.32\" dy=\"0.83em\">NATIONAL</tspan><tspan x=\"28.32\" dy=\"0.83em\">GEOGRAPHIC</tspan></text></svg></div>",
+            "largeLogoURL": "",
+            "sideMenuSize": "resizeble",
+            "smallLogoURL": "",
+            "logoHeight": 51,
+            "menuWidth": 260,
+            "menuPadding": 22,
+            "menuMargin": 5,
+            "menuCompactWidth": 80,
+            "logoWidth": 190,
+            "logoPosition": "left",
+            "generatedSmallLogo": "<div><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\"><link href=\"https://fonts.googleapis.com/css2?family=Arya:wght@400;700&amp;display=swap\" rel=\"stylesheet\"><svg width=\"51\" height=\"51\" viewBox=\"0 0 26 26\"><radialGradient id=\"grad_rad0\"><stop offset=\"20%\" stop-color=\"#f12711\"></stop><stop offset=\"100%\" stop-color=\"#f5af19\"></stop></radialGradient><path transform=\"scale(1.2) translate(-1.7, -1)\" fill=\"url(#grad_rad0)\" d=\"M21.6634 9.98693L21.6354 9.91531L18.9164 2.82092C18.8612 2.68178 18.7634 2.56365 18.6371 2.48339C18.5098 2.40304 18.3607 2.36419 18.2104 2.37219C18.0601 2.38019 17.9159 2.43464 17.7979 2.52804C17.6809 2.62181 17.5966 2.75012 17.5569 2.89466L15.7187 8.52049H8.28157L6.44336 2.89466C6.40366 2.75012 6.31934 2.62181 6.20241 2.52804C6.08487 2.43402 5.94083 2.37915 5.79052 2.37114C5.64021 2.36313 5.49116 2.40238 5.36429 2.48339C5.2374 2.56332 5.13921 2.68153 5.08388 2.82092L2.36183 9.92462L2.33379 9.99524C1.94304 11.0184 1.895 12.1407 2.19691 13.1934C2.49882 14.2462 3.13436 15.1725 4.00794 15.833L4.01832 15.8402L4.04221 15.8589L8.18917 18.9632L10.2393 20.5159L11.4856 21.4599C11.6319 21.5705 11.8104 21.6304 11.9939 21.6304C12.1774 21.6304 12.3559 21.5705 12.5023 21.4599L13.7486 20.5159L15.7997 18.9632L19.9706 15.8402L19.9819 15.8319C20.8585 15.1721 21.4966 14.245 21.7999 13.1906C22.1033 12.1362 22.0553 11.0117 21.6634 9.98693Z\"></path></svg></div>",
+            "menuPosition": "side",
+            "dontHideGroups": false,
+            "sideMenuAlign": "center",
+            "signFillType": "radial-gradient",
+            "signColorGrad1": "#f12711",
+            "signColorGrad2": "#f5af19",
+            "logoSubtitle": "",
+            "logoSubtitleColor": "rgba(0,0,0,0.37)",
+            "signGradDirection": "diag",
+            "horMenuGroupArrowSize": "medium",
+            "horMenuGroupArrow": "left",
+            "horMenuMargin": 20,
+            "menuBorderWidth": 3,
+            "menuLogoMargin": 24
+        },
+        "item__1697890651425": {
+            "linkToPage": "/restore-password",
+            "name": "Restore password",
+            "iconType": "remix_icon",
+            "menuRemixIcon": {
+                "Content": "M12 21.9966C6.47715 21.9966 2 17.5194 2 11.9966C2 6.47373 6.47715 1.99658 12 1.99658C17.5228 1.99658 22 6.47373 22 11.9966C22 17.5194 17.5228 21.9966 12 21.9966ZM12 19.9966C16.4183 19.9966 20 16.4149 20 11.9966C20 7.5783 16.4183 3.99658 12 3.99658C7.58172 3.99658 4 7.5783 4 11.9966C4 16.4149 7.58172 19.9966 12 19.9966ZM12 17.9966V5.99658C15.3137 5.99658 18 8.68287 18 11.9966C18 15.3103 15.3137 17.9966 12 17.9966Z",
+                "Category": "Design",
+                "id": "contrast-line"
+            },
+            "menuRemixIconColor": "#7ed321",
+            "menuRemixIconColorSelected": "#d0021b",
+            "menuRemixIconSize": 17
+        },
+        "item__1699013073887": {
+            "linkToPage": "/profile",
+            "name": "Profile",
+            "iconType": "remix_icon",
+            "menuRemixIcon": {
+                "Content": "M16 2L21 7V21.0082C21 21.556 20.5551 22 20.0066 22H3.9934C3.44476 22 3 21.5447 3 21.0082V2.9918C3 2.44405 3.44495 2 3.9934 2H16ZM13.2 12L16 8H13.6L12 10.2857L10.4 8H8L10.8 12L8 16H10.4L12 13.7143L13.6 16H16L13.2 12Z",
+                "Category": "Document",
+                "id": "file-excel-fill"
+            }
+        },
+        "item__1699013069819": {
+            "linkToPage": "/restore-password",
+            "name": "Restore password",
+            "iconType": "directual_icon",
+            "menuDirectualIconSet": "delete"
+        },
+        "rootMobileMenu": {
+            "showMobileHeader": false,
+            "mobileHeaderLogo": "small",
+            "mobileHeaderLogoPosition": "center",
+            "mobileMenuSide": "right",
+            "mobileMenuPadding": 6,
+            "sideMenuPadding": 12,
+            "menuSideHideLogo": false,
+            "tabsPlacement": "top"
+        },
+        "item__1699616429571": {
+            "linkToPage": "/profile",
+            "name": "",
+            "iconType": "directual_icon",
+            "menuDirectualIconSet": "academy",
+            "linkToType": "external",
+            "linkToURL": "/system-icons"
+        },
+        "item__1699617677112": {
+            "iconType": "remix_icon",
+            "menuRemixIcon": {
+                "Category": "Editor",
+                "Content": "M18.5 10L22.9 21H20.745L19.544 18H15.454L14.255 21H12.101L16.5 10H18.5ZM10 2V4H16V6L14.0322 6.0006C13.2425 8.36616 11.9988 10.5057 10.4115 12.301C11.1344 12.9457 11.917 13.5176 12.7475 14.0079L11.9969 15.8855C10.9237 15.2781 9.91944 14.5524 8.99961 13.7249C7.21403 15.332 5.10914 16.5553 2.79891 17.2734L2.26257 15.3442C4.2385 14.7203 6.04543 13.6737 7.59042 12.3021C6.46277 11.0281 5.50873 9.57985 4.76742 8.00028L7.00684 8.00037C7.57018 9.03885 8.23979 10.0033 8.99967 10.877C10.2283 9.46508 11.2205 7.81616 11.9095 6.00101L2 6V4H8V2H10ZM17.5 12.8852L16.253 16H18.745L17.5 12.8852Z",
+                "id": "translate-2"
+            },
+            "linkToPage": "/all-users",
+            "name": "All Users",
+            "menuRemixIconSize": 40
+        },
+        "item__1699617695042": {
+            "linkToPage": "/home",
+            "name": "Home",
+            "iconType": "custom_icon",
+            "menuIconCustom": "https://api.directual.com/fileUploaded/directual-site/e/stamp_D.png",
+            "menuCustomIconSize": 53,
+            "addLabel": "add_label",
+            "menuLabel": "foo",
+            "menuIconCustomSelected": "https://api.directual.com/fileUploaded/directual-site/e/ebanet.jpeg"
+        },
+        "item__1699879618452": {
+            "linkToPage": "/all-users",
+            "name": "All Users",
+            "iconType": "remix_icon",
+            "menuRemixIcon": {
+                "Content": "M11 11V5.82843L9.17157 7.65685L7.75736 6.24264L12 2L16.2426 6.24264L14.8284 7.65685L13 5.82843V11H18.1716L16.3431 9.17157L17.7574 7.75736L22 12L17.7574 16.2426L16.3431 14.8284L18.1716 13H13V18.1716L14.8284 16.3431L16.2426 17.7574L12 22L7.75736 17.7574L9.17157 16.3431L11 18.1716V13H5.82843L7.65685 14.8284L6.24264 16.2426L2 12L6.24264 7.75736L7.65685 9.17157L5.82843 11H11Z",
+                "Category": "Arrows",
+                "id": "drag-move-2-line"
+            },
+            "menuRemixIconColor": "#a01717",
+            "menuRemixIconColorSelected": "#338196",
+            "menuRemixIconSize": 60
+        },
+        "item__1699966605560": {
+            "linkToPage": "/home",
+            "name": "Home",
+            "iconType": "no_icon"
+        },
+        "item__1699966611883": {
+            "linkToPage": "/profile",
+            "name": "Profile",
+            "iconType": "directual_icon",
+            "menuDirectualIconSet": "actions"
+        },
+        "item__1699966620076": {
+            "linkToPage": "/profile",
+            "name": "Profile",
+            "iconType": "remix_icon",
+            "menuRemixIcon": {
+                "Category": "Arrows",
+                "Content": "M12.0001 19.1643L18.2072 12.9572L16.793 11.543L12.0001 16.3359L7.20718 11.543L5.79297 12.9572L12.0001 19.1643ZM12.0001 13.5144L18.2072 7.30728L16.793 5.89307L12.0001 10.686L7.20718 5.89307L5.79297 7.30728L12.0001 13.5144Z",
+                "id": "arrow-down-double-fill"
+            },
+            "menuRemixIconColorSelected": "#058efc"
+        },
+        "item__1699966629619": {
+            "linkToPage": "/all-users",
+            "name": "All Users",
+            "iconType": "custom_icon",
+            "menuIconCustom": "https://api.directual.com/fileUploaded/directual-site/e/ebanet.jpeg"
+        }
+    }
+}
+
 function MainMenuWrapper(props) {
     let location = useLocation()
+    const { currentBP } = props
 
     const [logoUrl, setlogoUrl] = useState('https://api.alfa.directual.com/fileUploaded/directual-site/31f7185d-f0cc-4063-bc59-1ca46d9f8b7c.svg')
 
@@ -38,6 +461,37 @@ function MainMenuWrapper(props) {
         }
     }, [props.themeName])
 
+    if (props.mobileTabs && currentBP == 'mobile') { return <NewMobileTabs 
+        theme='ural'
+        mainMenu={newMenuEexample.mainMenu}
+        mobileMenuOption={newMenuEexample.mobileMenuOption}
+        menuConfig={newMenuEexample.menuConfig}
+        mobileMenu={newMenuEexample.mobileMenu}
+        currentRoute={location.pathname || '/'}
+        custom_labels={{
+            "counter": "0",
+            "foo": "3"
+        }}
+        currentBP={currentBP}
+        /> }
+
+    return <NewMainMenu
+        title='directual-design'
+        theme='ural'
+        compactState
+        currentBP={currentBP}
+        handleRoute={href => e => {}}
+        //horizontal={props.horizontal}
+        mainMenu={newMenuEexample.mainMenu}
+        mobileMenuOption={newMenuEexample.mobileMenuOption}
+        menuConfig={newMenuEexample.menuConfig}
+        mobileMenu={newMenuEexample.mobileMenu}
+        currentRoute={location.pathname || '/'}
+        custom_labels={{
+            "counter": "0",
+            "foo": "3"
+        }}
+    />
 
     return (
         <MainMenu
@@ -45,7 +499,7 @@ function MainMenuWrapper(props) {
             showUserButtons={true}
             loggedIn={true}
             logoSize={{
-                height:52,
+                height: 52,
                 width: 187
             }}
             handleRoute={href => e => console.log(href)}
@@ -89,150 +543,30 @@ const App = (props) => {
     }
 
     let cardActions = {
-        "sl": "openPipelinePlanned",
-        "pageSize": "10",
+        "sl": "vpnKey",
+        "pageSize": "4",
         "headerField": null,
         "params": {
-            "cardListLayout": "grid",
-            "cardHeaderComment": "tags",
+            "cardListLayout": "looseGrid",
+            "cardHeaderComment": "user",
             "deleteField": "",
-            "cardBodyText": "progress",
+            "cardBodyText": "paid_up_to",
             "cardImage": false,
-            "cardImageField": null,
+            "cardImageField": "",
             "cardImageType": "none",
             "cardImageSize": 100,
             "objectView": {},
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "color",
+                        "fieldSysName": "country",
                         "fetch": [],
-                        "sysName": "color",
-                        "name": "Card color",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "date_added",
-                        "fetch": [],
-                        "sysName": "date_added",
-                        "name": "Date added",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "D MMMM, Y",
-                            "timeFormat": "",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "date_updated",
-                        "fetch": [],
-                        "sysName": "date_updated",
-                        "name": "Date updated",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "D MMMM, Y",
-                            "timeFormat": "",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "description",
-                        "fetch": [],
-                        "sysName": "description",
-                        "name": "Feature description",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "dev_status",
-                        "fetch": [
-                            {
-                                "fieldSysName": "status",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "dev_status",
-                        "name": "Development status",
+                        "sysName": "country",
+                        "name": "Страна",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "development_status"
-                    },
-                    {
-                        "fieldSysName": "feature_id",
-                        "fetch": [],
-                        "sysName": "feature_id",
-                        "name": "Inner ID",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "feature_type",
-                        "fetch": [],
-                        "sysName": "feature_type",
-                        "name": "Feature type",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "feature_type"
+                        "link": "servers"
                     },
                     {
                         "fieldSysName": "id",
@@ -245,12 +579,22 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "progress",
+                        "fieldSysName": "idVPN",
                         "fetch": [],
-                        "sysName": "progress",
-                        "name": "Progress",
-                        "dataType": "json",
-                        "format": "slider",
+                        "sysName": "idVPN",
+                        "name": "ID VPN",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "paid_up_to",
+                        "fetch": [],
+                        "sysName": "paid_up_to",
+                        "name": "Оплачен до",
+                        "dataType": "date",
+                        "format": "",
                         "formatOptions": {
                             "customOptionLabel": "My option",
                             "keyValue": {
@@ -258,8 +602,7 @@ const App = (props) => {
                                 "value": "value",
                                 "button": "One more"
                             },
-                            "unitName": "%",
-                            "dateLocale": "en-gb",
+                            "dateLocale": "ru",
                             "booleanOptions": [
                                 "True",
                                 "False"
@@ -274,96 +617,50 @@ const App = (props) => {
                                 "wed": true
                             },
                             "customOptionPlaceholder": "Describe your option",
-                            "range": {
-                                "min": 0,
-                                "max": 100,
-                                "step": 5
-                            },
+                            "range": {},
                             "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
+                            "dateFormat": "DD.MM.Y",
+                            "timeFormat": "",
+                            "isUTC": "true"
                         },
                         "link": ""
                     },
                     {
-                        "fieldSysName": "tags",
+                        "fieldSysName": "servserVPN",
                         "fetch": [],
-                        "sysName": "tags",
-                        "name": "Tags",
-                        "dataType": "arrayLink",
+                        "sysName": "servserVPN",
+                        "name": "Какой VPN",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "tags"
+                        "link": "servers"
                     },
                     {
-                        "fieldSysName": "title",
+                        "fieldSysName": "ss_key",
                         "fetch": [],
-                        "sysName": "title",
-                        "name": "Feature title",
+                        "sysName": "ss_key",
+                        "name": "Ключ для подключения к VPN",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": null
                     },
                     {
-                        "fieldSysName": "user_id",
-                        "fetch": [
-                            {
-                                "fieldSysName": "firstName",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "lastName",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "user_id",
-                        "name": "Who suggested",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "WebUser"
-                    },
-                    {
-                        "fieldSysName": "votes",
+                        "fieldSysName": "status",
                         "fetch": [],
-                        "sysName": "votes",
-                        "name": "Number of upvotes",
-                        "dataType": "number",
-                        "format": "positiveNum",
+                        "sysName": "status",
+                        "name": "Статус",
+                        "dataType": "array",
+                        "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "votes_ids",
-                        "fetch": [
-                            {
-                                "fieldSysName": "firstName",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "lastName",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "votes_ids",
-                        "name": "Who upvoted",
-                        "dataType": "arrayLink",
+                        "fieldSysName": "user",
+                        "fetch": [],
+                        "sysName": "user",
+                        "name": "Пользователь",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "link": "WebUser"
@@ -371,135 +668,15 @@ const App = (props) => {
                 ],
                 "writeFields": [],
                 "fields": {
-                    "color": {
-                        "id": "color",
-                        "content": "Card color",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "color",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "date_added": {
-                        "id": "date_added",
-                        "content": "Date added",
-                        "type": "field",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "D MMMM, Y",
-                            "timeFormat": "",
-                            "isUTC": "false"
-                        },
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "date_updated": {
-                        "id": "date_updated",
-                        "content": "Date updated",
-                        "type": "field",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "D MMMM, Y",
-                            "timeFormat": "",
-                            "isUTC": "false"
-                        },
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "description": {
-                        "id": "description",
-                        "content": "Feature description",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "markdown",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "dev_status": {
-                        "id": "dev_status",
-                        "content": "Development status",
+                    "country": {
+                        "id": "country",
+                        "content": "Страна",
                         "type": "field",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": "development_status",
-                        "actions": []
-                    },
-                    "feature_id": {
-                        "id": "feature_id",
-                        "content": "Inner ID",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "feature_type": {
-                        "id": "feature_type",
-                        "content": "Feature type",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "feature_type",
+                        "link": "servers",
                         "actions": []
                     },
                     "id": {
@@ -513,12 +690,23 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
-                    "progress": {
-                        "id": "progress",
-                        "content": "Progress",
+                    "idVPN": {
+                        "id": "idVPN",
+                        "content": "ID VPN",
                         "type": "field",
-                        "dataType": "json",
-                        "format": "slider",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null,
+                        "actions": []
+                    },
+                    "paid_up_to": {
+                        "id": "paid_up_to",
+                        "content": "Оплачен до",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
                         "formatOptions": {
                             "customOptionLabel": "My option",
                             "keyValue": {
@@ -526,8 +714,7 @@ const App = (props) => {
                                 "value": "value",
                                 "button": "One more"
                             },
-                            "unitName": "%",
-                            "dateLocale": "en-gb",
+                            "dateLocale": "ru",
                             "booleanOptions": [
                                 "True",
                                 "False"
@@ -542,34 +729,30 @@ const App = (props) => {
                                 "wed": true
                             },
                             "customOptionPlaceholder": "Describe your option",
-                            "range": {
-                                "min": 0,
-                                "max": 100,
-                                "step": 5
-                            },
+                            "range": {},
                             "customOptionType": "textarea",
-                            "dateFormat": "DD/MM/Y",
-                            "timeFormat": " HH:mm",
-                            "isUTC": "false"
+                            "dateFormat": "DD.MM.Y",
+                            "timeFormat": "",
+                            "isUTC": "true"
                         },
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "tags": {
-                        "id": "tags",
-                        "content": "Tags",
+                    "servserVPN": {
+                        "id": "servserVPN",
+                        "content": "Какой VPN",
                         "type": "field",
-                        "dataType": "arrayLink",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": "tags",
+                        "link": "servers",
                         "actions": []
                     },
-                    "title": {
-                        "id": "title",
-                        "content": "Feature title",
+                    "ss_key": {
+                        "id": "ss_key",
+                        "content": "Ключ для подключения к VPN",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
@@ -578,9 +761,20 @@ const App = (props) => {
                         "link": null,
                         "actions": []
                     },
-                    "user_id": {
-                        "id": "user_id",
-                        "content": "Who suggested",
+                    "status": {
+                        "id": "status",
+                        "content": "Статус",
+                        "type": "field",
+                        "dataType": "array",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "user": {
+                        "id": "user",
+                        "content": "Пользователь",
                         "type": "field",
                         "dataType": "link",
                         "format": "",
@@ -589,53 +783,58 @@ const App = (props) => {
                         "link": "WebUser",
                         "actions": []
                     },
-                    "votes": {
-                        "id": "votes",
-                        "content": "Number of upvotes",
-                        "type": "field",
-                        "dataType": "number",
-                        "format": "positiveNum",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "votes_ids": {
-                        "id": "votes_ids",
-                        "content": "Who upvoted",
-                        "type": "field",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "WebUser",
+                    "action__71551694689685262": {
+                        "id": "action__71551694689685262",
+                        "content": "Отмена подписки",
+                        "type": "action",
                         "actions": []
                     }
                 },
                 "fieldParams": {
-                    "date_added": {
+                    "email": {
                         "include": true,
+                        "disableEditing": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "description": {
+                    "paid_up_to": {
                         "include": true,
+                        "disableEditing": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "title": {
-                        "include": false,
+                    "ss_key": {
+                        "include": true,
+                        "disableEditing": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "votes": {
+                    "status": {
                         "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "tariff": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "descriptionFlag": false
+                    },
+                    "country": {
+                        "include": true,
+                        "disableEditing": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
@@ -643,107 +842,30 @@ const App = (props) => {
                     },
                     "id": {
                         "include": false,
+                        "disableEditing": true,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "color": {
+                    "idVPN": {
                         "include": false,
+                        "disableEditing": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "user_id": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "configureLinkedCard": {
-                            "fields": {
-                                "firstName": {
-                                    "id": "firstName",
-                                    "content": "First name",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "string",
-                                    "format": null,
-                                    "formatOptions": {}
-                                },
-                                "lastName": {
-                                    "id": "lastName",
-                                    "content": "Last name",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "string",
-                                    "format": null,
-                                    "formatOptions": {}
-                                }
-                            },
-                            "fieldParams": {
-                                "firstName": {
-                                    "include": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "lastName": {
-                                    "include": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                }
-                            },
-                            "fieldOrder": [
-                                "firstName",
-                                "lastName"
-                            ]
-                        }
-                    },
-                    "feature_type": {
-                        "include": true,
+                    "servserVPN": {
+                        "include": false,
+                        "disableEditing": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "feature_id": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "dev_status": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "tags": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "progress": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "votes_ids": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "date_updated": {
-                        "include": true,
+                    "user": {
+                        "include": false,
                         "disableEditing": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
@@ -756,20 +878,15 @@ const App = (props) => {
                         "id": "tab-1",
                         "title": "New section",
                         "fieldIds": [
-                            "title",
-                            "feature_id",
-                            "feature_type",
-                            "description",
+                            "paid_up_to",
+                            "ss_key",
+                            "status",
+                            "country",
                             "id",
-                            "color",
-                            "date_updated",
-                            "date_added",
-                            "user_id",
-                            "votes",
-                            "dev_status",
-                            "tags",
-                            "progress",
-                            "votes_ids"
+                            "idVPN",
+                            "servserVPN",
+                            "user",
+                            "action__71551694689685262"
                         ]
                     }
                 },
@@ -779,29 +896,50 @@ const App = (props) => {
                 "actions": []
             },
             "fields": {
-                "date_added": {
+                "email": {
                     "include": true,
+                    "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "description": {
+                "paid_up_to": {
                     "include": true,
+                    "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "title": {
-                    "include": false,
+                "ss_key": {
+                    "include": true,
+                    "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "votes": {
+                "status": {
                     "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "tariff": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "descriptionFlag": false
+                },
+                "country": {
+                    "include": true,
+                    "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
@@ -809,107 +947,30 @@ const App = (props) => {
                 },
                 "id": {
                     "include": false,
+                    "disableEditing": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "color": {
+                "idVPN": {
                     "include": false,
+                    "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "user_id": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "configureLinkedCard": {
-                        "fields": {
-                            "firstName": {
-                                "id": "firstName",
-                                "content": "First name",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "string",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "lastName": {
-                                "id": "lastName",
-                                "content": "Last name",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "string",
-                                "format": null,
-                                "formatOptions": {}
-                            }
-                        },
-                        "fieldParams": {
-                            "firstName": {
-                                "include": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "lastName": {
-                                "include": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            }
-                        },
-                        "fieldOrder": [
-                            "firstName",
-                            "lastName"
-                        ]
-                    }
-                },
-                "feature_type": {
-                    "include": true,
+                "servserVPN": {
+                    "include": false,
+                    "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "feature_id": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "dev_status": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "tags": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "progress": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "votes_ids": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "date_updated": {
-                    "include": true,
+                "user": {
+                    "include": false,
                     "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
@@ -917,265 +978,124 @@ const App = (props) => {
                     "clickable": false
                 }
             },
-            "showCounter": true,
-            "counterField": "votes",
-            "counterText": " upvotes",
-            "actions": [],
-            "cardColor": "color",
-            "cardColorOption": "left",
-            "lazyLoading": true
+            "cardHeaderStyle": "p",
+            "cardColor": "status",
+            "cardColorOption": "none",
+            "cardLayoutType": "default",
+            "actions": [
+                {
+                    "sysName": "cancel_paymentnut_lk",
+                    "id": "71551694689685262",
+                    "name": "Отмена подписки",
+                    "displayAs": "button",
+                    "buttonIcon": "ban",
+                    "conditionals": [
+                        {
+                            "id": "74461694690822939",
+                            "target": "field",
+                            "value": "Оплачен",
+                            "field": "status"
+                        }
+                    ],
+                    "SLtype": "other",
+                    "fields": {
+                        "readFields": [
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ],
+                        "writeFields": [
+                            {
+                                "fieldSysName": "country",
+                                "fetch": [],
+                                "sysName": "country",
+                                "name": "",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": null
+                            },
+                            {
+                                "fieldSysName": "email",
+                                "fetch": [],
+                                "sysName": "email",
+                                "name": "",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": null
+                            },
+                            {
+                                "fieldSysName": "id",
+                                "fetch": [],
+                                "sysName": "id",
+                                "name": "id",
+                                "dataType": "id",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        ]
+                    },
+                    "formMapping": [
+                        {
+                            "id": "11471694689740746",
+                            "target": "country",
+                            "type": "objectField",
+                            "value": "country"
+                        },
+                        {
+                            "id": "55631694689756718",
+                            "target": "email",
+                            "type": "objectField",
+                            "value": "user"
+                        }
+                    ],
+                    "showMessage": true,
+                    "closePopup": false,
+                    "resultMessage": "Запрос на отмену подписки отправлен, вам придет письмо",
+                    "resultButton": "Подписка отменяется"
+                }
+            ]
         },
-        "tableTitle": "Planned",
+        "tableTitle": "Ключи для VPN",
         "actions": null,
         "headers": [
             {
-                "sysName": "color",
-                "dataType": "string",
-                "name": "Card color",
-                "id": "61881621017200362",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 9,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "color",
-                "formatOptions": null,
-                "groupName": null,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "date_added",
-                "dataType": "date",
-                "name": "Date added",
-                "id": "68351620832123660",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "D MMMM, Y",
-                    "timeFormat": "",
-                    "isUTC": "false"
-                },
-                "groupName": null,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "date_updated",
-                "dataType": "date",
-                "name": "Date updated",
-                "id": "74581670507990970",
-                "link": "",
+                "sysName": "country",
+                "dataType": "link",
+                "name": "Страна",
+                "id": "15411673282156887",
+                "link": "servers",
                 "group": "0",
                 "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "D MMMM, Y",
-                    "timeFormat": "",
-                    "isUTC": "false"
-                },
-                "groupName": null,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "description",
-                "dataType": "string",
-                "name": "Feature description",
-                "id": "77031620832091108",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "markdown",
-                "formatOptions": null,
-                "groupName": null,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "dev_status",
-                "dataType": "link",
-                "name": "Development status",
-                "id": "85621620832330584",
-                "link": "development_status",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
+                "indexing": true,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 8,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "linkIndexFieldSysName": [
+                    "country"
+                ],
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
-                "indexExists": false,
+                "linkType": true,
+                "arrayLink": false,
                 "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "feature_id",
-                "dataType": "string",
-                "name": "Inner ID",
-                "id": "23601621342083348",
-                "link": null,
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 11,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "feature_type",
-                "dataType": "link",
-                "name": "Feature type",
-                "id": "55371621030232780",
-                "link": "feature_type",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 10,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
+                "indexExists": true,
                 "array": false
             },
             {
@@ -1198,192 +1118,20 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "indexExists": false,
+                "linkType": false,
+                "arrayLink": false,
                 "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "progress",
-                "dataType": "json",
-                "name": "Progress",
-                "id": "68751622642385874",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 16,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": "slider",
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "unitName": "%",
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {
-                        "min": 0,
-                        "max": 100,
-                        "step": 5
-                    },
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD/MM/Y",
-                    "timeFormat": " HH:mm",
-                    "isUTC": "false"
-                },
-                "groupName": null,
                 "indexExists": false,
-                "typeVariable": {},
-                "json": true,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
                 "array": false
             },
             {
-                "sysName": "tags",
-                "dataType": "arrayLink",
-                "name": "Tags",
-                "id": "67851621409605492",
-                "link": "tags",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 15,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": false,
-                "arrayLink": true,
-                "array": false
-            },
-            {
-                "sysName": "title",
+                "sysName": "idVPN",
                 "dataType": "string",
-                "name": "Feature title",
-                "id": "79031620832091734",
+                "name": "ID VPN",
+                "id": "85101673281869481",
                 "link": null,
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "user_id",
-                "dataType": "link",
-                "name": "Who suggested",
-                "id": "59421620832153105",
-                "link": "WebUser",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 4,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": true,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "votes",
-                "dataType": "number",
-                "name": "Number of upvotes",
-                "id": "68061620832170304",
-                "link": "",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": "positiveNum",
-                "formatOptions": null,
-                "groupName": null,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "votes_ids",
-                "dataType": "arrayLink",
-                "name": "Who upvoted",
-                "id": "14001620832180875",
-                "link": "WebUser",
                 "group": "0",
                 "tags": null,
                 "indexing": false,
@@ -1398,1060 +1146,287 @@ const App = (props) => {
                 "format": null,
                 "formatOptions": null,
                 "groupName": null,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
                 "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "paid_up_to",
+                "dataType": "date",
+                "name": "Оплачен до",
+                "id": "60121673281813015",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "ru",
+                    "booleanOptions": [
+                        "True",
+                        "False"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD.MM.Y",
+                    "timeFormat": "",
+                    "isUTC": "true"
+                },
+                "groupName": null,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "servserVPN",
+                "dataType": "link",
+                "name": "Какой VPN",
+                "id": "72501673281886265",
+                "link": "servers",
+                "group": "0",
+                "tags": null,
+                "indexing": true,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 7,
+                "linkIndexFieldSysName": [
+                    "country"
+                ],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkType": true,
+                "arrayLink": false,
                 "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": true,
+                "indexExists": true,
+                "array": false
+            },
+            {
+                "sysName": "ss_key",
+                "dataType": "string",
+                "name": "Ключ для подключения к VPN",
+                "id": "48521673281776493",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
                 "linkType": false,
-                "arrayLink": true,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            {
+                "sysName": "status",
+                "dataType": "array",
+                "name": "Статус",
+                "id": "67281673281863015",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "indexExists": false,
+                "array": true
+            },
+            {
+                "sysName": "user",
+                "dataType": "link",
+                "name": "Пользователь",
+                "id": "20071673281951832",
+                "link": "WebUser",
+                "group": "0",
+                "tags": null,
+                "indexing": true,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [
+                    "servserVPN.country",
+                    "id"
+                ],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkType": true,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "indexExists": true,
                 "array": false
             }
         ],
         "data": [
             {
-                "votes": 28,
-                "description": "Calendar view for the structure",
-                "tags": [
-                    "web-pages"
+                "idVPN": "213",
+                "country": "Netherlands",
+                "id": "7b0669f7-9497-4971-bc3c-8c57622833ab",
+                "ss_key": "ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTo3TlZ6aDV3S2c0elJlZzVZb0NRNFI5@51.15.102.5:32243/?outline=1",
+                "status": [
+                    "Оплачен"
                 ],
-                "feature_id": "PLT-113",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "date_updated": 1670519010000,
-                "feature_type": "feature",
-                "id": "2c7192b1-cae4-4234-a245-8e5d0160ee2f",
-                "dev_status": {
-                    "status": "Planned"
-                },
-                "date_added": 1621374804000,
-                "votes_ids": [
-                    {
-                        "firstName": "Victor",
-                        "lastName": "Zaborskiy",
-                        "id": "victor@zaborskiy.com"
-                    },
-                    {
-                        "firstName": "Александр",
-                        "lastName": "Головков",
-                        "id": "a.golovkoff@gmail.com"
-                    },
-                    {
-                        "id": "mf.alexander@gmail.com"
-                    },
-                    {
-                        "firstName": "Nuno",
-                        "lastName": "Poço",
-                        "id": "nuno.poco@gmail.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "lastName": "Reyes",
-                        "firstName": "Cathy",
-                        "id": "iamcathyreyes@yahoo.com"
-                    },
-                    {
-                        "firstName": "Vladimir",
-                        "lastName": "Stepanenko",
-                        "id": "vgstepanenko@gmail.com"
-                    },
-                    {
-                        "lastName": "Quinn",
-                        "firstName": "Niki",
-                        "id": "niki_q@icloud.com"
-                    },
-                    {
-                        "firstName": "Roman",
-                        "lastName": "Tkachev",
-                        "id": "tkachev.rb@gmail.com"
-                    },
-                    {
-                        "id": "hamelmesfin@gmail.com"
-                    },
-                    {
-                        "id": "subrtt@gmail.com"
-                    },
-                    {
-                        "firstName": "Joses",
-                        "lastName": "Saumaitoga",
-                        "id": "josesjjs@tpg.com.au"
-                    },
-                    {
-                        "lastName": "Nichols",
-                        "firstName": "Joanne",
-                        "id": "jonichols@me.com"
-                    },
-                    {
-                        "lastName": "Goncharov",
-                        "firstName": "Pavel",
-                        "id": "pavel@goncharov.me"
-                    },
-                    {
-                        "lastName": "Khokhlov",
-                        "firstName": "Alexey",
-                        "id": "alexhohlov89@gmail.com"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "firstName": "Efim",
-                        "lastName": "Maisak",
-                        "id": "coldnaked@gmail.com"
-                    },
-                    {
-                        "id": "lykovmaxim@gmail.com"
-                    },
-                    {
-                        "id": "drammichd@gmail.com"
-                    },
-                    {
-                        "id": "kolgtim@gmail.com"
-                    },
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "id": "xavvis308@gmail.com"
-                    },
-                    {
-                        "id": "sergey.azarov@gmail.com"
-                    },
-                    {
-                        "firstName": "Elise",
-                        "lastName": "Boonstra-Legerstee",
-                        "id": "elise.legerstee@gmail.com"
-                    },
-                    {
-                        "firstName": "Hao",
-                        "lastName": "Ngo",
-                        "id": "hao.ngolv@gmail.com"
-                    },
-                    {
-                        "id": "kovgan96@gmail.com"
-                    },
-                    {
-                        "id": "trustpropsonline@gmail.com"
-                    },
-                    {
-                        "firstName": "JOHNLY",
-                        "lastName": "NARAG",
-                        "id": "johnly_s_narag@yahoo.com"
-                    }
-                ],
-                "title": "Calendar component"
+                "paid_up_to": 1699976745175,
+                "servserVPN": "ab3a8a64-41a4-4f69-be7f-5e851e032e4d",
+                "user": "test13@bubuvpn.com"
             },
             {
-                "votes": 27,
-                "description": "1. Make API-builder interface easier\n2. Introduce API-endpoint request logs\n3. Improve work with HTTP-parameters\n4. Include automatic userID filling\n5. Open API-endpoint settings in a modal window\n6. Show places where API-endpoint is used\n7. Filter endpoints (public, private, external systems, etc.)\n8. Show if there are sync scenarios connected to the endpoint\n9. Pause endpoint\n10. Requests log (`api/v3/apiEndpoints/history`)\n11. Add http-params description\n12. Endpoint versioning\n13. Fast data structure preview",
-                "tags": [
-                    "api-builder"
+                "idVPN": "1",
+                "country": "Turkey",
+                "id": "a6952aaa-c988-4125-b562-c5235bee545c",
+                "ss_key": "ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpjUmtZSW1pNmpwcW9tbUtYNnNKeDdi@185.123.100.29:1337/?outline=1",
+                "status": [
+                    "Оплачен"
                 ],
-                "feature_id": "PLT-103",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "date_updated": 1676557489000,
-                "feature_type": "feature",
-                "id": "ea8ef168-ca6c-4f6c-b82b-6d6c4f0610f0",
-                "progress": "{\"firstValue\":0}",
-                "dev_status": {
-                    "status": "Planned"
-                },
-                "date_added": 1621373826000,
-                "votes_ids": [
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    },
-                    {
-                        "lastName": "One",
-                        "firstName": "Dear",
-                        "id": "directualone@gmail.com"
-                    },
-                    {
-                        "firstName": "Mathew",
-                        "lastName": "Tusa",
-                        "id": "mobileactionim@gmail.com"
-                    },
-                    {
-                        "lastName": "H",
-                        "firstName": "Alejandro",
-                        "id": "digitalgebo@gmail.com"
-                    },
-                    {
-                        "firstName": "Александр",
-                        "lastName": "Головков",
-                        "id": "a.golovkoff@gmail.com"
-                    },
-                    {
-                        "firstName": "Steve",
-                        "lastName": "Ryker",
-                        "id": "steveryker20@gmail.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "firstName": "A",
-                        "lastName": "A",
-                        "id": "admin@agdigitals.com"
-                    },
-                    {
-                        "firstName": "Roman",
-                        "lastName": "Tkachev",
-                        "id": "tkachev.rb@gmail.com"
-                    },
-                    {
-                        "id": "subrtt@gmail.com"
-                    },
-                    {
-                        "firstName": "Joses",
-                        "lastName": "Saumaitoga",
-                        "id": "josesjjs@tpg.com.au"
-                    },
-                    {
-                        "lastName": "Slipenko",
-                        "firstName": "Maxim",
-                        "id": "max.slipenko@gmail.com"
-                    },
-                    {
-                        "lastName": "Jabbour",
-                        "firstName": "Tony",
-                        "id": "tonyjabbour007@gmail.com"
-                    },
-                    {
-                        "firstName": "Adibta",
-                        "lastName": "Triantama",
-                        "id": "adibtatriantama@gmail.com"
-                    },
-                    {
-                        "firstName": "Anton",
-                        "lastName": "Sidorov",
-                        "id": "a@preencipium.com"
-                    },
-                    {
-                        "firstName": "Do",
-                        "lastName": "Do",
-                        "id": "dodo@inboxbear.com"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "lastName": "Pearson",
-                        "firstName": "Lloyd",
-                        "id": "lloydpearson@packagecues.com"
-                    },
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "firstName": "Maksim",
-                        "lastName": "Tsaryk",
-                        "id": "max@maksimtsaryk.com"
-                    },
-                    {
-                        "lastName": "Novoseltsev",
-                        "firstName": "Vladimir",
-                        "id": "xtrms@yandex.ru"
-                    },
-                    {
-                        "lastName": "S",
-                        "firstName": "Sania",
-                        "id": "sania1813@yahoo.com"
-                    },
-                    {
-                        "firstName": "VISHAL",
-                        "lastName": "SETHI",
-                        "id": "vs301991@gmail.com"
-                    },
-                    {
-                        "firstName": "Hao",
-                        "lastName": "Ngo",
-                        "id": "hao.ngolv@gmail.com"
-                    },
-                    {
-                        "lastName": "Grimalsky",
-                        "firstName": "Slava",
-                        "id": "itareo@gmail.com"
-                    },
-                    {
-                        "firstName": "JOHNLY",
-                        "lastName": "NARAG",
-                        "id": "johnly_s_narag@yahoo.com"
-                    },
-                    {
-                        "lastName": "Dolgov",
-                        "firstName": "Nikita",
-                        "id": "n.dolgov@directual.com"
-                    }
-                ],
-                "title": "API-builder UI updating"
-            },
-            {
-                "votes": 15,
-                "description": "Option to restrict any access to files on Directual for non-authorised users",
-                "tags": [
-                    "database"
-                ],
-                "feature_id": "PLT-177",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "date_updated": 1670519010000,
-                "feature_type": "feature",
-                "id": "3874bd01-38af-4d0c-a04f-5eb999733d4f",
-                "progress": "{\"firstValue\":0}",
-                "dev_status": {
-                    "status": "Planned"
-                },
-                "date_added": 1625253351000,
-                "votes_ids": [
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    },
-                    {
-                        "id": "dave@tomorrowready.com"
-                    },
-                    {
-                        "firstName": "Mathew",
-                        "lastName": "Tusa",
-                        "id": "mobileactionim@gmail.com"
-                    },
-                    {
-                        "lastName": "H",
-                        "firstName": "Alejandro",
-                        "id": "digitalgebo@gmail.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "firstName": "Vladimir",
-                        "lastName": "Stepanenko",
-                        "id": "vgstepanenko@gmail.com"
-                    },
-                    {
-                        "firstName": "A",
-                        "lastName": "A",
-                        "id": "admin@agdigitals.com"
-                    },
-                    {
-                        "firstName": "Roman",
-                        "lastName": "Tkachev",
-                        "id": "tkachev.rb@gmail.com"
-                    },
-                    {
-                        "lastName": "Pearson",
-                        "firstName": "Lloyd",
-                        "id": "lloydpearson@packagecues.com"
-                    },
-                    {
-                        "lastName": "N",
-                        "firstName": "Kamil",
-                        "id": "kamil@leverall.com"
-                    },
-                    {
-                        "firstName": "titouan",
-                        "lastName": "albouy",
-                        "id": "titouan@akatek.io"
-                    },
-                    {
-                        "firstName": "VISHAL",
-                        "lastName": "SETHI",
-                        "id": "vs301991@gmail.com"
-                    },
-                    {
-                        "firstName": "Elise",
-                        "lastName": "Boonstra-Legerstee",
-                        "id": "elise.legerstee@gmail.com"
-                    },
-                    {
-                        "firstName": "Thomas",
-                        "lastName": "Omaley",
-                        "id": "thomasomaley1964@gmail.com"
-                    },
-                    {
-                        "firstName": "JOHNLY",
-                        "lastName": "NARAG",
-                        "id": "johnly_s_narag@yahoo.com"
-                    }
-                ],
-                "title": "Restrict access to files "
-            },
-            {
-                "votes": 14,
-                "description": "from the table row",
-                "tags": [
-                    "web-pages"
-                ],
-                "feature_id": "PLT-107",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "date_updated": 1674056358000,
-                "feature_type": "feature",
-                "id": "bcfb59c9-235d-4d4a-96d9-07c73ec20124",
-                "dev_status": {
-                    "status": "Planned"
-                },
-                "date_added": 1621374197000,
-                "votes_ids": [
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    },
-                    {
-                        "lastName": "Nazarov",
-                        "firstName": "Oleg",
-                        "id": "olegnazarov@hotmail.com"
-                    },
-                    {
-                        "id": "mf.alexander@gmail.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "firstName": "Vladimir",
-                        "lastName": "Stepanenko",
-                        "id": "vgstepanenko@gmail.com"
-                    },
-                    {
-                        "firstName": "Roman",
-                        "lastName": "Tkachev",
-                        "id": "tkachev.rb@gmail.com"
-                    },
-                    {
-                        "id": "hamelmesfin@gmail.com"
-                    },
-                    {
-                        "id": "av.volgin@gmail.com"
-                    },
-                    {
-                        "lastName": "Goncharov",
-                        "firstName": "Pavel",
-                        "id": "pavel@goncharov.me"
-                    },
-                    {
-                        "lastName": "Khokhlov",
-                        "firstName": "Alexey",
-                        "id": "alexhohlov89@gmail.com"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "id": "lykovmaxim@gmail.com"
-                    },
-                    {
-                        "id": "trustpropsonline@gmail.com"
-                    },
-                    {
-                        "firstName": "JOHNLY",
-                        "lastName": "NARAG",
-                        "id": "johnly_s_narag@yahoo.com"
-                    }
-                ],
-                "title": "Actions in Table"
-            },
-            {
-                "votes": 12,
-                "description": "Current ES5 is not the best JS-engine :)",
-                "tags": [
-                    "scenarios"
-                ],
-                "feature_id": "PLT-112",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "date_updated": 1671918952000,
-                "feature_type": "feature",
-                "id": "63da4103-bb50-4b03-889c-1e5af18677c5",
-                "progress": "{\"firstValue\":30}",
-                "dev_status": {
-                    "status": "Planned"
-                },
-                "date_added": 1621374725000,
-                "votes_ids": [
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    },
-                    {
-                        "firstName": "Nuno",
-                        "lastName": "Poço",
-                        "id": "nuno.poco@gmail.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "firstName": "Roman",
-                        "lastName": "Tkachev",
-                        "id": "tkachev.rb@gmail.com"
-                    },
-                    {
-                        "id": "effgenij@gmail.com"
-                    },
-                    {
-                        "id": "vitaly.krenel@gmail.com"
-                    },
-                    {
-                        "firstName": "Do",
-                        "lastName": "Do",
-                        "id": "dodo@inboxbear.com"
-                    },
-                    {
-                        "lastName": "Goncharov",
-                        "firstName": "Pavel",
-                        "id": "pavel@goncharov.me"
-                    },
-                    {
-                        "lastName": "Pearson",
-                        "firstName": "Lloyd",
-                        "id": "lloydpearson@packagecues.com"
-                    },
-                    {
-                        "firstName": "Elise",
-                        "lastName": "Boonstra-Legerstee",
-                        "id": "elise.legerstee@gmail.com"
-                    },
-                    {
-                        "firstName": "JOHNLY",
-                        "lastName": "NARAG",
-                        "id": "johnly_s_narag@yahoo.com"
-                    },
-                    {
-                        "lastName": "Dolgov",
-                        "firstName": "Nikita",
-                        "id": "n.dolgov@directual.com"
-                    }
-                ],
-                "title": "ES-2017  as a JS-engine"
-            },
-            {
-                "votes": 11,
-                "description": "As of today, arrayLink is displayed as a simple list. It would be great to have:\n\n- Comments\n- ✅ Sorted list (in prod)\n- Cards\n- ✅ Table (in prod)\n- ✅ Shopping cart (in prod)\n- Calendar",
-                "tags": [
-                    "web-pages"
-                ],
-                "feature_id": "PLT-114",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "date_updated": 1670519010000,
-                "feature_type": "feature",
-                "id": "db3ce173-737a-4b9b-9872-f9c5d090f015",
-                "progress": "{\"firstValue\":40}",
-                "dev_status": {
-                    "status": "Planned"
-                },
-                "date_added": 1621374947000,
-                "votes_ids": [
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "lastName": "Reyes",
-                        "firstName": "Cathy",
-                        "id": "iamcathyreyes@yahoo.com"
-                    },
-                    {
-                        "firstName": "Vladimir",
-                        "lastName": "Stepanenko",
-                        "id": "vgstepanenko@gmail.com"
-                    },
-                    {
-                        "firstName": "Do",
-                        "lastName": "Do",
-                        "id": "dodo@inboxbear.com"
-                    },
-                    {
-                        "lastName": "Goncharov",
-                        "firstName": "Pavel",
-                        "id": "pavel@goncharov.me"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "firstName": "Efim",
-                        "lastName": "Maisak",
-                        "id": "coldnaked@gmail.com"
-                    },
-                    {
-                        "id": "kolgtim@gmail.com"
-                    },
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "firstName": "JOHNLY",
-                        "lastName": "NARAG",
-                        "id": "johnly_s_narag@yahoo.com"
-                    }
-                ],
-                "title": "Sophisticated view for arrayLinks on object cards"
-            },
-            {
-                "votes": 11,
-                "description": "Allow users to copy and paste cubes in scenarios",
-                "tags": [
-                    "scenarios"
-                ],
-                "feature_id": "PLT-117",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Dolgov",
-                    "firstName": "Nikita",
-                    "id": "n.dolgov@directual.com"
-                },
-                "date_updated": 1679394051000,
-                "feature_type": "feature",
-                "id": "48d88933-add5-49a8-aa6d-a3748cdca468",
-                "dev_status": {
-                    "status": "Planned"
-                },
-                "date_added": 1621375728000,
-                "votes_ids": [
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    },
-                    {
-                        "firstName": "Kashtanov",
-                        "lastName": "Dmitry",
-                        "id": "y3sw0r1d@gmail.com"
-                    },
-                    {
-                        "firstName": "Vladislav",
-                        "lastName": "Boyko",
-                        "id": "for.work.vboyko@yandex.ru"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "firstName": "Roman",
-                        "lastName": "Tkachev",
-                        "id": "tkachev.rb@gmail.com"
-                    },
-                    {
-                        "id": "effgenij@gmail.com"
-                    },
-                    {
-                        "lastName": "Mozer",
-                        "firstName": "Anna",
-                        "id": "annmozer116@gmail.com"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "id": "lykovmaxim@gmail.com"
-                    },
-                    {
-                        "firstName": "JOHNLY",
-                        "lastName": "NARAG",
-                        "id": "johnly_s_narag@yahoo.com"
-                    },
-                    {
-                        "lastName": "Dolgov",
-                        "firstName": "Nikita",
-                        "id": "n.dolgov@directual.com"
-                    }
-                ],
-                "title": "Copy cubes"
-            },
-            {
-                "votes": 10,
-                "description": "Add \"not in array\" filter in condition cube and in api filter section. Ideally add 2 new options: \n1. object is NOT in array\n2. array does NOT contain all\n2. array does NOT contain any",
-                "tags": [
-                    "scenarios",
-                    "api-builder"
-                ],
-                "feature_id": "PLT-120",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Dolgov",
-                    "firstName": "Nikita",
-                    "id": "n.dolgov@directual.com"
-                },
-                "date_updated": 1692696268000,
-                "feature_type": "feature",
-                "id": "7d8635da-2738-44cf-b4b7-1d509611f8ed",
-                "progress": "{\"firstValue\":0}",
-                "dev_status": {
-                    "status": "Planned"
-                },
-                "date_added": 1621377697000,
-                "votes_ids": [
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "lastName": "Ermolaev",
-                        "firstName": "Timur",
-                        "id": "ermolaev@code-word.ru"
-                    },
-                    {
-                        "firstName": "Anton",
-                        "lastName": "Sidorov",
-                        "id": "a@preencipium.com"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "id": "drammichd@gmail.com"
-                    },
-                    {
-                        "id": "kolgtim@gmail.com"
-                    },
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "firstName": "JOHNLY",
-                        "lastName": "NARAG",
-                        "id": "johnly_s_narag@yahoo.com"
-                    },
-                    {
-                        "lastName": "Dolgov",
-                        "firstName": "Nikita",
-                        "id": "n.dolgov@directual.com"
-                    }
-                ],
-                "title": "Add NOT-filters for arrays"
-            },
-            {
-                "votes": 10,
-                "description": "Copy pages in Web-pages",
-                "tags": [
-                    "web-pages"
-                ],
-                "feature_id": "PLT-215",
-                "color": "57bf97",
-                "user_id": {
-                    "firstName": "Vladimir",
-                    "lastName": "Stepanenko",
-                    "id": "vgstepanenko@gmail.com"
-                },
-                "date_updated": 1670519011000,
-                "feature_type": "feature",
-                "id": "67b93ec9-cff1-4870-8d92-42a4a53e60d9",
-                "progress": "{\"firstValue\":0}",
-                "dev_status": {
-                    "status": "Planned"
-                },
-                "date_added": 1628176984000,
-                "votes_ids": [
-                    {
-                        "firstName": "Egor",
-                        "lastName": "Baev",
-                        "id": "artosiris@gmail.com"
-                    },
-                    {
-                        "firstName": "Joses",
-                        "lastName": "Saumaitoga",
-                        "id": "josesjjs@tpg.com.au"
-                    },
-                    {
-                        "lastName": "Nichols",
-                        "firstName": "Joanne",
-                        "id": "jonichols@me.com"
-                    },
-                    {
-                        "firstName": "Max",
-                        "lastName": "Lykov",
-                        "id": "mxf@mail.ru"
-                    },
-                    {
-                        "lastName": "Goncharov",
-                        "firstName": "Pavel",
-                        "id": "office@ingros.ru"
-                    },
-                    {
-                        "id": "victorblan@gmail.com"
-                    },
-                    {
-                        "id": "lykovmaxim@gmail.com"
-                    },
-                    {
-                        "lastName": "Ershov",
-                        "firstName": "Pavel",
-                        "id": "pavel@directual.com"
-                    },
-                    {
-                        "id": "trustpropsonline@gmail.com"
-                    },
-                    {
-                        "firstName": "JOHNLY",
-                        "lastName": "NARAG",
-                        "id": "johnly_s_narag@yahoo.com"
-                    }
-                ],
-                "title": "Copy page on portal"
-            },
-            {
-                "votes": 10,
-                "description": "Add params to dropdown fields for dynamic options filtering on the API side",
-                "tags": [
-                    "web-pages"
-                ],
-                "feature_id": "PLT-286",
-                "color": "57bf97",
-                "user_id": {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                "date_updated": 1670519010000,
-                "feature_type": "feature",
-                "id": "dd8a05ba-83d6-4d04-a903-f29f763217d5",
-                "dev_status": {
-                    "status": "Planned"
-                },
-                "date_added": 1638561542000,
-                "votes_ids": [
-                    {
-                        "lastName": "Online",
-                        "firstName": "Bisapco",
-                        "id": "atr.service.msk@gmail.com"
-                    },
-                    {
-                        "id": "mf.alexander@gmail.com"
-                    },
-                    {
-                        "firstName": "Dimitry",
-                        "lastName": "Novozhilov",
-                        "id": "novozhilov@code-word.ru"
-                    },
-                    {
-                        "id": "subrtt@gmail.com"
-                    },
-                    {
-                        "firstName": "Joses",
-                        "lastName": "Saumaitoga",
-                        "id": "josesjjs@tpg.com.au"
-                    },
-                    {
-                        "lastName": "Nichols",
-                        "firstName": "Joanne",
-                        "id": "jonichols@me.com"
-                    },
-                    {
-                        "lastName": "Khokhlov",
-                        "firstName": "Alexey",
-                        "id": "alexhohlov89@gmail.com"
-                    },
-                    {
-                        "lastName": "Pearson",
-                        "firstName": "Lloyd",
-                        "id": "lloydpearson@packagecues.com"
-                    },
-                    {
-                        "firstName": "Mark",
-                        "lastName": "Vokes",
-                        "id": "mark@concept2commerce.com"
-                    },
-                    {
-                        "firstName": "JOHNLY",
-                        "lastName": "NARAG",
-                        "id": "johnly_s_narag@yahoo.com"
-                    }
-                ],
-                "title": "Form. Dynamic drop-downs"
+                "paid_up_to": 1697298706534,
+                "servserVPN": "ea9a6be4-12d6-450c-8cbd-140f642a9a6e",
+                "user": "test13@bubuvpn.com"
             }
         ],
-        "totalPages": 6,
+        "totalPages": 1,
         "pageNumber": 0,
         "error": null,
         "fieldScheme": [
             [
-                "color",
-                1385610
-            ],
-            [
-                "date_added",
-                1385610
-            ],
-            [
-                "date_updated",
-                1385610
-            ],
-            [
-                "description",
-                1385610
-            ],
-            [
-                "dev_status.status",
-                1385613
-            ],
-            [
-                "feature_id",
-                1385610
-            ],
-            [
-                "feature_type",
-                1385610
+                "country",
+                99165310
             ],
             [
                 "id",
-                1385610
+                99165310
             ],
             [
-                "progress",
-                1385610
+                "idVPN",
+                99165310
             ],
             [
-                "tags",
-                1385610
+                "paid_up_to",
+                99165310
             ],
             [
-                "title",
-                1385610
+                "servserVPN",
+                99165310
             ],
             [
-                "user_id.firstName",
-                1385542
+                "ss_key",
+                99165310
             ],
             [
-                "user_id.id",
-                1385542
+                "status",
+                99165310
             ],
             [
-                "user_id.lastName",
-                1385542
-            ],
-            [
-                "votes",
-                1385610
-            ],
-            [
-                "votes_ids.firstName",
-                1385542
-            ],
-            [
-                "votes_ids.id",
-                1385542
-            ],
-            [
-                "votes_ids.lastName",
-                1385542
+                "user",
+                99165310
             ]
         ],
         "writeFields": [],
         "structures": {
-            "1385542": {
-                "networkID": 6829,
-                "sysName": "WebUser",
-                "name": "App users",
-                "id": 1385542,
-                "dateCreated": "2021-05-14T21:02:45Z",
+            "99165310": {
+                "networkID": 14030,
+                "id": 99165310,
+                "dateCreated": "2023-01-11T14:20:41Z",
                 "hidden": false,
                 "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"dateLastActivity\",\"dataType\":\"string\",\"name\":\"dateLastActivity\",\"id\":\"8\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"dateCreated\",\"dataType\":\"string\",\"name\":\"dateCreated\",\"id\":\"11\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"isAuthorization\",\"dataType\":\"boolean\",\"name\":\"isAuthorization\",\"id\":\"7\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"phone\",\"dataType\":\"string\",\"name\":\"Phone\",\"id\":\"10\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"email\",\"dataType\":\"string\",\"name\":\"Email\",\"id\":\"9\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"userpic\",\"dataType\":\"file\",\"name\":\"User pic\",\"id\":\"1\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"Username (login)\",\"id\":\"13\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"role\",\"dataType\":\"string\",\"name\":\"Roles\",\"id\":\"6\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"password\",\"dataType\":\"string\",\"name\":\"Password (hash)\",\"id\":\"12\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"firstName\",\"dataType\":\"string\",\"name\":\"First name\",\"id\":\"5\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"lastName\",\"dataType\":\"string\",\"name\":\"Last name\",\"id\":\"4\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"gender\",\"dataType\":\"string\",\"name\":\"Gender\",\"id\":\"3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"date_registered\",\"dataType\":\"date\",\"name\":\"Date registered on Dev\",\"id\":\"14451621029358812\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"isBlocked\",\"dataType\":\"boolean\",\"name\":\"Block user\",\"id\":\"2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"code\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"51351621027822811\",\"link\":null,\"group\":\"1621027815164\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"isEmailConfirmed\",\"dataType\":\"boolean\",\"name\":\"Email confirmed\",\"id\":\"60111621027825496\",\"link\":\"\",\"group\":\"1621027815164\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false}]",
-                "jsonGroupSettings": "[{\"id\":-502807437,\"name\":\"Contacts\",\"order\":0},{\"id\":-1776115286,\"name\":\"System fields\",\"order\":1},{\"id\":1621027815164,\"name\":\"Email confirmation\",\"order\":2}]",
-                "jsonViewIdSettings": "[{\"sysName\":\"firstName\"},{\"sysName\":\"lastName\"}]",
+                "name": "vpn_key",
+                "sysName": "vpn_key",
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"dateCreated\",\"dataType\":\"date\",\"name\":\"Дата создания\",\"id\":\"44761675095209850\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"user\",\"dataType\":\"link\",\"name\":\"Пользователь\",\"id\":\"20071673281951832\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[\"servserVPN.country\",\"id\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":true,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"ss_key\",\"dataType\":\"string\",\"name\":\"Ключ для подключения к VPN\",\"id\":\"48521673281776493\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"paid_up_to\",\"dataType\":\"date\",\"name\":\"Оплачен до\",\"id\":\"60121673281813015\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.Y\",\"timeFormat\":\"\",\"isUTC\":\"true\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"status\",\"dataType\":\"array\",\"name\":\"Статус\",\"id\":\"67281673281863015\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":true},{\"sysName\":\"idVPN\",\"dataType\":\"string\",\"name\":\"ID VPN\",\"id\":\"85101673281869481\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"servserVPN\",\"dataType\":\"link\",\"name\":\"Какой VPN\",\"id\":\"72501673281886265\",\"link\":\"servers\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[\"country\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":true,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"country\",\"dataType\":\"link\",\"name\":\"Страна\",\"id\":\"15411673282156887\",\"link\":\"servers\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[\"country\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":true,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"accessUrl\",\"dataType\":\"string\",\"name\":\"Ответ от сервера\",\"id\":\"10391673448202267\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"type_purchase\",\"dataType\":\"string\",\"name\":\"Тип покупки\",\"id\":\"47341675520436360\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"new\",\"label\":\"Новый\"},{\"value\":\"add\",\"label\":\"Дополнительный\"}]},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false}]",
+                "jsonGroupSettings": "[]",
+                "jsonViewIdSettings": "[{\"sysName\":\"status\"},{\"sysName\":\"country\"}]",
                 "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2021-11-20T16:05:00Z",
-                "createBy": 0,
-                "changedBy": 0,
+                "dateChanged": "2023-06-27T09:49:52Z",
+                "createBy": 14363,
+                "changedBy": 1,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "objectIDSysName": "id",
                 "innerIDField": {
                     "sysName": "id",
                     "dataType": "id",
-                    "name": "Username (login)",
-                    "id": "13",
+                    "name": "id",
+                    "id": "0",
                     "link": "",
-                    "group": "",
+                    "group": "0",
                     "tags": "",
                     "indexing": false,
                     "ordering": false,
                     "description": null,
                     "weight": null,
-                    "order": 1,
+                    "order": 0,
                     "linkIndexFieldSysName": [],
                     "defaultValue": "",
                     "constraints": null,
@@ -2459,119 +1434,15 @@ const App = (props) => {
                     "format": null,
                     "formatOptions": {},
                     "groupName": null,
-                    "indexExists": false,
+                    "linkType": false,
+                    "arrayLink": false,
                     "typeVariable": {},
                     "json": false,
                     "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
+                    "indexExists": false,
                     "array": false
                 },
                 "folderId": null
-            },
-            "1385610": {
-                "networkID": 6829,
-                "sysName": "Features",
-                "name": "Feature requests and Bug reports",
-                "id": 1385610,
-                "dateCreated": "2021-05-12T15:06:56Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"votes_ids\",\"dataType\":\"arrayLink\",\"name\":\"Who upvoted\",\"id\":\"14001620832180875\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"feature_id\",\"dataType\":\"string\",\"name\":\"Inner ID\",\"id\":\"23601621342083348\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"subscriber_ids\",\"dataType\":\"arrayLink\",\"name\":\"Subscribers\",\"id\":\"26751621348189191\",\"link\":\"WebUser\",\"group\":\"1621348185318\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"status\",\"dataType\":\"link\",\"name\":\"Request status\",\"id\":\"40251620832303364\",\"link\":\"request_status\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"release_id\",\"dataType\":\"link\",\"name\":\"Release\",\"id\":\"40791621408746909\",\"link\":\"Releases\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"feature_type\",\"dataType\":\"link\",\"name\":\"Feature type\",\"id\":\"55371621030232780\",\"link\":\"feature_type\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"user_id\",\"dataType\":\"link\",\"name\":\"Who suggested\",\"id\":\"59421620832153105\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"screenshots\",\"dataType\":\"file\",\"name\":\"Screenshots or Screencast\",\"id\":\"61091637158867177\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"multipleFiles\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"color\",\"dataType\":\"string\",\"name\":\"Card color\",\"id\":\"61881621017200362\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"tags\",\"dataType\":\"arrayLink\",\"name\":\"Tags\",\"id\":\"67851621409605492\",\"link\":\"tags\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"votes\",\"dataType\":\"number\",\"name\":\"Number of upvotes\",\"id\":\"68061620832170304\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"date_added\",\"dataType\":\"date\",\"name\":\"Date added\",\"id\":\"68351620832123660\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"D MMMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"progress\",\"dataType\":\"json\",\"name\":\"Progress\",\"id\":\"68751622642385874\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"slider\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"unitName\":\"%\",\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{\"min\":0,\"max\":100,\"step\":5},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"release_date\",\"dataType\":\"date\",\"name\":\"Release date\",\"id\":\"71651621345011532\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"D MMMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"decline_reason\",\"dataType\":\"string\",\"name\":\"Reason of decline\",\"id\":\"73671621342083940\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"date_updated\",\"dataType\":\"date\",\"name\":\"Date updated\",\"id\":\"74581670507990970\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"D MMMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"Feature description\",\"id\":\"77031620832091108\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"title\",\"dataType\":\"string\",\"name\":\"Feature title\",\"id\":\"79031620832091734\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"dev_status\",\"dataType\":\"link\",\"name\":\"Development status\",\"id\":\"85621620832330584\",\"link\":\"development_status\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false}]",
-                "jsonGroupSettings": "[{\"name\":\"Subscriptions\",\"id\":1621348185318,\"order\":0}]",
-                "jsonViewIdSettings": "[{\"sysName\":\"feature_id\"},{\"sysName\":\"title\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2022-12-08T14:02:39Z",
-                "createBy": 1,
-                "changedBy": 1,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "indexExists": false,
-                    "typeVariable": {},
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "array": false
-                },
-                "folderId": 33625685
-            },
-            "1385613": {
-                "networkID": 6829,
-                "sysName": "development_status",
-                "name": "development_status",
-                "id": 1385613,
-                "dateCreated": "2021-05-12T15:14:45Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"status\",\"dataType\":\"string\",\"name\":\"Status\",\"id\":\"23221620832490508\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"status\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": false,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2021-05-12T15:14:59Z",
-                "createBy": 1,
-                "changedBy": 1,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "indexExists": false,
-                    "typeVariable": {},
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "array": false
-                },
-                "folderId": 33625685
             }
         },
         "isSuccessWrite": false,
@@ -7230,7 +6101,7 @@ const App = (props) => {
     }
 
     let exampleForm = {
-        "sl": "adminSurveyFilters",
+        "sl": "editClient",
         "formName": "",
         "formDesc": "",
         "formButton": "",
@@ -7243,564 +6114,420 @@ const App = (props) => {
                 "resultMessageField": null,
                 "isSuccessField": null
             },
-            "data": {
-                "readFields": [
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    }
-                ],
-                "writeFields": [
-                    {
-                        "fieldSysName": "from",
-                        "fetch": [],
-                        "sysName": "from",
-                        "name": "From",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD MMM, Y",
-                            "timeFormat": "",
-                            "isUTC": "true"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "survey_1",
-                        "fetch": [],
-                        "sysName": "survey_1",
-                        "name": "Question 1 filter (Which describes you best)",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "survey_step1"
-                    },
-                    {
-                        "fieldSysName": "survey_2",
-                        "fetch": [],
-                        "sysName": "survey_2",
-                        "name": "Question 2 filter (Which describes you best)",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "survey_step2"
-                    },
-                    {
-                        "fieldSysName": "survey_3",
-                        "fetch": [],
-                        "sysName": "survey_3",
-                        "name": "Question 3 filter (How did you know about Directual)",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "survey_step2"
-                    },
-                    {
-                        "fieldSysName": "to",
-                        "fetch": [],
-                        "sysName": "to",
-                        "name": "To",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD MMM, Y",
-                            "timeFormat": "",
-                            "isUTC": "true"
-                        },
-                        "link": ""
-                    }
-                ],
-                "fields": {
-                    "id": {
-                        "id": "id",
-                        "content": "id",
-                        "type": "field",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "from": {
-                        "id": "from",
-                        "content": "From",
-                        "type": "field",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD MMM, Y",
-                            "timeFormat": "",
-                            "isUTC": "true"
-                        },
-                        "write": true,
-                        "link": ""
-                    },
-                    "survey_1": {
-                        "id": "survey_1",
-                        "content": "Question 1 filter (Which describes you best)",
-                        "type": "field",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "link": "survey_step1"
-                    },
-                    "survey_2": {
-                        "id": "survey_2",
-                        "content": "Question 2 filter (Which describes you best)",
-                        "type": "field",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "link": "survey_step2"
-                    },
-                    "survey_3": {
-                        "id": "survey_3",
-                        "content": "Question 3 filter (How did you know about Directual)",
-                        "type": "field",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "link": "survey_step2"
-                    },
-                    "to": {
-                        "id": "to",
-                        "content": "To",
-                        "type": "field",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD MMM, Y",
-                            "timeFormat": "",
-                            "isUTC": "true"
-                        },
-                        "write": true,
-                        "link": ""
-                    }
-                },
-                "fieldParams": {
-                    "from": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "survey_1": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "defaultValueOn": true,
-                        "defaultValue": "reset_everything"
-                    },
-                    "survey_2": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "survey_3": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "to": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "users_count": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "id": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    }
-                },
-                "columns": {
-                    "tab-1": {
-                        "id": "tab-1",
-                        "title": "New section",
-                        "fieldIds": [
-                            "from",
-                            "survey_1",
-                            "survey_2",
-                            "survey_3",
-                            "to",
-                            "id"
-                        ]
-                    }
-                },
-                "columnOrder": [
-                    "tab-1"
-                ]
-            },
-            "fields": {
-                "from": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "survey_1": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "defaultValueOn": true,
-                    "defaultValue": "reset_everything"
-                },
-                "survey_2": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "survey_3": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "to": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "users_count": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "id": {
-                    "include": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                }
-            },
-            "resultScreen": {
-                "disableResubmit": true,
-                "successMessage": "Resetting stats..."
+            "useEditing": true,
+            "editObject": "url",
+            "auth": {
+                "isPerson": false
             }
         },
         "fileds": [
             {
-                "sysName": "from",
-                "name": "From",
-                "dataType": "date",
-                "id": "15231689344219273",
+                "sysName": "address",
+                "dataType": "string",
+                "name": "Address",
+                "id": "99561692639142683",
                 "link": "",
-                "group": "0",
-                "tags": null,
+                "group": "-502807437",
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD MMM, Y",
-                    "timeFormat": "",
-                    "isUTC": "true"
-                },
-                "groupName": null,
-                "indexExists": false,
-                "json": false,
-                "typeVariable": {},
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "array": false
-            },
-            {
-                "sysName": "survey_1",
-                "name": "Question 1 filter (Which describes you best)",
-                "dataType": "arrayLink",
-                "id": "95921689345130773",
-                "link": "survey_step1",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
+                "weight": 0,
                 "order": 3,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
                 "indexExists": false,
-                "json": false,
-                "typeVariable": {},
-                "linkOrArrayLinkType": true,
                 "linkType": false,
-                "arrayLink": true,
-                "array": false
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "array": false,
+                "params": {
+                    "include": true,
+                    "hidden": false,
+                    "required": false,
+                    "isTextarea": false,
+                    "isMarkdown": false,
+                    "textareaRows": 4,
+                    "defaultValue": "",
+                    "isPositive": false,
+                    "quickSearch": true,
+                    "allowAddLinks": false,
+                    "dateTimeOn": true,
+                    "isValid": true,
+                    "weight": 0,
+                    "jsonDisplay": "default",
+                    "range": {
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unitName": ""
+                    }
+                },
+                "isValid": true
             },
             {
-                "sysName": "survey_2",
-                "name": "Question 2 filter (Which describes you best)",
-                "dataType": "arrayLink",
-                "id": "48191689345146760",
-                "link": "survey_step2",
+                "sysName": "client_tag",
+                "dataType": "link",
+                "name": "Client Tag",
+                "id": "40291696233077937",
+                "link": "tags",
                 "group": "0",
-                "tags": null,
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
-                "weight": null,
-                "order": 4,
+                "weight": 0,
+                "order": 8,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
                 "indexExists": false,
-                "json": false,
+                "linkType": true,
                 "typeVariable": {},
+                "json": false,
                 "linkOrArrayLinkType": true,
-                "linkType": false,
-                "arrayLink": true,
-                "array": false
+                "arrayLink": false,
+                "array": false,
+                "params": {
+                    "include": true,
+                    "hidden": false,
+                    "required": false,
+                    "isTextarea": false,
+                    "isMarkdown": false,
+                    "textareaRows": 4,
+                    "defaultValue": "",
+                    "isPositive": false,
+                    "quickSearch": true,
+                    "allowAddLinks": false,
+                    "dateTimeOn": true,
+                    "isValid": true,
+                    "weight": 0,
+                    "jsonDisplay": "default",
+                    "range": {
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unitName": ""
+                    }
+                },
+                "isValid": true
             },
             {
-                "sysName": "survey_3",
-                "name": "Question 3 filter (How did you know about Directual)",
-                "dataType": "arrayLink",
-                "id": "72871689345166484",
-                "link": "survey_step2",
-                "group": "0",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 5,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "indexExists": false,
-                "json": false,
-                "typeVariable": {},
-                "linkOrArrayLinkType": true,
-                "linkType": false,
-                "arrayLink": true,
-                "array": false
-            },
-            {
-                "sysName": "to",
-                "name": "To",
-                "dataType": "date",
-                "id": "71261689344219765",
+                "sysName": "firstName",
+                "dataType": "string",
+                "name": "First name",
+                "id": "5",
                 "link": "",
                 "group": "0",
-                "tags": null,
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
-                "weight": null,
-                "order": 2,
+                "weight": 0,
+                "order": 3,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": {
-                    "customOptionLabel": "My option",
-                    "keyValue": {
-                        "key": "key",
-                        "value": "value",
-                        "button": "One more"
-                    },
-                    "dateLocale": "en-gb",
-                    "booleanOptions": [
-                        "True",
-                        "False"
-                    ],
-                    "validWeekDays": {
-                        "mon": true,
-                        "thu": true,
-                        "tue": true,
-                        "sun": true,
-                        "fri": true,
-                        "sat": true,
-                        "wed": true
-                    },
-                    "customOptionPlaceholder": "Describe your option",
-                    "range": {},
-                    "customOptionType": "textarea",
-                    "dateFormat": "DD MMM, Y",
-                    "timeFormat": "",
-                    "isUTC": "true"
-                },
+                "formatOptions": {},
                 "groupName": null,
                 "indexExists": false,
-                "json": false,
-                "typeVariable": {},
-                "linkOrArrayLinkType": false,
                 "linkType": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
                 "arrayLink": false,
-                "array": false
+                "array": false,
+                "params": {
+                    "include": true,
+                    "hidden": false,
+                    "required": false,
+                    "isTextarea": false,
+                    "isMarkdown": false,
+                    "textareaRows": 4,
+                    "defaultValue": "",
+                    "isPositive": false,
+                    "quickSearch": true,
+                    "allowAddLinks": false,
+                    "dateTimeOn": true,
+                    "isValid": true,
+                    "weight": 0,
+                    "jsonDisplay": "default",
+                    "range": {
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unitName": ""
+                    }
+                },
+                "isValid": true
+            },
+            {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "Username (login)",
+                "id": "13",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": 0,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "array": false,
+                "params": {
+                    "include": true,
+                    "hidden": false,
+                    "required": false,
+                    "isTextarea": false,
+                    "isMarkdown": false,
+                    "textareaRows": 4,
+                    "defaultValue": "",
+                    "isPositive": false,
+                    "quickSearch": true,
+                    "allowAddLinks": false,
+                    "dateTimeOn": true,
+                    "isValid": true,
+                    "weight": 0,
+                    "jsonDisplay": "default",
+                    "range": {
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unitName": ""
+                    }
+                },
+                "isValid": true
+            },
+            {
+                "sysName": "lastName",
+                "dataType": "string",
+                "name": "Last name",
+                "id": "4",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": 0,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "array": false,
+                "params": {
+                    "include": true,
+                    "hidden": false,
+                    "required": false,
+                    "isTextarea": false,
+                    "isMarkdown": false,
+                    "textareaRows": 4,
+                    "defaultValue": "",
+                    "isPositive": false,
+                    "quickSearch": true,
+                    "allowAddLinks": false,
+                    "dateTimeOn": true,
+                    "isValid": true,
+                    "weight": 0,
+                    "jsonDisplay": "default",
+                    "range": {
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unitName": ""
+                    }
+                },
+                "isValid": true
+            },
+            {
+                "sysName": "phone",
+                "dataType": "string",
+                "name": "Phone",
+                "id": "10",
+                "link": "",
+                "group": "-502807437",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": 0,
+                "order": 8,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": "Contacts",
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "array": false,
+                "params": {
+                    "include": true,
+                    "hidden": false,
+                    "required": false,
+                    "isTextarea": false,
+                    "isMarkdown": false,
+                    "textareaRows": 4,
+                    "defaultValue": "",
+                    "isPositive": false,
+                    "quickSearch": true,
+                    "allowAddLinks": false,
+                    "dateTimeOn": true,
+                    "isValid": true,
+                    "weight": 0,
+                    "jsonDisplay": "default",
+                    "range": {
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unitName": ""
+                    }
+                },
+                "isValid": true
+            },
+            {
+                "sysName": "post_number",
+                "dataType": "string",
+                "name": "Post",
+                "id": "89351692639178868",
+                "link": "",
+                "group": "-502807437",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": 0,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "array": false,
+                "params": {
+                    "include": true,
+                    "hidden": false,
+                    "required": false,
+                    "isTextarea": false,
+                    "isMarkdown": false,
+                    "textareaRows": 4,
+                    "defaultValue": "",
+                    "isPositive": false,
+                    "quickSearch": true,
+                    "allowAddLinks": false,
+                    "dateTimeOn": true,
+                    "isValid": true,
+                    "weight": 0,
+                    "jsonDisplay": "default",
+                    "range": {
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unitName": ""
+                    }
+                },
+                "isValid": true
+            },
+            {
+                "sysName": "userpic",
+                "dataType": "file",
+                "name": "User pic",
+                "id": "1",
+                "link": "",
+                "group": "-502807437",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": 0,
+                "order": 13,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "image",
+                "formatOptions": {},
+                "groupName": "Contacts",
+                "indexExists": false,
+                "linkType": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "array": false,
+                "params": {
+                    "include": true,
+                    "hidden": false,
+                    "required": false,
+                    "isTextarea": false,
+                    "isMarkdown": false,
+                    "textareaRows": 4,
+                    "defaultValue": "",
+                    "isPositive": false,
+                    "quickSearch": true,
+                    "allowAddLinks": false,
+                    "dateTimeOn": true,
+                    "isValid": true,
+                    "weight": 0,
+                    "jsonDisplay": "default",
+                    "range": {
+                        "min": 0,
+                        "max": 100,
+                        "step": 1,
+                        "unitName": ""
+                    }
+                },
+                "isValid": true
             }
         ],
         "error": null,
@@ -8630,6 +7357,41 @@ const App = (props) => {
 
     const [currentTheme, setCurrentTheme] = useState(basicTheme)
 
+    const brakePoints = {
+        mobile: { from: 0, to: 768 },
+        desktop: { from: 769, to: 10000 },
+    }
+
+    const layoutRef = useRef(null);
+    const [currentBP, setCurrentBP] = useState('desktop')
+    const [layoutWidth, setLayoutWidth] = useState(brakePoints[currentBP].display)
+
+    // Calculating layout width:
+    useEffect(() => {
+        if (layoutRef.current && layoutRef.current.offsetWidth != layoutWidth) {
+            setLayoutWidth(layoutRef.current.offsetWidth)
+        }
+    })
+    useEffect(() => {
+        if (layoutWidth <= brakePoints.mobile.to) {
+            setCurrentBP('mobile')
+        }
+        if (layoutWidth >= brakePoints.desktop.from) {
+            setCurrentBP('desktop')
+        }
+    }, [layoutWidth])
+
+    useEffect(() => {
+        const resizeListener = () => {
+            if (layoutRef.current && layoutRef.current.offsetWidth !== layoutWidth) {
+                setLayoutWidth(layoutRef.current.offsetWidth);
+            }
+        }
+        window.addEventListener("resize", resizeListener);
+        return () => { window.removeEventListener('resize', resizeListener); };
+    }, []);
+    // =========================
+
     useEffect(() => {
         localStorage.setItem('dd-theme-color', currentTheme.colorScheme)
         localStorage.setItem('dd-desktop-menu', currentTheme.desktopMenu)
@@ -8644,111 +7406,126 @@ const App = (props) => {
 
 
     const exampleTabs = [
-        { key: '1', title: 'Table', content: <FpsTable data={exampleTable} auth={authExample} locale='FRA'/> },
+        { key: '1', title: 'Table', content: <FpsTable data={exampleTable} auth={authExample} locale='FRA' /> },
         // { key: '2', title: 'Tab 2', content: <div>Tab content 2</div> },
     ]
 
-    return (
+    return <Router>
+        <div style={{ width: '100%', position: 'absolute', height: 0 }} ref={layoutRef}></div>
         <FpsWrapper
-            horizontal={currentTheme.desktopMenu == 'top'}
+            horizontal = {false || currentBP == 'mobile'}
+            //showMobileTabs
+            mobileTabsPlace = 'bottom' // 'top'
             mobileLeftSide={currentTheme.mobileMenu == 'left'}
+            whiteLabel={false}
+            locale='ESP'
+            themeName={currentTheme}
+            mainMenu={
+                <MainMenuWrapper
+                    themeName={currentTheme}
+                    currentBP={currentBP}
+                />
+            }
+            mobileTabs={
+                <MainMenuWrapper
+                    themeName={currentTheme}
+                    mobileTabs
+                    currentBP={currentBP}
+                />
+            }
+            components={<React.Fragment>
+                <Switch>
+                    <Route exact path="/table">
+                        <TabsPane tabs={exampleTabs} hideSingleTab currentTabKey={1} fixedScroll={false} />
+                    </Route>
+                    <Route exact path="/">
+                        <WhatIsIt />
+                    </Route>
+                    <Route exact path="/form">
+                        <FpsForm locale='ESP' data={exampleForm} auth={authExample} />
+                    </Route>
+                    <Route exact path="/kanban">
+                        <FpsKanban locale='ESP' data={kanbanData} auth={authExample} />
+                    </Route>
+                    <Route exact path="/chart">
+                        <FpsChart data={chartData} />
+                        <FpsChart data={chartData1} />
+                    </Route>
+                    <Route exact path="/profile">
+                        <Profile
+                            width={600}
+                            user={exampleUser}
+                        />
+                        <SignIn
+                            header='Sign in!'
+                            width={400}
+                            //googleAuth={<Button socialGoogle onClick={()=>alert('Google!')}>Sign In with Google</Button>}
+                            facebookAuth={<Button socialFacebook onClick={() => alert('Facebook!')}>Sign In with Facebook</Button>}
+                            onSignIn={value => console.log(value)}
+                            userNameFormat='phone'
+                        />
+                        <SignUp
+                            header='Sign Up!'
+                            width={400}
+                            googleAuth={<Button socialGoogle onClick={() => alert('Google!')}>Sign Up with Google</Button>}
+                            facebookAuth={<Button socialFacebook onClick={() => alert('Facebook!')}>Sign Up with Facebook</Button>}
+                            userNameFormat='phone'
+                            onSignUp={value => console.log(value)}
+                        />
+                        <RestorePass
+                            header='Reset password'
+                            width={400}
+                            userNameFormat='phone'
+                            onRestore={value => console.log(value)}
+                        />
+
+                    </Route>
+                    <Route exact path="/cards">
+                        <FpsCards locale="ESP" data={cardActions} auth={authExample} currentBP='mobile' />
+                    </Route>
+                    <Route exact path="/theme">
+                        <h1>Theme management</h1>
+                        <FpsTheme
+                            onChange={value => { setCurrentTheme(value) }}
+                            defaultValue={currentTheme}
+                            themes={['classic', 'white', 'tiffany', 'darkMint', 'warmNight', 'hacker', 'raspberry', 'baltic', 'custom']} />
+                    </Route>
+
+                    <Route exact path="/system-typography">
+                        <h1>Typography</h1>
+                        <TypoPage />
+                    </Route>
+                    <Route exact path="/system-button">
+                        <ButtonsPage />
+                    </Route>
+                    <Route exact path="/system-icons">
+                        <IconsPage />
+                    </Route>
+                    <Route exact path="/system-data-entry">
+                        <InputsPage />
+                    </Route>
+                    <Route exact path="/system-dnd">
+                        <Dnd />
+                    </Route>
+                    <Route exact path="/system-layout">
+                        <LayoutPage />
+                    </Route>
+                    <Route exact path="/platform">
+                        <PlatformPage />
+                    </Route>
+                    <Route exact path="/system-media">
+                        <h1>Media</h1>
+                        <h2>Youtube</h2>
+                        {/* <CodeSnippet code="<Media type='video' source='https://www.youtube.com/watch?v=JAwEWLP-G_M' width='550' height='300'/>" /> */}
+                        <Media type='video' source="https://www.youtube.com/watch?v=JAwEWLP-G_M" width='550' height='300' />
+                        {/* <Stopwatch timer min={60} direction='reverse' sec={0} /> */}
+                    </Route>
+
+                </Switch>
+            </React.Fragment>}
         >
-            <Router>
-                <MainMenuWrapper themeName={currentTheme} horizontal={currentTheme.desktopMenu == 'top'} mobileLeftSide={currentTheme.mobileMenu == 'left'} />
-                <ContentWrapper whiteLabel={false} locale='FRA' themeName={currentTheme}>
-                    <Switch>
-                        <Route exact path="/table">
-                            <TabsPane tabs={exampleTabs} hideSingleTab currentTabKey={1} fixedScroll={false} />
-                        </Route>
-                        <Route exact path="/">
-                            <WhatIsIt />
-                        </Route>
-                        <Route exact path="/form">
-                            <FpsForm locale='ESP' data={exampleForm} auth={authExample} />
-                        </Route>
-                        <Route exact path="/kanban">
-                            <FpsKanban locale='ESP' data={kanbanData} auth={authExample} />
-                        </Route>
-                        <Route exact path="/chart">
-                            <FpsChart data={chartData}/>
-                            <FpsChart data={chartData1}/>
-                        </Route>
-                        <Route exact path="/profile">
-                            <Profile
-                                width={600}
-                                user={exampleUser}
-                            />
-                            <SignIn
-                                header='Sign in!'
-                                width={400}
-                                //googleAuth={<Button socialGoogle onClick={()=>alert('Google!')}>Sign In with Google</Button>}
-                                facebookAuth={<Button socialFacebook onClick={() => alert('Facebook!')}>Sign In with Facebook</Button>}
-                                onSignIn={value => console.log(value)}
-                                userNameFormat='phone'
-                            />
-                            <SignUp
-                                header='Sign Up!'
-                                width={400}
-                                googleAuth={<Button socialGoogle onClick={() => alert('Google!')}>Sign Up with Google</Button>}
-                                facebookAuth={<Button socialFacebook onClick={() => alert('Facebook!')}>Sign Up with Facebook</Button>}
-                                userNameFormat='phone'
-                                onSignUp={value => console.log(value)}
-                            />
-                            <RestorePass
-                                header='Reset password'
-                                width={400}
-                                userNameFormat='phone'
-                                onRestore={value => console.log(value)}
-                            />
-
-                        </Route>
-                        <Route exact path="/cards">
-                            <FpsCards locale="ESP" data={cardActions} auth={authExample} currentBP='mobile' />
-                        </Route>
-                        <Route exact path="/theme">
-                            <h1>Theme management</h1>
-                            <FpsTheme
-                                onChange={value => { setCurrentTheme(value) }}
-                                defaultValue={currentTheme}
-                                themes={['classic', 'white', 'tiffany', 'darkMint', 'warmNight', 'hacker', 'raspberry', 'baltic', 'custom']} />
-                        </Route>
-
-                        <Route exact path="/system-typography">
-                            <h1>Typography</h1>
-                            <TypoPage />
-                        </Route>
-                        <Route exact path="/system-button">
-                            <ButtonsPage />
-                        </Route>
-                        <Route exact path="/system-icons">
-                            <IconsPage />
-                        </Route>
-                        <Route exact path="/system-data-entry">
-                            <InputsPage />
-                        </Route>
-                        <Route exact path="/system-dnd">
-                            <Dnd />
-                        </Route>
-                        <Route exact path="/system-layout">
-                            <LayoutPage />
-                        </Route>
-                        <Route exact path="/platform">
-                            <PlatformPage />
-                        </Route>
-                        <Route exact path="/system-media">
-                            <h1>Media</h1>
-                            <h2>Youtube</h2>
-                            {/* <CodeSnippet code="<Media type='video' source='https://www.youtube.com/watch?v=JAwEWLP-G_M' width='550' height='300'/>" /> */}
-                            <Media type='video' source="https://www.youtube.com/watch?v=JAwEWLP-G_M" width='550' height='300' />
-                            {/* <Stopwatch timer min={60} direction='reverse' sec={0} /> */}
-                        </Route>
-
-                    </Switch>
-
-                </ContentWrapper>
-            </Router>
         </FpsWrapper>
-    )
+    </Router>
 }
 
 export default App

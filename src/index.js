@@ -13,7 +13,7 @@ import FpsHtml, { FpsMarkdown } from './components/fps/FpsHtml'
 import FpsButton from './components/fps/button/FpsButton'
 import FpsHint from './components/fps/hint/FpsHint'
 import FpsForm, { FormSection } from './components/fps/dataentry/form/FpsForm'
-import MainMenu from './components/fps/mainmenu/mainmenu'
+import MainMenu, { NewMainMenu, NewMobileTabs } from './components/fps/mainmenu/mainmenu'
 import ComponentDetails from './components/fps/componentdetails/componentdetails'
 import FpsTable from './components/fps/viewobjects/table/FpsTable'
 import FpsKanban from './components/fps/viewobjects/kanban/FpsKanban'
@@ -80,6 +80,8 @@ export {
   Tree,
   Stopwatch,
   MainMenu,
+  NewMainMenu,
+  NewMobileTabs,
   ComponentDetails,
   FpsWrapper,
   ContentWrapper,

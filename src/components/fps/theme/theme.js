@@ -13,11 +13,12 @@ import ActionPanel from '../actionspanel/actionspanel'
 const customThemeColors = {
     classic: {
         '--menu-bgr': "#ffffff",
-        '--menu-border-color': "#eeeeee",
+        '--menu-border-color': "#dddddd",
         '--menu-item': "#999999",
         '--menu-item-hover': "#333333",
         '--menu-item-selected': "#058efc",
-        '--menu-group': "#333333",
+        '--menu-item-selected-bgr': "#eeeeee",
+        '--menu-group': "#aaaaaa",
 
         // Button regular
         '--button-bgr': "#ffffff",
@@ -112,10 +113,11 @@ const customThemeColors = {
     },
     white: {
         '--menu-bgr': "#ffffff",
-        '--menu-border-color': "#aaaaaa",
+        '--menu-border-color': "#",
         '--menu-item': "#999999",
         '--menu-item-hover': "#333333",
         '--menu-item-selected': "#058efc",
+        '--menu-item-selected-bgr': "#aaaaaa",
         '--menu-group': "#333333",
 
         // Button regular
@@ -211,11 +213,12 @@ const customThemeColors = {
     },
     tiffany: {
         '--menu-bgr': "#ffffff",
-        '--menu-border-color': "#aaaaaa",
+        '--menu-border-color': "#dddddd",
         '--menu-item': "#999999",
         '--menu-item-hover': "#333333",
         '--menu-item-selected': "#4ad5c8",
-        '--menu-group': "#333333",
+        '--menu-item-selected-bgr': "#eeeeee",
+        '--menu-group': "#aaaaaa",
 
         // Button regular
         '--button-bgr': "#ffffff",
@@ -310,11 +313,12 @@ const customThemeColors = {
     },
     darkMint: {
         '--menu-bgr': "#1c1d3b",
-        '--menu-border-color': "#131022",
+        '--menu-border-color': "#27204a",
         '--menu-item': "#aaaaaa",
         '--menu-item-hover': "#ffffff",
         '--menu-item-selected': "#1ae191",
-        '--menu-group': "#fff",
+        '--menu-item-selected-bgr': "#131022",
+        '--menu-group': "rgba(255,255,255,.75)",
 
         // Button regular
         '--button-bgr': "#1c1d3b",
@@ -413,6 +417,7 @@ const customThemeColors = {
         '--menu-item': "#aaaaaa",
         '--menu-item-hover': "#ffffff",
         '--menu-item-selected': "#85c92e",
+        '--menu-item-selected-bgr': "#142025",
         '--menu-group': "#fff",
 
         // Button regular
@@ -508,10 +513,11 @@ const customThemeColors = {
     },
     hacker: {
         '--menu-bgr': "#333333",
-        '--menu-border-color': "#111",
+        '--menu-border-color': "#111111",
         '--menu-item': "#aaaaaa",
         '--menu-item-hover': "#ffffff",
         '--menu-item-selected': "#60FF00",
+        '--menu-item-selected-bgr': "#222222",
         '--menu-group': "#fff",
 
         // Button regular
@@ -608,6 +614,7 @@ const customThemeColors = {
         '--menu-item': "#999999",
         '--menu-item-hover': "#333333",
         '--menu-item-selected': "#db004a",
+        '--menu-item-selected-bgr': "#f5e8e4",
         '--menu-group': "#333333",
 
         // Button regular
@@ -703,10 +710,11 @@ const customThemeColors = {
     },
     baltic: {
         '--menu-bgr': "#ffffff",
-        '--menu-border-color': "#eeefe7",
+        '--menu-border-color': "#",
         '--menu-item': "#999999",
         '--menu-item-hover': "#333333",
         '--menu-item-selected': "#8ca3a3",
+        '--menu-item-selected-bgr': "#eeefe7",
         '--menu-group': "#333333",
 
         // Button regular
@@ -808,6 +816,7 @@ const customThemeColorNames = {
     '--menu-item': "Menu | Item color",
     '--menu-item-hover': "Menu | Hovered item color",
     '--menu-item-selected': "Menu | Selected item color",
+    '--menu-item-selected-bgr': "Menu | Selected item background color",
     '--menu-group': "Menu | Subheader (group) color",
 
     // Button _ regular
@@ -1028,7 +1037,7 @@ export default function FpsTheme(props) {
     const fontFaces = [
         { key: 'Montserrat', value: 'Montserrat' },
         { key: 'Roboto', value: 'Roboto' },
-        { key: 'Lato', value: 'Lato' },
+        { key: 'Open Sans', value: 'Open Sans' },
         { key: 'Merriweather', value: 'Merriweather' },
         { key: 'Oswald', value: 'Oswald' },
         { key: 'Rubik', value: 'Rubik' },
@@ -1039,6 +1048,7 @@ export default function FpsTheme(props) {
         { key: 'Playfair Display', value: 'Playfair Display' },
         { key: 'Alice', value: 'Alice' },
         { key: 'Bitter', value: 'Bitter' },
+        { key: 'Lato', value: 'Lato' },
         { key: 'Fira Sans', value: 'Fira Sans' },
         { key: 'Gabriela', value: 'Gabriela' },
         { key: 'Orelega One', value: 'Orelega One' },
@@ -1048,11 +1058,13 @@ export default function FpsTheme(props) {
         { key: 'Comfortaa', value: 'Comfortaa' },
         { key: 'Kanit', value: 'Kanit' },
         { key: 'Noto Serif JP', value: 'すべての (Noto Serif)' },
+        { key: 'Amatic SC', value: 'Amatic SC' },
+        { key: 'Arimo', value: 'Arimo' },
+        { key: 'Yanone Kaffeesatz', value: 'Yanone Kaffeesatz' },
     ]
     const fontWeights = [
         { key: '900', value: 'Black 900' },
         { key: '700', value: 'Bold 700' },
-        { key: '500', value: 'Medium 500' },
         { key: '400', value: 'Regular 400' },
         { key: '300', value: 'Light 300' },
     ]
