@@ -473,16 +473,19 @@ export function NewMainMenu(props) {
                 {mobileHeaderLogo == 'small' ?
                     <React.Fragment>
                         {logoOption == 'ai' ?
-                            <a href="/">
-                                <div style={{
+                            <div
+                                onClick={handleRoute("/")}
+                                style={{
                                     width: logoSize.height,
-                                    height: logoSize.height
+                                    height: logoSize.height,
+                                    display: "flex",
+                                    alignItems: "flex-end"
                                 }}
-                                    dangerouslySetInnerHTML={{ __html: _.get(menuConfig, "rootMenu.generatedSmallLogo") }} />
-                            </a>
+                                dangerouslySetInnerHTML={{ __html: _.get(menuConfig, "rootMenu.generatedSmallLogo") }} />
                             :
-                            <a href="/">
-                                <div style={{
+                            <div
+                                onClick={handleRoute("/")}
+                                style={{
                                     backgroundImage: `url(${smallLogoURL})`,
                                     backgroundPosition: 'center center',
                                     backgroundSize: 'contain',
@@ -490,38 +493,40 @@ export function NewMainMenu(props) {
                                     width: logoSize.height,
                                     height: logoSize.height
                                 }} />
-                            </a>
                         }
                     </React.Fragment>
                     :
                     <React.Fragment>
                         {logoOption == 'ai' ?
-                            <a href="/">
-                                <div style={{
+                            <div
+                                onClick={handleRoute("/")}
+                                style={{
                                     width: logoSize.width,
-                                    height: logoSize.height
+                                    height: logoSize.height,
+                                    display: "flex",
+                                    alignItems: "flex-end"
                                 }}
-                                    dangerouslySetInnerHTML={{ __html: _.get(menuConfig, "rootMenu.generatedLogo") }} />
-                            </a>
+                                dangerouslySetInnerHTML={{ __html: _.get(menuConfig, "rootMenu.generatedLogo") }} />
                             :
-                            largeLogoURL ? <a href="/">
-                                <div style={{
+                            largeLogoURL ? <div
+                                onClick={handleRoute("/")}
+                                style={{
                                     backgroundImage: `url(${largeLogoURL})`,
                                     backgroundPosition: 'center center',
                                     backgroundSize: 'contain',
                                     backgroundRepeat: 'no-repeat',
                                     width: logoSize.width,
                                     height: logoSize.height
-                                }} />
-                            </a> :
-                                <a href="/"
+                                }} /> :
+                                <div
+                                    onClick={handleRoute("/")}
                                     style={{
                                         width: logoSize.width,
                                         height: logoSize.height,
                                         margin: 0
                                     }}
                                     className={styles.newTitle}>
-                                    {props.title}</a>
+                                    {props.title}</div>
                         }
                     </React.Fragment>}
             </div>
@@ -655,15 +660,23 @@ export function NewMainMenu(props) {
                         }}
                     >
                         {logoOption == 'ai' ?
-                            <div className={styles.cursorPointer} onClick={handleRoute("/")}>
+                            <div className={styles.cursorPointer} onClick={e => {
+                                hideMMhandler()
+                                handleRoute("/")()
+                            }}>
                                 <div style={{
                                     width: logoSize.height,
-                                    height: logoSize.height
+                                    height: logoSize.height,
+                                    display: "flex",
+                                    alignItems: "flex-end"
                                 }}
                                     dangerouslySetInnerHTML={{ __html: _.get(menuConfig, "rootMenu.generatedSmallLogo") }} />
                             </div>
                             :
-                            <div onClick={handleRoute("/")}
+                            <div onClick={e => {
+                                hideMMhandler()
+                                handleRoute("/")()
+                            }}
                                 className={`${styles.newLogo} D_MainMenu_Logo ${styles.cursorPointer}`}
                                 style={{
                                     backgroundImage: `url(${smallLogoURL})`,
@@ -683,10 +696,15 @@ export function NewMainMenu(props) {
                         }}
                     >
                         {logoOption == 'ai' ?
-                            <div className={styles.cursorPointer} onClick={handleRoute("/")}>
+                            <div className={styles.cursorPointer} onClick={e => {
+                                hideMMhandler()
+                                handleRoute("/")()
+                            }}>
                                 <div style={{
                                     width: logoSize.width,
-                                    height: logoSize.height
+                                    height: logoSize.height,
+                                    display: "flex",
+                                    alignItems: "flex-end"
                                 }}
                                     dangerouslySetInnerHTML={{ __html: _.get(menuConfig, "rootMenu.generatedLogo") }} />
                             </div>
@@ -732,7 +750,7 @@ export function NewMainMenu(props) {
                         item={item}
                         menuCompactWidth={menuCompactWidth}
                         menuPadding={menuPadding}
-                        handleRoute={route => {
+                        handleRoute={route => e => {
                             hideMMhandler()
                             handleRoute(route)()
                         }
@@ -915,6 +933,7 @@ function NewMainMenuItem({ item, menuPadding, menuCompactWidth, isHorizontal, ha
                         <NewMainMenuItem
                             custom_labels={custom_labels}
                             item={child}
+                            handleRoute={handleRoute}
                             currentRoute={currentRoute}
                             menuConfig={menuConfig} />
                     )}
@@ -927,7 +946,7 @@ function NewMainMenuItem({ item, menuPadding, menuCompactWidth, isHorizontal, ha
 
 
 
-    return <div onClick={e => menuItem.linkToType !== 'external' ?
+    return <a onClick={e => menuItem.linkToType !== 'external' ?
         handleRoute(menuItem.linkToPage)(e) : undefined}
         href={menuItem.linkToType !== 'external' ? undefined : menuItem.linkToURL}
         target={menuItem.linkToURLNewWindow && menuItem.linkToType == 'external' ? '_blank' : ''}
@@ -976,5 +995,5 @@ function NewMainMenuItem({ item, menuPadding, menuCompactWidth, isHorizontal, ha
                 {menuItem.linkToURLNewWindow && menuItem.linkToType == 'external' && <div className={`icon verySmall inline icon-arrowRightTop ${styles.newWindow}`} />}
             </div> : undefined}
         {getLabel()}
-    </div>
+    </a>
 }

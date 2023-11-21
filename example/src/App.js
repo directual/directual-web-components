@@ -10,7 +10,8 @@ import {
     Switch,
     Route,
     Link,
-    useLocation
+    useLocation,
+    useHistory
 } from 'react-router-dom'
 
 //pages:
@@ -204,6 +205,10 @@ const newMenuEexample = {
             "name": "Hello there",
             "iconType": "directual_icon",
             "menuDirectualIconSet": "actions"
+        },
+        "rootMobileMenu": {
+            "showMobileHeader": true,
+            "mobileMenuSide": "right"
         }
     }
 }
@@ -211,8 +216,14 @@ const newMenuEexample = {
 function MainMenuWrapper(props) {
     let location = useLocation()
     const { currentBP } = props
+    let history = useHistory();
 
     const [logoUrl, setlogoUrl] = useState('https://api.alfa.directual.com/fileUploaded/directual-site/31f7185d-f0cc-4063-bc59-1ca46d9f8b7c.svg')
+
+    const handleRoute = href => {
+        console.log('route to => ' + href)
+        history.push(href);
+    }
 
     useEffect(() => {
 
@@ -224,19 +235,21 @@ function MainMenuWrapper(props) {
         }
     }, [props.themeName])
 
-    if (props.mobileTabs && currentBP == 'mobile') { return <NewMobileTabs 
-        theme='ural'
-        mainMenu={newMenuEexample.mainMenu}
-        mobileMenuOption={newMenuEexample.mobileMenuOption}
-        menuConfig={newMenuEexample.menuConfig}
-        mobileMenu={newMenuEexample.mobileMenu}
-        currentRoute={location.pathname || '/'}
-        custom_labels={{
-            "counter": "0",
-            "foo": "3"
-        }}
-        currentBP={currentBP}
-        /> }
+    if (props.mobileTabs && currentBP == 'mobile') {
+        return <NewMobileTabs
+            theme='ural'
+            mainMenu={newMenuEexample.mainMenu}
+            mobileMenuOption={newMenuEexample.mobileMenuOption}
+            menuConfig={newMenuEexample.menuConfig}
+            mobileMenu={newMenuEexample.mobileMenu}
+            currentRoute={location.pathname || '/'}
+            custom_labels={{
+                "counter": "0",
+                "foo": "3"
+            }}
+            currentBP={currentBP}
+        />
+    }
 
     return <NewMainMenu
         title='directual-design'
@@ -244,7 +257,7 @@ function MainMenuWrapper(props) {
         //compactState
         currentBP={currentBP}
         handleRoute={href => e => {
-            console.log('route to => ' + href)
+            handleRoute(href);
         }}
         //horizontal={props.horizontal}
         mainMenu={newMenuEexample.mainMenu}
@@ -7178,9 +7191,9 @@ const App = (props) => {
     return <Router>
         <div style={{ width: '100%', position: 'absolute', height: 0 }} ref={layoutRef}></div>
         <FpsWrapper
-            horizontal = {false || currentBP == 'mobile'}
+            horizontal={false || currentBP == 'mobile'}
             //showMobileTabs
-            mobileTabsPlace = 'bottom' // 'top'
+            mobileTabsPlace='bottom' // 'top'
             mobileLeftSide={currentTheme.mobileMenu == 'left'}
             whiteLabel={false}
             locale='ESP'
