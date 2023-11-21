@@ -143,3 +143,7 @@
     flex-grow: 2;
     overflow: auto;
 }
+
+:global(.FPS_Branded_footer) {
+    border:solid 2px red;
+}

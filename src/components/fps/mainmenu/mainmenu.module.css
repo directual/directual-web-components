@@ -170,7 +170,7 @@
   transform: rotate(180deg);
 }
 :global .ural .D_MainMenu_Item {
-  margin: 6px 1px;
+  margin: 9px 1px 1px 1px;
   color: var(--menu-item-hover);
   display: flex;
   justify-content: flex-start;
@@ -326,6 +326,8 @@
   flex-grow: 2;
 }
 .customIcon {
+  min-height: 32px;
+  min-width: 32px;
   position: relative;
   display: flex;
   flex-shrink: 0;
@@ -537,8 +539,6 @@
   }
   .newList {
     overflow: auto;
-    border-top: solid 1px rgba(0, 0, 0, 0);
-    border-bottom: solid 1px rgba(0, 0, 0, 0);
     transition: 0.5s;
   }
   .newList.topBordered {

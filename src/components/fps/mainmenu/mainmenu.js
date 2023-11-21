@@ -267,8 +267,8 @@ function MobileTab(props) {
         {iconType == "remix_icon" && tabConfig.menuRemixIcon &&
             <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`}>
                 <svg
-                    width={tabConfig.menuRemixIconSize || 32}
-                    height={tabConfig.menuRemixIconSize || 32}
+                    width={tabConfig.menuRemixIconSize || 24}
+                    height={tabConfig.menuRemixIconSize || 24}
                     viewBox={`0 0 24 24`}
                 >
                     <path
@@ -285,7 +285,7 @@ function MobileTab(props) {
             <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`}>
                 <img
                     style={{
-                        width: tabConfig.menuCustomIconSize || 32
+                        width: tabConfig.menuCustomIconSize || 24
                     }}
                     src={currentRoute == tabConfig.linkToPage && tabConfig.menuIconCustomSelected ?
                         tabConfig.menuIconCustomSelected
@@ -414,7 +414,7 @@ export function NewMainMenu(props) {
 
     const compactModeHandler = mode => {
         setCompactMode(mode)
-        localStorage.setItem(props.title + '_compactModeStorage', mode ? 'true' : 'false');
+        //localStorage.setItem(props.title + '_compactModeStorage', mode ? 'true' : 'false');
     }
 
 
@@ -919,8 +919,8 @@ function NewMainMenuItem({ item, isHorizontal, handleRoute, currentRoute, hideGr
             <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`}>
                 <img
                     style={{
-                        width: menuItem.menuCustomIconSize || 32,
-                        height: menuItem.menuCustomIconSize || 32
+                        width: menuItem.menuCustomIconSize || 24,
+                        height: menuItem.menuCustomIconSize || 24
                     }}
                     src={currentRoute == menuItem.linkToPage && menuItem.menuIconCustomSelected ?
                         menuItem.menuIconCustomSelected
@@ -930,8 +930,8 @@ function NewMainMenuItem({ item, isHorizontal, handleRoute, currentRoute, hideGr
         {menuItem.iconType == "remix_icon" && menuItem.menuRemixIcon &&
             <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`}>
                 <svg
-                    width={menuItem.menuRemixIconSize || 32}
-                    height={menuItem.menuRemixIconSize || 32}
+                    width={menuItem.menuRemixIconSize || 24}
+                    height={menuItem.menuRemixIconSize || 24}
                     viewBox={`0 0 24 24`}
                 >
                     <path

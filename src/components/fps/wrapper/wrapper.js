@@ -68,10 +68,10 @@ export function FpsWrapper(props) {
                     </div>}
                 </div> :
                 <div className={`${styles.content_components} FPS_Content_Components`}>
-                    {props.components}
+                {props.components}
                 </div>}
         </div>
-        {!props.whiteLabel && <div className={styles.newBrandedFooter}>
+        {!props.whiteLabel && <div className={`${styles.newBrandedFooter} FPS_Branded_footer`}>
             <div className={styles.version}>
                 <a target="_blank" className={styles.logo} href="https://directual.com?ref=fps_footer">
                     <img src={logoUrl} />

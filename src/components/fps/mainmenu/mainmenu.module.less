@@ -197,7 +197,7 @@
     }
 
     .D_MainMenu_Item {
-      margin: 6px 1px;
+      margin: 9px 1px 1px 1px;
       color: var(--menu-item-hover);
       display: flex;
       justify-content: flex-start;
@@ -370,8 +370,8 @@
 }
 
 .customIcon {
-  // height: 32px;
-  // width: 32px;
+  min-height: 32px;
+  min-width: 32px;
   position: relative;
   display: flex;
   flex-shrink: 0;
@@ -594,8 +594,8 @@
 
   .newList {
     overflow: auto;
-    border-top: solid 1px rgba(0,0,0,0);
-    border-bottom: solid 1px rgba(0,0,0,0);
+    //border-top: solid 1px rgba(0,0,0,0);
+    //border-bottom: solid 1px rgba(0,0,0,0);
     transition: .5s;
     &.topBordered {
       border-top: solid 1px var(--menu-border-color)
