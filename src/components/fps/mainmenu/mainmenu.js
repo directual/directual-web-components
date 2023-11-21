@@ -414,7 +414,7 @@ export function NewMainMenu(props) {
 
     const compactModeHandler = mode => {
         setCompactMode(mode)
-        //localStorage.setItem(props.title + '_compactModeStorage', mode ? 'true' : 'false');
+        localStorage.setItem(props.title + '_compactModeStorage', mode ? 'true' : 'false');
     }
 
 
