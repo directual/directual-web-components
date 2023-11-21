@@ -406,11 +406,15 @@ export function NewMainMenu(props) {
     const [showTopBorder, setShowTopBorder] = useState(false)
     const [showBottomBorder, setShowBottomBorder] = useState(false)
 
-    const [compactMode, setCompactMode] = useState(_.get(menuConfig, "rootMenu.sideMenuSize") == "compact" || props.compactState )
+    const [compactMode, setCompactMode] = useState(_.get(menuConfig, "rootMenu.sideMenuSize") == "compact" || props.compactState)
 
-    useEffect(()=> {
-        setCompactMode(props.compactState)
+    useEffect(() => {
+        setCompactMode(props.compactState && currentBP !== 'mobile')
     }, [props.compactState])
+
+    useEffect(() => {
+        if (currentBP == 'mobile') { setCompactMode(false) }
+    }, [currentBP])
 
     const compactModeHandler = mode => {
         setCompactMode(mode)
@@ -526,7 +530,9 @@ export function NewMainMenu(props) {
 
         {/* HORIZONTAL MENU */}
         {currentBP == 'desktop' && isHorizontal &&
-            <div className={`${styles.newMainmenu} D_MainMenu ${isHorizontal ? styles.isHorizontal : styles.hideDesktop} ${showMM && styles.show} ${props.theme} ${compactMode ? `${styles.compactMode} compact_Mode` : ''}`}
+            <div className={`${styles.newMainmenu} D_MainMenu ${isHorizontal ? styles.isHorizontal : styles.hideDesktop} ${showMM && styles.show} ${props.theme} 
+            ${compactMode ? `${styles.compactMode} compact_Mode` : ''
+                }`}
                 style={menuMargin !== 0 ? {
                     margin: menuMargin,
                     borderWidth: menuBorderWidth,
@@ -686,7 +692,10 @@ export function NewMainMenu(props) {
                             </div>
                             : <React.Fragment>
                                 {largeLogoURL ?
-                                    <div onClick={handleRoute("/")}
+                                    <div onClick={e => {
+                                        hideMMhandler()
+                                        handleRoute("/")()
+                                    }}
                                         className={`${styles.newLogo} D_MainMenu_Logo ${styles.cursorPointer}`}
                                         style={{
                                             backgroundImage: `url(${largeLogoURL})`,
@@ -696,7 +705,10 @@ export function NewMainMenu(props) {
                                             backgroundRepeat: 'no-repeat',
                                             height: logoSize.height
                                         }} /> :
-                                    <div onClick={handleRoute("/")}
+                                    <div onClick={e => {
+                                        hideMMhandler()
+                                        handleRoute("/")()
+                                    }}
                                         style={{
                                             width: compactMode ? logoSize.height : logoSize.width,
                                             margin: logoPosition == 'center' ? '0 auto 0 auto' : 0,
@@ -718,7 +730,13 @@ export function NewMainMenu(props) {
                 {(mainMenu.children || []).map(item =>
                     <NewMainMenuItem
                         item={item}
-                        handleRoute={handleRoute}
+                        menuCompactWidth={menuCompactWidth}
+                        menuPadding={menuPadding}
+                        handleRoute={route => {
+                            hideMMhandler()
+                            handleRoute(route)()
+                        }
+                        }
                         custom_labels={custom_labels}
                         compactMode={compactMode}
                         currentRoute={props.currentRoute}
@@ -814,12 +832,9 @@ export function NewMainMenu(props) {
     </React.Fragment >
 }
 
-function NewMainMenuItem({ item, isHorizontal, handleRoute, currentRoute, hideGroups, menuConfig, compactMode, custom_labels }) {
+function NewMainMenuItem({ item, menuPadding, menuCompactWidth, isHorizontal, handleRoute, currentRoute, hideGroups, menuConfig, compactMode, custom_labels }) {
 
     const menuItem = _.get(menuConfig, [item.id]) || {}
-    // console.log(item)
-    // console.log(menuItem)
-    // console.log(custom_labels)
 
     const name = menuItem.name || item.name
 
@@ -856,13 +871,20 @@ function NewMainMenuItem({ item, isHorizontal, handleRoute, currentRoute, hideGr
                 ${isOpened ? '' : 'group_title_hidden'}
                 ${hideGroups ? 'group_title_hideble' : ''}
                 D_MainMenu_List_Group_Title`}
-                onClick={hideGroup}>
+                onClick={hideGroup}
+                style={compactMode ? {
+                    maxWidth: menuCompactWidth - menuPadding
+                } : {}}
+            >
                 {hideGroups && !compactMode && <div className={`icon icon-up small D_MainMenu_List_expand ${isOpened ? '' : 'group_hidden'}`} />}
                 {name}</div>}
             {(isOpened) && item.children.length && item.children.map(child =>
                 <NewMainMenuItem
                     custom_labels={custom_labels}
                     compactMode={compactMode}
+                    handleRoute={handleRoute}
+                    menuPadding={menuPadding}
+                    menuCompactWidth={menuCompactWidth}
                     item={child}
                     currentRoute={currentRoute}
                     menuConfig={menuConfig} />
@@ -906,7 +928,10 @@ function NewMainMenuItem({ item, isHorizontal, handleRoute, currentRoute, hideGr
 
 
     return <div onClick={e => menuItem.linkToType !== 'external' ?
-        handleRoute(menuItem.linkToPage)(e) : undefined} className={`D_MainMenu_Item 
+        handleRoute(menuItem.linkToPage)(e) : undefined}
+        href={menuItem.linkToType !== 'external' ? undefined : menuItem.linkToURL}
+        target={menuItem.linkToURLNewWindow && menuItem.linkToType == 'external' ? '_blank' : ''}
+        className={`D_MainMenu_Item 
             ${styles.menuIcon}
             ${styles.cursorPointer}
             ${currentRoute == menuItem.linkToPage ? "selected" : ""}
@@ -945,13 +970,11 @@ function NewMainMenuItem({ item, isHorizontal, handleRoute, currentRoute, hideGr
 
         {compactMode && <div className={`${styles.compactTooltip} D_MainMenu_Item_Toolip`}>{name}</div>}
         {item.link && !compactMode ? item.link :
-            !compactMode ? <a
-                className={styles.newMenuLink}
-                href={menuItem.linkToType !== 'external' ? undefined : menuItem.linkToURL}
-                target={menuItem.linkToURLNewWindow && menuItem.linkToType == 'external' ? '_blank' : ''}>
+            !compactMode ? <div
+                className={`${styles.newMenuLink} DD_MainMenu_A`}>
                 {name}
                 {menuItem.linkToURLNewWindow && menuItem.linkToType == 'external' && <div className={`icon verySmall inline icon-arrowRightTop ${styles.newWindow}`} />}
-            </a> : undefined}
+            </div> : undefined}
         {getLabel()}
     </div>
 }

@@ -216,7 +216,7 @@
         font-size: var(--text-small-size);
         margin-right: 4px;
       }
-      a {
+      .DD_MainMenu_A {
         color: var(--menu-item-hover);
         padding: 0 0 0 10px;
         flex-grow: 2;
@@ -386,6 +386,7 @@
 .menuIcon {
   cursor: pointer;
   position: relative;
+  text-decoration: none !important;
   .compactTooltip {
     position: absolute;
     background-color: rgba(0,0,0,.7);
@@ -450,10 +451,15 @@
   border-radius: 4px;
 }
 
+.newListGroupTitle {
+  display: flex;
+  align-items: center;
+}
+
 .compactMode .newList {
   width: 500px !important;
   border: none !important;
-  .newListGroupTitle { max-width: 80px }
+  //.newListGroupTitle { max-width: 80px }
   overflow: auto !important;
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
   scrollbar-width: none; /* for Firefox */

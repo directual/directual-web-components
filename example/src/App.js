@@ -31,32 +31,25 @@ const newMenuEexample = {
         "isFolder": true,
         "children": [
             {
-                "id": "group_1699967261238",
+                "id": "item__1700128649200",
+                "name": "New page",
+                "children": [],
+                "isFolder": false,
+                "icon": "application"
+            },
+            {
+                "id": "group_1700578488736",
                 "name": "New group",
                 "children": [
                     {
-                        "id": "item__1699966605560",
+                        "id": "item__1700128674697",
                         "name": "New page",
                         "children": [],
                         "isFolder": false,
                         "icon": "application"
                     },
                     {
-                        "id": "item__1699966611883",
-                        "name": "New page",
-                        "children": [],
-                        "isFolder": false,
-                        "icon": "application"
-                    },
-                    {
-                        "id": "item__1699966620076",
-                        "name": "New page",
-                        "children": [],
-                        "isFolder": false,
-                        "icon": "application"
-                    },
-                    {
-                        "id": "item__1699966629619",
+                        "id": "item__1700140180934",
                         "name": "New page",
                         "children": [],
                         "isFolder": false,
@@ -67,129 +60,14 @@ const newMenuEexample = {
                 "icon": "folder"
             },
             {
-                "id": "item__1699967278240",
+                "id": "item__1700578521786",
                 "name": "New page",
                 "children": [],
                 "isFolder": false,
                 "icon": "application"
             },
             {
-                "id": "item__1699967279686",
-                "name": "New page",
-                "children": [],
-                "isFolder": false,
-                "icon": "application"
-            },
-            {
-                "id": "item__1699967280997",
-                "name": "New page",
-                "children": [],
-                "isFolder": false,
-                "icon": "application"
-            },
-            {
-                "id": "item__1699967282230",
-                "name": "New page",
-                "children": [],
-                "isFolder": false,
-                "icon": "application"
-            },
-            {
-                "id": "item__1699967283620",
-                "name": "New page",
-                "children": [],
-                "isFolder": false,
-                "icon": "application"
-            },
-            {
-                "id": "item__1699967285090",
-                "name": "New page",
-                "children": [],
-                "isFolder": false,
-                "icon": "application"
-            },
-            {
-                "id": "item__1699967286486",
-                "name": "New page",
-                "children": [],
-                "isFolder": false,
-                "icon": "application"
-            },
-            {
-                "id": "item__1699967287802",
-                "name": "New page",
-                "children": [],
-                "isFolder": false,
-                "icon": "application"
-            },
-            {
-                "id": "item__1699967289329",
-                "name": "New page",
-                "children": [],
-                "isFolder": false,
-                "icon": "application"
-            },
-            {
-                "id": "group_1699967291905",
-                "name": "New group",
-                "children": [
-                    {
-                        "id": "item__1699967290586",
-                        "name": "New page",
-                        "children": [],
-                        "isFolder": false,
-                        "icon": "application"
-                    },
-                    {
-                        "id": "item__1699967293366",
-                        "name": "New page",
-                        "children": [],
-                        "isFolder": false,
-                        "icon": "application"
-                    }
-                ],
-                "isFolder": true,
-                "icon": "folder"
-            },
-            {
-                "id": "item__1699970170936",
-                "name": "New page",
-                "children": [],
-                "isFolder": false,
-                "icon": "application"
-            }
-        ]
-    },
-    "mobileMenuOption": "side_right",
-    "mobileMenu": {
-        "id": "rootMobileMenu",
-        "icon": "folder",
-        "name": "Mobile menu (tabs)",
-        "isFolder": true,
-        "children": [
-            {
-                "id": "item__1699616429571",
-                "name": "New page",
-                "children": [],
-                "isFolder": false,
-                "icon": "application"
-            },
-            {
-                "id": "item__1699617677112",
-                "name": "New page",
-                "children": [],
-                "isFolder": false,
-                "icon": "application"
-            },
-            {
-                "id": "item__1699617695042",
-                "name": "New page",
-                "children": [],
-                "isFolder": false,
-                "icon": "application"
-            },
-            {
-                "id": "item__1699879618452",
+                "id": "item__1700578539619",
                 "name": "New page",
                 "children": [],
                 "isFolder": false,
@@ -198,249 +76,134 @@ const newMenuEexample = {
         ]
     },
     "menuConfig": {
-        "item__1697885764944": {
-            "linkToPage": "/profile",
-            "name": "Profile",
-            "iconType": "custom_icon",
-            "menuRemixIcon": {
-                "Content": "M22 17.0022C21.999 19.8731 19.9816 22.2726 17.2872 22.8616L16.6492 20.9476C17.8532 20.7511 18.8765 20.0171 19.4649 19H17C15.8954 19 15 18.1046 15 17V13C15 11.8954 15.8954 11 17 11H19.9381C19.446 7.05369 16.0796 4 12 4C7.92038 4 4.55399 7.05369 4.06189 11H7C8.10457 11 9 11.8954 9 13V17C9 18.1046 8.10457 19 7 19H4C2.89543 19 2 18.1046 2 17V12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12V12.9987V13V17V17.0013V17.0022ZM20 17V13H17V17H20ZM4 13V17H7V13H4Z",
-                "Category": "Business",
-                "id": "customer-service-line"
-            },
-            "menuRemixIconSize": 30,
-            "addLabel": "add_label",
-            "menuLabel": "counter",
-            "menuIconCustom": "https://api.directual.com/fileUploaded/directual-site/e/home.svg",
-            "menuCustomIconSize": 22,
-            "menuIconCustomSelected": "https://api.directual.com/fileUploaded/directual-site/e/home1.svg"
-        },
-        "item__1697889115436": {
-            "linkToPage": "/all-users",
-            "name": "All Users",
-            "iconType": "directual_icon",
-            "menuDirectualIconSet": "user"
-        },
-        "item__1697889123670": {
-            "linkToPage": "/home",
-            "name": "Home",
-            "iconType": "remix_icon",
-            "menuRemixIcon": {
-                "Content": "M21 19.9997C21 20.552 20.5523 20.9997 20 20.9997H4C3.44772 20.9997 3 20.552 3 19.9997V9.48882C3 9.18023 3.14247 8.88893 3.38606 8.69947L11.3861 2.47725C11.7472 2.19639 12.2528 2.19639 12.6139 2.47725L20.6139 8.69947C20.8575 8.88893 21 9.18023 21 9.48882V19.9997ZM19 18.9997V9.97791L12 4.53346L5 9.97791V18.9997H19Z",
-                "Category": "Buildings",
-                "id": "home-line"
-            }
-        },
-        "group_1697889131112": {
-            "name": "Administrator pages",
-            "iconType": "remix_icon",
-            "menuRemixIcon": {
-                "Content": "M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 12.792C10.117 12.4062 9.5 11.5252 9.5 10.5C9.5 9.11929 10.6193 8 12 8C13.3807 8 14.5 9.11929 14.5 10.5C14.5 11.5252 13.883 12.4062 13 12.792V16H11V12.792Z",
-                "Category": "Others",
-                "id": "door-lock-line"
-            },
-            "hideByDefault": true
-        },
-        "group_1697889573211": {
-            "name": "Hey there"
-        },
-        "item__1697889581068": {
-            "linkToPage": "/profile",
-            "name": "Profile",
-            "iconType": "remix_icon",
-            "menuRemixIcon": {
-                "Content": "M12 17C14.2091 17 16 15.2091 16 13H14C14 14.1046 13.1046 15 12 15 10.8954 15 10 14.1046 10 13H8C8 15.2091 9.79086 17 12 17ZM6.5 2C4.01472 2 2 4.01472 2 6.5 2 7.85729 2.60121 9.07332 3.54934 9.89751 3.19384 10.8656 3 11.911 3 13 3 17.9706 7.02944 22 12 22 16.9706 22 21 17.9706 21 13 21 11.911 20.8062 10.8656 20.4507 9.89751 21.3988 9.07332 22 7.85729 22 6.5 22 4.01472 19.9853 2 17.5 2 15.8737 2 14.4505 2.8624 13.6601 4.15297 13.1215 4.05246 12.5665 4 12 4 11.4335 4 10.8785 4.05246 10.3399 4.15297 9.5495 2.8624 8.12635 2 6.5 2ZM4 6.5C4 5.11929 5.11929 4 6.5 4 7.58033 4 8.50304 4.68577 8.8517 5.64896L9.1696 6.52718 10.0675 6.26991C10.6801 6.09435 11.3282 6 12 6 12.6718 6 13.3199 6.09435 13.9325 6.26991L14.8304 6.52718 15.1483 5.64896C15.497 4.68577 16.4197 4 17.5 4 18.8807 4 20 5.11929 20 6.5 20 7.43301 19.4894 8.24804 18.7275 8.67859L17.9141 9.13832 18.3176 9.98107C18.7547 10.8939 19 11.9169 19 13 19 16.866 15.866 20 12 20 8.13401 20 5 16.866 5 13 5 11.9169 5.24529 10.8939 5.6824 9.98107L6.08595 9.13832 5.27248 8.6786C4.51064 8.24805 4 7.43301 4 6.5Z",
-                "Category": "User & Faces",
-                "id": "bear-smile-line"
-            }
-        },
-        "item__1697889582464": {
-            "linkToType": "external",
-            "linkToURL": "https://directual.com",
-            "linkToURLNewWindow": true,
-            "name": "Documentation",
-            "iconType": "remix_icon",
-            "menuRemixIcon": {
-                "Content": "M3 18.5V5C3 3.34315 4.34315 2 6 2H20C20.5523 2 21 2.44772 21 3V21C21 21.5523 20.5523 22 20 22H6.5C4.567 22 3 20.433 3 18.5ZM19 20V17H6.5C5.67157 17 5 17.6716 5 18.5C5 19.3284 5.67157 20 6.5 20H19ZM10 4H6C5.44772 4 5 4.44772 5 5V15.3368C5.45463 15.1208 5.9632 15 6.5 15H19V4H17V12L13.5 10L10 12V4Z",
-                "Category": "Document",
-                "id": "book-mark-line"
-            },
-            "menuRemixIconColor": "#bd10e0",
-            "menuRemixIconColorSelected": "#7ed321",
-            "menuRemixIconSize": 32
-        },
         "rootMenu": {
+            "menuWidth": 253,
             "logoOption": "ai",
             "logoGenerationSettings": {
-                "signSize": 23.6,
-                "logoTextSize": 12,
-                "scaleSign": 1.2,
-                "moveSign": -1,
-                "moveHorSign": -1.7,
-                "lineSpacing": 0.83,
-                "titleLetterSpacing": 0.4,
-                "subtitleLetterSpacing": 1,
-                "titleY": 3,
-                "subtitleY": 25.1,
-                "logoSubtitleSize": 6
+                "logoTitle": "Microsoft",
+                "logoColor": "#ffffff",
+                "googleFont": {
+                    "id": "Bagel Fat One",
+                    "subsets": [
+                        "korean",
+                        "latin",
+                        "latin-ext"
+                    ],
+                    "category": "display",
+                    "family": "Bagel Fat One",
+                    "variants": [
+                        "regular"
+                    ],
+                    "selectedStyle": "regular"
+                },
+                "logoSubtitleColor": "rgba(0,0,0,.8)",
+                "signColor": "#058efc",
+                "signColorGrad1": "#1fa2ff",
+                "signColorGrad2": "#a6ffcb",
+                "signFillType": "linear-gradient",
+                "signGradDirection": "diag",
+                "addSign": true,
+                "signSize": 25.7,
+                "logoTextSize": 14.8,
+                "scaleSign": 1.1555555555555554,
+                "moveSign": 0,
+                "moveHorSign": -2.2,
+                "lineSpacing": 0.79,
+                "titleLetterSpacing": 0.6,
+                "subtitleLetterSpacing": 0,
+                "titleY": 18.4,
+                "subtitleY": 13,
+                "logoSubtitleSize": 6,
+                "remixIcon": {
+                    "Category": "Development",
+                    "Content": "M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM16.4645 15.5355L20 12L16.4645 8.46447L15.0503 9.87868L17.1716 12L15.0503 14.1213L16.4645 15.5355ZM6.82843 12L8.94975 9.87868L7.53553 8.46447L4 12L7.53553 15.5355L8.94975 14.1213L6.82843 12ZM11.2443 17L14.884 7H12.7557L9.11597 17H11.2443Z",
+                    "id": "code-box-fill"
+                }
             },
-            "logoTitle": "NATIONAL\nGEOGRAPHIC",
+            "logoTitle": "Google",
             "googleFont": {
-                "id": "Arya",
+                "id": "ABeeZee",
                 "subsets": [
-                    "devanagari",
                     "latin",
                     "latin-ext"
                 ],
                 "category": "sans-serif",
-                "family": "Arya",
+                "family": "ABeeZee",
                 "variants": [
                     "regular",
-                    "700"
+                    "italic"
                 ],
                 "selectedStyle": "regular"
             },
             "addSign": true,
             "remixIcon": {
                 "Category": "Logos",
-                "Content": "M21.6634 9.98693L21.6354 9.91531L18.9164 2.82092C18.8612 2.68178 18.7634 2.56365 18.6371 2.48339C18.5098 2.40304 18.3607 2.36419 18.2104 2.37219C18.0601 2.38019 17.9159 2.43464 17.7979 2.52804C17.6809 2.62181 17.5966 2.75012 17.5569 2.89466L15.7187 8.52049H8.28157L6.44336 2.89466C6.40366 2.75012 6.31934 2.62181 6.20241 2.52804C6.08487 2.43402 5.94083 2.37915 5.79052 2.37114C5.64021 2.36313 5.49116 2.40238 5.36429 2.48339C5.2374 2.56332 5.13921 2.68153 5.08388 2.82092L2.36183 9.92462L2.33379 9.99524C1.94304 11.0184 1.895 12.1407 2.19691 13.1934C2.49882 14.2462 3.13436 15.1725 4.00794 15.833L4.01832 15.8402L4.04221 15.8589L8.18917 18.9632L10.2393 20.5159L11.4856 21.4599C11.6319 21.5705 11.8104 21.6304 11.9939 21.6304C12.1774 21.6304 12.3559 21.5705 12.5023 21.4599L13.7486 20.5159L15.7997 18.9632L19.9706 15.8402L19.9819 15.8319C20.8585 15.1721 21.4966 14.245 21.7999 13.1906C22.1033 12.1362 22.0553 11.0117 21.6634 9.98693Z",
-                "id": "gitlab-fill"
+                "Content": "M3.06364 7.50914C4.70909 4.24092 8.09084 2 12 2C14.6954 2 16.959 2.99095 18.6909 4.60455L15.8227 7.47274C14.7864 6.48185 13.4681 5.97727 12 5.97727C9.39542 5.97727 7.19084 7.73637 6.40455 10.1C6.2045 10.7 6.09086 11.3409 6.09086 12C6.09086 12.6591 6.2045 13.3 6.40455 13.9C7.19084 16.2636 9.39542 18.0227 12 18.0227C13.3454 18.0227 14.4909 17.6682 15.3864 17.0682C16.4454 16.3591 17.15 15.3 17.3818 14.05H12V10.1818H21.4181C21.5364 10.8363 21.6 11.5182 21.6 12.2273C21.6 15.2727 20.5091 17.8363 18.6181 19.5773C16.9636 21.1046 14.7 22 12 22C8.09084 22 4.70909 19.7591 3.06364 16.4909C2.38638 15.1409 2 13.6136 2 12C2 10.3864 2.38638 8.85911 3.06364 7.50914Z",
+                "id": "google-fill"
             },
-            "signColor": "#e35079",
-            "generatedLogo": "<div><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\"><link href=\"https://fonts.googleapis.com/css2?family=Arya:wght@400;700&amp;display=swap\" rel=\"stylesheet\"><svg width=\"190\" height=\"51\" viewBox=\"0 0 95 26\"><radialGradient id=\"grad_rad0\"><stop offset=\"20%\" stop-color=\"#f12711\"></stop><stop offset=\"100%\" stop-color=\"#f5af19\"></stop></radialGradient><path transform=\"scale(1.2) translate(-1.7, -1)\" fill=\"url(#grad_rad0)\" d=\"M21.6634 9.98693L21.6354 9.91531L18.9164 2.82092C18.8612 2.68178 18.7634 2.56365 18.6371 2.48339C18.5098 2.40304 18.3607 2.36419 18.2104 2.37219C18.0601 2.38019 17.9159 2.43464 17.7979 2.52804C17.6809 2.62181 17.5966 2.75012 17.5569 2.89466L15.7187 8.52049H8.28157L6.44336 2.89466C6.40366 2.75012 6.31934 2.62181 6.20241 2.52804C6.08487 2.43402 5.94083 2.37915 5.79052 2.37114C5.64021 2.36313 5.49116 2.40238 5.36429 2.48339C5.2374 2.56332 5.13921 2.68153 5.08388 2.82092L2.36183 9.92462L2.33379 9.99524C1.94304 11.0184 1.895 12.1407 2.19691 13.1934C2.49882 14.2462 3.13436 15.1725 4.00794 15.833L4.01832 15.8402L4.04221 15.8589L8.18917 18.9632L10.2393 20.5159L11.4856 21.4599C11.6319 21.5705 11.8104 21.6304 11.9939 21.6304C12.1774 21.6304 12.3559 21.5705 12.5023 21.4599L13.7486 20.5159L15.7997 18.9632L19.9706 15.8402L19.9819 15.8319C20.8585 15.1721 21.4966 14.245 21.7999 13.1906C22.1033 12.1362 22.0553 11.0117 21.6634 9.98693Z\"></path><text font-family=\"Arya\" font-weight=\"400\" font-style=\"normal\" letter-spacing=\"0.4\" font-size=\"12\" fill=\"rgba(0,0,0,.8)\" x=\"28.32\" y=\"3\"><tspan x=\"28.32\" dy=\"0.83em\">NATIONAL</tspan><tspan x=\"28.32\" dy=\"0.83em\">GEOGRAPHIC</tspan></text></svg></div>",
-            "largeLogoURL": "",
             "sideMenuSize": "resizeble",
-            "smallLogoURL": "",
-            "logoHeight": 51,
-            "menuWidth": 260,
-            "menuPadding": 22,
-            "menuMargin": 5,
-            "menuCompactWidth": 80,
-            "logoWidth": 190,
-            "logoPosition": "left",
-            "generatedSmallLogo": "<div><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\"><link href=\"https://fonts.googleapis.com/css2?family=Arya:wght@400;700&amp;display=swap\" rel=\"stylesheet\"><svg width=\"51\" height=\"51\" viewBox=\"0 0 26 26\"><radialGradient id=\"grad_rad0\"><stop offset=\"20%\" stop-color=\"#f12711\"></stop><stop offset=\"100%\" stop-color=\"#f5af19\"></stop></radialGradient><path transform=\"scale(1.2) translate(-1.7, -1)\" fill=\"url(#grad_rad0)\" d=\"M21.6634 9.98693L21.6354 9.91531L18.9164 2.82092C18.8612 2.68178 18.7634 2.56365 18.6371 2.48339C18.5098 2.40304 18.3607 2.36419 18.2104 2.37219C18.0601 2.38019 17.9159 2.43464 17.7979 2.52804C17.6809 2.62181 17.5966 2.75012 17.5569 2.89466L15.7187 8.52049H8.28157L6.44336 2.89466C6.40366 2.75012 6.31934 2.62181 6.20241 2.52804C6.08487 2.43402 5.94083 2.37915 5.79052 2.37114C5.64021 2.36313 5.49116 2.40238 5.36429 2.48339C5.2374 2.56332 5.13921 2.68153 5.08388 2.82092L2.36183 9.92462L2.33379 9.99524C1.94304 11.0184 1.895 12.1407 2.19691 13.1934C2.49882 14.2462 3.13436 15.1725 4.00794 15.833L4.01832 15.8402L4.04221 15.8589L8.18917 18.9632L10.2393 20.5159L11.4856 21.4599C11.6319 21.5705 11.8104 21.6304 11.9939 21.6304C12.1774 21.6304 12.3559 21.5705 12.5023 21.4599L13.7486 20.5159L15.7997 18.9632L19.9706 15.8402L19.9819 15.8319C20.8585 15.1721 21.4966 14.245 21.7999 13.1906C22.1033 12.1362 22.0553 11.0117 21.6634 9.98693Z\"></path></svg></div>",
-            "menuPosition": "side",
-            "dontHideGroups": false,
-            "sideMenuAlign": "center",
-            "signFillType": "radial-gradient",
-            "signColorGrad1": "#f12711",
-            "signColorGrad2": "#f5af19",
-            "logoSubtitle": "",
-            "logoSubtitleColor": "rgba(0,0,0,0.37)",
+            "largeLogoURL": "https://api.directual.com/fileUploaded/directual-site/e/ebanet.jpeg",
+            "signColor": "#bd10e0",
+            "generatedLogo": "<div><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\"><link href=\"https://fonts.googleapis.com/css2?family=Bagel+Fat+One&amp;display=swap\" rel=\"stylesheet\"><svg width=\"216\" height=\"45\" viewBox=\"0 0 108 23\"><linearGradient id=\"grad10\" x1=\"10%\" y1=\"10%\" x2=\"90%\" y2=\"90%\"><stop offset=\"0%\" stop-color=\"#1fa2ff\"></stop><stop offset=\"100%\" stop-color=\"#a6ffcb\"></stop></linearGradient><path transform=\"scale(1.1555555555555554) translate(-2.2, 0)\" fill=\"url(#grad10)\" d=\"M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM16.4645 15.5355L20 12L16.4645 8.46447L15.0503 9.87868L17.1716 12L15.0503 14.1213L16.4645 15.5355ZM6.82843 12L8.94975 9.87868L7.53553 8.46447L4 12L7.53553 15.5355L8.94975 14.1213L6.82843 12ZM11.2443 17L14.884 7H12.7557L9.11597 17H11.2443Z\"></path><text font-family=\"Bagel Fat One\" font-weight=\"400\" font-style=\"normal\" letter-spacing=\"0.6\" fill=\"#ffffff\" font-size=\"14.8\" x=\"29.697777777777773\" y=\"18.4\">Microsoft</text></svg></div>",
+            "generatedSmallLogo": "<div><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\"><link href=\"https://fonts.googleapis.com/css2?family=Bagel+Fat+One&amp;display=swap\" rel=\"stylesheet\"><svg width=\"45\" height=\"45\" viewBox=\"0 0 23 23\"><linearGradient id=\"grad10\" x1=\"10%\" y1=\"10%\" x2=\"90%\" y2=\"90%\"><stop offset=\"0%\" stop-color=\"#1fa2ff\"></stop><stop offset=\"100%\" stop-color=\"#a6ffcb\"></stop></linearGradient><path transform=\"scale(1.1555555555555554) translate(-2.2, 0)\" fill=\"url(#grad10)\" d=\"M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM16.4645 15.5355L20 12L16.4645 8.46447L15.0503 9.87868L17.1716 12L15.0503 14.1213L16.4645 15.5355ZM6.82843 12L8.94975 9.87868L7.53553 8.46447L4 12L7.53553 15.5355L8.94975 14.1213L6.82843 12ZM11.2443 17L14.884 7H12.7557L9.11597 17H11.2443Z\"></path></svg></div>",
+            "logoColor": "#ffffff",
+            "signFillType": "linear-gradient",
+            "signColorGrad1": "#7f7fd5",
+            "signColorGrad2": "#91eae4",
             "signGradDirection": "diag",
-            "horMenuGroupArrowSize": "medium",
-            "horMenuGroupArrow": "left",
-            "horMenuMargin": 20,
-            "menuBorderWidth": 3,
-            "menuLogoMargin": 24
+            "logoWidth": 216,
+            "logoHeight": 45,
+            "menuPadding": 12,
+            "menuLogoMargin": 22,
+            "menuBorderWidth": 3
         },
-        "item__1697890651425": {
-            "linkToPage": "/restore-password",
-            "name": "Restore password",
+        "item__1700128649200": {
+            "linkToPage": "/home",
+            "name": "Home",
             "iconType": "remix_icon",
             "menuRemixIcon": {
-                "Content": "M12 21.9966C6.47715 21.9966 2 17.5194 2 11.9966C2 6.47373 6.47715 1.99658 12 1.99658C17.5228 1.99658 22 6.47373 22 11.9966C22 17.5194 17.5228 21.9966 12 21.9966ZM12 19.9966C16.4183 19.9966 20 16.4149 20 11.9966C20 7.5783 16.4183 3.99658 12 3.99658C7.58172 3.99658 4 7.5783 4 11.9966C4 16.4149 7.58172 19.9966 12 19.9966ZM12 17.9966V5.99658C15.3137 5.99658 18 8.68287 18 11.9966C18 15.3103 15.3137 17.9966 12 17.9966Z",
-                "Category": "Design",
-                "id": "contrast-line"
+                "Content": "M20 20.0001C20 20.5524 19.5523 21.0001 19 21.0001H5C4.44772 21.0001 4 20.5524 4 20.0001V11.0001H1L11.3273 1.61162C11.7087 1.26488 12.2913 1.26488 12.6727 1.61162L23 11.0001H20V20.0001ZM18 19.0001V9.15757L12 3.70302L6 9.15757V19.0001H18ZM12 17.0001L8.64124 13.6413C7.76256 12.7627 7.76256 11.338 8.64124 10.4594C9.51992 9.58068 10.9445 9.58068 11.8232 10.4594L12 10.6361L12.1768 10.4594C13.0555 9.58068 14.4801 9.58068 15.3588 10.4594C16.2374 11.338 16.2374 12.7627 15.3588 13.6413L12 17.0001Z",
+                "Category": "Buildings",
+                "id": "home-heart-line"
             },
-            "menuRemixIconColor": "#7ed321",
-            "menuRemixIconColorSelected": "#d0021b",
-            "menuRemixIconSize": 17
+            "menuRemixIconColor": "#417505",
+            "menuRemixIconColorSelected": "#a6ffcb",
+            "menuRemixIconSize": 24
         },
-        "item__1699013073887": {
-            "linkToPage": "/profile",
-            "name": "Profile",
+        "item__1700128674697": {
+            "linkToPage": "/orders",
+            "name": "My Orders",
             "iconType": "remix_icon",
             "menuRemixIcon": {
-                "Content": "M16 2L21 7V21.0082C21 21.556 20.5551 22 20.0066 22H3.9934C3.44476 22 3 21.5447 3 21.0082V2.9918C3 2.44405 3.44495 2 3.9934 2H16ZM13.2 12L16 8H13.6L12 10.2857L10.4 8H8L10.8 12L8 16H10.4L12 13.7143L13.6 16H16L13.2 12Z",
-                "Category": "Document",
-                "id": "file-excel-fill"
-            }
+                "Content": "M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM7 12H9C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12H17C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12Z",
+                "Category": "User & Faces",
+                "id": "user-smile-line"
+            },
+            "menuRemixIconColor": "#417505",
+            "menuRemixIconColorSelected": "#a6ffcb"
         },
-        "item__1699013069819": {
-            "linkToPage": "/restore-password",
-            "name": "Restore password",
+        "item__1700140180934": {
+            "linkToPage": "/all-users",
+            "name": "All Users",
             "iconType": "directual_icon",
-            "menuDirectualIconSet": "delete"
+            "menuDirectualIconSet": "academy"
         },
-        "rootMobileMenu": {
-            "showMobileHeader": false,
-            "mobileHeaderLogo": "small",
-            "mobileHeaderLogoPosition": "center",
-            "mobileMenuSide": "right",
-            "mobileMenuPadding": 6,
-            "sideMenuPadding": 12,
-            "menuSideHideLogo": false,
-            "tabsPlacement": "top"
+        "group_1700578488736": {
+            "name": "Admin pages"
         },
-        "item__1699616429571": {
-            "linkToPage": "/profile",
-            "name": "",
-            "iconType": "directual_icon",
-            "menuDirectualIconSet": "academy",
+        "item__1700578521786": {
             "linkToType": "external",
-            "linkToURL": "/system-icons"
+            "linkToURL": "https://www.directual.com/",
+            "linkToURLNewWindow": true,
+            "name": "Directual.com",
+            "iconType": "directual_icon",
+            "menuDirectualIconSet": "directual"
         },
-        "item__1699617677112": {
-            "iconType": "remix_icon",
-            "menuRemixIcon": {
-                "Category": "Editor",
-                "Content": "M18.5 10L22.9 21H20.745L19.544 18H15.454L14.255 21H12.101L16.5 10H18.5ZM10 2V4H16V6L14.0322 6.0006C13.2425 8.36616 11.9988 10.5057 10.4115 12.301C11.1344 12.9457 11.917 13.5176 12.7475 14.0079L11.9969 15.8855C10.9237 15.2781 9.91944 14.5524 8.99961 13.7249C7.21403 15.332 5.10914 16.5553 2.79891 17.2734L2.26257 15.3442C4.2385 14.7203 6.04543 13.6737 7.59042 12.3021C6.46277 11.0281 5.50873 9.57985 4.76742 8.00028L7.00684 8.00037C7.57018 9.03885 8.23979 10.0033 8.99967 10.877C10.2283 9.46508 11.2205 7.81616 11.9095 6.00101L2 6V4H8V2H10ZM17.5 12.8852L16.253 16H18.745L17.5 12.8852Z",
-                "id": "translate-2"
-            },
-            "linkToPage": "/all-users",
-            "name": "All Users",
-            "menuRemixIconSize": 40
-        },
-        "item__1699617695042": {
-            "linkToPage": "/home",
-            "name": "Home",
-            "iconType": "custom_icon",
-            "menuIconCustom": "https://api.directual.com/fileUploaded/directual-site/e/stamp_D.png",
-            "menuCustomIconSize": 53,
-            "addLabel": "add_label",
-            "menuLabel": "foo",
-            "menuIconCustomSelected": "https://api.directual.com/fileUploaded/directual-site/e/ebanet.jpeg"
-        },
-        "item__1699879618452": {
-            "linkToPage": "/all-users",
-            "name": "All Users",
-            "iconType": "remix_icon",
-            "menuRemixIcon": {
-                "Content": "M11 11V5.82843L9.17157 7.65685L7.75736 6.24264L12 2L16.2426 6.24264L14.8284 7.65685L13 5.82843V11H18.1716L16.3431 9.17157L17.7574 7.75736L22 12L17.7574 16.2426L16.3431 14.8284L18.1716 13H13V18.1716L14.8284 16.3431L16.2426 17.7574L12 22L7.75736 17.7574L9.17157 16.3431L11 18.1716V13H5.82843L7.65685 14.8284L6.24264 16.2426L2 12L6.24264 7.75736L7.65685 9.17157L5.82843 11H11Z",
-                "Category": "Arrows",
-                "id": "drag-move-2-line"
-            },
-            "menuRemixIconColor": "#a01717",
-            "menuRemixIconColorSelected": "#338196",
-            "menuRemixIconSize": 60
-        },
-        "item__1699966605560": {
-            "linkToPage": "/home",
-            "name": "Home",
-            "iconType": "no_icon"
-        },
-        "item__1699966611883": {
-            "linkToPage": "/profile",
-            "name": "Profile",
+        "item__1700578539619": {
+            "linkToPage": "/hello-there",
+            "name": "Hello there",
             "iconType": "directual_icon",
             "menuDirectualIconSet": "actions"
-        },
-        "item__1699966620076": {
-            "linkToPage": "/profile",
-            "name": "Profile",
-            "iconType": "remix_icon",
-            "menuRemixIcon": {
-                "Category": "Arrows",
-                "Content": "M12.0001 19.1643L18.2072 12.9572L16.793 11.543L12.0001 16.3359L7.20718 11.543L5.79297 12.9572L12.0001 19.1643ZM12.0001 13.5144L18.2072 7.30728L16.793 5.89307L12.0001 10.686L7.20718 5.89307L5.79297 7.30728L12.0001 13.5144Z",
-                "id": "arrow-down-double-fill"
-            },
-            "menuRemixIconColorSelected": "#058efc"
-        },
-        "item__1699966629619": {
-            "linkToPage": "/all-users",
-            "name": "All Users",
-            "iconType": "custom_icon",
-            "menuIconCustom": "https://api.directual.com/fileUploaded/directual-site/e/ebanet.jpeg"
         }
     }
 }
@@ -478,9 +241,11 @@ function MainMenuWrapper(props) {
     return <NewMainMenu
         title='directual-design'
         theme='ural'
-        compactState
+        //compactState
         currentBP={currentBP}
-        handleRoute={href => e => {}}
+        handleRoute={href => e => {
+            console.log('route to => ' + href)
+        }}
         //horizontal={props.horizontal}
         mainMenu={newMenuEexample.mainMenu}
         mobileMenuOption={newMenuEexample.mobileMenuOption}

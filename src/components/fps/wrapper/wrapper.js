@@ -49,7 +49,7 @@ export function FpsWrapper(props) {
     return <div className={`${styles.newWrapper} FPS_Wrapper`}>
         <div style={{ width: '100%', position: 'absolute', height: 0 }} ref={layoutRef}></div>
         <SetTheme themeName={currentTheme} />
-        <div className={`${styles.mainWrapper} FPS_Main_Wrapper ${props.horizontal ? styles.horizontal : ''}`}>
+        <div className={`${styles.mainWrapper} FPS_Main_Wrapper ${props.horizontal || currentBP == 'mobile' ? styles.horizontal : ''}`}>
             <div className={`${styles.content_menu} FPS_Content_Menu`}>
                 {props.mainMenu}
             </div>

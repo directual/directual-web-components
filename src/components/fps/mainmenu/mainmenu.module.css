@@ -190,7 +190,7 @@
   font-size: var(--text-small-size);
   margin-right: 4px;
 }
-:global .ural .D_MainMenu_Item a {
+:global .ural .D_MainMenu_Item .DD_MainMenu_A {
   color: var(--menu-item-hover);
   padding: 0 0 0 10px;
   flex-grow: 2;
@@ -342,6 +342,7 @@
 .menuIcon {
   cursor: pointer;
   position: relative;
+  text-decoration: none !important;
 }
 .menuIcon .compactTooltip {
   position: absolute;
@@ -401,6 +402,10 @@
   opacity: 0.4;
   border-radius: 4px;
 }
+.newListGroupTitle {
+  display: flex;
+  align-items: center;
+}
 .compactMode .newList {
   width: 500px !important;
   border: none !important;
@@ -410,9 +415,6 @@
   scrollbar-width: none;
   /* for Firefox */
   overflow-y: scroll;
-}
-.compactMode .newList .newListGroupTitle {
-  max-width: 80px;
 }
 .compactMode .newList::-webkit-scrollbar {
   display: none;
