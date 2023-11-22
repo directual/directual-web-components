@@ -229,7 +229,7 @@ const newMenuEexample = {
             "tabsPadding": 0,
             "tabsMargin": 0,
             "tabsPlacement": "bottom",
-            "mobileTitlesSize": "large",
+            "mobileTitlesSize": "small",
             "showMobileAuthBlock": true
         },
         "item__1700661946193": {

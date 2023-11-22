@@ -336,7 +336,7 @@ function MobileTab(props) {
 
         {name && <div className={`${styles.mobileTabTitle} D_MainMenu_Mobile_Tabs_Title 
             ${mobileTitlesSize == 'medium' ? 'mediumMobileTitleMenu' :
-                mobileTitlesSize == 'large' ? 'largeMobileTitleMenu' : ''}  largeMobileTitleMenu`}>
+                mobileTitlesSize == 'large' ? 'largeMobileTitleMenu' : ''}`}>
             {name}
         </div>}
         {getLabel()}
@@ -910,7 +910,7 @@ function NewMainMenuAuth({ auth, compactMode, horizontal, logOut, handleRoute, m
 
                 :
                 <div className={`DMainMenu_LogInButton ${horizontal ? 'horizontalLB' : ''} ${compactMode ? 'compactLB' : ''}`}>
-                    <Button accent onClick={handleRoute("/signin")} icon='logoutAlt'>{compactMode ? "" : "Sign in"}</Button>
+                    <Button accent={!mobileHeader} transparent={mobileHeader} onClick={handleRoute("/signin")} icon='logoutAlt'>{compactMode ? "" : "Sign in"}</Button>
                 </div>
         }
     </React.Fragment>
