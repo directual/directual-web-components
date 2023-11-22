@@ -158,7 +158,8 @@ const newMenuEexample = {
             "menuLogoMargin": 22,
             "menuBorderWidth": 0,
             "dontHideGroups": true,
-            "menuPosition": "side"
+            "menuPosition": "side",
+            "menuMargin": 0
         },
         "item__1700128649200": {
             "linkToPage": "/home",
@@ -221,23 +222,23 @@ const newMenuEexample = {
         "rootMobileMenu": {
             "showMobileHeader": true,
             "mobileMenuSide": "left",
-            "mobileHeaderLogo": "small",
+            "mobileHeaderLogo": "large",
             "mobileHeaderLogoPosition": "center",
             "mobileMenuPadding": 8,
-            "tabsInnerPadding": "0 5 20 5",
+            "tabsInnerPadding": "10 5 10 5",
             "tabsPadding": 0,
             "tabsMargin": 0,
             "tabsPlacement": "top",
-            "mobileTitlesSize": "medium"
+            "mobileTitlesSize": "large"
         },
         "item__1700661946193": {
             "linkToPage": "/home",
             "name": "Home",
-            "permissions": "all_unauthorised"
+            "permissions": "everybody"
         },
         "item__1700661949645": {
             "linkToPage": "/all-users",
-            "name": "All Users",
+            "name": "",
             "iconType": "directual_icon",
             "menuDirectualIconSet": "academy",
             "permissions": "all_registered",

@@ -335,7 +335,9 @@ function MobileTab(props) {
                         : tabConfig.menuIconCustom} /></div>
         }
 
-        {name && <div className={`${styles.mobileTabTitle} ${mobileTitlesSize ? 'largeMobileTitleMenu' : ''}  largeMobileTitleMenu`}>
+        {name && <div className={`${styles.mobileTabTitle} D_MainMenu_Mobile_Tabs_Title 
+            ${mobileTitlesSize == 'medium' ? 'mediumMobileTitleMenu' : 
+            mobileTitlesSize == 'large' ? 'largeMobileTitleMenu' : ''}  largeMobileTitleMenu`}>
             {name}
         </div>}
         {getLabel()}
