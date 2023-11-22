@@ -585,9 +585,6 @@
   .isHorizontal .newList.alignCenter {
     justify-content: center;
   }
-  .isHorizontal .newList .menuIcon {
-    margin-left: 12px;
-  }
   .isHorizontal .newList .newMenuLink {
     margin-right: 8px;
   }

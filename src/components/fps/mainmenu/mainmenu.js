@@ -356,7 +356,7 @@ export function NewMainMenu(props) {
 
     // MENU LAYOUT
     const isHorizontal = props.horizontal || _.get(menuConfig, "rootMenu.menuPosition") == 'top'
-    const sideMenuAlign = _.get(menuConfig, "rootMenu.sideMenuAlign")
+    const sideMenuAlign = _.get(menuConfig, "rootMenu.sideMenuAlign") || 'left'
 
 
     // SIZE
@@ -440,6 +440,9 @@ export function NewMainMenu(props) {
     const handleLogOut = () => {
         props.logOut && props.logOut()
     }
+
+    // console.log("sideMenuAlign!")
+    // console.log(sideMenuAlign)
 
     return <React.Fragment>
         <div style={{ width: '100%', position: 'absolute', height: 0 }} ref={layoutRef}></div>
@@ -967,11 +970,14 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
 
         </div>
     }
-
+    
     return <a onClick={e => menuItem.linkToType !== 'external' ?
         handleRoute(menuItem.linkToPage)(e) : undefined}
         href={menuItem.linkToType !== 'external' ? undefined : menuItem.linkToURL}
         target={menuItem.linkToURLNewWindow && menuItem.linkToType == 'external' ? '_blank' : ''}
+        style={sideMenuAlign == 'right' ? { marginLeft: horMenuMargin } : 
+            sideMenuAlign == 'left' ? { marginRight: horMenuMargin } : {}
+        }
         className={`D_MainMenu_Item 
             ${styles.menuIcon}
             ${styles.cursorPointer}
@@ -979,7 +985,6 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
             ${menuItem.iconType == 'directual_icon' ? `icon icon-${menuItem.menuDirectualIconSet}` : ''}
             ${!menuItem.menuDirectualIconSet && !menuItem.menuRemixIcon && !menuItem.menuIconCustom ? 'icon icon-application' : ''}
         `}>
-
         {/* Custom icon: */}
         {menuItem.iconType == "custom_icon" && menuItem.menuIconCustom &&
             <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`}>
