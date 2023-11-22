@@ -53,6 +53,9 @@
   border-color: var(--menu-border-color);
   border-style: solid;
 }
+:global .ural svg {
+  display: block;
+}
 :global .ural .D_MainMenu {
   border-color: var(--menu-border-color);
 }

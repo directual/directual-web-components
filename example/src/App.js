@@ -99,20 +99,20 @@ const newMenuEexample = {
                 },
                 "logoSubtitleColor": "rgba(0,0,0,.8)",
                 "signColor": "#058efc",
-                "signColorGrad1": "#1fa2ff",
-                "signColorGrad2": "#a6ffcb",
+                "signColorGrad1": "#c02425",
+                "signColorGrad2": "#f0cb35",
                 "signFillType": "linear-gradient",
                 "signGradDirection": "diag",
                 "addSign": true,
                 "signSize": 25.7,
                 "logoTextSize": 14.8,
-                "scaleSign": 1.1555555555555554,
-                "moveSign": 0,
+                "scaleSign": 1.2,
+                "moveSign": -2.4,
                 "moveHorSign": -2.2,
                 "lineSpacing": 0.79,
                 "titleLetterSpacing": 0.6,
                 "subtitleLetterSpacing": 0,
-                "titleY": 18.4,
+                "titleY": 17,
                 "subtitleY": 13,
                 "logoSubtitleSize": 6,
                 "remixIcon": {
@@ -145,20 +145,20 @@ const newMenuEexample = {
             "sideMenuSize": "resizeble",
             "largeLogoURL": "https://api.directual.com/fileUploaded/directual-site/e/ebanet.jpeg",
             "signColor": "#bd10e0",
-            "generatedLogo": "<div><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\"><link href=\"https://fonts.googleapis.com/css2?family=Bagel+Fat+One&amp;display=swap\" rel=\"stylesheet\"><svg width=\"216\" height=\"45\" viewBox=\"0 0 108 23\"><linearGradient id=\"grad10\" x1=\"10%\" y1=\"10%\" x2=\"90%\" y2=\"90%\"><stop offset=\"0%\" stop-color=\"#1fa2ff\"></stop><stop offset=\"100%\" stop-color=\"#a6ffcb\"></stop></linearGradient><path transform=\"scale(1.1555555555555554) translate(-2.2, 0)\" fill=\"url(#grad10)\" d=\"M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM16.4645 15.5355L20 12L16.4645 8.46447L15.0503 9.87868L17.1716 12L15.0503 14.1213L16.4645 15.5355ZM6.82843 12L8.94975 9.87868L7.53553 8.46447L4 12L7.53553 15.5355L8.94975 14.1213L6.82843 12ZM11.2443 17L14.884 7H12.7557L9.11597 17H11.2443Z\"></path><text font-family=\"Bagel Fat One\" font-weight=\"400\" font-style=\"normal\" letter-spacing=\"0.6\" fill=\"#ffffff\" font-size=\"14.8\" x=\"29.697777777777773\" y=\"18.4\">Microsoft</text></svg></div>",
-            "generatedSmallLogo": "<div><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\"><link href=\"https://fonts.googleapis.com/css2?family=Bagel+Fat+One&amp;display=swap\" rel=\"stylesheet\"><svg width=\"45\" height=\"45\" viewBox=\"0 0 23 23\"><linearGradient id=\"grad10\" x1=\"10%\" y1=\"10%\" x2=\"90%\" y2=\"90%\"><stop offset=\"0%\" stop-color=\"#1fa2ff\"></stop><stop offset=\"100%\" stop-color=\"#a6ffcb\"></stop></linearGradient><path transform=\"scale(1.1555555555555554) translate(-2.2, 0)\" fill=\"url(#grad10)\" d=\"M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM16.4645 15.5355L20 12L16.4645 8.46447L15.0503 9.87868L17.1716 12L15.0503 14.1213L16.4645 15.5355ZM6.82843 12L8.94975 9.87868L7.53553 8.46447L4 12L7.53553 15.5355L8.94975 14.1213L6.82843 12ZM11.2443 17L14.884 7H12.7557L9.11597 17H11.2443Z\"></path></svg></div>",
+            "generatedLogo": "<div><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\"><link href=\"https://fonts.googleapis.com/css2?family=Bagel+Fat+One&amp;display=swap\" rel=\"stylesheet\"><svg width=\"212\" height=\"46\" viewBox=\"0 0 106 23\" style=\"\n    display: block;\n\"><linearGradient id=\"grad10\" x1=\"10%\" y1=\"10%\" x2=\"90%\" y2=\"90%\"><stop offset=\"0%\" stop-color=\"#c02425\"></stop><stop offset=\"100%\" stop-color=\"#f0cb35\"></stop></linearGradient><path transform=\"scale(1.2) translate(-2.2, -2.4)\" fill=\"url(#grad10)\" d=\"M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM16.4645 15.5355L20 12L16.4645 8.46447L15.0503 9.87868L17.1716 12L15.0503 14.1213L16.4645 15.5355ZM6.82843 12L8.94975 9.87868L7.53553 8.46447L4 12L7.53553 15.5355L8.94975 14.1213L6.82843 12ZM11.2443 17L14.884 7H12.7557L9.11597 17H11.2443Z\"></path><text font-family=\"Bagel Fat One\" font-weight=\"400\" font-style=\"normal\" letter-spacing=\"0.6\" fill=\"#ffffff\" font-size=\"14.8\" x=\"30.839999999999996\" y=\"17\">Microsoft</text></svg></div>",
+            "generatedSmallLogo": "<div><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\"><link href=\"https://fonts.googleapis.com/css2?family=Bagel+Fat+One&amp;display=swap\" rel=\"stylesheet\"><svg width=\"46\" height=\"46\" viewBox=\"0 0 23 23\"><linearGradient id=\"grad10\" x1=\"10%\" y1=\"10%\" x2=\"90%\" y2=\"90%\"><stop offset=\"0%\" stop-color=\"#c02425\"></stop><stop offset=\"100%\" stop-color=\"#f0cb35\"></stop></linearGradient><path transform=\"scale(1.2) translate(-2.2, -2.4)\" fill=\"url(#grad10)\" d=\"M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM16.4645 15.5355L20 12L16.4645 8.46447L15.0503 9.87868L17.1716 12L15.0503 14.1213L16.4645 15.5355ZM6.82843 12L8.94975 9.87868L7.53553 8.46447L4 12L7.53553 15.5355L8.94975 14.1213L6.82843 12ZM11.2443 17L14.884 7H12.7557L9.11597 17H11.2443Z\"></path></svg></div>",
             "logoColor": "#ffffff",
             "signFillType": "linear-gradient",
             "signColorGrad1": "#7f7fd5",
             "signColorGrad2": "#91eae4",
             "signGradDirection": "diag",
             "logoWidth": 212,
-            "logoHeight": 45,
+            "logoHeight": 46,
             "menuPadding": 12,
             "menuLogoMargin": 22,
             "menuBorderWidth": 3,
             "dontHideGroups": true,
-            "menuPosition": "top"
+            "menuPosition": "side"
         },
         "item__1700128649200": {
             "linkToPage": "/home",
@@ -172,7 +172,9 @@ const newMenuEexample = {
             "menuRemixIconColor": "#417505",
             "menuRemixIconColorSelected": "#a6ffcb",
             "menuRemixIconSize": 24,
-            "permissions": "all_registered"
+            "permissions": "all_registered",
+            "addLabel": "add_label",
+            "menuLabel": "foo"
         },
         "item__1700128674697": {
             "linkToPage": "/orders",
@@ -212,7 +214,7 @@ const newMenuEexample = {
             "name": "Unauthorised",
             "iconType": "directual_icon",
             "menuDirectualIconSet": "actions",
-            "addLabel": "no_label",
+            "addLabel": "add_label",
             "menuLabel": "foo",
             "permissions": "all_unauthorised"
         },
@@ -222,7 +224,59 @@ const newMenuEexample = {
             "mobileHeaderLogo": "small",
             "mobileHeaderLogoPosition": "center",
             "mobileMenuPadding": 8
+        },
+        "item__1700661946193": {
+            "linkToPage": "/home",
+            "name": "Home"
+        },
+        "item__1700661949645": {
+            "linkToPage": "/all-users",
+            "name": "All Users",
+            "iconType": "directual_icon",
+            "menuDirectualIconSet": "academy"
+        },
+        "item__1700661962340": {
+            "linkToPage": "/orders",
+            "name": "My Orders",
+            "iconType": "remix_icon",
+            "menuRemixIcon": {
+                "Content": "M4.00014 10.0003L4 19.0002L6 19.0002L6.00011 12.0003L12.1719 12.0002L8.22222 15.9499L9.63643 17.3642L16.0004 11.0002L9.63643 4.63623L8.22221 6.05044L12.172 10.0002L4.00014 10.0003ZM15.2506 4.63623L13.8364 6.05044L18.7861 11.0002L13.8364 15.9499L15.2506 17.3642L21.6145 11.0002L15.2506 4.63623Z",
+                "Category": "Arrows",
+                "id": "corner-up-right-double-line"
+            },
+            "menuRemixIconColor": "#c51010",
+            "menuRemixIconColorSelected": "#35cc68"
         }
+    },
+    "mobileMenuOption": "tabs_bottom",
+    "mobileMenu": {
+        "id": "rootMobileMenu",
+        "icon": "folder",
+        "name": "Mobile menu (tabs)",
+        "isFolder": true,
+        "children": [
+            {
+                "id": "item__1700661946193",
+                "name": "New page",
+                "children": [],
+                "isFolder": false,
+                "icon": "application"
+            },
+            {
+                "id": "item__1700661949645",
+                "name": "New page",
+                "children": [],
+                "isFolder": false,
+                "icon": "application"
+            },
+            {
+                "id": "item__1700661962340",
+                "name": "New page",
+                "children": [],
+                "isFolder": false,
+                "icon": "application"
+            }
+        ]
     }
 }
 
@@ -261,6 +315,10 @@ function MainMenuWrapper(props) {
                 "foo": "3"
             }}
             currentBP={currentBP}
+            handleRoute={href => e => {
+                handleRoute(href);
+            }}
+            auth={props.auth}
         />
     }
 
@@ -7212,9 +7270,9 @@ const App = (props) => {
     return <Router>
         <div style={{ width: '100%', position: 'absolute', height: 0 }} ref={layoutRef}></div>
         <FpsWrapper
-            horizontal={true || currentBP == 'mobile'}
-            //showMobileTabs
-            mobileTabsPlace='bottom' // 'top'
+            horizontal={false || currentBP == 'mobile'}
+            showMobileTabs
+            mobileTabsPlace='bottom'
             mobileLeftSide={currentTheme.mobileMenu == 'left'}
             whiteLabel={false}
             locale='ESP'

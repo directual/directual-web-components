@@ -224,6 +224,8 @@ export function NewMobileTabs(props) {
             style={{ padding: tabsPadding }} >
             {mobileMenu.children.map(tab => <MobileTab
                 currentRoute={props.currentRoute}
+                auth={props.auth}
+                handleRoute={props.handleRoute}
                 tabsInnerPadding={tabsInnerPadding}
                 key={tab.id}
                 custom_labels={props.custom_labels}
@@ -238,16 +240,22 @@ export function NewMobileTabs(props) {
 
 function MobileTab(props) {
 
-    const { tabsInnerPadding, tabConfig, currentRoute, custom_labels, auth } = props
+    const { tabsInnerPadding, tabConfig, currentRoute, custom_labels, auth, handleRoute } = props
 
     const name = tabConfig.name || ""
     const iconType = tabConfig.iconType || 'no_icon'
 
-    // console.log("auth")
-    // console.log(auth)
+    //checkig RBAC
+    if (tabConfig.permissions == "all_unauthorised" && auth.isAuth) { return null }
+    if (tabConfig.permissions == "all_registered" && !auth.isAuth) { return null }
+    if (tabConfig.permissions == "roles" &&
+        (!auth.isAuth || !auth.role || !tabConfig.specifyRoles ||
+            _.intersection(auth.role.split(","), tabConfig.specifyRoles.split(",")).length == 0)
+    ) { return null }
+    //===========
 
     const getLabel = () => {
-        if (_.get(custom_labels, tabConfig.addLabel) !== "add_label") { return null }
+        if (_.get(tabConfig, "addLabel") !== "add_label") { return null }
         const label = _.get(custom_labels, tabConfig.menuLabel)
         if (label && label !== "0") {
             return <div className={`${styles.itemLabel} D_MainMenu_Item_Label`}>{label}</div>
@@ -259,7 +267,11 @@ function MobileTab(props) {
 
     return <a className={`${styles.mobileTab} D_MainMenu_Mobile_Tabs_Tab ${currentRoute == tabConfig.linkToPage && 'selected'}`}
         style={{ padding: `${tabsInnerPadding}px 0` }}
-        href={tabConfig.linkToType !== 'external' ? tabConfig.linkToPage : tabConfig.linkToURL}
+        onClick={e => {
+            e.preventDefault()
+            handleRoute(tabConfig.linkToPage)(e)
+        }}
+        href={tabConfig.linkToType !== 'external' ? null : tabConfig.linkToURL}
         target={tabConfig.linkToURLNewWindow && tabConfig.linkToType == 'external' ? '_blank' : ''}
     >
         {iconType == 'directual_icon' && tabConfig.menuDirectualIconSet && <React.Fragment>
@@ -358,7 +370,6 @@ export function NewMainMenu(props) {
     const isHorizontal = props.horizontal || _.get(menuConfig, "rootMenu.menuPosition") == 'top'
     const sideMenuAlign = _.get(menuConfig, "rootMenu.sideMenuAlign") || 'left'
 
-
     // SIZE
     const resizable = _.get(menuConfig, "rootMenu.sideMenuSize") == "resizeble"
     const menuWidth = _.get(menuConfig, "rootMenu.menuWidth") || 200
@@ -400,10 +411,6 @@ export function NewMainMenu(props) {
         setShowMM(false)
     }
     // =====================
-
-
-    // console.log("auth")
-    // console.log(auth)
 
     const scrollDivRef = useRef(null)
     const [showTopBorder, setShowTopBorder] = useState(false)
@@ -886,7 +893,7 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
     }
 
     const getLabel = () => {
-        if (_.get(custom_labels, menuItem.addLabel) !== "add_label") { return null }
+        if (_.get(menuItem, "addLabel") !== "add_label") { return null }
         const label = _.get(custom_labels, menuItem.menuLabel)
         if (label && label !== "0") {
             return <div className={`${styles.itemLabel} D_MainMenu_Item_Label`}>{label}</div>
