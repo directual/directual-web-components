@@ -439,9 +439,12 @@ export function NewMainMenu(props) {
         {/* SIDE MOBILE MENU EXPNADER */}
         {showBackdrop && <Backdrop top onClick={hideMMhandler} />}
         {!isTabs && <div className={`D_MeinMenu_show_MM ${styles.show_mobile_menu} ${leftSide && currentBP == 'mobile' && styles.leftSide}`}
-            style={{
-                top: 6 + showMobileHeader ? (mobileMenuPadding + menuMargin + menuBorderWidth) : 0,
-                right: showMobileHeader ? (menuBorderWidth + menuMargin + mobileMenuPadding) : 6
+            style={leftSide ? {
+                top: 8 + showMobileHeader ? (mobileMenuPadding + menuMargin + menuBorderWidth) : 0,
+                left: showMobileHeader ? (menuBorderWidth + menuMargin + mobileMenuPadding) : 8
+            } : {
+                top: 8 + showMobileHeader ? (mobileMenuPadding + menuMargin + menuBorderWidth) : 0,
+                right: showMobileHeader ? (menuBorderWidth + menuMargin + mobileMenuPadding) : 8
             }}
             onClick={showMMhandler}></div>}
         {/* ======================= */}
