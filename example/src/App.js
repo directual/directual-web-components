@@ -156,7 +156,7 @@ const newMenuEexample = {
             "logoHeight": 46,
             "menuPadding": 12,
             "menuLogoMargin": 22,
-            "menuBorderWidth": 3,
+            "menuBorderWidth": 0,
             "dontHideGroups": true,
             "menuPosition": "side"
         },
@@ -223,17 +223,26 @@ const newMenuEexample = {
             "mobileMenuSide": "left",
             "mobileHeaderLogo": "small",
             "mobileHeaderLogoPosition": "center",
-            "mobileMenuPadding": 8
+            "mobileMenuPadding": 8,
+            "tabsInnerPadding": "0 5 20 5",
+            "tabsPadding": 0,
+            "tabsMargin": 0,
+            "tabsPlacement": "top",
+            "mobileTitlesSize": "medium"
         },
         "item__1700661946193": {
             "linkToPage": "/home",
-            "name": "Home"
+            "name": "Home",
+            "permissions": "all_unauthorised"
         },
         "item__1700661949645": {
             "linkToPage": "/all-users",
             "name": "All Users",
             "iconType": "directual_icon",
-            "menuDirectualIconSet": "academy"
+            "menuDirectualIconSet": "academy",
+            "permissions": "all_registered",
+            "addLabel": "add_label",
+            "menuLabel": "foo"
         },
         "item__1700661962340": {
             "linkToPage": "/orders",
@@ -245,7 +254,9 @@ const newMenuEexample = {
                 "id": "corner-up-right-double-line"
             },
             "menuRemixIconColor": "#c51010",
-            "menuRemixIconColorSelected": "#35cc68"
+            "menuRemixIconColorSelected": "#35cc68",
+            "permissions": "roles",
+            "specifyRoles": "admin"
         }
     },
     "mobileMenuOption": "tabs_bottom",
@@ -7287,6 +7298,7 @@ const App = (props) => {
             mobileTabs={
                 <MainMenuWrapper
                     themeName={currentTheme}
+                    auth={authExample}
                     mobileTabs
                     currentBP={currentBP}
                 />

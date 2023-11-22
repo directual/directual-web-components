@@ -52,6 +52,7 @@
   border-radius: var(--border-radius);
   border-color: var(--menu-border-color);
   border-style: solid;
+  border-width: 0;
 }
 :global .ural svg {
   display: block;
@@ -132,6 +133,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+}
+:global .ural .D_MainMenu_Mobile_Tabs_Tab .D_MainMenu_Mobile_Tabs_Title.largeMobileTitleMenu {
+  font-size: var(--text-small-size);
 }
 :global .ural .D_MainMenu_List {
   width: 100%;

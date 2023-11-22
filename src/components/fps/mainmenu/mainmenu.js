@@ -203,12 +203,19 @@ export default function MainMenu(props) {
 
 export function NewMobileTabs(props) {
 
+
     const mobileMenu = props.mobileMenu || { children: [] }
     const menuConfig = props.menuConfig || {}
 
-    const tabsPadding = _.get(menuConfig, "rootMobileMenu.tabsPadding") || 10
-    const tabsMargin = _.get(menuConfig, "rootMobileMenu.tabsMargin") || 5
-    const tabsInnerPadding = _.get(menuConfig, "rootMobileMenu.tabsInnerPadding") || 10
+    console.log("NewMobileTabs")
+    console.log(menuConfig)
+
+    const tabsPadding = _.get(menuConfig, "rootMobileMenu.tabsPadding") == 0 ? 0 :
+        _.get(menuConfig, "rootMobileMenu.tabsPadding") || 10
+    const tabsMargin = _.get(menuConfig, "rootMobileMenu.tabsMargin") == 0 ? 0 :
+        _.get(menuConfig, "rootMobileMenu.tabsMargin") || 5
+    const tabsInnerPadding = _.get(menuConfig, "rootMobileMenu.tabsInnerPadding") || "10 10 10 10"
+    const mobileTitlesSize = _.get(menuConfig, "rootMobileMenu.mobileTitlesSize") || 'small'
 
     return <div className={`${props.theme}`}
         style={tabsMargin !== 0 ? {
@@ -224,7 +231,9 @@ export function NewMobileTabs(props) {
             style={{ padding: tabsPadding }} >
             {mobileMenu.children.map(tab => <MobileTab
                 currentRoute={props.currentRoute}
+                tabsPadding={tabsPadding}
                 auth={props.auth}
+                mobileTitlesSize={mobileTitlesSize}
                 handleRoute={props.handleRoute}
                 tabsInnerPadding={tabsInnerPadding}
                 key={tab.id}
@@ -240,10 +249,25 @@ export function NewMobileTabs(props) {
 
 function MobileTab(props) {
 
-    const { tabsInnerPadding, tabConfig, currentRoute, custom_labels, auth, handleRoute } = props
+    const { tabsInnerPadding, tabConfig, currentRoute, mobileTitlesSize,
+        custom_labels, auth, handleRoute, tabsPadding } = props
 
     const name = tabConfig.name || ""
     const iconType = tabConfig.iconType || 'no_icon'
+
+    // padding
+    let paddingTop = 10
+    let paddingRight = 10
+    let paddingBottom = 10
+    let paddingLeft = 10
+
+    let paddingArray = typeof tabsInnerPadding == 'string' ? tabsInnerPadding.split(' ') : [10, 10, 10, 10]
+    try {
+        paddingTop = parseInt(paddingArray[0])
+        paddingRight = parseInt(paddingArray[1])
+        paddingBottom = parseInt(paddingArray[2])
+        paddingLeft = parseInt(paddingArray[3])
+    } catch { }
 
     //checkig RBAC
     if (tabConfig.permissions == "all_unauthorised" && auth.isAuth) { return null }
@@ -266,7 +290,12 @@ function MobileTab(props) {
     }
 
     return <a className={`${styles.mobileTab} D_MainMenu_Mobile_Tabs_Tab ${currentRoute == tabConfig.linkToPage && 'selected'}`}
-        style={{ padding: `${tabsInnerPadding}px 0` }}
+        style={tabsPadding == 0 ? { 
+            padding: `${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`,
+            borderRadius: 0    
+        }
+            :
+            { padding: `${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px` }}
         onClick={e => {
             e.preventDefault()
             handleRoute(tabConfig.linkToPage)(e)
@@ -306,7 +335,7 @@ function MobileTab(props) {
                         : tabConfig.menuIconCustom} /></div>
         }
 
-        {name && <div className={`${styles.mobileTabTitle}  D_MainMenu_Mobile_Tabs_Title`}>
+        {name && <div className={`${styles.mobileTabTitle} ${mobileTitlesSize ? 'largeMobileTitleMenu' : ''}  largeMobileTitleMenu`}>
             {name}
         </div>}
         {getLabel()}
@@ -947,9 +976,9 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
 
     if (item.isFolder && isHorizontal) {
         return <div className={`D_MainMenu_Item D_MainMenu_GroupTitle ${styles.menuIcon}`}
-            style={sideMenuAlign == 'right' ? { marginLeft: horMenuMargin } : 
-            sideMenuAlign == 'left' ? { marginRight: horMenuMargin } : {}
-        }
+            style={sideMenuAlign == 'right' ? { marginLeft: horMenuMargin } :
+                sideMenuAlign == 'left' ? { marginRight: horMenuMargin } : {}
+            }
         >
             <DropDown
                 dropButton={<div className={`${styles.newMenuLink} icon`}>
@@ -977,12 +1006,12 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
 
         </div>
     }
-    
+
     return <a onClick={e => menuItem.linkToType !== 'external' ?
         handleRoute(menuItem.linkToPage)(e) : undefined}
         href={menuItem.linkToType !== 'external' ? undefined : menuItem.linkToURL}
         target={menuItem.linkToURLNewWindow && menuItem.linkToType == 'external' ? '_blank' : ''}
-        style={sideMenuAlign == 'right' ? { marginLeft: horMenuMargin } : 
+        style={sideMenuAlign == 'right' ? { marginLeft: horMenuMargin } :
             sideMenuAlign == 'left' ? { marginRight: horMenuMargin } : {}
         }
         className={`D_MainMenu_Item 
