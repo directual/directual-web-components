@@ -83,13 +83,15 @@
         .D_MainMenu_Item_Label
         {
           position: absolute;
-          max-width: 50px;
-          overflow: hidden;
+          max-width: 100%;
           text-overflow: ellipsis;
           font-size: var(--text-very-small-size);
           top:-10px;
           right:-20px;
           padding:2px 4px;
+          white-space: nowrap;
+          justify-content: flex-start;
+          overflow: hidden;
         }
       }
       .D_MainMenu_List {
@@ -195,6 +197,11 @@
         }
       }
     }
+    &.DD_Horizontal {
+      .D_MainMenu_Item {
+        margin-top: 0;
+      }
+    }
 
     .D_MainMenu_Item {
       margin: 9px 1px 1px 1px;
@@ -205,6 +212,9 @@
       min-height: 36px;
       .D_MainMenu_Item_Label {
         flex-shrink: 0;
+        max-width: 50%;
+        white-space: nowrap;
+        overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -296,6 +306,15 @@
       }
     }
   }
+  .DMainMenu_LogInButton {
+    &.horizontalLB {
+      width: 100%;
+    }
+    &.compactLB {
+      display: flex;
+      justify-content: center;
+    }
+  }
 
 }
 
@@ -331,7 +350,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  &.vertical {
+    width: 100%;
+  }
 }
 .newListFooterImage {
   width: 50px;
@@ -357,6 +378,7 @@
   flex-direction: column;
   flex-grow: 2;
   margin-left: 12px;
+  margin-right: 6px;
 }
 
 .newListFooterName, .newListFooterID {
@@ -621,7 +643,7 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      margin-left: 8px;
+      //margin-left: 8px;
       &.alignRight {
         justify-content: flex-end;
       }
@@ -712,11 +734,6 @@
     overflow: auto;
     top:0; bottom: 0;
     &.show {
-      // &.leftSide {
-      //   left: 0;
-      //   right: auto;
-      //   transform: translateX(-40px);
-      // }
       transform: translateX(0px);
       transition: 0;
       transition-timing-function: cubic-bezier(0.81, 0.12, 0.55, 1.4);
@@ -923,7 +940,31 @@
 .bdd {
   position: relative;
   display: inline-block;
+  .profileDD {
+    padding:8px;
+    .profileDDlink {
+      padding: 2px;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: .5s;
+      &:hover {
+        color: var(--menu-item-selected);
+      }
+    }
+  }
   .dropdownMenu {
+    &.top {
+      bottom: 100%;
+      top: auto;
+      margin-top: auto;
+      margin-bottom: -16px;
+      &.show {
+        z-index: 300;
+        opacity: 1;
+        margin-bottom: 0px;
+        margin-top: auto;
+      }
+    }
     position: absolute;
     //right: 0;
     transition: 0.3s;
@@ -934,7 +975,7 @@
     &.show {
       z-index: 300;
       opacity: 1;
-      margin-top: -6px;
+      margin-top: 0px;
     }
     border: solid 1px var(--button-border);
     border-radius: var(--border-radius);
@@ -1008,9 +1049,9 @@
 }
 
 .newDDMenu {
-  padding: 2px 6px 2px 0;
+  padding: 6px 6px 6px 0;
     .menuIcon {
-      margin-left: 8px !important;
+      margin-left: 6px !important;
     }
 }
 

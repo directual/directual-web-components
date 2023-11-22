@@ -68,13 +68,15 @@
 }
 :global .ural.compact_Mode .D_MainMenu_Item .D_MainMenu_Item_Label {
   position: absolute;
-  max-width: 50px;
-  overflow: hidden;
+  max-width: 100%;
   text-overflow: ellipsis;
   font-size: var(--text-very-small-size);
   top: -10px;
   right: -20px;
   padding: 2px 4px;
+  white-space: nowrap;
+  justify-content: flex-start;
+  overflow: hidden;
 }
 :global .ural.compact_Mode .D_MainMenu_List {
   display: flex;
@@ -169,6 +171,9 @@
 :global .ural .D_MainMenu_List_Group_Title .D_MainMenu_List_expand.group_hidden {
   transform: rotate(180deg);
 }
+:global .ural.DD_Horizontal .D_MainMenu_Item {
+  margin-top: 0;
+}
 :global .ural .D_MainMenu_Item {
   margin: 9px 1px 1px 1px;
   color: var(--menu-item-hover);
@@ -179,6 +184,9 @@
 }
 :global .ural .D_MainMenu_Item .D_MainMenu_Item_Label {
   flex-shrink: 0;
+  max-width: 50%;
+  white-space: nowrap;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -264,6 +272,13 @@
   border: solid 2px var(--menu-border-color);
   border-radius: var(--border-radius);
 }
+:global .DMainMenu_LogInButton.horizontalLB {
+  width: 100%;
+}
+:global .DMainMenu_LogInButton.compactLB {
+  display: flex;
+  justify-content: center;
+}
 .newListGroup {
   display: flex;
   flex-direction: column;
@@ -290,6 +305,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.newListFooter.vertical {
   width: 100%;
 }
 .newListFooterImage {
@@ -315,6 +332,7 @@
   flex-direction: column;
   flex-grow: 2;
   margin-left: 12px;
+  margin-right: 6px;
 }
 .newListFooterName,
 .newListFooterID {
@@ -560,7 +578,6 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    margin-left: 8px;
   }
   .isHorizontal .newList.alignRight {
     justify-content: flex-end;
@@ -837,6 +854,18 @@
   position: relative;
   display: inline-block;
 }
+.bdd .profileDD {
+  padding: 8px;
+}
+.bdd .profileDD .profileDDlink {
+  padding: 2px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.bdd .profileDD .profileDDlink:hover {
+  color: var(--menu-item-selected);
+}
 .bdd .dropdownMenu {
   position: absolute;
   transition: 0.3s;
@@ -854,10 +883,22 @@
   align-items: stretch;
   overflow: hidden;
 }
+.bdd .dropdownMenu.top {
+  bottom: 100%;
+  top: auto;
+  margin-top: auto;
+  margin-bottom: -16px;
+}
+.bdd .dropdownMenu.top.show {
+  z-index: 300;
+  opacity: 1;
+  margin-bottom: 0px;
+  margin-top: auto;
+}
 .bdd .dropdownMenu.show {
   z-index: 300;
   opacity: 1;
-  margin-top: -6px;
+  margin-top: 0px;
 }
 .bdd .dropdownMenu .button {
   border-color: rgba(0, 0, 0, 0) !important;
@@ -915,10 +956,10 @@
   background-color: var(--button-dropdown-hover-bgr);
 }
 .newDDMenu {
-  padding: 2px 6px 2px 0;
+  padding: 6px 6px 6px 0;
 }
 .newDDMenu .menuIcon {
-  margin-left: 8px !important;
+  margin-left: 6px !important;
 }
 .cursorPointer {
   cursor: pointer;

@@ -32,7 +32,7 @@ function DropDown(props) {
         <div onClick={(e) => {
             setShow(!show)
         }}>{props.dropButton}</div>
-        <div className={`${styles.dropdownMenu} ${show ? styles.show : ''}`} ref={dropMenu} onClick={() => setShow(false)}>
+        <div className={`${styles.dropdownMenu} ${props.top ? styles.top : ''} ${show ? styles.show : ''}`} ref={dropMenu} onClick={() => setShow(false)}>
             {props.children}
         </div>
     </div>
@@ -238,14 +238,16 @@ export function NewMobileTabs(props) {
 
 function MobileTab(props) {
 
-    const { tabsInnerPadding, tabConfig, currentRoute, custom_labels } = props
+    const { tabsInnerPadding, tabConfig, currentRoute, custom_labels, auth } = props
 
     const name = tabConfig.name || ""
     const iconType = tabConfig.iconType || 'no_icon'
 
-    // console.log(tabConfig)
+    // console.log("auth")
+    // console.log(auth)
 
     const getLabel = () => {
+        if (_.get(custom_labels, tabConfig.addLabel) !== "add_label") { return null }
         const label = _.get(custom_labels, tabConfig.menuLabel)
         if (label && label !== "0") {
             return <div className={`${styles.itemLabel} D_MainMenu_Item_Label`}>{label}</div>
@@ -348,6 +350,7 @@ export function NewMainMenu(props) {
     const menuConfig = props.menuConfig || {}
     const mainMenu = props.mainMenu || { children: [] }
     const mobileMenu = props.mobileMenu || { children: [] }
+    const auth = props.auth || {}
 
     const custom_labels = props.custom_labels || {}
 
@@ -399,8 +402,8 @@ export function NewMainMenu(props) {
     // =====================
 
 
-    // console.log("isTabs")
-    // console.log(props.mobileMenuOption)
+    // console.log("auth")
+    // console.log(auth)
 
     const scrollDivRef = useRef(null)
     const [showTopBorder, setShowTopBorder] = useState(false)
@@ -409,7 +412,7 @@ export function NewMainMenu(props) {
     const [compactMode, setCompactMode] = useState(_.get(menuConfig, "rootMenu.sideMenuSize") == "compact" || props.compactState)
 
     useEffect(() => {
-        setCompactMode(props.compactState && currentBP !== 'mobile')
+        setCompactMode(props.compactState && !isHorizontal && currentBP !== 'mobile')
     }, [props.compactState])
 
     useEffect(() => {
@@ -434,17 +437,21 @@ export function NewMainMenu(props) {
             setShowBottomBorder(false);
     }
 
+    const handleLogOut = () => {
+        props.logOut && props.logOut()
+    }
+
     return <React.Fragment>
         <div style={{ width: '100%', position: 'absolute', height: 0 }} ref={layoutRef}></div>
         {/* SIDE MOBILE MENU EXPNADER */}
         {showBackdrop && <Backdrop top onClick={hideMMhandler} />}
         {!isTabs && <div className={`D_MeinMenu_show_MM ${styles.show_mobile_menu} ${leftSide && currentBP == 'mobile' && styles.leftSide}`}
             style={leftSide ? {
-                top: 8 + showMobileHeader ? (mobileMenuPadding + menuMargin + menuBorderWidth) : 0,
-                left: showMobileHeader ? (menuBorderWidth + menuMargin + mobileMenuPadding) : 8
+                top: 4 + (showMobileHeader ? (mobileMenuPadding + menuMargin + menuBorderWidth) : 0),
+                left: showMobileHeader ? (menuBorderWidth + menuMargin + mobileMenuPadding) : 6
             } : {
-                top: 8 + showMobileHeader ? (mobileMenuPadding + menuMargin + menuBorderWidth) : 0,
-                right: showMobileHeader ? (menuBorderWidth + menuMargin + mobileMenuPadding) : 8
+                top: 4 + (showMobileHeader ? (mobileMenuPadding + menuMargin + menuBorderWidth) : 0),
+                right: showMobileHeader ? (menuBorderWidth + menuMargin + mobileMenuPadding) : 6
             }}
             onClick={showMMhandler}></div>}
         {/* ======================= */}
@@ -538,7 +545,10 @@ export function NewMainMenu(props) {
 
         {/* HORIZONTAL MENU */}
         {currentBP == 'desktop' && isHorizontal &&
-            <div className={`${styles.newMainmenu} D_MainMenu ${isHorizontal ? styles.isHorizontal : styles.hideDesktop} ${showMM && styles.show} ${props.theme} 
+            <div className={`${styles.newMainmenu} D_MainMenu ${isHorizontal ? styles.isHorizontal : styles.hideDesktop} 
+                ${isHorizontal ? "DD_Horizontal" : ""}
+                ${showMM && styles.show} 
+                ${props.theme} 
             ${compactMode ? `${styles.compactMode} compact_Mode` : ''
                 }`}
                 style={menuMargin !== 0 ? {
@@ -557,7 +567,10 @@ export function NewMainMenu(props) {
 
                 <div className={`${styles.newLogoWrapper} D_MainMenu_Logo_Wrapper`}>
                     {logoOption == 'ai' ?
-                        <a href="/">
+                        <a onClick={e => {
+                            e.preventDefault()
+                            handleRoute("/")(e)
+                        }}>
                             <div style={{
                                 width: logoSize.width,
                                 height: logoSize.height
@@ -566,7 +579,10 @@ export function NewMainMenu(props) {
                         </a>
                         : <React.Fragment>
                             {largeLogoURL ?
-                                <a href="/"
+                                <a onClick={e => {
+                                    e.preventDefault()
+                                    handleRoute("/")(e)
+                                }}
                                     className={`${styles.newLogo} D_MainMenu_Logo`}
                                     style={{
                                         backgroundImage: `url(${largeLogoURL})`,
@@ -576,7 +592,10 @@ export function NewMainMenu(props) {
                                         backgroundRepeat: 'no-repeat',
                                         height: logoSize.height
                                     }} /> :
-                                <a href="/"
+                                <a onClick={e => {
+                                    e.preventDefault()
+                                    handleRoute("/")(e)
+                                }}
                                     style={{
                                         width: compactMode ? logoSize.height : logoSize.width,
                                         margin: logoPosition == 'center' ? '0 auto 0 auto' : 0,
@@ -596,33 +615,33 @@ export function NewMainMenu(props) {
                     {(mainMenu.children || []).map(item =>
                         <NewMainMenuItem
                             item={item}
+                            auth={auth}
+                            sideMenuAlign={sideMenuAlign}
                             isHorizontal
                             custom_labels={custom_labels}
                             compactMode={compactMode}
                             currentRoute={props.currentRoute}
+                            handleRoute={route => e => {
+                                hideMMhandler(e)
+                                handleRoute(route)(e)
+                            }
+                            }
                             menuConfig={menuConfig}
                             hideGroups={hideGroups} />
                     )}
 
                 </div>
 
-                {/* AUTH PART ↓ */}
-                <div className={`${styles.newListSeparator} D_MainMenu_Separator Horizontal_One`} />
-                <div className={`${styles.newListFooter} D_MainMenu_Footer`}
-                    style={{ width: 250 }}
-                >
-                    <div className={`${styles.newListFooterImage} D_MainMenu_Footer_Image`}>
-                        <img src={props.userPic} />
-                    </div>
-                    {!compactMode &&
-                        <React.Fragment>
-                            <div className={`${styles.newListFooterText} D_MainMenu_Footer_Text`}>
-                                <div className={`${styles.newListFooterName} D_MainMenu_Footer_Name`}>{props.userName}</div>
-                                <div className={`${styles.newListFooterID} D_MainMenu_Footer_ID`}>{props.userID}</div>
-                            </div>
-                            <div className={`${styles.newListFooterLogout} D_MainMenu_Footer_Logout icon icon-logoutAlt`} />
-                        </React.Fragment>}
-                </div>
+                <NewMainMenuAuth
+                    auth={auth}
+                    handleRoute={route => e => {
+                        hideMMhandler()
+                        handleRoute(route)()
+                    }}
+                    compactMode={compactMode}
+                    logOut={handleLogOut}
+                />
+
             </div>}
         {/* ======================= */}
 
@@ -751,11 +770,12 @@ export function NewMainMenu(props) {
                 {(mainMenu.children || []).map(item =>
                     <NewMainMenuItem
                         item={item}
+                        auth={auth}
                         menuCompactWidth={menuCompactWidth}
                         menuPadding={menuPadding}
                         handleRoute={route => e => {
-                            hideMMhandler()
-                            handleRoute(route)()
+                            hideMMhandler(e)
+                            handleRoute(route)(e)
                         }
                         }
                         custom_labels={custom_labels}
@@ -766,94 +786,81 @@ export function NewMainMenu(props) {
                 )}
 
             </div>
-
-            {/* AUTH PART ↓ */}
-            {props.showUserButtons && <React.Fragment>
-                <div className={`${styles.newListSeparator} D_MainMenu_Separator Vertical_One`} />
-                {props.loggedIn ?
-                    <div className={`${styles.newListFooter} D_MainMenu_Footer`}>
-                        <a className={`${styles.newListFooterImage} D_MainMenu_Footer_Image`}>
-                            <img src={props.userPic} />
-                        </a>
-                        {!compactMode &&
-                            <React.Fragment>
-                                <div className={`${styles.newListFooterText} D_MainMenu_Footer_Text`}>
-                                    <div className={`${styles.newListFooterName} D_MainMenu_Footer_Name`}>{props.userName}</div>
-                                    <div className={`${styles.newListFooterID} D_MainMenu_Footer_ID`}>{props.userID}</div>
-                                </div>
-                                <div className={`${styles.newListFooterLogout} D_MainMenu_Footer_Logout icon icon-logoutAlt`} />
-                            </React.Fragment>}
-                    </div> :
-                    <div className='DMainMenu_LogInButton'>
-                        {props.logInButton}
-                    </div>
-                }
-            </React.Fragment>}
-
-            {/* <ul className={styles.list}>
-                {props.menu.map(item => (
-                    !item.hidden && (item.subheader == 'true' || item.subheader == true) ?
-                        <li
-                            key={item.name}
-                            className={styles.subheader}>{item.name}</li> :
-                        !item.hidden &&
-                        <li
-                            key={item.name}
-                            onClick={e=> {
-                                hideMM();
-                                props.handleRoute(item.route)(e)
-                            }}
-                            className={`${styles.item} ${props.currentRoute == item.route && styles.active} 
-                                ${item.disabled && styles.disabled} icon ${item.icon ? `icon-${item.icon}` : `icon-forward`}`}>
-                            {item.link ? item.link :
-                                <a href={!item.disabled && item.route}>{item.name}</a>
-                            }
-                        </li>
-                ))}
-            </ul> */}
-            {/* <div className={styles.menuFooter}>
-                {props.showUserButtons &&
-                    <div className={styles.menuFooterButton}>
-                        {props.loggedIn ?
-                            <ActionPanel margin={{ top: 1, bottom: 1 }}>
-                                <div className=
-                                    {`
-                            ${styles.menuButton} 
-                            ${props.profileButton.icon && `${styles.icon} icon icon-${props.profileButton.icon}`}
-                            `}
-                                    style={{ marginRight: 6 }}
-                                    onClick={e=> {
-                                        hideMM();
-                                        props.handleRoute('/profile')(e)
-                                    }}>
-                                    {props.profileButton.link}
-                                </div>
-                                {props.logOutButton &&
-                                    <Button height={50} icon='logoutAlt' onClick={() => { hideMM(); props.logout && props.logout() }} />
-                                }
-                            </ActionPanel>
-                            :
-                            <div className={`
-                                    ${styles.menuButton}
-                                    ${props.logInButton.icon && `${styles.icon} icon icon-${props.logInButton.icon}`}
-                                    ${styles.accent}
-                                    `}
-                                    onClick={e=> {
-                                        hideMM();
-                                        props.handleRoute('/signin')(e)
-                                    }}>
-                                {props.logInButton.link}
-                            </div>
-                        }
-                    </div>}
-            </div> */}
+            <NewMainMenuAuth
+                auth={auth}
+                horizontal
+                handleRoute={route => e => {
+                    hideMMhandler()
+                    handleRoute(route)()
+                }}
+                compactMode={compactMode}
+                logOut={handleLogOut}
+                menuWidth={menuWidth}
+                menuCompactWidth={menuCompactWidth}
+            />
         </div>}
-        {/* ======================= */}
 
     </React.Fragment >
 }
 
-function NewMainMenuItem({ item, menuPadding, menuCompactWidth, isHorizontal, handleRoute, currentRoute, hideGroups, menuConfig, compactMode, custom_labels }) {
+function NewMainMenuAuth({ auth, compactMode, horizontal, logOut, handleRoute }) {
+
+    const userName = () => {
+        let name = ""
+        if (auth.firstName) { name = name + auth.firstName + " " }
+        if (auth.lastName) { name = name + auth.lastName }
+        return name
+    }
+
+    return <React.Fragment>
+        {horizontal ?
+            <div className={`${styles.newListSeparator} D_MainMenu_Separator Vertical_One`} /> :
+            <div className={`${styles.newListSeparator} D_MainMenu_Separator Horizontal_One`} />}
+
+        {auth.isAuth && !compactMode ?
+            <div className={`${styles.newListFooter} ${!horizontal ? styles.horizontal : styles.vertical} D_MainMenu_Footer`}>
+                <a className={`${styles.newListFooterImage} D_MainMenu_Footer_Image`}
+                    onClick={e => {
+                        e.preventDefault()
+                        handleRoute("/profile")(e)
+                    }}
+                >
+                    {auth.userpic ? <img src={auth.userpic} /> : <div className='icon large icon-user' />}
+                </a>
+                <div className={`${styles.newListFooterText} D_MainMenu_Footer_Text`}>
+                    {userName() && <div className={`${styles.newListFooterName} D_MainMenu_Footer_Name`}>{userName()}</div>}
+                    <div className={`${styles.newListFooterID} D_MainMenu_Footer_ID`}>{auth.user}</div>
+                </div>
+                <div onClick={logOut} className={`${styles.newListFooterLogout} D_MainMenu_Footer_Logout icon icon-logout`} />
+            </div> :
+            auth.isAuth && compactMode ?
+                <DropDown
+                    top
+                    dropButton={<a className={`${styles.newListFooterImage} D_MainMenu_Footer_Image`} >
+                        {auth.userpic ? <img src={auth.userpic} /> : <div className='icon large icon-user' />}
+                    </a>}>
+                    <div className={`${styles.profileDD}`}>
+                        <div onClick={handleRoute("/profile")} className={`${styles.profileDDlink} icon icon-user`}>
+                            Profile
+                        </div>
+                        <div onClick={logOut} className={`${styles.profileDDlink} icon icon-logout`}>
+                            Sign out
+                        </div>
+                    </div>
+
+                </DropDown>
+
+                :
+                <div className={`DMainMenu_LogInButton ${horizontal ? 'horizontalLB' : ''} ${compactMode ? 'compactLB' : ''}`}>
+                    <Button accent onClick={handleRoute("/signin")} icon='logoutAlt'>{compactMode ? "" : "Sign in"}</Button>
+                </div>
+        }
+    </React.Fragment>
+}
+
+function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
+    isHorizontal, handleRoute, currentRoute, hideGroups,
+    menuConfig, compactMode, custom_labels, sideMenuAlign }) {
 
     const menuItem = _.get(menuConfig, [item.id]) || {}
 
@@ -876,6 +883,7 @@ function NewMainMenuItem({ item, menuPadding, menuCompactWidth, isHorizontal, ha
     }
 
     const getLabel = () => {
+        if (_.get(custom_labels, menuItem.addLabel) !== "add_label") { return null }
         const label = _.get(custom_labels, menuItem.menuLabel)
         if (label && label !== "0") {
             return <div className={`${styles.itemLabel} D_MainMenu_Item_Label`}>{label}</div>
@@ -884,6 +892,15 @@ function NewMainMenuItem({ item, menuPadding, menuCompactWidth, isHorizontal, ha
             return null
         }
     }
+
+    //checkig RBAC
+    if (menuItem.permissions == "all_unauthorised" && auth.isAuth) { return null }
+    if (menuItem.permissions == "all_registered" && !auth.isAuth) { return null }
+    if (menuItem.permissions == "roles" &&
+        (!auth.isAuth || !auth.role || !menuItem.specifyRoles ||
+            _.intersection(auth.role.split(","), menuItem.specifyRoles.split(",")).length == 0)
+    ) { return null }
+    //===========
 
     if (item.isFolder && !isHorizontal) {
         return <div className={`${styles.newListGroup} D_MainMenu_List_Group`}>
@@ -903,6 +920,7 @@ function NewMainMenuItem({ item, menuPadding, menuCompactWidth, isHorizontal, ha
                 <NewMainMenuItem
                     custom_labels={custom_labels}
                     compactMode={compactMode}
+                    auth={auth}
                     handleRoute={handleRoute}
                     menuPadding={menuPadding}
                     menuCompactWidth={menuCompactWidth}
@@ -919,7 +937,9 @@ function NewMainMenuItem({ item, menuPadding, menuCompactWidth, isHorizontal, ha
 
     if (item.isFolder && isHorizontal) {
         return <div className={`D_MainMenu_Item D_MainMenu_GroupTitle ${styles.menuIcon}`}
-            style={{ marginLeft: horMenuMargin }}
+            style={sideMenuAlign == 'right' ? { marginLeft: horMenuMargin } : 
+            sideMenuAlign == 'left' ? { marginRight: horMenuMargin } : {}
+        }
         >
             <DropDown
                 dropButton={<div className={`${styles.newMenuLink} icon`}>
@@ -936,6 +956,7 @@ function NewMainMenuItem({ item, menuPadding, menuCompactWidth, isHorizontal, ha
                         <NewMainMenuItem
                             custom_labels={custom_labels}
                             item={child}
+                            auth={auth}
                             handleRoute={handleRoute}
                             currentRoute={currentRoute}
                             menuConfig={menuConfig} />
@@ -946,8 +967,6 @@ function NewMainMenuItem({ item, menuPadding, menuCompactWidth, isHorizontal, ha
 
         </div>
     }
-
-
 
     return <a onClick={e => menuItem.linkToType !== 'external' ?
         handleRoute(menuItem.linkToPage)(e) : undefined}

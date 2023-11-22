@@ -78,7 +78,7 @@ const newMenuEexample = {
     },
     "menuConfig": {
         "rootMenu": {
-            "menuWidth": 253,
+            "menuWidth": 276,
             "logoOption": "ai",
             "logoGenerationSettings": {
                 "logoTitle": "Microsoft",
@@ -152,15 +152,17 @@ const newMenuEexample = {
             "signColorGrad1": "#7f7fd5",
             "signColorGrad2": "#91eae4",
             "signGradDirection": "diag",
-            "logoWidth": 216,
+            "logoWidth": 212,
             "logoHeight": 45,
             "menuPadding": 12,
             "menuLogoMargin": 22,
-            "menuBorderWidth": 3
+            "menuBorderWidth": 3,
+            "dontHideGroups": true,
+            "menuPosition": "top"
         },
         "item__1700128649200": {
             "linkToPage": "/home",
-            "name": "Home",
+            "name": "All authorised",
             "iconType": "remix_icon",
             "menuRemixIcon": {
                 "Content": "M20 20.0001C20 20.5524 19.5523 21.0001 19 21.0001H5C4.44772 21.0001 4 20.5524 4 20.0001V11.0001H1L11.3273 1.61162C11.7087 1.26488 12.2913 1.26488 12.6727 1.61162L23 11.0001H20V20.0001ZM18 19.0001V9.15757L12 3.70302L6 9.15757V19.0001H18ZM12 17.0001L8.64124 13.6413C7.76256 12.7627 7.76256 11.338 8.64124 10.4594C9.51992 9.58068 10.9445 9.58068 11.8232 10.4594L12 10.6361L12.1768 10.4594C13.0555 9.58068 14.4801 9.58068 15.3588 10.4594C16.2374 11.338 16.2374 12.7627 15.3588 13.6413L12 17.0001Z",
@@ -169,7 +171,8 @@ const newMenuEexample = {
             },
             "menuRemixIconColor": "#417505",
             "menuRemixIconColorSelected": "#a6ffcb",
-            "menuRemixIconSize": 24
+            "menuRemixIconSize": 24,
+            "permissions": "all_registered"
         },
         "item__1700128674697": {
             "linkToPage": "/orders",
@@ -190,25 +193,35 @@ const newMenuEexample = {
             "menuDirectualIconSet": "academy"
         },
         "group_1700578488736": {
-            "name": "Admin pages"
+            "name": "Admin pages",
+            "permissions": "roles",
+            "specifyRoles": "admin"
         },
         "item__1700578521786": {
             "linkToType": "external",
             "linkToURL": "https://www.directual.com/",
             "linkToURLNewWindow": true,
-            "name": "Directual.com",
-            "iconType": "directual_icon",
-            "menuDirectualIconSet": "directual"
+            "name": "Directual.com (GOD)",
+            "iconType": "no_icon",
+            "menuDirectualIconSet": "directual",
+            "permissions": "roles",
+            "specifyRoles": "god"
         },
         "item__1700578539619": {
             "linkToPage": "/hello-there",
-            "name": "Hello there",
+            "name": "Unauthorised",
             "iconType": "directual_icon",
-            "menuDirectualIconSet": "actions"
+            "menuDirectualIconSet": "actions",
+            "addLabel": "no_label",
+            "menuLabel": "foo",
+            "permissions": "all_unauthorised"
         },
         "rootMobileMenu": {
             "showMobileHeader": true,
-            "mobileMenuSide": "right"
+            "mobileMenuSide": "left",
+            "mobileHeaderLogo": "small",
+            "mobileHeaderLogoPosition": "center",
+            "mobileMenuPadding": 8
         }
     }
 }
@@ -254,12 +267,14 @@ function MainMenuWrapper(props) {
     return <NewMainMenu
         title='directual-design'
         theme='ural'
-        //compactState
+        compactState
         currentBP={currentBP}
         handleRoute={href => e => {
             handleRoute(href);
         }}
         //horizontal={props.horizontal}
+        logOut={e => console.log('log out!')}
+        auth={props.auth}
         mainMenu={newMenuEexample.mainMenu}
         mobileMenuOption={newMenuEexample.mobileMenuOption}
         menuConfig={newMenuEexample.menuConfig}
@@ -267,7 +282,7 @@ function MainMenuWrapper(props) {
         currentRoute={location.pathname || '/'}
         custom_labels={{
             "counter": "0",
-            "foo": "3"
+            "foo": "hello brave new world, how are you?!"
         }}
     />
 
@@ -5872,10 +5887,16 @@ const App = (props) => {
     }
 
     let authExample = {
-        isAuth: true,
-        role: "admin",
-        token: "a256c0c6-6aa1-4706-afad-521d0d37e3f3",
-        user: "puzyrcult"
+        "isAuth": true,
+        "custom_labels": "{\n   \"foo\": \"hello brave new world!\",\n   \"bar\": \"foobar\"\n}",
+        "role": "admin",
+        "lastName": "Watson",
+        "firstName": "David",
+        "token": "1a9f10d0-d45f-4bf2-9e7e-d6ce2e752d03",
+        "notifications_counter": "",
+        "nid": 18924,
+        "user": "david@directual.com",
+        "userpic": "https://api.directual.com/fileUploaded/basic-template/efdd480a-d36a-4a01-ac82-baf871ffd2fd.jpg"
     }
 
     let exampleForm = {
@@ -7191,7 +7212,7 @@ const App = (props) => {
     return <Router>
         <div style={{ width: '100%', position: 'absolute', height: 0 }} ref={layoutRef}></div>
         <FpsWrapper
-            horizontal={false || currentBP == 'mobile'}
+            horizontal={true || currentBP == 'mobile'}
             //showMobileTabs
             mobileTabsPlace='bottom' // 'top'
             mobileLeftSide={currentTheme.mobileMenu == 'left'}
@@ -7202,6 +7223,7 @@ const App = (props) => {
                 <MainMenuWrapper
                     themeName={currentTheme}
                     currentBP={currentBP}
+                    auth={authExample}
                 />
             }
             mobileTabs={
