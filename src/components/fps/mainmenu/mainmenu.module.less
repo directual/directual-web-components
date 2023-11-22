@@ -57,277 +57,6 @@
   }
 }
 
-// menu themes:
-:global { 
-
-  .ural {
-    svg {display: block;}
-    background-color: var(--menu-bgr);
-    //padding: 22px;
-    //margin:5px;
-    border-radius: var(--border-radius);
-    border-color: var(--menu-border-color);
-    border-style: solid;
-    border-width: 0;
-    .D_MainMenu {
-      border-color: var(--menu-border-color);
-    }
-    .D_MobileMenuHeader {
-      border-color: var(--menu-border-color);
-    }
-    &.compact_Mode {
-      //padding: 22px 10px;
-      .D_MainMenu_List_Group {
-        align-items: center;
-      }
-      .D_MainMenu_Item {
-        padding-right: 8px;
-        padding-left: 3px;
-        .D_MainMenu_Item_Label
-        {
-          position: absolute;
-          max-width: 100%;
-          text-overflow: ellipsis;
-          font-size: var(--text-very-small-size);
-          top:-10px;
-          right:-20px;
-          padding:2px 4px;
-          white-space: nowrap;
-          justify-content: flex-start;
-          overflow: hidden;
-        }
-      }
-      .D_MainMenu_List {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .D_MainMenu_List_Group_Title {
-        text-align: center;
-      }
-    }
-    
-
-    .D_MainMenu_Mobile_Tabs {
-      background-color: var(--menu-bgr);
-      border-radius: var(--border-radius);
-    }
-  
-    .D_MainMenu_Mobile_Tabs_Tab {
-      //padding: 10px 0;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      position: relative;
-      color: var(--menu-item-hover);
-      .D_MainMenu_Item_Label
-        {
-          position: absolute;
-          max-width: 100%;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          font-size: var(--text-very-small-size);
-          top:5px;
-          right:5px;
-          padding:2px 4px;
-          flex-shrink: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          max-height: 18px;
-          border-radius: 50px;
-          background-color: var(--cards-notification);
-          color: var(--cards-notification-text);
-          font-size: var(--text-small-size);
-          margin-right: 4px;
-        }
-      &.selected {
-        color: var(--menu-item-selected);
-        box-shadow: 0 0 0 1px var(--menu-border-color);
-        background-color: var(--menu-item-selected-bgr);
-        border-radius: var(--border-radius);
-      }
-      .D_MainMenu_Mobile_Tabs_Title {
-        &.mediumMobileTitleMenu {
-          font-size: var(--text-small-size);
-        }
-        &.largeMobileTitleMenu {
-          font-size: var(--text-font-size);
-        }
-        font-size: var(--text-very-small-size);
-        text-align: center;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 100%;
-      }
-    }
-
-    .D_MainMenu_List {
-      width: 100%;
-      //overflow: hidden;
-    }
-
-    .D_MainMenu_List_Group {
-      border-bottom: solid 1px var(--menu-border-color);
-      padding-bottom: 12px;
-      margin-bottom: 12px;
-    }
-
-    .D_MainMenu_List_Group_Title {
-      color: var(--menu-group);
-      letter-spacing: 1px;
-      margin-top: 18px;
-      margin-bottom: 12px;
-      text-transform: uppercase;
-      font-size: var(--text-very-small-size);
-      font-weight: var(--strong-font-weight);
-      overflow: hidden;
-      text-overflow: ellipsis;
-      position: relative;
-      &.group_title_hidden {
-        color: var(--menu-item-hover);
-      }
-      &.group_title_hideble {
-        cursor: pointer;
-        &:hover {
-          color: var(--menu-item-hover);
-        }
-      }
-      &:hover .D_MainMenu_List_expand {
-        color: var(--menu-item-hover);
-      }
-      .D_MainMenu_List_expand {
-        position: absolute;
-        right: 0;
-        cursor: pointer;
-        transition: .6s;
-        &.group_hidden {
-          transform: rotate(180deg);
-        }
-      }
-    }
-    &.DD_Horizontal {
-      .D_MainMenu_Item {
-        margin-top: 0;
-      }
-    }
-
-    .D_MainMenu_Item {
-      margin: 9px 1px 1px 1px;
-      color: var(--menu-item-hover);
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      min-height: 36px;
-      .D_MainMenu_Item_Label {
-        flex-shrink: 0;
-        max-width: 50%;
-        white-space: nowrap;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        max-height: 18px;
-        padding: 5px 8px;
-        border-radius: 50px;
-        background-color: var(--cards-notification);
-        color: var(--cards-notification-text);
-        font-size: var(--text-small-size);
-        margin-right: 4px;
-      }
-      .DD_MainMenu_A {
-        color: var(--menu-item-hover);
-        padding: 0 0 0 10px;
-        flex-grow: 2;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      &:hover {
-        .D_MainMenu_Item {
-          color: var(--menu-item-hover);
-          a {
-            color: var(--menu-item-hover);
-          }
-          &:hover {
-            color: var(--menu-item-selected);
-            a {
-              color: var(--menu-item-selected);
-        }
-          }
-        }
-        color: var(--menu-item-selected);
-        a {
-          color: var(--menu-item-selected);
-        }
-      }
-      &.selected {
-        color: var(--menu-item-selected);
-        box-shadow: 0 0 0 1px var(--menu-border-color);
-        background-color: var(--menu-item-selected-bgr);
-        //border-radius: 8px;
-        border-radius: var(--border-radius);
-        a {
-          color: var(--menu-item-selected);
-        }
-      }
-    }
-    .D_MainMenu_Separator {
-      border-bottom: solid 1px var(--menu-border-color);
-      margin-bottom: 22px;
-      margin-top: 44px;
-      &.Vertical_One {
-        //width: 100%;
-        margin-top: 0;
-        margin-bottom: 10px;
-      }
-      &.Horizontal_One {
-        border-left: solid 1px var(--menu-border-color);
-        border-bottom: none;
-        margin: 0 22px;
-        height: 53px;
-      }
-    }
-    .D_MainMenu_Footer_Image {
-      border: solid 1px var(--menu-border-color);
-    }
-    .D_MainMenu_Footer_Name {
-      font-weight: var(--strong-font-weight);
-      padding-bottom: 3px;
-    }
-    .D_MainMenu_Footer_ID {
-      font-size: var(--text-small-size);
-      opacity: .5;
-    }
-    .D_MainMenu_Footer_Logout {
-      opacity: .4;
-      cursor: pointer;
-      transition: .5s;
-      &:hover {
-        opacity: .9;
-      }
-    }
-    .D_MainMenu_Minimize {
-      .D_MainMenu_Minimize_Button {
-        background-color: var(--menu-bgr);
-        border: solid 2px var(--menu-border-color);
-        border-radius: var(--border-radius);
-      }
-    }
-  }
-  .DMainMenu_LogInButton {
-    &.horizontalLB {
-      width: 100%;
-    }
-    &.compactLB {
-      display: flex;
-      justify-content: center;
-    }
-  }
-
-}
-
 .newListGroup {
   display: flex;
   flex-direction: column;
@@ -975,6 +704,10 @@
         margin-top: auto;
       }
     }
+    &.rightSide {
+      right: 0;
+      left: auto;
+    }
     position: absolute;
     //right: 0;
     transition: 0.3s;
@@ -1068,3 +801,287 @@
 .cursorPointer {
   cursor: pointer;
 }
+
+.newMobileMenuHeader {
+  position: relative;
+}
+
+.mobileheaderAuth {
+  position: absolute;
+  top:0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+// menu themes:
+:global { 
+
+  .ural {
+    svg {display: block;}
+    background-color: var(--menu-bgr);
+    //padding: 22px;
+    //margin:5px;
+    border-radius: var(--border-radius);
+    border-color: var(--menu-border-color);
+    border-style: solid;
+    border-width: 0;
+    .D_MainMenu {
+      border-color: var(--menu-border-color);
+    }
+    .D_MobileMenuHeader {
+      border-color: var(--menu-border-color);
+    }
+    &.compact_Mode {
+      //padding: 22px 10px;
+      .D_MainMenu_List_Group {
+        align-items: center;
+      }
+      .D_MainMenu_Item {
+        padding-right: 8px;
+        padding-left: 3px;
+        .D_MainMenu_Item_Label
+        {
+          position: absolute;
+          max-width: 100%;
+          text-overflow: ellipsis;
+          font-size: var(--text-very-small-size);
+          top:-10px;
+          right:-20px;
+          padding:2px 4px;
+          white-space: nowrap;
+          justify-content: flex-start;
+          overflow: hidden;
+        }
+      }
+      .D_MainMenu_List {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .D_MainMenu_List_Group_Title {
+        text-align: center;
+      }
+    }
+    
+
+    .D_MainMenu_Mobile_Tabs {
+      background-color: var(--menu-bgr);
+      border-radius: var(--border-radius);
+    }
+  
+    .D_MainMenu_Mobile_Tabs_Tab {
+      //padding: 10px 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      position: relative;
+      color: var(--menu-item-hover);
+      .D_MainMenu_Item_Label
+        {
+          position: absolute;
+          max-width: 100%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-size: var(--text-very-small-size);
+          top:5px;
+          right:5px;
+          padding:2px 4px;
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          max-height: 18px;
+          border-radius: 50px;
+          background-color: var(--cards-notification);
+          color: var(--cards-notification-text);
+          font-size: var(--text-small-size);
+          margin-right: 4px;
+        }
+      &.selected {
+        color: var(--menu-item-selected);
+        box-shadow: 0 0 0 1px var(--menu-border-color);
+        background-color: var(--menu-item-selected-bgr);
+        border-radius: var(--border-radius);
+      }
+      .D_MainMenu_Mobile_Tabs_Title {
+        &.mediumMobileTitleMenu {
+          font-size: var(--text-small-size);
+        }
+        &.largeMobileTitleMenu {
+          font-size: var(--text-font-size);
+        }
+        font-size: var(--text-very-small-size);
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+      }
+    }
+
+    .D_MainMenu_List {
+      width: 100%;
+      //overflow: hidden;
+    }
+
+    .D_MainMenu_List_Group {
+      border-bottom: solid 1px var(--menu-border-color);
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+    }
+
+    .D_MainMenu_List_Group_Title {
+      color: var(--menu-group);
+      letter-spacing: 1px;
+      margin-top: 18px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      font-size: var(--text-very-small-size);
+      font-weight: var(--strong-font-weight);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      position: relative;
+      &.group_title_hidden {
+        color: var(--menu-item-hover);
+      }
+      &.group_title_hideble {
+        cursor: pointer;
+        &:hover {
+          color: var(--menu-item-hover);
+        }
+      }
+      &:hover .D_MainMenu_List_expand {
+        color: var(--menu-item-hover);
+      }
+      .D_MainMenu_List_expand {
+        position: absolute;
+        right: 0;
+        cursor: pointer;
+        transition: .6s;
+        &.group_hidden {
+          transform: rotate(180deg);
+        }
+      }
+    }
+    &.DD_Horizontal {
+      .D_MainMenu_Item {
+        margin-top: 0;
+      }
+    }
+
+    .D_MainMenu_Item {
+      margin: 9px 1px 1px 1px;
+      color: var(--menu-item-hover);
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      min-height: 36px;
+      .D_MainMenu_Item_Label {
+        flex-shrink: 0;
+        max-width: 50%;
+        white-space: nowrap;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-height: 18px;
+        padding: 5px 8px;
+        border-radius: 50px;
+        background-color: var(--cards-notification);
+        color: var(--cards-notification-text);
+        font-size: var(--text-small-size);
+        margin-right: 4px;
+      }
+      .DD_MainMenu_A {
+        color: var(--menu-item-hover);
+        padding: 0 0 0 10px;
+        flex-grow: 2;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      &:hover {
+        .D_MainMenu_Item {
+          color: var(--menu-item-hover);
+          a {
+            color: var(--menu-item-hover);
+          }
+          &:hover {
+            color: var(--menu-item-selected);
+            a {
+              color: var(--menu-item-selected);
+        }
+          }
+        }
+        color: var(--menu-item-selected);
+        a {
+          color: var(--menu-item-selected);
+        }
+      }
+      &.selected {
+        color: var(--menu-item-selected);
+        box-shadow: 0 0 0 1px var(--menu-border-color);
+        background-color: var(--menu-item-selected-bgr);
+        //border-radius: 8px;
+        border-radius: var(--border-radius);
+        a {
+          color: var(--menu-item-selected);
+        }
+      }
+    }
+    .D_MainMenu_Separator {
+      border-bottom: solid 1px var(--menu-border-color);
+      margin-bottom: 22px;
+      margin-top: 44px;
+      &.Vertical_One {
+        //width: 100%;
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+      &.Horizontal_One {
+        border-left: solid 1px var(--menu-border-color);
+        border-bottom: none;
+        margin: 0 22px;
+        height: 53px;
+      }
+    }
+    .D_MainMenu_Footer_Image {
+      border: solid 1px var(--menu-border-color);
+    }
+    .D_MainMenu_Footer_Name {
+      font-weight: var(--strong-font-weight);
+      padding-bottom: 3px;
+    }
+    .D_MainMenu_Footer_ID {
+      font-size: var(--text-small-size);
+      opacity: .5;
+    }
+    .D_MainMenu_Footer_Logout {
+      opacity: .4;
+      cursor: pointer;
+      transition: .5s;
+      &:hover {
+        opacity: .9;
+      }
+    }
+    .D_MainMenu_Minimize {
+      .D_MainMenu_Minimize_Button {
+        background-color: var(--menu-bgr);
+        border: solid 2px var(--menu-border-color);
+        border-radius: var(--border-radius);
+      }
+    }
+  }
+  .DMainMenu_LogInButton {
+    &.horizontalLB {
+      width: 100%;
+    }
+    &.compactLB {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+}
+

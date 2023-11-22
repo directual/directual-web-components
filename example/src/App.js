@@ -222,14 +222,15 @@ const newMenuEexample = {
         "rootMobileMenu": {
             "showMobileHeader": true,
             "mobileMenuSide": "left",
-            "mobileHeaderLogo": "large",
+            "mobileHeaderLogo": "small",
             "mobileHeaderLogoPosition": "center",
             "mobileMenuPadding": 8,
             "tabsInnerPadding": "10 5 10 5",
             "tabsPadding": 0,
             "tabsMargin": 0,
-            "tabsPlacement": "top",
-            "mobileTitlesSize": "large"
+            "tabsPlacement": "bottom",
+            "mobileTitlesSize": "large",
+            "showMobileAuthBlock": true
         },
         "item__1700661946193": {
             "linkToPage": "/home",

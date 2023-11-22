@@ -32,12 +32,15 @@ function DropDown(props) {
         <div onClick={(e) => {
             setShow(!show)
         }}>{props.dropButton}</div>
-        <div className={`${styles.dropdownMenu} ${props.top ? styles.top : ''} ${show ? styles.show : ''}`} ref={dropMenu} onClick={() => setShow(false)}>
+        <div className={`${styles.dropdownMenu} 
+            ${props.rightSide ? styles.rightSide : ''}
+            ${props.top ? styles.top : ''} ${show ? styles.show : ''}`} ref={dropMenu} onClick={() => setShow(false)}>
             {props.children}
         </div>
     </div>
 }
 
+// LEGACY MENU:
 export default function MainMenu(props) {
     const [showMM, setShowMM] = useState(false)
     const [showBackdrop, setShowBackdrop] = useState(false)
@@ -203,12 +206,8 @@ export default function MainMenu(props) {
 
 export function NewMobileTabs(props) {
 
-
     const mobileMenu = props.mobileMenu || { children: [] }
     const menuConfig = props.menuConfig || {}
-
-    console.log("NewMobileTabs")
-    console.log(menuConfig)
 
     const tabsPadding = _.get(menuConfig, "rootMobileMenu.tabsPadding") == 0 ? 0 :
         _.get(menuConfig, "rootMobileMenu.tabsPadding") || 10
@@ -290,9 +289,9 @@ function MobileTab(props) {
     }
 
     return <a className={`${styles.mobileTab} D_MainMenu_Mobile_Tabs_Tab ${currentRoute == tabConfig.linkToPage && 'selected'}`}
-        style={tabsPadding == 0 ? { 
+        style={tabsPadding == 0 ? {
             padding: `${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`,
-            borderRadius: 0    
+            borderRadius: 0
         }
             :
             { padding: `${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px` }}
@@ -336,8 +335,8 @@ function MobileTab(props) {
         }
 
         {name && <div className={`${styles.mobileTabTitle} D_MainMenu_Mobile_Tabs_Title 
-            ${mobileTitlesSize == 'medium' ? 'mediumMobileTitleMenu' : 
-            mobileTitlesSize == 'large' ? 'largeMobileTitleMenu' : ''}  largeMobileTitleMenu`}>
+            ${mobileTitlesSize == 'medium' ? 'mediumMobileTitleMenu' :
+                mobileTitlesSize == 'large' ? 'largeMobileTitleMenu' : ''}  largeMobileTitleMenu`}>
             {name}
         </div>}
         {getLabel()}
@@ -384,9 +383,6 @@ export function NewMainMenu(props) {
     }, []);
     // =========================
 
-    // console.log("currentBP")
-    // console.log(currentBP)
-
     const handleRoute = props.handleRoute
 
     // GENERAL MENU SETTINGS
@@ -413,6 +409,7 @@ export function NewMainMenu(props) {
     // MOBILE MENU
     const isTabs = (props.mobileMenuOption == "tabs_bottom" || props.mobileMenuOption == "tabs_top")
     const showMobileHeader = _.get(menuConfig, "rootMobileMenu.showMobileHeader")
+    const showMobileAuthBlock = _.get(menuConfig, "rootMobileMenu.showMobileAuthBlock")
     const mobileHeaderLogo = _.get(menuConfig, "rootMobileMenu.mobileHeaderLogo") || "large"
     const mobileHeaderLogoPosition = _.get(menuConfig, "rootMobileMenu.mobileHeaderLogoPosition") || "left"
     const menuSideHideLogo = _.get(menuConfig, "rootMobileMenu.menuSideHideLogo")
@@ -462,7 +459,6 @@ export function NewMainMenu(props) {
         localStorage.setItem(props.title + '_compactModeStorage', mode ? 'true' : 'false');
     }
 
-
     const handleScroll = () => {
         if (!scrollDivRef.current) { return undefined }
         const { scrollTop, scrollHeight, clientHeight } = scrollDivRef.current;
@@ -479,11 +475,9 @@ export function NewMainMenu(props) {
         props.logOut && props.logOut()
     }
 
-    // console.log("sideMenuAlign!")
-    // console.log(sideMenuAlign)
-
     return <React.Fragment>
         <div style={{ width: '100%', position: 'absolute', height: 0 }} ref={layoutRef}></div>
+
         {/* SIDE MOBILE MENU EXPNADER */}
         {showBackdrop && <Backdrop top onClick={hideMMhandler} />}
         {!isTabs && <div className={`D_MeinMenu_show_MM ${styles.show_mobile_menu} ${leftSide && currentBP == 'mobile' && styles.leftSide}`}
@@ -499,7 +493,7 @@ export function NewMainMenu(props) {
 
         {/* MOBILE HEADER */}
         {currentBP == 'mobile' && showMobileHeader && <div
-            className={`${styles.newMobileMenuHeader} D_MobileMenuHeader ural`}
+            className={`${styles.newMobileMenuHeader} D_MobileMenuHeader  ${props.theme}`}
             style={menuMargin !== 0 ? {
                 margin: menuMargin,
                 borderWidth: menuBorderWidth,
@@ -581,6 +575,26 @@ export function NewMainMenu(props) {
                         }
                     </React.Fragment>}
             </div>
+            {showMobileAuthBlock && <div
+                className={`${styles.mobileheaderAuth} D_MainMenu_Mobile_Auth`}
+                style={!leftSide ? {
+                    left: showMobileHeader ? (menuBorderWidth + menuMargin + mobileMenuPadding) : 6
+                } : {
+                    right: showMobileHeader ? (menuBorderWidth + menuMargin + mobileMenuPadding) : 6
+                }}
+            >
+                <NewMainMenuAuth
+                    auth={auth}
+                    rightSide={leftSide}
+                    handleRoute={route => e => {
+                        hideMMhandler()
+                        handleRoute(route)()
+                    }}
+                    mobileHeader
+                    compactMode={true}
+                    logOut={handleLogOut}
+                />
+            </div>}
         </div>}
         {/* ======================= */}
 
@@ -844,7 +858,7 @@ export function NewMainMenu(props) {
     </React.Fragment >
 }
 
-function NewMainMenuAuth({ auth, compactMode, horizontal, logOut, handleRoute }) {
+function NewMainMenuAuth({ auth, compactMode, horizontal, logOut, handleRoute, mobileHeader, rightSide }) {
 
     const userName = () => {
         let name = ""
@@ -854,9 +868,11 @@ function NewMainMenuAuth({ auth, compactMode, horizontal, logOut, handleRoute })
     }
 
     return <React.Fragment>
-        {horizontal ?
-            <div className={`${styles.newListSeparator} D_MainMenu_Separator Vertical_One`} /> :
-            <div className={`${styles.newListSeparator} D_MainMenu_Separator Horizontal_One`} />}
+        {!mobileHeader && <React.Fragment>
+            {horizontal ?
+                <div className={`${styles.newListSeparator} D_MainMenu_Separator Vertical_One`} /> :
+                <div className={`${styles.newListSeparator} D_MainMenu_Separator Horizontal_One`} />}
+        </React.Fragment>}
 
         {auth.isAuth && !compactMode ?
             <div className={`${styles.newListFooter} ${!horizontal ? styles.horizontal : styles.vertical} D_MainMenu_Footer`}>
@@ -876,7 +892,8 @@ function NewMainMenuAuth({ auth, compactMode, horizontal, logOut, handleRoute })
             </div> :
             auth.isAuth && compactMode ?
                 <DropDown
-                    top
+                    top={!mobileHeader}
+                    rightSide={rightSide}
                     dropButton={<a className={`${styles.newListFooterImage} D_MainMenu_Footer_Image`} >
                         {auth.userpic ? <img src={auth.userpic} /> : <div className='icon large icon-user' />}
                     </a>}>
