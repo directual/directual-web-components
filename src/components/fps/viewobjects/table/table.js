@@ -283,7 +283,7 @@ function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fiel
                             </th> */}
                             {!hideExpandTD && <th style={{ width: 30 }} />}
                             {headerGroup.headers.map(column => {
-                                if (tableParams[column.id].colorRow || !tableParams[column.id].include) return null
+                                if ((tableParams[column.id] && tableParams[column.id].colorRow) || !tableParams[column.id].include) return null
                                 return <React.Fragment>
                                     <th
                                         {...column.getHeaderProps()}
