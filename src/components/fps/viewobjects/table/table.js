@@ -327,7 +327,7 @@ function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fiel
                                 {!hideExpandTD && <td ><a onClick={() => onExpand(row.original)} className={`icon icon-expand ${styles.expand}`} /></td>}
                                 {row.cells.map(cell => {
 
-                                    const isColorCell = tableParams[cell.column.id].colorCell ? tableParams[cell.column.id] : null
+                                    const isColorCell = _.get(tableParams,`[${cell.column.id}].colorCell`) ? tableParams[cell.column.id] : null
 
                                     let colorCellValue = null
                                     if (isColorCell && (isColorCell.colorCellSource == 'const' || !isColorCell.colorCellSource)) {
