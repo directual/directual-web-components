@@ -366,7 +366,7 @@
 }
 @media all and (max-width: 768px) {
   .leftSide .hide_mobile_menu {
-    right: 20px;
+    right: 20px !important;
   }
   .isHorizontal {
     display: none;
@@ -404,7 +404,7 @@
   padding: 0;
 }
 .mainmenu .menuFooter {
-  padding-bottom: 48px;
+  padding-bottom: 24px;
   padding-left: 24px;
   padding-right: 24px;
 }
@@ -460,6 +460,9 @@
     left: 0;
     right: auto;
     transform: translateX(-40px);
+  }
+  .mainmenu.show .hide_mobile_menu {
+    right: 52px;
   }
 }
 .subheader {

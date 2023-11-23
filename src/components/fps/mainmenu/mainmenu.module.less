@@ -410,7 +410,7 @@
 @media all and (max-width: 768px) {
   .leftSide {
     .hide_mobile_menu {
-      right: 20px;
+      right: 20px !important;
     }
   }
   .isHorizontal { 
@@ -449,7 +449,7 @@
     padding: 0;
   }
   .menuFooter {
-    padding-bottom: 48px;
+    padding-bottom: 24px;
     padding-left: 24px;
     padding-right: 24px;
     .menuFooterButton {
@@ -498,11 +498,15 @@
     .menuFooter {
       padding-bottom: 24px;
     }
+    
     &.show {
       &.leftSide {
         left: 0;
         right: auto;
         transform: translateX(-40px);
+      }
+      .hide_mobile_menu {
+        right: 52px;
       }
       transform: translateX(40px);
       transition: 0;

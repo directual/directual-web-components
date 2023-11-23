@@ -6,8 +6,6 @@ import { FormSection } from '../dataentry/form/FpsForm'
 import _ from 'lodash'
 import TabsPane from '../layout/tabpane/tabpane'
 import Checkbox from '../dataentry/checkbox/checkbox'
-import Button from '../button/button'
-import ActionPanel from '../actionspanel/actionspanel'
 
 
 const customThemeColors = {
