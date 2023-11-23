@@ -544,7 +544,7 @@
 }
 .horMainmenu {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   background-color: var(--menu-bgr);
   border-bottom: solid 1px var(--menu-border-color);
