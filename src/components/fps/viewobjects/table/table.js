@@ -6,6 +6,7 @@ import Checkbox from '../../dataentry/checkbox/checkbox'
 import Button from '../../button/button'
 import moment from 'moment'
 import Loader from '../../loader/loader'
+import _ from 'lodash'
 
 // Create an editable cell renderer
 const EditableCell = ({
