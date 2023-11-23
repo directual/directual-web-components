@@ -283,7 +283,7 @@ function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fiel
                             </th> */}
                             {!hideExpandTD && <th style={{ width: 30 }} />}
                             {headerGroup.headers.map(column => {
-                                if ((tableParams[column.id] && tableParams[column.id].colorRow) || !tableParams[column.id].include) return null
+                                if (_.get(tableParams,`[${column.id}].colorRow`) || !_.get(tableParams,`[${column.id}].include`)) return null
                                 return <React.Fragment>
                                     <th
                                         {...column.getHeaderProps()}
@@ -302,11 +302,12 @@ function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fiel
                     {rows.map(row => {
                         prepareRow(row)
 
-                        const isColorRow = row.cells.filter(cell => tableParams[cell.column.id] &&
-                            tableParams[cell.column.id].include && tableParams[cell.column.id].colorRow) ?
-                            row.cells.filter(cell => tableParams[cell.column.id]
-                                && tableParams[cell.column.id].include
-                                && tableParams[cell.column.id].colorRow)[0] : null
+                        const isColorRow = row.cells.filter(cell => 
+                            (_.get(tableParams,`[${cell.column.id}].include`) && _.get(tableParams,`[${cell.column.id}].colorRow`))
+                            ) ?
+                            row.cells.filter(cell => 
+                                (_.get(tableParams,`[${cell.column.id}].include`) && _.get(tableParams,`[${cell.column.id}].colorRow`))
+                            )[0] : null
                         let colorRow = isColorRow ? isColorRow.row.values[isColorRow.column.id] ?
                             isColorRow.row.values[isColorRow.column.id] : 'default' : 'default'
 
@@ -337,7 +338,7 @@ function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fiel
                                     colorCellValue = !colorCellValue ? null : (colorCellValue[0] == '#' || colorCellValue[0] == 'r') ? colorCellValue : '#' + colorCellValue
 
                                     if ((tableParams[cell.column.id] && tableParams[cell.column.id].colorRow) ||
-                                        !tableParams[cell.column.id].include) return null
+                                        !_.get(tableParams,`[${cell.column.id}].include`) ) return null
                                     return <td
                                         {...cell.getCellProps()}
                                         style={colorCellValue ?
