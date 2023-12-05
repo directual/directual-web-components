@@ -1214,6 +1214,12 @@
 .themeSettings {
   line-height: normal;
 }
+.colorSection {
+  display: flex;
+}
+.colorSection .colorThemePreview {
+  margin-left: 20px;
+}
 .horInputs {
   display: flex;
   flex-wrap: wrap;

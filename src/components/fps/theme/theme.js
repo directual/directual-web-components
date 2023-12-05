@@ -809,104 +809,110 @@ const customThemeColors = {
 }
 
 const customThemeColorNames = {
-    '--menu-bgr': "Menu | Background color",
-    '--menu-border-color': "Menu | Border color",
-    '--menu-item': "Menu | Item color",
-    '--menu-item-hover': "Menu | Hovered item color",
-    '--menu-item-selected': "Menu | Selected item color",
-    '--menu-item-selected-bgr': "Menu | Selected item background color",
-    '--menu-group': "Menu | Subheader (group) color",
+    "Layout": {
+        // Layout
+        '--layout-bgr': "Layout background color",
+        '--layout-secondary-bgr': "Layout secondary background color",
+        '--layout-accent': "Accent color",
+        '--layout-accent-hover': "Accent hover color",
+        '--layout-text': "Main text color",
+        '--layout-headers': "Headers color",
+        '--layout-footer-bgr': "Footer color",
+        '--layout-footer-text': "Footer text color",
+        '--layout-footer-border': "Footer border color",
+    },
+    "Main menu": {
+        '--menu-bgr': "Menu | Background color",
+        '--menu-border-color': "Menu | Border color",
+        '--menu-item': "Menu | Item color",
+        '--menu-item-hover': "Menu | Hovered item color",
+        '--menu-item-selected': "Menu | Selected item color",
+        '--menu-item-selected-bgr': "Menu | Selected item background color",
+        '--menu-group': "Menu | Subheader (group) color",
+    },
 
-    // Button _ regular
-    '--button-bgr': "Button | Regular | Button color",
-    '--button-border': "Button | Regular | Border color",
-    '--button-text': "Button | Regular | Text color",
+    "Buttons": {
+        // Button _ regular
+        '--button-bgr': "Button | Regular | Button color",
+        '--button-border': "Button | Regular | Border color",
+        '--button-text': "Button | Regular | Text color",
 
-    '--button-hover-bgr': "Button | Regular | Hover button color",
-    '--button-hover-border': "Button | Regular | Hover border color",
-    '--button-hover-text': "Button | Regular | Hover text color",
+        '--button-hover-bgr': "Button | Regular | Hover button color",
+        '--button-hover-border': "Button | Regular | Hover border color",
+        '--button-hover-text': "Button | Regular | Hover text color",
 
-    '--button-active-bgr': "Button | Regular | Active button color",
-    '--button-active-border': "Button | Regular | Active border color",
-    '--button-active-text': "Button | Regular | Active text color",
+        '--button-active-bgr': "Button | Regular | Active button color",
+        '--button-active-border': "Button | Regular | Active border color",
+        '--button-active-text': "Button | Regular | Active text color",
 
-    '--button-dropdown-hover-bgr': "Button | Dropdown | Hover color",
+        '--button-dropdown-hover-bgr': "Button | Dropdown | Hover color",
 
-    // Button _ accent
-    '--button-accent-bgr': "Button | Accent | Button color",
-    '--button-accent-border': "Button | Accent | Border color",
-    '--button-accent-text': "Button | Accent | Text color",
+        // Button _ accent
+        '--button-accent-bgr': "Button | Accent | Button color",
+        '--button-accent-border': "Button | Accent | Border color",
+        '--button-accent-text': "Button | Accent | Text color",
 
-    '--button-accent-hover-bgr': "Button | Accent | Hover button color",
-    '--button-accent-hover-border': "Button | Accent | Hover border color",
-    '--button-accent-hover-text': "Button | Accent | Hover text color",
+        '--button-accent-hover-bgr': "Button | Accent | Hover button color",
+        '--button-accent-hover-border': "Button | Accent | Hover border color",
+        '--button-accent-hover-text': "Button | Accent | Hover text color",
 
-    '--button-accent-active-bgr': "Button | Accent | Active button color",
-    '--button-accent-active-border': "Button | Accent | Active border color",
-    '--button-accent-active-text': "Button | Accent | Active text color",
+        '--button-accent-active-bgr': "Button | Accent | Active button color",
+        '--button-accent-active-border': "Button | Accent | Active border color",
+        '--button-accent-active-text': "Button | Accent | Active text color",
 
-    // Button _ danger
-    '--button-danger-bgr': "Button | Danger | Button color",
-    '--button-danger-border': "Button | Danger | Border color",
-    '--button-danger-text': "Button | Danger | Text color",
+        // Button _ danger
+        '--button-danger-bgr': "Button | Danger | Button color",
+        '--button-danger-border': "Button | Danger | Border color",
+        '--button-danger-text': "Button | Danger | Text color",
 
-    '--button-danger-hover-bgr': "Button | Danger | Hover button color",
-    '--button-danger-hover-border': "Button | Danger | Hover border color",
-    '--button-danger-hover-text': "Button | Danger | Hover text color",
+        '--button-danger-hover-bgr': "Button | Danger | Hover button color",
+        '--button-danger-hover-border': "Button | Danger | Hover border color",
+        '--button-danger-hover-text': "Button | Danger | Hover text color",
 
-    '--button-danger-active-bgr': "Button | Danger | Active button color",
-    '--button-danger-active-border': "Button | Danger | Active border color",
-    '--button-danger-active-text': "Button | Danger | Active text color",
+        '--button-danger-active-bgr': "Button | Danger | Active button color",
+        '--button-danger-active-border': "Button | Danger | Active border color",
+        '--button-danger-active-text': "Button | Danger | Active text color",
+    },
+    "Others": {
 
-    // Table
-    '--table-borders': "Table borders color",
-    '--table-raw-hover': "Table hover row color",
+        // Table
+        '--table-borders': "Table borders color",
+        '--table-raw-hover': "Table hover row color",
 
-    // Cards
-    '--cards-bgr': "Cards color",
-    '--cards-border': "Cards border",
-    '--cards-hover-bgr': "Cards hover color",
-    '--cards-hover-border': "Cards hover border color",
-    '--cards-notification': "Cards notification (counter)",
-    '--cards-notification-text': "Cards notification text",
+        // Cards
+        '--cards-bgr': "Cards color",
+        '--cards-border': "Cards border",
+        '--cards-hover-bgr': "Cards hover color",
+        '--cards-hover-border': "Cards hover border color",
+        '--cards-notification': "Cards notification (counter)",
+        '--cards-notification-text': "Cards notification text",
 
+        // Forms
+        '--form-field-border': "Form fields border color",
+        '--form-field-bgr': "Form fields background color",
+        '--form-placeholder': "Form field text color",
+        '--form-placeholder-disabled': "Form disabled field color",
+        '--form-field-border-disabled': "Form disabled field border color",
+        '--form-field-bgr-disabled': "Form disabled field background",
+        '--form-accent': "Form accent color",
 
-    // Layout
-    '--layout-bgr': "Layout background color",
-    '--layout-secondary-bgr': "Layout secondary background color",
-    '--layout-accent': "Accent color",
-    '--layout-accent-hover': "Accent hover color",
-    '--layout-text': "Main text color",
-    '--layout-headers': "Headers color",
-    '--layout-footer-bgr': "Footer color",
-    '--layout-footer-text': "Footer text color",
-    '--layout-footer-border': "Footer border color",
+        // Code blocks
+        '--code': "Code text color",
+        '--code-background': "Code text background",
 
-    // Forms
-    '--form-field-border': "Form fields border color",
-    '--form-field-bgr': "Form fields background color",
-    '--form-placeholder': "Form field text color",
-    '--form-placeholder-disabled': "Form disabled field color",
-    '--form-field-border-disabled': "Form disabled field border color",
-    '--form-field-bgr-disabled': "Form disabled field background",
-    '--form-accent': "Form accent color",
+        // Hints
+        '--hint-error': "Error color",
+        '--hint-error-light': "Error light color",
+        '--hint-alert': "Alert color",
+        '--hint-alert-light': "Alert light color",
+        '--hint-ok': "OK color",
+        '--hint-ok-light': "OK light color",
+        '--hint-text-color': "Hint text color",
 
-    // Code blocks
-    '--code': "Code text color",
-    '--code-background': "Code text background",
-
-    // Hints
-    '--hint-error': "Error color",
-    '--hint-error-light': "Error light color",
-    '--hint-alert': "Alert color",
-    '--hint-alert-light': "Alert light color",
-    '--hint-ok': "OK color",
-    '--hint-ok-light': "OK light color",
-    '--hint-text-color': "Hint text color",
-
-    // Labels (tags)
-    '--label': "Label (tag) color",
-    '--label-text': "Label (tag) text color",
+        // Labels (tags)
+        '--label': "Label (tag) color",
+        '--label-text': "Label (tag) text color",
+    }
 }
 
 export function SetTheme({ themeName }) {
@@ -964,38 +970,65 @@ export default function FpsTheme(props) {
             {
                 value: 'classic',
                 label: 'Directual Blue',
-                image: 'https://api.alfa.directual.com/fileUploaded/directual-site/50790519-1bd7-4fcb-ac77-b6ad2fe8e161.svg'
+                image: 'https://api.directual.com/fileUploaded/directual-site/1b276877-3d1c-4611-8f3a-83105e055912.svg'
             },
             {
                 value: 'white',
                 label: 'Snow White',
-                image: 'https://api.alfa.directual.com/fileUploaded/directual-site/9129ba57-2a1d-4644-9d75-9634d5b576b4.svg'
+                image: 'https://api.directual.com/fileUploaded/directual-site/4cedc730-dedf-4e92-a78d-4ccaf9ec8765.svg'
             },
             {
                 value: 'tiffany',
                 label: 'Tiffany Blue',
-                image: 'https://api.alfa.directual.com/fileUploaded/directual-site/9eb3e82a-2293-47f6-992e-899daaaa6369.svg'
+                image: 'https://api.directual.com/fileUploaded/directual-site/88fb07b4-8c0c-4e5d-bafa-904e65a6ed38.svg'
             },
             {
                 value: 'darkMint',
                 label: 'Denim-Mint',
-                image: 'https://api.alfa.directual.com/fileUploaded/directual-site/d200bdab-d4af-44f2-b5e9-e3e3b15d94d2.svg'
+                image: 'https://api.directual.com/fileUploaded/directual-site/d2e22bf7-aa03-4670-8045-cc595b0c28f5.svg'
             },
             {
                 value: 'warmNight',
                 label: 'Warm Night',
-                image: 'https://api.alfa.directual.com/fileUploaded/directual-site/037fb9e9-b9b5-4e0d-b335-1ce331b112b9.svg'
+                image: 'https://api.directual.com/fileUploaded/directual-site/e2f17c86-ea10-4d36-aadc-94641cea2287.svg'
             },
             {
                 value: 'hacker',
                 label: 'Hacker Style',
-                image: 'https://api.alfa.directual.com/fileUploaded/directual-site/de91e0cc-62d1-4d89-ae59-264368763397.svg'
+                image: 'https://api.directual.com/fileUploaded/directual-site/e06df81a-2acc-4efa-bf31-fa5455fde077.svg'
+            },
+
+            {
+                value: 'rossoCorsa',
+                label: 'Rosso Corsa',
+                image: 'https://api.directual.com/fileUploaded/directual-site/caea2b95-7038-4702-8697-47c62bd2c9fb.svg'
+            },
+            {
+                value: 'contrastBlue',
+                label: 'Contrast Blue',
+                image: 'https://api.directual.com/fileUploaded/directual-site/4f8e1e78-aa56-44c3-b542-1c093e3b068e.svg'
+            },
+            {
+                value: 'contrastDark',
+                label: 'Contrast Dark',
+                image: 'https://api.directual.com/fileUploaded/directual-site/6daf5fa9-ceed-4394-ae92-c5911271c172.svg'
+            },
+            {
+                value: 'contrastPurple',
+                label: 'Contrast Purple',
+                image: 'https://api.directual.com/fileUploaded/directual-site/69a7e11b-4b3a-4a58-bf67-d91abdc45f26.svg'
+            },
+            {
+                value: 'bondiBeach',
+                label: 'Bondi Beach',
+                image: 'https://api.directual.com/fileUploaded/directual-site/c93d7c65-f8cd-4afb-915f-137ce681a40e.svg'
             },
             {
                 value: 'raspberry',
                 label: 'Raspberry',
-                image: 'https://api.alfa.directual.com/fileUploaded/directual-site/b2eee4fa-fbbb-4f83-a2f4-bbcb248f481e.svg'
+                image: 'https://api.directual.com/fileUploaded/directual-site/59baa1d1-91b3-42a5-9de9-513ed2593ead.svg'
             },
+
             {
                 value: 'baltic',
                 label: 'Baltic',
@@ -1003,12 +1036,12 @@ export default function FpsTheme(props) {
             },
             {
                 value: 'custom',
-                label: 'Customise theme',
-                image: 'https://api.alfa.directual.com/fileUploaded/directual-site/c407d11f-bf59-4ef7-9c5a-7fb1d904d1c6.svg'
+                label: 'Custom scheme',
+                image: 'https://api.directual.com/fileUploaded/directual-site/78ac1208-9770-4dad-a268-d330d64da0e8.svg'
             },
         ]
 
-    const userOptions = (props.themes && options.filter(option => props.themes.indexOf(option.value) != -1)) || options
+    const userOptions = options // (props.themes && options.filter(option => props.themes.indexOf(option.value) != -1)) || options
 
     const [selectedColorScheme, setSelectedColorScheme] = useState(
         {
@@ -1091,13 +1124,6 @@ export default function FpsTheme(props) {
 
     const [themeRawView, setThemeRawView] = useState(false)
 
-    // useEffect(() => {
-    //     if (!selectedColorScheme.customThemeColors || customThemeColors.customThemeColors == {}) {
-    //         const saveCS = { ...selectedColorScheme, customThemeColors: { ...deepCloneCustomThemeColors } }
-    //         setSelectedColorScheme(saveCS)
-    //     }
-    // }, [])
-
     const myCustomTheme = <div>
         <Checkbox className={styles.checkbox} label='Raw mode (JSON)' defaultValue={themeRawView} onChange={setThemeRawView} />
         {!themeRawView ? <div>
@@ -1126,13 +1152,39 @@ export default function FpsTheme(props) {
                 rows='auto' defaultValue={stringifyJson(_.merge({ ...customThemeColors.darkMint }, selectedColorScheme.customThemeColors))} />}
     </div>
 
+    const myNewCustomTheme = <div>
+        {Object.keys(customThemeColorNames).map(colorGroup => <div>
+            <GroupOfColors
+                colorGroup={colorGroup}
+            >
+                <div className={styles.colorSection}>
+                    <div className={styles.horInputs}>
+                        {Object.keys(customThemeColorNames[colorGroup]).map(color => <Input
+                            type='colour'
+                            label={customThemeColorNames[colorGroup][color]}
+                            className={styles.input}
+                            tip={<code>{color}</code>}
+                            width={290}
+                            defaultValue={_.get(selectedColorScheme, `customThemeColors.${color}`)}
+                        />)}
+                    </div>
+                    <div className={styles.colorThemePreview}>
+                            Preview
+                    </div>
+                </div>
+            </GroupOfColors>
+
+        </div >)
+        }
+    </div >
+
     const tabs = [
         { key: 'myTheme', title: 'My custom theme', content: myCustomTheme },
     ]
 
     return (
         <div className={styles.themeSettings}>
-            <div className={styles.horInputs}>
+            {/* <div className={styles.horInputs}>
                 <Input
                     type='radio'
                     width={250}
@@ -1157,7 +1209,7 @@ export default function FpsTheme(props) {
                     defaultValue={selectedColorScheme.mobileMenu}
                     onChange={value => setSelectedColorScheme({ ...selectedColorScheme, mobileMenu: value })}
                 />
-            </div>
+            </div> */}
             <Input
                 type='radio'
                 label='Choose color scheme'
@@ -1170,12 +1222,13 @@ export default function FpsTheme(props) {
                     setSelectedColorScheme({ ...selectedColorScheme, colorScheme: value, customThemeColors: { ...customThemeColors[value] } })
                 }
             />
-            {selectedColorScheme.colorScheme == 'custom' && <React.Fragment>
-                <FormSection title='Custom coloring scheme' />
-                <TabsPane tabs={tabs}
+            <React.Fragment>
+                {/* <FormSection title='Custom coloring scheme' /> */}
+                {myNewCustomTheme}
+                {/* <TabsPane tabs={tabs}
                     hideSingleTab
-                    currentTabKey='myTheme' fixedScroll={false} />
-            </React.Fragment>}
+                    currentTabKey='myTheme' fixedScroll={false} /> */}
+            </React.Fragment>
             <FormSection title='Typography' />
             <Input
                 type='number'
@@ -1326,4 +1379,14 @@ export default function FpsTheme(props) {
             <FormSection title='Branding' />
         </div>
     )
+}
+
+function GroupOfColors(props) {
+    const [hidden, setHidden] = useState(false)
+    return <div>
+        <FormSection title={props.colorGroup} hide defaultValue={false} onHide={setHidden} />
+        {!hidden && <div>
+            {props.children}
+        </div>}
+    </div>
 }

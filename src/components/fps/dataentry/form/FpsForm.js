@@ -14,6 +14,25 @@ import moment from 'moment'
 import _ from 'lodash'
 
 export function FormSection(props) {
+
+  const [hidden,setHidden] = useState(props.defaultValue)
+
+  const onChangeState = (val) => {
+    setHidden(val)
+    props.onHide && props.onHide(val)
+  } 
+
+  if (props.hide) {
+    return (
+      <div className={`${styles.FormSection} ${styles.hidable}`} onClick={() => onChangeState(!hidden)}>
+        <div className={styles.FormSectionLine} />
+        <div className={`icon icon-down small ${styles.icon} ${hidden && styles.rotate}`} />
+        <span className={styles.noPadding} >{props.title}</span>
+        <div className={`icon icon-down small ${styles.icon} ${hidden && styles.rotate}`} />
+        <div className={styles.FormSectionLine} />
+      </div>
+    )
+  }
   return (
     <div className={styles.FormSection}>
       <div className={styles.FormSectionLine} />

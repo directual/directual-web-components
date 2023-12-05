@@ -156,10 +156,10 @@ const newMenuEexample = {
             "logoHeight": 46,
             "menuPadding": 12,
             "menuLogoMargin": 22,
-            "menuBorderWidth": 0,
+            "menuBorderWidth": 2,
             "dontHideGroups": true,
             "menuPosition": "side",
-            "menuMargin": 0
+            "menuMargin": 6
         },
         "item__1700128649200": {
             "linkToPage": "/home",
@@ -173,7 +173,7 @@ const newMenuEexample = {
             "menuRemixIconColor": "#417505",
             "menuRemixIconColorSelected": "#a6ffcb",
             "menuRemixIconSize": 24,
-            "permissions": "all_registered",
+            "permissions": "everybody",
             "addLabel": "add_label",
             "menuLabel": "foo"
         },
@@ -197,17 +197,17 @@ const newMenuEexample = {
         },
         "group_1700578488736": {
             "name": "Admin pages",
-            "permissions": "roles",
+            "permissions": "everybody",
             "specifyRoles": "admin"
         },
         "item__1700578521786": {
             "linkToType": "external",
             "linkToURL": "https://www.directual.com/",
             "linkToURLNewWindow": true,
-            "name": "Directual.com (GOD)",
-            "iconType": "no_icon",
+            "name": "Directual.com",
+            "iconType": "directual_icon",
             "menuDirectualIconSet": "directual",
-            "permissions": "roles",
+            "permissions": "everybody",
             "specifyRoles": "god"
         },
         "item__1700578539619": {
@@ -217,7 +217,7 @@ const newMenuEexample = {
             "menuDirectualIconSet": "actions",
             "addLabel": "add_label",
             "menuLabel": "foo",
-            "permissions": "all_unauthorised"
+            "permissions": "everybody"
         },
         "rootMobileMenu": {
             "showMobileHeader": true,
@@ -226,11 +226,12 @@ const newMenuEexample = {
             "mobileHeaderLogoPosition": "center",
             "mobileMenuPadding": 8,
             "tabsInnerPadding": "10 5 10 5",
-            "tabsPadding": 0,
-            "tabsMargin": 0,
+            "tabsPadding": 4,
+            "tabsMargin": 4,
             "tabsPlacement": "bottom",
-            "mobileTitlesSize": "small",
-            "showMobileAuthBlock": true
+            "mobileTitlesSize": "large",
+            "showMobileAuthBlock": true,
+            "menuSideHideLogo": false
         },
         "item__1700661946193": {
             "linkToPage": "/home",
@@ -242,7 +243,7 @@ const newMenuEexample = {
             "name": "",
             "iconType": "directual_icon",
             "menuDirectualIconSet": "academy",
-            "permissions": "all_registered",
+            "permissions": "everybody",
             "addLabel": "add_label",
             "menuLabel": "foo"
         },
@@ -257,7 +258,7 @@ const newMenuEexample = {
             },
             "menuRemixIconColor": "#c51010",
             "menuRemixIconColorSelected": "#35cc68",
-            "permissions": "roles",
+            "permissions": "everybody",
             "specifyRoles": "admin"
         }
     },

@@ -192,8 +192,10 @@
   display: flex;
   align-items: center;
 }
-.compactMode .newList {
+.compactMode:hover .newList {
   width: 500px !important;
+}
+.compactMode .newList {
   border: none !important;
   overflow: auto !important;
   -ms-overflow-style: none;
