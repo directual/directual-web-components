@@ -1250,7 +1250,9 @@ function Preview(props) {
         default:
             preview = <div>unknown preview</div>
     }
-    return preview
+    return <div style={{
+        backgroundColor: colors["--layout-bgr"],
+    }}>{preview}</div>
 }
 
 function PreviewOther({ colors }) {
@@ -1311,7 +1313,7 @@ const count = animals.push('cows');`}
 }
 
 function PreviewTable({ colors }) {
-    return <div className={styles.previewWrapper}>
+    return <div className={styles.previewWrapper} style={{color: colors["--layout-text"]}}>
         <div className={styles.previewTableBorder} style={{
             borderColor: colors["--cards-border"],
         }}>
@@ -1674,10 +1676,10 @@ function PreviewLayout({ colors }) {
         </div>
         <div className={styles.previewTabs}>
             <div className={styles.previewTab} style={{
-                borderBottom: `solid 3px ${colors["--layout-accent"]}`
+                borderBottom: `solid 3px ${colors["--layout-accent"]}`, color: colors["--layout-text"]
             }}>Tab 1</div>
-            <div style={{opacity: 0.6}} className={styles.previewTab}>Tab 2</div>
-            <div style={{opacity: 0.6}} className={styles.previewTab}>Tab 3</div>
+            <div style={{opacity: 0.6, color: colors["--layout-text"]}} className={styles.previewTab}>Tab 2</div>
+            <div style={{opacity: 0.6, color: colors["--layout-text"]}} className={styles.previewTab}>Tab 3</div>
         </div>
     </div >
 }
