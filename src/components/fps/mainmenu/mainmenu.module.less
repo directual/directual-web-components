@@ -822,18 +822,21 @@
   align-items: center;
 }
 
+
+
 // menu themes:
 :global { 
 
   .ural {
     svg {display: block;}
     background-color: var(--menu-bgr);
-    //padding: 22px;
-    //margin:5px;
     border-radius: var(--border-radius);
     border-color: var(--menu-border-color);
     border-style: solid;
     border-width: 0;
+    a {
+      text-decoration: none !important;
+    }
     .D_MainMenu {
       border-color: var(--menu-border-color);
     }
@@ -841,7 +844,6 @@
       border-color: var(--menu-border-color);
     }
     &.compact_Mode {
-      //padding: 22px 10px;
       .D_MainMenu_List_Group {
         align-items: center;
       }
@@ -951,16 +953,16 @@
       text-overflow: ellipsis;
       position: relative;
       &.group_title_hidden {
-        color: var(--menu-item-hover);
+        color: var(--menu-group-hover);
       }
       &.group_title_hideble {
         cursor: pointer;
         &:hover {
-          color: var(--menu-item-hover);
+          color: var(--menu-group-hover);
         }
       }
       &:hover .D_MainMenu_List_expand {
-        color: var(--menu-item-hover);
+        color: var(--menu-group-hover);
       }
       .D_MainMenu_List_expand {
         position: absolute;
@@ -976,11 +978,18 @@
       .D_MainMenu_Item {
         margin-top: 0;
       }
+      .D_MainMenu_Item_Label {
+        position: absolute;
+        left: 100%;
+        top: -10px;
+        margin-left: -23px;
+        max-width: 20px !important;
+      }
     }
 
     .D_MainMenu_Item {
       margin: 9px 1px 1px 1px;
-      color: var(--menu-item-hover);
+      color: var(--menu-item);
       display: flex;
       justify-content: flex-start;
       align-items: center;
@@ -996,13 +1005,13 @@
         max-height: 18px;
         padding: 5px 8px;
         border-radius: 50px;
-        background-color: var(--cards-notification);
-        color: var(--cards-notification-text);
+        background-color: var(--menu-alert-bgr);
+        color: var(--menu-alert);
         font-size: var(--text-small-size);
         margin-right: 4px;
       }
       .DD_MainMenu_A {
-        color: var(--menu-item-hover);
+        //color: var(--menu-item);
         padding: 0 0 0 10px;
         flex-grow: 2;
         white-space: nowrap;
@@ -1011,28 +1020,36 @@
       }
       &:hover {
         .D_MainMenu_Item {
-          color: var(--menu-item-hover);
-          a {
-            color: var(--menu-item-hover);
-          }
-          &:hover {
+          color: var(--menu-item);
+          &.selected {
             color: var(--menu-item-selected);
             a {
               color: var(--menu-item-selected);
-        }
+            }
+          }
+          a {
+            color: var(--menu-item);
+          }
+          &:hover {
+            color: var(--menu-item-hover);
+              a {
+                color: var(--menu-item-hover);
+              }
           }
         }
-        color: var(--menu-item-selected);
+        color: var(--menu-item-hover);
         a {
-          color: var(--menu-item-selected);
+          color: var(--menu-item-hover);
         }
+        background-color: var(--menu-item-hover-bgr);
+        box-shadow: 0 0 0 1px var(--menu-item-hover-border);
       }
+      border-radius: var(--border-radius);
+
       &.selected {
         color: var(--menu-item-selected);
-        box-shadow: 0 0 0 1px var(--menu-border-color);
+        box-shadow: 0 0 0 1px var(--menu-item-selected-border);
         background-color: var(--menu-item-selected-bgr);
-        //border-radius: 8px;
-        border-radius: var(--border-radius);
         a {
           color: var(--menu-item-selected);
         }

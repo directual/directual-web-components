@@ -758,6 +758,9 @@
 :global .ural svg {
   display: block;
 }
+:global .ural a {
+  text-decoration: none !important;
+}
 :global .ural .D_MainMenu {
   border-color: var(--menu-border-color);
 }
@@ -863,16 +866,16 @@
   position: relative;
 }
 :global .ural .D_MainMenu_List_Group_Title.group_title_hidden {
-  color: var(--menu-item-hover);
+  color: var(--menu-group-hover);
 }
 :global .ural .D_MainMenu_List_Group_Title.group_title_hideble {
   cursor: pointer;
 }
 :global .ural .D_MainMenu_List_Group_Title.group_title_hideble:hover {
-  color: var(--menu-item-hover);
+  color: var(--menu-group-hover);
 }
 :global .ural .D_MainMenu_List_Group_Title:hover .D_MainMenu_List_expand {
-  color: var(--menu-item-hover);
+  color: var(--menu-group-hover);
 }
 :global .ural .D_MainMenu_List_Group_Title .D_MainMenu_List_expand {
   position: absolute;
@@ -886,13 +889,21 @@
 :global .ural.DD_Horizontal .D_MainMenu_Item {
   margin-top: 0;
 }
+:global .ural.DD_Horizontal .D_MainMenu_Item_Label {
+  position: absolute;
+  left: 100%;
+  top: -10px;
+  margin-left: -23px;
+  max-width: 20px !important;
+}
 :global .ural .D_MainMenu_Item {
   margin: 9px 1px 1px 1px;
-  color: var(--menu-item-hover);
+  color: var(--menu-item);
   display: flex;
   justify-content: flex-start;
   align-items: center;
   min-height: 36px;
+  border-radius: var(--border-radius);
 }
 :global .ural .D_MainMenu_Item .D_MainMenu_Item_Label {
   flex-shrink: 0;
@@ -905,13 +916,12 @@
   max-height: 18px;
   padding: 5px 8px;
   border-radius: 50px;
-  background-color: var(--cards-notification);
-  color: var(--cards-notification-text);
+  background-color: var(--menu-alert-bgr);
+  color: var(--menu-alert);
   font-size: var(--text-small-size);
   margin-right: 4px;
 }
 :global .ural .D_MainMenu_Item .DD_MainMenu_A {
-  color: var(--menu-item-hover);
   padding: 0 0 0 10px;
   flex-grow: 2;
   white-space: nowrap;
@@ -919,28 +929,35 @@
   text-overflow: ellipsis;
 }
 :global .ural .D_MainMenu_Item:hover {
-  color: var(--menu-item-selected);
+  color: var(--menu-item-hover);
+  background-color: var(--menu-item-hover-bgr);
+  box-shadow: 0 0 0 1px var(--menu-item-hover-border);
 }
 :global .ural .D_MainMenu_Item:hover .D_MainMenu_Item {
-  color: var(--menu-item-hover);
+  color: var(--menu-item);
+}
+:global .ural .D_MainMenu_Item:hover .D_MainMenu_Item.selected {
+  color: var(--menu-item-selected);
+}
+:global .ural .D_MainMenu_Item:hover .D_MainMenu_Item.selected a {
+  color: var(--menu-item-selected);
 }
 :global .ural .D_MainMenu_Item:hover .D_MainMenu_Item a {
-  color: var(--menu-item-hover);
+  color: var(--menu-item);
 }
 :global .ural .D_MainMenu_Item:hover .D_MainMenu_Item:hover {
-  color: var(--menu-item-selected);
+  color: var(--menu-item-hover);
 }
 :global .ural .D_MainMenu_Item:hover .D_MainMenu_Item:hover a {
-  color: var(--menu-item-selected);
+  color: var(--menu-item-hover);
 }
 :global .ural .D_MainMenu_Item:hover a {
-  color: var(--menu-item-selected);
+  color: var(--menu-item-hover);
 }
 :global .ural .D_MainMenu_Item.selected {
   color: var(--menu-item-selected);
-  box-shadow: 0 0 0 1px var(--menu-border-color);
+  box-shadow: 0 0 0 1px var(--menu-item-selected-border);
   background-color: var(--menu-item-selected-bgr);
-  border-radius: var(--border-radius);
 }
 :global .ural .D_MainMenu_Item.selected a {
   color: var(--menu-item-selected);

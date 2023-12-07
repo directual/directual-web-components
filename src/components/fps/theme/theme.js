@@ -6,6 +6,9 @@ import { FormSection } from '../dataentry/form/FpsForm'
 import _ from 'lodash'
 import TabsPane from '../layout/tabpane/tabpane'
 import Checkbox from '../dataentry/checkbox/checkbox'
+import ActionPanel from '../actionspanel/actionspanel'
+import Button from '../button/button'
+import Hint from '../hint/hint'
 
 
 const customThemeColors = {
@@ -14,9 +17,15 @@ const customThemeColors = {
         '--menu-border-color': "#dddddd",
         '--menu-item': "#999999",
         '--menu-item-hover': "#333333",
+        '--menu-item-hover-bgr': "#ffffff",
+        '--menu-item-hover-border': "#ffffff",
         '--menu-item-selected': "#058efc",
         '--menu-item-selected-bgr': "#eeeeee",
+        '--menu-item-selected-border': "#ffffff",
         '--menu-group': "#aaaaaa",
+        '--menu-group-hover': "#ffffff",
+        '--menu-alert': "#ffffff",
+        '--menu-alert-bgr': "#ffffff",
 
         // Button regular
         '--button-bgr': "#ffffff",
@@ -110,13 +119,13 @@ const customThemeColors = {
         '--label-text': "#ffffff",
     },
     white: {
-        '--menu-bgr': "#ffffff",
-        '--menu-border-color': "#",
+        '--menu-bgr': "#EEEEEE",
+        '--menu-border-color': "#d3d3d3",
         '--menu-item': "#999999",
         '--menu-item-hover': "#333333",
         '--menu-item-selected': "#058efc",
         '--menu-item-selected-bgr': "#aaaaaa",
-        '--menu-group': "#333333",
+        '--menu-group': "rgba(0,0,0,0.35)",
 
         // Button regular
         '--button-bgr': "#ffffff",
@@ -311,7 +320,7 @@ const customThemeColors = {
     },
     darkMint: {
         '--menu-bgr': "#1c1d3b",
-        '--menu-border-color': "#27204a",
+        '--menu-border-color': "#4b4b7f",
         '--menu-item': "#aaaaaa",
         '--menu-item-hover': "#ffffff",
         '--menu-item-selected': "#1ae191",
@@ -373,7 +382,7 @@ const customThemeColors = {
         '--cards-notification-text': "#fff",
 
         // Layout
-        '--layout-bgr': "#131022",
+        '--layout-bgr': "#26274D",
         '--layout-secondary-bgr': "#1c1d3b",
         '--layout-accent': "#1ae191",
         '--layout-accent-hover': "#00ff98",
@@ -812,25 +821,45 @@ const customThemeColorNames = {
     "Layout": {
         // Layout
         '--layout-bgr': "Layout background color",
-        '--layout-secondary-bgr': "Layout secondary background color",
+        '--layout-headers': "Headers color",
+        '--layout-text': "Text color",
         '--layout-accent': "Accent color",
         '--layout-accent-hover': "Accent hover color",
-        '--layout-text': "Main text color",
-        '--layout-headers': "Headers color",
         '--layout-footer-bgr': "Footer color",
         '--layout-footer-text': "Footer text color",
         '--layout-footer-border': "Footer border color",
     },
     "Main menu": {
-        '--menu-bgr': "Menu | Background color",
-        '--menu-border-color': "Menu | Border color",
-        '--menu-item': "Menu | Item color",
-        '--menu-item-hover': "Menu | Hovered item color",
-        '--menu-item-selected': "Menu | Selected item color",
-        '--menu-item-selected-bgr': "Menu | Selected item background color",
-        '--menu-group': "Menu | Subheader (group) color",
+        '--menu-bgr': "Background color",
+        '--menu-border-color': "Border color",
+        '--menu-item': "Item color",
+        '--menu-item-hover': "Hovered item color",
+        '--menu-item-hover-bgr': "Hovered item background color",
+        '--menu-item-hover-border': "Hovered item border color",
+        '--menu-item-selected': "Selected item color",
+        '--menu-item-selected-bgr': "Selected item background color",
+        '--menu-item-selected-border': "Selected item border color",
+        '--menu-group': "Subheader (group) color",
+        '--menu-group-hover': "Hovered subheader (group) color",
+        '--menu-alert': "Alert message color",
+        '--menu-alert-bgr': "Alert message background color",
     },
+    
+    "Table, Cards, Kanban": {
+        '--layout-secondary-bgr': "Table and Object popup background",
 
+        // Table
+        '--cards-bgr': "Cards/Table background color",
+        '--table-borders': "Table inner borders color",
+        '--table-raw-hover': "Table hover row color",
+
+        // Cards
+        '--cards-border': "Cards border color",
+        '--cards-hover-bgr': "Cards hover background color",
+        '--cards-hover-border': "Cards hover border color",
+        '--cards-notification': "Cards label (counter)",
+        '--cards-notification-text': "Cards label text color",
+    },
     "Buttons": {
         // Button _ regular
         '--button-bgr': "Button | Regular | Button color",
@@ -845,7 +874,7 @@ const customThemeColorNames = {
         '--button-active-border': "Button | Regular | Active border color",
         '--button-active-text': "Button | Regular | Active text color",
 
-        '--button-dropdown-hover-bgr': "Button | Dropdown | Hover color",
+        //'--button-dropdown-hover-bgr': "Button | Dropdown | Hover color",
 
         // Button _ accent
         '--button-accent-bgr': "Button | Accent | Button color",
@@ -873,20 +902,7 @@ const customThemeColorNames = {
         '--button-danger-active-border': "Button | Danger | Active border color",
         '--button-danger-active-text': "Button | Danger | Active text color",
     },
-    "Others": {
-
-        // Table
-        '--table-borders': "Table borders color",
-        '--table-raw-hover': "Table hover row color",
-
-        // Cards
-        '--cards-bgr': "Cards color",
-        '--cards-border': "Cards border",
-        '--cards-hover-bgr': "Cards hover color",
-        '--cards-hover-border': "Cards hover border color",
-        '--cards-notification': "Cards notification (counter)",
-        '--cards-notification-text': "Cards notification text",
-
+    "Form and Inputs": {
         // Forms
         '--form-field-border': "Form fields border color",
         '--form-field-bgr': "Form fields background color",
@@ -895,7 +911,8 @@ const customThemeColorNames = {
         '--form-field-border-disabled': "Form disabled field border color",
         '--form-field-bgr-disabled': "Form disabled field background",
         '--form-accent': "Form accent color",
-
+    },
+    "Other": {
         // Code blocks
         '--code': "Code text color",
         '--code-background': "Code text background",
@@ -912,7 +929,7 @@ const customThemeColorNames = {
         // Labels (tags)
         '--label': "Label (tag) color",
         '--label-text': "Label (tag) text color",
-    }
+    },
 }
 
 export function SetTheme({ themeName }) {
@@ -1036,7 +1053,7 @@ export default function FpsTheme(props) {
             },
             {
                 value: 'custom',
-                label: 'Custom scheme',
+                label: 'Customise scheme',
                 image: 'https://api.directual.com/fileUploaded/directual-site/78ac1208-9770-4dad-a268-d330d64da0e8.svg'
             },
         ]
@@ -1166,10 +1183,18 @@ export default function FpsTheme(props) {
                             tip={<code>{color}</code>}
                             width={290}
                             defaultValue={_.get(selectedColorScheme, `customThemeColors.${color}`)}
+                            onChange={value => {
+                                const copyCS = { ...selectedColorScheme }
+                                _.set(copyCS, `customThemeColors.${color}`, value)
+                                console.log(copyCS)
+                                setSelectedColorScheme(copyCS)
+                            }}
                         />)}
                     </div>
                     <div className={styles.colorThemePreview}>
-                            Preview
+                        <Preview
+                            colorGroup={colorGroup}
+                            colors={_.get(selectedColorScheme, "customThemeColors") || {}} />
                     </div>
                 </div>
             </GroupOfColors>
@@ -1177,10 +1202,6 @@ export default function FpsTheme(props) {
         </div >)
         }
     </div >
-
-    const tabs = [
-        { key: 'myTheme', title: 'My custom theme', content: myCustomTheme },
-    ]
 
     return (
         <div className={styles.themeSettings}>
@@ -1224,7 +1245,7 @@ export default function FpsTheme(props) {
             />
             <React.Fragment>
                 {/* <FormSection title='Custom coloring scheme' /> */}
-                {myNewCustomTheme}
+                {selectedColorScheme.colorScheme == 'custom' && myNewCustomTheme}
                 {/* <TabsPane tabs={tabs}
                     hideSingleTab
                     currentTabKey='myTheme' fixedScroll={false} /> */}
@@ -1379,6 +1400,466 @@ export default function FpsTheme(props) {
             <FormSection title='Branding' />
         </div>
     )
+}
+
+function Preview(props) {
+
+    const { colors, colorGroup, selectedColorScheme } = props
+
+    let preview = <div>Preview {colorGroup}</div>
+
+    switch (props.colorGroup) {
+        case 'Main menu':
+            preview = <PreviewMenu colors={colors} />;
+            break;
+        case 'Layout':
+            preview = <PreviewLayout colors={colors} />;
+            break;
+        case 'Buttons':
+            preview = <PreviewButtons colors={colors} />;
+            break;
+        case 'Form and Inputs':
+            preview = <PreviewForm colors={colors} />;
+            break;
+        case 'Table, Cards, Kanban':
+            preview = <PreviewTable colors={colors} />;
+            break;
+        case 'Other':
+            preview = <PreviewOther colors={colors} />;
+            break;
+        default:
+            preview = <div>unknown preview</div>
+    }
+    return preview
+}
+
+function PreviewOther({ colors }) {
+    return <div className={styles.previewWrapper}>
+        <pre style={{
+            color: colors["--code"],
+            backgroundColor: colors["--code-background"],
+            borderRadius: 8,
+            padding: 12,
+            marginBottom: 18
+        }}>
+            <code>
+                {`code block:
+const animals = ['pigs', 'goats', 'sheep'];
+const count = animals.push('cows');`}
+            </code>
+        </pre>
+        <div className={styles.previewHint} style={{
+            color: colors["--hint-text-color"],
+            backgroundColor: colors["--hint-alert-light"],
+            borderColor: colors["--hint-alert"]
+        }}>
+            <div className={styles.hintTitle}>Alert hint</div>
+            <div className={styles.hintText}>Lorem ipsum dolor</div>
+        </div>
+        <div className={styles.previewHint} style={{
+            color: colors["--hint-text-color"],
+            backgroundColor: colors["--hint-ok-light"],
+            borderColor: colors["--hint-ok"]
+        }}>
+            <div className={styles.hintTitle}>OK hint</div>
+            <div className={styles.hintText}>Lorem ipsum dolor</div>
+        </div>
+        <div className={styles.previewHint} style={{
+            color: colors["--hint-text-color"],
+            backgroundColor: colors["--hint-error-light"],
+            borderColor: colors["--hint-error"],
+        }}>
+            <div className={styles.hintTitle}>Error hint</div>
+            <div className={styles.hintText}>Lorem ipsum dolor</div>
+        </div>
+
+        <div className={styles.previewTags}>
+            <div className={styles.previewTag} style={{
+                color: colors["--label-text"],
+                backgroundColor: colors["--label"],
+            }}>Tag 1</div>
+            <div className={styles.previewTag} style={{
+                color: colors["--label-text"],
+                backgroundColor: colors["--label"],
+            }}>Tag 2</div>
+            <div className={styles.previewTag} style={{
+                color: colors["--label-text"],
+                backgroundColor: colors["--label"],
+            }}>Tag 3</div>
+        </div>
+    </div>
+}
+
+function PreviewTable({ colors }) {
+    return <div className={styles.previewWrapper}>
+        <div className={styles.previewTableBorder} style={{
+            borderColor: colors["--cards-border"],
+        }}>
+            <table className={styles.previewTable} style={{
+                backgroundColor: colors["--layout-secondary-bgr"],
+            }}>
+                <thead>
+                    <tr >
+                        <td>Header 1</td>
+                        <td>Header 2</td>
+                        <td>Header 3</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style={{
+                        borderColor: colors["--table-borders"],
+                    }}>
+                        <td>Regular row</td>
+                        <td>a</td>
+                        <td align='right'>2</td>
+                    </tr>
+                    <tr style={{
+                        backgroundColor: colors["--table-raw-hover"],
+                        borderColor: colors["--table-borders"],
+                    }}>
+                        <td>Hovered row</td>
+                        <td>b</td>
+                        <td align='right'>2</td>
+                    </tr>
+                    <tr style={{
+                        borderColor: colors["--table-borders"],
+                    }}>
+                        <td>Regular row</td>
+                        <td>c</td>
+                        <td align='right'>2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div className={styles.previewPopup} style={{
+            backgroundColor: colors["--cards-bgr"],
+            borderColor: colors["--cards-border"],
+        }}>
+            <h3 style={{
+                color: colors["--layout-headers"]
+            }}>Object popup</h3>
+            <div className={`icon icon-close ${styles.previewClose}`} />
+            <p style={{
+                color: colors["--layout-text"]
+            }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua. Ut enim ad <a style={{
+                    color: colors["--layout-accent"]
+                }}>regular link</a>, quis nostrud exercitation <a style={{
+                    color: colors["--layout-accent-hover"]
+                }}>hovered link</a> ullamco laboris nisi ut
+                nulla pariatur</p>
+        </div>
+
+        <div className={styles.previewCards}>
+            <div className={styles.previewPopup} style={{
+                backgroundColor: colors["--cards-bgr"],
+                borderColor: colors["--cards-border"],
+            }}>
+                <h3 style={{
+                    color: colors["--layout-headers"]
+                }}>Card</h3>
+                <div className={styles.previewTags}>
+                    <div className={styles.previewTag} style={{
+                        color: colors["--layout-accent"],
+                        border: `solid 1px ${colors["--layout-accent"]}`
+                    }}>Tag 1</div>
+                    <div className={styles.previewTag} style={{
+                        color: colors["--layout-accent"],
+                        border: `solid 1px ${colors["--layout-accent"]}`
+                    }}>Tag 2</div>
+                    <div className={styles.previewTag} style={{
+                        color: colors["--layout-accent"],
+                        border: `solid 1px ${colors["--layout-accent"]}`
+                    }}>Tag 3</div>
+                </div>
+                <div className={`${styles.previewCardAlert}`} style={{
+                    color: colors["--cards-notification-text"],
+                    backgroundColor: colors["--cards-notification"]
+                }}>12</div>
+                <p style={{
+                    color: colors["--layout-text"]
+                }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.</p>
+            </div>
+            <div className={styles.previewPopup} style={{
+                backgroundColor: colors["--cards-hover-bgr"],
+                borderColor: colors["--cards-hover-border"],
+                borderWidth: 2
+            }}>
+                <h3 style={{
+                    color: colors["--layout-headers"]
+                }}>Hovered card</h3>
+                <div className={styles.previewTags}>
+                    <div className={styles.previewTag} style={{
+                        color: colors["--layout-accent"],
+                        border: `solid 1px ${colors["--layout-accent"]}`
+                    }}>Tag 1</div>
+                    <div className={styles.previewTag} style={{
+                        color: colors["--layout-accent"],
+                        border: `solid 1px ${colors["--layout-accent"]}`
+                    }}>Tag 2</div>
+                    <div className={styles.previewTag} style={{
+                        color: colors["--layout-accent"],
+                        border: `solid 1px ${colors["--layout-accent"]}`
+                    }}>Tag 3</div>
+                </div>
+                <div className={`${styles.previewCardAlert}`} style={{
+                    color: colors["--cards-notification-text"],
+                    backgroundColor: colors["--cards-notification"]
+                }}>12</div>
+                <p style={{
+                    color: colors["--layout-text"]
+                }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.</p>
+            </div>
+        </div>
+    </div>
+}
+
+function PreviewForm({ colors }) {
+    return <div className={styles.previewWrapper}>
+        <div className={styles.inputBattery}>
+            <div className={styles.inputBatteryWrapper}>
+                <div className={styles.labelpreview} style={{
+                    color: colors["--form-placeholder"]
+                }}>Field label</div>
+                <input className={styles.inputpreview} value='Regular input' style={{
+                    color: colors["--form-placeholder"],
+                    borderColor: colors["--form-field-border"],
+                    backgroundColor: colors["--form-field-bgr"],
+                }} />
+            </div>
+            <div className={styles.inputBatteryWrapper}>
+                <div className={styles.labelpreview} style={{
+                    color: colors["--form-placeholder"]
+                }}>Field label</div>
+                <input className={styles.inputpreview} value='Hovered input' style={{
+                    color: colors["--form-placeholder"],
+                    borderColor: colors["--form-field-border"],
+                    backgroundColor: colors["--form-field-bgr"],
+                    borderWidth: 2
+                }} />
+            </div>
+            <div className={styles.inputBatteryWrapper}>
+                <div className={styles.labelpreview} style={{
+                    color: colors["--form-placeholder"]
+                }}>Field label</div>
+                <input className={styles.inputpreview} value='Active input' style={{
+                    color: colors["--form-placeholder"],
+                    borderColor: colors["--form-placeholder"],
+                    backgroundColor: colors["--form-field-bgr"],
+                    borderWidth: 2
+                }} />
+            </div>
+            <div className={styles.inputBatteryWrapper}>
+                <div className={styles.labelpreview} style={{
+                    color: colors["--form-placeholder"]
+                }}>Field label</div>
+                <input className={styles.inputpreview} value='Focused input' style={{
+                    color: colors["--form-placeholder"],
+                    borderColor: colors["--form-accent"],
+                    backgroundColor: colors["--form-field-bgr"],
+                    borderWidth: 2
+                }} />
+            </div>
+        </div>
+        {/* <Input placeholder='hello' label='hello' nomargin/> */}
+    </div>
+}
+
+function PreviewButtons({ colors }) {
+    return <div className={styles.previewWrapper}>
+        <div className={styles.buttonBattery}>
+            <div className={`${styles.button}`} style={{
+                color: colors["--button-text"],
+                backgroundColor: colors["--button-bgr"],
+                borderColor: colors["--button-border"]
+            }}>
+                Regular button
+            </div>
+            <div className={`${styles.button}`} style={{
+                color: colors["--button-hover-text"],
+                backgroundColor: colors["--button-hover-bgr"],
+                borderColor: colors["--button-hover-border"],
+                borderWidth: 2
+            }}>
+                Hovered button
+            </div>
+            <div className={`${styles.button}`} style={{
+                color: colors["--button-active-text"],
+                backgroundColor: colors["--button-active-bgr"],
+                borderColor: colors["--button-active-border"],
+                borderWidth: 2
+            }}>
+                Active button
+            </div>
+        </div>
+        {/* ================ */}
+        <div className={styles.buttonBattery}>
+            <div className={`${styles.button}`} style={{
+                color: colors["--button-accent-text"],
+                backgroundColor: colors["--button-accent-bgr"],
+                borderColor: colors["--button-accent-border"]
+            }}>
+                Accent button
+            </div>
+            <div className={`${styles.button}`} style={{
+                color: colors["--button-accent-hover-text"],
+                backgroundColor: colors["--button-accent-hover-bgr"],
+                borderColor: colors["--button-accent-hover-border"],
+                borderWidth: 2
+            }}>
+                Hovered button
+            </div>
+            <div className={`${styles.button}`} style={{
+                color: colors["--button-accent-active-text"],
+                backgroundColor: colors["--button-accent-active-bgr"],
+                borderColor: colors["--button-accent-active-border"],
+                borderWidth: 2
+            }}>
+                Active button
+            </div>
+        </div>
+        {/* ================ */}
+        <div className={styles.buttonBattery}>
+            <div className={`${styles.button}`} style={{
+                color: colors["--button-danger-text"],
+                backgroundColor: colors["--button-danger-bgr"],
+                borderColor: colors["--button-danger-border"]
+            }}>
+                Danger button
+            </div>
+            <div className={`${styles.button}`} style={{
+                color: colors["--button-danger-hover-text"],
+                backgroundColor: colors["--button-danger-hover-bgr"],
+                borderColor: colors["--button-danger-hover-border"],
+                borderWidth: 2
+            }}>
+                Hovered button
+            </div>
+            <div className={`${styles.button}`} style={{
+                color: colors["--button-danger-active-text"],
+                backgroundColor: colors["--button-danger-active-bgr"],
+                borderColor: colors["--button-danger-active-border"],
+                borderWidth: 2
+            }}>
+                Active button
+            </div>
+        </div>
+        {/* <ActionPanel
+            width={400}
+            alignCenter
+            border
+            column
+            margin={{ top: 6, bottom: 24 }}>
+            <Button accent>Accent button</Button>
+            <Button danger>Danger button</Button>
+            <Button>Regular button</Button>
+            <Button icon="play">Icon button</Button>
+            <Button disabled>Disabled button</Button>
+        </ActionPanel> */}
+    </div >
+}
+
+function PreviewMenu({ colors }) {
+    return <div className={styles.previewWrapper}>
+        <div className={styles.mmPreview}
+            style={{
+                backgroundColor: colors["--menu-bgr"],
+                borderColor: colors["--menu-border-color"]
+            }}
+        >
+            <div className={styles.menuItem}
+                style={{
+                    color: colors["--menu-item"]
+                }}
+            >
+                <div className='icon icon-academy'>Regular menu item</div>
+            </div>
+            <div className={styles.menuItem}
+                style={{
+                    color: colors["--menu-item-hover"],
+                    backgroundColor: colors["--menu-item-hover-bgr"],
+                    border: `solid 1px ${colors["--menu-item-hover-border"]}`
+                }}
+            >
+                <div className='icon icon-actions'>Hovered menu item</div>
+            </div>
+            <div className={styles.menuItem}
+                style={{
+                    color: colors["--menu-item-selected"],
+                    backgroundColor: colors["--menu-item-selected-bgr"],
+                    border: `solid 1px ${colors["--menu-item-selected-border"]}`
+                }}>
+                <div className='icon icon-bubble'>Selected menu item</div>
+            </div>
+            <div className={styles.menuGroup}
+                style={{
+                    borderBottom: `solid 1px ${colors["--menu-border-color"]}`
+                }}>
+                <div className={styles.menuGroutTitle}
+                    style={{
+                        color: colors["--menu-group"],
+                    }}
+                >Menu group</div>
+                <div className={styles.menuItem} style={{
+                    color: colors["--menu-item"]
+                }}>
+                    <div className='icon icon-bell'>Menu item</div>
+                </div>
+                <div className={styles.menuItem} style={{
+                    color: colors["--menu-item"]
+                }}>
+                    <div className='icon icon-bookmark'>Menu item
+                    </div>
+                    <div className={styles.menuLabel} style={{
+                        color: colors["--menu-alert"],
+                        backgroundColor: colors["--menu-alert-bgr"],
+                    }}>12</div>
+                </div>
+            </div>
+            <div className={styles.menuItem} style={{
+                color: colors["--menu-item"]
+            }}>
+                <div className='icon icon-babai'>Menu item
+                </div>
+            </div>
+        </div>
+    </div >
+}
+
+function PreviewLayout({ colors }) {
+    return <div className={styles.previewWrapper}>
+        <div className={styles.layoutPreview}>
+            <h2 style={{
+                color: colors["--layout-headers"]
+            }}>Header text</h2>
+            <p style={{
+                color: colors["--layout-text"]
+            }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua. Ut enim ad <a style={{
+                    color: colors["--layout-accent"]
+                }}>regular link</a>, quis nostrud exercitation <a style={{
+                    color: colors["--layout-accent-hover"]
+                }}>hovered link</a> ullamco laboris nisi ut
+                nulla pariatur</p>
+            <div className={styles.footerPreview} style={{
+                color: colors["--layout-footer-text"],
+                backgroundColor: colors["--layout-footer-bgr"],
+                borderTop: `solid 1px ${colors["--layout-footer-border"]}`
+            }}>
+                Footer
+            </div>
+        </div>
+        <div className={styles.previewTabs}>
+            <div className={styles.previewTab} style={{
+                borderBottom: `solid 3px ${colors["--layout-accent"]}`
+            }}>Tab 1</div>
+            <div style={{opacity: 0.6}} className={styles.previewTab}>Tab 2</div>
+            <div style={{opacity: 0.6}} className={styles.previewTab}>Tab 3</div>
+        </div>
+    </div >
 }
 
 function GroupOfColors(props) {

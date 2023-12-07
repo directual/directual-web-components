@@ -157,8 +157,8 @@ const newMenuEexample = {
             "menuPadding": 12,
             "menuLogoMargin": 22,
             "menuBorderWidth": 2,
-            "dontHideGroups": true,
-            "menuPosition": "side",
+            "dontHideGroups": false,
+            "menuPosition": "top",
             "menuMargin": 6
         },
         "item__1700128649200": {
@@ -178,8 +178,8 @@ const newMenuEexample = {
             "menuLabel": "foo"
         },
         "item__1700128674697": {
-            "linkToPage": "/orders",
-            "name": "My Orders",
+            "linkToPage": "/system-button",
+            "name": "Buttons",
             "iconType": "remix_icon",
             "menuRemixIcon": {
                 "Content": "M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM7 12H9C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12H17C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12Z",
@@ -190,10 +190,10 @@ const newMenuEexample = {
             "menuRemixIconColorSelected": "#a6ffcb"
         },
         "item__1700140180934": {
-            "linkToPage": "/all-users",
-            "name": "All Users",
+            "linkToPage": "/theme",
+            "name": "Themes",
             "iconType": "directual_icon",
-            "menuDirectualIconSet": "academy"
+            "menuDirectualIconSet": "styles"
         },
         "group_1700578488736": {
             "name": "Admin pages",
@@ -5959,7 +5959,7 @@ const App = (props) => {
     }
 
     let authExample = {
-        "isAuth": true,
+        "isAuth": false,
         "custom_labels": "{\n   \"foo\": \"hello brave new world!\",\n   \"bar\": \"foobar\"\n}",
         "role": "admin",
         "lastName": "Watson",
@@ -7284,7 +7284,7 @@ const App = (props) => {
     return <Router>
         <div style={{ width: '100%', position: 'absolute', height: 0 }} ref={layoutRef}></div>
         <FpsWrapper
-            horizontal={false || currentBP == 'mobile'}
+            horizontal={true || currentBP == 'mobile'}
             showMobileTabs
             mobileTabsPlace='bottom'
             mobileLeftSide={currentTheme.mobileMenu == 'left'}
