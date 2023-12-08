@@ -1022,9 +1022,9 @@
         .D_MainMenu_Item {
           color: var(--menu-item);
           &.selected {
-            color: var(--menu-item-selected);
+            color: var(--menu-item-selected) !important;
             a {
-              color: var(--menu-item-selected);
+              color: var(--menu-item-selected) !important;
             }
           }
           a {
@@ -1095,6 +1095,7 @@
         background-color: var(--menu-bgr);
         border: solid 2px var(--menu-border-color);
         border-radius: var(--border-radius);
+        color: var(--menu-item);
       }
     }
   }

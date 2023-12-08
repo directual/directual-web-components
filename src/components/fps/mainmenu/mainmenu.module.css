@@ -937,10 +937,10 @@
   color: var(--menu-item);
 }
 :global .ural .D_MainMenu_Item:hover .D_MainMenu_Item.selected {
-  color: var(--menu-item-selected);
+  color: var(--menu-item-selected) !important;
 }
 :global .ural .D_MainMenu_Item:hover .D_MainMenu_Item.selected a {
-  color: var(--menu-item-selected);
+  color: var(--menu-item-selected) !important;
 }
 :global .ural .D_MainMenu_Item:hover .D_MainMenu_Item a {
   color: var(--menu-item);
@@ -1000,6 +1000,7 @@
   background-color: var(--menu-bgr);
   border: solid 2px var(--menu-border-color);
   border-radius: var(--border-radius);
+  color: var(--menu-item);
 }
 :global .DMainMenu_LogInButton.horizontalLB {
   width: 100%;

@@ -158,7 +158,7 @@ const newMenuEexample = {
             "menuLogoMargin": 22,
             "menuBorderWidth": 2,
             "dontHideGroups": false,
-            "menuPosition": "top",
+            "menuPosition": "side",
             "menuMargin": 6
         },
         "item__1700128649200": {
@@ -7284,7 +7284,7 @@ const App = (props) => {
     return <Router>
         <div style={{ width: '100%', position: 'absolute', height: 0 }} ref={layoutRef}></div>
         <FpsWrapper
-            horizontal={true || currentBP == 'mobile'}
+            horizontal={false || currentBP == 'mobile'}
             showMobileTabs
             mobileTabsPlace='bottom'
             mobileLeftSide={currentTheme.mobileMenu == 'left'}
