@@ -28,19 +28,28 @@
 
 :root {
   --headers-font-family: 'Montserrat', sans-serif;
+  --headers-font-family-h2: 'Montserrat', sans-serif;
+  --headers-font-family-h3: 'Montserrat', sans-serif;
   --main-font-family: 'Lato', sans-serif;
   --strong-font-weight: 600;
 
   --text-font-size: 16px;
+  --text-font-style: normal;
   --text-small-size: 14px;
   --text-very-small-size: 12px;
 
   --text-font-weight: 400;
   --headers-font-weight: 700;
+  --headers-font-weight-h2: 700;
+  --headers-font-weight-h3: 700;
 
   --h1-font-size: 42px;
   --h2-font-size: 30px;
   --h3-font-size: 22px;
+
+  --h1-font-style: normal;
+  --h2-font-style: normal;
+  --h3-font-style: normal;
 }
 
 @media all and (max-width: 415px) {
@@ -59,6 +68,7 @@
   body {
     font-family: var(--main-font-family);
     font-size: var(--text-font-size);
+    font-style: var(--text-font-style);
     font-weight: var(--text-font-weight);
   }
 
@@ -74,18 +84,21 @@
     font-family: var(--headers-font-family);
     font-size: var(--h1-font-size);
     font-weight: var(--headers-font-weight);
+    font-style: var(--h1-font-style);
   }
 
   h2 {
-    font-family: var(--headers-font-family);
+    font-family: var(--headers-font-family-h2);
     font-size: var(--h2-font-size);
     font-weight: var(--headers-font-weight);
+    font-style: var(--h2-font-style);
   }
 
   h3 {
-    font-family: var(--headers-font-family);
+    font-family: var(--headers-font-family-h3);
     font-size: var(--h3-font-size);
     font-weight: var(--headers-font-weight);
+    font-style: var(--h3-font-style);
   }
 
   a {

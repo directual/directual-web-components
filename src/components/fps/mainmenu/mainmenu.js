@@ -345,8 +345,8 @@ function MobileTab(props) {
 
 export function NewMainMenu(props) {
 
-    // console.log("NewMainMenu")
-    // console.log(props)
+    console.log("NewMainMenu")
+    console.log(props)
 
     const brakePoints = {
         mobile: { from: 0, to: 768 },
@@ -421,7 +421,7 @@ export function NewMainMenu(props) {
     const logoOption = _.get(menuConfig, "rootMenu.logoOption") || "upload"
     const logoSize = { height: _.get(menuConfig, "rootMenu.logoHeight") || 52, width: _.get(menuConfig, "rootMenu.logoWidth") || 187 }
     const logoPosition = _.get(menuConfig, "rootMenu.logoPosition") || "left"
-    const largeLogoURL = _.get(menuConfig, "rootMenu.largeLogoURL")
+    const largeLogoURL = _.get(menuConfig, "rootMenu.largeLogoURL") || props.oldLogoUrl
     const smallLogoURL = _.get(menuConfig, "rootMenu.smallLogoURL")
     const menuLogoMargin = _.get(menuConfig, "rootMenu.menuLogoMargin") || 32
     const menuBorderWidth = _.get(menuConfig, "rootMenu.menuBorderWidth") || 0
@@ -969,7 +969,7 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
                 D_MainMenu_List_Group_Title`}
                 onClick={hideGroup}
                 style={compactMode ? {
-                    maxWidth: menuCompactWidth - menuPadding
+                    maxWidth: menuCompactWidth// - menuPadding
                 } : {}}
             >
                 {hideGroups && !compactMode && <div className={`icon icon-up small D_MainMenu_List_expand ${isOpened ? '' : 'group_hidden'}`} />}

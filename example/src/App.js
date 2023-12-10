@@ -32,25 +32,11 @@ const newMenuEexample = {
         "isFolder": true,
         "children": [
             {
-                "id": "item__1700128649200",
-                "name": "New page",
-                "children": [],
-                "isFolder": false,
-                "icon": "application"
-            },
-            {
-                "id": "group_1700578488736",
+                "id": "group_1702032834666",
                 "name": "New group",
                 "children": [
                     {
-                        "id": "item__1700128674697",
-                        "name": "New page",
-                        "children": [],
-                        "isFolder": false,
-                        "icon": "application"
-                    },
-                    {
-                        "id": "item__1700140180934",
+                        "id": "item__1702032623640",
                         "name": "New page",
                         "children": [],
                         "isFolder": false,
@@ -61,67 +47,45 @@ const newMenuEexample = {
                 "icon": "folder"
             },
             {
-                "id": "item__1700578521786",
-                "name": "New page",
-                "children": [],
-                "isFolder": false,
-                "icon": "application"
-            },
-            {
-                "id": "item__1700578539619",
-                "name": "New page",
-                "children": [],
-                "isFolder": false,
-                "icon": "application"
+                "id": "group_1702032845969",
+                "name": "New group",
+                "children": [
+                    {
+                        "id": "item__1702035114482",
+                        "name": "New page",
+                        "children": [],
+                        "isFolder": false,
+                        "icon": "application"
+                    },
+                    {
+                        "id": "item__1702035125602",
+                        "name": "New page",
+                        "children": [],
+                        "isFolder": false,
+                        "icon": "application"
+                    },
+                    {
+                        "id": "item__1702035160342",
+                        "name": "New page",
+                        "children": [],
+                        "isFolder": false,
+                        "icon": "application"
+                    }
+                ],
+                "isFolder": true,
+                "icon": "folder"
             }
         ]
     },
     "menuConfig": {
         "rootMenu": {
-            "menuWidth": 276,
-            "logoOption": "ai",
-            "logoGenerationSettings": {
-                "logoTitle": "Microsoft",
-                "logoColor": "#ffffff",
-                "googleFont": {
-                    "id": "Bagel Fat One",
-                    "subsets": [
-                        "korean",
-                        "latin",
-                        "latin-ext"
-                    ],
-                    "category": "display",
-                    "family": "Bagel Fat One",
-                    "variants": [
-                        "regular"
-                    ],
-                    "selectedStyle": "regular"
-                },
-                "logoSubtitleColor": "rgba(0,0,0,.8)",
-                "signColor": "#058efc",
-                "signColorGrad1": "#c02425",
-                "signColorGrad2": "#f0cb35",
-                "signFillType": "linear-gradient",
-                "signGradDirection": "diag",
-                "addSign": true,
-                "signSize": 25.7,
-                "logoTextSize": 14.8,
-                "scaleSign": 1.2,
-                "moveSign": -2.4,
-                "moveHorSign": -2.2,
-                "lineSpacing": 0.79,
-                "titleLetterSpacing": 0.6,
-                "subtitleLetterSpacing": 0,
-                "titleY": 17,
-                "subtitleY": 13,
-                "logoSubtitleSize": 6,
-                "remixIcon": {
-                    "Category": "Development",
-                    "Content": "M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM16.4645 15.5355L20 12L16.4645 8.46447L15.0503 9.87868L17.1716 12L15.0503 14.1213L16.4645 15.5355ZM6.82843 12L8.94975 9.87868L7.53553 8.46447L4 12L7.53553 15.5355L8.94975 14.1213L6.82843 12ZM11.2443 17L14.884 7H12.7557L9.11597 17H11.2443Z",
-                    "id": "code-box-fill"
-                }
+            "logoOption": "upload",
+            "addSign": true,
+            "remixIcon": {
+                "Content": "M12 17C14.2091 17 16 15.2091 16 13H14C14 14.1046 13.1046 15 12 15 10.8954 15 10 14.1046 10 13H8C8 15.2091 9.79086 17 12 17ZM6.5 2C4.01472 2 2 4.01472 2 6.5 2 7.85729 2.60121 9.07332 3.54934 9.89751 3.19384 10.8656 3 11.911 3 13 3 17.9706 7.02944 22 12 22 16.9706 22 21 17.9706 21 13 21 11.911 20.8062 10.8656 20.4507 9.89751 21.3988 9.07332 22 7.85729 22 6.5 22 4.01472 19.9853 2 17.5 2 15.8737 2 14.4505 2.8624 13.6601 4.15297 13.1215 4.05246 12.5665 4 12 4 11.4335 4 10.8785 4.05246 10.3399 4.15297 9.5495 2.8624 8.12635 2 6.5 2ZM4 6.5C4 5.11929 5.11929 4 6.5 4 7.58033 4 8.50304 4.68577 8.8517 5.64896L9.1696 6.52718 10.0675 6.26991C10.6801 6.09435 11.3282 6 12 6 12.6718 6 13.3199 6.09435 13.9325 6.26991L14.8304 6.52718 15.1483 5.64896C15.497 4.68577 16.4197 4 17.5 4 18.8807 4 20 5.11929 20 6.5 20 7.43301 19.4894 8.24804 18.7275 8.67859L17.9141 9.13832 18.3176 9.98107C18.7547 10.8939 19 11.9169 19 13 19 16.866 15.866 20 12 20 8.13401 20 5 16.866 5 13 5 11.9169 5.24529 10.8939 5.6824 9.98107L6.08595 9.13832 5.27248 8.6786C4.51064 8.24805 4 7.43301 4 6.5Z",
+                "Category": "User & Faces",
+                "id": "bear-smile-line"
             },
-            "logoTitle": "Google",
             "googleFont": {
                 "id": "ABeeZee",
                 "subsets": [
@@ -136,161 +100,67 @@ const newMenuEexample = {
                 ],
                 "selectedStyle": "regular"
             },
-            "addSign": true,
-            "remixIcon": {
-                "Category": "Logos",
-                "Content": "M3.06364 7.50914C4.70909 4.24092 8.09084 2 12 2C14.6954 2 16.959 2.99095 18.6909 4.60455L15.8227 7.47274C14.7864 6.48185 13.4681 5.97727 12 5.97727C9.39542 5.97727 7.19084 7.73637 6.40455 10.1C6.2045 10.7 6.09086 11.3409 6.09086 12C6.09086 12.6591 6.2045 13.3 6.40455 13.9C7.19084 16.2636 9.39542 18.0227 12 18.0227C13.3454 18.0227 14.4909 17.6682 15.3864 17.0682C16.4454 16.3591 17.15 15.3 17.3818 14.05H12V10.1818H21.4181C21.5364 10.8363 21.6 11.5182 21.6 12.2273C21.6 15.2727 20.5091 17.8363 18.6181 19.5773C16.9636 21.1046 14.7 22 12 22C8.09084 22 4.70909 19.7591 3.06364 16.4909C2.38638 15.1409 2 13.6136 2 12C2 10.3864 2.38638 8.85911 3.06364 7.50914Z",
-                "id": "google-fill"
-            },
             "sideMenuSize": "resizeble",
-            "largeLogoURL": "https://api.directual.com/fileUploaded/directual-site/e/ebanet.jpeg",
-            "signColor": "#bd10e0",
-            "generatedLogo": "<div><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\"><link href=\"https://fonts.googleapis.com/css2?family=Bagel+Fat+One&amp;display=swap\" rel=\"stylesheet\"><svg width=\"212\" height=\"46\" viewBox=\"0 0 106 23\" style=\"\n    display: block;\n\"><linearGradient id=\"grad10\" x1=\"10%\" y1=\"10%\" x2=\"90%\" y2=\"90%\"><stop offset=\"0%\" stop-color=\"#c02425\"></stop><stop offset=\"100%\" stop-color=\"#f0cb35\"></stop></linearGradient><path transform=\"scale(1.2) translate(-2.2, -2.4)\" fill=\"url(#grad10)\" d=\"M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM16.4645 15.5355L20 12L16.4645 8.46447L15.0503 9.87868L17.1716 12L15.0503 14.1213L16.4645 15.5355ZM6.82843 12L8.94975 9.87868L7.53553 8.46447L4 12L7.53553 15.5355L8.94975 14.1213L6.82843 12ZM11.2443 17L14.884 7H12.7557L9.11597 17H11.2443Z\"></path><text font-family=\"Bagel Fat One\" font-weight=\"400\" font-style=\"normal\" letter-spacing=\"0.6\" fill=\"#ffffff\" font-size=\"14.8\" x=\"30.839999999999996\" y=\"17\">Microsoft</text></svg></div>",
-            "generatedSmallLogo": "<div><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\"><link href=\"https://fonts.googleapis.com/css2?family=Bagel+Fat+One&amp;display=swap\" rel=\"stylesheet\"><svg width=\"46\" height=\"46\" viewBox=\"0 0 23 23\"><linearGradient id=\"grad10\" x1=\"10%\" y1=\"10%\" x2=\"90%\" y2=\"90%\"><stop offset=\"0%\" stop-color=\"#c02425\"></stop><stop offset=\"100%\" stop-color=\"#f0cb35\"></stop></linearGradient><path transform=\"scale(1.2) translate(-2.2, -2.4)\" fill=\"url(#grad10)\" d=\"M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM16.4645 15.5355L20 12L16.4645 8.46447L15.0503 9.87868L17.1716 12L15.0503 14.1213L16.4645 15.5355ZM6.82843 12L8.94975 9.87868L7.53553 8.46447L4 12L7.53553 15.5355L8.94975 14.1213L6.82843 12ZM11.2443 17L14.884 7H12.7557L9.11597 17H11.2443Z\"></path></svg></div>",
-            "logoColor": "#ffffff",
-            "signFillType": "linear-gradient",
-            "signColorGrad1": "#7f7fd5",
-            "signColorGrad2": "#91eae4",
-            "signGradDirection": "diag",
-            "logoWidth": 212,
-            "logoHeight": 46,
-            "menuPadding": 12,
-            "menuLogoMargin": 22,
-            "menuBorderWidth": 2,
-            "dontHideGroups": false,
-            "menuPosition": "side",
-            "menuMargin": 6
-        },
-        "item__1700128649200": {
-            "linkToPage": "/home",
-            "name": "All authorised",
-            "iconType": "remix_icon",
-            "menuRemixIcon": {
-                "Content": "M20 20.0001C20 20.5524 19.5523 21.0001 19 21.0001H5C4.44772 21.0001 4 20.5524 4 20.0001V11.0001H1L11.3273 1.61162C11.7087 1.26488 12.2913 1.26488 12.6727 1.61162L23 11.0001H20V20.0001ZM18 19.0001V9.15757L12 3.70302L6 9.15757V19.0001H18ZM12 17.0001L8.64124 13.6413C7.76256 12.7627 7.76256 11.338 8.64124 10.4594C9.51992 9.58068 10.9445 9.58068 11.8232 10.4594L12 10.6361L12.1768 10.4594C13.0555 9.58068 14.4801 9.58068 15.3588 10.4594C16.2374 11.338 16.2374 12.7627 15.3588 13.6413L12 17.0001Z",
-                "Category": "Buildings",
-                "id": "home-heart-line"
+            "generatedLogo": "<div><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\"><div></div><svg width=\"187\" height=\"52\" viewBox=\"0 0 94 26\"><linearGradient id=\"grad10\" x1=\"10%\" y1=\"10%\" x2=\"90%\" y2=\"10%\"><stop offset=\"0%\" stop-color=\"#dd3e54\"></stop><stop offset=\"100%\" stop-color=\"#6be585\"></stop></linearGradient><text letter-spacing=\"0\" fill=\"rgba(0,0,0,.8)\" font-size=\"30\" x=\"0\" y=\"23\">Directual Dev</text></svg></div>",
+            "generatedSmallLogo": "<div><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\"><div></div><svg width=\"52\" height=\"52\" viewBox=\"0 0 26 26\"><linearGradient id=\"grad10\" x1=\"10%\" y1=\"10%\" x2=\"90%\" y2=\"10%\"><stop offset=\"0%\" stop-color=\"#dd3e54\"></stop><stop offset=\"100%\" stop-color=\"#6be585\"></stop></linearGradient></svg></div>",
+            "logoGenerationSettings": {
+                "logoColor": "rgba(0,0,0,.8)",
+                "logoSubtitleColor": "rgba(0,0,0,.8)",
+                "signColor": "#058efc",
+                "signColorGrad1": "#dd3e54",
+                "signColorGrad2": "#6be585",
+                "signFillType": "solid",
+                "signGradDirection": "hor",
+                "signSize": 30,
+                "logoTextSize": 30,
+                "scaleSign": 1.1555555555555554,
+                "moveSign": 0,
+                "moveHorSign": 0,
+                "lineSpacing": 1.2,
+                "titleLetterSpacing": 0,
+                "subtitleLetterSpacing": 0,
+                "titleY": 23,
+                "subtitleY": 13,
+                "logoSubtitleSize": 6
             },
-            "menuRemixIconColor": "#417505",
-            "menuRemixIconColorSelected": "#a6ffcb",
-            "menuRemixIconSize": 24,
-            "permissions": "everybody",
-            "addLabel": "add_label",
-            "menuLabel": "foo"
+            "menuCompactWidth": 50,
+            "menuPadding": 15,
+            "menuLogoMargin": 20,
+            "menuBorderWidth": 3
         },
-        "item__1700128674697": {
-            "linkToPage": "/system-button",
-            "name": "Buttons",
-            "iconType": "remix_icon",
-            "menuRemixIcon": {
-                "Content": "M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM7 12H9C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12H17C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12Z",
-                "Category": "User & Faces",
-                "id": "user-smile-line"
-            },
-            "menuRemixIconColor": "#417505",
-            "menuRemixIconColorSelected": "#a6ffcb"
-        },
-        "item__1700140180934": {
-            "linkToPage": "/theme",
-            "name": "Themes",
+        "item__1702032623640": {
+            "linkToPage": "/open-pipeline",
+            "name": "Public Roadmap",
             "iconType": "directual_icon",
-            "menuDirectualIconSet": "styles"
+            "menuDirectualIconSet": "kanban"
         },
-        "group_1700578488736": {
-            "name": "Admin pages",
-            "permissions": "everybody",
-            "specifyRoles": "admin"
+        "group_1702032834666": {
+            "name": "Public pages"
         },
-        "item__1700578521786": {
-            "linkToType": "external",
-            "linkToURL": "https://www.directual.com/",
-            "linkToURLNewWindow": true,
-            "name": "Directual.com",
+        "group_1702032845969": {
+            "name": "My pages",
+            "permissions": "all_registered"
+        },
+        "item__1702035114482": {
+            "linkToPage": "/new-feature",
+            "name": "Suggest a Feature",
+            "permissions": "all_registered",
+            "specifyRoles": "",
             "iconType": "directual_icon",
-            "menuDirectualIconSet": "directual",
-            "permissions": "everybody",
-            "specifyRoles": "god"
+            "menuDirectualIconSet": "idea"
         },
-        "item__1700578539619": {
-            "linkToPage": "/hello-there",
-            "name": "Unauthorised",
+        "item__1702035125602": {
+            "linkToPage": "/feature-requests",
+            "name": "Vote for the Features",
             "iconType": "directual_icon",
-            "menuDirectualIconSet": "actions",
-            "addLabel": "add_label",
-            "menuLabel": "foo",
-            "permissions": "everybody"
+            "menuDirectualIconSet": "arrowUp"
         },
-        "rootMobileMenu": {
-            "showMobileHeader": true,
-            "mobileMenuSide": "left",
-            "mobileHeaderLogo": "small",
-            "mobileHeaderLogoPosition": "center",
-            "mobileMenuPadding": 8,
-            "tabsInnerPadding": "10 5 10 5",
-            "tabsPadding": 4,
-            "tabsMargin": 4,
-            "tabsPlacement": "bottom",
-            "mobileTitlesSize": "large",
-            "showMobileAuthBlock": true,
-            "menuSideHideLogo": false
-        },
-        "item__1700661946193": {
-            "linkToPage": "/home",
-            "name": "Home",
-            "permissions": "everybody"
-        },
-        "item__1700661949645": {
-            "linkToPage": "/all-users",
-            "name": "",
+        "item__1702035160342": {
+            "linkToPage": "/my-subscriptions",
+            "name": "Features I watch",
             "iconType": "directual_icon",
-            "menuDirectualIconSet": "academy",
-            "permissions": "everybody",
-            "addLabel": "add_label",
-            "menuLabel": "foo"
-        },
-        "item__1700661962340": {
-            "linkToPage": "/orders",
-            "name": "My Orders",
-            "iconType": "remix_icon",
-            "menuRemixIcon": {
-                "Content": "M4.00014 10.0003L4 19.0002L6 19.0002L6.00011 12.0003L12.1719 12.0002L8.22222 15.9499L9.63643 17.3642L16.0004 11.0002L9.63643 4.63623L8.22221 6.05044L12.172 10.0002L4.00014 10.0003ZM15.2506 4.63623L13.8364 6.05044L18.7861 11.0002L13.8364 15.9499L15.2506 17.3642L21.6145 11.0002L15.2506 4.63623Z",
-                "Category": "Arrows",
-                "id": "corner-up-right-double-line"
-            },
-            "menuRemixIconColor": "#c51010",
-            "menuRemixIconColorSelected": "#35cc68",
-            "permissions": "everybody",
-            "specifyRoles": "admin"
+            "menuDirectualIconSet": "view"
         }
-    },
-    "mobileMenuOption": "tabs_bottom",
-    "mobileMenu": {
-        "id": "rootMobileMenu",
-        "icon": "folder",
-        "name": "Mobile menu (tabs)",
-        "isFolder": true,
-        "children": [
-            {
-                "id": "item__1700661946193",
-                "name": "New page",
-                "children": [],
-                "isFolder": false,
-                "icon": "application"
-            },
-            {
-                "id": "item__1700661949645",
-                "name": "New page",
-                "children": [],
-                "isFolder": false,
-                "icon": "application"
-            },
-            {
-                "id": "item__1700661962340",
-                "name": "New page",
-                "children": [],
-                "isFolder": false,
-                "icon": "application"
-            }
-        ]
     }
 }
 
@@ -339,6 +209,7 @@ function MainMenuWrapper(props) {
     return <NewMainMenu
         title='directual-design'
         theme='ural'
+        oldLogoUrl="https://api.directual.com/fileUploaded/dev/48294569-8ce6-4d95-822a-af2eecdd8462.png"
         compactState
         currentBP={currentBP}
         handleRoute={href => e => {
@@ -5959,7 +5830,7 @@ const App = (props) => {
     }
 
     let authExample = {
-        "isAuth": false,
+        "isAuth": true,
         "custom_labels": "{\n   \"foo\": \"hello brave new world!\",\n   \"bar\": \"foobar\"\n}",
         "role": "admin",
         "lastName": "Watson",
@@ -5968,7 +5839,7 @@ const App = (props) => {
         "notifications_counter": "",
         "nid": 18924,
         "user": "david@directual.com",
-        "userpic": "https://api.directual.com/fileUploaded/basic-template/efdd480a-d36a-4a01-ac82-baf871ffd2fd.jpg"
+        //"userpic": "https://api.directual.com/fileUploaded/basic-template/efdd480a-d36a-4a01-ac82-baf871ffd2fd.jpg"
     }
 
     let exampleForm = {
