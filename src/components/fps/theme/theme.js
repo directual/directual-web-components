@@ -1230,7 +1230,7 @@ export function SetTheme({ themeName }) {
         document.documentElement.style.setProperty('--headers-font-weight', theme.headersFontWeight || 700)
         document.documentElement.style.setProperty('--headers-font-weight-h2', theme.headersFontWeightH2 || 700)
         document.documentElement.style.setProperty('--headers-font-weight-h3', theme.headersFontWeightH3 || 700)
-        document.documentElement.style.setProperty('--text-font-weight', theme.bodyFontWeight || 900)
+        document.documentElement.style.setProperty('--text-font-weight', theme.bodyFontWeight || 400)
         document.documentElement.style.setProperty('--headers-font-family', "'" + theme.headersFont + "'" + ', sans-serif')
         document.documentElement.style.setProperty('--headers-font-family-h2', "'" + theme.headersFontH2 + "'" + ', sans-serif')
         document.documentElement.style.setProperty('--headers-font-family-h3', "'" + theme.headersFontH3 + "'" + ', sans-serif')
@@ -1241,9 +1241,9 @@ export function SetTheme({ themeName }) {
         document.documentElement.style.setProperty('--h2-font-size', theme.h2size + 'px')
         document.documentElement.style.setProperty('--h3-font-size', theme.h3size + 'px')
         document.documentElement.style.setProperty('--text-font-style', theme.textStyle)
-        document.documentElement.style.setProperty('--h1-font-style', theme.h1Style)
-        document.documentElement.style.setProperty('--h2-font-style', theme.h2Style)
-        document.documentElement.style.setProperty('--h3-font-style', theme.h3Style)
+        document.documentElement.style.setProperty('--h1-font-style', theme.h1Style || "normal")
+        document.documentElement.style.setProperty('--h2-font-style', theme.h2Style || "normal")
+        document.documentElement.style.setProperty('--h3-font-style', theme.h3Style || "normal")
         if (theme.colorScheme === 'custom') {
             for (const param in customThemeColors.classic) {
                 document.documentElement.style.setProperty(param,
