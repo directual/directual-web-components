@@ -1222,64 +1222,36 @@ const customThemeColorNames = {
 }
 
 export function SetTheme({ themeName }) {
-
-    // themeName is like {colors:'tiffany',radius:10}
-
     useEffect(() => {
-        if (themeName.colorScheme) {
-            setTheme(
-                themeName.colorScheme,
-                themeName.radius || 25,
-                themeName.headersFont || 'Montserrat',
-                themeName.headersFonHh2 || themeName.headersFont || 'Montserrat',
-                themeName.headersFontH3 || themeName.headersFont || 'Montserrat',
-                themeName.fontText || 'Lato',
-                themeName.headersFontWeight || '700',
-                themeName.headersFontWeightH2 || themeName.headersFontWeight || '700',
-                themeName.headersFontWeightH3 || themeName.headersFontWeight || '700',
-                themeName.bodyFontWeight || '400',
-                themeName.textSize || 16,
-                themeName.h1size || 42,
-                themeName.h2size || 30,
-                themeName.h3size || 22,
-                themeName.h3size || 22,
-                themeName.textStyle || 'normal',
-                themeName.h1Style || 'normal',
-                themeName.h2Style || 'normal',
-                themeName.h3Style || 'normal',
-                themeName.customThemeColors || customThemeColors,
-            )
-        } else { setTheme(themeName, 25, 'Montserrat', 'Lato', '700', '400', 16, 42, 30, 22) }
+        setTheme(themeName)
     }, [themeName])
 
-    const setTheme = (colorScheme, radius, headersFont, headersFontH2, headersFontH3, fontText, headersFontWeight, 
-        headersFontWeightH2, headersFontWeightH3, bodyFontWeight,
-        textSize, h1size, h2size, h3size, textStyle, h1Style, h2Style, h3Style) => {
-        document.documentElement.style.setProperty('--headers-font-weight', headersFontWeight)
-        document.documentElement.style.setProperty('--headers-font-weight-h2', headersFontWeightH2)
-        document.documentElement.style.setProperty('--headers-font-weight-h3', headersFontWeightH3)
-        document.documentElement.style.setProperty('--text-font-weight', bodyFontWeight)
-        document.documentElement.style.setProperty('--headers-font-family', "'" + headersFont + "'" + ', sans-serif')
-        document.documentElement.style.setProperty('--headers-font-family-h2', "'" + headersFontH2 + "'" + ', sans-serif')
-        document.documentElement.style.setProperty('--headers-font-family-h3', "'" + headersFontH3 + "'" + ', sans-serif')
-        document.documentElement.style.setProperty('--main-font-family', "'" + fontText + "'" + ', sans-serif')
-        document.documentElement.style.setProperty('--border-radius', radius + 'px')
-        document.documentElement.style.setProperty('--text-font-size', textSize + 'px')
-        document.documentElement.style.setProperty('--h1-font-size', h1size + 'px')
-        document.documentElement.style.setProperty('--h2-font-size', h2size + 'px')
-        document.documentElement.style.setProperty('--h3-font-size', h3size + 'px')
-        document.documentElement.style.setProperty('--text-font-style', textStyle)
-        document.documentElement.style.setProperty('--h1-font-style', h1Style)
-        document.documentElement.style.setProperty('--h2-font-style', h2Style)
-        document.documentElement.style.setProperty('--h3-font-style', h3Style)
-        if (colorScheme === 'custom') {
+    const setTheme = ( theme ) => {
+        document.documentElement.style.setProperty('--headers-font-weight', theme.headersFontWeight || 700)
+        document.documentElement.style.setProperty('--headers-font-weight-h2', theme.headersFontWeightH2 || 700)
+        document.documentElement.style.setProperty('--headers-font-weight-h3', theme.headersFontWeightH3 || 700)
+        document.documentElement.style.setProperty('--text-font-weight', theme.bodyFontWeight || 900)
+        document.documentElement.style.setProperty('--headers-font-family', "'" + theme.headersFont + "'" + ', sans-serif')
+        document.documentElement.style.setProperty('--headers-font-family-h2', "'" + theme.headersFontH2 + "'" + ', sans-serif')
+        document.documentElement.style.setProperty('--headers-font-family-h3', "'" + theme.headersFontH3 + "'" + ', sans-serif')
+        document.documentElement.style.setProperty('--main-font-family', "'" + theme.fontText + "'" + ', sans-serif')
+        document.documentElement.style.setProperty('--border-radius', theme.radius + 'px')
+        document.documentElement.style.setProperty('--text-font-size', theme.textSize + 'px')
+        document.documentElement.style.setProperty('--h1-font-size', theme.h1size + 'px')
+        document.documentElement.style.setProperty('--h2-font-size', theme.h2size + 'px')
+        document.documentElement.style.setProperty('--h3-font-size', theme.h3size + 'px')
+        document.documentElement.style.setProperty('--text-font-style', theme.textStyle)
+        document.documentElement.style.setProperty('--h1-font-style', theme.h1Style)
+        document.documentElement.style.setProperty('--h2-font-style', theme.h2Style)
+        document.documentElement.style.setProperty('--h3-font-style', theme.h3Style)
+        if (theme.colorScheme === 'custom') {
             for (const param in customThemeColors.classic) {
                 document.documentElement.style.setProperty(param,
-                    (themeName.customThemeColors && themeName.customThemeColors[param]) || customThemeColors.classic[param])
+                    (theme.customThemeColors && theme.customThemeColors[param]) || customThemeColors.classic[param])
             }
         } else {
-            for (const param in customThemeColors[colorScheme]) {
-                document.documentElement.style.setProperty(param, customThemeColors[colorScheme][param])
+            for (const param in customThemeColors[theme.colorScheme]) {
+                document.documentElement.style.setProperty(param, customThemeColors[theme.colorScheme][param])
             }
         }
 

@@ -345,8 +345,8 @@ function MobileTab(props) {
 
 export function NewMainMenu(props) {
 
-    console.log("NewMainMenu")
-    console.log(props)
+    // console.log("NewMainMenu")
+    // console.log(props)
 
     const brakePoints = {
         mobile: { from: 0, to: 768 },
