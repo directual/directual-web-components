@@ -19,8 +19,18 @@ import debounce from 'lodash.debounce';
 function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     if (!data) { data = {} }
 
-    console.log('---data FpsTable---')
-    console.log(data)
+    // console.log('---currentData FpsTable---')
+    // console.log(data)
+
+    const [currentData,setCurrentData] = useState(data)
+    useEffect(()=>{ 
+        console.log('=== update data === ')
+        console.log('== old data: ==')
+        console.log(currentData)
+        console.log('== new data: ==')
+        console.log(data)
+        setCurrentData(data)
+    }, [data])
 
     const cx = null
     const dqlService = debounce(performFiltering, 600);
@@ -29,7 +39,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
 
     const [loading, setLoading] = useState(false)
-    const [qSearch, setQSearch] = useState(data.quickSearch === "true")
+    const [qSearch, setQSearch] = useState(currentData.quickSearch === "true")
     const [searchValue, setSearchValue] = useState()
 
     const [currentDQL, setCurrentDQL] = useState('')
@@ -37,19 +47,19 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
     const [showObject, setShowObject] = useState()
 
-    const [cardsData, setCardsData] = useState(_.get(data, "data") || [])
+    const [cardscurrentData, setCardscurrentData] = useState(_.get(currentData, "currentData") || [])
 
-    const tableTitle = data.tableTitle || null
-    const writeFields = data.writeFields || []
+    const tableTitle = currentData.tableTitle || null
+    const writeFields = currentData.writeFields || []
 
-    const tableFieldScheme = data.fieldScheme || []
-    const tableStructures = data.structures || {}
+    const tableFieldScheme = currentData.fieldScheme || []
+    const tableStructures = currentData.structures || {}
 
-    const tableHeaders = data.headers || []
+    const tableHeaders = currentData.headers || []
 
-    const pageSize = data.pageSize || 0
-    const totalPages = data.totalPages || 0
-    const currentPage = data.pageNumber || 0
+    const pageSize = currentData.pageSize || 0
+    const totalPages = currentData.totalPages || 0
+    const currentPage = currentData.pageNumber || 0
 
     function performFiltering(dql, sort) {
         clearTimeout(cx);
@@ -65,14 +75,14 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
     useEffect(() => {
         setLoading(false)
-        if (data.isSuccessWrite) {
+        if (currentData.isSuccessWrite) {
         }
-        if (!data.isSuccessWrite && data.writeError) {
-            console.log('data write error')
-            console.log('error ==> ' + data.writeError)
+        if (!currentData.isSuccessWrite && currentData.writeError) {
+            console.log('currentData write error')
+            console.log('error ==> ' + currentData.writeError)
         }
-        setQSearch(data.quickSearch === "true")
-    }, [data])
+        setQSearch(currentData.quickSearch === "true")
+    }, [currentData])
 
 
     /**
@@ -90,10 +100,10 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         // костылек для даты
         for (const prop in msg) {
             if (typeof msg[prop] == 'number' && msg[prop] > 1000000000000) {
-                const dataType = data.headers.filter(i => i.sysName == prop) &&
-                    data.headers.filter(i => i.sysName == prop)[0] &&
-                    data.headers.filter(i => i.sysName == prop)[0].dataType
-                if (dataType == 'date') { msg[prop] = moment(msg[prop]) }
+                const currentDataType = currentData.headers.filter(i => i.sysName == prop) &&
+                    currentData.headers.filter(i => i.sysName == prop)[0] &&
+                    currentData.headers.filter(i => i.sysName == prop)[0].currentDataType
+                if (currentDataType == 'date') { msg[prop] = moment(msg[prop]) }
             }
         }
         const message =
@@ -120,7 +130,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         if (value) {
             setSearchValue(value)
             !currentDQL && !page && removeUrlParam(id + '_page')
-            const fieldsDQL = data.headers && data.headers.map(i => i.sysName);
+            const fieldsDQL = currentData.headers && currentData.headers.map(i => i.sysName);
             const requestDQL = fieldsDQL.map(i => "'" + i + "'" + ' like ' + "'" + value + "'").join(' OR ')
             setCurrentDQL(requestDQL)
             //addUrlParam({ key: id + '_dql', value: value })
@@ -148,7 +158,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     const [lazyLoadingHandler, setLazyLoadingHandler] = useState(false)
 
     function setPage(page) {
-        if (_.get(data, "params.lazyLoading")) { setLazyLoadingHandler(true) }
+        if (_.get(currentData, "params.lazyLoading")) { setLazyLoadingHandler(true) }
         let prom = onEvent({ dql: currentDQL, sort: currentSort, _id: id }, { page: page }, { reqParam1: "true" })
         page !== 0 ? addUrlParam({ key: id + '_page', value: page }) : removeUrlParam(id + '_page')
         if (prom && prom.finally) {
@@ -163,7 +173,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         if (saveModel) {
             for (const field in saveModel) {
                 console.log(field)
-                if (saveModel[field] && typeof saveModel[field] == 'object' && _.get(data, `params.data.fields[${field}].dataType`) != 'date') {
+                if (saveModel[field] && typeof saveModel[field] == 'object' && _.get(currentData, `params.currentData.fields[${field}].currentDataType`) != 'date') {
                     // console.log('removing links')
                     delete saveModel[field]
                 }  // removing links
@@ -171,7 +181,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                     // console.log(`removing ${field} as a field not for writing`)
                     delete saveModel[field]
                 } // removing fields not for writing
-                if (data.params.data.fields[field] && _.get(data, `params.data.fields[${field}].dataType`) == 'date' && typeof saveModel[field] == 'number') {
+                if (currentData.params.currentData.fields[field] && _.get(currentData, `params.currentData.fields[${field}].currentDataType`) == 'date' && typeof saveModel[field] == 'number') {
                     saveModel[field] = moment(saveModel[field])
                 }
             }
@@ -325,7 +335,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     useEffect(() => {
         if (lazyLoadingHandler) {
             setLazyLoadingHandler(false)
-            setCardsData([...cardsData, ...data.data])
+            setCardscurrentData([...cardscurrentData, ...currentData.currentData])
         }
         const queryString = typeof window !== 'undefined' ? window.location.search : '';
         const urlParams = new URLSearchParams(queryString);
@@ -335,10 +345,10 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         // if (urlDql && !currentDQL) {search(urlDql, urlPage || 0)}
         // if (!urlDql && urlPage && urlPage != currentPage) {setPage(urlPage)}
         if (currentID) {
-            const foundObject = data.data.filter(i => i.id == currentID) ? data.data.filter(i => i.id == currentID)[0] : null
+            const foundObject = currentData.currentData.filter(i => i.id == currentID) ? currentData.currentData.filter(i => i.id == currentID)[0] : null
             if (foundObject) { setShowObject(foundObject) } else { console.log("no foundObject") }
         }
-    }, [data]);
+    }, [currentData]);
 
     useEffect(() => {
         if (showObject && showObject.id) {
@@ -348,7 +358,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         }
     }, [showObject])
 
-    const params = (data || {}).params || {}
+    const params = (currentData || {}).params || {}
 
     const { hideExpandTD, autoRefresh, largeFont } = params
     let autoRefreshPeriod = params.autoRefreshPeriod || 60 // минута по умолчанию
@@ -365,12 +375,12 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         return () => clearInterval(interval);
     }, []);
 
-    if (!data || data == {} || !data.params) { return <div /> }
+    if (!currentData || currentData == {} || !currentData.params) { return <div /> }
 
 
     return (
         <ComponentWrapper currentBP={currentBP}>
-            {data.writeError && data.writeError != 'dql is not allowed for write' && <Hint title={dict[lang].form.error} error>{data.writeError}</Hint>}
+            {currentData.writeError && currentData.writeError != 'dql is not allowed for write' && <Hint title={dict[lang].form.error} error>{currentData.writeError}</Hint>}
             {/* <Button onClick={refresh} icon='refresh'>refresh</Button> */}
             {showObject &&
                 <React.Fragment>
@@ -406,8 +416,8 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 currentBP={currentBP}
                 tableTitle={tableTitle}
                 searchValue={searchValue}
-                tableQuickSearch={data.quickSearch == 'true'}
-                search={data.data && data.data.length > 0 ? true : false}
+                tableQuickSearch={currentData.quickSearch == 'true'}
+                search={currentData.currentData && currentData.currentData.length > 0 ? true : false}
                 onSearch={searchService}
                 loading={loading}
                 dict={dict}
@@ -416,8 +426,8 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
             />
             <Table
                 currentBP={currentBP}
-                data={data}
-                cardsData={cardsData}
+                currentData={currentData}
+                cardscurrentData={cardscurrentData}
                 dict={dict}
                 lang={lang}
                 largeFont={largeFont}
@@ -425,11 +435,11 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 params={params}
                 searchValue={searchValue}
                 checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
-                // onExpand={val => { _.get(data,'params.data.cardsOrPage') == 'page' ? handleRoute('./' + val.id)() : setShowObject(val) }}
+                // onExpand={val => { _.get(currentData,'params.currentData.cardsOrPage') == 'page' ? handleRoute('./' + val.id)() : setShowObject(val) }}
                 onExpand={val => {
-                    _.get(data, 'params.data.cardsOrPage') == 'page' ? handleRoute(`./${_.get(data, 'params.data.additionalPath') ? _.get(data, 'params.data.additionalPath') + '/' : ''}` + val.id)() :
-                        _.get(data, 'params.data.cardsOrPage') == 'anotherPage' ? handleRoute(`/${_.get(data, 'params.data.anotherPage')}/` + val.id)() :
-                            _.get(data, 'params.data.cardsOrPage') == 'disable' ? undefined :
+                    _.get(currentData, 'params.currentData.cardsOrPage') == 'page' ? handleRoute(`./${_.get(currentData, 'params.currentData.additionalPath') ? _.get(currentData, 'params.currentData.additionalPath') + '/' : ''}` + val.id)() :
+                        _.get(currentData, 'params.currentData.cardsOrPage') == 'anotherPage' ? handleRoute(`/${_.get(currentData, 'params.currentData.anotherPage')}/` + val.id)() :
+                            _.get(currentData, 'params.currentData.cardsOrPage') == 'disable' ? undefined :
                                 setShowObject(val)
                 }}
                 // onExpand={val => { setShowObject(val) }}
@@ -440,7 +450,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 loading={loading}
                 setLoading={value => setLoading(value)}
             />
-            {_.get(data, "params.lazyLoading") ?
+            {_.get(currentData, "params.lazyLoading") ?
                 <LazyLoading
                     setPage={setPage}
                     pageSize={pageSize}
