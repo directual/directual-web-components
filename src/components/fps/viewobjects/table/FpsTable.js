@@ -19,15 +19,16 @@ import debounce from 'lodash.debounce';
 function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     if (!data) { data = {} }
 
-    console.log('---data FpsTable---')
-    console.log(data)
+    // console.log('---data FpsTable---')
+    // console.log(data)
 
     const [currentData,setCurrentData] = useState(data)
+
     useEffect(()=>{
-        console.log('=== update data ===')
-        console.log(currentData)
-        console.log(' vvv ')
-        console.log(data)
+        // console.log('=== update data ===')
+        // console.log(currentData)
+        // console.log(' vvv ')
+        // console.log(data)
         setCurrentData(data);
     }, [data])
 
@@ -335,6 +336,8 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         if (lazyLoadingHandler) {
             setLazyLoadingHandler(false)
             setCardsData([...cardsData, ...currentData.data])
+        } else {
+            setCardsData(currentData.data)
         }
         const queryString = typeof window !== 'undefined' ? window.location.search : '';
         const urlParams = new URLSearchParams(queryString);

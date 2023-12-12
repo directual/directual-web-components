@@ -246,6 +246,7 @@ const defaultColumn = {
 }
 
 function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fieldDetails, tableParams, skipPageReset, getLinkName, onExpand }) {
+    
     const {
         getTableProps,
         getTableBodyProps,
@@ -314,11 +315,10 @@ function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fiel
                             isColorRow.row.values[isColorRow.column.id] : 'default' : 'default'
 
                         colorRow = colorRow == 'default' ? colorRow : (colorRow[0] == '#' || colorRow[0] == 'r') ? colorRow : '#' + colorRow
-                        console.log("row")
-                        console.log(row)
+                        const key = _.get(row,'original.id') || row.id
                         return (
                             <tr 
-                                key={_.get(row,'original.id') || row.id}
+                                key={key}
                                 onDoubleClick={() => onExpand(row.original)}
                                 style={colorRow == 'default' ? {} :
                                     {
@@ -327,7 +327,7 @@ function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fiel
                                     }}
                                 {...row.getRowProps()}>
                                 {/* <td>
-                                    <Checkbox label='' />
+                                    {key}
                                 </td> */}
                                 {!hideExpandTD && <td ><a onClick={() => onExpand(row.original)} className={`icon icon-expand ${styles.expand}`} /></td>}
                                 {row.cells.map(cell => {
@@ -396,6 +396,8 @@ export function Table({
 
     // обогащаем поля теми, что не пришли по данным, но мы их можем писать:
     function enrichTableDataWithWriteFields(data) {
+        console.log("enrichTableDataWithWriteFields")
+        console.log(cardsData)
         let saveData = cardsData ? [...cardsData] : []
         saveData.forEach(field => {
             data.writeFields && data.writeFields.forEach(writeField => {
@@ -502,7 +504,7 @@ export function Table({
     //------------------------------
 
     // composing Table data 
-    const tableData = useMemo(() => enrichTableDataWithWriteFields(data), [data.data])
+    const tableData = useMemo(() => enrichTableDataWithWriteFields(data), [cardsData])
     const columns = useMemo(() => tableColumns, [])
 
     //const [tableData, setTableData] = useState(data.data)
