@@ -19,17 +19,16 @@ import debounce from 'lodash.debounce';
 function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     if (!data) { data = {} }
 
-    // console.log('---currentData FpsTable---')
-    // console.log(data)
+    console.log('---data FpsTable---')
+    console.log(data)
 
     const [currentData,setCurrentData] = useState(data)
-    useEffect(()=>{ 
-        console.log('=== update data === ')
-        console.log('== old data: ==')
+    useEffect(()=>{
+        console.log('=== update data ===')
         console.log(currentData)
-        console.log('== new data: ==')
+        console.log(' vvv ')
         console.log(data)
-        setCurrentData(data)
+        setCurrentData(data);
     }, [data])
 
     const cx = null
@@ -47,7 +46,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
     const [showObject, setShowObject] = useState()
 
-    const [cardscurrentData, setCardscurrentData] = useState(_.get(currentData, "currentData") || [])
+    const [cardsData, setCardsData] = useState(_.get(currentData, "data") || [])
 
     const tableTitle = currentData.tableTitle || null
     const writeFields = currentData.writeFields || []
@@ -78,7 +77,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         if (currentData.isSuccessWrite) {
         }
         if (!currentData.isSuccessWrite && currentData.writeError) {
-            console.log('currentData write error')
+            console.log('data write error')
             console.log('error ==> ' + currentData.writeError)
         }
         setQSearch(currentData.quickSearch === "true")
@@ -100,10 +99,10 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         // костылек для даты
         for (const prop in msg) {
             if (typeof msg[prop] == 'number' && msg[prop] > 1000000000000) {
-                const currentDataType = currentData.headers.filter(i => i.sysName == prop) &&
+                const dataType = currentData.headers.filter(i => i.sysName == prop) &&
                     currentData.headers.filter(i => i.sysName == prop)[0] &&
-                    currentData.headers.filter(i => i.sysName == prop)[0].currentDataType
-                if (currentDataType == 'date') { msg[prop] = moment(msg[prop]) }
+                    currentData.headers.filter(i => i.sysName == prop)[0].dataType
+                if (dataType == 'date') { msg[prop] = moment(msg[prop]) }
             }
         }
         const message =
@@ -173,7 +172,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         if (saveModel) {
             for (const field in saveModel) {
                 console.log(field)
-                if (saveModel[field] && typeof saveModel[field] == 'object' && _.get(currentData, `params.currentData.fields[${field}].currentDataType`) != 'date') {
+                if (saveModel[field] && typeof saveModel[field] == 'object' && _.get(currentData, `params.data.fields[${field}].dataType`) != 'date') {
                     // console.log('removing links')
                     delete saveModel[field]
                 }  // removing links
@@ -181,7 +180,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                     // console.log(`removing ${field} as a field not for writing`)
                     delete saveModel[field]
                 } // removing fields not for writing
-                if (currentData.params.currentData.fields[field] && _.get(currentData, `params.currentData.fields[${field}].currentDataType`) == 'date' && typeof saveModel[field] == 'number') {
+                if (currentData.params.data.fields[field] && _.get(currentData, `params.data.fields[${field}].dataType`) == 'date' && typeof saveModel[field] == 'number') {
                     saveModel[field] = moment(saveModel[field])
                 }
             }
@@ -335,7 +334,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     useEffect(() => {
         if (lazyLoadingHandler) {
             setLazyLoadingHandler(false)
-            setCardscurrentData([...cardscurrentData, ...currentData.currentData])
+            setCardsData([...cardsData, ...currentData.data])
         }
         const queryString = typeof window !== 'undefined' ? window.location.search : '';
         const urlParams = new URLSearchParams(queryString);
@@ -345,7 +344,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         // if (urlDql && !currentDQL) {search(urlDql, urlPage || 0)}
         // if (!urlDql && urlPage && urlPage != currentPage) {setPage(urlPage)}
         if (currentID) {
-            const foundObject = currentData.currentData.filter(i => i.id == currentID) ? currentData.currentData.filter(i => i.id == currentID)[0] : null
+            const foundObject = currentData.data.filter(i => i.id == currentID) ? currentData.data.filter(i => i.id == currentID)[0] : null
             if (foundObject) { setShowObject(foundObject) } else { console.log("no foundObject") }
         }
     }, [currentData]);
@@ -417,7 +416,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 tableTitle={tableTitle}
                 searchValue={searchValue}
                 tableQuickSearch={currentData.quickSearch == 'true'}
-                search={currentData.currentData && currentData.currentData.length > 0 ? true : false}
+                search={currentData.data && currentData.data.length > 0 ? true : false}
                 onSearch={searchService}
                 loading={loading}
                 dict={dict}
@@ -426,8 +425,8 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
             />
             <Table
                 currentBP={currentBP}
-                currentData={currentData}
-                cardscurrentData={cardscurrentData}
+                data={currentData}
+                cardsData={cardsData}
                 dict={dict}
                 lang={lang}
                 largeFont={largeFont}
@@ -435,11 +434,11 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 params={params}
                 searchValue={searchValue}
                 checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
-                // onExpand={val => { _.get(currentData,'params.currentData.cardsOrPage') == 'page' ? handleRoute('./' + val.id)() : setShowObject(val) }}
+                // onExpand={val => { _.get(data,'params.data.cardsOrPage') == 'page' ? handleRoute('./' + val.id)() : setShowObject(val) }}
                 onExpand={val => {
-                    _.get(currentData, 'params.currentData.cardsOrPage') == 'page' ? handleRoute(`./${_.get(currentData, 'params.currentData.additionalPath') ? _.get(currentData, 'params.currentData.additionalPath') + '/' : ''}` + val.id)() :
-                        _.get(currentData, 'params.currentData.cardsOrPage') == 'anotherPage' ? handleRoute(`/${_.get(currentData, 'params.currentData.anotherPage')}/` + val.id)() :
-                            _.get(currentData, 'params.currentData.cardsOrPage') == 'disable' ? undefined :
+                    _.get(currentData, 'params.data.cardsOrPage') == 'page' ? handleRoute(`./${_.get(currentData, 'params.data.additionalPath') ? _.get(currentData, 'params.data.additionalPath') + '/' : ''}` + val.id)() :
+                        _.get(currentData, 'params.data.cardsOrPage') == 'anotherPage' ? handleRoute(`/${_.get(currentData, 'params.data.anotherPage')}/` + val.id)() :
+                            _.get(currentData, 'params.data.cardsOrPage') == 'disable' ? undefined :
                                 setShowObject(val)
                 }}
                 // onExpand={val => { setShowObject(val) }}
