@@ -386,7 +386,7 @@ export function ObjectCard(props) {
                         field={field}
                         formatDate={formatDate}
                         object={object}
-                    setModel={value => { setModel(value); }}
+                        setModel={value => { setModel(value); }}
                         setLinkedObject={setLinkedObject}
                         setShowLinkedObject={setShowLinkedObject}
                         getStructure={getStructure}
@@ -523,8 +523,15 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
     const [edit, setEdit] = useState(false)
 
     const getResolution = line => {
+        if (!line) return null
         const regex = /\....?.?.?$/g;
-        const found = Array.isArray(line) ? line[0].match(regex) : line.match(regex);
+        let found
+        try {
+            found = Array.isArray(line) && line[0] ? line[0].match(regex) : line.match(regex);
+        }
+        catch (e) {
+            console.log(e);
+        }
         return found ? found[0] : ''
     }
 
@@ -1187,7 +1194,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                     }}
                     //debug
                     defaultValue={
-                        field.dataType == 'link' ? Array.isArray(renderAL) && renderAL.length == 1 
+                        field.dataType == 'link' ? Array.isArray(renderAL) && renderAL.length == 1
                             ? renderAL[0] ? (renderAL[0].id || renderAL[0]) : null : renderAL ? renderAL.id : null
                             :
                             (renderAL && renderAL.length > 0
@@ -1203,7 +1210,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                     onChange={onChange}
                     // description={JSON.stringify(renderAL)}
                     defaultValue={
-                        field.dataType == 'link' ? Array.isArray(renderAL) && renderAL.length == 1 
+                        field.dataType == 'link' ? Array.isArray(renderAL) && renderAL.length == 1
                             ? renderAL[0] ? (renderAL[0].id || renderAL[0]) : null : renderAL ? renderAL.id : null
                             :
                             (renderAL && renderAL.length > 0

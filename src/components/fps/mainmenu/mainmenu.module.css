@@ -896,6 +896,16 @@
   margin-left: -23px;
   max-width: 20px !important;
 }
+:global .ural .D_FPS_profileDD .D_FPS_profileDD_Button {
+  color: var(--menu-item);
+  padding-right: 4px;
+}
+:global .ural .D_FPS_profileDD .D_FPS_profileDD_Button:hover {
+  color: var(--menu-item-hover);
+  background-color: var(--menu-item-hover-bgr);
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 0 1px var(--menu-item-hover-border);
+}
 :global .ural .D_MainMenu_Item {
   margin: 9px 1px 1px 1px;
   color: var(--menu-item);

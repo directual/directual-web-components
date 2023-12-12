@@ -5111,8 +5111,8 @@ const App = (props) => {
     }
 
     let exampleTable = {
-        "sl": "getEmailsInCampaignByID",
-        "pageSize": "10",
+        "sl": "getRequest",
+        "pageSize": "12",
         "headerField": null,
         "params": {
             "cardListLayout": "grid",
@@ -5127,12 +5127,102 @@ const App = (props) => {
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "delay_days",
+                        "fieldSysName": "additionalPhotoFront",
                         "fetch": [],
-                        "sysName": "delay_days",
-                        "name": "Delay in days",
+                        "sysName": "additionalPhotoFront",
+                        "name": "Дополнительное фото",
+                        "dataType": "file",
+                        "format": "multipleImages",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "adminId",
+                        "fetch": [],
+                        "sysName": "adminId",
+                        "name": "Кто провел верификацию",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "age",
+                        "fetch": [],
+                        "sysName": "age",
+                        "name": "Возраст",
                         "dataType": "number",
-                        "format": "positiveNum",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "bio",
+                        "fetch": [],
+                        "sysName": "bio",
+                        "name": "О себе",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "city",
+                        "fetch": [],
+                        "sysName": "city",
+                        "name": "Город",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "comment",
+                        "fetch": [],
+                        "sysName": "comment",
+                        "name": "Комментарий",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "firstName",
+                        "fetch": [],
+                        "sysName": "firstName",
+                        "name": "Имя",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "gallery",
+                        "fetch": [],
+                        "sysName": "gallery",
+                        "name": "Галерея",
+                        "dataType": "file",
+                        "format": "multipleImages",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "gender",
+                        "fetch": [],
+                        "sysName": "gender",
+                        "name": "Пол",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "height",
+                        "fetch": [],
+                        "sysName": "height",
+                        "name": "Рост",
+                        "dataType": "decimal",
+                        "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
@@ -5147,35 +5237,263 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "template_id",
-                        "fetch": [
-                            {
-                                "fieldSysName": "subject",
-                                "condition": null,
-                                "fetch": []
+                        "fieldSysName": "isInvitedAdmin",
+                        "fetch": [],
+                        "sysName": "isInvitedAdmin",
+                        "name": "Пригласил администратор?",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
                             },
-                            {
-                                "fieldSysName": "template",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "template_id",
-                        "name": "Template",
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Да",
+                                "Без приглашения"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "isInvitedUser",
+                        "fetch": [],
+                        "sysName": "isInvitedUser",
+                        "name": "Пригласил пользователь?",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Да",
+                                "Без приглашения"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "lastName",
+                        "fetch": [],
+                        "sysName": "lastName",
+                        "name": "Фамилия",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "location",
+                        "fetch": [],
+                        "sysName": "location",
+                        "name": "Координаты",
+                        "dataType": "json",
+                        "format": "geo",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "geoType": "oneObject",
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "mainPhotoFront",
+                        "fetch": [],
+                        "sysName": "mainPhotoFront",
+                        "name": "Главное фото",
+                        "dataType": "file",
+                        "format": "multipleImages",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "photoInFullHeightFront",
+                        "fetch": [],
+                        "sysName": "photoInFullHeightFront",
+                        "name": "Фото в полный рост",
+                        "dataType": "file",
+                        "format": "multipleImages",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "photoMemFront",
+                        "fetch": [],
+                        "sysName": "photoMemFront",
+                        "name": "Мем",
+                        "dataType": "file",
+                        "format": "multipleImages",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "photoSelfieFront",
+                        "fetch": [],
+                        "sysName": "photoSelfieFront",
+                        "name": "Фото лица",
+                        "dataType": "file",
+                        "format": "multipleImages",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "requestDate",
+                        "fetch": [],
+                        "sysName": "requestDate",
+                        "name": "Время заявки",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "requestStatus",
+                        "fetch": [],
+                        "sysName": "requestStatus",
+                        "name": "Статус заявки",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "email_templates"
+                        "link": "request_status"
+                    },
+                    {
+                        "fieldSysName": "requestType",
+                        "fetch": [],
+                        "sysName": "requestType",
+                        "name": "Тип заявки",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "request_type"
+                    },
+                    {
+                        "fieldSysName": "verificationData",
+                        "fetch": [],
+                        "sysName": "verificationData",
+                        "name": "Дата проверки",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "weight",
+                        "fetch": [],
+                        "sysName": "weight",
+                        "name": "Вес",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
                     }
                 ],
                 "writeFields": [
                     {
-                        "fieldSysName": "delay_days",
+                        "fieldSysName": "adminId",
                         "fetch": [],
-                        "sysName": "delay_days",
-                        "name": "Delay in days",
-                        "dataType": "number",
-                        "format": "positiveNum",
+                        "sysName": "adminId",
+                        "name": "Кто провел верификацию",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "comment",
+                        "fetch": [],
+                        "sysName": "comment",
+                        "name": "Комментарий",
+                        "dataType": "string",
+                        "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
@@ -5190,25 +5508,125 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "template_id",
+                        "fieldSysName": "requestStatus",
                         "fetch": [],
-                        "sysName": "template_id",
-                        "name": "Template",
+                        "sysName": "requestStatus",
+                        "name": "Статус заявки",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "email_templates"
+                        "link": "request_status"
                     }
                 ],
                 "fields": {
-                    "delay_days": {
-                        "id": "delay_days",
-                        "content": "Delay in days",
+                    "additionalPhotoFront": {
+                        "id": "additionalPhotoFront",
+                        "content": "Дополнительное фото",
                         "type": "field",
-                        "dataType": "number",
-                        "format": "positiveNum",
+                        "dataType": "file",
+                        "format": "multipleImages",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "adminId": {
+                        "id": "adminId",
+                        "content": "Кто провел верификацию",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
                         "formatOptions": {},
                         "write": true,
+                        "read": true,
+                        "link": "WebUser",
+                        "actions": []
+                    },
+                    "age": {
+                        "id": "age",
+                        "content": "Возраст",
+                        "type": "field",
+                        "dataType": "number",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "bio": {
+                        "id": "bio",
+                        "content": "О себе",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "city": {
+                        "id": "city",
+                        "content": "Город",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "comment": {
+                        "id": "comment",
+                        "content": "Комментарий",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "firstName": {
+                        "id": "firstName",
+                        "content": "Имя",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "gallery": {
+                        "id": "gallery",
+                        "content": "Галерея",
+                        "type": "field",
+                        "dataType": "file",
+                        "format": "multipleImages",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "gender": {
+                        "id": "gender",
+                        "content": "Пол",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "height": {
+                        "id": "height",
+                        "content": "Рост",
+                        "type": "field",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
                         "read": true,
                         "link": "",
                         "actions": []
@@ -5225,72 +5643,411 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
-                    "template_id": {
-                        "id": "template_id",
-                        "content": "Template",
+                    "isInvitedAdmin": {
+                        "id": "isInvitedAdmin",
+                        "content": "Пригласил администратор?",
+                        "type": "field",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Да",
+                                "Без приглашения"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "isInvitedUser": {
+                        "id": "isInvitedUser",
+                        "content": "Пригласил пользователь?",
+                        "type": "field",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Да",
+                                "Без приглашения"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "lastName": {
+                        "id": "lastName",
+                        "content": "Фамилия",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "location": {
+                        "id": "location",
+                        "content": "Координаты",
+                        "type": "field",
+                        "dataType": "json",
+                        "format": "geo",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "geoType": "oneObject",
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "mainPhotoFront": {
+                        "id": "mainPhotoFront",
+                        "content": "Главное фото",
+                        "type": "field",
+                        "dataType": "file",
+                        "format": "multipleImages",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "photoInFullHeightFront": {
+                        "id": "photoInFullHeightFront",
+                        "content": "Фото в полный рост",
+                        "type": "field",
+                        "dataType": "file",
+                        "format": "multipleImages",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "photoMemFront": {
+                        "id": "photoMemFront",
+                        "content": "Мем",
+                        "type": "field",
+                        "dataType": "file",
+                        "format": "multipleImages",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "photoSelfieFront": {
+                        "id": "photoSelfieFront",
+                        "content": "Фото лица",
+                        "type": "field",
+                        "dataType": "file",
+                        "format": "multipleImages",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "requestDate": {
+                        "id": "requestDate",
+                        "content": "Время заявки",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "requestStatus": {
+                        "id": "requestStatus",
+                        "content": "Статус заявки",
                         "type": "field",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "write": true,
                         "read": true,
-                        "link": "email_templates",
+                        "link": "request_status",
+                        "actions": []
+                    },
+                    "requestType": {
+                        "id": "requestType",
+                        "content": "Тип заявки",
+                        "type": "field",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "request_type",
+                        "actions": []
+                    },
+                    "verificationData": {
+                        "id": "verificationData",
+                        "content": "Дата проверки",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "weight": {
+                        "id": "weight",
+                        "content": "Вес",
+                        "type": "field",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "action__77161695113320580": {
+                        "content": "Одобрить",
+                        "id": "action__77161695113320580",
+                        "type": "action",
+                        "actions": []
+                    },
+                    "action__68841695113405656": {
+                        "content": "Одобрить, отправить рекомендацию",
+                        "id": "action__68841695113405656",
+                        "type": "action",
+                        "actions": []
+                    },
+                    "action__47921695113445712": {
+                        "content": "Отклонить",
+                        "id": "action__47921695113445712",
+                        "type": "action",
                         "actions": []
                     }
                 },
                 "fieldParams": {
-                    "delay_days": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
                     "id": {
                         "include": false,
-                        "disableEditing": true,
+                        "disableEditing": false,
                         "fileImageFormat": "square",
                         "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "template_id": {
+                    "requestStatus": {
+                        "include": false,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "requestType": {
+                        "include": false,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "age": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
-                        "quickSearch": true,
+                        "quickSearch": false,
                         "fileImageSize": 200,
-                        "clickable": true,
+                        "clickable": false
+                    },
+                    "bio": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "city": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "firstName": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "gender": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "height": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "lastName": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "location": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "weight": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "mainPhoto": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
                         "configureLinkedCard": {
                             "fields": {
-                                "subject": {
-                                    "id": "subject",
-                                    "content": "",
+                                "id": {
+                                    "id": "id",
+                                    "content": "id",
                                     "type": "field",
                                     "read": true,
                                     "dataType": "string",
                                     "format": null,
-                                    "formatOptions": null
+                                    "formatOptions": {}
                                 },
-                                "template": {
-                                    "id": "template",
-                                    "content": "",
+                                "urlLink": {
+                                    "id": "urlLink",
+                                    "content": "urlLink",
                                     "type": "field",
                                     "read": true,
                                     "dataType": "string",
-                                    "format": "html",
-                                    "formatOptions": null
+                                    "format": null,
+                                    "formatOptions": {}
                                 }
                             },
                             "fieldParams": {
-                                "subject": {
-                                    "include": true,
-                                    "disableEditing": false,
+                                "id": {
+                                    "include": false,
+                                    "disableEditing": true,
                                     "fileImageFormat": "square",
                                     "fileImageSize": 200
                                 },
-                                "template": {
+                                "urlLink": {
                                     "include": true,
                                     "disableEditing": false,
                                     "fileImageFormat": "square",
@@ -5298,81 +6055,493 @@ const App = (props) => {
                                 }
                             },
                             "fieldOrder": [
-                                "subject",
-                                "template"
+                                "id",
+                                "urlLink"
+                            ]
+                        },
+                        "veiwOption": "table",
+                        "tableView": {
+                            "columns": [
+                                {
+                                    "id": "1701341506019",
+                                    "field": "urlLink"
+                                }
                             ]
                         }
+                    },
+                    "photoInFullHeight": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "veiwOption": "table",
+                        "tableView": {
+                            "columns": [
+                                {
+                                    "id": "1701341514002",
+                                    "field": "urlLink"
+                                }
+                            ]
+                        }
+                    },
+                    "photoSelfie": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "veiwOption": "table",
+                        "tableView": {
+                            "columns": [
+                                {
+                                    "id": "1701341510333",
+                                    "field": "urlLink"
+                                }
+                            ]
+                        }
+                    },
+                    "photoMem": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "veiwOption": "table",
+                        "tableView": {
+                            "columns": [
+                                {
+                                    "id": "1701341518037",
+                                    "field": "urlLink"
+                                }
+                            ]
+                        }
+                    },
+                    "adminId": {
+                        "include": true,
+                        "disableEditing": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "veiwOption": "tags",
+                        "configureLinkedCard": {
+                            "fields": {},
+                            "fieldParams": {},
+                            "fieldOrder": []
+                        }
+                    },
+                    "comment": {
+                        "include": true,
+                        "disableEditing": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false,
+                        "displayAsHint": true,
+                        "hintType": "ok"
+                    },
+                    "requestDate": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "verificationData": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "isInvitedAdmin": {
+                        "include": false,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "isInvitedUser": {
+                        "include": false,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "gallery": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "mainPhotoFront": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "photoInFullHeightFront": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "photoMemFront": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "photoSelfieFront": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "additionalPhotoFront": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
                     }
                 },
                 "columns": {
-                    "tab-1": {
-                        "id": "tab-1",
-                        "title": "New section",
+                    "21601695115078305": {
+                        "id": "21601695115078305",
+                        "title": "User  ",
                         "fieldIds": [
-                            "delay_days",
+                            "firstName",
+                            "lastName",
+                            "gender",
+                            "age",
+                            "height",
+                            "weight",
+                            "location",
+                            "city",
+                            "bio",
                             "id",
-                            "template_id"
+                            "requestStatus",
+                            "requestType",
+                            "requestDate",
+                            "isInvitedAdmin",
+                            "isInvitedUser",
+                            "gallery"
+                        ]
+                    },
+                    "74451695115445324": {
+                        "id": "74451695115445324",
+                        "title": "Action",
+                        "fieldIds": [
+                            "action__77161695113320580",
+                            "action__68841695113405656",
+                            "action__47921695113445712"
+                        ]
+                    },
+                    "36341695115871428": {
+                        "id": "36341695115871428",
+                        "title": "Photo",
+                        "fieldIds": [
+                            "mainPhotoFront",
+                            "photoSelfieFront",
+                            "photoInFullHeightFront",
+                            "additionalPhotoFront",
+                            "photoMemFront"
+                        ]
+                    },
+                    "68471696239821660": {
+                        "id": "68471696239821660",
+                        "title": "Модерация",
+                        "fieldIds": [
+                            "verificationData",
+                            "adminId",
+                            "comment"
                         ]
                     }
                 },
                 "columnOrder": [
-                    "tab-1"
+                    "21601695115078305",
+                    "36341695115871428",
+                    "68471696239821660",
+                    "74451695115445324"
                 ],
-                "actions": []
+                "actions": [
+                    {
+                        "sysName": "",
+                        "id": "77161695113320580",
+                        "name": "Одобрить",
+                        "displayAs": "button",
+                        "buttonIcon": "done",
+                        "buttonType": "accent",
+                        "showMessage": false,
+                        "closePopup": true,
+                        "callFrom": "main",
+                        "formMapping": [
+                            {
+                                "id": "63731695119066877",
+                                "target": "adminId",
+                                "type": "user",
+                                "value": null
+                            },
+                            {
+                                "id": "92091695119199363",
+                                "target": "requestStatus",
+                                "type": "const",
+                                "value": "approved"
+                            },
+                            {
+                                "id": "52141695119245703",
+                                "target": "id",
+                                "type": "objectField",
+                                "value": "id"
+                            }
+                        ]
+                    },
+                    {
+                        "sysName": "",
+                        "id": "68841695113405656",
+                        "name": "Одобрить, отправить рекомендацию",
+                        "displayAs": "form",
+                        "buttonIcon": "edit",
+                        "SLtype": "same",
+                        "formFields": [
+                            {
+                                "id": "47801695119219110",
+                                "field": {
+                                    "fieldSysName": "comment",
+                                    "fetch": [],
+                                    "sysName": "comment",
+                                    "name": "Комментарий",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                }
+                            }
+                        ],
+                        "formMapping": [
+                            {
+                                "id": "58041695119228243",
+                                "target": "adminId",
+                                "type": "user",
+                                "value": null
+                            },
+                            {
+                                "id": "50061695119233557",
+                                "target": "requestStatus",
+                                "type": "const",
+                                "value": "partiallyApproved"
+                            },
+                            {
+                                "id": "18031695119255848",
+                                "target": "id",
+                                "type": "objectField",
+                                "value": "id"
+                            }
+                        ],
+                        "closePopup": true,
+                        "showMessage": false
+                    },
+                    {
+                        "sysName": "",
+                        "id": "47921695113445712",
+                        "name": "Отклонить",
+                        "displayAs": "form",
+                        "buttonIcon": "ban",
+                        "buttonType": "danger",
+                        "SLtype": "same",
+                        "formFields": [
+                            {
+                                "id": "60571695119279159",
+                                "field": {
+                                    "fieldSysName": "comment",
+                                    "fetch": [],
+                                    "sysName": "comment",
+                                    "name": "Комментарий",
+                                    "dataType": "string",
+                                    "format": "",
+                                    "formatOptions": {},
+                                    "link": ""
+                                }
+                            }
+                        ],
+                        "formMapping": [
+                            {
+                                "id": "73881695119282334",
+                                "target": "adminId",
+                                "type": "user",
+                                "value": null
+                            },
+                            {
+                                "id": "39581695119285340",
+                                "target": "requestStatus",
+                                "type": "const",
+                                "value": "rejected"
+                            },
+                            {
+                                "id": "14401695119294047",
+                                "target": "id",
+                                "type": "objectField",
+                                "value": "id"
+                            }
+                        ],
+                        "closePopup": true,
+                        "showMessage": false
+                    }
+                ]
             },
             "fields": {
-                "delay_days": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
                 "id": {
                     "include": false,
-                    "disableEditing": true,
+                    "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "template_id": {
+                "requestStatus": {
+                    "include": false,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "requestType": {
+                    "include": false,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "age": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
-                    "quickSearch": true,
+                    "quickSearch": false,
                     "fileImageSize": 200,
-                    "clickable": true,
+                    "clickable": false
+                },
+                "bio": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "city": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "firstName": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "gender": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "height": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "lastName": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "location": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "weight": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "mainPhoto": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
                     "configureLinkedCard": {
                         "fields": {
-                            "subject": {
-                                "id": "subject",
-                                "content": "",
+                            "id": {
+                                "id": "id",
+                                "content": "id",
                                 "type": "field",
                                 "read": true,
                                 "dataType": "string",
                                 "format": null,
-                                "formatOptions": null
+                                "formatOptions": {}
                             },
-                            "template": {
-                                "id": "template",
-                                "content": "",
+                            "urlLink": {
+                                "id": "urlLink",
+                                "content": "urlLink",
                                 "type": "field",
                                 "read": true,
                                 "dataType": "string",
-                                "format": "html",
-                                "formatOptions": null
+                                "format": null,
+                                "formatOptions": {}
                             }
                         },
                         "fieldParams": {
-                            "subject": {
-                                "include": true,
-                                "disableEditing": false,
+                            "id": {
+                                "include": false,
+                                "disableEditing": true,
                                 "fileImageFormat": "square",
                                 "fileImageSize": 200
                             },
-                            "template": {
+                            "urlLink": {
                                 "include": true,
                                 "disableEditing": false,
                                 "fileImageFormat": "square",
@@ -5380,27 +6549,255 @@ const App = (props) => {
                             }
                         },
                         "fieldOrder": [
-                            "subject",
-                            "template"
+                            "id",
+                            "urlLink"
                         ]
                     },
-                    "searchData": [
-                        {
-                            "key": "5d01dc8e-cb94-48e9-b035-bdcac18a9594",
-                            "value": "Webinar 31.08"
-                        }
-                    ]
+                    "veiwOption": "table",
+                    "tableView": {
+                        "columns": [
+                            {
+                                "id": "1701341506019",
+                                "field": "urlLink"
+                            }
+                        ]
+                    }
+                },
+                "photoInFullHeight": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "veiwOption": "table",
+                    "tableView": {
+                        "columns": [
+                            {
+                                "id": "1701341514002",
+                                "field": "urlLink"
+                            }
+                        ]
+                    }
+                },
+                "photoSelfie": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "veiwOption": "table",
+                    "tableView": {
+                        "columns": [
+                            {
+                                "id": "1701341510333",
+                                "field": "urlLink"
+                            }
+                        ]
+                    }
+                },
+                "photoMem": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "veiwOption": "table",
+                    "tableView": {
+                        "columns": [
+                            {
+                                "id": "1701341518037",
+                                "field": "urlLink"
+                            }
+                        ]
+                    }
+                },
+                "adminId": {
+                    "include": true,
+                    "disableEditing": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "veiwOption": "tags",
+                    "configureLinkedCard": {
+                        "fields": {},
+                        "fieldParams": {},
+                        "fieldOrder": []
+                    }
+                },
+                "comment": {
+                    "include": true,
+                    "disableEditing": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "displayAsHint": true,
+                    "hintType": "ok"
+                },
+                "requestDate": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "verificationData": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "isInvitedAdmin": {
+                    "include": false,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "isInvitedUser": {
+                    "include": false,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "gallery": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "mainPhotoFront": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "photoInFullHeightFront": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "photoMemFront": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "photoSelfieFront": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "additionalPhotoFront": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
                 }
             },
             "tableParams": {
                 "readFields": [
                     {
-                        "fieldSysName": "delay_days",
+                        "fieldSysName": "adminId",
                         "fetch": [],
-                        "sysName": "delay_days",
-                        "name": "Delay in days",
+                        "sysName": "adminId",
+                        "name": "Кто провел верификацию",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "age",
+                        "fetch": [],
+                        "sysName": "age",
+                        "name": "Возраст",
                         "dataType": "number",
-                        "format": "positiveNum",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "bio",
+                        "fetch": [],
+                        "sysName": "bio",
+                        "name": "О себе",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "city",
+                        "fetch": [],
+                        "sysName": "city",
+                        "name": "Город",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "comment",
+                        "fetch": [],
+                        "sysName": "comment",
+                        "name": "Комментарий",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "firstName",
+                        "fetch": [],
+                        "sysName": "firstName",
+                        "name": "Имя",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "gender",
+                        "fetch": [],
+                        "sysName": "gender",
+                        "name": "Пол",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "height",
+                        "fetch": [],
+                        "sysName": "height",
+                        "name": "Рост",
+                        "dataType": "decimal",
+                        "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
@@ -5415,34 +6812,358 @@ const App = (props) => {
                         "link": ""
                     },
                     {
-                        "fieldSysName": "template_id",
-                        "fetch": [
-                            {
-                                "fieldSysName": "subject",
-                                "condition": null,
-                                "fetch": []
+                        "fieldSysName": "isInvitedAdmin",
+                        "fetch": [],
+                        "sysName": "isInvitedAdmin",
+                        "name": "Пригласил администратор?",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
                             },
-                            {
-                                "fieldSysName": "template",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "template_id",
-                        "name": "Template",
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Да",
+                                "Без приглашения"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "isInvitedUser",
+                        "fetch": [],
+                        "sysName": "isInvitedUser",
+                        "name": "Пригласил пользователь?",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Да",
+                                "Без приглашения"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "lastName",
+                        "fetch": [],
+                        "sysName": "lastName",
+                        "name": "Фамилия",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "location",
+                        "fetch": [],
+                        "sysName": "location",
+                        "name": "Координаты",
+                        "dataType": "json",
+                        "format": "geo",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "geoType": "oneObject",
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "mainPhoto",
+                        "fetch": [],
+                        "sysName": "mainPhoto",
+                        "name": "Главное фото",
+                        "dataType": "file",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "photoInFullHeight",
+                        "fetch": [],
+                        "sysName": "photoInFullHeight",
+                        "name": "Фото в полный рост",
+                        "dataType": "file",
+                        "format": "multipleFiles",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "photoMem",
+                        "fetch": [],
+                        "sysName": "photoMem",
+                        "name": "Мем",
+                        "dataType": "file",
+                        "format": "multipleFiles",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "photoSelfie",
+                        "fetch": [],
+                        "sysName": "photoSelfie",
+                        "name": "Фото лица",
+                        "dataType": "file",
+                        "format": "multipleFiles",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "requestDate",
+                        "fetch": [],
+                        "sysName": "requestDate",
+                        "name": "Время заявки",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "requestStatus",
+                        "fetch": [],
+                        "sysName": "requestStatus",
+                        "name": "Статус заявки",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "email_templates"
+                        "link": "request_status"
+                    },
+                    {
+                        "fieldSysName": "requestType",
+                        "fetch": [],
+                        "sysName": "requestType",
+                        "name": "Тип заявки",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "request_type"
+                    },
+                    {
+                        "fieldSysName": "verificationData",
+                        "fetch": [],
+                        "sysName": "verificationData",
+                        "name": "Дата проверки",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "weight",
+                        "fetch": [],
+                        "sysName": "weight",
+                        "name": "Вес",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
                     }
                 ],
-                "writeFields": [],
+                "writeFields": [
+                    {
+                        "fieldSysName": "adminId",
+                        "fetch": [],
+                        "sysName": "adminId",
+                        "name": "Кто провел верификацию",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "WebUser"
+                    },
+                    {
+                        "fieldSysName": "comment",
+                        "fetch": [],
+                        "sysName": "comment",
+                        "name": "Комментарий",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "id",
+                        "fetch": [],
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "requestStatus",
+                        "fetch": [],
+                        "sysName": "requestStatus",
+                        "name": "Статус заявки",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": "request_status"
+                    }
+                ],
                 "fields": {
-                    "delay_days": {
-                        "id": "delay_days",
-                        "content": "Delay in days",
+                    "adminId": {
+                        "id": "adminId",
+                        "content": "Кто провел верификацию",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "WebUser"
+                    },
+                    "age": {
+                        "id": "age",
+                        "content": "Возраст",
                         "dataType": "number",
-                        "format": "positiveNum",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "bio": {
+                        "id": "bio",
+                        "content": "О себе",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "city": {
+                        "id": "city",
+                        "content": "Город",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "comment": {
+                        "id": "comment",
+                        "content": "Комментарий",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": ""
+                    },
+                    "firstName": {
+                        "id": "firstName",
+                        "content": "Имя",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "gender": {
+                        "id": "gender",
+                        "content": "Пол",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "height": {
+                        "id": "height",
+                        "content": "Рост",
+                        "dataType": "decimal",
+                        "format": "",
                         "formatOptions": {},
                         "read": true,
                         "link": ""
@@ -5453,28 +7174,239 @@ const App = (props) => {
                         "dataType": "id",
                         "format": "",
                         "formatOptions": {},
+                        "write": true,
                         "read": true,
                         "link": ""
                     },
-                    "template_id": {
-                        "id": "template_id",
-                        "content": "Template",
+                    "isInvitedAdmin": {
+                        "id": "isInvitedAdmin",
+                        "content": "Пригласил администратор?",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Да",
+                                "Без приглашения"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "read": true,
+                        "link": ""
+                    },
+                    "isInvitedUser": {
+                        "id": "isInvitedUser",
+                        "content": "Пригласил пользователь?",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Да",
+                                "Без приглашения"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "read": true,
+                        "link": ""
+                    },
+                    "lastName": {
+                        "id": "lastName",
+                        "content": "Фамилия",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "location": {
+                        "id": "location",
+                        "content": "Координаты",
+                        "dataType": "json",
+                        "format": "geo",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "geoType": "oneObject",
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "read": true,
+                        "link": ""
+                    },
+                    "mainPhoto": {
+                        "id": "mainPhoto",
+                        "content": "Главное фото",
+                        "dataType": "file",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "photoInFullHeight": {
+                        "id": "photoInFullHeight",
+                        "content": "Фото в полный рост",
+                        "dataType": "file",
+                        "format": "multipleFiles",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "photoMem": {
+                        "id": "photoMem",
+                        "content": "Мем",
+                        "dataType": "file",
+                        "format": "multipleFiles",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "photoSelfie": {
+                        "id": "photoSelfie",
+                        "content": "Фото лица",
+                        "dataType": "file",
+                        "format": "multipleFiles",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "requestDate": {
+                        "id": "requestDate",
+                        "content": "Время заявки",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "requestStatus": {
+                        "id": "requestStatus",
+                        "content": "Статус заявки",
+                        "dataType": "link",
+                        "format": "",
+                        "formatOptions": {},
+                        "write": true,
+                        "read": true,
+                        "link": "request_status"
+                    },
+                    "requestType": {
+                        "id": "requestType",
+                        "content": "Тип заявки",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": "email_templates"
+                        "link": "request_type"
+                    },
+                    "verificationData": {
+                        "id": "verificationData",
+                        "content": "Дата проверки",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "True",
+                                "False"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "read": true,
+                        "link": ""
+                    },
+                    "weight": {
+                        "id": "weight",
+                        "content": "Вес",
+                        "dataType": "decimal",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
                     }
                 },
                 "fieldParams": {
-                    "delay_days": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
                     "id": {
                         "include": false,
                         "fileImageFormat": "square",
@@ -5483,8 +7415,168 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "template_id": {
+                    "requestStatus": {
                         "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "requestType": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "age": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "bio": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "city": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "firstName": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "gender": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "height": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "lastName": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "location": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "weight": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "mainPhoto": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "photoInFullHeight": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "photoSelfie": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "photoMem": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "adminId": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "comment": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "requestDate": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "verificationData": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "isInvitedAdmin": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "isInvitedUser": {
+                        "include": false,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
                         "colorCode": false,
@@ -5493,47 +7585,525 @@ const App = (props) => {
                     }
                 },
                 "fieldOrder": [
-                    "template_id",
-                    "delay_days",
-                    "id"
+                    "id",
+                    "requestStatus",
+                    "requestType",
+                    "mainPhoto",
+                    "photoSelfie",
+                    "photoInFullHeight",
+                    "photoMem",
+                    "lastName",
+                    "firstName",
+                    "age",
+                    "gender",
+                    "height",
+                    "weight",
+                    "city",
+                    "location",
+                    "bio",
+                    "adminId",
+                    "comment",
+                    "requestDate",
+                    "verificationData",
+                    "isInvitedAdmin",
+                    "isInvitedUser"
                 ]
-            }
+            },
+            "autoRefresh": false,
+            "autoRefreshPeriod": 300,
+            "filterParams": {
+                "isSorting": true,
+                "isFiltering": true,
+                "filteringType": "regular",
+                "filterFields": {
+                    "id": {
+                        "active": false,
+                        "format": "",
+                        "formatOptions": {},
+                        "name": "id"
+                    },
+                    "isInvitedAdmin": {
+                        "active": true,
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Да",
+                                "Без приглашения"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "name": "Пригласил администратор?"
+                    },
+                    "isInvitedUser": {
+                        "active": true,
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {
+                            "customOptionLabel": "My option",
+                            "keyValue": {
+                                "key": "key",
+                                "value": "value",
+                                "button": "One more"
+                            },
+                            "dateLocale": "en-gb",
+                            "booleanOptions": [
+                                "Да",
+                                "Без приглашения"
+                            ],
+                            "validWeekDays": {
+                                "mon": true,
+                                "thu": true,
+                                "tue": true,
+                                "sun": true,
+                                "fri": true,
+                                "sat": true,
+                                "wed": true
+                            },
+                            "customOptionPlaceholder": "Describe your option",
+                            "range": {},
+                            "customOptionType": "textarea",
+                            "dateFormat": "DD/MM/Y",
+                            "timeFormat": " HH:mm",
+                            "isUTC": "false"
+                        },
+                        "name": "Пригласил пользователь?"
+                    }
+                }
+            },
+            "actions": [
+                {
+                    "sysName": "",
+                    "id": "77161695113320580",
+                    "name": "Одобрить",
+                    "displayAs": "button",
+                    "buttonIcon": "done",
+                    "buttonType": "accent",
+                    "showMessage": false,
+                    "closePopup": true,
+                    "callFrom": "main",
+                    "formMapping": [
+                        {
+                            "id": "63731695119066877",
+                            "target": "adminId",
+                            "type": "user",
+                            "value": null
+                        },
+                        {
+                            "id": "92091695119199363",
+                            "target": "requestStatus",
+                            "type": "const",
+                            "value": "approved"
+                        },
+                        {
+                            "id": "52141695119245703",
+                            "target": "id",
+                            "type": "objectField",
+                            "value": "id"
+                        }
+                    ]
+                },
+                {
+                    "sysName": "",
+                    "id": "68841695113405656",
+                    "name": "Одобрить, отправить рекомендацию",
+                    "displayAs": "form",
+                    "buttonIcon": "edit",
+                    "SLtype": "same",
+                    "formFields": [
+                        {
+                            "id": "47801695119219110",
+                            "field": {
+                                "fieldSysName": "comment",
+                                "fetch": [],
+                                "sysName": "comment",
+                                "name": "Комментарий",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        }
+                    ],
+                    "formMapping": [
+                        {
+                            "id": "58041695119228243",
+                            "target": "adminId",
+                            "type": "user",
+                            "value": null
+                        },
+                        {
+                            "id": "50061695119233557",
+                            "target": "requestStatus",
+                            "type": "const",
+                            "value": "partiallyApproved"
+                        },
+                        {
+                            "id": "18031695119255848",
+                            "target": "id",
+                            "type": "objectField",
+                            "value": "id"
+                        }
+                    ],
+                    "closePopup": true,
+                    "showMessage": false
+                },
+                {
+                    "sysName": "",
+                    "id": "47921695113445712",
+                    "name": "Отклонить",
+                    "displayAs": "form",
+                    "buttonIcon": "ban",
+                    "buttonType": "danger",
+                    "SLtype": "same",
+                    "formFields": [
+                        {
+                            "id": "60571695119279159",
+                            "field": {
+                                "fieldSysName": "comment",
+                                "fetch": [],
+                                "sysName": "comment",
+                                "name": "Комментарий",
+                                "dataType": "string",
+                                "format": "",
+                                "formatOptions": {},
+                                "link": ""
+                            }
+                        }
+                    ],
+                    "formMapping": [
+                        {
+                            "id": "73881695119282334",
+                            "target": "adminId",
+                            "type": "user",
+                            "value": null
+                        },
+                        {
+                            "id": "39581695119285340",
+                            "target": "requestStatus",
+                            "type": "const",
+                            "value": "rejected"
+                        },
+                        {
+                            "id": "14401695119294047",
+                            "target": "id",
+                            "type": "objectField",
+                            "value": "id"
+                        }
+                    ],
+                    "closePopup": true,
+                    "showMessage": false
+                }
+            ]
         },
-        "tableTitle": "",
+        "tableTitle": "Заявки на верификацию от активных пользователей",
         "actions": null,
         "headers": [
             {
-                "sysName": "delay_days",
-                "dataType": "number",
-                "name": "Delay in days",
-                "id": "42521693314278292",
+                "sysName": "additionalPhotoFront",
+                "name": "Дополнительное фото",
+                "dataType": "file",
+                "id": "54481701936531921",
                 "link": "",
-                "group": "0",
-                "tags": null,
+                "group": "1701341718430",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "multipleImages",
+                "formatOptions": {},
+                "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "adminId",
+                "name": "Кто провел верификацию",
+                "dataType": "link",
+                "id": "91981695118231259",
+                "link": "WebUser",
+                "group": "1695109558257",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "age",
+                "name": "Возраст",
+                "dataType": "number",
+                "id": "36251695113852132",
+                "link": "",
+                "group": "1695109500288",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "bio",
+                "name": "О себе",
+                "dataType": "string",
+                "id": "39161695114000516",
+                "link": "",
+                "group": "1695109500288",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 9,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "city",
+                "name": "Город",
+                "dataType": "string",
+                "id": "75811695113912128",
+                "link": "",
+                "group": "1695109500288",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 8,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "comment",
+                "name": "Комментарий",
+                "dataType": "string",
+                "id": "82751695118262723",
+                "link": "",
+                "group": "1695109558257",
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 2,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
-                "format": "positiveNum",
-                "formatOptions": null,
+                "format": null,
+                "formatOptions": {},
                 "groupName": null,
                 "array": false,
-                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "firstName",
+                "name": "Имя",
+                "dataType": "string",
+                "id": "50981695113791757",
+                "link": "",
+                "group": "1695109500288",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "array": false,
                 "typeVariable": {},
-                "json": false
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "gallery",
+                "name": "Галерея",
+                "dataType": "file",
+                "id": "98191699567497507",
+                "link": "",
+                "group": "1695115505401",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "multipleImages",
+                "formatOptions": {},
+                "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "gender",
+                "name": "Пол",
+                "dataType": "string",
+                "id": "29041695113809536",
+                "link": "",
+                "group": "1695109500288",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "height",
+                "name": "Рост",
+                "dataType": "decimal",
+                "id": "72361695113863888",
+                "link": "",
+                "group": "1695109500288",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false
             },
             {
                 "sysName": "id",
-                "dataType": "id",
                 "name": "id",
+                "dataType": "id",
                 "id": "0",
                 "link": "",
                 "group": "0",
@@ -5551,20 +8121,75 @@ const App = (props) => {
                 "formatOptions": {},
                 "groupName": null,
                 "array": false,
-                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "typeVariable": {},
-                "json": false
+                "indexExists": false
             },
             {
-                "sysName": "template_id",
-                "dataType": "link",
-                "name": "Template",
-                "id": "16781693314269942",
-                "link": "email_templates",
-                "group": "0",
+                "sysName": "isInvitedAdmin",
+                "name": "Пригласил администратор?",
+                "dataType": "boolean",
+                "id": "84371696579625530",
+                "link": "",
+                "group": "1696579618561",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "en-gb",
+                    "booleanOptions": [
+                        "Да",
+                        "Без приглашения"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD/MM/Y",
+                    "timeFormat": " HH:mm",
+                    "isUTC": "false"
+                },
+                "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "isInvitedUser",
+                "name": "Пригласил пользователь?",
+                "dataType": "boolean",
+                "id": "76231696579651454",
+                "link": "",
+                "group": "1696579618561",
                 "tags": null,
                 "indexing": false,
                 "ordering": false,
@@ -5576,26 +8201,497 @@ const App = (props) => {
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "en-gb",
+                    "booleanOptions": [
+                        "Да",
+                        "Без приглашения"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD/MM/Y",
+                    "timeFormat": " HH:mm",
+                    "isUTC": "false"
+                },
+                "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "lastName",
+                "name": "Фамилия",
+                "dataType": "string",
+                "id": "65251695113805100",
+                "link": "",
+                "group": "1695109500288",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "location",
+                "name": "Координаты",
+                "dataType": "json",
+                "id": "77441695113898518",
+                "link": "",
+                "group": "1695109500288",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 7,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": "geo",
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "en-gb",
+                    "booleanOptions": [
+                        "True",
+                        "False"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "geoType": "oneObject",
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD/MM/Y",
+                    "timeFormat": " HH:mm",
+                    "isUTC": "false"
+                },
+                "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "json": true,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "mainPhotoFront",
+                "name": "Главное фото",
+                "dataType": "file",
+                "id": "27991701341738328",
+                "link": "",
+                "group": "1701341718430",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "multipleImages",
                 "formatOptions": null,
                 "groupName": null,
                 "array": false,
-                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "photoInFullHeightFront",
+                "name": "Фото в полный рост",
+                "dataType": "file",
+                "id": "55601701341758893",
+                "link": "",
+                "group": "1701341718430",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "multipleImages",
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "photoMemFront",
+                "name": "Мем",
+                "dataType": "file",
+                "id": "81101701341761041",
+                "link": "",
+                "group": "1701341718430",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "multipleImages",
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "photoSelfieFront",
+                "name": "Фото лица",
+                "dataType": "file",
+                "id": "76121701341759401",
+                "link": "",
+                "group": "1701341718430",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "multipleImages",
+                "formatOptions": null,
+                "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "requestDate",
+                "name": "Время заявки",
+                "dataType": "date",
+                "id": "56021695203566005",
+                "link": "",
+                "group": "1695109537270",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "requestStatus",
+                "name": "Статус заявки",
+                "dataType": "link",
+                "id": "69101695109544540",
+                "link": "request_status",
+                "group": "1695109537270",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "json": false,
                 "linkOrArrayLinkType": true,
                 "linkType": true,
                 "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "requestType",
+                "name": "Тип заявки",
+                "dataType": "link",
+                "id": "45301695112324592",
+                "link": "request_type",
+                "group": "1695109537270",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "array": false,
                 "typeVariable": {},
-                "json": false
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "verificationData",
+                "name": "Дата проверки",
+                "dataType": "date",
+                "id": "94391695118616229",
+                "link": "",
+                "group": "1695109558257",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {
+                    "customOptionLabel": "My option",
+                    "keyValue": {
+                        "key": "key",
+                        "value": "value",
+                        "button": "One more"
+                    },
+                    "dateLocale": "en-gb",
+                    "booleanOptions": [
+                        "True",
+                        "False"
+                    ],
+                    "validWeekDays": {
+                        "mon": true,
+                        "thu": true,
+                        "tue": true,
+                        "sun": true,
+                        "fri": true,
+                        "sat": true,
+                        "wed": true
+                    },
+                    "customOptionPlaceholder": "Describe your option",
+                    "range": {},
+                    "customOptionType": "textarea",
+                    "dateFormat": "DD/MM/Y",
+                    "timeFormat": " HH:mm",
+                    "isUTC": "false"
+                },
+                "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "weight",
+                "name": "Вес",
+                "dataType": "decimal",
+                "id": "74841695113883414",
+                "link": "",
+                "group": "1695109500288",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 6,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false
             }
         ],
         "data": [
             {
-                "template_id": {
-                    "template": "<!DOCTYPE html>\n<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title></title><!--[if !mso]><!--><style type=\"text/css\">\n        @import url('https://fonts.googleapis.com/css?family=Inter:400,600');\n    </style><!--<![endif]--><style type=\"text/css\" rel=\"stylesheet\" media=\"all\">\n        @media only screen and (max-width: 640px) {\n\n            .ms-header {\n                display: none !important;\n            }\n            .ms-content {\n                width: 100% !important;\n                border-radius: 0;\n            }\n            .ms-content-body {\n                padding: 30px !important;\n            }\n            .ms-footer {\n                width: 100% !important;\n            }\n            .mobile-wide {\n                width: 100% !important;\n            }\n            .info-lg {\n                padding: 30px;\n            }\n        }\n    </style><!--[if mso]>\n    <style type=\"text/css\">\n    body { font-family: Arial, Helvetica, sans-serif!important  !important; }\n    td { font-family: Arial, Helvetica, sans-serif!important  !important; }\n    td * { font-family: Arial, Helvetica, sans-serif!important  !important; }\n    td p { font-family: Arial, Helvetica, sans-serif!important  !important; }\n    td a { font-family: Arial, Helvetica, sans-serif!important  !important; }\n    td span { font-family: Arial, Helvetica, sans-serif!important  !important; }\n    td div { font-family: Arial, Helvetica, sans-serif!important  !important; }\n    td ul li { font-family: Arial, Helvetica, sans-serif!important  !important; }\n    td ol li { font-family: Arial, Helvetica, sans-serif!important  !important; }\n    td blockquote { font-family: Arial, Helvetica, sans-serif!important  !important; }\n    th * { font-family: Arial, Helvetica, sans-serif!important  !important; }\n    </style>\n    <![endif]--></head><body style=\"font-family:'Inter', Helvetica, Arial, sans-serif; width: 100% !important; height: 100%; margin: 0; padding: 0; -webkit-text-size-adjust: none; background-color: #f4f7fa; color: #4a5566;\">\n\n<div class=\"preheader\" style=\"display:none !important;visibility:hidden;mso-hide:all;font-size:1px;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;\"></div>\n\n<table class=\"ms-body\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse:collapse;background-color:#f4f7fa;width:100%;margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;\"><tr><td align=\"center\" style=\"word-break:break-word;font-family:'Inter', Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;\">\n\n            <table class=\"ms-container\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"border-collapse:collapse;width:100%;margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;\"><tr><td align=\"center\" style=\"word-break:break-word;font-family:'Inter', Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;\">\n\n                        <table class=\"ms-header\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"border-collapse:collapse;\"><tr><td height=\"40\" style=\"font-size:0px;line-height:0px;word-break:break-word;font-family:'Inter', Helvetica, Arial, sans-serif;\">\n                                </td>\n                            </tr></table></td>\n                </tr><tr><td align=\"center\" cellpadding=\"0\" cellspacing=\"0\" style=\"border-collapse:collapse;width:100%;margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;\">\n                <img width=\"60\" src=\"https://api.directual.com/fileUploaded/directual-site/80725ee3-98b3-4183-9687-e52498ca1e71.png\"></td></tr><tr height=\"30\"><td></td></tr><tr><td align=\"center\" style=\"word-break:break-word;font-family:'Inter', Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;\">\n\n                        <table class=\"ms-content\" width=\"640\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse:collapse;width:640px;margin-top:0;margin-bottom:0;margin-right:auto;margin-left:auto;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;background-color:#FFFFFF;border-radius:6px;box-shadow:0 3px 6px 0 rgba(0,0,0,.05);\"><tr><td class=\"ms-content-body\" style=\"word-break:break-word;font-family:'Inter', Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;padding-top:40px;padding-bottom:40px;padding-right:50px;padding-left:50px;\">\n\n\n                                    <h1 style=\"margin-top:0;color:#111111;font-size:24px;line-height:36px;font-weight:600;margin-bottom:24px;\">Hi, {$name}!</h1>\n                                    <p style=\"color:#4a5566;margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;font-size:16px;line-height:28px;\">\n                                        <a href=\"https://www.directual.com/nocode-workshops\">\n                                            <img style=\"max-width:100%\" src=\"https://api.directual.com/fileUploaded/directual-site/web/39e0fe21-b2a1-481e-ad23-bbd64275ce94.webp\" />\n                                        </a>\n                                    </p>\n                                    <p style=\"color:#4a5566;margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;font-size:16px;line-height:28px;\">\n                                        At Directual, we are constantly looking for new ways to make the lives of our app builders easier and more fun! Now, you can create no-code apps in Directual with a single prompt. It’s pure <i>space magic</i>.\n                                    </p>\n                                    <p style=\"color:#4a5566;margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;font-size:16px;line-height:28px;\">\n                                        Join our webinar \"Building no-code apps with the power of AI\" on <b>August 10th, 19:00 CET</b>.\n                                    </p>\n                                    <p style=\"color:#4a5566;margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;font-size:16px;line-height:28px;\">\n                                        It's not just a webinar, though. Think of it more like a master class in building no-code apps, an insider's guide to the latest features on our platform, and a showcase of our brand-new AI integration..\n                                    </p>\n                                    <p style=\"color:#4a5566;margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;font-size:16px;line-height:28px;\">\n                                        You'll get to:\n                                    </p>\n                                    <ul>\n                                        <li style=\"color:#4a5566;margin-right:0;margin-left:0;font-size:16px;line-height:28px;\">\n                                            Discover how to build AI-powered apps with simple text prompts\n                                        </li>\n                                        <li style=\"color:#4a5566;margin-right:0;margin-left:0;font-size:16px;line-height:28px;\">\n                                            Explore new dimensions in no-code app development\n                                        </li>\n                                        <li style=\"color:#4a5566;margin-right:0;margin-left:0;font-size:16px;line-height:28px;\">\n                                            Learn about our newest plugins and how they can supercharge your app-building process\n                                        </li>\n                                        <li style=\"color:#4a5566;margin-right:0;margin-left:0;font-size:16px;line-height:28px;\">\n                                            Get your questions answered in a live Q&A\n                                        </li>\n                                    </ul>\n                                    <p style=\"color:#4a5566;margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;font-size:16px;line-height:28px;\">\n                                        So, are you ready to step into the future of app development? Tie your laces tight, because this ride is going to be spectacular!\n                                    </p>\n                                    <p style=\"color:#4a5566;margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;font-size:16px;line-height:28px;\">\n                                        <a href=\"https://www.directual.com/nocode-workshops\" style=\"color:#058efc\">Register for the webinar here</a>\n                                    </p>\n                                    </td>\n                                        </tr></table><!--table width=\"100%\" style=\"border-collapse:collapse;\" >\n                                        <tr>\n                                            <td height=\"20\" style=\"font-size:0px;line-height:0px;word-break:break-word;font-family:'Inter', Helvetica, Arial, sans-serif;\" >\n                                                &nbsp;\n                                            </td>\n                                        </tr>\n                                        <tr>\n                                            <td height=\"20\" style=\"font-size:0px;line-height:0px;border-top-width:1px;border-top-style:solid;border-top-color:#e2e8f0;word-break:break-word;font-family:'Inter', Helvetica, Arial, sans-serif;\" >\n                                                &nbsp;\n                                            </td>\n                                        </tr>\n                                    </table--></td>\n                            </tr></table></td>\n                </tr><tr><td align=\"center\" style=\"word-break:break-word;font-family:'Inter', Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;\">\n\n                        <table class=\"ms-footer\" width=\"640\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse:collapse;width:640px;margin-top:0;margin-bottom:0;margin-right:auto;margin-left:auto;\"><tr><td class=\"ms-content-body\" align=\"center\" style=\"word-break:break-word;font-family:'Inter', Helvetica, Arial, sans-serif;font-size:16px;line-height:24px;padding-top:40px;padding-bottom:40px;padding-right:50px;padding-left:50px;\">\n                                    <p class=\"small\" style=\"margin-top:0px;margin-bottom:5px;margin-right:0;margin-left:0;color:#96a2b3;font-size:14px;line-height:21px;\">Let people create!</p>\n                                    <img width=\"200\" src=\"https://api.directual.com/fileUploaded/directual-site/c5182e8d-b19d-41fc-9861-3f54aab38849.png\"><table width=\"200\" style=\"margin-top:10px\"><tr><td align=\"center\">\n                                                <a href=\"https://www.facebook.com/directualcom\" target=\"_blank\"><img width=\"30\" src=\"https://api.directual.com/fileUploaded/directual-site/96452a58-fcd5-4413-91b8-18c7f3c6f54e.png\"></a>\n                                            </td>\n                                            <td align=\"center\">\n                                                <a href=\"https://discord.gg/wVMSrH7kXK\" target=\"_blank\"><img width=\"30\" src=\"https://api.directual.com/fileUploaded/directual-site/b621ab5a-448e-40d0-b60b-d896dfb5ffc7.png\"></a>\n                                            </td>\n                                            <td align=\"center\">\n                                                <a href=\"https://twitter.com/directual\" target=\"_blank\"><img width=\"30\" src=\"https://api.directual.com/fileUploaded/directual-site/e55ae759-1d01-48d4-98be-b924a9b92793.png\"></a>\n                                            </td>\n                                        </tr></table><p class=\"small\" style=\"margin-top:20px;margin-right:0;margin-left:0;color:#96a2b3;font-size:14px;line-height:21px;\">© 2023 Directual. All rights reserved.</p>\n                                        <p style=\"margin-bottom:20px\"><a style=\"opacity:0.8;text-decoration:none;font-size:12px;color:#058efc\" href=\"https://directual-site.directual.app/embed/650c5611-8321-4ad0-bccd-0a21527fce3f/{{user_id.subscription_settings}}\" target=\"_blank\">Subscription settings</a></p>\n                                </td>\n                            </tr>\n                            </table></td>\n                </tr></table></td>\n    </tr></table></body></html>",
-                    "subject": "Webinar 31.08",
-                    "id": "5d01dc8e-cb94-48e9-b035-bdcac18a9594"
-                },
-                "delay_days": "",
-                "id": "3c732c7b-46d6-4126-9d59-e5ef3e4e110d"
+                "weight": 188,
+                "city": "Москва",
+                "requestDate": 1701958542000,
+                "isInvitedUser": false,
+                "requestType": "active",
+                "height": 88,
+                "age": 22,
+                "gallery": [],
+                "bio": "Ha-ha-ha",
+                "firstName": "Noname",
+                "id": "98a2aaca-5839-4b8f-b491-199d13a30fcd",
+                "requestStatus": "wait",
+                "isInvitedAdmin": false,
+                "gender": "Ж",
+                "adminId": "",
+                "comment": ""
+            },
+            {
+                "weight": 188,
+                "city": "Москва",
+                "requestDate": 1701958525000,
+                "isInvitedUser": false,
+                "requestType": "active",
+                "height": 88,
+                "age": 22,
+                "gallery": [],
+                "bio": "Ha-ha-ha",
+                "firstName": "Noname",
+                "id": "3d2c31c8-8f16-4143-a4bb-70dea98cbf17",
+                "requestStatus": "wait",
+                "isInvitedAdmin": false,
+                "gender": "Ж",
+                "adminId": "",
+                "comment": ""
+            },
+            {
+                "weight": 188,
+                "city": "Москва",
+                "requestDate": 1701958120000,
+                "isInvitedUser": false,
+                "requestType": "active",
+                "height": 88,
+                "age": 22,
+                "gallery": [],
+                "bio": "Ha-ha-ha",
+                "firstName": "Noname21",
+                "id": "0efdeb71-6de8-401a-8d22-e3d65b7c4adb",
+                "requestStatus": "wait",
+                "isInvitedAdmin": false,
+                "gender": "Ж",
+                "adminId": "",
+                "comment": ""
+            },
+            {
+                "weight": 188,
+                "city": "Москва",
+                "requestDate": 1701957365000,
+                "isInvitedUser": false,
+                "requestType": "active",
+                "height": 88,
+                "age": 22,
+                "gallery": [],
+                "bio": "Ha-ha-ha",
+                "firstName": "Noname21",
+                "id": "bf04b8ba-e523-46ad-8202-d2868bebe1b8",
+                "requestStatus": "wait",
+                "isInvitedAdmin": false,
+                "gender": "Ж",
+                "adminId": "",
+                "comment": ""
+            },
+            {
+                "weight": 188,
+                "city": "Москва",
+                "requestDate": 1701957283000,
+                "isInvitedUser": false,
+                "requestType": "active",
+                "height": 88,
+                "age": 22,
+                "gallery": [],
+                "bio": "Ha-ha-ha",
+                "firstName": "Noname12",
+                "id": "2a81eee6-d6ce-4fe2-bd6e-dfd4a030da68",
+                "requestStatus": "wait",
+                "isInvitedAdmin": false,
+                "gender": "Ж",
+                "adminId": "",
+                "comment": ""
             }
         ],
         "totalPages": 1,
@@ -5603,57 +8699,134 @@ const App = (props) => {
         "error": null,
         "fieldScheme": [
             [
-                "delay_days",
-                99245396
+                "additionalPhotoFront",
+                99251064
+            ],
+            [
+                "adminId",
+                99251064
+            ],
+            [
+                "age",
+                99251064
+            ],
+            [
+                "bio",
+                99251064
+            ],
+            [
+                "city",
+                99251064
+            ],
+            [
+                "comment",
+                99251064
+            ],
+            [
+                "firstName",
+                99251064
+            ],
+            [
+                "gallery",
+                99251064
+            ],
+            [
+                "gender",
+                99251064
+            ],
+            [
+                "height",
+                99251064
             ],
             [
                 "id",
-                99245396
+                99251064
             ],
             [
-                "template_id.id",
-                99245395
+                "isInvitedAdmin",
+                99251064
             ],
             [
-                "template_id.subject",
-                99245395
+                "isInvitedUser",
+                99251064
             ],
             [
-                "template_id.template",
-                99245395
+                "lastName",
+                99251064
+            ],
+            [
+                "location",
+                99251064
+            ],
+            [
+                "mainPhotoFront",
+                99251064
+            ],
+            [
+                "photoInFullHeightFront",
+                99251064
+            ],
+            [
+                "photoMemFront",
+                99251064
+            ],
+            [
+                "photoSelfieFront",
+                99251064
+            ],
+            [
+                "requestDate",
+                99251064
+            ],
+            [
+                "requestStatus",
+                99251064
+            ],
+            [
+                "requestType",
+                99251064
+            ],
+            [
+                "verificationData",
+                99251064
+            ],
+            [
+                "weight",
+                99251064
             ]
         ],
         "writeFields": [
-            "delay_days",
+            "adminId",
+            "comment",
             "id",
-            "template_id"
+            "requestStatus"
         ],
         "structures": {
-            "99245395": {
-                "id": 99245395,
-                "dateCreated": "2023-08-29T12:38:30Z",
+            "99251064": {
+                "id": 99251064,
+                "dateCreated": "2023-09-19T07:43:19Z",
                 "hidden": false,
                 "dateHidden": null,
-                "networkID": 1822,
-                "name": "Email templates",
-                "sysName": "email_templates",
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"subject\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"46261693312833516\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"template\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"82131693312723943\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"html\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"subject\"}]",
+                "networkID": 18487,
+                "name": "Request",
+                "sysName": "request",
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"inviteId\",\"dataType\":\"link\",\"name\":\"Кто пригласил? \",\"id\":\"22071696579880559\",\"link\":\"WebUser\",\"group\":\"1696579618561\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"mainPhotoFront\",\"dataType\":\"file\",\"name\":\"Главное фото\",\"id\":\"27991701341738328\",\"link\":\"\",\"group\":\"1701341718430\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"multipleImages\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"gender\",\"dataType\":\"string\",\"name\":\"Пол\",\"id\":\"29041695113809536\",\"link\":\"\",\"group\":\"1695109500288\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"shareCollectionPhotoIdsJson\",\"dataType\":\"json\",\"name\":\"Общая коллекция фоточек\",\"id\":\"29571695457778391\",\"link\":\"\",\"group\":\"1695109537270\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":true,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"age\",\"dataType\":\"number\",\"name\":\"Возраст\",\"id\":\"36251695113852132\",\"link\":\"\",\"group\":\"1695109500288\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"photoInFullHeight\",\"dataType\":\"arrayLink\",\"name\":\"Фото в полный рост\",\"id\":\"36541695115517967\",\"link\":\"FileUpload\",\"group\":\"1695115505401\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"additionalPhoto\",\"dataType\":\"arrayLink\",\"name\":\"Дополнительное фото\",\"id\":\"37271701934773599\",\"link\":\"FileUpload\",\"group\":\"1695115505401\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"bio\",\"dataType\":\"string\",\"name\":\"О себе\",\"id\":\"39161695114000516\",\"link\":\"\",\"group\":\"1695109500288\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"requestType\",\"dataType\":\"link\",\"name\":\"Тип заявки\",\"id\":\"45301695112324592\",\"link\":\"request_type\",\"group\":\"1695109537270\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"mainPhoto\",\"dataType\":\"link\",\"name\":\"Главное фото\",\"id\":\"45351695115516687\",\"link\":\"FileUpload\",\"group\":\"1695115505401\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"firstName\",\"dataType\":\"string\",\"name\":\"Имя\",\"id\":\"50981695113791757\",\"link\":\"\",\"group\":\"1695109500288\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"additionalPhotoFront\",\"dataType\":\"file\",\"name\":\"Дополнительное фото\",\"id\":\"54481701936531921\",\"link\":\"\",\"group\":\"1701341718430\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"multipleImages\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"photoInFullHeightFront\",\"dataType\":\"file\",\"name\":\"Фото в полный рост\",\"id\":\"55601701341758893\",\"link\":\"\",\"group\":\"1701341718430\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"multipleImages\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"requestDate\",\"dataType\":\"date\",\"name\":\"Время заявки\",\"id\":\"56021695203566005\",\"link\":\"\",\"group\":\"1695109537270\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"photoMem\",\"dataType\":\"arrayLink\",\"name\":\"Мем\",\"id\":\"58621695116720467\",\"link\":\"FileUpload\",\"group\":\"1695115505401\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"lastName\",\"dataType\":\"string\",\"name\":\"Фамилия\",\"id\":\"65251695113805100\",\"link\":\"\",\"group\":\"1695109500288\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"requestStatus\",\"dataType\":\"link\",\"name\":\"Статус заявки\",\"id\":\"69101695109544540\",\"link\":\"request_status\",\"group\":\"1695109537270\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"height\",\"dataType\":\"decimal\",\"name\":\"Рост\",\"id\":\"72361695113863888\",\"link\":\"\",\"group\":\"1695109500288\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"weight\",\"dataType\":\"decimal\",\"name\":\"Вес\",\"id\":\"74841695113883414\",\"link\":\"\",\"group\":\"1695109500288\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"city\",\"dataType\":\"string\",\"name\":\"Город\",\"id\":\"75811695113912128\",\"link\":\"\",\"group\":\"1695109500288\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"photoSelfieFront\",\"dataType\":\"file\",\"name\":\"Фото лица\",\"id\":\"76121701341759401\",\"link\":\"\",\"group\":\"1701341718430\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"multipleImages\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"isInvitedUser\",\"dataType\":\"boolean\",\"name\":\"Пригласил пользователь?\",\"id\":\"76231696579651454\",\"link\":\"\",\"group\":\"1696579618561\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Без приглашения\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"location\",\"dataType\":\"json\",\"name\":\"Координаты\",\"id\":\"77441695113898518\",\"link\":\"\",\"group\":\"1695109500288\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"geo\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"geoType\":\"oneObject\",\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":true,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"photoMemFront\",\"dataType\":\"file\",\"name\":\"Мем\",\"id\":\"81101701341761041\",\"link\":\"\",\"group\":\"1701341718430\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"multipleImages\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"comment\",\"dataType\":\"string\",\"name\":\"Комментарий\",\"id\":\"82751695118262723\",\"link\":\"\",\"group\":\"1695109558257\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"isInvitedAdmin\",\"dataType\":\"boolean\",\"name\":\"Пригласил администратор?\",\"id\":\"84371696579625530\",\"link\":\"\",\"group\":\"1696579618561\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Без приглашения\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"photoSelfie\",\"dataType\":\"arrayLink\",\"name\":\"Фото лица\",\"id\":\"85241695115727356\",\"link\":\"FileUpload\",\"group\":\"1695115505401\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"adminId\",\"dataType\":\"link\",\"name\":\"Кто провел верификацию\",\"id\":\"91981695118231259\",\"link\":\"WebUser\",\"group\":\"1695109558257\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"verificationData\",\"dataType\":\"date\",\"name\":\"Дата проверки\",\"id\":\"94391695118616229\",\"link\":\"\",\"group\":\"1695109558257\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"userId\",\"dataType\":\"link\",\"name\":\"Пользователь\",\"id\":\"95061695118588098\",\"link\":\"WebUser\",\"group\":\"1695109500288\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false},{\"sysName\":\"gallery\",\"dataType\":\"file\",\"name\":\"Галерея\",\"id\":\"98191699567497507\",\"link\":\"\",\"group\":\"1695115505401\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"multipleImages\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"typeVariable\":{},\"indexExists\":false,\"array\":false}]",
+                "jsonGroupSettings": "[{\"id\":1695109558257,\"name\":\"Admin\",\"order\":3},{\"id\":1695115505401,\"name\":\"User files\",\"order\":1},{\"id\":1701341718430,\"name\":\"Foto to admin Front\",\"order\":2},{\"id\":1696579618561,\"name\":\"Invite\",\"order\":5},{\"id\":1695109537270,\"name\":\"System\",\"order\":4},{\"id\":1695109500288,\"name\":\"User\",\"order\":0}]",
+                "jsonViewIdSettings": "[{\"sysName\":\"lastName\"},{\"sysName\":\"firstName\"}]",
                 "jsonSettings": null,
                 "jsonNativeIndexSettings": null,
                 "indexEnabled": true,
                 "lastIndexUpdate": 0,
                 "indexName": "",
-                "dateChanged": "2023-08-29T12:41:03Z",
-                "createBy": 1,
-                "changedBy": 1,
+                "dateChanged": "2023-12-07T08:09:13Z",
+                "createBy": 7868,
+                "changedBy": 7868,
                 "_settings": null,
                 "_nativeIndexSettings": null,
                 "innerIDField": {
                     "sysName": "id",
-                    "dataType": "id",
                     "name": "id",
+                    "dataType": "id",
                     "id": "0",
                     "link": "",
                     "group": "0",
@@ -5671,67 +8844,15 @@ const App = (props) => {
                     "formatOptions": {},
                     "groupName": null,
                     "array": false,
-                    "indexExists": false,
+                    "typeVariable": {},
+                    "json": false,
                     "linkOrArrayLinkType": false,
                     "linkType": false,
                     "arrayLink": false,
-                    "typeVariable": {},
-                    "json": false
+                    "indexExists": false
                 },
                 "objectIDSysName": "id",
-                "folderId": 33770779
-            },
-            "99245396": {
-                "id": 99245396,
-                "dateCreated": "2023-08-29T13:04:22Z",
-                "hidden": false,
-                "dateHidden": null,
-                "networkID": 1822,
-                "name": "Emails in the campaign",
-                "sysName": "emails_in_the_campaign",
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"template_id\",\"name\":\"Template\",\"dataType\":\"link\",\"id\":\"16781693314269942\",\"link\":\"email_templates\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"delay_days\",\"name\":\"Delay in days\",\"dataType\":\"number\",\"id\":\"42521693314278292\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"campaign_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"73431693314924064\",\"link\":\"email_campaigns\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"array\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"template_id\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2023-08-29T13:37:54Z",
-                "createBy": 1,
-                "changedBy": 1,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "array": false,
-                    "indexExists": false,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "typeVariable": {},
-                    "json": false
-                },
-                "objectIDSysName": "id",
-                "folderId": 33770779
+                "folderId": 33773562
             }
         },
         "isSuccessWrite": false,
@@ -5739,37 +8860,65 @@ const App = (props) => {
         "writeResponse": null,
         "fileds": [
             {
-                "sysName": "delay_days",
-                "dataType": "number",
-                "name": "Delay in days",
-                "id": "42521693314278292",
+                "sysName": "adminId",
+                "name": "Кто провел верификацию",
+                "dataType": "link",
+                "id": "91981695118231259",
+                "link": "WebUser",
+                "group": "1695109558257",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            {
+                "sysName": "comment",
+                "name": "Комментарий",
+                "dataType": "string",
+                "id": "82751695118262723",
                 "link": "",
-                "group": "0",
-                "tags": null,
+                "group": "1695109558257",
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 2,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
-                "format": "positiveNum",
-                "formatOptions": null,
+                "format": null,
+                "formatOptions": {},
                 "groupName": null,
                 "array": false,
-                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "typeVariable": {},
-                "json": false
+                "indexExists": false
             },
             {
                 "sysName": "id",
-                "dataType": "id",
                 "name": "id",
+                "dataType": "id",
                 "id": "0",
                 "link": "",
                 "group": "0",
@@ -5787,50 +8936,53 @@ const App = (props) => {
                 "formatOptions": {},
                 "groupName": null,
                 "array": false,
-                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "typeVariable": {},
-                "json": false
+                "indexExists": false
             },
             {
-                "sysName": "template_id",
+                "sysName": "requestStatus",
+                "name": "Статус заявки",
                 "dataType": "link",
-                "name": "Template",
-                "id": "16781693314269942",
-                "link": "email_templates",
-                "group": "0",
-                "tags": null,
+                "id": "69101695109544540",
+                "link": "request_status",
+                "group": "1695109537270",
+                "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 1,
                 "linkIndexFieldSysName": [],
-                "defaultValue": null,
+                "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
                 "array": false,
-                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
                 "linkOrArrayLinkType": true,
                 "linkType": true,
                 "arrayLink": false,
-                "typeVariable": {},
-                "json": false
+                "indexExists": false
             }
         ],
         "quickSearch": "false",
-        "httpParams": {},
+        "httpParams": {
+            "requestStatusActive": "wait",
+            "requestType": "active"
+        },
         "cardCustomHtml": null,
         "cardCustomLayout": null
     }
 
     let authExample = {
-        "isAuth": true,
+        "isAuth": false,
         "custom_labels": "{\n   \"foo\": \"hello brave new world!\",\n   \"bar\": \"foobar\"\n}",
         "role": "admin",
         "lastName": "Watson",

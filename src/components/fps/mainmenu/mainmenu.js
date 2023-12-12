@@ -390,6 +390,7 @@ export function NewMainMenu(props) {
     const mainMenu = props.mainMenu || { children: [] }
     const mobileMenu = props.mobileMenu || { children: [] }
     const auth = props.auth || {}
+    const showUserButtons = props.showUserButtons
 
     const custom_labels = props.custom_labels || {}
 
@@ -575,7 +576,7 @@ export function NewMainMenu(props) {
                         }
                     </React.Fragment>}
             </div>
-            {showMobileAuthBlock && <div
+            {showMobileAuthBlock && showUserButtons && <div
                 className={`${styles.mobileheaderAuth} D_MainMenu_Mobile_Auth`}
                 style={!leftSide ? {
                     left: showMobileHeader ? (menuBorderWidth + menuMargin + mobileMenuPadding) : 6
@@ -583,7 +584,7 @@ export function NewMainMenu(props) {
                     right: showMobileHeader ? (menuBorderWidth + menuMargin + mobileMenuPadding) : 6
                 }}
             >
-                <NewMainMenuAuth
+                {showUserButtons && <NewMainMenuAuth
                     auth={auth}
                     rightSide={leftSide}
                     handleRoute={route => e => {
@@ -593,7 +594,7 @@ export function NewMainMenu(props) {
                     mobileHeader
                     compactMode={true}
                     logOut={handleLogOut}
-                />
+                />}
             </div>}
         </div>}
         {/* ======================= */}
@@ -687,7 +688,7 @@ export function NewMainMenu(props) {
 
                 </div>
 
-                <NewMainMenuAuth
+                {showUserButtons && <NewMainMenuAuth
                     auth={auth}
                     handleRoute={route => e => {
                         hideMMhandler()
@@ -695,7 +696,7 @@ export function NewMainMenu(props) {
                     }}
                     compactMode={compactMode}
                     logOut={handleLogOut}
-                />
+                />}
 
             </div>}
         {/* ======================= */}
@@ -841,7 +842,7 @@ export function NewMainMenu(props) {
                 )}
 
             </div>
-            <NewMainMenuAuth
+            {showUserButtons && <NewMainMenuAuth
                 auth={auth}
                 horizontal
                 handleRoute={route => e => {
@@ -852,7 +853,7 @@ export function NewMainMenu(props) {
                 logOut={handleLogOut}
                 menuWidth={menuWidth}
                 menuCompactWidth={menuCompactWidth}
-            />
+            />}
         </div>}
 
     </React.Fragment >
@@ -897,11 +898,11 @@ function NewMainMenuAuth({ auth, compactMode, horizontal, logOut, handleRoute, m
                     dropButton={<a className={`${styles.newListFooterImage} D_MainMenu_Footer_Image`} >
                         {auth.userpic ? <img src={auth.userpic} /> : <div className='icon large icon-user' />}
                     </a>}>
-                    <div className={`${styles.profileDD}`}>
-                        <div onClick={handleRoute("/profile")} className={`${styles.profileDDlink} icon icon-user`}>
+                    <div className={`${styles.profileDD} D_FPS_profileDD`}>
+                        <div onClick={handleRoute("/profile")} className={`${styles.profileDDlink} D_FPS_profileDD_Button icon icon-user`}>
                             Profile
                         </div>
-                        <div onClick={logOut} className={`${styles.profileDDlink} icon icon-logout`}>
+                        <div onClick={logOut} className={`${styles.profileDDlink} D_FPS_profileDD_Button icon icon-logout`}>
                             Sign out
                         </div>
                     </div>

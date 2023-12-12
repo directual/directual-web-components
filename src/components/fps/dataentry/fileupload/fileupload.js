@@ -312,6 +312,7 @@ function ImagePreview({ imageUrl, onDelete, openImage, edit }) {
 function FilePreview({ fileUrl, onDelete, edit }) {
 
     const getResolution = line => {
+        if (!line) return null
         const regex = /\....?.?.?$/g;
         const found = line.match(regex);
         return found ? found[0].substring(1) : '?'
