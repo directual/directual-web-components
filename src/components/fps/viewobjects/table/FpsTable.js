@@ -19,8 +19,8 @@ import debounce from 'lodash.debounce';
 function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     if (!data) { data = {} }
 
-    // console.log('---data FpsTable---')
-    // console.log(data)
+    console.log('---data FpsTable---')
+    console.log(data)
 
     const [currentData,setCurrentData] = useState(data)
 

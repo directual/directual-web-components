@@ -396,8 +396,8 @@ export function Table({
 
     // обогащаем поля теми, что не пришли по данным, но мы их можем писать:
     function enrichTableDataWithWriteFields(data) {
-        console.log("enrichTableDataWithWriteFields")
-        console.log(cardsData)
+        // console.log("enrichTableDataWithWriteFields")
+        // console.log(cardsData)
         let saveData = cardsData ? [...cardsData] : []
         saveData.forEach(field => {
             data.writeFields && data.writeFields.forEach(writeField => {
