@@ -10,7 +10,7 @@
 .newMainmenu.leftSide {
   left: 0;
   right: auto;
-  transform: translateX(-100%);
+  transform: translateX(-105%);
   padding-left: 40px;
   padding-right: 0;
 }
@@ -827,7 +827,7 @@
 }
 :global .ural .D_MainMenu_Mobile_Tabs_Tab.selected {
   color: var(--menu-item-selected);
-  box-shadow: 0 0 0 1px var(--menu-border-color);
+  box-shadow: 0 0 0 1px var(--menu-item-selected-border);
   background-color: var(--menu-item-selected-bgr);
   border-radius: var(--border-radius);
 }
