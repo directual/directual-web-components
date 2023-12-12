@@ -278,7 +278,8 @@ function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fiel
             <table {...getTableProps()}>
                 <thead>
                     {headerGroups.map(headerGroup => {
-                        return <tr {...headerGroup.getHeaderGroupProps()}>
+                        return <tr 
+                            {...headerGroup.getHeaderGroupProps()}>
                             {/* <th style={{ width: 20 }}>
                                 <Checkbox label='' />
                             </th> */}
@@ -313,8 +314,12 @@ function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fiel
                             isColorRow.row.values[isColorRow.column.id] : 'default' : 'default'
 
                         colorRow = colorRow == 'default' ? colorRow : (colorRow[0] == '#' || colorRow[0] == 'r') ? colorRow : '#' + colorRow
+                        console.log("row")
+                        console.log(row)
                         return (
-                            <tr onDoubleClick={() => onExpand(row.original)}
+                            <tr 
+                                key={_.get(row,'original.id') || row.id}
+                                onDoubleClick={() => onExpand(row.original)}
                                 style={colorRow == 'default' ? {} :
                                     {
                                         backgroundColor: colorRow,
