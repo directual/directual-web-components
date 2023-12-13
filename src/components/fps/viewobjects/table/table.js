@@ -505,7 +505,7 @@ export function Table({
 
     // composing Table data 
     const tableData = useMemo(() => enrichTableDataWithWriteFields(data), [cardsData])
-    const columns = useMemo(() => tableColumns, [])
+    const columns = useMemo(() => tableColumns, [cardsData])
 
     //const [tableData, setTableData] = useState(data.data)
     // const [originalData] = useState(data.data)
