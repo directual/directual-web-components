@@ -481,7 +481,7 @@
   }
   li.item.active {
     border-right: solid 3px rgba(0, 0, 0, 0);
-    border-left: solid 3px var(--menu-item-selected);
+    border-left: solid 3px var(--menu-item-selected-bgr);
   }
   .leftSide li.item {
     border-right: solid 3px rgba(0, 0, 0, 0);
@@ -491,7 +491,7 @@
     padding-right: 21px;
   }
   .leftSide li.item.active {
-    border-right: solid 3px var(--menu-item-selected);
+    border-right: solid 3px var(--menu-item-selected-bgr);
     border-left: solid 3px rgba(0, 0, 0, 0);
   }
 }
@@ -515,7 +515,7 @@
   color: var(--menu-item-hover);
 }
 .item:hover a {
-  color: var(--menu-item-hover);
+  color: var(--menu-item);
 }
 .item.disabled {
   opacity: 0.25 !important;
@@ -528,13 +528,13 @@
   color: var(--menu-item-hover);
   opacity: 1;
   transition: 0;
-  border-right: solid 3px var(--menu-item-selected);
+  border-right: solid 3px var(--menu-item-selected-bgr);
 }
 .item.active a {
-  color: var(--menu-item-hover);
+  color: var(--menu-item);
 }
 .item.active:before {
-  color: var(--menu-item-selected);
+  color: var(--menu-item-selected-bgr);
   opacity: 1;
 }
 .item a {
