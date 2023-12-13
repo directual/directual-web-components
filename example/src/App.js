@@ -5111,8 +5111,8 @@ const App = (props) => {
     }
 
     let exampleTable = {
-        "sl": "getCloudUsers",
-        "pageSize": "15",
+        "sl": "getAllAgreements",
+        "pageSize": "10",
         "headerField": null,
         "params": {
             "cardListLayout": "grid",
@@ -5127,583 +5127,303 @@ const App = (props) => {
             "data": {
                 "readFields": [
                     {
-                        "fieldSysName": "apps",
-                        "fetch": [
-                            {
-                                "fieldSysName": "app_id",
-                                "condition": null,
-                                "fetch": [
-                                    {
-                                        "fieldSysName": "isDowngraded",
-                                        "condition": null,
-                                        "fetch": []
-                                    },
-                                    {
-                                        "fieldSysName": "plan_id",
-                                        "condition": null,
-                                        "fetch": []
-                                    },
-                                    {
-                                        "fieldSysName": "sysName",
-                                        "condition": null,
-                                        "fetch": []
-                                    }
-                                ]
-                            },
-                            {
-                                "fieldSysName": "is_blocked",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "is_hidden",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "sys_name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "apps",
-                        "name": "Apps",
-                        "dataType": "arrayLink",
+                        "fieldSysName": "773774616695",
+                        "fetch": [],
+                        "sysName": "773774616695",
+                        "name": "ИНН инвестора",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": "AppInfo"
+                        "link": ""
                     },
                     {
-                        "fieldSysName": "country",
-                        "fetch": [
-                            {
-                                "fieldSysName": "Name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "country",
-                        "name": "Country",
+                        "fieldSysName": "INNInvPlat",
+                        "fetch": [],
+                        "sysName": "INNInvPlat",
+                        "name": "ИНН ОИП",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "INNOrg",
+                        "fetch": [],
+                        "sysName": "INNOrg",
+                        "name": "ИНН эмитента",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "amountOfInvestment",
+                        "fetch": [],
+                        "sysName": "amountOfInvestment",
+                        "name": "Объем проинвестированных средств",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "dateOfAgreement",
+                        "fetch": [],
+                        "sysName": "dateOfAgreement",
+                        "name": "Дата заключения договора инвестирования",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "fullNameInvestor",
+                        "fetch": [],
+                        "sysName": "fullNameInvestor",
+                        "name": "ФИО/Наименование инвестора",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "idInvestor",
+                        "fetch": [],
+                        "sysName": "idInvestor",
+                        "name": "Уникальный идентификационный номер инвестора",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "CountriesISO"
+                        "link": "CreatiumUsers"
                     },
                     {
-                        "fieldSysName": "email_campaigns",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "title",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "email_campaigns",
-                        "name": "Email campaigns",
-                        "dataType": "arrayLink",
+                        "fieldSysName": "idProject",
+                        "fetch": [],
+                        "sysName": "idProject",
+                        "name": "Уникальный идентификационный номер инвестиционного предложения",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "email_campaigns"
+                        "link": "Project"
                     },
                     {
-                        "fieldSysName": "first_name",
+                        "fieldSysName": "nameInvPlatShort",
                         "fetch": [],
-                        "sysName": "first_name",
-                        "name": "First name",
+                        "sysName": "nameInvPlatShort",
+                        "name": "Сокращенное наименование ОИП",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "gravatar_pic",
-                        "fetch": [],
-                        "sysName": "gravatar_pic",
-                        "name": " ",
-                        "dataType": "file",
-                        "format": "image",
-                        "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "id",
+                        "fieldSysName": "nameOrg",
                         "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "isBlocked",
-                        "fetch": [],
-                        "sysName": "isBlocked",
-                        "name": "",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "last_name",
-                        "fetch": [],
-                        "sysName": "last_name",
-                        "name": "Last name",
+                        "sysName": "nameOrg",
+                        "name": "Наименование эмитента",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": null
+                        "link": ""
                     },
                     {
-                        "fieldSysName": "notifications",
-                        "fetch": [
-                            {
-                                "fieldSysName": "date",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "is_bounced",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "is_clicked",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "is_complained",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "is_delivered",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "is_marketing",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "is_opened",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "is_sent",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "message_email",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "message_platform",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "sent_to_email",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "topic",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "notifications",
-                        "name": "Notifications",
-                        "dataType": "arrayLink",
+                        "fieldSysName": "nominalStockPrice",
+                        "fetch": [],
+                        "sysName": "nominalStockPrice",
+                        "name": "Номинальная цена акциии",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": "user_notifications"
+                        "link": ""
                     },
                     {
-                        "fieldSysName": "number_of_apps",
+                        "fieldSysName": "numberOfStocks",
                         "fetch": [],
-                        "sysName": "number_of_apps",
-                        "name": "Number of apps",
+                        "sysName": "numberOfStocks",
+                        "name": "Количество акций (шт)",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "numberPP",
+                        "fetch": [],
+                        "sysName": "numberPP",
+                        "name": "№ п/п",
                         "dataType": "number",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "paddle_id",
+                        "fieldSysName": "projectInvestoId",
                         "fetch": [],
-                        "sysName": "paddle_id",
-                        "name": "paddle id",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "paddle_status",
-                        "fetch": [],
-                        "sysName": "paddle_status",
-                        "name": "",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "register_date",
-                        "fetch": [],
-                        "sysName": "register_date",
-                        "name": "Register date",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD.MM.YYYY",
-                            "timeFormat": "",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "source",
-                        "fetch": [],
-                        "sysName": "source",
-                        "name": "Source",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "subscription_settings",
-                        "fetch": [
-                            {
-                                "fieldSysName": "Unsubscribed",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "subscription_settings",
-                        "name": "",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "subscription_settings"
-                    },
-                    {
-                        "fieldSysName": "survey_is_aborted",
-                        "fetch": [],
-                        "sysName": "survey_is_aborted",
-                        "name": "",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "survey_step_1_raw",
-                        "fetch": [],
-                        "sysName": "survey_step_1_raw",
-                        "name": "Which describes you best",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "survey_step_2_raw",
-                        "fetch": [],
-                        "sysName": "survey_step_2_raw",
-                        "name": "Whom do you want to build apps for",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "survey_step_3_raw",
-                        "fetch": [],
-                        "sysName": "survey_step_3_raw",
-                        "name": "How did you know about Directual",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "tinkoff_rebill_id",
-                        "fetch": [],
-                        "sysName": "tinkoff_rebill_id",
-                        "name": "",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "tinkoff_status",
-                        "fetch": [],
-                        "sysName": "tinkoff_status",
-                        "name": "",
+                        "sysName": "projectInvestoId",
+                        "name": "Номер акцепта",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "unsubscribed",
+                        "fieldSysName": "stockPrice",
                         "fetch": [],
-                        "sysName": "unsubscribed",
-                        "name": "Unsubscribed",
-                        "dataType": "boolean",
+                        "sysName": "stockPrice",
+                        "name": "Цена акции",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "wallet_balance",
+                        "fieldSysName": "typeOfInvestor",
                         "fetch": [],
-                        "sysName": "wallet_balance",
-                        "name": "",
-                        "dataType": "decimal",
+                        "sysName": "typeOfInvestor",
+                        "name": "Тип инвестора",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
-                    },
-                    {
-                        "fieldSysName": "wallet_transactions",
-                        "fetch": [
-                            {
-                                "fieldSysName": "balance",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "comment",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "date",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "type",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "user_id",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "wallet_transactions",
-                        "name": "",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "appwallet"
                     }
                 ],
-                "writeFields": [
-                    {
-                        "fieldSysName": "email_campaigns",
-                        "fetch": [],
-                        "sysName": "email_campaigns",
-                        "name": "Email campaigns",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "email_campaigns"
-                    },
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "isBlocked",
-                        "fetch": [],
-                        "sysName": "isBlocked",
-                        "name": "",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "paddle_id",
-                        "fetch": [],
-                        "sysName": "paddle_id",
-                        "name": "paddle id",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "tinkoff_rebill_id",
-                        "fetch": [],
-                        "sysName": "tinkoff_rebill_id",
-                        "name": "",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    }
-                ],
+                "writeFields": [],
                 "fields": {
-                    "apps": {
-                        "id": "apps",
-                        "content": "Apps",
+                    "773774616695": {
+                        "id": "773774616695",
+                        "content": "ИНН инвестора",
                         "type": "field",
-                        "dataType": "arrayLink",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": "AppInfo",
+                        "link": "",
                         "actions": []
                     },
-                    "country": {
-                        "id": "country",
-                        "content": "Country",
+                    "INNInvPlat": {
+                        "id": "INNInvPlat",
+                        "content": "ИНН ОИП",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "INNOrg": {
+                        "id": "INNOrg",
+                        "content": "ИНН эмитента",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "amountOfInvestment": {
+                        "id": "amountOfInvestment",
+                        "content": "Объем проинвестированных средств",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "dateOfAgreement": {
+                        "id": "dateOfAgreement",
+                        "content": "Дата заключения договора инвестирования",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "fullNameInvestor": {
+                        "id": "fullNameInvestor",
+                        "content": "ФИО/Наименование инвестора",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "idInvestor": {
+                        "id": "idInvestor",
+                        "content": "Уникальный идентификационный номер инвестора",
                         "type": "field",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": "CountriesISO",
+                        "link": "CreatiumUsers",
                         "actions": []
                     },
-                    "email_campaigns": {
-                        "id": "email_campaigns",
-                        "content": "Email campaigns",
+                    "idProject": {
+                        "id": "idProject",
+                        "content": "Уникальный идентификационный номер инвестиционного предложения",
                         "type": "field",
-                        "dataType": "arrayLink",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
-                        "link": "email_campaigns",
+                        "link": "Project",
                         "actions": []
                     },
-                    "first_name": {
-                        "id": "first_name",
-                        "content": "First name",
+                    "nameInvPlatShort": {
+                        "id": "nameInvPlatShort",
+                        "content": "Сокращенное наименование ОИП",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "gravatar_pic": {
-                        "id": "gravatar_pic",
-                        "content": " ",
-                        "type": "field",
-                        "dataType": "file",
-                        "format": "image",
-                        "formatOptions": {},
-                        "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "id": {
-                        "id": "id",
-                        "content": "id",
-                        "type": "field",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "isBlocked": {
-                        "id": "isBlocked",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "last_name": {
-                        "id": "last_name",
-                        "content": "Last name",
+                    "nameOrg": {
+                        "id": "nameOrg",
+                        "content": "Наименование эмитента",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": null,
+                        "link": "",
                         "actions": []
                     },
-                    "notifications": {
-                        "id": "notifications",
-                        "content": "Notifications",
+                    "nominalStockPrice": {
+                        "id": "nominalStockPrice",
+                        "content": "Номинальная цена акциии",
                         "type": "field",
-                        "dataType": "arrayLink",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": "user_notifications",
+                        "link": "",
                         "actions": []
                     },
-                    "number_of_apps": {
-                        "id": "number_of_apps",
-                        "content": "Number of apps",
+                    "numberOfStocks": {
+                        "id": "numberOfStocks",
+                        "content": "Количество акций (шт)",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "numberPP": {
+                        "id": "numberPP",
+                        "content": "№ п/п",
                         "type": "field",
                         "dataType": "number",
                         "format": "",
@@ -5712,148 +5432,9 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
-                    "paddle_id": {
-                        "id": "paddle_id",
-                        "content": "paddle id",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "paddle_status": {
-                        "id": "paddle_status",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "register_date": {
-                        "id": "register_date",
-                        "content": "Register date",
-                        "type": "field",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD.MM.YYYY",
-                            "timeFormat": "",
-                            "isUTC": "false"
-                        },
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "source": {
-                        "id": "source",
-                        "content": "Source",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "subscription_settings": {
-                        "id": "subscription_settings",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "subscription_settings",
-                        "actions": []
-                    },
-                    "survey_is_aborted": {
-                        "id": "survey_is_aborted",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "",
-                        "actions": []
-                    },
-                    "survey_step_1_raw": {
-                        "id": "survey_step_1_raw",
-                        "content": "Which describes you best",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "survey_step_2_raw": {
-                        "id": "survey_step_2_raw",
-                        "content": "Whom do you want to build apps for",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "survey_step_3_raw": {
-                        "id": "survey_step_3_raw",
-                        "content": "How did you know about Directual",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "tinkoff_rebill_id": {
-                        "id": "tinkoff_rebill_id",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": null,
-                        "actions": []
-                    },
-                    "tinkoff_status": {
-                        "id": "tinkoff_status",
-                        "content": "",
+                    "projectInvestoId": {
+                        "id": "projectInvestoId",
+                        "content": "Номер акцепта",
                         "type": "field",
                         "dataType": "string",
                         "format": "",
@@ -5862,391 +5443,31 @@ const App = (props) => {
                         "link": "",
                         "actions": []
                     },
-                    "unsubscribed": {
-                        "id": "unsubscribed",
-                        "content": "Unsubscribed",
+                    "stockPrice": {
+                        "id": "stockPrice",
+                        "content": "Цена акции",
                         "type": "field",
-                        "dataType": "boolean",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
                         "link": "",
                         "actions": []
                     },
-                    "wallet_balance": {
-                        "id": "wallet_balance",
-                        "content": "",
+                    "typeOfInvestor": {
+                        "id": "typeOfInvestor",
+                        "content": "Тип инвестора",
                         "type": "field",
-                        "dataType": "decimal",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
                         "link": "",
-                        "actions": []
-                    },
-                    "wallet_transactions": {
-                        "id": "wallet_transactions",
-                        "content": "",
-                        "type": "field",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "appwallet",
-                        "actions": [
-                            {
-                                "sysName": "adminChangeApp",
-                                "id": "44781681823938965",
-                                "name": "Remove transaction",
-                                "displayAs": "button",
-                                "buttonIcon": "delete",
-                                "buttonType": "danger",
-                                "showMessage": true,
-                                "closePopup": false,
-                                "resultMessage": "Removed!",
-                                "SLtype": "other",
-                                "callFrom": "linked",
-                                "callFromField": "wallet_transactions",
-                                "fields": {
-                                    "readFields": [
-                                        {
-                                            "fieldSysName": "id",
-                                            "fetch": [],
-                                            "sysName": "id",
-                                            "name": "id",
-                                            "dataType": "id",
-                                            "format": "",
-                                            "formatOptions": {},
-                                            "link": ""
-                                        }
-                                    ],
-                                    "writeFields": [
-                                        {
-                                            "fieldSysName": "Billing_date",
-                                            "fetch": [],
-                                            "sysName": "Billing_date",
-                                            "name": "Billing date",
-                                            "dataType": "date",
-                                            "format": "",
-                                            "formatOptions": {
-                                                "customOptionLabel": "My option",
-                                                "keyValue": {
-                                                    "key": "key",
-                                                    "value": "value",
-                                                    "button": "One more"
-                                                },
-                                                "dateLocale": "en-gb",
-                                                "booleanOptions": [
-                                                    "True",
-                                                    "False"
-                                                ],
-                                                "validWeekDays": {
-                                                    "mon": true,
-                                                    "thu": true,
-                                                    "tue": true,
-                                                    "sun": true,
-                                                    "fri": true,
-                                                    "sat": true,
-                                                    "wed": true
-                                                },
-                                                "customOptionPlaceholder": "Describe your option",
-                                                "range": {},
-                                                "customOptionType": "textarea",
-                                                "dateFormat": "DD/MM/Y",
-                                                "timeFormat": " ",
-                                                "isUTC": "true"
-                                            },
-                                            "link": ""
-                                        },
-                                        {
-                                            "fieldSysName": "Plan",
-                                            "fetch": [],
-                                            "sysName": "Plan",
-                                            "name": "Plan",
-                                            "dataType": "json",
-                                            "format": "radioOptions",
-                                            "formatOptions": {
-                                                "customOptionLabel": "My option",
-                                                "keyValue": {
-                                                    "key": "key",
-                                                    "value": "value",
-                                                    "button": "One more"
-                                                },
-                                                "dateLocale": "en-gb",
-                                                "booleanOptions": [
-                                                    "True",
-                                                    "False"
-                                                ],
-                                                "validWeekDays": {
-                                                    "mon": true,
-                                                    "thu": true,
-                                                    "tue": true,
-                                                    "sun": true,
-                                                    "fri": true,
-                                                    "sat": true,
-                                                    "wed": true
-                                                },
-                                                "customOptionPlaceholder": "Describe your option",
-                                                "range": {},
-                                                "customOptionType": "textarea",
-                                                "dateFormat": "DD/MM/Y",
-                                                "timeFormat": " HH:mm",
-                                                "isUTC": "false",
-                                                "multipleChoice": [
-                                                    {
-                                                        "value": "Startup-monthly",
-                                                        "label": "Startup-monthly"
-                                                    },
-                                                    {
-                                                        "value": "Startup-yearly",
-                                                        "label": "Startup-yearly"
-                                                    },
-                                                    {
-                                                        "value": "Pro-monthly",
-                                                        "label": "Pro-monthly"
-                                                    },
-                                                    {
-                                                        "value": "Pro-yearly",
-                                                        "label": "Pro-yearly"
-                                                    },
-                                                    {
-                                                        "value": "Business-monthly",
-                                                        "label": "Business-monthly"
-                                                    },
-                                                    {
-                                                        "value": "Business-yearly",
-                                                        "label": "Business-yearly"
-                                                    },
-                                                    {
-                                                        "value": "Business-DEV",
-                                                        "label": "Business-DEV"
-                                                    }
-                                                ]
-                                            },
-                                            "link": ""
-                                        },
-                                        {
-                                            "fieldSysName": "action",
-                                            "fetch": [],
-                                            "sysName": "action",
-                                            "name": "",
-                                            "dataType": "string",
-                                            "format": "",
-                                            "formatOptions": {},
-                                            "link": null
-                                        },
-                                        {
-                                            "fieldSysName": "app_id",
-                                            "fetch": [],
-                                            "sysName": "app_id",
-                                            "name": "App ID",
-                                            "dataType": "link",
-                                            "format": "",
-                                            "formatOptions": {},
-                                            "link": "Apps"
-                                        },
-                                        {
-                                            "fieldSysName": "wallet_trans",
-                                            "fetch": [],
-                                            "sysName": "wallet_trans",
-                                            "name": "",
-                                            "dataType": "link",
-                                            "format": "",
-                                            "formatOptions": {},
-                                            "link": "appwallet"
-                                        }
-                                    ]
-                                },
-                                "formMapping": [
-                                    {
-                                        "id": "70801681823997150",
-                                        "target": "action",
-                                        "type": "const",
-                                        "value": "delete_transaction"
-                                    },
-                                    {
-                                        "id": "13491681824091127",
-                                        "type": "linkedField",
-                                        "value": "id",
-                                        "target": "wallet_trans"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    "action__36031644360570298": {
-                        "content": "Add funds",
-                        "id": "action__36031644360570298",
-                        "type": "action",
-                        "actions": []
-                    },
-                    "action__58681693998305855": {
-                        "id": "action__58681693998305855",
-                        "content": "Downgrade apps",
-                        "type": "action",
                         "actions": []
                     }
                 },
                 "fieldParams": {
-                    "app_description": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "apps": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": true,
-                        "configureLinkedCard": {
-                            "fields": {
-                                "sys_name": {
-                                    "id": "sys_name",
-                                    "content": "sys_name",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "string",
-                                    "format": null,
-                                    "formatOptions": null
-                                },
-                                "app_id": {
-                                    "id": "app_id",
-                                    "content": "",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "link",
-                                    "format": null,
-                                    "formatOptions": null
-                                },
-                                "is_blocked": {
-                                    "id": "is_blocked",
-                                    "content": "is_blocked",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "boolean",
-                                    "format": null,
-                                    "formatOptions": null
-                                },
-                                "is_hidden": {
-                                    "id": "is_hidden",
-                                    "content": "is_hidden",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "boolean",
-                                    "format": null,
-                                    "formatOptions": {}
-                                }
-                            },
-                            "fieldParams": {
-                                "sys_name": {
-                                    "include": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "app_id": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "is_blocked": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "is_hidden": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                }
-                            },
-                            "fieldOrder": [
-                                "sys_name",
-                                "app_id",
-                                "is_blocked",
-                                "is_hidden"
-                            ]
-                        },
-                        "subHeader": "App: "
-                    },
-                    "country": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "first_name": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "gravatar_pic": {
-                        "include": true,
-                        "fileImageFormat": "circle",
-                        "quickSearch": false,
-                        "fileImageSize": 120,
-                        "clickable": false,
-                        "fileImage": true
-                    },
-                    "last_name": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "email_hash": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "gravatar": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "register_date": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "id": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false,
-                        "disableEditing": true
-                    },
-                    "number_of_apps": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "source": {
-                        "include": true,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "wallet_balance": {
+                    "773774616695": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -6254,149 +5475,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "wallet_transactions": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": true,
-                        "veiwOption": "table",
-                        "tableView": {
-                            "columns": [
-                                {
-                                    "id": "1648999669082",
-                                    "field": "comment"
-                                },
-                                {
-                                    "id": "1648999672732",
-                                    "field": "date"
-                                },
-                                {
-                                    "id": "1648999674621",
-                                    "field": "type"
-                                },
-                                {
-                                    "id": "1648999677081",
-                                    "field": "balance"
-                                }
-                            ]
-                        },
-                        "sortArrayLink": true,
-                        "sortByField": "date",
-                        "sortDirection": "desc",
-                        "configureLinkedCard": {
-                            "fields": {
-                                "balance": {
-                                    "id": "balance",
-                                    "content": "balance",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "decimal",
-                                    "format": null,
-                                    "formatOptions": null
-                                },
-                                "comment": {
-                                    "id": "comment",
-                                    "content": "comment",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "string",
-                                    "format": null,
-                                    "formatOptions": null
-                                },
-                                "date": {
-                                    "id": "date",
-                                    "content": "date",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "date",
-                                    "format": null,
-                                    "formatOptions": null
-                                },
-                                "id": {
-                                    "id": "id",
-                                    "content": "id",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "id",
-                                    "format": null,
-                                    "formatOptions": {}
-                                },
-                                "type": {
-                                    "id": "type",
-                                    "content": "Transaction type",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "link",
-                                    "format": null,
-                                    "formatOptions": null
-                                },
-                                "user_id": {
-                                    "id": "user_id",
-                                    "content": "",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "link",
-                                    "format": null,
-                                    "formatOptions": null
-                                },
-                                "action__44781681823938965": {
-                                    "id": "action__44781681823938965",
-                                    "content": "Remove transaction",
-                                    "type": "action"
-                                }
-                            },
-                            "fieldParams": {
-                                "balance": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "comment": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "date": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "id": {
-                                    "include": false,
-                                    "disableEditing": true,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "type": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "user_id": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                }
-                            },
-                            "fieldOrder": [
-                                "action__44781681823938965",
-                                "balance",
-                                "comment",
-                                "date",
-                                "type",
-                                "user_id",
-                                "id"
-                            ]
-                        }
-                    },
-                    "survey_is_aborted": {
+                    "INNInvPlat": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -6404,7 +5483,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "survey_step_1_raw": {
+                    "INNOrg": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -6412,7 +5491,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "survey_step_2_raw": {
+                    "amountOfInvestment": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -6420,7 +5499,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "survey_step_3_raw": {
+                    "dateOfAgreement": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -6428,7 +5507,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "paddle_id": {
+                    "fullNameInvestor": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -6436,7 +5515,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "paddle_status": {
+                    "idInvestor": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -6444,7 +5523,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "tinkoff_rebill_id": {
+                    "idProject": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -6452,7 +5531,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "tinkoff_status": {
+                    "nameInvPlatShort": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -6460,7 +5539,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "isBlocked": {
+                    "nameOrg": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -6468,290 +5547,7 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "notifications": {
-                        "include": true,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": true,
-                        "veiwOption": "table",
-                        "tableView": {
-                            "columns": [
-                                {
-                                    "id": "1693244569377",
-                                    "field": "date"
-                                },
-                                {
-                                    "id": "1693244576458",
-                                    "field": "topic"
-                                },
-                                {
-                                    "id": "1693244580551",
-                                    "field": "message_platform"
-                                },
-                                {
-                                    "id": "1693244861888",
-                                    "field": "sent_to_email"
-                                },
-                                {
-                                    "id": "1693245861484",
-                                    "field": "is_marketing"
-                                },
-                                {
-                                    "id": "1693244872127",
-                                    "field": "is_delivered"
-                                },
-                                {
-                                    "id": "1693244586071",
-                                    "field": "is_opened"
-                                },
-                                {
-                                    "id": "1693244878213",
-                                    "field": "is_clicked"
-                                }
-                            ]
-                        },
-                        "sortArrayLink": true,
-                        "sortByField": "date",
-                        "configureLinkedCard": {
-                            "fields": {
-                                "date": {
-                                    "id": "date",
-                                    "content": "Date",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "date",
-                                    "format": null,
-                                    "formatOptions": {
-                                        "customOptionLabel": "My option",
-                                        "keyValue": {
-                                            "key": "key",
-                                            "value": "value",
-                                            "button": "One more"
-                                        },
-                                        "dateLocale": "en-gb",
-                                        "booleanOptions": [
-                                            "True",
-                                            "False"
-                                        ],
-                                        "validWeekDays": {
-                                            "mon": true,
-                                            "thu": true,
-                                            "tue": true,
-                                            "sun": true,
-                                            "fri": true,
-                                            "sat": true,
-                                            "wed": true
-                                        },
-                                        "customOptionPlaceholder": "Describe your option",
-                                        "range": {},
-                                        "customOptionType": "textarea",
-                                        "dateFormat": "DD MMM, Y",
-                                        "timeFormat": " HH:mm",
-                                        "isUTC": "false"
-                                    }
-                                },
-                                "is_bounced": {
-                                    "id": "is_bounced",
-                                    "content": "",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "boolean",
-                                    "format": null,
-                                    "formatOptions": {}
-                                },
-                                "is_clicked": {
-                                    "id": "is_clicked",
-                                    "content": "",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "boolean",
-                                    "format": null,
-                                    "formatOptions": {}
-                                },
-                                "is_complained": {
-                                    "id": "is_complained",
-                                    "content": "",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "boolean",
-                                    "format": null,
-                                    "formatOptions": {}
-                                },
-                                "is_delivered": {
-                                    "id": "is_delivered",
-                                    "content": "",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "boolean",
-                                    "format": null,
-                                    "formatOptions": {}
-                                },
-                                "is_opened": {
-                                    "id": "is_opened",
-                                    "content": "",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "boolean",
-                                    "format": null,
-                                    "formatOptions": {}
-                                },
-                                "is_sent": {
-                                    "id": "is_sent",
-                                    "content": "",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "boolean",
-                                    "format": null,
-                                    "formatOptions": {}
-                                },
-                                "message_email": {
-                                    "id": "message_email",
-                                    "content": "Message for Email",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "string",
-                                    "format": "html",
-                                    "formatOptions": null
-                                },
-                                "message_platform": {
-                                    "id": "message_platform",
-                                    "content": "Message for platform UI",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "string",
-                                    "format": "html",
-                                    "formatOptions": null
-                                },
-                                "sent_to_email": {
-                                    "id": "sent_to_email",
-                                    "content": "Send to email?",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "boolean",
-                                    "format": null,
-                                    "formatOptions": null
-                                },
-                                "topic": {
-                                    "id": "topic",
-                                    "content": "Topic",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "string",
-                                    "format": null,
-                                    "formatOptions": null
-                                },
-                                "is_marketing": {
-                                    "id": "is_marketing",
-                                    "content": "",
-                                    "type": "field",
-                                    "read": true,
-                                    "dataType": "boolean",
-                                    "format": null,
-                                    "formatOptions": null
-                                }
-                            },
-                            "fieldParams": {
-                                "date": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "is_bounced": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "is_clicked": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "is_complained": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "is_delivered": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "is_opened": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "is_sent": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "message_email": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "message_platform": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "sent_to_email": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "topic": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                },
-                                "is_marketing": {
-                                    "include": true,
-                                    "disableEditing": false,
-                                    "fileImageFormat": "square",
-                                    "fileImageSize": 200
-                                }
-                            },
-                            "fieldOrder": [
-                                "date",
-                                "is_bounced",
-                                "is_clicked",
-                                "is_complained",
-                                "is_delivered",
-                                "is_opened",
-                                "is_sent",
-                                "message_email",
-                                "message_platform",
-                                "sent_to_email",
-                                "topic",
-                                "is_marketing"
-                            ]
-                        },
-                        "sortDirection": "desc"
-                    },
-                    "subscription_settings": {
-                        "include": false,
-                        "disableEditing": false,
-                        "fileImageFormat": "square",
-                        "quickSearch": false,
-                        "fileImageSize": 200,
-                        "clickable": false
-                    },
-                    "unsubscribed": {
+                    "nominalStockPrice": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
@@ -6759,11 +5555,43 @@ const App = (props) => {
                         "fileImageSize": 200,
                         "clickable": false
                     },
-                    "email_campaigns": {
+                    "numberOfStocks": {
                         "include": true,
                         "disableEditing": false,
                         "fileImageFormat": "square",
-                        "quickSearch": true,
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "numberPP": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "projectInvestoId": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "stockPrice": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "typeOfInvestor": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
                         "fileImageSize": 200,
                         "clickable": false
                     }
@@ -6771,520 +5599,34 @@ const App = (props) => {
                 "columns": {
                     "tab-1": {
                         "id": "tab-1",
-                        "title": "Basic info",
+                        "title": "New section",
                         "fieldIds": [
-                            "id",
-                            "gravatar_pic",
-                            "first_name",
-                            "last_name",
-                            "register_date",
-                            "isBlocked"
-                        ]
-                    },
-                    "12911620037086726": {
-                        "id": "12911620037086726",
-                        "title": "Apps",
-                        "fieldIds": [
-                            "number_of_apps",
-                            "apps"
-                        ]
-                    },
-                    "25891620037107353": {
-                        "id": "25891620037107353",
-                        "title": "Acquisition",
-                        "fieldIds": [
-                            "country",
-                            "source",
-                            "survey_is_aborted",
-                            "survey_step_1_raw",
-                            "survey_step_2_raw",
-                            "survey_step_3_raw"
-                        ]
-                    },
-                    "12001644360561352": {
-                        "id": "12001644360561352",
-                        "title": "Billing",
-                        "fieldIds": [
-                            "action__58681693998305855",
-                            "paddle_id",
-                            "paddle_status",
-                            "tinkoff_rebill_id",
-                            "tinkoff_status",
-                            "wallet_balance",
-                            "wallet_transactions",
-                            "action__36031644360570298"
-                        ]
-                    },
-                    "35491693234132859": {
-                        "id": "35491693234132859",
-                        "title": "Notifications",
-                        "fieldIds": [
-                            "unsubscribed",
-                            "email_campaigns",
-                            "notifications",
-                            "subscription_settings"
+                            "numberPP",
+                            "nameInvPlatShort",
+                            "INNInvPlat",
+                            "nameOrg",
+                            "INNOrg",
+                            "fullNameInvestor",
+                            "773774616695",
+                            "idInvestor",
+                            "typeOfInvestor",
+                            "idProject",
+                            "amountOfInvestment",
+                            "stockPrice",
+                            "nominalStockPrice",
+                            "numberOfStocks",
+                            "projectInvestoId",
+                            "dateOfAgreement"
                         ]
                     }
                 },
                 "columnOrder": [
-                    "tab-1",
-                    "35491693234132859",
-                    "12001644360561352",
-                    "12911620037086726",
-                    "25891620037107353"
+                    "tab-1"
                 ],
-                "actions": [
-                    {
-                        "sysName": "adminAddFunds",
-                        "id": "36031644360570298",
-                        "name": "Add funds",
-                        "displayAs": "form",
-                        "buttonIcon": "money",
-                        "buttonType": "accent",
-                        "showMessage": true,
-                        "closePopup": false,
-                        "resultMessage": "Funds have been added",
-                        "resultButton": "Submit more",
-                        "SLtype": "other",
-                        "fields": {
-                            "readFields": [
-                                {
-                                    "fieldSysName": "id",
-                                    "fetch": [],
-                                    "sysName": "id",
-                                    "name": "id",
-                                    "dataType": "id",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": ""
-                                }
-                            ],
-                            "writeFields": [
-                                {
-                                    "fieldSysName": "balance",
-                                    "fetch": [],
-                                    "sysName": "balance",
-                                    "name": "balance",
-                                    "dataType": "decimal",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": ""
-                                },
-                                {
-                                    "fieldSysName": "comment",
-                                    "fetch": [],
-                                    "sysName": "comment",
-                                    "name": "comment",
-                                    "dataType": "string",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": null
-                                },
-                                {
-                                    "fieldSysName": "type",
-                                    "fetch": [],
-                                    "sysName": "type",
-                                    "name": "Transaction type",
-                                    "dataType": "string",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": null
-                                },
-                                {
-                                    "fieldSysName": "user_id",
-                                    "fetch": [],
-                                    "sysName": "user_id",
-                                    "name": "",
-                                    "dataType": "link",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": "Cloud_users"
-                                }
-                            ]
-                        },
-                        "formFields": [
-                            {
-                                "id": "14641644360732971",
-                                "field": {
-                                    "fieldSysName": "balance",
-                                    "fetch": [],
-                                    "sysName": "balance",
-                                    "name": "balance",
-                                    "dataType": "decimal",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": ""
-                                }
-                            },
-                            {
-                                "id": "28201644361223817",
-                                "field": {
-                                    "fieldSysName": "comment",
-                                    "fetch": [],
-                                    "sysName": "comment",
-                                    "name": "comment",
-                                    "dataType": "string",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": null
-                                }
-                            }
-                        ],
-                        "formMapping": [
-                            {
-                                "id": "32471644360747373",
-                                "target": "type",
-                                "type": "const",
-                                "value": "manual"
-                            },
-                            {
-                                "id": "15621644360911193",
-                                "target": "user_id",
-                                "type": "objectField",
-                                "value": "id"
-                            }
-                        ]
-                    },
-                    {
-                        "sysName": "adminChangeApp",
-                        "id": "44781681823938965",
-                        "name": "Remove transaction",
-                        "displayAs": "button",
-                        "buttonIcon": "delete",
-                        "buttonType": "danger",
-                        "showMessage": true,
-                        "closePopup": false,
-                        "resultMessage": "Removed!",
-                        "SLtype": "other",
-                        "callFrom": "linked",
-                        "callFromField": "wallet_transactions",
-                        "fields": {
-                            "readFields": [
-                                {
-                                    "fieldSysName": "id",
-                                    "fetch": [],
-                                    "sysName": "id",
-                                    "name": "id",
-                                    "dataType": "id",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": ""
-                                }
-                            ],
-                            "writeFields": [
-                                {
-                                    "fieldSysName": "Billing_date",
-                                    "fetch": [],
-                                    "sysName": "Billing_date",
-                                    "name": "Billing date",
-                                    "dataType": "date",
-                                    "format": "",
-                                    "formatOptions": {
-                                        "customOptionLabel": "My option",
-                                        "keyValue": {
-                                            "key": "key",
-                                            "value": "value",
-                                            "button": "One more"
-                                        },
-                                        "dateLocale": "en-gb",
-                                        "booleanOptions": [
-                                            "True",
-                                            "False"
-                                        ],
-                                        "validWeekDays": {
-                                            "mon": true,
-                                            "thu": true,
-                                            "tue": true,
-                                            "sun": true,
-                                            "fri": true,
-                                            "sat": true,
-                                            "wed": true
-                                        },
-                                        "customOptionPlaceholder": "Describe your option",
-                                        "range": {},
-                                        "customOptionType": "textarea",
-                                        "dateFormat": "DD/MM/Y",
-                                        "timeFormat": " ",
-                                        "isUTC": "true"
-                                    },
-                                    "link": ""
-                                },
-                                {
-                                    "fieldSysName": "Plan",
-                                    "fetch": [],
-                                    "sysName": "Plan",
-                                    "name": "Plan",
-                                    "dataType": "json",
-                                    "format": "radioOptions",
-                                    "formatOptions": {
-                                        "customOptionLabel": "My option",
-                                        "keyValue": {
-                                            "key": "key",
-                                            "value": "value",
-                                            "button": "One more"
-                                        },
-                                        "dateLocale": "en-gb",
-                                        "booleanOptions": [
-                                            "True",
-                                            "False"
-                                        ],
-                                        "validWeekDays": {
-                                            "mon": true,
-                                            "thu": true,
-                                            "tue": true,
-                                            "sun": true,
-                                            "fri": true,
-                                            "sat": true,
-                                            "wed": true
-                                        },
-                                        "customOptionPlaceholder": "Describe your option",
-                                        "range": {},
-                                        "customOptionType": "textarea",
-                                        "dateFormat": "DD/MM/Y",
-                                        "timeFormat": " HH:mm",
-                                        "isUTC": "false",
-                                        "multipleChoice": [
-                                            {
-                                                "value": "Startup-monthly",
-                                                "label": "Startup-monthly"
-                                            },
-                                            {
-                                                "value": "Startup-yearly",
-                                                "label": "Startup-yearly"
-                                            },
-                                            {
-                                                "value": "Pro-monthly",
-                                                "label": "Pro-monthly"
-                                            },
-                                            {
-                                                "value": "Pro-yearly",
-                                                "label": "Pro-yearly"
-                                            },
-                                            {
-                                                "value": "Business-monthly",
-                                                "label": "Business-monthly"
-                                            },
-                                            {
-                                                "value": "Business-yearly",
-                                                "label": "Business-yearly"
-                                            },
-                                            {
-                                                "value": "Business-DEV",
-                                                "label": "Business-DEV"
-                                            }
-                                        ]
-                                    },
-                                    "link": ""
-                                },
-                                {
-                                    "fieldSysName": "action",
-                                    "fetch": [],
-                                    "sysName": "action",
-                                    "name": "",
-                                    "dataType": "string",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": null
-                                },
-                                {
-                                    "fieldSysName": "app_id",
-                                    "fetch": [],
-                                    "sysName": "app_id",
-                                    "name": "App ID",
-                                    "dataType": "link",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": "Apps"
-                                },
-                                {
-                                    "fieldSysName": "wallet_trans",
-                                    "fetch": [],
-                                    "sysName": "wallet_trans",
-                                    "name": "",
-                                    "dataType": "link",
-                                    "format": "",
-                                    "formatOptions": {},
-                                    "link": "appwallet"
-                                }
-                            ]
-                        },
-                        "formMapping": [
-                            {
-                                "id": "70801681823997150",
-                                "target": "action",
-                                "type": "const",
-                                "value": "delete_transaction"
-                            },
-                            {
-                                "id": "13491681824091127",
-                                "type": "linkedField",
-                                "value": "id",
-                                "target": "wallet_trans"
-                            }
-                        ]
-                    }
-                ]
+                "actions": []
             },
             "fields": {
-                "app_description": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "apps": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": true,
-                    "configureLinkedCard": {
-                        "fields": {
-                            "sys_name": {
-                                "id": "sys_name",
-                                "content": "sys_name",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "string",
-                                "format": null,
-                                "formatOptions": null
-                            },
-                            "app_id": {
-                                "id": "app_id",
-                                "content": "",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "link",
-                                "format": null,
-                                "formatOptions": null
-                            },
-                            "is_blocked": {
-                                "id": "is_blocked",
-                                "content": "is_blocked",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "boolean",
-                                "format": null,
-                                "formatOptions": null
-                            },
-                            "is_hidden": {
-                                "id": "is_hidden",
-                                "content": "is_hidden",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "boolean",
-                                "format": null,
-                                "formatOptions": {}
-                            }
-                        },
-                        "fieldParams": {
-                            "sys_name": {
-                                "include": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "app_id": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "is_blocked": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "is_hidden": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            }
-                        },
-                        "fieldOrder": [
-                            "sys_name",
-                            "app_id",
-                            "is_blocked",
-                            "is_hidden"
-                        ]
-                    },
-                    "subHeader": "App: "
-                },
-                "country": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "first_name": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "gravatar_pic": {
-                    "include": true,
-                    "fileImageFormat": "circle",
-                    "quickSearch": false,
-                    "fileImageSize": 120,
-                    "clickable": false,
-                    "fileImage": true
-                },
-                "last_name": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "email_hash": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "gravatar": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "register_date": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "id": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "disableEditing": true
-                },
-                "number_of_apps": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "source": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "wallet_balance": {
+                "773774616695": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -7292,149 +5634,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "wallet_transactions": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": true,
-                    "veiwOption": "table",
-                    "tableView": {
-                        "columns": [
-                            {
-                                "id": "1648999669082",
-                                "field": "comment"
-                            },
-                            {
-                                "id": "1648999672732",
-                                "field": "date"
-                            },
-                            {
-                                "id": "1648999674621",
-                                "field": "type"
-                            },
-                            {
-                                "id": "1648999677081",
-                                "field": "balance"
-                            }
-                        ]
-                    },
-                    "sortArrayLink": true,
-                    "sortByField": "date",
-                    "sortDirection": "desc",
-                    "configureLinkedCard": {
-                        "fields": {
-                            "balance": {
-                                "id": "balance",
-                                "content": "balance",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "decimal",
-                                "format": null,
-                                "formatOptions": null
-                            },
-                            "comment": {
-                                "id": "comment",
-                                "content": "comment",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "string",
-                                "format": null,
-                                "formatOptions": null
-                            },
-                            "date": {
-                                "id": "date",
-                                "content": "date",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "date",
-                                "format": null,
-                                "formatOptions": null
-                            },
-                            "id": {
-                                "id": "id",
-                                "content": "id",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "id",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "type": {
-                                "id": "type",
-                                "content": "Transaction type",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "link",
-                                "format": null,
-                                "formatOptions": null
-                            },
-                            "user_id": {
-                                "id": "user_id",
-                                "content": "",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "link",
-                                "format": null,
-                                "formatOptions": null
-                            },
-                            "action__44781681823938965": {
-                                "id": "action__44781681823938965",
-                                "content": "Remove transaction",
-                                "type": "action"
-                            }
-                        },
-                        "fieldParams": {
-                            "balance": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "comment": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "date": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "id": {
-                                "include": false,
-                                "disableEditing": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "type": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "user_id": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            }
-                        },
-                        "fieldOrder": [
-                            "action__44781681823938965",
-                            "balance",
-                            "comment",
-                            "date",
-                            "type",
-                            "user_id",
-                            "id"
-                        ]
-                    }
-                },
-                "survey_is_aborted": {
+                "INNInvPlat": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -7442,7 +5642,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "survey_step_1_raw": {
+                "INNOrg": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -7450,7 +5650,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "survey_step_2_raw": {
+                "amountOfInvestment": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -7458,7 +5658,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "survey_step_3_raw": {
+                "dateOfAgreement": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -7466,7 +5666,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "paddle_id": {
+                "fullNameInvestor": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -7474,7 +5674,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "paddle_status": {
+                "idInvestor": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -7482,7 +5682,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "tinkoff_rebill_id": {
+                "idProject": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -7490,7 +5690,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "tinkoff_status": {
+                "nameInvPlatShort": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -7498,7 +5698,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "isBlocked": {
+                "nameOrg": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -7506,290 +5706,7 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "notifications": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": true,
-                    "veiwOption": "table",
-                    "tableView": {
-                        "columns": [
-                            {
-                                "id": "1693244569377",
-                                "field": "date"
-                            },
-                            {
-                                "id": "1693244576458",
-                                "field": "topic"
-                            },
-                            {
-                                "id": "1693244580551",
-                                "field": "message_platform"
-                            },
-                            {
-                                "id": "1693244861888",
-                                "field": "sent_to_email"
-                            },
-                            {
-                                "id": "1693245861484",
-                                "field": "is_marketing"
-                            },
-                            {
-                                "id": "1693244872127",
-                                "field": "is_delivered"
-                            },
-                            {
-                                "id": "1693244586071",
-                                "field": "is_opened"
-                            },
-                            {
-                                "id": "1693244878213",
-                                "field": "is_clicked"
-                            }
-                        ]
-                    },
-                    "sortArrayLink": true,
-                    "sortByField": "date",
-                    "configureLinkedCard": {
-                        "fields": {
-                            "date": {
-                                "id": "date",
-                                "content": "Date",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "date",
-                                "format": null,
-                                "formatOptions": {
-                                    "customOptionLabel": "My option",
-                                    "keyValue": {
-                                        "key": "key",
-                                        "value": "value",
-                                        "button": "One more"
-                                    },
-                                    "dateLocale": "en-gb",
-                                    "booleanOptions": [
-                                        "True",
-                                        "False"
-                                    ],
-                                    "validWeekDays": {
-                                        "mon": true,
-                                        "thu": true,
-                                        "tue": true,
-                                        "sun": true,
-                                        "fri": true,
-                                        "sat": true,
-                                        "wed": true
-                                    },
-                                    "customOptionPlaceholder": "Describe your option",
-                                    "range": {},
-                                    "customOptionType": "textarea",
-                                    "dateFormat": "DD MMM, Y",
-                                    "timeFormat": " HH:mm",
-                                    "isUTC": "false"
-                                }
-                            },
-                            "is_bounced": {
-                                "id": "is_bounced",
-                                "content": "",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "boolean",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "is_clicked": {
-                                "id": "is_clicked",
-                                "content": "",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "boolean",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "is_complained": {
-                                "id": "is_complained",
-                                "content": "",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "boolean",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "is_delivered": {
-                                "id": "is_delivered",
-                                "content": "",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "boolean",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "is_opened": {
-                                "id": "is_opened",
-                                "content": "",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "boolean",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "is_sent": {
-                                "id": "is_sent",
-                                "content": "",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "boolean",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "message_email": {
-                                "id": "message_email",
-                                "content": "Message for Email",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "string",
-                                "format": "html",
-                                "formatOptions": null
-                            },
-                            "message_platform": {
-                                "id": "message_platform",
-                                "content": "Message for platform UI",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "string",
-                                "format": "html",
-                                "formatOptions": null
-                            },
-                            "sent_to_email": {
-                                "id": "sent_to_email",
-                                "content": "Send to email?",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "boolean",
-                                "format": null,
-                                "formatOptions": null
-                            },
-                            "topic": {
-                                "id": "topic",
-                                "content": "Topic",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "string",
-                                "format": null,
-                                "formatOptions": null
-                            },
-                            "is_marketing": {
-                                "id": "is_marketing",
-                                "content": "",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "boolean",
-                                "format": null,
-                                "formatOptions": null
-                            }
-                        },
-                        "fieldParams": {
-                            "date": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "is_bounced": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "is_clicked": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "is_complained": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "is_delivered": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "is_opened": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "is_sent": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "message_email": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "message_platform": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "sent_to_email": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "topic": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "is_marketing": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            }
-                        },
-                        "fieldOrder": [
-                            "date",
-                            "is_bounced",
-                            "is_clicked",
-                            "is_complained",
-                            "is_delivered",
-                            "is_opened",
-                            "is_sent",
-                            "message_email",
-                            "message_platform",
-                            "sent_to_email",
-                            "topic",
-                            "is_marketing"
-                        ]
-                    },
-                    "sortDirection": "desc"
-                },
-                "subscription_settings": {
-                    "include": false,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "unsubscribed": {
+                "nominalStockPrice": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -7797,798 +5714,359 @@ const App = (props) => {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "email_campaigns": {
+                "numberOfStocks": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
-                    "quickSearch": true,
+                    "quickSearch": false,
                     "fileImageSize": 200,
-                    "clickable": false,
-                    "searchData": [
-                        {
-                            "key": "ad304c98-6829-4896-9a24-6f90a9f6a25f",
-                            "value": "Onboarding"
-                        },
-                        {
-                            "key": "fc382562-34cb-4b8e-86c9-d9662ec8b7f3",
-                            "value": "Building no-code apps with AI! Join Free Live Webinar"
-                        },
-                        {
-                            "key": "15355ba2-0175-4b84-a9f7-57fed4161095",
-                            "value": "LTD upgrades"
-                        },
-                        {
-                            "key": "4f0cd79c-2523-440b-87d4-628133b6ed88",
-                            "value": "LTD november last call"
-                        }
-                    ]
+                    "clickable": false
+                },
+                "numberPP": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "projectInvestoId": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "stockPrice": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "typeOfInvestor": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
                 }
             },
             "tableParams": {
                 "readFields": [
                     {
-                        "fieldSysName": "apps",
-                        "fetch": [
-                            {
-                                "fieldSysName": "app_id",
-                                "condition": null,
-                                "fetch": [
-                                    {
-                                        "fieldSysName": "isDowngraded",
-                                        "condition": null,
-                                        "fetch": []
-                                    },
-                                    {
-                                        "fieldSysName": "plan_id",
-                                        "condition": null,
-                                        "fetch": []
-                                    },
-                                    {
-                                        "fieldSysName": "sysName",
-                                        "condition": null,
-                                        "fetch": []
-                                    }
-                                ]
-                            },
-                            {
-                                "fieldSysName": "is_blocked",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "is_hidden",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "sys_name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "apps",
-                        "name": "Apps",
-                        "dataType": "arrayLink",
+                        "fieldSysName": "773774616695",
+                        "fetch": [],
+                        "sysName": "773774616695",
+                        "name": "ИНН инвестора",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": "AppInfo"
+                        "link": ""
                     },
                     {
-                        "fieldSysName": "country",
-                        "fetch": [
-                            {
-                                "fieldSysName": "Name",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "country",
-                        "name": "Country",
+                        "fieldSysName": "INNInvPlat",
+                        "fetch": [],
+                        "sysName": "INNInvPlat",
+                        "name": "ИНН ОИП",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "INNOrg",
+                        "fetch": [],
+                        "sysName": "INNOrg",
+                        "name": "ИНН эмитента",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "amountOfInvestment",
+                        "fetch": [],
+                        "sysName": "amountOfInvestment",
+                        "name": "Объем проинвестированных средств",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "dateOfAgreement",
+                        "fetch": [],
+                        "sysName": "dateOfAgreement",
+                        "name": "Дата заключения договора инвестирования",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "fullNameInvestor",
+                        "fetch": [],
+                        "sysName": "fullNameInvestor",
+                        "name": "ФИО/Наименование инвестора",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "idInvestor",
+                        "fetch": [],
+                        "sysName": "idInvestor",
+                        "name": "Уникальный идентификационный номер инвестора",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "CountriesISO"
+                        "link": "CreatiumUsers"
                     },
                     {
-                        "fieldSysName": "email_campaigns",
-                        "fetch": [
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "title",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "email_campaigns",
-                        "name": "Email campaigns",
-                        "dataType": "arrayLink",
+                        "fieldSysName": "idProject",
+                        "fetch": [],
+                        "sysName": "idProject",
+                        "name": "Уникальный идентификационный номер инвестиционного предложения",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "link": "email_campaigns"
+                        "link": "Project"
                     },
                     {
-                        "fieldSysName": "first_name",
+                        "fieldSysName": "nameInvPlatShort",
                         "fetch": [],
-                        "sysName": "first_name",
-                        "name": "First name",
+                        "sysName": "nameInvPlatShort",
+                        "name": "Сокращенное наименование ОИП",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "gravatar_pic",
-                        "fetch": [],
-                        "sysName": "gravatar_pic",
-                        "name": " ",
-                        "dataType": "file",
-                        "format": "image",
-                        "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "id",
+                        "fieldSysName": "nameOrg",
                         "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "isBlocked",
-                        "fetch": [],
-                        "sysName": "isBlocked",
-                        "name": "",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "last_name",
-                        "fetch": [],
-                        "sysName": "last_name",
-                        "name": "Last name",
+                        "sysName": "nameOrg",
+                        "name": "Наименование эмитента",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": null
+                        "link": ""
                     },
                     {
-                        "fieldSysName": "notifications",
-                        "fetch": [
-                            {
-                                "fieldSysName": "date",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "is_bounced",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "is_clicked",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "is_complained",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "is_delivered",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "is_marketing",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "is_opened",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "is_sent",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "message_email",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "message_platform",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "sent_to_email",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "topic",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "notifications",
-                        "name": "Notifications",
-                        "dataType": "arrayLink",
+                        "fieldSysName": "nominalStockPrice",
+                        "fetch": [],
+                        "sysName": "nominalStockPrice",
+                        "name": "Номинальная цена акциии",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
-                        "link": "user_notifications"
+                        "link": ""
                     },
                     {
-                        "fieldSysName": "number_of_apps",
+                        "fieldSysName": "numberOfStocks",
                         "fetch": [],
-                        "sysName": "number_of_apps",
-                        "name": "Number of apps",
+                        "sysName": "numberOfStocks",
+                        "name": "Количество акций (шт)",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "numberPP",
+                        "fetch": [],
+                        "sysName": "numberPP",
+                        "name": "№ п/п",
                         "dataType": "number",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "paddle_id",
+                        "fieldSysName": "projectInvestoId",
                         "fetch": [],
-                        "sysName": "paddle_id",
-                        "name": "paddle id",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "paddle_status",
-                        "fetch": [],
-                        "sysName": "paddle_status",
-                        "name": "",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "register_date",
-                        "fetch": [],
-                        "sysName": "register_date",
-                        "name": "Register date",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD.MM.YYYY",
-                            "timeFormat": "",
-                            "isUTC": "false"
-                        },
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "source",
-                        "fetch": [],
-                        "sysName": "source",
-                        "name": "Source",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "subscription_settings",
-                        "fetch": [
-                            {
-                                "fieldSysName": "Unsubscribed",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "subscription_settings",
-                        "name": "",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "subscription_settings"
-                    },
-                    {
-                        "fieldSysName": "survey_is_aborted",
-                        "fetch": [],
-                        "sysName": "survey_is_aborted",
-                        "name": "",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "survey_step_1_raw",
-                        "fetch": [],
-                        "sysName": "survey_step_1_raw",
-                        "name": "Which describes you best",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "survey_step_2_raw",
-                        "fetch": [],
-                        "sysName": "survey_step_2_raw",
-                        "name": "Whom do you want to build apps for",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "survey_step_3_raw",
-                        "fetch": [],
-                        "sysName": "survey_step_3_raw",
-                        "name": "How did you know about Directual",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "tinkoff_rebill_id",
-                        "fetch": [],
-                        "sysName": "tinkoff_rebill_id",
-                        "name": "",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "tinkoff_status",
-                        "fetch": [],
-                        "sysName": "tinkoff_status",
-                        "name": "",
+                        "sysName": "projectInvestoId",
+                        "name": "Номер акцепта",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "unsubscribed",
+                        "fieldSysName": "stockPrice",
                         "fetch": [],
-                        "sysName": "unsubscribed",
-                        "name": "Unsubscribed",
-                        "dataType": "boolean",
+                        "sysName": "stockPrice",
+                        "name": "Цена акции",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
                     },
                     {
-                        "fieldSysName": "wallet_balance",
+                        "fieldSysName": "typeOfInvestor",
                         "fetch": [],
-                        "sysName": "wallet_balance",
-                        "name": "",
-                        "dataType": "decimal",
+                        "sysName": "typeOfInvestor",
+                        "name": "Тип инвестора",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "link": ""
-                    },
-                    {
-                        "fieldSysName": "wallet_transactions",
-                        "fetch": [
-                            {
-                                "fieldSysName": "balance",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "comment",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "date",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "id",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "type",
-                                "condition": null,
-                                "fetch": []
-                            },
-                            {
-                                "fieldSysName": "user_id",
-                                "condition": null,
-                                "fetch": []
-                            }
-                        ],
-                        "sysName": "wallet_transactions",
-                        "name": "",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "appwallet"
                     }
                 ],
-                "writeFields": [
-                    {
-                        "fieldSysName": "email_campaigns",
-                        "fetch": [],
-                        "sysName": "email_campaigns",
-                        "name": "Email campaigns",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": "email_campaigns"
-                    },
-                    {
-                        "fieldSysName": "id",
-                        "fetch": [],
-                        "sysName": "id",
-                        "name": "id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "isBlocked",
-                        "fetch": [],
-                        "sysName": "isBlocked",
-                        "name": "",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": ""
-                    },
-                    {
-                        "fieldSysName": "paddle_id",
-                        "fetch": [],
-                        "sysName": "paddle_id",
-                        "name": "paddle id",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    },
-                    {
-                        "fieldSysName": "tinkoff_rebill_id",
-                        "fetch": [],
-                        "sysName": "tinkoff_rebill_id",
-                        "name": "",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "link": null
-                    }
-                ],
+                "writeFields": [],
                 "fields": {
-                    "apps": {
-                        "id": "apps",
-                        "content": "Apps",
-                        "dataType": "arrayLink",
+                    "773774616695": {
+                        "id": "773774616695",
+                        "content": "ИНН инвестора",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": "AppInfo"
+                        "link": ""
                     },
-                    "country": {
-                        "id": "country",
-                        "content": "Country",
+                    "INNInvPlat": {
+                        "id": "INNInvPlat",
+                        "content": "ИНН ОИП",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "INNOrg": {
+                        "id": "INNOrg",
+                        "content": "ИНН эмитента",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "amountOfInvestment": {
+                        "id": "amountOfInvestment",
+                        "content": "Объем проинвестированных средств",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "dateOfAgreement": {
+                        "id": "dateOfAgreement",
+                        "content": "Дата заключения договора инвестирования",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "fullNameInvestor": {
+                        "id": "fullNameInvestor",
+                        "content": "ФИО/Наименование инвестора",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "idInvestor": {
+                        "id": "idInvestor",
+                        "content": "Уникальный идентификационный номер инвестора",
                         "dataType": "link",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": "CountriesISO"
+                        "link": "CreatiumUsers"
                     },
-                    "email_campaigns": {
-                        "id": "email_campaigns",
-                        "content": "Email campaigns",
-                        "dataType": "arrayLink",
+                    "idProject": {
+                        "id": "idProject",
+                        "content": "Уникальный идентификационный номер инвестиционного предложения",
+                        "dataType": "link",
                         "format": "",
                         "formatOptions": {},
-                        "write": true,
                         "read": true,
-                        "link": "email_campaigns"
+                        "link": "Project"
                     },
-                    "first_name": {
-                        "id": "first_name",
-                        "content": "First name",
+                    "nameInvPlatShort": {
+                        "id": "nameInvPlatShort",
+                        "content": "Сокращенное наименование ОИП",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": null
-                    },
-                    "gravatar_pic": {
-                        "id": "gravatar_pic",
-                        "content": " ",
-                        "dataType": "file",
-                        "format": "image",
-                        "formatOptions": {},
-                        "read": true,
                         "link": ""
                     },
-                    "id": {
-                        "id": "id",
-                        "content": "id",
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "isBlocked": {
-                        "id": "isBlocked",
-                        "content": "",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": ""
-                    },
-                    "last_name": {
-                        "id": "last_name",
-                        "content": "Last name",
+                    "nameOrg": {
+                        "id": "nameOrg",
+                        "content": "Наименование эмитента",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": null
+                        "link": ""
                     },
-                    "notifications": {
-                        "id": "notifications",
-                        "content": "Notifications",
-                        "dataType": "arrayLink",
+                    "nominalStockPrice": {
+                        "id": "nominalStockPrice",
+                        "content": "Номинальная цена акциии",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
-                        "link": "user_notifications"
+                        "link": ""
                     },
-                    "number_of_apps": {
-                        "id": "number_of_apps",
-                        "content": "Number of apps",
+                    "numberOfStocks": {
+                        "id": "numberOfStocks",
+                        "content": "Количество акций (шт)",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "numberPP": {
+                        "id": "numberPP",
+                        "content": "№ п/п",
                         "dataType": "number",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
                         "link": ""
                     },
-                    "paddle_id": {
-                        "id": "paddle_id",
-                        "content": "paddle id",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": null
-                    },
-                    "paddle_status": {
-                        "id": "paddle_status",
-                        "content": "",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null
-                    },
-                    "register_date": {
-                        "id": "register_date",
-                        "content": "Register date",
-                        "dataType": "date",
-                        "format": "",
-                        "formatOptions": {
-                            "customOptionLabel": "My option",
-                            "keyValue": {
-                                "key": "key",
-                                "value": "value",
-                                "button": "One more"
-                            },
-                            "dateLocale": "en-gb",
-                            "booleanOptions": [
-                                "True",
-                                "False"
-                            ],
-                            "validWeekDays": {
-                                "mon": true,
-                                "thu": true,
-                                "tue": true,
-                                "sun": true,
-                                "fri": true,
-                                "sat": true,
-                                "wed": true
-                            },
-                            "customOptionPlaceholder": "Describe your option",
-                            "range": {},
-                            "customOptionType": "textarea",
-                            "dateFormat": "DD.MM.YYYY",
-                            "timeFormat": "",
-                            "isUTC": "false"
-                        },
-                        "read": true,
-                        "link": ""
-                    },
-                    "source": {
-                        "id": "source",
-                        "content": "Source",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null
-                    },
-                    "subscription_settings": {
-                        "id": "subscription_settings",
-                        "content": "",
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "subscription_settings"
-                    },
-                    "survey_is_aborted": {
-                        "id": "survey_is_aborted",
-                        "content": "",
-                        "dataType": "boolean",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": ""
-                    },
-                    "survey_step_1_raw": {
-                        "id": "survey_step_1_raw",
-                        "content": "Which describes you best",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null
-                    },
-                    "survey_step_2_raw": {
-                        "id": "survey_step_2_raw",
-                        "content": "Whom do you want to build apps for",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null
-                    },
-                    "survey_step_3_raw": {
-                        "id": "survey_step_3_raw",
-                        "content": "How did you know about Directual",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": null
-                    },
-                    "tinkoff_rebill_id": {
-                        "id": "tinkoff_rebill_id",
-                        "content": "",
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "write": true,
-                        "read": true,
-                        "link": null
-                    },
-                    "tinkoff_status": {
-                        "id": "tinkoff_status",
-                        "content": "",
+                    "projectInvestoId": {
+                        "id": "projectInvestoId",
+                        "content": "Номер акцепта",
                         "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
                         "link": ""
                     },
-                    "unsubscribed": {
-                        "id": "unsubscribed",
-                        "content": "Unsubscribed",
-                        "dataType": "boolean",
+                    "stockPrice": {
+                        "id": "stockPrice",
+                        "content": "Цена акции",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
                         "link": ""
                     },
-                    "wallet_balance": {
-                        "id": "wallet_balance",
-                        "content": "",
-                        "dataType": "decimal",
+                    "typeOfInvestor": {
+                        "id": "typeOfInvestor",
+                        "content": "Тип инвестора",
+                        "dataType": "string",
                         "format": "",
                         "formatOptions": {},
                         "read": true,
                         "link": ""
-                    },
-                    "wallet_transactions": {
-                        "id": "wallet_transactions",
-                        "content": "",
-                        "dataType": "arrayLink",
-                        "format": "",
-                        "formatOptions": {},
-                        "read": true,
-                        "link": "appwallet"
                     }
                 },
                 "fieldParams": {
-                    "app_description": {
-                        "include": false
-                    },
-                    "apps": {
-                        "include": true
-                    },
-                    "country": {
-                        "include": true
-                    },
-                    "email_hash": {
-                        "include": true
-                    },
-                    "first_name": {
-                        "include": true
-                    },
-                    "gravatar": {
-                        "include": true
-                    },
-                    "gravatar_pic": {
-                        "include": true,
-                        "fileImage": true,
-                        "fileImageFormat": "circle",
-                        "fileImageSize": 40
-                    },
-                    "last_name": {
-                        "include": true
-                    },
-                    "register_date": {
-                        "include": true
-                    },
-                    "id": {
-                        "include": true
-                    },
-                    "number_of_apps": {
-                        "include": true
-                    },
-                    "source": {
-                        "include": false
-                    },
-                    "wallet_balance": {
+                    "773774616695": {
                         "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -8596,79 +6074,7 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "wallet_transactions": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "survey_is_aborted": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "survey_step_1_raw": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "survey_step_2_raw": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "survey_step_3_raw": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "paddle_id": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "paddle_status": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "tinkoff_rebill_id": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "tinkoff_status": {
-                        "include": false,
-                        "fileImageFormat": "square",
-                        "fileImageSize": 80,
-                        "colorCode": false,
-                        "colorFormat": "square",
-                        "colorSize": 40
-                    },
-                    "isBlocked": {
+                    "INNInvPlat": {
                         "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
@@ -8676,32 +6082,112 @@ const App = (props) => {
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "notifications": {
-                        "include": false,
+                    "INNOrg": {
+                        "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
                         "colorCode": false,
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "subscription_settings": {
-                        "include": false,
+                    "amountOfInvestment": {
+                        "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
                         "colorCode": false,
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "unsubscribed": {
-                        "include": false,
+                    "dateOfAgreement": {
+                        "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
                         "colorCode": false,
                         "colorFormat": "square",
                         "colorSize": 40
                     },
-                    "email_campaigns": {
-                        "include": false,
+                    "fullNameInvestor": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "idInvestor": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "idProject": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "nameInvPlatShort": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "nameOrg": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "nominalStockPrice": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "numberOfStocks": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "numberPP": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "projectInvestoId": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "stockPrice": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "typeOfInvestor": {
+                        "include": true,
                         "fileImageFormat": "square",
                         "fileImageSize": 80,
                         "colorCode": false,
@@ -8710,7088 +6196,47 @@ const App = (props) => {
                     }
                 },
                 "fieldOrder": [
-                    "gravatar_pic",
-                    
+                    "numberPP",
+                    "nameInvPlatShort",
+                    "INNInvPlat",
+                    "nameOrg",
+                    "INNOrg",
+                    "fullNameInvestor",
+                    "773774616695",
+                    "idInvestor",
+                    "typeOfInvestor",
+                    "idProject",
+                    "amountOfInvestment",
+                    "stockPrice",
+                    "nominalStockPrice",
+                    "numberOfStocks",
+                    "projectInvestoId",
+                    "dateOfAgreement"
                 ]
-            },
-            "actions": [
-                {
-                    "sysName": "adminAddFunds",
-                    "id": "36031644360570298",
-                    "name": "Add funds",
-                    "displayAs": "form",
-                    "buttonIcon": "money",
-                    "buttonType": "accent",
-                    "showMessage": true,
-                    "closePopup": false,
-                    "resultMessage": "Funds have been added",
-                    "resultButton": "Submit more",
-                    "SLtype": "other",
-                    "fields": {
-                        "readFields": [
-                            {
-                                "fieldSysName": "id",
-                                "fetch": [],
-                                "sysName": "id",
-                                "name": "id",
-                                "dataType": "id",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": ""
-                            }
-                        ],
-                        "writeFields": [
-                            {
-                                "fieldSysName": "balance",
-                                "fetch": [],
-                                "sysName": "balance",
-                                "name": "balance",
-                                "dataType": "decimal",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": ""
-                            },
-                            {
-                                "fieldSysName": "comment",
-                                "fetch": [],
-                                "sysName": "comment",
-                                "name": "comment",
-                                "dataType": "string",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": null
-                            },
-                            {
-                                "fieldSysName": "type",
-                                "fetch": [],
-                                "sysName": "type",
-                                "name": "Transaction type",
-                                "dataType": "string",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": null
-                            },
-                            {
-                                "fieldSysName": "user_id",
-                                "fetch": [],
-                                "sysName": "user_id",
-                                "name": "",
-                                "dataType": "link",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": "Cloud_users"
-                            }
-                        ]
-                    },
-                    "formFields": [
-                        {
-                            "id": "14641644360732971",
-                            "field": {
-                                "fieldSysName": "balance",
-                                "fetch": [],
-                                "sysName": "balance",
-                                "name": "balance",
-                                "dataType": "decimal",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": ""
-                            }
-                        },
-                        {
-                            "id": "28201644361223817",
-                            "field": {
-                                "fieldSysName": "comment",
-                                "fetch": [],
-                                "sysName": "comment",
-                                "name": "comment",
-                                "dataType": "string",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": null
-                            }
-                        }
-                    ],
-                    "formMapping": [
-                        {
-                            "id": "32471644360747373",
-                            "target": "type",
-                            "type": "const",
-                            "value": "manual"
-                        },
-                        {
-                            "id": "15621644360911193",
-                            "target": "user_id",
-                            "type": "objectField",
-                            "value": "id"
-                        }
-                    ]
-                },
-                {
-                    "sysName": "adminChangeApp",
-                    "id": "44781681823938965",
-                    "name": "Remove transaction",
-                    "displayAs": "button",
-                    "buttonIcon": "delete",
-                    "buttonType": "danger",
-                    "showMessage": true,
-                    "closePopup": false,
-                    "resultMessage": "Removed!",
-                    "SLtype": "other",
-                    "callFrom": "linked",
-                    "callFromField": "wallet_transactions",
-                    "fields": {
-                        "readFields": [
-                            {
-                                "fieldSysName": "id",
-                                "fetch": [],
-                                "sysName": "id",
-                                "name": "id",
-                                "dataType": "id",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": ""
-                            }
-                        ],
-                        "writeFields": [
-                            {
-                                "fieldSysName": "Billing_date",
-                                "fetch": [],
-                                "sysName": "Billing_date",
-                                "name": "Billing date",
-                                "dataType": "date",
-                                "format": "",
-                                "formatOptions": {
-                                    "customOptionLabel": "My option",
-                                    "keyValue": {
-                                        "key": "key",
-                                        "value": "value",
-                                        "button": "One more"
-                                    },
-                                    "dateLocale": "en-gb",
-                                    "booleanOptions": [
-                                        "True",
-                                        "False"
-                                    ],
-                                    "validWeekDays": {
-                                        "mon": true,
-                                        "thu": true,
-                                        "tue": true,
-                                        "sun": true,
-                                        "fri": true,
-                                        "sat": true,
-                                        "wed": true
-                                    },
-                                    "customOptionPlaceholder": "Describe your option",
-                                    "range": {},
-                                    "customOptionType": "textarea",
-                                    "dateFormat": "DD/MM/Y",
-                                    "timeFormat": " ",
-                                    "isUTC": "true"
-                                },
-                                "link": ""
-                            },
-                            {
-                                "fieldSysName": "Plan",
-                                "fetch": [],
-                                "sysName": "Plan",
-                                "name": "Plan",
-                                "dataType": "json",
-                                "format": "radioOptions",
-                                "formatOptions": {
-                                    "customOptionLabel": "My option",
-                                    "keyValue": {
-                                        "key": "key",
-                                        "value": "value",
-                                        "button": "One more"
-                                    },
-                                    "dateLocale": "en-gb",
-                                    "booleanOptions": [
-                                        "True",
-                                        "False"
-                                    ],
-                                    "validWeekDays": {
-                                        "mon": true,
-                                        "thu": true,
-                                        "tue": true,
-                                        "sun": true,
-                                        "fri": true,
-                                        "sat": true,
-                                        "wed": true
-                                    },
-                                    "customOptionPlaceholder": "Describe your option",
-                                    "range": {},
-                                    "customOptionType": "textarea",
-                                    "dateFormat": "DD/MM/Y",
-                                    "timeFormat": " HH:mm",
-                                    "isUTC": "false",
-                                    "multipleChoice": [
-                                        {
-                                            "value": "Startup-monthly",
-                                            "label": "Startup-monthly"
-                                        },
-                                        {
-                                            "value": "Startup-yearly",
-                                            "label": "Startup-yearly"
-                                        },
-                                        {
-                                            "value": "Pro-monthly",
-                                            "label": "Pro-monthly"
-                                        },
-                                        {
-                                            "value": "Pro-yearly",
-                                            "label": "Pro-yearly"
-                                        },
-                                        {
-                                            "value": "Business-monthly",
-                                            "label": "Business-monthly"
-                                        },
-                                        {
-                                            "value": "Business-yearly",
-                                            "label": "Business-yearly"
-                                        },
-                                        {
-                                            "value": "Business-DEV",
-                                            "label": "Business-DEV"
-                                        }
-                                    ]
-                                },
-                                "link": ""
-                            },
-                            {
-                                "fieldSysName": "action",
-                                "fetch": [],
-                                "sysName": "action",
-                                "name": "",
-                                "dataType": "string",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": null
-                            },
-                            {
-                                "fieldSysName": "app_id",
-                                "fetch": [],
-                                "sysName": "app_id",
-                                "name": "App ID",
-                                "dataType": "link",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": "Apps"
-                            },
-                            {
-                                "fieldSysName": "wallet_trans",
-                                "fetch": [],
-                                "sysName": "wallet_trans",
-                                "name": "",
-                                "dataType": "link",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": "appwallet"
-                            }
-                        ]
-                    },
-                    "formMapping": [
-                        {
-                            "id": "70801681823997150",
-                            "target": "action",
-                            "type": "const",
-                            "value": "delete_transaction"
-                        },
-                        {
-                            "id": "13491681824091127",
-                            "type": "linkedField",
-                            "value": "id",
-                            "target": "wallet_trans"
-                        }
-                    ]
-                },
-                {
-                    "sysName": "adminUserActions",
-                    "id": "58681693998305855",
-                    "name": "Downgrade apps",
-                    "displayAs": "button",
-                    "buttonIcon": "download",
-                    "buttonType": "danger",
-                    "showMessage": true,
-                    "closePopup": false,
-                    "resultMessage": "Apps are scheduled to downgrade",
-                    "SLtype": "other",
-                    "fields": {
-                        "readFields": [
-                            {
-                                "fieldSysName": "id",
-                                "fetch": [],
-                                "sysName": "id",
-                                "name": "id",
-                                "dataType": "id",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": ""
-                            }
-                        ],
-                        "writeFields": [
-                            {
-                                "fieldSysName": "action",
-                                "fetch": [],
-                                "sysName": "action",
-                                "name": "",
-                                "dataType": "string",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": null
-                            },
-                            {
-                                "fieldSysName": "user",
-                                "fetch": [],
-                                "sysName": "user",
-                                "name": "",
-                                "dataType": "link",
-                                "format": "",
-                                "formatOptions": {},
-                                "link": "WebUser"
-                            }
-                        ]
-                    },
-                    "formMapping": [
-                        {
-                            "id": "47641693998486633",
-                            "target": "action",
-                            "type": "const",
-                            "value": "downgrade"
-                        },
-                        {
-                            "id": "80821693998494185",
-                            "target": "user",
-                            "type": "objectField",
-                            "value": "id"
-                        }
-                    ]
-                }
-            ],
-            "filterParams": {
-                "isSorting": true,
-                "isFiltering": true,
-                "filterFields": {
-                    "last_name": {
-                        "active": true,
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "name": "Last name"
-                    },
-                    "first_name": {
-                        "active": true,
-                        "dataType": "string",
-                        "format": "",
-                        "formatOptions": {},
-                        "name": "First name"
-                    },
-                    "id": {
-                        "active": true,
-                        "dataType": "id",
-                        "format": "",
-                        "formatOptions": {},
-                        "name": "id"
-                    },
-                    "country": {
-                        "active": true,
-                        "dataType": "link",
-                        "format": "",
-                        "formatOptions": {},
-                        "name": "Country",
-                        "textsearch": "fulltext"
-                    },
-                    "number_of_apps": {
-                        "active": true,
-                        "dataType": "number",
-                        "format": "",
-                        "formatOptions": {},
-                        "name": "Number of apps"
-                    },
-                    "wallet_balance": {
-                        "active": true,
-                        "dataType": "decimal",
-                        "format": "",
-                        "formatOptions": {},
-                        "name": "wallet_balance"
-                    }
-                }
-            },
-            "lazyLoading": false
+            }
         },
-        "tableTitle": "",
+        "tableTitle": "Реестр договоров инвестирования",
         "actions": null,
-        
-        "data": [
+        "headers": [
             {
-                "survey_is_aborted": false,
-                "first_name": "G",
-                "tinkoff_rebill_id": "1313207339",
-                "source": "direct",
-                "survey_step_1_raw": "rookie",
-                "wallet_balance": -415.35,
-                "tinkoff_status": "failed",
-                "country": {
-                    "Name": "Turkey"
-                },
-                "paddle_id": "16118488",
-                "gravatar_pic": "https://www.gravatar.com/avatar/970607c2425100efa61c8d9a6a11e809?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "paddle_status": "failed",
-                "register_date": 1663316713847,
-                "id": "x20081988@gmail.com",
-                "survey_step_3_raw": "friends",
-                "email_campaigns": [
-                    {
-                        "title": "Building no-code apps with AI! Join Free Live Webinar",
-                        "id": "fc382562-34cb-4b8e-86c9-d9662ec8b7f3"
-                    }
-                ],
-                "unsubscribed": true,
-                "subscription_settings": {
-                    "Unsubscribed": true
-                },
-                "wallet_transactions": [
-                    {
-                        "balance": -415.35,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "4ea67977-ff4b-4966-b9d2-5364ea19fb92",
-                        "date": 1701422646000,
-                        "comment": "On-demand resource consumption. App zapusk (11477), period 2023-11",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -27.25,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "5caf3759-629f-4bc7-868f-d1d8bbbbbe3e",
-                        "date": 1677685203000,
-                        "comment": "On-demand resource consumption. App zapusk (11477), period 2023-02",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "2f3cb313-a52f-4072-b473-24599b043ba3",
-                        "date": 1673946039000,
-                        "comment": "App zapusk (11477), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 233.17,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "b0cf2577-cadb-4baf-9681-cc616d0782c1",
-                        "date": 1679936186000,
-                        "comment": "Adding funds via Tinkoff 18187.0 ₽ → 233.17 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": -5.56,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "1736f72a-e99d-41fe-b618-97a53021163b",
-                        "date": 1664619209000,
-                        "comment": "On-demand resource consumption. App zapusk (11477), period 2022-09",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "2e5c0926-08e4-46f8-909a-895111bf9e11",
-                        "date": 1690707709000,
-                        "comment": "App zapusk (11477), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -20.73,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "366f637b-0307-44f4-baf1-7dad202cb4e0",
-                        "date": 1693572040000,
-                        "comment": "On-demand resource consumption. App zapusk (11477), period 2023-08",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": 1.9,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "593fe762-1015-48d8-bcbd-f1ac3e4a99ba",
-                        "date": 1672911670000,
-                        "comment": "Payment from Credit card or Paypal",
-                        "type": "paddle_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "c3384f78-4a3c-4dcc-b941-35cdf2ceda04",
-                        "date": 1663409225000,
-                        "comment": "Update app zapusk, plan Startup-monthly (previous plan: Free)",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "ca9d17b6-0813-4e5f-ab1d-8b5395786275",
-                        "date": 1698656568000,
-                        "comment": "App zapusk (11477), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "42a8092f-ad35-4e0f-91eb-48c09788b74a",
-                        "date": 1701334959000,
-                        "comment": "App zapusk (11477), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "2437859f-fb6d-4e0d-b965-4f3420365f0d",
-                        "date": 1681722029000,
-                        "comment": "App zapusk (11477), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 120,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "64481bce-9c67-4541-935d-1cda07897097",
-                        "date": 1667313617000,
-                        "comment": "Promo-code ASTANAHUB",
-                        "type": "promo"
-                    },
-                    {
-                        "balance": 34.24,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "a70e6705-d8e8-4262-b4f2-868bbbe96fa6",
-                        "date": 1680537402000,
-                        "comment": "Payment from Credit card or Paypal",
-                        "type": "paddle_payment"
-                    },
-                    {
-                        "balance": 4.56,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "bfdc72d3-3b2e-40c7-93f8-9c2159fae733",
-                        "date": 1664619218000,
-                        "comment": "Payment from Credit card or Paypal",
-                        "type": "paddle_payment"
-                    },
-                    {
-                        "balance": -88.92,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "5d47d524-9c79-443d-92ac-4f92d17f9e4d",
-                        "date": 1675516542000,
-                        "comment": "On-demand resource consumption. App zapusk (11477), period 2023-01",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -15.39,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "a7b2e897-a9ea-4ff2-a3da-31a6248fa65c",
-                        "date": 1696235990000,
-                        "comment": "On-demand resource consumption. App zapusk (11477), period 2023-09",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "83349c0d-7821-43bd-b0e9-be145ccf5593",
-                        "date": 1676624612000,
-                        "comment": "App zapusk (11477), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -34.24,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "bf736e5c-9f45-4f5e-9f04-2f7230656b4f",
-                        "date": 1680537397000,
-                        "comment": "On-demand resource consumption. App zapusk (11477), period 2023-03",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": 4.36,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "8010cc67-6b4b-4c04-83c6-4889da38d253",
-                        "date": 1671267638000,
-                        "comment": "Payment from Credit card or Paypal",
-                        "type": "paddle_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "1aeb141b-8835-43a0-8c66-db1fda0474c8",
-                        "date": 1679043645000,
-                        "comment": "App zapusk (11477), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "9a4e9798-6f9d-48b9-8506-7f60855f59f6",
-                        "date": 1696064484000,
-                        "comment": "App zapusk (11477), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -1.9,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "6c363bad-59be-4ee3-bcf0-56958a597f88",
-                        "date": 1672911664000,
-                        "comment": "On-demand resource consumption. App zapusk (11477), period 2022-12",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "04171f58-3f3a-4d93-a14e-2ec9dccf9c8d",
-                        "date": 1665997255000,
-                        "comment": "App zapusk (11477), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -7.36,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "f3ce72bc-19b3-4991-8622-5ebc92bc8fd4",
-                        "date": 1667309852000,
-                        "comment": "On-demand resource consumption. App zapusk (11477), period 2022-10",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": 21.39,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "c04fd56d-1764-4ed7-81dd-015e79f44857",
-                        "date": 1685448806000,
-                        "comment": "App zapusk plan upgrade Startup → Pro monthly. Partial refund",
-                        "type": "manual"
-                    },
-                    {
-                        "balance": 96.3,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "97f95948-ad26-4ffe-9c46-9f0fdfefc41a",
-                        "date": 1683057965000,
-                        "comment": "Adding funds via Tinkoff 7993.0 ₽ → 96.30 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": 180,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "cd971bb4-bd45-4f4a-a499-414b77c42381",
-                        "date": 1685442485000,
-                        "comment": "Adding funds via Tinkoff 14580.0 ₽ → 180.00 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "1f2b32f3-568c-48a0-92fd-640561129772",
-                        "date": 1688116071000,
-                        "comment": "App zapusk (11477), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 0.01,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "c3992aec-6b9d-4ab1-b4f2-74ab20dd59a0",
-                        "date": 1689352270000,
-                        "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": 115.61,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "35473834-5cd0-47c4-87f5-44a5aecd10c2",
-                        "date": 1689352273000,
-                        "comment": "Adding funds via Tinkoff 10751.73 ₽ → 115.61 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": 139,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "39309988-5226-4f52-9847-3433f9e4e688",
-                        "date": 1690707752000,
-                        "comment": "Adding funds via Tinkoff 13205.0 ₽ → 139.00 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": -12.43,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "f613cb0d-b42c-4d0c-a491-0f8397299d25",
-                        "date": 1690898071000,
-                        "comment": "On-demand resource consumption. App zapusk (11477), period 2023-07",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": 40,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "e53f9cb2-506d-4ddd-b794-2e2ec4825312",
-                        "date": 1663334165000,
-                        "comment": "Payment from Credit card or Paypal",
-                        "type": "paddle_payment"
-                    },
-                    {
-                        "balance": 12.43,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "2c941a7a-6557-492c-b2a6-1eafaf7493b6",
-                        "date": 1690898074000,
-                        "comment": "Adding funds via Tinkoff 1193.28 ₽ → 12.43 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "f4db13cc-cea5-4d0c-88a8-fa3046c637e8",
-                        "date": 1693386064000,
-                        "comment": "App zapusk (11477), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 20.73,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "7e247d5f-43ed-4348-9ce6-7080513f00b2",
-                        "date": 1693572050000,
-                        "comment": "Adding funds via Tinkoff 2093.73 ₽ → 20.73 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "35b6e571-dc77-4ea3-bb98-18bef4d27989",
-                        "date": 1684314068000,
-                        "comment": "App zapusk (11477), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 139,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "af248547-80ec-40df-ab87-35736e2e228d",
-                        "date": 1693386195000,
-                        "comment": "Adding funds via Tinkoff 14039.0 ₽ → 139.00 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": 154.39,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "da6789d7-97c8-4c90-ba15-b109c43496b0",
-                        "date": 1698145185000,
-                        "comment": "Adding funds via Tinkoff 15593.39 ₽ → 154.39 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "678c6afd-caae-4d06-83b9-982536b6f739",
-                        "date": 1668675691000,
-                        "comment": "App zapusk (11477), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "0b77f588-7031-4c11-b6a9-1e4bc2094323",
-                        "date": 1685448869000,
-                        "comment": "App zapusk (11477), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -21.58,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "86534a7c-069b-4232-b1a2-fb74ada246d5",
-                        "date": 1698931633000,
-                        "comment": "On-demand resource consumption. App zapusk (11477), period 2023-10",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": 160.58,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "0d59d155-4f2c-4a05-bdc9-1ed5c4390993",
-                        "date": 1699957155000,
-                        "comment": "Adding funds via Tinkoff 15415.68 ₽ → 160.58 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": -57.31,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "06ac1035-bac3-4e87-b4a7-c0dbf2aa5b74",
-                        "date": 1682972951000,
-                        "comment": "On-demand resource consumption. App zapusk (11477), period 2023-04",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "a509623b-b1ee-433f-a519-6806f4ec7d93",
-                        "date": 1671267631000,
-                        "comment": "App zapusk (11477), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 139,
-                        "user_id": "x20081988@gmail.com",
-                        "id": "d3900f12-537b-411f-848e-cea148dcd874",
-                        "date": 1701334975000,
-                        "comment": "Adding funds via Tinkoff 13066.0 ₽ → 139.00 D-coins",
-                        "type": "tinkoff"
-                    }
-                ],
-                "number_of_apps": 1,
-                "survey_step_2_raw": "startup",
-                "notifications": [
-                    {
-                        "message_platform": "Update app zapusk, plan Startup-monthly (previous plan: Free)",
-                        "date": 1663409154620,
-                        "topic": "App is upgraded",
-                        "id": "85998eb2-0190-492d-9ad8-2a819db69926"
-                    },
-                    {
-                        "id": "87b84284-e491-4ed4-a81a-65756e32a791",
-                        "date": 1698931647000,
-                        "message_platform": "You need to add 160.58 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 160.58 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "73dcad7f-c372-4dff-87f5-b15c283e3b0c",
-                        "date": 1696944977000,
-                        "message_platform": "Your Directual account balance went too low (-154.39 D-coins). The payment method failed. The following apps will be downgraded and blocked:\n— Zapusk App zapusk, ID: 11477\nPlease, link valid payment method and cancel apps downgrade until they are blocked completely.",
-                        "topic": "🚫 Your Directual apps will be blocked soon",
-                        "message_email": "<p>Your Directual account balance went too low (-154.39 D-coins). The payment method failed. The following apps will be downgraded to FREE and blocked:</p>\n<ul>\n<li><b>Zapusk App</b> zapusk, ID: 11477 will be downgraded on 30 October, 2023.</li>\n</ul>\n<p>Please, <a href=\"https://my.directual.com/platform/billing/\" target=\"_blank\">link valid payment method</a> and cancel apps downgrade until they are blocked completely.</p>"
-                    },
-                    {
-                        "id": "a500ce01-7d2c-4d44-93cb-8e590c1a9370",
-                        "date": 1696064531000,
-                        "message_platform": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "bb8d1484-451d-4e1c-8f27-bfe7f86d5fed",
-                        "date": 1699266175000,
-                        "message_platform": "You need to add 160.58 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 160.58 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "30c17703-3bfa-4b0b-aecc-80e3eed9413d",
-                        "date": 1663333972819,
-                        "message_platform": "You need to add 40 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 40 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "6815f6cc-2214-485a-a3d9-ea9d02f9613e",
-                        "date": 1696082894000,
-                        "message_platform": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "b94d3e0e-062b-424a-9a77-a5b8ced85023",
-                        "date": 1689350393372,
-                        "message_platform": "You need to add 116 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 116 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "446e7f1a-68ac-4405-954e-a324b7305473",
-                        "date": 1697104580000,
-                        "message_platform": "You need to add 154.39 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 154.39 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "3f6e8694-6b13-4b74-beb9-a9e6fccaebdf",
-                        "date": 1688645844910,
-                        "message_platform": "You need to add 115.62 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 115.62 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "33c7500b-ff61-49a1-b373-349621aa23b2",
-                        "date": 1699520726000,
-                        "message_platform": "You need to add 160.58 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 160.58 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "dcf6ee09-5da9-46ea-8808-68deeb0e5dc4",
-                        "date": 1685448747109,
-                        "message_platform": "App zapusk plan is changed Startup-monthly → Pro-monthly",
-                        "topic": "App zapusk plan is changed"
-                    },
-                    {
-                        "id": "28657b42-be5e-41ec-8176-65a8c1979b1e",
-                        "date": 1697538130000,
-                        "message_platform": "You need to add 154.39 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 154.39 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "2a684dbc-fda9-4eb3-ab34-18846bbc6d39",
-                        "date": 1688121590271,
-                        "message_platform": "You need to add 115.62 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 115.62 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "1d3d6c92-3a76-43a9-9925-4a7da9b9c8af",
-                        "date": 1696416562000,
-                        "message_platform": "You need to add 154.39 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 154.39 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "e25b14a5-1fa6-4a68-8ebe-f72a1914df59",
-                        "date": 1684314072925,
-                        "message_platform": "You need to add 39.01 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 39.01 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "1ba13478-51f0-4c78-92c8-afbd0ab9d861",
-                        "date": 1698720957000,
-                        "message_platform": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "0345038f-5e7e-4f75-a55c-345ae07f4eaf",
-                        "date": 1663409333883,
-                        "message_platform": "App zapusk plan is changed Startup-monthly → Pro-sandbox",
-                        "topic": "App zapusk plan is changed"
-                    },
-                    {
-                        "id": "bd2efa7b-8a61-4a9e-8aab-ef17ac36d54a",
-                        "date": 1702199119000,
-                        "message_platform": "You need to add 415.35 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 415.35 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "c1bddce3-eb9d-4e32-8ecc-4da08e5228f7",
-                        "date": 1663409651852,
-                        "message_platform": "App zapusk plan is changed Pro-sandbox → FREE",
-                        "topic": "App zapusk plan is changed"
-                    },
-                    {
-                        "id": "10c81a7c-c09f-421c-b609-eaeffda608dc",
-                        "date": 1701615080000,
-                        "message_platform": "You need to add 415.35 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 415.35 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "448559a4-ab74-4d48-bc7d-f7ae4607b591",
-                        "date": 1688976234683,
-                        "message_platform": "You need to add 115.62 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 115.62 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "ceb8d6a3-a704-4ab8-8b3c-e901d7ea22eb",
-                        "date": 1699088674000,
-                        "message_platform": "You need to add 160.58 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 160.58 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "bf1dd120-bad6-4201-9bcb-98a73c15e27f",
-                        "date": 1701422661000,
-                        "message_platform": "You need to add 415.35 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 415.35 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "a5c02156-8c82-4e54-8dce-438aa57620c2",
-                        "date": 1696852490000,
-                        "message_platform": "You need to add 154.39 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 154.39 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "sent_to_email": true,
-                        "is_delivered": true,
-                        "is_opened": true,
-                        "id": "d1ef5da6-795b-4ffe-9f6a-748fd6938bdf",
-                        "date": 1701615352000,
-                        "message_platform": "Your Directual account balance went too low (-415.35 D-coins). The payment method failed. The following apps will be downgraded and blocked:\n— Zapusk App zapusk, ID: 11477\nPlease, link valid payment method and cancel apps downgrade until they are blocked completely.",
-                        "topic": "🚫 Your Directual apps will be blocked soon",
-                        "message_email": "<p>Your Directual account balance went too low (-415.35 D-coins). The payment method failed. The following apps will be downgraded to FREE and blocked:</p>\n<ul>\n<li><b>Zapusk App</b> zapusk, ID: 11477 will be downgraded on 30 December, 2023.</li>\n</ul>\n<p>Please, <a href=\"https://my.directual.com/platform/billing/\" target=\"_blank\">link valid payment method</a> and cancel apps downgrade until they are blocked completely.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "8fc1c905-f499-4dbb-b31e-64e1833869d2",
-                        "date": 1677575147907,
-                        "message_platform": "Your account balance went too low (-166.92 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-166.92 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "a2853521-76f2-41aa-89fd-8ad0e6ae44da",
-                        "date": 1689339842938,
-                        "message_platform": "Your Directual account balance went too low (-115.62 D-coins). The payment method failed. The following apps will be downgraded and blocked:\n— Zapusk App zapusk, ID: 11477\nPlease, link valid payment method and cancel apps downgrade until they are blocked completely.",
-                        "topic": "🚫 Your Directual apps will be blocked soon",
-                        "message_email": "<p>Your Directual account balance went too low (-115.62 D-coins). The payment method failed. The following apps will be downgraded to FREE and blocked:</p>\n<ul>\n<li><b>Zapusk App</b> zapusk, ID: 11477 will be downgraded on 30 July, 2023.</li>\n</ul>\n<p>Please, <a href=\"https://my.directual.com/platform/billing/\" target=\"_blank\">link valid payment method</a> and cancel apps downgrade until they are blocked completely.</p>"
-                    },
-                    {
-                        "id": "73526007-d2cb-42fa-ac9e-fecb314e2fa9",
-                        "date": 1698068621000,
-                        "message_platform": "You need to add 154.39 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 154.39 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "75594ffe-8f30-4ad8-9b66-de1d8e55ff3b",
-                        "date": 1696236004000,
-                        "message_platform": "You need to add 154.39 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 154.39 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "sent_to_email": true,
-                        "is_delivered": true,
-                        "is_opened": true,
-                        "id": "43010fc5-dbdb-421c-ae81-b3421528449d",
-                        "date": 1698721442000,
-                        "message_platform": "Your Directual account balance went too low (-139 D-coins). The payment method failed. The following apps will be downgraded and blocked:\n— Zapusk App zapusk, ID: 11477\nPlease, link valid payment method and cancel apps downgrade until they are blocked completely.",
-                        "topic": "🚫 Your Directual apps will be blocked soon",
-                        "message_email": "<p>Your Directual account balance went too low (-139 D-coins). The payment method failed. The following apps will be downgraded to FREE and blocked:</p>\n<ul>\n<li><b>Zapusk App</b> zapusk, ID: 11477 will be downgraded on 30 November, 2023.</li>\n</ul>\n<p>Please, <a href=\"https://my.directual.com/platform/billing/\" target=\"_blank\">link valid payment method</a> and cancel apps downgrade until they are blocked completely.</p>"
-                    },
-                    {
-                        "id": "4e6757c8-03d8-4752-a526-3e33afd70264",
-                        "date": 1698656589000,
-                        "message_platform": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "98c9f1df-bf69-4d0c-90c5-98e9ed7aec67",
-                        "date": 1663409228408,
-                        "message_platform": "App zapusk plan is changed FREE → Startup-monthly",
-                        "topic": "App zapusk plan is changed"
-                    },
-                    {
-                        "id": "24033c9a-fb89-4bf2-9eb9-2359f445e5d2",
-                        "date": 1696576856000,
-                        "message_platform": "You need to add 154.39 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 154.39 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "a8ba268d-71f5-48cc-8f1f-4d7bf0b4575a",
-                        "date": 1666602087632,
-                        "message_platform": "Your account balance went too low (-39 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-39 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "id": "5e7d04fd-ca69-41e5-8829-054065b120b2",
-                        "date": 1696325595000,
-                        "message_platform": "You need to add 154.39 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 154.39 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "5ccc675c-bfc3-4e83-973b-93336d1d39c8",
-                        "date": 1683013022111,
-                        "message_platform": "Your account balance went too low (-96.31 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-96.31 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "321348a2-4e9f-4c4b-94f3-a97dac3e9bcb",
-                        "date": 1663322979557,
-                        "message_platform": "Your app Zapusk App (zapusk) exceeds FREE-plan load limits. You need to upgrade it, choosing one of the paid plans. If you dont't upgrade the app in a few days it will be blocked!",
-                        "topic": "🔥 You need to upgrade app Zapusk App (zapusk)",
-                        "message_email": "<p>Your app <a href=\"https://my.directual.com/platform/apps/zapusk\">Zapusk App (zapusk)</a> exceeds FREE-plan load limits. You need to upgrade it, choosing one of the <a href=\"https://www.directual.com/pricing\">paid plans</a>.</p>\n<p>If you dont't upgrade the app in a few days it will be blocked!</p>"
-                    },
-                    {
-                        "id": "aa505cfc-b21f-4db7-a4ab-1fd76bb84041",
-                        "date": 1689350247350,
-                        "message_platform": "You need to add 115.62 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 115.62 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "6b49f65f-5b68-498f-aac4-1f3ce2518a52",
-                        "date": 1689339832608,
-                        "message_platform": "You need to add 115.62 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 115.62 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "date": 1663409330923,
-                        "message_platform": "App zapusk (11477) plan Startup-monthly → Pro-sandbox",
-                        "id": "d71151d6-8688-4713-9ad3-96479f2b774b"
-                    },
-                    {
-                        "id": "1be98eef-6639-4ae2-883c-6ba254d1c4b0",
-                        "date": 1696944803000,
-                        "message_platform": "You need to add 154.39 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 154.39 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "sent_to_email": true,
-                        "is_delivered": true,
-                        "is_opened": true,
-                        "id": "1d42124e-08f0-4c8e-8417-2ead9718233b",
-                        "date": 1701157343000,
-                        "message_platform": "The app zapusk hits the plan load limits. Forecast payment is 351.94 US$. It'll be billed on the 1st day of the next month.",
-                        "topic": "App zapusk hits the plan limits. On-demand resourse consumption is ON.",
-                        "message_email": "<p style=\"margin-bottom:10px\">The app <a href=\"https://my.directual.com/platform/apps/zapusk\" target=\"_blank\">zapusk</a> hits the plan load limits.</p>\n<p style=\"margin-bottom:10px\">Forecast payment is <b>351.94</b> US$. It'll be billed on the 1st day of the next month.</p>\n<p style=\"margin-bottom:10px\">If you want to upgrade the plan with the higher limit, just reply us here, we'll assist with that.</p>\n<p style=\"margin-bottom:10px\">If you don't want the on-demand bill to increase, stop the scenarios or block your app.</p>\n<p>In case of any questions contact us via support chat or via email support@directual.com</p>"
-                    },
-                    {
-                        "id": "1dc2b346-c094-4369-8214-77433b2871ad",
-                        "date": 1697650291000,
-                        "message_platform": "You need to add 154.39 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 154.39 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    }
-                ],
-                "apps": [
-                    {
-                        "is_blocked": false,
-                        "id": "11477",
-                        "is_hidden": false,
-                        "sys_name": "zapusk",
-                        "app_id": {
-                            "sysName": "zapusk",
-                            "plan_id": "Pro-monthly",
-                            "isDowngraded": true
-                        }
-                    }
-                ]
-            },
-            {
-                "survey_is_aborted": false,
-                "first_name": "Marat",
-                "source": "www.directual.com/",
-                "survey_step_1_raw": "rookie",
-                "wallet_balance": -319.58,
-                "country": {
-                    "Name": "Russian Federation"
-                },
-                "gravatar_pic": "https://www.gravatar.com/avatar/029ad944d919b8c16a9a05b101e828c4?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "register_date": 1647498822959,
-                "id": "m.garifullin.f@gmail.com",
-                "survey_step_3_raw": "friends",
-                "last_name": "Garifullin",
-                "email_campaigns": [
-                    {
-                        "title": "Building no-code apps with AI! Join Free Live Webinar",
-                        "id": "fc382562-34cb-4b8e-86c9-d9662ec8b7f3"
-                    }
-                ],
-                "unsubscribed": false,
-                "subscription_settings": {
-                    "Unsubscribed": false
-                },
-                "wallet_transactions": [
-                    {
-                        "balance": -41.02,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "8f2cb2b2-18ce-4dc4-ae03-d32fc8d5c2f8",
-                        "date": 1701422800000,
-                        "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2023-11",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "36bd2abd-d115-4f8b-8599-5b79be395402",
-                        "date": 1700917207000,
-                        "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": -52.54,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "7bc3da58-cbc7-4fe0-b006-cd21c5f5386d",
-                        "date": 1698931545000,
-                        "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2023-10",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -103.13,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "96197574-d89b-4fa9-b6c0-abb37c79ea5c",
-                        "date": 1669910794000,
-                        "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2022-11",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "c334076c-c3cd-44d4-8d6b-f003769eef02",
-                        "date": 1651309215000,
-                        "comment": "App sump (12477), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -19.9,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "4144341a-05e4-45e4-94e3-5ebcf17a9017",
-                        "date": 1667309842000,
-                        "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2022-10",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "87d2033f-c057-4e1d-ba75-f9e52c71c564",
-                        "date": 1666702803000,
-                        "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": 100,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "3cb12f18-7f19-405a-8749-5f14ce0ad00f",
-                        "date": 1667300478000,
-                        "comment": "Promo-code YQD2AH1CQ5MI",
-                        "type": "promo"
-                    },
-                    {
-                        "balance": -19.16,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "121e8228-ea49-4ef8-a6ab-18957d1f58aa",
-                        "date": 1664619194000,
-                        "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2022-09",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": 150,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "dcf16790-971c-4487-8747-42a2c26603d4",
-                        "date": 1662017378000,
-                        "comment": "Promo-code 0FDZ3CZHNCDI",
-                        "type": "promo"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "6be73dc7-4a54-4f66-8399-2c85be499dc7",
-                        "date": 1685019605000,
-                        "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": 330.49,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "76305202-d2fe-4cf8-a611-ee3fd1145665",
-                        "date": 1671200593000,
-                        "comment": "Wire transfer from ООО «КОННЕКТИВ ПЛМ», 21151.360000 ₽ → 330.49 D-coins",
-                        "type": "bank_payment"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "f702e985-824f-43e4-a1d9-417dab4c4d73",
-                        "date": 1661432403000,
-                        "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": 120,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "e275cbcf-d293-4cb3-9f8f-5b626ad9d94a",
-                        "date": 1648567750000,
-                        "comment": "Promo-code ZEROCODER",
-                        "type": "promo"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "86746e7c-1423-49cd-8c7e-b261a8da15fc",
-                        "date": 1651065340000,
-                        "comment": "Create app connectiveconfiguratortcp, plan Startup-monthly",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -57.23,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "0570ac5d-bdc3-4c24-84d7-deb2e47958c5",
-                        "date": 1690897967000,
-                        "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2023-07",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": 100,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "178d9e4e-1c6e-481c-8658-0a7293b54abb",
-                        "date": 1657608399000,
-                        "comment": "Promo-code PRODUCTHUNT",
-                        "type": "promo"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "787173c5-77b8-4a22-8457-aed3b4b475f0",
-                        "date": 1648739458000,
-                        "comment": "Create app moviesappis, plan Startup-monthly",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 682.94,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "61c2e962-54da-49d2-8cfd-74f3f0bb4b92",
-                        "date": 1687436463000,
-                        "comment": "Wire transfer from ООО «КОННЕКТИВ ПЛМ», 55318.140000 ₽ → 682.94 D-coins",
-                        "type": "bank_payment"
-                    },
-                    {
-                        "balance": 300,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "85f6dc4b-bf9c-4eac-a69f-1f837a9ef7e4",
-                        "date": 1653499358000,
-                        "comment": "Promo-code ZQA0375H4CXR",
-                        "type": "promo"
-                    },
-                    {
-                        "balance": -72.17,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "44cd15ef-326c-46dd-8ea0-55fdc5f12f02",
-                        "date": 1672911309000,
-                        "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2022-12",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "dbc5b90d-7b69-4b0e-935e-5029468fb0a2",
-                        "date": 1679749205000,
-                        "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "314af1d9-3bb2-4f1e-b04f-b3922c012108",
-                        "date": 1669381226000,
-                        "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "0ee6f93b-916e-412b-9cdf-4e911c678750",
-                        "date": 1653499444000,
-                        "comment": "Team  Connective Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "b368b8c5-c2c4-4601-9c00-30c4c78ec878",
-                        "date": 1682427607000,
-                        "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": -3.65,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "9636aac2-226e-426e-9753-53ab3ecbb454",
-                        "date": 1677685271000,
-                        "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2023-02",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "8d673dbb-28e6-4b77-9601-1a662a50428a",
-                        "date": 1692968410000,
-                        "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "a1c41424-d2a6-4f69-982c-4d555903ca07",
-                        "date": 1664110829000,
-                        "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "a89463eb-4f81-4e55-b99e-41777d02ccb1",
-                        "date": 1656162004000,
-                        "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": 433.17,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "a417cee9-50bb-4d95-90d4-9feeabd5607b",
-                        "date": 1679560192000,
-                        "comment": "Wire transfer from ООО «КОННЕКТИВ ПЛМ», 32487.750000 ₽ → 433.17 D-coins",
-                        "type": "bank_payment"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "cc39c6ae-05e0-4ea0-8ad3-0ba78df4d9e3",
-                        "date": 1671973236000,
-                        "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "63e6cc02-2d77-4d24-a2af-5c2519b0aa3a",
-                        "date": 1674651608000,
-                        "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": -33.35,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "3c6d6607-b120-4cf9-86d6-0d9c9868ff93",
-                        "date": 1675516716000,
-                        "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2023-01",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -116.2,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "a17c8c45-5473-4e1a-8b07-ea71db29fa74",
-                        "date": 1685625985000,
-                        "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2023-05",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "69fb2c12-7831-4432-ab79-98b6dd91b551",
-                        "date": 1648567835000,
-                        "comment": "Update app sump, plan Startup-monthly (previous plan: )",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -7.3,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "050d3c58-bce0-4604-a266-5387fee35b65",
-                        "date": 1662047123000,
-                        "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2022-08",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "83dbc309-6b7d-44bc-be30-1b447315148a",
-                        "date": 1677330008000,
-                        "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": -82.78,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "1d8d9114-f7b4-4830-82bf-b932a4184a74",
-                        "date": 1680537346000,
-                        "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2023-03",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -159.96,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "99995f00-2c59-4e77-82d9-6eafc157f60c",
-                        "date": 1682972791000,
-                        "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2023-04",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "5c1ac51a-91bd-4d61-8351-6ad572a42062",
-                        "date": 1698238809000,
-                        "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": -86.57,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "fca43c10-fd14-4ba2-8417-9ada98b5ed9d",
-                        "date": 1688368969000,
-                        "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2023-06",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "46c19100-0d90-4ed4-81dd-cba08be2cee5",
-                        "date": 1687698007000,
-                        "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "556c0dac-b077-426f-ae92-d058f360abdb",
-                        "date": 1690290020000,
-                        "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": -72.74,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "14f68563-3bdb-4c5e-9eaf-ced986ccbf48",
-                        "date": 1693571957000,
-                        "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2023-08",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "c36219c3-5168-4411-9f66-a2e47eea7e7d",
-                        "date": 1658754004000,
-                        "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "3885b6a0-8997-4bc9-a9d2-c11644868613",
-                        "date": 1651395633000,
-                        "comment": "App moviesappis (12680), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 648.54,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "d814f9d7-75b6-4fe3-ad15-d59276bd2006",
-                        "date": 1695653020000,
-                        "comment": "Wire transfer from ООО «КОННЕКТИВ ПЛМ», 66152 ₽ → 648.54 D-coins",
-                        "type": "bank_payment"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "fd0d2395-b4f8-4853-b1dc-b63a773a108e",
-                        "date": 1695646808000,
-                        "comment": "Team Connective Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": -10.02,
-                        "user_id": "m.garifullin.f@gmail.com",
-                        "id": "18467a87-1996-4202-a028-d02cab6e47c8",
-                        "date": 1696236015000,
-                        "comment": "On-demand resource consumption. App connectiveconfiguratortcp (12947), period 2023-09",
-                        "type": "ondemand"
-                    }
-                ],
-                "number_of_apps": 2,
-                "survey_step_2_raw": "personal_use",
-                "isBlocked": true,
-                "notifications": [
-                    {
-                        "sent_to_email": true,
-                        "id": "5d10f822-ac7d-48d8-a2da-56438320c958",
-                        "date": 1670577896702,
-                        "message_platform": "Your account balance went too low (-330.49 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-330.49 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "4f16a301-f527-45bd-bba0-f3d115afe09e",
-                        "date": 1693205708360,
-                        "message_platform": "The app connectiveconfiguratortcp hits the plan load limits. Forecast payment is 62.3 US$. It'll be billed on the 1st day of the next month.",
-                        "topic": "App connectiveconfiguratortcp hits the plan limits. On-demand resourse consumption is ON.",
-                        "message_email": "<p style=\"margin-bottom:10px\">The app <a href=\"https://my.directual.com/platform/apps/connectiveconfiguratortcp\" target=\"_blank\">connectiveconfiguratortcp</a> hits the plan load limits.</p>\n<p style=\"margin-bottom:10px\">Forecast payment is <b>62.3</b> US$. It'll be billed on the 1st day of the next month.</p>\n<p style=\"margin-bottom:10px\">If you don't want the on-demand bill to increase, stop the scenarios or block your app.</p>\n<p>In case of any questions contact us via support chat or via email support@directual.com</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "4742623f-5195-41f7-b1b9-91c331681b2b",
-                        "date": 1664270098026,
-                        "message_platform": "Your account balance went too low (-72.3 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-72.3 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "040000b6-666d-4141-8e37-76480e4367ec",
-                        "date": 1653901231708,
-                        "message_platform": "App sump plan is changed Startup-monthly → FREE",
-                        "topic": "App sump plan is changed"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "cadc5f89-91dc-4b33-9a0e-4e726bcb11b8",
-                        "date": 1684334087482,
-                        "message_platform": "App sump plan is changed FREE → Startup-monthly",
-                        "topic": "App sump plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "1124a227-d59b-432a-aff4-961ebae0db29",
-                        "date": 1664952862018,
-                        "message_platform": "Your account balance went too low (-91.46 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-91.46 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "message_platform": "Create app moviesappis, plan Startup-monthly",
-                        "date": 1648739457938,
-                        "topic": "App is created",
-                        "id": "55a75bc9-114a-43f6-a531-721b0fdd2b07"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "ea7955e5-0d62-4399-8ff0-44ffe7c22d67",
-                        "date": 1666602087775,
-                        "message_platform": "Your account balance went too low (-91.46 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-91.46 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "47a978b7-8a2a-4684-865d-a584b06def7c",
-                        "date": 1685523720087,
-                        "message_platform": "App moviesappis plan is changed Startup-monthly → FREE",
-                        "topic": "App moviesappis plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "f8d1cdd3-e893-4d37-aa1c-5b65b7d5f8f7",
-                        "date": 1690900408623,
-                        "message_platform": "Your account balance went too low (-359.8 US$). Please, link payment method to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-359.8 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">link payment method</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "date": 1653901292991,
-                        "topic": "App is downgraded",
-                        "message_email": "App sump (12477) is downgraded to FREE.",
-                        "id": "d2e46252-f2d6-4ee1-b04a-50b1438c902e"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "is_delivered": true,
-                        "is_opened": true,
-                        "id": "acc58212-edfa-4d03-a5cf-0e35df4e00f4",
-                        "date": 1694590394000,
-                        "message_platform": "Your account balance went too low (-540.54 US$). Please, link payment method and add funds to prevent account suspension.",
-                        "topic": "⚠️ Your Directual account is about to be blocked!",
-                        "message_email": "<p>Your account balance went too low (-540.54 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">link payment method and add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "65f63359-f752-4027-b376-56817e52ac85",
-                        "date": 1685523731472,
-                        "message_platform": "App sump plan is changed Startup-monthly → FREE",
-                        "topic": "App sump plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "f5c81367-b3c3-4b69-9876-e0e1a9ae5ed8",
-                        "date": 1685523665505,
-                        "topic": "App is downgraded",
-                        "message_email": "App sump (12477) is downgraded to FREE and blocked."
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "4096583f-b9c8-4135-b83d-a9bb9f42415d",
-                        "date": 1666862748452,
-                        "message_platform": "Your account balance went too low (-199.46 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-199.46 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "169865df-9d73-496e-9e67-ed531dce56d6",
-                        "date": 1669746422758,
-                        "message_platform": "Your account balance went too low (-227.36 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-227.36 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "b2738676-7701-4cd1-9468-ab0b5b071b3b",
-                        "date": 1686597070639,
-                        "message_platform": "The app connectiveconfiguratortcp hits the plan load limits. Forecast payment is 8.2 US$. It'll be billed on the 1st day of the next month.",
-                        "topic": "App connectiveconfiguratortcp hits the plan limits. On-demand resourse consumption is ON.",
-                        "message_email": "<p style=\"margin-bottom:10px\">The app <a href=\"https://my.directual.com/platform/apps/\" target=\"_blank\">connectiveconfiguratortcp</a> hits the plan load limits.</p>\n<p style=\"margin-bottom:10px\">Forecast payment is <b>8.2</b> US$. It'll be billed on the 1st day of the next month.</p>\n<p style=\"margin-bottom:10px\">If you don't want the on-demand bill to increase, stop the scenarios or block your app.</p>\n<p>In case of any questions contact us via support chat or via email support@directual.com</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "bbf07f35-06cd-48f1-8417-e857e17b9a59",
-                        "date": 1685523664188,
-                        "topic": "App is downgraded",
-                        "message_email": "App moviesappis (12680) is downgraded to FREE and blocked."
-                    },
-                    {
-                        "date": 1648567836848,
-                        "topic": "App is upgraded",
-                        "message_platform": "Update app sump, plan Startup-monthly (previous plan: )",
-                        "id": "b70505ed-c87d-4bd8-b627-64ef7fb033a4"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "7a67952d-d800-4624-8372-94e04cccf6a2",
-                        "date": 1668848384144,
-                        "message_platform": "Your account balance went too low (-119.36 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-119.36 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "message_platform": "The app moviesappis will be downgraded to FREE on 01 June, 2022",
-                        "topic": "App will be downgraded",
-                        "date": 1652271906750,
-                        "id": "be5eb19a-d18f-43b9-90ea-aef3fb8079db"
-                    },
-                    {
-                        "topic": "App will be downgraded",
-                        "message_platform": "The app sump will be downgraded to FREE on 01 June, 2022",
-                        "date": 1652271915884,
-                        "id": "0e58735f-44e7-4141-b234-db7911374b1d"
-                    },
-                    {
-                        "message_platform": "The app connectiveconfiguratortcp will be downgraded to FREE on 01 June, 2022",
-                        "date": 1652271896650,
-                        "topic": "App will be downgraded",
-                        "id": "3c92b335-0723-4545-9ac2-e474ed72d4d4"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "99155e61-a4d9-41a4-9e6e-5b588633e06f",
-                        "date": 1654074095165,
-                        "message_platform": "App connectiveconfiguratortcp plan is changed Pro-sandbox → FREE",
-                        "topic": "App connectiveconfiguratortcp plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "8007a37f-821e-4f98-9b53-a76ccddff4bc",
-                        "date": 1683013022043,
-                        "message_platform": "Your account balance went too low (-458.74 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-458.74 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "348acbad-a75e-48c7-a10e-979738c47f9b",
-                        "date": 1677575148214,
-                        "message_platform": "Your account balance went too low (-429.52 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-429.52 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "895c990b-5d14-4183-a390-7595d72a93c2",
-                        "date": 1684333898575,
-                        "message_platform": "App moviesappis plan is changed FREE → Startup-monthly",
-                        "topic": "App moviesappis plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "e8a9db1b-674c-4a58-b723-2c352d6d30aa",
-                        "date": 1686573454290,
-                        "message_platform": "Your account balance went too low (-682.94 US$). Please, link payment method to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-682.94 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">link payment method</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "date": 1654079478662,
-                        "message_platform": "App connectiveconfiguratortcp (12947) plan FREE → Pro-sandbox",
-                        "id": "70160b73-2257-481c-a062-2321c931f3e8"
-                    },
-                    {
-                        "date": 1654074109075,
-                        "topic": "App is downgraded",
-                        "message_email": "App moviesappis (12680) is downgraded to FREE.",
-                        "id": "49912bd7-b8f1-4585-a735-c64164210fe2"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "6b32784b-99c4-4564-97a8-d85d6d92449a",
-                        "date": 1685627135581,
-                        "message_platform": "Your account balance went too low (-682.94 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-682.94 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "a727c878-fd9b-4b22-80ff-01aa8372e05d",
-                        "date": 1653499444000,
-                        "message_platform": "Team created. Team  Connective Team, plan team_monthly, 2 developer seats",
-                        "topic": "Team was created successfully",
-                        "message_email": "<p>Team was created successfully.<p>\n<p>Team  Connective Team, plan team_monthly, 2 developer seats</p>\n<p>Thanks for using Directual!</p>"
-                    }
-                ],
-                "apps": [
-                    {
-                        "is_blocked": false,
-                        "id": "13314",
-                        "is_hidden": false,
-                        "sys_name": "registrationtransactions",
-                        "app_id": {
-                            "sysName": "registrationtransactions",
-                            "plan_id": "Pro-sandbox"
-                        }
-                    },
-                    {
-                        "is_blocked": false,
-                        "id": "12947",
-                        "is_hidden": false,
-                        "sys_name": "connectiveconfiguratortcp",
-                        "app_id": {
-                            "sysName": "connectiveconfiguratortcp",
-                            "plan_id": "Pro-sandbox",
-                            "isDowngraded": false
-                        }
-                    }
-                ]
-            },
-            {
-                "survey_is_aborted": false,
-                "first_name": "FTM",
-                "tinkoff_rebill_id": "1292313471",
-                "source": "www.directual.com/",
-                "survey_step_1_raw": "developer_familiar_with_nocode",
-                "wallet_balance": -278,
-                "tinkoff_status": "failed",
-                "country": {
-                    "Name": "Russian Federation"
-                },
-                "gravatar_pic": "https://www.gravatar.com/avatar/9523f69a7d9469f50f99ff1a3352a9a1?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "register_date": 1682608456301,
-                "id": "ftm.rusgroup-energotrade@yandex.ru",
-                "survey_step_3_raw": "friends",
-                "last_name": "Agency",
-                "email_campaigns": [
-                    {
-                        "title": "Building no-code apps with AI! Join Free Live Webinar",
-                        "id": "fc382562-34cb-4b8e-86c9-d9662ec8b7f3"
-                    }
-                ],
-                "unsubscribed": false,
-                "subscription_settings": {
-                    "Unsubscribed": false
-                },
-                "wallet_transactions": [
-                    {
-                        "balance": -139,
-                        "user_id": "ftm.rusgroup-energotrade@yandex.ru",
-                        "id": "c187ff8f-6035-4c1d-a2e1-c2bb150a3a8c",
-                        "date": 1693818114000,
-                        "comment": "App rusgroup-enrgotrade-test (17240), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 0.01,
-                        "user_id": "ftm.rusgroup-energotrade@yandex.ru",
-                        "id": "584ee538-508d-4f08-8dcb-bbc8258bd0cc",
-                        "date": 1688480656000,
-                        "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": 0,
-                        "user_id": "ftm.rusgroup-energotrade@yandex.ru",
-                        "id": "c9bbb1ff-a7cc-4169-8a3c-01e355e9d4d9",
-                        "date": 1688116116000,
-                        "comment": "App rusgroup-enrgotrade-live (17241), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "ftm.rusgroup-energotrade@yandex.ru",
-                        "id": "7638a255-b6f0-4630-af18-9c0e77e45888",
-                        "date": 1691139653000,
-                        "comment": "App rusgroup-enrgotrade-test (17240), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 0,
-                        "user_id": "ftm.rusgroup-energotrade@yandex.ru",
-                        "id": "742be966-5966-43a6-ae66-89ba69172c0c",
-                        "date": 1688116105000,
-                        "comment": "App rusgroup-enrgotrade-test (17240), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 0,
-                        "user_id": "ftm.rusgroup-energotrade@yandex.ru",
-                        "id": "599a617e-ee17-49b1-81f5-3c43185aadcf",
-                        "date": 1690897785000,
-                        "comment": "On-demand resource consumption. App rusgroup-enrgotrade-test (17240), period 2023-07",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": 0,
-                        "user_id": "ftm.rusgroup-energotrade@yandex.ru",
-                        "id": "3194fd88-a653-48e6-8b9f-aa21b1f3e897",
-                        "date": 1685610181000,
-                        "comment": "Adding funds via Tinkoff 3159.0 ₽ → 39.00 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "ftm.rusgroup-energotrade@yandex.ru",
-                        "id": "94cc3cbe-8aee-4914-9f33-8a8ed7a4475a",
-                        "date": 1685532209000,
-                        "comment": "Update app rusgroup-enrgotrade-test, plan Startup-monthly (previous plan: Free)",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 0.01,
-                        "user_id": "ftm.rusgroup-energotrade@yandex.ru",
-                        "id": "1390239f-4adf-49f2-b22c-d0c41d452dd9",
-                        "date": 1685533463000,
-                        "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": 0,
-                        "user_id": "ftm.rusgroup-energotrade@yandex.ru",
-                        "id": "b274562c-f241-490a-b185-44dd018210c0",
-                        "date": 1685610184000,
-                        "comment": "Adding funds via Tinkoff 3159.0 ₽ → 39.00 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": 100,
-                        "user_id": "ftm.rusgroup-energotrade@yandex.ru",
-                        "id": "0f3f3df5-4e2e-49f3-8261-cc8b7100975b",
-                        "date": 1685528536000,
-                        "comment": "Promo-code PRODUCTHUNT",
-                        "type": "promo"
-                    },
-                    {
-                        "balance": 116.95,
-                        "user_id": "ftm.rusgroup-energotrade@yandex.ru",
-                        "id": "65eec60b-19ce-4edc-aad3-8f2ff18839f3",
-                        "date": 1688480701000,
-                        "comment": "Adding funds via Tinkoff 10759.4 ₽ → 116.95 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "ftm.rusgroup-energotrade@yandex.ru",
-                        "id": "16d79ada-efb6-44c6-9522-d5c50378442c",
-                        "date": 1688480698000,
-                        "comment": "Update app rusgroup-enrgotrade-test, plan Pro-monthly (previous plan: Free)",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "ftm.rusgroup-energotrade@yandex.ru",
-                        "id": "131b658d-ed1c-41ff-8cea-94a3a368e64d",
-                        "date": 1685533022000,
-                        "comment": "Update app rusgroup-enrgotrade-live, plan Startup-monthly (previous plan: Free)",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 0.01,
-                        "user_id": "ftm.rusgroup-energotrade@yandex.ru",
-                        "id": "81ef18dc-36b5-40ea-9d24-95a8fe355245",
-                        "date": 1685529382000,
-                        "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": 0.01,
-                        "user_id": "ftm.rusgroup-energotrade@yandex.ru",
-                        "id": "4926d763-483c-4a39-96aa-dc3655e38170",
-                        "date": 1685531695000,
-                        "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": 0.01,
-                        "user_id": "ftm.rusgroup-energotrade@yandex.ru",
-                        "id": "c589521c-3027-4ccb-8b12-9ae99f563e4e",
-                        "date": 1685533415000,
-                        "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": 0,
-                        "user_id": "ftm.rusgroup-energotrade@yandex.ru",
-                        "id": "23a962da-2681-4282-b522-7ca3b0b13715",
-                        "date": 1685610056000,
-                        "comment": "App rusgroup-enrgotrade-test (17240), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 0,
-                        "user_id": "ftm.rusgroup-energotrade@yandex.ru",
-                        "id": "490282ae-535a-46c8-8b19-d3585b70c0c8",
-                        "date": 1685610175000,
-                        "comment": "App rusgroup-enrgotrade-live (17241), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 0,
-                        "user_id": "ftm.rusgroup-energotrade@yandex.ru",
-                        "id": "7570aa2a-1d27-4c92-b604-07912eb5795e",
-                        "date": 1685610177000,
-                        "comment": "Adding funds via Tinkoff 1373.76 ₽ → 16.96 D-coins",
-                        "type": "tinkoff"
-                    }
-                ],
-                "number_of_apps": 1,
-                "survey_step_2_raw": "SMB",
-                "notifications": [
-                    {
-                        "sent_to_email": true,
-                        "id": "04748be4-ef0a-4ff1-9d66-8199b8d8441d",
-                        "date": 1685523924175,
-                        "topic": "App is downgraded",
-                        "message_email": "App rusgroup-enrgotrade-live (17241) is downgraded to FREE and blocked."
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "c1536417-a847-4afa-b182-3fc35ed25ff6",
-                        "date": 1689232605909,
-                        "message_platform": "The app rusgroup-enrgotrade-test hits the plan load limits. Forecast payment is 344.27 US$. It'll be billed on the 1st day of the next month.",
-                        "topic": "App rusgroup-enrgotrade-test hits the plan limits. On-demand resourse consumption is ON.",
-                        "message_email": "<p style=\"margin-bottom:10px\">The app <a href=\"https://my.directual.com/platform/apps/rusgroup-enrgotrade-test\" target=\"_blank\">rusgroup-enrgotrade-test</a> hits the plan load limits.</p>\n<p style=\"margin-bottom:10px\">Forecast payment is <b>344.27</b> US$. It'll be billed on the 1st day of the next month.</p>\n<p style=\"margin-bottom:10px\">If you don't want the on-demand bill to increase, stop the scenarios or block your app.</p>\n<p>In case of any questions contact us via support chat or via email support@directual.com</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "14b2fc1b-fcd8-4c28-9f62-34a41952cf66",
-                        "date": 1690448302564,
-                        "message_platform": "The app rusgroup-enrgotrade-test hits the plan load limits. Forecast payment is 2015.7 US$. It'll be billed on the 1st day of the next month.",
-                        "topic": "App rusgroup-enrgotrade-test hits the plan limits. On-demand resourse consumption is ON.",
-                        "message_email": "<p style=\"margin-bottom:10px\">The app <a href=\"https://my.directual.com/platform/apps/rusgroup-enrgotrade-test\" target=\"_blank\">rusgroup-enrgotrade-test</a> hits the plan load limits.</p>\n<p style=\"margin-bottom:10px\">Forecast payment is <b>2015.7</b> US$. It'll be billed on the 1st day of the next month.</p>\n<p style=\"margin-bottom:10px\">If you don't want the on-demand bill to increase, stop the scenarios or block your app.</p>\n<p>In case of any questions contact us via support chat or via email support@directual.com</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "5077ed13-5a5e-4f8d-a052-1e8e6b3eb5de",
-                        "date": 1688480701111,
-                        "message_platform": "App rusgroup-enrgotrade-test plan is changed FREE → Pro-monthly",
-                        "topic": "App rusgroup-enrgotrade-test plan is changed"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "8c4df453-0e95-4b73-b296-ef9adcd8791a",
-                        "date": 1688480698356,
-                        "message_platform": "App rusgroup-enrgotrade-test plan is changed FREE → Pro-monthly",
-                        "topic": "App rusgroup-enrgotrade-test plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "is_delivered": true,
-                        "id": "7f46f054-2b1e-4327-8e4b-e1d1fcbc306f",
-                        "date": 1694590406000,
-                        "message_platform": "Your account balance went too low (-278 US$). Please, link payment method to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-278 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">link payment method</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "d74d8d15-92af-4e8c-9b41-41f3257e21db",
-                        "date": 1684333994211,
-                        "message_platform": "App rusgroup-enrgotrade-live plan is changed FREE → Startup-monthly",
-                        "topic": "App rusgroup-enrgotrade-live plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "9c575844-f070-4b29-bb1b-f3e41975b61c",
-                        "date": 1686597070770,
-                        "message_platform": "The app rusgroup-enrgotrade-test hits the plan load limits. Forecast payment is 656.69 US$. It'll be billed on the 1st day of the next month.",
-                        "topic": "App rusgroup-enrgotrade-test hits the plan limits. On-demand resourse consumption is ON.",
-                        "message_email": "<p style=\"margin-bottom:10px\">The app <a href=\"https://my.directual.com/platform/apps/\" target=\"_blank\">rusgroup-enrgotrade-test</a> hits the plan load limits.</p>\n<p style=\"margin-bottom:10px\">Forecast payment is <b>656.69</b> US$. It'll be billed on the 1st day of the next month.</p>\n<p style=\"margin-bottom:10px\">If you don't want the on-demand bill to increase, stop the scenarios or block your app.</p>\n<p>In case of any questions contact us via support chat or via email support@directual.com</p>"
-                    },
-                    {
-                        "date": 1685528595813,
-                        "message_platform": "Update app rusgroup-enrgotrade-live, plan Startup-monthly (previous plan: Free)",
-                        "topic": "App is upgraded",
-                        "id": "dc93b4ce-2b1c-4f7b-98f0-467b1dec56b8"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "77718ea6-daa3-4406-9376-7bcb4d252d70",
-                        "date": 1690900408949,
-                        "message_platform": "Your account balance went too low (-4034.89 US$). Please, link payment method and add funds to prevent account suspension.",
-                        "topic": "⚠️ Your Directual account is about to be blocked!",
-                        "message_email": "<p>Your account balance went too low (-4034.89 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">link payment method and add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "6a892081-1bec-40a9-88af-db12aeae0094",
-                        "date": 1685528192690,
-                        "message_platform": "App rusgroup-enrgotrade-test plan is changed Startup-monthly → FREE",
-                        "topic": "App rusgroup-enrgotrade-test plan is changed"
-                    },
-                    {
-                        "message_platform": "Update app rusgroup-enrgotrade-test, plan Pro-monthly (previous plan: Free)",
-                        "topic": "App is upgraded",
-                        "date": 1688480698057,
-                        "id": "6b2b5dea-ad4a-4db8-864c-995ad37c0900"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "f36ff6f8-db95-4028-8b96-62e04e31a928",
-                        "date": 1688120686324,
-                        "message_platform": "App rusgroup-enrgotrade-test plan is changed Startup-monthly → FREE",
-                        "topic": "App rusgroup-enrgotrade-test plan is changed"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "4c4089a5-e7d5-4ddd-bd9a-d0ed6fe96534",
-                        "date": 1685527964919,
-                        "message_platform": "App rusgroup-enrgotrade-test plan is changed Startup-monthly → FREE",
-                        "topic": "App rusgroup-enrgotrade-test plan is changed"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "8836b3a7-fa8b-4dfe-bd33-a2e337c60adc",
-                        "date": 1685528286069,
-                        "message_platform": "App rusgroup-enrgotrade-live plan is changed Startup-monthly → FREE",
-                        "topic": "App rusgroup-enrgotrade-live plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "is_delivered": true,
-                        "id": "e33a41ed-9243-4828-b043-67953131209d",
-                        "date": 1693818471000,
-                        "message_platform": "Your Directual account balance went too low (-278 D-coins). The payment method failed. The following apps will be downgraded and blocked:\n— rusgroup-enrgotrade-test rusgroup-enrgotrade-test, ID: 17240\nPlease, link valid payment method and cancel apps downgrade until they are blocked completely.",
-                        "topic": "🚫 Your Directual apps will be blocked soon",
-                        "message_email": "<p>Your Directual account balance went too low (-278 D-coins). The payment method failed. The following apps will be downgraded to FREE and blocked:</p>\n<ul>\n<li><b>rusgroup-enrgotrade-test</b> rusgroup-enrgotrade-test, ID: 17240 will be downgraded on 04 October, 2023.</li>\n</ul>\n<p>Please, <a href=\"https://my.directual.com/platform/billing/\" target=\"_blank\">link valid payment method</a> and cancel apps downgrade until they are blocked completely.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "514acf89-92bd-441c-a23f-417837a4b479",
-                        "date": 1690195160443,
-                        "message_platform": "The app rusgroup-enrgotrade-test hits the plan load limits. Forecast payment is 1322.57 US$. It'll be billed on the 1st day of the next month.",
-                        "topic": "App rusgroup-enrgotrade-test hits the plan limits. On-demand resourse consumption is ON.",
-                        "message_email": "<p style=\"margin-bottom:10px\">The app <a href=\"https://my.directual.com/platform/apps/rusgroup-enrgotrade-test\" target=\"_blank\">rusgroup-enrgotrade-test</a> hits the plan load limits.</p>\n<p style=\"margin-bottom:10px\">Forecast payment is <b>1322.57</b> US$. It'll be billed on the 1st day of the next month.</p>\n<p style=\"margin-bottom:10px\">If you don't want the on-demand bill to increase, stop the scenarios or block your app.</p>\n<p>In case of any questions contact us via support chat or via email support@directual.com</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "e3033bf1-b66e-4121-b1ec-597988db3193",
-                        "date": 1696410061000,
-                        "message_platform": "App rusgroup-enrgotrade-test plan is changed Pro-monthly → FREE",
-                        "topic": "App rusgroup-enrgotrade-test plan is changed"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "59825c26-c294-4bc9-a7fd-113ec8e9ecf2",
-                        "date": 1684333995294,
-                        "message_platform": "App rusgroup-enrgotrade-test plan is changed FREE → Startup-monthly",
-                        "topic": "App rusgroup-enrgotrade-test plan is changed"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "506eb299-1130-4593-a089-2601d9cf2881",
-                        "date": 1688120690388,
-                        "message_platform": "App rusgroup-enrgotrade-live plan is changed Startup-monthly → FREE",
-                        "topic": "App rusgroup-enrgotrade-live plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "1eebc96a-864d-495b-8c1d-85c655ba66e1",
-                        "date": 1689923931675,
-                        "message_platform": "The app rusgroup-enrgotrade-test hits the plan load limits. Forecast payment is 1151.41 US$. It'll be billed on the 1st day of the next month.",
-                        "topic": "App rusgroup-enrgotrade-test hits the plan limits. On-demand resourse consumption is ON.",
-                        "message_email": "<p style=\"margin-bottom:10px\">The app <a href=\"https://my.directual.com/platform/apps/rusgroup-enrgotrade-test\" target=\"_blank\">rusgroup-enrgotrade-test</a> hits the plan load limits.</p>\n<p style=\"margin-bottom:10px\">Forecast payment is <b>1151.41</b> US$. It'll be billed on the 1st day of the next month.</p>\n<p style=\"margin-bottom:10px\">If you don't want the on-demand bill to increase, stop the scenarios or block your app.</p>\n<p>In case of any questions contact us via support chat or via email support@directual.com</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "b1a81167-36a4-405f-bd1c-0c676270f762",
-                        "date": 1685523912628,
-                        "topic": "App is downgraded",
-                        "message_email": "App rusgroup-enrgotrade-test (17240) is downgraded to FREE and blocked."
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "cf1b47a1-00e1-45a2-bd5b-677309d54fea",
-                        "date": 1686943236434,
-                        "message_platform": "The app rusgroup-enrgotrade-test hits the plan load limits. Forecast payment is 660.19 US$. It'll be billed on the 1st day of the next month.",
-                        "topic": "App rusgroup-enrgotrade-test hits the plan limits. On-demand resourse consumption is ON.",
-                        "message_email": "<p style=\"margin-bottom:10px\">The app <a href=\"https://my.directual.com/platform/apps/rusgroup-enrgotrade-test\" target=\"_blank\">rusgroup-enrgotrade-test</a> hits the plan load limits.</p>\n<p style=\"margin-bottom:10px\">Forecast payment is <b>660.19</b> US$. It'll be billed on the 1st day of the next month.</p>\n<p style=\"margin-bottom:10px\">If you don't want the on-demand bill to increase, stop the scenarios or block your app.</p>\n<p>In case of any questions contact us via support chat or via email support@directual.com</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "b90d256e-0c05-45ec-a467-a7209bcada7d",
-                        "date": 1685527937479,
-                        "message_platform": "App rusgroup-enrgotrade-live plan is changed Startup-monthly → FREE",
-                        "topic": "App rusgroup-enrgotrade-live plan is changed"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "35251b76-22dd-4ee5-b39a-0f253ea07d30",
-                        "date": 1696410061000,
-                        "topic": "App is downgraded",
-                        "message_email": "App rusgroup-enrgotrade-test (17240) is downgraded to FREE and blocked."
-                    }
-                ],
-                "apps": [
-                    {
-                        "is_blocked": false,
-                        "id": "17240",
-                        "is_hidden": false,
-                        "sys_name": "rusgroup-enrgotrade-test",
-                        "app_id": {
-                            "sysName": "rusgroup-enrgotrade-test",
-                            "plan_id": "FREE",
-                            "isDowngraded": false
-                        }
-                    }
-                ]
-            },
-            {
-                "survey_is_aborted": false,
-                "first_name": "Nikita",
-                "source": "www.directual.com/",
-                "survey_step_1_raw": "beginner",
-                "wallet_balance": -269.76,
-                "country": {
-                    "Name": "United States"
-                },
-                "gravatar_pic": "https://www.gravatar.com/avatar/463680b2a53757f30fafbef35cfc20f9?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "register_date": 1662046195203,
-                "id": "nikita.t.agency@yandex.ru",
-                "survey_step_3_raw": "media",
-                "last_name": "Smirnov",
-                "email_campaigns": [
-                    {
-                        "title": "Building no-code apps with AI! Join Free Live Webinar",
-                        "id": "fc382562-34cb-4b8e-86c9-d9662ec8b7f3"
-                    }
-                ],
-                "unsubscribed": false,
-                "subscription_settings": {
-                    "Unsubscribed": false
-                },
-                "wallet_transactions": [
-                    {
-                        "balance": -139,
-                        "user_id": "nikita.t.agency@yandex.ru",
-                        "id": "4be59d6a-6b86-4ca1-9624-cd7c5cfa0744",
-                        "date": 1693040451000,
-                        "comment": "App creativebot (14087), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "nikita.t.agency@yandex.ru",
-                        "id": "47501fec-519d-427c-b3f7-03480173be30",
-                        "date": 1669971643000,
-                        "comment": "App creativebot (14087), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 34,
-                        "user_id": "nikita.t.agency@yandex.ru",
-                        "id": "1e4eb04a-2d87-45e2-9248-a11ec737d574",
-                        "date": 1662129381000,
-                        "comment": "Adding funds via Tinkoff 2176.0 ₽ → 34.0 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": 39,
-                        "user_id": "nikita.t.agency@yandex.ru",
-                        "id": "a662c7e4-c1d3-417b-8b0d-9f40acd4540b",
-                        "date": 1667559063000,
-                        "comment": "Adding funds via Tinkoff 2496.0 ₽ → 39.0 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "nikita.t.agency@yandex.ru",
-                        "id": "a9bebeb8-1c66-4efa-b83c-d7e11eb08cc1",
-                        "date": 1687770044000,
-                        "comment": "App creativebot (14087), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 5,
-                        "user_id": "nikita.t.agency@yandex.ru",
-                        "id": "6b8b9c1d-8aa6-4ce0-9ac6-fd6e4e676e42",
-                        "date": 1662047252000,
-                        "comment": "Adding funds via Tinkoff 320.0 ₽ → 5.0 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": 30,
-                        "user_id": "nikita.t.agency@yandex.ru",
-                        "id": "d5cf297f-aa34-4acf-a0d8-04a332c22d95",
-                        "date": 1681199130000,
-                        "comment": "Promo-code GY62LMQGP66R",
-                        "type": "promo"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "nikita.t.agency@yandex.ru",
-                        "id": "5c77e735-8f00-44bc-adf4-985025d46101",
-                        "date": 1664702059000,
-                        "comment": "App creativebot (14087), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "nikita.t.agency@yandex.ru",
-                        "id": "3c1b2d37-5e35-4352-81de-feda9e113b5b",
-                        "date": 1672650052000,
-                        "comment": "App creativebot (14087), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "nikita.t.agency@yandex.ru",
-                        "id": "8fa6c929-6cdd-472b-bf37-266985cbe2ee",
-                        "date": 1667379625000,
-                        "comment": "App creativebot (14087), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 39,
-                        "user_id": "nikita.t.agency@yandex.ru",
-                        "id": "0b700f10-65f6-4565-a976-4179f1c60d61",
-                        "date": 1665039288000,
-                        "comment": "Adding funds via Tinkoff 2496.0 ₽ → 39.0 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "nikita.t.agency@yandex.ru",
-                        "id": "15854391-8a39-4a13-931a-1aa3420cb975",
-                        "date": 1662129416000,
-                        "comment": "Update app creativebot, plan Startup-monthly (previous plan: Free)",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "nikita.t.agency@yandex.ru",
-                        "id": "2d879ac9-ca97-4f5d-921f-7b3e2b237e7f",
-                        "date": 1675328439000,
-                        "comment": "App creativebot (14087), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -7.57,
-                        "user_id": "nikita.t.agency@yandex.ru",
-                        "id": "9d2ce2d5-0332-40f6-82e6-c11717b7f658",
-                        "date": 1680537449000,
-                        "comment": "On-demand resource consumption. App creativebot (14087), period 2023-03",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": 8.81,
-                        "user_id": "nikita.t.agency@yandex.ru",
-                        "id": "684abc92-af84-4fc8-bd6c-3c7f5cd0eead",
-                        "date": 1682494069000,
-                        "comment": "App creativebot plan upgrade (Startup → Pro-monthly) partial refund",
-                        "type": "app_payment_upgrade_refund"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "nikita.t.agency@yandex.ru",
-                        "id": "dab9de62-31b7-4b96-943e-3c5d39b9a921",
-                        "date": 1677747635000,
-                        "comment": "App creativebot (14087), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "nikita.t.agency@yandex.ru",
-                        "id": "637a6a18-990a-4114-a99d-7502463aff92",
-                        "date": 1690362055000,
-                        "comment": "App creativebot (14087), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "nikita.t.agency@yandex.ru",
-                        "id": "3beecd3e-e222-4a7e-9302-c015a13e4728",
-                        "date": 1682499659000,
-                        "comment": "App creativebot (14087), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 39,
-                        "user_id": "nikita.t.agency@yandex.ru",
-                        "id": "3f3b1ae4-9bf6-4d6d-b913-2078833b7eb8",
-                        "date": 1670816566000,
-                        "comment": "Adding funds via Tinkoff 2496.0 ₽ → 39.0 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": 30,
-                        "user_id": "nikita.t.agency@yandex.ru",
-                        "id": "35130c8c-57c2-464e-abc6-eaf3042aa1b5",
-                        "date": 1681199107000,
-                        "comment": "Promo-code 912RRVFXYLDI",
-                        "type": "promo"
-                    },
-                    {
-                        "balance": 220,
-                        "user_id": "nikita.t.agency@yandex.ru",
-                        "id": "215eb87d-623c-410d-b979-1e30c0423f06",
-                        "date": 1686935723000,
-                        "comment": "Wire transfer from ООО «ОККАМ СИ ЭС», 18920 ₽ → 220 D-coins",
-                        "type": "bank_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "nikita.t.agency@yandex.ru",
-                        "id": "aababe78-5483-415e-96c9-6caed6f6e8b4",
-                        "date": 1680426048000,
-                        "comment": "App creativebot (14087), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 300,
-                        "user_id": "nikita.t.agency@yandex.ru",
-                        "id": "5654acdd-1ac3-40df-be42-c181e7d68483",
-                        "date": 1681546044000,
-                        "comment": "Wire transfer from ООО «ОККАМ СИ ЭС», 24600 ₽ → 300 D-coins",
-                        "type": "bank_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "nikita.t.agency@yandex.ru",
-                        "id": "fb3ced42-8e58-4d72-9982-2f5937bd4387",
-                        "date": 1685091625000,
-                        "comment": "App creativebot (14087), license payment, plan Pro",
-                        "type": "app_payment"
-                    }
-                ],
-                "number_of_apps": 1,
-                "survey_step_2_raw": "startup",
-                "notifications": [
-                    {
-                        "sent_to_email": true,
-                        "id": "29279cb8-5467-4e51-9b34-e93e29b81ed5",
-                        "date": 1690900408948,
-                        "message_platform": "Your account balance went too low (-130.76 US$). Please, link payment method to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-130.76 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">link payment method</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "496e7e02-d340-4604-b0bf-55056fdc455f",
-                        "date": 1690366504653,
-                        "message_platform": "Your account balance went too low (-130.76 US$). Please, link payment method to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-130.76 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">link payment method</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "8230b7d8-8a23-4496-bb5d-57eb39937437",
-                        "date": 1678183732255,
-                        "message_platform": "Your app testcreatiumint (testcreatiumint) exceeds FREE-plan load limits. You need to upgrade it, choosing one of the paid plans. If you dont't upgrade the app in a few days it will be blocked!",
-                        "topic": "🔥 You need to upgrade app testcreatiumint (testcreatiumint)",
-                        "message_email": "<p>Your app <a href=\"https://my.directual.com/platform/apps/testcreatiumint\">testcreatiumint (testcreatiumint)</a> exceeds FREE-plan load limits. You need to upgrade it, choosing one of the <a href=\"https://www.directual.com/pricing\">paid plans</a>.</p>\n<p>If you dont't upgrade the app in a few days it will be blocked!</p>"
-                    },
-                    {
-                        "date": 1662129416422,
-                        "message_platform": "Update app creativebot, plan Startup-monthly (previous plan: Free)",
-                        "topic": "App is upgraded",
-                        "id": "7c2bc9ec-57d9-4021-b421-d8e6f5ef0156"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "cf733933-3e1e-4a00-aaba-19b3a00ec386",
-                        "date": 1684333923910,
-                        "message_platform": "App testcreatiumint plan is changed FREE → Startup-monthly",
-                        "topic": "App testcreatiumint plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "24438d8b-4bbe-4caa-b279-c9225edf348e",
-                        "date": 1664952861629,
-                        "message_platform": "Your account balance went too low (-39 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-39 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "is_delivered": true,
-                        "id": "bb5fd276-1079-4277-807e-2d503bca563e",
-                        "date": 1694590423000,
-                        "message_platform": "Your account balance went too low (-269.76 US$). Please, link payment method to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-269.76 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">link payment method</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "04735b52-8957-4692-b4a7-24e41d09d58b",
-                        "date": 1677060512329,
-                        "message_platform": "Your app testcreatiumint (testcreatiumint) exceeds FREE-plan load limits. You need to upgrade it, choosing one of the paid plans. If you dont't upgrade the app in a few days it will be blocked!",
-                        "topic": "🔥 You need to upgrade app testcreatiumint (testcreatiumint)",
-                        "message_email": "<p>Your app <a href=\"https://my.directual.com/platform/apps/testcreatiumint\">testcreatiumint (testcreatiumint)</a> exceeds FREE-plan load limits. You need to upgrade it, choosing one of the <a href=\"https://www.directual.com/pricing\">paid plans</a>.</p>\n<p>If you dont't upgrade the app in a few days it will be blocked!</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "9caac250-b0c2-4f0a-b836-a1188069f29c",
-                        "date": 1678356516790,
-                        "message_platform": "Your app testcreatiumint (testcreatiumint) exceeds FREE-plan load limits. You need to upgrade it, choosing one of the paid plans. If you dont't upgrade the app in a few days it will be blocked!",
-                        "topic": "🔥 You need to upgrade app testcreatiumint (testcreatiumint)",
-                        "message_email": "<p>Your app <a href=\"https://my.directual.com/platform/apps/testcreatiumint\">testcreatiumint (testcreatiumint)</a> exceeds FREE-plan load limits. You need to upgrade it, choosing one of the <a href=\"https://www.directual.com/pricing\">paid plans</a>.</p>\n<p>If you dont't upgrade the app in a few days it will be blocked!</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "cc16e5b6-ebc3-4720-b0af-5108fcb149e6",
-                        "date": 1678097320094,
-                        "message_platform": "Your app testcreatiumint (testcreatiumint) exceeds FREE-plan load limits. You need to upgrade it, choosing one of the paid plans. If you dont't upgrade the app in a few days it will be blocked!",
-                        "topic": "🔥 You need to upgrade app testcreatiumint (testcreatiumint)",
-                        "message_email": "<p>Your app <a href=\"https://my.directual.com/platform/apps/testcreatiumint\">testcreatiumint (testcreatiumint)</a> exceeds FREE-plan load limits. You need to upgrade it, choosing one of the <a href=\"https://www.directual.com/pricing\">paid plans</a>.</p>\n<p>If you dont't upgrade the app in a few days it will be blocked!</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "1822c976-4b8b-4e21-a975-3d8796489de8",
-                        "date": 1677233310930,
-                        "message_platform": "Your app testcreatiumint (testcreatiumint) exceeds FREE-plan load limits. You need to upgrade it, choosing one of the paid plans. If you dont't upgrade the app in a few days it will be blocked!",
-                        "topic": "🔥 You need to upgrade app testcreatiumint (testcreatiumint)",
-                        "message_email": "<p>Your app <a href=\"https://my.directual.com/platform/apps/testcreatiumint\">testcreatiumint (testcreatiumint)</a> exceeds FREE-plan load limits. You need to upgrade it, choosing one of the <a href=\"https://www.directual.com/pricing\">paid plans</a>.</p>\n<p>If you dont't upgrade the app in a few days it will be blocked!</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "b74554af-87be-4937-899c-7fc82486c2b6",
-                        "date": 1677319708782,
-                        "message_platform": "Your app testcreatiumint (testcreatiumint) exceeds FREE-plan load limits. You need to upgrade it, choosing one of the paid plans. If you dont't upgrade the app in a few days it will be blocked!",
-                        "topic": "🔥 You need to upgrade app testcreatiumint (testcreatiumint)",
-                        "message_email": "<p>Your app <a href=\"https://my.directual.com/platform/apps/testcreatiumint\">testcreatiumint (testcreatiumint)</a> exceeds FREE-plan load limits. You need to upgrade it, choosing one of the <a href=\"https://www.directual.com/pricing\">paid plans</a>.</p>\n<p>If you dont't upgrade the app in a few days it will be blocked!</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "0f4197e6-a576-4ab1-8c6e-f2b677ab09bc",
-                        "date": 1682493930169,
-                        "message_platform": "App creativebot plan is changed Startup-monthly → Pro-monthly",
-                        "topic": "App creativebot plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "a4576eb7-c4b7-40ac-8ba1-e630d777f570",
-                        "date": 1685627136703,
-                        "message_platform": "Your account balance went too low (-72.76 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-72.76 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "11e8e3b2-974b-4e11-8cee-bf37f44f6f4e",
-                        "date": 1678270118557,
-                        "message_platform": "Your app testcreatiumint (testcreatiumint) exceeds FREE-plan load limits. You need to upgrade it, choosing one of the paid plans. If you dont't upgrade the app in a few days it will be blocked!",
-                        "topic": "🔥 You need to upgrade app testcreatiumint (testcreatiumint)",
-                        "message_email": "<p>Your app <a href=\"https://my.directual.com/platform/apps/testcreatiumint\">testcreatiumint (testcreatiumint)</a> exceeds FREE-plan load limits. You need to upgrade it, choosing one of the <a href=\"https://www.directual.com/pricing\">paid plans</a>.</p>\n<p>If you dont't upgrade the app in a few days it will be blocked!</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "63bf4004-0fb3-42c4-b0ad-71af0d390712",
-                        "date": 1677575148251,
-                        "message_platform": "Your account balance went too low (-78 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-78 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "54400791-fcd8-4c05-b60b-79e841616e68",
-                        "date": 1695718849000,
-                        "message_platform": "App creativebot plan is changed Pro-monthly → FREE",
-                        "topic": "App creativebot plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "9e1e84a8-2655-4cb2-a55f-6b5e0f008935",
-                        "date": 1670577897001,
-                        "message_platform": "Your account balance went too low (-39 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-39 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "is_delivered": true,
-                        "id": "a1360a66-ad64-4b6d-8424-ad5fcfb02e96",
-                        "date": 1694075149000,
-                        "message_platform": "Your Directual account balance went too low (-269.76 D-coins). The payment method failed. The following apps will be downgraded and blocked:\n— CreativeBot creativebot, ID: 14087\nPlease, link valid payment method and cancel apps downgrade until they are blocked completely.",
-                        "topic": "🚫 Your Directual apps will be blocked soon",
-                        "message_email": "<p>Your Directual account balance went too low (-269.76 D-coins). The payment method failed. The following apps will be downgraded to FREE and blocked:</p>\n<ul>\n<li><b>CreativeBot</b> creativebot, ID: 14087 will be downgraded on 26 September, 2023.</li>\n</ul>\n<p>Please, <a href=\"https://my.directual.com/platform/billing/\" target=\"_blank\">link valid payment method</a> and cancel apps downgrade until they are blocked completely.</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "7ac67d9d-64b6-4218-97b5-219c053476bf",
-                        "date": 1695718848000,
-                        "topic": "App is downgraded",
-                        "message_email": "App creativebot (14087) is downgraded to FREE and blocked."
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "af3c381d-7ddc-4649-b0c5-28ff3e392d4e",
-                        "date": 1662129416902,
-                        "message_platform": "App creativebot plan is changed FREE → Startup-monthly",
-                        "topic": "App creativebot plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "19c11bd9-5108-454c-a5eb-4e9ac94efd64",
-                        "date": 1677146968034,
-                        "message_platform": "Your app testcreatiumint (testcreatiumint) exceeds FREE-plan load limits. You need to upgrade it, choosing one of the paid plans. If you dont't upgrade the app in a few days it will be blocked!",
-                        "topic": "🔥 You need to upgrade app testcreatiumint (testcreatiumint)",
-                        "message_email": "<p>Your app <a href=\"https://my.directual.com/platform/apps/testcreatiumint\">testcreatiumint (testcreatiumint)</a> exceeds FREE-plan load limits. You need to upgrade it, choosing one of the <a href=\"https://www.directual.com/pricing\">paid plans</a>.</p>\n<p>If you dont't upgrade the app in a few days it will be blocked!</p>"
-                    }
-                ],
-                "apps": [
-                    {
-                        "is_blocked": false,
-                        "id": "14087",
-                        "is_hidden": false,
-                        "sys_name": "creativebot",
-                        "app_id": {
-                            "sysName": "creativebot",
-                            "plan_id": "FREE",
-                            "isDowngraded": false
-                        }
-                    }
-                ]
-            },
-            {
-                "survey_is_aborted": false,
-                "first_name": "Владислав",
-                "source": "www.directual.com/",
-                "survey_step_1_raw": "customOption: собственник",
-                "wallet_balance": -230.97,
-                "country": {
-                    "Name": "Russian Federation"
-                },
-                "gravatar_pic": "https://www.gravatar.com/avatar/724f935ba3a35ac550a41c8a93b091c9?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "register_date": 1665142866826,
-                "id": "golotov.vladislav@yandex.ru",
-                "survey_step_3_raw": "friends",
-                "last_name": "Голотов",
-                "email_campaigns": [
-                    {
-                        "title": "Building no-code apps with AI! Join Free Live Webinar",
-                        "id": "fc382562-34cb-4b8e-86c9-d9662ec8b7f3"
-                    }
-                ],
-                "unsubscribed": false,
-                "subscription_settings": {
-                    "Unsubscribed": false
-                },
-                "wallet_transactions": [
-                    {
-                        "balance": -91.97,
-                        "user_id": "golotov.vladislav@yandex.ru",
-                        "id": "9f9a8dc5-071f-42f6-9c7e-8165098c2db6",
-                        "date": 1667309598000,
-                        "comment": "On-demand resource consumption. App rubinloft (11648), period 2022-10",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "golotov.vladislav@yandex.ru",
-                        "id": "df1b6002-891e-4067-8b6c-d888e60a793b",
-                        "date": 1665219655000,
-                        "comment": "App rubinloft (11648), license payment, plan Pro",
-                        "type": "app_payment"
-                    }
-                ],
-                "number_of_apps": 1,
-                "survey_step_2_raw": "SMB",
-                "notifications": [
-                    {
-                        "sent_to_email": true,
-                        "id": "7b594c41-67d6-4f91-ae6f-7ccddec4577e",
-                        "date": 1666871399867,
-                        "message_platform": "<Your Directual account balance went too low (-139 D-coins). The following apps will be downgraded:\n— RUBINLOFT rubinloft, ID: 11648\nIf you don't add funds to your account balance, it'll be blocked completely.",
-                        "topic": "🚫 Your apps will be downgraded to FREE",
-                        "message_email": "<p>Your Directual account balance went too low (-139 D-coins). The following apps will be downgraded to FREE:</p>\n<ul>\n<li><b>RUBINLOFT</b> rubinloft, ID: 11648 will be downgraded on 07 November, 2022.</li>\n</ul>\n<p>If you don't <a href=\"https://readme.directual.com/pricing-and-billing/how-billing-works#adding-funds-to-your-account-balance\" target=\"_blank\">add funds</a> to your account balance, it'll be blocked completely.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "c4a466c4-cdd3-4e59-b612-7555143bc796",
-                        "date": 1670577896862,
-                        "message_platform": "Your account balance went too low (-230.97 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-230.97 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "9ae206d4-8867-4d99-9adb-5e8b1df74bbf",
-                        "date": 1671613911524,
-                        "message_platform": "Your account balance went too low (-230.97 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-230.97 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "c5ed34d3-2c76-4f3c-8688-d055cb173f5a",
-                        "date": 1684334024380,
-                        "message_platform": "App rubinloft plan is changed FREE → Startup-monthly",
-                        "topic": "App rubinloft plan is changed"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "3f095d66-4584-4600-87ae-3d7ad207d3e6",
-                        "date": 1665152905447,
-                        "message_platform": "App rubinloft plan is changed FREE → Pro-monthly",
-                        "topic": "App rubinloft plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "8e7dc73b-6b0d-41ab-8c2b-591678a44e90",
-                        "date": 1666602087702,
-                        "message_platform": "Your account balance went too low (-139 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-139 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "619303da-1247-48ab-9713-9af1ed38aa21",
-                        "date": 1669746422492,
-                        "message_platform": "Your account balance went too low (-230.97 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-230.97 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "96b6d7b4-0aa7-49a6-9999-09512e94ca08",
-                        "date": 1687330334865,
-                        "topic": "App is downgraded",
-                        "message_email": "App rubinloft (11648) is downgraded to FREE and blocked."
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "5ba633a9-1dbc-494c-b492-cd3f01189ecc",
-                        "date": 1686573454636,
-                        "message_platform": "Your account balance went too low (-230.97 US$). Please, link payment method to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-230.97 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">link payment method</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "adfb80e1-3f33-41c6-92ba-3840e1981fd6",
-                        "date": 1667902105159,
-                        "message_platform": "Your app RUBINLOFT (rubinloft) exceeds FREE-plan load limits. You need to upgrade it, choosing one of the paid plans. If you dont't upgrade the app in a few days it will be blocked!",
-                        "topic": "🔥 You need to upgrade app RUBINLOFT (rubinloft)",
-                        "message_email": "<p>Your app <a href=\"https://my.directual.com/platform/apps/rubinloft\">RUBINLOFT (rubinloft)</a> exceeds FREE-plan load limits. You need to upgrade it, choosing one of the <a href=\"https://www.directual.com/pricing\">paid plans</a>.</p>\n<p>If you dont't upgrade the app in a few days it will be blocked!</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "is_delivered": true,
-                        "id": "5176d196-8596-4921-8baa-1763aa3d2e73",
-                        "date": 1694590428000,
-                        "message_platform": "Your account balance went too low (-230.97 US$). Please, link payment method to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-230.97 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">link payment method</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "723d9c8c-f375-40d2-b499-5f176bf5080f",
-                        "date": 1677575147841,
-                        "message_platform": "Your account balance went too low (-230.97 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-230.97 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "topic": "App is downgraded",
-                        "date": 1667811632313,
-                        "message_email": "App rubinloft (11648) is downgraded to FREE.",
-                        "id": "618d8985-cc88-4d0b-8e21-ea3d4628e895"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "542cceff-d24d-40c8-bf80-a4267f1fa086",
-                        "date": 1690900408801,
-                        "message_platform": "Your account balance went too low (-230.97 US$). Please, link payment method to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-230.97 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">link payment method</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "60868f6e-6765-4192-be87-5095e345be16",
-                        "date": 1668848385861,
-                        "message_platform": "Your account balance went too low (-230.97 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-230.97 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "98d26d77-9009-4723-9766-8b7376ca597b",
-                        "date": 1666862748621,
-                        "message_platform": "Your account balance went too low (-139 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-139 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "09248bbf-c39b-469d-8475-74bc499cea92",
-                        "date": 1683013020702,
-                        "message_platform": "Your account balance went too low (-230.97 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-230.97 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    }
-                ],
-                "apps": [
-                    {
-                        "is_blocked": false,
-                        "id": "11648",
-                        "is_hidden": false,
-                        "sys_name": "rubinloft",
-                        "app_id": {
-                            "sysName": "rubinloft",
-                            "plan_id": "FREE",
-                            "isDowngraded": false
-                        }
-                    }
-                ]
-            },
-            {
-                "survey_is_aborted": false,
-                "first_name": "Andrey",
-                "source": "direct",
-                "survey_step_1_raw": "rookie",
-                "wallet_balance": -190.77,
-                "country": {
-                    "Name": "Russian Federation"
-                },
-                "gravatar_pic": "https://www.gravatar.com/avatar/c219a245a74d340c4c1eaf221b834ac7?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "register_date": 1677070686775,
-                "id": "av.volgin@gmail.com",
-                "survey_step_3_raw": "social_networks",
-                "last_name": "Volgin",
-                "email_campaigns": [
-                    {
-                        "title": "Building no-code apps with AI! Join Free Live Webinar",
-                        "id": "fc382562-34cb-4b8e-86c9-d9662ec8b7f3"
-                    }
-                ],
-                "unsubscribed": false,
-                "subscription_settings": {
-                    "Unsubscribed": false
-                },
-                "wallet_transactions": [
-                    {
-                        "balance": 243,
-                        "user_id": "av.volgin@gmail.com",
-                        "id": "44df8682-2f02-460d-a52b-cfe2624dd94e",
-                        "date": 1686945719000,
-                        "comment": "Скидка на первый on-demand платеж",
-                        "type": "manual"
-                    },
-                    {
-                        "balance": -20,
-                        "user_id": "av.volgin@gmail.com",
-                        "id": "e39b9d9a-66ee-437f-9c3e-4cb2d629134a",
-                        "date": 1686733254000,
-                        "comment": "App kuzmino (17388), license payment, plan Startup (partial refund)",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -270.64,
-                        "user_id": "av.volgin@gmail.com",
-                        "id": "51530991-8446-48b0-a626-1d9cac3d2f3a",
-                        "date": 1685625964000,
-                        "comment": "On-demand resource consumption. App kuzmino (17388), period 2023-05",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": 100,
-                        "user_id": "av.volgin@gmail.com",
-                        "id": "7245cacb-87dc-4910-8d8e-65f8aa8c91b5",
-                        "date": 1684075681000,
-                        "comment": "Adding funds via Tinkoff 7900.0 ₽ → 100.00 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": -215.13,
-                        "user_id": "av.volgin@gmail.com",
-                        "id": "eb97a002-008a-4258-bce8-de36fd2ecf93",
-                        "date": 1688368915000,
-                        "comment": "On-demand resource consumption. App kuzmino (17388), period 2023-06",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "av.volgin@gmail.com",
-                        "id": "2a31a819-4d98-4068-ad45-d3b4b6b88970",
-                        "date": 1684075711000,
-                        "comment": "Update app kuzmino, plan Startup-monthly (previous plan: Free)",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 50,
-                        "user_id": "av.volgin@gmail.com",
-                        "id": "4d895546-0749-4188-bff4-bbe04d326214",
-                        "date": 1684304865000,
-                        "comment": "Promo-code Welcome",
-                        "type": "promo"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "av.volgin@gmail.com",
-                        "id": "36de5ccd-ead6-4cfc-ae21-2ba7237ffcd1",
-                        "date": 1685523916000,
-                        "comment": "App avolgintest (17427), license payment, plan Startup",
-                        "type": "app_payment"
-                    }
-                ],
-                "number_of_apps": 1,
-                "survey_step_2_raw": "enterprise",
-                "isBlocked": true,
-                "notifications": [
-                    {
-                        "sent_to_email": false,
-                        "id": "b9093612-53e5-4575-acb6-997853f56003",
-                        "date": 1686936778348,
-                        "message_platform": "App avolgintest plan is changed Startup-monthly → FREE",
-                        "topic": "App avolgintest plan is changed"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "cbd269ad-6fc7-4a8a-8db9-191367a93100",
-                        "date": 1688487444958,
-                        "message_platform": "App kuzmino plan is changed Startup-monthly → FREE",
-                        "topic": "App kuzmino plan is changed"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "3306e2c6-fd77-4945-98d6-6d3c5e00a2a1",
-                        "date": 1684334138145,
-                        "message_platform": "App avolgintest plan is changed FREE → Startup-monthly",
-                        "topic": "App avolgintest plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "7b072bfd-ef34-4451-978d-00d0a631b06a",
-                        "date": 1686573455030,
-                        "message_platform": "Your account balance went too low (-198.64 US$). Please, link payment method to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-198.64 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">link payment method</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "4eb8a87e-fa64-4699-9c7f-6917c8734d96",
-                        "date": 1685627128687,
-                        "message_platform": "Your account balance went too low (-198.64 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-198.64 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "is_marketing": true,
-                        "is_delivered": true,
-                        "id": "ffe2a235-fb84-495d-85aa-e932d88bc27b",
-                        "date": 1693333924000,
-                        "message_platform": "At Directual, we are constantly looking for new ways to make the lives of our app builders easier and more fun! Now, you can create no-code apps in Directual with a single prompt. It’s pure space magic.\n\nJoin our webinar \"Building no-code apps with the power of AI\" on August 10th, 19:00 CET.\n\nIt's not just a webinar, though. Think of it more like a master class in building no-code apps, an insider's guide to the latest features on our platform, and a showcase of our brand-new AI integration..\n\nYou'll get to:\n\n-  Discover how to build AI-powered apps with simple text prompts\n-  Explore new dimensions in no-code app development\n-  Learn about our newest plugins and how they can supercharge your app-building process\n-  Get your questions answered in a live Q&A\n\nSo, are you ready to step into the future of app development? Tie your laces tight, because this ride is going to be spectacular!\n\n[Register for the webinar here](https://www.directual.com/nocode-workshops)",
-                        "topic": "Webinar 31.08",
-                        "message_email": "                                    <p style=\"color:#4a5566;margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;font-size:16px;line-height:28px;\">\n                                        <a href=\"https://www.directual.com/nocode-workshops\">\n                                            <img style=\"max-width:100%\" src=\"https://api.directual.com/fileUploaded/directual-site/web/39e0fe21-b2a1-481e-ad23-bbd64275ce94.webp\" />\n                                        </a>\n                                    </p>\n                                    <p style=\"color:#4a5566;margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;font-size:16px;line-height:28px;\">\n                                        At Directual, we are constantly looking for new ways to make the lives of our app builders easier and more fun! Now, you can create no-code apps in Directual with a single prompt. It’s pure <i>space magic</i>.\n                                    </p>\n                                    <p style=\"color:#4a5566;margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;font-size:16px;line-height:28px;\">\n                                        Join our webinar \"Building no-code apps with the power of AI\" on <b>August 10th, 19:00 CET</b>.\n                                    </p>\n                                    <p style=\"color:#4a5566;margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;font-size:16px;line-height:28px;\">\n                                        It's not just a webinar, though. Think of it more like a master class in building no-code apps, an insider's guide to the latest features on our platform, and a showcase of our brand-new AI integration..\n                                    </p>\n                                    <p style=\"color:#4a5566;margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;font-size:16px;line-height:28px;\">\n                                        You'll get to:\n                                    </p>\n                                    <ul>\n                                        <li style=\"color:#4a5566;margin-right:0;margin-left:0;font-size:16px;line-height:28px;\">\n                                            Discover how to build AI-powered apps with simple text prompts\n                                        </li>\n                                        <li style=\"color:#4a5566;margin-right:0;margin-left:0;font-size:16px;line-height:28px;\">\n                                            Explore new dimensions in no-code app development\n                                        </li>\n                                        <li style=\"color:#4a5566;margin-right:0;margin-left:0;font-size:16px;line-height:28px;\">\n                                            Learn about our newest plugins and how they can supercharge your app-building process\n                                        </li>\n                                        <li style=\"color:#4a5566;margin-right:0;margin-left:0;font-size:16px;line-height:28px;\">\n                                            Get your questions answered in a live Q&A\n                                        </li>\n                                    </ul>\n                                    <p style=\"color:#4a5566;margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;font-size:16px;line-height:28px;\">\n                                        So, are you ready to step into the future of app development? Tie your laces tight, because this ride is going to be spectacular!\n                                    </p>\n                                    <p style=\"color:#4a5566;margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;font-size:16px;line-height:28px;\">\n                                        <a href=\"https://www.directual.com/nocode-workshops\" style=\"color:#058efc\">Register for the webinar here</a>\n                                    </p>"
-                    },
-                    {
-                        "topic": "App is upgraded",
-                        "message_platform": "Update app kuzmino, plan Startup-monthly (previous plan: Free)",
-                        "date": 1684075711060,
-                        "id": "65a98394-3376-4801-a9de-3aa8eba566f8"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "9bb1bb00-7a4c-4395-9e2d-a4c735d7d9a5",
-                        "date": 1687004020417,
-                        "message_platform": "The app kuzmino hits the plan load limits. Forecast payment is 102.14 US$. It'll be billed on the 1st day of the next month.",
-                        "topic": "App kuzmino hits the plan limits. On-demand resourse consumption is ON.",
-                        "message_email": "<p style=\"margin-bottom:10px\">The app <a href=\"https://my.directual.com/platform/apps/kuzmino\" target=\"_blank\">kuzmino</a> hits the plan load limits.</p>\n<p style=\"margin-bottom:10px\">Forecast payment is <b>102.14</b> US$. It'll be billed on the 1st day of the next month.</p>\n<p style=\"margin-bottom:10px\">If you don't want the on-demand bill to increase, stop the scenarios or block your app.</p>\n<p>In case of any questions contact us via support chat or via email support@directual.com</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "99fb3d47-4df0-407d-a0f7-9703aa30bcca",
-                        "date": 1687860076763,
-                        "message_platform": "App kuzmino plan is changed FREE → Startup-monthly",
-                        "topic": "App kuzmino plan is changed"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "506eb333-9122-4db9-984f-54ce3b587c62",
-                        "date": 1686945830168,
-                        "message_platform": "App avolgintest plan is changed FREE → Startup-monthly",
-                        "topic": "App avolgintest plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "e5c8d39b-a111-4f25-9abd-f7e870ae2d7a",
-                        "date": 1686597070555,
-                        "message_platform": "The app kuzmino hits the plan load limits. Forecast payment is 66.3 US$. It'll be billed on the 1st day of the next month.",
-                        "topic": "App kuzmino hits the plan limits. On-demand resourse consumption is ON.",
-                        "message_email": "<p style=\"margin-bottom:10px\">The app <a href=\"https://my.directual.com/platform/apps/\" target=\"_blank\">kuzmino</a> hits the plan load limits.</p>\n<p style=\"margin-bottom:10px\">Forecast payment is <b>66.3</b> US$. It'll be billed on the 1st day of the next month.</p>\n<p style=\"margin-bottom:10px\">If you don't want the on-demand bill to increase, stop the scenarios or block your app.</p>\n<p>In case of any questions contact us via support chat or via email support@directual.com</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "344cb33c-2299-4e29-a01d-b09a04cb7436",
-                        "date": 1686936778345,
-                        "message_platform": "App avolgintest plan is changed Startup-monthly → FREE",
-                        "topic": "App avolgintest plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "cdc39f4f-af0b-4310-9dfd-326de89cfe0d",
-                        "date": 1690900408776,
-                        "message_platform": "Your account balance went too low (-190.77 US$). Please, link payment method to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-190.77 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">link payment method</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "4ea2e608-0234-459c-b2cb-3cc7a71ed8be",
-                        "date": 1684075711808,
-                        "message_platform": "App kuzmino plan is changed FREE → Startup-monthly",
-                        "topic": "App kuzmino plan is changed"
-                    }
-                ],
-                "apps": [
-                    {
-                        "is_blocked": false,
-                        "id": "17388",
-                        "is_hidden": false,
-                        "sys_name": "kuzmino",
-                        "app_id": {
-                            "sysName": "kuzmino",
-                            "plan_id": "FREE",
-                            "isDowngraded": true
-                        }
-                    }
-                ]
-            },
-            {
-                "survey_is_aborted": false,
-                "first_name": "Kate",
-                "tinkoff_rebill_id": "1364150074",
-                "source": "direct",
-                "survey_step_1_raw": "rookie",
-                "wallet_balance": -187.86,
-                "tinkoff_status": "failed",
-                "country": {
-                    "Name": "Russian Federation"
-                },
-                "gravatar_pic": "https://www.gravatar.com/avatar/61a93ad2d6bad0ebe4074f9e14e6b4e4?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "register_date": 1696002773315,
-                "id": "butko.ekaterina@gmail.com",
-                "survey_step_3_raw": "friends",
-                "last_name": "Butko",
-                "email_campaigns": [
-                    {
-                        "title": "Onboarding",
-                        "id": "ad304c98-6829-4896-9a24-6f90a9f6a25f"
-                    }
-                ],
-                "subscription_settings": {
-                    "Unsubscribed": false
-                },
-                "wallet_transactions": [
-                    {
-                        "balance": -39,
-                        "user_id": "butko.ekaterina@gmail.com",
-                        "id": "ec19a3de-4e7f-42b0-aa90-2984d3edaed5",
-                        "date": 1701075692000,
-                        "comment": "App oracl-card-deck (16359), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 139.16,
-                        "user_id": "butko.ekaterina@gmail.com",
-                        "id": "52b29f85-b5c2-4381-a6cb-8eddeaae9871",
-                        "date": 1698931507000,
-                        "comment": "Adding funds via Tinkoff 14055.16 ₽ → 139.16 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "butko.ekaterina@gmail.com",
-                        "id": "bdac4057-5afc-45e7-bf62-38e47bf0ec4c",
-                        "date": 1698397282000,
-                        "comment": "App oracl-card-deck (16359), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -148.86,
-                        "user_id": "butko.ekaterina@gmail.com",
-                        "id": "cc4d4848-e7fd-4a37-80b6-3cd4583e8824",
-                        "date": 1701422709000,
-                        "comment": "On-demand resource consumption. App oracl-card-deck (16359), period 2023-11",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": 38.99,
-                        "user_id": "butko.ekaterina@gmail.com",
-                        "id": "9357b0e6-3d30-4209-aef4-ffdf9a98ae61",
-                        "date": 1698397304000,
-                        "comment": "Adding funds via Tinkoff 3937.99 ₽ → 38.99 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": 0.01,
-                        "user_id": "butko.ekaterina@gmail.com",
-                        "id": "7fa1388c-3a42-4da7-acf9-fb100d2a190e",
-                        "date": 1698145362000,
-                        "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": -139.16,
-                        "user_id": "butko.ekaterina@gmail.com",
-                        "id": "c1b1f619-b20a-4467-8489-9626c4dd268f",
-                        "date": 1698931497000,
-                        "comment": "On-demand resource consumption. App oracl-card-deck (16359), period 2023-10",
-                        "type": "ondemand"
-                    }
-                ],
-                "number_of_apps": 1,
-                "survey_step_2_raw": "startup",
-                "notifications": [
-                    {
-                        "sent_to_email": true,
-                        "is_marketing": true,
-                        "is_delivered": true,
-                        "id": "3aa8e1c8-3feb-4caf-b62b-c17762b3c42b",
-                        "date": 1696343319000,
-                        "message_platform": "Welcome to Directual!\n\nWe put together some useful links to help you learn all about Directual. Try Directual building build an admin portal, a web3-app, a chat-bot or a backend for your startup!\n\n- Explore [101-crash course](https://www.directual.com/101-crash-course)\n- Join [Directual community](https://www.directual.com/community)\n\nIf you have any questions or need an assistance, feel free to reach us out using support chat (right-bottom corner) — we are always happy to help!\n\n[Start building your app!](https://my.directual.com)",
-                        "topic": "Welcome to Directual",
-                        "message_email": "<p style=\"color:#4a5566;margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;font-size:18px;line-height:20px; font-weight:bold\">\nWelcome to Directual!\n</p>\n<img style=\"max-width:100%\" src=\"https://api.directual.com/fileUploaded/directual-site/bc2737e5-ca67-46f5-80d9-99811c443a5c.gif\" alt=\"Directual platform\" />\n<p style=\"color:#4a5566;margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;font-size:16px;line-height:28px;\">\nWe put together some useful links to help you learn all about Directual. Try Directual building build an admin portal, a web3-app, a chat-bot or a backend for your startup!\n</p>\n<ul>\n<li style=\"color:#4a5566;margin-top:5px;margin-bottom:5px;margin-right:0;margin-left:0;font-size:16px;line-height:28px; margin-left:23px; list-style-type:disk;\">Explore <a target=\"_blank\"  style=\"color:#058efc\" href=\"https://www.directual.com/101-crash-course\">101-crash course</a></li>\n<li style=\"color:#4a5566;margin-top:5px;margin-bottom:5px;margin-right:0;margin-left:0;font-size:16px;line-height:28px; margin-left:23px; list-style-type:disk;\"> Join <a target=\"_blank\"  style=\"color:#058efc\" href=\"https://www.directual.com/community\">Directual community</a></li>\n</ul>\n<p style=\"color:#4a5566;margin-top:20px;margin-bottom:20px;margin-right:0;margin-left:0;font-size:16px;line-height:28px;\">\nIf you have any questions or need an assistance, feel free to reach us out using support chat (right-bottom corner) — we are always happy to help!\n</p>\n<div style=\"text-align:center; margin-top:35px; margin-bottom:-20px\">\n<a href=\"https://my.directual.com\" target=\"_blank\" style=\"text-decoration:none;display:block; background:#058efc; padding:18px 0; border-radius:100px;color:#fff;text-align:center; width: 220px; margin:0 auto;\">Start building your app!</a>\n</div>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "is_delivered": true,
-                        "is_opened": true,
-                        "id": "a7cc3d4c-3a75-4239-a8ff-b2cdc1be23b2",
-                        "date": 1701096798000,
-                        "message_platform": "Your Directual account balance went too low (-39 D-coins). The payment method failed. The following apps will be downgraded and blocked:\n— Oracle Card Deck oracl-card-deck, ID: 16359\nPlease, link valid payment method and cancel apps downgrade until they are blocked completely.",
-                        "topic": "🚫 Your Directual apps will be blocked soon",
-                        "message_email": "<p>Your Directual account balance went too low (-39 D-coins). The payment method failed. The following apps will be downgraded to FREE and blocked:</p>\n<ul>\n<li><b>Oracle Card Deck</b> oracl-card-deck, ID: 16359 will be downgraded on 27 December, 2023.</li>\n</ul>\n<p>Please, <a href=\"https://my.directual.com/platform/billing/\" target=\"_blank\">link valid payment method</a> and cancel apps downgrade until they are blocked completely.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "is_delivered": true,
-                        "id": "1a6170ac-27db-4760-9b61-e5bff01868dd",
-                        "date": 1701157367000,
-                        "message_platform": "The app oracl-card-deck hits the plan load limits. Forecast payment is 132.02 US$. It'll be billed on the 1st day of the next month.",
-                        "topic": "App oracl-card-deck hits the plan limits. On-demand resourse consumption is ON.",
-                        "message_email": "<p style=\"margin-bottom:10px\">The app <a href=\"https://my.directual.com/platform/apps/oracl-card-deck\" target=\"_blank\">oracl-card-deck</a> hits the plan load limits.</p>\n<p style=\"margin-bottom:10px\">Forecast payment is <b>132.02</b> US$. It'll be billed on the 1st day of the next month.</p>\n<p style=\"margin-bottom:10px\">If you want to upgrade the plan with the higher limit, just reply us here, we'll assist with that.</p>\n<p style=\"margin-bottom:10px\">If you don't want the on-demand bill to increase, stop the scenarios or block your app.</p>\n<p>In case of any questions contact us via support chat or via email support@directual.com</p>"
-                    }
-                ],
-                "apps": [
-                    {
-                        "is_blocked": false,
-                        "id": "16359",
-                        "is_hidden": false,
-                        "sys_name": "oracl-card-deck",
-                        "app_id": {
-                            "sysName": "oracl-card-deck",
-                            "plan_id": "Startup-monthly",
-                            "isDowngraded": true
-                        }
-                    }
-                ]
-            },
-            {
-                "survey_is_aborted": false,
-                "first_name": "David",
-                "source": "www.google.com/",
-                "survey_step_1_raw": "rookie",
-                "wallet_balance": -139,
-                "country": {
-                    "Name": "United States"
-                },
-                "paddle_id": "22194828",
-                "gravatar_pic": "https://www.gravatar.com/avatar/e914e3934045e906d4179db5c24de3a4?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "paddle_status": "failed",
-                "register_date": 1691090032241,
-                "id": "david@represent.digital",
-                "survey_step_3_raw": "friends",
-                "last_name": "McWilliams",
-                "email_campaigns": [
-                    {
-                        "title": "Building no-code apps with AI! Join Free Live Webinar",
-                        "id": "fc382562-34cb-4b8e-86c9-d9662ec8b7f3"
-                    }
-                ],
-                "unsubscribed": false,
-                "subscription_settings": {
-                    "Unsubscribed": false
-                },
-                "wallet_transactions": [
-                    {
-                        "balance": 139,
-                        "user_id": "david@represent.digital",
-                        "id": "b70999e5-f2de-4ab3-861f-67087e418977",
-                        "date": 1696323683000,
-                        "comment": "Payment from Credit card or Paypal",
-                        "type": "paddle_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "david@represent.digital",
-                        "id": "f7e98e06-89a7-4102-814e-b0a67dc22b82",
-                        "date": 1696323665000,
-                        "comment": "App 9a-userportal (18058), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -1,
-                        "user_id": "david@represent.digital",
-                        "id": "40aaf6df-4c5f-438a-82f8-a8cf4a8d712c",
-                        "date": 1691090350000,
-                        "comment": "Pro-trial 1 month period. Create app 9a-userportal, plan Pro-monthly",
-                        "type": "trial"
-                    },
-                    {
-                        "balance": 1,
-                        "user_id": "david@represent.digital",
-                        "id": "1f871df1-188c-4201-8afc-6a0f1e4f0024",
-                        "date": 1691090350000,
-                        "comment": "Payment from Credit card or Paypal",
-                        "type": "paddle_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "david@represent.digital",
-                        "id": "92c993e1-c791-43db-8063-1c6c299d35c9",
-                        "date": 1693731651000,
-                        "comment": "App 9a-userportal (18058), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "david@represent.digital",
-                        "id": "4a9d7f65-4fe8-409a-b440-3304b5a9cf60",
-                        "date": 1699002057000,
-                        "comment": "App 9a-userportal (18058), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 139,
-                        "user_id": "david@represent.digital",
-                        "id": "f787ebbf-3e34-4118-a549-913db933b348",
-                        "date": 1693731651000,
-                        "comment": "Payment from Credit card or Paypal",
-                        "type": "paddle_payment"
-                    }
-                ],
-                "number_of_apps": 1,
-                "survey_step_2_raw": "startup",
-                "notifications": [
-                    {
-                        "id": "c8bcf90d-9918-496a-83f7-d7b279f642aa",
-                        "date": 1701615142000,
-                        "message_platform": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "a1a67b16-3dfd-4ffb-ab46-c5e92cefa929",
-                        "date": 1699266139000,
-                        "message_platform": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "58a4d8de-1e88-470b-ad42-245d4f6e1d3a",
-                        "date": 1701337753000,
-                        "message_platform": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "sent_to_email": true,
-                        "is_delivered": true,
-                        "is_opened": true,
-                        "id": "d9794449-ecbe-410c-ae0b-312a701565e8",
-                        "date": 1699088912000,
-                        "message_platform": "Your Directual account balance went too low (-139 D-coins). The payment method failed. The following apps will be downgraded and blocked:\n— 9a-userportal 9a-userportal, ID: 18058\nPlease, link valid payment method and cancel apps downgrade until they are blocked completely.",
-                        "topic": "🚫 Your Directual apps will be blocked soon",
-                        "message_email": "<p>Your Directual account balance went too low (-139 D-coins). The payment method failed. The following apps will be downgraded to FREE and blocked:</p>\n<ul>\n<li><b>9a-userportal</b> 9a-userportal, ID: 18058 will be downgraded on 03 December, 2023.</li>\n</ul>\n<p>Please, <a href=\"https://my.directual.com/platform/billing/\" target=\"_blank\">link valid payment method</a> and cancel apps downgrade until they are blocked completely.</p>"
-                    },
-                    {
-                        "id": "d4018990-08f9-491d-9cfc-e806bb5c3463",
-                        "date": 1699002082000,
-                        "message_platform": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "3e290671-71b5-4491-a03c-872f34ba40f1",
-                        "date": 1701605446000,
-                        "topic": "App is downgraded",
-                        "message_email": "App 9a-userportal (18058) is downgraded to FREE and blocked."
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "635ff0cd-9b54-48cb-9579-c556206d2351",
-                        "date": 1701605522000,
-                        "message_platform": "App 9a-userportal plan is changed Pro-monthly → FREE",
-                        "topic": "App 9a-userportal plan is changed"
-                    },
-                    {
-                        "id": "62c91fe0-4346-4666-87e8-121c1078bf0e",
-                        "date": 1699520752000,
-                        "message_platform": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "c332b77b-bf50-4bba-864d-c25da7b730da",
-                        "date": 1702199152000,
-                        "message_platform": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "3b23d340-a6d5-40b5-89b7-40134fd30052",
-                        "date": 1699088705000,
-                        "message_platform": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "1e4279f8-2966-48d3-a67a-62d42a683296",
-                        "date": 1700808304000,
-                        "message_platform": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "01101301-fe64-462c-bd4c-31b1c6d8ba6f",
-                        "date": 1699957168000,
-                        "message_platform": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "bd77af08-aef1-45d4-8c0d-c2df702228e4",
-                        "date": 1691090361831,
-                        "message_platform": "Trial period (till 03 September, 2023) is activated for app 9a-userportal",
-                        "topic": "Trial is activated"
-                    },
-                    {
-                        "id": "7c7eb870-82a6-4698-8a85-70645aec0ac4",
-                        "date": 1701096709000,
-                        "message_platform": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 139 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "message_platform": "Create app 9a-userportal, plan Pro-monthly",
-                        "date": 1691090349979,
-                        "topic": "App is created",
-                        "id": "9b2d0c04-3ed5-454a-94be-688119aae15a"
-                    }
-                ],
-                "apps": [
-                    {
-                        "is_blocked": false,
-                        "id": "18058",
-                        "is_hidden": false,
-                        "sys_name": "9a-userportal",
-                        "app_id": {
-                            "sysName": "9a-userportal",
-                            "plan_id": "FREE",
-                            "isDowngraded": false
-                        }
-                    }
-                ]
-            },
-            {
-                "survey_is_aborted": false,
-                "first_name": "Nocode",
-                "source": "www.directual.com/",
-                "survey_step_1_raw": "customOption: 1",
-                "wallet_balance": -132.745,
-                "country": {
-                    "Name": "Belarus"
-                },
-                "paddle_id": "23070168",
-                "gravatar_pic": "https://www.gravatar.com/avatar/d23f92b283f3aaab9e8db2ecb683ad4d?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "paddle_status": "failed",
-                "register_date": 1640854267160,
-                "id": "ncdmstrs@gmail.com",
-                "survey_step_3_raw": "customOption: 1",
-                "last_name": "masters",
-                "email_campaigns": [
-                    {
-                        "title": "Building no-code apps with AI! Join Free Live Webinar",
-                        "id": "fc382562-34cb-4b8e-86c9-d9662ec8b7f3"
-                    }
-                ],
-                "unsubscribed": false,
-                "subscription_settings": {
-                    "Unsubscribed": false
-                },
-                "wallet_transactions": [
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "1d28b9fe-c7f0-4e1a-a716-5e2ae9d858db",
-                        "date": 1701951231000,
-                        "comment": "Affiliate reward for buildercrm001@gmail.com transaction (app builder-crm, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "4fcbe916-8968-44d6-83ee-d083f3d0fdcb",
-                        "date": 1700658013000,
-                        "comment": "Team Vlad Kovalsky Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": 69.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "3269aa97-b86a-44d4-a685-2a1a5a79e900",
-                        "date": 1698145684000,
-                        "comment": "Affiliate reward for x20081988@gmail.com transaction (app zapusk, -139 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "4b259b2f-8641-42ee-a849-52d8828a509e",
-                        "date": 1697979607000,
-                        "comment": "Team Vlad Kovalsky Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "f80d65ee-6184-4977-985a-d1427acedbee",
-                        "date": 1695897726000,
-                        "comment": "Affiliate reward for act@arka.kz transaction (app restaraunt, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 69.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "3ed9a8f0-f336-4a4e-bfe4-7bfa46224cf0",
-                        "date": 1695897701000,
-                        "comment": "Affiliate reward for x20081988@gmail.com transaction (app zapusk, -139 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 69.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "7f1b554e-ec38-47d2-98c5-9bc370e2ea3f",
-                        "date": 1695897691000,
-                        "comment": "Affiliate reward for x20081988@gmail.com transaction (app zapusk, -139 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "f3dee2a5-3009-455c-a613-41f6c958a14a",
-                        "date": 1695387618000,
-                        "comment": "Team Vlad Kovalsky Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "b68c2136-49cd-4937-80dd-d513d6e1260c",
-                        "date": 1690793146000,
-                        "comment": "Affiliate reward for act@arka.kz transaction (app restaraunt, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "d193fdec-772e-4db2-8475-643272184ab3",
-                        "date": 1689231476000,
-                        "comment": "Affiliate reward for buildercrm001@gmail.com transaction (app builder-crm, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "db63eae1-3f07-4706-828a-56fe70bcc344",
-                        "date": 1689231469000,
-                        "comment": "Affiliate reward for buildercrm001@gmail.com transaction (app builder-crm, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "f4925a67-cb72-4e0d-8eb3-a12dcc5b3185",
-                        "date": 1689231450000,
-                        "comment": "Affiliate reward for buildercrm001@gmail.com transaction (app builder-crm, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "960286d2-a328-41d0-a25b-4aab7d279457",
-                        "date": 1687438808000,
-                        "comment": "Team Vlad Kovalsky Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": 150,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "42b3ce53-59a1-4433-97dc-767bdcc98074",
-                        "date": 1686214955000,
-                        "comment": "Promo-code 3HU1QI05P14I",
-                        "type": "promo"
-                    },
-                    {
-                        "balance": 69.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "1fbe2722-c8ea-4d11-a346-fcfc302f23af",
-                        "date": 1686138233000,
-                        "comment": "Affiliate reward for x20081988@gmail.com transaction (app zapusk, -139 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "0277e472-8fb0-43df-8cbf-e0a4e0e55593",
-                        "date": 1678614280000,
-                        "comment": "Affiliate reward for buildercrm001@gmail.com transaction (app builder-crm, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 13.625,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "14810fa8-31c7-4cc7-9297-4eba52973ab7",
-                        "date": 1686138153000,
-                        "comment": "Affiliate reward for x20081988@gmail.com transaction (app zapusk, -27.25 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "515b6817-0fe6-4913-beb4-7dda91ad9ddb",
-                        "date": 1692709207000,
-                        "comment": "Team Vlad Kovalsky Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "82c44bc7-b59b-44c5-aad4-c03991486ac6",
-                        "date": 1678614266000,
-                        "comment": "Affiliate reward for buildercrm001@gmail.com transaction (app builder-crm, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "87480094-1246-445d-9c07-988ea5fe0a75",
-                        "date": 1677070815000,
-                        "comment": "Team Vlad Kovalsky Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "2a61b90d-54fc-4d2c-8b27-fce0f642c910",
-                        "date": 1674392407000,
-                        "comment": "Team Vlad Kovalsky Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": 3.68,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "2b5315cf-3d2e-4d43-b0e0-7f9eb2ecd4dc",
-                        "date": 1686138112000,
-                        "comment": "Affiliate reward for x20081988@gmail.com transaction (app zapusk, -7.36 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "db434ca3-114d-41aa-8c6e-c50f6777bc08",
-                        "date": 1696576971000,
-                        "comment": "Affiliate reward for buildercrm001@gmail.com transaction (app builder-crm, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "4a7e165b-96bd-47c3-a143-3d5df4554451",
-                        "date": 1686138120000,
-                        "comment": "Affiliate reward for x20081988@gmail.com transaction (app zapusk, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 50,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "1a1543d6-bb5f-40ca-be4b-b4124705b87b",
-                        "date": 1672861576000,
-                        "comment": "Promo-code HAPPYNEWYEAR",
-                        "type": "promo"
-                    },
-                    {
-                        "balance": -216,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "07d3c0f0-7dc5-47c2-9df3-f3fbbf38407e",
-                        "date": 1666443608000,
-                        "comment": "Team Vlad Kovalsky Team, plan team_monthly, 4 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": 50.52,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "6c8f9ad9-e715-4e0d-afb6-b84ad6523a78",
-                        "date": 1666603479000,
-                        "comment": "Removing developer seats for team Vlad Kovalsky Team (3 → 2 seats)",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "fc0e2ea6-612f-4550-8534-8b4c47da140b",
-                        "date": 1688646906000,
-                        "comment": "Affiliate reward for act@arka.kz transaction (app restaraunt, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "17024e6a-868a-4b29-a26c-98a08ff186eb",
-                        "date": 1686137726000,
-                        "comment": "Affiliate reward for act@arka.kz transaction (app restaraunt, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": -216,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "640e1480-a077-4baf-bf90-d20aa9b9afa0",
-                        "date": 1661173206000,
-                        "comment": "Team Vlad Kovalsky Team, plan team_monthly, 4 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "4a53f9a0-3713-4f61-ae58-591b2427ffda",
-                        "date": 1684760405000,
-                        "comment": "Team Vlad Kovalsky Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "769d4c03-d1f1-437f-b6ee-5c6753241d1e",
-                        "date": 1689231437000,
-                        "comment": "Affiliate reward for buildercrm001@gmail.com transaction (app builder-crm, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": -216,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "cbc0a86a-b81f-4516-b552-ea8b13cdc199",
-                        "date": 1658494816000,
-                        "comment": "Team Vlad Kovalsky Team, plan team_monthly, 4 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "ca6f1d5a-9698-4586-8f7a-dc059b684262",
-                        "date": 1682168406000,
-                        "comment": "Team Vlad Kovalsky Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": -216,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "6509eb9f-0025-415f-923b-6bd9630c2699",
-                        "date": 1655214179000,
-                        "comment": "Team Vlad Kovalsky Team, plan team_monthly, 4 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "d924c031-6f3f-4bd2-aad9-74bf78b4fa4e",
-                        "date": 1678614586000,
-                        "comment": "Affiliate reward for act@arka.kz transaction (app restaraunt, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "05365e4a-8777-4299-8dca-f5cd2820d92d",
-                        "date": 1690030808000,
-                        "comment": "Team Vlad Kovalsky Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": 69.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "397ab79f-9579-4df3-a56c-a12d632853a5",
-                        "date": 1664737716000,
-                        "comment": "Affiliate reward for buildercrm001@gmail.com transaction (app builder-crm, -139 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": -216,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "debdb609-af61-4da6-842c-aeaaa6decd67",
-                        "date": 1650619919000,
-                        "comment": "Adding developer seats for team Vlad Kovalsky Team (0 → 4 seats)",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "9825d5e2-d7fc-4198-a069-751d416ed3e5",
-                        "date": 1678614568000,
-                        "comment": "Affiliate reward for act@arka.kz transaction (app restaraunt, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "4035d499-aaa7-454f-849f-89a43aa8053b",
-                        "date": 1678614577000,
-                        "comment": "Affiliate reward for act@arka.kz transaction (app restaraunt, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 1000,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "a38a98a5-cdff-486e-8ae7-430408fc858e",
-                        "date": 1650613811000,
-                        "comment": "Promo-code YIFYEX8KHUXR",
-                        "type": "promo"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "6db7cdd7-9fbf-4ed2-a7d2-04d109ef430d",
-                        "date": 1695897849000,
-                        "comment": "Affiliate reward for buildercrm001@gmail.com transaction (app builder-crm, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 50.52,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "e9fcee3a-032d-4dee-ba1f-b612887486c8",
-                        "date": 1666603211000,
-                        "comment": "Removing developer seats for team Vlad Kovalsky Team (4 → 3 seats)",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": -216,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "62550e9b-caf6-433a-93bd-4d510d636734",
-                        "date": 1663851602000,
-                        "comment": "Team Vlad Kovalsky Team, plan team_monthly, 4 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "cbc8e477-a2fa-4053-bbd4-c1d447025020",
-                        "date": 1695897721000,
-                        "comment": "Affiliate reward for act@arka.kz transaction (app restaraunt, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "66952136-e00e-4af9-a0d0-7aab52dd99cf",
-                        "date": 1669122010000,
-                        "comment": "Team Vlad Kovalsky Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "86d6cc9a-ca12-41b6-ba41-bb02ddca8f47",
-                        "date": 1664737789000,
-                        "comment": "Affiliate reward for x20081988@gmail.com transaction (app zapusk, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "a74a7e5e-c32d-4157-a9b1-9e2318477b66",
-                        "date": 1664737632000,
-                        "comment": "Affiliate reward for act@arka.kz transaction (app restaraunt, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 0.95,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "248098e0-f898-45b8-ab81-af1bafd80042",
-                        "date": 1686138132000,
-                        "comment": "Affiliate reward for x20081988@gmail.com transaction (app zapusk, -1.9 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "3d2d0538-19ae-431f-9c68-78c468108c32",
-                        "date": 1686138225000,
-                        "comment": "Affiliate reward for x20081988@gmail.com transaction (app zapusk, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "d686fbda-531c-426e-8f40-a53dd15d8385",
-                        "date": 1671714020000,
-                        "comment": "Team Vlad Kovalsky Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "4d973cda-f266-4604-ae65-9abac6927ff9",
-                        "date": 1689231458000,
-                        "comment": "Affiliate reward for buildercrm001@gmail.com transaction (app builder-crm, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "8a72f64f-db25-47a1-9e54-2115be05f4b4",
-                        "date": 1686138148000,
-                        "comment": "Affiliate reward for x20081988@gmail.com transaction (app zapusk, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 69.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "6f16f3af-a009-4696-b527-f59adb243054",
-                        "date": 1678614290000,
-                        "comment": "Affiliate reward for buildercrm001@gmail.com transaction (app builder-crm, -139 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 69.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "12616b17-c28e-4544-89a7-62aa65e15382",
-                        "date": 1695897708000,
-                        "comment": "Affiliate reward for x20081988@gmail.com transaction (app zapusk, -139 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 69.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "e366207b-5e0f-4959-8ea0-ca6bfb0958d8",
-                        "date": 1678614298000,
-                        "comment": "Affiliate reward for buildercrm001@gmail.com transaction (app builder-crm, -139 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 69.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "60a17f3f-6b31-471d-b09b-33755bfbc52a",
-                        "date": 1678614304000,
-                        "comment": "Affiliate reward for buildercrm001@gmail.com transaction (app builder-crm, -139 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 69.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "188b6231-4bbe-44bd-b1e5-28aa2c5e96eb",
-                        "date": 1664737730000,
-                        "comment": "Affiliate reward for buildercrm001@gmail.com transaction (app builder-crm, -139 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "d41ba170-3b33-40a4-9ec4-3cdb394177ee",
-                        "date": 1678614555000,
-                        "comment": "Affiliate reward for act@arka.kz transaction (app restaraunt, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "af873302-9cdb-47ca-8b4a-7677e7ee439c",
-                        "date": 1686137752000,
-                        "comment": "Affiliate reward for act@arka.kz transaction (app restaraunt, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": -108,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "76be61c1-e73c-4367-9087-b5593d28edd2",
-                        "date": 1679490012000,
-                        "comment": "Team Vlad Kovalsky Team, plan team_monthly, 2 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "02009377-7b0e-4864-8e16-30eae884b4b8",
-                        "date": 1686137733000,
-                        "comment": "Affiliate reward for act@arka.kz transaction (app restaraunt, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": -216,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "4ba69332-979a-4fd7-bcfc-515bb38d142d",
-                        "date": 1655902815000,
-                        "comment": "Team Vlad Kovalsky Team, plan team_monthly, 4 developer seats",
-                        "type": "team_payment"
-                    },
-                    {
-                        "balance": 120,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "02394fd5-21e9-4fc9-8941-674b521824c6",
-                        "date": 1666605432000,
-                        "comment": "Promo-code ASTANAHUB",
-                        "type": "promo"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "a42d14e2-5c05-44e9-9e47-66d0df5597a1",
-                        "date": 1686138106000,
-                        "comment": "Affiliate reward for x20081988@gmail.com transaction (app zapusk, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "9a75d981-257e-456f-ae86-31466a3c607d",
-                        "date": 1686138127000,
-                        "comment": "Affiliate reward for x20081988@gmail.com transaction (app zapusk, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "7395ea83-9ae6-4990-a4a6-5d9e2de9a00a",
-                        "date": 1678614593000,
-                        "comment": "Affiliate reward for act@arka.kz transaction (app restaraunt, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "d6b64c66-6dcd-41fc-8d8d-18ed81ae762b",
-                        "date": 1686138137000,
-                        "comment": "Affiliate reward for x20081988@gmail.com transaction (app zapusk, -39 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 44.46,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "b9278345-a110-4a25-951b-48d28c67599e",
-                        "date": 1686138143000,
-                        "comment": "Affiliate reward for x20081988@gmail.com transaction (app zapusk, -88.92 D-coins)",
-                        "type": "affiliate"
-                    },
-                    {
-                        "balance": 19.5,
-                        "user_id": "ncdmstrs@gmail.com",
-                        "id": "a87c0047-62aa-48e7-903b-3b6307ae5acd",
-                        "date": 1686138216000,
-                        "comment": "Affiliate reward for x20081988@gmail.com transaction (app zapusk, -39 D-coins)",
-                        "type": "affiliate"
-                    }
-                ],
-                "number_of_apps": 1,
-                "survey_step_2_raw": "customOption: 1",
-                "notifications": [
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1688724347883,
-                        "id": "483798c4-5863-45db-8e05-64a0653c295e"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1694253645000,
-                        "id": "4a701eea-e55c-49b5-9f6e-1c6522646fa7"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "f19704aa-046a-4237-99c4-056abd7c0291",
-                        "date": 1697360456000,
-                        "message_platform": "App investrademoadmin plan is changed Startup-monthly → FREE",
-                        "topic": "App investrademoadmin plan is changed"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1691748217255,
-                        "id": "b1a96c15-fb0e-4c54-94cc-283f4eeb10b5"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "688886b8-48c0-4a24-b572-d7d180a046ec",
-                        "date": 1661451419013,
-                        "message_platform": "App restaraunt plan is changed Pro-sandbox → FREE",
-                        "topic": "App restaraunt plan is changed"
-                    },
-                    {
-                        "date": 1694426644000,
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "id": "84f7581a-3de4-40da-b346-ba54a56dfe00"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1690970533418,
-                        "id": "716b8915-bfbd-4b45-8fd1-8296fb6dbd83"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "c27f67d8-9c25-40b8-a239-76c3183f5509",
-                        "date": 1695899232000,
-                        "message_platform": "App integranext plan is changed FREE → Pro-sandbox",
-                        "topic": "App integranext plan is changed"
-                    },
-                    {
-                        "message_platform": "App bnect-erp (13267) plan FREE → Pro-sandbox",
-                        "date": 1655816742017,
-                        "id": "dea3d48e-768b-4498-adaf-df340eab98bf"
-                    },
-                    {
-                        "date": 1688810697908,
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "id": "6b261964-1a48-4a0b-a133-8f7e0da05750"
-                    },
-                    {
-                        "id": "67e1a4fe-ffcf-4dac-a15d-aa7952651bd4",
-                        "date": 1699957155000,
-                        "message_platform": "You need to add 44.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 44.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "a24649c6-9c75-4370-8331-e59510cd3d06",
-                        "date": 1696146658000,
-                        "message_platform": "Trial period (till 15 October, 2023) is activated for app ivestaadmindemo",
-                        "topic": "Trial is activated"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "5aaeda82-7e61-4523-a8c8-a2ff036d4e38",
-                        "date": 1701944148000,
-                        "message_platform": "App investranext plan is changed FREE → Pro-sandbox",
-                        "topic": "App investranext plan is changed"
-                    },
-                    {
-                        "id": "ce37fcb8-d31b-4f5c-b722-ea05c9693386",
-                        "date": 1696233838000,
-                        "message_platform": "You need to add 25.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 25.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "b5d33570-73ad-467f-82c6-1933506956ec",
-                        "date": 1699088655000,
-                        "message_platform": "You need to add 44.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 44.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1693648972000,
-                        "id": "9abf6d0b-63da-4a63-96af-739431cac9fd"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "326d6f26-292f-4322-a794-e421e9e19a28",
-                        "date": 1695911069000,
-                        "message_platform": "App integranext plan is changed FREE → Pro-sandbox",
-                        "topic": "App integranext plan is changed"
-                    },
-                    {
-                        "date": 1661001615343,
-                        "message_platform": "App flowerdistrsys (13967) plan FREE → Pro-sandbox",
-                        "id": "c1b077c4-2b65-4fcc-8e54-f9dc704229dd"
-                    },
-                    {
-                        "message_platform": "Update app zapusk, plan Pro-monthly (previous plan: Free)",
-                        "topic": "App is upgraded",
-                        "date": 1650614676887,
-                        "id": "708ff15e-d9a1-42c0-8c92-4b76e97a0f15"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "d92e36ff-83b6-4b8c-8e29-01be8eec4040",
-                        "date": 1695981676000,
-                        "message_platform": "App integranext plan is changed FREE → Pro-sandbox",
-                        "topic": "App integranext plan is changed"
-                    },
-                    {
-                        "id": "af3b8deb-d655-4b87-ad84-aa535d109068",
-                        "date": 1699520703000,
-                        "message_platform": "You need to add 44.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 44.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1693735336000,
-                        "id": "df1d8dc7-9b68-4675-9e1b-c894822c9367"
-                    },
-                    {
-                        "id": "7f8d6944-940b-42e1-a141-a29a1679ffd6",
-                        "date": 1697650311000,
-                        "message_platform": "You need to add 5.745 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 5.745 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "e986641c-0ba6-4afb-aeca-db36df596147",
-                        "date": 1702199136000,
-                        "message_platform": "You need to add 132.745 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 132.745 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1693994686000,
-                        "id": "da99510e-3401-4554-95c5-cf41581f92dc"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1691143328262,
-                        "id": "1212c6ed-9f16-4947-9b59-35c856d9e372"
-                    },
-                    {
-                        "id": "40d1b4ae-cef1-4030-9b7a-c836a4d376f6",
-                        "date": 1697104590000,
-                        "message_platform": "You need to add 5.745 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 5.745 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "dcf54fde-ee4c-497d-a008-67775d1e9cac",
-                        "date": 1671613910623,
-                        "message_platform": "Your account balance went too low (-220.96 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-220.96 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "date": 1692093699020,
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "id": "9c4f49d7-aee3-4804-a703-20ec08c21045"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1694599460000,
-                        "id": "a37cb9af-78ab-452e-94be-e93f9e89dc14"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1693821765000,
-                        "id": "79082ae8-e1a0-4732-813d-494f28bf2e26"
-                    },
-                    {
-                        "id": "187f8583-710c-4edf-87f6-77961bc25d33",
-                        "date": 1700658024000,
-                        "message_platform": "You need to add 152.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 152.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "date": 1692266146569,
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "id": "82f7b7db-e585-44a3-9982-ef93e21f992e"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "2da6f351-5bbb-4c38-8c3b-70397fe03bac",
-                        "date": 1701943523000,
-                        "message_platform": "App integranext plan is changed Pro-sandbox → FREE",
-                        "topic": "App integranext plan is changed"
-                    },
-                    {
-                        "id": "f5e3d4fd-4a60-4bdb-b205-0044c8fd1f9c",
-                        "date": 1700808277000,
-                        "message_platform": "You need to add 152.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 152.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "date": 1694081038000,
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "id": "7877a419-59d3-4ec5-bc99-382762a30c24"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1694685749000,
-                        "id": "2b13a94a-8be9-41da-b7be-7ac2076c0cdb"
-                    },
-                    {
-                        "date": 1694340145000,
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "id": "707ef828-db34-4dda-ba29-9f9f1a216b18"
-                    },
-                    {
-                        "date": 1688119348287,
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "id": "ba0e580f-44e2-44e4-b9c4-74c8ae5dd470"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "26f568bc-054c-4cd9-816e-62039a30dd93",
-                        "date": 1701944165000,
-                        "message_platform": "App integranext plan is changed FREE → Pro-sandbox",
-                        "topic": "App integranext plan is changed"
-                    },
-                    {
-                        "id": "23bd52b1-3f5e-4c63-b5b1-4bbe487145b1",
-                        "date": 1696576983000,
-                        "message_platform": "You need to add 5.745 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 5.745 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "date": 1701944160000,
-                        "message_platform": "App integranext (18678) plan FREE → Pro-sandbox",
-                        "id": "b83ced47-cf9d-495f-b2b1-b32e65a72a56"
-                    },
-                    {
-                        "id": "2f0471a0-8b3f-435a-a328-02269dbfe2cb",
-                        "date": 1699266170000,
-                        "message_platform": "You need to add 44.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 44.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1689674694883,
-                        "id": "395ab305-dff7-4a56-8503-1f50c12f2ceb"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "50a3535f-a0ff-4cd5-bbb3-4341477dfa79",
-                        "date": 1702031000000,
-                        "message_platform": "App investranext plan is changed FREE → Pro-sandbox",
-                        "topic": "App investranext plan is changed"
-                    },
-                    {
-                        "id": "25447bbb-14cc-4c5d-83f2-dc662eea72d4",
-                        "date": 1701096737000,
-                        "message_platform": "You need to add 152.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 152.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "528f0551-ac5b-4782-b162-309aa975ce06",
-                        "date": 1701943539000,
-                        "message_platform": "App investranext plan is changed FREE → Pro-sandbox",
-                        "topic": "App investranext plan is changed"
-                    },
-                    {
-                        "date": 1686215062615,
-                        "message_platform": "App zapusknext (17643) plan FREE → Pro-sandbox",
-                        "id": "0276ce87-f1b9-49d3-ada4-8bacf998cd3a"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1692784865283,
-                        "id": "4a1d0d11-8669-4f02-9545-f94948021665"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1691575374863,
-                        "id": "19f9bb3c-417b-4ef2-9d97-dac1fc095fa3"
-                    },
-                    {
-                        "message_platform": "App flowerdistrsys (13967) plan Pro-sandbox → FREE",
-                        "date": 1686137844846,
-                        "id": "d3fa01a9-9f54-40b5-ad1f-c7a78dd3d5b0"
-                    },
-                    {
-                        "id": "99267aa2-7e19-43e2-9eb0-5a7059e5d37d",
-                        "date": 1698145695000,
-                        "message_platform": "You need to add 44.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 44.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "9d15284d-c715-40f0-9dc4-0327efd5fdb6",
-                        "date": 1661497690598,
-                        "message_platform": "App flowerdistrsys plan is changed FREE → Pro-sandbox",
-                        "topic": "App flowerdistrsys plan is changed"
-                    },
-                    {
-                        "message_platform": "App demoalabs (13129) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1664630130816,
-                        "id": "eb3960ed-048b-44be-a7e2-4640d677c1d1"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1690106644208,
-                        "id": "97b4b046-485b-4d6e-a27f-f82913f55d9e"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "d18d63ff-5550-4467-b13c-3b370b99e5dd",
-                        "date": 1697360456000,
-                        "topic": "App is downgraded",
-                        "message_email": "App investrademoadmin (18725) is downgraded to FREE and blocked."
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1689329009800,
-                        "id": "fbb42009-0800-404a-8a9b-decbecf03b04"
-                    },
-                    {
-                        "date": 1701943539000,
-                        "message_platform": "App investranext (19241) plan FREE → Pro-sandbox",
-                        "id": "0b8f000a-c304-4fc7-a78c-a2067206627e"
-                    },
-                    {
-                        "id": "93fff646-9944-4810-b273-7707bc0df6e1",
-                        "date": 1698720969000,
-                        "message_platform": "You need to add 44.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 44.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "7927551f-261e-45d0-9e1b-4707d3621aca",
-                        "date": 1661001615532,
-                        "message_platform": "App flowerdistrsys plan is changed FREE → Pro-sandbox",
-                        "topic": "App flowerdistrsys plan is changed"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1688551402317,
-                        "id": "0ae2e5c6-9e37-421b-80b5-4270a2d841ae"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1693216950392,
-                        "id": "3d390330-06e2-4e2b-a354-96d3a76a96c4"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1694512973000,
-                        "id": "8d32deba-41f5-4be1-921c-e1c350ed9407"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "60ff819b-7f70-41c5-8722-c5e90dca2ebc",
-                        "date": 1655739147668,
-                        "message_platform": "App bnect-erp plan is changed Pro-sandbox → FREE",
-                        "topic": "App bnect-erp plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "bc4f9e28-7c5e-44b8-8a15-97c7b50e66d1",
-                        "date": 1668848385484,
-                        "message_platform": "Your account balance went too low (-112.96 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-112.96 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1693389756000,
-                        "id": "55a5ec49-fe38-4ecd-86bd-2a1e890630bf"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1691229976117,
-                        "id": "387a8022-12a4-47a6-8d45-1e054e873dcf"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1689156123269,
-                        "id": "fa823646-7910-4338-9833-ea68f37ea0ec"
-                    },
-                    {
-                        "date": 1694772222000,
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "id": "2c931694-f916-4852-9945-789e3b46ff11"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "d363300e-3da4-405f-9fe4-6ec61cace295",
-                        "date": 1661416532766,
-                        "message_platform": "Your account balance went too low (-80 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-80 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "date": 1661072823211,
-                        "message_platform": "App restaraunt (12131) plan FREE → Pro-sandbox",
-                        "id": "087f4bb2-732f-48f8-a1a7-30781bada670"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "46078732-3b2f-4db0-b734-51347dddef68",
-                        "date": 1683013021391,
-                        "message_platform": "Your account balance went too low (-365.96 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-365.96 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "date": 1695899228000,
-                        "message_platform": "App integranext (18678) plan FREE → Pro-sandbox",
-                        "id": "30b5e354-f5c5-45b5-9539-d52c0d5b9007"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1695722968000,
-                        "id": "315ae09f-b9d2-49c2-9113-4c0409539fe1"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1690538527662,
-                        "id": "ddd54c95-c4f3-4029-92ac-29bfda659893"
-                    },
-                    {
-                        "id": "10602eb8-75f8-4de8-bba5-50d4e275e623",
-                        "date": 1697538167000,
-                        "message_platform": "You need to add 5.745 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 5.745 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "81d80684-19fe-4ced-8b92-657bec4e9ea3",
-                        "date": 1696944821000,
-                        "message_platform": "You need to add 5.745 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 5.745 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "9a961b2c-2493-4fc0-8f35-086adf660a63",
-                        "date": 1696152704000,
-                        "message_platform": "Trial period (till 15 October, 2023) is activated for app investrademoadmin",
-                        "topic": "Trial is activated"
-                    },
-                    {
-                        "date": 1688983473354,
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "id": "0793f04e-94d4-4ff4-be73-561de16e5fcc"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1691316124185,
-                        "id": "57a9f5a3-3c26-43d3-8e55-b682a6414b5a"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "33077199-06dd-410b-b9f0-579ee457adcd",
-                        "date": 1701944148000,
-                        "message_platform": "App investranext plan is changed Pro-sandbox → FREE",
-                        "topic": "App investranext plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "efaa3e53-b3f5-4709-a0e7-eeacedb60f34",
-                        "date": 1650619919000,
-                        "message_platform": "You've added developer seats for the team Vlad Kovalsky Team. 0 → 4 seats.",
-                        "topic": "Adding dev seats for the team Vlad Kovalsky Team",
-                        "message_email": "<p>You've added developer seats for the team Vlad Kovalsky Team. 0 → 4 seats.</p>"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1690624965132,
-                        "id": "39ce5c7f-bc9b-440f-9b45-5e41beef66c1"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1692266610281,
-                        "id": "487f605f-22f0-45f3-afe6-b0a2074a3202"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "5264e617-98c9-49c5-8e92-936f95d645e2",
-                        "date": 1690900408899,
-                        "message_platform": "Your account balance went too low (-76.245 US$). Please, link payment method to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-76.245 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">link payment method</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "id": "bbf14f09-45f8-4328-933c-e056d0f86f84",
-                        "date": 1700730330000,
-                        "message_platform": "You need to add 157.235 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 157.235 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "25b8ca5f-53cc-4d3e-a860-5da019d2e5c9",
-                        "date": 1664270097112,
-                        "message_platform": "Your account balance went too low (-296 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-296 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "id": "41177dab-85e4-4e71-bd32-6a47d094637e",
-                        "date": 1696325560000,
-                        "message_platform": "You need to add 25.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 25.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "14532725-536f-494a-8738-a03898b923b6",
-                        "date": 1685627136284,
-                        "message_platform": "Your account balance went too low (-473.96 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-473.96 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "id": "2d5d22b5-6a8d-4ff1-a780-ff9432f987f1",
-                        "date": 1698068581000,
-                        "message_platform": "You need to add 113.745 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 113.745 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "sent_to_email": true,
-                        "is_delivered": true,
-                        "is_opened": true,
-                        "id": "2edf4a17-6b6e-4ae6-b0a2-0c7e4728d9dc",
-                        "date": 1696495824000,
-                        "message_platform": "Your Directual account balance went too low (-25.245 D-coins). The payment method failed. The following apps will be downgraded and blocked:\n— Investra Admin investrademoadmin, ID: 18725\nPlease, link valid payment method and cancel apps downgrade until they are blocked completely.",
-                        "topic": "🚫 Your Directual apps will be blocked soon",
-                        "message_email": "<p>Your Directual account balance went too low (-25.245 D-coins). The payment method failed. The following apps will be downgraded to FREE and blocked:</p>\n<ul>\n<li><b>Investra Admin</b> investrademoadmin, ID: 18725 will be downgraded on 15 October, 2023.</li>\n</ul>\n<p>Please, <a href=\"https://my.directual.com/platform/billing/\" target=\"_blank\">link valid payment method</a> and cancel apps downgrade until they are blocked completely.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "959c69bb-1ae7-4c3f-acb5-dcdbab856f31",
-                        "date": 1677575147447,
-                        "message_platform": "Your account balance went too low (-494.96 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-494.96 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1689588292325,
-                        "id": "a02c8c08-1d92-4fd7-af1f-e914b861e1cb"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "abd5c8f1-0b11-4253-9e40-036ea780a1ab",
-                        "date": 1669746422534,
-                        "message_platform": "Your account balance went too low (-220.96 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-220.96 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "6fd90480-c602-48fa-988f-a66d718e1bd2",
-                        "date": 1674464766967,
-                        "message_platform": "Your account balance went too low (-386.96 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-386.96 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "id": "4b9a7e9c-2860-4446-b5a0-f4b2fca2b6da",
-                        "date": 1701951243000,
-                        "message_platform": "You need to add 132.745 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 132.745 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1693476196000,
-                        "id": "45f46fe5-c7b2-4e51-a126-c90ec45dbc9e"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "06276418-24a8-4329-8a42-264b9f45b50c",
-                        "date": 1686215062993,
-                        "message_platform": "App zapusknext plan is changed FREE → Pro-sandbox",
-                        "topic": "App zapusknext plan is changed"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1694167318000,
-                        "id": "2cf58dd0-59e9-44dd-b8b7-3316b7e656af"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1692007321203,
-                        "id": "462fef16-9e8f-4431-9972-ddba23063f0d"
-                    },
-                    {
-                        "id": "67e8efc3-1939-4302-8e53-20b16485c39f",
-                        "date": 1701337779000,
-                        "message_platform": "You need to add 152.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 152.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "427c4b08-9b58-4200-8338-f5a1728c44d9",
-                        "date": 1696852509000,
-                        "message_platform": "You need to add 5.745 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 5.745 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "date": 1695911069000,
-                        "message_platform": "App integranext (18678) plan FREE → Pro-sandbox",
-                        "id": "a0b937e6-2bbe-441a-a3f4-fc07d4238292"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "11bf95b2-8f30-41bb-a846-3f7fb9e3b725",
-                        "date": 1701959680000,
-                        "message_platform": "App integranext plan is changed FREE → Pro-sandbox",
-                        "topic": "App integranext plan is changed"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1692352935308,
-                        "id": "d02cdc3d-95ad-4fa4-baf5-93ce87a1b8f5"
-                    },
-                    {
-                        "id": "4742b5e8-4cb0-4f7d-949a-5889e2982646",
-                        "date": 1697979618000,
-                        "message_platform": "You need to add 113.745 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 113.745 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "date": 1689502130511,
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "id": "480b8260-d4ab-4744-a891-86f69a0bfa3e"
-                    },
-                    {
-                        "id": "82683b1a-b610-4207-8146-b126f7290f4e",
-                        "date": 1701615120000,
-                        "message_platform": "You need to add 152.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 152.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "date": 1664630119185,
-                        "message_platform": "App flowerdistrsys (13967) plan Pro-sandbox → Pro-sandbox",
-                        "id": "781085b6-b8ea-45a5-bf82-9e0f63868ab8"
-                    },
-                    {
-                        "message_platform": "App integranext (18678) plan Pro-sandbox → FREE",
-                        "date": 1701943523000,
-                        "id": "9210e54c-e105-4794-8345-048f974e8808"
-                    },
-                    {
-                        "topic": "App is deleted",
-                        "message_platform": "🗑 app ivestaadmindemo `18722` is deleted",
-                        "date": 1696147124000,
-                        "id": "e5f2943b-0ca0-4c99-a331-8aea88f4a95f"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "531102fe-5ac5-4bda-8d2e-1d5dc4560e56",
-                        "date": 1701939682000,
-                        "message_platform": "App investranext plan is changed Startup-monthly → FREE",
-                        "topic": "App investranext plan is changed"
-                    },
-                    {
-                        "date": 1655737340300,
-                        "message_platform": "App bnect-erp (13267) plan Pro-sandbox → FREE",
-                        "id": "045a46f9-c7b8-46d4-933e-04cc1aeaf1d2"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1690365805920,
-                        "id": "cf6d84c2-f48d-446a-9005-e4a705e9135e"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1691488930934,
-                        "id": "45691bb6-cfd2-4c77-a5e0-698c103d4239"
-                    },
-                    {
-                        "id": "859d1b17-b3b4-4f42-a1d7-8113eaea987a",
-                        "date": 1696416555000,
-                        "message_platform": "You need to add 25.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 25.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "date": 1691834528617,
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "id": "1007ff40-92ba-4a52-acbf-ee6c8424ec4b"
-                    },
-                    {
-                        "id": "5873868e-11a7-45b8-a933-60e73b91c28a",
-                        "date": 1696576824000,
-                        "message_platform": "You need to add 25.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 25.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "876b2bef-3648-44b5-a98a-63ca7ccf1ccf",
-                        "date": 1662644797417,
-                        "message_platform": "Your account balance went too low (-80 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-80 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "ed177f4a-5dd2-4868-b3da-aa92bfc12ab6",
-                        "date": 1686215062996,
-                        "message_platform": "App zapusknext plan is changed FREE → Pro-sandbox",
-                        "topic": "App zapusknext plan is changed"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1691920954493,
-                        "id": "a2ce725b-663e-4d4e-b496-8170d0ff2cac"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "215c6041-5819-4e85-809c-a4c01acb5ef3",
-                        "date": 1702116514000,
-                        "message_platform": "App investranext plan is changed FREE → Pro-sandbox",
-                        "topic": "App investranext plan is changed"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1693130521627,
-                        "id": "de2cba3d-e01f-4628-8774-e13336c57467"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "c08f3bf1-88bc-4fd6-b34f-331eef56533e",
-                        "date": 1664952860503,
-                        "message_platform": "Your account balance went too low (-118 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-118 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1690193011051,
-                        "id": "263c6441-1104-42fd-acc7-bf1e32f4d8fd"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "8b905186-44ea-403d-ad5a-484b550cd02e",
-                        "date": 1701962819000,
-                        "message_platform": "App zapusknext plan is changed Pro-sandbox → FREE",
-                        "topic": "App zapusknext plan is changed"
-                    },
-                    {
-                        "id": "65b367e0-6cf6-4130-982c-adf9a3c1b125",
-                        "date": 1702031335000,
-                        "message_platform": "You need to add 137.735 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 137.735 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "id": "4b171185-f518-407f-a8cc-5452b5a8363f",
-                        "date": 1698633667000,
-                        "message_platform": "You need to add 44.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets.",
-                        "topic": "Transaction failed",
-                        "message_email": "You need to add 44.245 US$ to your account balance. Transaction failed. Please, update your basic payment method or add funds to your account using crypto wallets."
-                    },
-                    {
-                        "date": 1701944146000,
-                        "message_platform": "App investranext (19241) plan Pro-sandbox → FREE",
-                        "id": "16ca5d6c-ffe6-4371-bfe5-135b5baeb892"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "3b0b3e67-2fa8-4af8-8038-9f0a4908de59",
-                        "date": 1701939676000,
-                        "topic": "App is downgraded",
-                        "message_email": "App investranext (19241) is downgraded to FREE and blocked."
-                    },
-                    {
-                        "date": 1702031000000,
-                        "message_platform": "App investranext (19241) plan FREE → Pro-sandbox",
-                        "id": "c3bde67e-5fb5-4906-b513-bf9f97de1952"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "is_delivered": true,
-                        "is_opened": true,
-                        "id": "77cf4a3e-0d90-4139-a4bd-7c64488e4879",
-                        "date": 1700808385000,
-                        "message_platform": "Your Directual account balance went too low (-152.245 D-coins). The payment method failed. The following apps will be downgraded and blocked:\n— investranext investranext, ID: 19241\nPlease, link valid payment method and cancel apps downgrade until they are blocked completely.",
-                        "topic": "🚫 Your Directual apps will be blocked soon",
-                        "message_email": "<p>Your Directual account balance went too low (-152.245 D-coins). The payment method failed. The following apps will be downgraded to FREE and blocked:</p>\n<ul>\n<li><b>investranext</b> investranext, ID: 19241 will be downgraded on 07 December, 2023.</li>\n</ul>\n<p>Please, <a href=\"https://my.directual.com/platform/billing/\" target=\"_blank\">link valid payment method</a> and cancel apps downgrade until they are blocked completely.</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "a865fa09-85c7-4231-b225-98b3d1a7820c",
-                        "date": 1695902013000,
-                        "message_platform": "App integranext plan is changed Pro-sandbox → FREE",
-                        "topic": "App integranext plan is changed"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1688032862839,
-                        "id": "27c7a697-fa78-4357-adab-cb75020457fb"
-                    },
-                    {
-                        "date": 1701962819000,
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → FREE",
-                        "id": "4e7c6d14-b68f-4b06-ae05-56bdd787177f"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1693908121000,
-                        "id": "532fc581-07e5-46c6-9e35-76e25ac73cf9"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1693562639000,
-                        "id": "f328344e-2549-457c-aa4f-d6ce19d6563c"
-                    },
-                    {
-                        "date": 1689069720332,
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "id": "3b078162-2cc3-4c7f-b229-2ef5569a4b8f"
-                    },
-                    {
-                        "message_platform": "App zapusknext (17643) plan Pro-sandbox → Pro-sandbox",
-                        "date": 1695809034000,
-                        "id": "adee7f4d-04e6-473e-a087-3990df5191c6"
-                    }
-                ],
-                "apps": [
-                    {
-                        "is_blocked": false,
-                        "id": "18678",
-                        "is_hidden": false,
-                        "sys_name": "integranext",
-                        "app_id": {
-                            "sysName": "integranext",
-                            "plan_id": "Pro-sandbox"
-                        }
-                    }
-                ]
-            },
-            {
-                "survey_is_aborted": false,
-                "first_name": "Sagan",
-                "source": "www.directual.com/",
-                "survey_step_1_raw": "pro_nocoder",
-                "wallet_balance": -118,
-                "country": {
-                    "Name": "Russian Federation"
-                },
-                "gravatar_pic": "https://www.gravatar.com/avatar/8de8508d591fd46b8c09c64e3997e3c2?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "register_date": 1666595433484,
-                "id": "2222olga86@gmail.com",
-                "survey_step_3_raw": "friends",
-                "last_name": "Sagan",
-                "email_campaigns": [
-                    {
-                        "title": "Building no-code apps with AI! Join Free Live Webinar",
-                        "id": "fc382562-34cb-4b8e-86c9-d9662ec8b7f3"
-                    }
-                ],
-                "unsubscribed": false,
-                "subscription_settings": {
-                    "Unsubscribed": false
-                },
-                "wallet_transactions": [
-                    {
-                        "balance": -39,
-                        "user_id": "2222olga86@gmail.com",
-                        "id": "2494e8b4-9090-4caf-a2df-36b682b1acba",
-                        "date": 1695632452000,
-                        "comment": "App sagan (13672), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "2222olga86@gmail.com",
-                        "id": "7d5b14d0-36f2-42ad-a964-0937125e2ff3",
-                        "date": 1692954050000,
-                        "comment": "App sagan (13672), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "2222olga86@gmail.com",
-                        "id": "3c239b87-bf50-4321-8dce-3d24220f2e59",
-                        "date": 1690275656000,
-                        "comment": "App sagan (13672), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 0,
-                        "user_id": "2222olga86@gmail.com",
-                        "id": "af02025c-4833-4c23-8212-054d7bde05f9",
-                        "date": 1689167489000,
-                        "type": "manual"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "2222olga86@gmail.com",
-                        "id": "50668d5b-3ba0-4bd0-b710-2d21f9faf10b",
-                        "date": 1669366829000,
-                        "comment": "App sagan (13672), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "2222olga86@gmail.com",
-                        "id": "9ced0f5e-a88c-486a-8d89-e03bbc1eae5f",
-                        "date": 1666909225000,
-                        "comment": "App sagan (13672), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "2222olga86@gmail.com",
-                        "id": "e5126fd6-e830-44ff-af51-dfc7d21bb5a9",
-                        "date": 1671958841000,
-                        "comment": "App sagan (13672), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "2222olga86@gmail.com",
-                        "id": "6d8e5e2b-1d54-4ef5-8ea2-a5aa412a656d",
-                        "date": 1682413318000,
-                        "comment": "App sagan (13672), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "2222olga86@gmail.com",
-                        "id": "4ba29984-1c46-4d9e-9e4e-be2c945349ce",
-                        "date": 1674637234000,
-                        "comment": "App sagan (13672), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "2222olga86@gmail.com",
-                        "id": "62f7e3e8-80af-4cae-bf5d-28da56ab84cb",
-                        "date": 1677315631000,
-                        "comment": "App sagan (13672), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "2222olga86@gmail.com",
-                        "id": "c3fa896b-142c-433e-b17c-50b027e49129",
-                        "date": 1679734827000,
-                        "comment": "App sagan (13672), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 350,
-                        "user_id": "2222olga86@gmail.com",
-                        "id": "17461924-b130-4183-a476-bd9c0ff692da",
-                        "date": 1666898635000,
-                        "comment": "Adding funds via Tinkoff 22400.0 ₽ → 350.0 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "2222olga86@gmail.com",
-                        "id": "f24debe2-4eeb-4020-9282-10dbe1ab103c",
-                        "date": 1685005210000,
-                        "comment": "App sagan (13672), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "2222olga86@gmail.com",
-                        "id": "5b707ad4-0a25-4177-90da-b701f6bfd9e3",
-                        "date": 1687683645000,
-                        "comment": "App sagan (13672), license payment, plan Startup",
-                        "type": "app_payment"
-                    }
-                ],
-                "number_of_apps": 1,
-                "survey_step_2_raw": "startup",
-                "notifications": [
-                    {
-                        "sent_to_email": false,
-                        "id": "31faf0cc-1a39-4756-aa73-1572497147da",
-                        "date": 1666723726896,
-                        "message_platform": "App sagan plan is changed FREE → Startup-monthly",
-                        "topic": "App sagan plan is changed"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "41f77795-02d0-4a94-8451-27300e437c62",
-                        "date": 1698224462000,
-                        "message_platform": "App sagan plan is changed Startup-monthly → FREE",
-                        "topic": "App sagan plan is changed"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "a483d2b0-313e-4072-8dda-057d936009e8",
-                        "date": 1666613580373,
-                        "message_platform": "App sagan plan is changed Pro-sandbox-AppSumo → FREE",
-                        "topic": "App sagan plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "is_delivered": true,
-                        "is_opened": true,
-                        "id": "7c2ba287-597d-440f-9050-36b8c5aa4c48",
-                        "date": 1696494360000,
-                        "message_platform": "Your Directual account balance went too low (-118 D-coins). The payment method failed. The following apps will be downgraded and blocked:\n— sagan sagan, ID: 13672\nPlease, link valid payment method and cancel apps downgrade until they are blocked completely.",
-                        "topic": "🚫 Your Directual apps will be blocked soon",
-                        "message_email": "<p>Your Directual account balance went too low (-118 D-coins). The payment method failed. The following apps will be downgraded to FREE and blocked:</p>\n<ul>\n<li><b>sagan</b> sagan, ID: 13672 will be downgraded on 25 October, 2023.</li>\n</ul>\n<p>Please, <a href=\"https://my.directual.com/platform/billing/\" target=\"_blank\">link valid payment method</a> and cancel apps downgrade until they are blocked completely.</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "41dcfc8a-bd0f-46f9-960b-cb583faaf539",
-                        "date": 1698224463000,
-                        "topic": "App is downgraded",
-                        "message_email": "App sagan (13672) is downgraded to FREE and blocked."
-                    },
-                    {
-                        "date": 1666613579977,
-                        "message_platform": "App sagan (13672) plan Pro-sandbox-AppSumo → FREE",
-                        "id": "c0425ead-ddc7-4fea-805c-d7fcde7cca4c"
-                    }
-                ],
-                "apps": [
-                    {
-                        "is_blocked": false,
-                        "id": "13672",
-                        "is_hidden": false,
-                        "sys_name": "sagan",
-                        "app_id": {
-                            "sysName": "sagan",
-                            "plan_id": "FREE",
-                            "isDowngraded": false
-                        }
-                    }
-                ]
-            },
-            {
-                "survey_is_aborted": false,
-                "first_name": "Дмитрий",
-                "source": "direct",
-                "survey_step_1_raw": "beginner",
-                "wallet_balance": -112,
-                "country": {
-                    "Name": "Russian Federation"
-                },
-                "gravatar_pic": "https://www.gravatar.com/avatar/a3c367c8a1d0cddf6f30a0a7c9480a5d?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "register_date": 1663750903753,
-                "id": "evexconzoomtwo@gmail.com",
-                "survey_step_3_raw": "zerocoder",
-                "last_name": "Резяпкин",
-                "email_campaigns": [
-                    {
-                        "title": "Building no-code apps with AI! Join Free Live Webinar",
-                        "id": "fc382562-34cb-4b8e-86c9-d9662ec8b7f3"
-                    }
-                ],
-                "unsubscribed": false,
-                "subscription_settings": {
-                    "Unsubscribed": false
-                },
-                "wallet_transactions": [
-                    {
-                        "balance": -39,
-                        "user_id": "evexconzoomtwo@gmail.com",
-                        "id": "85339227-e592-4fb4-a381-12e5a5acf1b9",
-                        "date": 1696064501000,
-                        "comment": "App doctorschool (14511), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "evexconzoomtwo@gmail.com",
-                        "id": "0224f9e9-52aa-4fe0-a9a8-01a798ab7587",
-                        "date": 1688116047000,
-                        "comment": "App doctorschool (14511), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "evexconzoomtwo@gmail.com",
-                        "id": "f415816a-5379-4aad-92ef-d20aa8ece89a",
-                        "date": 1685523937000,
-                        "comment": "App doctorschool (14511), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "evexconzoomtwo@gmail.com",
-                        "id": "6a8183d4-83b6-481c-84d9-e8c13d95b85e",
-                        "date": 1674551676000,
-                        "comment": "Update app doctorschool, plan Startup-monthly (previous plan: Free)",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "evexconzoomtwo@gmail.com",
-                        "id": "51c9256c-7729-4acd-ae37-6e4d605fccd5",
-                        "date": 1690707665000,
-                        "comment": "App doctorschool (14511), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "evexconzoomtwo@gmail.com",
-                        "id": "a66fb95a-3ff1-422d-9cbc-54793c87388f",
-                        "date": 1666861410000,
-                        "comment": "Create app doctorschool, plan Pro-monthly",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "evexconzoomtwo@gmail.com",
-                        "id": "286c97e5-3227-4ee8-bf36-b74cd42d5930",
-                        "date": 1693386122000,
-                        "comment": "App doctorschool (14511), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "evexconzoomtwo@gmail.com",
-                        "id": "4d7930e5-a933-4465-87f1-a68283526384",
-                        "date": 1669539637000,
-                        "comment": "App doctorschool (14511), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 200,
-                        "user_id": "evexconzoomtwo@gmail.com",
-                        "id": "3f441ac0-a554-4164-add1-6516a384c7bd",
-                        "date": 1666773586000,
-                        "comment": "Wire transfer from ООО \"ИВЕКСКОН\", 12800 ₽ → 200 D-coins",
-                        "type": "bank_payment"
-                    },
-                    {
-                        "balance": 200,
-                        "user_id": "evexconzoomtwo@gmail.com",
-                        "id": "f34aa8da-fee4-4985-91ea-a012adfd8556",
-                        "date": 1674551398000,
-                        "comment": "Wire transfer from Общество с ограниченной ответственностью \"Ивекскон\", 13600 ₽ → 200 D-coins",
-                        "type": "bank_payment"
-                    }
-                ],
-                "number_of_apps": 1,
-                "survey_step_2_raw": "SMB",
-                "notifications": [
-                    {
-                        "sent_to_email": false,
-                        "id": "17e75a9c-abff-41ba-9f7c-4f5720a2cafd",
-                        "date": 1698656550000,
-                        "topic": "App is downgraded",
-                        "message_email": "App doctorschool (14511) is downgraded to FREE and blocked."
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "0ed7f842-27f0-4bb1-a14f-4062d2a2cec4",
-                        "date": 1698656540000,
-                        "message_platform": "App doctorschool plan is changed Startup-monthly → FREE",
-                        "topic": "App doctorschool plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "4d32ec13-5d25-42d8-b787-776ce33ff594",
-                        "date": 1671613911304,
-                        "message_platform": "Your account balance went too low (-78 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-78 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "is_delivered": true,
-                        "is_opened": true,
-                        "id": "597e468d-896e-410b-bd10-19e96a44292e",
-                        "date": 1696494518000,
-                        "message_platform": "Your Directual account balance went too low (-112 D-coins). The payment method failed. The following apps will be downgraded and blocked:\n— Doctor School doctorschool, ID: 14511\nPlease, link valid payment method and cancel apps downgrade until they are blocked completely.",
-                        "topic": "🚫 Your Directual apps will be blocked soon",
-                        "message_email": "<p>Your Directual account balance went too low (-112 D-coins). The payment method failed. The following apps will be downgraded to FREE and blocked:</p>\n<ul>\n<li><b>Doctor School</b> doctorschool, ID: 14511 will be downgraded on 30 October, 2023.</li>\n</ul>\n<p>Please, <a href=\"https://my.directual.com/platform/billing/\" target=\"_blank\">link valid payment method</a> and cancel apps downgrade until they are blocked completely.</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "e3a457f9-e0d0-436a-847c-c3f949bdf5a0",
-                        "date": 1674551679457,
-                        "message_platform": "App doctorschool plan is changed FREE → Startup-monthly",
-                        "topic": "App doctorschool plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "a4e87bd7-cfa1-4648-aa37-6b9007240992",
-                        "date": 1669746422491,
-                        "message_platform": "Your account balance went too low (-78 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-78 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "e4662d82-bbb7-4e49-b6c3-832d65e813a3",
-                        "date": 1684334123413,
-                        "message_platform": "App doctorschool plan is changed FREE → Startup-monthly",
-                        "topic": "App doctorschool plan is changed"
-                    },
-                    {
-                        "date": 1666861410872,
-                        "message_platform": "Create app doctorschool, plan Pro-monthly",
-                        "topic": "App is created",
-                        "id": "829eb1f2-2ec0-4cda-b86c-5181fab9a804"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "dc835a35-66e5-4c94-b829-491383f088e0",
-                        "date": 1670577896935,
-                        "message_platform": "Your account balance went too low (-78 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-78 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "7651e85f-9534-44bc-80cf-a0b3a3f84372",
-                        "date": 1677229240193,
-                        "message_platform": "App doctorschool plan is changed Startup-monthly → FREE",
-                        "topic": "App doctorschool plan is changed"
-                    }
-                ],
-                "apps": [
-                    {
-                        "is_blocked": false,
-                        "id": "14511",
-                        "is_hidden": false,
-                        "sys_name": "doctorschool",
-                        "app_id": {
-                            "sysName": "doctorschool",
-                            "plan_id": "FREE",
-                            "isDowngraded": false
-                        }
-                    }
-                ]
-            },
-            {
-                "survey_is_aborted": false,
-                "first_name": "Stepa",
-                "source": "direct",
-                "survey_step_1_raw": "beginner",
-                "wallet_balance": -108.15,
-                "country": {
-                    "Name": "Russian Federation"
-                },
-                "gravatar_pic": "https://www.gravatar.com/avatar/f4427fcbee59171d6d8d5bbd04fc7102?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "register_date": 1649094271125,
-                "id": "sbatsov@harvester.so",
-                "survey_step_3_raw": "customOption: vc.ru",
-                "last_name": "Bats",
-                "email_campaigns": [
-                    {
-                        "title": "Building no-code apps with AI! Join Free Live Webinar",
-                        "id": "fc382562-34cb-4b8e-86c9-d9662ec8b7f3"
-                    }
-                ],
-                "unsubscribed": false,
-                "subscription_settings": {
-                    "Unsubscribed": false
-                },
-                "wallet_transactions": [
-                    {
-                        "balance": -24.28,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "0f82db17-511f-4586-b99d-c4e40e036042",
-                        "date": 1701422827000,
-                        "comment": "On-demand resource consumption. App harvester (13006), period 2023-11",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "dc46eeab-a0c2-4cb4-93cc-6f63ef7f1d4b",
-                        "date": 1701075992000,
-                        "comment": "App harvester (13006), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -5.24,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "adee068c-50d3-4c84-aa0f-185bae8ccf50",
-                        "date": 1698931737000,
-                        "comment": "On-demand resource consumption. App harvester (13006), period 2023-10",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -5.09,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "1a927509-7e5a-405e-b7e3-9d42b130dac8",
-                        "date": 1696236032000,
-                        "comment": "On-demand resource consumption. App harvester (13006), period 2023-09",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": 500,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "78282a7a-f8fa-452c-b107-f634f7490fe4",
-                        "date": 1695816932000,
-                        "comment": "Wire transfer from OOO \"Юникорн Гудс\", 51000 ₽ → 500 D-coins",
-                        "type": "bank_payment"
-                    },
-                    {
-                        "balance": -2.27,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "ccceb4f5-fad8-4221-aaaf-8f9c688f5667",
-                        "date": 1693572121000,
-                        "comment": "On-demand resource consumption. App harvester (13006), period 2023-08",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "ff464239-e7af-4e14-b14c-dcf396a19775",
-                        "date": 1659690034000,
-                        "comment": "App harvester (13006), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "43d4f235-bd36-40bb-8ecc-acc24fbfa634",
-                        "date": 1683277235000,
-                        "comment": "App harvester (13006), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "07098052-9fcd-467a-9569-ebde7e56c5fe",
-                        "date": 1693126849000,
-                        "comment": "App harvester (13006), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "29e75c80-c6cf-44a0-b1b0-3284eeff8a60",
-                        "date": 1662368429000,
-                        "comment": "App harvester (13006), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 139,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "044617d3-9569-4dd4-834d-244308bb6496",
-                        "date": 1651672234000,
-                        "comment": "Wire transfer",
-                        "type": "bank_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "292a4d61-ce8c-44bf-b45c-309c2baea789",
-                        "date": 1695805251000,
-                        "comment": "App harvester (13006), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "f1f92c3d-36a4-4518-bb0e-8f9dc7d8be48",
-                        "date": 1657011624000,
-                        "comment": "App harvester (13006), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -7.22,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "31d6b6f1-2988-41df-b890-71521cb25e35",
-                        "date": 1685626058000,
-                        "comment": "On-demand resource consumption. App harvester (13006), period 2023-05",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": 556,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "5607305a-dc74-4d0c-bb5b-199a0bcab781",
-                        "date": 1664798704000,
-                        "comment": "Wire transfer from ООО \"БМП\", 35584 ₽ → 556 D-coins",
-                        "type": "bank_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "e59139e0-3ae8-4dbe-8546-def2265baf76",
-                        "date": 1670230876000,
-                        "comment": "App harvester (13006), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "96be5c1a-9520-4dde-9bba-0cdc8e8b0749",
-                        "date": 1698397282000,
-                        "comment": "App harvester (13006), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "12303f3d-00d5-4444-a4f2-5f4f8723a338",
-                        "date": 1651739178000,
-                        "comment": "Update app harvester, plan Pro-monthly (previous plan: Free)",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 200,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "97ab0026-76a8-4eab-a869-0ac9841a19e0",
-                        "date": 1675756536000,
-                        "comment": "Wire transfer from ООО \"БМП Индастриал\" , 13800 ₽ → 200 D-coins",
-                        "type": "bank_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "26b39935-875e-46b2-9485-0adeeb453af9",
-                        "date": 1654419690000,
-                        "comment": "App harvester (13006), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 650,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "89fad12e-42f6-4f83-bc75-e0db240f13aa",
-                        "date": 1686726741000,
-                        "comment": "Wire transfer from ООО \"Юникорн Гудс\", 55250 ₽ → 650 D-coins",
-                        "type": "bank_payment"
-                    },
-                    {
-                        "balance": 417,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "b074add4-390f-4170-8aaf-721963d19af3",
-                        "date": 1674564495000,
-                        "comment": "Adding funds via Tinkoff 28773.0 ₽ → 417.0 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "f7ea2afa-bdd2-4d27-94af-72107104c449",
-                        "date": 1675587663000,
-                        "comment": "App harvester (13006), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "831fbaf6-cdb0-416b-b157-d671052f212b",
-                        "date": 1690448455000,
-                        "comment": "App harvester (13006), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "5a706870-9c5e-428f-95a3-537f2abecd23",
-                        "date": 1678006837000,
-                        "comment": "App harvester (13006), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "cfbbd13b-3a3a-4847-ae36-06a31c91e962",
-                        "date": 1667638826000,
-                        "comment": "App harvester (13006), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "46ac9cc0-858a-42ed-9e1b-1d12fc020cfc",
-                        "date": 1680685236000,
-                        "comment": "App harvester (13006), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "0bac33dd-ecd2-4e06-a1b2-0bfdde2b6ad6",
-                        "date": 1672909265000,
-                        "comment": "App harvester (13006), license payment, plan Pro",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -6.11,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "d91159e2-66a4-4749-a1b3-b2f172259850",
-                        "date": 1690898104000,
-                        "comment": "On-demand resource consumption. App harvester (13006), period 2023-07",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -17.94,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "38a133b7-6994-43c4-b119-27f1f5646f00",
-                        "date": 1685955656000,
-                        "comment": "App harvester (13006), license payment, plan Pro. 05 June – 09 June.",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -139,
-                        "user_id": "sbatsov@harvester.so",
-                        "id": "597a90b6-3c64-4da2-9cbd-4e33da28e6c9",
-                        "date": 1687265567000,
-                        "comment": "App harvester (13006), license payment, plan Pro",
-                        "type": "app_payment"
-                    }
-                ],
-                "number_of_apps": 1,
-                "survey_step_2_raw": "SMB",
-                "notifications": [
-                    {
-                        "sent_to_email": true,
-                        "id": "d6e993d5-c31e-4f0d-903f-cafe0a48d2be",
-                        "date": 1671613910216,
-                        "message_platform": "Your account balance went too low (-278 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-278 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "is_delivered": true,
-                        "id": "8a3370ab-cbc2-4969-86cb-0b7ae944987c",
-                        "date": 1695805383000,
-                        "message_platform": "Your Directual account balance went too low (-295.54 D-coins). The payment method failed. The following apps will be downgraded and blocked:\n— harvester harvester, ID: 13006\nPlease, link valid payment method and cancel apps downgrade until they are blocked completely.",
-                        "topic": "🚫 Your Directual apps will be blocked soon",
-                        "message_email": "<p>Your Directual account balance went too low (-295.54 D-coins). The payment method failed. The following apps will be downgraded to FREE and blocked:</p>\n<ul>\n<li><b>harvester</b> harvester, ID: 13006 will be downgraded on 27 October, 2023.</li>\n</ul>\n<p>Please, <a href=\"https://my.directual.com/platform/billing/\" target=\"_blank\">link valid payment method</a> and cancel apps downgrade until they are blocked completely.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "92933426-d6d0-4957-a584-cb41962a5e8f",
-                        "date": 1686597070771,
-                        "message_platform": "The app harvester hits the plan load limits. Forecast payment is 21.86 US$. It'll be billed on the 1st day of the next month.",
-                        "topic": "App harvester hits the plan limits. On-demand resourse consumption is ON.",
-                        "message_email": "<p style=\"margin-bottom:10px\">The app <a href=\"https://my.directual.com/platform/apps/\" target=\"_blank\">harvester</a> hits the plan load limits.</p>\n<p style=\"margin-bottom:10px\">Forecast payment is <b>21.86</b> US$. It'll be billed on the 1st day of the next month.</p>\n<p style=\"margin-bottom:10px\">If you don't want the on-demand bill to increase, stop the scenarios or block your app.</p>\n<p>In case of any questions contact us via support chat or via email support@directual.com</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "b238abe7-a5b6-4211-ae9b-eddf5a740f8a",
-                        "date": 1687860049123,
-                        "message_platform": "App harvester plan is changed FREE → Pro-monthly",
-                        "topic": "App harvester plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "ae515be3-6902-4ff5-96c6-64c342c6c6e8",
-                        "date": 1683013021274,
-                        "message_platform": "Your account balance went too low (-217 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-217 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "d0740e73-1900-40f3-b82a-fae70c9f5b8f",
-                        "date": 1656666996068,
-                        "message_platform": "Your account balance went too low (-139 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-139 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "date": 1651739180469,
-                        "topic": "App is upgraded",
-                        "message_platform": "Update app harvester, plan Pro-monthly (previous plan: Free)",
-                        "id": "f07ad30a-c37e-4309-a5f1-de845c0cb7be"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "8aefb41c-8494-42e8-a564-5f61ac8844fc",
-                        "date": 1664270098496,
-                        "message_platform": "Your account balance went too low (-556 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-556 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "25c8d9cb-47fb-433e-86af-a5409aabe1f7",
-                        "date": 1661416532852,
-                        "message_platform": "Your account balance went too low (-417 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-417 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "54b28e9d-44e4-4238-8359-5f5670a663de",
-                        "date": 1686319538020,
-                        "message_platform": "App harvester plan is changed Pro-monthly → FREE",
-                        "topic": "App harvester plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "57f7c014-ad68-4642-9db0-59b9a2f3ce2a",
-                        "date": 1662644797402,
-                        "message_platform": "Your account balance went too low (-556 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-556 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "38aace77-013c-464c-b237-89e74fe3823c",
-                        "date": 1673079388669,
-                        "message_platform": "Your account balance went too low (-417 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-417 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "c1dd1bdb-a985-4b24-9db6-c3906978d358",
-                        "date": 1664960433418,
-                        "message_platform": "App harvester plan is changed Pro-monthly → FREE",
-                        "topic": "App harvester plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "bc257270-8ae1-4fdc-9c83-15f1bce1a98c",
-                        "date": 1685627131217,
-                        "message_platform": "Your account balance went too low (-363.22 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-363.22 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "is_delivered": true,
-                        "id": "0dda5169-084c-43ef-bf67-cdc488d6aa3b",
-                        "date": 1701096798000,
-                        "message_platform": "Your Directual account balance went too low (-83.87 D-coins). The payment method failed. The following apps will be downgraded and blocked:\n— harvester harvester, ID: 13006\nPlease, link valid payment method and cancel apps downgrade until they are blocked completely.",
-                        "topic": "🚫 Your Directual apps will be blocked soon",
-                        "message_email": "<p>Your Directual account balance went too low (-83.87 D-coins). The payment method failed. The following apps will be downgraded to FREE and blocked:</p>\n<ul>\n<li><b>harvester</b> harvester, ID: 13006 will be downgraded on 27 December, 2023.</li>\n</ul>\n<p>Please, <a href=\"https://my.directual.com/platform/billing/\" target=\"_blank\">link valid payment method</a> and cancel apps downgrade until they are blocked completely.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "2b3929a8-85f6-4066-866d-7d1e85fa6071",
-                        "date": 1660814255107,
-                        "message_platform": "Your account balance went too low (-417 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-417 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "b577158d-817c-4b2e-8133-bf010ac2cf8c",
-                        "date": 1674464749936,
-                        "message_platform": "Your account balance went too low (-417 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-417 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "69849202-3613-4a00-983c-c29ef07fcaad",
-                        "date": 1687265476572,
-                        "message_platform": "App harvester plan is changed FREE → Pro-monthly",
-                        "topic": "App harvester plan is changed"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "917c2646-73a8-479a-8a2c-ae6401efbb65",
-                        "date": 1664960565236,
-                        "message_platform": "App harvester plan is changed FREE → Pro-monthly",
-                        "topic": "App harvester plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "7b79dcff-3003-4ddb-81f1-11918eaee3cf",
-                        "date": 1655198923340,
-                        "message_platform": "Your account balance went too low (-139 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-139 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "message_platform": "App harvester (13006) plan Pro-sandbox → FREE",
-                        "date": 1651650425811,
-                        "id": "31ab3aec-d1e7-4b6c-90a0-3737f5619c22"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "dd0ec739-0556-493b-a3a2-dad4d35bf4a8",
-                        "date": 1670577896154,
-                        "message_platform": "Your account balance went too low (-278 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-278 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "is_delivered": true,
-                        "id": "4f838ae7-2c1e-46fc-9b89-045ce94f2b2c",
-                        "date": 1694590449000,
-                        "message_platform": "Your account balance went too low (-156.54 US$). Please, link payment method to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-156.54 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">link payment method</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "fa8eacd4-c3f0-4511-8cdd-58829f6be06d",
-                        "date": 1659359882844,
-                        "message_platform": "Your account balance went too low (-278 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-278 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "c449c40d-db8a-423c-9ec2-ced580b92c1a",
-                        "date": 1656157071445,
-                        "message_platform": "Your account balance went too low (-139 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-139 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "c2302ff9-ca22-4d34-9dcc-9a32315d883e",
-                        "date": 1668545627287,
-                        "message_platform": "<Your Directual account balance went too low (-139 D-coins). The following apps will be downgraded:\n— harvester harvester, ID: 13006\nIf you don't add funds to your account balance, it'll be blocked completely.",
-                        "topic": "🚫 Your apps will be downgraded to FREE",
-                        "message_email": "<p>Your Directual account balance went too low (-139 D-coins). The following apps will be downgraded to FREE:</p>\n<ul>\n<li><b>harvester</b> harvester, ID: 13006 will be downgraded on 05 December, 2022.</li>\n</ul>\n<p>If you don't <a href=\"https://readme.directual.com/pricing-and-billing/how-billing-works#adding-funds-to-your-account-balance\" target=\"_blank\">add funds</a> to your account balance, it'll be blocked completely.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "94d8c725-9f70-4bc4-bfb8-c8d088a716d6",
-                        "date": 1668848385788,
-                        "message_platform": "Your account balance went too low (-139 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-139 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "e9c14018-b613-40f4-b537-432271fae0a5",
-                        "date": 1660284115795,
-                        "message_platform": "Your account balance went too low (-417 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-417 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    }
-                ],
-                "apps": [
-                    {
-                        "is_blocked": false,
-                        "id": "13006",
-                        "is_hidden": false,
-                        "sys_name": "harvester",
-                        "app_id": {
-                            "sysName": "harvester",
-                            "plan_id": "Pro-monthly",
-                            "isDowngraded": true
-                        }
-                    }
-                ]
-            },
-            {
-                "survey_is_aborted": false,
-                "first_name": "adel",
-                "source": "direct",
-                "survey_step_1_raw": "pro_nocoder",
-                "wallet_balance": -107.2,
-                "country": {
-                    "Name": "Kyrgyzstan"
-                },
-                "gravatar_pic": "https://www.gravatar.com/avatar/c1adfcc14ee4569064cd8aa941c6ef49?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "register_date": 1660300542686,
-                "id": "cmo@traffic-retail.ru",
-                "survey_step_3_raw": "zerocoder",
-                "last_name": "kadyrov",
-                "email_campaigns": [
-                    {
-                        "title": "Building no-code apps with AI! Join Free Live Webinar",
-                        "id": "fc382562-34cb-4b8e-86c9-d9662ec8b7f3"
-                    }
-                ],
-                "unsubscribed": false,
-                "subscription_settings": {
-                    "Unsubscribed": false
-                },
-                "wallet_transactions": [
-                    {
-                        "balance": -4.82,
-                        "user_id": "cmo@traffic-retail.ru",
-                        "id": "92727eb1-7a46-48fc-90c9-b7c00a8cb7e3",
-                        "date": 1685626062000,
-                        "comment": "On-demand resource consumption. App traffic-retail (13904), period 2023-05",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "cmo@traffic-retail.ru",
-                        "id": "525c9a7c-a053-4498-b852-9807a2247aba",
-                        "date": 1671094838000,
-                        "comment": "App traffic-retail (13904), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "cmo@traffic-retail.ru",
-                        "id": "30d4c319-7217-42f3-a582-5a89d71c6c86",
-                        "date": 1668502833000,
-                        "comment": "App traffic-retail (13904), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "cmo@traffic-retail.ru",
-                        "id": "9c45218e-06c9-4813-9b4a-0f4700dec869",
-                        "date": 1665824439000,
-                        "comment": "App traffic-retail (13904), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "cmo@traffic-retail.ru",
-                        "id": "71791d7d-1e07-4dbc-a109-6df6b77b27d8",
-                        "date": 1660569210000,
-                        "comment": "Update app traffic-retail, plan Startup-monthly (previous plan: Free)",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -1.18,
-                        "user_id": "cmo@traffic-retail.ru",
-                        "id": "1b8ec490-ab9c-4025-9c2a-6447348dbac2",
-                        "date": 1667309890000,
-                        "comment": "On-demand resource consumption. App traffic-retail (13904), period 2022-10",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "cmo@traffic-retail.ru",
-                        "id": "7f836986-b269-4067-9b50-62aa19a123c0",
-                        "date": 1663232454000,
-                        "comment": "App traffic-retail (13904), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -1.76,
-                        "user_id": "cmo@traffic-retail.ru",
-                        "id": "180a29f6-0742-4dc4-a88f-bfe2b9845ad7",
-                        "date": 1672911671000,
-                        "comment": "On-demand resource consumption. App traffic-retail (13904), period 2022-12",
-                        "type": "ondemand"
-                    },
-                    {
-                        "balance": 100,
-                        "user_id": "cmo@traffic-retail.ru",
-                        "id": "f1a91fbb-7b19-442a-91dd-65d6d3cb59c9",
-                        "date": 1660300620000,
-                        "comment": "Promo-code PRODUCTHUNT",
-                        "type": "promo"
-                    },
-                    {
-                        "balance": -4.44,
-                        "user_id": "cmo@traffic-retail.ru",
-                        "id": "e8aaa997-7800-4f69-af19-979fb1195c1b",
-                        "date": 1662047153000,
-                        "comment": "On-demand resource consumption. App traffic-retail (13904), period 2022-08",
-                        "type": "ondemand"
-                    }
-                ],
-                "number_of_apps": 1,
-                "survey_step_2_raw": "SMB",
-                "notifications": [
-                    {
-                        "sent_to_email": false,
-                        "id": "8be65344-1594-478f-ba69-dada84880ce1",
-                        "date": 1660569211548,
-                        "message_platform": "App traffic-retail plan is changed FREE → Startup-monthly",
-                        "topic": "App traffic-retail plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "614ae8ce-8def-4f55-ac87-74d7711f2054",
-                        "date": 1670577896804,
-                        "message_platform": "Your account balance went too low (-61.62 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-61.62 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "463b5fad-f9cf-45bc-87cc-a304751be9f8",
-                        "date": 1686573454342,
-                        "message_platform": "Your account balance went too low (-107.2 US$). Please, link payment method to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-107.2 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">link payment method</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "d7d8de46-695f-4e18-a9b5-e6f534df8c56",
-                        "date": 1674036517036,
-                        "message_platform": "Your app traffic-retail (traffic-retail) exceeds FREE-plan load limits. You need to upgrade it, choosing one of the paid plans. If you dont't upgrade the app in a few days it will be blocked!",
-                        "topic": "🔥 You need to upgrade app traffic-retail (traffic-retail)",
-                        "message_email": "<p>Your app <a href=\"https://my.directual.com/platform/apps/traffic-retail\">traffic-retail (traffic-retail)</a> exceeds FREE-plan load limits. You need to upgrade it, choosing one of the <a href=\"https://www.directual.com/pricing\">paid plans</a>.</p>\n<p>If you dont't upgrade the app in a few days it will be blocked!</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "15b5bd25-3051-49fa-99c5-6a843ed7b65e",
-                        "date": 1673863775241,
-                        "message_platform": "Your app traffic-retail (traffic-retail) exceeds FREE-plan load limits. You need to upgrade it, choosing one of the paid plans. If you dont't upgrade the app in a few days it will be blocked!",
-                        "topic": "🔥 You need to upgrade app traffic-retail (traffic-retail)",
-                        "message_email": "<p>Your app <a href=\"https://my.directual.com/platform/apps/traffic-retail\">traffic-retail (traffic-retail)</a> exceeds FREE-plan load limits. You need to upgrade it, choosing one of the <a href=\"https://www.directual.com/pricing\">paid plans</a>.</p>\n<p>If you dont't upgrade the app in a few days it will be blocked!</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "a44bc3c0-491c-4cbd-a5d8-255c13959d45",
-                        "date": 1677575148301,
-                        "message_platform": "Your account balance went too low (-102.38 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-102.38 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "49dcceb3-58b2-4873-b0e8-1aa652cad701",
-                        "date": 1674209307866,
-                        "message_platform": "Your app traffic-retail (traffic-retail) exceeds FREE-plan load limits. You need to upgrade it, choosing one of the paid plans. If you dont't upgrade the app in a few days it will be blocked!",
-                        "topic": "🔥 You need to upgrade app traffic-retail (traffic-retail)",
-                        "message_email": "<p>Your app <a href=\"https://my.directual.com/platform/apps/traffic-retail\">traffic-retail (traffic-retail)</a> exceeds FREE-plan load limits. You need to upgrade it, choosing one of the <a href=\"https://www.directual.com/pricing\">paid plans</a>.</p>\n<p>If you dont't upgrade the app in a few days it will be blocked!</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "1344c14e-a921-481f-9259-787af94fcd8a",
-                        "date": 1673773234015,
-                        "message_platform": "App traffic-retail plan is changed Startup-monthly → FREE",
-                        "topic": "App traffic-retail plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "e9744978-bf8a-42c2-b5f4-e51515335ead",
-                        "date": 1683013022136,
-                        "message_platform": "Your account balance went too low (-102.38 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-102.38 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "004725df-1e5b-4074-9a39-6262c42024a2",
-                        "date": 1673950114587,
-                        "message_platform": "Your app traffic-retail (traffic-retail) exceeds FREE-plan load limits. You need to upgrade it, choosing one of the paid plans. If you dont't upgrade the app in a few days it will be blocked!",
-                        "topic": "🔥 You need to upgrade app traffic-retail (traffic-retail)",
-                        "message_email": "<p>Your app <a href=\"https://my.directual.com/platform/apps/traffic-retail\">traffic-retail (traffic-retail)</a> exceeds FREE-plan load limits. You need to upgrade it, choosing one of the <a href=\"https://www.directual.com/pricing\">paid plans</a>.</p>\n<p>If you dont't upgrade the app in a few days it will be blocked!</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "370336bf-3f83-4b33-b8df-6517163dfb44",
-                        "date": 1687330347463,
-                        "topic": "App is downgraded",
-                        "message_email": "App traffic-retail (13904) is downgraded to FREE and blocked."
-                    },
-                    {
-                        "sent_to_email": true,
-                        "is_delivered": true,
-                        "id": "bba41547-176f-45b2-8ee9-18a605316cd2",
-                        "date": 1694590455000,
-                        "message_platform": "Your account balance went too low (-107.2 US$). Please, link payment method to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-107.2 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">link payment method</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "52447dab-271f-480b-adf8-8c6ac75778d9",
-                        "date": 1684334052786,
-                        "message_platform": "App traffic-retail plan is changed FREE → Startup-monthly",
-                        "topic": "App traffic-retail plan is changed"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "30a060a7-ba89-4d99-8798-1824c45543bd",
-                        "date": 1685627122086,
-                        "message_platform": "Your account balance went too low (-107.2 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-107.2 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "b9ab444e-2eeb-413d-b7f0-60e3aaa4f396",
-                        "date": 1668848384854,
-                        "message_platform": "Your account balance went too low (-61.62 US$). Please, add funds to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-61.62 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">add funds</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "8e5b31d2-aff3-4faf-b99e-8ef29589bff0",
-                        "date": 1690900408805,
-                        "message_platform": "Your account balance went too low (-107.2 US$). Please, link payment method to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-107.2 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">link payment method</a> to prevent account suspension.</p>"
-                    },
-                    {
-                        "topic": "App is upgraded",
-                        "message_platform": "Update app traffic-retail, plan Startup-monthly (previous plan: Free)",
-                        "date": 1660569211399,
-                        "id": "7dda1318-bc94-4a40-8177-7a1f2382a79a"
-                    }
-                ],
-                "apps": [
-                    {
-                        "is_blocked": false,
-                        "id": "13904",
-                        "is_hidden": false,
-                        "sys_name": "traffic-retail",
-                        "app_id": {
-                            "sysName": "traffic-retail",
-                            "plan_id": "FREE",
-                            "isDowngraded": false
-                        }
-                    }
-                ]
-            },
-            {
-                "survey_is_aborted": false,
-                "first_name": "Anton",
-                "source": "www.directual.com/",
-                "survey_step_1_raw": "beginner",
-                "wallet_balance": -106,
-                "country": {
-                    "Name": "Russian Federation"
-                },
-                "gravatar_pic": "https://www.gravatar.com/avatar/2bf5f41a13127fecbfa166f5f66771a5?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "register_date": 1655462842205,
-                "id": "ant.angst@yandex.ru",
-                "survey_step_3_raw": "zerocoder",
-                "last_name": "Lozhkin",
-                "email_campaigns": [
-                    {
-                        "title": "Building no-code apps with AI! Join Free Live Webinar",
-                        "id": "fc382562-34cb-4b8e-86c9-d9662ec8b7f3"
-                    }
-                ],
-                "unsubscribed": false,
-                "subscription_settings": {
-                    "Unsubscribed": false
-                },
-                "wallet_transactions": [
-                    {
-                        "balance": -39,
-                        "user_id": "ant.angst@yandex.ru",
-                        "id": "c3f59b03-f315-432f-8259-8262c2dd1cc0",
-                        "date": 1690534857000,
-                        "comment": "App upgradeplatform (13360), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "ant.angst@yandex.ru",
-                        "id": "db5ab85a-0efe-4c6a-a431-57bb75e477f8",
-                        "date": 1685264413000,
-                        "comment": "App upgradeplatform (13360), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "ant.angst@yandex.ru",
-                        "id": "34754514-b23a-4fba-bc58-19d2262fc107",
-                        "date": 1679994035000,
-                        "comment": "App upgradeplatform (13360), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "ant.angst@yandex.ru",
-                        "id": "529cd5fd-fe8e-4fa8-9edc-5d4cdf0cdf22",
-                        "date": 1677574836000,
-                        "comment": "App upgradeplatform (13360), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "ant.angst@yandex.ru",
-                        "id": "d4ad932a-6007-4f5c-a819-a352605e12db",
-                        "date": 1674982828000,
-                        "comment": "App upgradeplatform (13360), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 50,
-                        "user_id": "ant.angst@yandex.ru",
-                        "id": "a38b45b8-2da1-4af3-ae6e-f3c2ec81700c",
-                        "date": 1673255190000,
-                        "comment": "Promo-code HAPPYNEWYEAR",
-                        "type": "promo"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "ant.angst@yandex.ru",
-                        "id": "4c4d482a-98d3-40e8-80cb-b5844cae6b5d",
-                        "date": 1687942883000,
-                        "comment": "App upgradeplatform (13360), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "ant.angst@yandex.ru",
-                        "id": "227581a5-4b96-46c5-b28f-4b836f6a9d8c",
-                        "date": 1672304439000,
-                        "comment": "App upgradeplatform (13360), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 100,
-                        "user_id": "ant.angst@yandex.ru",
-                        "id": "2db6ce67-24d7-48e8-8d12-98fb54f23355",
-                        "date": 1657909189000,
-                        "comment": "Promo-code C1PEYKMG3NMI",
-                        "type": "promo"
-                    },
-                    {
-                        "balance": 100,
-                        "user_id": "ant.angst@yandex.ru",
-                        "id": "991310cf-c037-4bd5-8258-2d2e3c44335a",
-                        "date": 1657648455000,
-                        "comment": "Promo-code PRODUCTHUNT",
-                        "type": "promo"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "ant.angst@yandex.ru",
-                        "id": "206e0a2f-5e71-4273-ba46-67a0d6702585",
-                        "date": 1656481033000,
-                        "comment": "Update app upgradeplatform, plan Startup-monthly (previous plan: Free)",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 50,
-                        "user_id": "ant.angst@yandex.ru",
-                        "id": "f1783640-cfc0-479b-b038-80b07b71ab8d",
-                        "date": 1673255359000,
-                        "comment": "Promo-code WELCOME",
-                        "type": "promo"
-                    },
-                    {
-                        "balance": 40,
-                        "user_id": "ant.angst@yandex.ru",
-                        "id": "e8f2eec4-4d25-470a-b6c5-0b2ae9367ba8",
-                        "date": 1656480959000,
-                        "comment": "Adding funds via Tinkoff 2400.0 ₽ → 40.0 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "ant.angst@yandex.ru",
-                        "id": "05331ebe-8cc2-4176-a19a-4176cb6794cf",
-                        "date": 1659085234000,
-                        "comment": "App upgradeplatform (13360), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "ant.angst@yandex.ru",
-                        "id": "373ef8cc-5f5e-412b-90ce-e77595c96a01",
-                        "date": 1661761547000,
-                        "comment": "App upgradeplatform (13360), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "ant.angst@yandex.ru",
-                        "id": "17f73965-c912-4ba6-8e63-e0e3644ebdb5",
-                        "date": 1682672464000,
-                        "comment": "App upgradeplatform (13360), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "ant.angst@yandex.ru",
-                        "id": "56b1d2d2-349c-4569-a4f6-9b6965810876",
-                        "date": 1669712434000,
-                        "comment": "App upgradeplatform (13360), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "ant.angst@yandex.ru",
-                        "id": "c465e7fb-96f7-4566-956d-739315421f97",
-                        "date": 1664442060000,
-                        "comment": "App upgradeplatform (13360), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 100,
-                        "user_id": "ant.angst@yandex.ru",
-                        "id": "0163671f-98db-4fd7-bd46-57291dcd5e59",
-                        "date": 1666591219000,
-                        "comment": "Promo-code 1JZGFNEFJEMI",
-                        "type": "promo"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "ant.angst@yandex.ru",
-                        "id": "189c4411-6259-46a1-a534-c5377a77ecfc",
-                        "date": 1667034029000,
-                        "comment": "App upgradeplatform (13360), license payment, plan Startup",
-                        "type": "app_payment"
-                    }
-                ],
-                "number_of_apps": 1,
-                "survey_step_2_raw": "startup",
-                "notifications": [
-                    {
-                        "sent_to_email": true,
-                        "id": "2a572bc4-c3a6-4295-99e6-25a1beedc4df",
-                        "date": 1691833293698,
-                        "message_platform": "Your Directual account balance went too low (-106 D-coins). The payment method failed. The following apps will be downgraded and blocked:\n— Upgrade upgradeplatform, ID: 13360\nPlease, link valid payment method and cancel apps downgrade until they are blocked completely.",
-                        "topic": "🚫 Your Directual apps will be blocked soon",
-                        "message_email": "<p>Your Directual account balance went too low (-106 D-coins). The payment method failed. The following apps will be downgraded to FREE and blocked:</p>\n<ul>\n<li><b>Upgrade</b> upgradeplatform, ID: 13360 will be downgraded on 28 August, 2023.</li>\n</ul>\n<p>Please, <a href=\"https://my.directual.com/platform/billing/\" target=\"_blank\">link valid payment method</a> and cancel apps downgrade until they are blocked completely.</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "5ffd7ef4-81e3-4d8d-986c-7d09ad02074b",
-                        "date": 1693213253254,
-                        "message_platform": "App upgradeplatform plan is changed Startup-monthly → FREE",
-                        "topic": "App upgradeplatform plan is changed"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "a96a882c-3507-4d3c-8647-cfaae6b3de29",
-                        "date": 1656481037424,
-                        "message_platform": "App upgradeplatform plan is changed FREE → Startup-monthly",
-                        "topic": "App upgradeplatform plan is changed"
-                    },
-                    {
-                        "message_platform": "Update app upgradeplatform, plan Startup-monthly (previous plan: Free)",
-                        "date": 1656481033376,
-                        "topic": "App is upgraded",
-                        "id": "81b8a6dd-9b68-4bb1-8127-b30b27e5de2b"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "d8ade19c-5012-4642-b33b-f1c4db9a49ad",
-                        "date": 1690900408913,
-                        "message_platform": "Your account balance went too low (-106 US$). Please, link payment method to prevent account suspension.",
-                        "topic": "Your Directual account balance went low, you need to add funds",
-                        "message_email": "<p>Your account balance went too low (-106 US$). \n</p><p style=\"margin-top:10px\">Please, <a href=\"https://my.directual.com/platform/billing/\">link payment method</a> to prevent account suspension.</p>"
-                    }
-                ],
-                "apps": [
-                    {
-                        "is_blocked": false,
-                        "id": "13360",
-                        "is_hidden": false,
-                        "sys_name": "upgradeplatform",
-                        "app_id": {
-                            "sysName": "upgradeplatform",
-                            "plan_id": "FREE",
-                            "isDowngraded": false
-                        }
-                    }
-                ]
-            },
-            {
-                "survey_is_aborted": false,
-                "first_name": "artem",
-                "tinkoff_rebill_id": "1293323900",
-                "source": "direct",
-                "survey_step_1_raw": "pro_nocoder",
-                "wallet_balance": -78,
-                "tinkoff_status": "failed",
-                "country": {
-                    "Name": "Russian Federation"
-                },
-                "gravatar_pic": "https://www.gravatar.com/avatar/8bd18119716db32dc15ec68b347ed039?d=https://api.alfa.directual.com/fileUploaded/directual-site/dbd15954-809c-4024-a66c-aa7ccb19292e.jpg",
-                "register_date": 1665677745892,
-                "id": "t_best@mail.ru",
-                "survey_step_3_raw": "friends",
-                "last_name": "lap",
-                "email_campaigns": [
-                    {
-                        "title": "Building no-code apps with AI! Join Free Live Webinar",
-                        "id": "fc382562-34cb-4b8e-86c9-d9662ec8b7f3"
-                    }
-                ],
-                "unsubscribed": false,
-                "subscription_settings": {
-                    "Unsubscribed": false
-                },
-                "wallet_transactions": [
-                    {
-                        "balance": -39,
-                        "user_id": "t_best@mail.ru",
-                        "id": "0ae7f28a-ad4a-4237-aaf7-b9d1cd384003",
-                        "date": 1690448455000,
-                        "comment": "App my-first-project-123 (14392), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": 39,
-                        "user_id": "t_best@mail.ru",
-                        "id": "8b7ef9b2-d80f-4e7a-acd4-be49f79aa843",
-                        "date": 1685782854000,
-                        "comment": "Adding funds via Tinkoff 3159.0 ₽ → 39.00 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": 0.01,
-                        "user_id": "t_best@mail.ru",
-                        "id": "7be39df0-8dfa-4e5f-99c3-713c49dc41da",
-                        "date": 1685699915000,
-                        "comment": "Adding funds via Tinkoff 1.0 ₽ → 0.01 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": 38.99,
-                        "user_id": "t_best@mail.ru",
-                        "id": "40d26fe1-ec0d-4651-b77d-194e5edeaed7",
-                        "date": 1685699934000,
-                        "comment": "Adding funds via Tinkoff 3158.19 ₽ → 38.99 D-coins",
-                        "type": "tinkoff"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "t_best@mail.ru",
-                        "id": "eb4d78fa-eb3e-4e2f-9ab7-cc091e7ac4e6",
-                        "date": 1693126853000,
-                        "comment": "App my-first-project-123 (14392), license payment, plan Startup",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "t_best@mail.ru",
-                        "id": "e674a651-22e2-410f-9b2b-4e591f8ce230",
-                        "date": 1685699934000,
-                        "comment": "Update app my-first-project-123, plan Startup-monthly (previous plan: Free)",
-                        "type": "app_payment"
-                    },
-                    {
-                        "balance": -39,
-                        "user_id": "t_best@mail.ru",
-                        "id": "93a1a8da-7147-4965-922a-240b73b4a626",
-                        "date": 1685782841000,
-                        "comment": "App my-first-project-123 (14392), license payment, plan Startup",
-                        "type": "app_payment"
-                    }
-                ],
-                "number_of_apps": 1,
-                "survey_step_2_raw": "startup",
-                "notifications": [
-                    {
-                        "sent_to_email": false,
-                        "id": "6c931536-26d7-4772-a91f-a53f53b0d47e",
-                        "date": 1685699934394,
-                        "message_platform": "App my-first-project-123 plan is changed FREE → Startup-monthly",
-                        "topic": "App my-first-project-123 plan is changed"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "4af0079f-7a5a-4434-9932-974a1ad7fc7b",
-                        "date": 1685527498255,
-                        "message_platform": "App my-first-project-123 plan is changed Startup-monthly → FREE",
-                        "topic": "App my-first-project-123 plan is changed"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "f52f5764-1b9f-4387-8d03-9214edf214be",
-                        "date": 1684333965270,
-                        "message_platform": "App my-first-project-123 plan is changed FREE → Startup-monthly",
-                        "topic": "App my-first-project-123 plan is changed"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "6da120ce-cd91-4630-8291-5a818b9b3bed",
-                        "date": 1695805254000,
-                        "topic": "App is downgraded",
-                        "message_email": "App my-first-project-123 (14392) is downgraded to FREE and blocked."
-                    },
-                    {
-                        "sent_to_email": true,
-                        "is_delivered": true,
-                        "id": "e3440e59-47f4-4a89-8248-682cd4045d83",
-                        "date": 1693826438000,
-                        "message_platform": "Your Directual account balance went too low (-78 D-coins). The payment method failed. The following apps will be downgraded and blocked:\n— my first project my-first-project-123, ID: 14392\nPlease, link valid payment method and cancel apps downgrade until they are blocked completely.",
-                        "topic": "🚫 Your Directual apps will be blocked soon",
-                        "message_email": "<p>Your Directual account balance went too low (-78 D-coins). The payment method failed. The following apps will be downgraded to FREE and blocked:</p>\n<ul>\n<li><b>my first project</b> my-first-project-123, ID: 14392 will be downgraded on 27 September, 2023.</li>\n</ul>\n<p>Please, <a href=\"https://my.directual.com/platform/billing/\" target=\"_blank\">link valid payment method</a> and cancel apps downgrade until they are blocked completely.</p>"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "f97b9528-8bf4-46cb-8171-be3cd114f787",
-                        "date": 1695805254000,
-                        "message_platform": "App my-first-project-123 plan is changed Startup-monthly → FREE",
-                        "topic": "App my-first-project-123 plan is changed"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "35ad32d5-bf49-4a89-8662-506d310778fe",
-                        "date": 1687860058374,
-                        "message_platform": "App my-first-project-123 plan is changed FREE → Startup-monthly",
-                        "topic": "App my-first-project-123 plan is changed"
-                    },
-                    {
-                        "sent_to_email": false,
-                        "id": "afa0855a-9c69-4b89-8af8-6630764c5dd4",
-                        "date": 1685527622214,
-                        "message_platform": "App my-first-project-123 plan is changed Startup-monthly → FREE",
-                        "topic": "App my-first-project-123 plan is changed"
-                    },
-                    {
-                        "topic": "App is upgraded",
-                        "date": 1685699934301,
-                        "message_platform": "Update app my-first-project-123, plan Startup-monthly (previous plan: Free)",
-                        "id": "d899cd86-38d7-41d9-8764-c2b3151b2a27"
-                    },
-                    {
-                        "sent_to_email": true,
-                        "id": "08cb820c-a44d-402a-90a7-279486983c21",
-                        "date": 1685523901675,
-                        "topic": "App is downgraded",
-                        "message_email": "App my-first-project-123 (14392) is downgraded to FREE and blocked."
-                    }
-                ],
-                "apps": [
-                    {
-                        "is_blocked": false,
-                        "id": "14392",
-                        "is_hidden": false,
-                        "sys_name": "my-first-project-123",
-                        "app_id": {
-                            "sysName": "my-first-project-123",
-                            "plan_id": "FREE",
-                            "isDowngraded": false
-                        }
-                    }
-                ]
-            }
-        ],
-        "totalPages": 1234,
-        "pageNumber": 0,
-        "error": null,
-        "fieldScheme": [
-            [
-                "apps.app_id.isDowngraded",
-                1395053
-            ],
-            [
-                "apps.app_id.plan_id",
-                1395053
-            ],
-            [
-                "apps.app_id.sysName",
-                1395053
-            ],
-            [
-                "apps.is_blocked",
-                1294703
-            ],
-            [
-                "apps.is_hidden",
-                1294703
-            ],
-            [
-                "apps.sys_name",
-                1294703
-            ],
-            [
-                "country.Name",
-                1302886
-            ],
-            [
-                "email_campaigns.id",
-                99245292
-            ],
-            [
-                "email_campaigns.title",
-                99245292
-            ],
-            [
-                "first_name",
-                1282551
-            ],
-            [
-                "gravatar_pic",
-                1282551
-            ],
-            [
-                "id",
-                1282551
-            ],
-            [
-                "isBlocked",
-                1282551
-            ],
-            [
-                "last_name",
-                1282551
-            ],
-            [
-                "notifications.date",
-                99059977
-            ],
-            [
-                "notifications.is_bounced",
-                99059977
-            ],
-            [
-                "notifications.is_clicked",
-                99059977
-            ],
-            [
-                "notifications.is_complained",
-                99059977
-            ],
-            [
-                "notifications.is_delivered",
-                99059977
-            ],
-            [
-                "notifications.is_marketing",
-                99059977
-            ],
-            [
-                "notifications.is_opened",
-                99059977
-            ],
-            [
-                "notifications.is_sent",
-                99059977
-            ],
-            [
-                "notifications.message_email",
-                99059977
-            ],
-            [
-                "notifications.message_platform",
-                99059977
-            ],
-            [
-                "notifications.sent_to_email",
-                99059977
-            ],
-            [
-                "notifications.topic",
-                99059977
-            ],
-            [
-                "number_of_apps",
-                1282551
-            ],
-            [
-                "paddle_id",
-                1282551
-            ],
-            [
-                "paddle_status",
-                1282551
-            ],
-            [
-                "register_date",
-                1282551
-            ],
-            [
-                "source",
-                1282551
-            ],
-            [
-                "subscription_settings.Unsubscribed",
-                99245291
-            ],
-            [
-                "survey_is_aborted",
-                1282551
-            ],
-            [
-                "survey_step_1_raw",
-                1282551
-            ],
-            [
-                "survey_step_2_raw",
-                1282551
-            ],
-            [
-                "survey_step_3_raw",
-                1282551
-            ],
-            [
-                "tinkoff_rebill_id",
-                1282551
-            ],
-            [
-                "tinkoff_status",
-                1282551
-            ],
-            [
-                "unsubscribed",
-                1282551
-            ],
-            [
-                "wallet_balance",
-                1282551
-            ],
-            [
-                "wallet_transactions.balance",
-                99034345
-            ],
-            [
-                "wallet_transactions.comment",
-                99034345
-            ],
-            [
-                "wallet_transactions.date",
-                99034345
-            ],
-            [
-                "wallet_transactions.id",
-                99034345
-            ],
-            [
-                "wallet_transactions.type",
-                99034345
-            ],
-            [
-                "wallet_transactions.user_id",
-                99034345
-            ]
-        ],
-        "writeFields": [
-            "email_campaigns",
-            "id",
-            "isBlocked",
-            "paddle_id",
-            "tinkoff_rebill_id"
-        ],
-        "structures": {
-            "1282551": {
-                "networkID": 1822,
-                "sysName": "Cloud_users",
-                "name": "👨🏻 Cloud users",
-                "id": 1282551,
-                "dateCreated": "2019-10-05T15:17:37Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":true,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"note\",\"dataType\":\"string\",\"name\":\"Note\",\"id\":\"34591570383079323\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"first_name\",\"dataType\":\"string\",\"name\":\"First name\",\"id\":\"23971570288647049\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"last_name\",\"dataType\":\"string\",\"name\":\"Last name\",\"id\":\"81941570288646826\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"locale\",\"dataType\":\"string\",\"name\":\"locale\",\"id\":\"47031570379144750\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"source\",\"dataType\":\"string\",\"name\":\"Source\",\"id\":\"92371570288676773\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"request_id\",\"dataType\":\"link\",\"name\":\"Request ID\",\"id\":\"23691571997337572\",\"link\":\"Requests\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[\"\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":true,\"array\":false},{\"sysName\":\"ip\",\"dataType\":\"string\",\"name\":\"ip\",\"id\":\"70561588673350213\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"country\",\"dataType\":\"link\",\"name\":\"Country\",\"id\":\"37101588673355053\",\"link\":\"CountriesISO\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"social_register\",\"dataType\":\"boolean\",\"name\":\"social_register\",\"id\":\"71461588678509868\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"register_date\",\"dataType\":\"date\",\"name\":\"Register date\",\"id\":\"36551588868841568\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"country_id\",\"dataType\":\"link\",\"name\":\"Country link (ISO)\",\"id\":\"31401588873548829\",\"link\":\"CountriesISO\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"raw_id\",\"dataType\":\"link\",\"name\":\"Raw ID\",\"id\":\"39691642000254942\",\"link\":\"cloud_users_ids\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isBlocked\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"42921686321097973\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"last_activity_date\",\"dataType\":\"date\",\"name\":\"Last activity date\",\"id\":\"96951570962621002\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"apps\",\"dataType\":\"arrayLink\",\"name\":\"Apps\",\"id\":\"80561587152006234\",\"link\":\"AppInfo\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"number_of_sl\",\"dataType\":\"number\",\"name\":\"Number of SLs\",\"id\":\"41141570962898360\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"number_of_structures\",\"dataType\":\"number\",\"name\":\"Number of structures\",\"id\":\"70371570962891170\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"number_of_scenarios\",\"dataType\":\"number\",\"name\":\"Number of scenarios\",\"id\":\"71201570962890259\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"logged_in\",\"dataType\":\"boolean\",\"name\":\"Have logged in\",\"id\":\"42361570962605801\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"number_of_apps\",\"dataType\":\"number\",\"name\":\"Number of apps\",\"id\":\"41911570383626553\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"today_stat_id\",\"dataType\":\"link\",\"name\":\"Today stat link\",\"id\":\"42431587908594891\",\"link\":\"Dashboard_data\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"team_ids\",\"dataType\":\"arrayLink\",\"name\":\"Teams\",\"id\":\"26441632905559721\",\"link\":\"Teams\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"current_team_plans\",\"dataType\":\"arrayLink\",\"name\":\"Current team plans\",\"id\":\"45021632906172898\",\"link\":\"TeamTariffs\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isLTD_user\",\"dataType\":\"boolean\",\"name\":\"LTD user\",\"id\":\"13531632918815271\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Paid_app_plan_user\",\"dataType\":\"boolean\",\"name\":\"Paid app plan user\",\"id\":\"22421632918830874\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"current_app_plans\",\"dataType\":\"arrayLink\",\"name\":\"Current app plans\",\"id\":\"54321632918865581\",\"link\":\"Tariff\",\"group\":\"1570288674389\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"creditCardIsLinked\",\"dataType\":\"boolean\",\"name\":\"CreditCardIsLinked?\",\"id\":\"42541642072780075\",\"link\":\"\",\"group\":\"1570288674389\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"notifications\",\"dataType\":\"arrayLink\",\"name\":\"Notifications\",\"id\":\"72051693242822317\",\"link\":\"user_notifications\",\"group\":\"1570379125072\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"unsubscribed\",\"dataType\":\"boolean\",\"name\":\"Unsubscribed\",\"id\":\"20361600521081143\",\"link\":\"\",\"group\":\"1570379125072\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"subscription_settings\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"73111693243486754\",\"link\":\"subscription_settings\",\"group\":\"1570379125072\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"email_campaigns\",\"dataType\":\"arrayLink\",\"name\":\"Email campaigns\",\"id\":\"26601693323488417\",\"link\":\"email_campaigns\",\"group\":\"1570379125072\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"app_description\",\"dataType\":\"string\",\"name\":\"App description\",\"id\":\"72461572603438535\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"customer_type\",\"dataType\":\"string\",\"name\":\"Customer type\",\"id\":\"93281572603437791\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"utm_source\",\"dataType\":\"string\",\"name\":\"utm_source\",\"id\":\"91131588673287122\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"utm_medium\",\"dataType\":\"string\",\"name\":\"utm_medium\",\"id\":\"27621588673319861\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"utm_campaign\",\"dataType\":\"string\",\"name\":\"utm_campaign\",\"id\":\"85671588673320381\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"survey_ids\",\"dataType\":\"arrayLink\",\"name\":\"Surveys\",\"id\":\"27581591180002769\",\"link\":\"Surveys\",\"group\":\"1570381436668\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ref\",\"dataType\":\"string\",\"name\":\"ref\",\"id\":\"68451626349155030\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"storage\",\"dataType\":\"json\",\"name\":\"Survey storage\",\"id\":\"86371627198748459\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"survey_step_1_raw\",\"dataType\":\"string\",\"name\":\"Which describes you best\",\"id\":\"24041632732046851\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"survey_step_2_raw\",\"dataType\":\"string\",\"name\":\"Whom do you want to build apps for\",\"id\":\"57151632732047604\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"survey_step_3_raw\",\"dataType\":\"string\",\"name\":\"How did you know about Directual\",\"id\":\"98341632732048278\",\"link\":null,\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"survey_is_aborted\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"75331632901439193\",\"link\":\"\",\"group\":\"1570381436668\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"notifications_account\",\"dataType\":\"boolean\",\"name\":\"Notify about Account\",\"id\":\"49381572378982097\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"notifications_academy\",\"dataType\":\"boolean\",\"name\":\"Notify about Academy\",\"id\":\"97951572378981844\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"notifications_blog\",\"dataType\":\"boolean\",\"name\":\"Notify about Blog\",\"id\":\"20211572378981407\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"unsibscribed_reason\",\"dataType\":\"string\",\"name\":\"unsibscribed_reason\",\"id\":\"87491600521243757\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"admin_notification_text\",\"dataType\":\"string\",\"name\":\"admin_notification_text\",\"id\":\"21331602224278958\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"whom_to_alert\",\"dataType\":\"arrayLink\",\"name\":\"\",\"id\":\"61381602224446180\",\"link\":\"TUser\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"MailerLite_id\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"73551663229204538\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"MailerLite_MAIN\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"28941663229219515\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"MailerLite_Onboarding\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"16811663229232291\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"LTD_allow_dcoins\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"72171695637445784\",\"link\":\"\",\"group\":\"1572378880897\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"email_hash\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"40581588875619696\",\"link\":\"\",\"group\":\"1588875605532\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"gravatar\",\"dataType\":\"string\",\"name\":\"Gravatar\",\"id\":\"89411588875620336\",\"link\":\"\",\"group\":\"1588875605532\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"gravatar_pic\",\"dataType\":\"file\",\"name\":\" \",\"id\":\"77261619116355317\",\"link\":\"\",\"group\":\"1588875605532\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"is_suspended\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"97901644220993828\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"is_failed\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"10721644221276956\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"basic_promo_code\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"62581644246255699\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"wallet_transactions\",\"dataType\":\"arrayLink\",\"name\":\"\",\"id\":\"53431648999094908\",\"link\":\"appwallet\",\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"wallet_balance\",\"dataType\":\"decimal\",\"name\":\"\",\"id\":\"60951648999103921\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"paid_apps_ids\",\"dataType\":\"arrayLink\",\"name\":\"\",\"id\":\"96621663160984409\",\"link\":\"Apps\",\"group\":\"1644221182856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"sent_to_partner\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"82171680675432429\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"paddle_id\",\"dataType\":\"string\",\"name\":\"paddle id\",\"id\":\"69331644221263888\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"paddle_status\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"99591644221269393\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"update_url\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"44161644221281677\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"paddle_cancel_url\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"27901682774248073\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"paddle_method\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"78841682873134749\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"paddle_card_type\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"46161682873174727\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"paddle_digits\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"26711682873142482\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"paddle_date_expiry\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"94461682873159773\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"tinkoff_rebill_id\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"97601678722478382\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"tinkoff_status\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"11351683570594828\",\"link\":\"\",\"group\":\"1644221182856\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"tinkoff_digits\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"13861682873811387\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"tinkoff_card_type\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"34471682873837848\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"tinkoff_date_expiry\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"24521682873848595\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"tinkoff_update_url\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"63031682874690044\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":20,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"tinkoff_cancel_url\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"36191682874701304\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":21,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"default_method\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"59911682875603989\",\"link\":null,\"group\":\"1644221182856\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":22,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false}]",
-                "jsonGroupSettings": "[{\"id\":1570381436668,\"name\":\"CRM\",\"order\":3},{\"id\":1588875605532,\"name\":\"Gravatar\",\"order\":4},{\"id\":1570379125072,\"name\":\"Emails\",\"order\":0},{\"id\":1570288674389,\"name\":\"Cloud usage\",\"order\":2},{\"id\":1572378880897,\"name\":\"LEGACY Notifications settings\",\"order\":5},{\"id\":1644221182856,\"name\":\"Billing\",\"order\":1}]",
-                "jsonViewIdSettings": "[{\"sysName\":\"first_name\"},{\"sysName\":\"last_name\"},{\"sysName\":\"country\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2023-09-25T10:24:19Z",
-                "createBy": 21,
-                "changedBy": 1,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": true,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": null,
-                    "groupName": null,
-                    "indexExists": false,
-                    "typeVariable": {},
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "array": false
-                },
-                "folderId": 667556
-            },
-            "1294703": {
-                "networkID": 1822,
-                "sysName": "AppInfo",
-                "name": "raw_Applications",
-                "id": 1294703,
-                "dateCreated": "2020-02-27T12:54:30Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"9\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"number_of_users\",\"name\":\"number_of_users\",\"dataType\":\"string\",\"id\":\"1\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"number_of_active_scenarios\",\"name\":\"number_of_active_scenarios\",\"dataType\":\"string\",\"id\":\"2\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"number_of_scenarios\",\"name\":\"number_of_scenarios\",\"dataType\":\"string\",\"id\":\"3\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"number_of_structures\",\"name\":\"number_of_structures\",\"dataType\":\"string\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"number_of_sl\",\"name\":\"number_of_sl\",\"dataType\":\"string\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"user_id\",\"name\":\"user_id\",\"dataType\":\"link\",\"id\":\"6\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"creator_email\",\"name\":\"creator_email\",\"dataType\":\"string\",\"id\":\"7\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"sys_name\",\"name\":\"sys_name\",\"dataType\":\"string\",\"id\":\"8\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"alert_hit\",\"name\":\"Когда пинали о превышении тарифа\",\"dataType\":\"date\",\"id\":\"22121614804113546\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"ignored_counter\",\"name\":\"Сколько раз проигнорировал письмо-алерт\",\"dataType\":\"number\",\"id\":\"96291614932806065\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"is_sandbox\",\"name\":\"is_sandbox\",\"dataType\":\"string\",\"id\":\"59151644829765708\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"team_id\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"65031644829771596\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"fullName\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"27851646141877505\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"execution\",\"name\":\"Load_execution\",\"dataType\":\"number\",\"id\":\"32211587202484528\",\"link\":\"\",\"group\":\"1587202477104\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"getRequest\",\"name\":\"Load_getRequest\",\"dataType\":\"number\",\"id\":\"37261587202485664\",\"link\":\"\",\"group\":\"1587202477104\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"period\",\"name\":\"Billing_period\",\"dataType\":\"link\",\"id\":\"50391587206053532\",\"link\":\"UsageHistory\",\"group\":\"1587202477104\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"maxUsers\",\"name\":\"Load_maxUsers\",\"dataType\":\"number\",\"id\":\"66391587202485120\",\"link\":\"\",\"group\":\"1587202477104\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"postRequest\",\"name\":\"Load_postRequest\",\"dataType\":\"number\",\"id\":\"71631587202506976\",\"link\":\"\",\"group\":\"1587202477104\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"executionSync\",\"name\":\"executionSync\",\"dataType\":\"number\",\"id\":\"75661619421361645\",\"link\":\"\",\"group\":\"1587202477104\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"AppSettings_id\",\"name\":\"AppSettings\",\"dataType\":\"link\",\"id\":\"34831592935814438\",\"link\":\"AppSetting\",\"group\":\"1587202477104\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"pluginRequest\",\"name\":\"pluginRequest\",\"dataType\":\"number\",\"id\":\"48361624022240081\",\"link\":\"\",\"group\":\"1587202477104\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"is_blocked\",\"name\":\"is_blocked\",\"dataType\":\"boolean\",\"id\":\"45741633095617725\",\"link\":\"\",\"group\":\"1587202477104\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"is_hidden\",\"name\":\"is_hidden\",\"dataType\":\"boolean\",\"id\":\"59141646142321554\",\"link\":\"\",\"group\":\"1587202477104\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"app_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"35571623745217854\",\"link\":\"Apps\",\"group\":\"1623745203139\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false}]",
-                "jsonGroupSettings": "[{\"id\":1587202449588,\"name\":\"Global stats\",\"order\":0},{\"id\":1587202477104,\"name\":\"Usage for last period\",\"order\":1},{\"id\":1623745203139,\"name\":\"Чистовые данные\",\"order\":2}]",
-                "jsonViewIdSettings": "[{\"sysName\":\"sys_name\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2022-03-01T13:57:44Z",
-                "createBy": 0,
-                "changedBy": 2853,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "9",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": null,
-                    "groupName": null,
-                    "indexExists": false,
-                    "typeVariable": {},
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "array": false
-                },
-                "folderId": 33631051
-            },
-            "1302886": {
-                "networkID": 1822,
-                "sysName": "CountriesISO",
-                "name": "Countries-ISO",
-                "id": 1302886,
-                "dateCreated": "2020-05-07T17:38:58Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false},{\"sysName\":\"Name\",\"name\":\"Country name\",\"dataType\":\"string\",\"id\":\"91001588873211198\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"Name\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2020-06-25T11:21:28Z",
-                "createBy": 1,
-                "changedBy": 1,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": null,
-                    "groupName": null,
-                    "indexExists": false,
-                    "typeVariable": {},
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "array": false
-                },
-                "folderId": 33580950
-            },
-            "1395053": {
-                "networkID": 1822,
-                "sysName": "Apps",
-                "name": "📱 Apps",
-                "id": 1395053,
-                "dateCreated": "2021-06-14T21:39:39Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"App id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"sysName\",\"name\":\"System name\",\"dataType\":\"string\",\"id\":\"27541623706978377\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"name\",\"name\":\"App name\",\"dataType\":\"string\",\"id\":\"13661623706989350\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"description\",\"name\":\"Description\",\"dataType\":\"string\",\"id\":\"38791623706999272\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"owner_id\",\"name\":\"Owner\",\"dataType\":\"link\",\"id\":\"41841623707118206\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"developer_ids\",\"name\":\"Developers\",\"dataType\":\"arrayLink\",\"id\":\"54301623707131642\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"isTeam\",\"name\":\"Team app\",\"dataType\":\"boolean\",\"id\":\"68981623707196589\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"team_id\",\"name\":\"Team\",\"dataType\":\"link\",\"id\":\"94291623707210181\",\"link\":\"Teams\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"isLegacy\",\"name\":\"Legacy app\",\"dataType\":\"boolean\",\"id\":\"30351623746607632\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"is_sandbox\",\"name\":\"is_sandbox\",\"dataType\":\"boolean\",\"id\":\"47331625209998636\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"is_blocked\",\"name\":\"is_blocked\",\"dataType\":\"boolean\",\"id\":\"82901633095583058\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"is_hidden\",\"name\":\"is_hidden\",\"dataType\":\"boolean\",\"id\":\"10251637661442776\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"new_billing\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"75171645533130519\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"new_billing_plan\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"91761645533150600\",\"link\":\"Tariff\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"previous_owner_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"50981666709963736\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"plan_id\",\"name\":\"Billing plan\",\"dataType\":\"link\",\"id\":\"74161623707026653\",\"link\":\"Tariff\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"previous_plan_id\",\"name\":\"Previous plan\",\"dataType\":\"link\",\"id\":\"75791641032667863\",\"link\":\"Tariff\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"change_plan_request_ids\",\"name\":\"Plan change requests\",\"dataType\":\"arrayLink\",\"id\":\"76611623707045935\",\"link\":\"ChangeTariffRequests\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"merchant_event_ids\",\"name\":\"Paddle events\",\"dataType\":\"arrayLink\",\"id\":\"46441623707088217\",\"link\":\"MerchantEvent\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"stat_get\",\"name\":\"Stat | GET\",\"dataType\":\"number\",\"id\":\"94951623707229504\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"stat_users\",\"name\":\"Stat | Users\",\"dataType\":\"number\",\"id\":\"76861623707270662\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"stat_post\",\"name\":\"Stat | POST\",\"dataType\":\"number\",\"id\":\"37551623707296997\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"stat_proc\",\"name\":\"Stat | Proc exec\",\"dataType\":\"number\",\"id\":\"16611623707312286\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"stat_sync\",\"name\":\"Stat | SYNC Proc exec\",\"dataType\":\"number\",\"id\":\"87341623707329117\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"stat_http\",\"name\":\"Stat | HTTP requests\",\"dataType\":\"number\",\"id\":\"32051667244802942\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"is_excess\",\"name\":\"Excess plan\",\"dataType\":\"boolean\",\"id\":\"40361623748858552\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"🔥 hit limits\",\" OK\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"color\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"79011623748876085\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"color_get\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"26091623775679245\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"color_post\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"89081623775692061\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"color_proc\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"92601623775698497\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"color_sync\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"45481623775706832\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"color_users\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"86811623775714205\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"color_http\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"30261667244970378\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"paddle_subscription_id\",\"name\":\"Paddle ID\",\"dataType\":\"string\",\"id\":\"13631633089941494\",\"link\":null,\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"paddle_subscription_status\",\"name\":\"Paddle Status\",\"dataType\":\"string\",\"id\":\"99931633090832671\",\"link\":null,\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"paddle_update_date\",\"name\":\"\",\"dataType\":\"date\",\"id\":\"26191633364756662\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":20,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"reports\",\"name\":\"Billing reports\",\"dataType\":\"arrayLink\",\"id\":\"71551633353882284\",\"link\":\"UsageHistory\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":21,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"balance\",\"name\":\"Credits\",\"dataType\":\"decimal\",\"id\":\"20731633354617743\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":22,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"is_cancelled\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"95451637666256272\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":23,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"forecast_bill\",\"name\":\"Forecast bill, $\",\"dataType\":\"decimal\",\"id\":\"63341640954051997\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":24,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"next_ondemand_billing_date\",\"name\":\"\",\"dataType\":\"date\",\"id\":\"54391647334223782\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":25,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"next_ondemand_payment\",\"name\":\"\",\"dataType\":\"decimal\",\"id\":\"50071647334246527\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":26,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"next_billing_date\",\"name\":\"\",\"dataType\":\"date\",\"id\":\"39091647335092236\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":27,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"next_payment\",\"name\":\"\",\"dataType\":\"decimal\",\"id\":\"23671647335096237\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":28,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"legacy_billing\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"67651647899758711\",\"link\":\"\",\"group\":\"1623707015468\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":29,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"raw_app_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"12131623746301658\",\"link\":\"AppInfo\",\"group\":\"1623746295898\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"raw_usage_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"96391623747858362\",\"link\":\"UsageHistory\",\"group\":\"1623746295898\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"hidden_messaged\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"99061676539646225\",\"link\":\"\",\"group\":\"1623746295898\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"admin_requests_ids\",\"name\":\"Admin actions\",\"dataType\":\"arrayLink\",\"id\":\"85821633095205778\",\"link\":\"admin_app_change_requests\",\"group\":\"1633095201028\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"comments\",\"name\":\"Comments\",\"dataType\":\"arrayLink\",\"id\":\"44101633194013799\",\"link\":\"admin_comments\",\"group\":\"1633095201028\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"events\",\"name\":\"App events\",\"dataType\":\"arrayLink\",\"id\":\"67551637607379984\",\"link\":\"appEvents\",\"group\":\"1633095201028\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"free_alert_counter\",\"name\":\"Free alert counter\",\"dataType\":\"number\",\"id\":\"30071661159016438\",\"link\":\"\",\"group\":\"1633095201028\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"isTrial\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"41181683803882995\",\"link\":\"\",\"group\":\"1683803887851\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"isDowngraded\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"26051647940518677\",\"link\":\"\",\"group\":\"1683803887851\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"date_trial_started\",\"name\":\"\",\"dataType\":\"date\",\"id\":\"37981683803928426\",\"link\":\"\",\"group\":\"1683803887851\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD MMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"trialType\",\"name\":\"trial type (pro,startup)\",\"dataType\":\"string\",\"id\":\"64401683803952185\",\"link\":\"\",\"group\":\"1683803887851\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"date_trial_ended\",\"name\":\"\",\"dataType\":\"date\",\"id\":\"52821683804754338\",\"link\":\"\",\"group\":\"1683803887851\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD MMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"Automatic_downgrade\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"98981687328025298\",\"link\":\"\",\"group\":\"1683803887851\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false}]",
-                "jsonGroupSettings": "[{\"name\":\"Billing\",\"id\":1623707015468,\"order\":0},{\"name\":\"Trial\",\"id\":1683803887851,\"order\":1},{\"name\":\"ADMIN\",\"id\":1633095201028,\"order\":2},{\"name\":\"RAW_data\",\"id\":1623746295898,\"order\":3}]",
-                "jsonViewIdSettings": "[{\"sysName\":\"sysName\"},{\"sysName\":\"id\"},{\"sysName\":\"owner_id\"},{\"sysName\":\"plan_id\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2023-06-21T06:14:02Z",
-                "createBy": 1,
-                "changedBy": 21,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "App id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "indexExists": false,
-                    "typeVariable": {},
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "array": false
-                },
-                "folderId": 667556
-            },
-            "99034345": {
-                "networkID": 1822,
-                "sysName": "appwallet",
-                "name": "🪙 Wallet Transactions",
-                "id": 99034345,
-                "dateCreated": "2021-10-04T13:35:54Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"type\",\"dataType\":\"link\",\"name\":\"Transaction type\",\"id\":\"34331644178252191\",\"link\":\"transaction_types\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"balance\",\"dataType\":\"decimal\",\"name\":\"balance\",\"id\":\"17881633354558295\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"comment\",\"dataType\":\"string\",\"name\":\"comment\",\"id\":\"40211633354569149\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"app_id\",\"dataType\":\"link\",\"name\":\"app_id\",\"id\":\"51971633354577141\",\"link\":\"Apps\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"user_id\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"24421633360151131\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"date\",\"dataType\":\"date\",\"name\":\"date\",\"id\":\"96991644174902603\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"receipt\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"22031644176668353\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"promo\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"59651644249885512\",\"link\":\"promo_codes\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"merchant_event_id\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"91791644274810120\",\"link\":\"MerchantEvent\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"affiliate_transaction_id\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"93701664633122070\",\"link\":\"appwallet\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"affiliate_user_id\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"57701664731840784\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"parent_affiliate_trans_id\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"47871664733203199\",\"link\":\"appwallet\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"period\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"21831670405117574\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"tinkoff_order_id\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"86121683551357702\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"cash\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"48671686254411681\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"type\"},{\"sysName\":\"balance\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2023-06-08T20:00:18Z",
-                "createBy": 2853,
-                "changedBy": 1,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "indexExists": false,
-                    "typeVariable": {},
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "array": false
-                },
-                "folderId": 33575450
-            },
-            "99059977": {
-                "networkID": 1822,
-                "sysName": "user_notifications",
-                "name": "💌 user notifications",
-                "id": 99059977,
-                "dateCreated": "2021-12-31T12:23:43Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"name\",\"name\":\"User name\",\"dataType\":\"string\",\"id\":\"34441640953428638\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"topic\",\"name\":\"Topic\",\"dataType\":\"string\",\"id\":\"80761640953496265\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"email\",\"name\":\"email address\",\"dataType\":\"string\",\"id\":\"43261640953624135\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"email\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"sent_to_email\",\"name\":\"Send to email?\",\"dataType\":\"boolean\",\"id\":\"58211644341371793\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"user_id\",\"name\":\"Cloud user\",\"dataType\":\"link\",\"id\":\"13531644341405471\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"array\":false},{\"sysName\":\"isNotRead\",\"name\":\"Isn't read\",\"dataType\":\"boolean\",\"id\":\"67021644341480681\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"message_platform\",\"name\":\"Message for platform UI\",\"dataType\":\"string\",\"id\":\"87681644341531686\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"html\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"message_email\",\"name\":\"Message for Email\",\"dataType\":\"string\",\"id\":\"78281644341576440\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"html\",\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"message\",\"name\":\"legacy message field\",\"dataType\":\"string\",\"id\":\"21601640953429139\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"html\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"date\",\"name\":\"Date\",\"dataType\":\"date\",\"id\":\"24051644341647995\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD MMM, Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"is_marketing\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"92461693245633862\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"campaign_id\",\"name\":\"Email campaign\",\"dataType\":\"link\",\"id\":\"58971693246308223\",\"link\":\"email_campaigns\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"array\":false},{\"sysName\":\"is_failed\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"63961693334302212\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"email_in_campaign_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"30651696342286861\",\"link\":\"emails_in_the_campaign\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"array\":false},{\"sysName\":\"resend_id\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"46111693234281574\",\"link\":\"\",\"group\":\"1693234298588\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"is_delivered\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"56651693234286620\",\"link\":\"\",\"group\":\"1693234298588\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"is_opened\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"96061693234307343\",\"link\":\"\",\"group\":\"1693234298588\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"is_sent\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"83931693239441660\",\"link\":\"\",\"group\":\"1693234298588\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"is_clicked\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"28921693239481462\",\"link\":\"\",\"group\":\"1693234298588\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"is_bounced\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"44721693239482080\",\"link\":\"\",\"group\":\"1693234298588\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"is_complained\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"10001693239482920\",\"link\":\"\",\"group\":\"1693234298588\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false}]",
-                "jsonGroupSettings": "[{\"id\":1693234298588,\"name\":\"Resend info\",\"order\":0}]",
-                "jsonViewIdSettings": null,
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2023-10-03T14:11:40Z",
-                "createBy": 21,
-                "changedBy": 1,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "indexExists": false,
-                    "typeVariable": {},
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "array": false
-                },
-                "folderId": 33770779
-            },
-            "99245291": {
-                "networkID": 1822,
-                "sysName": "subscription_settings",
-                "name": "subscription settings",
-                "id": 99245291,
-                "dateCreated": "2023-08-28T17:24:31Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"user\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"89701693243508414\",\"link\":\"Cloud_users\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"Unsubscribed\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"40961693243516145\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"🚫 Don't receive marketing emails\",\"✉️ Get marketing emails\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": null,
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2023-08-28T18:09:45Z",
-                "createBy": 21,
-                "changedBy": 21,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "indexExists": false,
-                    "typeVariable": {},
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "array": false
-                },
-                "folderId": 33770779
-            },
-            "99245292": {
-                "networkID": 1822,
-                "sysName": "email_campaigns",
-                "name": "Email campaigns",
-                "id": 99245292,
-                "dateCreated": "2023-08-28T18:11:17Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"delivery_rate\",\"name\":\"Delivery rate\",\"dataType\":\"string\",\"id\":\"19691693380156005\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"last_email\",\"name\":\"Last email sent\",\"dataType\":\"date\",\"id\":\"32071693332179247\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"emails_in_campaign_ids\",\"name\":\"Emails in the campaign\",\"dataType\":\"arrayLink\",\"id\":\"35771693314350909\",\"link\":\"emails_in_the_campaign\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"emails_delivered\",\"name\":\"Emails delivered\",\"dataType\":\"number\",\"id\":\"36171693380155369\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"open_rate\",\"name\":\"Open rate\",\"dataType\":\"string\",\"id\":\"37221693297746386\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"click_rate\",\"name\":\"Click rate\",\"dataType\":\"string\",\"id\":\"38451693297788926\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"emails_opened\",\"name\":\"Emails opened\",\"dataType\":\"number\",\"id\":\"40351693297758608\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"title\",\"name\":\"Campaign title\",\"dataType\":\"string\",\"id\":\"42641693246289576\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"emails_sent\",\"name\":\"Emails sent\",\"dataType\":\"number\",\"id\":\"50391693297735896\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"emails_clicked\",\"name\":\"Emails clicked\",\"dataType\":\"number\",\"id\":\"97591693297776181\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2023-08-30T07:22:59Z",
-                "createBy": 21,
-                "changedBy": 1,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "dataType": "id",
-                    "name": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "indexExists": false,
-                    "typeVariable": {},
-                    "json": false,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "array": false
-                },
-                "folderId": 33770779
-            }
-        },
-        "isSuccessWrite": false,
-        "writeError": null,
-        "writeResponse": null,
-        "fileds": [
-            {
-                "sysName": "email_campaigns",
-                "dataType": "arrayLink",
-                "name": "Email campaigns",
-                "id": "26601693323488417",
-                "link": "email_campaigns",
-                "group": "1570379125072",
-                "tags": null,
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 3,
-                "linkIndexFieldSysName": [],
-                "defaultValue": null,
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": null,
-                "groupName": null,
-                "indexExists": false,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": true,
-                "linkType": false,
-                "arrayLink": true,
-                "array": false
-            },
-            {
-                "sysName": "id",
-                "dataType": "id",
-                "name": "id",
-                "id": "0",
+                "sysName": "773774616695",
+                "dataType": "string",
+                "name": "ИНН инвестора",
+                "id": "58111675912684309",
                 "link": "",
                 "group": "0",
                 "tags": "",
                 "indexing": false,
-                "ordering": true,
+                "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 0,
+                "order": 7,
                 "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
                 "synthetic": false,
                 "format": null,
-                "formatOptions": null,
+                "formatOptions": {},
                 "groupName": null,
                 "indexExists": false,
                 "typeVariable": {},
@@ -15802,10 +6247,374 @@ const App = (props) => {
                 "array": false
             },
             {
-                "sysName": "isBlocked",
-                "dataType": "boolean",
-                "name": "",
-                "id": "42921686321097973",
+                "sysName": "INNInvPlat",
+                "dataType": "string",
+                "name": "ИНН ОИП",
+                "id": "35681675912541445",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "INNOrg",
+                "dataType": "string",
+                "name": "ИНН эмитента",
+                "id": "75551675912622708",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "amountOfInvestment",
+                "dataType": "string",
+                "name": "Объем проинвестированных средств",
+                "id": "87871675913601220",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 12,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "dateOfAgreement",
+                "dataType": "string",
+                "name": "Дата заключения договора инвестирования",
+                "id": "18891675913933699",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 18,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "fullNameInvestor",
+                "dataType": "string",
+                "name": "ФИО/Наименование инвестора",
+                "id": "14201675912653828",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 6,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "idInvestor",
+                "dataType": "link",
+                "name": "Уникальный идентификационный номер инвестора",
+                "id": "73791675912742843",
+                "link": "CreatiumUsers",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 8,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "idProject",
+                "dataType": "link",
+                "name": "Уникальный идентификационный номер инвестиционного предложения",
+                "id": "71661675913476003",
+                "link": "Project",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 11,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": true,
+                "linkType": true,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "nameInvPlatShort",
+                "dataType": "string",
+                "name": "Сокращенное наименование ОИП",
+                "id": "87161675912513429",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "nameOrg",
+                "dataType": "string",
+                "name": "Наименование эмитента",
+                "id": "12811675912556560",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "nominalStockPrice",
+                "dataType": "string",
+                "name": "Номинальная цена акциии",
+                "id": "10031675913769735",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 14,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "numberOfStocks",
+                "dataType": "string",
+                "name": "Количество акций (шт)",
+                "id": "66211675913829649",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 15,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "numberPP",
+                "dataType": "number",
+                "name": "№ п/п",
+                "id": "43011675912482897",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "projectInvestoId",
+                "dataType": "string",
+                "name": "Номер акцепта",
+                "id": "11731675913896559",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 16,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "stockPrice",
+                "dataType": "string",
+                "name": "Цена акции",
+                "id": "31041675913635266",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -15830,12 +6639,2500 @@ const App = (props) => {
                 "array": false
             },
             {
-                "sysName": "paddle_id",
+                "sysName": "typeOfInvestor",
                 "dataType": "string",
-                "name": "paddle id",
-                "id": "69331644221263888",
+                "name": "Тип инвестора",
+                "id": "62091675913459637",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 9,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            }
+        ],
+        "data": [
+            {
+                "idInvestor": "339959",
+                "projectInvestoId": "7473476",
+                "fullNameInvestor": "Цесарская Мария Валентиновна",
+                "idProject": "053c0447-e4b2-4e00-98be-d09290c97564",
+                "INNOrg": "9722024600",
+                "nominalStockPrice": "1р.",
+                "numberPP": 1,
+                "nameOrg": "АО \"ЧИО ЧИО\"",
+                "nameInvPlatShort": "ООО \"Капитализация\"",
+                "typeOfInvestor": "Физ лицо",
+                "stockPrice": "1р.",
+                "numberOfStocks": "698",
+                "amountOfInvestment": "698р.",
+                "dateOfAgreement": "31.03.2023",
+                "773774616695": "323210635109",
+                "INNInvPlat": "9722009697"
+            },
+            {
+                "idInvestor": "332260",
+                "projectInvestoId": "7414101",
+                "fullNameInvestor": "Клейносов Иван Алексеевич",
+                "idProject": "053c0447-e4b2-4e00-98be-d09290c97564",
+                "INNOrg": "9722024600",
+                "nominalStockPrice": "1р.",
+                "numberPP": 2,
+                "nameOrg": "АО \"ЧИО ЧИО\"",
+                "nameInvPlatShort": "ООО \"Капитализация\"",
+                "typeOfInvestor": "Физ лицо",
+                "stockPrice": "1р.",
+                "numberOfStocks": "1284",
+                "amountOfInvestment": "1284р.",
+                "dateOfAgreement": "31.03.2023",
+                "773774616695": "421717313845",
+                "INNInvPlat": "9722009697"
+            },
+            {
+                "idInvestor": "336649",
+                "projectInvestoId": "7394401",
+                "fullNameInvestor": "Лискина Ольга Сергеевна",
+                "idProject": "053c0447-e4b2-4e00-98be-d09290c97564",
+                "INNOrg": "9722024600",
+                "nominalStockPrice": "1р.",
+                "numberPP": 3,
+                "nameOrg": "АО \"ЧИО ЧИО\"",
+                "nameInvPlatShort": "ООО \"Капитализация\"",
+                "typeOfInvestor": "Физ лицо",
+                "stockPrice": "1р.",
+                "numberOfStocks": "792",
+                "amountOfInvestment": "792р.",
+                "dateOfAgreement": "31.03.2023",
+                "773774616695": "741207787895",
+                "INNInvPlat": "9722009697"
+            },
+            {
+                "idInvestor": "336644",
+                "projectInvestoId": "7387154",
+                "fullNameInvestor": "Глобина Мария Владимировна",
+                "idProject": "053c0447-e4b2-4e00-98be-d09290c97564",
+                "INNOrg": "9722024600",
+                "nominalStockPrice": "1р.",
+                "numberPP": 4,
+                "nameOrg": "АО \"ЧИО ЧИО\"",
+                "nameInvPlatShort": "ООО \"Капитализация\"",
+                "typeOfInvestor": "Физ лицо",
+                "stockPrice": "1р.",
+                "numberOfStocks": "334",
+                "amountOfInvestment": "334р.",
+                "dateOfAgreement": "31.03.2023",
+                "773774616695": "643001522409",
+                "INNInvPlat": "9722009697"
+            },
+            {
+                "idInvestor": "338089",
+                "projectInvestoId": "7385096",
+                "fullNameInvestor": "Стецкая Ирина Леонидовна",
+                "idProject": "053c0447-e4b2-4e00-98be-d09290c97564",
+                "INNOrg": "9722024600",
+                "nominalStockPrice": "1р.",
+                "numberPP": 5,
+                "nameOrg": "АО \"ЧИО ЧИО\"",
+                "nameInvPlatShort": "ООО \"Капитализация\"",
+                "typeOfInvestor": "Физ лицо",
+                "stockPrice": "1р.",
+                "numberOfStocks": "326",
+                "amountOfInvestment": "326р.",
+                "dateOfAgreement": "31.03.2023",
+                "773774616695": "372900277587",
+                "INNInvPlat": "9722009697"
+            },
+            {
+                "idInvestor": "333136",
+                "projectInvestoId": "7382255",
+                "fullNameInvestor": "Сунгатуллин Марат Азатович",
+                "idProject": "053c0447-e4b2-4e00-98be-d09290c97564",
+                "INNOrg": "9722024600",
+                "nominalStockPrice": "1р.",
+                "numberPP": 6,
+                "nameOrg": "АО \"ЧИО ЧИО\"",
+                "nameInvPlatShort": "ООО \"Капитализация\"",
+                "typeOfInvestor": "Физ лицо",
+                "stockPrice": "1р.",
+                "numberOfStocks": "8959",
+                "amountOfInvestment": "8959р.",
+                "dateOfAgreement": "31.03.2023",
+                "773774616695": "165909184309",
+                "INNInvPlat": "9722009697"
+            },
+            {
+                "idInvestor": "337045",
+                "projectInvestoId": "7378705",
+                "fullNameInvestor": "Мосьпан Елена Сергеевна",
+                "idProject": "053c0447-e4b2-4e00-98be-d09290c97564",
+                "INNOrg": "9722024600",
+                "nominalStockPrice": "1р.",
+                "numberPP": 7,
+                "nameOrg": "АО \"ЧИО ЧИО\"",
+                "nameInvPlatShort": "ООО \"Капитализация\"",
+                "typeOfInvestor": "Физ лицо",
+                "stockPrice": "1р.",
+                "numberOfStocks": "167",
+                "amountOfInvestment": "167р.",
+                "dateOfAgreement": "31.03.2023",
+                "773774616695": "744902938527",
+                "INNInvPlat": "9722009697"
+            },
+            {
+                "idInvestor": "332333",
+                "projectInvestoId": "7335615",
+                "fullNameInvestor": "Зараев Александр Михайлович",
+                "idProject": "053c0447-e4b2-4e00-98be-d09290c97564",
+                "INNOrg": "9722024600",
+                "nominalStockPrice": "1р.",
+                "numberPP": 8,
+                "nameOrg": "АО \"ЧИО ЧИО\"",
+                "nameInvPlatShort": "ООО \"Капитализация\"",
+                "typeOfInvestor": "Физ лицо",
+                "stockPrice": "1р.",
+                "numberOfStocks": "1250",
+                "amountOfInvestment": "1250р.",
+                "dateOfAgreement": "31.03.2023",
+                "773774616695": "770902920560",
+                "INNInvPlat": "9722009697"
+            },
+            {
+                "idInvestor": "337111",
+                "projectInvestoId": "7318982",
+                "fullNameInvestor": "Ухова Евгения Вадимовна",
+                "idProject": "053c0447-e4b2-4e00-98be-d09290c97564",
+                "INNOrg": "9722024600",
+                "nominalStockPrice": "1р.",
+                "numberPP": 9,
+                "nameOrg": "АО \"ЧИО ЧИО\"",
+                "nameInvPlatShort": "ООО \"Капитализация\"",
+                "typeOfInvestor": "Физ лицо",
+                "stockPrice": "1р.",
+                "numberOfStocks": "546",
+                "amountOfInvestment": "546р.",
+                "dateOfAgreement": "31.03.2023",
+                "773774616695": "772146142136",
+                "INNInvPlat": "9722009697"
+            },
+            {
+                "idInvestor": "332405",
+                "projectInvestoId": "7333519",
+                "fullNameInvestor": "Игнатенкова Дарья Владимировна",
+                "idProject": "053c0447-e4b2-4e00-98be-d09290c97564",
+                "INNOrg": "9722024600",
+                "nominalStockPrice": "1р.",
+                "numberPP": 10,
+                "nameOrg": "АО \"ЧИО ЧИО\"",
+                "nameInvPlatShort": "ООО \"Капитализация\"",
+                "typeOfInvestor": "Физ лицо",
+                "stockPrice": "1р.",
+                "numberOfStocks": "2042",
+                "amountOfInvestment": "2042р.",
+                "dateOfAgreement": "31.03.2023",
+                "773774616695": "702281444065",
+                "INNInvPlat": "9722009697"
+            }
+        ],
+        "totalPages": 12,
+        "pageNumber": 0,
+        "error": null,
+        "fieldScheme": [
+            [
+                "773774616695",
+                99174476
+            ],
+            [
+                "INNInvPlat",
+                99174476
+            ],
+            [
+                "INNOrg",
+                99174476
+            ],
+            [
+                "amountOfInvestment",
+                99174476
+            ],
+            [
+                "dateOfAgreement",
+                99174476
+            ],
+            [
+                "fullNameInvestor",
+                99174476
+            ],
+            [
+                "idInvestor",
+                99174476
+            ],
+            [
+                "idProject",
+                99174476
+            ],
+            [
+                "nameInvPlatShort",
+                99174476
+            ],
+            [
+                "nameOrg",
+                99174476
+            ],
+            [
+                "nominalStockPrice",
+                99174476
+            ],
+            [
+                "numberOfStocks",
+                99174476
+            ],
+            [
+                "numberPP",
+                99174476
+            ],
+            [
+                "projectInvestoId",
+                99174476
+            ],
+            [
+                "stockPrice",
+                99174476
+            ],
+            [
+                "typeOfInvestor",
+                99174476
+            ]
+        ],
+        "writeFields": [],
+        "structures": {
+            "99174476": {
+                "networkID": 11477,
+                "sysName": "RegisterOfInvestmentAgreements",
+                "name": "Register of investment agreements",
+                "id": 99174476,
+                "dateCreated": "2023-02-09T03:13:39Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"nominalStockPrice\",\"dataType\":\"string\",\"name\":\"Номинальная цена акциии\",\"id\":\"10031675913769735\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"projectInvestoId\",\"dataType\":\"string\",\"name\":\"Номер акцепта\",\"id\":\"11731675913896559\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ogrnipDate\",\"dataType\":\"string\",\"name\":\"ОГРНИП\",\"id\":\"12681697116838188\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":21,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"nameOrg\",\"dataType\":\"string\",\"name\":\"Наименование эмитента\",\"id\":\"12811675912556560\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"fullNameInvestor\",\"dataType\":\"string\",\"name\":\"ФИО/Наименование инвестора\",\"id\":\"14201675912653828\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"dateOfAgreement\",\"dataType\":\"string\",\"name\":\"Дата заключения договора инвестирования\",\"id\":\"18891675913933699\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"passportDate\",\"dataType\":\"string\",\"name\":\"Дата выдачи паспорта\",\"id\":\"24521697116817970\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":20,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"stockPrice\",\"dataType\":\"string\",\"name\":\"Цена акции\",\"id\":\"31041675913635266\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"INNInvPlat\",\"dataType\":\"string\",\"name\":\"ИНН ОИП\",\"id\":\"35681675912541445\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"numberOfAgreement\",\"dataType\":\"string\",\"name\":\"Номер договора\",\"id\":\"42841681410809069\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"numberPP\",\"dataType\":\"number\",\"name\":\"№ п/п\",\"id\":\"43011675912482897\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"773774616695\",\"dataType\":\"string\",\"name\":\"ИНН инвестора\",\"id\":\"58111675912684309\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"typeOfInvestor\",\"dataType\":\"string\",\"name\":\"Тип инвестора\",\"id\":\"62091675913459637\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"numberOfStocks\",\"dataType\":\"string\",\"name\":\"Количество акций (шт)\",\"id\":\"66211675913829649\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"idProject\",\"dataType\":\"link\",\"name\":\"Уникальный идентификационный номер инвестиционного предложения\",\"id\":\"71661675913476003\",\"link\":\"Project\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"idInvestor\",\"dataType\":\"link\",\"name\":\"Уникальный идентификационный номер инвестора\",\"id\":\"73791675912742843\",\"link\":\"CreatiumUsers\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"passportId\",\"dataType\":\"string\",\"name\":\"Серия и номер паспорта\",\"id\":\"74371697113250000\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"INNOrg\",\"dataType\":\"string\",\"name\":\"ИНН эмитента\",\"id\":\"75551675912622708\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"registrationDate\",\"dataType\":\"string\",\"name\":\"Дата регистрации\",\"id\":\"80231701084930141\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":22,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"nameInvPlatShort\",\"dataType\":\"string\",\"name\":\"Сокращенное наименование ОИП\",\"id\":\"87161675912513429\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"amountOfInvestment\",\"dataType\":\"string\",\"name\":\"Объем проинвестированных средств\",\"id\":\"87871675913601220\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ogrnIp\",\"dataType\":\"string\",\"name\":\"ОГРНИП\",\"id\":\"96991676952654426\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false}]",
+                "jsonGroupSettings": null,
+                "jsonViewIdSettings": null,
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2023-11-27T11:35:52Z",
+                "createBy": 14395,
+                "changedBy": 14395,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "objectIDSysName": "id",
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "indexExists": false,
+                    "typeVariable": {},
+                    "json": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "arrayLink": false,
+                    "array": false
+                },
+                "folderId": 33734634
+            }
+        },
+        "isSuccessWrite": false,
+        "writeError": null,
+        "writeResponse": null,
+        "fileds": [],
+        "quickSearch": "false",
+        "httpParams": {},
+        "cardCustomHtml": null,
+        "cardCustomLayout": null
+    }
+
+    let exampleTable3 = {
+        "sl": "projpayments",
+        "pageSize": "50",
+        "headerField": null,
+        "params": {
+            "cardListLayout": "grid",
+            "cardHeaderComment": "",
+            "deleteField": "",
+            "cardBodyText": "",
+            "cardImage": false,
+            "cardImageField": "",
+            "cardImageType": "none",
+            "cardImageSize": 100,
+            "objectView": {},
+            "data": {
+                "readFields": [
+                    {
+                        "fieldSysName": "IsIdentified",
+                        "fetch": [],
+                        "sysName": "IsIdentified",
+                        "name": "Платеж идентифицирован",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "accountNumber",
+                        "fetch": [],
+                        "sysName": "accountNumber",
+                        "name": "accountNumber",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "amount",
+                        "fetch": [],
+                        "sysName": "amount",
+                        "name": "amount",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "chargeDate",
+                        "fetch": [],
+                        "sysName": "chargeDate",
+                        "name": "chargeDate",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "currency",
+                        "fetch": [],
+                        "sysName": "currency",
+                        "name": "currency",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "documentNumber",
+                        "fetch": [],
+                        "sysName": "documentNumber",
+                        "name": "documentNumber",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "id",
+                        "fetch": [],
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "operationAmount",
+                        "fetch": [],
+                        "sysName": "operationAmount",
+                        "name": "Сумма операции",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "operationCurrency",
+                        "fetch": [],
+                        "sysName": "operationCurrency",
+                        "name": "operationCurrency",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "operationId",
+                        "fetch": [],
+                        "sysName": "operationId",
+                        "name": "operationId",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "payerAccountNumber",
+                        "fetch": [],
+                        "sysName": "payerAccountNumber",
+                        "name": "payerAccountNumber",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "payerBankName",
+                        "fetch": [],
+                        "sysName": "payerBankName",
+                        "name": "Банк",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "payerBankSwiftCode",
+                        "fetch": [],
+                        "sysName": "payerBankSwiftCode",
+                        "name": "payerBankSwiftCode",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "payerBik",
+                        "fetch": [],
+                        "sysName": "payerBik",
+                        "name": "payerBik",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "payerCorrAccountNumber",
+                        "fetch": [],
+                        "sysName": "payerCorrAccountNumber",
+                        "name": "payerCorrAccountNumber",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "payerInn",
+                        "fetch": [],
+                        "sysName": "payerInn",
+                        "name": "payerInn",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "payerKpp",
+                        "fetch": [],
+                        "sysName": "payerKpp",
+                        "name": "payerKpp",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "payerName",
+                        "fetch": [],
+                        "sysName": "payerName",
+                        "name": "Имя",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "paymentPurpose",
+                        "fetch": [],
+                        "sysName": "paymentPurpose",
+                        "name": "Назначение платежа",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    }
+                ],
+                "writeFields": [],
+                "fields": {
+                    "IsIdentified": {
+                        "id": "IsIdentified",
+                        "content": "Платеж идентифицирован",
+                        "type": "field",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "accountNumber": {
+                        "id": "accountNumber",
+                        "content": "accountNumber",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null,
+                        "actions": []
+                    },
+                    "amount": {
+                        "id": "amount",
+                        "content": "amount",
+                        "type": "field",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "chargeDate": {
+                        "id": "chargeDate",
+                        "content": "chargeDate",
+                        "type": "field",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "currency": {
+                        "id": "currency",
+                        "content": "currency",
+                        "type": "field",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "documentNumber": {
+                        "id": "documentNumber",
+                        "content": "documentNumber",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null,
+                        "actions": []
+                    },
+                    "id": {
+                        "id": "id",
+                        "content": "id",
+                        "type": "field",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "operationAmount": {
+                        "id": "operationAmount",
+                        "content": "Сумма операции",
+                        "type": "field",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "operationCurrency": {
+                        "id": "operationCurrency",
+                        "content": "operationCurrency",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": "",
+                        "actions": []
+                    },
+                    "operationId": {
+                        "id": "operationId",
+                        "content": "operationId",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null,
+                        "actions": []
+                    },
+                    "payerAccountNumber": {
+                        "id": "payerAccountNumber",
+                        "content": "payerAccountNumber",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null,
+                        "actions": []
+                    },
+                    "payerBankName": {
+                        "id": "payerBankName",
+                        "content": "Банк",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null,
+                        "actions": []
+                    },
+                    "payerBankSwiftCode": {
+                        "id": "payerBankSwiftCode",
+                        "content": "payerBankSwiftCode",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null,
+                        "actions": []
+                    },
+                    "payerBik": {
+                        "id": "payerBik",
+                        "content": "payerBik",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null,
+                        "actions": []
+                    },
+                    "payerCorrAccountNumber": {
+                        "id": "payerCorrAccountNumber",
+                        "content": "payerCorrAccountNumber",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null,
+                        "actions": []
+                    },
+                    "payerInn": {
+                        "id": "payerInn",
+                        "content": "payerInn",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null,
+                        "actions": []
+                    },
+                    "payerKpp": {
+                        "id": "payerKpp",
+                        "content": "payerKpp",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null,
+                        "actions": []
+                    },
+                    "payerName": {
+                        "id": "payerName",
+                        "content": "Имя",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null,
+                        "actions": []
+                    },
+                    "paymentPurpose": {
+                        "id": "paymentPurpose",
+                        "content": "Назначение платежа",
+                        "type": "field",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null,
+                        "actions": []
+                    }
+                },
+                "fieldParams": {
+                    "accountNumber": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "amount": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "bankName": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "beneficiaryId": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "bik": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "inn": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "kpp": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "name": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "paymentAccountNumber": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "paymentCorrAccountNumber": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "paymentId": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "status": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "dealId": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "id": {
+                        "include": false,
+                        "disableEditing": true,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "recipientId": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "stepId": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "@dateChanged": {
+                        "include": false,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "@dateCreated": {
+                        "include": false,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "@who": {
+                        "include": false,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "IsIdentified": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "chargeDate": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "currency": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "documentNumber": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "operationAmount": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "operationCurrency": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "operationId": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "payerAccountNumber": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "payerBankName": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "payerBankSwiftCode": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "payerBik": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "payerCorrAccountNumber": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "payerInn": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "payerKpp": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "payerName": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    },
+                    "paymentPurpose": {
+                        "include": true,
+                        "disableEditing": false,
+                        "fileImageFormat": "square",
+                        "quickSearch": false,
+                        "fileImageSize": 200,
+                        "clickable": false
+                    }
+                },
+                "columns": {
+                    "tab-1": {
+                        "id": "tab-1",
+                        "title": "New section",
+                        "fieldIds": [
+                            "operationId",
+                            "operationAmount",
+                            "operationCurrency",
+                            "amount",
+                            "currency",
+                            "accountNumber",
+                            "id",
+                            "documentNumber",
+                            "payerAccountNumber",
+                            "payerBankName",
+                            "payerBankSwiftCode",
+                            "payerBik",
+                            "payerCorrAccountNumber",
+                            "payerInn",
+                            "payerKpp",
+                            "payerName",
+                            "paymentPurpose",
+                            "chargeDate",
+                            "IsIdentified"
+                        ]
+                    }
+                },
+                "columnOrder": [
+                    "tab-1"
+                ],
+                "actions": []
+            },
+            "fields": {
+                "accountNumber": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "amount": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "bankName": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "beneficiaryId": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "bik": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "inn": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "kpp": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "name": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "paymentAccountNumber": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "paymentCorrAccountNumber": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "paymentId": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "status": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "dealId": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "id": {
+                    "include": false,
+                    "disableEditing": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "recipientId": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "stepId": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "@dateChanged": {
+                    "include": false,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "@dateCreated": {
+                    "include": false,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "@who": {
+                    "include": false,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "IsIdentified": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "chargeDate": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "currency": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "documentNumber": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "operationAmount": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "operationCurrency": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "operationId": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "payerAccountNumber": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "payerBankName": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "payerBankSwiftCode": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "payerBik": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "payerCorrAccountNumber": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "payerInn": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "payerKpp": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "payerName": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "paymentPurpose": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                }
+            },
+            "tableParams": {
+                "readFields": [
+                    {
+                        "fieldSysName": "IsIdentified",
+                        "fetch": [],
+                        "sysName": "IsIdentified",
+                        "name": "Платеж идентифицирован",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "accountNumber",
+                        "fetch": [],
+                        "sysName": "accountNumber",
+                        "name": "accountNumber",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "amount",
+                        "fetch": [],
+                        "sysName": "amount",
+                        "name": "amount",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "chargeDate",
+                        "fetch": [],
+                        "sysName": "chargeDate",
+                        "name": "chargeDate",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "currency",
+                        "fetch": [],
+                        "sysName": "currency",
+                        "name": "currency",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "documentNumber",
+                        "fetch": [],
+                        "sysName": "documentNumber",
+                        "name": "documentNumber",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "id",
+                        "fetch": [],
+                        "sysName": "id",
+                        "name": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "operationAmount",
+                        "fetch": [],
+                        "sysName": "operationAmount",
+                        "name": "operationAmount",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "operationCurrency",
+                        "fetch": [],
+                        "sysName": "operationCurrency",
+                        "name": "operationCurrency",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": ""
+                    },
+                    {
+                        "fieldSysName": "operationId",
+                        "fetch": [],
+                        "sysName": "operationId",
+                        "name": "operationId",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "payerAccountNumber",
+                        "fetch": [],
+                        "sysName": "payerAccountNumber",
+                        "name": "payerAccountNumber",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "payerBankName",
+                        "fetch": [],
+                        "sysName": "payerBankName",
+                        "name": "payerBankName",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "payerBankSwiftCode",
+                        "fetch": [],
+                        "sysName": "payerBankSwiftCode",
+                        "name": "payerBankSwiftCode",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "payerBik",
+                        "fetch": [],
+                        "sysName": "payerBik",
+                        "name": "payerBik",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "payerCorrAccountNumber",
+                        "fetch": [],
+                        "sysName": "payerCorrAccountNumber",
+                        "name": "payerCorrAccountNumber",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "payerInn",
+                        "fetch": [],
+                        "sysName": "payerInn",
+                        "name": "payerInn",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "payerKpp",
+                        "fetch": [],
+                        "sysName": "payerKpp",
+                        "name": "payerKpp",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "payerName",
+                        "fetch": [],
+                        "sysName": "payerName",
+                        "name": "payerName",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    },
+                    {
+                        "fieldSysName": "paymentPurpose",
+                        "fetch": [],
+                        "sysName": "paymentPurpose",
+                        "name": "paymentPurpose",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "link": null
+                    }
+                ],
+                "writeFields": [],
+                "fields": {
+                    "IsIdentified": {
+                        "id": "IsIdentified",
+                        "content": "Платеж идентифицирован",
+                        "dataType": "boolean",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "accountNumber": {
+                        "id": "accountNumber",
+                        "content": "accountNumber",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null
+                    },
+                    "amount": {
+                        "id": "amount",
+                        "content": "amount",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "chargeDate": {
+                        "id": "chargeDate",
+                        "content": "chargeDate",
+                        "dataType": "date",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "currency": {
+                        "id": "currency",
+                        "content": "currency",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "documentNumber": {
+                        "id": "documentNumber",
+                        "content": "documentNumber",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null
+                    },
+                    "id": {
+                        "id": "id",
+                        "content": "id",
+                        "dataType": "id",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "operationAmount": {
+                        "id": "operationAmount",
+                        "content": "operationAmount",
+                        "dataType": "number",
+                        "format": "positiveNum",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "operationCurrency": {
+                        "id": "operationCurrency",
+                        "content": "operationCurrency",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": ""
+                    },
+                    "operationId": {
+                        "id": "operationId",
+                        "content": "operationId",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null
+                    },
+                    "payerAccountNumber": {
+                        "id": "payerAccountNumber",
+                        "content": "payerAccountNumber",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null
+                    },
+                    "payerBankName": {
+                        "id": "payerBankName",
+                        "content": "payerBankName",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null
+                    },
+                    "payerBankSwiftCode": {
+                        "id": "payerBankSwiftCode",
+                        "content": "payerBankSwiftCode",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null
+                    },
+                    "payerBik": {
+                        "id": "payerBik",
+                        "content": "payerBik",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null
+                    },
+                    "payerCorrAccountNumber": {
+                        "id": "payerCorrAccountNumber",
+                        "content": "payerCorrAccountNumber",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null
+                    },
+                    "payerInn": {
+                        "id": "payerInn",
+                        "content": "payerInn",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null
+                    },
+                    "payerKpp": {
+                        "id": "payerKpp",
+                        "content": "payerKpp",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null
+                    },
+                    "payerName": {
+                        "id": "payerName",
+                        "content": "payerName",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null
+                    },
+                    "paymentPurpose": {
+                        "id": "paymentPurpose",
+                        "content": "paymentPurpose",
+                        "dataType": "string",
+                        "format": "",
+                        "formatOptions": {},
+                        "read": true,
+                        "link": null
+                    }
+                },
+                "fieldParams": {
+                    "accountNumber": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "amount": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "bankName": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "beneficiaryId": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "bik": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "inn": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40,
+                        "colorCell": false,
+                        "colorCellConst": "#e6f6fc"
+                    },
+                    "kpp": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "name": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40,
+                        "colorCell": false,
+                        "colorCellConst": "#f7fcfc"
+                    },
+                    "paymentAccountNumber": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "paymentCorrAccountNumber": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "paymentId": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "status": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "dealId": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "id": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "recipientId": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "stepId": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "@dateChanged": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "@dateCreated": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "@who": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "IsIdentified": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "chargeDate": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "currency": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "documentNumber": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "operationAmount": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "operationCurrency": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "operationId": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "payerAccountNumber": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "payerBankName": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "payerBankSwiftCode": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "payerBik": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "payerCorrAccountNumber": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "payerInn": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "payerKpp": {
+                        "include": false,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "payerName": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    },
+                    "paymentPurpose": {
+                        "include": true,
+                        "fileImageFormat": "square",
+                        "fileImageSize": 80,
+                        "colorCode": false,
+                        "colorFormat": "square",
+                        "colorSize": 40
+                    }
+                },
+                "fieldOrder": [
+                    "payerName",
+                    "payerBankName",
+                    "paymentPurpose",
+                    "operationId",
+                    "operationAmount",
+                    "operationCurrency",
+                    "accountNumber",
+                    "amount",
+                    "currency",
+                    "documentNumber",
+                    "id",
+                    "payerAccountNumber",
+                    "chargeDate",
+                    "payerBankSwiftCode",
+                    "payerBik",
+                    "payerCorrAccountNumber",
+                    "payerInn",
+                    "payerKpp",
+                    "IsIdentified"
+                ]
+            },
+            "autoRefresh": true
+        },
+        "tableTitle": "Пополнения",
+        "actions": null,
+        "headers": [
+            {
+                "sysName": "IsIdentified",
+                "dataType": "boolean",
+                "name": "Платеж идентифицирован",
+                "id": "50091661106136022",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 17,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "accountNumber",
+                "dataType": "string",
+                "name": "accountNumber",
+                "id": "29111661105837476",
                 "link": null,
-                "group": "1644221182856",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "amount",
+                "dataType": "number",
+                "name": "amount",
+                "id": "70041661105854761",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "positiveNum",
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "chargeDate",
+                "dataType": "date",
+                "name": "chargeDate",
+                "id": "15801661105957877",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 16,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "currency",
+                "dataType": "number",
+                "name": "currency",
+                "id": "84501661105863013",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "positiveNum",
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "documentNumber",
+                "dataType": "string",
+                "name": "documentNumber",
+                "id": "41871661105952501",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 15,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "operationAmount",
+                "dataType": "number",
+                "name": "Сумма операции",
+                "id": "77831661105871170",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "positiveNum",
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "operationCurrency",
+                "dataType": "string",
+                "name": "operationCurrency",
+                "id": "15801661105880761",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "operationId",
+                "dataType": "string",
+                "name": "operationId",
+                "id": "49261661105851415",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "payerAccountNumber",
+                "dataType": "string",
+                "name": "payerAccountNumber",
+                "id": "47221661105931183",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 11,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "payerBankName",
+                "dataType": "string",
+                "name": "Банк",
+                "id": "18911661105917821",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 9,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "payerBankSwiftCode",
+                "dataType": "string",
+                "name": "payerBankSwiftCode",
+                "id": "99821661105924523",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 10,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "payerBik",
+                "dataType": "string",
+                "name": "payerBik",
+                "id": "15161661105900279",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 6,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "payerCorrAccountNumber",
+                "dataType": "string",
+                "name": "payerCorrAccountNumber",
+                "id": "17021661105939016",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 12,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "payerInn",
+                "dataType": "string",
+                "name": "payerInn",
+                "id": "82791661105912321",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 8,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "payerKpp",
+                "dataType": "string",
+                "name": "payerKpp",
+                "id": "80201661105904613",
+                "link": null,
+                "group": "0",
                 "tags": null,
                 "indexing": false,
                 "ordering": false,
@@ -15858,18 +9155,2028 @@ const App = (props) => {
                 "array": false
             },
             {
-                "sysName": "tinkoff_rebill_id",
+                "sysName": "payerName",
                 "dataType": "string",
-                "name": "",
-                "id": "97601678722478382",
+                "name": "Имя",
+                "id": "15111661105944465",
                 "link": null,
-                "group": "1644221182856",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 13,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "paymentPurpose",
+                "dataType": "string",
+                "name": "Назначение платежа",
+                "id": "74931661105946621",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 14,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            }
+        ],
+        "data": [
+            {
+                "payerInn": "773774616695",
+                "payerName": "Светушкин Григорий Сергеевич //140003, Московская обл, Люберцы г, 3-е почтовое отделение ул, д. 17, кв. 19//",
+                "payerCorrAccountNumber": "30101810200000000700",
+                "paymentPurpose": "5884995 код клиента. Перевод средств по договору об оказании услуг по содействию винвестировании № 5884995 от 18.08.2022 11:53, НДС не облагается.",
+                "IsIdentified": true,
+                "documentNumber": "1",
+                "payerAccountNumber": "40817810001005641289",
+                "payerBik": "044525700",
+                "operationCurrency": "643",
+                "operationId": "34bef1ef-d60e-00fb-ae46-70dcc548db8b",
+                "amount": 100,
+                "chargeDate": 1660815636000,
+                "id": "39808227-038d-4f04-a5ef-1be358a807d0",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 100,
+                "payerBankName": "АО \"РАЙФФАЙЗЕНБАНК\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": "",
+                "payerKpp": ""
+            },
+            {
+                "payerInn": "773774616695",
+                "payerName": "Светушкин Григорий Сергеевич //140003, Московская обл, Люберцы г, 3-е почтовое отделение ул, д. 17, кв. 19//",
+                "payerCorrAccountNumber": "30101810200000000700",
+                "paymentPurpose": "Пополнение виртуального счета № 298851",
+                "IsIdentified": true,
+                "documentNumber": "1",
+                "payerAccountNumber": "40817810001005641289",
+                "payerBik": "044525700",
+                "operationCurrency": "643",
+                "operationId": "a87a9f58-badb-00ef-b203-28b6ed6a79aa",
+                "amount": 50,
+                "chargeDate": 1662381794000,
+                "id": "d0038f87-6b2b-4e97-b9be-e69620b1583b",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 50,
+                "payerBankName": "АО \"Райффайзенбанк\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": "",
+                "payerKpp": ""
+            },
+            {
+                "payerInn": "352511450003",
+                "payerName": "СМИРНОВ НИКИТА ЕВГЕНЬЕВИЧ",
+                "payerCorrAccountNumber": "30101810145250000974",
+                "paymentPurpose": "Перевод с карты *4942, Пополнение виртуального счета №326047. НДС не облагается",
+                "IsIdentified": true,
+                "documentNumber": "28254",
+                "payerAccountNumber": "40817810300016074420",
+                "payerBik": "044525974",
+                "operationCurrency": "643",
+                "operationId": "56bd798a-6599-007d-9675-032e96950454",
+                "amount": 150,
+                "payerKpp": "0",
+                "chargeDate": 1676773580000,
+                "id": "b9db85ff-1421-447c-a933-ff43ccfc81f4",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 150,
+                "payerBankName": "АО \"ТИНЬКОФФ БАНК\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "352511450003",
+                "payerName": "СМИРНОВ НИКИТА ЕВГЕНЬЕВИЧ",
+                "payerCorrAccountNumber": "30101810145250000974",
+                "paymentPurpose": "Перевод с карты *4942, Оплата по сделке №7135436. НДС не облагается",
+                "IsIdentified": true,
+                "documentNumber": "395153",
+                "payerAccountNumber": "40817810300016074420",
+                "payerBik": "044525974",
+                "operationCurrency": "643",
+                "operationId": "686b97fb-b3d6-0058-a55d-d4599bf28297",
+                "amount": 150,
+                "payerKpp": "0",
+                "chargeDate": 1676780828000,
+                "id": "834d1385-6d41-4ea6-a861-d81b3c2c05e2",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 150,
+                "payerBankName": "АО \"ТИНЬКОФФ БАНК\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "773774616695",
+                "payerName": "Светушкин Григорий Сергеевич //140003, Московская обл, Люберцы г, 3-е почтовое отделение ул, д. 17, кв. 19//",
+                "payerCorrAccountNumber": "30101810200000000700",
+                "paymentPurpose": "Пополнение виртуального счета №298851",
+                "IsIdentified": true,
+                "documentNumber": "1",
+                "payerAccountNumber": "40817810001005641289",
+                "payerBik": "044525700",
+                "operationCurrency": "643",
+                "operationId": "b896689e-29de-00b0-afaf-778da7ce403d",
+                "amount": 150,
+                "chargeDate": 1667774555000,
+                "id": "fdc93066-66c9-4d05-9cfb-26e781209852",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 150,
+                "payerBankName": "АО \"Райффайзенбанк\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": "",
+                "payerKpp": ""
+            },
+            {
+                "payerInn": "352511450003",
+                "payerName": "СМИРНОВ НИКИТА ЕВГЕНЬЕВИЧ",
+                "payerCorrAccountNumber": "30101810145250000974",
+                "paymentPurpose": "Перевод с карты *4942, Пополнение виртуального счета №326047. НДС не облагается",
+                "IsIdentified": true,
+                "documentNumber": "216771",
+                "payerAccountNumber": "40817810300016074420",
+                "payerBik": "044525974",
+                "operationCurrency": "643",
+                "operationId": "a97bb6e7-3c06-005b-ad29-66ac8ba243c2",
+                "amount": 150,
+                "payerKpp": "0",
+                "chargeDate": 1676779263000,
+                "id": "0464572f-c942-4479-85f5-29e35bd0d6a8",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 150,
+                "payerBankName": "АО \"ТИНЬКОФФ БАНК\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "352511450003",
+                "payerName": "СМИРНОВ НИКИТА ЕВГЕНЬЕВИЧ",
+                "payerCorrAccountNumber": "30101810145250000974",
+                "paymentPurpose": "Перевод с карты *4942, Оплата по сделке №7136056. НДС не облагается",
+                "IsIdentified": true,
+                "documentNumber": "108746",
+                "payerAccountNumber": "40817810300016074420",
+                "payerBik": "044525974",
+                "operationCurrency": "643",
+                "operationId": "272f8d45-3278-007d-8ae1-1842e27efbc5",
+                "amount": 150,
+                "payerKpp": "0",
+                "chargeDate": 1676788410000,
+                "id": "ca93af2f-c889-4e7a-9ac2-1ee2829b9619",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 150,
+                "payerBankName": "АО \"ТИНЬКОФФ БАНК\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "352511450003",
+                "payerName": "СМИРНОВ НИКИТА ЕВГЕНЬЕВИЧ",
+                "payerCorrAccountNumber": "30101810145250000974",
+                "paymentPurpose": "Перевод с карты *4942, Оплата по сделке №7139577. НДС не облагается",
+                "IsIdentified": true,
+                "documentNumber": "741277",
+                "payerAccountNumber": "40817810300016074420",
+                "payerBik": "044525974",
+                "operationCurrency": "643",
+                "operationId": "5b4d04f2-d3e9-00d9-8748-dd4dab05ca64",
+                "amount": 150,
+                "payerKpp": "0",
+                "chargeDate": 1676818379000,
+                "id": "0edaa520-8543-40b1-a8ac-5860d90c08a0",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 150,
+                "payerBankName": "АО \"ТИНЬКОФФ БАНК\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "352511450003",
+                "payerName": "СМИРНОВ НИКИТА ЕВГЕНЬЕВИЧ",
+                "payerCorrAccountNumber": "30101810145250000974",
+                "paymentPurpose": "Перевод с карты *4942, Оплата;Смирнов Никита Евгеньевич. НДС не облагается",
+                "IsIdentified": true,
+                "documentNumber": "866999",
+                "payerAccountNumber": "40817810300016074420",
+                "payerBik": "044525974",
+                "operationCurrency": "643",
+                "operationId": "879ab598-0e18-0038-a8cb-98b7c2fdf4f6",
+                "amount": 10,
+                "payerKpp": "0",
+                "chargeDate": 1677861361000,
+                "id": "b874f380-fe11-4210-8ac2-67e6af0187c9",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 10,
+                "payerBankName": "АО \"ТИНЬКОФФ БАНК\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "7707083893",
+                "payerName": "ПАО СБЕРБАНК//Мордвинцева Анна Валерьевна//1581695703535//117525,РОССИЯ,МОСКВА Г,Г МОСКВА,УЛ ДНЕПРОПЕТРОВСКАЯ,Д 5 КОРП 3 КВ 26//",
+                "payerCorrAccountNumber": "30101810900000000603",
+                "paymentPurpose": "ЗА 10/03/2023;ПЕРЕВОД ЗА Субботовича Н.А.НА ВИРТУАЛЬНЫЙ СЧЕТ №331834",
+                "IsIdentified": true,
+                "documentNumber": "397933",
+                "payerAccountNumber": "30233810642000600001",
+                "payerBik": "042202603",
+                "operationCurrency": "643",
+                "operationId": "5362892b-af74-00ae-b0b5-e68e2de5797c",
+                "amount": 1048,
+                "payerKpp": "526002001",
+                "chargeDate": 1678662030000,
+                "id": "a6d336f6-a394-4431-b6b6-0cece2db5f96",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 1048,
+                "payerBankName": "ВОЛГО-ВЯТСКИЙ БАНК ПАО СБЕРБАНК",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "771529847971",
+                "payerName": "Бенедиктова Диана Владимировна //127562, Москва г, Санникова ул, д. 7, кв. 164//",
+                "payerCorrAccountNumber": "30101810200000000700",
+                "paymentPurpose": "Перевод на виртуальный счет №337352",
+                "IsIdentified": true,
+                "documentNumber": "1",
+                "payerAccountNumber": "40817810801002285437",
+                "payerBik": "044525700",
+                "operationCurrency": "643",
+                "operationId": "bfe366e1-ccd6-002c-92c4-417de55f3e02",
+                "amount": 418,
+                "chargeDate": 1678720200000,
+                "id": "bca719b2-ffcb-493e-8c30-4ad813e2da0d",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 418,
+                "payerBankName": "АО \"Райффайзенбанк\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": "",
+                "payerKpp": ""
+            },
+            {
+                "payerInn": "771876034741",
+                "payerName": "Бирюкова Ирина Евгеньевна //107014, Москва г., Остроумовская М , д. 1А, кв. 176//",
+                "payerCorrAccountNumber": "30101810200000000700",
+                "paymentPurpose": "Перевод на виртуальный счет №337439",
+                "IsIdentified": true,
+                "documentNumber": "1",
+                "payerAccountNumber": "40817810001003764087",
+                "payerBik": "044525700",
+                "operationCurrency": "643",
+                "operationId": "c89ce97e-edcd-0059-b918-9e4ed2a702bd",
+                "amount": 234,
+                "chargeDate": 1678972275000,
+                "id": "32a9b60c-c796-49ea-ac73-1d7a81cda68f",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 234,
+                "payerBankName": "АО \"Райффайзенбанк\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": "",
+                "payerKpp": ""
+            },
+            {
+                "payerInn": "590618723814",
+                "payerName": "ВЕРЕТЕННИКОВА ОЛЬГА ДМИТРИЕВНА",
+                "payerCorrAccountNumber": "30101810145250000974",
+                "paymentPurpose": "Перевод с карты *1077, Перевод на виртуальный счет №335131. НДС не облагается",
+                "IsIdentified": true,
+                "documentNumber": "79251",
+                "payerAccountNumber": "40817810700050608326",
+                "payerBik": "044525974",
+                "operationCurrency": "643",
+                "operationId": "8e3ba8e9-7888-0047-844f-0da2b67d764d",
+                "amount": 698,
+                "payerKpp": "0",
+                "chargeDate": 1678991109000,
+                "id": "26ac111b-626c-4a72-978d-dc63e6afe319",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 698,
+                "payerBankName": "АО \"ТИНЬКОФФ БАНК\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "564500025933",
+                "payerName": "ЮДИНА ФЛЮЗА РАШИТОВНА",
+                "payerCorrAccountNumber": "30101810145250000974",
+                "paymentPurpose": "Перевод с карты *5544, Перевод на виртуальный счет №335056. НДС не облагается",
+                "IsIdentified": true,
+                "documentNumber": "394604",
+                "payerAccountNumber": "45508810600015168079",
+                "payerBik": "044525974",
+                "operationCurrency": "643",
+                "operationId": "de8121f2-6cbf-00d5-92ed-ace317e2f6bb",
+                "amount": 698,
+                "payerKpp": "0",
+                "chargeDate": 1678993737000,
+                "id": "2175dc4a-a216-4ba5-9a65-24cfc0898562",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 698,
+                "payerBankName": "АО \"ТИНЬКОФФ БАНК\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "7707083893",
+                "payerName": "ПАО СБЕРБАНК//Коновалова Наталья Дмитриевна//1585848477827//129327,РОССИЯ,МОСКВА Г,Г МОСКВА,ПРОЕЗД ЯНТАРНЫЙ,Д 9 КВ 82//",
+                "payerCorrAccountNumber": "30101810900000000603",
+                "paymentPurpose": "ЗА 16/03/2023;ПЕРЕВОД НА ВИРТУАЛЬНЫЙ СЧЕТ №331968",
+                "IsIdentified": true,
+                "documentNumber": "909924",
+                "payerAccountNumber": "30233810642000600001",
+                "payerBik": "042202603",
+                "operationCurrency": "643",
+                "operationId": "83f460a1-f86e-008b-bff2-51d92072aa3a",
+                "amount": 349,
+                "payerKpp": "526002001",
+                "chargeDate": 1679006232000,
+                "id": "c009a90d-ee51-4595-8220-1e9b84db6b33",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 349,
+                "payerBankName": "ВОЛГО-ВЯТСКИЙ БАНК ПАО СБЕРБАНК",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "222200285203",
+                "payerName": "СУВОРОВА ЛИДИЯ ВИКТОРОВНА",
+                "payerCorrAccountNumber": "30101810145250000974",
+                "paymentPurpose": "Перевод с карты *2641, Перевод на виртуальный счет №331847. НДС не облагается",
+                "IsIdentified": true,
+                "documentNumber": "323814",
+                "payerAccountNumber": "40817810400008098987",
+                "payerBik": "044525974",
+                "operationCurrency": "643",
+                "operationId": "500229ef-d940-00e3-a795-463a01d1f770",
+                "amount": 1513,
+                "payerKpp": "0",
+                "chargeDate": 1679034323000,
+                "id": "282b067a-bfde-4baa-bcc8-e15f62a6f6ef",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 1513,
+                "payerBankName": "АО \"ТИНЬКОФФ БАНК\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "165056936754",
+                "payerName": "СОФРОНОВ АРТЕМ НИКОЛАЕВИЧ",
+                "payerCorrAccountNumber": "30101810145250000974",
+                "paymentPurpose": "Перевод с карты *6459, Перевод на виртуальный счет №332011. НДС не облагается",
+                "IsIdentified": true,
+                "documentNumber": "688682",
+                "payerAccountNumber": "40817810300000591168",
+                "payerBik": "044525974",
+                "operationCurrency": "643",
+                "operationId": "2dd638bd-375a-007b-9f3e-807ca8946ae3",
+                "amount": 3334,
+                "payerKpp": "0",
+                "chargeDate": 1679040575000,
+                "id": "ec0f0a6d-2789-487e-97d4-3e94913a804a",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 3334,
+                "payerBankName": "АО \"ТИНЬКОФФ БАНК\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "7707083893",
+                "payerName": "ПАО СБЕРБАНК//Савельев Андрей Сергеевич//1586424645293//454047,РОССИЯ,ЧЕЛЯБИНСКАЯ ОБЛ,Г ЧЕЛЯБИНСК,УЛ ДЕГТЯРЕВА,Д 31 КВ 15//",
+                "payerCorrAccountNumber": "30101810900000000603",
+                "paymentPurpose": "ЗА 17/03/2023;ПЕРЕВОД НА ВИРТУАЛЬНЫЙ СЧЕТ №331945",
+                "IsIdentified": true,
+                "documentNumber": "927652",
+                "payerAccountNumber": "30233810642000600001",
+                "payerBik": "042202603",
+                "operationCurrency": "643",
+                "operationId": "81616445-e5ae-00ee-b80d-229441c75f1d",
+                "amount": 3334,
+                "payerKpp": "526002001",
+                "chargeDate": 1679265708000,
+                "id": "60257729-5788-4fb3-b1db-6101d3e927d6",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 3334,
+                "payerBankName": "ВОЛГО-ВЯТСКИЙ БАНК ПАО СБЕРБАНК",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "381403147550",
+                "payerName": "ЮРИНА АННА ЛЕОНИДОВНА",
+                "payerCorrAccountNumber": "30101810145250000974",
+                "paymentPurpose": "Перевод с карты *7711, Перевод на виртуальный счет №342123. НДС не облагается",
+                "IsIdentified": true,
+                "documentNumber": "720159",
+                "payerAccountNumber": "40817810000005147529",
+                "payerBik": "044525974",
+                "operationCurrency": "643",
+                "operationId": "4f3e40af-06b0-00f5-86fd-94742ed3a71b",
+                "amount": 1644,
+                "payerKpp": "0",
+                "chargeDate": 1679314334000,
+                "id": "0f730de8-a911-42f0-b587-628a2fdac948",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 1644,
+                "payerBankName": "АО \"ТИНЬКОФФ БАНК\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "7707083893",
+                "payerName": "ПАО СБЕРБАНК//Андреев Андрей Андреевич//1588406938127//121374,РОССИЯ,МОСКВА Г,Г МОСКВА,УЛ КРАСНЫХ ЗОРЬ,Д 23 КВ 79//",
+                "payerCorrAccountNumber": "30101810900000000603",
+                "paymentPurpose": "ЗА 20/03/2023;ПЕРЕВОД НА ВИРТУАЛЬНЫЙ СЧЕТ №331873",
+                "IsIdentified": true,
+                "documentNumber": "112479",
+                "payerAccountNumber": "30233810642000600001",
+                "payerBik": "042202603",
+                "operationCurrency": "643",
+                "operationId": "f864fb14-7079-00eb-acaa-6b40313e82ba",
+                "amount": 4485,
+                "payerKpp": "526002001",
+                "chargeDate": 1679360433000,
+                "id": "5533c8a8-ee84-4a39-8f29-c2927a2026ab",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 4485,
+                "payerBankName": "ВОЛГО-ВЯТСКИЙ БАНК ПАО СБЕРБАНК",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "7707083893",
+                "payerName": "ПАО СБЕРБАНК//Цысь Ирина Викторовна//1588543914706//127221,РОССИЯ,МОСКВА Г,Г МОСКВА,УЛ ПОЛЯРНАЯ,Д 32 КВ 124//",
+                "payerCorrAccountNumber": "30101810900000000603",
+                "paymentPurpose": "ЗА 20/03/2023;ПЕРЕВОД НА ВИРТУАЛЬНЫЙ СЧЕТ №335042",
+                "IsIdentified": true,
+                "documentNumber": "183203",
+                "payerAccountNumber": "30233810642000600001",
+                "payerBik": "042202603",
+                "operationCurrency": "643",
+                "operationId": "03eaffad-5bf1-00e6-9130-5e4f276ce5bf",
+                "amount": 1047,
+                "payerKpp": "526002001",
+                "chargeDate": 1679361702000,
+                "id": "4defa69d-f823-4251-a9fb-114fab623f2b",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 1047,
+                "payerBankName": "ВОЛГО-ВЯТСКИЙ БАНК ПАО СБЕРБАНК",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "166111588005",
+                "payerName": "ТАЗЕЕВ ДАМИР РАИЛЕВИЧ",
+                "payerCorrAccountNumber": "30101810145250000974",
+                "paymentPurpose": "Перевод с карты *8850, Перевод на виртуальный счет №331841. НДС не облагается",
+                "IsIdentified": true,
+                "documentNumber": "124737",
+                "payerAccountNumber": "40817810700005931433",
+                "payerBik": "044525974",
+                "operationCurrency": "643",
+                "operationId": "11780a08-b8f9-00cc-aed3-4f6619cb35b8",
+                "amount": 1250,
+                "payerKpp": "0",
+                "chargeDate": 1679391444000,
+                "id": "120070f5-2c85-4ac5-b9f3-7cd3883767a9",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 1250,
+                "payerBankName": "АО \"ТИНЬКОФФ БАНК\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "773370915241",
+                "payerName": "ХОДАКОВ ПАВЕЛ АНДРЕЕВИЧ",
+                "payerCorrAccountNumber": "30101810145250000974",
+                "paymentPurpose": "Перевод с карты *3905, Перевод на виртуальный счет №336924. НДС не облагается",
+                "IsIdentified": true,
+                "documentNumber": "159451",
+                "payerAccountNumber": "40817810000003439271",
+                "payerBik": "044525974",
+                "operationCurrency": "643",
+                "operationId": "d4492490-a897-0017-881e-1204e0c90988",
+                "amount": 1250,
+                "payerKpp": "0",
+                "chargeDate": 1679391596000,
+                "id": "3cacec83-dd12-4366-88a5-8b19631d220a",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 1250,
+                "payerBankName": "АО \"ТИНЬКОФФ БАНК\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "7707083893",
+                "payerName": "ПАО СБЕРБАНК//Ухова Евгения Вадимовна//1586584905464//117452,РОССИЯ,МОСКВА Г,Г МОСКВА,Б-Р ЧЕРНОМОРСКИЙ,Д 23 КОРП 1 КВ 35//",
+                "payerCorrAccountNumber": "30101810900000000603",
+                "paymentPurpose": "ЗА 17/03/2023;ПЕРЕВОД НА ВИРТУАЛЬНЫЙ СЧЕТ №337111",
+                "IsIdentified": true,
+                "documentNumber": "854241",
+                "payerAccountNumber": "30233810642000600001",
+                "payerBik": "042202603",
+                "operationCurrency": "643",
+                "operationId": "af96f0b3-bf1b-006d-8cc3-b2b8f4249587",
+                "amount": 546,
+                "payerKpp": "526002001",
+                "chargeDate": 1679265511000,
+                "id": "18dc909f-ab91-4054-903d-f9fd5629441b",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 546,
+                "payerBankName": "ВОЛГО-ВЯТСКИЙ БАНК ПАО СБЕРБАНК",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "7707083893",
+                "payerName": "ПАО СБЕРБАНК//Зараев Александр Михайлович//1586512828027//109462,РОССИЯ,МОСКВА Г,Г МОСКВА,УЛ МАРШАЛА ЧУЙКОВА,Д 9 КОРП 1 КВ 107//",
+                "payerCorrAccountNumber": "30101810900000000603",
+                "paymentPurpose": "ЗА 17/03/2023;ПЕРЕВОД НА ВИРТУАЛЬНЫЙ СЧЕТ №332333",
+                "IsIdentified": true,
+                "documentNumber": "794246",
+                "payerAccountNumber": "30233810642000600001",
+                "payerBik": "042202603",
+                "operationCurrency": "643",
+                "operationId": "4e53dc1e-98a6-003f-81dd-db33d711876e",
+                "amount": 1250,
+                "payerKpp": "526002001",
+                "chargeDate": 1679265763000,
+                "id": "376b940f-a398-4e50-baa8-73073755347c",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 1250,
+                "payerBankName": "ВОЛГО-ВЯТСКИЙ БАНК ПАО СБЕРБАНК",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "745108643385",
+                "payerName": "ПИХТИН АЛЕКСАНДР МИХАЙЛОВИЧ",
+                "payerCorrAccountNumber": "30101810145250000974",
+                "paymentPurpose": "Перевод с карты *9974, Перевод на виртуальный счет №335395. НДС не облагается",
+                "IsIdentified": true,
+                "documentNumber": "609455",
+                "payerAccountNumber": "40817810400008879135",
+                "payerBik": "044525974",
+                "operationCurrency": "643",
+                "operationId": "bcc74a3d-7c2f-00be-af43-9969efe1b858",
+                "amount": 1667,
+                "payerKpp": "0",
+                "chargeDate": 1679035820000,
+                "id": "f75f32da-96db-4340-ab8e-d169f6571d98",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 1667,
+                "payerBankName": "АО \"ТИНЬКОФФ БАНК\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "551405492252",
+                "payerName": "ДЬЯКОНОВ НИКОЛАЙ ВАЛЕРЬЕВИЧ",
+                "payerCorrAccountNumber": "30101810845250000245",
+                "paymentPurpose": "ПЕРЕВОД НА ВИРТУАЛЬНЫЙ СЧЕТ N335780",
+                "IsIdentified": true,
+                "documentNumber": "369481",
+                "payerAccountNumber": "40817810690013097766",
+                "payerBik": "044525245",
+                "operationCurrency": "643",
+                "operationId": "77f09787-4710-009a-8bd8-45d25ef54959",
+                "amount": 1644,
+                "chargeDate": 1679043076000,
+                "id": "1fe08413-d038-4ac0-a86c-acf368478f99",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 1644,
+                "payerBankName": "ООО \"ХКФ БАНК\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": "",
+                "payerKpp": ""
+            },
+            {
+                "payerName": "ШАЯХМЕТОВА ТАНЗИЛЯ АСГАТОВНА//423201,Татарстан Респ,Бугульминский р-н,,Подлесный п,Сиреневая ул,1,,//",
+                "payerCorrAccountNumber": "30101810245250000214",
+                "paymentPurpose": "Перевод на виртуальный счет №335152 Без НДС",
+                "IsIdentified": true,
+                "documentNumber": "6606",
+                "payerAccountNumber": "40817810500481986317",
+                "payerBik": "044525214",
+                "operationCurrency": "643",
+                "operationId": "c8c28cfe-e7a3-0009-afe1-f8828779780d",
+                "amount": 698,
+                "payerKpp": "0",
+                "chargeDate": 1679046488000,
+                "id": "c9e97b6b-07a8-4797-b370-9fb28474f002",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 698,
+                "payerBankName": "АО \"Почта Банк\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": "",
+                "payerInn": ""
+            },
+            {
+                "payerInn": "911103853388",
+                "payerName": "РНКБ Банк (ПАО)//ПЕГАШЕВА ОЛЬГА ЮРЬЕВНА//Крым Респ, г Керчь, ул Героев, д. 48//",
+                "payerCorrAccountNumber": "30101810335100000607",
+                "paymentPurpose": "Перевод на виртуальный счет №332551 Списание с карты № 2200020228711646 ПЕГАШЕВА ОЛЬГА ЮРЬЕВНА",
+                "IsIdentified": true,
+                "documentNumber": "8",
+                "payerAccountNumber": "30233810740002000004",
+                "payerBik": "043510607",
+                "operationCurrency": "643",
+                "operationId": "25bb41f7-d6f3-004e-9c09-d48b33f66279",
+                "amount": 367,
+                "payerKpp": "0",
+                "chargeDate": 1679393716000,
+                "id": "1a136485-bb4e-4f57-b797-9770718757de",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 367,
+                "payerBankName": "РНКБ БАНК (ПАО)",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "231109925890",
+                "payerName": "Сайгаш Виталий Анатольевич",
+                "payerCorrAccountNumber": "30101810945250000297",
+                "paymentPurpose": "Без НДС Перевод на виртуальный счет №332276",
+                "IsIdentified": true,
+                "documentNumber": "233479",
+                "payerAccountNumber": "40817810578002696354",
+                "payerBik": "044525297",
+                "operationCurrency": "643",
+                "operationId": "e26da7f4-2c27-005b-8410-64369f628efc",
+                "amount": 584,
+                "chargeDate": 1679409732000,
+                "id": "b7344430-4ac7-4894-b0f6-1aea939c65a3",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 584,
+                "payerBankName": "ФИЛИАЛ ЦЕНТРАЛЬНЫЙ ПАО БАНКА \"ФК ОТКРЫТИЕ\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": "",
+                "payerKpp": ""
+            },
+            {
+                "payerInn": "505012683072",
+                "payerName": "ЕФРЕМОВ НИКИТА ВЛАДИМИРОВИЧ",
+                "payerCorrAccountNumber": "30101810845250000245",
+                "paymentPurpose": "ПЕРЕВОД НА ВИРТУАЛЬНЫЙ СЧЕТ N331815",
+                "IsIdentified": true,
+                "documentNumber": "549176",
+                "payerAccountNumber": "40817810690011981201",
+                "payerBik": "044525245",
+                "operationCurrency": "643",
+                "operationId": "fd7387e6-2ceb-0069-bc78-896b54cd4b47",
+                "amount": 5000,
+                "chargeDate": 1679411182000,
+                "id": "6f43c425-df54-4e67-9a84-bfb8b9f9e012",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 5000,
+                "payerBankName": "ООО \"ХКФ БАНК\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": "",
+                "payerKpp": ""
+            },
+            {
+                "payerInn": "636275339323",
+                "payerName": "КАТАЕВА ЕКАТЕРИНА НИКОЛАЕВНА",
+                "payerCorrAccountNumber": "30101810145250000974",
+                "paymentPurpose": "Перевод с карты *4531, Перевод на виртуальный счет №335076. НДС не облагается",
+                "IsIdentified": true,
+                "documentNumber": "984712",
+                "payerAccountNumber": "40817810300063937756",
+                "payerBik": "044525974",
+                "operationCurrency": "643",
+                "operationId": "84354540-1f1b-0075-abae-58238c138a21",
+                "amount": 698,
+                "payerKpp": "0",
+                "chargeDate": 1679413662000,
+                "id": "a8bb664d-3d59-4a30-a01f-5e7c12a808f1",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 698,
+                "payerBankName": "АО \"ТИНЬКОФФ БАНК\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "372900277587",
+                "payerName": "СТЕЦКАЯ ИРИНА ЛЕОНИДОВНА",
+                "payerCorrAccountNumber": "30101810145250000974",
+                "paymentPurpose": "Перевод с карты *6521, Перевод на виртуальный счет №338089. НДС не облагается",
+                "IsIdentified": true,
+                "documentNumber": "400179",
+                "payerAccountNumber": "40817810700034438855",
+                "payerBik": "044525974",
+                "operationCurrency": "643",
+                "operationId": "07aa3f0e-3cdd-00c7-8c5e-cf1a5645f493",
+                "amount": 326,
+                "payerKpp": "0",
+                "chargeDate": 1679428988000,
+                "id": "d573a893-375f-4918-8c0f-c20bc688e7d0",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 326,
+                "payerBankName": "АО \"ТИНЬКОФФ БАНК\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "7707083893",
+                "payerName": "ПАО СБЕРБАНК//Лапковская Екатерина Сергеевна//1588966141597//644083,РОССИЯ,ОМСКАЯ ОБЛ,Г ОМСК,УЛ КОММУНАЛЬНАЯ,Д 7 КВ 90//",
+                "payerCorrAccountNumber": "30101810900000000603",
+                "paymentPurpose": "ЗА 21/03/2023;ПЕРЕВОД НА ВИРТУАЛЬНЫЙ СЧЕТ №332724",
+                "IsIdentified": true,
+                "documentNumber": "903638",
+                "payerAccountNumber": "30233810642000600001",
+                "payerBik": "042202603",
+                "operationCurrency": "643",
+                "operationId": "91a4381f-1ed1-0087-a55d-4bf75d0bce55",
+                "amount": 4167,
+                "payerKpp": "526002001",
+                "chargeDate": 1679438196000,
+                "id": "af6ccd2f-46b1-4063-b4c4-acedef967c9d",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 4167,
+                "payerBankName": "ВОЛГО-ВЯТСКИЙ БАНК ПАО СБЕРБАНК",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "7707083893",
+                "payerName": "ПАО СБЕРБАНК//Куц Николай Владимирович//1588994764459//680045,РОССИЯ,ХАБАРОВСКИЙ КРАЙ,Г ХАБАРОВСК,УЛ КОСМИЧЕСКАЯ,Д 9А КВ 23//",
+                "payerCorrAccountNumber": "30101810900000000603",
+                "paymentPurpose": "ЗА 21/03/2023;ПЕРЕВОД НА ВИРТУАЛЬНЫЙ СЧЕТ №332663",
+                "IsIdentified": true,
+                "documentNumber": "155891",
+                "payerAccountNumber": "30233810642000600001",
+                "payerBik": "042202603",
+                "operationCurrency": "643",
+                "operationId": "87cbf622-1e12-00bb-a85c-8ad9b05af0f7",
+                "amount": 1462,
+                "payerKpp": "526002001",
+                "chargeDate": 1679438423000,
+                "id": "9d28e5b0-ff01-41ca-a75e-cfd0d7e3b78e",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 1462,
+                "payerBankName": "ВОЛГО-ВЯТСКИЙ БАНК ПАО СБЕРБАНК",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "7707083893",
+                "payerName": "ПАО СБЕРБАНК//Шавалеев Идель Равилевич//1588993203501//453100,РОССИЯ,БАШКОРТОСТАН РЕСП,Г СТЕРЛИТАМАК,УЛ АРТЕМА,Д 43 КВ 11//",
+                "payerCorrAccountNumber": "30101810900000000603",
+                "paymentPurpose": "ЗА 21/03/2023;ПЕРЕВОД НА ВИРТУАЛЬНЫЙ СЧЕТ №331832",
+                "IsIdentified": true,
+                "documentNumber": "144085",
+                "payerAccountNumber": "30233810642000600001",
+                "payerBik": "042202603",
+                "operationCurrency": "643",
+                "operationId": "bc016afe-3677-00cd-b638-097736669fb1",
+                "amount": 1667,
+                "payerKpp": "526002001",
+                "chargeDate": 1679438491000,
+                "id": "a2d94e59-0d47-40ec-82bc-a784d711ac86",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 1667,
+                "payerBankName": "ВОЛГО-ВЯТСКИЙ БАНК ПАО СБЕРБАНК",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "7707083893",
+                "payerName": "ПАО СБЕРБАНК//Носов Роман Викторович//1588987170115//601901,РОССИЯ,ВЛАДИМИРСКАЯ ОБЛ,Г КОВРОВ,УЛ ЧЕРНЫШЕВСКОГО,Д 17 КВ 40//",
+                "payerCorrAccountNumber": "30101810900000000603",
+                "paymentPurpose": "ЗА 21/03/2023;ПЕРЕВОД НА ВИРТУАЛЬНЫЙ СЧЕТ №301294",
+                "IsIdentified": true,
+                "documentNumber": "105549",
+                "payerAccountNumber": "30233810642000600001",
+                "payerBik": "042202603",
+                "operationCurrency": "643",
+                "operationId": "22268a24-2048-00cb-957a-c69383a188fb",
+                "amount": 1875,
+                "payerKpp": "526002001",
+                "chargeDate": 1679438866000,
+                "id": "bdaf9fc6-eb79-4367-8969-7ca05f52e5c4",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 1875,
+                "payerBankName": "ВОЛГО-ВЯТСКИЙ БАНК ПАО СБЕРБАНК",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "7707083893",
+                "payerName": "ПАО СБЕРБАНК//Лапаев Андрей Владимирович//1589024674645//641010,РОССИЯ,КУРГАНСКАЯ ОБЛ,ЩУЧАНСКИЙ Р-Н,Г ЩУЧЬЕ,УЛ БРЯНСКАЯ,Д 27 КВ 2//",
+                "payerCorrAccountNumber": "30101810900000000603",
+                "paymentPurpose": "ЗА 21/03/2023;ПЕРЕВОД НА ВИРТУАЛЬНЫЙ СЧЕТ №331963",
+                "IsIdentified": true,
+                "documentNumber": "80534",
+                "payerAccountNumber": "30233810642000600001",
+                "payerBik": "042202603",
+                "operationCurrency": "643",
+                "operationId": "4afe8154-d92e-0016-bd15-fe9c483ec56e",
+                "amount": 4167,
+                "payerKpp": "526002001",
+                "chargeDate": 1679438772000,
+                "id": "8022f6c2-0040-4a01-9377-41a7e20f9014",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 4167,
+                "payerBankName": "ВОЛГО-ВЯТСКИЙ БАНК ПАО СБЕРБАНК",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "165802850651",
+                "payerName": "ХАРИТОНОВА ОЛЬГА ГЕРБЕРТОВНА",
+                "payerCorrAccountNumber": "30101810145250000974",
+                "paymentPurpose": "Перевод с карты *6903, Перевод на виртуальный счет №332072. НДС не облагается",
+                "IsIdentified": true,
+                "documentNumber": "72648",
+                "payerAccountNumber": "40817810900003141465",
+                "payerBik": "044525974",
+                "operationCurrency": "643",
+                "operationId": "e82cc700-cee3-00b0-acf4-a7f3079e4ada",
+                "amount": 1209,
+                "payerKpp": "0",
+                "chargeDate": 1679425763000,
+                "id": "5e267c01-bf78-4d12-aa77-7e2c5333005d",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 1209,
+                "payerBankName": "АО \"ТИНЬКОФФ БАНК\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "7707083893",
+                "payerName": "ПАО СБЕРБАНК//Мосьпан Елена Сергеевна//1588977472523//454108,РОССИЯ,ЧЕЛЯБИНСКАЯ ОБЛ,Г ЧЕЛЯБИНСК,УЛ БАРБЮСА,Д 16 КВ 113//",
+                "payerCorrAccountNumber": "30101810900000000603",
+                "paymentPurpose": "ЗА 21/03/2023;ПЕРЕВОД НА ВИРТУАЛЬНЫЙ СЧЕТ №337045",
+                "IsIdentified": true,
+                "documentNumber": "46767",
+                "payerAccountNumber": "30233810642000600001",
+                "payerBik": "042202603",
+                "operationCurrency": "643",
+                "operationId": "444ea5d1-ebe5-009f-bba8-b32c1f8d5ece",
+                "amount": 167,
+                "payerKpp": "526002001",
+                "chargeDate": 1679438870000,
+                "id": "503ecf16-6f55-4dcd-88e1-5ba80a491682",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 167,
+                "payerBankName": "ВОЛГО-ВЯТСКИЙ БАНК ПАО СБЕРБАНК",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "7707083893",
+                "payerName": "ПАО СБЕРБАНК//Благова Татьяна Владимировна//1589153635975//633142,РОССИЯ,НОВОСИБИРСК,ОКТЯБРЬСКИЙ,КОШУРНИКОВА,20,,68,МОШКОВСКИЙ//",
+                "payerCorrAccountNumber": "30101810900000000603",
+                "paymentPurpose": "ЗА 21/03/2023;ПЕРЕВОД НА ВИРТУАЛЬНЫЙ СЧЕТ №340094",
+                "IsIdentified": true,
+                "documentNumber": "55160",
+                "payerAccountNumber": "30233810642000600001",
+                "payerBik": "042202603",
+                "operationCurrency": "643",
+                "operationId": "b4e6c534-95ea-003e-ba08-0971ba2779c9",
+                "amount": 1644,
+                "payerKpp": "526002001",
+                "chargeDate": 1679442918000,
+                "id": "1ff62d30-f89e-4462-851e-425188d0a485",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 1644,
+                "payerBankName": "ВОЛГО-ВЯТСКИЙ БАНК ПАО СБЕРБАНК",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "7707083893",
+                "payerName": "ПАО СБЕРБАНК//Авакян Андрей Андроникович//1589087346161//352901,РОССИЯ,КРАСНОДАРСКИЙ КРАЙ,Г АРМАВИР,УЛ МАРШАЛА ЖУКОВА,Д 195//",
+                "payerCorrAccountNumber": "30101810900000000603",
+                "paymentPurpose": "ЗА 21/03/2023;Пополнение виртуального счёта с номером",
+                "IsIdentified": true,
+                "documentNumber": "95629",
+                "payerAccountNumber": "30233810642000600001",
+                "payerBik": "042202603",
+                "operationCurrency": "643",
+                "operationId": "3e60015d-2dac-0021-8c7e-cee64429590f",
+                "amount": 667,
+                "payerKpp": "526002001",
+                "chargeDate": 1679444451000,
+                "id": "bccaf4a6-3fc5-4f16-97c0-804bbd058786",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 667,
+                "payerBankName": "ВОЛГО-ВЯТСКИЙ БАНК ПАО СБЕРБАНК",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "540408083860",
+                "payerName": "ОГУРЧЁНОК СЕРГЕЙ МИХАЙЛОВИЧ",
+                "payerCorrAccountNumber": "30101810145250000974",
+                "paymentPurpose": "Перевод с карты *2876, Перевод на виртуальный счет №332655. НДС не облагается",
+                "IsIdentified": true,
+                "documentNumber": "364108",
+                "payerAccountNumber": "40817810400020149131",
+                "payerBik": "044525974",
+                "operationCurrency": "643",
+                "operationId": "e31ed51c-baad-0072-ab8c-760100d38e5e",
+                "amount": 7888,
+                "payerKpp": "0",
+                "chargeDate": 1679455217000,
+                "id": "99588842-362c-4617-98e6-03a035a9347b",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 7888,
+                "payerBankName": "АО \"ТИНЬКОФФ БАНК\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "7707083893",
+                "payerName": "ПАО СБЕРБАНК//ГАЛЕЕВА ХАТЫМЯ АНВАРОВНА//1589182754838////",
+                "payerCorrAccountNumber": "30101810900000000603",
+                "paymentPurpose": "ЗА 21/03/2023;ГАЛЕЕВА ХАТЫМЯ АНВАРОВНА;ПОПОЛНЕНИЕ ВИРТУАЛЬНОГО СЧЕТА № 332731",
+                "IsIdentified": true,
+                "documentNumber": "84854",
+                "payerAccountNumber": "30233810642000600001",
+                "payerBik": "042202603",
+                "operationCurrency": "643",
+                "operationId": "9a13c06a-d357-00a5-b7d6-ece620d1f715",
+                "amount": 1644,
+                "payerKpp": "526002001",
+                "chargeDate": 1679442603000,
+                "id": "d3381440-d40f-4666-bb1b-4fbe7be52d88",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 1644,
+                "payerBankName": "ВОЛГО-ВЯТСКИЙ БАНК ПАО СБЕРБАНК",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "7707083893",
+                "payerName": "ПАО СБЕРБАНК//Глобина Мария Владимировна//1589123407301//428038,РОССИЯ,ЧУВАШСКАЯ РЕСПУБЛИКА - ЧУВАШИЯ,Г ЧЕБОКСАРЫ,Б-Р А.МИТТОВА,Д 1 КВ 72//",
+                "payerCorrAccountNumber": "30101810900000000603",
+                "paymentPurpose": "ЗА 21/03/2023;ПЕРЕВОД НА ВИРТУАЛЬНЫЙ СЧЕТ №336644",
+                "IsIdentified": true,
+                "documentNumber": "117093",
+                "payerAccountNumber": "30233810642000600001",
+                "payerBik": "042202603",
+                "operationCurrency": "643",
+                "operationId": "b1614a2e-9bac-0049-a7c9-ea5fc555f548",
+                "amount": 334,
+                "payerKpp": "526002001",
+                "chargeDate": 1679448512000,
+                "id": "feffb4cf-c77b-4007-9656-06443d7e5d20",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 334,
+                "payerBankName": "ВОЛГО-ВЯТСКИЙ БАНК ПАО СБЕРБАНК",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "741111875325",
+                "payerName": "МАРКИН ЕВГЕНИЙ ВЛАДИМИРОВИЧ",
+                "payerCorrAccountNumber": "30101810145250000974",
+                "paymentPurpose": "Перевод с карты *0807, Перевод на виртуальный счет №333997. НДС не облагается",
+                "IsIdentified": true,
+                "documentNumber": "600581",
+                "payerAccountNumber": "40817810700024643029",
+                "payerBik": "044525974",
+                "operationCurrency": "643",
+                "operationId": "1711083a-428b-0037-88f8-952954eb73c1",
+                "amount": 1250,
+                "payerKpp": "0",
+                "chargeDate": 1679488482000,
+                "id": "10fb9152-286d-4c4b-a0fc-824dbd30d456",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 1250,
+                "payerBankName": "АО \"ТИНЬКОФФ БАНК\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "7707083893",
+                "payerName": "ПАО СБЕРБАНК//Кешокова Жанна Алиевна//1590065511833//369012,РОССИЯ,КАРАЧАЕВО-ЧЕРКЕССКАЯ РЕСП,Г ЧЕРКЕССК,ПЕР ОРЕХОВЫЙ,Д 11//",
+                "payerCorrAccountNumber": "30101810900000000603",
+                "paymentPurpose": "ЗА 23/03/2023;КЕШОКОВА ЖАННА АЛИЕВНА;ПЕРЕВОД НА ВИРТУАЛЬНЫЙ СЧЕТ №335631",
+                "IsIdentified": true,
+                "documentNumber": "825052",
+                "payerAccountNumber": "30233810642000600001",
+                "payerBik": "042202603",
+                "operationCurrency": "643",
+                "operationId": "7e63f17c-d8d4-0083-aefb-63c7e5debac7",
+                "amount": 1644,
+                "payerKpp": "526002001",
+                "chargeDate": 1679610341000,
+                "id": "8b90492d-7681-4e47-885f-3b94eb3fc9e8",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 1644,
+                "payerBankName": "ВОЛГО-ВЯТСКИЙ БАНК ПАО СБЕРБАНК",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "325305300062",
+                "payerName": "ЛЯКУН АЛЕКСАНДР АЛЕКСАНДРОВИЧ",
+                "payerCorrAccountNumber": "30101810145250000974",
+                "paymentPurpose": "Перевод с карты *8881, Перевод на виртуальный счет №332308. НДС не облагается",
+                "IsIdentified": true,
+                "documentNumber": "447103",
+                "payerAccountNumber": "40817810200027041830",
+                "payerBik": "044525974",
+                "operationCurrency": "643",
+                "operationId": "ca034a63-3903-0096-9838-fe934e461bf6",
+                "amount": 1209,
+                "payerKpp": "0",
+                "chargeDate": 1679645944000,
+                "id": "29365b2c-7881-4d6d-bc64-60f369646ea3",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 1209,
+                "payerBankName": "АО \"ТИНЬКОФФ БАНК\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            },
+            {
+                "payerInn": "772375862104",
+                "payerName": "Цыбин Владимир Анатольевич //109044, Москва г, Москва г, 3-й Крутицкий пер, д. 13, кв. 181//",
+                "payerCorrAccountNumber": "30101810200000000700",
+                "paymentPurpose": "Перевод на виртуальный счет №332464",
+                "IsIdentified": true,
+                "documentNumber": "1",
+                "payerAccountNumber": "40817810301000045085",
+                "payerBik": "044525700",
+                "operationCurrency": "643",
+                "operationId": "3fad2747-77b6-00a5-a9ab-5c113023e798",
+                "amount": 1209,
+                "chargeDate": 1679656752000,
+                "id": "0c5365a2-4523-4e4f-8153-4c102f7941b4",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 1209,
+                "payerBankName": "АО \"Райффайзенбанк\"",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": "",
+                "payerKpp": ""
+            },
+            {
+                "payerInn": "7707083893",
+                "payerName": "ПАО СБЕРБАНК//Тихонов Вадим Владимирович//1589553099117//143072,РОССИЯ,МОСКОВСКАЯ ОБЛ,ОДИНЦОВСКИЙ Р-Н,П ВНИИССОК,УЛ РЯБИНОВАЯ,Д 6 КВ 77//",
+                "payerCorrAccountNumber": "30101810900000000603",
+                "paymentPurpose": "ЗА 22/03/2023;ТИХОНОВ ВАДИМ ВЛАДИМИРОВИЧ;ПЕРЕВОД НА ВИРТУАЛЬНЫЙ СЧЕТ №336295",
+                "IsIdentified": true,
+                "documentNumber": "760639",
+                "payerAccountNumber": "30233810642000600001",
+                "payerBik": "042202603",
+                "operationCurrency": "643",
+                "operationId": "cb2a6a2b-848a-007c-a543-45bf38723b15",
+                "amount": 1250,
+                "payerKpp": "526002001",
+                "chargeDate": 1679522707000,
+                "id": "218ca58d-36dd-4184-9649-0324b99cf8c5",
+                "currency": 643,
+                "accountNumber": "40702810310001075238",
+                "operationAmount": 1250,
+                "payerBankName": "ВОЛГО-ВЯТСКИЙ БАНК ПАО СБЕРБАНК",
+                "@dateChanged": "",
+                "@dateCreated": "",
+                "@who": "",
+                "payerBankSwiftCode": ""
+            }
+        ],
+        "totalPages": 4,
+        "pageNumber": 0,
+        "error": null,
+        "fieldScheme": [
+            [
+                "IsIdentified",
+                99129030
+            ],
+            [
+                "accountNumber",
+                99129030
+            ],
+            [
+                "amount",
+                99129030
+            ],
+            [
+                "chargeDate",
+                99129030
+            ],
+            [
+                "currency",
+                99129030
+            ],
+            [
+                "documentNumber",
+                99129030
+            ],
+            [
+                "id",
+                99129030
+            ],
+            [
+                "operationAmount",
+                99129030
+            ],
+            [
+                "operationCurrency",
+                99129030
+            ],
+            [
+                "operationId",
+                99129030
+            ],
+            [
+                "payerAccountNumber",
+                99129030
+            ],
+            [
+                "payerBankName",
+                99129030
+            ],
+            [
+                "payerBankSwiftCode",
+                99129030
+            ],
+            [
+                "payerBik",
+                99129030
+            ],
+            [
+                "payerCorrAccountNumber",
+                99129030
+            ],
+            [
+                "payerInn",
+                99129030
+            ],
+            [
+                "payerKpp",
+                99129030
+            ],
+            [
+                "payerName",
+                99129030
+            ],
+            [
+                "paymentPurpose",
+                99129030
+            ]
+        ],
+        "writeFields": [
+            "@dateChanged",
+            "@dateCreated",
+            "@who",
+            "IsIdentified",
+            "accountNumber",
+            "amount",
+            "chargeDate",
+            "currency",
+            "documentNumber",
+            "id",
+            "operationAmount",
+            "operationCurrency",
+            "operationId",
+            "payerAccountNumber",
+            "payerBankName",
+            "payerBankSwiftCode",
+            "payerBik",
+            "payerCorrAccountNumber",
+            "payerInn",
+            "payerKpp",
+            "payerName",
+            "paymentPurpose"
+        ],
+        "structures": {
+            "99129030": {
+                "networkID": 11477,
+                "sysName": "projpayments",
+                "name": "ProjPayments",
+                "id": 99129030,
+                "dateCreated": "2022-08-21T18:17:04Z",
+                "hidden": false,
+                "dateHidden": null,
+                "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"accountNumber\",\"dataType\":\"string\",\"name\":\"accountNumber\",\"id\":\"29111661105837476\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"operationId\",\"dataType\":\"string\",\"name\":\"operationId\",\"id\":\"49261661105851415\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"amount\",\"dataType\":\"number\",\"name\":\"amount\",\"id\":\"70041661105854761\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"currency\",\"dataType\":\"number\",\"name\":\"currency\",\"id\":\"84501661105863013\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"operationAmount\",\"dataType\":\"number\",\"name\":\"Сумма операции\",\"id\":\"77831661105871170\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"operationCurrency\",\"dataType\":\"string\",\"name\":\"operationCurrency\",\"id\":\"15801661105880761\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"payerBik\",\"dataType\":\"string\",\"name\":\"payerBik\",\"id\":\"15161661105900279\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"payerKpp\",\"dataType\":\"string\",\"name\":\"payerKpp\",\"id\":\"80201661105904613\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"payerInn\",\"dataType\":\"string\",\"name\":\"payerInn\",\"id\":\"82791661105912321\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"payerBankName\",\"dataType\":\"string\",\"name\":\"Банк\",\"id\":\"18911661105917821\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"payerBankSwiftCode\",\"dataType\":\"string\",\"name\":\"payerBankSwiftCode\",\"id\":\"99821661105924523\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"payerAccountNumber\",\"dataType\":\"string\",\"name\":\"payerAccountNumber\",\"id\":\"47221661105931183\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"payerCorrAccountNumber\",\"dataType\":\"string\",\"name\":\"payerCorrAccountNumber\",\"id\":\"17021661105939016\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"payerName\",\"dataType\":\"string\",\"name\":\"Имя\",\"id\":\"15111661105944465\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"paymentPurpose\",\"dataType\":\"string\",\"name\":\"Назначение платежа\",\"id\":\"74931661105946621\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"documentNumber\",\"dataType\":\"string\",\"name\":\"documentNumber\",\"id\":\"41871661105952501\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"chargeDate\",\"dataType\":\"date\",\"name\":\"chargeDate\",\"id\":\"15801661105957877\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"IsIdentified\",\"dataType\":\"boolean\",\"name\":\"Платеж идентифицирован\",\"id\":\"50091661106136022\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"identifyProccess\",\"dataType\":\"boolean\",\"name\":\"Процесс идентификации\",\"id\":\"53581671635785384\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"dealComplete\",\"dataType\":\"boolean\",\"name\":\"Платеж зачислен в сделку\",\"id\":\"98441680639309631\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"creatiumUser\",\"dataType\":\"link\",\"name\":\"creatiumUser\",\"id\":\"90871671720812060\",\"link\":\"CreatiumUsers\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":20,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"getAmount\",\"dataType\":\"json\",\"name\":\"getAmount\",\"id\":\"36801672024132721\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":21,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ProjectInvestor\",\"dataType\":\"link\",\"name\":\"ProjectInvestor\",\"id\":\"90101676781399413\",\"link\":\"ProjectInvestor\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":22,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"previousTopUps\",\"dataType\":\"json\",\"name\":\"previousTopUps\",\"id\":\"68021676805805418\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":23,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"getRecipientAmount\",\"dataType\":\"json\",\"name\":\"getRecipientAmount\",\"id\":\"44001676812734790\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":24,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"getAllDeponents\",\"dataType\":\"json\",\"name\":\"getAllDeponents\",\"id\":\"72041676867975237\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":25,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"getDeponent\",\"dataType\":\"json\",\"name\":\"getDeponent\",\"id\":\"95201678858484178\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":26,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"putDeponent\",\"dataType\":\"json\",\"name\":\"putDeponent\",\"id\":\"24751678858949124\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":27,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"test\",\"dataType\":\"string\",\"name\":\"test\",\"id\":\"50971678859442401\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":28,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"arrPayerName\",\"dataType\":\"array\",\"name\":\"arrPayerName\",\"id\":\"99721680146771989\",\"link\":\"\",\"group\":\"1680146748694\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":true},{\"sysName\":\"reasonsOfNotIdentify\",\"dataType\":\"string\",\"name\":\"Причины не идентификации платежа\",\"id\":\"40971682355775108\",\"link\":\"\",\"group\":\"1682355756058\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
+                "jsonGroupSettings": "[{\"name\":\"IdentifyName\",\"id\":1680146748694,\"order\":0},{\"name\":\"Errors\",\"id\":1682355756058,\"order\":1}]",
+                "jsonViewIdSettings": null,
+                "jsonSettings": null,
+                "jsonNativeIndexSettings": null,
+                "indexEnabled": true,
+                "lastIndexUpdate": 0,
+                "indexName": "",
+                "dateChanged": "2023-04-24T17:04:21Z",
+                "createBy": 11429,
+                "changedBy": 14395,
+                "_settings": null,
+                "_nativeIndexSettings": null,
+                "objectIDSysName": "id",
+                "innerIDField": {
+                    "sysName": "id",
+                    "dataType": "id",
+                    "name": "id",
+                    "id": "0",
+                    "link": "",
+                    "group": "0",
+                    "tags": "",
+                    "indexing": false,
+                    "ordering": false,
+                    "description": null,
+                    "weight": null,
+                    "order": 0,
+                    "linkIndexFieldSysName": [],
+                    "defaultValue": "",
+                    "constraints": null,
+                    "synthetic": false,
+                    "format": null,
+                    "formatOptions": {},
+                    "groupName": null,
+                    "indexExists": false,
+                    "typeVariable": {},
+                    "json": false,
+                    "linkOrArrayLinkType": false,
+                    "linkType": false,
+                    "arrayLink": false,
+                    "array": false
+                },
+                "folderId": 33680700
+            }
+        },
+        "isSuccessWrite": false,
+        "writeError": null,
+        "writeResponse": null,
+        "fileds": [
+            {
+                "sysName": "@dateChanged",
+                "dataType": "string",
+                "name": "@dateChanged",
+                "id": "",
+                "link": "",
+                "group": "",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": null,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "@dateCreated",
+                "dataType": "string",
+                "name": "@dateCreated",
+                "id": "",
+                "link": "",
+                "group": "",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": null,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "@who",
+                "dataType": "string",
+                "name": "@who",
+                "id": "",
+                "link": "",
+                "group": "",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": null,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "IsIdentified",
+                "dataType": "boolean",
+                "name": "Платеж идентифицирован",
+                "id": "50091661106136022",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 17,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "accountNumber",
+                "dataType": "string",
+                "name": "accountNumber",
+                "id": "29111661105837476",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "amount",
+                "dataType": "number",
+                "name": "amount",
+                "id": "70041661105854761",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 2,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "positiveNum",
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "chargeDate",
+                "dataType": "date",
+                "name": "chargeDate",
+                "id": "15801661105957877",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 16,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "currency",
+                "dataType": "number",
+                "name": "currency",
+                "id": "84501661105863013",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 3,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "positiveNum",
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "documentNumber",
+                "dataType": "string",
+                "name": "documentNumber",
+                "id": "41871661105952501",
+                "link": null,
+                "group": "0",
                 "tags": null,
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
                 "order": 15,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "operationAmount",
+                "dataType": "number",
+                "name": "Сумма операции",
+                "id": "77831661105871170",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 4,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": "positiveNum",
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "operationCurrency",
+                "dataType": "string",
+                "name": "operationCurrency",
+                "id": "15801661105880761",
+                "link": "",
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 5,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "operationId",
+                "dataType": "string",
+                "name": "operationId",
+                "id": "49261661105851415",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 1,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "payerAccountNumber",
+                "dataType": "string",
+                "name": "payerAccountNumber",
+                "id": "47221661105931183",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 11,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "payerBankName",
+                "dataType": "string",
+                "name": "Банк",
+                "id": "18911661105917821",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 9,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "payerBankSwiftCode",
+                "dataType": "string",
+                "name": "payerBankSwiftCode",
+                "id": "99821661105924523",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 10,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "payerBik",
+                "dataType": "string",
+                "name": "payerBik",
+                "id": "15161661105900279",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 6,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "payerCorrAccountNumber",
+                "dataType": "string",
+                "name": "payerCorrAccountNumber",
+                "id": "17021661105939016",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 12,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "payerInn",
+                "dataType": "string",
+                "name": "payerInn",
+                "id": "82791661105912321",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 8,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "payerKpp",
+                "dataType": "string",
+                "name": "payerKpp",
+                "id": "80201661105904613",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 7,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "payerName",
+                "dataType": "string",
+                "name": "Имя",
+                "id": "15111661105944465",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 13,
+                "linkIndexFieldSysName": [],
+                "defaultValue": null,
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "array": false
+            },
+            {
+                "sysName": "paymentPurpose",
+                "dataType": "string",
+                "name": "Назначение платежа",
+                "id": "74931661105946621",
+                "link": null,
+                "group": "0",
+                "tags": null,
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 14,
                 "linkIndexFieldSysName": [],
                 "defaultValue": null,
                 "constraints": null,
@@ -24734,7 +20041,7 @@ const App = (props) => {
             components={<React.Fragment>
                 <Switch>
                     <Route exact path="/table">
-                        <Button onClick={()=>setTableData(exampleTable2)}>Change data</Button>
+                        <Button onClick={()=>setTableData(exampleTable3)}>Change data</Button>
                         <FpsTable data={tableData} auth={authExample} locale='FRA' />
                     </Route>
                     <Route exact path="/">
