@@ -60,7 +60,7 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale }) {
     if (!layout) { return <div className={styles.error}>no layout</div> }
 
     const composeTabsContent = (tabId) => {
-        if (localLoading) return <Loader>{dict[lang].loading}</Loader>
+        if (localLoading) return <div style={{margin: 24}}><Loader>{dict[lang].loading}</Loader></div>
         if (!layout.sections[tabId] || layout.sections[tabId].length == 0) return <div />
         return <div>
             {layout.sections[tabId].map(section => <Section key={section.id} section={section} currentBP={currentBP} />)}

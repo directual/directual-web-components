@@ -22,7 +22,14 @@ export default function TabsPane({ tabs, onDivRef, loading, currentTabKey, fpsTa
     useEffect(()=> {currentTabKey && currentTabKey != currentTab && setCurrentTab(currentTabKey)}, [currentTabKey])
 
     useEffect(()=> {
-        console.log('TABS ARE CHANGED')
+        // если выбран таб, которого нет:
+        if (
+            currentTab && 
+            filter(tabs,tab => tab.id == currentTab).length == 0 &&
+            filter(tabs,tab => tab.key == currentTab).length == 0
+        ) {
+            setCurrentTab(currentTabKey || tabs[0].key || tabs[0].id)
+        }
     }, [tabs])
 
     useEffect(function onFirstMount() {
