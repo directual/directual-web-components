@@ -4,6 +4,8 @@ import styles from './fpsLayout.module.css'
 // import FpsCards from '../../viewobjects/cards/FpsCards'
 import TabsPane from '../tabpane/tabpane'
 import _ from 'lodash'
+import Loader from '../../loader/loader'
+import { dict } from '../../locale'
 
 const brakePoints = {
     mobile: { from: 0, to: 478, display: 400 },
@@ -12,11 +14,12 @@ const brakePoints = {
     wideDesktop: { from: 1202, to: '∞', display: 1400 },
 }
 
-export function FpsLayout({ layout, onChangeTab }) {
+export function FpsLayout({ layout, onChangeTab, localLoading, locale }) {
 
     const layoutRef = useRef(null);
     const [currentBP, setCurrentBP] = useState('desktop')
     const [layoutWidth, setLayoutWidth] = useState(brakePoints[currentBP].display)
+    const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
 
     // Calculating layout width:
     useEffect(() => {
@@ -57,6 +60,7 @@ export function FpsLayout({ layout, onChangeTab }) {
     if (!layout) { return <div className={styles.error}>no layout</div> }
 
     const composeTabsContent = (tabId) => {
+        if (localLoading) return <Loader>{dict[lang].loading}</Loader>
         if (!layout.sections[tabId] || layout.sections[tabId].length == 0) return <div />
         return <div>
             {layout.sections[tabId].map(section => <Section key={section.id} section={section} currentBP={currentBP} />)}
