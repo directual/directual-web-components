@@ -21,8 +21,12 @@ export default function TabsPane({ tabs, onDivRef, loading, currentTabKey, fpsTa
 
     useEffect(()=> {currentTabKey && currentTabKey != currentTab && setCurrentTab(currentTabKey)}, [currentTabKey])
 
+    useEffect(()=> {
+        console.log('TABS ARE CHANGED')
+    }, [tabs])
+
     useEffect(function onFirstMount() {
-        console.log('miunting tabs')
+        console.log('mounting tabs')
         console.log('currentTabKey = ' + currentTabKey)
         const queryString = typeof window !== 'undefined' ? window.location.search : '';
         const urlParams = new URLSearchParams(queryString);
