@@ -22,10 +22,13 @@ export default function TabsPane({ tabs, onDivRef, loading, currentTabKey, fpsTa
     useEffect(()=> {currentTabKey && currentTabKey != currentTab && setCurrentTab(currentTabKey)}, [currentTabKey])
 
     useEffect(function onFirstMount() {
+        console.log('miunting tabs')
+        console.log('currentTabKey = ' + currentTabKey)
         const queryString = typeof window !== 'undefined' ? window.location.search : '';
         const urlParams = new URLSearchParams(queryString);
         const urlTab = urlParams && urlParams.get('tab')
         if (!currentTabKey && urlTab && saveTabToURL && tabs.filter(i => i.key == urlTab).length) { 
+            console.log('set url tab' + urlTab)
             setCurrentTab(urlTab);
         }
         // if none is selected, pick the first:
@@ -38,7 +41,8 @@ export default function TabsPane({ tabs, onDivRef, loading, currentTabKey, fpsTa
     }, []);
 
     return (<div style={{height: "100%"}}
-    >current = {currentTab} <br />
+    >
+        {/* current = {currentTab} <br /> */}
         <div className={`${styles.tabsPane} ${fixedScroll && styles.fixedScroll}`} style={style}>
             {(!isSingleTab || (isSingleTab && !hideSingleTab)) &&
                 <TabsMenu
