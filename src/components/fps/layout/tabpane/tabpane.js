@@ -33,8 +33,8 @@ export default function TabsPane({ tabs, onDivRef, loading, currentTabKey, fpsTa
     }, [tabs])
 
     useEffect(function onFirstMount() {
-        console.log('mounting tabs')
-        console.log('currentTabKey = ' + currentTabKey)
+        // console.log('mounting tabs')
+        // console.log('currentTabKey = ' + currentTabKey)
         const queryString = typeof window !== 'undefined' ? window.location.search : '';
         const urlParams = new URLSearchParams(queryString);
         const urlTab = urlParams && urlParams.get('tab')
@@ -44,10 +44,10 @@ export default function TabsPane({ tabs, onDivRef, loading, currentTabKey, fpsTa
         }
         // if none is selected, pick the first:
         if (!currentTab) {
-            console.log('none tab is selected')
-            console.log(tabs)
+            // console.log('none tab is selected')
+            // console.log(tabs)
         } else {
-            console.log(currentTab + ' - is selected')
+            // console.log(currentTab + ' - is selected')
         }
     }, []);
 
