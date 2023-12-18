@@ -795,6 +795,9 @@
 :global .ural.compact_Mode .D_MainMenu_List_Group_Title {
   text-align: center;
 }
+:global .ural .D_MainMenu_GroupTitle {
+  padding-left: 10px;
+}
 :global .ural .D_MainMenu_Mobile_Tabs {
   background-color: var(--menu-bgr);
   border-radius: var(--border-radius);
@@ -995,17 +998,20 @@
 :global .ural .D_MainMenu_Footer_Name {
   font-weight: var(--strong-font-weight);
   padding-bottom: 3px;
+  color: var(--menu-item);
 }
 :global .ural .D_MainMenu_Footer_ID {
   font-size: var(--text-small-size);
-  opacity: 0.5;
+  color: var(--menu-item);
+  opacity: 0.6;
 }
 :global .ural .D_MainMenu_Footer_Logout {
-  opacity: 0.4;
+  color: var(--menu-item);
   cursor: pointer;
   transition: 0.5s;
 }
 :global .ural .D_MainMenu_Footer_Logout:hover {
+  color: var(--menu-item-hover);
   opacity: 0.9;
 }
 :global .ural .D_MainMenu_Minimize .D_MainMenu_Minimize_Button {

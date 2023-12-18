@@ -19946,8 +19946,8 @@ const App = (props) => {
     let basicTheme = {
         colorScheme: localStorage.getItem('dd-theme-color') || 'classic',
         radius: localStorage.getItem('dd-theme-radius') || 25,
-        headersFont: localStorage.getItem('dd-theme-headersFont') || 'Montserrat',
-        fontText: localStorage.getItem('dd-theme-fontText') || 'Lato',
+        headersFont: localStorage.getItem('dd-theme-headersFont') || 'Inter',
+        fontText: localStorage.getItem('dd-theme-fontText') || 'Inter',
         headersFontWeight: localStorage.getItem('dd-theme-headersFontWeight') || '700',
         bodyFontWeight: localStorage.getItem('dd-theme-bodyFontWeight') || '400',
         customThemeColors: parseJson(localStorage.getItem('dd-theme-customThemeColors')),

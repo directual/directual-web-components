@@ -874,6 +874,10 @@
         text-align: center;
       }
     }
+
+    .D_MainMenu_GroupTitle {
+      padding-left: 10px;
+    }
     
 
     .D_MainMenu_Mobile_Tabs {
@@ -1092,16 +1096,20 @@
     .D_MainMenu_Footer_Name {
       font-weight: var(--strong-font-weight);
       padding-bottom: 3px;
+      color: var(--menu-item);
     }
     .D_MainMenu_Footer_ID {
       font-size: var(--text-small-size);
-      opacity: .5;
+      color: var(--menu-item);
+      opacity: .6;
     }
     .D_MainMenu_Footer_Logout {
-      opacity: .4;
+      //opacity: .4;
+      color: var(--menu-item);
       cursor: pointer;
       transition: .5s;
       &:hover {
+        color: var(--menu-item-hover);
         opacity: .9;
       }
     }

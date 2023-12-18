@@ -996,8 +996,8 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
 
     if (item.isFolder && isHorizontal) {
         return <div className={`D_MainMenu_Item D_MainMenu_GroupTitle ${styles.menuIcon}`}
-            style={sideMenuAlign == 'right' ? { marginLeft: horMenuMargin } :
-                sideMenuAlign == 'left' ? { marginRight: horMenuMargin } : {}
+            style={sideMenuAlign == 'right' ? { marginLeft: horMenuMargin, marginTop: 0 } :
+                sideMenuAlign == 'left' ? { marginRight: horMenuMargin, marginTop: 0 } : {}
             }
         >
             <DropDown
@@ -1027,12 +1027,16 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
         </div>
     }
 
-    return <a onClick={e => menuItem.linkToType !== 'external' ?
-        handleRoute(menuItem.linkToPage)(e) : undefined}
-        href={menuItem.linkToType !== 'external' ? undefined : menuItem.linkToURL}
+    return <a onClick={e => {
+        if (menuItem.linkToType !== 'external') {
+            handleRoute(menuItem.linkToPage)(e)
+            e.preventDefault()
+        }
+        }}
+        href={menuItem.linkToType !== 'external' ? menuItem.linkToPage : menuItem.linkToURL}
         target={menuItem.linkToURLNewWindow && menuItem.linkToType == 'external' ? '_blank' : ''}
-        style={sideMenuAlign == 'right' ? { marginLeft: horMenuMargin } :
-            sideMenuAlign == 'left' ? { marginRight: horMenuMargin } : {}
+        style={sideMenuAlign == 'right' ? { marginLeft: horMenuMargin, marginTop: 0 } :
+            sideMenuAlign == 'left' ? { marginRight: horMenuMargin, marginTop: 0 } : {}
         }
         className={`D_MainMenu_Item 
             ${styles.menuIcon}

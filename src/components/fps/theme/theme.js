@@ -1347,8 +1347,8 @@ export default function FpsTheme(props) {
         {
             colorScheme: props.defaultValue.colorScheme || options[0].value,
             radius: props.defaultValue.radius || 25,
-            headersFont: props.defaultValue.headersFont || 'Montserrat',
-            fontText: props.defaultValue.fontText || 'Lato',
+            headersFont: props.defaultValue.headersFont || 'Inter',
+            fontText: props.defaultValue.fontText || 'Inter',
             headersFontWeight: props.defaultValue.headersFontWeight || '700',
             bodyFontWeight: props.defaultValue.bodyFontWeight || '400',
             textSize: props.defaultValue.textSize || 16,
