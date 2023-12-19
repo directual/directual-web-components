@@ -7,6 +7,7 @@ export function LazyLoading({ setPage, pageSize, totalPages, currentPage, setLoa
     const lazyRef = useRef(null);
     const currentPageRef = useRef(currentPage);
     const totalPagesRef = useRef(totalPages);
+    const setPageRef = useRef(setPage);
 
     // Update the ref whenever currentPage changes
     useEffect(() => {
@@ -17,11 +18,15 @@ export function LazyLoading({ setPage, pageSize, totalPages, currentPage, setLoa
         totalPagesRef.current = totalPages;
     }, [totalPages]);
 
+    useEffect(() => {
+        setPageRef.current = setPage;
+    }, [setPage]);
+
     const addOnePage = () => {
         if (totalPagesRef.current === 1) return;
         if (currentPageRef.current < (totalPagesRef.current - 1)) {
             setLoading(true);
-            setPage(currentPageRef.current + 1);
+            setPageRef.current(currentPageRef.current + 1);
         }
     };
 
