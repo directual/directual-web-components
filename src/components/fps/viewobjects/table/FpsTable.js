@@ -19,9 +19,9 @@ import debounce from 'lodash.debounce';
 function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     if (!data) { data = {} }
 
-    const [currentData, setCurrentData] = useState(data)
+    const [currentData,setCurrentData] = useState(data)
 
-    useEffect(() => {
+    useEffect(()=>{
         // console.log('=== update data ===')
         // console.log(currentData)
         // console.log(' vvv ')
@@ -335,7 +335,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
     // get direct link ID
     useEffect(() => {
-        if (!lazyLoadingHandler) {
+        if (lazyLoadingHandler) {
             setLazyLoadingHandler(false)
             setCardsData([...cardsData, ...currentData.data])
         } else {
@@ -428,7 +428,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 lang={lang}
                 onFilter={() => { }}
             />
-            <div style={{ position: 'fixed', top: 0, right: 0, backgroundColor: 'cyan', padding: 10 }}>{currentPage}</div>
+            <div style={{ position: 'fixed', top: 0 , right: 0, backgroundColor: 'cyan', padding: 10}}>{currentPage}</div>
             <Table
                 currentBP={currentBP}
                 data={currentData}
@@ -456,28 +456,14 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 setLoading={value => setLoading(value)}
             />
             {_.get(currentData, "params.lazyLoading") ?
-                <React.Fragment>
-                    <LazyLoading
-                        setPage={setPage}
-                        pageSize={pageSize}
-                        totalPages={totalPages}
-                        currentPage={currentPage}
-                        setLoading={setLoading}
-                        loading={loading}
-                    />
-                    <div className={styles.pagination}>
-                        <Paging
-                            setPage={setPage}
-                            pageSize={pageSize}
-                            dict={dict}
-                            lang={lang}
-                            totalPages={totalPages}
-                            currentPage={currentPage}
-                            setLoading={setLoading}
-                            loading={loading}
-                        />
-                    </div>
-                </React.Fragment> :
+                <LazyLoading
+                    setPage={setPage}
+                    pageSize={pageSize}
+                    totalPages={totalPages}
+                    currentPage={currentPage}
+                    setLoading={setLoading}
+                    loading={loading}
+                /> :
                 totalPages > 0 && tableHeaders.length != 0 &&
                 <div className={styles.pagination}>
                     <Paging
