@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import styles from './paging.module.css'
 import Button from '../../button/button'
 import Loader from '../../loader/loader';
@@ -7,14 +7,21 @@ export function LazyLoading({ setPage, pageSize, totalPages, currentPage, setLoa
 
     const lazyRef = useRef(null);
 
+    const [currPage,setCurrPage] = useState(currentPage)
+
+    useEffect(()=>{
+        if (currentPage != currPage) { setCurrPage(currentPage)}
+    }, [currentPage])
+
     const addOnePage = () => {
         console.log('=========> addOnePage ============>')
-        console.log(currentPage + 1)
+        console.log("currPage = " + currPage)
+        console.log(currPage + 1)
         if (totalPages == 1) return undefined
 
-        if (currentPage < (totalPages - 1)) {
+        if (currPage < (totalPages - 1)) {
             setLoading(true)
-            setPage(currentPage + 1)
+            setPage(currPage + 1)
         }
     }
 
