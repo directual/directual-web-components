@@ -19,9 +19,6 @@ import debounce from 'lodash.debounce';
 function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     if (!data) { data = {} }
 
-    console.log('---data FpsTable---')
-    console.log(data)
-
     const [currentData,setCurrentData] = useState(data)
 
     useEffect(()=>{
@@ -31,6 +28,9 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         // console.log(data)
         setCurrentData(data);
     }, [data])
+
+    console.log('---currentData FpsTable---')
+    console.log(currentData)
 
     const cx = null
     const dqlService = debounce(performFiltering, 600);
