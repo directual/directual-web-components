@@ -428,7 +428,6 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 lang={lang}
                 onFilter={() => { }}
             />
-            <div style={{ position: 'fixed', top: 0 , right: 0, backgroundColor: 'cyan', padding: 10}}>{currentPage}</div>
             <Table
                 currentBP={currentBP}
                 data={currentData}

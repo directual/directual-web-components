@@ -6,15 +6,20 @@ import Loader from '../../loader/loader';
 export function LazyLoading({ setPage, pageSize, totalPages, currentPage, setLoading, loading, dict, lang, chartPaging }) {
     const lazyRef = useRef(null);
     const currentPageRef = useRef(currentPage);
+    const totalPagesRef = useRef(totalPages);
 
     // Update the ref whenever currentPage changes
     useEffect(() => {
         currentPageRef.current = currentPage;
     }, [currentPage]);
 
+    useEffect(() => {
+        totalPagesRef.current = totalPages;
+    }, [totalPages]);
+
     const addOnePage = () => {
-        if (totalPages === 1) return;
-        if (currentPageRef.current < (totalPages - 1)) {
+        if (totalPagesRef.current === 1) return;
+        if (currentPageRef.current < (totalPagesRef.current - 1)) {
             setLoading(true);
             setPage(currentPageRef.current + 1);
         }
@@ -24,10 +29,10 @@ export function LazyLoading({ setPage, pageSize, totalPages, currentPage, setLoa
         const observer = new IntersectionObserver(
             (entries) => {
                 if (entries[0].isIntersecting) {
-                    console.log('lazyRef is visible!');
+                    //console.log('lazyRef is visible!');
                     addOnePage();
                 } else {
-                    console.log('lazyRef is not visible.');
+                    //console.log('lazyRef is not visible.');
                 }
             },
             {
