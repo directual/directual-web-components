@@ -16,6 +16,9 @@ export function LazyLoading({ setPage, pageSize, totalPages, currentPage, setLoa
         }
     }
 
+    console.log("LazyLoading")
+    console.log(currentPage)
+
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
