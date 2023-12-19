@@ -92,13 +92,6 @@ export function Cards({
         null
     }
     const name = id && tableStructures[id] && tableStructures[id].name
-    // console.log('randomField')
-    // console.log('tableFieldScheme')
-    // console.log(tableFieldScheme)
-    // console.log(randomField)
-    // console.log('id')
-    // console.log(id)
-    // console.log(tableStructures[id])
     const viewName =
       id &&
       tableStructures[id] &&

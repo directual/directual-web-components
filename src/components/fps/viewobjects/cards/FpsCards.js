@@ -20,8 +20,8 @@ import debounce from 'lodash.debounce';
 function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     if (!data) { data = {} }
 
-    console.log('---data FpsCards---')
-    console.log(data)
+    // console.log('---data FpsCards---')
+    // console.log(data)
 
     const cx = null
     const dqlService = debounce(performFiltering, 600);
@@ -321,9 +321,14 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
     // get direct link ID
     useEffect(() => {
+        // console.log('======= 2')
+        // console.log(cardsData);
+        // console.log(data.data);
         if (lazyLoadingHandler) {
             setLazyLoadingHandler(false)
             setCardsData([...cardsData, ...data.data])
+        } else {
+            setCardsData([...data.data])
         }
         const queryString = typeof window !== 'undefined' ? window.location.search : '';
         const urlParams = new URLSearchParams(queryString);
