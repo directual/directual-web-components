@@ -148,7 +148,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     const [lazyLoadingHandler, setLazyLoadingHandler] = useState(false)
 
     function setPage(page) {
-        console.log('=========> SET PAGE ============>')
+        console.log('=========> SET PAGE! ============>')
         console.log(page)
         if (_.get(data, "params.lazyLoading")) { setLazyLoadingHandler(true) }
         let prom = onEvent({ dql: currentDQL, sort: currentSort, _id: id }, { page: page }, { reqParam1: "true" })

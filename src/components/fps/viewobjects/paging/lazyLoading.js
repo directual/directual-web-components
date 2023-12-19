@@ -8,6 +8,8 @@ export function LazyLoading({ setPage, pageSize, totalPages, currentPage, setLoa
     const lazyRef = useRef(null);
 
     const addOnePage = () => {
+        console.log('=========> addOnePage ============>')
+        console.log(currentPage + 1)
         if (totalPages == 1) return undefined
 
         if (currentPage < (totalPages - 1)) {
