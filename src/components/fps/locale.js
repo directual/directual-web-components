@@ -33,6 +33,7 @@ export const dict = {
         of: "of",
         card: {
             edit: "edit",
+            dropdownDisabled: "Dropdown option is disabled. Enter objects' IDs",
             cancelEditing: "cancel editing",
             saveChanges: "Save changes",
             discardChanges: "Discard changes",
@@ -101,6 +102,7 @@ export const dict = {
         of: "von",
         card: {
             edit: "bearbeiten",
+            dropdownDisabled: "Dropdown-Option ist deaktiviert. Geben Sie die IDs der Objekte ein",
             cancelEditing: "bearbeitung abbrechen",
             saveChanges: "Änderungen speichern",
             discardChanges: "Änderungen verwerfen",
@@ -170,6 +172,7 @@ export const dict = {
         of: "de",
         card: {
             edit: "editar",
+            dropdownDisabled: "La opción desplegable está deshabilitada. Ingrese las ID de los objetos",
             cancelEditing: "cancelar la edición",
             saveChanges: "Guardar los cambios",
             discardChanges: "Descartar los cambios",
@@ -239,6 +242,7 @@ export const dict = {
         of: "sur",
         card: {
             edit: "éditer",
+            dropdownDisabled: "L'option de liste déroulante est désactivée. Entrez les identifiants des objets",
             cancelEditing: "annuler l'édition",
             saveChanges: "Sauvegarder les modifications",
             discardChanges: "Annuler les modifications",
@@ -308,6 +312,7 @@ export const dict = {
         of: "из",
         card: {
             edit: "редактировать",
+            dropdownDisabled: "Выпадающий список отключен. Введите идентификаторы объектов",
             cancelEditing: "отменить редактирование",
             saveChanges: "Сохранить изменения",
             discardChanges: "Отменить изменения",
@@ -377,6 +382,7 @@ export const dict = {
         card: {
             edit: "編集する",
             cancelEditing: "編集をキャンセルする",
+            dropdownDisabled: "ドロップダウンオプションは無効です。オブジェクトのIDを入力してください。",
             saveChanges: "変更を保存する",
             discardChanges: "変更を破棄する",
             noVisibleName: "表示可能な名前はありません",
@@ -445,6 +451,7 @@ export const dict = {
         "card": {
             "edit": "editar",
             "cancelEditing": "cancelar edição",
+            "dropdownDisabled": "Opção de dropdown está desativada. Insira os IDs dos objetos",
             "saveChanges": "Salvar alterações",
             "discardChanges": "Descartar alterações",
             "noVisibleName": "Sem nome visível",
@@ -512,6 +519,7 @@ export const dict = {
         card: {
             edit: "संपादित करें",
             cancelEditing: "संपादन रद्द करें",
+            dropdownDisabled: "ड्रॉपडाउन विकल्प निष्क्रिय है। ऑब्जेक्ट्स के आईडी दर्ज करें।",
             saveChanges: "परिवर्तन सहेजें",
             discardChanges: "परिवर्तन त्यागें",
             noVisibleName: "कोई दृश्यमान नाम नहीं",

@@ -542,7 +542,6 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
 
     return (
         <div key={field.sysName} className={styles.objFieldWrapper}>
-
             {debug && <div>
                 <p className='dd-debug'>{JSON.stringify(field)}</p>
                 <p className='dd-debug'><b>object: </b>{JSON.stringify(object[field.sysName])}</p>
@@ -664,7 +663,6 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
                     object={object}
                     dict={dict}
                     lang={lang}
-                    editingOn={editingOn}
                     field={field}
                     composeObject={composeObject}
                     onChange={value => setModel({ ...model, [field.sysName]: value })}
@@ -1187,6 +1185,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                 <Input
                     type={`${field.dataType == 'link' ? 'select' : 'multiselect'}`}
                     options={field.searchData}
+                    locale={lang}
                     onChange={value => {
                         field.dataType == 'link' ?
                             onChange(value) :
@@ -1216,7 +1215,7 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                             (renderAL && renderAL.length > 0
                                 && renderAL.map(i => i.id || i))
                     }
-                    tip="Dropdown option is disabled. Enter objects' IDs"
+                    tip={dict[lang].card.dropdownDisabled} //"Dropdown option is disabled. Enter objects' IDs"
                 />
             }
         </React.Fragment> : <div />

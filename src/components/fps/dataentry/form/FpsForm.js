@@ -846,6 +846,7 @@ function FpsFormOld({ auth, data, onEvent, id, locale }) {
                 <div>
                   <Input
                     sysName={field.sysName}
+                    locale={locale}
                     validationHandler={validationHandler}
                     label={(data.placeholder != "true" || typesMatching(field) == 'slider' || typesMatching(field) == 'range') ? field.name : ''}
                     placeholder={`${data.placeholder == "true" ? `${field.name}${field.params.required ? '*' : ''}` : ''}`}

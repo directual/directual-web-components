@@ -189,7 +189,7 @@ export default function StructureField(props) {
                             </div> :
                             !filter ?
                                 <div className={`${styles.currentInlineField} ${styles.transparent}`}>
-                                    {props.placeholder ? props.placeholder : 'Select the value'}
+                                    {props.placeholder ? props.placeholder : null}
                                 </div> :
                                 <div className={`${styles.currentInlineField} ${styles.transparent}`}>&nbsp;
                                 </div>
@@ -264,7 +264,7 @@ export default function StructureField(props) {
                 <div className={`${styles.value_wrapper} ${(props.filterFields || props.filterLinkFields) && styles.narrow}`}>
                     {!value && !focus &&
                         <div className={`${styles.placeholder}`}>
-                            {props.placeholder ? props.placeholder : 'Select the value'}</div>}
+                            {props.placeholder ? props.placeholder : null}</div>}
                     {value &&
                         <div className={`${styles.currentField} ${focus && styles.transparent}`}>
                             {getValueDetails(value).name &&

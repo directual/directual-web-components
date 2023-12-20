@@ -116,6 +116,9 @@ function List(props) {
 
 export default function Select(props) {
 
+    console.log('select lang')
+    console.log(props.dict)
+
     function convertDefaultValue(def) {
         if (def === '[]' || (Array.isArray(def) && def.length == 1 && def[0] == "")) {
             def = null
@@ -347,7 +350,7 @@ export default function Select(props) {
                     {!props.multi && <React.Fragment>
                         {!value && !filter &&
                             <div className={`${styles.placeholder}`}>
-                                {props.placeholder ? props.placeholder :  _.get(props.dict,'select') ||'Select the value'}</div>}
+                                {props.placeholder ? props.placeholder :  _.get(props.dict,'select')}</div>}
                         {value && !filter &&
                             <div className={styles.currentValue}>{value.value}
                                 <span className={styles.displayKey}>

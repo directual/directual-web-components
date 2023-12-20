@@ -277,7 +277,7 @@ function OpenAI({ saveAIFilters, openAI, alignRight }) {
 }
 
 function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters, dict, alignRight, currentBP,
-    saveChartFilters, chartFilters, lang, dict }) {
+    saveChartFilters, chartFilters, lang }) {
 
     const filterWrapper = useRef(null);
 

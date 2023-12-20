@@ -393,6 +393,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                             onClose={handleCloseShowObject}
                             onTerminate={handleCloseShowObject}
                             object={showObject}
+                            locale={locale}
                             submit={submit}
                             dict={dict}
                             lang={lang}

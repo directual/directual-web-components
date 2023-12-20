@@ -398,7 +398,7 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue, mapR
     </React.Fragment>
 }
 
-function FieldLink({ field, onChange, placeholder, editingOn, defaultValue }) {
+function FieldLink({ field, onChange, placeholder, editingOn, defaultValue, locale }) {
 
     const [edit, setEdit] = useState(false)
 
@@ -415,6 +415,7 @@ function FieldLink({ field, onChange, placeholder, editingOn, defaultValue }) {
         return <Input
             type={field.dataType == 'link' ? 'select' : 'multiselect'}
             onChange={onChange}
+            locale={locale}
             disabled={!editingOn}
             required={field.required}
             placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}

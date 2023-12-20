@@ -386,6 +386,7 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
                             onClose={handleCloseShowObject}
                             onTerminate={handleCloseShowObject}
                             object={showObject}
+                            locale={locale}
                             submit={submit}
                             auth={auth}
                             dict={dict}
