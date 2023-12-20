@@ -350,7 +350,7 @@ export const dict = {
         },
         moreThan: "больше чем",
         lessThan: "меньше чем",
-        from: "`От",
+        from: "От",
         to: "До",
         clear: "Очистить",
         sort: "Сортировка",
