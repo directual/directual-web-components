@@ -7,7 +7,8 @@ export const dict = {
             submittedSuccessfuly: 'Submitted successfully',
             submit: 'Submit',
             submitAgain: 'Submit again',
-            thankYou: 'Thank you'
+            thankYou: 'Thank you',
+            chosen: 'chosen'
         },
         sortField: 'Sort field',
         error: 'Error',
@@ -76,7 +77,8 @@ export const dict = {
             submittedSuccessfuly: 'Erfolgreich eingereicht',
             submit: 'Einreichen',
             submitAgain: 'Erneut senden',
-            thankYou: 'Dankeschön'
+            thankYou: 'Dankeschön',
+            chosen: 'ausgewählt'
         },
         sortField: 'Sortierfeld',
         error: 'Fehler',
@@ -146,7 +148,8 @@ export const dict = {
             submittedSuccessfuly: 'Enviado satisfactoriamente',
             submit: 'Enviar',
             submitAgain: 'Enviar de nuevo',
-            thankYou: 'Gracias'
+            thankYou: 'Gracias',
+            chosen: 'elegido'
         },
         sortField: 'Campo de ordenación',
         error: 'Error',
@@ -216,7 +219,8 @@ export const dict = {
             submittedSuccessfuly: "Soumis avec succès",
             submit: 'Soumettre',
             submitAgain: 'Soumettre à nouveau',
-            thankYou: 'Merci'
+            thankYou: 'Merci',
+            chosen: 'choisi'
         },
         sortField: 'Champ de tri',
         error: 'Erreur',
@@ -286,7 +290,8 @@ export const dict = {
             submittedSuccessfuly: 'Успешно отправлено',
             submit: 'Отправить',
             submitAgain: 'Отправить опять',
-            thankYou: 'Спасибо'
+            thankYou: 'Спасибо',
+            chosen: 'выбрано'
         },
         sortField: 'Поле для сортировки',
         error: 'Ошибка',
@@ -355,7 +360,8 @@ export const dict = {
             submittedSuccessfuly: '送信されました',
             submit: '送信する',
             submitAgain: '再送信する',
-            thankYou: 'ありがとうございます'
+            thankYou: 'ありがとうございます',
+            chosen: '選ばれた'
         },
         sortField: '並び替えフィールド',
         error: 'エラー',
@@ -424,7 +430,8 @@ export const dict = {
             "submittedSuccessfuly": "Enviado com sucesso",
             "submit": "Enviar",
             "submitAgain": "Enviar novamente",
-            "thankYou": "Obrigado"
+            "thankYou": "Obrigado",
+            "chosen": 'escolhido'
         },
         "sortField": 'Campo de ordenação',
         "error": "Erro",
@@ -492,7 +499,8 @@ export const dict = {
             submittedSuccessfuly: 'सफलतापूर्वक सबमिट किया गया',
             submit: 'सबमिट करें',
             submitAgain: 'फिर से सबमिट करें',
-            thankYou: 'धन्यवाद'
+            thankYou: 'धन्यवाद',
+            chosen: 'चुना हुआ'
         },
         sortField: 'क्रमबद्ध क्षेत्र',
         error: 'त्रुटि',

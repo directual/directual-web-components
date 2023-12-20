@@ -44,7 +44,7 @@ function List(props) {
     })
 
     const noOptions = !props.thisIsSubSelect ? <SomethingWentWrong icon='ban'
-        message={`No options${props.filter ? ` like \"${props.filter}\"` : ''}`} /> :
+        message={`${props.filter ? `${_.get(props.dict,'table.noDataFound')} \"${props.filter}\"` : `${_.get(props.dict,'table.noData')}`}`} /> :
         <span className={styles.noOptionsSmall}>No options</span>
 
     return (
@@ -52,8 +52,10 @@ function List(props) {
             {props.options && props.options.length > 0 && props.focus && !props.disabled &&
                 <li className={styles.options_counter}>
 
-                    {props.current && props.current.length > 0 ? `${props.current.length}/${props.options.length} chosen` :
-                        <React.Fragment>{props.options.length} option{`${props.options.length > 1 ? 's' : ''}`}</React.Fragment>
+                    {props.current && props.current.length > 0 ? `${props.current.length}/${props.options.length} ${_.get(props.dict,'form.chosen')}` :
+                        <React.Fragment>{props.options.length} 
+                        {/* option{`${props.options.length > 1 ? 's' : ''}`} */}
+                        </React.Fragment>
                     }
                 </li>}
             <ul className={`${styles.list} ${styles.flat}`}
@@ -116,8 +118,8 @@ function List(props) {
 
 export default function Select(props) {
 
-    console.log('select lang')
-    console.log(props.dict)
+    // console.log('select lang')
+    // console.log(props.dict)
 
     function convertDefaultValue(def) {
         if (def === '[]' || (Array.isArray(def) && def.length == 1 && def[0] == "")) {
@@ -376,6 +378,7 @@ export default function Select(props) {
                     <div onClick={() => { setFocus(!focus) }} className={`${styles.arrow} icon icon-down ${focus && styles.twist}`}></div>}
                 <List
                     chooseOption={option => chooseOption(option)}
+                    dict={props.dict}
                     removeOption={option => removeOption(option)}
                     current={_.get(value,'[0].key') ? value : []}
                     bottomSelect={props.bottomSelect}
