@@ -145,7 +145,9 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
         "ESP": "es",
         "FRA": "fr",
         "JPN": "ja",
-        "ENG": "en-us"
+        "ENG": "en-us",
+        "POR": "pt",
+        "IND": "hi",
     }
 
     const transformData = (d) => {
