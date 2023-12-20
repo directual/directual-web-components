@@ -807,13 +807,15 @@ function FpsFormOld({ auth, data, onEvent, id, locale }) {
       </React.Fragment>}
 
       {!showForm && !loading && data.error != 'You have no permissions for viewing form' && data.error != 'Form is not configured' &&
+        <ActionPanel margin={{top:12, bottom:0}}>
         <Button icon='refresh' onClick={() => {
           setShowForm(true);
           data.response == [];
           data.error = '';
           fetchObjectFields(eidtID)
           getResultAnswer().isSuccess && !data.error && setModel({ ...hiddenFieldsValues, ...hiddenAuth, ...fetchedObjectFields }) // TODO : скрытые поля, авторизация и фетч
-        }}>{formButtonResubmit}</Button>}
+        }}>{formButtonResubmit}</Button>
+        </ActionPanel>}
 
       {showForm && !loading && (
         <form onSubmit={submit} style={{ maxWidth: formWidth }}>
