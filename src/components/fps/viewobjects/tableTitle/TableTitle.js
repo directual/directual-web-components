@@ -7,6 +7,7 @@ import Loader from '../../loader/loader'
 import ActionPanel from '../../actionspanel/actionspanel'
 import { FormSection } from '../../dataentry/form/FpsForm'
 import _ from 'lodash'
+import moment from 'moment'
 
 export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters, onFilter, currentDQL,
     chartFilters, displayChartFilters, updateChartFilters, chartLines, clearChartFilters,
@@ -457,6 +458,38 @@ function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters
 
                 {(_.get(field, 'type') == 'date') &&
                     <div>
+                        <div className={`${styles.newFilterDateAs} DD_Table_NewFilters_Dates`}>
+                            <a onClick={e=>{
+                                e.preventDefault()
+                                const newFilters = { ...filters };
+                                let valueFrom = moment().add(-7,'days')
+                                let valueTo = moment()
+                                _.set(newFilters, `filters[${field.id}].valueFrom`, valueFrom);
+                                _.set(newFilters, `filters[${field.id}].valueTo`, valueTo);
+                                _.set(newFilters, `filters[${field.id}].type`, 'date');
+                                saveFilters(newFilters);
+                            }}>{_.get(dict, 'lastWeek')}</a>
+                            <a onClick={e=>{
+                                e.preventDefault()
+                                const newFilters = { ...filters };
+                                let valueFrom = moment().add(-2,'weeks')
+                                let valueTo = moment()
+                                _.set(newFilters, `filters[${field.id}].valueFrom`, valueFrom);
+                                _.set(newFilters, `filters[${field.id}].valueTo`, valueTo);
+                                _.set(newFilters, `filters[${field.id}].type`, 'date');
+                                saveFilters(newFilters);
+                            }}>{_.get(dict, 'last2Weeks')}</a>
+                            <a onClick={e=>{
+                                e.preventDefault()
+                                const newFilters = { ...filters };
+                                let valueFrom = moment().add(-1,'month')
+                                let valueTo = moment()
+                                _.set(newFilters, `filters[${field.id}].valueFrom`, valueFrom);
+                                _.set(newFilters, `filters[${field.id}].valueTo`, valueTo);
+                                _.set(newFilters, `filters[${field.id}].type`, 'date');
+                                saveFilters(newFilters);
+                            }}>{_.get(dict, 'lastMonth')}</a>
+                        </div>
                         <Input type="date"
                             label={_.get(dict, 'from') || 'From'}
                             defaultValue={_.get(filters, `filters[${field.id}].valueFrom`)}
