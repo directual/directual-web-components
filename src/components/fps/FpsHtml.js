@@ -5,6 +5,7 @@ import iconMkd from './../../icons/fps-markdown.svg'
 import { ComponentWrapper } from './wrapper/wrapper'
 import Article from './article/article'
 import Input from './dataentry/input/input'
+import InnerHTML from 'dangerously-set-html-content'
 
 export default function FpsHtml(props) {
 
@@ -24,9 +25,7 @@ export default function FpsHtml(props) {
   return (
     <ComponentWrapper>
       <Article>
-        <div
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
+        <InnerHTML html={{ __html: html }} />
       </Article>
     </ComponentWrapper>
   )
