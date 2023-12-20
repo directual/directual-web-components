@@ -81,7 +81,7 @@ export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters,
     )
 }
 
-function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOptions, alignRight, currentBP, tableTitle,
+function NewFilters({ tableFilters, performFiltering, lang, dict, loading, fieldOptions, alignRight, currentBP, tableTitle,
     chartFilters, displayChartFilters, updateChartFilters, displayFilters, chartLines, clearChartFilters }) {
 
 
@@ -186,6 +186,7 @@ function NewFilters({ tableFilters, performFiltering, dict, loading, fieldOption
                     chartFilters={chartFilters}
                     active={JSON.stringify(chartFilters) !== JSON.stringify(defaultChartFilters)}
                     dict={dict}
+                    lang={lang}
                     chartLines={chartLines}
                     saveChartFilters={updateChartFilters}
                     filters={filters}
@@ -276,7 +277,7 @@ function OpenAI({ saveAIFilters, openAI, alignRight }) {
 }
 
 function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters, dict, alignRight, currentBP,
-    saveChartFilters, chartFilters }) {
+    saveChartFilters, chartFilters, lang, dict }) {
 
     const filterWrapper = useRef(null);
 
@@ -387,7 +388,7 @@ function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters
                         <Input type="select"
                             nomargin
                             defaultValue={_.get(filters, 'sort.field')}
-                            placeholder={dict[lang].sortField} //'Sort field'
+                            placeholder={dict.sortField} //'Sort field'
                             width={220}
                             //displayKey
                             options={fieldOptions}
