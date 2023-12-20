@@ -25,7 +25,7 @@ export default function FpsHtml(props) {
   return (
     <ComponentWrapper>
       <Article>
-        <InnerHTML html={{ __html: html }} />
+        <InnerHTML html={html} />
       </Article>
     </ComponentWrapper>
   )
