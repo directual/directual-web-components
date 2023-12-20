@@ -549,7 +549,7 @@ export function Table({
     if (tableData.length === 0) {
         return <SomethingWentWrong
             icon='ban'
-            message={`${searchValue ? `No object found for ${searchValue}` : `No objects`}`}
+            message={`${searchValue ? `${_.get(dict[lang], 'table.noDataFound')} ${searchValue}` : _.get(dict[lang], 'table.noData')}`}
         />
     }
 

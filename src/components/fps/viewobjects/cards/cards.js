@@ -245,8 +245,8 @@ export function Cards({
               <SomethingWentWrong
                 icon='ban'
                 message={`${searchValue
-                  ? `No object found for ${searchValue}`
-                  : `No objects`
+                  ? (_.get(dict[lang], 'table.noDataFound') || "No results for") + " " + {searchValue} // `No object found for ${searchValue}`
+                  : _.get(dict[lang], 'table.noData') || "No data" //`No objects`
                   }`}
               />
             )}

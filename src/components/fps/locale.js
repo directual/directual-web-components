@@ -13,12 +13,12 @@ export const dict = {
         success: 'Success',
         madeOn: 'made on',
         loading: 'Loading...',
-        profile : {
+        profile: {
             password: 'Password',
             or: 'Or',
             firstName: 'First name',
             lastName: 'Last name',
-            email:'Email address',
+            email: 'Email address',
             phone: 'Phone number',
             login: 'Login',
             repeatPassword: 'Repeat password'
@@ -58,7 +58,11 @@ export const dict = {
         uploading: "Uploading files...",
         select: "Select the value",
         numbersOnly: "numbers only",
-        chartLines: "Show chart lines"
+        chartLines: "Show chart lines",
+        table: {
+            noDataFound: "No results for",
+            noData: "No data"
+        }
     },
 
 
@@ -76,12 +80,12 @@ export const dict = {
         success: 'Erfolg',
         madeOn: 'gemacht auf',
         loading: 'Wird geladen...',
-        profile : {
+        profile: {
             password: 'Passwort',
             or: 'Oder',
             firstName: 'Vorname',
             lastName: 'Nachname',
-            email:'E-Mail-Addresse',
+            email: 'E-Mail-Addresse',
             phone: 'Telefonnummer',
             login: 'Anmeldung',
             repeatPassword: 'Passwort wiederholen'
@@ -122,7 +126,11 @@ export const dict = {
         uploading: "Dateien werden hochgeladen...",
         select: "Wählen Sie den Wert aus",
         numbersOnly: "nur Zahlen",
-        chartLines: "Diagrammlinien anzeigen"
+        chartLines: "Diagrammlinien anzeigen",
+        table: {
+            noDataFound: "Keine Ergebnisse für",
+            noData: "Keine Daten"
+        }
     },
 
 
@@ -140,12 +148,12 @@ export const dict = {
         success: 'Éxito',
         madeOn: 'hecho en',
         loading: 'Cargando...',
-        profile : {
+        profile: {
             password: 'Contraseña',
             or: 'O',
             firstName: 'Nombre de pila',
             lastName: 'Apellido',
-            email:'Correo electrónico',
+            email: 'Correo electrónico',
             phone: 'Número de teléfono',
             login: 'Acceso',
             repeatPassword: 'Repite la contraseña'
@@ -186,7 +194,11 @@ export const dict = {
         uploading: "Subiendo archivos...",
         select: "Seleccione el valor",
         numbersOnly: "solo numeros",
-        chartLines: "Mostrar líneas de gráfico"
+        chartLines: "Mostrar líneas de gráfico",
+        table: {
+            noDataFound: "No se encontraron resultados para",
+            noData: "Sin datos"
+        }
     },
 
 
@@ -204,12 +216,12 @@ export const dict = {
         success: 'Succès',
         madeOn: 'fait sur',
         loading: 'Chargement...',
-        profile : {
+        profile: {
             password: 'Mot de passe',
             or: 'Ou',
             firstName: 'Prénom',
             lastName: 'Nom de famille',
-            email:'Adresse e-mails',
+            email: 'Adresse e-mails',
             phone: 'Numéro de téléphone',
             login: 'Login',
             repeatPassword: 'Répéter le mot de passe'
@@ -250,7 +262,11 @@ export const dict = {
         uploading: "Téléchargement de fichiers...",
         select: "Sélectionnez la valeur",
         numbersOnly: "chiffres uniquement",
-        chartLines: "Afficher les lignes du graphique"
+        chartLines: "Afficher les lignes du graphique",
+        table: {
+            noDataFound: "Aucun résultat pour",
+            noData: "Pas de données"
+        }
     },
 
 
@@ -268,12 +284,12 @@ export const dict = {
         success: 'Успех',
         madeOn: 'сделано на',
         loading: 'Загрузка...',
-        profile : {
+        profile: {
             password: 'Пароль',
             or: 'Или',
             firstName: 'Имя',
             lastName: 'Фамилия',
-            email:'Электронная почта',
+            email: 'Электронная почта',
             phone: 'Телефон',
             login: 'Логин',
             repeatPassword: 'Повторите пароль'
@@ -314,7 +330,11 @@ export const dict = {
         uploading: "Идет загрузка...",
         select: "Выберите значение",
         numbersOnly: "только цифры",
-        chartLines: "Показать значения"
+        chartLines: "Показать значения",
+        table: {
+            noDataFound: "Нет результатов для",
+            noData: "Нет данных"
+        }
     },
 
     JPN: {
@@ -331,12 +351,12 @@ export const dict = {
         success: '成功しました',
         madeOn: 'made on',
         loading: '読み込んでいます…',
-        profile : {
+        profile: {
             password: 'パスワード',
             or: 'または',
             firstName: '名前',
             lastName: '名字',
-            email:'メールアドレス',
+            email: 'メールアドレス',
             phone: '電話番号',
             login: 'ログイン',
             repeatPassword: 'パスワードをリセットする'
@@ -377,6 +397,142 @@ export const dict = {
         uploading: "ファイルをアップロードしています...",
         select: "値を選択",
         numbersOnly: "数字のみ",
-        chartLines: "チャート線を表示"
+        chartLines: "チャート線を表示",
+        table: {
+            noDataFound: "結果が見つかりません",
+            noData: "データなし"
+        }
+    },
+
+    POR: {
+        "form": {
+            "noPermissions": "Você não tem permissões para visualizar o formulário",
+            "notConfigured": "Formulário não configurado",
+            "error": "Erro no formulário",
+            "submittedSuccessfuly": "Enviado com sucesso",
+            "submit": "Enviar",
+            "submitAgain": "Enviar novamente",
+            "thankYou": "Obrigado"
+        },
+        "error": "Erro",
+        "success": "Sucesso",
+        "madeOn": "feito em",
+        "loading": "Carregando...",
+        "profile": {
+            "password": "Senha",
+            "or": "Ou",
+            "firstName": "Nome",
+            "lastName": "Sobrenome",
+            "email": "Endereço de email",
+            "phone": "Número de telefone",
+            "login": "Login",
+            "repeatPassword": "Repetir senha"
+        },
+        "search": "Pesquisar",
+        "searching": "Pesquisando",
+        "prev": "Anterior",
+        "first": "Primeiro",
+        "next": "Próximo",
+        "page": "página",
+        "of": "de",
+        "card": {
+            "edit": "editar",
+            "cancelEditing": "cancelar edição",
+            "saveChanges": "Salvar alterações",
+            "discardChanges": "Descartar alterações",
+            "noVisibleName": "Sem nome visível",
+            "copyLink": "Copiar link direto para o objeto",
+            "refreshCard": "Atualizar objeto",
+            "cart": {
+                "notConfigured": "Carrinho não configurado",
+                "Total": "Total",
+                "Price": "Preço",
+                "Quantity": "Quantidade",
+                "Status": "Status",
+                "Title": "Título"
+            }
+        },
+        "moreThan": "maior que",
+        "lessThan": "menor que",
+        "from": "de",
+        "to": "para",
+        "clear": "Limpar",
+        "sort": "Ordenar",
+        "dropMany": "Solte arquivos aqui ou clique para selecionar arquivos",
+        "dropOne": "Solte um arquivo aqui ou clique para selecionar um",
+        "uploading": "Enviando arquivos...",
+        "select": "Selecione o valor",
+        "numbersOnly": "somente números",
+        "chartLines": "Mostrar linhas do gráfico",
+        "table": {
+            "noDataFound": "Nenhum resultado para",
+            "noData": "Sem dados"
+        }
+    },
+
+    IND: {
+        form: {
+            noPermissions: 'आपके पास फॉर्म देखने की अनुमति नहीं है',
+            notConfigured: 'फॉर्म कॉन्फ़िगर नहीं किया गया है',
+            error: 'फॉर्म त्रुटि',
+            submittedSuccessfuly: 'सफलतापूर्वक सबमिट किया गया',
+            submit: 'सबमिट करें',
+            submitAgain: 'फिर से सबमिट करें',
+            thankYou: 'धन्यवाद'
+        },
+        error: 'त्रुटि',
+        success: 'सफलता',
+        madeOn: 'बनाया गया',
+        loading: 'लोड हो रहा है...',
+        profile: {
+            password: 'पासवर्ड',
+            or: 'या',
+            firstName: 'पहला नाम',
+            lastName: 'अंतिम नाम',
+            email: 'ईमेल पता',
+            phone: 'फोन नंबर',
+            login: 'लॉगिन',
+            repeatPassword: 'पासवर्ड दोहराएं'
+        },
+        search: "खोजें",
+        searching: "खोज रहा है",
+        prev: "पिछला",
+        first: "पहला",
+        next: "अगला",
+        page: "पृष्ठ",
+        of: "का",
+        card: {
+            edit: "संपादित करें",
+            cancelEditing: "संपादन रद्द करें",
+            saveChanges: "परिवर्तन सहेजें",
+            discardChanges: "परिवर्तन त्यागें",
+            noVisibleName: "कोई दृश्यमान नाम नहीं",
+            copyLink: "ऑब्जेक्ट के लिए सीधा लिंक कॉपी करें",
+            refreshCard: "ऑब्जेक्ट रिफ्रेश करें",
+            cart: {
+                notConfigured: 'कार्ट कॉन्फ़िगर नहीं किया गया है',
+                Total: 'कुल',
+                Price: 'मूल्य',
+                Quantity: 'मात्रा',
+                Status: 'स्थिति',
+                Title: 'शीर्षक'
+            }
+        },
+        moreThan: "इससे अधिक",
+        lessThan: "इससे कम",
+        from: "से",
+        to: "तक",
+        clear: "साफ करें",
+        sort: "क्रमबद्ध करें",
+        dropMany: "फाइलें यहां डालें, या फाइलें चुनने के लिए क्लिक करें",
+        dropOne: "एक फाइल यहां डालें, या एक चुनने के लिए क्लिक करें",
+        uploading: "फाइलें अपलोड हो रही हैं...",
+        select: "मान चुनें",
+        numbersOnly: "केवल संख्याएं",
+        chartLines: "चार्ट लाइनें दिखाएं",
+        table: {
+            noDataFound: "कोई परिणाम नहीं मिला",
+            noData: "कोई डेटा नहीं"
+        }
     }
 }

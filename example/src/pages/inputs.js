@@ -229,9 +229,9 @@ Some *emphasis* and <strong>strong</strong>!`;
 
             <br />
 
-            <Input type='multiselect'
+            <Input type='select'
                 locale="FRA"
-                defaultValue={['id', 'хуе-мое']}
+                //defaultValue={['id', 'хуе-мое']}
                 options={[
                     {
                         "key": "id",
