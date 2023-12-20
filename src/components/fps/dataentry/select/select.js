@@ -326,7 +326,7 @@ export default function Select(props) {
                         )}
 
                         <li className={styles.multiplaceholder}>
-                            {!filter && <div>{props.placeholder ? props.placeholder : _.get(props.dict,'select') || 'Select the value'}</div>}
+                            {!filter && <div>{props.placeholder ? props.placeholder : _.get(props.dict,'select')}</div>}
                             {focus &&
                                 <input
                                     disabled={props.disabled}

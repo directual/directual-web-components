@@ -9,6 +9,7 @@ export const dict = {
             submitAgain: 'Submit again',
             thankYou: 'Thank you'
         },
+        sortField: 'Sort field',
         error: 'Error',
         success: 'Success',
         madeOn: 'made on',
@@ -76,6 +77,7 @@ export const dict = {
             submitAgain: 'Erneut senden',
             thankYou: 'Dankeschön'
         },
+        sortField: 'Sortierfeld',
         error: 'Fehler',
         success: 'Erfolg',
         madeOn: 'gemacht auf',
@@ -144,6 +146,7 @@ export const dict = {
             submitAgain: 'Enviar de nuevo',
             thankYou: 'Gracias'
         },
+        sortField: 'Campo de ordenación',
         error: 'Error',
         success: 'Éxito',
         madeOn: 'hecho en',
@@ -212,6 +215,7 @@ export const dict = {
             submitAgain: 'Soumettre à nouveau',
             thankYou: 'Merci'
         },
+        sortField: 'Champ de tri',
         error: 'Erreur',
         success: 'Succès',
         madeOn: 'fait sur',
@@ -280,6 +284,7 @@ export const dict = {
             submitAgain: 'Отправить опять',
             thankYou: 'Спасибо'
         },
+        sortField: 'Поле для сортировки',
         error: 'Ошибка',
         success: 'Успех',
         madeOn: 'сделано на',
@@ -347,6 +352,7 @@ export const dict = {
             submitAgain: '再送信する',
             thankYou: 'ありがとうございます'
         },
+        sortField: '並び替えフィールド',
         error: 'エラー',
         success: '成功しました',
         madeOn: 'made on',
@@ -414,6 +420,7 @@ export const dict = {
             "submitAgain": "Enviar novamente",
             "thankYou": "Obrigado"
         },
+        "sortField": 'Campo de ordenação',
         "error": "Erro",
         "success": "Sucesso",
         "madeOn": "feito em",
@@ -480,6 +487,7 @@ export const dict = {
             submitAgain: 'फिर से सबमिट करें',
             thankYou: 'धन्यवाद'
         },
+        sortField: 'क्रमबद्ध क्षेत्र',
         error: 'त्रुटि',
         success: 'सफलता',
         madeOn: 'बनाया गया',

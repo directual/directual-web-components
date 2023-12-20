@@ -387,7 +387,7 @@ function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters
                         <Input type="select"
                             nomargin
                             defaultValue={_.get(filters, 'sort.field')}
-                            placeholder='Sort field'
+                            placeholder={dict[lang].sortField} //'Sort field'
                             width={220}
                             //displayKey
                             options={fieldOptions}
