@@ -481,12 +481,12 @@ export function NewMainMenu(props) {
 
         {/* SIDE MOBILE MENU EXPNADER */}
         {showBackdrop && <Backdrop top onClick={hideMMhandler} />}
-        {!isTabs && <div className={`D_MeinMenu_show_MM ${styles.show_mobile_menu} ${leftSide && currentBP == 'mobile' && styles.leftSide}`}
+        {!isTabs && <div className={`D_MeinMenu_show_MM ${showMobileHeader && 'D_MeinMenu_MM_on_header'} ${styles.show_mobile_menu} ${leftSide && currentBP == 'mobile' && styles.leftSide}`}
             style={leftSide ? {
-                top: 4 + (showMobileHeader ? (mobileMenuPadding + menuMargin + menuBorderWidth) : 0),
+                top: 6 + (showMobileHeader ? (mobileMenuPadding + menuMargin + menuBorderWidth) : 0),
                 left: showMobileHeader ? (menuBorderWidth + menuMargin + mobileMenuPadding) : 6
             } : {
-                top: 4 + (showMobileHeader ? (mobileMenuPadding + menuMargin + menuBorderWidth) : 0),
+                top: 6 + (showMobileHeader ? (mobileMenuPadding + menuMargin + menuBorderWidth) : 0),
                 right: showMobileHeader ? (menuBorderWidth + menuMargin + mobileMenuPadding) : 6
             }}
             onClick={showMMhandler}></div>}

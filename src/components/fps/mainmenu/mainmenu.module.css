@@ -795,6 +795,9 @@
 :global .ural.compact_Mode .D_MainMenu_List_Group_Title {
   text-align: center;
 }
+:global .ural .D_MeinMenu_MM_on_header {
+  color: var(--menu-item);
+}
 :global .ural .D_MainMenu_GroupTitle {
   padding-left: 8px;
 }

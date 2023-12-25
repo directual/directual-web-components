@@ -115,6 +115,8 @@ const EditableCell = ({
 
     //booleans
     if (fieldDetails[id].dataType == 'boolean') {
+        console.log('BOOL')
+        console.log(fieldDetails[id].formatOptions.booleanOptions)
         if (fieldDetails[id].formatOptions &&
             fieldDetails[id].formatOptions.booleanOptions &&
             fieldDetails[id].formatOptions.booleanOptions.length > 0) {
