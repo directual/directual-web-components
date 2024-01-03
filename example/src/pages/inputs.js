@@ -173,18 +173,18 @@ Some *emphasis* and <strong>strong</strong>!`;
 
             {/* <Input debug type='textarea' autoWidth minWidth={140} maxWidth={500} rows='auto' /> */}
 
-            {/* <Map
+            <Map
                 label='This is my map'
                 height='600px'
                 width='600px'
                 edit
-                //oneMarker
-                //defaultValue={testData}
+                oneMarker
+                defaultValue={testData}
                 jsonView
                 maptoken="pk.eyJ1IjoiZGlyZWN0dWFsIiwiYSI6ImNrdmJncTl0eTBkcWIyc3BuYjlpYXp2cnkifQ.mVDgIP-E8tA2FlBttPdi4A"
-                //mapStyle="mapbox://styles/mapbox/dark-v10"
+                mapStyle="mapbox://styles/mapbox/dark-v10"
             />
-            <br /> */}
+            <br />
 
             {/* <Input type='number' defaultValue={0} /> */}
             {/* <Input required type='select' />
