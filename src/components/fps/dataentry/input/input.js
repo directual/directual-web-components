@@ -9,7 +9,6 @@ import Checkbox from '../checkbox/checkbox'
 import StructureField from '../structurefield/structurefield'
 import { Markdown } from '../../article/mkd'
 import OptionsHandler, { AdvancedOptionsHandler } from '../optionsHandler/optionsHandler'
-import Map from '../map/map'
 import _ from 'lodash'
 import { dict } from '../../locale'
 
@@ -343,7 +342,7 @@ export default function Input(props) {
         // console.log('counting lines...')
         // console.log(textarea)
         if (!textarea || !textarea.constructor || textarea.constructor.name != 'HTMLTextAreaElement') {
-            //console.log('not a textarea'); 
+            //console.log('not a textarea');
             return;
         }
         let _buffer;
@@ -492,7 +491,7 @@ export default function Input(props) {
                         {props.icon && <div className={`${styles.input_icon_wrapper} icon icon-${props.icon}`} />}
 
                         {showColor && (props.type == 'color' || props.type == 'colour' || props.type == 'colorpicker') && <div ref={pickerRef}>
-                            <Colorpicker 
+                            <Colorpicker
                                 onChange={handleChange}
                                 defaultValue={value}
                                 sketch />
@@ -506,11 +505,11 @@ export default function Input(props) {
                                 height: props.height || 44
                             }}
                             className=
-                            {`${styles.field} 
+                            {`${styles.field}
                             ${props.icon && styles.icon}
                             ${props.addonAfter && styles.addonAfterInput}
                             ${(props.addonBefore || props.preSelect || (props.type == 'color' || props.type == 'colour' || props.type == 'colorpicker')) && styles.addonBeforeInput}
-                            ${props.code && styles.code} 
+                            ${props.code && styles.code}
                             ${warningMsg.type && styles[warningMsg.type]}
                             ${props.disabled && styles.disabled}`}
                             onClick={e => e.stopPropagation()}
@@ -572,8 +571,8 @@ export default function Input(props) {
                         }}
                         ref={inputEl}
                         className={`
-                        ${styles.field} 
-                        ${styles.icon} 
+                        ${styles.field}
+                        ${styles.icon}
                         ${props.inputClassName}
                         ${warningMsg.type && styles[warningMsg.type]}
                         ${props.disabled && styles.disabled}`}
@@ -711,9 +710,9 @@ export default function Input(props) {
                         ref={inputEl}
                         disabled={props.disabled}
                         className={`
-                        ${styles.field} 
-                        ${props.disabled && styles.disabled} 
-                        ${styles.code} 
+                        ${styles.field}
+                        ${props.disabled && styles.disabled}
+                        ${styles.code}
                         ${warningMsg.type && styles[warningMsg.type]}`}
                         type="text"
                         rows={props.rows == 'auto' ? lines : (props.rows || 1)}

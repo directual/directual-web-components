@@ -9,7 +9,6 @@ import ActionPanel from '../../actionspanel/actionspanel'
 import FileUpload from '../fileupload/fileupload'
 import Media from '../../media/media'
 import _ from 'lodash'
-import Map from '../map/map'
 
 export function InputForm(props) {
     // console.log('== InputForm == ' + props.field.content)

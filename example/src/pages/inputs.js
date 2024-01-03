@@ -5,11 +5,7 @@ import {
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 
-import * as Comlink from 'comlink';
-import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
-/* eslint-disable import/no-webpack-loader-syntax */
-const worker = new Worker("mapbox-gl/dist/mapbox-gl-csp-worker");
-//import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
+
 
 export default function InputsPage() {
     const [value, setValue] = useState()
