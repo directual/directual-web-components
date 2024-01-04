@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styles from './map.module.css'
 import ReactMapGL, { Marker, GeolocateControl, NavigationControl, Popup } from 'react-map-gl'
-import 'mapbox-gl/dist/mapbox-gl.css'
 import Input from '../input/input'
 import pointer from './../../../../icons/POINTER.svg'
 import ExpandedText from '../../expandedText/expandedText'
