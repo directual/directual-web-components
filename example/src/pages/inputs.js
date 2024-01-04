@@ -182,7 +182,15 @@ Some *emphasis* and <strong>strong</strong>!`;
                 //width='600px'
                 edit
                 //oneMarker
-                defaultValue={testData}
+                defaultValue={[
+                    {
+                       "id": 1642151991953,
+                       "latitude": 55.75166273629019,
+                       "longitude": 37.61742228272211,
+                       "title": "The Kremlin",
+                       "image": "https://api.demo.directual.com/fileUploaded/showcase-attractions/76dae0f7-7bdd-4aeb-920c-dc8417827c54.jpeg"
+                    }
+                 ]}
                 jsonView
                 maptoken="pk.eyJ1IjoiZGlyZWN0dWFsMTIzIiwiYSI6ImNscXkxZmZvOTBrNW4ya21pOXRyM2FqY2QifQ.ECQA2moC4r6-Zb0eAtTXpw"
                 //mapStyle="mapbox://styles/mapbox/dark-v10"

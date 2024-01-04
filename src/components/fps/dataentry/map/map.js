@@ -42,8 +42,8 @@ export default function Map({
     };
 
     const [viewport, setViewport] = useState({
-        latitude: lat || 37.786868,
-        longitude: lng || -122.252865,
+        latitude: lat || _.get(defaultValue,'[0].latitude') || 37.786868,
+        longitude: lng || _.get(defaultValue,'[0].longitude') || -122.252865,
         zoom: zoom || 8,
         width: width || '100%',
         height: height || '300px',
@@ -72,7 +72,7 @@ export default function Map({
     const defaultStyle = 'mapbox://styles/mapbox/streets-v11'
 
     const [json, setJson] = useState(false)
-    const [value, setValue] = useState((defaultValue && defaultValue.data) || [])
+    const [value, setValue] = useState((defaultValue && defaultValue.data) || defaultValue || [])
     const [showPopup, setShowPopup] = useState(null);
     const [initialPositioning, setInitialPositioning] = useState(false)
     const [addMarker, setAddMarker] = useState(false)
@@ -240,8 +240,8 @@ export default function Map({
             <ReactMapGL
                 mapboxAccessToken={maptoken || defaultMaptoken}
                 initialViewState={{
-                    latitude: lat || 37.786868,
-                    longitude: lng || -122.252865,
+                    latitude: lat || _.get(defaultValue,'[0].latitude') || 37.786868,
+                    longitude: lng || _.get(defaultValue,'[0].longitude') || -122.252865,
                     zoom: zoom || 8,
                 }}
                 onClick={e => {
