@@ -16,7 +16,7 @@ import Loader from '../../loader/loader'
 // }
 
 
-export default function Map({
+export default function FpsMap({
     lng, // longitude
     lat, // latitude
     height,
