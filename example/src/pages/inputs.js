@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {
     Button, Input, InputGroup, ComponentDetails, CodeSnippet, FileUpload,
-    Checkbox, Markdown, DropFiles, Colorpicker, Map
+    Checkbox, Markdown, DropFiles, Colorpicker, FpsMap
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 
@@ -176,7 +176,7 @@ Some *emphasis* and <strong>strong</strong>!`;
 
             {/* <Input debug type='textarea' autoWidth minWidth={140} maxWidth={500} rows='auto' /> */}
 
-            <Map
+            <FpsMap
                 label='This is my map'
                 height='400px'
                 //width='600px'
