@@ -12,6 +12,7 @@ import FpsChart from './components/fps/FpsChart'
 import FpsHtml, { FpsMarkdown } from './components/fps/FpsHtml'
 import FpsButton from './components/fps/button/FpsButton'
 import FpsHint from './components/fps/hint/FpsHint'
+import Map from './components/fps/dataentry/map/map'
 import FpsForm, { FormSection } from './components/fps/dataentry/form/FpsForm'
 import MainMenu, { NewMainMenu, NewMobileTabs } from './components/fps/mainmenu/mainmenu'
 import ComponentDetails from './components/fps/componentdetails/componentdetails'
@@ -76,6 +77,7 @@ export {
   FpsKanban,
   Tags,
   Tree,
+  Map,
   Stopwatch,
   MainMenu,
   NewMainMenu,

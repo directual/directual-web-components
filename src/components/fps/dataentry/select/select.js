@@ -286,7 +286,9 @@ export default function Select(props) {
             <div
                 id='selectElement'
                 className=
-                {`${styles.select_field} ${props.warning == 'error' ? styles.error : ''} ${focus && styles.focus} ${props.disabled && styles.disabled}`}
+                {`${styles.select_field} ${props.warning == 'error' ? styles.error : ''} 
+                ${props.smallSelect && styles.smallSelect}
+                ${focus && styles.focus} ${props.disabled && styles.disabled}`}
                 style={{
                     minHeight: props.height || 34
                 }}

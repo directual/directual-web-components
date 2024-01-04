@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {
     Button, Input, InputGroup, ComponentDetails, CodeSnippet, FileUpload,
-    Checkbox, Markdown, DropFiles, Map, Colorpicker
+    Checkbox, Markdown, DropFiles, Colorpicker, Map
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 
@@ -152,8 +152,8 @@ Some *emphasis* and <strong>strong</strong>!`;
     const testData = {
         data: [
             {
-                latitude: 35.786868,
-                longitude: -121.252865,
+                latitude: 37.786868,
+                longitude: -122.252865,
                 id: 'pointer1',
                 title: 'Pointer 1',
                 image: 'https://api.directual.com/fileUploaded/dev/f13801f2-c52e-463b-9904-8eb36c1f82a7.jpg',
@@ -167,24 +167,28 @@ Some *emphasis* and <strong>strong</strong>!`;
         <React.Fragment>
             <h1>Data entry</h1>
 
-            <Colorpicker defaultValue="#AAABBB" onChange={val => console.log(val)} />
 
-            <Input type='color' defaultValue={null} label='choose the color' />
+            <hr />
+
+            {/* <Colorpicker defaultValue="#AAABBB" onChange={val => console.log(val)} />
+
+            <Input type='color' defaultValue={null} label='choose the color' /> */}
 
             {/* <Input debug type='textarea' autoWidth minWidth={140} maxWidth={500} rows='auto' /> */}
 
             <Map
                 label='This is my map'
-                height='600px'
-                width='600px'
+                height='400px'
+                //width='600px'
                 edit
-                oneMarker
+                //oneMarker
                 defaultValue={testData}
                 jsonView
-                maptoken="pk.eyJ1IjoiZGlyZWN0dWFsIiwiYSI6ImNrdmJncTl0eTBkcWIyc3BuYjlpYXp2cnkifQ.mVDgIP-E8tA2FlBttPdi4A"
-                mapStyle="mapbox://styles/mapbox/dark-v10"
+                maptoken="pk.eyJ1IjoiZGlyZWN0dWFsMTIzIiwiYSI6ImNscXkxZmZvOTBrNW4ya21pOXRyM2FqY2QifQ.ECQA2moC4r6-Zb0eAtTXpw"
+                //mapStyle="mapbox://styles/mapbox/dark-v10"
             />
             <br />
+            <hr />
 
             {/* <Input type='number' defaultValue={0} /> */}
             {/* <Input required type='select' />

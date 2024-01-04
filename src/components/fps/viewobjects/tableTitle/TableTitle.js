@@ -38,6 +38,7 @@ export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters,
                         <NewFilters
                             tableFilters={tableFilters}
                             dict={dict[lang]}
+                            lang={lang}
                             chartLines={chartLines}
                             displayFilters={displayFilters}
                             currentBP={currentBP}
@@ -217,6 +218,7 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
                     saveFilters={saveFilters}
                     currentBP={currentBP}
                     alignRight={alignRight}
+                    lang={lang}
                     dict={dict}
                     key={filterField}
                     field={{
@@ -235,6 +237,7 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
                 <FilterField
                     active={_.get(filters, "sort.field")}
                     filters={filters}
+                    lang={lang}
                     dict={dict}
                     currentBP={currentBP}
                     alignRight={alignRight}
@@ -458,31 +461,90 @@ function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters
 
                 {(_.get(field, 'type') == 'date') &&
                     <div>
-                        <div className={`${styles.newFilterDateAs} DD_Table_NewFilters_Dates`}>
-                            <a onClick={e=>{
+                        <Input type='select' smallSelect
+                            locale={lang}
+                            width={220}
+                            options={[
+                                { key: 'yesterday', value: _.get(dict, 'yesterday') },
+                                { key: 'lastWeek', value: _.get(dict, 'lastWeek') },
+                                { key: 'last2Weeks', value: _.get(dict, 'last2Weeks') },
+                                { key: 'lastMonth', value: _.get(dict, 'lastMonth') },
+                                { key: 'tomorrow', value: _.get(dict, 'tomorrow') },
+                                { key: 'nextWeek', value: _.get(dict, 'nextWeek') },
+                                { key: 'next2Weeks', value: _.get(dict, 'next2Weeks') },
+                                { key: 'nextMonth', value: _.get(dict, 'nextMonth') },
+                            ]}
+                            onChange={value => {
+                                const newFilters = { ...filters };
+                                let valueFrom = null
+                                let valueTo = null
+                                switch (value) {
+                                    case 'yesterday':
+                                        valueFrom = moment().add(-1, 'day')
+                                        valueTo = moment()
+                                        break;
+                                    case 'lastWeek':
+                                        valueFrom = moment().add(-1, 'week')
+                                        valueTo = moment()
+                                        break;
+                                    case 'last2Weeks':
+                                        valueFrom = moment().add(-2, 'weeks')
+                                        valueTo = moment()
+                                        break;
+                                    case 'lastMonth':
+                                        valueFrom = moment().add(-1, 'month')
+                                        valueTo = moment()
+                                        break;
+                                    case 'tomorrow':
+                                        valueFrom = moment()
+                                        valueTo = moment().add(1, 'day')
+                                        break;
+                                    case 'nextWeek':
+                                        valueFrom = moment()
+                                        valueTo = moment().add(1, 'week')
+                                        break;
+                                    case 'next2Weeks':
+                                        valueFrom = moment()
+                                        valueTo = moment().add(2, 'weeks')
+                                        break;
+                                    case 'nextMonth':
+                                        valueFrom = moment()
+                                        valueTo = moment().add(1, 'month')
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                _.set(newFilters, `filters[${field.id}].valueFrom`, valueFrom);
+                                _.set(newFilters, `filters[${field.id}].valueTo`, valueTo);
+                                _.set(newFilters, `filters[${field.id}].type`, 'date');
+                                saveFilters(newFilters);
+                            }}
+                        />
+                        <div style={{ display: 'none' }} className={`${styles.newFilterDateAs} DD_Table_NewFilters_Dates`}>
+                            <a onClick={e => {
                                 e.preventDefault()
                                 const newFilters = { ...filters };
-                                let valueFrom = moment().add(-7,'days')
+                                let valueFrom = moment().add(-7, 'days')
                                 let valueTo = moment()
                                 _.set(newFilters, `filters[${field.id}].valueFrom`, valueFrom);
                                 _.set(newFilters, `filters[${field.id}].valueTo`, valueTo);
                                 _.set(newFilters, `filters[${field.id}].type`, 'date');
                                 saveFilters(newFilters);
                             }}>{_.get(dict, 'lastWeek')}</a>
-                            <a onClick={e=>{
+                            <a onClick={e => {
                                 e.preventDefault()
                                 const newFilters = { ...filters };
-                                let valueFrom = moment().add(-2,'weeks')
+                                let valueFrom = moment().add(-2, 'weeks')
                                 let valueTo = moment()
                                 _.set(newFilters, `filters[${field.id}].valueFrom`, valueFrom);
                                 _.set(newFilters, `filters[${field.id}].valueTo`, valueTo);
                                 _.set(newFilters, `filters[${field.id}].type`, 'date');
                                 saveFilters(newFilters);
                             }}>{_.get(dict, 'last2Weeks')}</a>
-                            <a onClick={e=>{
+                            <a onClick={e => {
                                 e.preventDefault()
                                 const newFilters = { ...filters };
-                                let valueFrom = moment().add(-1,'month')
+                                let valueFrom = moment().add(-1, 'month')
                                 let valueTo = moment()
                                 _.set(newFilters, `filters[${field.id}].valueFrom`, valueFrom);
                                 _.set(newFilters, `filters[${field.id}].valueTo`, valueTo);

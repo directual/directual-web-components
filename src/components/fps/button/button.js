@@ -15,7 +15,7 @@ export default function Button(props) {
                     style={{
                         height: props.height || 48
                     }}
-                    className={`${styles.button} 
+                    className={`${styles.button} FPS_BUTTON
                         ${props.small && styles.small}
                         ${props.active && styles.active}
                         ${props.alighLeft && styles.alighLeft}
@@ -37,7 +37,7 @@ export default function Button(props) {
                     {props.loading && <Loader small accent={props.accent}></Loader>}
                     {props.children}</button>
                 :
-                <a className={`${styles.button}
+                <a className={`${styles.button} FPS_BUTTON
                     ${props.icon && `${styles.icon} icon icon-${props.icon}`}
                     ${props.small && styles.small}
                     ${props.verySmall && styles.verySmall}

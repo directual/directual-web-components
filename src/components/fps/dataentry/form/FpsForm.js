@@ -24,8 +24,8 @@ export function FormSection(props) {
 
   if (props.hide) {
     return (
-      <div className={`${styles.FormSection} ${styles.hidable}`} onClick={() => onChangeState(!hidden)}>
-        <div className={styles.FormSectionLine} />
+      <div className={`${styles.FormSection} ${styles.hidable} D_FPS_FORM_SECTION`} onClick={() => onChangeState(!hidden)}>
+        <div className={`${styles.FormSectionLine} D_FPS_FORM_SECTION_LINE`} />
         <div className={`icon icon-down small ${styles.icon} ${hidden && styles.rotate}`} />
         <span className={styles.noPadding} >{props.title}</span>
         <div className={`icon icon-down small ${styles.icon} ${hidden && styles.rotate}`} />
@@ -34,10 +34,10 @@ export function FormSection(props) {
     )
   }
   return (
-    <div className={styles.FormSection}>
-      <div className={styles.FormSectionLine} />
+    <div className={`${styles.FormSection} D_FPS_FORM_SECTION`}>
+      <div className={`${styles.FormSectionLine} D_FPS_FORM_SECTION_LINE`} />
       <span>{props.title}</span>
-      <div className={styles.FormSectionLine} />
+      <div className={`${styles.FormSectionLine} D_FPS_FORM_SECTION_LINE`} />
     </div>
   )
 }
@@ -372,7 +372,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
   return (
     <ComponentWrapper>
       {/* <Button icon='refresh' onClick={resubmit}>refresh</Button> */}
-      {formName && <h2 className={styles.form_header}>{formName}</h2>}
+      {formName && <h2 className={`${styles.form_header} D_FPS_FORM_HEADER`}>{formName}</h2>}
       <div style={{ maxWidth: formWidth, marginBottom: formDesc ? 12 : 0 }}>
         {formDesc && showForm && (
           <Markdown value={formDesc} />

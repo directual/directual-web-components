@@ -69,8 +69,8 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale }) {
     const tabs = layout.tabs.map(tab => { return { ...tab, key: tab.id, content: composeTabsContent(tab.id) } })
 
     return (
-        (tabs && tabs[0]) ? <div className={styles.fpsLayout} ref={layoutRef}>
-            {layout.showHeader && layout.header && <h1 className={styles.layoutHeader}>{layout.header}</h1>}
+        (tabs && tabs[0]) ? <div className={`${styles.fpsLayout} D_FPS_LAYOUT`} ref={layoutRef}>
+            {layout.showHeader && layout.header && <h1 className={`${styles.layoutHeader} D_FPS_LAYOUT_HEADER`}>{layout.header}</h1>}
             {tabs && <TabsPane fpsTabs hideSingleTab tabs={tabs} saveTabToURL onChangeTab={onChangeTab} //currentTabKey={tabs[0].key}
             //fixedScroll
             />}
@@ -107,7 +107,7 @@ const Section = ({ section, currentBP }) => {
 
 const Column = ({ column, row, last }) => {
 
-    return <div className={styles.column} style={{ width: row ? column.size + '%' : 'auto' }}>
+    return <div className={`${styles.column} D_FPS_LAYOUT_COLUMN`} style={{ width: row ? column.size + '%' : 'auto' }}>
         <ComponentWrapper last={last} row={row}>
             {column.render}
         </ComponentWrapper>
@@ -153,7 +153,7 @@ function ComponentWrapper(props) {
     // =========================
 
     return (
-        <div className={styles.componentWrapper} ref={layoutRef} style={{ paddingRight: !props.last && props.row ? paddingRight : 0 }}>
+        <div className={`${styles.componentWrapper} D_FPS_COMPONENT_WRAPPER`} ref={layoutRef} style={{ paddingRight: !props.last && props.row ? paddingRight : 0 }}>
             {/* <div className={styles.componentWidth}>{layoutWidth} – {currentBP}</div> */}
             {props.children(currentBP)}
         </div>)
