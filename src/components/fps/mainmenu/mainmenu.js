@@ -59,7 +59,7 @@ export default function MainMenu(props) {
         <div className={`D_MeinMenu_show_MM ${styles.show_mobile_menu} ${isLeft ? styles.leftSide : ''}`}
             onClick={() => { setShowMM(true); setShowBackdrop(true) }}></div>
 
-        <div className={`${styles.horMainmenu} ${showMM && styles.show} ${!props.horizontal ? styles.hideHorizontal : ''}`}>
+        <div className={`${styles.horMainmenu} D_MeinMenu_hor_MM ${showMM && styles.show} ${!props.horizontal ? styles.hideHorizontal : ''}`}>
             <div className={styles.horLogoWrapper}>
                 {props.logoUrl ?
                     <a href="/" className={styles.logo} style={{ backgroundImage: `url(${props.logoUrl})`, width: logoSize.width, height: logoSize.height }} /> :
@@ -136,7 +136,7 @@ export default function MainMenu(props) {
                 </div>}
         </div>
 
-        <div className={`${styles.mainmenu} ${showMM && styles.show} ${isLeft ? styles.leftSide : ''} ${props.horizontal ? styles.hideHorizontal : ''}`}>
+        <div className={`${styles.mainmenu} D_MeinMenu_MM ${showMM && styles.show} ${isLeft ? styles.leftSide : ''} ${props.horizontal ? styles.hideHorizontal : ''}`}>
             <div className={styles.hide_mobile_menu}
                 onClick={hideMM}></div>
             {props.logoUrl ?
