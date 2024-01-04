@@ -9,13 +9,6 @@ import Button from '../../button/button'
 import ActionPanel from '../../actionspanel/actionspanel'
 import Loader from '../../loader/loader'
 
-// export default function Map({ label }) {
-//     return <div>
-//         {label && <div className={styles.label}>{label}</div>}
-//         Geo data type temporary is not supported</div>
-// }
-
-
 export default function FpsMap({
     lng, // longitude
     lat, // latitude
