@@ -107,9 +107,9 @@ export default function FpsMap({
         }
     })
 
-    useEffect(() => {
-        setMapLoader(true)
-    }, [defaultValue])
+    // useEffect(() => {
+    //     setMapLoader(true)
+    // }, [defaultValue])
 
     // const reloadMap = () => { setMapLoader(true) }
 
