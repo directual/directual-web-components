@@ -179,7 +179,7 @@ export default function FpsMap({
             longitude: lngLat.lng,
             title: 'New Marker',
         }
-        const saveData = [...value]
+        const saveData = value && Array.isArray(value) ? [...value] : []
         saveData.push(marker)
         setShowPopup(null)
         save(saveData)
