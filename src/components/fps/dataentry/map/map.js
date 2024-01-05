@@ -10,12 +10,14 @@ import Button from '../../button/button'
 import ActionPanel from '../../actionspanel/actionspanel'
 import Loader from '../../loader/loader'
 
-import { Map, Marker } from "pigeon-maps"
+// import { Map, Marker } from "pigeon-maps"
 
 export default function SimpleMap({ }) {
 
     return <div>
-        Итак, тут должна быть карта
+        <hr />
+        Итак, тут должна быть карта!
+        <hr />
         {/* <Map height={300} defaultCenter={[50.879, 4.6997]} defaultZoom={11}>
             <Marker width={50} anchor={[50.879, 4.6997]} />
         </Map> */}
