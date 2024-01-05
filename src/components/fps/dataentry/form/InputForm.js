@@ -3,6 +3,7 @@ import Input from '../input/input'
 import { Markdown } from '../../article/mkd'
 import Hint from '../../hint/hint'
 import moment from 'moment'
+import FpsMap from '../map/map'
 import styles from '../../viewobjects/table/table.module.css'
 import Button from '../../button/button'
 import ActionPanel from '../../actionspanel/actionspanel'
@@ -315,7 +316,7 @@ function FieldJson({ field, onChange, placeholder, editingOn, defaultValue, mapR
                 {!_.get(field, 'formatOptions.mapToken') ?
                     <Hint>Map token is not set (go to data structure fields configurations)</Hint>
                     :
-                    <Map
+                    <FpsMap
                         edit={editingOn}
                         mapRefreshOff={mapRefreshOff}
                         oneMarker={_.get(field, 'formatOptions.oneMarker')}
