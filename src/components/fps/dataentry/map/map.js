@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styles from './map.module.css'
 import ReactMapGL, { Marker, GeolocateControl, NavigationControl, Popup } from 'react-map-gl'
+import MapLibre from 'react-map-gl/maplibre';
 import Input from '../input/input'
 import pointer from './../../../../icons/POINTER.svg'
 import ExpandedText from '../../expandedText/expandedText'
@@ -9,7 +10,22 @@ import Button from '../../button/button'
 import ActionPanel from '../../actionspanel/actionspanel'
 import Loader from '../../loader/loader'
 
-export default function FpsMap({
+export default function Maplibre({ }) {
+
+    return <div>
+        <MapLibre
+            initialViewState={{
+                longitude: -122.4,
+                latitude: 37.8,
+                zoom: 14
+            }}
+            style={{ width: 600, height: 600 }}
+            mapStyle="https://api.maptiler.com/maps/streets/style.json?key=KAKkpADnDSsTJxYS4L88"
+        />
+    </div>
+}
+
+export function FpsMap({
     lng, // longitude
     lat, // latitude
     height,
@@ -35,8 +51,8 @@ export default function FpsMap({
     };
 
     const [viewport, setViewport] = useState({
-        latitude: lat || _.get(defaultValue,'[0].latitude') || 37.786868,
-        longitude: lng || _.get(defaultValue,'[0].longitude') || -122.252865,
+        latitude: lat || _.get(defaultValue, '[0].latitude') || 37.786868,
+        longitude: lng || _.get(defaultValue, '[0].longitude') || -122.252865,
         zoom: zoom || 8,
         width: width || '100%',
         height: height || '300px',
@@ -233,8 +249,8 @@ export default function FpsMap({
             <ReactMapGL
                 mapboxAccessToken={maptoken || defaultMaptoken}
                 initialViewState={{
-                    latitude: lat || _.get(defaultValue,'[0].latitude') || 37.786868,
-                    longitude: lng || _.get(defaultValue,'[0].longitude') || -122.252865,
+                    latitude: lat || _.get(defaultValue, '[0].latitude') || 37.786868,
+                    longitude: lng || _.get(defaultValue, '[0].longitude') || -122.252865,
                     zoom: zoom || 8,
                 }}
                 onClick={e => {

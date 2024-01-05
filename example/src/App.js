@@ -6,6 +6,7 @@ import {
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 import 'mapbox-gl/dist/mapbox-gl.css'
+import 'maplibre-gl/dist/maplibre-gl.css';
 import {
     BrowserRouter as Router,
     Switch,

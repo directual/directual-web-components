@@ -78,6 +78,7 @@
     "dangerously-set-html-content": "^1.1.0",
     "lodash": "^4.17.21",
     "mapbox-gl": "^3.0.1",
+    "maplibre-gl": "^3.6.2",
     "moment": "^2.26.0",
     "react-beautiful-dnd": "^13.0.0",
     "react-color": "^2.19.3",
