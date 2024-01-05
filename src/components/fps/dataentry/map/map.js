@@ -80,7 +80,7 @@ export default function FpsMap({
     const defaultStyle = 'mapbox://styles/mapbox/streets-v11'
 
     const [json, setJson] = useState(false)
-    const [value, setValue] = useState((defaultValue && defaultValue.data) || defaultValue || [])
+    const [value, setValue] = useState((defaultValue && defaultValue.data) || JSON.stringify(defaultValue) !== "{}" ? defaultValue : [] || [])
     const [showPopup, setShowPopup] = useState(null);
     const [initialPositioning, setInitialPositioning] = useState(false)
     const [addMarker, setAddMarker] = useState(false)
@@ -183,7 +183,7 @@ export default function FpsMap({
             longitude: lngLat.lng,
             title: 'New Marker',
         }
-        const saveData = value && Array.isArray(value) ? [...value] : []
+        const saveData = value && JSON.stringify(value) !== "{}" ? [...value] : []
         saveData.push(marker)
         setShowPopup(null)
         save(saveData)
