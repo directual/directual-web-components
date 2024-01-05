@@ -333,11 +333,12 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
     // get direct link ID
     useEffect(() => {
+        let copydata = currentData.data || []
         if (lazyLoadingHandler) {
             setLazyLoadingHandler(false)
-            setCardsData([...cardsData, ...currentData.data])
+            setCardsData([...cardsData, ...copydata])
         } else {
-            setCardsData(currentData.data)
+            setCardsData(copydata)
         }
         const queryString = typeof window !== 'undefined' ? window.location.search : '';
         const urlParams = new URLSearchParams(queryString);
@@ -347,7 +348,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         // if (urlDql && !currentDQL) {search(urlDql, urlPage || 0)}
         // if (!urlDql && urlPage && urlPage != currentPage) {setPage(urlPage)}
         if (currentID) {
-            const foundObject = currentData.data.filter(i => i.id == currentID) ? currentData.data.filter(i => i.id == currentID)[0] : null
+            const foundObject = copydata.filter(i => i.id == currentID) ? copydata.filter(i => i.id == currentID)[0] : null
             if (foundObject) { setShowObject(foundObject) } else { console.log("no foundObject") }
         }
     }, [currentData]);
