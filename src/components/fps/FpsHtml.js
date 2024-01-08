@@ -25,7 +25,7 @@ export default function FpsHtml(props) {
   return (
     <ComponentWrapper>
       <Article>
-        <InnerHTML allowRerender={true} html={html} />
+        {html && <InnerHTML allowRerender={true} html={html} />}
       </Article>
     </ComponentWrapper>
   )
