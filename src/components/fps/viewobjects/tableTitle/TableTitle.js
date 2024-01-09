@@ -465,6 +465,7 @@ function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters
                             locale={lang}
                             width={220}
                             options={[
+                                { key: 'today', value: _.get(dict, 'today') },
                                 { key: 'yesterday', value: _.get(dict, 'yesterday') },
                                 { key: 'lastWeek', value: _.get(dict, 'lastWeek') },
                                 { key: 'last2Weeks', value: _.get(dict, 'last2Weeks') },
@@ -479,6 +480,10 @@ function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters
                                 let valueFrom = null
                                 let valueTo = null
                                 switch (value) {
+                                    case 'yesterday':
+                                        valueFrom = moment(now).startOf('day')
+                                        valueTo = moment(now).endOf('day')
+                                        break;
                                     case 'yesterday':
                                         valueFrom = moment().add(-1, 'day')
                                         valueTo = moment()

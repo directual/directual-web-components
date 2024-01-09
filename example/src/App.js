@@ -31,136 +31,38 @@ const newMenuEexample = {
         "icon": "folder",
         "name": "Main menu",
         "isFolder": true,
+        "children": []
+    },
+    "mobileMenuOption": "tabs_bottom",
+    "mobileMenu": {
+        "id": "rootMobileMenu",
+        "icon": "folder",
+        "name": "Mobile menu (tabs)",
+        "isFolder": true,
         "children": [
             {
-                "id": "group_1702032834666",
-                "name": "New group",
-                "children": [
-                    {
-                        "id": "item__1702032623640",
-                        "name": "New page",
-                        "children": [],
-                        "isFolder": false,
-                        "icon": "application"
-                    }
-                ],
-                "isFolder": true,
-                "icon": "folder"
-            },
-            {
-                "id": "group_1702032845969",
-                "name": "New group",
-                "children": [
-                    {
-                        "id": "item__1702035114482",
-                        "name": "New page",
-                        "children": [],
-                        "isFolder": false,
-                        "icon": "application"
-                    },
-                    {
-                        "id": "item__1702035125602",
-                        "name": "New page",
-                        "children": [],
-                        "isFolder": false,
-                        "icon": "application"
-                    },
-                    {
-                        "id": "item__1702035160342",
-                        "name": "New page",
-                        "children": [],
-                        "isFolder": false,
-                        "icon": "application"
-                    }
-                ],
-                "isFolder": true,
-                "icon": "folder"
+                "id": "item__1704717577159",
+                "name": "New page",
+                "children": [],
+                "isFolder": false,
+                "icon": "application"
             }
         ]
     },
     "menuConfig": {
+        "item__1704717577159": {
+            "linkToPage": "/home",
+            "name": "Home page",
+            "iconType": "directual_icon",
+            "menuDirectualIconSet": "babai"
+        },
+        "rootMobileMenu": {
+            "tabsInnerPadding": "0 0 0 0",
+            "tabsPadding": 0,
+            "tabsMargin": 0
+        },
         "rootMenu": {
-            "logoOption": "upload",
-            "addSign": true,
-            "remixIcon": {
-                "Content": "M12 17C14.2091 17 16 15.2091 16 13H14C14 14.1046 13.1046 15 12 15 10.8954 15 10 14.1046 10 13H8C8 15.2091 9.79086 17 12 17ZM6.5 2C4.01472 2 2 4.01472 2 6.5 2 7.85729 2.60121 9.07332 3.54934 9.89751 3.19384 10.8656 3 11.911 3 13 3 17.9706 7.02944 22 12 22 16.9706 22 21 17.9706 21 13 21 11.911 20.8062 10.8656 20.4507 9.89751 21.3988 9.07332 22 7.85729 22 6.5 22 4.01472 19.9853 2 17.5 2 15.8737 2 14.4505 2.8624 13.6601 4.15297 13.1215 4.05246 12.5665 4 12 4 11.4335 4 10.8785 4.05246 10.3399 4.15297 9.5495 2.8624 8.12635 2 6.5 2ZM4 6.5C4 5.11929 5.11929 4 6.5 4 7.58033 4 8.50304 4.68577 8.8517 5.64896L9.1696 6.52718 10.0675 6.26991C10.6801 6.09435 11.3282 6 12 6 12.6718 6 13.3199 6.09435 13.9325 6.26991L14.8304 6.52718 15.1483 5.64896C15.497 4.68577 16.4197 4 17.5 4 18.8807 4 20 5.11929 20 6.5 20 7.43301 19.4894 8.24804 18.7275 8.67859L17.9141 9.13832 18.3176 9.98107C18.7547 10.8939 19 11.9169 19 13 19 16.866 15.866 20 12 20 8.13401 20 5 16.866 5 13 5 11.9169 5.24529 10.8939 5.6824 9.98107L6.08595 9.13832 5.27248 8.6786C4.51064 8.24805 4 7.43301 4 6.5Z",
-                "Category": "User & Faces",
-                "id": "bear-smile-line"
-            },
-            "googleFont": {
-                "id": "ABeeZee",
-                "subsets": [
-                    "latin",
-                    "latin-ext"
-                ],
-                "category": "sans-serif",
-                "family": "ABeeZee",
-                "variants": [
-                    "regular",
-                    "italic"
-                ],
-                "selectedStyle": "regular"
-            },
-            "sideMenuSize": "resizeble",
-            "generatedLogo": "<div><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\"><div></div><svg width=\"187\" height=\"52\" viewBox=\"0 0 94 26\"><linearGradient id=\"grad10\" x1=\"10%\" y1=\"10%\" x2=\"90%\" y2=\"10%\"><stop offset=\"0%\" stop-color=\"#dd3e54\"></stop><stop offset=\"100%\" stop-color=\"#6be585\"></stop></linearGradient><text letter-spacing=\"0\" fill=\"rgba(0,0,0,.8)\" font-size=\"30\" x=\"0\" y=\"23\">Directual Dev</text></svg></div>",
-            "generatedSmallLogo": "<div><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\"><div></div><svg width=\"52\" height=\"52\" viewBox=\"0 0 26 26\"><linearGradient id=\"grad10\" x1=\"10%\" y1=\"10%\" x2=\"90%\" y2=\"10%\"><stop offset=\"0%\" stop-color=\"#dd3e54\"></stop><stop offset=\"100%\" stop-color=\"#6be585\"></stop></linearGradient></svg></div>",
-            "logoGenerationSettings": {
-                "logoColor": "rgba(0,0,0,.8)",
-                "logoSubtitleColor": "rgba(0,0,0,.8)",
-                "signColor": "#058efc",
-                "signColorGrad1": "#dd3e54",
-                "signColorGrad2": "#6be585",
-                "signFillType": "solid",
-                "signGradDirection": "hor",
-                "signSize": 30,
-                "logoTextSize": 30,
-                "scaleSign": 1.1555555555555554,
-                "moveSign": 0,
-                "moveHorSign": 0,
-                "lineSpacing": 1.2,
-                "titleLetterSpacing": 0,
-                "subtitleLetterSpacing": 0,
-                "titleY": 23,
-                "subtitleY": 13,
-                "logoSubtitleSize": 6
-            },
-            "menuCompactWidth": 50,
-            "menuPadding": 15,
-            "menuLogoMargin": 20,
-            "menuBorderWidth": 3
-        },
-        "item__1702032623640": {
-            "linkToPage": "/open-pipeline",
-            "name": "Public Roadmap",
-            "iconType": "directual_icon",
-            "menuDirectualIconSet": "kanban"
-        },
-        "group_1702032834666": {
-            "name": "Public pages"
-        },
-        "group_1702032845969": {
-            "name": "My pages",
-            "permissions": "all_registered"
-        },
-        "item__1702035114482": {
-            "linkToPage": "/new-feature",
-            "name": "Suggest a Feature",
-            "permissions": "all_registered",
-            "specifyRoles": "",
-            "iconType": "directual_icon",
-            "menuDirectualIconSet": "idea"
-        },
-        "item__1702035125602": {
-            "linkToPage": "/feature-requests",
-            "name": "Vote for the Features",
-            "iconType": "directual_icon",
-            "menuDirectualIconSet": "arrowUp"
-        },
-        "item__1702035160342": {
-            "linkToPage": "/my-subscriptions",
-            "name": "Features I watch",
-            "iconType": "directual_icon",
-            "menuDirectualIconSet": "view"
+            "logoPosition": "center"
         }
     }
 }
