@@ -31,7 +31,7 @@ export function SignIn({ width, header, locale, facebookAuth, googleAuth, signUp
     const loginFormEnabled = showLoginFrom !== false
 
     return (
-        <div className={styles.signinform} style={{ maxWidth: width || 'auto' }}>
+        <div className={`${styles.signinform} D_FPS_SIGNIN_FORM`} style={{ maxWidth: width || 'auto' }}>
             {header && <h1 style={{ marginBottom: 24 }}>{header || 'Sign In'}</h1>}
             {googleAuth && <ActionPanel column margin={{ top: 0, bottom: 0 }}>{googleAuth}</ActionPanel>}
             {facebookAuth && <ActionPanel column margin={{ top: 0, bottom: 0 }}>{facebookAuth}</ActionPanel>}
@@ -79,7 +79,7 @@ export function SignUp(props) {
     const loginFormEnabled = props.showLoginFrom !== false
 
     return (
-        <div className={styles.signinform} style={{ maxWidth: props.width || 'auto' }}>
+        <div className={`${styles.signinform} D_FPS_SIGNIN_FORM`} style={{ maxWidth: props.width || 'auto' }}>
 
             {props.header && <h1 style={{ marginBottom: 24 }}>{props.header || 'Sign Up'}</h1>}
             {props.googleAuth && <ActionPanel column margin={{ top: 0, bottom: 0 }}>{props.googleAuth}</ActionPanel>}
@@ -151,7 +151,7 @@ export function RestorePass(props) {
         props.userNameFormat == 'phone' ? dict[lang].profile.phone : dict[lang].profile.login
 
     return (
-        <div className={styles.form} style={{ maxWidth: props.width || 'auto' }}>
+        <div className={`${styles.form} D_FPS_RESTORE_PASS_FORM`} style={{ maxWidth: props.width || 'auto' }}>
             <form>
                 {props.header && <h1 style={{ marginBottom: 24 }}>{props.header || 'Reset passwpord'}</h1>}
                 <Input
@@ -180,7 +180,7 @@ export function Profile(props) {
                 fullName={`${props.data.firstName} ${props.data.lastName}`} /> }
           {props.data && <ProfileBody
                 user={props.data} /> } */}
-            <div className={styles.logOut}>
+            <div className={`${styles.logOut} D_FPS_LOGOUT`}>
                 <Button icon='logout' onClick={() => props.logOut()}>Log out</Button></div>
         </div>
     )

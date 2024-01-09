@@ -54,7 +54,7 @@ export default function TabsPane({ tabs, onDivRef, loading, currentTabKey, fpsTa
     return (<div style={{height: "100%"}}
     >
         {/* current = {currentTab} <br /> */}
-        <div className={`${styles.tabsPane} ${fixedScroll && styles.fixedScroll}`} style={style}>
+        <div className={`${styles.tabsPane} ${fixedScroll && styles.fixedScroll} D_FPS_TABPANE`} style={style}>
             {(!isSingleTab || (isSingleTab && !hideSingleTab)) &&
                 <TabsMenu
                     tabs={tabs}
@@ -74,7 +74,7 @@ export default function TabsPane({ tabs, onDivRef, loading, currentTabKey, fpsTa
 
 function TabsMenu({ tabs, currentTabKey, onClick, fpsTabs }) {
     return (
-        <ul className={`${styles.tabsMenu} ${fpsTabs && styles.fpsTabs}`}>
+        <ul className={`${styles.tabsMenu} ${fpsTabs && styles.fpsTabs} D_FPS_TABSMENU`}>
             {tabs && tabs.map(tab =>
                 <React.Fragment key={tab.key}>
                     {!tab.hidden &&
@@ -82,7 +82,7 @@ function TabsMenu({ tabs, currentTabKey, onClick, fpsTabs }) {
                             onClick={() => (tab.key && !tab.disabled) && onClick(tab.key)}
                             key={tab.key}
                             className={`
-                        ${styles.tabMenuItem}
+                        ${styles.tabMenuItem} D_FPS_TABMENU_ITEM
                         ${(tab.key && tab.disabled) && styles.disabled}
                         ${currentTabKey == tab.key && styles.current}
                     `}>
@@ -111,7 +111,7 @@ export function Tab({ tabContent, currentTabKey, isSingleTab, loading }) {
             className=
             {`
                 ${isSingleTab && styles.singleTab}
-                ${styles.tabWrapper}
+                ${styles.tabWrapper} D_FPS_TAB_WRAPPER
                 ${currentTabKey == tabContent.key && styles.current}
                 ${showBorder && styles.bordered}
             `}>

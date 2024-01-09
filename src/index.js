@@ -12,13 +12,13 @@ import FpsChart from './components/fps/FpsChart'
 import FpsHtml, { FpsMarkdown } from './components/fps/FpsHtml'
 import FpsButton from './components/fps/button/FpsButton'
 import FpsHint from './components/fps/hint/FpsHint'
+import FpsMap from './components/fps/dataentry/map/map'
 import FpsForm, { FormSection } from './components/fps/dataentry/form/FpsForm'
 import MainMenu, { NewMainMenu, NewMobileTabs } from './components/fps/mainmenu/mainmenu'
 import ComponentDetails from './components/fps/componentdetails/componentdetails'
 import FpsTable from './components/fps/viewobjects/table/FpsTable'
 import FpsKanban from './components/fps/viewobjects/kanban/FpsKanban'
 import { Table } from './components/fps/viewobjects/table/table'
-import Map from './components/fps/dataentry/map/map'
 import { FpsWrapper, ContentWrapper, ComponentWrapper } from './components/fps/wrapper/wrapper'
 import Input, { InputGroup } from './components/fps/dataentry/input/input'
 import Button, { ButtonDropDown } from './components/fps/button/button'
@@ -66,7 +66,6 @@ export {
   AdvancedOptionsHandler,
   PageIsEmpty,
   Checkbox,
-  Map,
   RestorePass,
   OptionsHandler,
   StructureField,
@@ -78,6 +77,7 @@ export {
   FpsKanban,
   Tags,
   Tree,
+  FpsMap,
   Stopwatch,
   MainMenu,
   NewMainMenu,

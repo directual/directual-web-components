@@ -115,19 +115,22 @@ const EditableCell = ({
 
     //booleans
     if (fieldDetails[id].dataType == 'boolean') {
-        console.log('BOOL')
-        console.log(fieldDetails[id].formatOptions.booleanOptions)
+
         if (fieldDetails[id].formatOptions &&
             fieldDetails[id].formatOptions.booleanOptions &&
             fieldDetails[id].formatOptions.booleanOptions.length > 0) {
+            let classDone = _.get(fieldDetails[id],'formatOptions.hideStandardBooleanIcons') ? '' : 'icon icon-done'
+            let classBan = _.get(fieldDetails[id],'formatOptions.hideStandardBooleanIcons') ? '' : 'icon icon-ban'
             return <div className={`${styles.notEditableValue} ${styles.boolean}`}>
-                {value === true && <span className='icon icon-done'>{fieldDetails[id].formatOptions.booleanOptions[0]}</span>}
-                {value === false && <span className='icon icon-ban'>{fieldDetails[id].formatOptions.booleanOptions[1]}</span>}
+                {value === true && <span className={classDone}>{fieldDetails[id].formatOptions.booleanOptions[0]}</span>}
+                {value === false && <span className={classBan}>{fieldDetails[id].formatOptions.booleanOptions[1]}</span>}
             </div>
         } else {
+            let classDone = _.get(fieldDetails[id],'formatOptions.hideStandardBooleanIcons') ? '' : 'icon icon-done'
+            let classBan = _.get(fieldDetails[id],'formatOptions.hideStandardBooleanIcons') ? '' : 'icon icon-ban'
             return <div className={`${styles.notEditableValue} ${styles.boolean}`}>
-                {value === true && <span className='icon icon-done'>true</span>}
-                {value === false && <span className='icon icon-ban'>false</span>}
+                {value === true && <span className={classDone}>true</span>}
+                {value === false && <span className={classBan}>false</span>}
             </div>
         }
     }
@@ -248,7 +251,7 @@ const defaultColumn = {
 }
 
 function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fieldDetails, tableParams, skipPageReset, getLinkName, onExpand }) {
-    
+
     const {
         getTableProps,
         getTableBodyProps,
@@ -281,14 +284,14 @@ function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fiel
             <table {...getTableProps()}>
                 <thead>
                     {headerGroups.map(headerGroup => {
-                        return <tr 
+                        return <tr
                             {...headerGroup.getHeaderGroupProps()}>
                             {/* <th style={{ width: 20 }}>
                                 <Checkbox label='' />
                             </th> */}
                             {!hideExpandTD && <th style={{ width: 30 }} />}
                             {headerGroup.headers.map(column => {
-                                if (_.get(tableParams,`[${column.id}].colorRow`) || !_.get(tableParams,`[${column.id}].include`)) return null
+                                if (_.get(tableParams, `[${column.id}].colorRow`) || !_.get(tableParams, `[${column.id}].include`)) return null
                                 return <React.Fragment>
                                     <th
                                         {...column.getHeaderProps()}
@@ -307,19 +310,19 @@ function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fiel
                     {rows.map(row => {
                         prepareRow(row)
 
-                        const isColorRow = row.cells.filter(cell => 
-                            (_.get(tableParams,`[${cell.column.id}].include`) && _.get(tableParams,`[${cell.column.id}].colorRow`))
-                            ) ?
-                            row.cells.filter(cell => 
-                                (_.get(tableParams,`[${cell.column.id}].include`) && _.get(tableParams,`[${cell.column.id}].colorRow`))
+                        const isColorRow = row.cells.filter(cell =>
+                            (_.get(tableParams, `[${cell.column.id}].include`) && _.get(tableParams, `[${cell.column.id}].colorRow`))
+                        ) ?
+                            row.cells.filter(cell =>
+                                (_.get(tableParams, `[${cell.column.id}].include`) && _.get(tableParams, `[${cell.column.id}].colorRow`))
                             )[0] : null
                         let colorRow = isColorRow ? isColorRow.row.values[isColorRow.column.id] ?
                             isColorRow.row.values[isColorRow.column.id] : 'default' : 'default'
 
                         colorRow = colorRow == 'default' ? colorRow : (colorRow[0] == '#' || colorRow[0] == 'r') ? colorRow : '#' + colorRow
-                        const key = _.get(row,'original.id') || row.id
+                        const key = _.get(row, 'original.id') || row.id
                         return (
-                            <tr 
+                            <tr
                                 key={key}
                                 onDoubleClick={() => onExpand(row.original)}
                                 style={colorRow == 'default' ? {} :
@@ -334,7 +337,7 @@ function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fiel
                                 {!hideExpandTD && <td ><a onClick={() => onExpand(row.original)} className={`icon icon-expand ${styles.expand}`} /></td>}
                                 {row.cells.map(cell => {
 
-                                    const isColorCell = _.get(tableParams,`[${cell.column.id}].colorCell`) ? tableParams[cell.column.id] : null
+                                    const isColorCell = _.get(tableParams, `[${cell.column.id}].colorCell`) ? tableParams[cell.column.id] : null
 
                                     let colorCellValue = null
                                     if (isColorCell && (isColorCell.colorCellSource == 'const' || !isColorCell.colorCellSource)) {
@@ -346,7 +349,7 @@ function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fiel
                                     colorCellValue = !colorCellValue ? null : (colorCellValue[0] == '#' || colorCellValue[0] == 'r') ? colorCellValue : '#' + colorCellValue
 
                                     if ((tableParams[cell.column.id] && tableParams[cell.column.id].colorRow) ||
-                                        !_.get(tableParams,`[${cell.column.id}].include`) ) return null
+                                        !_.get(tableParams, `[${cell.column.id}].include`)) return null
                                     return <td
                                         {...cell.getCellProps()}
                                         style={colorCellValue ?

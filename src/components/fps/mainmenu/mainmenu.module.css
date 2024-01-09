@@ -1,4 +1,5 @@
 .newMainmenu {
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -546,6 +547,8 @@
 }
 .horMainmenu {
   display: flex;
+  z-index: 2;
+  position: relative;
   align-items: flex-end;
   justify-content: space-between;
   background-color: var(--menu-bgr);

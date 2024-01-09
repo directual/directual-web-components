@@ -1,15 +1,11 @@
 import React, { useState } from 'react'
 import {
     Button, Input, InputGroup, ComponentDetails, CodeSnippet, FileUpload,
-    Checkbox, Markdown, DropFiles, Map, Colorpicker
+    Checkbox, Markdown, DropFiles, Colorpicker, FpsMap
 } from 'directual-web-components'
 import 'directual-web-components/dist/index.css'
 
-import * as Comlink from 'comlink';
-import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
-/* eslint-disable import/no-webpack-loader-syntax */
-const worker = new Worker("mapbox-gl/dist/mapbox-gl-csp-worker");
-//import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
+
 
 export default function InputsPage() {
     const [value, setValue] = useState()
@@ -156,8 +152,8 @@ Some *emphasis* and <strong>strong</strong>!`;
     const testData = {
         data: [
             {
-                latitude: 35.786868,
-                longitude: -121.252865,
+                latitude: 37.786868,
+                longitude: -122.252865,
                 id: 'pointer1',
                 title: 'Pointer 1',
                 image: 'https://api.directual.com/fileUploaded/dev/f13801f2-c52e-463b-9904-8eb36c1f82a7.jpg',
@@ -171,24 +167,28 @@ Some *emphasis* and <strong>strong</strong>!`;
         <React.Fragment>
             <h1>Data entry</h1>
 
-            <Colorpicker defaultValue="#AAABBB" onChange={val => console.log(val)} />
 
-            <Input type='color' defaultValue={null} label='choose the color' />
+            <hr />
+
+            {/* <Colorpicker defaultValue="#AAABBB" onChange={val => console.log(val)} />
+
+            <Input type='color' defaultValue={null} label='choose the color' /> */}
 
             {/* <Input debug type='textarea' autoWidth minWidth={140} maxWidth={500} rows='auto' /> */}
 
-            {/* <Map
+            <FpsMap
                 label='This is my map'
-                height='600px'
-                width='600px'
+                height='400px'
+                //width='600px'
                 edit
                 //oneMarker
-                //defaultValue={testData}
+                defaultValue={null}
                 jsonView
-                maptoken="pk.eyJ1IjoiZGlyZWN0dWFsIiwiYSI6ImNrdmJncTl0eTBkcWIyc3BuYjlpYXp2cnkifQ.mVDgIP-E8tA2FlBttPdi4A"
+                maptoken="pk.eyJ1IjoiZGlyZWN0dWFsMTIzIiwiYSI6ImNscXkxZmZvOTBrNW4ya21pOXRyM2FqY2QifQ.ECQA2moC4r6-Zb0eAtTXpw"
                 //mapStyle="mapbox://styles/mapbox/dark-v10"
             />
-            <br /> */}
+            <br />
+            <hr />
 
             {/* <Input type='number' defaultValue={0} /> */}
             {/* <Input required type='select' />

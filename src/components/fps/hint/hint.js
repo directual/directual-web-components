@@ -19,8 +19,8 @@ export default function Hint(props) {
                     marginBottom: marginBottom
                 }
             }
-            className={`${styles.hint} ${props.ok && styles.ok} ${props.error && styles.error}`}>
-            {props.title && <p className={styles.title}>{props.title}</p>}
+            className={`${styles.hint} FPS_HINT ${props.ok && styles.ok} ${props.error && styles.error}`}>
+            {props.title && <p className={`${styles.title} FPS_HINT_TITLE`}>{props.title}</p>}
             <p>{props.children}</p>
         </blockquote>
     )

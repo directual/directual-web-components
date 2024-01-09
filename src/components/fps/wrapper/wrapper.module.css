@@ -32,6 +32,7 @@
     overflow: auto;
 }
 .newBrandedFooter {
+    z-index: 2;
     background-color: var(--layout-footer-bgr);
     border-top:solid 1px var(--layout-footer-border);
     padding:5px 8px;

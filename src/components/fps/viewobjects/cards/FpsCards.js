@@ -323,11 +323,12 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         // console.log('======= 2')
         // console.log(cardsData);
         // console.log(data.data);
+        let copydata = data.data || []
         if (lazyLoadingHandler) {
             setLazyLoadingHandler(false)
-            setCardsData([...cardsData, ...data.data])
+            setCardsData([...cardsData, ...copydata])
         } else {
-            setCardsData([...data.data])
+            setCardsData([...copydata])
         }
         const queryString = typeof window !== 'undefined' ? window.location.search : '';
         const urlParams = new URLSearchParams(queryString);
@@ -337,7 +338,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         // if (urlDql && !currentDQL) {search(urlDql, urlPage || 0)}
         // if (!urlDql && urlPage && urlPage != currentPage) {setPage(urlPage)}
         if (currentID) {
-            const foundObject = data.data.filter(i => i.id == currentID) ? data.data.filter(i => i.id == currentID)[0] : null
+            const foundObject = copydata.filter(i => i.id == currentID) ? copydata.filter(i => i.id == currentID)[0] : null
             if (foundObject) { setShowObject(foundObject) } else { console.log("no Object found") }
         }
     }, [data]);

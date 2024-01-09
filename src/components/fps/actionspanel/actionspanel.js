@@ -4,7 +4,7 @@ import styles from './actionspanel.module.css'
 export default function ActionPanel(props) {
     return (
         <div
-            className={`${styles.panel} 
+            className={`${styles.panel} D_FPS_ACTIONS_PANEL
                 ${props.border && styles.border} 
                 ${props.title && styles.with_title}
                 ${props.column && styles.column}
@@ -21,7 +21,7 @@ export default function ActionPanel(props) {
                 }
             }
         >
-            {props.title && <div className={styles.title}>{props.title}</div>}
+            {props.title && <div className={`${styles.title} D_FPS_AP_TITLE`}>{props.title}</div>}
             {props.children}
         </div>
     )

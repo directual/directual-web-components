@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
-import ReactMapGL, { Marker, NavigationControl, Popup } from 'react-map-gl';
-//import 'mapbox-gl/dist/mapbox-gl.css';
 import styles from './map.module.css'
+import ReactMapGL, { Marker, GeolocateControl, NavigationControl, Popup } from 'react-map-gl'
+// import MapLibre from 'react-map-gl/maplibre';
 import Input from '../input/input'
 import pointer from './../../../../icons/POINTER.svg'
 import ExpandedText from '../../expandedText/expandedText'
@@ -10,12 +10,19 @@ import Button from '../../button/button'
 import ActionPanel from '../../actionspanel/actionspanel'
 import Loader from '../../loader/loader'
 
-import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp.js';
-import MapboxGLWorker from 'mapbox-gl/dist/mapbox-gl-csp-worker.js';
+// import { Map, Marker } from "pigeon-maps"
 
-mapboxgl.workerClass = MapboxGLWorker;
+// export default function SimpleMap({ }) {
 
-export default function Map({
+//     return <div>
+//         map is not supported
+//         {/* <Map height={300} defaultCenter={[50.879, 4.6997]} defaultZoom={11}>
+//             <Marker width={50} anchor={[50.879, 4.6997]} />
+//         </Map> */}
+//     </div>
+// }
+
+export default function FpsMap({
     lng, // longitude
     lat, // latitude
     height,
@@ -41,8 +48,8 @@ export default function Map({
     };
 
     const [viewport, setViewport] = useState({
-        latitude: lat || 37.786868,
-        longitude: lng || -122.252865,
+        latitude: lat || _.get(defaultValue, '[0].latitude') || 37.786868,
+        longitude: lng || _.get(defaultValue, '[0].longitude') || -122.252865,
         zoom: zoom || 8,
         width: width || '100%',
         height: height || '300px',
@@ -71,7 +78,7 @@ export default function Map({
     const defaultStyle = 'mapbox://styles/mapbox/streets-v11'
 
     const [json, setJson] = useState(false)
-    const [value, setValue] = useState((defaultValue && defaultValue.data) || [])
+    const [value, setValue] = useState((defaultValue && defaultValue.data) || JSON.stringify(defaultValue) !== "{}" ? defaultValue : [] || [])
     const [showPopup, setShowPopup] = useState(null);
     const [initialPositioning, setInitialPositioning] = useState(false)
     const [addMarker, setAddMarker] = useState(false)
@@ -97,6 +104,10 @@ export default function Map({
             setWrapperWidth(mapWrapper.current.offsetWidth);
         }
     })
+
+    // useEffect(() => {
+    //     setMapLoader(true)
+    // }, [defaultValue])
 
     // const reloadMap = () => { setMapLoader(true) }
 
@@ -160,15 +171,17 @@ export default function Map({
     // console.log(value)
 
     const newMarker = (lngLat) => {
+        console.log("newMarker")
+        console.log(lngLat)
         setAddMarker(false)
         if (showPopup) return null
         const marker = {
             id: new Date().getTime(),
-            latitude: lngLat[1],
-            longitude: lngLat[0],
+            latitude: lngLat.lat,
+            longitude: lngLat.lng,
             title: 'New Marker',
         }
-        const saveData = [...value]
+        const saveData = value && JSON.stringify(value) !== "{}" ? [...value] : []
         saveData.push(marker)
         setShowPopup(null)
         save(saveData)
@@ -209,8 +222,8 @@ export default function Map({
         }
     }, [isEdit])
 
-    // console.log('map')
-    // console.log(value)
+    console.log('map')
+    console.log(value)
     // console.log(defaultValue)
 
     useEffect(() => {
@@ -235,38 +248,48 @@ export default function Map({
             />
             :
             <ReactMapGL
-                {...viewport}
-                mapStyle={mapStyle || defaultStyle}
-                mapboxApiAccessToken={maptoken || defaultMaptoken}
-                onViewportChange={setViewport}
+                mapboxAccessToken={maptoken || defaultMaptoken}
+                initialViewState={{
+                    latitude: lat || _.get(defaultValue, '[0].latitude') || 37.786868,
+                    longitude: lng || _.get(defaultValue, '[0].longitude') || -122.252865,
+                    zoom: zoom || 8,
+                }}
                 onClick={e => {
-                    //setShowPopup(null)
                     if (!addMarker) return null
                     newMarker(e.lngLat)
                 }}
+                style={{ width: width || '100%', height: height || 300 }}
+                mapStyle={mapStyle || defaultStyle}
             >
-                {value && value.length ? value.map(marker => (
-                    <Marker
+                <GeolocateControl />
+                {value && value.length ? value.map(marker => {
+                    return <Marker
                         key={marker.id}
                         draggable={edit}
-                        onClick={() => setShowPopup(marker)}
+                        anchor="bottom"
+                        onClick={(e) => {
+                            setShowPopup(marker)
+                        }}
                         onDragEnd={e => {
+                            console.log(e)
                             editMarker(marker.id, {
-                                latitude: e.lngLat[1],
-                                longitude: e.lngLat[0],
+                                latitude: _.get(e, "lngLat.lat"),
+                                longitude: _.get(e, "lngLat.lng")
                             })
                         }}
                         latitude={marker.latitude}
-                        longitude={marker.longitude}>
-                        <div className={styles.pointer} style={{ backgroundImage: `url(${pointer})` }} />
+                        longitude={marker.longitude}
+                    >
+                        <img src={pointer} height={50} width={50} />
                     </Marker>
-                )) : null}
+                }) : null}
+
                 {showPopup && <Popup
                     latitude={showPopup.latitude}
                     longitude={showPopup.longitude}
                     closeButton={true}
+                    closeOnClick={false}
                     className={styles.popup}
-                    closeOnClick={true}
                     onClose={() => { setShowPopup(null); setIsEdit(false) }}
                     anchor="bottom" >
                     {isEdit ?
@@ -324,13 +347,13 @@ export default function Map({
                             }} className={`icon icon-edit ${styles.editMarker}`} />}
                         </div>}
                 </Popup>}
-                {addMarker && <div className={styles.overlay} />}
+                {/* {addMarker && <div className={styles.overlay} />} */}
                 {!addMarker && (!oneMarker || !value || value.length == 0) && edit && <Button
-                    icon='plus'
+                    icon='map'
                     className={styles.addPoint}
                     onClick={e => {
                         e.preventDefault();
-                        setTimeout(() => setAddMarker(true), 300)
+                        setTimeout(() => setAddMarker(true), 100)
                     }}
                 />}
                 {addMarker && <Button
@@ -344,6 +367,7 @@ export default function Map({
                 {!hideNav && <div style={navStyle}>
                     <NavigationControl />
                 </div>}
+
             </ReactMapGL>}
     </div>
 }

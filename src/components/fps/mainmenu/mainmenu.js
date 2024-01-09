@@ -59,7 +59,7 @@ export default function MainMenu(props) {
         <div className={`D_MeinMenu_show_MM ${styles.show_mobile_menu} ${isLeft ? styles.leftSide : ''}`}
             onClick={() => { setShowMM(true); setShowBackdrop(true) }}></div>
 
-        <div className={`${styles.horMainmenu} ${showMM && styles.show} ${!props.horizontal ? styles.hideHorizontal : ''}`}>
+        <div className={`${styles.horMainmenu} D_MeinMenu_hor_MM ${showMM && styles.show} ${!props.horizontal ? styles.hideHorizontal : ''}`}>
             <div className={styles.horLogoWrapper}>
                 {props.logoUrl ?
                     <a href="/" className={styles.logo} style={{ backgroundImage: `url(${props.logoUrl})`, width: logoSize.width, height: logoSize.height }} /> :
@@ -136,7 +136,7 @@ export default function MainMenu(props) {
                 </div>}
         </div>
 
-        <div className={`${styles.mainmenu} ${showMM && styles.show} ${isLeft ? styles.leftSide : ''} ${props.horizontal ? styles.hideHorizontal : ''}`}>
+        <div className={`${styles.mainmenu} D_MeinMenu_MM ${showMM && styles.show} ${isLeft ? styles.leftSide : ''} ${props.horizontal ? styles.hideHorizontal : ''}`}>
             <div className={styles.hide_mobile_menu}
                 onClick={hideMM}></div>
             {props.logoUrl ?
@@ -344,9 +344,6 @@ function MobileTab(props) {
 }
 
 export function NewMainMenu(props) {
-
-    // console.log("NewMainMenu")
-    // console.log(props)
 
     const brakePoints = {
         mobile: { from: 0, to: 768 },
@@ -975,7 +972,7 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
             >
                 {hideGroups && !compactMode && <div className={`icon icon-up small D_MainMenu_List_expand ${isOpened ? '' : 'group_hidden'}`} />}
                 {name}</div>}
-            {(isOpened) && item.children.length && item.children.map(child =>
+            {(isOpened) && item.children.length ? item.children.map(child =>
                 <NewMainMenuItem
                     custom_labels={custom_labels}
                     compactMode={compactMode}
@@ -986,7 +983,7 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
                     item={child}
                     currentRoute={currentRoute}
                     menuConfig={menuConfig} />
-            )}
+            ) : <div />}
         </div>
     }
 
