@@ -8,9 +8,3 @@ it('renders without crashing', () => {
   root.render(<App />); // Render the component.
   root.unmount(); // Unmount the component.
 });
-
-  const div = document.createElement('div');
-  const root = createRoot(div); // Create a root.
-  root.render(<App />); // Render the component.
-  root.unmount(); // Unmount the component.
-});
