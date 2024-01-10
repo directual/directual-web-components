@@ -3,6 +3,7 @@ FROM node:20.8.0-alpine3.17 as build
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 
+ENV NODE_OPTIONS=--openssl-legacy-provider
 COPY . /app
 RUN yarn install
 WORKDIR /app/example
