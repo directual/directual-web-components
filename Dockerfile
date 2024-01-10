@@ -1,15 +1,13 @@
 # build environment
-FROM node:16-alpine as build
+FROM node:20.8.0-alpine3.17 as build
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 
 COPY . /app
 RUN npm install
 WORKDIR /app/example
-RUN npm install
+RUN yarn install
 RUN npm run build
-RUN pwd
-RUN ls -la
 
 # production environment
 FROM nginx:stable-alpine
