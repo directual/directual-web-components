@@ -24,6 +24,7 @@
 .content_menu {
     /* overflow: auto; */
     display: flex;
+    z-index: 5;
     align-items: stretch;
     flex-shrink: 0;
 }
