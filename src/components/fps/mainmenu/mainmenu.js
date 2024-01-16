@@ -4,6 +4,7 @@ import styles from './mainmenu.module.css'
 import Button, { ButtonDropDown } from '../button/button'
 import ActionPanel from '../actionspanel/actionspanel'
 import _ from 'lodash'
+import { dict } from '../locale'
 
 
 function DropDown(props) {
@@ -345,6 +346,8 @@ function MobileTab(props) {
 
 export function NewMainMenu(props) {
 
+    const lang = props.locale ? props.locale.length == 3 ? props.locale : 'ENG' : 'ENG'
+
     const brakePoints = {
         mobile: { from: 0, to: 768 },
         desktop: { from: 769, to: 10000 },
@@ -583,6 +586,7 @@ export function NewMainMenu(props) {
             >
                 {showUserButtons && <NewMainMenuAuth
                     auth={auth}
+                    dict={dict[lang]}
                     rightSide={leftSide}
                     handleRoute={route => e => {
                         hideMMhandler()
@@ -687,6 +691,7 @@ export function NewMainMenu(props) {
 
                 {showUserButtons && <NewMainMenuAuth
                     auth={auth}
+                    dict={dict[lang]}
                     handleRoute={route => e => {
                         hideMMhandler()
                         handleRoute(route)()
@@ -841,6 +846,7 @@ export function NewMainMenu(props) {
             </div>
             {showUserButtons && <NewMainMenuAuth
                 auth={auth}
+                dict={dict[lang]}
                 horizontal
                 handleRoute={route => e => {
                     hideMMhandler()
@@ -856,7 +862,7 @@ export function NewMainMenu(props) {
     </React.Fragment >
 }
 
-function NewMainMenuAuth({ auth, compactMode, horizontal, logOut, handleRoute, mobileHeader, rightSide }) {
+function NewMainMenuAuth({ auth, compactMode, horizontal, dict, logOut, handleRoute, mobileHeader, rightSide }) {
 
     const userName = () => {
         let name = ""
@@ -897,10 +903,10 @@ function NewMainMenuAuth({ auth, compactMode, horizontal, logOut, handleRoute, m
                     </a>}>
                     <div className={`${styles.profileDD} D_FPS_profileDD`}>
                         <div onClick={handleRoute("/profile")} className={`${styles.profileDDlink} D_FPS_profileDD_Button icon icon-user`}>
-                            Profile
+                            {_.get(dict, 'auth.profile')}
                         </div>
                         <div onClick={logOut} className={`${styles.profileDDlink} D_FPS_profileDD_Button icon icon-logout`}>
-                            Sign out
+                            {_.get(dict, 'auth.logout')}
                         </div>
                     </div>
 
@@ -908,7 +914,7 @@ function NewMainMenuAuth({ auth, compactMode, horizontal, logOut, handleRoute, m
 
                 :
                 <div className={`DMainMenu_LogInButton ${horizontal ? 'horizontalLB' : ''} ${compactMode ? 'compactLB' : ''}`}>
-                    <Button accent={!mobileHeader} transparent={mobileHeader} onClick={handleRoute("/signin")} icon='logoutAlt'>{compactMode ? "" : "Sign in"}</Button>
+                    <Button accent={!mobileHeader} transparent={mobileHeader} onClick={handleRoute("/signin")} icon='logoutAlt'>{compactMode ? "" : _.get(dict, 'auth.login')}</Button>
                 </div>
         }
     </React.Fragment>
@@ -1029,7 +1035,7 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
             handleRoute(menuItem.linkToPage)(e)
             e.preventDefault()
         }
-        }}
+    }}
         href={menuItem.linkToType !== 'external' ? menuItem.linkToPage : menuItem.linkToURL}
         target={menuItem.linkToURLNewWindow && menuItem.linkToType == 'external' ? '_blank' : ''}
         style={sideMenuAlign == 'right' ? { marginLeft: horMenuMargin, marginTop: 0 } :

@@ -15,6 +15,11 @@ export const dict = {
         success: 'Success',
         madeOn: 'made on',
         loading: 'Loading...',
+        auth: {
+            login: "Sign in",
+            profile: "Profile",
+            logout: "Log in",
+        },
         profile: {
             password: 'Password',
             or: 'Or',
@@ -92,6 +97,11 @@ export const dict = {
         },
         sortField: 'Sortierfeld',
         error: 'Fehler',
+        "auth": {
+            "login": "Anmelden",
+            "profile": "Profil",
+            "logout": "Abmelden"
+        },
         success: 'Erfolg',
         madeOn: 'gemacht auf',
         loading: 'Wird geladen...',
@@ -172,6 +182,11 @@ export const dict = {
         },
         sortField: 'Campo de ordenación',
         error: 'Error',
+        "auth": {
+            "login": "Iniciar sesión",
+            "profile": "Perfil",
+            "logout": "Cerrar sesión"
+        },
         success: 'Éxito',
         madeOn: 'hecho en',
         loading: 'Cargando...',
@@ -253,6 +268,11 @@ export const dict = {
         sortField: 'Champ de tri',
         error: 'Erreur',
         success: 'Succès',
+        "auth": {
+            "login": "Se connecter",
+            "profile": "Profil",
+            "logout": "Se déconnecter"
+        },
         "lastMonth": "le mois dernier",
         "last2Weeks": "les 2 dernières semaines",
         "lastWeek": "la semaine dernière",
@@ -333,6 +353,11 @@ export const dict = {
         sortField: 'Поле для сортировки',
         error: 'Ошибка',
         success: 'Успех',
+        "auth": {
+            "login": "Войти",
+            "profile": "Профиль",
+            "logout": "Выйти"
+        },
         "lastMonth": "прошлый месяц",
         "last2Weeks": "последние 2 недели",
         "lastWeek": "прошлая неделя",
@@ -414,6 +439,11 @@ export const dict = {
         "lastMonth": "先月",
         "last2Weeks": "過去2週間",
         "lastWeek": "先週",
+        "auth": {
+            "login": "サインイン",
+            "profile": "プロフィール",
+            "logout": "ログアウト"
+        },
         "yesterday": "昨日",
         "tomorrow": "明日",
         "nextWeek": "来週",
@@ -495,6 +525,11 @@ export const dict = {
         "lastWeek": "semana passada",
         "yesterday": "ontem",
         "tomorrow": "amanhã",
+        "auth": {
+            "login": "Entrar",
+            "profile": "Perfil",
+            "logout": "Sair"
+        },
         "nextWeek": "próxima semana",
         "next2Weeks": "próximas 2 semanas",
         "nextMonth": "próximo mês",
@@ -571,6 +606,11 @@ export const dict = {
         "lastMonth": "पिछले महीने",
         "last2Weeks": "पिछले 2 सप्ताह",
         "lastWeek": "पिछले सप्ताह",
+        "auth": {
+            "login": "साइन इन करें",
+            "profile": "प्रोफाइल",
+            "logout": "लॉग इन करें"
+        },
         "yesterday": "कल",
         "tomorrow": "कल",
         "nextWeek": "आगामी सप्ताह",

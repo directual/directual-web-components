@@ -97,6 +97,7 @@ function MainMenuWrapper(props) {
             menuConfig={newMenuEexample.menuConfig}
             mobileMenu={newMenuEexample.mobileMenu}
             currentRoute={location.pathname || '/'}
+            locale='ESP'
             custom_labels={{
                 "counter": "0",
                 "foo": "3"
@@ -114,6 +115,7 @@ function MainMenuWrapper(props) {
         theme='ural'
         oldLogoUrl="https://api.directual.com/fileUploaded/dev/48294569-8ce6-4d95-822a-af2eecdd8462.png"
         compactState
+        locale='ESP'
         currentBP={currentBP}
         handleRoute={href => e => {
             handleRoute(href);
