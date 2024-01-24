@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "PORT=3006 NODE_OPTIONS=--openssl-legacy-provider node ../node_modules/react-scripts/bin/react-scripts.js start",
+    "start": "DISABLE_ESLINT_PLUGIN=true PORT=3006 NODE_OPTIONS=--openssl-legacy-provider node ../node_modules/react-scripts/bin/react-scripts.js start",
     "build": "node ../node_modules/react-scripts/bin/react-scripts.js build",
     "test": "node ../node_modules/react-scripts/bin/react-scripts.js test",
     "eject": "node ../node_modules/react-scripts/bin/react-scripts.js eject"
@@ -15,17 +15,19 @@
     "react-map-gl": "5.3.17",
     "directual-web-components": "file:..",
     "moment": "^2.26.0",
-    "react": "file:../node_modules/react",
     "react-color": "^2.19.3",
-    "react-dom": "file:../node_modules/react-dom",
-    "react-router-dom": "^5.2.0",
+    "react-router-dom": "5.3.4",
     "react-scripts": "file:../node_modules/react-scripts"
   },
   "devDependencies": {
     "@babel/plugin-syntax-object-rest-spread": "^7.8.3"
   },
+  "peerDependencies": {
+    "react": "^18",
+    "react-dom": "^18"
+  },
   "eslintConfig": {
-    "extends": "react-app"
+
   },
   "browserslist": [
     ">0.2%",
