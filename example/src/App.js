@@ -113,7 +113,7 @@ function MainMenuWrapper(props) {
     return <NewMainMenu
         title='directual-design'
         theme='ural'
-        oldLogoUrl="https://api.directual.com/fileUploaded/dev/48294569-8ce6-4d95-822a-af2eecdd8462.png"
+        //oldLogoUrl="https://api.directual.com/fileUploaded/dev/48294569-8ce6-4d95-822a-af2eecdd8462.png"
         compactState
         locale='ESP'
         currentBP={currentBP}

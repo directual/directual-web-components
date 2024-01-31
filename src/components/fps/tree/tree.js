@@ -102,8 +102,8 @@ export function Tree(props) {
                 "isFolder": true
             }]
         }
-        console.log('====composeTree=====')
-        console.log(options)
+        // console.log('====composeTree=====')
+        // console.log(options)
         function collectChildren(folder) {
             let children = (options || []).filter(i => {
                 return i.parentID == folder
