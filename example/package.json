@@ -12,10 +12,10 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "comlink": "^4.3.1",
-    "react-map-gl": "5.3.17",
     "directual-web-components": "file:..",
     "moment": "^2.26.0",
     "react-color": "^2.19.3",
+    "react-map-gl": "5.3.17",
     "react-router-dom": "5.3.4",
     "react-scripts": "file:../node_modules/react-scripts"
   },
@@ -23,13 +23,14 @@
     "react": "^18",
     "react-dom": "^18"
   },
-  "eslintConfig": {
-
-  },
+  "eslintConfig": {},
   "browserslist": [
     ">0.2%",
     "not ie 11",
     "not dead",
     "not chrome 49"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  }
 }
