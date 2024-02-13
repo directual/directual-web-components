@@ -222,8 +222,8 @@ export default function FpsMap({
         }
     }, [isEdit])
 
-    console.log('map')
-    console.log(value)
+    // console.log('map')
+    // console.log(value)
     // console.log(defaultValue)
 
     useEffect(() => {

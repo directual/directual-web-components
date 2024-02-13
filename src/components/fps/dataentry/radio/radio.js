@@ -43,8 +43,8 @@ export default function Radio(props) {
         <div className={`${styles.radio} ${props.disabled && styles.disabled}`}>
             <div className={`${styles.radio_flex} ${props.horizontal ? styles.horizontal : ''}`}>
                 {!props.radioImages && <React.Fragment>
-                    {props.options && props.options.map(option =>
-                        <label>
+                    {props.options && props.options.map((option, i) =>
+                        <label key={i}>
                             <input
                                 type="radio"
                                 value={option.value}
@@ -64,8 +64,8 @@ export default function Radio(props) {
 
                 {props.radioImages && <div className={`${styles.radioImages} ${props.small && styles.small}`}>
 
-                    {props.options && props.options.map(option =>
-                        <label style={{width: props.radioImagesWidth || 146}}>
+                    {props.options && props.options.map((option,i) =>
+                        <label key={i} style={{width: props.radioImagesWidth || 146}}>
                             <div className={styles.label}>
                                 <input
                                     type="radio"
