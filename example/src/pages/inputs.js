@@ -163,6 +163,8 @@ Some *emphasis* and <strong>strong</strong>!`;
         ]
     }
 
+    const [err,setErr] = useState("")
+
     return (
         <React.Fragment>
             <h1>Data entry</h1>

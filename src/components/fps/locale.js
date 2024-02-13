@@ -18,7 +18,7 @@ export const dict = {
         auth: {
             login: "Sign in",
             profile: "Profile",
-            logout: "Log in",
+            logout: "Log out",
         },
         profile: {
             password: 'Password',
