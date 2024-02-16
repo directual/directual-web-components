@@ -6,7 +6,8 @@ ENV PATH /app/node_modules/.bin:$PATH
 ENV NODE_OPTIONS=--openssl-legacy-provider
 COPY . /app
 RUN yarn install
-#WORKDIR /app/example
+WORKDIR /app/example
+RUN mkdir "build"
 #RUN yarn install
 #RUN npm run build
 
