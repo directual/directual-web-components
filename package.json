@@ -1,6 +1,6 @@
 {
   "name": "directual-web-components",
-  "version": "3.0.13",
+  "version": "3.0.22",
   "description": "fps components",
   "author": "Directual",
   "license": "MIT",
@@ -68,7 +68,8 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "transform-loader": "^0.2.4",
-    "webworkify-webpack": "^1.0.6"
+    "webworkify-webpack": "^1.0.6",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   },
   "files": [
     "dist"

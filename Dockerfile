@@ -7,8 +7,9 @@ ENV NODE_OPTIONS=--openssl-legacy-provider
 COPY . /app
 RUN yarn install
 WORKDIR /app/example
-RUN yarn install
-RUN npm run build
+RUN mkdir "build"
+#RUN yarn install
+#RUN npm run build
 
 # production environment
 FROM nginx:stable-alpine
