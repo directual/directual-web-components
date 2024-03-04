@@ -355,7 +355,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
     return (
         <ComponentWrapper currentBP={currentBP}>
-
+            <Hint>TEST</Hint>
             {data.writeError && data.writeError != 'dql is not allowed for write' && <Hint title={dict[lang].form.error} error>{data.writeError}</Hint>}
             {showObject &&
                 <React.Fragment>

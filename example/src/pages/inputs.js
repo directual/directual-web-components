@@ -169,7 +169,6 @@ Some *emphasis* and <strong>strong</strong>!`;
         <React.Fragment>
             <h1>Data entry</h1>
 
-
             <hr />
 
             {/* <Colorpicker defaultValue="#AAABBB" onChange={val => console.log(val)} />
