@@ -45,6 +45,7 @@ a.button:hover:not(.disabled):not(.transparent) {
   transition: 0s;
   white-space: nowrap;
   font-weight: var(--text-font-weight);
+  margin: 1px;
 }
 .button.loading {
   padding-left: 6px;

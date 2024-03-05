@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react'
 import styles from './button.module.css'
+import '../theme/theme.module.css'
 import Loader from '../loader/loader'
+import PropTypes from 'prop-types';
 
 export default function Button(props) {
 
@@ -35,7 +37,7 @@ export default function Button(props) {
                     disabled={(props.disabled || props.loading) && 'disabled'}
                 >
                     {props.loading && <Loader small accent={props.accent}></Loader>}
-                    {props.children}</button>
+                    {props.children || props.label}</button>
                 :
                 <a className={`${styles.button} FPS_BUTTON
                     ${props.icon && `${styles.icon} icon icon-${props.icon}`}
@@ -57,12 +59,29 @@ export default function Button(props) {
                     href={!props.disabled && props.link}
                     target={props.newWindow && '_blank'}
                 >
-                    {props.children}
+                    {props.children || props.label}
                 </a>
             }
         </React.Fragment>
     )
 }
+
+Button.propTypes = {
+    accent: PropTypes.bool,
+    danger: PropTypes.bool,
+    onClick: PropTypes.func,
+    children: PropTypes.string.isRequired,
+    icon: PropTypes.string,
+};
+
+Button.defaultProps = {
+    accent: false,
+    danger: false,
+    onClick: undefined,
+    children: 'button',
+    icon: null
+};
+
 
 export function ButtonDropDown(props) {
 
@@ -99,8 +118,8 @@ export function ButtonDropDown(props) {
                 setShow(!show)
             }}
         >{props.title}</Button>
-        <div 
-            style={shiftDropdown ? {marginLeft: shiftDropdown} : null }
+        <div
+            style={shiftDropdown ? { marginLeft: shiftDropdown } : null}
             className={`${styles.dropdownMenu} ${show ? styles.show : ''}`} ref={dropMenu}
             onClick={() => !props.lockDD ? setShow(false) : undefined}>
             {props.children}
