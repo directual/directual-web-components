@@ -29,11 +29,9 @@ export const Regular = {
       "data": [
           {
               "id": 1709649755976,
-              "latitude": 37.868871551387045,
-              "longitude": -121.76671998046874,
-              "title": "New Marker",
-              "text": "hello",
-              "link": "there"
+              "latitude": 37.791573569307815,
+              "longitude": -119.55922502572798,
+              "title": "Yosemite",
           }
       ]
   },

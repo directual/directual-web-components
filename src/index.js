@@ -6,6 +6,7 @@ import {
   PageIsEmpty
 } from './components/fps/FpsSystem'
 import FpsLogin from './components/fps/FpsLogin'
+import Spacing from './components/fps/dataentry/spacing/spacing'
 import CodeInput from './components/fps/dataentry/codeinput/codeinput'
 import FpsCards from './components/fps/viewobjects/cards/FpsCards'
 import FpsChart from './components/fps/FpsChart'
@@ -57,6 +58,7 @@ import FpsTheme, { SetTheme } from './components/fps/theme/theme'
 export {
   Fps404,
   Fps400,
+  Spacing,
   Fps500,
   FpsBlocked,
   Colorpicker,

@@ -142,17 +142,23 @@ export default function FpsMap({
             !mapRefreshOff && setValue(defaultValue.data)
             if (!initialPositioning && defaultValue.data.length) {
                 setInitialPositioning(true)
+                console.log("===")
+                console.log(defaultValue)
                 positionMap(defaultValue.data[0].longitude, defaultValue.data[0].latitude)
             }
         }
     }, [defaultValue])
 
     useEffect(() => {
+        // console.log("!")
+        // console.log(initialPositioning)
         if (!initialPositioning && value && value.length) {
             setInitialPositioning(true)
+            // console.log("initialPositioning")
+            // console.log(value[0].longitude, value[0].latitude)
             positionMap(value[0].longitude, value[0].latitude)
         }
-    }, [])
+    }, [value])
 
     const save = val => {
         if (!edit) return null
@@ -250,11 +256,13 @@ export default function FpsMap({
             :
             <ReactMapGL
                 mapboxAccessToken={maptoken || defaultMaptoken}
-                initialViewState={{
-                    latitude: lat || _.get(defaultValue, '[0].latitude') || 37.786868,
-                    longitude: lng || _.get(defaultValue, '[0].longitude') || -122.252865,
-                    zoom: zoom || 8,
-                }}
+                {...viewport}
+                onMove={evt => setViewport(evt.viewState)}
+                // initialViewState={{
+                //     latitude: lat || _.get(defaultValue, '[0].latitude') || 37.786868,
+                //     longitude: lng || _.get(defaultValue, '[0].longitude') || -122.252865,
+                //     zoom: zoom || 8,
+                // }}
                 onClick={e => {
                     if (!addMarker) return null
                     newMarker(e.lngLat)

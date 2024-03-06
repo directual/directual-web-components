@@ -15,6 +15,7 @@ import { addUrlParam, removeUrlParam, clearURL } from '../../queryParams'
 import Hint from '../../hint/hint'
 import _ from 'lodash'
 import debounce from 'lodash.debounce';
+import PropTypes from 'prop-types';
 
 function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     if (!data) { data = {} }
@@ -479,6 +480,21 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         </ComponentWrapper>
     )
 }
+
+FpsTable.propTypes = {
+    data: PropTypes.object.isRequired,
+    auth: PropTypes.object,
+    locale: PropTypes.string,
+    onChange: PropTypes.func,
+};
+
+FpsTable.defaultProps = {
+    data: {},
+    auth: {},
+    locale: "ENG",
+    onChange: undefined,
+};
+
 FpsTable.settings = {
     icon: icon,
     name: 'Table view',
