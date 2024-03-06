@@ -10,7 +10,6 @@ export default function Spacing(props) {
     const { label, defaultValue, onChange, isCentered, type } = props
     const [value, setValue] = useState(defaultValue ||
         (type == 'horisontal' ? 0
-
             : {
                 marginTop: 0,
                 marginRight: 0,
@@ -22,12 +21,13 @@ export default function Spacing(props) {
                 paddingLeft: 0,
             }))
 
+
     useEffect(() => {
         if (!_.isEqual(value, defaultValue)) setValue(defaultValue)
     }, [defaultValue])
 
-    const handleChange = field => value => {
-        const newValue = field ? { ...value, [field]: value } : value
+    const handleChange = field => val => {
+        const newValue = field ? { ...value, [field]: val } : val
         setValue(newValue)
         onChange && onChange(newValue)
     }

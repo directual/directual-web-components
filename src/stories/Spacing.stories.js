@@ -34,7 +34,8 @@ export const Regular = {
     defaultValue: exampleSpacing,
     label: "Spacing, px.",
     isCentered: false,
-    type: 'all'
+    type: 'all',
+    onChange: value => console.log(value)
   },
 };
 
