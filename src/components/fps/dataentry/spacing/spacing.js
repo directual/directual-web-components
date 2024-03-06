@@ -7,7 +7,7 @@ import Input from '../input/input'
 
 export default function Spacing(props) {
 
-    const { label, defaultValue, onChange, isCentered, type } = props
+    const { label, defaultValue, onChange, isCentered, type, nomargin } = props
     const [value, setValue] = useState(defaultValue ||
         (type == 'horisontal' ? 0
             : {
@@ -32,7 +32,7 @@ export default function Spacing(props) {
         onChange && onChange(newValue)
     }
 
-    if (type == 'horisontal') return <div className={styles.inputMarginWrapper}>
+    if (type == 'horisontal') return <div className={styles.inputMarginWrapper} style={{marginBottom: nomargin ? 0 : 22}}>
         <Input label={label} type='number' nomargin defaultValue={value} onChange={handleChange(null)} positive />
         <div className={`${styles.spaceWrapper} ${styles.hor}`}>
             <div className={styles.block} />
@@ -41,7 +41,7 @@ export default function Spacing(props) {
         </div>
     </div>
 
-    if (type == 'vertical') return <div className={styles.inputMarginWrapper}>
+    if (type == 'vertical') return <div className={styles.inputMarginWrapper} style={{marginBottom: nomargin ? 0 : 22}}>
         <Input label={label} type='number' nomargin defaultValue={value} onChange={handleChange(null)} positive />
         <div className={`${styles.spaceWrapper} ${styles.vert}`}>
             <div className={styles.block} />
@@ -50,7 +50,7 @@ export default function Spacing(props) {
         </div>
     </div>
 
-    return <div className={styles.spacingWrapper}>
+    return <div className={styles.spacingWrapper} style={{marginBottom: nomargin ? 0 : 22}}>
         {label && <div className={styles.label}>{label}</div>}
         <div className={styles.margin}>
             <p className={styles.spacingTitle}>MARGIN</p>
@@ -133,6 +133,7 @@ Spacing.propTypes = {
     label: PropTypes.string,
     isCentered: PropTypes.bool,
     type: PropTypes.string,
+    nomargin: PropTypes.bool
 };
 
 Spacing.defaultProps = {
@@ -140,5 +141,6 @@ Spacing.defaultProps = {
     onChange: undefined,
     label: "",
     isCentered: false,
-    type: 'all'
+    type: 'all',
+    nomargin: false
 };

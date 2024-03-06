@@ -1,3 +1,6 @@
+.spacingWrapper {
+  width: 250px;
+}
 .spacingWrapper .margin {
   border-top: solid 30px #c1d2df;
   border-bottom: solid 30px #c1d2df;
