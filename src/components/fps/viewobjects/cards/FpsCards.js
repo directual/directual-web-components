@@ -457,6 +457,7 @@ FpsCards.settings = {
         { name: 'List title', sysName: 'tableTitle', type: 'input' },
         { name: 'Page size', sysName: 'pageSize', type: 'number' },
         { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
+        { name: 'Component comment', sysName: 'comment', type: 'comment' },
     ]
 }
 export default FpsCards

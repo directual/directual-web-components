@@ -85,5 +85,6 @@ Media.settings = {
         //{ name: 'Height', sysName: 'height', type: 'htmlSize' },
         { name: 'Apply template engine', sysName: 'withTemplate', type: 'boolean' },
         { name: 'API-endpoint', sysName: 'sl', type: 'api-endpoint' },
+        { name: 'Component comment', sysName: 'comment', type: 'comment' },
     ]
 }

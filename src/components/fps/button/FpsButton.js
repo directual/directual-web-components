@@ -54,6 +54,7 @@ FpsButton.settings = {
         { name: 'Apply template engine', sysName: 'withTemplate', type: 'boolean' },
         { name: 'API-endpoint (optional)', sysName: 'sl', type: 'api-endpoint' },
         { name: 'Hide component', sysName: 'isHidden', type: 'isHidden' },
+        { name: 'Component comment', sysName: 'comment', type: 'comment' },
 ]
 }
 

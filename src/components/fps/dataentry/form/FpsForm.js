@@ -911,5 +911,6 @@ FpsForm.settings = {
     { name: 'Labels or Placeholders', sysName: 'placeholder', type: 'labelOrPlaceholder' },
     { name: 'Form max width, px', sysName: 'maxWidth', type: 'number' },
     { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
+    { name: 'Component comment', sysName: 'comment', type: 'comment' },
   ]
 }

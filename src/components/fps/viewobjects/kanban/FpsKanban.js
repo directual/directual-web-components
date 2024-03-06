@@ -454,6 +454,7 @@ FpsKanban.settings = {
         { name: 'Kanban title', sysName: 'tableTitle', type: 'input' },
         { name: 'Max objects quantity', sysName: 'pageSize', type: 'number' },
         { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
+        { name: 'Component comment', sysName: 'comment', type: 'comment' },
     ]
 }
 export default FpsKanban

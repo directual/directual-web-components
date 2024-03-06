@@ -41,6 +41,7 @@ FpsHtml.settings = {
     { name: 'API-endpoint (optional)', sysName: 'sl', type: 'api-endpoint' },
     { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
     { name: 'Hide component', sysName: 'isHidden', type: 'isHidden' },
+    { name: 'Component comment', sysName: 'comment', type: 'comment' },
   ]
 }
 
@@ -65,6 +66,7 @@ FpsMarkdown.settings = {
     { name: 'API-endpoint (optional)', sysName: 'sl', type: 'api-endpoint' },
     { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
     { name: 'Hide component', sysName: 'isHidden', type: 'isHidden' },
+    { name: 'Component comment', sysName: 'comment', type: 'comment' },
   ]
 }
 
