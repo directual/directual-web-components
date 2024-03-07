@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styles from './map.module.css'
-import ReactMapGL, { Marker, GeolocateControl, NavigationControl, Popup } from 'react-map-gl'
+// import ReactMapGL, { Marker, GeolocateControl, NavigationControl, Popup } from 'react-map-gl'
 // import MapLibre from 'react-map-gl/maplibre';
 import Input from '../input/input'
 import pointer from './../../../../icons/POINTER.svg'
@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 
 // import { Map, Marker } from "pigeon-maps"
 
-export default function SimpleMap({ }) {
+export default function FpsMap({ }) {
 
     return <div>
         map is not supported
@@ -381,23 +381,23 @@ export default function SimpleMap({ }) {
 //     </div>
 // }
 
-FpsMap.propTypes = {
-    label: PropTypes.string,
-    height: PropTypes.string,
-    onChange: PropTypes.func,
-    maptoken: PropTypes.string,
-    jsonView: PropTypes.bool,
-    edit: PropTypes.bool,
-    defaultValue: PropTypes.object
-};
+// FpsMap.propTypes = {
+//     label: PropTypes.string,
+//     height: PropTypes.string,
+//     onChange: PropTypes.func,
+//     maptoken: PropTypes.string,
+//     jsonView: PropTypes.bool,
+//     edit: PropTypes.bool,
+//     defaultValue: PropTypes.object
+// };
 
-FpsMap.defaultProps = {
-    label: 'This is my map',
-    height: '600px',
-    onChange: undefined,
-    maptoken: "pk.eyJ1IjoiZGlyZWN0dWFsMTIzIiwiYSI6ImNscXkxZmZvOTBrNW4ya21pOXRyM2FqY2QifQ.ECQA2moC4r6-Zb0eAtTXpw",
-    jsonView: false,
-    edit: false,
-    defaultValue: null
-};
+// FpsMap.defaultProps = {
+//     label: 'This is my map',
+//     height: '600px',
+//     onChange: undefined,
+//     maptoken: "pk.eyJ1IjoiZGlyZWN0dWFsMTIzIiwiYSI6ImNscXkxZmZvOTBrNW4ya21pOXRyM2FqY2QifQ.ECQA2moC4r6-Zb0eAtTXpw",
+//     jsonView: false,
+//     edit: false,
+//     defaultValue: null
+// };
                 
