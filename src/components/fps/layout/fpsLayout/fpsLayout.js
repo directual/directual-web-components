@@ -6,6 +6,7 @@ import TabsPane from '../tabpane/tabpane'
 import _ from 'lodash'
 import Loader from '../../loader/loader'
 import { dict } from '../../locale'
+import PropTypes from 'prop-types';
 
 const brakePoints = {
     mobile: { from: 0, to: 478, display: 400 },
@@ -60,7 +61,7 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale }) {
     if (!layout) { return <div className={styles.error}>no layout</div> }
 
     const composeTabsContent = (tabId) => {
-        if (localLoading) return <div style={{margin: 24}}><Loader>{dict[lang].loading}</Loader></div>
+        if (localLoading) return <div style={{ margin: 24 }}><Loader>{dict[lang].loading}</Loader></div>
         if (!layout.sections[tabId] || layout.sections[tabId].length == 0) return <div />
         return <div>
             {layout.sections[tabId].map(section => <Section key={section.id} section={section} currentBP={currentBP} />)}
@@ -85,38 +86,64 @@ const Section = ({ section, currentBP }) => {
     if (!section.columns || section.columns.length == 0) return <div>no columns</div>
     const correctedBP = currentBP == 'wideDesktop' ? 'desktop' : currentBP;
 
-    const marginTop = _.get(section, 'marginTop') || _.get(section, 'marginTop') === 0 ? _.get(section, 'marginTop') : 24
-    const marginBottom = _.get(section, 'marginBottom') || _.get(section, 'marginBottom') === 0 ? _.get(section, 'marginBottom') : 24
-    const marginLeft = _.get(section, 'marginLeft') || _.get(section, 'marginLeft') === 0 ? _.get(section, 'marginLeft') : 24
-    const marginRight = _.get(section, 'marginRight') || _.get(section, 'marginRight') === 0 ? _.get(section, 'marginRight') : 24
+    const marginTop = _.get(section, 'spacing.marginBottom') || _.get(section, 'spacing.marginBottom') === 0 ? _.get(section, 'spacing.marginBottom') :
+        (_.get(section, 'marginTop') || _.get(section, 'marginTop') === 0 ? _.get(section, 'marginTop') : 24)
+    const marginBottom = _.get(section, 'spacing.marginBottom') || _.get(section, 'spacing.marginBottom') === 0 ? _.get(section, 'spacing.marginBottom') :
+        (_.get(section, 'marginBottom') || _.get(section, 'marginBottom') === 0 ? _.get(section, 'marginBottom') : 24)
+    const marginLeft = _.get(section, 'spacing.marginLeft') || _.get(section, 'spacing.marginLeft') === 0 ? _.get(section, 'spacing.marginLeft') :
+        (_.get(section, 'marginLeft') || _.get(section, 'marginLeft') === 0 ? _.get(section, 'marginLeft') : 24)
+    const marginRight = _.get(section, 'spacing.marginRight') || _.get(section, 'spacing.marginRight') === 0 ? _.get(section, 'spacing.marginRight') :
+        (_.get(section, 'marginRight') || _.get(section, 'marginRight') === 0 ? _.get(section, 'marginRight') : 24)
+
+    const paddingTop = _.get(section, 'spacing.paddingBottom') || _.get(section, 'spacing.paddingBottom') === 0 ? _.get(section, 'spacing.paddingBottom') :
+        (_.get(section, 'paddingTop') || _.get(section, 'paddingTop') === 0 ? _.get(section, 'paddingTop') : 0)
+    const paddingBottom = _.get(section, 'spacing.paddingBottom') || _.get(section, 'spacing.paddingBottom') === 0 ? _.get(section, 'spacing.paddingBottom') :
+        (_.get(section, 'paddingBottom') || _.get(section, 'paddingBottom') === 0 ? _.get(section, 'paddingBottom') : 0)
+    const paddingLeft = _.get(section, 'spacing.paddingLeft') || _.get(section, 'spacing.paddingLeft') === 0 ? _.get(section, 'spacing.paddingLeft') :
+        (_.get(section, 'paddingLeft') || _.get(section, 'paddingLeft') === 0 ? _.get(section, 'paddingLeft') : 0)
+    const paddingRight = _.get(section, 'spacing.paddingRight') || _.get(section, 'spacing.paddingRight') === 0 ? _.get(section, 'spacing.paddingRight') :
+        (_.get(section, 'paddingRight') || _.get(section, 'paddingRight') === 0 ? _.get(section, 'paddingRight') : 0)
+
     const maxWidth = _.get(section, 'maxWidth') || _.get(section, 'maxWidth') === 0 ? _.get(section, 'maxWidth') : 'none'
     const align = _.get(section, 'align')
 
-    return <div className={`${styles.section} ${align == 'center' ? styles.alignCenter : ''}`}
+    return <div className={`${styles.section} ${_.get(section,"cssClass")} ${align == 'center' ? styles.alignCenter : ''}`}
         style={{
             flexDirection: section.flexDirection[correctedBP],
-            marginTop: marginTop,
-            marginBottom: marginBottom,
-            marginLeft: marginLeft,
-            marginRight: marginRight,
-            maxWidth: maxWidth,
+            marginTop: parseInt(marginTop),
+            marginBottom: parseInt(marginBottom),
+            marginLeft: parseInt(marginLeft),
+            marginRight: parseInt(marginRight),
+            paddingTop: parseInt(paddingTop),
+            paddingBottom: parseInt(paddingBottom),
+            paddingLeft: parseInt(paddingLeft),
+            paddingRight: parseInt(paddingRight),
+            maxWidth: parseInt(maxWidth),
         }}>
-        {section.columns.map((column, i) => <Column last={section.columns.length == i + 1} key={column.id} row={section.flexDirection[correctedBP] == 'row'} column={column} />)}
+        {section.columns.map((column, i) => <Column
+            section={section}
+            last={section.columns.length == i + 1}
+            key={column.id}
+            row={section.flexDirection[correctedBP] == 'row'}
+            column={column} />)}
     </div>
 }
 
-const Column = ({ column, row, last }) => {
+const Column = ({ column, row, last, section }) => {
 
     return <div className={`${styles.column} D_FPS_LAYOUT_COLUMN`} style={{ width: row ? column.size + '%' : 'auto' }}>
-        <ComponentWrapper last={last} row={row}>
+        <ComponentWrapper last={last} section={section} row={row}>
             {column.render}
         </ComponentWrapper>
     </div>
 }
 
 function ComponentWrapper(props) {
+    const { section } = props
 
-    const paddingRight = 24 // space between columns
+    const paddingRight = _.get(section, 'horSpacing') || _.get(section, 'horSpacing') === 0 ? _.get(section, 'horSpacing') : 24 // space between columns
+    const paddingBottom = _.get(section, 'vertSpacing') || _.get(section, 'vertSpacing') === 0 ? _.get(section, 'vertSpacing') : 24 // space between rows
+
 
     const layoutRef = useRef(null);
     const [currentBP, setCurrentBP] = useState('desktop')
@@ -152,9 +179,29 @@ function ComponentWrapper(props) {
     }, []);
     // =========================
 
+
     return (
-        <div className={`${styles.componentWrapper} D_FPS_COMPONENT_WRAPPER`} ref={layoutRef} style={{ paddingRight: !props.last && props.row ? paddingRight : 0 }}>
-            {/* <div className={styles.componentWidth}>{layoutWidth} – {currentBP}</div> */}
-            {props.children(currentBP)}
+        <div className={`${styles.componentWrapper} D_FPS_COMPONENT_WRAPPER`} ref={layoutRef}
+            style={{
+                paddingRight: !props.last && props.row ? parseInt(paddingRight) : 0,
+                paddingBottom: !props.last && !props.row ? parseInt(paddingBottom) : 0
+            }}>
+
+            {/* For Production / For Storybook testing:  */}
+            {props.children ? props.children(currentBP) : 
+                <div style={{ height: 100, backgroundColor: 'lightcoral', display:'flex', alignItems: 'center', justifyContent: 'center', opacity: 0.5 }}>
+                    <code>development mode</code></div>}
+
         </div>)
 }
+
+
+FpsLayout.propTypes = {
+    layout: PropTypes.object,
+    locale: PropTypes.string
+};
+
+FpsLayout.defaultProps = {
+    layout: {},
+    locale: "ENG"
+};
