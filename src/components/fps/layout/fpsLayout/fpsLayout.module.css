@@ -1,12 +1,8 @@
-.fpsLayout {
-  border: solid 1px slateblue;
-}
 .fpsLayout .layoutHeader {
   margin: 24px 0 0 24px;
   line-height: 1em;
 }
 .section {
-  border: solid 1px blue;
   display: flex;
 }
 .section.alignCenter {
@@ -17,10 +13,8 @@
   flex-shrink: 0;
   flex-grow: 2;
   max-width: 100%;
-  border: solid 1px springgreen;
 }
 .componentWrapper .componentWidth {
-  background-color: coral;
   color: #fff;
 }
 .error {
