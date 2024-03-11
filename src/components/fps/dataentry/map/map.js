@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styles from './map.module.css'
-// import ReactMapGL, { Marker, GeolocateControl, NavigationControl, Popup } from 'react-map-gl'
+import ReactMapGL, { Marker, GeolocateControl, NavigationControl, Popup } from 'react-map-gl'
 // import MapLibre from 'react-map-gl/maplibre';
 import Input from '../input/input'
 import pointer from './../../../../icons/POINTER.svg'
@@ -13,15 +13,15 @@ import PropTypes from 'prop-types';
 
 // import { Map, Marker } from "pigeon-maps"
 
-// export default function FpsMap({ }) {
+export default function FpsMap({ }) {
 
-//     return <div>
-//         map is not supported
-//         {/* <Map height={300} defaultCenter={[50.879, 4.6997]} defaultZoom={11}>
-//             <Marker width={50} anchor={[50.879, 4.6997]} />
-//         </Map> */}
-//     </div>
-// }
+    return <div>
+        map is not supported
+        {/* <Map height={300} defaultCenter={[50.879, 4.6997]} defaultZoom={11}>
+            <Marker width={50} anchor={[50.879, 4.6997]} />
+        </Map> */}
+    </div>
+}
 
 // export default function FpsMap({
 //     lng, // longitude
