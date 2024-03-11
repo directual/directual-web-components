@@ -78,7 +78,8 @@ Button.defaultProps = {
     accent: false,
     danger: false,
     onClick: undefined,
-    children: 'button',
+    children: '',
+    label: '',
     icon: null
 };
 

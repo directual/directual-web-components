@@ -388,7 +388,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
       {/* Standard response processing: */}
       {!showForm && !loading && !getResultAnswer().sync && <React.Fragment>
         {isSuccessWrite && <Hint 
-          margin={{ top: wf_noHinned.length > 0 ? 24 : 0, bottom: 0 }}
+          margin={{ top: wf_noHinned.length > 0 ? 24 : 0, bottom: 24 }}
           title={resultTitle} ok><div dangerouslySetInnerHTML={{ __html: resultMessage }} /></Hint>}
       </React.Fragment>}
 
@@ -397,7 +397,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
       {!showForm && !data.error && !loading && getResultAnswer().sync && <React.Fragment>
         {data.response && !getResultAnswer().isSuccess && <React.Fragment>
           <Hint
-            margin={{ top: wf_noHinned.length > 0 ? 24 : 0, bottom: 0 }} 
+            margin={{ top: wf_noHinned.length > 0 ? 24 : 0, bottom: 24 }} 
             title={getResultAnswer().answerTitle} error>
             <div dangerouslySetInnerHTML={{ __html: getResultAnswer().answerText }} />
           </Hint>

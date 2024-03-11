@@ -47,7 +47,7 @@
 }
 .card .details {
   position: absolute;
-  z-index: 100;
+  z-index: 5;
   top: 12px;
   right: 6px;
   transition: 0.5s;
