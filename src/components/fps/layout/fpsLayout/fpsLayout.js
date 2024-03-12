@@ -85,8 +85,7 @@ const Section = ({ section, currentBP }) => {
 
     if (!section.columns || section.columns.length == 0) return <div>no columns</div>
     const correctedBP = currentBP == 'wideDesktop' ? 'desktop' : currentBP;
-
-    const marginTop = _.get(section, 'spacing.marginBottom') || _.get(section, 'spacing.marginBottom') === 0 ? _.get(section, 'spacing.marginBottom') :
+    const marginTop = _.get(section, 'spacing.marginTop') || _.get(section, 'spacing.marginTop') === 0 ? _.get(section, 'spacing.marginTop') :
         (_.get(section, 'marginTop') || _.get(section, 'marginTop') === 0 ? _.get(section, 'marginTop') : 24)
     const marginBottom = _.get(section, 'spacing.marginBottom') || _.get(section, 'spacing.marginBottom') === 0 ? _.get(section, 'spacing.marginBottom') :
         (_.get(section, 'marginBottom') || _.get(section, 'marginBottom') === 0 ? _.get(section, 'marginBottom') : 24)
