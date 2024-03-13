@@ -1,8 +1,9 @@
 .newMainmenu {
   z-index: 1;
-  font-family: var(--menu-font-family);
+  font-family: var(--menu-font-family) !important;
   font-weight: var(--menu-font-weight);
   font-style: var(--menu-font-style);
+  font-size: var(--menu-font-size);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -10,9 +11,6 @@
   position: relative;
   transition: 0.5s;
   transition-timing-function: cubic-bezier(0.81, 0.12, 0.55, 1.4);
-}
-.newMainmenu .icon {
-  font-family: var(--menu-font-family);
 }
 .newMainmenu.leftSide {
   left: 0;
