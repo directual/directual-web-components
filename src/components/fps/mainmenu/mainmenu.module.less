@@ -1,7 +1,7 @@
 .newMainmenu {
   z-index: 1;
   position: relative;
-  font-family: var(--menu-font-family) !important;
+  font-family: var(--menu-font-family);
   font-weight: var(--menu-font-weight);
   font-style: var(--menu-font-style);
   font-size: var(--menu-font-size);
@@ -851,6 +851,9 @@
 :global { 
 
   .ural {
+    .icon {
+      font-family: var(--menu-font-family)
+    }
     svg {display: block;}
     background-color: var(--menu-bgr);
     border-radius: var(--border-radius);

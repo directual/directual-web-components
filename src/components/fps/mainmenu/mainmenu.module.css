@@ -1,6 +1,6 @@
 .newMainmenu {
   z-index: 1;
-  font-family: var(--menu-font-family) !important;
+  font-family: var(--menu-font-family);
   font-weight: var(--menu-font-weight);
   font-style: var(--menu-font-style);
   font-size: var(--menu-font-size);
@@ -774,6 +774,9 @@
   border-color: var(--menu-border-color);
   border-style: solid;
   border-width: 0;
+}
+:global .ural .icon {
+  font-family: var(--menu-font-family);
 }
 :global .ural svg {
   display: block;
