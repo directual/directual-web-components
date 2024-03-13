@@ -21,7 +21,7 @@ export default {
 };
 
 const authExample = {
-    "isAuth": false,
+    "isAuth": true,
     "custom_labels": "{\n   \"foo\": \"hello brave new world!\",\n   \"bar\": \"foobar\"\n}",
     "role": "admin",
     "lastName": "Watson",
@@ -112,6 +112,13 @@ const newMenuEexample = {
                 ],
                 "isFolder": true,
                 "icon": "folder"
+            },
+            {
+                "id": "item__1710337600511",
+                "name": "New page",
+                "children": [],
+                "isFolder": false,
+                "icon": "application"
             }
         ]
     },
@@ -164,7 +171,8 @@ const newMenuEexample = {
             },
             "menuBorderWidth": 3,
             "menuWidth": 244,
-            "logoWidth": 220
+            "logoWidth": 220,
+            "menuPosition": "side"
         },
         "item__1704799994598": {
             "linkToPage": "/dashboard",
@@ -222,12 +230,15 @@ const newMenuEexample = {
             "name": "My work",
             "permissions": "all_registered",
             "linkToPage": "/my-work",
-            "iconType": "directual_icon",
+            "iconType": "no_icon",
             "menuDirectualIconSet": "actions"
         },
         "rootMobileMenu": {
-            "showMobileHeader": true,
+            "showMobileHeader": false,
             "mobileHeaderLogoPosition": "center"
+        },
+        "item__1710337600511": {
+            "name": "test"
         }
     },
     "homePageDefault": "/raise-ticket",

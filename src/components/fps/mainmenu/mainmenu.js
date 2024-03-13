@@ -306,7 +306,6 @@ function MobileTab(props) {
         {iconType == 'directual_icon' && tabConfig.menuDirectualIconSet && <React.Fragment>
             <div className={`icon veryLarge icon-${tabConfig.menuDirectualIconSet}`} />
         </React.Fragment>}
-
         {iconType == "remix_icon" && tabConfig.menuRemixIcon &&
             <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`}>
                 <svg
@@ -999,6 +998,7 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
     const horMenuMargin = _.get(menuConfig, "rootMenu.horMenuMargin") || 12
     const horMenuGroupArrow = _.get(menuConfig, "rootMenu.horMenuGroupArrow") || 'left'
     const horMenuGroupArrowSize = _.get(menuConfig, "rootMenu.horMenuGroupArrowSize") || 'medium'
+    const iconType = menuItem.iconType || 'no_icon'
 
     if (item.isFolder && isHorizontal) {
         return <div className={`D_MainMenu_Item D_MainMenu_GroupTitle ${styles.menuIcon}`}
@@ -1048,11 +1048,11 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
             ${styles.menuIcon}
             ${styles.cursorPointer}
             ${currentRoute == menuItem.linkToPage ? "selected" : ""}
-            ${menuItem.iconType == 'directual_icon' ? `icon icon-${menuItem.menuDirectualIconSet}` : ''}
-            ${!menuItem.menuDirectualIconSet && !menuItem.menuRemixIcon && !menuItem.menuIconCustom ? 'icon icon-application' : ''}
+            ${iconType == 'directual_icon' ? `icon icon-${menuItem.menuDirectualIconSet}` : ''}
+            ${!menuItem.menuDirectualIconSet && !menuItem.menuRemixIcon && !menuItem.menuIconCustom && iconType !== 'no_icon' ? 'icon icon-application' : ''}
         `}>
         {/* Custom icon: */}
-        {menuItem.iconType == "custom_icon" && menuItem.menuIconCustom &&
+        {iconType == "custom_icon" && menuItem.menuIconCustom &&
             <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`}>
                 <img
                     style={{
@@ -1064,7 +1064,7 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
                         : menuItem.menuIconCustom} /></div>}
 
         {/* Remix icon: */}
-        {menuItem.iconType == "remix_icon" && menuItem.menuRemixIcon &&
+        {iconType == "remix_icon" && menuItem.menuRemixIcon &&
             <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`}>
                 <svg
                     width={menuItem.menuRemixIconSize || 24}
