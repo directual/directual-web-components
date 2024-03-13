@@ -24,7 +24,8 @@
   opacity: 1;
 }
 .table_wrapper table td {
-  padding: 12px 12px;
+  padding: 12px;
+  height: 32px;
   border-top: solid 1px var(--table-borders);
 }
 .table_wrapper table td .cardImage {
@@ -50,7 +51,8 @@
   font-weight: var(--strong-font-weight);
   border: none;
   text-align: left;
-  padding: 12px 12px;
+  padding: 12px;
+  height: 32px;
   white-space: nowrap;
   max-width: 300px;
   overflow: hidden;
@@ -557,4 +559,8 @@ div.tableTitle.mobile h2 {
 .htmlPreview .htmlHidePreview:hover,
 .htmlPreview .htmlShowPreview:hover {
   opacity: 1;
+}
+.table_showMore {
+  padding: 4px;
+  font-size: var(--text-small-size);
 }

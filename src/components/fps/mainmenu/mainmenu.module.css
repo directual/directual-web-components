@@ -1,5 +1,8 @@
 .newMainmenu {
   z-index: 1;
+  font-family: var(--menu-font-family);
+  font-weight: var(--menu-font-weight);
+  font-style: var(--menu-font-style);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -7,6 +10,9 @@
   position: relative;
   transition: 0.5s;
   transition-timing-function: cubic-bezier(0.81, 0.12, 0.55, 1.4);
+}
+.newMainmenu .icon {
+  font-family: var(--menu-font-family);
 }
 .newMainmenu.leftSide {
   left: 0;
@@ -318,6 +324,9 @@
   right: auto;
   left: 6px;
 }
+.show_mobile_menu.no_mob_header {
+  color: var(--layout-text);
+}
 .show_mobile_menu:before {
   font-family: 'directual-icons';
   content: '\e940';
@@ -371,6 +380,7 @@
 .hide_mobile_menu {
   display: none;
   z-index: 10;
+  color: var(--menu-item);
 }
 @media all and (max-width: 768px) {
   .leftSide .hide_mobile_menu {

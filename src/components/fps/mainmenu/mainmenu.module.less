@@ -1,6 +1,12 @@
 .newMainmenu {
   z-index: 1;
   position: relative;
+  font-family: var(--menu-font-family);
+  font-weight: var(--menu-font-weight);
+  font-style: var(--menu-font-style);
+  .icon {
+    font-family: var(--menu-font-family);
+  }
   &.leftSide {
     left: 0;
     right: auto;
@@ -346,6 +352,9 @@
   position: absolute;
   width: 40px;
   color: var(--menu-item);
+  &.no_mob_header {
+    color: var(--layout-text);
+  }
   height: 40px;
   display: flex;
   align-items: center;
@@ -417,6 +426,7 @@
 .hide_mobile_menu {
   display: none;
   z-index: 10;
+  color: var(--menu-item)
 }
 
 @media all and (max-width: 768px) {

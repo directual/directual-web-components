@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import styles from './wrapper.module.css'
 import { SetTheme } from '../theme/theme'
 import { dict } from '../locale'
+import PropTypes from 'prop-types';
 
 export function FpsWrapper(props) {
 
@@ -82,6 +83,32 @@ export function FpsWrapper(props) {
         </div>}
     </div>
 }
+
+FpsWrapper.propTypes = {
+    horizontal: PropTypes.bool,
+    showMobileTabs: PropTypes.bool,
+    themeName: PropTypes.object,
+    mobileTabsPlace: PropTypes.string, // 'bottom' 'top'
+    mobileLeftSide: PropTypes.bool, // burger on top
+    whiteLabel: PropTypes.bool,
+    locale: PropTypes.string,
+    mainMenu: PropTypes.element,
+    mobileTabs: PropTypes.element,
+    components: PropTypes.element
+};
+
+FpsWrapper.defaultProps = {
+    horizontal: false,
+    showMobileTabs: false,
+    mobileTabsPlace: 'bottom',
+    mobileLeftSide: false,
+    themeName: {},
+    whiteLabel: false,
+    locale: "ENG",
+    mainMenu: <div></div>,
+    mobileTabs: <div></div>,
+    components: <div></div>
+};
 
 export function ComponentWrapper(props) {
     return (

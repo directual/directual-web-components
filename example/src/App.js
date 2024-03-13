@@ -47257,8 +47257,7 @@ const App = (props) => {
 
                 </Switch>
             </React.Fragment>}
-        >
-        </FpsWrapper>
+        />
     </Router>
 }
 

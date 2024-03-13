@@ -6,6 +6,7 @@
     flex-grow: 2;
     position: relative;
     overflow: hidden;
+    min-height: 500px;
 }
 .mainWrapper.horizontal {
     flex-direction: column;
@@ -15,6 +16,7 @@
     display: block;
 }
 .mainWrapper {
+    position: relative;
     flex-grow: 2;
     overflow: auto;
     display: flex;

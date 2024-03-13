@@ -36,6 +36,8 @@ const EditableCell = ({
         setValue(initialValue)
     }, [initialValue])
 
+    const [showAll,setShowAll] = useState(false)
+
     // todo: editting objects from the table
     // const [isEditing,setIsEditing] = useState(false)
     // if (fieldDetails[id].write) {
@@ -231,10 +233,16 @@ const EditableCell = ({
 
     // arrayLink:
     if (fieldDetails[id].dataType == 'arrayLink' && value) {
+        let maxNum = showAll ? Array.isArray(value) ? value.length : 5 : 5
+        const showExpand = Array.isArray(value) && value.length > maxNum
+
         return <div className={`${styles.notEditableValue} ${styles.linkWrapper}`}>
             {Array.isArray(value) ?
-                value.map(label => <div className={`${styles.linkText} ${styles.notClickable}`}>{getLinkName(id, label)}</div>) :
+                _.slice(value, 0, maxNum).map(label => <div className={`${styles.linkText} ${styles.notClickable}`}>{getLinkName(id, label)}</div>) :
                 <div className={`${styles.linkText} ${styles.notClickable}`}>{value}</div>}
+            {showExpand && <a onClick={()=> {
+                setShowAll(true)
+            }} className={styles.table_showMore}>Show {value.length - maxNum} more</a>}
         </div>
     }
 
@@ -250,7 +258,7 @@ const defaultColumn = {
     Cell: EditableCell
 }
 
-function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fieldDetails, tableParams, skipPageReset, getLinkName, onExpand }) {
+function ReactTable({ columns, params, hideExpandTD, data, largeFont, updateMyData, fieldDetails, tableParams, skipPageReset, getLinkName, onExpand }) {
 
     const {
         getTableProps,
@@ -277,6 +285,7 @@ function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fiel
             getLinkName
         }
     )
+    const tableCellPadding = _.get(params,"tableCellPadding") || 12
 
     // Render the UI for your table
     return (
@@ -296,7 +305,7 @@ function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fiel
                                     <th
                                         {...column.getHeaderProps()}
                                         style={(fieldDetails[column.id] && (fieldDetails[column.id].dataType == 'number' || fieldDetails[column.id].dataType == 'decimal')) ?
-                                            { textAlign: 'right' } : {}}
+                                            { textAlign: 'right', padding: tableCellPadding } : { padding: tableCellPadding }}
                                     >
                                         <span className={styles.columnHeader}>
                                             {column.Header || <code>{column.id}</code>}</span>
@@ -331,10 +340,9 @@ function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fiel
                                         border: 'none'
                                     }}
                                 {...row.getRowProps()}>
-                                {/* <td>
-                                    {key}
-                                </td> */}
-                                {!hideExpandTD && <td ><a onClick={() => onExpand(row.original)} className={`icon icon-expand ${styles.expand}`} /></td>}
+                                {!hideExpandTD && <td 
+                                    style={{padding: tableCellPadding}}
+                                ><a onClick={() => onExpand(row.original)} className={`icon icon-expand ${styles.expand}`} /></td>}
                                 {row.cells.map(cell => {
 
                                     const isColorCell = _.get(tableParams, `[${cell.column.id}].colorCell`) ? tableParams[cell.column.id] : null
@@ -354,9 +362,9 @@ function ReactTable({ columns, hideExpandTD, data, largeFont, updateMyData, fiel
                                         {...cell.getCellProps()}
                                         style={colorCellValue ?
                                             isColorCell.colorCellType == 'text' ?
-                                                { color: colorCellValue } :
-                                                { backgroundColor: colorCellValue }
-                                            : {}}
+                                                { color: colorCellValue, padding: tableCellPadding } :
+                                                { backgroundColor: colorCellValue, padding: tableCellPadding }
+                                            : { padding: tableCellPadding }}
                                         className={`${styles.nowrap} ${styles.ellipsis} ${largeFont ? styles.largeFont : ''}`}
 
                                     >{cell.render('Cell')}</td>
@@ -568,6 +576,7 @@ export function Table({
             <ReactTable
                 columns={columns}
                 data={tableData}
+                params={params}
                 hideExpandTD={hideExpandTD}
                 largeFont={largeFont}
                 getLinkName={getLinkName}

@@ -667,7 +667,7 @@
 :global .icon {
   display: flex;
   align-items: center;
-  font-family: var(--main-font-family) !important;
+  font-family: var(--main-font-family);
 }
 :global .inline.icon {
   display: inline;
