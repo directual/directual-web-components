@@ -172,7 +172,7 @@ const newMenuEexample = {
             "menuBorderWidth": 3,
             "menuWidth": 244,
             "logoWidth": 220,
-            "menuPosition": "side"
+            "menuPosition": "top"
         },
         "item__1704799994598": {
             "linkToPage": "/dashboard",

@@ -1049,7 +1049,9 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
             ${styles.cursorPointer}
             ${currentRoute == menuItem.linkToPage ? "selected" : ""}
             ${iconType == 'directual_icon' ? `icon icon-${menuItem.menuDirectualIconSet}` : ''}
-            ${!menuItem.menuDirectualIconSet && !menuItem.menuRemixIcon && !menuItem.menuIconCustom && iconType !== 'no_icon' ? 'icon icon-application' : ''}
+            ${compactMode && iconType == 'no_icon' && 'icon icon-application'}
+            ${!menuItem.menuDirectualIconSet && !menuItem.menuRemixIcon 
+                && !menuItem.menuIconCustom && iconType !== 'no_icon' ? 'icon icon-application' : ''}
         `}>
         {/* Custom icon: */}
         {iconType == "custom_icon" && menuItem.menuIconCustom &&
