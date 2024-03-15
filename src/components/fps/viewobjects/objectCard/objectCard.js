@@ -928,6 +928,46 @@ function FieldLink({ field, handleRoute, model, onChange, setLinkedObject, objec
         return JSON.stringify(sum)
     }
 
+    function transformObject(object) {
+        for (const key in object) {
+            if (_.isObject(object[key]) && 'id' in object[key]) {
+                object[key] = object[key]['id'];
+            }
+        }
+        return object;
+    }
+
+    const encodeValues = obj => {
+        for (let key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                obj[key] = encodeURI(obj[key]);
+            }
+        }
+        return obj;
+    }
+
+    const composeURL = f => {
+        const encodedLinkedData = encodeValues(transformObject(_.cloneDeep(model[f.sysName])))
+        const clickableField = "{{" + (_.trim(_.get(f, 'clickableField'), "/") || "id") + "}}"
+        const encodedData = encodeValues(transformObject(_.cloneDeep(model)));
+        const templateString = _.trim(_.get(f, 'clickableRoute'), '/')
+        _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
+        const urlToRoute = (templateString ? "/" + _.template(templateString)(encodedData) + "/" : "./") + _.template(clickableField)(encodedLinkedData)
+        return urlToRoute
+    }
+
+    const composeURLforAL = (f,m) => {
+        const encodedLinkedData = encodeValues(transformObject(_.cloneDeep(m)))
+        const clickableField = "{{" + (_.trim(_.get(f, 'clickableField'), "/") || "id") + "}}"
+        const encodedData = encodeValues(transformObject(_.cloneDeep(model)));
+        const templateString = _.trim(_.get(f, 'clickableRoute'), '/')
+        _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
+        if (_.isEmpty(encodedLinkedData)) return ""
+        const urlToRoute = (templateString ? "/" + _.template(templateString)(encodedData) + "/" : "./") 
+            + _.template(clickableField)(encodedLinkedData)
+        return urlToRoute
+    }
+
     if (field.veiwOption == 'cart') {
         if (!field.cartView) { return <div>{dict[lang].card.cart.notConfigured}</div> }
         const cart = field.cartView
@@ -955,8 +995,12 @@ function FieldLink({ field, handleRoute, model, onChange, setLinkedObject, objec
                 </thead>
                 <tbody>
                     {!renderAL.length ? '—' : renderAL.map((item, i) => <tr key={i} className={field.clickable ? styles.clickable : ''}
-                        onClick={() => {
-                            if (field.clickable) {
+                        onClick={(e) => {
+                            if (_.get(field, 'clickableType') == 'page' && field.clickable) {
+                                e.preventDefault()
+                                handleRoute(composeURLforAL(field,item))(e)
+                            }
+                            if (_.get(field, 'clickableType') !== 'page' && field.clickable) {
                                 setLinkedObject({
                                     object: item,
                                     params: {
@@ -981,7 +1025,14 @@ function FieldLink({ field, handleRoute, model, onChange, setLinkedObject, objec
                         }}
                     >
                         {cart.image && <td>{processField(item[cart.imageField], cart.imageField)}</td>}
-                        {cart.title && <td>{processField(item[cart.titleField], cart.titleField)}</td>}
+                        {cart.title && <td>
+                            {(_.get(field, 'clickableType') == 'page') ?
+                            <a style={{userSelect: 'none'}} href={composeURLforAL(field,item)} onClick={e => e.preventDefault()}>
+                                {processField(item[cart.titleField], cart.titleField)}
+                            </a>
+                            : processField(item[cart.titleField], cart.titleField)}
+
+                            </td>}
                         {cart.status && <td className={styles.right}>{processField(item[cart.statusField], cart.statusField)}</td>}
                         {cart.quantity && <td className={styles.right}>{numberWithSpaces(processField(item[cart.quantityField], cart.quantityField, true) || '0')}</td>}
                         {cart.quantity && cart.price && <td className={styles.right}>
@@ -1018,9 +1069,6 @@ function FieldLink({ field, handleRoute, model, onChange, setLinkedObject, objec
         if (!field.tableView) { return <div>Table is not configured</div> }
 
         const table = field.tableView || []
-        // console.log('table')
-        // console.log(table)
-        // console.log(renderAL)
 
         return <React.Fragment>
             <span className={styles.label}>
@@ -1039,8 +1087,12 @@ function FieldLink({ field, handleRoute, model, onChange, setLinkedObject, objec
                 </thead>
                 <tbody>
                     {!renderAL.length ? '—' : renderAL.map((item, i) => <tr key={i} className={field.clickable ? styles.clickable : ''}
-                        onClick={() => {
-                            if (field.clickable) {
+                        onClick={(e) => {
+                            if (_.get(field, 'clickableType') == 'page' && field.clickable) {
+                                e.preventDefault()
+                                handleRoute(composeURLforAL(field,item))(e)
+                            }
+                            if (_.get(field, 'clickableType') !== 'page' && field.clickable) {
                                 setLinkedObject({
                                     object: item,
                                     params: {
@@ -1064,7 +1116,13 @@ function FieldLink({ field, handleRoute, model, onChange, setLinkedObject, objec
                             }
                         }}
                     >
-                        {(table.columns || []).map(column => <td>{processField(item[column.field], column.field)}</td>)}
+                        {(table.columns || []).map((column,i) => <td>
+                            {(i == 0 && _.get(field, 'clickableType') == 'page') ?
+                            <a style={{userSelect: 'none'}} href={composeURLforAL(field,item)} onClick={e => e.preventDefault()}>
+                                {processField(item[column.field], column.field)}
+                            </a>
+                            : processField(item[column.field], column.field)}
+                        </td>)}
                         {(field.write && editingOn && table.deleteOn) && <td className={styles.right}>
                             <div className={`${styles.deleteCartItem} icon icon-delete`}
                                 onClick={e => {
@@ -1082,58 +1140,7 @@ function FieldLink({ field, handleRoute, model, onChange, setLinkedObject, objec
                     </tr>}
                 </tbody>
             </table>
-            {/* <br /><hr />< br />
-            <pre style={{ fontSize: 12 }}>{JSON.stringify(enrichedObject, 0, 3)}</pre>
-            <pre style={{ fontSize: 12 }}>{JSON.stringify(table, 0, 3)}</pre>
-            <pre style={{ fontSize: 12 }}>{JSON.stringify(object[field.sysName].value, 0, 3)}</pre> */}
         </React.Fragment>
-    }
-
-    // console.log("link field")
-    // console.log(field)
-    // console.log(model)
-
-    function transformObject(object) {
-        for (const key in object) {
-            if (_.isObject(object[key]) && 'id' in object[key]) {
-                object[key] = object[key]['id'];
-            }
-        }
-        return object;
-    }
-
-    const encodeValues = obj => {
-        for (let key in obj) {
-            if (obj.hasOwnProperty(key)) {
-                obj[key] = encodeURI(obj[key]);
-            }
-        }
-        return obj;
-    }
-
-    const composeURL = f => {
-        const encodedLinkedData = encodeValues(transformObject(_.cloneDeep(model[f.sysName])))
-        const clickableField = "{{" + (_.trim(_.get(f, 'clickableField'), "/") || "id") + "}}"
-        const encodedData = encodeValues(transformObject(_.cloneDeep(model)));
-        const templateString = _.trim(_.get(f, 'clickableRoute'), '/')
-        _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
-        const urlToRoute = (templateString ? "/" + _.template(templateString)(encodedData) + "/" : "./") + _.template(clickableField)(encodedLinkedData)
-        return urlToRoute
-    }
-
-    const composeURLforAL = (f,m) => {
-        const encodedLinkedData = encodeValues(transformObject(_.cloneDeep(m)))
-        const clickableField = "{{" + (_.trim(_.get(f, 'clickableField'), "/") || "id") + "}}"
-        const encodedData = encodeValues(transformObject(_.cloneDeep(model)));
-        const templateString = _.trim(_.get(f, 'clickableRoute'), '/')
-        _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
-        // console.log(clickableField)
-        // console.log(encodedLinkedData)
-        // console.log(m)
-        if (_.isEmpty(encodedLinkedData)) return ""
-        const urlToRoute = (templateString ? "/" + _.template(templateString)(encodedData) + "/" : "./") 
-            + _.template(clickableField)(encodedLinkedData)
-        return urlToRoute
     }
 
     return (

@@ -443,8 +443,8 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
                 // onExpand={val => { _.get(data,'params.data.cardsOrPage') == 'page' ? handleRoute('./' + val.id)() : setShowObject(val) }}
                 onExpand={val => {
-                    _.get(currentData, 'params.data.cardsOrPage') == 'page' ? handleRoute(`./${_.get(currentData, 'params.data.additionalPath') ? _.get(currentData, 'params.data.additionalPath') + '/' : ''}` + val.id)() :
-                        _.get(currentData, 'params.data.cardsOrPage') == 'anotherPage' ? handleRoute(`/${_.get(currentData, 'params.data.anotherPage')}/` + val.id)() :
+                    _.get(currentData, 'params.data.cardsOrPage') == 'page' ? handleRoute(`./${_.get(currentData, 'params.data.additionalPath') ? _.get(currentData, 'params.data.additionalPath') + '/' : ''}` + encodeURI(val[(_.get(currentData, 'params.data.pathField') || "id")]))() :
+                        _.get(currentData, 'params.data.cardsOrPage') == 'anotherPage' ? handleRoute(`/${_.get(currentData, 'params.data.anotherPage')}/` + encodeURI(val[(_.get(currentData, 'params.data.pathField') || "id")]))() :
                             _.get(currentData, 'params.data.cardsOrPage') == 'disable' ? undefined :
                                 setShowObject(val)
                 }}

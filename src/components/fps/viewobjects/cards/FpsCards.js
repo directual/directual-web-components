@@ -412,8 +412,10 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 searchValue={searchValue}
                 checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
                 onExpand={val => {
-                    _.get(data, 'params.data.cardsOrPage') == 'page' ? handleRoute(`./${_.get(data, 'params.data.additionalPath') ? _.get(data, 'params.data.additionalPath') + '/' : ''}` + val.id)() :
-                        _.get(data, 'params.data.cardsOrPage') == 'anotherPage' ? handleRoute(`/${_.get(data, 'params.data.anotherPage')}/` + val.id)() :
+                    console.log(val)
+                    console.log(_.get(data, 'params.data'))
+                    _.get(data, 'params.data.cardsOrPage') == 'page' ? handleRoute(`./${_.get(data, 'params.data.additionalPath') ? _.get(data, 'params.data.additionalPath') + '/' : ''}` + encodeURI(val[(_.get(data, 'params.data.pathField') || "id")]))() :
+                        _.get(data, 'params.data.cardsOrPage') == 'anotherPage' ? handleRoute(`/${_.get(data, 'params.data.anotherPage')}/` + encodeURI(val[(_.get(data, 'params.data.pathField') || "id")]))() :
                             _.get(data, 'params.data.cardsOrPage') == 'disable' ? undefined :
                                 setShowObject(val)
                 }}

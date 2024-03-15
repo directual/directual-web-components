@@ -431,8 +431,8 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
                 lang={lang}
                 searchValue={searchValue}
                 onExpand={val => {
-                    _.get(data, 'params.data.cardsOrPage') == 'page' ? handleRoute(`./${_.get(data, 'params.data.additionalPath') ? _.get(data, 'params.data.additionalPath') + '/' : ''}` + val.id)() :
-                        _.get(data, 'params.data.cardsOrPage') == 'anotherPage' ? handleRoute(`/${_.get(data, 'params.data.anotherPage')}/` + val.id)() :
+                    _.get(data, 'params.data.cardsOrPage') == 'page' ? handleRoute(`./${_.get(data, 'params.data.additionalPath') ? _.get(data, 'params.data.additionalPath') + '/' : ''}` + encodeURI(val[(_.get(data, 'params.data.pathField') || "id")]))() :
+                        _.get(data, 'params.data.cardsOrPage') == 'anotherPage' ? handleRoute(`/${_.get(data, 'params.data.anotherPage')}/` + encodeURI(val[(_.get(data, 'params.data.pathField') || "id")]))() :
                             _.get(data, 'params.data.cardsOrPage') == 'disable' ? undefined :
                                 setShowObject(val)
                 }}

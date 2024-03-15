@@ -270,7 +270,31 @@ let exampleTable = {
                         ]
                     },
                     "clickableType": "page",
-                    "clickableField": "id"
+                    "clickableField": "internal_number",
+                    "clickableRoute": "fps-2/{{lastName}}",
+                    "veiwOption": "cart",
+                    "cartView": {
+                        "title": true,
+                        "titleField": "internal_number",
+                        "price": false,
+                        "priceField": null,
+                        "quantity": false,
+                        "quantityField": null,
+                        "status": true,
+                        "statusField": "status"
+                    },
+                    "tableView": {
+                        "columns": [
+                            {
+                                "id": "1710527248643",
+                                "field": "id"
+                            },
+                            {
+                                "id": "1710527249141",
+                                "field": "status"
+                            }
+                        ]
+                    }
                 }
             },
             "columns": {
@@ -288,7 +312,9 @@ let exampleTable = {
             "columnOrder": [
                 "tab-1"
             ],
-            "actions": []
+            "actions": [],
+            "cardsOrPage": "anotherPage",
+            "pathField": "firstName"
         },
         "fields": {
             "id": {
@@ -411,7 +437,31 @@ let exampleTable = {
                     ]
                 },
                 "clickableType": "page",
-                "clickableField": "id"
+                "clickableField": "internal_number",
+                "clickableRoute": "fps-2/{{lastName}}",
+                "veiwOption": "cart",
+                "cartView": {
+                    "title": true,
+                    "titleField": "internal_number",
+                    "price": false,
+                    "priceField": null,
+                    "quantity": false,
+                    "quantityField": null,
+                    "status": true,
+                    "statusField": "status"
+                },
+                "tableView": {
+                    "columns": [
+                        {
+                            "id": "1710527248643",
+                            "field": "id"
+                        },
+                        {
+                            "id": "1710527249141",
+                            "field": "status"
+                        }
+                    ]
+                }
             }
         }
     },
