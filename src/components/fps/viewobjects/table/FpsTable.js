@@ -487,6 +487,7 @@ FpsTable.propTypes = {
     auth: PropTypes.object,
     locale: PropTypes.string,
     onChange: PropTypes.func,
+    handleRoute: PropTypes.func
 };
 
 FpsTable.defaultProps = {
@@ -494,6 +495,7 @@ FpsTable.defaultProps = {
     auth: {},
     locale: "ENG",
     onChange: undefined,
+    handleRoute: undefined
 };
 
 FpsTable.settings = {
