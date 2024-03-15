@@ -1111,6 +1111,31 @@ function FieldLink({ field, handleRoute, model, onChange, setLinkedObject, objec
         return obj;
     }
 
+    const composeURL = f => {
+        const encodedLinkedData = encodeValues(transformObject(_.cloneDeep(model[f.sysName])))
+        const clickableField = "{{" + (_.trim(_.get(f, 'clickableField'), "/") || "id") + "}}"
+        const encodedData = encodeValues(transformObject(_.cloneDeep(model)));
+        const templateString = _.trim(_.get(f, 'clickableRoute'), '/')
+        _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
+        const urlToRoute = (templateString ? "/" + _.template(templateString)(encodedData) + "/" : "./") + _.template(clickableField)(encodedLinkedData)
+        return urlToRoute
+    }
+
+    const composeURLforAL = (f,m) => {
+        const encodedLinkedData = encodeValues(transformObject(_.cloneDeep(m)))
+        const clickableField = "{{" + (_.trim(_.get(f, 'clickableField'), "/") || "id") + "}}"
+        const encodedData = encodeValues(transformObject(_.cloneDeep(model)));
+        const templateString = _.trim(_.get(f, 'clickableRoute'), '/')
+        _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
+        // console.log(clickableField)
+        // console.log(encodedLinkedData)
+        // console.log(m)
+        if (_.isEmpty(encodedLinkedData)) return ""
+        const urlToRoute = (templateString ? "/" + _.template(templateString)(encodedData) + "/" : "./") 
+            + _.template(clickableField)(encodedLinkedData)
+        return urlToRoute
+    }
+
     return (
         (field.write || (field.read && renderAL && JSON.stringify(renderAL) != '[""]')) ? <React.Fragment>
             <span className={styles.label}>
@@ -1129,21 +1154,13 @@ function FieldLink({ field, handleRoute, model, onChange, setLinkedObject, objec
 
             {field.dataType == 'link' && field.read && renderAL && !edit && renderAL.length !== 0 &&
                 <div className={`${styles.linkFieldWrapper} ${!field.clickable && styles.notClickable}`}>
-                    <a
-                        onClick={() => {
-                            if (_.get(field,'clickableType') == 'page' && field.clickable) {
-
-                                const encodedLinkedData = encodeValues(transformObject(_.cloneDeep(model[field.sysName])))
-                                const clickableField = "{{" + (_.trim(_.get(field,'clickableField'),"/") || "id") + "}}"
-
-                                const encodedData = encodeValues(transformObject(_.cloneDeep(model)));
-                                const templateString = _.trim(_.get(field,'clickableRoute'), '/')
-
-                                _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
-                                const urlToRoute = (templateString ? "/" + _.template(templateString)(encodedData) + "/" : "./") + _.template(clickableField)(encodedLinkedData)
-                                handleRoute(urlToRoute)()
+                    <a href={composeURL(field)}
+                        onClick={(e) => {
+                            if (_.get(field, 'clickableType') == 'page' && field.clickable) {
+                                e.preventDefault()
+                                handleRoute(composeURL(field))(e)
                             }
-                            if (field.clickable && _.get(field,'clickableType') !== 'page') {
+                            if (field.clickable && _.get(field, 'clickableType') !== 'page') {
                                 setLinkedObject({
                                     object: object[field.sysName].value,
                                     params: {
@@ -1175,8 +1192,13 @@ function FieldLink({ field, handleRoute, model, onChange, setLinkedObject, objec
                     {object[field.sysName].value && object[field.sysName].value.length > 0 && object[field.sysName].value.map((link, i) => {
                         return link ? <a
                             key={i}
-                            onClick={() => {
-                                if (field.clickable) {
+                            href={composeURLforAL(field,link)}
+                            onClick={(e) => {
+                                if (_.get(field, 'clickableType') == 'page' && field.clickable) {
+                                    e.preventDefault()
+                                    handleRoute(composeURLforAL(field,link))(e)
+                                }
+                                if (_.get(field, 'clickableType') !== 'page' && field.clickable) {
                                     setLinkedObject({
                                         object: link,
                                         params: {

@@ -15,6 +15,7 @@ import { dict } from '../../locale'
 import { addUrlParam, removeUrlParam, clearURL } from '../../queryParams'
 import _ from 'lodash'
 import debounce from 'lodash.debounce';
+import PropTypes from 'prop-types';
 
 
 function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
@@ -449,6 +450,23 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
         </ComponentWrapper>
     )
 }
+
+FpsCards.propTypes = {
+    data: PropTypes.object.isRequired,
+    auth: PropTypes.object,
+    locale: PropTypes.string,
+    onChange: PropTypes.func,
+    handleRoute: PropTypes.func
+};
+
+FpsCards.defaultProps = {
+    data: {},
+    auth: {},
+    locale: "ENG",
+    onChange: undefined,
+    handleRoute: undefined
+};
+
 FpsCards.settings = {
     icon: icon,
     name: 'Cards view',

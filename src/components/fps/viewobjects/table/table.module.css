@@ -243,6 +243,7 @@ div.tableTitle.mobile h2 {
 }
 .objFieldWrapper .linkFieldWrapper {
   display: flex;
+  user-select: none;
   flex-wrap: wrap;
   margin-bottom: -6px;
 }

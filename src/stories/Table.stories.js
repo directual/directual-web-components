@@ -1231,6 +1231,6 @@ export const Regular = {
     auth: authExample,
     locale: 'ESP',
     onChange: value => console.log(value),
-    handleRoute: value => console.log("route => " + value),
+    handleRoute: value => e => console.log("route => " + value),
   },
 };
