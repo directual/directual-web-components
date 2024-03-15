@@ -362,6 +362,7 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                     <div className={styles.firstObjectCard}>
                         <ObjectCard
                             currentBP={currentBP}
+                            handleRoute={handleRoute}
                             onClose={handleCloseShowObject}
                             onTerminate={handleCloseShowObject}
                             object={showObject}

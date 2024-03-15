@@ -384,6 +384,7 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
                         <ObjectCard
                             currentBP={currentBP}
                             onClose={handleCloseShowObject}
+                            handleRoute={handleRoute}
                             onTerminate={handleCloseShowObject}
                             object={showObject}
                             locale={locale}

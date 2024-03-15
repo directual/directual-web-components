@@ -382,6 +382,7 @@ export function ObjectCard(props) {
                         key={i}
                         editingOn={editingOn}
                         dict={dict}
+                        handleRoute={props.handleRoute}
                         lang={lang}
                         field={field}
                         formatDate={formatDate}
@@ -501,6 +502,7 @@ export function ObjectCard(props) {
                         onTerminate={() => props.onClose()}
                         auth={props.auth}
                         refresh={refresh}
+                        handleRoute={props.handleRoute}
                         data={data}
                         dict={dict}
                         lang={lang}
@@ -518,7 +520,7 @@ export function ObjectCard(props) {
     )
 }
 
-function CardField({ field, object, model, setModel, debug, editingOn, formatDate, tableFieldScheme, dict, lang,
+function CardField({ field, object, handleRoute, model, setModel, debug, editingOn, formatDate, tableFieldScheme, dict, lang,
     setLinkedObject, setLinkedObjectStruct, setShowLinkedObject, getLinkName, transformTableFieldScheme, getStructure, composeObject }) {
     const [edit, setEdit] = useState(false)
 
@@ -662,6 +664,7 @@ function CardField({ field, object, model, setModel, debug, editingOn, formatDat
                     editingOn={editingOn}
                     object={object}
                     dict={dict}
+                    handleRoute={handleRoute}
                     lang={lang}
                     field={field}
                     composeObject={composeObject}
@@ -808,7 +811,7 @@ function SaveCard({ model, currentObject, submit, setCurrentObject, setModel, lo
     )
 }
 
-function FieldLink({ field, model, onChange, setLinkedObject, object, tableFieldScheme, dict, lang, composeObject,
+function FieldLink({ field, handleRoute, model, onChange, setLinkedObject, object, tableFieldScheme, dict, lang, composeObject,
     setLinkedObjectStruct, setShowLinkedObject, getLinkName, editingOn, transformTableFieldScheme, getStructure }) {
 
     const linkedObj = object[field.sysName].value ? Array.isArray(object[field.sysName].value) ? object[field.sysName].value[0] : object[field.sysName].value : {}
@@ -874,29 +877,19 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
     const [costyl, setCostyl] = useState(object)
 
     useEffect(() => {
-        // console.log('object has changed')
-        // console.log(object)
-        // console.log(costyl)
         if (JSON.stringify(costyl) != JSON.stringify(object)) {
             setCostyl(object)
             setRenderAL(sortArray(object[field.sysName].value) || [])
-            // console.log('оп оп костылёк')
         }
-        // if (JSON.stringify(object[field.sysName].value) != JSON.stringify(renderAL) && typeof object[field.sysName] !== 'string') {
-        //     setRenderAL(sortArray(object[field.sysName].value) || [])
-        // }
     }, [object])
 
     useEffect(() => {
-        // console.log('model has changed')
-        // console.log(model)
         if (JSON.stringify(model[field.sysName]) != JSON.stringify(renderAL) && typeof model[field.sysName] !== 'string') {
             setRenderAL(sortArray(model[field.sysName]) || [])
         }
     }, [model])
 
     const processField = (f, fieldName, nospaces) => {
-        // if (enrichedObject[fieldName].dataType == 'boolean') console.log(f ? _.get(enrichedObject[fieldName],'formatOptions.booleanOptions[0]') : _.get(enrichedObject[fieldName],'formatOptions.booleanOptions[1]'))
         if (enrichedObject[fieldName].dataType == 'boolean') return f ? <div className='icon icon-done'>{_.get(enrichedObject[fieldName], 'formatOptions.booleanOptions[0]') || 'true'}</div> : <div className='icon icon-ban'>{_.get(enrichedObject[fieldName], 'formatOptions.booleanOptions[1]') || 'false'}</div>
         if (!f) return null
         if (!enrichedObject[fieldName]) return typeof f == 'object' ? getLinkName(fieldName, f, transformTableFieldScheme(field.sysName, tableFieldScheme)) : f
@@ -925,8 +918,6 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
         if (renderAL.length == 1) return typeof renderAL[0][fieldName] == 'object' ? 1 : renderAL[0][fieldName]
 
         const sum = renderAL.reduce((total, num) => {
-            // console.log(total[fieldName])
-            // console.log(typeof total[fieldName])
             const newTotal = typeof total == 'number' ? total :
                 typeof total[fieldName] == 'number' ? total[fieldName] : total[fieldName] ? 1 : 0
             const plus = typeof num[fieldName] == 'number' ? num[fieldName] : num[fieldName] ? 1 : 0
@@ -1098,6 +1089,28 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
         </React.Fragment>
     }
 
+    // console.log("link field")
+    // console.log(field)
+    // console.log(model)
+
+    function transformObject(object) {
+        for (const key in object) {
+            if (_.isObject(object[key]) && 'id' in object[key]) {
+                object[key] = object[key]['id'];
+            }
+        }
+        return object;
+    }
+
+    const encodeValues = obj => {
+        for (let key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                obj[key] = encodeURI(obj[key]);
+            }
+        }
+        return obj;
+    }
+
     return (
         (field.write || (field.read && renderAL && JSON.stringify(renderAL) != '[""]')) ? <React.Fragment>
             <span className={styles.label}>
@@ -1118,7 +1131,20 @@ function FieldLink({ field, model, onChange, setLinkedObject, object, tableField
                 <div className={`${styles.linkFieldWrapper} ${!field.clickable && styles.notClickable}`}>
                     <a
                         onClick={() => {
-                            if (field.clickable) {
+                            if (_.get(field,'clickableType') == 'page' && field.clickable) {
+
+                                const encodedLinkedData = encodeValues(transformObject(_.cloneDeep(model[field.sysName])))
+                                const clickableField = "{{" + (_.trim(_.get(field,'clickableField'),"/") || "id") + "}}"
+
+                                const encodedData = encodeValues(transformObject(_.cloneDeep(model)));
+                                const templateString = _.trim(_.get(field,'clickableRoute'), '/')
+
+                                _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
+                                const urlToRoute = (templateString ? "/" + _.template(templateString)(encodedData) + "/" : "./") + _.template(clickableField)(encodedLinkedData)
+                                console.log('route to => ' + urlToRoute)
+                                handleRoute(urlToRoute)
+                            }
+                            if (field.clickable && _.get(field,'clickableType') !== 'page') {
                                 setLinkedObject({
                                     object: object[field.sysName].value,
                                     params: {
