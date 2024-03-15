@@ -1141,7 +1141,7 @@ function FieldLink({ field, handleRoute, model, onChange, setLinkedObject, objec
 
                                 _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
                                 const urlToRoute = (templateString ? "/" + _.template(templateString)(encodedData) + "/" : "./") + _.template(clickableField)(encodedLinkedData)
-                                handleRoute(urlToRoute)
+                                handleRoute(urlToRoute)()
                             }
                             if (field.clickable && _.get(field,'clickableType') !== 'page') {
                                 setLinkedObject({
