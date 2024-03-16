@@ -271,8 +271,8 @@ let exampleTable = {
                     },
                     "clickableType": "page",
                     "clickableField": "internal_number",
-                    "clickableRoute": "fps-2/{{lastName}}",
-                    "veiwOption": "cart",
+                    "clickableRoute": "fps/{{lastName}}",
+                    "veiwOption": "tags",
                     "cartView": {
                         "title": true,
                         "titleField": "internal_number",
@@ -302,10 +302,10 @@ let exampleTable = {
                     "id": "tab-1",
                     "title": "New section",
                     "fieldIds": [
+                        "ticket_ids",
                         "id",
                         "firstName",
-                        "lastName",
-                        "ticket_ids"
+                        "lastName"
                     ]
                 }
             },
@@ -313,7 +313,7 @@ let exampleTable = {
                 "tab-1"
             ],
             "actions": [],
-            "cardsOrPage": "anotherPage",
+            "cardsOrPage": "card",
             "pathField": "firstName"
         },
         "fields": {
@@ -438,8 +438,8 @@ let exampleTable = {
                 },
                 "clickableType": "page",
                 "clickableField": "internal_number",
-                "clickableRoute": "fps-2/{{lastName}}",
-                "veiwOption": "cart",
+                "clickableRoute": "fps/{{lastName}}",
+                "veiwOption": "tags",
                 "cartView": {
                     "title": true,
                     "titleField": "internal_number",
@@ -461,6 +461,52 @@ let exampleTable = {
                             "field": "status"
                         }
                     ]
+                }
+            }
+        },
+        "filterParams": {
+            "isFiltering": true,
+            "filterFields": {
+                "ticket_ids": {
+                    "active": true,
+                    "dataType": "arrayLink",
+                    "format": "",
+                    "formatOptions": {},
+                    "name": "Tickets",
+                    "textsearch": "choice",
+                    "linkDirectory": [
+                        {
+                            "id": "207ae69d-c13c-461f-9695-b3bf54bf6b46",
+                            "text": "SD-1001 Срать хочу"
+                        },
+                        {
+                            "id": "0f40c0c6-63f6-48fe-b627-b78509c965f8",
+                            "text": "SD-1002 Посрал"
+                        },
+                        {
+                            "id": "28e267fd-d30a-4643-9c9f-849a461026d0",
+                            "text": "SD-1003 Принесите мне чаю"
+                        },
+                        {
+                            "id": "aec48e25-29cf-4905-804b-9110da2a51c4",
+                            "text": "SD-1004 Нужна новая мышка"
+                        }
+                    ]
+                },
+                "lastName": {
+                    "active": true,
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "name": "Last name",
+                    "exactMatch": "exact"
+                },
+                "firstName": {
+                    "active": true,
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "name": "First name"
                 }
             }
         }
@@ -583,6 +629,8 @@ let exampleTable = {
     ],
     "data": [
         {
+            "firstName": "Alejandro",
+            "lastName": "Cruz",
             "ticket_ids": [
                 {
                     "subject": "Срать хочу",
@@ -605,8 +653,6 @@ let exampleTable = {
                     }
                 }
             ],
-            "firstName": "Alejandro",
-            "lastName": "Cruz",
             "id": "manager1@directual.com"
         }
     ],

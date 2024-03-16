@@ -120,10 +120,13 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
     }
 
     function composeDQL(filters) {
-        // console.log("composing DQL")
+        console.log("composing DQL")
         // console.log(filters)
+        console.log(tableFilters)
         function composeExpression(exp, fieldName) {
-            if (exp.type == "string") { return "('" + fieldName + "'" + ' like ' + "'" + exp.value + "')" }
+            if (exp.type == "string") { 
+                const operator = _.get(tableFilters,`filterFields.${fieldName}.exactMatch`) == "exact" ? " == " : " like "
+                return "('" + fieldName + "'" + operator + "'" + exp.value + "')" }
             if (exp.type == "boolean") { return "('" + fieldName + "'" + ' = ' + "'" + exp.value + "')" }
             if (exp.type == "date") {
                 if (exp.valueTo && exp.valueFrom) {
@@ -150,7 +153,8 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
                 }
             }
             if (exp.type == "multiOptions") {
-                return "(" + Object.keys(exp.value).map(i => { return "('" + fieldName + "' = '" + i + "')" }).join(" OR ") + ")"
+                const operator = _.get(tableFilters,`filterFields.${fieldName}.dataType`) == "link" ? ' = ' : ' like '
+                return "(" + Object.keys(exp.value).map(i => { return "('" + fieldName + `'${operator}'` + i + "')" }).join(" OR ") + ")"
             }
         }
         return (Object.keys(filters || {}) || []).filter(i => {
@@ -225,6 +229,7 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
                         id: filterField,
                         name: tableFilters.filterFields[filterField].name,
                         type: tableFilters.filterFields[filterField].dataType,
+                        operator: _.get(tableFilters,`filterFields.${filterField}.exactMatch`) == "exact" ? "exact match" : "like", 
                         textsearch: tableFilters.filterFields[filterField].textsearch,
                         format: tableFilters.filterFields[filterField].format,
                         formatOptions: tableFilters.filterFields[filterField].formatOptions,
@@ -358,7 +363,7 @@ function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters
                     _.get(field, 'textsearch') == 'fulltext') &&
                     <Input type="string"
                         nomargin
-                        placeholder='like'
+                        placeholder={field.operator || 'like'}
                         width={220}
                         defaultValue={_.get(filters, `filters[${field.id}].value`)}
                         onChange={value => {
