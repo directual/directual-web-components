@@ -125,7 +125,7 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
         console.log(tableFilters)
         function composeExpression(exp, fieldName) {
             if (exp.type == "string") { 
-                const operator = _.get(tableFilters,`filterFields.${fieldName}.exactMatch`) == "exact" ? " == " : " like "
+                const operator = _.get(tableFilters,`filterFields.${fieldName}.exactMatch`) == "exact" ? " = " : " like "
                 return "('" + fieldName + "'" + operator + "'" + exp.value + "')" }
             if (exp.type == "boolean") { return "('" + fieldName + "'" + ' = ' + "'" + exp.value + "')" }
             if (exp.type == "date") {
