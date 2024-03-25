@@ -18,19 +18,10 @@ export default {
 };
 
 let exampleTable = {
-    "sl": "testTick",
+    "sl": "v1_front_admin_incomingtransactions_getAll",
     "pageSize": "10",
     "headerField": null,
     "params": {
-        "cardListLayout": "grid",
-        "cardHeaderComment": "",
-        "deleteField": "",
-        "cardBodyText": "",
-        "cardImage": false,
-        "cardImageField": "",
-        "cardImageType": "none",
-        "cardImageSize": 100,
-        "objectView": {},
         "data": {
             "readFields": [
                 {
@@ -44,7 +35,113 @@ let exampleTable = {
                     "link": ""
                 },
                 {
+                    "fieldSysName": "dateAndTime",
+                    "fetch": [],
+                    "sysName": "dateAndTime",
+                    "name": "Дата и время",
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "dateLocale": "ru",
+                        "booleanOptions": [
+                            "True",
+                            "False"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "DD.MM.Y",
+                        "timeFormat": " HH:mm",
+                        "isUTC": "true"
+                    },
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "isReceipt",
+                    "fetch": [],
+                    "sysName": "isReceipt",
+                    "format": "",
+                    "formatOptions": {}
+                },
+                {
                     "fieldSysName": "status",
+                    "fetch": [],
+                    "sysName": "status",
+                    "name": "Статус(success/noIdentify)",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "accountId",
+                    "fetch": [
+                        {
+                            "fieldSysName": "id",
+                            "condition": null,
+                            "fetch": []
+                        }
+                    ],
+                    "sysName": "accountId",
+                    "name": "ID Аккаунта",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "accounts"
+                },
+                {
+                    "fieldSysName": "type",
+                    "fetch": [
+                        {
+                            "fieldSysName": "id",
+                            "condition": null,
+                            "fetch": []
+                        }
+                    ],
+                    "sysName": "type",
+                    "format": "",
+                    "formatOptions": {}
+                },
+                {
+                    "fieldSysName": "amount",
+                    "fetch": [],
+                    "sysName": "amount",
+                    "name": "Сумма",
+                    "dataType": "number",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "incomingTransactions",
+                    "fetch": [
+                        {
+                            "fieldSysName": "id",
+                            "condition": null,
+                            "fetch": []
+                        }
+                    ],
+                    "sysName": "incomingTransactions",
+                    "format": "",
+                    "formatOptions": {}
+                },
+                {
+                    "fieldSysName": "getIncomingTransactions",
                     "fetch": [
                         {
                             "fieldSysName": "id",
@@ -52,57 +149,116 @@ let exampleTable = {
                             "fetch": []
                         },
                         {
-                            "fieldSysName": "status",
+                            "fieldSysName": "visibleStatus",
                             "condition": null,
                             "fetch": []
                         }
                     ],
-                    "sysName": "status",
-                    "name": "Status",
+                    "sysName": "getIncomingTransactions",
+                    "format": "",
+                    "formatOptions": {}
+                },
+                {
+                    "fieldSysName": "bik",
+                    "fetch": [],
+                    "sysName": "bik",
+                    "name": "Корр счет банка",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "bankName",
+                    "fetch": [],
+                    "sysName": "bankName",
+                    "name": "Название банка",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "corrAccountNumber",
+                    "fetch": [],
+                    "sysName": "corrAccountNumber",
+                    "name": "БИК",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "fullName",
+                    "fetch": [],
+                    "sysName": "fullName",
+                    "name": "Полное имя",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "purpose",
+                    "fetch": [],
+                    "sysName": "purpose",
+                    "name": "Назначение платежа",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "accountNumber",
+                    "fetch": [],
+                    "sysName": "accountNumber",
+                    "name": "Номер счета",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "balanceChange",
+                    "fetch": [
+                        {
+                            "fieldSysName": "id",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "visibleStatus",
+                            "condition": null,
+                            "fetch": []
+                        }
+                    ],
+                    "sysName": "balanceChange",
+                    "name": "Изменение баланса",
                     "dataType": "link",
                     "format": "",
                     "formatOptions": {},
-                    "link": "ticket_statuses"
+                    "link": "balancechanges"
                 },
                 {
-                    "fieldSysName": "weight",
-                    "fetch": [],
-                    "sysName": "weight",
-                    "name": "",
-                    "dataType": "decimal",
+                    "fieldSysName": "identifyTransactionT",
+                    "fetch": [
+                        {
+                            "fieldSysName": "id",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "visibleStatus",
+                            "condition": null,
+                            "fetch": []
+                        }
+                    ],
+                    "sysName": "identifyTransactionT",
+                    "name": "Идентификация транзакции (Тинькофф)",
+                    "dataType": "link",
                     "format": "",
                     "formatOptions": {},
-                    "link": ""
-                },
-                {
-                    "fieldSysName": "subject",
-                    "fetch": [],
-                    "sysName": "subject",
-                    "name": "Subject",
-                    "dataType": "string",
-                    "format": "",
-                    "formatOptions": {},
-                    "link": ""
-                },
-                {
-                    "fieldSysName": "internal_number",
-                    "fetch": [],
-                    "sysName": "internal_number",
-                    "name": "Internal number",
-                    "dataType": "string",
-                    "format": "",
-                    "formatOptions": {},
-                    "link": ""
-                },
-                {
-                    "fieldSysName": "description",
-                    "fetch": [],
-                    "sysName": "description",
-                    "name": "Description",
-                    "dataType": "string",
-                    "format": "",
-                    "formatOptions": {},
-                    "link": ""
+                    "link": "indetifytransaction_tinkoff"
                 }
             ],
             "writeFields": [],
@@ -118,31 +274,112 @@ let exampleTable = {
                     "link": "",
                     "actions": []
                 },
+                "dateAndTime": {
+                    "id": "dateAndTime",
+                    "content": "Дата и время",
+                    "type": "field",
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "dateLocale": "ru",
+                        "booleanOptions": [
+                            "True",
+                            "False"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "DD.MM.Y",
+                        "timeFormat": " HH:mm",
+                        "isUTC": "true"
+                    },
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "isReceipt": {
+                    "id": "isReceipt",
+                    "type": "field",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "actions": []
+                },
                 "status": {
                     "id": "status",
-                    "content": "Status",
+                    "content": "Статус(success/noIdentify)",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "accountId": {
+                    "id": "accountId",
+                    "content": "ID Аккаунта",
                     "type": "field",
                     "dataType": "link",
                     "format": "",
                     "formatOptions": {},
                     "read": true,
-                    "link": "ticket_statuses",
+                    "link": "accounts",
                     "actions": []
                 },
-                "weight": {
-                    "id": "weight",
-                    "content": "",
+                "type": {
+                    "id": "type",
                     "type": "field",
-                    "dataType": "decimal",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "actions": []
+                },
+                "amount": {
+                    "id": "amount",
+                    "content": "Сумма",
+                    "type": "field",
+                    "dataType": "number",
                     "format": "",
                     "formatOptions": {},
                     "read": true,
                     "link": "",
                     "actions": []
                 },
-                "subject": {
-                    "id": "subject",
-                    "content": "Subject",
+                "incomingTransactions": {
+                    "id": "incomingTransactions",
+                    "type": "field",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "actions": []
+                },
+                "getIncomingTransactions": {
+                    "id": "getIncomingTransactions",
+                    "type": "field",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "actions": []
+                },
+                "bik": {
+                    "id": "bik",
+                    "content": "Корр счет банка",
                     "type": "field",
                     "dataType": "string",
                     "format": "",
@@ -151,9 +388,9 @@ let exampleTable = {
                     "link": "",
                     "actions": []
                 },
-                "internal_number": {
-                    "id": "internal_number",
-                    "content": "Internal number",
+                "bankName": {
+                    "id": "bankName",
+                    "content": "Название банка",
                     "type": "field",
                     "dataType": "string",
                     "format": "",
@@ -162,15 +399,70 @@ let exampleTable = {
                     "link": "",
                     "actions": []
                 },
-                "description": {
-                    "id": "description",
-                    "content": "Description",
+                "corrAccountNumber": {
+                    "id": "corrAccountNumber",
+                    "content": "БИК",
                     "type": "field",
                     "dataType": "string",
                     "format": "",
                     "formatOptions": {},
                     "read": true,
                     "link": "",
+                    "actions": []
+                },
+                "fullName": {
+                    "id": "fullName",
+                    "content": "Полное имя",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "purpose": {
+                    "id": "purpose",
+                    "content": "Назначение платежа",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "accountNumber": {
+                    "id": "accountNumber",
+                    "content": "Номер счета",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "balanceChange": {
+                    "id": "balanceChange",
+                    "content": "Изменение баланса",
+                    "type": "field",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "balancechanges",
+                    "actions": []
+                },
+                "identifyTransactionT": {
+                    "id": "identifyTransactionT",
+                    "content": "Идентификация транзакции (Тинькофф)",
+                    "type": "field",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "indetifytransaction_tinkoff",
                     "actions": []
                 }
             },
@@ -183,7 +475,7 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "subject": {
+                "dateAndTime": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -191,7 +483,7 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "internal_number": {
+                "isReceipt": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -205,71 +497,9 @@ let exampleTable = {
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
-                    "clickable": true,
-                    "configureLinkedCard": {
-                        "fields": {
-                            "id": {
-                                "id": "id",
-                                "content": "id",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "id",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "status": {
-                                "id": "status",
-                                "content": "",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "string",
-                                "format": null,
-                                "formatOptions": {}
-                            }
-                        },
-                        "fieldParams": {
-                            "id": {
-                                "include": false,
-                                "disableEditing": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "status": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            }
-                        },
-                        "fieldOrder": [
-                            "id",
-                            "status"
-                        ]
-                    },
-                    "clickableType": "page",
-                    "clickableRoute": "fps-2/{{id}}",
-                    "clickableField": "id",
-                    "veiwOption": "cart",
-                    "tableView": {
-                        "columns": [
-                            {
-                                "id": "1710518121818",
-                                "field": "id"
-                            },
-                            {
-                                "id": "1710518124289",
-                                "field": "status"
-                            }
-                        ]
-                    },
-                    "cartView": {
-                        "image": false,
-                        "title": true,
-                        "titleField": "status",
-                        "status": false
-                    }
+                    "clickable": false
                 },
-                "status_cell_color": {
+                "accountId": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -277,7 +507,7 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "priority_cell_color": {
+                "type": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -285,7 +515,7 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "comment_ids": {
+                "amount": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -293,7 +523,7 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "date_due": {
+                "incomingTransactions": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -301,7 +531,7 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "manager_id": {
+                "getIncomingTransactions": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -309,7 +539,7 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "date_raised": {
+                "balanceChange": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -317,7 +547,7 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "files": {
+                "identifyTransactionT": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -325,7 +555,7 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "priority": {
+                "bik": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -333,7 +563,7 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "description": {
+                "bankName": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -341,7 +571,7 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "email": {
+                "corrAccountNumber": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -349,7 +579,7 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "event_ids": {
+                "fullName": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -357,7 +587,15 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "weight": {
+                "purpose": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "accountNumber": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -367,24 +605,34 @@ let exampleTable = {
                 }
             },
             "columns": {
-                "tab-1": {
-                    "id": "tab-1",
-                    "title": "New section",
+                "27971710867371674": {
+                    "id": "27971710867371674",
+                    "title": "Основные данные",
                     "fieldIds": [
-                        "id",
+                        "accountId",
+                        "dateAndTime",
                         "status",
-                        "weight",
-                        "subject",
-                        "internal_number",
-                        "description"
+                        "identifyTransactionT",
+                        "balanceChange",
+                        "amount",
+                        "accountNumber",
+                        "fullName",
+                        "purpose",
+                        "bankName",
+                        "corrAccountNumber",
+                        "bik",
+                        "id",
+                        "incomingTransactions",
+                        "type",
+                        "getIncomingTransactions",
+                        "isReceipt"
                     ]
                 }
             },
             "columnOrder": [
-                "tab-1"
+                "27971710867371674"
             ],
-            "actions": [],
-            "cardsOrPage": "card"
+            "actions": []
         },
         "fields": {
             "id": {
@@ -395,7 +643,7 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "subject": {
+            "dateAndTime": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -403,7 +651,7 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "internal_number": {
+            "isReceipt": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -417,71 +665,9 @@ let exampleTable = {
                 "fileImageFormat": "square",
                 "quickSearch": false,
                 "fileImageSize": 200,
-                "clickable": true,
-                "configureLinkedCard": {
-                    "fields": {
-                        "id": {
-                            "id": "id",
-                            "content": "id",
-                            "type": "field",
-                            "read": true,
-                            "dataType": "id",
-                            "format": null,
-                            "formatOptions": {}
-                        },
-                        "status": {
-                            "id": "status",
-                            "content": "",
-                            "type": "field",
-                            "read": true,
-                            "dataType": "string",
-                            "format": null,
-                            "formatOptions": {}
-                        }
-                    },
-                    "fieldParams": {
-                        "id": {
-                            "include": false,
-                            "disableEditing": true,
-                            "fileImageFormat": "square",
-                            "fileImageSize": 200
-                        },
-                        "status": {
-                            "include": true,
-                            "disableEditing": false,
-                            "fileImageFormat": "square",
-                            "fileImageSize": 200
-                        }
-                    },
-                    "fieldOrder": [
-                        "id",
-                        "status"
-                    ]
-                },
-                "clickableType": "page",
-                "clickableRoute": "fps-2/{{id}}",
-                "clickableField": "id",
-                "veiwOption": "cart",
-                "tableView": {
-                    "columns": [
-                        {
-                            "id": "1710518121818",
-                            "field": "id"
-                        },
-                        {
-                            "id": "1710518124289",
-                            "field": "status"
-                        }
-                    ]
-                },
-                "cartView": {
-                    "image": false,
-                    "title": true,
-                    "titleField": "status",
-                    "status": false
-                }
+                "clickable": false
             },
-            "status_cell_color": {
+            "accountId": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -489,7 +675,7 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "priority_cell_color": {
+            "type": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -497,7 +683,7 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "comment_ids": {
+            "amount": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -505,7 +691,7 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "date_due": {
+            "incomingTransactions": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -513,7 +699,7 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "manager_id": {
+            "getIncomingTransactions": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -521,7 +707,7 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "date_raised": {
+            "balanceChange": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -529,7 +715,7 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "files": {
+            "identifyTransactionT": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -537,7 +723,7 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "priority": {
+            "bik": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -545,7 +731,7 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "description": {
+            "bankName": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -553,7 +739,7 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "email": {
+            "corrAccountNumber": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -561,7 +747,7 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "event_ids": {
+            "fullName": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -569,7 +755,15 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "weight": {
+            "purpose": {
+                "include": true,
+                "disableEditing": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "accountNumber": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -591,7 +785,83 @@ let exampleTable = {
                     "link": ""
                 },
                 {
+                    "fieldSysName": "dateAndTime",
+                    "fetch": [],
+                    "sysName": "dateAndTime",
+                    "format": "",
+                    "formatOptions": {}
+                },
+                {
+                    "fieldSysName": "isReceipt",
+                    "fetch": [],
+                    "sysName": "isReceipt",
+                    "format": "",
+                    "formatOptions": {}
+                },
+                {
                     "fieldSysName": "status",
+                    "fetch": [],
+                    "sysName": "status",
+                    "name": "Статус(success/noIdentify)",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "accountId",
+                    "fetch": [
+                        {
+                            "fieldSysName": "id",
+                            "condition": null,
+                            "fetch": []
+                        }
+                    ],
+                    "sysName": "accountId",
+                    "name": "ID Аккаунта",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "accounts"
+                },
+                {
+                    "fieldSysName": "type",
+                    "fetch": [
+                        {
+                            "fieldSysName": "id",
+                            "condition": null,
+                            "fetch": []
+                        }
+                    ],
+                    "sysName": "type",
+                    "format": "",
+                    "formatOptions": {}
+                },
+                {
+                    "fieldSysName": "amount",
+                    "fetch": [],
+                    "sysName": "amount",
+                    "name": "Сумма",
+                    "dataType": "number",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "incomingTransactions",
+                    "fetch": [
+                        {
+                            "fieldSysName": "id",
+                            "condition": null,
+                            "fetch": []
+                        }
+                    ],
+                    "sysName": "incomingTransactions",
+                    "format": "",
+                    "formatOptions": {}
+                },
+                {
+                    "fieldSysName": "getIncomingTransactions",
                     "fetch": [
                         {
                             "fieldSysName": "id",
@@ -599,53 +869,107 @@ let exampleTable = {
                             "fetch": []
                         },
                         {
-                            "fieldSysName": "status",
+                            "fieldSysName": "visibleStatus",
                             "condition": null,
                             "fetch": []
                         }
                     ],
-                    "sysName": "status",
-                    "name": "Status",
+                    "sysName": "getIncomingTransactions",
+                    "format": "",
+                    "formatOptions": {}
+                },
+                {
+                    "fieldSysName": "balanceChange",
+                    "fetch": [
+                        {
+                            "fieldSysName": "id",
+                            "condition": null,
+                            "fetch": []
+                        }
+                    ],
+                    "sysName": "balanceChange",
+                    "name": "Изменение баланса",
                     "dataType": "link",
                     "format": "",
                     "formatOptions": {},
-                    "link": "ticket_statuses"
+                    "link": "balancechanges"
                 },
                 {
-                    "fieldSysName": "weight",
-                    "fetch": [],
-                    "sysName": "weight",
-                    "name": "",
-                    "dataType": "decimal",
+                    "fieldSysName": "identifyTransactionT",
+                    "fetch": [
+                        {
+                            "fieldSysName": "id",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "visibleStatus",
+                            "condition": null,
+                            "fetch": []
+                        }
+                    ],
+                    "sysName": "identifyTransactionT",
+                    "name": "Идентификация транзакции (Тинькофф)",
+                    "dataType": "link",
                     "format": "",
                     "formatOptions": {},
-                    "link": ""
+                    "link": "indetifytransaction_tinkoff"
                 },
                 {
-                    "fieldSysName": "subject",
+                    "fieldSysName": "bik",
                     "fetch": [],
-                    "sysName": "subject",
-                    "name": "Subject",
+                    "sysName": "bik",
+                    "name": "Корр счет банка",
                     "dataType": "string",
                     "format": "",
                     "formatOptions": {},
                     "link": ""
                 },
                 {
-                    "fieldSysName": "internal_number",
+                    "fieldSysName": "bankName",
                     "fetch": [],
-                    "sysName": "internal_number",
-                    "name": "Internal number",
+                    "sysName": "bankName",
+                    "name": "Название банка",
                     "dataType": "string",
                     "format": "",
                     "formatOptions": {},
                     "link": ""
                 },
                 {
-                    "fieldSysName": "description",
+                    "fieldSysName": "corrAccountNumber",
                     "fetch": [],
-                    "sysName": "description",
-                    "name": "Description",
+                    "sysName": "corrAccountNumber",
+                    "name": "БИК",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "fullName",
+                    "fetch": [],
+                    "sysName": "fullName",
+                    "name": "Полное имя",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "purpose",
+                    "fetch": [],
+                    "sysName": "purpose",
+                    "name": "Назначение платежа",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "accountNumber",
+                    "fetch": [],
+                    "sysName": "accountNumber",
+                    "name": "Номер счета",
                     "dataType": "string",
                     "format": "",
                     "formatOptions": {},
@@ -663,45 +987,129 @@ let exampleTable = {
                     "read": true,
                     "link": ""
                 },
+                "dateAndTime": {
+                    "id": "dateAndTime",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true
+                },
+                "isReceipt": {
+                    "id": "isReceipt",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true
+                },
                 "status": {
                     "id": "status",
-                    "content": "Status",
+                    "content": "Статус(success/noIdentify)",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": ""
+                },
+                "accountId": {
+                    "id": "accountId",
+                    "content": "ID Аккаунта",
                     "dataType": "link",
                     "format": "",
                     "formatOptions": {},
                     "read": true,
-                    "link": "ticket_statuses"
+                    "link": "accounts"
                 },
-                "weight": {
-                    "id": "weight",
-                    "content": "",
-                    "dataType": "decimal",
+                "type": {
+                    "id": "type",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true
+                },
+                "amount": {
+                    "id": "amount",
+                    "content": "Сумма",
+                    "dataType": "number",
                     "format": "",
                     "formatOptions": {},
                     "read": true,
                     "link": ""
                 },
-                "subject": {
-                    "id": "subject",
-                    "content": "Subject",
+                "incomingTransactions": {
+                    "id": "incomingTransactions",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true
+                },
+                "getIncomingTransactions": {
+                    "id": "getIncomingTransactions",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true
+                },
+                "balanceChange": {
+                    "id": "balanceChange",
+                    "content": "Изменение баланса",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "balancechanges"
+                },
+                "identifyTransactionT": {
+                    "id": "identifyTransactionT",
+                    "content": "Идентификация транзакции (Тинькофф)",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "indetifytransaction_tinkoff"
+                },
+                "bik": {
+                    "id": "bik",
+                    "content": "Корр счет банка",
                     "dataType": "string",
                     "format": "",
                     "formatOptions": {},
                     "read": true,
                     "link": ""
                 },
-                "internal_number": {
-                    "id": "internal_number",
-                    "content": "Internal number",
+                "bankName": {
+                    "id": "bankName",
+                    "content": "Название банка",
                     "dataType": "string",
                     "format": "",
                     "formatOptions": {},
                     "read": true,
                     "link": ""
                 },
-                "description": {
-                    "id": "description",
-                    "content": "Description",
+                "corrAccountNumber": {
+                    "id": "corrAccountNumber",
+                    "content": "БИК",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": ""
+                },
+                "fullName": {
+                    "id": "fullName",
+                    "content": "Полное имя",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": ""
+                },
+                "purpose": {
+                    "id": "purpose",
+                    "content": "Назначение платежа",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": ""
+                },
+                "accountNumber": {
+                    "id": "accountNumber",
+                    "content": "Номер счета",
                     "dataType": "string",
                     "format": "",
                     "formatOptions": {},
@@ -718,16 +1126,16 @@ let exampleTable = {
                     "colorFormat": "square",
                     "colorSize": 40
                 },
-                "subject": {
-                    "include": true,
+                "dateAndTime": {
+                    "include": false,
                     "fileImageFormat": "square",
                     "fileImageSize": 80,
                     "colorCode": false,
                     "colorFormat": "square",
                     "colorSize": 40
                 },
-                "internal_number": {
-                    "include": true,
+                "isReceipt": {
+                    "include": false,
                     "fileImageFormat": "square",
                     "fileImageSize": 80,
                     "colorCode": false,
@@ -735,6 +1143,14 @@ let exampleTable = {
                     "colorSize": 40
                 },
                 "status": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "fileImageSize": 80,
+                    "colorCode": false,
+                    "colorFormat": "square",
+                    "colorSize": 40
+                },
+                "accountId": {
                     "include": true,
                     "fileImageFormat": "square",
                     "fileImageSize": 80,
@@ -742,7 +1158,15 @@ let exampleTable = {
                     "colorFormat": "square",
                     "colorSize": 40
                 },
-                "status_cell_color": {
+                "type": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "fileImageSize": 80,
+                    "colorCode": false,
+                    "colorFormat": "square",
+                    "colorSize": 40
+                },
+                "amount": {
                     "include": true,
                     "fileImageFormat": "square",
                     "fileImageSize": 80,
@@ -750,7 +1174,23 @@ let exampleTable = {
                     "colorFormat": "square",
                     "colorSize": 40
                 },
-                "priority_cell_color": {
+                "incomingTransactions": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "fileImageSize": 80,
+                    "colorCode": false,
+                    "colorFormat": "square",
+                    "colorSize": 40
+                },
+                "getIncomingTransactions": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "fileImageSize": 80,
+                    "colorCode": false,
+                    "colorFormat": "square",
+                    "colorSize": 40
+                },
+                "balanceChange": {
                     "include": true,
                     "fileImageFormat": "square",
                     "fileImageSize": 80,
@@ -758,7 +1198,7 @@ let exampleTable = {
                     "colorFormat": "square",
                     "colorSize": 40
                 },
-                "comment_ids": {
+                "identifyTransactionT": {
                     "include": true,
                     "fileImageFormat": "square",
                     "fileImageSize": 80,
@@ -766,7 +1206,7 @@ let exampleTable = {
                     "colorFormat": "square",
                     "colorSize": 40
                 },
-                "date_due": {
+                "bik": {
                     "include": true,
                     "fileImageFormat": "square",
                     "fileImageSize": 80,
@@ -774,7 +1214,7 @@ let exampleTable = {
                     "colorFormat": "square",
                     "colorSize": 40
                 },
-                "manager_id": {
+                "bankName": {
                     "include": true,
                     "fileImageFormat": "square",
                     "fileImageSize": 80,
@@ -782,7 +1222,7 @@ let exampleTable = {
                     "colorFormat": "square",
                     "colorSize": 40
                 },
-                "date_raised": {
+                "corrAccountNumber": {
                     "include": true,
                     "fileImageFormat": "square",
                     "fileImageSize": 80,
@@ -790,7 +1230,7 @@ let exampleTable = {
                     "colorFormat": "square",
                     "colorSize": 40
                 },
-                "files": {
+                "fullName": {
                     "include": true,
                     "fileImageFormat": "square",
                     "fileImageSize": 80,
@@ -798,7 +1238,7 @@ let exampleTable = {
                     "colorFormat": "square",
                     "colorSize": 40
                 },
-                "priority": {
+                "purpose": {
                     "include": true,
                     "fileImageFormat": "square",
                     "fileImageSize": 80,
@@ -806,31 +1246,7 @@ let exampleTable = {
                     "colorFormat": "square",
                     "colorSize": 40
                 },
-                "description": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "fileImageSize": 80,
-                    "colorCode": false,
-                    "colorFormat": "square",
-                    "colorSize": 40
-                },
-                "email": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "fileImageSize": 80,
-                    "colorCode": false,
-                    "colorFormat": "square",
-                    "colorSize": 40
-                },
-                "event_ids": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "fileImageSize": 80,
-                    "colorCode": false,
-                    "colorFormat": "square",
-                    "colorSize": 40
-                },
-                "weight": {
+                "accountNumber": {
                     "include": true,
                     "fileImageFormat": "square",
                     "fileImageSize": 80,
@@ -841,48 +1257,23 @@ let exampleTable = {
             },
             "fieldOrder": [
                 "id",
-                "subject",
-                "internal_number",
+                "accountId",
+                "dateAndTime",
+                "isReceipt",
                 "status",
-                "description",
-                "weight"
+                "type",
+                "amount",
+                "incomingTransactions",
+                "getIncomingTransactions",
+                "balanceChange",
+                "identifyTransactionT",
+                "bik",
+                "bankName",
+                "corrAccountNumber",
+                "fullName",
+                "purpose",
+                "accountNumber"
             ]
-        },
-        "filterParams": {
-            "isFiltering": true,
-            "filterFields": {
-                "status": {
-                    "active": true,
-                    "dataType": "link",
-                    "format": "",
-                    "formatOptions": {},
-                    "name": "Status",
-                    "textsearch": "endpoint",
-                    "endpoint": "status",
-                    "linkDirectory": [
-                        {
-                            "id": "new",
-                            "text": "New"
-                        },
-                        {
-                            "id": "working",
-                            "text": "Working on it"
-                        },
-                        {
-                            "id": "done",
-                            "text": "Done"
-                        },
-                        {
-                            "id": "moderation",
-                            "text": "Under moderation"
-                        },
-                        {
-                            "id": "declined",
-                            "text": "Declined"
-                        }
-                    ]
-                }
-            }
         }
     },
     "tableTitle": "",
@@ -908,49 +1299,21 @@ let exampleTable = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "status",
-            "dataType": "link",
-            "name": "Status",
-            "id": "66011707656077772",
-            "link": "ticket_statuses",
-            "group": "1707655162019",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 6,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
+            "array": false
         },
         {
-            "sysName": "weight",
-            "dataType": "decimal",
-            "name": "",
-            "id": "82001710265018884",
+            "sysName": "dateAndTime",
+            "dataType": "date",
+            "name": "Дата и время",
+            "id": "38611710866712495",
             "link": "",
-            "group": "1707655519815",
+            "group": "0",
             "tags": "",
             "indexing": false,
             "ordering": false,
@@ -962,29 +1325,56 @@ let exampleTable = {
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": {},
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "ru",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD.MM.Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "true"
+            },
             "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "indexExists": false
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
         },
         {
-            "sysName": "subject",
+            "sysName": "isReceipt",
             "dataType": "string",
-            "name": "Subject",
-            "id": "87201707655050079",
+            "name": "isReceipt",
+            "id": "",
             "link": "",
-            "group": "0",
+            "group": "",
             "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 2,
+            "order": null,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -992,27 +1382,27 @@ let exampleTable = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "indexExists": false
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
         },
         {
-            "sysName": "internal_number",
-            "dataType": "string",
-            "name": "Internal number",
-            "id": "70091707656698254",
-            "link": "",
+            "sysName": "status",
+            "dataType": "link",
+            "name": "Статус(success/noIdentify/returned)",
+            "id": "40901693911895385",
+            "link": "icomingtransactionsstatuses",
             "group": "0",
             "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 6,
+            "order": 0,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -1020,20 +1410,20 @@ let exampleTable = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "array": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
+            "array": false
         },
         {
-            "sysName": "description",
-            "dataType": "string",
-            "name": "Description",
-            "id": "91941707655057838",
-            "link": "",
+            "sysName": "accountId",
+            "dataType": "link",
+            "name": "ID Аккаунта",
+            "id": "85061710831208892",
+            "link": "accounts",
             "group": "0",
             "tags": "",
             "indexing": false,
@@ -1048,55 +1438,431 @@ let exampleTable = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "array": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
+            "array": false
+        },
+        {
+            "sysName": "type",
+            "dataType": "string",
+            "name": "type",
+            "id": "",
+            "link": "",
+            "group": "",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": null,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "indexExists": false
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
+        },
+        {
+            "sysName": "amount",
+            "dataType": "number",
+            "name": "Сумма",
+            "id": "81181693840010597",
+            "link": "",
+            "group": "1710853670931",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 6,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
+        },
+        {
+            "sysName": "incomingTransactions",
+            "dataType": "string",
+            "name": "incomingTransactions",
+            "id": "",
+            "link": "",
+            "group": "",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": null,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
+        },
+        {
+            "sysName": "getIncomingTransactions",
+            "dataType": "string",
+            "name": "getIncomingTransactions",
+            "id": "",
+            "link": "",
+            "group": "",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": null,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
+        },
+        {
+            "sysName": "bik",
+            "dataType": "string",
+            "name": "Корр счет банка",
+            "id": "22241710833315226",
+            "link": "",
+            "group": "1710853670931",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
+        },
+        {
+            "sysName": "bankName",
+            "dataType": "string",
+            "name": "Название банка",
+            "id": "60791710833306142",
+            "link": "",
+            "group": "1710853670931",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
+        },
+        {
+            "sysName": "corrAccountNumber",
+            "dataType": "string",
+            "name": "БИК",
+            "id": "62331710833139313",
+            "link": "",
+            "group": "1710853670931",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
+        },
+        {
+            "sysName": "fullName",
+            "dataType": "string",
+            "name": "Полное имя",
+            "id": "91911693841983562",
+            "link": "",
+            "group": "1710853670931",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
+        },
+        {
+            "sysName": "purpose",
+            "dataType": "string",
+            "name": "Назначение платежа",
+            "id": "68041693840053500",
+            "link": "",
+            "group": "1710853670931",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 5,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
+        },
+        {
+            "sysName": "accountNumber",
+            "dataType": "string",
+            "name": "Номер счета",
+            "id": "57511693840001869",
+            "link": "",
+            "group": "1710853670931",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
+        },
+        {
+            "sysName": "balanceChange",
+            "dataType": "link",
+            "name": "Изменение баланса",
+            "id": "97401710856658239",
+            "link": "balancechanges",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
+        },
+        {
+            "sysName": "identifyTransactionT",
+            "dataType": "link",
+            "name": "Идентификация транзакции (Тинькофф)",
+            "id": "95971710853706576",
+            "link": "indetifytransaction_tinkoff",
+            "group": "1710853801475",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
+        },
+        {
+            "sysName": "colorStatus",
+            "dataType": "string",
+            "name": "Цвет статуса",
+            "id": "85851711023895026",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "color",
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
+        },
+        {
+            "sysName": "ruStatus",
+            "dataType": "string",
+            "name": "Статус",
+            "id": "54941711024290797",
+            "link": null,
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
         }
     ],
     "data": [
         {
-            "subject": "Срать хочу",
-            "description": "Но некогда",
-            "internal_number": "SD-1001",
-            "id": "207ae69d-c13c-461f-9695-b3bf54bf6b46",
+            "ruStatus": "Идентифицировано",
+            "colorStatus": "#c2ff81",
+            "fullName": "СМИРНОВ НИКИТА ЕВГЕНЬЕВИЧ",
+            "accountId": "ФЛ-5",
+            "amount": 10,
+            "purpose": "Перевод с карты *7146, Пополнение счета №ФЛ2. НДС не облагается",
+            "id": "198296ac-8fc4-00dc-8238-beb3ab72b253",
+            "identifyTransactionT": {
+                "visibleStatus": "Платеж идентифицирован",
+                "id": "21d3e70d-64d3-4def-930b-d597f1c45532"
+            },
             "status": {
-                "id": "working",
-                "status": "Working on it"
-            }
-        },
-        {
-            "subject": "Посрал",
-            "description": "Закрывайте предыдущий тикет",
-            "internal_number": "SD-1002",
-            "id": "0f40c0c6-63f6-48fe-b627-b78509c965f8",
-            "status": {
-                "id": "moderation",
-                "status": "Under moderation"
-            }
-        },
-        {
-            "subject": "Принесите мне чаю",
-            "description": "Зеленого, пожалуйста.",
-            "internal_number": "SD-1003",
-            "id": "28e267fd-d30a-4643-9c9f-849a461026d0",
-            "status": {
-                "id": "new",
-                "status": "New"
-            }
-        },
-        {
-            "subject": "Нужна новая мышка",
-            "description": "Эппл маджик маус, пожалуйста",
-            "internal_number": "SD-1004",
-            "id": "aec48e25-29cf-4905-804b-9110da2a51c4",
-            "status": {
-                "id": "declined",
-                "status": "Declined"
-            }
+                "color": "00ff00",
+                "name": "Идентифицировано",
+                "id": "success"
+            },
+            "accountNumber": "40817810300016074420",
+            "balanceChange": {
+                "visibleStatus": "Деньги зачислены на баланс ФЛ-5",
+                "id": "0dd4d680-0704-48ea-8416-03f2b04ee7be"
+            },
+            "dateAndTime": 1710795600000
         }
     ],
     "totalPages": 1,
@@ -1105,57 +1871,104 @@ let exampleTable = {
     "fieldScheme": [
         [
             "id",
-            99289737
+            99299824
+        ],
+        [
+            "dateAndTime",
+            99299824
+        ],
+        [
+            "isReceipt",
+            99299824
         ],
         [
             "status.id",
-            99289741
+            99300606
         ],
         [
-            "status.status",
-            99289741
+            "status.color",
+            99300606
         ],
         [
-            "weight",
-            99289737
+            "status.name",
+            99300606
         ],
         [
-            "subject",
-            99289737
+            "accountId.id",
+            99269355
         ],
         [
-            "internal_number",
-            99289737
+            "amount",
+            99299824
         ],
         [
-            "description",
-            99289737
+            "bik",
+            99299824
+        ],
+        [
+            "bankName",
+            99299824
+        ],
+        [
+            "corrAccountNumber",
+            99299824
+        ],
+        [
+            "fullName",
+            99299824
+        ],
+        [
+            "purpose",
+            99299824
+        ],
+        [
+            "accountNumber",
+            99299824
+        ],
+        [
+            "balanceChange.id",
+            99275187
+        ],
+        [
+            "balanceChange.visibleStatus",
+            99275187
+        ],
+        [
+            "identifyTransactionT.id",
+            99300137
+        ],
+        [
+            "identifyTransactionT.visibleStatus",
+            99300137
+        ],
+        [
+            "ruStatus",
+            99299824
         ]
     ],
     "writeFields": [],
     "structures": {
-        "99289737": {
-            "networkID": 19736,
-            "id": 99289737,
-            "dateCreated": "2024-02-11T12:37:17Z",
+        "99269355": {
+            "networkID": 19241,
+            "sysName": "accounts",
+            "name": "Accounts",
+            "id": 99269355,
+            "dateCreated": "2023-06-08T18:10:55Z",
             "hidden": false,
             "dateHidden": null,
-            "name": "Tickets",
-            "sysName": "tickets",
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"email\",\"dataType\":\"string\",\"name\":\"Email\",\"id\":\"57781707655041505\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"email\",\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"subject\",\"dataType\":\"string\",\"name\":\"Subject\",\"id\":\"87201707655050079\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"Description\",\"id\":\"91941707655057838\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"priority\",\"dataType\":\"json\",\"name\":\"Priority\",\"id\":\"68501707655073618\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"radioOptions\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"low\",\"label\":\"Low\"},{\"value\":\"regular\",\"label\":\"Regular\"},{\"value\":\"high\",\"label\":\"🔥 High\"}]},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"files\",\"dataType\":\"file\",\"name\":\"Attach relevant files\",\"id\":\"89941707655124325\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"multipleFiles\",\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"internal_number\",\"dataType\":\"string\",\"name\":\"Internal number\",\"id\":\"70091707656698254\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"date_raised\",\"dataType\":\"date\",\"name\":\"Date raised\",\"id\":\"25281707655156851\",\"link\":\"\",\"group\":\"1707655162019\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"MMM DD\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"date_due\",\"dataType\":\"date\",\"name\":\"Due date\",\"id\":\"76811707655179999\",\"link\":\"\",\"group\":\"1707655162019\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"MMM DD\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"manager_id\",\"dataType\":\"link\",\"name\":\"Manager\",\"id\":\"36921707655169804\",\"link\":\"WebUser\",\"group\":\"1707655162019\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"prev_manager_id\",\"dataType\":\"link\",\"name\":\"Previous manager\",\"id\":\"69611709124076159\",\"link\":\"WebUser\",\"group\":\"1707655162019\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"comment_ids\",\"dataType\":\"arrayLink\",\"name\":\"Comments\",\"id\":\"17041707655231809\",\"link\":\"tickets_comments\",\"group\":\"1707655162019\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false},{\"sysName\":\"event_ids\",\"dataType\":\"arrayLink\",\"name\":\"Changelog\",\"id\":\"39961707655238067\",\"link\":\"tickets_changelog\",\"group\":\"1707655162019\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false},{\"sysName\":\"status\",\"dataType\":\"link\",\"name\":\"Status\",\"id\":\"66011707656077772\",\"link\":\"ticket_statuses\",\"group\":\"1707655162019\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"prev_status\",\"dataType\":\"link\",\"name\":\"Previous status\",\"id\":\"59601709123226785\",\"link\":\"ticket_statuses\",\"group\":\"1707655162019\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"changed_by\",\"dataType\":\"link\",\"name\":\"Changed by\",\"id\":\"32101709125002752\",\"link\":\"WebUser\",\"group\":\"1707655162019\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"priority_cell_color\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"77871707655517886\",\"link\":\"\",\"group\":\"1707655519815\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"status_cell_color\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"68401707655558604\",\"link\":\"\",\"group\":\"1707655519815\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"sync_processing_result\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"51851707656627589\",\"link\":\"\",\"group\":\"1707655519815\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"sync_processing_title\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"21361707656647074\",\"link\":\"\",\"group\":\"1707655519815\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"sync_processing_text\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"30541707656654334\",\"link\":\"\",\"group\":\"1707655519815\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"weight\",\"dataType\":\"decimal\",\"name\":\"\",\"id\":\"82001710265018884\",\"link\":\"\",\"group\":\"1707655519815\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false}]",
-            "jsonGroupSettings": "[{\"id\":1707655162019,\"name\":\"Processing\",\"order\":0},{\"id\":1707655519815,\"name\":\"Technical fields\",\"order\":1}]",
-            "jsonViewIdSettings": "[{\"sysName\":\"internal_number\"},{\"sysName\":\"subject\"}]",
-            "jsonSettings": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"subject\",\"name\":\"Субъект\",\"dataType\":\"link\",\"id\":\"24621692192817370\",\"link\":\"subject\",\"group\":\"1693648368017\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"beneficiarIdT\",\"name\":\"ID Бенефициара\",\"dataType\":\"string\",\"id\":\"36851694256840517\",\"link\":\"\",\"group\":\"1693909431470\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"statusT\",\"name\":\"Статус проверки Тинькофф\",\"dataType\":\"link\",\"id\":\"38191694452540594\",\"link\":\"accountstatus\",\"group\":\"1693909431470\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"bankDetailsIdT\",\"name\":\"ID Банковских Реквизитов (Перемещен в структуру bank details))\",\"dataType\":\"string\",\"id\":\"40661693909438886\",\"link\":\"\",\"group\":\"1693909431470\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"CreateBeneficiarFL\",\"name\":\"Создание бенефициара ФЛ\",\"dataType\":\"link\",\"id\":\"48441710675190542\",\"link\":\"createbeneficiarfl_tinkoff\",\"group\":\"1693909431470\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"invested\",\"name\":\"Проинвестировано\",\"dataType\":\"number\",\"id\":\"50351702572736883\",\"link\":\"\",\"group\":\"1702572618046\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"deals\",\"name\":\"Сделки\",\"dataType\":\"arrayLink\",\"id\":\"52641693648444099\",\"link\":\"deals\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"investorId\",\"name\":\"ID инвестора\",\"dataType\":\"link\",\"id\":\"56611690198070104\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"dealsQuantity\",\"name\":\"Количество сделок\",\"dataType\":\"number\",\"id\":\"57231702573131054\",\"link\":\"\",\"group\":\"1702572618046\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"topUps\",\"name\":\"Пополнения\",\"dataType\":\"arrayLink\",\"id\":\"62091693649005493\",\"link\":\"topups\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"qualifyStatus\",\"name\":\"Статус квалификации (notQualified // request // qualified)\",\"dataType\":\"string\",\"id\":\"77541702576406574\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"qualify\",\"name\":\"qualify\",\"dataType\":\"link\",\"id\":\"78631701762114235\",\"link\":\"qualify\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"limitNoQualify\",\"name\":\"Лимит для неквала\",\"dataType\":\"number\",\"id\":\"80981702572602612\",\"link\":\"\",\"group\":\"1702572618046\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"typeOfAccount\",\"name\":\"Тип аккаунта (individual / entrepreneur  / legalEntity )\",\"dataType\":\"link\",\"id\":\"81451690198094533\",\"link\":\"typesofaccountes\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"BankDetailsIds\",\"name\":\"Банковские реквизиты\",\"dataType\":\"link\",\"id\":\"85611694452391589\",\"link\":\"bankdetails\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[\"accountNumber\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":true,\"array\":false},{\"sysName\":\"balance\",\"name\":\"Баланс аккаунта\",\"dataType\":\"number\",\"id\":\"88321701762031231\",\"link\":\"\",\"group\":\"1702572618046\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"onHold\",\"name\":\"Забукированные средства\",\"dataType\":\"number\",\"id\":\"91731702572684418\",\"link\":\"\",\"group\":\"1702572618046\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"verify\",\"name\":\"Верифицирован\",\"dataType\":\"boolean\",\"id\":\"91911690700097059\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false}]",
+            "jsonGroupSettings": "[{\"name\":\"Account Info\",\"id\":1693648368017,\"order\":0},{\"name\":\"Tinkoff\",\"id\":1693909431470,\"order\":1},{\"name\":\"Gene\",\"id\":1702572618046,\"order\":2}]",
+            "jsonViewIdSettings": "[]",
+            "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
             "jsonNativeIndexSettings": null,
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2024-03-12T17:37:05Z",
-            "createBy": 21,
-            "changedBy": 21,
+            "dateChanged": "2024-03-19T07:18:01Z",
+            "createBy": 14395,
+            "changedBy": 1,
             "_settings": null,
             "_nativeIndexSettings": null,
-            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "dataType": "id",
@@ -1176,38 +1989,38 @@ let exampleTable = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "array": false,
-                "typeVariable": {},
-                "json": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "indexExists": false
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "array": false
             },
-            "folderId": 33787880
+            "objectIDSysName": "id",
+            "folderId": 33782067
         },
-        "99289741": {
-            "networkID": 19736,
-            "id": 99289741,
-            "dateCreated": "2024-02-11T12:46:32Z",
+        "99275187": {
+            "networkID": 19241,
+            "sysName": "balancechanges",
+            "name": "BalanceChanges",
+            "id": 99275187,
+            "dateCreated": "2023-12-18T14:46:13Z",
             "hidden": false,
             "dateHidden": null,
-            "name": "Ticket statuses",
-            "sysName": "ticket_statuses",
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"status\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"97511707655598067\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"color\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"19121707655598571\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false}]",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isReceipt\",\"dataType\":\"boolean\",\"name\":\"Приход?\",\"id\":\"21251710764249325\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"amount\",\"dataType\":\"number\",\"name\":\"Сумма\",\"id\":\"22851702910779039\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"type\",\"dataType\":\"link\",\"name\":\"Тип (payDeal // topUp // cancelDeal // return)\",\"id\":\"24971702910816261\",\"link\":\"balancechangestypes\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"status\",\"dataType\":\"string\",\"name\":\"Статус (create // complete)\",\"id\":\"59741702910935730\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"accountId\",\"dataType\":\"link\",\"name\":\"ID счета\",\"id\":\"78611702910895839\",\"link\":\"accounts\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[\"typeOfAccount\",\"type\",\"investorId\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":true,\"array\":false},{\"sysName\":\"visibleStatus\",\"dataType\":\"string\",\"name\":\"Визуальный статус\",\"id\":\"95671710867184742\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"dateAndTime\",\"dataType\":\"date\",\"name\":\"Дата и время\",\"id\":\"96451710772977668\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
             "jsonGroupSettings": null,
-            "jsonViewIdSettings": "[{\"sysName\":\"status\"}]",
+            "jsonViewIdSettings": "[{\"sysName\":\"visibleStatus\"}]",
             "jsonSettings": null,
             "jsonNativeIndexSettings": null,
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2024-02-11T12:46:50Z",
-            "createBy": 21,
-            "changedBy": 21,
+            "dateChanged": "2024-03-19T16:53:48Z",
+            "createBy": 19687,
+            "changedBy": 19687,
             "_settings": null,
             "_nativeIndexSettings": null,
-            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "dataType": "id",
@@ -1228,15 +2041,172 @@ let exampleTable = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "array": false,
-                "typeVariable": {},
-                "json": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "indexExists": false
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "array": false
             },
-            "folderId": 33792275
+            "objectIDSysName": "id",
+            "folderId": 33797700
+        },
+        "99299824": {
+            "networkID": 19241,
+            "sysName": "incomingtransactions",
+            "name": "IncomingTransactions",
+            "id": 99299824,
+            "dateCreated": "2024-03-17T07:25:08Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"bik\",\"name\":\"Корр счет банка\",\"dataType\":\"string\",\"id\":\"22241710833315226\",\"link\":\"\",\"group\":\"1710853670931\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"dateAndTime\",\"name\":\"Дата и время\",\"dataType\":\"date\",\"id\":\"38611710866712495\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"true\"},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"status\",\"name\":\"Статус(success/noIdentify/returned)\",\"dataType\":\"link\",\"id\":\"40901693911895385\",\"link\":\"icomingtransactionsstatuses\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"ruStatus\",\"name\":\"Статус\",\"dataType\":\"string\",\"id\":\"54941711024290797\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"accountNumber\",\"name\":\"Номер счета\",\"dataType\":\"string\",\"id\":\"57511693840001869\",\"link\":\"\",\"group\":\"1710853670931\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"bankName\",\"name\":\"Название банка\",\"dataType\":\"string\",\"id\":\"60791710833306142\",\"link\":\"\",\"group\":\"1710853670931\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"corrAccountNumber\",\"name\":\"БИК\",\"dataType\":\"string\",\"id\":\"62331710833139313\",\"link\":\"\",\"group\":\"1710853670931\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"purpose\",\"name\":\"Назначение платежа\",\"dataType\":\"string\",\"id\":\"68041693840053500\",\"link\":\"\",\"group\":\"1710853670931\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"amount\",\"name\":\"Сумма\",\"dataType\":\"number\",\"id\":\"81181693840010597\",\"link\":\"\",\"group\":\"1710853670931\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"accountId\",\"name\":\"ID Аккаунта\",\"dataType\":\"link\",\"id\":\"85061710831208892\",\"link\":\"accounts\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"colorStatus\",\"name\":\"Цвет статуса\",\"dataType\":\"string\",\"id\":\"85851711023895026\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"fullName\",\"name\":\"Полное имя\",\"dataType\":\"string\",\"id\":\"91911693841983562\",\"link\":\"\",\"group\":\"1710853670931\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"identifyTransactionT\",\"name\":\"Идентификация транзакции (Тинькофф)\",\"dataType\":\"link\",\"id\":\"95971710853706576\",\"link\":\"indetifytransaction_tinkoff\",\"group\":\"1710853801475\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"balanceChange\",\"name\":\"Изменение баланса\",\"dataType\":\"link\",\"id\":\"97401710856658239\",\"link\":\"balancechanges\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false}]",
+            "jsonGroupSettings": "[{\"id\":1710853670931,\"name\":\"Details\",\"order\":0},{\"id\":1710853801475,\"name\":\"Tinkoff\",\"order\":1}]",
+            "jsonViewIdSettings": "[{\"sysName\":\"amount\"},{\"sysName\":\"accountId\"},{\"sysName\":\"dateAndTime\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2024-03-21T12:31:46Z",
+            "createBy": 19687,
+            "changedBy": 19687,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "array": false
+            },
+            "objectIDSysName": "id",
+            "folderId": 33797666
+        },
+        "99300137": {
+            "networkID": 19241,
+            "sysName": "indetifytransaction_tinkoff",
+            "name": "IdentifyTransaction_Tinkoff",
+            "id": 99300137,
+            "dateCreated": "2024-03-19T09:39:22Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"sendRequest\",\"dataType\":\"link\",\"name\":\"Отправка запроса\",\"id\":\"70641710338549400\",\"link\":\"sendrequest_tinkoff\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"visibleStatus\",\"dataType\":\"link\",\"name\":\"Визуальный статус запроса\",\"id\":\"49331710841397230\",\"link\":\"requestvisiblestatuses_tinkoff\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"incomiTransactions_res\",\"dataType\":\"json\",\"name\":\"Список пополнений\",\"id\":\"94931710669488325\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"amountDistribution\",\"dataType\":\"json\",\"name\":\"Список распределений по бенефициарам* { \\\"beneficiaryId\\\":  string,  \\\"amount\\\":  number  }[]\",\"id\":\"82941710841200117\",\"link\":\"\",\"group\":\"1710841168075\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"operationId\",\"dataType\":\"string\",\"name\":\"ID Операции\",\"id\":\"47461710841288137\",\"link\":\"\",\"group\":\"1710841177828\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"response\",\"dataType\":\"json\",\"name\":\"Ответ\",\"id\":\"42281710318168825\",\"link\":\"\",\"group\":\"1710841188886\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"error\",\"dataType\":\"link\",\"name\":\"Ошибка\",\"id\":\"94681710334629430\",\"link\":\"errors_tinkoff\",\"group\":\"1710841193980\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isError\",\"dataType\":\"boolean\",\"name\":\"Ошибка?\",\"id\":\"94071710339741449\",\"link\":\"\",\"group\":\"1710841193980\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
+            "jsonGroupSettings": "[{\"name\":\"Request Body\",\"id\":1710841168075,\"order\":0},{\"name\":\"Path Params\",\"id\":1710841177828,\"order\":1},{\"name\":\"Response\",\"id\":1710841188886,\"order\":2},{\"name\":\"Errors\",\"id\":1710841193980,\"order\":3}]",
+            "jsonViewIdSettings": "[{\"sysName\":\"visibleStatus\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": false,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2024-03-19T09:46:46Z",
+            "createBy": 19687,
+            "changedBy": 19687,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "array": false
+            },
+            "objectIDSysName": "id",
+            "folderId": 33796998
+        },
+        "99300606": {
+            "networkID": 19241,
+            "sysName": "icomingtransactionsstatuses",
+            "name": "IncomingTransactionsStatuses",
+            "id": 99300606,
+            "dateCreated": "2024-03-21T12:07:34Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"name\",\"name\":\"Название\",\"dataType\":\"string\",\"id\":\"34031711022909217\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"color\",\"name\":\"Цвет\",\"dataType\":\"string\",\"id\":\"34301711022918230\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": null,
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": false,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2024-03-21T12:24:21Z",
+            "createBy": 19687,
+            "changedBy": 19687,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "array": false
+            },
+            "objectIDSysName": "id",
+            "folderId": 33797666
         }
     },
     "isSuccessWrite": false,
@@ -1244,7 +2214,9 @@ let exampleTable = {
     "writeResponse": null,
     "fileds": [],
     "quickSearch": "false",
-    "httpParams": {},
+    "httpParams": {
+        "status": "success"
+    },
     "cardCustomHtml": null,
     "cardCustomLayout": null
 }

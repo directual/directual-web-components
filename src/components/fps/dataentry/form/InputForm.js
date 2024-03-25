@@ -56,6 +56,7 @@ export function InputForm(props) {
 }
 
 function FieldText({ field, locale, onChange, placeholder, editingOn, code, defaultValue, link, hintType, isHint }) {
+    
     const addHttp = link => {
         if (!link) return link
         if (link.substring(0, 4) != 'http') { link = 'http://' + link }

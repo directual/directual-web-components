@@ -818,10 +818,12 @@ function FieldLink({ field, handleRoute, model, onChange, setLinkedObject, objec
     const struct = getStructure(linkedObj, transformTableFieldScheme(field.sysName, tableFieldScheme))
     //const enrichedObject = composeObject(linkedObj, struct)
 
-
+    // console.log("FieldLink")
     // console.log(object[field.sysName])
     // console.log(linkedObj)
     // console.log(struct)
+    //if (object[field.sysName].sysName == "accountId") 
+    //return <div />
 
     // в объекте может не быть каких-то полей, поэтому я ебанул синтетический объект, чтобы собрать
     // по структуре всю метаинформацию:
@@ -956,14 +958,14 @@ function FieldLink({ field, handleRoute, model, onChange, setLinkedObject, objec
         return urlToRoute
     }
 
-    const composeURLforAL = (f,m) => {
+    const composeURLforAL = (f, m) => {
         const encodedLinkedData = encodeValues(transformObject(_.cloneDeep(m)))
         const clickableField = "{{" + (_.trim(_.get(f, 'clickableField'), "/") || "id") + "}}"
         const encodedData = encodeValues(transformObject(_.cloneDeep(model)));
         const templateString = _.trim(_.get(f, 'clickableRoute'), '/')
         _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
         if (_.isEmpty(encodedLinkedData)) return ""
-        const urlToRoute = (templateString ? "/" + _.template(templateString)(encodedData) + "/" : "./") 
+        const urlToRoute = (templateString ? "/" + _.template(templateString)(encodedData) + "/" : "./")
             + _.template(clickableField)(encodedLinkedData)
         return urlToRoute
     }
@@ -997,8 +999,9 @@ function FieldLink({ field, handleRoute, model, onChange, setLinkedObject, objec
                     {!renderAL.length ? '—' : renderAL.map((item, i) => <tr key={i} className={field.clickable ? styles.clickable : ''}
                         onClick={(e) => {
                             if (_.get(field, 'clickableType') == 'page' && field.clickable) {
+                                
                                 e.preventDefault()
-                                handleRoute(composeURLforAL(field,item))(e)
+                                handleRoute(composeURLforAL(field, item))(e)
                             }
                             if (_.get(field, 'clickableType') !== 'page' && field.clickable) {
                                 setLinkedObject({
@@ -1026,13 +1029,13 @@ function FieldLink({ field, handleRoute, model, onChange, setLinkedObject, objec
                     >
                         {cart.image && <td>{processField(item[cart.imageField], cart.imageField)}</td>}
                         {cart.title && <td>
-                            {(_.get(field, 'clickableType') == 'page') ?
-                            <a style={{userSelect: 'none'}} href={composeURLforAL(field,item)} onClick={e => e.preventDefault()}>
-                                {processField(item[cart.titleField], cart.titleField)}
-                            </a>
-                            : processField(item[cart.titleField], cart.titleField)}
+                            {(_.get(field, 'clickableType') == 'page' && field.clickable) ?
+                                <a style={{ userSelect: 'none' }} href={composeURLforAL(field, item)} onClick={e => e.preventDefault()}>
+                                    {processField(item[cart.titleField], cart.titleField)}
+                                </a>
+                                : processField(item[cart.titleField], cart.titleField)}
 
-                            </td>}
+                        </td>}
                         {cart.status && <td className={styles.right}>{processField(item[cart.statusField], cart.statusField)}</td>}
                         {cart.quantity && <td className={styles.right}>{numberWithSpaces(processField(item[cart.quantityField], cart.quantityField, true) || '0')}</td>}
                         {cart.quantity && cart.price && <td className={styles.right}>
@@ -1090,7 +1093,7 @@ function FieldLink({ field, handleRoute, model, onChange, setLinkedObject, objec
                         onClick={(e) => {
                             if (_.get(field, 'clickableType') == 'page' && field.clickable) {
                                 e.preventDefault()
-                                handleRoute(composeURLforAL(field,item))(e)
+                                handleRoute(composeURLforAL(field, item))(e)
                             }
                             if (_.get(field, 'clickableType') !== 'page' && field.clickable) {
                                 setLinkedObject({
@@ -1116,12 +1119,12 @@ function FieldLink({ field, handleRoute, model, onChange, setLinkedObject, objec
                             }
                         }}
                     >
-                        {(table.columns || []).map((column,i) => <td>
-                            {(i == 0 && _.get(field, 'clickableType') == 'page') ?
-                            <a style={{userSelect: 'none'}} href={composeURLforAL(field,item)} onClick={e => e.preventDefault()}>
-                                {processField(item[column.field], column.field)}
-                            </a>
-                            : processField(item[column.field], column.field)}
+                        {(table.columns || []).map((column, i) => <td>
+                            {(i == 0 && _.get(field, 'clickableType') == 'page' && field.clickable) ?
+                                <a style={{ userSelect: 'none' }} href={composeURLforAL(field, item)} onClick={e => e.preventDefault()}>
+                                    {processField(item[column.field], column.field)}
+                                </a>
+                                : processField(item[column.field], column.field)}
                         </td>)}
                         {(field.write && editingOn && table.deleteOn) && <td className={styles.right}>
                             <div className={`${styles.deleteCartItem} icon icon-delete`}
@@ -1161,7 +1164,7 @@ function FieldLink({ field, handleRoute, model, onChange, setLinkedObject, objec
 
             {field.dataType == 'link' && field.read && renderAL && !edit && renderAL.length !== 0 &&
                 <div className={`${styles.linkFieldWrapper} ${!field.clickable && styles.notClickable}`}>
-                    <a href={composeURL(field)}
+                    <a href={(_.get(field, 'clickableType') == 'page'&& field.clickable) ? composeURL(field) : null}
                         onClick={(e) => {
                             if (_.get(field, 'clickableType') == 'page' && field.clickable) {
                                 e.preventDefault()
@@ -1199,11 +1202,11 @@ function FieldLink({ field, handleRoute, model, onChange, setLinkedObject, objec
                     {object[field.sysName].value && object[field.sysName].value.length > 0 && object[field.sysName].value.map((link, i) => {
                         return link ? <a
                             key={i}
-                            href={composeURLforAL(field,link)}
+                            href={(_.get(field, 'clickableType') == 'page'&& field.clickable) ? composeURLforAL(field, link) : null}
                             onClick={(e) => {
                                 if (_.get(field, 'clickableType') == 'page' && field.clickable) {
                                     e.preventDefault()
-                                    handleRoute(composeURLforAL(field,link))(e)
+                                    handleRoute(composeURLforAL(field, link))(e)
                                 }
                                 if (_.get(field, 'clickableType') !== 'page' && field.clickable) {
                                     setLinkedObject({

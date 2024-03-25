@@ -1009,3 +1009,17 @@ export default function Input(props) {
         </div>
     )
 }
+
+Input.propTypes = {
+    type: PropTypes.string,
+    options: PropTypes.array,
+    onClick: PropTypes.func,
+    icon: PropTypes.string,
+};
+
+Input.defaultProps = {
+    type: 'string',
+    options: [],
+    onClick: undefined,
+    icon: null
+};

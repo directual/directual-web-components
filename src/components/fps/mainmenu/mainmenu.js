@@ -927,6 +927,7 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
     menuConfig, compactMode, custom_labels, sideMenuAlign }) {
 
     const menuItem = _.get(menuConfig, [item.id]) || {}
+    const [isHovered, setIsHovered] = useState(false)
 
     const name = menuItem.name || item.name
 
@@ -1033,12 +1034,15 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
         </div>
     }
 
-    return <a onClick={e => {
-        if (menuItem.linkToType !== 'external') {
-            handleRoute(menuItem.linkToPage)(e)
-            e.preventDefault()
-        }
-    }}
+    return <a
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onClick={e => {
+            if (menuItem.linkToType !== 'external') {
+                handleRoute(menuItem.linkToPage)(e)
+                e.preventDefault()
+            }
+        }}
         href={menuItem.linkToType !== 'external' ? menuItem.linkToPage : menuItem.linkToURL}
         target={menuItem.linkToURLNewWindow && menuItem.linkToType == 'external' ? '_blank' : ''}
         style={sideMenuAlign == 'right' ? { marginLeft: horMenuMargin, marginTop: 0 } :
@@ -1050,7 +1054,7 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
             ${currentRoute == menuItem.linkToPage ? "selected" : ""}
             ${iconType == 'directual_icon' ? `icon icon-${menuItem.menuDirectualIconSet}` : ''}
             ${compactMode && iconType == 'no_icon' && 'icon icon-application'}
-            ${!menuItem.menuDirectualIconSet && !menuItem.menuRemixIcon 
+            ${!menuItem.menuDirectualIconSet && !menuItem.menuRemixIcon
                 && !menuItem.menuIconCustom && iconType !== 'no_icon' ? 'icon icon-application' : ''}
         `}>
         {/* Custom icon: */}
@@ -1074,8 +1078,9 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
                     viewBox={`0 0 24 24`}
                 >
                     <path
-                        fill={currentRoute == menuItem.linkToPage ?
-                            (menuItem.menuRemixIconColorSelected || '#000000') :
+                        fill={currentRoute == 
+                            menuItem.linkToPage ? (menuItem.menuRemixIconColorSelected || '#000000') :
+                            isHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
                             (menuItem.menuRemixIconColor || '#000000')}
                         d={menuItem.menuRemixIcon.Content}
                     ></path>
