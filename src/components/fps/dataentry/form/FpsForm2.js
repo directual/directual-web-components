@@ -5,7 +5,7 @@ import Button from '../../button/button'
 import ActionPanel from '../../actionspanel/actionspanel'
 import Hint from '../../hint/hint'
 import Loader from '../../loader/loader'
-import icon from './../../../../icons/fps-form.svg'
+import icon from './../../../../icons/fps-form2.svg'
 import { ComponentWrapper } from './../../wrapper/wrapper'
 import { Markdown } from '../../article/mkd'
 import { InputForm } from './InputForm'
@@ -451,18 +451,18 @@ function FpsForm2({ auth, data, onEvent, id, locale }) {
 
 
 
-// FpsForm2.settings = {
-//   icon: icon,
-//   name: 'Multistep Form',
-//   sysName: 'FpsForm2',
-//   form: [
-//     { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
-//     { name: 'Form title', sysName: 'formName', type: 'input' },
-//     { name: 'Form description', sysName: 'formDesc', type: 'textarea' },
-//     { name: 'Submit button text', sysName: 'formButton', type: 'input' },
-//     { name: 'Labels or Placeholders', sysName: 'placeholder', type: 'labelOrPlaceholder' },
-//     { name: 'Form max width, px', sysName: 'maxWidth', type: 'number' },
-//     { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
-//     { name: 'Component comment', sysName: 'comment', type: 'comment' },
-//   ]
-// }
+FpsForm2.settings = {
+  icon: icon,
+  name: 'Multistep Form',
+  sysName: 'FpsForm2',
+  form: [
+    { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
+    { name: 'Form title', sysName: 'formName', type: 'input' },
+    { name: 'Form description', sysName: 'formDesc', type: 'textarea' },
+    { name: 'Submit button text', sysName: 'formButton', type: 'input' },
+    { name: 'Labels or Placeholders', sysName: 'placeholder', type: 'labelOrPlaceholder' },
+    { name: 'Form max width, px', sysName: 'maxWidth', type: 'number' },
+    { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
+    { name: 'Component comment', sysName: 'comment', type: 'comment' },
+  ]
+}

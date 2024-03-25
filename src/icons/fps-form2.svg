@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="109px"
+   height="109px"
+   viewBox="0 0 109 109"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="fps-form2.svg"
+   inkscape:version="1.3.1 (91b66b0, 2023-11-16)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="2.1651376"
+     inkscape:cx="54.269068"
+     inkscape:cy="54.5"
+     inkscape:window-width="1296"
+     inkscape:window-height="769"
+     inkscape:window-x="90"
+     inkscape:window-y="85"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="FEB/component/form" />
+  <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+  <title
+     id="title1">fps-form</title>
+  <desc
+     id="desc1">Created with Sketch.</desc>
+  <g
+     id="Symbols"
+     stroke="none"
+     stroke-width="1"
+     fill="none"
+     fill-rule="evenodd">
+    <g
+       id="FEB/component/form">
+      <g
+         id="fps-form">
+        <g
+           id="Group">
+          <rect
+             id="Rectangle"
+             fill="#6B1B9A"
+             x="0"
+             y="0"
+             width="109"
+             height="109"
+             rx="19"
+             style="fill:#9467dd;fill-opacity:1" />
+          <g
+             id=".platform/icon/menu"
+             transform="translate(12.000000, 12.000000)"
+             fill="#FFFFFF">
+            <g
+               id="Combined-Shape">
+              <path
+                 d="M66.1875,53.75 C66.7397847,53.75 67.1875,54.1977153 67.1875,54.75 L67.1875,58.125 C67.1875,58.6772847 66.7397847,59.125 66.1875,59.125 L19.8125,59.125 C19.2602153,59.125 18.8125,58.6772847 18.8125,58.125 L18.8125,54.75 C18.8125,54.1977153 19.2602153,53.75 19.8125,53.75 L66.1875,53.75 Z M66.1875,40.3125 C66.7397847,40.3125 67.1875,40.7602153 67.1875,41.3125 L67.1875,44.6875 C67.1875,45.2397847 66.7397847,45.6875 66.1875,45.6875 L19.8125,45.6875 C19.2602153,45.6875 18.8125,45.2397847 18.8125,44.6875 L18.8125,41.3125 C18.8125,40.7602153 19.2602153,40.3125 19.8125,40.3125 L66.1875,40.3125 Z M66.1875,26.875 C66.7397847,26.875 67.1875,27.3227153 67.1875,27.875 L67.1875,31.25 C67.1875,31.8022847 66.7397847,32.25 66.1875,32.25 L19.8125,32.25 C19.2602153,32.25 18.8125,31.8022847 18.8125,31.25 L18.8125,27.875 C18.8125,27.3227153 19.2602153,26.875 19.8125,26.875 L66.1875,26.875 Z"
+                 id="path1" />
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
