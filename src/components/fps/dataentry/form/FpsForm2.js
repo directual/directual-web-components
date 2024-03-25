@@ -13,7 +13,7 @@ import { dict } from '../../locale'
 import moment from 'moment'
 import _ from 'lodash'
 
-export default function FormSection(props) {
+export function FormSection(props) {
 
   const [hidden,setHidden] = useState(props.defaultValue)
 
@@ -42,7 +42,7 @@ export default function FormSection(props) {
   )
 }
 
-function FpsForm2({ auth, data, onEvent, id, locale }) {
+export default function FpsForm2({ auth, data, onEvent, id, locale }) {
 
   const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
   // console.log('locale')
