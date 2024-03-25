@@ -13,7 +13,7 @@ import { dict } from '../../locale'
 import moment from 'moment'
 import _ from 'lodash'
 
-export function FormSection(props) {
+export default function FormSection(props) {
 
   const [hidden,setHidden] = useState(props.defaultValue)
 
