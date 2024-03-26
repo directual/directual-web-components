@@ -455,13 +455,13 @@ FpsForm2.settings = {
   icon: icon,
   name: 'Multistep Form',
   sysName: 'FpsForm2',
+  isLegacy: false,
+  isMarketplace: true,
   form: [
     { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
     { name: 'Form title', sysName: 'formName', type: 'input' },
-    { name: 'Form description', sysName: 'formDesc', type: 'textarea' },
-    { name: 'Submit button text', sysName: 'formButton', type: 'input' },
-    { name: 'Labels or Placeholders', sysName: 'placeholder', type: 'labelOrPlaceholder' },
-    { name: 'Form max width, px', sysName: 'maxWidth', type: 'number' },
+    { name: 'Form description', sysName: 'formDescription', type: 'input' },
+    { name: 'Apply template engine', sysName: 'withTemplate', type: 'boolean' },
     { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
     { name: 'Component comment', sysName: 'comment', type: 'comment' },
   ]
