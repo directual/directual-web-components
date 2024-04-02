@@ -461,7 +461,7 @@ FpsForm2.settings = {
     { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
     { name: 'Form title', sysName: 'formName', type: 'input' },
     { name: 'Form description', sysName: 'formDescription', type: 'input' },
-    { name: 'Apply template engine', sysName: 'withTemplate', type: 'boolean' },
+    { name: 'Form max width, px', sysName: 'maxWidth', type: 'number' },
     { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
     { name: 'Component comment', sysName: 'comment', type: 'comment' },
   ]
