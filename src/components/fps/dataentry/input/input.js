@@ -866,7 +866,7 @@ export default function Input(props) {
                 <Select
                     warning={warningMsg.type}
                     placeholder={props.placeholder || 'Choose icon'}
-                    options={props.options ||  icon_options}
+                    options={(props.options && props.options.length > 0 && props.options) ||  icon_options}
                     bottomSelect={props.bottomSelect}
                     dict={dict[lang]}
                     height={props.height}
