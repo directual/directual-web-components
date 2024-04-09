@@ -1,5 +1,9 @@
 .cb_wrap {
   display: flex;
+  user-select: none;
+}
+.cb_wrap * {
+  user-select: none;
 }
 .cb_wrap .checkbox {
   box-sizing: content-box;

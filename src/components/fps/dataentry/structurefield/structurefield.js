@@ -216,6 +216,7 @@ export default function StructureField(props) {
                         fields={props.fields}
                         filter={filter}
                         focus={focus}
+                        noHint={props.noHint}
                         isAltList={isAltList}
                         keyFocus={keyFocus}
                         showGlobalVars={props.showGlobalVars}
@@ -302,6 +303,7 @@ export default function StructureField(props) {
                     fields={props.fields}
                     filter={filter}
                     focus={focus}
+                    noHint={props.noHint}
                     keyFocus={keyFocus}
                     showGlobalVars={props.showGlobalVars}
                     showContextVars={props.showContextVars}
@@ -387,6 +389,7 @@ function ListFields(props) {
             <StructListFields
                 odd={false}
                 focus={props.focus}
+                noHint={props.noHint}
                 fields={props.fields}
                 filter={props.filter}
                 firstLevel
@@ -660,8 +663,8 @@ function StructListFields(props) {
                             {props.structSysName}{(props.filter && isLast()) && ' (filtered)'}
                         </span>
                     }
-                    {props.firstLevel && !isAltList && <span className={styles.templatingHint}>Hint: Type <span className={styles.code}>#,^,/</span> for<br />templating functions</span>}
-                    {props.firstLevel && isAltList && props.value && <span className={styles.templatingHint}>Hint: Type <span className={styles.code}>←</span> for<br />choosing fields</span>}
+                    {!props.noHint && props.firstLevel && !isAltList && <span className={styles.templatingHint}>Hint: Type <span className={styles.code}>#,^,/</span> for<br />templating functions</span>}
+                    {!props.noHint && props.firstLevel && isAltList && props.value && <span className={styles.templatingHint}>Hint: Type <span className={styles.code}>←</span> for<br />choosing fields</span>}
                 </div>
                 <ul ref={scrollDivRef}
                     onScroll={handleScroll}
@@ -713,6 +716,7 @@ function StructListFields(props) {
             ) && (shiftPath(props.value) || (getFieldDetails(currentField, props.structSysName) && getFieldDetails(currentField, props.structSysName).dataType == 'link')) &&
                 <StructListFields
                     fields={props.fields}
+                    noHint={props.noHint}
                     noPropagation={props.noPropagation}
                     filter={props.filter}
                     focus={props.focus}

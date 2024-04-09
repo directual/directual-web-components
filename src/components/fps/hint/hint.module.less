@@ -4,6 +4,7 @@
     color: var(--hint-text-color);
     padding: 18px 18px 6px 18px;
     font-size: var(--text-font-size);
+    position: relative;
     border-radius: 4px;
     * {color: var(--hint-text-color);}
     a {
@@ -43,5 +44,17 @@
         color: var(--hint-alert);
         margin-right: 8px;
       }
+    }
+  }
+
+  .closeHint {
+    position: absolute;
+    top:3px;
+    right: 3px;
+    cursor: pointer;
+    transition: .5s;
+    opacity: .3;
+    &:hover{ 
+      opacity: .9;
     }
   }
