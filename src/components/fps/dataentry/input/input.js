@@ -900,7 +900,7 @@ export default function Input(props) {
             {props.type == 'structurefield' &&
                 <StructureField
                     defaultValue={defVal}
-                    noHint={noHint}
+                    noHint={props.noHint}
                     fixHeight={props.fixHeight}
                     hideSysFields={props.hideSysFields}
                     hideId={props.hideId}
