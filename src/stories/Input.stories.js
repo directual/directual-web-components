@@ -1,5 +1,5 @@
 import Input from '../components/fps/dataentry/input/input';
-import { icon_options } from  '../components/fps/dataentry/input/input'
+import { icon_options } from '../components/fps/dataentry/input/input'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 
@@ -128,6 +128,29 @@ export const Danger = {
     danger: true,
     children: 'button',
     icon: 'delete'
+  },
+};
+
+export const DimanicSelect = {
+  args: {
+    type: 'dinamicSelect',
+    displayKey: true,
+    onLoad: (params, finish) => {
+      console.log('call onLoad')
+      console.log(params)
+      console.log('loading...')
+      setTimeout(() => {
+        const salt1 = Math.random().toString(5)
+        const salt2 = Math.random().toString(5)
+        const salt3 = Math.random().toString(5)
+        finish && finish([
+          { key: Date.now().toString() + salt1, value: "option_" + salt1 },
+          { key: Date.now().toString() + salt2, value: "option_" + salt2 },
+          { key: Date.now().toString() + salt3, value: "option_" + salt3 },
+        ])
+      }, 2000)
+    },
+    icon: 'actions'
   },
 };
 

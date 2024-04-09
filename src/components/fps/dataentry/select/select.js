@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styles from './select.module.css'
 import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong'
+import Loader from '../../loader/loader'
 import _ from 'lodash'
+// import debounce from 'lodash.debounce';
+import { debounce } from 'lodash'
 
 function List(props) {
     const scrollDivRef = useRef(null)
@@ -44,7 +47,7 @@ function List(props) {
     })
 
     const noOptions = !props.thisIsSubSelect ? <SomethingWentWrong icon='ban'
-        message={`${props.filter ? `${_.get(props.dict,'table.noDataFound')} \"${props.filter}\"` : `${_.get(props.dict,'table.noData')}`}`} /> :
+        message={`${props.filter ? `${_.get(props.dict, 'table.noDataFound')} \"${props.filter}\"` : `${_.get(props.dict, 'table.noData')}`}`} /> :
         <span className={styles.noOptionsSmall}>No options</span>
 
     return (
@@ -52,9 +55,9 @@ function List(props) {
             {props.options && props.options.length > 0 && props.focus && !props.disabled &&
                 <li className={styles.options_counter}>
 
-                    {props.current && props.current.length > 0 ? `${props.current.length}/${props.options.length} ${_.get(props.dict,'form.chosen')}` :
-                        <React.Fragment>{props.options.length} 
-                        {/* option{`${props.options.length > 1 ? 's' : ''}`} */}
+                    {props.current && props.current.length > 0 ? `${props.current.length}/${props.options.length} ${_.get(props.dict, 'form.chosen')}` :
+                        <React.Fragment>{props.options.length}
+                            {/* option{`${props.options.length > 1 ? 's' : ''}`} */}
                         </React.Fragment>
                     }
                 </li>}
@@ -69,57 +72,56 @@ function List(props) {
                 }
             >
 
-                {!props.options && noOptions}
+                {props.loading && <SomethingWentWrong message={<Loader>{_.get(props.dict, 'loading')}</Loader>} />}
+                
+                {!props.options && !props.dinamicSelect && !props.loading && noOptions}
 
-                {props.options && props.options.length == 0 && noOptions}
+                {props.options && !props.dinamicSelect && !props.loading && props.options.length == 0 && noOptions}
 
-                {props.options && props.options.map(option =>
-                    option &&
-                    <li
-                        className={`
-                            ${styles.option}
-                            ${props.current && props.current.key == option.key && styles.selected}
-                            ${props.selected && props.selected.key == option.key && styles.keySelected}
-                            ${(props.current && props.current.length > 0) && option && props.current.filter(i => i && i.key == option.key).length > 0 && styles.selected}
-                            ${props.iconOptions && option.icon && `${styles.optionIcon} icon icon-${option.icon}`}
-                        `}
-                        //ref={refs[option.key]}
-                        key={option.key}
-                        onClick={() => {
-                            
-                            // console.log("onClick")
-                            // console.log("props.current")
-                            // console.log(props.current)
-                            // console.log("option")
-                            // console.log(option)
-                            // console.log("props.current")
-                            // console.log(props.current)
-
-                            !props.multi && props.chooseOption(option)
-                            props.current && props.current.length >= 0 && props.current.filter(i => i.key == option.key).length == 0 ?
-                                props.chooseOption(option) :
-                                props.current && props.current.length >= 0 && props.removeOption(props.current.filter(i => i.key == option.key)[0])
-                            props.onClick()
-                        }}
-                    >
-                        {option.value}
-                        <span className={styles.displayKey}>
-                            {`${props.displayKey ? ` {{${option.key}}}` : ''}`}
-                        </span>
-                        <span className={styles.displayKeyShort}>
-                            {`${props.displayKeyShort ? ` [${option.key}]` : ''}`}
-                        </span>
-                    </li>
-                )}
+                {!props.loading && props.options && props.options.map((option, i) => option && option.key && <ListOption
+                    key={option.key}
+                    i={i}
+                    {...props}
+                    option={option}
+                />)}
             </ul>
         </div>
     )
 }
 
+function ListOption(props) {
+    const { option, i } = props
+    return <li
+        className={`
+        ${styles.option}
+        ${props.current && props.current.key == option.key && styles.selected}
+        ${props.selected && props.selected.key == option.key && styles.keySelected}
+        ${(props.current && props.current.length > 0) && option && props.current.filter(i => i && i.key == option.key).length > 0 && styles.selected}
+        ${props.iconOptions && option.icon && `${styles.optionIcon} icon icon-${option.icon}`}
+    `}
+
+        onClick={() => {
+            !props.multi && props.chooseOption(option)
+            props.current && props.current.length >= 0 && props.current.filter(i => i.key == option.key).length == 0 ?
+                props.chooseOption(option) :
+                props.current && props.current.length >= 0 && props.removeOption(props.current.filter(i => i.key == option.key)[0])
+            props.onClick()
+        }}
+    >
+        {option.value}
+        <span className={styles.displayKey}>
+            {`${props.displayKey ? ` {{${option.key}}}` : ''}`}
+        </span>
+        <span className={styles.displayKeyShort}>
+            {`${props.displayKeyShort ? ` [${option.key}]` : ''}`}
+        </span>
+    </li>
+}
+
 export default function Select(props) {
 
-    // console.log('select lang')
-    // console.log(props.dict)
+    // console.log('select props')
+    // console.log(props)
 
     function convertDefaultValue(def) {
         if (def === '[]' || (Array.isArray(def) && def.length == 1 && def[0] == "")) {
@@ -133,11 +135,12 @@ export default function Select(props) {
         }
         if (props.multi && def) {
             if (Array.isArray(def)) {
-                const convDef = []  
-                def.forEach(j => { 
+                const convDef = []
+                def.forEach(j => {
                     if (props.options.filter(i => i && i.key == j)[0]) {
-                        convDef.push(props.options.filter(i => i && i.key == j)[0]) } 
-                    } 
+                        convDef.push(props.options.filter(i => i && i.key == j)[0])
+                    }
+                }
                 )
                 // console.log('эвы чо епта')
                 // console.log(convDef)
@@ -147,7 +150,7 @@ export default function Select(props) {
                 return Array.isArray(def.split(',')) && def.split(',').length > 0 && def.split(',').map(j => props.options.filter(i => i.key == j)[0])
             }
         }
-        
+
         return props.multi ? [] : null
     }
 
@@ -158,9 +161,9 @@ export default function Select(props) {
     const [filteredOptions, setFilteredOptions] = useState(props.options ? props.options.filter(i => i && i.key) : [])
     const [keySelected, setKeySelected] = useState()
     const selectRef = useRef(null);
+    const [loading, setLoading] = useState(false) // loader for dynamic dropdown
 
     // const forceUpdate = useForceUpdate();
-
 
     useEffect(() => {
         let D = convertDefaultValue(props.defaultValue);
@@ -173,7 +176,6 @@ export default function Select(props) {
     }, [props.options])
 
     useOutsideAlerter(selectRef);
-
     function useOutsideAlerter(ref) {
         useEffect(() => {
             function handleClickOutside(event) {
@@ -194,23 +196,50 @@ export default function Select(props) {
         setKeySelected()
     }, [focus])
 
+
+    // FILTER:
     let FO;
     useEffect(() => {
         if (props.options) {
             FO = props.options.filter(el => {
-                if (!el || !el.key)  { 
-                    return false 
-                } 
-                try {return (String(el.value).toLowerCase().match(new RegExp(String(filter).toLowerCase())) || String(el.key).toLowerCase().match(new RegExp(String(filter).toLowerCase())))}
-                catch(e) {
+                if (!el || !el.key) {
+                    return false
+                }
+                try { return (String(el.value).toLowerCase().match(new RegExp(String(filter).toLowerCase())) || String(el.key).toLowerCase().match(new RegExp(String(filter).toLowerCase()))) }
+                catch (e) {
                     console.log(e)
                     return true
                 }
             })
         }
+        if (focus && props.dinamicSelect && props.onLoad) {
+            props.onLoad('хей хой')
+        }
         setFilteredOptions(FO)
         setKeySelected('')
     }, [filter, props.options])
+
+    const filterOptions = debounce(performFiltering, 500);
+
+    function performFiltering(params) {
+        setLoading(true)
+        props.onLoad(params, (data) => {
+            setLoading(false)
+            setFilteredOptions(data)
+            setKeySelected('')
+        })
+    }
+
+    // DYNAMIC DROPDOWN
+
+    useEffect(() => {
+        if (focus && props.dinamicSelect && props.onLoad) {
+            filterOptions('тыдыщь')
+        }
+        return () => {
+            filterOptions.cancel(); // Cancel any pending debounce calls on unmount
+        };
+    }, [filter, focus])
 
     let currentPosition;
     const handleKeyboard = (e) => {
@@ -259,11 +288,10 @@ export default function Select(props) {
     }
 
 
-
     const chooseOption = (option) => {
         !props.multi && submit(option)
         if (props.multi) {
-            let arr = _.get(value,'[0].key') ? [...value] : []
+            let arr = _.get(value, '[0].key') ? [...value] : []
             arr.indexOf(option) == -1 && arr.push(option)
             submit(arr)
         }
@@ -271,7 +299,7 @@ export default function Select(props) {
 
     const removeOption = (option) => {
         if (props.multi) {
-            let array = _.get(value,'[0].key') ? [...value] : []
+            let array = _.get(value, '[0].key') ? [...value] : []
             let index = array.indexOf(option)
             array.splice(index, 1)
             array.length >= 1 ? submit(array) : submit([]);
@@ -321,7 +349,7 @@ export default function Select(props) {
                             item &&
                             <li title={item.value}>
                                 <div className={styles.title_item}>
-                                    {item.value} 
+                                    {item.value}
                                     {props.displayKey ? <code>{`{{${item.key}}}`}</code> : ''}
                                     {props.displayKeyShort ? <code>{`[${item.key}]`}</code> : ''}
                                 </div>
@@ -333,7 +361,7 @@ export default function Select(props) {
                         )}
 
                         <li className={styles.multiplaceholder}>
-                            {!filter && <div>{props.placeholder ? props.placeholder : _.get(props.dict,'select')}</div>}
+                            {!filter && <div>{props.placeholder ? props.placeholder : _.get(props.dict, 'select')}</div>}
                             {focus &&
                                 <input
                                     disabled={props.disabled}
@@ -354,7 +382,7 @@ export default function Select(props) {
                     {!props.multi && <React.Fragment>
                         {!value && !filter &&
                             <div className={`${styles.placeholder}`}>
-                                {props.placeholder ? props.placeholder :  _.get(props.dict,'select')}</div>}
+                                {props.placeholder ? props.placeholder : _.get(props.dict, 'select')}</div>}
                         {value && !filter &&
                             <div className={styles.currentValue}>{value.value}
                                 <span className={styles.displayKey}>
@@ -381,11 +409,14 @@ export default function Select(props) {
                 <List
                     chooseOption={option => chooseOption(option)}
                     dict={props.dict}
+                    loading={loading}
+                    dinamicSelect={props.dinamicSelect}
+                    onLoad={props.onLoad}
                     removeOption={option => removeOption(option)}
-                    current={_.get(value,'[0].key') ? value : []}
+                    current={_.get(value, '[0].key') ? value : []}
                     bottomSelect={props.bottomSelect}
                     onClick={() => { setFocus(false) }}
-                    options={filteredOptions}
+                    options={_.uniqBy(filteredOptions, "key")}
                     displayKey={props.displayKey}
                     displayKeyShort={props.displayKeyShort}
                     filter={filter}

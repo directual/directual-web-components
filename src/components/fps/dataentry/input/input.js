@@ -309,7 +309,7 @@ export default function Input(props) {
     useEffect(() => {
         if (props.highlightEmpty && !value) { setWarningMesg({ type: 'error', msg: 'This field is required' }) }
         else { inputEl.current == document.activeElement && !props.error && setWarningMesg({}); }
-        if ((props.type == 'select' || props.type == 'multiselect' || props.type == 'structurefield') &&
+        if ((props.type == 'select' || props.type == 'multiselect' || props.type == 'dinamicSelect' || props.type == 'structurefield') &&
             props.highlightEmpty && value && !props.error) {
             setWarningMesg({});
         }
@@ -466,6 +466,7 @@ export default function Input(props) {
                 props.type != 'radioJson' &&
                 props.type != 'select' &&
                 props.type != 'multiselect' &&
+                props.type != 'dinamicSelect' &&
                 props.type != 'date' &&
                 props.type != 'slider' &&
                 props.type != 'markdown' &&
@@ -862,6 +863,28 @@ export default function Input(props) {
                     onChange={e => submit(e)}
                 />
             }
+            {props.type == 'dinamicSelect' &&
+                <Select
+                    warning={warningMsg.type}
+                    placeholder={props.placeholder}
+                    //options={props.options}
+                    onLoad={props.onLoad}
+                    dinamicSelect
+                    icon={props.icon}
+                    dict={dict[lang]}
+                    code={props.code}
+                    height={props.height}
+                    bottomSelect={props.bottomSelect}
+                    disabled={props.disabled}
+                    displayKey={props.displayKey}
+                    displayKeyShort={props.displayKeyShort}
+                    defaultValue={defVal}
+                    iconOptions={props.iconOptions}
+                    onChange={e => submit(e)}
+                    subSelect={props.subSelect}
+                    onChangeSubselect={props.onChangeSubselect}
+                />
+            }
             {props.type == 'icon' &&
                 <Select
                     warning={warningMsg.type}
@@ -1015,12 +1038,14 @@ Input.propTypes = {
     type: PropTypes.string,
     options: PropTypes.array,
     onClick: PropTypes.func,
+    displayKey: PropTypes.bool,
     icon: PropTypes.string,
 };
 
 Input.defaultProps = {
     type: 'string',
     options: [],
+    displayKey: false,
     onClick: undefined,
     icon: null
 };
