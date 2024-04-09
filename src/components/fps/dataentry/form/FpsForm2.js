@@ -12,6 +12,7 @@ import { InputForm } from './InputForm'
 import { dict } from '../../locale'
 import moment from 'moment'
 import _ from 'lodash'
+import PropTypes from 'prop-types';
 
 export function FormSection(props) {
 
@@ -42,7 +43,7 @@ export function FormSection(props) {
   )
 }
 
-export default function FpsForm2({ auth, data, onEvent, id, locale }) {
+function LeghacyFpsForm2({ auth, data, onEvent, id, locale }) {
 
   const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
   // console.log('locale')
@@ -449,6 +450,23 @@ export default function FpsForm2({ auth, data, onEvent, id, locale }) {
     </ComponentWrapper>)
 }
 
+export default function FpsForm2({ auth, data, onEvent, id, locale }) {
+  return <div>FpsForm2</div>
+}
+
+FpsForm2.propTypes = {
+  data: PropTypes.object.isRequired,
+  auth: PropTypes.object,
+  locale: PropTypes.string,
+  onChange: PropTypes.func,
+};
+
+FpsForm2.defaultProps = {
+  data: {},
+  auth: {},
+  locale: "ENG",
+  onChange: undefined,
+};
 
 
 FpsForm2.settings = {
