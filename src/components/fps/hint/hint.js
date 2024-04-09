@@ -24,7 +24,7 @@ export default function Hint(props) {
             }
             className={`${styles.hint} FPS_HINT ${props.ok && styles.ok} ${props.error && styles.error}`}>
             {props.title && <p className={`${styles.title} FPS_HINT_TITLE`}>{props.title}</p>}
-            {props.closable && props.onClose && <div className={`icon icon-close ${styles.closeHint}`} />}
+            {props.closable && props.onClose && <div onClick={props.onClose} className={`icon icon-close ${styles.closeHint}`} />}
             <p>{props.children}</p>
         </blockquote>
     )
