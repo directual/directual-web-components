@@ -14,35 +14,6 @@ import moment from 'moment'
 import _ from 'lodash'
 import PropTypes from 'prop-types';
 
-export function FormSection(props) {
-
-  const [hidden,setHidden] = useState(props.defaultValue)
-
-  const onChangeState = (val) => {
-    setHidden(val)
-    props.onHide && props.onHide(val)
-  } 
-
-  if (props.hide) {
-    return (
-      <div className={`${styles.FormSection} ${styles.hidable} D_FPS_FORM_SECTION`} onClick={() => onChangeState(!hidden)}>
-        <div className={`${styles.FormSectionLine} D_FPS_FORM_SECTION_LINE`} />
-        <div className={`icon icon-down small ${styles.icon} ${hidden && styles.rotate}`} />
-        <span className={styles.noPadding} >{props.title}</span>
-        <div className={`icon icon-down small ${styles.icon} ${hidden && styles.rotate}`} />
-        <div className={styles.FormSectionLine} />
-      </div>
-    )
-  }
-  return (
-    <div className={`${styles.FormSection} D_FPS_FORM_SECTION`}>
-      <div className={`${styles.FormSectionLine} D_FPS_FORM_SECTION_LINE`} />
-      <span>{props.title}</span>
-      <div className={`${styles.FormSectionLine} D_FPS_FORM_SECTION_LINE`} />
-    </div>
-  )
-}
-
 function LeghacyFpsForm2({ auth, data, onEvent, id, locale }) {
 
   const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
@@ -451,6 +422,44 @@ function LeghacyFpsForm2({ auth, data, onEvent, id, locale }) {
 }
 
 export default function FpsForm2({ auth, data, onEvent, id, locale }) {
+
+  const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
+
+  const [model,setModel] = useState({})
+  const [loading,setLoading] = useState(false)
+
+  console.log("=== FpsForm2 data ===")
+  console.log(data)
+
+  const sendMsg = (msg) => {
+    const message = { ...msg, _id: 'form_' + id }
+    setLoading(true)
+    if (onEvent) {
+      onEvent(message)
+    }
+  }
+
+  const submit = (e) => {
+    e.preventDefault()
+    console.log('submitting form...')
+    const modelToSend = {}
+    for (const f in model) {
+      const isWritable = (_.get(data, 'params.data.writeFields') || []).filter(w => w.sysName == f).length > 0
+      if (isWritable) {
+        modelCopy[f] = model[f]
+      }
+    }
+    console.log(modelToSend)
+    sendMsg(modelToSend)
+  }
+
+  useEffect(() => {
+    if (data.error || data.response) {
+      setLoading(false)
+    }
+  }, [data.error, data.response])
+
+
   return <div>FpsForm2</div>
 }
 
@@ -468,7 +477,6 @@ FpsForm2.defaultProps = {
   onChange: undefined,
 };
 
-
 FpsForm2.settings = {
   icon: icon,
   name: 'Multistep Form',
@@ -477,9 +485,6 @@ FpsForm2.settings = {
   isMarketplace: true,
   form: [
     { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
-    { name: 'Form title', sysName: 'formName', type: 'input' },
-    { name: 'Form description', sysName: 'formDescription', type: 'input' },
-    { name: 'Form max width, px', sysName: 'maxWidth', type: 'number' },
     { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
     { name: 'Component comment', sysName: 'comment', type: 'comment' },
   ]
