@@ -250,9 +250,12 @@ export function ObjectCard(props) {
         // console.log('getLinkName')
         // console.log(sysname)
         // console.log(obj)
-        // console.log(fieldScheme)
         fieldScheme = fieldScheme || props.tableFieldScheme
+        // console.log(fieldScheme)
+        // console.log(transformTableFieldScheme(sysname, fieldScheme))
         const structure = getStructure(obj, transformTableFieldScheme(sysname, fieldScheme), props.tableStructures)
+        // console.log(structure)
+        // console.log(props.tableStructures)
         const linkNameArr = []
         structure.visibleName && structure.visibleName.forEach(field => {
             const fieldDetails = structure.fieldStructure.filter(i => i.sysName == field)[0]
@@ -268,10 +271,14 @@ export function ObjectCard(props) {
                 }
             }
         })
+        // console.log(obj)
         const linkName = linkNameArr.length > 0 ? linkNameArr.join(' ') : null
         let displayID = ''
         if (typeof obj == 'string') { displayID = obj }
-        return linkName == 0 ? '0' : linkName || displayID || obj.id || dict[lang].card.noVisibleName
+        const result = linkName == 0 ? '0' : linkName || displayID || obj.id || dict[lang].card.noVisibleName
+        // console.log('result: ' + result)
+        // console.log('======')
+        return result
     }
 
     const scrollDivRef = useRef(null)

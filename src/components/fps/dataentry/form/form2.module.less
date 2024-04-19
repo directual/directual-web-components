@@ -1,0 +1,55 @@
+.formHeader {
+    margin-bottom: 18px;
+}
+.formDescription {
+    margin-bottom: 18px;
+}
+.formSection {
+    //border:solid 1px cyan;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.elementWrapper {
+    //margin-bottom: 18px;
+}
+
+.debug {
+    color: darkred;
+    font-size: 14px;
+    background-color: rgba(243, 66, 66, 0);
+    padding: 5px;
+    border-radius: 4px;
+    position: relative;
+    margin: 3px 0;
+    border: dashed 2px rgba(130, 56, 56, 0.276);
+    transition: background-color 0.3s ease-in-out;
+    &.highlight {
+        background-color: rgba(231, 28, 28, 0.668);
+    }
+    span {
+        position: absolute;
+        top:5px;
+        right: 5px;
+        opacity: .2;
+        font-size: 12px;
+        font-weight: bold;
+    }
+}
+
+.htmlPreview {
+    position: relative;
+    .htmlHidePreview, .htmlShowPreview {
+      position: absolute;
+      right: 0;
+      font-size: 10pt;
+      opacity: .5;
+      transition: .5s;
+      cursor: pointer;
+      z-index: 1;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }

@@ -91,6 +91,8 @@
 }
 .input_wrapper textarea {
   resize: none;
+  width: 100%;
+  box-sizing: border-box;
 }
 .input_wrapper textarea.field {
   height: auto !important;
@@ -150,6 +152,8 @@
 }
 .input_wrapper .field {
   flex-grow: 2;
+  width: 100%;
+  box-sizing: border-box;
   outline: none !important;
   border: solid 1px var(--form-field-border);
   border-radius: var(--border-radius);
@@ -281,6 +285,17 @@
 }
 .input_group .input_wrapper {
   width: calc(50% - 6px) !important;
+}
+.input_row {
+  display: flex;
+  gap: 18px 8px;
+  justify-content: stretch;
+}
+.input_row.column {
+  flex-direction: column;
+}
+.input_row > div {
+  flex: 1;
 }
 .fieldUnitsWrapper {
   padding-right: 30px;

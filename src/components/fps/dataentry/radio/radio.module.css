@@ -94,3 +94,7 @@
 .radio label input[type=radio]:active {
   border: solid 4px var(--form-placeholder);
 }
+.noOptions {
+  font-size: var(--text-small-size);
+  opacity: 0.6;
+}

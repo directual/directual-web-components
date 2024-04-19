@@ -2,10 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   padding: 24px 8px;
-}
-.sww .title {
-  font-size: var(--h3-font-size);
 }
 .sww .title.icon {
   display: flex;

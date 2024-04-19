@@ -73,10 +73,12 @@ function List(props) {
             >
 
                 {props.loading && <SomethingWentWrong message={<Loader>{_.get(props.dict, 'loading')}</Loader>} />}
-                
-                {!props.options && !props.dinamicSelect && !props.loading && noOptions}
 
-                {props.options && !props.dinamicSelect && !props.loading && props.options.length == 0 && noOptions}
+                {!props.options && !props.dinamicSelect &&
+                    !props.loading && noOptions}
+
+                {props.options && // !props.dinamicSelect && 
+                    !props.loading && props.options.length == 0 && noOptions}
 
                 {!props.loading && props.options && props.options.map((option, i) => option && option.key && <ListOption
                     key={option.key}
@@ -123,36 +125,7 @@ export default function Select(props) {
     // console.log('select props')
     // console.log(props)
 
-    function convertDefaultValue(def) {
-        if (def === '[]' || (Array.isArray(def) && def.length == 1 && def[0] == "")) {
-            def = null
-        } // какой-то лютый костыль для редактирования объекта
 
-        if (!props.options) { return null; }
-        if (!props.multi && def) {
-            let D = props.options.filter(i => i.key == def)[0];
-            return D;
-        }
-        if (props.multi && def) {
-            if (Array.isArray(def)) {
-                const convDef = []
-                def.forEach(j => {
-                    if (props.options.filter(i => i && i.key == j)[0]) {
-                        convDef.push(props.options.filter(i => i && i.key == j)[0])
-                    }
-                }
-                )
-                // console.log('эвы чо епта')
-                // console.log(convDef)
-                return convDef
-            }
-            else {
-                return Array.isArray(def.split(',')) && def.split(',').length > 0 && def.split(',').map(j => props.options.filter(i => i.key == j)[0])
-            }
-        }
-
-        return props.multi ? [] : null
-    }
 
     const [focus, setFocus] = useState(false);
     const [value, setValue] = useState((props.defaultValue && convertDefaultValue(props.defaultValue)) || (props.multi && []) || null);
@@ -165,6 +138,36 @@ export default function Select(props) {
 
     // const forceUpdate = useForceUpdate();
 
+    function convertDefaultValue(def) {
+        const options = props.options || filteredOptions
+        if (def === '[]' || (Array.isArray(def) && def.length == 1 && def[0] == "")) {
+            def = null
+        } // какой-то лютый костыль для редактирования объекта
+
+        if (!options) { return null; }
+        if (!props.multi && def) {
+            let D = options.filter(i => i.key == def)[0];
+            return D;
+        }
+        if (props.multi && def) {
+            if (Array.isArray(def)) {
+                const convDef = []
+                def.forEach(j => {
+                    if (options.filter(i => i && i.key == j)[0]) {
+                        convDef.push(options.filter(i => i && i.key == j)[0])
+                    }
+                }
+                )
+                return convDef
+            }
+            else {
+                return Array.isArray(def.split(',')) && def.split(',').length > 0 && def.split(',').map(j => options.filter(i => i.key == j)[0])
+            }
+        }
+
+        return props.multi ? [] : null
+    }
+
     useEffect(() => {
         let D = convertDefaultValue(props.defaultValue);
         setValue(D)
@@ -172,8 +175,8 @@ export default function Select(props) {
 
     useEffect(() => {
         let D = convertDefaultValue(props.defaultValue);
-        !value && setValue(D)
-    }, [props.options])
+        (!value || value.length == 0) && setValue(D)
+    }, [props.options, filteredOptions])
 
     useOutsideAlerter(selectRef);
     function useOutsideAlerter(ref) {
@@ -211,35 +214,51 @@ export default function Select(props) {
                     return true
                 }
             })
+            setFilteredOptions(FO)
+            setKeySelected('')
         }
-        if (focus && props.dinamicSelect && props.onLoad) {
-            props.onLoad('хей хой')
-        }
-        setFilteredOptions(FO)
-        setKeySelected('')
     }, [filter, props.options])
 
+
+    // DYNAMIC DROPDOWN
     const filterOptions = debounce(performFiltering, 500);
 
-    function performFiltering(params) {
+    function usePrevious(value) {
+        const ref = useRef();
+        useEffect(() => {
+            ref.current = value;
+        });
+        return ref.current;
+    }
+    function performFiltering() {
         setLoading(true)
-        props.onLoad(params, (data) => {
+        props.onLoad((data) => {
             setLoading(false)
             setFilteredOptions(data)
             setKeySelected('')
-        })
+        }, filter, props.defaultValue)
     }
 
-    // DYNAMIC DROPDOWN
+    const { callParams, defaultValue } = props
+
+    const prevCallParams = usePrevious(callParams)
+
+    // call endpoint when request params are changed
+    useEffect(() => {
+        if (!_.isEqual(callParams, prevCallParams) && props.dinamicSelect && props.onLoad) {
+            filterOptions()
+        }
+    }, [callParams])
 
     useEffect(() => {
-        if (focus && props.dinamicSelect && props.onLoad) {
-            filterOptions('тыдыщь')
+        if (props.dinamicSelect && props.onLoad) {
+            filterOptions()
         }
         return () => {
             filterOptions.cancel(); // Cancel any pending debounce calls on unmount
         };
-    }, [filter, focus])
+    }, [filter, defaultValue])
+    // =====================
 
     let currentPosition;
     const handleKeyboard = (e) => {
@@ -421,6 +440,7 @@ export default function Select(props) {
                     displayKeyShort={props.displayKeyShort}
                     filter={filter}
                     focus={focus}
+                    value={value}
                     selected={keySelected}
                     disabled={props.disabled}
                     iconOptions={props.iconOptions}

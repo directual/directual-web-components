@@ -37,7 +37,10 @@ export default function Radio(props) {
         }
     }, [customOption])
 
+    if (!props.options || props.options.length == 0) return <div className={styles.noOptions}>{_.get(props.dict, 'noOptions')}</div>
     
+    // console.log("props.options")
+    // console.log(props.options)
 
     return (
         <div className={`${styles.radio} ${props.disabled && styles.disabled}`}>

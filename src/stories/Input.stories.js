@@ -135,9 +135,8 @@ export const DimanicSelect = {
   args: {
     type: 'dinamicSelect',
     displayKey: true,
-    onLoad: (params, finish) => {
+    onLoad: (finish) => {
       console.log('call onLoad')
-      console.log(params)
       console.log('loading...')
       setTimeout(() => {
         const salt1 = Math.random().toString(5)

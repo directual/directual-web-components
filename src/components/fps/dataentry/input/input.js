@@ -12,10 +12,19 @@ import OptionsHandler, { AdvancedOptionsHandler } from '../optionsHandler/option
 import _ from 'lodash'
 import { dict } from '../../locale'
 import PropTypes from 'prop-types';
+import InnerHTML from 'dangerously-set-html-content'
 
 export function InputGroup(props) {
     return (
         <div className={styles.input_group} style={{ width: props.width || 'auto' }}>
+            {props.children}
+        </div>
+    )
+}
+
+export function InputRow(props) {
+    return (
+        <div className={`${styles.input_row} ${props.column ? styles.column : ""} FPS_INPUT_GROUP`} style={{ width: props.width || 'auto' }}>
             {props.children}
         </div>
     )
@@ -309,7 +318,7 @@ export default function Input(props) {
     useEffect(() => {
         if (props.highlightEmpty && !value) { setWarningMesg({ type: 'error', msg: 'This field is required' }) }
         else { inputEl.current == document.activeElement && !props.error && setWarningMesg({}); }
-        if ((props.type == 'select' || props.type == 'multiselect' || props.type == 'dinamicSelect' || props.type == 'structurefield') &&
+        if ((props.type == 'select' || props.type == 'multiselect' || props.type == 'dinamicSelect' || props.type == 'dinamicMultiSelect' || props.type == 'structurefield') &&
             props.highlightEmpty && value && !props.error) {
             setWarningMesg({});
         }
@@ -444,7 +453,9 @@ export default function Input(props) {
             }>
             {props.label && <label>{props.label}{props.required && '*'}</label>}
             {props.description &&
-                <div className={styles.description}>{props.description}</div>}
+                <div className={styles.description}>
+                    {props.description && <InnerHTML allowRerender={true} html={props.description} />}
+                </div>}
             {(props.debug) && <div>
                 <div className="dd-debug">searchValue: {JSON.stringify(searchValue)}</div>
                 <div className="dd-debug">value: {JSON.stringify(value)}</div>
@@ -467,6 +478,7 @@ export default function Input(props) {
                 props.type != 'select' &&
                 props.type != 'multiselect' &&
                 props.type != 'dinamicSelect' &&
+                props.type != 'dinamicMultiSelect' &&
                 props.type != 'date' &&
                 props.type != 'slider' &&
                 props.type != 'markdown' &&
@@ -800,6 +812,7 @@ export default function Input(props) {
                     horizontal={props.horizontal}
                     options={props.options}
                     disabled={props.disabled}
+                    dict={dict[lang]}
                     radioImagesWidth={props.radioImagesWidth}
                     placeholder={props.placeholder}
                     radioImages={props.radioImages}
@@ -815,6 +828,7 @@ export default function Input(props) {
                     onChange={e => { console.log(e); e ? (e.target ? submit({ value: e.target.value }) : submit(e)) : submit(null) }}
                     defaultValue={(defVal && defVal.value) || defVal}
                     options={props.options}
+                    dict={dict[lang]}
                     horizontal={props.horizontal}
                     disabled={props.disabled}
                     placeholder={props.placeholder}
@@ -868,8 +882,33 @@ export default function Input(props) {
                     warning={warningMsg.type}
                     placeholder={props.placeholder}
                     //options={props.options}
+                    callParams={props.callParams}
                     onLoad={props.onLoad}
                     dinamicSelect
+                    icon={props.icon}
+                    dict={dict[lang]}
+                    code={props.code}
+                    height={props.height}
+                    bottomSelect={props.bottomSelect}
+                    disabled={props.disabled}
+                    displayKey={props.displayKey}
+                    displayKeyShort={props.displayKeyShort}
+                    defaultValue={defVal}
+                    iconOptions={props.iconOptions}
+                    onChange={e => submit(e)}
+                    subSelect={props.subSelect}
+                    onChangeSubselect={props.onChangeSubselect}
+                />
+            }
+            {props.type == 'dinamicMultiSelect' &&
+                <Select
+                    warning={warningMsg.type}
+                    placeholder={props.placeholder}
+                    //options={props.options}
+                    callParams={props.callParams}
+                    onLoad={props.onLoad}
+                    dinamicSelect
+                    multi
                     icon={props.icon}
                     dict={dict[lang]}
                     code={props.code}
@@ -977,12 +1016,12 @@ export default function Input(props) {
 
             }
             {props.type == 'checkboxGroup' &&
-                <div style={props.horizontal ? { display: 'flex', flexWrap: 'wrap' } : {}}>
+                <div style={props.horizontal ? { display: 'flex', flexWrap: 'wrap', gap: "6px 18px" } : {}}>
                     {props.clearOption && value && JSON.stringify(value) !== "{}" &&
                         <a className={styles.checkbox_clearOption} onClick={() => submit({})}>Clear</a>}
                     {props.options && props.options.map(option => {
                         return (
-                            <div className={styles.checkbox_wrapper} style={props.horWidth ? { width: props.horWidth } : {}}>
+                            <div className={`${styles.checkbox_wrapper} ${props.horizontal ? styles.hor : ""}`} style={props.horWidth ? { width: props.horWidth } : {}}>
                                 <Checkbox
                                     disabled={props.disabled}
                                     label={option.label}

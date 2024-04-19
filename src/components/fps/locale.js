@@ -80,7 +80,8 @@ export const dict = {
         table: {
             noDataFound: "No results for",
             noData: "No data"
-        }
+        },
+        noOptions: "No options"
     },
 
 
@@ -165,7 +166,8 @@ export const dict = {
         table: {
             noDataFound: "Keine Ergebnisse für",
             noData: "Keine Daten"
-        }
+        },
+        noOptions: "keine Optionen"
     },
 
 
@@ -250,7 +252,8 @@ export const dict = {
         table: {
             noDataFound: "No se encontraron resultados para",
             noData: "Sin datos"
-        }
+        },
+        noOptions: "sin opciones"
     },
 
 
@@ -335,7 +338,8 @@ export const dict = {
         table: {
             noDataFound: "Aucun résultat pour",
             noData: "Pas de données"
-        }
+        },
+        noOptions: "pas d'options"
     },
 
 
@@ -420,7 +424,8 @@ export const dict = {
         table: {
             noDataFound: "Нет результатов для",
             noData: "Нет данных"
-        }
+        },
+        noOptions: "Нет доступных опций"
     },
 
     JPN: {
@@ -504,7 +509,8 @@ export const dict = {
         table: {
             noDataFound: "結果が見つかりません",
             noData: "データなし"
-        }
+        },
+        noOptions: "オプションなし"
     },
 
     POR: {
@@ -587,7 +593,8 @@ export const dict = {
         "table": {
             "noDataFound": "Nenhum resultado para",
             "noData": "Sem dados"
-        }
+        },
+        noOptions: "Sem opções"
     },
 
     IND: {
@@ -670,6 +677,91 @@ export const dict = {
         table: {
             noDataFound: "कोई परिणाम नहीं मिला",
             noData: "कोई डेटा नहीं"
-        }
-    }
+        },
+        noOptions: "कोई विकल्प नहीं"
+    },
+
+    KOR: {
+        "form": {
+            "noPermissions": "폼을 보는 데 권한이 없습니다",
+            "notConfigured": "폼이 구성되지 않았습니다",
+            "error": "폼 오류",
+            "submittedSuccessfuly": "성공적으로 제출되었습니다",
+            "submit": "제출",
+            "submitAgain": "다시 제출",
+            "thankYou": "감사합니다",
+            "chosen": "선택됨"
+        },
+        "sortField": "정렬 필드",
+        "error": "오류",
+        "success": "성공",
+        "madeOn": "작성 날짜",
+        "loading": "로딩 중...",
+        "auth": {
+            "login": "로그인",
+            "profile": "프로필",
+            "logout": "로그아웃"
+        },
+        "profile": {
+            "password": "비밀번호",
+            "or": "또는",
+            "firstName": "이름",
+            "lastName": "성",
+            "email": "이메일 주소",
+            "phone": "전화번호",
+            "login": "로그인",
+            "repeatPassword": "비밀번호 재입력"
+        },
+        "search": "검색",
+        "searching": "검색 중",
+        "prev": "이전",
+        "first": "첫 번째",
+        "next": "다음",
+        "page": "페이지",
+        "of": "중",
+        "card": {
+            "edit": "수정",
+            "dropdownDisabled": "드롭다운 옵션을 사용할 수 없습니다. 객체 ID를 입력하세요",
+            "cancelEditing": "수정 취소",
+            "saveChanges": "변경 사항 저장",
+            "discardChanges": "변경 사항 취소",
+            "noVisibleName": "표시할 수 있는 이름 없음",
+            "copyLink": "객체에 대한 직접 링크 복사",
+            "refreshCard": "객체 새로 고침",
+            "cart": {
+                "notConfigured": "카트가 구성되지 않았습니다",
+                "Total": "합계",
+                "Price": "가격",
+                "Quantity": "수량",
+                "Status": "상태",
+                "Title": "제목"
+            }
+        },
+        "moreThan": "초과",
+        "lessThan": "미만",
+        "from": "부터",
+        "to": "까지",
+        "lastMonth": "지난 달",
+        "last2Weeks": "지난 2주",
+        "lastWeek": "지난 주",
+        "today": "오늘",
+        "yesterday": "어제",
+        "tomorrow": "내일",
+        "nextWeek": "다음 주",
+        "next2Weeks": "다음 2주",
+        "nextMonth": "다음 달",
+        "clear": "지우기",
+        "sort": "정렬",
+        "dropMany": "여기에 파일을 놓거나 파일을 선택하려면 클릭하세요",
+        "dropOne": "여기에 파일을 놓거나 파일을 선택하려면 클릭하세요",
+        "uploading": "파일 업로드 중...",
+        "select": "값 선택",
+        "numbersOnly": "숫자만 입력하세요",
+        "chartLines": "차트 라인 표시",
+        "table": {
+            "noDataFound": "결과 없음",
+            "noData": "데이터 없음"
+        },
+        "noOptions": "옵션이 없습니다"
+    }    
 }
