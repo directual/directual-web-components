@@ -128,10 +128,10 @@ export default function Select(props) {
 
 
     const [focus, setFocus] = useState(false);
+    const [filteredOptions, setFilteredOptions] = useState(props.options ? props.options.filter(i => i && i.key) : [])
     const [value, setValue] = useState((props.defaultValue && convertDefaultValue(props.defaultValue)) || (props.multi && []) || null);
     const inputEl = useRef(null);
     const [filter, setFilter] = useState('')
-    const [filteredOptions, setFilteredOptions] = useState(props.options ? props.options.filter(i => i && i.key) : [])
     const [keySelected, setKeySelected] = useState()
     const selectRef = useRef(null);
     const [loading, setLoading] = useState(false) // loader for dynamic dropdown
