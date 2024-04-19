@@ -10,6 +10,7 @@ import { InputRow } from '../input/input'
 import { InputForm } from './InputForm'
 import FpsForm2Input from './FpsForm2Input'
 import FpsForm2Action from './FpsForm2Action'
+import _ from 'lodash'
 
 export default function FormElement(props) {
     const { element, template } = props
