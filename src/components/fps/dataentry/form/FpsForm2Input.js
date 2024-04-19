@@ -9,6 +9,7 @@ import Button from '../../button/button'
 import ActionPanel from '../../actionspanel/actionspanel'
 import FileUpload from '../fileupload/fileupload'
 import Media from '../../media/media'
+import _ from 'lodash'
 
 export default function FpsForm2Input(props) {
     const { field, template, dict, lang, loading, editModel, model, data, state, locale } = props

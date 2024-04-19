@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styles from './form2.module.css'
 import Button from '../../button/button'
+import _ from 'lodash'
 
 export default function FpsForm2Action(props) {
     const { actionFormat, action, loading, onPerform, checkHidden } = props
