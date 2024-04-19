@@ -144,7 +144,7 @@ export default function Select(props) {
             def = null
         } // какой-то лютый костыль для редактирования объекта
 
-        if (!options || options.length == 0) { return null; }
+        if (!options || options.length == 0 || !Array.isArray(options)) { return null; }
         if (!props.multi && def) {
             let D = options.filter(i => i.key == def)[0];
             return D;
