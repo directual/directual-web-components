@@ -33,36 +33,11 @@ let exampleForm = {
                         "_input_fields": [
                             {
                                 "id": "17135142211190.012210403142333000123311",
-                                "_field": "string"
+                                "_field": "link",
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "dropdown"
                             }
                         ]
-                    },
-                    {
-                        "id": "elmnt_1713516565939",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17135165711940.22032311220132214120012",
-                                "_action": "action_1712579859993",
-                                "_action_icon": "babai",
-                                "_action_button_type": "accent",
-                                "_conditionalView": true,
-                                "_action_conditional_disable_or_hide": "disable",
-                                "_conditionalView_field": "string",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{{FormState.step}}"
-                            },
-                            {
-                                "id": "17135165783890.34213041423400201410034",
-                                "_action": "action_1712655869018",
-                                "_action_label": "",
-                                "_action_icon": "arrowRight",
-                                "_action_button_type": "accent",
-                                "_conditionalView": false
-                            }
-                        ],
-                        "_actions_in_a_row": 2,
-                        "_conditionalView": false
                     }
                 ],
                 "CSSclass": "hello_ebta",
@@ -133,7 +108,7 @@ let exampleForm = {
         "hideHint": true,
         "form_title": "Hola! {{string}}",
         "form_description": "La información de forma {{WebUser.firstName}}",
-        "form_maxWidth": null,
+        "form_maxWidth": 500,
         "state": {
             "step": "default",
             "field": "ып"
@@ -168,13 +143,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "arrayLink",
@@ -196,13 +171,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": true,
             "json": false,
             "linkOrArrayLinkType": true,
-            "arrayLink": true,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "bool_false",
@@ -252,13 +227,13 @@ let exampleForm = {
                 "isUTC": "false"
             },
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "bool_true",
@@ -280,13 +255,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "strng2",
@@ -308,13 +283,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "link",
@@ -336,13 +311,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": true,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": true,
             "indexExists": false,
-            "array": false
+            "linkType": true
         },
         {
             "sysName": "string",
@@ -364,13 +339,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         }
     ],
     "data": [
@@ -478,7 +453,7 @@ let exampleForm = {
             "dateCreated": "2024-04-07T14:55:52Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"notifications_counter\",\"dataType\":\"string\",\"name\":\"Notifications Counter\",\"id\":\"1\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"dateLastActivity\",\"dataType\":\"string\",\"name\":\"dateLastActivity\",\"id\":\"10\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"email\",\"dataType\":\"string\",\"name\":\"Email\",\"id\":\"11\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"phone\",\"dataType\":\"string\",\"name\":\"Phone\",\"id\":\"12\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"dateCreated\",\"dataType\":\"string\",\"name\":\"dateCreated\",\"id\":\"13\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"password\",\"dataType\":\"string\",\"name\":\"Password (hash)\",\"id\":\"14\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"Username (login)\",\"id\":\"15\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"custom_labels\",\"dataType\":\"json\",\"name\":\"Custom labels\",\"id\":\"2\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"userpic\",\"dataType\":\"file\",\"name\":\"User pic\",\"id\":\"3\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":\"Contacts\",\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"user_ids\",\"dataType\":\"arrayLink\",\"name\":\"Users\",\"id\":\"33341712578573528\",\"link\":\"WebUser\",\"group\":\"1712578571780\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"array\":false},{\"sysName\":\"user_id\",\"dataType\":\"link\",\"name\":\"Usver\",\"id\":\"39811712578574247\",\"link\":\"WebUser\",\"group\":\"1712578571780\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"array\":false},{\"sysName\":\"isBlocked\",\"dataType\":\"boolean\",\"name\":\"Block user\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"gender\",\"dataType\":\"string\",\"name\":\"Gender\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"systemMessage\",\"dataType\":\"string\",\"name\":\"System message\",\"id\":\"56921641637265680\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"lastName\",\"dataType\":\"string\",\"name\":\"Last name\",\"id\":\"6\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"notif_Email\",\"dataType\":\"boolean\",\"name\":\"Notify me by Email\",\"id\":\"61231639915065277\",\"link\":\"\",\"group\":\"1639915049523\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Yes\",\"No\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"firstName\",\"dataType\":\"string\",\"name\":\"First name\",\"id\":\"7\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"role\",\"dataType\":\"array\",\"name\":\"Roles\",\"id\":\"8\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"array\":true},{\"sysName\":\"secret\",\"dataType\":\"string\",\"name\":\"secret\",\"id\":\"81131636839496227\",\"link\":\"\",\"group\":\"1636839487957\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"isAuthorization\",\"dataType\":\"boolean\",\"name\":\"isAuthorization\",\"id\":\"9\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"array\":false}]",
+            "jsonObject": "[{\"sysName\":\"dateLastActivity\",\"name\":\"dateLastActivity\",\"dataType\":\"string\",\"id\":\"10\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"array\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"dateCreated\",\"name\":\"dateCreated\",\"dataType\":\"string\",\"id\":\"13\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"array\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"isAuthorization\",\"name\":\"isAuthorization\",\"dataType\":\"boolean\",\"id\":\"9\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"array\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"notifications_counter\",\"name\":\"Notifications Counter\",\"dataType\":\"string\",\"id\":\"1\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"array\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"custom_labels\",\"name\":\"Custom labels\",\"dataType\":\"json\",\"id\":\"2\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"array\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":true,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"phone\",\"name\":\"Phone\",\"dataType\":\"string\",\"id\":\"12\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"array\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"email\",\"name\":\"Email\",\"dataType\":\"string\",\"id\":\"11\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"array\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"userpic\",\"name\":\"User pic\",\"dataType\":\"file\",\"id\":\"3\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":\"Contacts\",\"array\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"id\",\"name\":\"Username (login)\",\"dataType\":\"id\",\"id\":\"15\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"role\",\"name\":\"Roles\",\"dataType\":\"array\",\"id\":\"8\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":true,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"password\",\"name\":\"Password (hash)\",\"dataType\":\"string\",\"id\":\"14\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"firstName\",\"name\":\"First name\",\"dataType\":\"string\",\"id\":\"7\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"lastName\",\"name\":\"Last name\",\"dataType\":\"string\",\"id\":\"6\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"gender\",\"name\":\"Gender\",\"dataType\":\"string\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"isBlocked\",\"name\":\"Block user\",\"dataType\":\"boolean\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"systemMessage\",\"name\":\"System message\",\"dataType\":\"string\",\"id\":\"56921641637265680\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"secret\",\"name\":\"secret\",\"dataType\":\"string\",\"id\":\"81131636839496227\",\"link\":\"\",\"group\":\"1636839487957\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"notif_Email\",\"name\":\"Notify me by Email\",\"dataType\":\"boolean\",\"id\":\"61231639915065277\",\"link\":\"\",\"group\":\"1639915049523\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Yes\",\"No\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"user_ids\",\"name\":\"Users\",\"dataType\":\"arrayLink\",\"id\":\"33341712578573528\",\"link\":\"WebUser\",\"group\":\"1712578571780\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"arrayLink\":true,\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"linkType\":false},{\"sysName\":\"user_id\",\"name\":\"Usver\",\"dataType\":\"link\",\"id\":\"39811712578574247\",\"link\":\"WebUser\",\"group\":\"1712578571780\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"linkType\":true}]",
             "jsonGroupSettings": "[{\"name\":\"New Group 5\",\"id\":1712578571780,\"order\":4},{\"name\":\"Password restoring\",\"id\":1636839487957,\"order\":2},{\"name\":\"System fields (LEGACY)\",\"id\":-1776115286,\"order\":3},{\"name\":\"Notifications\",\"id\":1639915049523,\"order\":1},{\"name\":\"Contacts\",\"id\":-502807437,\"order\":0}]",
             "jsonViewIdSettings": "[{\"sysName\":\"firstName\"},{\"sysName\":\"lastName\"}]",
             "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
@@ -491,6 +466,7 @@ let exampleForm = {
             "changedBy": 21,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "name": "Username (login)",
@@ -511,15 +487,14 @@ let exampleForm = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "arrayLink": false,
                 "json": false,
                 "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "linkType": false,
                 "indexExists": false,
-                "array": false
+                "linkType": false
             },
-            "objectIDSysName": "id",
             "folderId": null
         },
         "99305059": {
@@ -543,6 +518,7 @@ let exampleForm = {
             "changedBy": 1,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "name": "id",
@@ -563,15 +539,14 @@ let exampleForm = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "arrayLink": false,
                 "json": false,
                 "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "linkType": false,
                 "indexExists": false,
-                "array": false
+                "linkType": false
             },
-            "objectIDSysName": "id",
             "folderId": null
         }
     },
@@ -599,13 +574,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": true,
             "json": false,
             "linkOrArrayLinkType": true,
-            "arrayLink": true,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "link",
@@ -627,13 +602,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": true,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": true,
             "indexExists": false,
-            "array": false
+            "linkType": true
         },
         {
             "sysName": "string",
@@ -655,13 +630,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "strng2",
@@ -683,13 +658,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "id",
@@ -711,13 +686,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "bool_false",
@@ -767,13 +742,13 @@ let exampleForm = {
                 "isUTC": "false"
             },
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "range2",
@@ -827,13 +802,13 @@ let exampleForm = {
                 "isUTC": "false"
             },
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": true,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "range",
@@ -855,13 +830,13 @@ let exampleForm = {
             "format": "rangeSlider",
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": true,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "slider2",
@@ -915,13 +890,13 @@ let exampleForm = {
                 "isUTC": "false"
             },
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": true,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "slider",
@@ -943,13 +918,13 @@ let exampleForm = {
             "format": "slider",
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": true,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "radio",
@@ -1009,13 +984,13 @@ let exampleForm = {
                 ]
             },
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": true,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "rad",
@@ -1037,13 +1012,13 @@ let exampleForm = {
             "format": "radioOptions",
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": true,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "chb2",
@@ -1103,13 +1078,13 @@ let exampleForm = {
                 ]
             },
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": true,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "chb",
@@ -1131,13 +1106,13 @@ let exampleForm = {
             "format": "checkboxes",
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": true,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "json",
@@ -1159,13 +1134,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": true,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "images",
@@ -1187,13 +1162,13 @@ let exampleForm = {
             "format": "multipleImages",
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "image",
@@ -1215,13 +1190,13 @@ let exampleForm = {
             "format": "image",
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "files",
@@ -1243,13 +1218,13 @@ let exampleForm = {
             "format": "multipleFiles",
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "file",
@@ -1271,13 +1246,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "oper",
@@ -1299,13 +1274,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "date2",
@@ -1354,13 +1329,13 @@ let exampleForm = {
                 "isUTC": "true"
             },
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "date",
@@ -1382,13 +1357,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "array",
@@ -1410,13 +1385,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": true,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": true
+            "linkType": false
         },
         {
             "sysName": "decimal",
@@ -1438,13 +1413,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "pos",
@@ -1466,13 +1441,13 @@ let exampleForm = {
             "format": "positiveNum",
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "number",
@@ -1494,13 +1469,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "youtube",
@@ -1522,13 +1497,13 @@ let exampleForm = {
             "format": "youTube",
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "weblink",
@@ -1550,13 +1525,13 @@ let exampleForm = {
             "format": "webLink",
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "colour",
@@ -1578,13 +1553,13 @@ let exampleForm = {
             "format": "color",
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "pwd",
@@ -1606,13 +1581,13 @@ let exampleForm = {
             "format": "password",
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "phone",
@@ -1634,13 +1609,13 @@ let exampleForm = {
             "format": "phone",
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "email",
@@ -1662,13 +1637,13 @@ let exampleForm = {
             "format": "email",
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "html",
@@ -1690,13 +1665,13 @@ let exampleForm = {
             "format": "html",
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "mkd",
@@ -1718,13 +1693,13 @@ let exampleForm = {
             "format": "markdown",
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "geo2",
@@ -1774,13 +1749,13 @@ let exampleForm = {
                 "isUTC": "false"
             },
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": true,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "geo",
@@ -1802,13 +1777,13 @@ let exampleForm = {
             "format": "geo",
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": true,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "bool_true",
@@ -1830,13 +1805,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         },
         {
             "sysName": "user",
@@ -1858,13 +1833,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": false,
             "linkOrArrayLinkType": true,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": true,
             "indexExists": false,
-            "array": false
+            "linkType": true
         },
         {
             "sysName": "urlParam",
@@ -1886,13 +1861,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "arrayLink": false,
             "json": true,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "linkType": false,
             "indexExists": false,
-            "array": false
+            "linkType": false
         }
     ],
     "quickSearch": null,

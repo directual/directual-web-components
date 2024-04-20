@@ -259,15 +259,55 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
         callEndpoint={(endpoint, params, finish, setOptions) => {
           console.log('===> calling endpoint /' + endpoint)
           console.log(params)
-          callEndpoint(
+
+          const transformedArray = inputArray => _.map(inputArray, (item) => {
+            const { id, ...rest } = item; // Destructure `id` and the rest of the properties
+            const value = _.values(_.pickBy(rest, _.isString)).join(' '); // Concatenate string values
+            return {
+              key: id,
+              value: _.trim(value) || id
+            };
+          });
+
+          // let result = [
+          //   {
+          //     "firstName": "Иван",
+          //     "lastName": "Бунин",
+          //     "id": "2ee9f1d7-cafe-420a-941e-0c87e9f0f71f"
+          //   },
+          //   {
+          //     "firstName": "Александр",
+          //     "lastName": "Пушкин",
+          //     "id": "88fca6be-338a-4b50-aeb0-7e7302a28241"
+          //   },
+          //   {
+          //     "firstName": "Сергей",
+          //     "lastName": "Есенин",
+          //     "id": "6fc2a69e-f73c-4196-85af-5fb2deb38344"
+          //   },
+          //   {
+          //     "firstName": "hello",
+          //     "id": "admin"
+          //   },
+          //   {
+          //     "id": "2"
+          //   }
+          // ]
+
+          // setTimeout(() => {
+          //   finish && finish(transformedArray(result))
+          //   setOptions && setOptions(transformedArray(result))
+          // }, 1000)
+
+          callEndpoint && callEndpoint(
             endpoint,
             "GET",
             undefined,
             params,
             (result, data) => {
               if (result == "ok") {
-                finish && finish(data)
-                setOptions && setOptions(data)
+                finish && finish(transformedArray(data))
+                setOptions && setOptions(transformedArray(data))
               }
             }
           )
