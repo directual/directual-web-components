@@ -11,7 +11,7 @@ import { Markdown } from '../../article/mkd'
 import { InputForm } from './InputForm'
 import { dict } from '../../locale'
 import moment from 'moment'
-import _ from 'lodash'
+import _, { isEmpty } from 'lodash'
 import PropTypes from 'prop-types';
 import InnerHTML from 'dangerously-set-html-content'
 import FormElement from './FpsForm2Element'
@@ -247,7 +247,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
         callEndpointPOST={(endpoint, body, finish) => {
           console.log('===> calling endpoint /' + endpoint)
           console.log(body)
-          
+
           callEndpoint && callEndpoint(
             endpoint,
             "POST",
@@ -257,8 +257,33 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
               if (result == "ok") {
                 finish && finish(data)
                 console.log('finish')
-                // TODO: update state and model
-                console.log(data)
+
+                // update state
+                if (!isEmpty(_.get(data, "state"))) {
+                  try {
+                    const stateUpdate = JSON.parse(_.get(data, "state"))
+                    setState({ ...state, ...stateUpdate })
+                  } catch (err) {
+                    console.log(err)
+                  }
+                }
+                // update model/object
+                if (!isEmpty(_.get(data, "object"))) {
+                  try {
+                    const modelUpdate = JSON.parse(_.get(data, "object"))
+                    setModel({ ...model, ...modelUpdate })
+                  } catch (err) {
+                    console.log(err)
+                  }
+                }
+                if (!isEmpty(_.get(data, "model"))) {
+                  try {
+                    const modelUpdate = JSON.parse(_.get(data, "model"))
+                    setModel({ ...model, ...modelUpdate })
+                  } catch (err) {
+                    console.log(err)
+                  }
+                }
               }
             }
           )
