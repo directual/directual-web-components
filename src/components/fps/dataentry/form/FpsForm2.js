@@ -257,28 +257,28 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
               if (result == "ok") {
                 finish && finish(data)
                 console.log('finish')
-                console.log(data)
+                // console.log(data)
                 try {
                   const response = JSON.parse(data)
                   // update state
                   if (!isEmpty(_.get(response, "state"))) {
-                    console.log("update state")
                     const stateUpdate = _.get(response, "state")
-                    console.log(stateUpdate)
+                    // console.log("update state")
+                    // console.log(stateUpdate)
                     setState({ ...state, ...stateUpdate })
                   }
                   // update model/object
                   if (!isEmpty(_.get(response, "object"))) {
-                    console.log("update object")
-                    const stateUpdate = _.get(response, "object")
-                    console.log(stateUpdate)
-                    setState({ ...state, ...stateUpdate })
+                    const modelUpdate = _.get(response, "object")
+                    // console.log("update object")
+                    // console.log(modelUpdate)
+                    setModel({ ...model, ...modelUpdate })
                   }
                   if (!isEmpty(_.get(response, "model"))) {
-                    console.log("update model")
-                    const stateUpdate = _.get(response, "model")
-                    console.log(stateUpdate)
-                    setState({ ...state, ...stateUpdate })
+                    const modelUpdate = _.get(response, "model")
+                    // console.log("update model")
+                    // console.log(modelUpdate)
+                    setModel({ ...model, ...modelUpdate })
                   }
                 } catch (err) {
                   console.log(err)
