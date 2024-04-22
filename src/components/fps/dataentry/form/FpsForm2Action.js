@@ -7,7 +7,7 @@ export default function FpsForm2Action(props) {
     const { actionFormat, action, loading, onPerform, checkHidden } = props
 
     if (actionFormat._conditionalView &&
-        checkHidden(actionFormat) &&
+        !checkHidden(actionFormat) &&
         actionFormat._action_conditional_disable_or_hide !== "disable"
     ) return <React.Fragment></React.Fragment>
 
@@ -15,7 +15,7 @@ export default function FpsForm2Action(props) {
         danger={actionFormat._action_button_type == "danger"}
         accent={actionFormat._action_button_type == "accent"}
         disabled={actionFormat._conditionalView &&
-            checkHidden(actionFormat) &&
+            !checkHidden(actionFormat) &&
             actionFormat._action_conditional_disable_or_hide == "disable"}
         onClick={onPerform}
         loading={loading}
