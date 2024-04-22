@@ -68,8 +68,8 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
     setTimeout(() => setHighlightModel(false), 300)
   }, [model])
 
-  // console.log("=== FpsForm2 data ===")
-  // console.log(data)
+  console.log("=== FpsForm2 data ===")
+  console.log(data)
 
   const sendMsg = (msg) => {
     const message = { ...msg, _id: 'form_' + id }
@@ -80,7 +80,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
   }
 
   const submit = (finish) => {
-    e.preventDefault()
+    // e.preventDefault()
     console.log('submitting form...')
 
     //FAKE SUBMIT

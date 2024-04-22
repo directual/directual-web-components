@@ -83,6 +83,7 @@ export default function FileUpload(props) {
                     tip={props.tip}
                     description={props.description}
                     height={48}
+                    required={props.required}
                     nomargin
                     onChange={updateFiles}
                     placeholder={props.multiple ? "Files URLs, comma separated, no spaces" : "File URL"}

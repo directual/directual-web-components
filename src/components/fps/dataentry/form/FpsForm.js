@@ -147,6 +147,8 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
   }
   eidtID = urlParams.get('@editObject') || eidtID; // если задаем в URL, приоритет выше
 
+  eidtID = "d2cad69a-1e48-4b24-a864-459363d34414" // TEMP
+
   if (data.params.editObject == "url") {
     // console.log("URL " + pathName)
     // console.log("queryString")
@@ -235,14 +237,19 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
     if (!data.data) { return } else {
       let getFieldVal
       getFieldVal = (data.data[0] && data.data[0][sysName]) // || defaultModel()[sysName]
+      if (sysName == "product_photo") {
+        console.log("=========")
+        console.log(getFieldVal)
+      }
 
       if (dataType == "file" && Array.isArray(getFieldVal)) {
-        return getFieldVal.join(",")
+
+        getFieldVal =  getFieldVal.join(",")
       }
 
       // костылек для масивов ссылок:
       if (Array.isArray(getFieldVal) && typeof getFieldVal[0] == 'string') {
-        return getFieldVal.join(",")
+        getFieldVal =  getFieldVal.join(",")
       }
 
       if (dataType == 'boolean') {

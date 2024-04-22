@@ -152,6 +152,7 @@ function FieldFile({ field, onChange, locale, placeholder, editingOn, defaultVal
         //allowUpload={field.fileUpload}
         edit={editingOn}
         locale={locale}
+        required={field.required}
         allowUpload
         multiple={field.format == 'multipleFiles' || field.format == 'multipleImages'}
         host='/api/upload'
