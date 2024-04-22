@@ -257,11 +257,13 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
               if (result == "ok") {
                 finish && finish(data)
                 console.log('finish')
-
+                console.log(data)
                 // update state
                 if (!isEmpty(_.get(data, "state"))) {
+                  console.log("updating state...")
                   try {
                     const stateUpdate = JSON.parse(_.get(data, "state"))
+                    console.log(stateUpdate)
                     setState({ ...state, ...stateUpdate })
                   } catch (err) {
                     console.log(err)
@@ -269,8 +271,10 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
                 }
                 // update model/object
                 if (!isEmpty(_.get(data, "object"))) {
+                  console.log("updating object...")
                   try {
                     const modelUpdate = JSON.parse(_.get(data, "object"))
+                    console.log(modelUpdate)
                     setModel({ ...model, ...modelUpdate })
                   } catch (err) {
                     console.log(err)
