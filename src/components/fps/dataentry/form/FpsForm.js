@@ -237,13 +237,12 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
     if (!data.data) { return } else {
       let getFieldVal
       getFieldVal = (data.data[0] && data.data[0][sysName]) // || defaultModel()[sysName]
-      if (sysName == "product_photo") {
-        console.log("=========")
-        console.log(getFieldVal)
-      }
+      // if (sysName == "product_photo") {
+      //   console.log("=========")
+      //   console.log(getFieldVal)
+      // }
 
       if (dataType == "file" && Array.isArray(getFieldVal)) {
-
         getFieldVal =  getFieldVal.join(",")
       }
 

@@ -43,6 +43,8 @@ export default function FpsForm2Input(props) {
             return <FieldMkd {...props} fieldInfo={fieldInfo} />
         case 'string_html':
             return <FieldHTML {...props} fieldInfo={fieldInfo} />
+        case 'string_color':
+            return <FieldColor {...props} fieldInfo={fieldInfo} />
         default:
             return <FieldText {...props} fieldInfo={fieldInfo} />
     }
@@ -75,7 +77,26 @@ function FieldText(props) {
     }
 
     return <Input
-        type={fieldInfo.dataType !== 'string' ? fieldInfo.dataType : `${fieldInfo.format == 'password' ? 'password' : 'textarea'}`} // для email, phone
+        type={fieldInfo.dataType !== 'string' ? fieldInfo.dataType : `${fieldInfo.format == 'password' ? 'password' :
+            fieldInfo.format == 'phone' ? 'phone' : 
+            fieldInfo.format == 'email' ? 'email' : 'textarea'}`}
+        positive={fieldInfo.format == 'positiveNum'}
+        rows='auto'
+        {...basicProps}
+        nomargin
+        label={fieldInfo.name || fieldInfo.sysName}
+        description={field._field_add_description && template(field._field_description_text)}
+        defaultValue={model[fieldInfo.sysName]}
+    />
+}
+
+function FieldColor(props) {
+
+    const { field, locale, template, model, state, onChange, fieldInfo, code } = props
+    const basicProps = { onChange, locale }
+
+    return <Input
+        type="color"
         positive={fieldInfo.format == 'positiveNum'}
         rows='auto'
         {...basicProps}
