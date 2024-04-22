@@ -258,41 +258,34 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
                 finish && finish(data)
                 console.log('finish')
                 console.log(data)
-                // update state
-                if (!isEmpty(_.get(data, "state"))) {
-                  console.log("updating state...")
-                  try {
-                    const stateUpdate = JSON.parse(_.get(data, "state"))
+                try {
+                  const response = JSON.parse(data)
+                  // update state
+                  if (!isEmpty(_.get(response, "state"))) {
+                    console.log("update state")
+                    const stateUpdate = _.get(response, "state")
                     console.log(stateUpdate)
                     setState({ ...state, ...stateUpdate })
-                  } catch (err) {
-                    console.log(err)
                   }
-                }
-                // update model/object
-                if (!isEmpty(_.get(data, "object"))) {
-                  console.log("updating object...")
-                  try {
-                    const modelUpdate = JSON.parse(_.get(data, "object"))
-                    console.log(modelUpdate)
-                    setModel({ ...model, ...modelUpdate })
-                  } catch (err) {
-                    console.log(err)
+                  // update model/object
+                  if (!isEmpty(_.get(response, "object"))) {
+                    console.log("update object")
+                    const stateUpdate = _.get(response, "object")
+                    console.log(stateUpdate)
+                    setState({ ...state, ...stateUpdate })
                   }
-                }
-                if (!isEmpty(_.get(data, "model"))) {
-                  try {
-                    const modelUpdate = JSON.parse(_.get(data, "model"))
-                    setModel({ ...model, ...modelUpdate })
-                  } catch (err) {
-                    console.log(err)
+                  if (!isEmpty(_.get(response, "model"))) {
+                    console.log("update model")
+                    const stateUpdate = _.get(response, "model")
+                    console.log(stateUpdate)
+                    setState({ ...state, ...stateUpdate })
                   }
+                } catch (err) {
+                  console.log(err)
                 }
               }
             }
           )
-
-
         }}
         callEndpoint={(endpoint, params, finish, setOptions) => {
           console.log('===> calling endpoint /' + endpoint)
