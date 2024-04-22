@@ -50,6 +50,15 @@ let exampleForm = {
                         "_input_fields_in_a_row": 3
                     },
                     {
+                        "id": "elmnt_1713795806148",
+                        "type": "hint",
+                        "hintTitle": "Внимание!",
+                        "_conditionalView": true,
+                        "_conditionalView_field": "FormState.message",
+                        "_conditionalView_operator": "isNotNull",
+                        "hintText": "{{FormState.message}}"
+                    },
+                    {
                         "id": "elmnt_1713787554658",
                         "type": "action",
                         "_actions": [
@@ -107,7 +116,6 @@ let exampleForm = {
         "form_maxWidth": 500,
         "state": {
             "step": "default",
-            "h": "",
             "message": ""
         },
         "general": {
@@ -140,12 +148,12 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "linkType": false,
-            "indexExists": false,
-            "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
+            "typeVariable": {},
             "arrayLink": false,
+            "indexExists": false,
+            "linkType": false,
             "array": false
         }
     ],
@@ -190,7 +198,6 @@ let exampleForm = {
             "changedBy": 1,
             "_settings": null,
             "_nativeIndexSettings": null,
-            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "dataType": "id",
@@ -211,14 +218,15 @@ let exampleForm = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "linkType": false,
-                "indexExists": false,
-                "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
+                "typeVariable": {},
                 "arrayLink": false,
+                "indexExists": false,
+                "linkType": false,
                 "array": false
             },
+            "objectIDSysName": "id",
             "folderId": null
         }
     },
@@ -246,12 +254,12 @@ let exampleForm = {
             "format": "color",
             "formatOptions": {},
             "groupName": null,
-            "linkType": false,
-            "indexExists": false,
-            "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
+            "typeVariable": {},
             "arrayLink": false,
+            "indexExists": false,
+            "linkType": false,
             "array": false
         },
         {
@@ -274,12 +282,12 @@ let exampleForm = {
             "format": "phone",
             "formatOptions": {},
             "groupName": null,
-            "linkType": false,
-            "indexExists": false,
-            "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
+            "typeVariable": {},
             "arrayLink": false,
+            "indexExists": false,
+            "linkType": false,
             "array": false
         },
         {
@@ -302,12 +310,12 @@ let exampleForm = {
             "format": "email",
             "formatOptions": {},
             "groupName": null,
-            "linkType": false,
-            "indexExists": false,
-            "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
+            "typeVariable": {},
             "arrayLink": false,
+            "indexExists": false,
+            "linkType": false,
             "array": false
         }
     ],

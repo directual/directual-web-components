@@ -13,105 +13,7 @@ import FpsForm2Action from './FpsForm2Action'
 import _ from 'lodash'
 
 export default function FormElement(props) {
-    const { element, template } = props
-
-    
-
-    const checkHidden = element => {
-        let isHidden = false
-        if (element._conditionalView) {
-            let field = template("{{" + element._conditionalView_field + "}}")
-            let value = template(element._conditionalView_value)
-    
-            // { key: "==", value: "is equal" },
-            if (element._conditionalView_operator == "==") {
-                if (!_.isEqual(field, value)) {
-                    console.log("element is hidden")
-                    console.log("{{" + element._conditionalView_field + "}} → " + field + " !== " + value)
-                    isHidden = true
-                }
-            }
-    
-            // { key: "!==", value: "is NOT equal" },
-            if (element._conditionalView_operator == "!==") {
-                if (_.isEqual(field, value)) {
-                    console.log("element is hidden")
-                    console.log("{{" + element._conditionalView_field + "}} → " + field + " == " + value)
-                    isHidden = true
-                }
-            }
-    
-            // { key: "contains", value: "contains" },
-            if (element._conditionalView_operator == "contains") {
-                value = value ? value.split(",") : null
-                field = field ? field.split(",") : null
-                if ((field && field.length > 0 &&
-                    value && value.length > 0
-                    && _.intersection(value, field).length == 0) || !field || !value) {
-                    console.log("element is hidden")
-                    console.log("{{" + element._conditionalView_field + "}} → " + field + " does NOT contain " + value)
-                    isHidden = true
-                }
-            }
-            // { key: "notContains", value: "does NOT contain" },
-            if (element._conditionalView_operator == "notContains") {
-                value = value ? value.split(",") : null
-                field = field ? field.split(",") : null
-                if ((field && field.length > 0 &&
-                    value && value.length > 0
-                    && _.intersection(value, field).length > 0) || !field || !value) {
-                    console.log("element is hidden")
-                    console.log("{{" + element._conditionalView_field + "}} → " + field + " contains " + value)
-                    isHidden = true
-                }
-            }
-    
-            // { key: "in", value: "in" },
-            if (element._conditionalView_operator == "in") {
-                value = value ? value.split(",") : null
-                field = field ? field.split(",") : null
-                if ((field && field.length > 0 &&
-                    value && value.length > 0
-                    && _.intersection(value, field).length == 0) || !field || !value) {
-                    console.log("element is hidden")
-                    console.log(value + " does NOT contain " + "{{" + element._conditionalView_field + "}} → " + field)
-                    isHidden = true
-                }
-            }
-    
-            // { key: "notIn", value: "NOT in" }
-            if (element._conditionalView_operator == "notIn") {
-                value = value ? value.split(",") : null
-                field = field ? field.split(",") : null
-                if ((field && field.length > 0 &&
-                    value && value.length > 0
-                    && _.intersection(value, field).length > 0) || !field || !value) {
-                    console.log("element is hidden")
-                    console.log(value + " contains " + "{{" + element._conditionalView_field + "}} → " + field)
-                    isHidden = true
-                }
-            }
-    
-            // { key: "isNull", value: "is empty" },
-            if (element._conditionalView_operator == "isNull") {
-                if (!field) {
-                    console.log("element is hidden")
-                    console.log("{{" + element._conditionalView_field + "}} → " + field + " is empty")
-                    isHidden = true
-                }
-            }
-    
-            // { key: "isNotNull", value: "is NOT empty" },
-            if (element._conditionalView_operator == "isNull") {
-                if (field) {
-                    console.log("element is hidden")
-                    console.log("{{" + element._conditionalView_field + "}} → " + field + " is NOT empty")
-                    isHidden = true
-                }
-            }
-        }
-        return isHidden
-    }
+    const { element, template, checkHidden } = props
 
     let render
     switch (element.type) {
@@ -137,8 +39,6 @@ export default function FormElement(props) {
             render = <div>??</div>
             break;
     }
-
-    if (checkHidden(element)) { return <div /> }
 
     return <div className={`${styles.elementWrapper} D_FPS_FORM2_ELEMENT_WRAPPER`}>{render}</div>
 }

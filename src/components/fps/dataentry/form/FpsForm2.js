@@ -194,6 +194,110 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
     setModel(copyModel)
   }
 
+  const checkHidden = element => {
+
+    if (element.type == 'hint') {
+      console.log("checkHidden")
+      console.log(element)
+    }
+
+    let isHidden = false
+    if (element._conditionalView) {
+      let field = template("{{" + element._conditionalView_field + "}}")
+      let value = template(element._conditionalView_value)
+
+      // { key: "==", value: "is equal" },
+      if (element._conditionalView_operator == "==") {
+        if (!_.isEqual(field, value)) {
+          console.log("element is hidden")
+          console.log("{{" + element._conditionalView_field + "}} → " + field + " !== " + value)
+          isHidden = true
+        }
+      }
+
+      // { key: "!==", value: "is NOT equal" },
+      if (element._conditionalView_operator == "!==") {
+        if (_.isEqual(field, value)) {
+          console.log("element is hidden")
+          console.log("{{" + element._conditionalView_field + "}} → " + field + " == " + value)
+          isHidden = true
+        }
+      }
+
+      // { key: "contains", value: "contains" },
+      if (element._conditionalView_operator == "contains") {
+        value = value ? value.split(",") : null
+        field = field ? field.split(",") : null
+        if ((field && field.length > 0 &&
+          value && value.length > 0
+          && _.intersection(value, field).length == 0) || !field || !value) {
+          console.log("element is hidden")
+          console.log("{{" + element._conditionalView_field + "}} → " + field + " does NOT contain " + value)
+          isHidden = true
+        }
+      }
+      // { key: "notContains", value: "does NOT contain" },
+      if (element._conditionalView_operator == "notContains") {
+        value = value ? value.split(",") : null
+        field = field ? field.split(",") : null
+        if ((field && field.length > 0 &&
+          value && value.length > 0
+          && _.intersection(value, field).length > 0) || !field || !value) {
+          console.log("element is hidden")
+          console.log("{{" + element._conditionalView_field + "}} → " + field + " contains " + value)
+          isHidden = true
+        }
+      }
+
+      // { key: "in", value: "in" },
+      if (element._conditionalView_operator == "in") {
+        value = value ? value.split(",") : null
+        field = field ? field.split(",") : null
+        if ((field && field.length > 0 &&
+          value && value.length > 0
+          && _.intersection(value, field).length == 0) || !field || !value) {
+          console.log("element is hidden")
+          console.log(value + " does NOT contain " + "{{" + element._conditionalView_field + "}} → " + field)
+          isHidden = true
+        }
+      }
+
+      // { key: "notIn", value: "NOT in" }
+      if (element._conditionalView_operator == "notIn") {
+        value = value ? value.split(",") : null
+        field = field ? field.split(",") : null
+        if ((field && field.length > 0 &&
+          value && value.length > 0
+          && _.intersection(value, field).length > 0) || !field || !value) {
+          console.log("element is hidden")
+          console.log(value + " contains " + "{{" + element._conditionalView_field + "}} → " + field)
+          isHidden = true
+        }
+      }
+
+      // { key: "isNull", value: "is empty" },
+      if (element._conditionalView_operator == "isNull") {
+        if (!_.isEmpty(field)) {
+          console.log("element is hidden")
+          console.log("{{" + element._conditionalView_field + "}} → " + field + " is empty")
+          isHidden = true
+        }
+      }
+
+      // { key: "isNotNull", value: "is NOT empty" },
+      if (element._conditionalView_operator == "isNotNull") {
+        console.log("!")
+        console.log(field)
+        if (_.isEmpty(field)) {
+          console.log("element is hidden")
+          console.log("{{" + element._conditionalView_field + "}} → " + field + " is NOT empty")
+          isHidden = true
+        }
+      }
+    }
+    return isHidden
+  }
+
   return <div className={`${styles.formWrapper} D_FPS_FORM2_WRAPPER`}
     style={{ maxWidth }}
   >
@@ -230,9 +334,10 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
         <span>debug mode: STEP</span>
       </pre>}
 
-      {(currentStep.elements || []).map(element => <FormElement
+      {(currentStep.elements || []).filter(element => !checkHidden(element)).map(element => <FormElement
         model={model}
         data={data}
+        checkHidden={checkHidden}
         dict={dict}
         locale={locale}
         state={state}
