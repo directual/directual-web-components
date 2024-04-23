@@ -59,16 +59,10 @@ let exampleForm = {
                         "hintText": "{{FormState.message}}"
                     },
                     {
-                        "id": "elmnt_1713787554658",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17137876137040.22222231402321323203432",
-                                "_action": "action_1712579859993",
-                                "_action_button_type": "danger",
-                                "_action_label": "💥 Ёбнуть по Банковой"
-                            }
-                        ]
+                        "id": "elmnt_1713858134856",
+                        "type": "submit",
+                        "submitLabel": "Поехали, блять",
+                        "submitIcon": "babai"
                     }
                 ],
                 "CSSclass": "hello_ebta",
@@ -85,6 +79,13 @@ let exampleForm = {
                         "hintColor": "ok",
                         "hintTitle": "Успех",
                         "hintText": "Ваша заявка отправлена"
+                    },
+                    {
+                        "id": "elmnt_1713853140968",
+                        "type": "redirect",
+                        "redirect_delay": 3,
+                        "redirect_url": "../{{email}}",
+                        "redirect_urlRaw": true
                     }
                 ]
             }
@@ -108,6 +109,31 @@ let exampleForm = {
                 ],
                 "resetModel": false,
                 "actionType": "endpoint"
+            },
+            {
+                "id": "action_1713856550278",
+                "name": "submit",
+                "actionType": "state",
+                "stateMapping": [
+                    {
+                        "id": "stateMapping1713856557259",
+                        "field": "FormState.step",
+                        "value": "submitted"
+                    }
+                ]
+            },
+            {
+                "id": "action_1713856583239",
+                "name": "reset model",
+                "actionType": "state",
+                "stateMapping": [
+                    {
+                        "id": "stateMapping1713856588412",
+                        "field": "FormState.message",
+                        "value": "хуй пизда джигурда"
+                    }
+                ],
+                "resetModel": true
             }
         ],
         "hideHint": true,

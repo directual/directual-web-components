@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import styles from './form2.module.css'
-import Input from '../input/input'
-import Button from '../../button/button'
-import ActionPanel from '../../actionspanel/actionspanel'
-import Hint from '../../hint/hint'
-import Loader from '../../loader/loader'
 import icon from './../../../../icons/fps-form2.svg'
-import { ComponentWrapper } from './../../wrapper/wrapper'
-import { Markdown } from '../../article/mkd'
-import { InputForm } from './InputForm'
 import { dict } from '../../locale'
-import moment from 'moment'
 import _, { isEmpty } from 'lodash'
 import PropTypes from 'prop-types';
 import InnerHTML from 'dangerously-set-html-content'
 import FormElement from './FpsForm2Element'
 
-export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale }) {
+export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale, handleRoute }) {
 
   const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
   const defaultState = { "step": null }
@@ -68,8 +59,8 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
     setTimeout(() => setHighlightModel(false), 300)
   }, [model])
 
-  // console.log("=== FpsForm2 data ===")
-  // console.log(data)
+  console.log("=== FpsForm2 data ===")
+  console.log(data)
 
   const sendMsg = (msg) => {
     const message = { ...msg, _id: 'form_' + id }
@@ -84,24 +75,36 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
     console.log('submitting form...')
 
     //FAKE SUBMIT
-    let result = {}
+    const modelToSend = {}
+    for (const f in model) {
+      const isWritable = (_.get(data, 'params.data.writeFields') || []).filter(w => w.sysName == f).length > 0
+      if (isWritable) {
+        modelToSend[f] = model[f]
+      }
+    }
+    console.log(modelToSend)
     setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-      finish && finish(result)
-      // UPDATE STATE FROM THE RESPONSE!
-      setState({ ...state, step: "submitted" })
-    }, 2000)
+    const endpoint = _.get(data,"sl")
+    callEndpoint && callEndpoint(
+      endpoint,
+      "POST",
+      modelToSend,
+      undefined,
+      (result, data) => {
+        if (result == "ok") {
+          finish && finish(data)
+          // console.log(data)
+          setLoading(false)
+          finish && finish(data)
+          // UPDATE STATE FROM THE RESPONSE!
+          setState({ ...state, step: "submitted" })
 
-    // const modelToSend = {}
-    // for (const f in model) {
-    //   const isWritable = (_.get(data, 'params.data.writeFields') || []).filter(w => w.sysName == f).length > 0
-    //   if (isWritable) {
-    //     modelCopy[f] = model[f]
-    //   }
-    // }
-    // console.log(modelToSend)
-    // sendMsg(modelToSend)
+        }
+      }
+    )
+
+
+    sendMsg(modelToSend)
   }
 
   useEffect(() => {
@@ -196,11 +199,6 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
 
   const checkHidden = element => {
 
-    if (element.type == 'hint') {
-      console.log("checkHidden")
-      console.log(element)
-    }
-
     let isHidden = false
     if (element._conditionalView) {
       let field = template("{{" + element._conditionalView_field + "}}")
@@ -286,8 +284,6 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
 
       // { key: "isNotNull", value: "is NOT empty" },
       if (element._conditionalView_operator == "isNotNull") {
-        console.log("!")
-        console.log(field)
         if (_.isEmpty(field)) {
           console.log("element is hidden")
           console.log("{{" + element._conditionalView_field + "}} → " + field + " is NOT empty")
@@ -348,11 +344,11 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
         onSubmit={submit}
         template={template}
         editModel={editModel}
+        setModel={setModel}
         element={element}
         callEndpointPOST={(endpoint, body, finish) => {
           console.log('===> calling endpoint /' + endpoint)
           console.log(body)
-
           callEndpoint && callEndpoint(
             endpoint,
             "POST",

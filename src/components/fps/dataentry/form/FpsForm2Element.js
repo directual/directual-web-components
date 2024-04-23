@@ -65,7 +65,7 @@ function ElementInput(props) {
 }
 
 function ElementAction(props) {
-    const { element, templateState, callEndpointPOST, setState, editModel, model, data, state } = props
+    const { element, templateState, callEndpointPOST, setState, setModel, data, state } = props
     const [loading, setLoading] = useState(false)
 
     const action_list = _.get(element, "_actions") || []
@@ -86,6 +86,9 @@ function ElementAction(props) {
     }, {});
 
     const performAction = (action) => {
+        if (action.resetModel) {
+            setModel({})
+        }
         if (action.actionType == "endpoint") {
             const payload = transformObject(action.mapping)
             setLoading(true)
