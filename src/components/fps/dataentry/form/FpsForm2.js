@@ -171,8 +171,6 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
   }
 
   // front-end template engine
-
-
   function template(input) {
     const templateData = defaultModel;
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
@@ -196,7 +194,6 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
       return '';
     }
   }
-
   function templateState(input) {
     const templateData = defaultModel
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
@@ -384,6 +381,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
         checkHidden={checkHidden}
         dict={dict}
         locale={locale}
+        handleRoute={handleRoute}
         state={state}
         templateState={templateState}
         loading={loading}

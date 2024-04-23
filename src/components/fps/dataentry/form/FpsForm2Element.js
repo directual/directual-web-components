@@ -35,6 +35,9 @@ export default function FormElement(props) {
         case "action":
             render = <ElementAction {...props} checkHidden={checkHidden} />
             break;
+        case "redirect":
+            render = <ElementRedirect {...props} />
+            break;
         default:
             render = <div>??</div>
             break;
@@ -141,7 +144,7 @@ function ElementSubmit(props) {
         })
     }
     return <div>
-        {state._submitError && <Hint margin={{top:0, bottom:18}} error closable onClose={() => setState({ ...state, _submitError: "" })}>
+        {state._submitError && <Hint margin={{ top: 0, bottom: 18 }} error closable onClose={() => setState({ ...state, _submitError: "" })}>
             {state._submitError}
         </Hint>}
         <Button onClick={submit} loading={loading} accent icon={submitIcon}>{submitLabel || dict[lang].form.submit}</Button>
@@ -168,4 +171,17 @@ function ElementHint(props) {
     >
         {hintText && <InnerHTML allowRerender={true} html={hintText} />}
     </Hint>
+}
+
+function ElementRedirect(props) {
+    const { element, template, handleRoute } = props
+    
+    const url = template(element.redirect_url)
+    const delay = element.redirect_delay || 0
+
+    setTimeout(()=>{
+        handleRoute(url)()
+    }, delay * 1000 )
+
+    return <div></div>
 }
