@@ -43,7 +43,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
   }
   const [model, setModel] = useState(edditingOn ? flatternModel({ ...gatherDefaults(), ..._.get(data, "data[0]") }) : {})
   //const [state, setState] = useState(templateState(_.get(data, "params.state") || defaultState))
-  const [state, setState] = useState(_.get(data, "params.state" || defaultState))
+  const [state, setState] = useState(_.get(data, "params.state") || defaultState)
   const transformedState = { FormState: state, WebUser: auth }
   const defaultModel = { ...emptyValues, ...model, ...transformedState }
   const [loading, setLoading] = useState(false)

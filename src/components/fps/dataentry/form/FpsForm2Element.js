@@ -177,7 +177,7 @@ function ElementRedirect(props) {
     const { element, template, handleRoute } = props
     
     const url = template(element.redirect_url)
-    const delay = element.redirect_delay || 0
+const delay = element.redirect_delay || 0
 
     setTimeout(()=>{
         handleRoute(url)()
