@@ -94,9 +94,13 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
           // console.log(data)
           setLoading(false)
           finish && finish(data)
-          // UPDATE STATE FROM THE RESPONSE!
           setState({ ...state, step: "submitted" })
+          setModel({}) // reset model
 
+        } else {
+          alert('ашипка')
+          console.log("------------")
+          confirm.log(data)
         }
       }
     )
