@@ -13,6 +13,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
   const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
   const defaultState = { "step": null }
   const params = _.get(data, "params")
+  const fields = _.get(data, "fileds")
   const edditingOn = _.get(params, "general.edittingOn")
   const emptyValues = fakeSchemeForTemplating(_.get(data, "fileds")) //  формируем джейсончик для шаблонизации (пустой)
   function fakeSchemeForTemplating(fieldScheme) {
@@ -55,13 +56,31 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
     setTimeout(() => setHighlightState(false), 300)
   }, [state])
 
+  function updateObjectIfDifferent(object1, object2) {
+    _.forOwn(object2, (value, key) => {
+      if (_.has(object1, key) && !_.isEqual(object1[key], value)) {
+        _.set(object1, key, value);
+      }
+    });
+    return object1;
+  }
+
+  // process Socket.io update
+  useEffect(() => {
+    console.log("update model (socket)")
+    const newModel = ({ ...model }, flatternModel({ ..._.get(data, "data[0]") }))
+    if (!_.isEqual(newModel, model)) {
+      setModel(newModel)
+    }
+  }, [_.get(data, "data[0]")])
+
   useEffect(() => {
     setHighlightModel(true)
     setTimeout(() => setHighlightModel(false), 300)
   }, [model])
 
-  console.log("=== FpsForm2 data ===")
-  console.log(data)
+  // console.log("=== FpsForm2 data ===")
+  // console.log(data)
 
   const sendMsg = (msg) => {
     const message = { ...msg, _id: 'form_' + id }
@@ -72,15 +91,42 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
   }
 
   const submit = (finish) => {
-    // e.preventDefault()
-    console.log('submitting form...')
-
+    setState({ ...state, _submitError: "" })
     const modelToSend = {}
     for (const f in model) {
       if (_.includes(_.get(data, 'writeFields'), f)) {
         modelToSend[f] = model[f]
       }
     }
+
+    // REQUIRED:
+    const requiredFieldValues = _.chain(_.get(params, "steps"))
+      .flatMap('elements')
+      .flatMap('_input_fields')
+      .filter('_field_required')
+      .map('_field')
+      .value();
+
+    function excludeNonEmptyValues(obj, keys) {
+      const filteredKeys = _.pickBy(obj, (value, key) => {
+        return !_.isEmpty(value); // Exclude keys with non-empty values
+      });
+      return keys.filter(key => !(key in filteredKeys));
+    }
+    let emptyFields = excludeNonEmptyValues(modelToSend, requiredFieldValues)
+
+    if (emptyFields.length > 0) {
+      emptyFields = emptyFields.map(i => {
+        const fieldName = _.find(fields, { sysName: i }).name
+        return fieldName ? '"' + fieldName + '"' : '"' + i + '"'
+      })
+      const errMessage = dict[lang].form.emptyRequired + emptyFields.join(", ")
+      setState({ ...state, _submitError: errMessage })
+      finish()
+      return;
+    }
+
+    console.log('submitting form...')
     console.log(modelToSend)
     setLoading(true)
     const endpoint = _.get(data, "sl")
@@ -98,7 +144,8 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
           setState({ ...state, step: "submitted" })
           setModel({}) // reset model
         } else {
-          setModel({...model, _apiError: data.msg})
+          setState({ ...model, _apiError: data.msg })
+          setLoading(false)
         }
       }
     )

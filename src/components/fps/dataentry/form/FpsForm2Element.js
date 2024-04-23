@@ -33,7 +33,7 @@ export default function FormElement(props) {
             render = <ElementInput {...props} />
             break;
         case "action":
-            render = <ElementAction {...props} checkHidden={checkHidden}/>
+            render = <ElementAction {...props} checkHidden={checkHidden} />
             break;
         default:
             render = <div>??</div>
@@ -92,14 +92,14 @@ function ElementAction(props) {
         if (action.actionType == "endpoint") {
             const payload = transformObject(action.mapping)
             setLoading(true)
-            callEndpointPOST(action.endpoint,templateState(payload),(result)=>{
+            callEndpointPOST(action.endpoint, templateState(payload), (result) => {
                 setLoading(false)
                 // console.log(result)
             })
         }
         if (action.actionType == "state") {
             const payload = transformState(action.stateMapping)
-            setState({...state, ...payload})
+            setState({ ...state, ...payload })
         }
     }
 
@@ -130,8 +130,8 @@ function ElementText(props) {
 }
 
 function ElementSubmit(props) {
-    const { element, template, onSubmit, dict, lang } = props
-    const [loading,setLoading] = useState(false)
+    const { element, template, state, setState, onSubmit, dict, lang } = props
+    const [loading, setLoading] = useState(false)
     const submitIcon = element.submitIcon
     const submitLabel = element.submitLabel
     const submit = () => {
@@ -140,7 +140,12 @@ function ElementSubmit(props) {
             setLoading(false)
         })
     }
-    return <Button onClick={submit} loading={loading} accent icon={submitIcon}>{submitLabel || dict[lang].form.submit}</Button>
+    return <div>
+        {state._submitError && <Hint margin={{top:0, bottom:18}} error closable onClose={() => setState({ ...state, _submitError: "" })}>
+            {state._submitError}
+        </Hint>}
+        <Button onClick={submit} loading={loading} accent icon={submitIcon}>{submitLabel || dict[lang].form.submit}</Button>
+    </div>
 }
 
 function ElementHint(props) {

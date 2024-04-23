@@ -82,6 +82,7 @@ function FieldText(props) {
                 fieldInfo.format == 'email' ? 'email' : 'textarea'}`}
         positive={fieldInfo.format == 'positiveNum'}
         rows='auto'
+        required={field._field_required}
         {...basicProps}
         nomargin
         label={fieldInfo.name || fieldInfo.sysName}
@@ -100,6 +101,7 @@ function FieldColor(props) {
         positive={fieldInfo.format == 'positiveNum'}
         rows='auto'
         {...basicProps}
+        required={field._field_required}
         nomargin
         label={fieldInfo.name || fieldInfo.sysName}
         description={field._field_add_description && template(field._field_description_text)}
@@ -116,6 +118,7 @@ function FieldMkd(props) {
         <Input
             type='markdown'
             onChange={onChange}
+            required={field._field_required}
             edit
             locale={locale}
             label={fieldInfo.name || fieldInfo.sysName}
@@ -147,6 +150,7 @@ function FieldHTML(props) {
                 : <Input
                     type='textarea'
                     onChange={onChange}
+                    required={field._field_required}
                     code
                     locale={locale}
                     rows='auto'
@@ -169,6 +173,7 @@ function FieldFile(props) {
         //allowUpload={field.fileUpload}
         locale={locale}
         edit
+        required={field._field_required}
         allowUpload
         multiple={fieldInfo.format == 'multipleFiles' || fieldInfo.format == 'multipleImages'}
         host='/api/upload'
@@ -194,6 +199,7 @@ function FieldDate(props) {
         utc={fieldInfo.formatOptions ? fieldInfo.formatOptions.isUTC == 'true' : true}
         validWeekDays={fieldInfo.formatOptions ? fieldInfo.formatOptions.validWeekDays : null}
         onChange={onChange}
+        required={field._field_required}
         nomargin
         label={fieldInfo.name || fieldInfo.sysName}
         description={field._field_add_description && template(field._field_description_text)}
@@ -231,6 +237,7 @@ function FieldJson(props) {
             <Input type='json'
                 onChange={onChange}
                 rows='auto'
+                required={field._field_required}
                 nomargin
                 label={fieldInfo.name || fieldInfo.sysName}
                 description={field._field_add_description && template(field._field_description_text)}
@@ -239,6 +246,7 @@ function FieldJson(props) {
 
         {fieldInfo && fieldInfo.format == 'checkboxes' &&
             <Input type='checkboxGroup'
+                required={field._field_required}
                 nomargin
                 onChange={value => onChange(JSON.stringify(value))}
                 label={fieldInfo.name || fieldInfo.sysName}
@@ -259,6 +267,7 @@ function FieldJson(props) {
                     <FpsMap
                         // mapRefreshOff={mapRefreshOff}
                         edit
+                        required={field._field_required}
                         nomargin
                         oneMarker={_.get(fieldInfo, 'formatOptions.oneMarker')}
                         height={_.get(fieldInfo, 'formatOptions.height') || 400}
@@ -274,6 +283,7 @@ function FieldJson(props) {
         {fieldInfo && fieldInfo.format == 'radioOptions' &&
             <Input type='radioJson'
                 onChange={value => onChange(JSON.stringify(value))}
+                required={field._field_required}
                 nomargin
                 label={fieldInfo.name || fieldInfo.sysName}
                 description={field._field_add_description && template(field._field_description_text)}
@@ -288,6 +298,7 @@ function FieldJson(props) {
         {fieldInfo && fieldInfo.format == 'keyValue' &&
             <Input type='optionsHandler'
                 onChange={value => onChange(JSON.stringify(value))}
+                required={field._field_required}
                 nomargin
                 label={fieldInfo.name || fieldInfo.sysName}
                 description={field._field_add_description && template(field._field_description_text)}
@@ -300,6 +311,7 @@ function FieldJson(props) {
         {fieldInfo && fieldInfo.format == 'slider' && fieldInfo.formatOptions.range &&
             <Input type='slider'
                 onChange={value => onChange(JSON.stringify(value))}
+                required={field._field_required}
                 nomargin
                 label={fieldInfo.name || fieldInfo.sysName}
                 description={field._field_add_description && template(field._field_description_text)}
@@ -322,6 +334,7 @@ function FieldJson(props) {
         {fieldInfo && fieldInfo.format == "rangeSlider" && fieldInfo.formatOptions.range &&
             <Input type='range'
                 onChange={value => onChange && onChange(JSON.stringify(value))}
+                required={field._field_required}
                 nomargin
                 label={fieldInfo.name || fieldInfo.sysName}
                 description={field._field_add_description && template(field._field_description_text)}
@@ -355,6 +368,7 @@ function FieldBoolean(props) {
             { value: 'false', label: !fieldInfo.formatOptions ? 'false' : fieldInfo.formatOptions.booleanOptions && fieldInfo.formatOptions.booleanOptions[1] ? fieldInfo.formatOptions.booleanOptions[1] : 'false' }
         ]}
         onChange={onChange}
+        required={field._field_required}
         nomargin
         locale={locale}
         // label={field.content || field.id}
@@ -412,6 +426,7 @@ function FieldLink(props) {
     if (field._field_link_type == "select") {
         return <Input type="dinamicSelect"
             onLoad={refreshOptions}
+            required={field._field_required}
             //debug
             label={fieldInfo.name || fieldInfo.sysName}
             description={field._field_add_description && template(field._field_description_text)}
@@ -430,6 +445,7 @@ function FieldLink(props) {
                     label: i.value
                 }
             })}
+            required={field._field_required}
             //description={options.length}
             horizontal={field._field_link_radio_layout == "horizontal"}
             label={fieldInfo.name || fieldInfo.sysName}
@@ -443,6 +459,7 @@ function FieldLink(props) {
     return <Input
         type={`${field.format == 'password' ? 'password' : 'textarea'}`}
         rows='auto'
+        required={field._field_required}
         code={code}
         nomargin
         locale={locale}
@@ -502,6 +519,7 @@ function FieldArrayLink(props) {
     if (field._field_arrayLink_type == "select") {
         return <Input type="dinamicMultiSelect"
             onLoad={refreshOptions}
+            required={field._field_required}
             // debug
             label={fieldInfo.name || fieldInfo.sysName}
             description={field._field_add_description && template(field._field_description_text)}
@@ -523,6 +541,7 @@ function FieldArrayLink(props) {
                     label: i.value
                 }
             })}
+            required={field._field_required}
             //description={options.length}
             horizontal={field._field_arrayLink_checkbox_type == "horizontal"}
             label={fieldInfo.name || fieldInfo.sysName}
@@ -539,6 +558,7 @@ function FieldArrayLink(props) {
     return <Input
         type={`${field.format == 'password' ? 'password' : 'textarea'}`}
         rows='auto'
+        required={field._field_required}
         code={code}
         nomargin
         locale={locale}

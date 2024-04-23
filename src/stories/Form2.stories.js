@@ -36,11 +36,13 @@ let exampleForm = {
                                 "_field": "colour",
                                 "_field_link_type": "radio",
                                 "_field_link_radio_layout": "horizontal",
-                                "_field_arrayLink_endpoint": "getGenders"
+                                "_field_arrayLink_endpoint": "getGenders",
+                                "_field_required": true
                             },
                             {
                                 "id": "17137878484500.033242010244001343241032",
-                                "_field": "phone"
+                                "_field": "phone",
+                                "_field_required": true
                             },
                             {
                                 "id": "17137885266220.02002130211223414100002",
@@ -161,7 +163,6 @@ let exampleForm = {
         "state": {
             "step": "default",
             "message": "",
-            "e": "",
             "_apiError": "err1",
             "_submitError": "err2"
         },
