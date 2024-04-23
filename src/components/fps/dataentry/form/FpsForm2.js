@@ -6,6 +6,7 @@ import _, { isEmpty } from 'lodash'
 import PropTypes from 'prop-types';
 import InnerHTML from 'dangerously-set-html-content'
 import FormElement from './FpsForm2Element'
+import Hint from '../../hint/hint'
 
 export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale, handleRoute }) {
 
@@ -82,7 +83,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
     }
     console.log(modelToSend)
     setLoading(true)
-    const endpoint = _.get(data,"sl")
+    const endpoint = _.get(data, "sl")
     callEndpoint && callEndpoint(
       endpoint,
       "POST",
@@ -96,11 +97,8 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
           finish && finish(data)
           setState({ ...state, step: "submitted" })
           setModel({}) // reset model
-
         } else {
-          alert('ашипка')
-          console.log("------------")
-          confirm.log(data)
+          setModel({...model, _apiError: data.msg})
         }
       }
     )
@@ -314,6 +312,10 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
       <code>{JSON.stringify(model, 0, 3)}</code>
       <span>debug mode: MODEL</span>
     </pre>}
+
+    {state._apiError && <Hint error closable onClose={() => setState({ ...state, _apiError: "" })}>
+      {state._apiError}
+    </Hint>}
 
     <div className={`${styles.formSection} D_FPS_FORM2_SECTION ${currentStep.CSSclass}`}
       style={{

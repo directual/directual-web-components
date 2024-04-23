@@ -62,7 +62,7 @@ function FieldText(props) {
                 type="select"
                 options={field._edit_state_options}
                 label={field._edit_state_input_label || field._state_field}
-                defaultValue={state[fieldInfo.sysName]}
+                defaultValue={_.get(state, field._state_field)}
                 {...basicProps}
             />
         }
@@ -71,15 +71,15 @@ function FieldText(props) {
             rows='auto'
             options={field._edit_state_options}
             label={field._edit_state_input_label || field._state_field}
+            defaultValue={_.get(state, field._state_field)}
             {...basicProps}
-            defaultValue={state[fieldInfo.sysName]}
         />
     }
 
     return <Input
         type={fieldInfo.dataType !== 'string' ? fieldInfo.dataType : `${fieldInfo.format == 'password' ? 'password' :
-            fieldInfo.format == 'phone' ? 'phone' : 
-            fieldInfo.format == 'email' ? 'email' : 'textarea'}`}
+            fieldInfo.format == 'phone' ? 'phone' :
+                fieldInfo.format == 'email' ? 'email' : 'textarea'}`}
         positive={fieldInfo.format == 'positiveNum'}
         rows='auto'
         {...basicProps}
