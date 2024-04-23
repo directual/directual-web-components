@@ -74,14 +74,13 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
     // e.preventDefault()
     console.log('submitting form...')
 
-    //FAKE SUBMIT
     const modelToSend = {}
     for (const f in model) {
-      const isWritable = (_.get(data, 'params.data.writeFields') || []).filter(w => w.sysName == f).length > 0
-      if (isWritable) {
+      if (_.includes(_.get(data, 'writeFields'), f)) {
         modelToSend[f] = model[f]
       }
     }
+    console.log("modelToSend")
     console.log(modelToSend)
     setLoading(true)
     const endpoint = _.get(data,"sl")
