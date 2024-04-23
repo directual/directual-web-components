@@ -80,7 +80,6 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
         modelToSend[f] = model[f]
       }
     }
-    console.log("modelToSend")
     console.log(modelToSend)
     setLoading(true)
     const endpoint = _.get(data,"sl")
@@ -101,9 +100,6 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
         }
       }
     )
-
-
-    sendMsg(modelToSend)
   }
 
   useEffect(() => {

@@ -14,7 +14,7 @@ import _ from 'lodash'
 export default function FpsForm2Input(props) {
     const { field, template, dict, lang, loading, editModel, model, data, state, locale } = props
 
-    const fieldInfo = _.find(_.get(data, "fileds"), { sysName: field._field })
+    const fieldInfo = _.find(_.get(data, "fileds"), { sysName: field._field }) || {}
     const type = `${fieldInfo.dataType}${fieldInfo.format ? `_${fieldInfo.format}` : ''}`
 
     switch (type) {
