@@ -728,8 +728,9 @@ function CardField({ field, object, handleRoute, model, setModel, debug, editing
                             //defaultValue={object[field.sysName].value}
                             defaultValue={model[field.sysName]}
                             onChange={value => setModel({ ...model, [field.sysName]: value })}
-                        /> :
-                        <FieldReadOnly field={field} object={object} weblink={{}} />}
+                        /> : 
+                        <FieldReadOnly field={field} object={object} weblink={{}} />
+                        }
                 </React.Fragment>}
 
 
@@ -757,14 +758,13 @@ function FieldReadOnly({ field, object, weblink, date, formatDate }) {
             {field.descriptionFlag && field.description &&
                 <span className={styles.description}>
                     {field.description}</span>}
-
             {date ?
                 <div>
                     {
                         (object[field.sysName] && object[field.sysName].value) ?
                             formatDate(object[field.sysName].value, field.formatOptions)
                             : '—'}
-                </div> :
+                </div> : //<div>—</div>
                 <React.Fragment>
 
                     {field.dataType != 'boolean' ?
@@ -773,16 +773,22 @@ function FieldReadOnly({ field, object, weblink, date, formatDate }) {
                             !weblink.flag ?
                                 <span className={styles.fieldValue}>
                                     {field.dataType != 'json' ?
-                                        object[field.sysName].value :
-                                        <pre><code>{jsonParse(object[field.sysName].value)}</code></pre>}
-                                </span> :
+                                        typeof object[field.sysName].value == "object" ? 
+                                        <pre><code>{JSON.stringify(object[field.sysName].value,0,3)}</code></pre>
+                                        : object[field.sysName].value :
+                                        <pre><code>{jsonParse(object[field.sysName].value)}</code></pre>
+                                    }
+                                </span> 
+                                :
                                 <a href={object[field.sysName].value} target="_blank">
                                     {weblink.weblink || object[field.sysName].value}
                                 </a>
                         :
                         <span className={`icon icon-${object[field.sysName] && (object[field.sysName].value ? `done` : `ban`)}`}>
-                            {object[field.sysName] && (object[field.sysName].value ? 'Yes' : 'No')}</span>}
-                </React.Fragment>}
+                            {object[field.sysName] && (object[field.sysName].value ? 'Yes' : 'No')}</span>
+                            }
+                </React.Fragment>
+                }
         </React.Fragment>
     )
 }

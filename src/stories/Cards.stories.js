@@ -18,17 +18,17 @@ export default {
 };
 
 let exampleTable = {
-    "sl": "manageItems",
-    "pageSize": "10",
+    "sl": "tasks",
+    "pageSize": "20",
     "headerField": null,
     "params": {
-        "cardListLayout": "grid",
-        "cardHeaderComment": "country_id",
+        "cardListLayout": "looseGrid",
+        "cardHeaderComment": "Subject",
         "deleteField": "",
-        "cardBodyText": "description",
+        "cardBodyText": "Deadline",
         "cardImage": true,
-        "cardImageField": "image",
-        "cardImageType": "cover",
+        "cardImageField": "Picture",
+        "cardImageType": "left",
         "cardImageSize": 100,
         "objectView": {},
         "data": {
@@ -44,22 +44,52 @@ let exampleTable = {
                     "link": ""
                 },
                 {
-                    "fieldSysName": "title",
+                    "fieldSysName": "Attachments",
                     "fetch": [],
-                    "sysName": "title",
-                    "name": "Item title",
-                    "dataType": "string",
-                    "format": "",
+                    "sysName": "Attachments",
+                    "name": "Прикреплённые файлы",
+                    "dataType": "file",
+                    "format": "multipleFiles",
                     "formatOptions": {},
-                    "link": null
+                    "link": ""
                 },
                 {
-                    "fieldSysName": "isHidden",
+                    "fieldSysName": "Colour",
                     "fetch": [],
-                    "sysName": "isHidden",
-                    "name": "hidden",
-                    "dataType": "boolean",
-                    "format": "",
+                    "sysName": "Colour",
+                    "name": "Цвет",
+                    "dataType": "string",
+                    "format": "color",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "Picture",
+                    "fetch": [],
+                    "sysName": "Picture",
+                    "name": "Картинка",
+                    "dataType": "file",
+                    "format": "image",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "Description",
+                    "fetch": [],
+                    "sysName": "Description",
+                    "name": "Описание задания",
+                    "dataType": "string",
+                    "format": "markdown",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "Category",
+                    "fetch": [],
+                    "sysName": "Category",
+                    "name": "Категория задачи",
+                    "dataType": "json",
+                    "format": "checkboxes",
                     "formatOptions": {
                         "customOptionLabel": "My option",
                         "keyValue": {
@@ -69,10 +99,114 @@ let exampleTable = {
                         },
                         "dateLocale": "en-gb",
                         "booleanOptions": [
-                            "❌ Hidden",
-                            "Not hidden"
+                            "True",
+                            "False"
                         ],
-                        "hideStandardBooleanIcons": true,
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "DD/MM/Y",
+                        "timeFormat": " HH:mm",
+                        "isUTC": "false",
+                        "multipleChoice": [
+                            {
+                                "value": "ToDo",
+                                "label": "ToDo"
+                            },
+                            {
+                                "value": "Homework",
+                                "label": "Homework"
+                            }
+                        ]
+                    },
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "Type",
+                    "fetch": [],
+                    "sysName": "Type",
+                    "name": "Тип задачи",
+                    "dataType": "json",
+                    "format": "checkboxes",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "dateLocale": "en-gb",
+                        "booleanOptions": [
+                            "True",
+                            "False"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOption": false,
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "DD/MM/Y",
+                        "timeFormat": " HH:mm",
+                        "isUTC": "false",
+                        "multipleChoice": [
+                            {
+                                "value": "Summative",
+                                "label": "Summative"
+                            },
+                            {
+                                "value": "Formative",
+                                "label": "Formative"
+                            }
+                        ]
+                    },
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "Title",
+                    "fetch": [],
+                    "sysName": "Title",
+                    "name": "Название задачи",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "Deadline",
+                    "fetch": [],
+                    "sysName": "Deadline",
+                    "name": "Крайний срок выполнения",
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "dateLocale": "ru",
+                        "booleanOptions": [
+                            "True",
+                            "False"
+                        ],
                         "validWeekDays": {
                             "mon": true,
                             "thu": true,
@@ -92,37 +226,17 @@ let exampleTable = {
                     "link": ""
                 },
                 {
-                    "fieldSysName": "price",
+                    "fieldSysName": "Subject",
                     "fetch": [],
-                    "sysName": "price",
-                    "name": "Price, per pound, $",
-                    "dataType": "decimal",
+                    "sysName": "Subject",
+                    "name": "Предмет",
+                    "dataType": "link",
                     "format": "",
                     "formatOptions": {},
-                    "link": ""
+                    "link": "subject"
                 },
                 {
-                    "fieldSysName": "description",
-                    "fetch": [],
-                    "sysName": "description",
-                    "name": "Description",
-                    "dataType": "string",
-                    "format": "markdown",
-                    "formatOptions": {},
-                    "link": ""
-                },
-                {
-                    "fieldSysName": "image",
-                    "fetch": [],
-                    "sysName": "image",
-                    "name": "Photo",
-                    "dataType": "file",
-                    "format": "image",
-                    "formatOptions": {},
-                    "link": ""
-                },
-                {
-                    "fieldSysName": "country_id",
+                    "fieldSysName": "ATLskills_ids",
                     "fetch": [
                         {
                             "fieldSysName": "id",
@@ -130,119 +244,197 @@ let exampleTable = {
                             "fetch": []
                         },
                         {
-                            "fieldSysName": "country",
+                            "fieldSysName": "ATLskills",
                             "condition": null,
                             "fetch": []
                         }
                     ],
-                    "sysName": "country_id",
-                    "name": "Producing country",
+                    "sysName": "ATLskills_ids",
+                    "name": "Навыки ATL",
+                    "dataType": "arrayLink",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "atl_skills"
+                },
+                {
+                    "fieldSysName": "Taskauthor",
+                    "fetch": [
+                        {
+                            "fieldSysName": "id",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "firstName",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "lastName",
+                            "condition": null,
+                            "fetch": []
+                        }
+                    ],
+                    "sysName": "Taskauthor",
+                    "name": "Автор задачи",
                     "dataType": "link",
                     "format": "",
                     "formatOptions": {},
-                    "link": "countries"
+                    "link": "WebUser"
+                },
+                {
+                    "fieldSysName": "Unit",
+                    "fetch": [
+                        {
+                            "fieldSysName": "id",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "Title",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "Subject",
+                            "condition": null,
+                            "fetch": [
+                                {
+                                    "fieldSysName": "id",
+                                    "condition": null,
+                                    "fetch": []
+                                },
+                                {
+                                    "fieldSysName": "Subject",
+                                    "condition": null,
+                                    "fetch": []
+                                }
+                            ]
+                        },
+                        {
+                            "fieldSysName": "InquiryQuestions",
+                            "condition": null,
+                            "fetch": [
+                                {
+                                    "fieldSysName": "id",
+                                    "condition": null,
+                                    "fetch": []
+                                },
+                                {
+                                    "fieldSysName": "InquiryQuestion",
+                                    "condition": null,
+                                    "fetch": []
+                                }
+                            ]
+                        },
+                        {
+                            "fieldSysName": "RelatedConcepts",
+                            "condition": null,
+                            "fetch": [
+                                {
+                                    "fieldSysName": "id",
+                                    "condition": null,
+                                    "fetch": []
+                                }
+                            ]
+                        },
+                        {
+                            "fieldSysName": "KeyConcept_id",
+                            "condition": null,
+                            "fetch": [
+                                {
+                                    "fieldSysName": "id",
+                                    "condition": null,
+                                    "fetch": []
+                                }
+                            ]
+                        },
+                        {
+                            "fieldSysName": "Attachments",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "Cover",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "Creator",
+                            "condition": null,
+                            "fetch": [
+                                {
+                                    "fieldSysName": "id",
+                                    "condition": null,
+                                    "fetch": []
+                                },
+                                {
+                                    "fieldSysName": "firstName",
+                                    "condition": null,
+                                    "fetch": []
+                                },
+                                {
+                                    "fieldSysName": "lastName",
+                                    "condition": null,
+                                    "fetch": []
+                                }
+                            ]
+                        },
+                        {
+                            "fieldSysName": "StatementofInquiry",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "Dateend",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "Datestart",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "Unittemplate",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "Description",
+                            "condition": null,
+                            "fetch": []
+                        }
+                    ],
+                    "sysName": "Unit",
+                    "format": "",
+                    "formatOptions": {}
+                },
+                {
+                    "fieldSysName": "Criteria",
+                    "fetch": [
+                        {
+                            "fieldSysName": "id",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "Criteria",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "id",
+                            "condition": null,
+                            "fetch": []
+                        }
+                    ],
+                    "sysName": "Criteria",
+                    "format": "",
+                    "formatOptions": {}
                 }
             ],
-            "writeFields": [
-                {
-                    "fieldSysName": "id",
-                    "fetch": [],
-                    "sysName": "id",
-                    "name": "id",
-                    "dataType": "id",
-                    "format": "",
-                    "formatOptions": {},
-                    "link": ""
-                },
-                {
-                    "fieldSysName": "isHidden",
-                    "fetch": [],
-                    "sysName": "isHidden",
-                    "name": "hidden",
-                    "dataType": "boolean",
-                    "format": "",
-                    "formatOptions": {
-                        "customOptionLabel": "My option",
-                        "keyValue": {
-                            "key": "key",
-                            "value": "value",
-                            "button": "One more"
-                        },
-                        "dateLocale": "en-gb",
-                        "booleanOptions": [
-                            "❌ Hidden",
-                            "Not hidden"
-                        ],
-                        "hideStandardBooleanIcons": true,
-                        "validWeekDays": {
-                            "mon": true,
-                            "thu": true,
-                            "tue": true,
-                            "sun": true,
-                            "fri": true,
-                            "sat": true,
-                            "wed": true
-                        },
-                        "customOptionPlaceholder": "Describe your option",
-                        "range": {},
-                        "customOptionType": "textarea",
-                        "dateFormat": "DD/MM/Y",
-                        "timeFormat": " HH:mm",
-                        "isUTC": "false"
-                    },
-                    "link": ""
-                },
-                {
-                    "fieldSysName": "price",
-                    "fetch": [],
-                    "sysName": "price",
-                    "name": "Price, per pound, $",
-                    "dataType": "decimal",
-                    "format": "",
-                    "formatOptions": {},
-                    "link": ""
-                },
-                {
-                    "fieldSysName": "description",
-                    "fetch": [],
-                    "sysName": "description",
-                    "name": "Description",
-                    "dataType": "string",
-                    "format": "markdown",
-                    "formatOptions": {},
-                    "link": ""
-                },
-                {
-                    "fieldSysName": "image",
-                    "fetch": [],
-                    "sysName": "image",
-                    "name": "Photo",
-                    "dataType": "file",
-                    "format": "image",
-                    "formatOptions": {},
-                    "link": ""
-                },
-                {
-                    "fieldSysName": "title",
-                    "fetch": [],
-                    "sysName": "title",
-                    "name": "Item title",
-                    "dataType": "string",
-                    "format": "",
-                    "formatOptions": {},
-                    "link": null
-                },
-                {
-                    "fieldSysName": "country_id",
-                    "fetch": [],
-                    "sysName": "country_id",
-                    "name": "Producing country",
-                    "dataType": "link",
-                    "format": "",
-                    "formatOptions": {},
-                    "link": "countries"
-                }
-            ],
+            "writeFields": [],
             "fields": {
                 "id": {
                     "id": "id",
@@ -251,29 +443,60 @@ let exampleTable = {
                     "dataType": "id",
                     "format": "",
                     "formatOptions": {},
-                    "write": true,
                     "read": true,
                     "link": "",
                     "actions": []
                 },
-                "title": {
-                    "id": "title",
-                    "content": "Item title",
+                "Attachments": {
+                    "id": "Attachments",
+                    "content": "Прикреплённые файлы",
                     "type": "field",
-                    "dataType": "string",
-                    "format": "",
+                    "dataType": "file",
+                    "format": "multipleFiles",
                     "formatOptions": {},
-                    "write": true,
                     "read": true,
-                    "link": null,
+                    "link": "",
                     "actions": []
                 },
-                "isHidden": {
-                    "id": "isHidden",
-                    "content": "hidden",
+                "Colour": {
+                    "id": "Colour",
+                    "content": "Цвет",
                     "type": "field",
-                    "dataType": "boolean",
-                    "format": "",
+                    "dataType": "string",
+                    "format": "color",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "Picture": {
+                    "id": "Picture",
+                    "content": "Картинка",
+                    "type": "field",
+                    "dataType": "file",
+                    "format": "image",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "Description": {
+                    "id": "Description",
+                    "content": "Описание задания",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "markdown",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "Category": {
+                    "id": "Category",
+                    "content": "Категория задачи",
+                    "type": "field",
+                    "dataType": "json",
+                    "format": "checkboxes",
                     "formatOptions": {
                         "customOptionLabel": "My option",
                         "keyValue": {
@@ -283,10 +506,117 @@ let exampleTable = {
                         },
                         "dateLocale": "en-gb",
                         "booleanOptions": [
-                            "❌ Hidden",
-                            "Not hidden"
+                            "True",
+                            "False"
                         ],
-                        "hideStandardBooleanIcons": true,
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "DD/MM/Y",
+                        "timeFormat": " HH:mm",
+                        "isUTC": "false",
+                        "multipleChoice": [
+                            {
+                                "value": "ToDo",
+                                "label": "ToDo"
+                            },
+                            {
+                                "value": "Homework",
+                                "label": "Homework"
+                            }
+                        ]
+                    },
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "Type": {
+                    "id": "Type",
+                    "content": "Тип задачи",
+                    "type": "field",
+                    "dataType": "json",
+                    "format": "checkboxes",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "dateLocale": "en-gb",
+                        "booleanOptions": [
+                            "True",
+                            "False"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOption": false,
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "DD/MM/Y",
+                        "timeFormat": " HH:mm",
+                        "isUTC": "false",
+                        "multipleChoice": [
+                            {
+                                "value": "Summative",
+                                "label": "Summative"
+                            },
+                            {
+                                "value": "Formative",
+                                "label": "Formative"
+                            }
+                        ]
+                    },
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "Title": {
+                    "id": "Title",
+                    "content": "Название задачи",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "Deadline": {
+                    "id": "Deadline",
+                    "content": "Крайний срок выполнения",
+                    "type": "field",
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "dateLocale": "ru",
+                        "booleanOptions": [
+                            "True",
+                            "False"
+                        ],
                         "validWeekDays": {
                             "mon": true,
                             "thu": true,
@@ -303,62 +633,62 @@ let exampleTable = {
                         "timeFormat": " HH:mm",
                         "isUTC": "false"
                     },
-                    "write": true,
                     "read": true,
                     "link": "",
                     "actions": []
                 },
-                "price": {
-                    "id": "price",
-                    "content": "Price, per pound, $",
-                    "type": "field",
-                    "dataType": "decimal",
-                    "format": "",
-                    "formatOptions": {},
-                    "write": true,
-                    "read": true,
-                    "link": "",
-                    "actions": []
-                },
-                "description": {
-                    "id": "description",
-                    "content": "Description",
-                    "type": "field",
-                    "dataType": "string",
-                    "format": "markdown",
-                    "formatOptions": {},
-                    "write": true,
-                    "read": true,
-                    "link": "",
-                    "actions": []
-                },
-                "image": {
-                    "id": "image",
-                    "content": "Photo",
-                    "type": "field",
-                    "dataType": "file",
-                    "format": "image",
-                    "formatOptions": {},
-                    "write": true,
-                    "read": true,
-                    "link": "",
-                    "actions": []
-                },
-                "country_id": {
-                    "id": "country_id",
-                    "content": "Producing country",
+                "Subject": {
+                    "id": "Subject",
+                    "content": "Предмет",
                     "type": "field",
                     "dataType": "link",
                     "format": "",
                     "formatOptions": {},
-                    "write": true,
                     "read": true,
-                    "link": "countries",
+                    "link": "subject",
                     "actions": []
                 },
-                "action__12161707383175503": {
-                    "id": "action__12161707383175503",
-                    "content": "Out of Stock (hide item)",
+                "ATLskills_ids": {
+                    "id": "ATLskills_ids",
+                    "content": "Навыки ATL",
+                    "type": "field",
+                    "dataType": "arrayLink",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "atl_skills",
+                    "actions": []
+                },
+                "Taskauthor": {
+                    "id": "Taskauthor",
+                    "content": "Автор задачи",
+                    "type": "field",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "WebUser",
+                    "actions": []
+                },
+                "Unit": {
+                    "id": "Unit",
+                    "type": "field",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "actions": []
+                },
+                "Criteria": {
+                    "id": "Criteria",
+                    "type": "field",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "actions": []
+                },
+                "action__11001713789049568": {
+                    "content": "Закрыть задачу",
+                    "id": "action__11001713789049568",
                     "type": "action",
                     "actions": []
                 }
@@ -372,7 +702,7 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "title": {
+                "Attachments": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -380,7 +710,7 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "isHidden": {
+                "Colour": {
                     "include": false,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -388,7 +718,7 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "price": {
+                "Picture": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -396,7 +726,7 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "description": {
+                "Description": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -404,7 +734,7 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "image": {
+                "Category": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -412,14 +742,371 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "country_id": {
+                "Type": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
-                    "quickSearch": true,
+                    "quickSearch": false,
                     "fileImageSize": 200,
-                    "clickable": false,
-                    "quickSearchSL": "allCountrues"
+                    "clickable": false
+                },
+                "Title": {
+                    "include": false,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "from": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "message_text": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "system": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "user_id": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "Deadline": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "Subject": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "ATLskills_ids": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "Taskauthor": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "Unit": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": true,
+                    "configureLinkedCard": {
+                        "fields": {
+                            "id": {
+                                "id": "id",
+                                "content": "id",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "id",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "Title": {
+                                "id": "Title",
+                                "content": "Название юнита",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "Subject": {
+                                "id": "Subject",
+                                "content": "Предмет",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "arrayLink",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "InquiryQuestions": {
+                                "id": "InquiryQuestions",
+                                "content": "Inquiry Questions",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "arrayLink",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "RelatedConcepts": {
+                                "id": "RelatedConcepts",
+                                "content": "Related Concept(s)",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "arrayLink",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "KeyConcept_id": {
+                                "id": "KeyConcept_id",
+                                "content": "Key Concept",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "link",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "Attachments": {
+                                "id": "Attachments",
+                                "content": "Вложения",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "file",
+                                "format": "multipleFiles",
+                                "formatOptions": {}
+                            },
+                            "Cover": {
+                                "id": "Cover",
+                                "content": "Обложка",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "file",
+                                "format": "image",
+                                "formatOptions": {}
+                            },
+                            "Creator": {
+                                "id": "Creator",
+                                "content": "Создатель юнита",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "link",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "StatementofInquiry": {
+                                "id": "StatementofInquiry",
+                                "content": "Statement of Inquiry",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": "markdown",
+                                "formatOptions": {}
+                            },
+                            "Dateend": {
+                                "id": "Dateend",
+                                "content": "Завершение юнита",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "date",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "Datestart": {
+                                "id": "Datestart",
+                                "content": "Начало юнита",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "date",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "Unittemplate": {
+                                "id": "Unittemplate",
+                                "content": "Unit Template",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "json",
+                                "format": "checkboxes",
+                                "formatOptions": {
+                                    "customOptionLabel": "My option",
+                                    "keyValue": {
+                                        "key": "key",
+                                        "value": "value",
+                                        "button": "One more"
+                                    },
+                                    "dateLocale": "en-gb",
+                                    "booleanOptions": [
+                                        "True",
+                                        "False"
+                                    ],
+                                    "validWeekDays": {
+                                        "mon": true,
+                                        "thu": true,
+                                        "tue": true,
+                                        "sun": true,
+                                        "fri": true,
+                                        "sat": true,
+                                        "wed": true
+                                    },
+                                    "customOptionPlaceholder": "Describe your option",
+                                    "range": {},
+                                    "customOptionType": "textarea",
+                                    "dateFormat": "DD/MM/Y",
+                                    "timeFormat": " HH:mm",
+                                    "isUTC": "false",
+                                    "multipleChoice": [
+                                        {
+                                            "value": "Standart",
+                                            "label": "Standart"
+                                        },
+                                        {
+                                            "value": "Interdisciplinary",
+                                            "label": "Interdisciplinary"
+                                        }
+                                    ]
+                                }
+                            },
+                            "Description": {
+                                "id": "Description",
+                                "content": "",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": "markdown",
+                                "formatOptions": {}
+                            }
+                        },
+                        "fieldParams": {
+                            "id": {
+                                "include": false,
+                                "disableEditing": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "Title": {
+                                "include": false,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "Subject": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "InquiryQuestions": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "RelatedConcepts": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "KeyConcept_id": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "Attachments": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "Cover": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200,
+                                "descriptionFlag": false
+                            },
+                            "Creator": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "StatementofInquiry": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "Dateend": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "Datestart": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "Unittemplate": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "Description": {
+                                "include": true,
+                                "disableEditing": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
+                        },
+                        "fieldOrder": [
+                            "id",
+                            "Title",
+                            "Description",
+                            "Cover",
+                            "Subject",
+                            "KeyConcept_id",
+                            "RelatedConcepts",
+                            "InquiryQuestions",
+                            "StatementofInquiry",
+                            "Datestart",
+                            "Dateend",
+                            "Unittemplate",
+                            "Attachments",
+                            "Creator"
+                        ]
+                    }
+                },
+                "Criteria": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
                 }
             },
             "columns": {
@@ -428,20 +1115,41 @@ let exampleTable = {
                     "title": "New section",
                     "fieldIds": [
                         "id",
-                        "image",
-                        "title",
-                        "isHidden",
-                        "description",
-                        "price",
-                        "country_id",
-                        "action__12161707383175503"
+                        "Colour",
+                        "Picture",
+                        "Description",
+                        "Category",
+                        "Type",
+                        "Title",
+                        "Deadline",
+                        "Subject",
+                        "ATLskills_ids",
+                        "Attachments",
+                        "Taskauthor",
+                        "Unit",
+                        "action__11001713789049568",
+                        "Criteria"
                     ]
                 }
             },
             "columnOrder": [
                 "tab-1"
             ],
-            "actions": []
+            "actions": [
+                {
+                    "sysName": "",
+                    "id": "11001713789049568",
+                    "name": "Закрыть задачу",
+                    "displayAs": "button",
+                    "footerButtons": false,
+                    "dropdown": true,
+                    "SLtype": "same",
+                    "callFrom": "main",
+                    "buttonIcon": "close",
+                    "closePopup": false,
+                    "showMessage": false
+                }
+            ]
         },
         "fields": {
             "id": {
@@ -452,7 +1160,7 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "title": {
+            "Attachments": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -460,7 +1168,7 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "isHidden": {
+            "Colour": {
                 "include": false,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -468,7 +1176,7 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "price": {
+            "Picture": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -476,7 +1184,7 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "description": {
+            "Description": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -484,7 +1192,7 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "image": {
+            "Category": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -492,1074 +1200,541 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "country_id": {
+            "Type": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
-                "quickSearch": true,
+                "quickSearch": false,
                 "fileImageSize": 200,
-                "clickable": false,
-                "quickSearchSL": "allCountrues",
-                "searchData": [
-                    {
-                        "key": "AF",
-                        "value": "Afghanistan"
-                    },
-                    {
-                        "key": "AX",
-                        "value": "Åland Islands"
-                    },
-                    {
-                        "key": "AL",
-                        "value": "Albania"
-                    },
-                    {
-                        "key": "DZ",
-                        "value": "Algeria"
-                    },
-                    {
-                        "key": "AS",
-                        "value": "American Samoa"
-                    },
-                    {
-                        "key": "AD",
-                        "value": "Andorra"
-                    },
-                    {
-                        "key": "AO",
-                        "value": "Angola"
-                    },
-                    {
-                        "key": "AI",
-                        "value": "Anguilla"
-                    },
-                    {
-                        "key": "AQ",
-                        "value": "Antarctica"
-                    },
-                    {
-                        "key": "AG",
-                        "value": "Antigua and Barbuda"
-                    },
-                    {
-                        "key": "AR",
-                        "value": "Argentina"
-                    },
-                    {
-                        "key": "AM",
-                        "value": "Armenia"
-                    },
-                    {
-                        "key": "AW",
-                        "value": "Aruba"
-                    },
-                    {
-                        "key": "AU",
-                        "value": "Australia"
-                    },
-                    {
-                        "key": "AT",
-                        "value": "Austria"
-                    },
-                    {
-                        "key": "AZ",
-                        "value": "Azerbaijan"
-                    },
-                    {
-                        "key": "BS",
-                        "value": "Bahamas"
-                    },
-                    {
-                        "key": "BH",
-                        "value": "Bahrain"
-                    },
-                    {
-                        "key": "BD",
-                        "value": "Bangladesh"
-                    },
-                    {
-                        "key": "BB",
-                        "value": "Barbados"
-                    },
-                    {
-                        "key": "BY",
-                        "value": "Belarus"
-                    },
-                    {
-                        "key": "BE",
-                        "value": "Belgium"
-                    },
-                    {
-                        "key": "BZ",
-                        "value": "Belize"
-                    },
-                    {
-                        "key": "BJ",
-                        "value": "Benin"
-                    },
-                    {
-                        "key": "BM",
-                        "value": "Bermuda"
-                    },
-                    {
-                        "key": "BT",
-                        "value": "Bhutan"
-                    },
-                    {
-                        "key": "BO",
-                        "value": "Bolivia, Plurinational State of"
-                    },
-                    {
-                        "key": "BQ",
-                        "value": "Bonaire, Sint Eustatius and Saba"
-                    },
-                    {
-                        "key": "BA",
-                        "value": "Bosnia and Herzegovina"
-                    },
-                    {
-                        "key": "BW",
-                        "value": "Botswana"
-                    },
-                    {
-                        "key": "BV",
-                        "value": "Bouvet Island"
-                    },
-                    {
-                        "key": "BR",
-                        "value": "Brazil"
-                    },
-                    {
-                        "key": "IO",
-                        "value": "British Indian Ocean Territory"
-                    },
-                    {
-                        "key": "BN",
-                        "value": "Brunei Darussalam"
-                    },
-                    {
-                        "key": "BG",
-                        "value": "Bulgaria"
-                    },
-                    {
-                        "key": "BF",
-                        "value": "Burkina Faso"
-                    },
-                    {
-                        "key": "BI",
-                        "value": "Burundi"
-                    },
-                    {
-                        "key": "KH",
-                        "value": "Cambodia"
-                    },
-                    {
-                        "key": "CM",
-                        "value": "Cameroon"
-                    },
-                    {
-                        "key": "CA",
-                        "value": "Canada"
-                    },
-                    {
-                        "key": "CV",
-                        "value": "Cape Verde"
-                    },
-                    {
-                        "key": "KY",
-                        "value": "Cayman Islands"
-                    },
-                    {
-                        "key": "CF",
-                        "value": "Central African Republic"
-                    },
-                    {
-                        "key": "TD",
-                        "value": "Chad"
-                    },
-                    {
-                        "key": "CL",
-                        "value": "Chile"
-                    },
-                    {
-                        "key": "CN",
-                        "value": "China"
-                    },
-                    {
-                        "key": "CX",
-                        "value": "Christmas Island"
-                    },
-                    {
-                        "key": "CC",
-                        "value": "Cocos (Keeling) Islands"
-                    },
-                    {
-                        "key": "CO",
-                        "value": "Colombia"
-                    },
-                    {
-                        "key": "KM",
-                        "value": "Comoros"
-                    },
-                    {
-                        "key": "CG",
-                        "value": "Congo"
-                    },
-                    {
-                        "key": "CD",
-                        "value": "Congo, the Democratic Republic of the"
-                    },
-                    {
-                        "key": "CK",
-                        "value": "Cook Islands"
-                    },
-                    {
-                        "key": "CR",
-                        "value": "Costa Rica"
-                    },
-                    {
-                        "key": "CI",
-                        "value": "Côte d'Ivoire"
-                    },
-                    {
-                        "key": "HR",
-                        "value": "Croatia"
-                    },
-                    {
-                        "key": "CU",
-                        "value": "Cuba"
-                    },
-                    {
-                        "key": "CW",
-                        "value": "Curaçao"
-                    },
-                    {
-                        "key": "CY",
-                        "value": "Cyprus"
-                    },
-                    {
-                        "key": "CZ",
-                        "value": "Czech Republic"
-                    },
-                    {
-                        "key": "DK",
-                        "value": "Denmark"
-                    },
-                    {
-                        "key": "DJ",
-                        "value": "Djibouti"
-                    },
-                    {
-                        "key": "DM",
-                        "value": "Dominica"
-                    },
-                    {
-                        "key": "DO",
-                        "value": "Dominican Republic"
-                    },
-                    {
-                        "key": "EC",
-                        "value": "Ecuador"
-                    },
-                    {
-                        "key": "EG",
-                        "value": "Egypt"
-                    },
-                    {
-                        "key": "SV",
-                        "value": "El Salvador"
-                    },
-                    {
-                        "key": "GQ",
-                        "value": "Equatorial Guinea"
-                    },
-                    {
-                        "key": "ER",
-                        "value": "Eritrea"
-                    },
-                    {
-                        "key": "EE",
-                        "value": "Estonia"
-                    },
-                    {
-                        "key": "ET",
-                        "value": "Ethiopia"
-                    },
-                    {
-                        "key": "FK",
-                        "value": "Falkland Islands (Malvinas)"
-                    },
-                    {
-                        "key": "FO",
-                        "value": "Faroe Islands"
-                    },
-                    {
-                        "key": "FJ",
-                        "value": "Fiji"
-                    },
-                    {
-                        "key": "FI",
-                        "value": "Finland"
-                    },
-                    {
-                        "key": "FR",
-                        "value": "France"
-                    },
-                    {
-                        "key": "GF",
-                        "value": "French Guiana"
-                    },
-                    {
-                        "key": "PF",
-                        "value": "French Polynesia"
-                    },
-                    {
-                        "key": "TF",
-                        "value": "French Southern Territories"
-                    },
-                    {
-                        "key": "GA",
-                        "value": "Gabon"
-                    },
-                    {
-                        "key": "GM",
-                        "value": "Gambia"
-                    },
-                    {
-                        "key": "GE",
-                        "value": "Georgia"
-                    },
-                    {
-                        "key": "DE",
-                        "value": "Germany"
-                    },
-                    {
-                        "key": "GH",
-                        "value": "Ghana"
-                    },
-                    {
-                        "key": "GI",
-                        "value": "Gibraltar"
-                    },
-                    {
-                        "key": "GR",
-                        "value": "Greece"
-                    },
-                    {
-                        "key": "GL",
-                        "value": "Greenland"
-                    },
-                    {
-                        "key": "GD",
-                        "value": "Grenada"
-                    },
-                    {
-                        "key": "GP",
-                        "value": "Guadeloupe"
-                    },
-                    {
-                        "key": "GU",
-                        "value": "Guam"
-                    },
-                    {
-                        "key": "GT",
-                        "value": "Guatemala"
-                    },
-                    {
-                        "key": "GG",
-                        "value": "Guernsey"
-                    },
-                    {
-                        "key": "GN",
-                        "value": "Guinea"
-                    },
-                    {
-                        "key": "GW",
-                        "value": "Guinea-Bissau"
-                    },
-                    {
-                        "key": "GY",
-                        "value": "Guyana"
-                    },
-                    {
-                        "key": "HT",
-                        "value": "Haiti"
-                    },
-                    {
-                        "key": "HM",
-                        "value": "Heard Island and McDonald Islands"
-                    },
-                    {
-                        "key": "VA",
-                        "value": "Holy See (Vatican City State)"
-                    },
-                    {
-                        "key": "HN",
-                        "value": "Honduras"
-                    },
-                    {
-                        "key": "HK",
-                        "value": "Hong Kong"
-                    },
-                    {
-                        "key": "HU",
-                        "value": "Hungary"
-                    },
-                    {
-                        "key": "IS",
-                        "value": "Iceland"
-                    },
-                    {
-                        "key": "IN",
-                        "value": "India"
-                    },
-                    {
-                        "key": "ID",
-                        "value": "Indonesia"
-                    },
-                    {
-                        "key": "IR",
-                        "value": "Iran, Islamic Republic of"
-                    },
-                    {
-                        "key": "IQ",
-                        "value": "Iraq"
-                    },
-                    {
-                        "key": "IE",
-                        "value": "Ireland"
-                    },
-                    {
-                        "key": "IM",
-                        "value": "Isle of Man"
-                    },
-                    {
-                        "key": "IL",
-                        "value": "Israel"
-                    },
-                    {
-                        "key": "IT",
-                        "value": "Italy"
-                    },
-                    {
-                        "key": "JM",
-                        "value": "Jamaica"
-                    },
-                    {
-                        "key": "JP",
-                        "value": "Japan"
-                    },
-                    {
-                        "key": "JE",
-                        "value": "Jersey"
-                    },
-                    {
-                        "key": "JO",
-                        "value": "Jordan"
-                    },
-                    {
-                        "key": "KZ",
-                        "value": "Kazakhstan"
-                    },
-                    {
-                        "key": "KE",
-                        "value": "Kenya"
-                    },
-                    {
-                        "key": "KI",
-                        "value": "Kiribati"
-                    },
-                    {
-                        "key": "KP",
-                        "value": "Korea, Democratic People's Republic of"
-                    },
-                    {
-                        "key": "KR",
-                        "value": "Korea, Republic of"
-                    },
-                    {
-                        "key": "KW",
-                        "value": "Kuwait"
-                    },
-                    {
-                        "key": "KG",
-                        "value": "Kyrgyzstan"
-                    },
-                    {
-                        "key": "LA",
-                        "value": "Lao People's Democratic Republic"
-                    },
-                    {
-                        "key": "LV",
-                        "value": "Latvia"
-                    },
-                    {
-                        "key": "LB",
-                        "value": "Lebanon"
-                    },
-                    {
-                        "key": "LS",
-                        "value": "Lesotho"
-                    },
-                    {
-                        "key": "LR",
-                        "value": "Liberia"
-                    },
-                    {
-                        "key": "LY",
-                        "value": "Libya"
-                    },
-                    {
-                        "key": "LI",
-                        "value": "Liechtenstein"
-                    },
-                    {
-                        "key": "LT",
-                        "value": "Lithuania"
-                    },
-                    {
-                        "key": "LU",
-                        "value": "Luxembourg"
-                    },
-                    {
-                        "key": "MO",
-                        "value": "Macao"
-                    },
-                    {
-                        "key": "MK",
-                        "value": "Macedonia, the Former Yugoslav Republic of"
-                    },
-                    {
-                        "key": "MG",
-                        "value": "Madagascar"
-                    },
-                    {
-                        "key": "MW",
-                        "value": "Malawi"
-                    },
-                    {
-                        "key": "MY",
-                        "value": "Malaysia"
-                    },
-                    {
-                        "key": "MV",
-                        "value": "Maldives"
-                    },
-                    {
-                        "key": "ML",
-                        "value": "Mali"
-                    },
-                    {
-                        "key": "MT",
-                        "value": "Malta"
-                    },
-                    {
-                        "key": "MH",
-                        "value": "Marshall Islands"
-                    },
-                    {
-                        "key": "MQ",
-                        "value": "Martinique"
-                    },
-                    {
-                        "key": "MR",
-                        "value": "Mauritania"
-                    },
-                    {
-                        "key": "MU",
-                        "value": "Mauritius"
-                    },
-                    {
-                        "key": "YT",
-                        "value": "Mayotte"
-                    },
-                    {
-                        "key": "MX",
-                        "value": "Mexico"
-                    },
-                    {
-                        "key": "FM",
-                        "value": "Micronesia, Federated States of"
-                    },
-                    {
-                        "key": "MD",
-                        "value": "Moldova, Republic of"
-                    },
-                    {
-                        "key": "MC",
-                        "value": "Monaco"
-                    },
-                    {
-                        "key": "MN",
-                        "value": "Mongolia"
-                    },
-                    {
-                        "key": "ME",
-                        "value": "Montenegro"
-                    },
-                    {
-                        "key": "MS",
-                        "value": "Montserrat"
-                    },
-                    {
-                        "key": "MA",
-                        "value": "Morocco"
-                    },
-                    {
-                        "key": "MZ",
-                        "value": "Mozambique"
-                    },
-                    {
-                        "key": "MM",
-                        "value": "Myanmar"
-                    },
-                    {
-                        "key": "NA",
-                        "value": "Namibia"
-                    },
-                    {
-                        "key": "NR",
-                        "value": "Nauru"
-                    },
-                    {
-                        "key": "NP",
-                        "value": "Nepal"
-                    },
-                    {
-                        "key": "NL",
-                        "value": "Netherlands"
-                    },
-                    {
-                        "key": "NC",
-                        "value": "New Caledonia"
-                    },
-                    {
-                        "key": "NZ",
-                        "value": "New Zealand"
-                    },
-                    {
-                        "key": "NI",
-                        "value": "Nicaragua"
-                    },
-                    {
-                        "key": "NE",
-                        "value": "Niger"
-                    },
-                    {
-                        "key": "NG",
-                        "value": "Nigeria"
-                    },
-                    {
-                        "key": "NU",
-                        "value": "Niue"
-                    },
-                    {
-                        "key": "NF",
-                        "value": "Norfolk Island"
-                    },
-                    {
-                        "key": "MP",
-                        "value": "Northern Mariana Islands"
-                    },
-                    {
-                        "key": "NO",
-                        "value": "Norway"
-                    },
-                    {
-                        "key": "OM",
-                        "value": "Oman"
-                    },
-                    {
-                        "key": "PK",
-                        "value": "Pakistan"
-                    },
-                    {
-                        "key": "PW",
-                        "value": "Palau"
-                    },
-                    {
-                        "key": "PS",
-                        "value": "Palestine, State of"
-                    },
-                    {
-                        "key": "PA",
-                        "value": "Panama"
-                    },
-                    {
-                        "key": "PG",
-                        "value": "Papua New Guinea"
-                    },
-                    {
-                        "key": "PY",
-                        "value": "Paraguay"
-                    },
-                    {
-                        "key": "PE",
-                        "value": "Peru"
-                    },
-                    {
-                        "key": "PH",
-                        "value": "Philippines"
-                    },
-                    {
-                        "key": "PN",
-                        "value": "Pitcairn"
-                    },
-                    {
-                        "key": "PL",
-                        "value": "Poland"
-                    },
-                    {
-                        "key": "PT",
-                        "value": "Portugal"
-                    },
-                    {
-                        "key": "PR",
-                        "value": "Puerto Rico"
-                    },
-                    {
-                        "key": "QA",
-                        "value": "Qatar"
-                    },
-                    {
-                        "key": "RE",
-                        "value": "Réunion"
-                    },
-                    {
-                        "key": "RO",
-                        "value": "Romania"
-                    },
-                    {
-                        "key": "RU",
-                        "value": "Russian Federation"
-                    },
-                    {
-                        "key": "RW",
-                        "value": "Rwanda"
-                    },
-                    {
-                        "key": "BL",
-                        "value": "Saint Barthélemy"
-                    },
-                    {
-                        "key": "SH",
-                        "value": "Saint Helena, Ascension and Tristan da Cunha"
-                    },
-                    {
-                        "key": "KN",
-                        "value": "Saint Kitts and Nevis"
-                    },
-                    {
-                        "key": "LC",
-                        "value": "Saint Lucia"
-                    },
-                    {
-                        "key": "MF",
-                        "value": "Saint Martin (French part)"
-                    },
-                    {
-                        "key": "PM",
-                        "value": "Saint Pierre and Miquelon"
-                    },
-                    {
-                        "key": "VC",
-                        "value": "Saint Vincent and the Grenadines"
-                    },
-                    {
-                        "key": "WS",
-                        "value": "Samoa"
-                    },
-                    {
-                        "key": "SM",
-                        "value": "San Marino"
-                    },
-                    {
-                        "key": "ST",
-                        "value": "Sao Tome and Principe"
-                    },
-                    {
-                        "key": "SA",
-                        "value": "Saudi Arabia"
-                    },
-                    {
-                        "key": "SN",
-                        "value": "Senegal"
-                    },
-                    {
-                        "key": "RS",
-                        "value": "Serbia"
-                    },
-                    {
-                        "key": "SC",
-                        "value": "Seychelles"
-                    },
-                    {
-                        "key": "SL",
-                        "value": "Sierra Leone"
-                    },
-                    {
-                        "key": "SG",
-                        "value": "Singapore"
-                    },
-                    {
-                        "key": "SX",
-                        "value": "Sint Maarten (Dutch part)"
-                    },
-                    {
-                        "key": "SK",
-                        "value": "Slovakia"
-                    },
-                    {
-                        "key": "SI",
-                        "value": "Slovenia"
-                    },
-                    {
-                        "key": "SB",
-                        "value": "Solomon Islands"
-                    },
-                    {
-                        "key": "SO",
-                        "value": "Somalia"
-                    },
-                    {
-                        "key": "ZA",
-                        "value": "South Africa"
-                    },
-                    {
-                        "key": "GS",
-                        "value": "South Georgia and the South Sandwich Islands"
-                    },
-                    {
-                        "key": "SS",
-                        "value": "South Sudan"
-                    },
-                    {
-                        "key": "ES",
-                        "value": "Spain"
-                    },
-                    {
-                        "key": "LK",
-                        "value": "Sri Lanka"
-                    },
-                    {
-                        "key": "SD",
-                        "value": "Sudan"
-                    },
-                    {
-                        "key": "SR",
-                        "value": "Suriname"
-                    },
-                    {
-                        "key": "SJ",
-                        "value": "Svalbard and Jan Mayen"
-                    },
-                    {
-                        "key": "SZ",
-                        "value": "Swaziland"
-                    },
-                    {
-                        "key": "SE",
-                        "value": "Sweden"
-                    },
-                    {
-                        "key": "CH",
-                        "value": "Switzerland"
-                    },
-                    {
-                        "key": "SY",
-                        "value": "Syrian Arab Republic"
-                    },
-                    {
-                        "key": "TW",
-                        "value": "Taiwan, Province of China"
-                    },
-                    {
-                        "key": "TJ",
-                        "value": "Tajikistan"
-                    },
-                    {
-                        "key": "TZ",
-                        "value": "Tanzania, United Republic of"
-                    },
-                    {
-                        "key": "TH",
-                        "value": "Thailand"
-                    },
-                    {
-                        "key": "TL",
-                        "value": "Timor-Leste"
-                    },
-                    {
-                        "key": "TG",
-                        "value": "Togo"
-                    },
-                    {
-                        "key": "TK",
-                        "value": "Tokelau"
-                    },
-                    {
-                        "key": "TO",
-                        "value": "Tonga"
-                    },
-                    {
-                        "key": "TT",
-                        "value": "Trinidad and Tobago"
-                    },
-                    {
-                        "key": "TN",
-                        "value": "Tunisia"
-                    },
-                    {
-                        "key": "TR",
-                        "value": "Turkey"
-                    },
-                    {
-                        "key": "TM",
-                        "value": "Turkmenistan"
-                    },
-                    {
-                        "key": "TC",
-                        "value": "Turks and Caicos Islands"
-                    },
-                    {
-                        "key": "TV",
-                        "value": "Tuvalu"
-                    },
-                    {
-                        "key": "UG",
-                        "value": "Uganda"
-                    },
-                    {
-                        "key": "UA",
-                        "value": "404 (not found)"
-                    },
-                    {
-                        "key": "AE",
-                        "value": "United Arab Emirates"
-                    },
-                    {
-                        "key": "GB",
-                        "value": "United Kingdom"
-                    },
-                    {
-                        "key": "US",
-                        "value": "United States"
-                    },
-                    {
-                        "key": "UM",
-                        "value": "United States Minor Outlying Islands"
-                    },
-                    {
-                        "key": "UY",
-                        "value": "Uruguay"
-                    },
-                    {
-                        "key": "UZ",
-                        "value": "Uzbekistan"
-                    },
-                    {
-                        "key": "VU",
-                        "value": "Vanuatu"
-                    },
-                    {
-                        "key": "VE",
-                        "value": "Venezuela, Bolivarian Republic of"
-                    },
-                    {
-                        "key": "VN",
-                        "value": "Viet Nam"
-                    },
-                    {
-                        "key": "VG",
-                        "value": "Virgin Islands, British"
-                    },
-                    {
-                        "key": "VI",
-                        "value": "Virgin Islands, U.S."
-                    },
-                    {
-                        "key": "WF",
-                        "value": "Wallis and Futuna"
-                    },
-                    {
-                        "key": "EH",
-                        "value": "Western Sahara"
-                    },
-                    {
-                        "key": "YE",
-                        "value": "Yemen"
-                    },
-                    {
-                        "key": "ZM",
-                        "value": "Zambia"
-                    },
-                    {
-                        "key": "ZW",
-                        "value": "Zimbabwe"
-                    },
-                    {
-                        "key": "Undefined",
-                        "value": "👽 Nowhere"
-                    }
-                ]
+                "clickable": false
+            },
+            "Title": {
+                "include": false,
+                "disableEditing": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "from": {
+                "include": true,
+                "disableEditing": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "message_text": {
+                "include": true,
+                "disableEditing": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "system": {
+                "include": true,
+                "disableEditing": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "user_id": {
+                "include": true,
+                "disableEditing": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "Deadline": {
+                "include": true,
+                "disableEditing": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "Subject": {
+                "include": true,
+                "disableEditing": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "ATLskills_ids": {
+                "include": true,
+                "disableEditing": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "Taskauthor": {
+                "include": true,
+                "disableEditing": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "Unit": {
+                "include": true,
+                "disableEditing": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": true,
+                "configureLinkedCard": {
+                    "fields": {
+                        "id": {
+                            "id": "id",
+                            "content": "id",
+                            "type": "field",
+                            "read": true,
+                            "dataType": "id",
+                            "format": null,
+                            "formatOptions": {}
+                        },
+                        "Title": {
+                            "id": "Title",
+                            "content": "Название юнита",
+                            "type": "field",
+                            "read": true,
+                            "dataType": "string",
+                            "format": null,
+                            "formatOptions": {}
+                        },
+                        "Subject": {
+                            "id": "Subject",
+                            "content": "Предмет",
+                            "type": "field",
+                            "read": true,
+                            "dataType": "arrayLink",
+                            "format": null,
+                            "formatOptions": {}
+                        },
+                        "InquiryQuestions": {
+                            "id": "InquiryQuestions",
+                            "content": "Inquiry Questions",
+                            "type": "field",
+                            "read": true,
+                            "dataType": "arrayLink",
+                            "format": null,
+                            "formatOptions": {}
+                        },
+                        "RelatedConcepts": {
+                            "id": "RelatedConcepts",
+                            "content": "Related Concept(s)",
+                            "type": "field",
+                            "read": true,
+                            "dataType": "arrayLink",
+                            "format": null,
+                            "formatOptions": {}
+                        },
+                        "KeyConcept_id": {
+                            "id": "KeyConcept_id",
+                            "content": "Key Concept",
+                            "type": "field",
+                            "read": true,
+                            "dataType": "link",
+                            "format": null,
+                            "formatOptions": {}
+                        },
+                        "Attachments": {
+                            "id": "Attachments",
+                            "content": "Вложения",
+                            "type": "field",
+                            "read": true,
+                            "dataType": "file",
+                            "format": "multipleFiles",
+                            "formatOptions": {}
+                        },
+                        "Cover": {
+                            "id": "Cover",
+                            "content": "Обложка",
+                            "type": "field",
+                            "read": true,
+                            "dataType": "file",
+                            "format": "image",
+                            "formatOptions": {}
+                        },
+                        "Creator": {
+                            "id": "Creator",
+                            "content": "Создатель юнита",
+                            "type": "field",
+                            "read": true,
+                            "dataType": "link",
+                            "format": null,
+                            "formatOptions": {}
+                        },
+                        "StatementofInquiry": {
+                            "id": "StatementofInquiry",
+                            "content": "Statement of Inquiry",
+                            "type": "field",
+                            "read": true,
+                            "dataType": "string",
+                            "format": "markdown",
+                            "formatOptions": {}
+                        },
+                        "Dateend": {
+                            "id": "Dateend",
+                            "content": "Завершение юнита",
+                            "type": "field",
+                            "read": true,
+                            "dataType": "date",
+                            "format": null,
+                            "formatOptions": {}
+                        },
+                        "Datestart": {
+                            "id": "Datestart",
+                            "content": "Начало юнита",
+                            "type": "field",
+                            "read": true,
+                            "dataType": "date",
+                            "format": null,
+                            "formatOptions": {}
+                        },
+                        "Unittemplate": {
+                            "id": "Unittemplate",
+                            "content": "Unit Template",
+                            "type": "field",
+                            "read": true,
+                            "dataType": "json",
+                            "format": "checkboxes",
+                            "formatOptions": {
+                                "customOptionLabel": "My option",
+                                "keyValue": {
+                                    "key": "key",
+                                    "value": "value",
+                                    "button": "One more"
+                                },
+                                "dateLocale": "en-gb",
+                                "booleanOptions": [
+                                    "True",
+                                    "False"
+                                ],
+                                "validWeekDays": {
+                                    "mon": true,
+                                    "thu": true,
+                                    "tue": true,
+                                    "sun": true,
+                                    "fri": true,
+                                    "sat": true,
+                                    "wed": true
+                                },
+                                "customOptionPlaceholder": "Describe your option",
+                                "range": {},
+                                "customOptionType": "textarea",
+                                "dateFormat": "DD/MM/Y",
+                                "timeFormat": " HH:mm",
+                                "isUTC": "false",
+                                "multipleChoice": [
+                                    {
+                                        "value": "Standart",
+                                        "label": "Standart"
+                                    },
+                                    {
+                                        "value": "Interdisciplinary",
+                                        "label": "Interdisciplinary"
+                                    }
+                                ]
+                            }
+                        },
+                        "Description": {
+                            "id": "Description",
+                            "content": "",
+                            "type": "field",
+                            "read": true,
+                            "dataType": "string",
+                            "format": "markdown",
+                            "formatOptions": {}
+                        }
+                    },
+                    "fieldParams": {
+                        "id": {
+                            "include": false,
+                            "disableEditing": true,
+                            "fileImageFormat": "square",
+                            "fileImageSize": 200
+                        },
+                        "Title": {
+                            "include": false,
+                            "disableEditing": false,
+                            "fileImageFormat": "square",
+                            "fileImageSize": 200
+                        },
+                        "Subject": {
+                            "include": true,
+                            "disableEditing": false,
+                            "fileImageFormat": "square",
+                            "fileImageSize": 200
+                        },
+                        "InquiryQuestions": {
+                            "include": true,
+                            "disableEditing": false,
+                            "fileImageFormat": "square",
+                            "fileImageSize": 200
+                        },
+                        "RelatedConcepts": {
+                            "include": true,
+                            "disableEditing": false,
+                            "fileImageFormat": "square",
+                            "fileImageSize": 200
+                        },
+                        "KeyConcept_id": {
+                            "include": true,
+                            "disableEditing": false,
+                            "fileImageFormat": "square",
+                            "fileImageSize": 200
+                        },
+                        "Attachments": {
+                            "include": true,
+                            "disableEditing": false,
+                            "fileImageFormat": "square",
+                            "fileImageSize": 200
+                        },
+                        "Cover": {
+                            "include": true,
+                            "disableEditing": false,
+                            "fileImageFormat": "square",
+                            "fileImageSize": 200,
+                            "descriptionFlag": false
+                        },
+                        "Creator": {
+                            "include": true,
+                            "disableEditing": false,
+                            "fileImageFormat": "square",
+                            "fileImageSize": 200
+                        },
+                        "StatementofInquiry": {
+                            "include": true,
+                            "disableEditing": false,
+                            "fileImageFormat": "square",
+                            "fileImageSize": 200
+                        },
+                        "Dateend": {
+                            "include": true,
+                            "disableEditing": false,
+                            "fileImageFormat": "square",
+                            "fileImageSize": 200
+                        },
+                        "Datestart": {
+                            "include": true,
+                            "disableEditing": false,
+                            "fileImageFormat": "square",
+                            "fileImageSize": 200
+                        },
+                        "Unittemplate": {
+                            "include": true,
+                            "disableEditing": false,
+                            "fileImageFormat": "square",
+                            "fileImageSize": 200
+                        },
+                        "Description": {
+                            "include": true,
+                            "disableEditing": false,
+                            "fileImageFormat": "square",
+                            "fileImageSize": 200
+                        }
+                    },
+                    "fieldOrder": [
+                        "id",
+                        "Title",
+                        "Description",
+                        "Cover",
+                        "Subject",
+                        "KeyConcept_id",
+                        "RelatedConcepts",
+                        "InquiryQuestions",
+                        "StatementofInquiry",
+                        "Datestart",
+                        "Dateend",
+                        "Unittemplate",
+                        "Attachments",
+                        "Creator"
+                    ]
+                }
+            },
+            "Criteria": {
+                "include": true,
+                "disableEditing": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
             }
         },
-        "cardCoverHeight": 100,
-        "cardBodyTextLength": 120,
+        "cardColor": "Colour",
+        "cardColorOption": "border",
+        "showCounter": false,
+        "counterField": null,
+        "counterText": null,
+        "cardHeaderStyle": "h3",
         "filterParams": {
             "isSorting": true,
             "isFiltering": true,
             "filterFields": {
-                "title": {
+                "Subject": {
                     "active": true,
-                    "dataType": "string",
-                    "format": "",
-                    "formatOptions": {},
-                    "name": "Item title"
-                },
-                "country_id": {
-                    "active": false,
                     "dataType": "link",
                     "format": "",
                     "formatOptions": {},
-                    "name": "Producing country",
-                    "textsearch": "fulltext"
-                },
-                "price": {
-                    "active": true,
-                    "dataType": "decimal",
-                    "format": "",
-                    "formatOptions": {},
-                    "name": "Price, per pound, $"
+                    "name": "Предмет",
+                    "textsearch": "choice",
+                    "linkDirectory": [
+                        {
+                            "id": "History",
+                            "text": "History"
+                        },
+                        {
+                            "id": "Geography",
+                            "text": "Geography"
+                        },
+                        {
+                            "id": "Biology",
+                            "text": "Biology"
+                        },
+                        {
+                            "id": "English",
+                            "text": "English"
+                        },
+                        {
+                            "id": "Literature",
+                            "text": "Literature"
+                        }
+                    ]
                 }
             }
         },
         "actions": [
             {
-                "sysName": "",
-                "id": "12161707383175503",
-                "name": "Out of Stock (hide item)",
+                "sysName": "statusoftaskbystudent",
+                "id": "11001713789049568",
+                "name": "Закрыть задачу",
                 "displayAs": "button",
-                "buttonIcon": "hide",
+                "footerButtons": false,
                 "dropdown": true,
+                "SLtype": "other",
+                "callFrom": "main",
+                "buttonIcon": "close",
+                "closePopup": false,
+                "showMessage": false,
+                "fields": {
+                    "readFields": [
+                        {
+                            "fieldSysName": "id",
+                            "fetch": [],
+                            "sysName": "id",
+                            "format": "",
+                            "formatOptions": {}
+                        },
+                        {
+                            "fieldSysName": "status",
+                            "fetch": [],
+                            "sysName": "status",
+                            "format": "",
+                            "formatOptions": {}
+                        },
+                        {
+                            "fieldSysName": "student",
+                            "fetch": [
+                                {
+                                    "fieldSysName": "id",
+                                    "condition": null,
+                                    "fetch": []
+                                },
+                                {
+                                    "fieldSysName": "firstName",
+                                    "condition": null,
+                                    "fetch": []
+                                },
+                                {
+                                    "fieldSysName": "lastName",
+                                    "condition": null,
+                                    "fetch": []
+                                }
+                            ],
+                            "sysName": "student",
+                            "format": "",
+                            "formatOptions": {}
+                        },
+                        {
+                            "fieldSysName": "task_id",
+                            "fetch": [
+                                {
+                                    "fieldSysName": "id",
+                                    "condition": null,
+                                    "fetch": []
+                                },
+                                {
+                                    "fieldSysName": "Title",
+                                    "condition": null,
+                                    "fetch": []
+                                }
+                            ],
+                            "sysName": "task_id",
+                            "format": "",
+                            "formatOptions": {}
+                        }
+                    ],
+                    "writeFields": [
+                        {
+                            "fieldSysName": "id",
+                            "fetch": [],
+                            "sysName": "id",
+                            "format": "",
+                            "formatOptions": {}
+                        },
+                        {
+                            "fieldSysName": "status",
+                            "fetch": [],
+                            "sysName": "status",
+                            "format": "",
+                            "formatOptions": {}
+                        },
+                        {
+                            "fieldSysName": "student",
+                            "fetch": [],
+                            "sysName": "student",
+                            "format": "",
+                            "formatOptions": {}
+                        },
+                        {
+                            "fieldSysName": "task_id",
+                            "fetch": [],
+                            "sysName": "task_id",
+                            "format": "",
+                            "formatOptions": {}
+                        }
+                    ]
+                },
                 "formMapping": [
                     {
-                        "id": "77131707383205298",
-                        "target": "id",
-                        "type": "objectField",
-                        "value": "id"
+                        "id": "37901713794092059",
+                        "target": "status",
+                        "type": "const",
+                        "value": "stop"
                     },
                     {
-                        "id": "85161707383210853",
-                        "target": "isHidden",
-                        "type": "const",
-                        "value": "true"
+                        "id": "83681713794435073",
+                        "target": "student",
+                        "type": "user",
+                        "value": null
+                    },
+                    {
+                        "id": "51331713794460623",
+                        "target": "task_id",
+                        "type": "objectField",
+                        "value": "id"
                     }
                 ]
             }
         ]
     },
-    "tableTitle": "",
+    "tableTitle": "All my tasks",
     "actions": null,
     "headers": [
         {
@@ -1582,57 +1757,300 @@ let exampleTable = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
             "typeVariable": {},
             "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "indexExists": false,
             "array": false
         },
         {
-            "sysName": "title",
-            "dataType": "string",
-            "name": "Item title",
-            "id": "21351707312297364",
-            "link": null,
+            "sysName": "Attachments",
+            "dataType": "file",
+            "name": "Прикреплённые файлы",
+            "id": "76431712652227464",
+            "link": "",
             "group": "0",
-            "tags": null,
+            "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 0,
+            "order": 7,
             "linkIndexFieldSysName": [],
-            "defaultValue": null,
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "multipleFiles",
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "Colour",
+            "dataType": "string",
+            "name": "Цвет",
+            "id": "67381712652193650",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 6,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "color",
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "Picture",
+            "dataType": "file",
+            "name": "Картинка",
+            "id": "79271712652088452",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 5,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "image",
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "Description",
+            "dataType": "string",
+            "name": "Описание задания",
+            "id": "19441712652067504",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "markdown",
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "Category",
+            "dataType": "json",
+            "name": "Категория задачи",
+            "id": "40381712651994456",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "checkboxes",
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false",
+                "multipleChoice": [
+                    {
+                        "value": "ToDo",
+                        "label": "ToDo"
+                    },
+                    {
+                        "value": "Homework",
+                        "label": "Homework"
+                    }
+                ]
+            },
+            "groupName": null,
+            "typeVariable": {},
+            "json": true,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "Type",
+            "dataType": "json",
+            "name": "Тип задачи",
+            "id": "11931712651803099",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "checkboxes",
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOption": false,
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false",
+                "multipleChoice": [
+                    {
+                        "value": "Summative",
+                        "label": "Summative"
+                    },
+                    {
+                        "value": "Formative",
+                        "label": "Formative"
+                    }
+                ]
+            },
+            "groupName": null,
+            "typeVariable": {},
+            "json": true,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "Title",
+            "dataType": "string",
+            "name": "Название задачи",
+            "id": "60651712651783721",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": null,
+            "formatOptions": {},
             "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
             "typeVariable": {},
             "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "indexExists": false,
             "array": false
         },
         {
-            "sysName": "isHidden",
-            "dataType": "boolean",
-            "name": "hidden",
-            "id": "45921707312355434",
+            "sysName": "Deadline",
+            "dataType": "date",
+            "name": "Крайний срок выполнения",
+            "id": "58551712653340005",
             "link": "",
-            "group": "1707312358289",
-            "tags": null,
+            "group": "0",
+            "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 0,
+            "order": 8,
             "linkIndexFieldSysName": [],
-            "defaultValue": null,
+            "defaultValue": "",
             "constraints": null,
             "synthetic": false,
             "format": null,
@@ -1643,12 +2061,11 @@ let exampleTable = {
                     "value": "value",
                     "button": "One more"
                 },
-                "dateLocale": "en-gb",
+                "dateLocale": "ru",
                 "booleanOptions": [
-                    "❌ Hidden",
-                    "Not hidden"
+                    "True",
+                    "False"
                 ],
-                "hideStandardBooleanIcons": true,
                 "validWeekDays": {
                     "mon": true,
                     "thu": true,
@@ -1666,111 +2083,141 @@ let exampleTable = {
                 "isUTC": "false"
             },
             "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
             "typeVariable": {},
             "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "indexExists": false,
             "array": false
         },
         {
-            "sysName": "price",
-            "dataType": "decimal",
-            "name": "Price, per pound, $",
-            "id": "71351707312332607",
-            "link": "",
-            "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 3,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "description",
-            "dataType": "string",
-            "name": "Description",
-            "id": "48911707312316532",
-            "link": "",
-            "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 2,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": "markdown",
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "image",
-            "dataType": "file",
-            "name": "Photo",
-            "id": "33781707312304756",
-            "link": "",
-            "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": "image",
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "country_id",
+            "sysName": "Subject",
             "dataType": "link",
-            "name": "Producing country",
-            "id": "18281707329973702",
-            "link": "countries",
+            "name": "Предмет",
+            "id": "65271712653605422",
+            "link": "subject",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 9,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "arrayLink": false,
+            "linkType": true,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "ATLskills_ids",
+            "dataType": "arrayLink",
+            "name": "Навыки ATL",
+            "id": "69301712909554884",
+            "link": "atl_skills",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 10,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "arrayLink": true,
+            "linkType": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "Taskauthor",
+            "dataType": "link",
+            "name": "Автор задачи",
+            "id": "77941712909990127",
+            "link": "WebUser",
+            "group": "0",
+            "tags": "",
+            "indexing": true,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 11,
+            "linkIndexFieldSysName": [
+                "id"
+            ],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "arrayLink": false,
+            "linkType": true,
+            "indexExists": true,
+            "array": false
+        },
+        {
+            "sysName": "Unit",
+            "dataType": "link",
+            "name": "Юнит",
+            "id": "21601713523939260",
+            "link": "units",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 12,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "arrayLink": false,
+            "linkType": true,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "Criteria",
+            "dataType": "arrayLink",
+            "name": "Критерий оценивания",
+            "id": "15271713543599499",
+            "link": "criteria",
             "group": "0",
             "tags": null,
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 5,
+            "order": 15,
             "linkIndexFieldSysName": [],
             "defaultValue": null,
             "constraints": null,
@@ -1778,103 +2225,328 @@ let exampleTable = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
             "typeVariable": {},
             "json": false,
+            "linkOrArrayLinkType": true,
+            "arrayLink": true,
+            "linkType": false,
+            "indexExists": false,
             "array": false
         }
     ],
     "data": [
         {
-            "image": "https://api.directual.com/fileUploaded/new-crm/web/903efd7d-b29d-49d1-af08-39dc278cbb96.jpeg",
-            "description": "Strawberry, a vibrant fruit bursting with sweetness, delights the senses with its juicy red flesh and floral aroma. Whether eaten fresh or incorporated into various dishes, its irresistible flavor and nutritional benefits make it a cherished treat.",
-            "price": 11,
-            "id": "f21f7b41-499b-4d2b-8510-66ff25087451",
-            "title": "Strawberry",
-            "country_id": {
-                "id": "RU"
+            "ATLskills_ids": [
+                {
+                    "ATLskills": "Собирать, записывать и проверять данные/информацию",
+                    "id": "b295b28a-b623-489b-98e7-58578a21d678"
+                },
+                {
+                    "ATLskills": "Устанавливать связи между различными источниками информации",
+                    "id": "d87f8414-47e8-4ab3-8193-48a26ae227f6"
+                },
+                {
+                    "ATLskills": "Тщательно наблюдать, чтобы распознавать проблемы",
+                    "id": "eaa3ca65-af8e-4a16-8855-11743b0a6928"
+                },
+                {
+                    "ATLskills": "Собирать и анализировать данные для принятия информированных решений",
+                    "id": "9015cf82-48f8-4732-9a32-46187d34881d"
+                }
+            ],
+            "Title": "Globe - planet model, parallels and meridians, geographical coordinates",
+            "Category": "{\"ToDo\":true}",
+            "Taskauthor": {
+                "firstName": "Elena",
+                "lastName": "Lerner",
+                "id": "newmb.eg@gmail.com"
             },
-            "isHidden": ""
+            "Subject": "Geography",
+            "Description": "1. Прочитать ученик параграфы 10-11 стр. 32-40 (по многочисленным просьбам). Учебник прикреплён здесь и есть на миро\n2. Выполнить задание по ссылке https://airtable.com/app2aZmxpcMmbmBJZ/shrzsqMIO4Nlj4gYe\n",
+            "Colour": "#12bb00",
+            "id": "fdc1448b-f512-436f-a29c-75abeb6afa57",
+            "Criteria": [],
+            "Unit": {
+                "Title": "Maps - the language of geography",
+                "Subject": [
+                    {
+                        "Subject": "Geography",
+                        "id": "Geography"
+                    }
+                ],
+                "Description": "Изучение базовых принципов чтения и создания карт",
+                "KeyConcept_id": "Function",
+                "Datestart": 1712955600000,
+                "Creator": {
+                    "firstName": "Elena",
+                    "lastName": "Lerner",
+                    "id": "newmb.eg@gmail.com"
+                },
+                "id": "2a703970-7254-4e62-9352-a9179179b04c",
+                "Unittemplate": "{\"Standart\":true}",
+                "Dateend": 1714424400000,
+                "RelatedConcepts": [
+                    "Scale"
+                ],
+                "StatementofInquiry": "Съешь ещё этих мягких французских булок, да выпей чаю",
+                "InquiryQuestions": [
+                    {
+                        "InquiryQuestion": "Есть ли жизнь на Марсе?",
+                        "id": "0741126d-6a34-42bc-8c01-69cdb91bc861"
+                    }
+                ],
+                "Cover": "https://api.directual.com/fileUploaded/gooash/web/857f00c8-aa69-4674-b72d-9c8cf0b243ca.jpg"
+            },
+            "Picture": "https://api.directual.com/fileUploaded/gooash/web/3e86ec28-d048-43cb-a60c-b80ea743a8dd.png",
+            "Deadline": 1713560400000,
+            "Type": "{\"Formative\":true}"
         },
         {
-            "image": "https://api.directual.com/fileUploaded/new-crm/web/3c366218-30af-45ea-83db-eb281b7e55b4.jpeg",
-            "description": "Bananas, a beloved fruit with a cheerful yellow peel, bring joy with their creamy texture and sweet flavor. Versatile and nutritious, they're delightful eaten on their own, blended into smoothies, or sliced atop cereal. With each bite, bananas offer a burst of energy and a dose of potassium, making them a favorite snack for health and happiness.",
-            "price": 5,
-            "id": "bc2a3247-0c22-4b99-9dd2-d8c815d3cb13",
-            "title": "Bananas",
-            "country_id": {
-                "id": "CG"
+            "ATLskills_ids": [
+                {
+                    "ATLskills": "Понимать, какое влияние оказывает форма подачи информации в медиа",
+                    "id": "8e57184a-f11f-40b6-9675-558a14f0f8f4"
+                }
+            ],
+            "Title": "Solar nad Lunar eclipse",
+            "Category": "{\"Homework\":true}",
+            "Taskauthor": {
+                "firstName": "Elena",
+                "lastName": "Lerner",
+                "id": "newmb.eg@gmail.com"
             },
-            "isHidden": ""
+            "Subject": "Biology",
+            "Description": "Watch the video https://youtu.be/n7tnHPDH5d8?si=0jwGs8_pgc0bKwSX and complete the worc this link",
+            "id": "aa83d645-4567-483c-ad5b-f61e30e8789f",
+            "Criteria": [],
+            "Unit": {
+                "Title": "Universe and us",
+                "Subject": [
+                    {
+                        "Subject": "Geography",
+                        "id": "Geography"
+                    }
+                ],
+                "Description": "## A study of the solar system and the Earth as part of it. \n**The influence of the Earth's motion in the Solar System on life cycles of a number of processes.**",
+                "KeyConcept_id": "Function",
+                "Datestart": 1712869200000,
+                "Creator": {
+                    "firstName": "Elena",
+                    "lastName": "Lerner",
+                    "id": "newmb.eg@gmail.com"
+                },
+                "id": "2be5ae4f-5b2d-49d0-a176-4a5236a3a267",
+                "Unittemplate": "{\"Standart\":true}",
+                "Dateend": 1715115600000,
+                "RelatedConcepts": [
+                    "Causality"
+                ],
+                "InquiryQuestions": [
+                    {
+                        "InquiryQuestion": "Есть ли жизнь на Марсе?",
+                        "id": "0741126d-6a34-42bc-8c01-69cdb91bc861"
+                    }
+                ],
+                "Cover": "https://api.directual.com/fileUploaded/gooash/web/a716b4de-0c92-4427-9cca-f930a8ad53c4.jpg"
+            },
+            "Picture": "https://api.directual.com/fileUploaded/gooash/web/4bab8e87-d374-41d3-958a-4d1b7785aab7.jpg",
+            "Deadline": 1713474000000,
+            "Type": "{\"Formative\":true}"
         },
         {
-            "image": "https://api.directual.com/fileUploaded/new-crm/web/efafb50f-79f8-43b1-ae80-ecff9b62ff97.jpeg",
-            "description": "Lemons, vibrant orbs of citrus sunshine, infuse dishes with their tangy zest and refreshing aroma. From adding a splash of brightness to savory recipes to lending their tartness to sweet treats, lemons elevate any dish they grace. With their invigorating flavor and rich vitamin C content, these citrus gems are both a culinary staple and a healthful delight.",
-            "price": 8,
-            "id": "3154b8de-750a-4285-bada-ecb5a07cdb38",
-            "title": "Lemons",
-            "country_id": {
-                "id": "IT"
+            "ATLskills_ids": [
+                {
+                    "ATLskills": "Читать вдумчиво",
+                    "id": "72857e90-9bd0-4a6b-ab46-5a450eb31d21"
+                },
+                {
+                    "ATLskills": "Устанавливать связи между предметными группами и дисциплинами",
+                    "id": "08b88fb8-cd20-46ac-9509-9b3f0b9064a4"
+                },
+                {
+                    "ATLskills": "Находить, организовывать, анализировать, оценивать, синтезировать и этично использовать информацию из различных источников и медиа (включая социальные сети и онлайн платформы — например, каналы в Telegram)",
+                    "id": "2597882f-0686-4163-9aec-be3e5487fe65"
+                }
+            ],
+            "Title": "Patterns between the planets of the solar system",
+            "Category": "{\"Homework\":true}",
+            "Taskauthor": {
+                "firstName": "Elena",
+                "lastName": "Lerner",
+                "id": "newmb.eg@gmail.com"
             },
-            "isHidden": ""
+            "Subject": "History",
+            "Description": "**Сделать кучу всего и очень классно плюс потрать на это очень мало времени**",
+            "id": "5c6a919a-15b6-4551-9e52-5282eee892b5",
+            "Criteria": [],
+            "Unit": {
+                "Title": "Universe and us",
+                "Subject": [
+                    {
+                        "Subject": "Geography",
+                        "id": "Geography"
+                    }
+                ],
+                "Description": "## A study of the solar system and the Earth as part of it. \n**The influence of the Earth's motion in the Solar System on life cycles of a number of processes.**",
+                "KeyConcept_id": "Function",
+                "Datestart": 1712869200000,
+                "Creator": {
+                    "firstName": "Elena",
+                    "lastName": "Lerner",
+                    "id": "newmb.eg@gmail.com"
+                },
+                "id": "2be5ae4f-5b2d-49d0-a176-4a5236a3a267",
+                "Unittemplate": "{\"Standart\":true}",
+                "Dateend": 1715115600000,
+                "RelatedConcepts": [
+                    "Causality"
+                ],
+                "InquiryQuestions": [
+                    {
+                        "InquiryQuestion": "Есть ли жизнь на Марсе?",
+                        "id": "0741126d-6a34-42bc-8c01-69cdb91bc861"
+                    }
+                ],
+                "Cover": "https://api.directual.com/fileUploaded/gooash/web/a716b4de-0c92-4427-9cca-f930a8ad53c4.jpg"
+            },
+            "Picture": "https://api.directual.com/fileUploaded/gooash/web/f21f6d1c-5092-4363-8296-94eb47639aca.jpg",
+            "Deadline": 1713992400000,
+            "Type": "{\"Summative\":true}"
         },
         {
-            "image": "https://api.directual.com/fileUploaded/new-crm/web/d46fc342-4db6-40f7-a926-7ec69679f19c.jpeg",
-            "description": "Cherries, tiny jewels of sweetness, paint the palate with bursts of vibrant flavor and a hint of tartness. Whether enjoyed freshly plucked from the tree or incorporated into desserts, their deep red hue and succulent flesh offer a tantalizing treat. Cherries, with their juicy goodness and antioxidant-rich profile, embody the essence of summer's bounty, bringing joy with each delightful bite.",
-            "price": 14,
-            "id": "a19e27eb-f350-4080-b08b-795c951a4c27",
-            "title": "Cherry",
-            "country_id": {
-                "id": "TR"
+            "ATLskills_ids": [
+                {
+                    "ATLskills": "Оценивать доказательства и аргументы",
+                    "id": "5a3a678c-9215-4cbe-b86b-7e72809747a6"
+                },
+                {
+                    "ATLskills": "Распознавать невысказанные допущения и необъективность",
+                    "id": "606894a4-221e-420f-a782-2be2f4c904df"
+                },
+                {
+                    "ATLskills": "Делать резонные выводы и обобщения",
+                    "id": "c0d3bba6-823d-45d9-a125-48b60c0c93ea"
+                }
+            ],
+            "Title": "Methods for depicting the earth's surface",
+            "Category": "{\"Homework\":true}",
+            "Taskauthor": {
+                "firstName": "Elena",
+                "lastName": "Lerner",
+                "id": "newmb.eg@gmail.com"
             },
-            "isHidden": ""
+            "Subject": "Geography",
+            "id": "73e51745-cdb8-4368-a527-9778859a79c0",
+            "Criteria": [
+                {
+                    "Criteria": "Criteria",
+                    "id": "C"
+                },
+                {
+                    "Criteria": "Criteria",
+                    "id": "A"
+                }
+            ],
+            "Unit": {
+                "Title": "Maps - the language of geography",
+                "Subject": [
+                    {
+                        "Subject": "Geography",
+                        "id": "Geography"
+                    }
+                ],
+                "Description": "Изучение базовых принципов чтения и создания карт",
+                "KeyConcept_id": "Function",
+                "Datestart": 1712955600000,
+                "Creator": {
+                    "firstName": "Elena",
+                    "lastName": "Lerner",
+                    "id": "newmb.eg@gmail.com"
+                },
+                "id": "2a703970-7254-4e62-9352-a9179179b04c",
+                "Unittemplate": "{\"Standart\":true}",
+                "Dateend": 1714424400000,
+                "RelatedConcepts": [
+                    "Scale"
+                ],
+                "StatementofInquiry": "Съешь ещё этих мягких французских булок, да выпей чаю",
+                "InquiryQuestions": [
+                    {
+                        "InquiryQuestion": "Есть ли жизнь на Марсе?",
+                        "id": "0741126d-6a34-42bc-8c01-69cdb91bc861"
+                    }
+                ],
+                "Cover": "https://api.directual.com/fileUploaded/gooash/web/857f00c8-aa69-4674-b72d-9c8cf0b243ca.jpg"
+            },
+            "Picture": "https://api.directual.com/fileUploaded/gooash/web/3b4b355a-94d3-473e-a81c-cffeeb808495.jpg",
+            "Deadline": 1714424400000,
+            "Type": "{\"Formative\":true}"
         },
         {
-            "image": "https://api.directual.com/fileUploaded/new-crm/web/d1154690-d978-4686-b75e-8d4ed34c6bee.jpeg",
-            "description": "Grapes, clusters of nature's candy, delight with their juicy orbs bursting with sweetness. Whether savored as a snack or pressed into a refreshing glass of wine, their versatility knows no bounds. With each bite, grapes offer a symphony of flavors, from floral notes to hints of tanginess, making them a beloved fruit for all occasions. Packed with vitamins and antioxidants, grapes not only satisfy the palate but also nourish the body, embodying the essence of natural goodness.",
-            "price": 5,
-            "id": "644653eb-b3d7-40f0-bdc1-9cce7cd10d29",
-            "title": "Grapes",
-            "country_id": {
-                "id": "FR"
+            "ATLskills_ids": [
+                {
+                    "ATLskills": "Распознавать невысказанные допущения и необъективность",
+                    "id": "606894a4-221e-420f-a782-2be2f4c904df"
+                },
+                {
+                    "ATLskills": "Делать резонные выводы и обобщения",
+                    "id": "c0d3bba6-823d-45d9-a125-48b60c0c93ea"
+                }
+            ],
+            "Title": "Methods for depicting the earth's surface",
+            "Category": "{\"Homework\":true}",
+            "Taskauthor": {
+                "firstName": "Elena",
+                "lastName": "Lerner",
+                "id": "newmb.eg@gmail.com"
             },
-            "isHidden": ""
-        },
-        {
-            "image": "https://api.directual.com/fileUploaded/new-crm/web/6b00b827-0cdb-469f-b964-736b3bfed036.jpeg",
-            "description": "Potatoes, humble earthy treasures, offer endless culinary possibilities with their versatile nature. Whether roasted to crispy perfection, mashed into creamy goodness, or sliced into golden fries, their comforting presence graces tables around the world. With each bite, potatoes impart a hearty warmth and satisfying texture, evoking memories of home-cooked meals and shared gatherings. Beyond their delicious taste, potatoes provide essential nutrients and energy, making them a staple ingredient in countless cuisines. In their simplicity and abundance, potatoes stand as a testament to the enduring appeal of wholesome comfort food.",
-            "price": 2,
-            "id": "098bd901-42f8-4423-bd81-0cb5189b96fe",
-            "title": "Potato",
-            "country_id": {
-                "id": "BY"
+            "Subject": "Geography",
+            "Description": "Перейти по ссылке и выполнить задание при помощи атласа, который есть в кабинете географии https://airtable.com/app2aZmxpcMmbmBJZ/shr6mc85Z5eNrTomu ",
+            "id": "e8ffb438-32cd-4d07-978e-080f6b2aa340",
+            "Criteria": [
+                {
+                    "Criteria": "Criteria",
+                    "id": "A"
+                },
+                {
+                    "Criteria": "Criteria",
+                    "id": "D"
+                }
+            ],
+            "Unit": {
+                "Title": "Maps - the language of geography",
+                "Subject": [
+                    {
+                        "Subject": "Geography",
+                        "id": "Geography"
+                    }
+                ],
+                "Description": "Изучение базовых принципов чтения и создания карт",
+                "KeyConcept_id": "Function",
+                "Datestart": 1712955600000,
+                "Creator": {
+                    "firstName": "Elena",
+                    "lastName": "Lerner",
+                    "id": "newmb.eg@gmail.com"
+                },
+                "id": "2a703970-7254-4e62-9352-a9179179b04c",
+                "Unittemplate": "{\"Standart\":true}",
+                "Dateend": 1714424400000,
+                "RelatedConcepts": [
+                    "Scale"
+                ],
+                "StatementofInquiry": "Съешь ещё этих мягких французских булок, да выпей чаю",
+                "InquiryQuestions": [
+                    {
+                        "InquiryQuestion": "Есть ли жизнь на Марсе?",
+                        "id": "0741126d-6a34-42bc-8c01-69cdb91bc861"
+                    }
+                ],
+                "Cover": "https://api.directual.com/fileUploaded/gooash/web/857f00c8-aa69-4674-b72d-9c8cf0b243ca.jpg"
             },
-            "isHidden": ""
-        },
-        {
-            "image": "https://api.directual.com/fileUploaded/new-crm/web/c8a121e6-71c3-405c-8215-57805bb9ba7f.jpeg",
-            "description": "Oranges, radiant spheres of sunshine, brighten both the palate and the spirit with their juicy sweetness. Whether peeled and enjoyed in segments or transformed into freshly squeezed juice, their vibrant flavor invigorates the senses. With each succulent bite, oranges offer a refreshing burst of vitamin C and a hint of tanginess, revitalizing the body and uplifting the soul. From breakfast tables to afternoon snacks, oranges epitomize the essence of zestful indulgence, adding a burst of sunshine to every moment.",
-            "price": 8,
-            "id": "3e508d9a-a3a8-432a-8e64-7e19642727f3",
-            "title": "Oranges",
-            "country_id": {
-                "id": "ES"
-            },
-            "isHidden": ""
-        },
-        {
-            "image": "https://api.directual.com/fileUploaded/new-crm/web/05cc260d-eecc-4b22-a97a-fb4a5c29706c.jpeg",
-            "description": "Kiwis, petite emerald gems, delight with their vibrant green flesh and tangy-sweet flavor. Whether enjoyed sliced and savored on their own or added to fruit salads for a burst of freshness, their versatility knows no bounds. With each juicy bite, kiwis offer a symphony of tropical notes and a refreshing tartness, awakening the palate with their distinctive taste. Packed with vitamin C and other essential nutrients, kiwis not only tantalize the taste buds but also nourish the body, embodying the essence of wholesome indulgence.",
-            "price": 16,
-            "isHidden": "",
-            "id": "14f5b2ec-02bd-405f-8ccd-8bd995d71707",
-            "title": "Kiwi",
-            "country_id": {
-                "id": "AU"
-            }
+            "Picture": "https://api.directual.com/fileUploaded/gooash/web/eab00329-c3b6-437b-98ad-5a7d89c76d0c.jpg",
+            "Deadline": 1714251600000,
+            "Type": "{\"Formative\":true}"
         }
     ],
     "totalPages": 1,
@@ -1883,73 +2555,177 @@ let exampleTable = {
     "fieldScheme": [
         [
             "id",
-            99298853
+            99305048
         ],
         [
-            "title",
-            99298853
+            "Attachments",
+            99305048
         ],
         [
-            "isHidden",
-            99298853
+            "Colour",
+            99305048
         ],
         [
-            "price",
-            99298853
+            "Picture",
+            99305048
         ],
         [
-            "description",
-            99298853
+            "Description",
+            99305048
         ],
         [
-            "image",
-            99298853
+            "Category",
+            99305048
         ],
         [
-            "country_id.id",
-            99298859
+            "Type",
+            99305048
         ],
         [
-            "country_id.country",
-            99298859
+            "Title",
+            99305048
+        ],
+        [
+            "Deadline",
+            99305048
+        ],
+        [
+            "Subject",
+            99305048
+        ],
+        [
+            "ATLskills_ids.id",
+            99305470
+        ],
+        [
+            "ATLskills_ids.ATLskills",
+            99305470
+        ],
+        [
+            "Taskauthor.id",
+            99305002
+        ],
+        [
+            "Taskauthor.firstName",
+            99305002
+        ],
+        [
+            "Taskauthor.lastName",
+            99305002
+        ],
+        [
+            "Unit.id",
+            99305409
+        ],
+        [
+            "Unit.Title",
+            99305409
+        ],
+        [
+            "Unit.Subject.id",
+            99305471
+        ],
+        [
+            "Unit.Subject.Subject",
+            99305471
+        ],
+        [
+            "Unit.InquiryQuestions.id",
+            99305413
+        ],
+        [
+            "Unit.InquiryQuestions.InquiryQuestion",
+            99305413
+        ],
+        [
+            "Unit.RelatedConcepts.id",
+            99305411
+        ],
+        [
+            "Unit.KeyConcept_id.id",
+            99305410
+        ],
+        [
+            "Unit.Attachments",
+            99305409
+        ],
+        [
+            "Unit.Cover",
+            99305409
+        ],
+        [
+            "Unit.Creator.id",
+            99305002
+        ],
+        [
+            "Unit.Creator.firstName",
+            99305002
+        ],
+        [
+            "Unit.Creator.lastName",
+            99305002
+        ],
+        [
+            "Unit.StatementofInquiry",
+            99305409
+        ],
+        [
+            "Unit.Dateend",
+            99305409
+        ],
+        [
+            "Unit.Datestart",
+            99305409
+        ],
+        [
+            "Unit.Unittemplate",
+            99305409
+        ],
+        [
+            "Unit.Description",
+            99305409
+        ],
+        [
+            "Criteria.id",
+            99305472
+        ],
+        [
+            "Criteria.Criteria",
+            99305472
+        ],
+        [
+            "Criteria.id",
+            99305472
         ]
     ],
-    "writeFields": [
-        "id",
-        "isHidden",
-        "price",
-        "description",
-        "image",
-        "title",
-        "country_id"
-    ],
+    "writeFields": [],
     "structures": {
-        "99298853": {
-            "networkID": 20362,
-            "sysName": "items",
-            "name": "Items",
-            "id": 99298853,
-            "dateCreated": "2024-02-07T13:24:38Z",
+        "99305002": {
+            "networkID": 20582,
+            "sysName": "WebUser",
+            "name": "App users",
+            "id": 99305002,
+            "dateCreated": "2024-04-09T08:16:29Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"title\",\"name\":\"Item title\",\"dataType\":\"string\",\"id\":\"21351707312297364\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"image\",\"name\":\"Photo\",\"dataType\":\"file\",\"id\":\"33781707312304756\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"description\",\"name\":\"Description\",\"dataType\":\"string\",\"id\":\"48911707312316532\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"price\",\"name\":\"Price, per pound, $\",\"dataType\":\"decimal\",\"id\":\"71351707312332607\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"price_text\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"79901707330555238\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"country_id\",\"name\":\"Producing country\",\"dataType\":\"link\",\"id\":\"18281707329973702\",\"link\":\"countries\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isHidden\",\"name\":\"hidden\",\"dataType\":\"boolean\",\"id\":\"45921707312355434\",\"link\":\"\",\"group\":\"1707312358289\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"❌ Hidden\",\"Not hidden\"],\"hideStandardBooleanIcons\":true,\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false}]",
-            "jsonGroupSettings": "[{\"id\":1707312358289,\"name\":\"Administration\",\"order\":0}]",
-            "jsonViewIdSettings": "[{\"sysName\":\"title\"},{\"sysName\":\"price_text\"}]",
-            "jsonSettings": null,
+            "jsonObject": "[{\"sysName\":\"notifications_counter\",\"name\":\"Notifications Counter\",\"dataType\":\"string\",\"id\":\"1\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false},{\"sysName\":\"dateLastActivity\",\"name\":\"dateLastActivity\",\"dataType\":\"string\",\"id\":\"10\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false},{\"sysName\":\"email\",\"name\":\"Email\",\"dataType\":\"string\",\"id\":\"11\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false},{\"sysName\":\"phone\",\"name\":\"Phone\",\"dataType\":\"string\",\"id\":\"12\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false},{\"sysName\":\"dateCreated\",\"name\":\"dateCreated\",\"dataType\":\"string\",\"id\":\"13\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false},{\"sysName\":\"password\",\"name\":\"Password (hash)\",\"dataType\":\"string\",\"id\":\"14\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false},{\"sysName\":\"id\",\"name\":\"Username (login)\",\"dataType\":\"id\",\"id\":\"15\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false},{\"sysName\":\"MarksB\",\"name\":\"Оценки по критерию В\",\"dataType\":\"arrayLink\",\"id\":\"18821713670150595\",\"link\":\"assessment\",\"group\":\"1713089785235\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false},{\"sysName\":\"custom_labels\",\"name\":\"Custom labels\",\"dataType\":\"json\",\"id\":\"2\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"array\":false,\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false},{\"sysName\":\"userpic\",\"name\":\"User pic\",\"dataType\":\"file\",\"id\":\"3\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":\"Contacts\",\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false},{\"sysName\":\"isBlocked\",\"name\":\"Block user\",\"dataType\":\"boolean\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false},{\"sysName\":\"gender\",\"name\":\"Gender\",\"dataType\":\"string\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false},{\"sysName\":\"MarksA\",\"name\":\"Оценки по критерию А\",\"dataType\":\"arrayLink\",\"id\":\"51401713670095371\",\"link\":\"assessment\",\"group\":\"1713089785235\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false},{\"sysName\":\"systemMessage\",\"name\":\"System message\",\"dataType\":\"string\",\"id\":\"56921641637265680\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false},{\"sysName\":\"lastName\",\"name\":\"Last name\",\"dataType\":\"string\",\"id\":\"6\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false},{\"sysName\":\"notif_Email\",\"name\":\"Notify me by Email\",\"dataType\":\"boolean\",\"id\":\"61231639915065277\",\"link\":\"\",\"group\":\"1639915049523\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Yes\",\"No\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false},{\"sysName\":\"firstName\",\"name\":\"First name\",\"dataType\":\"string\",\"id\":\"7\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false},{\"sysName\":\"t1\",\"name\":\"Task\",\"dataType\":\"arrayLink\",\"id\":\"76671713265494758\",\"link\":\"assessment\",\"group\":\"1713089785235\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false},{\"sysName\":\"role\",\"name\":\"Roles\",\"dataType\":\"array\",\"id\":\"8\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":true,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false},{\"sysName\":\"secret\",\"name\":\"secret\",\"dataType\":\"string\",\"id\":\"81131636839496227\",\"link\":\"\",\"group\":\"1636839487957\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false},{\"sysName\":\"isAuthorization\",\"name\":\"isAuthorization\",\"dataType\":\"boolean\",\"id\":\"9\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"indexExists\":false},{\"sysName\":\"Class\",\"name\":\"Класс\",\"dataType\":\"link\",\"id\":\"98141713089796004\",\"link\":\"groups\",\"group\":\"1713089785235\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[\"class\",\"id\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":true,\"indexExists\":true}]",
+            "jsonGroupSettings": "[{\"id\":1636839487957,\"name\":\"Password restoring\",\"order\":2},{\"id\":1713089785235,\"name\":\"School\",\"order\":4},{\"id\":-1776115286,\"name\":\"System fields (LEGACY)\",\"order\":3},{\"id\":1639915049523,\"name\":\"Notifications\",\"order\":1},{\"id\":-502807437,\"name\":\"Contacts\",\"order\":0}]",
+            "jsonViewIdSettings": "[{\"sysName\":\"firstName\"},{\"sysName\":\"lastName\"}]",
+            "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
             "jsonNativeIndexSettings": null,
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2024-02-07T18:29:36Z",
-            "createBy": 1,
-            "changedBy": 1,
+            "dateChanged": "2024-04-21T03:30:15Z",
+            "createBy": 0,
+            "changedBy": 23982,
             "_settings": null,
             "_nativeIndexSettings": null,
             "innerIDField": {
                 "sysName": "id",
                 "dataType": "id",
-                "name": "id",
-                "id": "0",
+                "name": "Username (login)",
+                "id": "15",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -1965,36 +2741,36 @@ let exampleTable = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
                 "typeVariable": {},
                 "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "indexExists": false,
                 "array": false
             },
             "objectIDSysName": "id",
-            "folderId": 33797142
+            "folderId": null
         },
-        "99298859": {
-            "networkID": 20362,
-            "sysName": "countries",
-            "name": "countries",
-            "id": 99298859,
-            "dateCreated": "2024-02-07T18:18:26Z",
+        "99305048": {
+            "networkID": 20582,
+            "sysName": "tasks",
+            "name": "Tasks",
+            "id": 99305048,
+            "dateCreated": "2024-04-09T08:36:12Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Name\",\"name\":\"Country\",\"dataType\":\"string\",\"id\":\"35581708093955587\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false}]",
+            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Type\",\"name\":\"Тип задачи\",\"dataType\":\"json\",\"id\":\"11931712651803099\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"checkboxes\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOption\":false,\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"Summative\",\"label\":\"Summative\"},{\"value\":\"Formative\",\"label\":\"Formative\"}]},\"groupName\":null,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Criteria\",\"name\":\"Критерий оценивания\",\"dataType\":\"arrayLink\",\"id\":\"15271713543599499\",\"link\":\"criteria\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Description\",\"name\":\"Описание задания\",\"dataType\":\"string\",\"id\":\"19441712652067504\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Unit\",\"name\":\"Юнит\",\"dataType\":\"link\",\"id\":\"21601713523939260\",\"link\":\"units\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"Category\",\"name\":\"Категория задачи\",\"dataType\":\"json\",\"id\":\"40381712651994456\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"checkboxes\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"ToDo\",\"label\":\"ToDo\"},{\"value\":\"Homework\",\"label\":\"Homework\"}]},\"groupName\":null,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Students\",\"name\":\"Студенты кому задано\",\"dataType\":\"string\",\"id\":\"52271713542104429\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Classes\",\"name\":\"Классы для выполнения задачи\",\"dataType\":\"arrayLink\",\"id\":\"54321713526770801\",\"link\":\"groups\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Deadline\",\"name\":\"Крайний срок выполнения\",\"dataType\":\"date\",\"id\":\"58551712653340005\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Title\",\"name\":\"Название задачи\",\"dataType\":\"string\",\"id\":\"60651712651783721\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Subject\",\"name\":\"Предмет\",\"dataType\":\"link\",\"id\":\"65271712653605422\",\"link\":\"subject\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"Colour\",\"name\":\"Цвет\",\"dataType\":\"string\",\"id\":\"67381712652193650\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ATLskills_ids\",\"name\":\"Навыки ATL\",\"dataType\":\"arrayLink\",\"id\":\"69301712909554884\",\"link\":\"atl_skills\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Attachments\",\"name\":\"Прикреплённые файлы\",\"dataType\":\"file\",\"id\":\"76431712652227464\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"multipleFiles\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Taskauthor\",\"name\":\"Автор задачи\",\"dataType\":\"link\",\"id\":\"77941712909990127\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":true,\"array\":false},{\"sysName\":\"Picture\",\"name\":\"Картинка\",\"dataType\":\"file\",\"id\":\"79271712652088452\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false}]",
             "jsonGroupSettings": null,
-            "jsonViewIdSettings": "[{\"sysName\":\"Name\"}]",
+            "jsonViewIdSettings": "[{\"sysName\":\"Title\"}]",
             "jsonSettings": null,
             "jsonNativeIndexSettings": null,
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2024-02-16T14:33:16Z",
-            "createBy": 1,
-            "changedBy": 1,
+            "dateChanged": "2024-04-19T16:29:59Z",
+            "createBy": 23982,
+            "changedBy": 23982,
             "_settings": null,
             "_nativeIndexSettings": null,
             "innerIDField": {
@@ -2017,251 +2793,391 @@ let exampleTable = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
                 "typeVariable": {},
                 "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "indexExists": false,
                 "array": false
             },
             "objectIDSysName": "id",
-            "folderId": 33797143
+            "folderId": 33800449
+        },
+        "99305409": {
+            "networkID": 20582,
+            "sysName": "units",
+            "name": "Units",
+            "id": 99305409,
+            "dateCreated": "2024-04-11T17:03:43Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Description\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"28861712855041922\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Dateend\",\"name\":\"Завершение юнита\",\"dataType\":\"date\",\"id\":\"33601712855258898\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Cover\",\"name\":\"Обложка\",\"dataType\":\"file\",\"id\":\"34401712855408258\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Unittemplate\",\"name\":\"Unit Template\",\"dataType\":\"json\",\"id\":\"53691712855086113\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"checkboxes\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"Standart\",\"label\":\"Standart\"},{\"value\":\"Interdisciplinary\",\"label\":\"Interdisciplinary\"}]},\"groupName\":null,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"KeyConcept_id\",\"name\":\"Key Concept\",\"dataType\":\"link\",\"id\":\"55991712858132960\",\"link\":\"key_concepts\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"Creator\",\"name\":\"Создатель юнита\",\"dataType\":\"link\",\"id\":\"59511712855359066\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":true,\"array\":false},{\"sysName\":\"Title\",\"name\":\"Название юнита\",\"dataType\":\"string\",\"id\":\"59761712855027693\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Subject\",\"name\":\"Предмет\",\"dataType\":\"arrayLink\",\"id\":\"63881712914193880\",\"link\":\"subject\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Attachments\",\"name\":\"Вложения\",\"dataType\":\"file\",\"id\":\"81791712855451735\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"multipleFiles\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Datestart\",\"name\":\"Начало юнита\",\"dataType\":\"date\",\"id\":\"88511712855233641\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"StatementofInquiry\",\"name\":\"Statement of Inquiry\",\"dataType\":\"string\",\"id\":\"90581712855338046\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"InquiryQuestions\",\"name\":\"Inquiry Questions\",\"dataType\":\"arrayLink\",\"id\":\"95391712858259836\",\"link\":\"inquiry_questions\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"RelatedConcepts\",\"name\":\"Related Concept(s)\",\"dataType\":\"arrayLink\",\"id\":\"97421712858210892\",\"link\":\"related_concepts\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"array\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": "[{\"sysName\":\"Title\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2024-04-20T09:46:02Z",
+            "createBy": 23982,
+            "changedBy": 23982,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            "objectIDSysName": "id",
+            "folderId": 33800449
+        },
+        "99305410": {
+            "networkID": 20582,
+            "sysName": "key_concepts",
+            "name": "Key Concepts",
+            "id": 99305410,
+            "dateCreated": "2024-04-11T17:14:54Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"Definition\",\"dataType\":\"string\",\"name\":\"Definition\",\"id\":\"67621712856404717\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": null,
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2024-04-11T17:27:00Z",
+            "createBy": 23982,
+            "changedBy": 23982,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            "objectIDSysName": "id",
+            "folderId": 33800638
+        },
+        "99305411": {
+            "networkID": 20582,
+            "sysName": "related_concepts",
+            "name": "Related Concepts",
+            "id": 99305411,
+            "dateCreated": "2024-04-11T17:27:52Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"Definition\",\"dataType\":\"string\",\"name\":\"Definition\",\"id\":\"18741712856480782\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": null,
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2024-04-11T17:29:07Z",
+            "createBy": 23982,
+            "changedBy": 23982,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            "objectIDSysName": "id",
+            "folderId": 33800638
+        },
+        "99305413": {
+            "networkID": 20582,
+            "sysName": "inquiry_questions",
+            "name": "Inquiry Questions",
+            "id": 99305413,
+            "dateCreated": "2024-04-11T17:49:33Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"Type\",\"dataType\":\"json\",\"name\":\"Тип вопроса\",\"id\":\"11271712857842376\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"checkboxes\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"Factual\",\"label\":\"Factual\"},{\"value\":\"Conseptual\",\"label\":\"Conseptual\"},{\"value\":\"Debateble\",\"label\":\"Debateble\"}]},\"groupName\":null,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"InquiryQuestion\",\"dataType\":\"string\",\"name\":\"Inquiry Question\",\"id\":\"39071712857780801\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": "[{\"sysName\":\"InquiryQuestion\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2024-04-23T12:08:53Z",
+            "createBy": 23982,
+            "changedBy": 23982,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            "objectIDSysName": "id",
+            "folderId": 33800638
+        },
+        "99305470": {
+            "networkID": 20582,
+            "sysName": "atl_skills",
+            "name": "ATL skills",
+            "id": 99305470,
+            "dateCreated": "2024-04-12T08:10:03Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"7thgrade\",\"dataType\":\"string\",\"name\":\"7 класс\",\"id\":\"15141712907861787\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"5thgrade\",\"dataType\":\"string\",\"name\":\"5 класс\",\"id\":\"26361712907750161\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"Group\",\"dataType\":\"string\",\"name\":\"Группа\",\"id\":\"36591712907711290\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"6thgrade\",\"dataType\":\"string\",\"name\":\"6 класс\",\"id\":\"55351712907858119\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"Take\",\"dataType\":\"json\",\"name\":\"Берём\",\"id\":\"67211712907743600\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"checkboxes\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"checked\",\"label\":\"checked\"}]},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"9thgrade\",\"dataType\":\"string\",\"name\":\"9 класс\",\"id\":\"73951712907872176\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"Subgroup\",\"dataType\":\"string\",\"name\":\"Подгруппа\",\"id\":\"79911712907887290\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"8thgrade\",\"dataType\":\"string\",\"name\":\"8 класс\",\"id\":\"86871712907865870\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"ATLskills\",\"dataType\":\"string\",\"name\":\"Навыки\",\"id\":\"88771712907695072\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": "[{\"sysName\":\"ATLskills\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2024-04-13T10:55:25Z",
+            "createBy": 23982,
+            "changedBy": 23982,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            "objectIDSysName": "id",
+            "folderId": 33800638
+        },
+        "99305471": {
+            "networkID": 20582,
+            "sysName": "subject",
+            "name": "Subject",
+            "id": 99305471,
+            "dateCreated": "2024-04-12T09:21:09Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"Subject\",\"dataType\":\"string\",\"name\":\"Предмет\",\"id\":\"39301712913673945\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": "[{\"sysName\":\"Subject\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2024-04-12T09:21:33Z",
+            "createBy": 23982,
+            "changedBy": 23982,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            "objectIDSysName": "id",
+            "folderId": 33800449
+        },
+        "99305472": {
+            "networkID": 20582,
+            "sysName": "criteria",
+            "name": "Criteria",
+            "id": 99305472,
+            "dateCreated": "2024-04-12T11:41:41Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Criteria\",\"dataType\":\"string\",\"name\":\"Criteria\",\"id\":\"61481712922123483\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": "[{\"sysName\":\"Criteria\"},{\"sysName\":\"id\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2024-04-12T11:44:45Z",
+            "createBy": 23982,
+            "changedBy": 23982,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "indexExists": false,
+                "array": false
+            },
+            "objectIDSysName": "id",
+            "folderId": 33800638
         }
     },
     "isSuccessWrite": false,
     "writeError": null,
     "writeResponse": null,
-    "fileds": [
-        {
-            "sysName": "id",
-            "dataType": "id",
-            "name": "id",
-            "id": "0",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 0,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "isHidden",
-            "dataType": "boolean",
-            "name": "hidden",
-            "id": "45921707312355434",
-            "link": "",
-            "group": "1707312358289",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 0,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "❌ Hidden",
-                    "Not hidden"
-                ],
-                "hideStandardBooleanIcons": true,
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD/MM/Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "price",
-            "dataType": "decimal",
-            "name": "Price, per pound, $",
-            "id": "71351707312332607",
-            "link": "",
-            "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 3,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "description",
-            "dataType": "string",
-            "name": "Description",
-            "id": "48911707312316532",
-            "link": "",
-            "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 2,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": "markdown",
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "image",
-            "dataType": "file",
-            "name": "Photo",
-            "id": "33781707312304756",
-            "link": "",
-            "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": "image",
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "title",
-            "dataType": "string",
-            "name": "Item title",
-            "id": "21351707312297364",
-            "link": null,
-            "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 0,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "country_id",
-            "dataType": "link",
-            "name": "Producing country",
-            "id": "18281707329973702",
-            "link": "countries",
-            "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 5,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        }
-    ],
+    "fileds": [],
     "quickSearch": "false",
     "httpParams": {},
     "cardCustomHtml": null,
-    "cardCustomLayout": null
+    "cardCustomLayout": null,
+    "comment": null
 }
 
 let authExample = {

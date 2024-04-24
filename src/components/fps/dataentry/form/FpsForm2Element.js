@@ -52,7 +52,7 @@ function ElementInput(props) {
     const inputs = _.get(element, "_input_fields") || []
 
     return <InputRow column={_.get(element, "_input_fields_in_a_row_column") == "column"}>
-        {inputs.map(field => (field._field || field._state_field) ? <FpsForm2Input
+        {inputs.filter(field => !field._field_hidden).map(field => (field._field || field._state_field) ? <FpsForm2Input
             {...props}
             key={field.id}
             field={field}

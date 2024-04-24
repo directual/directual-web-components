@@ -67,10 +67,12 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
 
   // process Socket.io update
   useEffect(() => {
-    console.log("update model (socket)")
-    const newModel = ({ ...model }, flatternModel({ ..._.get(data, "data[0]") }))
-    if (!_.isEqual(newModel, model)) {
-      setModel(newModel)
+    if (edditingOn) {
+      console.log("update model (socket)")
+      const newModel = ({ ...model }, flatternModel({ ..._.get(data, "data[0]") }))
+      if (!_.isEqual(newModel, model)) {
+        setModel(newModel)
+      }
     }
   }, [_.get(data, "data[0]")])
 
@@ -125,7 +127,6 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
       finish()
       return;
     }
-
     console.log('submitting form...')
     console.log(modelToSend)
     setLoading(true)
@@ -146,6 +147,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
         } else {
           setState({ ...model, _apiError: data.msg })
           setLoading(false)
+          finish && finish()
         }
       }
     )
