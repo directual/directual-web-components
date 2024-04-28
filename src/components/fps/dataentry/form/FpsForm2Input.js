@@ -10,6 +10,7 @@ import ActionPanel from '../../actionspanel/actionspanel'
 import FileUpload from '../fileupload/fileupload'
 import Media from '../../media/media'
 import _ from 'lodash'
+import Hint from '../../hint/hint'
 
 export default function FpsForm2Input(props) {
     const { field, template, dict, lang, loading, editModel, model, data, state, locale } = props
@@ -388,6 +389,7 @@ function FieldLink(props) {
     const [currentParams, setCurrentParams] =
         useState(_.omitBy(_.mapValues(field._field_arrayLink_endpoint_params || {}, i => template("{{" + i + "}}")), _.isEmpty))
     const params = _.omitBy(_.mapValues(field._field_arrayLink_endpoint_params || {}, i => template("{{" + i + "}}")), _.isEmpty)
+    const [error, setError] = useState("")
 
     const refreshOptions = (finish, filter, value) => {
         if (!field._field_arrayLink_endpoint) { return; }
@@ -399,12 +401,11 @@ function FieldLink(props) {
         reqParams = value ? { ...reqParams, _value: value.key || value } : reqParams
         setCurrentParams(params)
         callEndpoint(field._field_arrayLink_endpoint, reqParams, finish, data => {
-            console.log("finish")
-            console.log(data)
+            // console.log("finish")
+            // console.log(data)
             setOptions(data)
-        }, error => { 
-            console.log("ERROR");
-            console.log(error)
+        }, err => {
+            setError(err.msg)
         })
     }
 
@@ -430,7 +431,7 @@ function FieldLink(props) {
         if (!field._field_arrayLink_endpoint) return <div>
             <div className={styles.form2label}>{fieldInfo.name || fieldInfo.sysName}</div>
             Endpoint for the dropdown is not configured.</div>
-        return <Input type="dinamicSelect"
+        return <div><Input type="dinamicSelect"
             onLoad={refreshOptions}
             required={field._field_required}
             //debug
@@ -441,13 +442,17 @@ function FieldLink(props) {
             nomargin
             {...basicProps}
         />
+            {error && <Hint margin={{ top: 10, bottom: 0 }} closable error onClose={() => setError("")}>
+                {error}
+            </Hint>}
+        </div>
     }
 
     if (field._field_link_type == "radio") {
         if (!field._field_arrayLink_endpoint) return <div>
             <div className={styles.form2label}>{fieldInfo.name || fieldInfo.sysName}</div>
             Endpoint for radio buttons is not configured.</div>
-        return <Input type="radio"
+        return <div><Input type="radio"
             options={options.map(i => {
                 return {
                     value: i.key,
@@ -463,6 +468,10 @@ function FieldLink(props) {
             nomargin
             {...basicProps}
         />
+            {error && <Hint margin={{ top: 10, bottom: 0 }} closable error onClose={() => setError("")}>
+                {error}
+            </Hint>}
+        </div>
     }
 
     return <Input
@@ -491,6 +500,7 @@ function FieldArrayLink(props) {
     const [currentParams, setCurrentParams] =
         useState(_.omitBy(_.mapValues(field._field_arrayLink_endpoint_params || {}, i => template("{{" + i + "}}")), _.isEmpty))
     const params = _.omitBy(_.mapValues(field._field_arrayLink_endpoint_params || {}, i => template("{{" + i + "}}")), _.isEmpty)
+    const [error, setError] = useState("")
 
     const refreshOptions = (finish, filter, value) => {
         if (!field._field_arrayLink_endpoint) { return; }
@@ -505,9 +515,8 @@ function FieldArrayLink(props) {
             // console.log("finish")
             // console.log(data)
             setOptions(data)
-        }, error => { 
-            console.log("ERROR");
-            console.log(error)
+        }, err => {
+            setError(err.msg)
         })
     }
 
@@ -533,7 +542,7 @@ function FieldArrayLink(props) {
         if (!field._field_arrayLink_endpoint) return <div>
             <div className={styles.form2label}>{fieldInfo.name || fieldInfo.sysName}</div>
             Endpoint for the dropdown is not configured.</div>
-        return <Input type="dinamicMultiSelect"
+        return <div><Input type="dinamicMultiSelect"
             onLoad={refreshOptions}
             required={field._field_required}
             // debug
@@ -547,13 +556,17 @@ function FieldArrayLink(props) {
             }}
             locale={locale}
         />
+            {error && <Hint margin={{ top: 10, bottom: 0 }} closable error onClose={() => setError("")}>
+                {error}
+            </Hint>}
+        </div>
     }
 
     if (field._field_arrayLink_type == "checkboxes") {
         if (!field._field_arrayLink_endpoint) return <div>
             <div className={styles.form2label}>{fieldInfo.name || fieldInfo.sysName}</div>
             Endpoint for checkboxes is not configured.</div>
-        return <Input type="checkboxGroup"
+        return <div><Input type="checkboxGroup"
             options={options.map(i => {
                 return {
                     value: i.key,
@@ -572,6 +585,10 @@ function FieldArrayLink(props) {
             }}
             locale={locale}
         />
+            {error && <Hint margin={{ top: 10, bottom: 0 }} closable error onClose={() => setError("")}>
+                {error}
+            </Hint>}
+        </div>
     }
 
     return <Input
