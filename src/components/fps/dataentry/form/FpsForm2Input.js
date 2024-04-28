@@ -402,6 +402,9 @@ function FieldLink(props) {
             console.log("finish")
             console.log(data)
             setOptions(data)
+        }, error => { 
+            console.log("ERROR");
+            console.log(error)
         })
     }
 

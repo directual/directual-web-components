@@ -464,11 +464,11 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
                 finish && finish(transformedArray(data))
                 setOptions && setOptions(transformedArray(data))
               } 
-              // else {
-              //   setError && setError(data)
-              //   finish && finish([])
-              //   setOptions && setOptions([])
-              // }
+              else {
+                setError && setError(data)
+                finish && finish([])
+                setOptions && setOptions([])
+              }
             }
           )
         }}

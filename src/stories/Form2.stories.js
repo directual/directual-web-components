@@ -34,7 +34,8 @@ let exampleForm = {
                             {
                                 "id": "17143062854440.013200410331010302022123",
                                 "_field": "Gender",
-                                "_field_link_type": "select"
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "getGenders"
                             }
                         ]
                     }
