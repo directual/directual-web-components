@@ -41,7 +41,8 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
     })
     return tempModel
   }
-  const [model, setModel] = useState(edditingOn ? flatternModel({ ...gatherDefaults(), ..._.get(data, "data[0]") }) : {...gatherDefaults()})
+  //const [model, setModel] = useState(edditingOn ? flatternModel({ ...gatherDefaults(), ..._.get(data, "data[0]") }) : { ...gatherDefaults() })
+  const [model, setModel] = useState({ ...gatherDefaults() })
   //const [state, setState] = useState(templateState(_.get(data, "params.state") || defaultState))
   const [state, setState] = useState(_.get(data, "params.state") || defaultState)
   const transformedState = { FormState: state, WebUser: auth }
@@ -68,9 +69,11 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
   // process Socket.io update
   useEffect(() => {
     if (edditingOn) {
-      console.log("update model (socket)")
+      // console.log("update model (socket)")
       const newModel = ({ ...model }, flatternModel({ ..._.get(data, "data[0]") }))
       if (!_.isEqual(newModel, model)) {
+        const newState = templateState(state, newModel)
+        setState(newState)
         setModel(newModel)
       }
     }
@@ -196,8 +199,8 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
       return '';
     }
   }
-  function templateState(input) {
-    const templateData = defaultModel
+  function templateState(input, model) {
+    const templateData = model || defaultModel
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
     // Custom function to handle undefined variables by replacing them with ""
     if (!templateData) return {}
