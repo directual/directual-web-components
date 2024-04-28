@@ -41,9 +41,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
     })
     return tempModel
   }
-  //const [model, setModel] = useState(edditingOn ? flatternModel({ ...gatherDefaults(), ..._.get(data, "data[0]") }) : { ...gatherDefaults() })
   const [model, setModel] = useState({ ...gatherDefaults() })
-  //const [state, setState] = useState(templateState(_.get(data, "params.state") || defaultState))
   const [state, setState] = useState(_.get(data, "params.state") || defaultState)
   const transformedState = { FormState: state, WebUser: auth }
   const defaultModel = { ...emptyValues, ...model, ...transformedState }
@@ -57,20 +55,11 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
     setTimeout(() => setHighlightState(false), 300)
   }, [state])
 
-  function updateObjectIfDifferent(object1, object2) {
-    _.forOwn(object2, (value, key) => {
-      if (_.has(object1, key) && !_.isEqual(object1[key], value)) {
-        _.set(object1, key, value);
-      }
-    });
-    return object1;
-  }
-
   // process Socket.io update
   useEffect(() => {
     if (edditingOn) {
       // console.log("update model (socket)")
-      const newModel = ({ ...model }, flatternModel({ ..._.get(data, "data[0]") }))
+      const newModel = ({ ...model, ...flatternModel({ ..._.get(data, "data[0]") })})
       if (!_.isEqual(newModel, model)) {
         const newState = templateState(state, newModel)
         setState(newState)
@@ -87,6 +76,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
   // console.log("=== FpsForm2 data ===")
   // console.log(data)
 
+  // LEGACY:
   const sendMsg = (msg) => {
     const message = { ...msg, _id: 'form_' + id }
     setLoading(true)
@@ -94,6 +84,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
       onEvent(message)
     }
   }
+  // =======
 
   const submit = (finish) => {
     setState({ ...state, _submitError: "" })
@@ -142,7 +133,10 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
       (result, data) => {
         if (result == "ok") {
           finish && finish(data)
-          // console.log(data)
+          
+          console.log("FINISH SUBMIT")
+          console.log(data)
+
           setLoading(false)
           finish && finish(data)
           setState({ ...state, step: "submitted" })
@@ -340,6 +334,12 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
     return isHidden
   }
 
+  if (_.get(data, 'error') == '403') {
+    return <Hint error title="403" margin={{ top: 0, bottom: 0 }}>
+      <p>{dict[lang].form.noPermissions}</p>
+    </Hint>
+  }
+
   return <div className={`${styles.formWrapper} D_FPS_FORM2_WRAPPER`}
     style={{ maxWidth }}
   >
@@ -463,7 +463,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
               if (result == "ok") {
                 finish && finish(transformedArray(data))
                 setOptions && setOptions(transformedArray(data))
-              } 
+              }
               else {
                 setError && setError(data)
                 finish && finish([])
