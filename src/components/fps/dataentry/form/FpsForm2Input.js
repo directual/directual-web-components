@@ -390,6 +390,7 @@ function FieldLink(props) {
     const params = _.omitBy(_.mapValues(field._field_arrayLink_endpoint_params || {}, i => template("{{" + i + "}}")), _.isEmpty)
 
     const refreshOptions = (finish, filter, value) => {
+        if (!field._field_arrayLink_endpoint) { return; }
         if (field._field_link_type !== "radio" &&
             field._field_link_type !== "select") {
             return;
@@ -412,7 +413,6 @@ function FieldLink(props) {
     }, [params]) // update options when request params are changed
 
 
-
     useEffect(() => {
         if ((field._field_link_type == "radio")
             && !firstLoad) {
@@ -424,6 +424,9 @@ function FieldLink(props) {
     // return <div><pre><code>{JSON.stringify(options, 0, 3)}</code></pre></div>
 
     if (field._field_link_type == "select") {
+        if (!field._field_arrayLink_endpoint) return <div>
+            <div className={styles.form2label}>{fieldInfo.name || fieldInfo.sysName}</div>
+            Endpoint for the dropdown is not configured.</div>
         return <Input type="dinamicSelect"
             onLoad={refreshOptions}
             required={field._field_required}
@@ -438,6 +441,9 @@ function FieldLink(props) {
     }
 
     if (field._field_link_type == "radio") {
+        if (!field._field_arrayLink_endpoint) return <div>
+            <div className={styles.form2label}>{fieldInfo.name || fieldInfo.sysName}</div>
+            Endpoint for radio buttons is not configured.</div>
         return <Input type="radio"
             options={options.map(i => {
                 return {
@@ -484,6 +490,7 @@ function FieldArrayLink(props) {
     const params = _.omitBy(_.mapValues(field._field_arrayLink_endpoint_params || {}, i => template("{{" + i + "}}")), _.isEmpty)
 
     const refreshOptions = (finish, filter, value) => {
+        if (!field._field_arrayLink_endpoint) { return; }
         if (field._field_arrayLink_type !== "checkboxes" &&
             field._field_arrayLink_type !== "select") {
             return;
@@ -495,6 +502,9 @@ function FieldArrayLink(props) {
             // console.log("finish")
             // console.log(data)
             setOptions(data)
+        }, error => { 
+            console.log("ERROR");
+            console.log(error)
         })
     }
 
@@ -517,6 +527,9 @@ function FieldArrayLink(props) {
     // return <div><pre><code>{JSON.stringify(options, 0, 3)}</code></pre></div>
 
     if (field._field_arrayLink_type == "select") {
+        if (!field._field_arrayLink_endpoint) return <div>
+            <div className={styles.form2label}>{fieldInfo.name || fieldInfo.sysName}</div>
+            Endpoint for the dropdown is not configured.</div>
         return <Input type="dinamicMultiSelect"
             onLoad={refreshOptions}
             required={field._field_required}
@@ -534,6 +547,9 @@ function FieldArrayLink(props) {
     }
 
     if (field._field_arrayLink_type == "checkboxes") {
+        if (!field._field_arrayLink_endpoint) return <div>
+            <div className={styles.form2label}>{fieldInfo.name || fieldInfo.sysName}</div>
+            Endpoint for checkboxes is not configured.</div>
         return <Input type="checkboxGroup"
             options={options.map(i => {
                 return {

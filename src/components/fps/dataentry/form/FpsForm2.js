@@ -439,7 +439,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
             }
           )
         }}
-        callEndpoint={(endpoint, params, finish, setOptions) => {
+        callEndpoint={(endpoint, params, finish, setOptions, setError) => {
           console.log('===> calling endpoint /' + endpoint)
           console.log(params)
 
@@ -461,6 +461,10 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
               if (result == "ok") {
                 finish && finish(transformedArray(data))
                 setOptions && setOptions(transformedArray(data))
+              } else {
+                setError(data)
+                finish && finish([])
+                setOptions && setOptions([])
               }
             }
           )

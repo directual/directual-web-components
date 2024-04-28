@@ -28,34 +28,13 @@ let exampleForm = {
                 "sysName": "default",
                 "elements": [
                     {
-                        "id": "elmnt_1713599636424",
+                        "id": "elmnt_1714306282424",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17135996381740.002302331314242141012402",
-                                "_field": "phone",
-                                "_field_link_type": "radio",
-                                "_field_link_radio_layout": "horizontal",
-                                "_field_arrayLink_endpoint": "getGenders",
-                                "_field_required": false,
-                                "_input_type": "object"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 1,
-                        "_input_fields_in_a_row_column": "column"
-                    },
-                    {
-                        "id": "elmnt_1713876059286",
-                        "type": "text",
-                        "paraText": "{{email}}"
-                    },
-                    {
-                        "id": "elmnt_1713862028029",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17138620316220.22323223110210141132434",
-                                "_action": "action_1713856550278"
+                                "id": "17143062854440.013200410331010302022123",
+                                "_field": "Gender",
+                                "_field_link_type": "select"
                             }
                         ]
                     }
@@ -93,13 +72,13 @@ let exampleForm = {
                 "mapping": [
                     {
                         "id": "mapping_1712596178548",
-                        "value": "FormState.step",
+                        "value": "{\n  \"color\": {{email}},\n  \"state_step\": {{FormState.step}}\n}",
                         "field": "payload"
                     },
                     {
                         "id": "mapping_1713529734054",
                         "field": "payload2",
-                        "value": "colour"
+                        "value": "colour – {{phone}}"
                     }
                 ],
                 "resetModel": false,
@@ -114,6 +93,11 @@ let exampleForm = {
                         "id": "stateMapping1713856557259",
                         "field": "FormState.step",
                         "value": "submitted"
+                    },
+                    {
+                        "id": "stateMapping1714294596931",
+                        "field": "phone",
+                        "value": "{{FormState.step}}"
                     }
                 ]
             },
@@ -176,68 +160,10 @@ let exampleForm = {
             "linkOrArrayLinkType": false,
             "indexExists": false,
             "array": false
-        },
-        {
-            "sysName": "email",
-            "dataType": "string",
-            "name": "",
-            "id": "76631713448401631",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 13,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": "email",
-            "formatOptions": {},
-            "groupName": null,
-            "arrayLink": false,
-            "linkType": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "phone",
-            "dataType": "string",
-            "name": "",
-            "id": "90381713448410310",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 14,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": "phone",
-            "formatOptions": {},
-            "groupName": null,
-            "arrayLink": false,
-            "linkType": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "indexExists": false,
-            "array": false
         }
     ],
     "data": [
         {
-            "phone": "9",
-            "email": "pavel@ershov!",
             "id": "cfeba119-ae93-4367-9e61-1f6bf44ee879"
         }
     ],
@@ -248,20 +174,11 @@ let exampleForm = {
         [
             "id",
             99305059
-        ],
-        [
-            "email",
-            99305059
-        ],
-        [
-            "phone",
-            99305059
         ]
     ],
     "writeFields": [
-        "colour",
-        "phone",
-        "id"
+        "id",
+        "Gender"
     ],
     "structures": {
         "99305059": {
@@ -322,62 +239,6 @@ let exampleForm = {
     "writeResponse": null,
     "fileds": [
         {
-            "sysName": "colour",
-            "dataType": "string",
-            "name": "",
-            "id": "97561713448423014",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 16,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": "color",
-            "formatOptions": {},
-            "groupName": null,
-            "arrayLink": false,
-            "linkType": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "phone",
-            "dataType": "string",
-            "name": "",
-            "id": "90381713448410310",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 14,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": "phone",
-            "formatOptions": {},
-            "groupName": null,
-            "arrayLink": false,
-            "linkType": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
             "sysName": "id",
             "dataType": "id",
             "name": "id",
@@ -402,6 +263,34 @@ let exampleForm = {
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "Gender",
+            "dataType": "link",
+            "name": "Кого читаем?",
+            "id": "50871713599548844",
+            "link": "genders",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 39,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "arrayLink": false,
+            "linkType": true,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
             "indexExists": false,
             "array": false
         }

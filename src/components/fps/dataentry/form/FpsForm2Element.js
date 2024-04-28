@@ -68,7 +68,7 @@ function ElementInput(props) {
 }
 
 function ElementAction(props) {
-    const { element, templateState, callEndpointPOST, setState, setModel, data, state } = props
+    const { element, templateState, template, callEndpointPOST, setState, setModel, model, data, state } = props
     const [loading, setLoading] = useState(false)
 
     const action_list = _.get(element, "_actions") || []
@@ -77,14 +77,19 @@ function ElementAction(props) {
     const transformObject = array => _.reduce(array, (result, item) => {
         if (!array || array.length == 0) return {};
         const { field, value } = item;
-        result[field] = "{{" + value + "}}";
+        result[field] = template(value);
         return result;
     }, {});
 
-    const transformState = array => _.reduce(array, (result, item) => {
+    const transformState = (array, type) => _.reduce(array, (result, item) => {
         if (!array || array.length == 0) return {};
         const { field, value } = item;
-        result[field.substring(10)] = value;
+        if (field.substring(0,9) == "FormState" && type == "state") {
+            result[field.substring(10)] =  template(value);
+        }
+        if (field.substring(0,9) !== "FormState" && type == "model") {
+            result[field] =  template(value);
+        }
         return result;
     }, {});
 
@@ -95,14 +100,16 @@ function ElementAction(props) {
         if (action.actionType == "endpoint") {
             const payload = transformObject(action.mapping)
             setLoading(true)
-            callEndpointPOST(action.endpoint, templateState(payload), (result) => {
+            callEndpointPOST(action.endpoint, payload, (result) => {
                 setLoading(false)
                 // console.log(result)
             })
         }
         if (action.actionType == "state") {
-            const payload = transformState(action.stateMapping)
-            setState({ ...state, ...payload })
+            const payloadState = transformState(action.stateMapping, "state")
+            const payloadModel = transformState(action.stateMapping, "model")
+            setState({ ...state, ...payloadState })
+            setModel({ ...model, ...payloadModel })
         }
     }
 
