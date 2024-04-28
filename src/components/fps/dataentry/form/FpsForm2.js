@@ -59,7 +59,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
   useEffect(() => {
     if (edditingOn) {
       // console.log("update model (socket)")
-      const newModel = ({ ...model, ...flatternModel({ ..._.get(data, "data[0]") })})
+      const newModel = ({ ...model, ...flatternModel({ ..._.get(data, "data[0]") }) })
       if (!_.isEqual(newModel, model)) {
         const newState = templateState(state, newModel)
         setState(newState)
@@ -133,13 +133,24 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
       (result, data) => {
         if (result == "ok") {
           finish && finish(data)
-          
-          console.log("FINISH SUBMIT")
-          console.log(data)
-
+          // console.log("FINISH SUBMIT")
+          // console.log(data)
+          let saveState = {...state}
+          try {
+            const response = JSON.parse(data)
+            // update state
+            if (!isEmpty(_.get(response, "state"))) {
+              const stateUpdate = _.get(response, "state")
+              // console.log("update state")
+              // console.log(stateUpdate)
+              saveState = { ...state, ...stateUpdate }
+            }
+          } catch (err) {
+            console.log(err)
+          }
           setLoading(false)
           finish && finish(data)
-          setState({ ...state, step: "submitted" })
+          setState({ ...saveState, step: "submitted" })
           setModel({}) // reset model
         } else {
           setState({ ...model, _apiError: data.msg })
