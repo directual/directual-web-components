@@ -458,14 +458,17 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
             undefined,
             params,
             (result, data) => {
+              console.log(result)
+              console.log(data)
               if (result == "ok") {
                 finish && finish(transformedArray(data))
                 setOptions && setOptions(transformedArray(data))
-              } else {
-                setError(data)
-                finish && finish([])
-                setOptions && setOptions([])
-              }
+              } 
+              // else {
+              //   setError && setError(data)
+              //   finish && finish([])
+              //   setOptions && setOptions([])
+              // }
             }
           )
         }}
