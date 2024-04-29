@@ -335,7 +335,8 @@ let exampleForm = {
     ],
     "writeFields": [
         "phone",
-        "id"
+        "id",
+        "range2"
     ],
     "structures": {
         "99305059": {
@@ -498,6 +499,66 @@ let exampleForm = {
             "array": false,
             "linkOrArrayLinkType": false,
             "json": false,
+            "indexExists": false,
+            "linkType": false,
+            "typeVariable": {},
+            "arrayLink": false
+        },
+        {
+            "sysName": "range2",
+            "dataType": "json",
+            "name": "",
+            "id": "38791713448708658",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 38,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "rangeSlider",
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "unitName": "",
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {
+                    "max": 100,
+                    "min": -100,
+                    "step": 2
+                },
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "array": false,
+            "linkOrArrayLinkType": false,
+            "json": true,
             "indexExists": false,
             "linkType": false,
             "typeVariable": {},

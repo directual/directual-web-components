@@ -27,8 +27,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
     } catch (err) {
       console.error(err)
     }
-    array = [...array,
-    ..._.sortedUniq(_.sortBy((fieldScheme || []).map(item => item[0])))]
+    array = [...array, ..._.map(_.sortedUniq(_.sortBy((fieldScheme || []).map(item => item[0]))), i => i.split(".")[0])]
     return _.zipObject(array, Array(array.length).fill(''))
   }
 
