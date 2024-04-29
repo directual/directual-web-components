@@ -48,7 +48,7 @@ export default function FormSteps(props) {
 
     // type == 'progress'
     return <div className={`${styles.formStepProgress} FPS_FORM_STEPS_PROGRESS`}>
-        <div className={styles.stepsHeader}>
+        <div className={styles.stepsHeader || currentStepSysName}>
             <div className={styles.setpNumber}>{current}</div>
             <div className={styles.setpName}>{currentStep.title}</div>
         </div>
@@ -57,7 +57,7 @@ export default function FormSteps(props) {
             <div className={styles.progressBarFilled} style={{ width: `${(100 * current/total)}%` }} />
         </div>
         <div className={styles.stepsNofM}>{dict[lang].form.step} {current} {dict[lang].form.of} {total}</div>
-        <div className={styles.stepDescription}>{currentStep.description}</div>
+        {currentStep.description && <div className={styles.stepDescription}>{currentStep.description}</div>}
     </div>
 }
 
