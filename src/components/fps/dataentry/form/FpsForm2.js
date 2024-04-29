@@ -10,19 +10,25 @@ import Hint from '../../hint/hint'
 
 export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale, handleRoute }) {
 
+  // console.log("=== FpsForm2 data ===")
+  // console.log(data)
+
   const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
   const defaultState = { "step": null }
   const params = _.get(data, "params")
   const fields = _.get(data, "fileds")
   const edditingOn = _.get(params, "general.edittingOn")
-  const emptyValues = fakeSchemeForTemplating(_.get(data, "fileds")) //  формируем джейсончик для шаблонизации (пустой)
-  function fakeSchemeForTemplating(fieldScheme) {
+  const emptyValues = fakeSchemeForTemplating(_.get(data, "fileds"), _.get(data, "fieldScheme")) //  формируем джейсончик для шаблонизации (пустой)
+
+  function fakeSchemeForTemplating(fields, fieldScheme) {
     let array = []
     try {
-      array = fieldScheme.map(i => i.sysName)
+      array = fields.map(i => i.sysName)
     } catch (err) {
       console.error(err)
     }
+    array = [...array,
+    ..._.sortedUniq(_.sortBy((fieldScheme || []).map(item => item[0])))]
     return _.zipObject(array, Array(array.length).fill(''))
   }
 
@@ -73,8 +79,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
     setTimeout(() => setHighlightModel(false), 300)
   }, [model])
 
-  // console.log("=== FpsForm2 data ===")
-  // console.log(data)
+
 
   // LEGACY:
   const sendMsg = (msg) => {
@@ -135,7 +140,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
           finish && finish(data)
           // console.log("FINISH SUBMIT")
           // console.log(data)
-          let saveState = {...state}
+          let saveState = { ...state }
           try {
             const response = JSON.parse(data)
             // update state
@@ -238,7 +243,8 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
   const maxWidth = _.get(params, "form_maxWidth") || "auto"
   const object = _.get(data, "data[0]")
   const formSteps = _.get(params, "steps") || []
-  const currentStep = (state.step ? _.find(formSteps, { sysName: state.step }) : _.get(formSteps, "[0]")) || {}
+
+  //const currentStep = (state.step ? _.find(formSteps, { sysName: state.step }) : _.get(formSteps, "[0]")) || {}
   // =============
 
   const editModel = field => value => {
@@ -351,10 +357,24 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
     </Hint>
   }
 
+  const checkIfAllInputsHidden = element => {
+    return element.type == "input" && _.every(element._input_fields, item => item._field_hidden === true);
+  }
+
+  const showSection = section => {
+    if (section.sectionVisibility == "always") return true;
+    if (section.sectionVisibility == "custom") {
+      let current = state.step ? [state.step] : []
+      let steps = section.sectionCustomVisibility ? section.sectionCustomVisibility.split(",") : []
+      if (_.intersection(current, steps).length > 0) return true;
+    }
+    if (section.sysName == state.step) return true;
+    return false;
+  }
+
   return <div className={`${styles.formWrapper} D_FPS_FORM2_WRAPPER`}
     style={{ maxWidth }}
   >
-
     {formTitle && <h2
       className={`${styles.formHeader} D_FPS_FORM2_HEADER`}>
       <InnerHTML allowRerender={true} html={formTitle} /></h2>}
@@ -376,115 +396,121 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
     {state._apiError && <Hint error closable onClose={() => setState({ ...state, _apiError: "" })}>
       {state._apiError}
     </Hint>}
+    {formSteps
+      .filter(showSection)
+      .map(currentStep => {
 
-    <div className={`${styles.formSection} D_FPS_FORM2_SECTION ${currentStep.CSSclass}`}
-      style={{
-        gap: (currentStep.sectionGap || currentStep.sectionGap == 0) ?
-          `${currentStep.sectionGap}px 0`
-          :
-          `18px 0`
-      }}
-    >
+        return <div className={`${styles.formSection} D_FPS_FORM2_SECTION ${currentStep.CSSclass}`}
+          style={{
+            gap: (currentStep.sectionGap || currentStep.sectionGap == 0) ?
+              `${currentStep.sectionGap}px 0`
+              :
+              `18px 0`
+          }}
+        >
 
-      {_.get(params, "general.showState") && <pre className={styles.debug}>
-        <code>{currentStep.sysName}</code>
-        <span>debug mode: STEP</span>
-      </pre>}
+          {_.get(params, "general.showState") && <pre className={styles.debug}>
+            <code>{currentStep.sysName}</code>
+            <span>debug mode: STEP</span>
+          </pre>}
 
-      {(currentStep.elements || []).filter(element => !checkHidden(element)).map(element => <FormElement
-        model={model}
-        data={data}
-        checkHidden={checkHidden}
-        dict={dict}
-        locale={locale}
-        handleRoute={handleRoute}
-        state={state}
-        templateState={templateState}
-        loading={loading}
-        setState={setState}
-        lang={lang}
-        onSubmit={submit}
-        template={template}
-        editModel={editModel}
-        setModel={setModel}
-        element={element}
-        callEndpointPOST={(endpoint, body, finish) => {
-          console.log('===> calling endpoint /' + endpoint)
-          console.log(body)
-          callEndpoint && callEndpoint(
-            endpoint,
-            "POST",
-            body,
-            undefined,
-            (result, data) => {
-              if (result == "ok") {
-                finish && finish(data)
-                console.log('finish')
-                // console.log(data)
-                try {
-                  const response = JSON.parse(data)
-                  // update state
-                  if (!isEmpty(_.get(response, "state"))) {
-                    const stateUpdate = _.get(response, "state")
-                    // console.log("update state")
-                    // console.log(stateUpdate)
-                    setState({ ...state, ...stateUpdate })
+          {(currentStep.elements || [])
+            .filter(element => !checkHidden(element) && !checkIfAllInputsHidden(element))
+            .map(element => <FormElement
+              model={model}
+              data={data}
+              checkHidden={checkHidden}
+              dict={dict}
+              locale={locale}
+              handleRoute={handleRoute}
+              state={state}
+              templateState={templateState}
+              loading={loading}
+              setState={setState}
+              lang={lang}
+              onSubmit={submit}
+              template={template}
+              editModel={editModel}
+              setModel={setModel}
+              element={element}
+              callEndpointPOST={(endpoint, body, finish) => {
+                console.log('===> calling endpoint /' + endpoint)
+                console.log(body)
+                callEndpoint && callEndpoint(
+                  endpoint,
+                  "POST",
+                  body,
+                  undefined,
+                  (result, data) => {
+                    if (result == "ok") {
+                      finish && finish(data)
+                      console.log('finish')
+                      // console.log(data)
+                      try {
+                        const response = JSON.parse(data)
+                        // update state
+                        if (!isEmpty(_.get(response, "state"))) {
+                          const stateUpdate = _.get(response, "state")
+                          // console.log("update state")
+                          // console.log(stateUpdate)
+                          setState({ ...state, ...stateUpdate })
+                        }
+                        // update model/object
+                        if (!isEmpty(_.get(response, "object"))) {
+                          const modelUpdate = _.get(response, "object")
+                          // console.log("update object")
+                          // console.log(modelUpdate)
+                          setModel({ ...model, ...modelUpdate })
+                        }
+                        if (!isEmpty(_.get(response, "model"))) {
+                          const modelUpdate = _.get(response, "model")
+                          // console.log("update model")
+                          // console.log(modelUpdate)
+                          setModel({ ...model, ...modelUpdate })
+                        }
+                      } catch (err) {
+                        console.log(err)
+                      }
+                    }
                   }
-                  // update model/object
-                  if (!isEmpty(_.get(response, "object"))) {
-                    const modelUpdate = _.get(response, "object")
-                    // console.log("update object")
-                    // console.log(modelUpdate)
-                    setModel({ ...model, ...modelUpdate })
-                  }
-                  if (!isEmpty(_.get(response, "model"))) {
-                    const modelUpdate = _.get(response, "model")
-                    // console.log("update model")
-                    // console.log(modelUpdate)
-                    setModel({ ...model, ...modelUpdate })
-                  }
-                } catch (err) {
-                  console.log(err)
-                }
-              }
-            }
-          )
-        }}
-        callEndpoint={(endpoint, params, finish, setOptions, setError) => {
-          console.log('===> calling endpoint /' + endpoint)
-          console.log(params)
+                )
+              }}
+              callEndpoint={(endpoint, params, finish, setOptions, setError) => {
+                console.log('===> calling endpoint /' + endpoint)
+                console.log(params)
 
-          const transformedArray = inputArray => _.map(inputArray, (item) => {
-            const { id, ...rest } = item; // Destructure `id` and the rest of the properties
-            const value = _.values(_.pickBy(rest, _.isString)).join(' '); // Concatenate string values
-            return {
-              key: id,
-              value: _.trim(value) || id
-            };
-          });
+                const transformedArray = inputArray => _.map(inputArray, (item) => {
+                  const { id, ...rest } = item; // Destructure `id` and the rest of the properties
+                  const value = _.values(_.pickBy(rest, _.isString)).join(' '); // Concatenate string values
+                  return {
+                    key: id,
+                    value: _.trim(value) || id
+                  };
+                });
 
-          callEndpoint && callEndpoint(
-            endpoint,
-            "GET",
-            undefined,
-            params,
-            (result, data) => {
-              console.log(result)
-              console.log(data)
-              if (result == "ok") {
-                finish && finish(transformedArray(data))
-                setOptions && setOptions(transformedArray(data))
-              }
-              else {
-                setError && setError(data)
-                finish && finish([])
-                setOptions && setOptions([])
-              }
-            }
-          )
-        }}
-        key={element.id} />)}
-    </div>
+                callEndpoint && callEndpoint(
+                  endpoint,
+                  "GET",
+                  undefined,
+                  params,
+                  (result, data) => {
+                    console.log(result)
+                    console.log(data)
+                    if (result == "ok") {
+                      finish && finish(transformedArray(data))
+                      setOptions && setOptions(transformedArray(data))
+                    }
+                    else {
+                      setError && setError(data)
+                      finish && finish([])
+                      setOptions && setOptions([])
+                    }
+                  }
+                )
+              }}
+              key={element.id} />)}
+        </div>
+      })}
   </div>
 }
 
