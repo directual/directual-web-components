@@ -10,6 +10,7 @@ import { InputRow } from '../input/input'
 import { InputForm } from './InputForm'
 import FpsForm2Input from './FpsForm2Input'
 import FpsForm2Action from './FpsForm2Action'
+import FormSteps from './FormSteps'
 import _ from 'lodash'
 
 export default function FormElement(props) {
@@ -38,6 +39,9 @@ export default function FormElement(props) {
         case "redirect":
             render = <ElementRedirect {...props} />
             break;
+        case "steps":
+            render = <ElementSteps {...props} />
+            break;
         default:
             render = <div>??</div>
             break;
@@ -46,8 +50,21 @@ export default function FormElement(props) {
     return <div className={`${styles.elementWrapper} D_FPS_FORM2_ELEMENT_WRAPPER`}>{render}</div>
 }
 
+function ElementSteps(props) {
+    const { element, template, state } = props
+    console.log("element")
+    console.log(element)
+    return <FormSteps
+        {...props}
+        type='progress'
+        currentStep={state.step}
+        filter={template(_.get(element,"_formSteps.settings.filter"))}
+        formStepsSettings={element._formSteps}
+    />
+}
+
 function ElementInput(props) {
-    const { element, template, dict, lang, loading, setState, editModel, model, data, state, locale } = props
+    const { element, setState, editModel, state } = props
 
     const inputs = _.get(element, "_input_fields") || []
 
@@ -84,11 +101,11 @@ function ElementAction(props) {
     const transformState = (array, type) => _.reduce(array, (result, item) => {
         if (!array || array.length == 0) return {};
         const { field, value } = item;
-        if (field.substring(0,9) == "FormState" && type == "state") {
-            result[field.substring(10)] =  template(value);
+        if (field.substring(0, 9) == "FormState" && type == "state") {
+            result[field.substring(10)] = template(value);
         }
-        if (field.substring(0,9) !== "FormState" && type == "model") {
-            result[field] =  template(value);
+        if (field.substring(0, 9) !== "FormState" && type == "model") {
+            result[field] = template(value);
         }
         return result;
     }, {});
@@ -182,13 +199,13 @@ function ElementHint(props) {
 
 function ElementRedirect(props) {
     const { element, template, handleRoute } = props
-    
-    const url = template(element.redirect_url)
-const delay = element.redirect_delay || 0
 
-    setTimeout(()=>{
+    const url = template(element.redirect_url)
+    const delay = element.redirect_delay || 0
+
+    setTimeout(() => {
         handleRoute(url)()
-    }, delay * 1000 )
+    }, delay * 1000)
 
     return <div></div>
 }

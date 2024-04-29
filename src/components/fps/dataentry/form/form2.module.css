@@ -1,8 +1,7 @@
-.formHeader {
-  margin-bottom: 18px;
-}
-.formDescription {
-  margin-bottom: 18px;
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 18px 18px;
 }
 .formSection {
   display: flex;
@@ -16,7 +15,6 @@
   padding: 5px;
   border-radius: 4px;
   position: relative;
-  margin: 3px 0;
   border: dashed 2px rgba(130, 56, 56, 0.276);
   transition: background-color 0.3s ease-in-out;
 }
@@ -53,4 +51,60 @@
   opacity: 0.7;
   padding-bottom: 6px;
   font-weight: var(--strong-font-weight);
+}
+.formStepProgress {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.formStepProgress .stepsNofM {
+  font-size: var(--text-small-size);
+  opacity: 0.5;
+}
+.formStepProgress .stepDescription {
+  margin-top: 16px;
+}
+.formStepProgress .progressBar {
+  margin: 12px 0 6px 0;
+  height: 4px;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+.formStepProgress .progressBar .progressBarBackground {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: var(--form-field-border);
+}
+.formStepProgress .progressBar .progressBarFilled {
+  height: 100%;
+  position: absolute;
+  transition: 0.6s;
+  top: 0;
+  z-index: 2;
+  background-color: var(--form-accent);
+}
+.formStepProgress .stepsHeader {
+  display: flex;
+  align-items: center;
+  gap: 0 10px;
+}
+.formStepProgress .stepsHeader .setpNumber {
+  background-color: var(--menu-bgr);
+  border-radius: var(--border-radius);
+  border-color: var(--menu-border-color);
+  border-style: solid;
+  font-size: var(--h3-font-size);
+  font-weight: var(--headers-font-weight-h3);
+  padding: 4px 6px;
+  color: var(--menu-item);
+  min-width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.formStepProgress .stepsHeader .setpName {
+  font-size: var(--h3-font-size);
+  font-weight: var(--headers-font-weight-h3);
 }

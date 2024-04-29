@@ -16,6 +16,7 @@ import FpsHint from './components/fps/hint/FpsHint'
 import FpsMap from './components/fps/dataentry/map/map'
 import FpsForm, { FormSection } from './components/fps/dataentry/form/FpsForm'
 import FpsForm2 from './components/fps/dataentry/form/FpsForm2'
+import FormSteps from './components/fps/dataentry/form/FormSteps'
 import MainMenu, { NewMainMenu, NewMobileTabs } from './components/fps/mainmenu/mainmenu'
 import ComponentDetails from './components/fps/componentdetails/componentdetails'
 import FpsTable from './components/fps/viewobjects/table/FpsTable'
@@ -61,6 +62,7 @@ export {
   Fps400,
   Spacing,
   Fps500,
+  FormSteps,
   FpsForm2,
   FpsBlocked,
   Colorpicker,

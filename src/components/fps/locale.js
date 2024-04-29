@@ -9,7 +9,9 @@ export const dict = {
             submitAgain: 'Submit again',
             thankYou: 'Thank you',
             chosen: 'chosen',
-            emptyRequired: "Fill the required fields: "
+            emptyRequired: "Fill the required fields: ",
+            step: 'Step',
+            of: 'of'
         },
         sortField: 'Sort field',
         error: 'Error',
@@ -96,7 +98,9 @@ export const dict = {
             submitAgain: 'Erneut senden',
             thankYou: 'Dankeschön',
             chosen: 'ausgewählt',
-            emptyRequired: "Füllen Sie die erforderlichen Felder aus: "
+            emptyRequired: "Füllen Sie die erforderlichen Felder aus: ",
+            step: 'Schritt',
+            of: 'von'
         },
         sortField: 'Sortierfeld',
         error: 'Fehler',
@@ -183,7 +187,9 @@ export const dict = {
             submitAgain: 'Enviar de nuevo',
             thankYou: 'Gracias',
             chosen: 'elegido',
-            emptyRequired: "Rellene los campos requeridos: "
+            emptyRequired: "Rellene los campos requeridos: ",
+            step: 'Paso',
+            of: 'de'
         },
         sortField: 'Campo de ordenación',
         error: 'Error',
@@ -270,7 +276,9 @@ export const dict = {
             submitAgain: 'Soumettre à nouveau',
             thankYou: 'Merci',
             chosen: 'choisi',
-            emptyRequired: "Remplissez les champs obligatoires: "
+            emptyRequired: "Remplissez les champs obligatoires: ",
+            step: 'Étape',
+            of: 'de'
         },
         sortField: 'Champ de tri',
         error: 'Erreur',
@@ -357,7 +365,9 @@ export const dict = {
             submitAgain: 'Отправить опять',
             thankYou: 'Спасибо',
             chosen: 'выбрано',
-            emptyRequired: "Заполните обязательные поля: "
+            emptyRequired: "Заполните обязательные поля: ",
+            step: 'Шаг',
+            of: 'из'
         },
         sortField: 'Поле для сортировки',
         error: 'Ошибка',
@@ -443,7 +453,9 @@ export const dict = {
             submitAgain: '再送信する',
             thankYou: 'ありがとうございます',
             chosen: '選ばれた',
-            emptyRequired: "必要な項目を入力してください："
+            emptyRequired: "必要な項目を入力してください：",
+            step: 'ステップ',
+            of: 'の'
         },
         sortField: '並び替えフィールド',
         error: 'エラー',
@@ -529,7 +541,9 @@ export const dict = {
             "submitAgain": "Enviar novamente",
             "thankYou": "Obrigado",
             "chosen": 'escolhido',
-            emptyRequired: "Preencha os campos obrigatórios: "
+            emptyRequired: "Preencha os campos obrigatórios: ",
+            step: 'Passo',
+            of: 'de'
         },
         "sortField": 'Campo de ordenação',
         "error": "Erro",
@@ -614,7 +628,9 @@ export const dict = {
             submitAgain: 'फिर से सबमिट करें',
             thankYou: 'धन्यवाद',
             chosen: 'चुना हुआ',
-            emptyRequired: "आवश्यक फील्ड भरें: "
+            emptyRequired: "आवश्यक फील्ड भरें: ",
+            step: 'कदम',
+            of: 'का'
         },
         sortField: 'क्रमबद्ध क्षेत्र',
         error: 'त्रुटि',
@@ -699,7 +715,9 @@ export const dict = {
             "submitAgain": "다시 제출",
             "thankYou": "감사합니다",
             "chosen": "선택됨",
-            emptyRequired: "필수 항목을 입력하세요: "
+            emptyRequired: "필수 항목을 입력하세요: ",
+            step: '단계',
+            of: '의'
         },
         "sortField": "정렬 필드",
         "error": "오류",
@@ -772,5 +790,5 @@ export const dict = {
             "noData": "데이터 없음"
         },
         "noOptions": "옵션이 없습니다"
-    }    
+    }
 }

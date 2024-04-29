@@ -54,8 +54,8 @@ export default function FpsForm2Input(props) {
 
 function FieldText(props) {
 
-    const { field, locale, template, model, state, onChange, fieldInfo, code } = props
-    const basicProps = { onChange, locale }
+    const { field, locale, lang, template, model, state, onChange, fieldInfo, code } = props
+    const basicProps = { onChange, locale, lang }
 
     if (field._input_type == "state") {
         if (field._edit_state_type == "select") {
@@ -95,7 +95,7 @@ function FieldText(props) {
 function FieldColor(props) {
 
     const { field, locale, template, model, state, onChange, fieldInfo, code } = props
-    const basicProps = { onChange, locale }
+    const basicProps = { onChange, locale, lang }
 
     return <Input
         type="color"
@@ -112,7 +112,7 @@ function FieldColor(props) {
 
 function FieldMkd(props) {
     const { field, locale, template, model, state, onChange, fieldInfo, code } = props
-    const basicProps = { onChange, locale }
+    const basicProps = { onChange, locale, lang }
     const defaultValue = model[fieldInfo.sysName]
 
     return <React.Fragment>
