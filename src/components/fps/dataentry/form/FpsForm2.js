@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styles from './form2.module.css'
 import icon from './../../../../icons/fps-form2.svg'
 import { dict } from '../../locale'
@@ -47,7 +47,9 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
     return tempModel
   }
   const [model, setModel] = useState({ ...gatherDefaults() })
+  const previousModel = usePrevious(model);
   const [state, setState] = useState(_.get(data, "params.state") || defaultState)
+  const previousState = usePrevious(state);
   const transformedState = { FormState: state, WebUser: auth }
   const defaultModel = { ...emptyValues, ...model, ...transformedState }
   const [loading, setLoading] = useState(false)
@@ -55,9 +57,19 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
   const [highlightState, setHighlightState] = useState(false)
   const [highlightModel, setHighlightModel] = useState(false)
 
+  function usePrevious(value) {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = value;
+    }, [value]);
+    return ref.current;
+  }
+
   useEffect(() => {
-    setHighlightState(true)
-    setTimeout(() => setHighlightState(false), 300)
+    if (!_.isEqual(previousState, state)) {
+      setHighlightState(true)
+      setTimeout(() => setHighlightState(false), 300)
+    }
   }, [state])
 
   // process Socket.io update
@@ -74,8 +86,10 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
   }, [_.get(data, "data[0]")])
 
   useEffect(() => {
-    setHighlightModel(true)
-    setTimeout(() => setHighlightModel(false), 300)
+    if (!_.isEqual(previousModel, model)) {
+      setHighlightModel(true)
+      setTimeout(() => setHighlightModel(false), 300)
+    }
   }, [model])
 
 

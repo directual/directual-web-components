@@ -52,8 +52,6 @@ export default function FormElement(props) {
 
 function ElementSteps(props) {
     const { element, template, state } = props
-    console.log("element")
-    console.log(element)
     return <FormSteps
         {...props}
         type='progress'
