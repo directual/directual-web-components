@@ -24,51 +24,27 @@ let exampleForm = {
     "params": {
         "steps": [
             {
-                "id": "step_1714371618452",
-                "sysName": "Show everywhere",
+                "id": "step_1714487923358",
+                "sysName": "progress bar",
                 "elements": [
                     {
-                        "id": "elmnt_1714371630372",
+                        "id": "elmnt_1714487973589",
                         "type": "steps",
-                        "paraText": "Everywhere",
                         "_formSteps": {
-                            "settings": {
-                                "type": "progress",
-                                "steps": {
-                                    "1": true,
-                                    "2": true,
-                                    "3": true,
-                                    "Show everywhere": false,
-                                    "submitted": false,
-                                    "Show 2, 3": true,
-                                    "1 адин два три чотыре пять шесть семь": true,
-                                    "хуй пизда джигурда": true
-                                },
-                                "filter": "{{FormState.filter}}"
-                            },
                             "stepsOrder": [
-                                "1",
-                                "2",
-                                "3"
+                                "step 1",
+                                "step 2"
                             ],
+                            "settings": {
+                                "steps": {
+                                    "step 1": true,
+                                    "Step 2": true,
+                                    "step 2": true
+                                }
+                            },
                             "stepSettings": {
-                                "1": {
-                                    "title": "шаг 1",
-                                    "description": "Описалово"
-                                },
-                                "2": {
-                                    "title": "Шаг два",
-                                    "hideFor": "hide"
-                                },
-                                "3": {
-                                    "title": "Шаг 3",
-                                    "showFor": "show"
-                                },
-                                "Show everywhere": {
-                                    "title": "hello!",
-                                    "hideFor": "1",
-                                    "showFor": "2",
-                                    "description": "3"
+                                "step 1": {
+                                    "description": ""
                                 }
                             }
                         }
@@ -77,92 +53,26 @@ let exampleForm = {
                 "sectionVisibility": "always"
             },
             {
-                "id": "step_one",
-                "sysName": "1",
+                "id": "step_1714487935442",
+                "sysName": "step 1",
                 "elements": [
                     {
-                        "id": "elmnt_1714371456799",
+                        "id": "elmnt_1714487945480",
                         "type": "text",
-                        "paraText": "Step 1"
-                    },
-                    {
-                        "id": "elmnt_1714401786320",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17144017886340.11231122133030131403244",
-                                "_input_type": "state",
-                                "_state_field": "filter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1714371464574",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17143715039500.1234331421211032143333",
-                                "_action": "action_1714371469576"
-                            }
-                        ]
+                        "paraText": "STEP 1"
                     }
-                ],
-                "CSSclass": "hello_ebta",
-                "SecionGap": 0,
-                "sectionGap": null
+                ]
             },
             {
-                "id": "step_copy_1714371512149",
-                "sysName": "2",
+                "id": "step_1714487941095",
+                "sysName": "step 2",
                 "elements": [
                     {
-                        "id": "elmnt_1714371456799",
+                        "id": "elmnt_1714487953708",
                         "type": "text",
-                        "paraText": "Step 2"
-                    },
-                    {
-                        "id": "elmnt_1714371464574",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17143715039500.1234331421211032143333",
-                                "_action": "action_copy_1714371492012"
-                            },
-                            {
-                                "id": "17143715245240.3242302100401134124241",
-                                "_action": "action_copy_1714371483488"
-                            }
-                        ],
-                        "_actions_in_a_row": 2
+                        "paraText": "STEP 2"
                     }
-                ],
-                "CSSclass": "hello_ebta",
-                "SecionGap": 0,
-                "sectionGap": null
-            },
-            {
-                "id": "step_copy_1714371546145",
-                "sysName": "3",
-                "elements": [
-                    {
-                        "id": "elmnt_1714371456799",
-                        "type": "text",
-                        "paraText": "Step 3"
-                    },
-                    {
-                        "id": "elmnt_1714371464574",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17143715039500.1234331421211032143333",
-                                "_action": "action_copy_1714371492012"
-                            }
-                        ]
-                    }
-                ],
-                "CSSclass": "hello_ebta",
-                "SecionGap": 0,
-                "sectionGap": null
+                ]
             },
             {
                 "id": "step_submitted",
@@ -243,7 +153,7 @@ let exampleForm = {
         "form_description": "",
         "form_maxWidth": 500,
         "state": {
-            "step": "1",
+            "step": "step 1",
             "message": "",
             "filter": ""
         },

@@ -57,43 +57,20 @@ let exampleSteps = {
 }
 
 let newExampleSteps = {
-    "settings": {
-        "type": "progress",
-        "steps": {
-            "1": true,
-            "2": true,
-            "3": true,
-            "Show everywhere": false,
-            "submitted": false,
-            "Show 2, 3": true,
-            "1 адин два три чотыре пять шесть семь": true,
-            "хуй пизда джигурда": true
-        },
-        "filter": "{{FormState.filter}}"
-    },
     "stepsOrder": [
-        "1",
-        "2",
-        "3"
+        "step 1",
+        "step 2"
     ],
+    "settings": {
+        "steps": {
+            "step 1": true,
+            "Step 2": true,
+            "step 2": true
+        }
+    },
     "stepSettings": {
-        "1": {
-            "title": "шаг 1",
-            "description": "Описалово"
-        },
-        "2": {
-            "title": "Шаг два",
-            "hideFor": "hide"
-        },
-        "3": {
-            "title": "Шаг 3",
-            "showFor": "show"
-        },
-        "Show everywhere": {
-            "title": "hello!",
-            "hideFor": "1",
-            "showFor": "2",
-            "description": "3"
+        "step 1": {
+            "description": ""
         }
     }
 }

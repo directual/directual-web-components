@@ -10,8 +10,8 @@ import Hint from '../../hint/hint'
 
 export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale, handleRoute }) {
 
-  // console.log("=== FpsForm2 data ===")
-  // console.log(data)
+  console.log("=== FpsForm2 data ===")
+  console.log(data)
 
   const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
   const defaultState = { "step": null }
