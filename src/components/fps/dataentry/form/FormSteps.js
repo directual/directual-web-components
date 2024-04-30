@@ -17,7 +17,7 @@ export default function FormSteps(props) {
     })}
     const lang = props.lang ? props.lang : props.locale ? props.locale.length == 3 ? props.locale : 'ENG' : 'ENG'
     const currentStepSysName = props.currentStep || _.get(_.get(formSteps,"steps"), "[0].sysName")
-    const currentStep = _.find(_.get(formSteps,"steps"), { sysName: currentStepSysName })
+    const currentStep = _.find(_.get(formSteps,"steps"), { sysName: currentStepSysName }) || {}
     let availableSteps = (_.get(formSteps,"steps") || [])
         .filter(step => {
             if (!step.hideFor && !step.showFor) return true;
