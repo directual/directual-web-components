@@ -3,11 +3,10 @@ import styles from './form2.module.css'
 import React, { useState, useEffect } from "react"
 import PropTypes from 'prop-types';
 import { dict } from '../../locale'
-import { locale } from 'moment';
-
+import InnerHTML from 'dangerously-set-html-content'
 
 export default function FormSteps(props) {
-    const { type, formStepsSettings, filter } = props
+    const { type, formStepsSettings, filter, template } = props
     if (!formStepsSettings || _.isEqual(formStepsSettings, {})) return <div />
     const formSteps = {
         steps: _.uniq([...Object.keys(formStepsSettings.stepSettings || {}), ...(formStepsSettings.stepsOrder || [])]).map(i => {
@@ -58,7 +57,8 @@ export default function FormSteps(props) {
             <div className={styles.progressBarFilled} style={{ width: `${(100 * current / total)}%` }} />
         </div>
         <div className={styles.stepsNofM}>{dict[lang].form.step} {current} {dict[lang].form.of} {total}</div>
-        {currentStep.description && <div className={styles.stepDescription}>{currentStep.description}</div>}
+        {currentStep.description && <div className={styles.stepDescription}>
+            <InnerHTML allowRerender={true} html={template ? template(currentStep.description) : currentStep.description} /></div>}
     </div>
 }
 
