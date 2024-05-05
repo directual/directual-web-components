@@ -99,7 +99,7 @@ export default function FileUpload(props) {
                         <Dropzone
                             multiple={props.multiple ? true : false}
                             {...props}
-                            accept={props.images ? 'image/*' : null}
+                            accept={props.images ? 'image/*' : undefined}
                             onDrop={(acceptedFiles, rej, event) => {
                                 setUploading(true)
                                 let counter = 0 
