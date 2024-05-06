@@ -83,7 +83,7 @@ function ImageOption(props) {
         onClick={onChoose}
     >
         <div className={styles.checkbox}>
-            <Checkbox onClick={onChoose} checked={_.includes((value || "").split(","), id)} />
+            <Checkbox onChange={onChoose} checked={_.includes((value || "").split(","), id)} />
         </div>
     </div>
 }

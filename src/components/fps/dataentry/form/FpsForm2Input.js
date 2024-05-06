@@ -576,16 +576,14 @@ function FieldArrayLink(props) {
         return <div><Input type="selectImages"
             options={options.map(i => {
                 return {
-                    kay: i.key,
+                    key: i.key,
                     value: i.value
                 }
             })}
-
             required={field._field_required}
             imageWidth={field._field_arrayLink_images_width}
             imageHeight={field._field_arrayLink_images_height}
             resize={field._field_arrayLink_images_resize}
-            debug
             //description={options.length}
             label={fieldInfo.name || fieldInfo.sysName}
             description={field._field_add_description && template(field._field_description_text)}
