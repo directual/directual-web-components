@@ -422,10 +422,10 @@ function FieldLink(props) {
 
     useEffect(() => {
         if (
-            (field._field_link_type == "radio" 
-            || field._field_link_type == "radioImages"
-            || field._field_link_type == "tags"
-        )
+            (field._field_link_type == "radio"
+                || field._field_link_type == "radioImages"
+                || field._field_link_type == "tags"
+            )
             && !firstLoad) {
             setFirstLoad(true);
             refreshOptions()
@@ -622,7 +622,7 @@ function FieldArrayLink(props) {
             setOptions(data)
         }, err => {
             setError(err.msg)
-        })
+        }, fieldInfo.link)
     }
 
     useEffect(i => {
@@ -717,13 +717,18 @@ function FieldArrayLink(props) {
         if (!field._field_arrayLink_endpoint) return <div>
             <div className={styles.form2label}>{fieldInfo.name || fieldInfo.sysName}</div>
             Endpoint for radio buttons is not configured.</div>
-        return <div><Input type="selectImages"
-            options={options.map(i => {
-                return {
-                    key: i.key,
-                    value: i.value
-                }
-            })}
+        return <div>
+            <Input type="selectImages"
+            options={
+                    options.map(i => {
+                    return {
+                        key: i.key,
+                        value: i.value
+                    }
+                })
+                // [{ key: '1', value: "https://api.alfa.directual.com/fileUploaded/fpsform2/0037b933-27bc-455b-82d8-afb0cfc011a6.jpeg" },
+                // { key: '2', value: "https://api.alfa.directual.com/fileUploaded/fpsform2/0037b933-27bc-455b-82d8-afb0cfc011a6.jpeg" }]
+            }
             required={field._field_required}
             imageWidth={field._field_arrayLink_images_width}
             imageHeight={field._field_arrayLink_images_height}

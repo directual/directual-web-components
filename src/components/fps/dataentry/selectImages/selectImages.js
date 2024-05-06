@@ -37,7 +37,6 @@ export default function SelectImages(props) {
                 }
                 setValue(saveValue);
                 onChange(saveValue);
-                console.log(saveValue)
             }}
         />)}
     </div>
@@ -72,12 +71,12 @@ export default function SelectImages(props) {
 }
 
 function ImageOption(props) {
-    const { image, resize, height, width, value, id, onChoose } = props
+    const { image, resize, imageHeight, imageWidth, value, id, onChoose } = props
 
     return <div className={`${styles.option} ${_.includes((value || "").split(","), id) ? styles.selected : ""}`}
         style={{
-            width: width || 120,
-            height: height || 90,
+            width: imageWidth || 120,
+            height: imageHeight || 90,
             backgroundImage: `url(${image})`,
             backgroundPosition: `center center`,
             backgroundRepeat: `no-repeat`,

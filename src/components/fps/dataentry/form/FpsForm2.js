@@ -488,30 +488,89 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
                   }
                 )
               }}
-              callEndpoint={(endpoint, params, finish, setOptions, setError) => {
-                console.log('===> calling endpoint /' + endpoint)
-                console.log(params)
+              callEndpoint={(endpoint, params, finish, setOptions, setError, dataStruct) => {
+                // console.log('===> calling endpoint /' + endpoint)
+                // console.log(params)
 
-                const transformedArray = inputArray => _.map(inputArray, (item) => {
+                const transformedArray = (inputArray, visibleNames) => _.map(inputArray, (item) => {
+                  const parseJson = json => {
+                    if (!json) return {}
+                    let parsedJson = {}
+                    if (typeof json == 'object') return json
+                    try {
+                      parsedJson = JSON.parse(json)
+                    }
+                    catch (e) {
+                      console.log(json);
+                      console.log(e);
+                    }
+                    return parsedJson
+                  }
+
                   const { id, ...rest } = item; // Destructure `id` and the rest of the properties
-                  const value = _.values(_.pickBy(rest, _.isString)).join(' '); // Concatenate string values
+                  const value = _.trim(_.map(parseJson(visibleNames), field => _.get(item, field.sysName)).join(' ')) ||
+                    _.values(_.pickBy(rest, _.isString)).join(' '); // Concatenate string values
                   return {
                     key: id,
                     value: _.trim(value) || id
                   };
                 });
 
+                // fake request
+                // setTimeout(() => {
+                //   const data = [
+                //     {
+                //       "firstName": "Иван",
+                //       "lastName": "Бунин",
+                //       "userpic": "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg",
+                //       "id": "2ee9f1d7-cafe-420a-941e-0c87e9f0f71f"
+                //     },
+                //     {
+                //       "firstName": "Александр",
+                //       "lastName": "Пушкин",
+                //       "userpic": "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg",
+                //       "id": "88fca6be-338a-4b50-aeb0-7e7302a28241"
+                //     },
+                //     {
+                //       "userpic": "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg",
+                //       "firstName": "Сергей",
+                //       "lastName": "Есенин",
+                //       "id": "6fc2a69e-f73c-4196-85af-5fb2deb38344"
+                //     },
+                //     {
+                //       "firstName": "Зинаида",
+                //       "lastName": "Гиппиус",
+                //       "id": "9cecb091-2817-4fe9-93b8-512ce7661724"
+                //     },
+                //     {
+                //       "lastName": "Ахматова",
+                //       "firstName": "Анна",
+                //       "id": "c6af8c44-6a4d-4d11-a7d3-2301649d91c2"
+                //     },
+                //     {
+                //       "lastName": "Цветаева",
+                //       "userpic": "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg",
+                //       "firstName": "Марина",
+                //       "id": "c9146676-73b1-42d9-995a-825c62519624"
+                //     }
+                //   ]
+                //   const visibleNames = '[{"sysName":"firstName"},{"sysName":"lastName"}]'
+                //   finish && finish(transformedArray(data, visibleNames))
+                //   setOptions && setOptions(transformedArray(data, visibleNames))
+                // }, 1000)
+
                 callEndpoint && callEndpoint(
                   endpoint,
                   "GET",
                   undefined,
                   params,
-                  (result, data) => {
-                    console.log(result)
-                    console.log(data)
+                  (result, data, visibleNames) => {
+                    // console.log(result)
+                    // console.log(data)
+
                     if (result == "ok") {
-                      finish && finish(transformedArray(data))
-                      setOptions && setOptions(transformedArray(data))
+                      finish && finish(transformedArray(data, visibleNames))
+                      setOptions && setOptions(transformedArray(data, visibleNames))
                     }
                     else {
                       setError && setError(data)
