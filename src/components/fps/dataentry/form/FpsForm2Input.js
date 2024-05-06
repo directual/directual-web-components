@@ -394,6 +394,7 @@ function FieldLink(props) {
     const refreshOptions = (finish, filter, value) => {
         if (!field._field_arrayLink_endpoint) { return; }
         if (field._field_link_type !== "radio" &&
+            field._field_link_type !== "radioImages" &&
             field._field_link_type !== "select") {
             return;
         }
@@ -483,8 +484,8 @@ function FieldLink(props) {
             radio
             options={options.map(i => {
                 return {
-                    value: i.key,
-                    label: i.value
+                    key: i.key,
+                    value: i.value
                 }
             })}
             required={field._field_required}
@@ -575,8 +576,8 @@ function FieldArrayLink(props) {
         return <div><Input type="selectImages"
             options={options.map(i => {
                 return {
-                    value: i.key,
-                    label: i.value
+                    kay: i.key,
+                    value: i.value
                 }
             })}
 
