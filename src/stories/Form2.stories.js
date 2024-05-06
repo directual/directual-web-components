@@ -34,19 +34,20 @@ let exampleForm = {
                             {
                                 "id": "17149015104850.23022434203230044403034",
                                 "_field": "pictures",
-                                "_field_arrayLink_type": "checkboxImages",
+                                "_field_arrayLink_type": "tags",
                                 "_field_arrayLink_endpoint": "getimages",
                                 "_field_arrayLink_images_width": 100,
                                 "_field_arrayLink_images_height": 100,
                                 "_field_arrayLink_images_resize": "cover",
                                 "_field_required": true,
                                 "_field_add_description": true,
-                                "_field_description_text": "ahaha"
+                                "_field_description_text": "ahaha",
+                                "_field_arrayLink_tags_count": 0
                             },
                             {
                                 "id": "17149015118550.22013432400014104334",
                                 "_field": "one_picture",
-                                "_field_link_type": "radioImages",
+                                "_field_link_type": "tags",
                                 "_field_arrayLink_endpoint": "getimages",
                                 "_field_arrayLink_images_width": 50,
                                 "_field_arrayLink_images_height": 50,
@@ -179,8 +180,8 @@ let exampleForm = {
     "fileds": [
         {
             "sysName": "pictures",
-            "name": "",
             "dataType": "arrayLink",
+            "name": "",
             "id": "86211714495762107",
             "link": "pictures",
             "group": "0",
@@ -197,18 +198,18 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "array": false,
-            "json": false,
-            "typeVariable": {},
             "linkType": false,
-            "linkOrArrayLinkType": true,
+            "indexExists": false,
             "arrayLink": true,
-            "indexExists": false
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "array": false
         },
         {
             "sysName": "one_picture",
-            "name": "Picture",
             "dataType": "link",
+            "name": "Picture",
             "id": "75731714981605900",
             "link": "pictures",
             "group": "0",
@@ -225,13 +226,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
-            "array": false,
-            "json": false,
-            "typeVariable": {},
             "linkType": true,
-            "linkOrArrayLinkType": true,
+            "indexExists": false,
             "arrayLink": false,
-            "indexExists": false
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "array": false
         }
     ],
     "quickSearch": null,

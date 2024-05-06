@@ -20,6 +20,16 @@
 .tag:hover {
   color: var(--label-text);
 }
+.tag.FpsForm2 {
+  background-color: transparent;
+  border: solid 2px var(--label);
+  color: var(--label);
+  min-height: 20px;
+}
+.tag.FpsForm2.selected {
+  background-color: var(--label);
+  color: var(--label-text);
+}
 .tag.disabled {
   cursor: not-allowed;
   opacity: 0.3;

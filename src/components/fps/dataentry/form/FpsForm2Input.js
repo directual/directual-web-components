@@ -11,6 +11,7 @@ import FileUpload from '../fileupload/fileupload'
 import Media from '../../media/media'
 import _ from 'lodash'
 import Hint from '../../hint/hint'
+import { Tags } from '../../tags/Tags'
 
 export default function FpsForm2Input(props) {
     const { field, template, dict, lang, loading, editModel, model, data, state, locale } = props
@@ -395,6 +396,7 @@ function FieldLink(props) {
         if (!field._field_arrayLink_endpoint) { return; }
         if (field._field_link_type !== "radio" &&
             field._field_link_type !== "radioImages" &&
+            field._field_link_type !== "tags" &&
             field._field_link_type !== "select") {
             return;
         }
@@ -420,7 +422,10 @@ function FieldLink(props) {
 
     useEffect(() => {
         if (
-            (field._field_link_type == "radio" || field._field_link_type == "radioImages")
+            (field._field_link_type == "radio" 
+            || field._field_link_type == "radioImages"
+            || field._field_link_type == "tags"
+        )
             && !firstLoad) {
             setFirstLoad(true);
             refreshOptions()
@@ -444,6 +449,73 @@ function FieldLink(props) {
             nomargin
             {...basicProps}
         />
+            {error && <Hint margin={{ top: 10, bottom: 0 }} closable error onClose={() => setError("")}>
+                {error}
+            </Hint>}
+        </div>
+    }
+
+    if (field._field_link_type == "tags") {
+        const categories =
+            options.map(i => {
+                return {
+                    id: i.key,
+                    text: i.value,
+                    clickable: true
+                }
+            })
+
+        const filterTags =
+        {
+            maxWidth: field._field_arrayLink_tags_width || 300,
+            addButton: false,
+            selectable: true,
+            data: categories
+        }
+
+        const maxTags = 1
+
+        const changeTags = (tagId, action) => {
+            console.log(action + ' - ' + tagId)
+            function manipulateArray(array, object) {
+                if (!_.includes(array, object)) {
+                    array.push(object)
+                }
+                else {
+                    array = _.without(array, object);
+                }
+                return array;
+            }
+            let saveValue = model[fieldInfo.sysName] ? model[fieldInfo.sysName].split(",") : []
+            let array = _.takeRight(manipulateArray(saveValue, tagId), maxTags)
+            onChange(array.join(","))
+        }
+
+        const transfromValue = val => {
+            if (!val) return {}
+            const array = val ? val.split(",") : []
+            return _.zipObject(array, _.fill(Array(array.length), true))
+        }
+
+        if (!field._field_arrayLink_endpoint) return <div>
+            <div className={styles.form2label}>{fieldInfo.name || fieldInfo.sysName}</div>
+            Endpoint for radio buttons is not configured.</div>
+        return <div>
+            <Input type="tags"
+
+                FpsForm2
+                tags={filterTags}
+                onClick={tagId => changeTags(tagId, 'onClick')}
+                onResetSelect={tagId => changeTags(tagId, 'onResetSelect')}
+
+                required={field._field_required}
+                label={fieldInfo.name || fieldInfo.sysName}
+                description={field._field_add_description && template(field._field_description_text)}
+                defaultValue={transfromValue(model[fieldInfo.sysName])}
+                nomargin
+                locale={locale}
+            // {...basicProps}
+            />
             {error && <Hint margin={{ top: 10, bottom: 0 }} closable error onClose={() => setError("")}>
                 {error}
             </Hint>}
@@ -536,6 +608,7 @@ function FieldArrayLink(props) {
         if (!field._field_arrayLink_endpoint) { return; }
         if (field._field_arrayLink_type !== "checkboxes"
             && field._field_arrayLink_type !== "select"
+            && field._field_arrayLink_type !== "tags"
             && field._field_arrayLink_type !== "checkboxImages"
         ) {
             return;
@@ -561,13 +634,84 @@ function FieldArrayLink(props) {
 
     useEffect(() => {
         if ((
-            (field._field_arrayLink_type == "checkboxes") || field._field_arrayLink_type == "checkboxImages")
+            (field._field_arrayLink_type == "checkboxes")
+            || field._field_arrayLink_type == "checkboxImages"
+            || field._field_arrayLink_type == "tags"
+        )
             && !firstLoad
         ) {
             setFirstLoad(true);
             refreshOptions(undefined, null, model[fieldInfo.sysName])
         }
     }, [])
+
+
+    if (field._field_arrayLink_type == "tags") {
+        const categories =
+            options.map(i => {
+                return {
+                    id: i.key,
+                    text: i.value,
+                    clickable: true
+                }
+            })
+
+        const filterTags =
+        {
+            maxWidth: field._field_arrayLink_tags_width || 300,
+            addButton: false,
+            selectable: true,
+            data: categories
+        }
+
+        const maxTags = field._field_arrayLink_tags_count || 1000
+
+        const changeTags = (tagId, action) => {
+            console.log(action + ' - ' + tagId)
+            function manipulateArray(array, object) {
+                if (!_.includes(array, object)) {
+                    array.push(object)
+                }
+                else {
+                    array = _.without(array, object);
+                }
+                return array;
+            }
+            let saveValue = model[fieldInfo.sysName] ? model[fieldInfo.sysName].split(",") : []
+            let array = _.takeRight(manipulateArray(saveValue, tagId), maxTags)
+            onChange(array.join(","))
+        }
+
+        const transfromValue = val => {
+            if (!val) return {}
+            const array = val ? val.split(",") : []
+            return _.zipObject(array, _.fill(Array(array.length), true))
+        }
+
+        if (!field._field_arrayLink_endpoint) return <div>
+            <div className={styles.form2label}>{fieldInfo.name || fieldInfo.sysName}</div>
+            Endpoint for radio buttons is not configured.</div>
+        return <div>
+            <Input type="tags"
+
+                FpsForm2
+                tags={filterTags}
+                onClick={tagId => changeTags(tagId, 'onClick')}
+                onResetSelect={tagId => changeTags(tagId, 'onResetSelect')}
+
+                required={field._field_required}
+                label={fieldInfo.name || fieldInfo.sysName}
+                description={field._field_add_description && template(field._field_description_text)}
+                defaultValue={transfromValue(model[fieldInfo.sysName])}
+                nomargin
+                locale={locale}
+            // {...basicProps}
+            />
+            {error && <Hint margin={{ top: 10, bottom: 0 }} closable error onClose={() => setError("")}>
+                {error}
+            </Hint>}
+        </div>
+    }
 
     if (field._field_arrayLink_type == "checkboxImages") {
         if (!field._field_arrayLink_endpoint) return <div>

@@ -14,6 +14,7 @@ import { dict } from '../../locale'
 import PropTypes from 'prop-types';
 import InnerHTML from 'dangerously-set-html-content'
 import SelectImages from '../selectImages/selectImages'
+import { Tags } from '../../tags/Tags'
 
 export function InputGroup(props) {
     return (
@@ -181,7 +182,6 @@ export default function Input(props) {
     const [showColor, setShowColor] = useState(false)
     const lang = props.locale ? props.locale.length == 3 ? props.locale : 'ENG' : 'ENG'
     const pickerRef = useRef(null);
-
 
     const checkValue = () => {
         // console.log('checking...');
@@ -477,6 +477,7 @@ export default function Input(props) {
                 props.type != 'radio' &&
                 props.type != 'radioJson' &&
                 props.type != 'select' &&
+                props.type != 'tags' &&
                 props.type != 'multiselect' &&
                 props.type != 'dinamicSelect' &&
                 props.type != 'dinamicMultiSelect' &&
@@ -782,6 +783,16 @@ export default function Input(props) {
                     />
                 </div>}
 
+            {props.type == 'tags' &&
+                <div className={styles.field_wrapper}>
+                    <Tags
+                        {...props}
+                        selectedTags={defVal}
+                        onChange={e => e ? (e.target ? submit(e.target.value) : submit(e)) : submit(null)}
+                        dict={dict[lang]}
+                    />
+                </div>}
+
 
             {props.type == 'password' &&
                 <div className={styles.field_wrapper}>
@@ -830,6 +841,7 @@ export default function Input(props) {
                 <SelectImages
                     {...props}
                     defaultValue={defVal}
+                    dict={dict[lang]}
                     onChange={e => { e ? (e.target ? submit({ value: e.target.value }) : submit(e)) : submit(null) }}
                 />
             }

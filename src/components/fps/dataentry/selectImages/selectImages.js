@@ -16,6 +16,9 @@ export default function SelectImages(props) {
         if (!_.isEqual(defaultValue, value)) { setValue(defaultValue) }
     }, [defaultValue])
 
+    if (!options || options.length == 0) return <div>{_.get(props.dict, 'noOptions')}</div>
+
+
     if (!radio) return <div className={`FPS_SELECT_IMAGES ${styles.wrapper}`}>
         {(options || []).map(option => <ImageOption
             {...props}

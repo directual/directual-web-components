@@ -21,6 +21,16 @@
     text-overflow: ellipsis;
     cursor: default;
     overflow: hidden;
+    &.FpsForm2 {
+        background-color: transparent;
+        border: solid 2px var(--label);
+        color: var(--label);
+        min-height: 20px;
+        &.selected {
+            background-color: var(--label);
+            color: var(--label-text);
+        }
+    }
     &.disabled {
         cursor:not-allowed;
         opacity: .3;
