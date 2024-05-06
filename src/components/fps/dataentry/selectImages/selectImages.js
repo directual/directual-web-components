@@ -6,8 +6,8 @@ import Radio from '../radio/radio'
 
 export default function SelectImages(props) {
 
-    console.log("SelectImages")
-    console.log(props)
+    // console.log("SelectImages")
+    // console.log(props)
 
     const { options, defaultValue, radio, onChange } = props
     const [value, setValue] = useState(defaultValue)

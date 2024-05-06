@@ -585,6 +585,7 @@ function FieldArrayLink(props) {
             imageWidth={field._field_arrayLink_images_width}
             imageHeight={field._field_arrayLink_images_height}
             resize={field._field_arrayLink_images_resize}
+            debug
             //description={options.length}
             label={fieldInfo.name || fieldInfo.sysName}
             description={field._field_add_description && template(field._field_description_text)}

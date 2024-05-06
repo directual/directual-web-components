@@ -136,26 +136,27 @@ export const SelectImages = {
     type: 'selectImages',
     options: [
       {
-        key: "1",
-        value: "https://api.alfa.directual.com/fileUploaded/fpsform2/0037b933-27bc-455b-82d8-afb0cfc011a6.jpeg"
+        "key": "46713452-42a6-421c-9e91-8e35dd355c15",
+        "value": "https://api.alfa.directual.com/fileUploaded/fpsform2/0037b933-27bc-455b-82d8-afb0cfc011a6.jpeg"
       },
       {
-        key: "2",
-        value: "https://api.alfa.directual.com/fileUploaded/fpsform2/d6d8c71e-ed00-49ed-a4ea-4bc6de592bef.jpg"
+        "key": "731e88cf-6050-4e03-8308-ffcb188fbbef",
+        "value": "https://api.alfa.directual.com/fileUploaded/fpsform2/d6d8c71e-ed00-49ed-a4ea-4bc6de592bef.jpg"
       },
       {
-        key: "3",
-        value: "https://api.alfa.directual.com/fileUploaded/fpsform2/c10bf0be-cdf0-4bf6-b43e-8332784f3634.jpg"
+        "key": "2f56d81d-a11a-4d22-b2c9-4a0224dc6294",
+        "value": "https://api.alfa.directual.com/fileUploaded/fpsform2/c10bf0be-cdf0-4bf6-b43e-8332784f3634.jpg"
       },
       {
-        key: "4",
-        value: "https://api.alfa.directual.com/fileUploaded/fpsform2/d0f8f716-2dfd-4a46-a9be-072693834547.jpg"
-      },
+        "key": "3395fba2-aad3-4919-b5c2-d25f4116bfd0",
+        "value": "https://api.alfa.directual.com/fileUploaded/fpsform2/d0f8f716-2dfd-4a46-a9be-072693834547.jpg"
+      }
     ],
     imageWidth: 140,
     imageHeight: 105,
     resize: "cover",
-    defaultValue: "2"
+    defaultValue: "2f56d81d-a11a-4d22-b2c9-4a0224dc6294",
+    //debug: true
   },
 };
 
@@ -164,27 +165,27 @@ export const SelectRadioImages = {
     type: 'selectImages',
     options: [
       {
-        key: "1",
-        value: "https://api.alfa.directual.com/fileUploaded/fpsform2/0037b933-27bc-455b-82d8-afb0cfc011a6.jpeg"
+        "key": "46713452-42a6-421c-9e91-8e35dd355c15",
+        "value": "https://api.alfa.directual.com/fileUploaded/fpsform2/0037b933-27bc-455b-82d8-afb0cfc011a6.jpeg"
       },
       {
-        key: "2",
-        value: "https://api.alfa.directual.com/fileUploaded/fpsform2/d6d8c71e-ed00-49ed-a4ea-4bc6de592bef.jpg"
+        "key": "731e88cf-6050-4e03-8308-ffcb188fbbef",
+        "value": "https://api.alfa.directual.com/fileUploaded/fpsform2/d6d8c71e-ed00-49ed-a4ea-4bc6de592bef.jpg"
       },
       {
-        key: "3",
-        value: "https://api.alfa.directual.com/fileUploaded/fpsform2/c10bf0be-cdf0-4bf6-b43e-8332784f3634.jpg"
+        "key": "2f56d81d-a11a-4d22-b2c9-4a0224dc6294",
+        "value": "https://api.alfa.directual.com/fileUploaded/fpsform2/c10bf0be-cdf0-4bf6-b43e-8332784f3634.jpg"
       },
       {
-        key: "4",
-        value: "https://api.alfa.directual.com/fileUploaded/fpsform2/d0f8f716-2dfd-4a46-a9be-072693834547.jpg"
-      },
+        "key": "3395fba2-aad3-4919-b5c2-d25f4116bfd0",
+        "value": "https://api.alfa.directual.com/fileUploaded/fpsform2/d0f8f716-2dfd-4a46-a9be-072693834547.jpg"
+      }
     ],
     imageWidth: 140,
     imageHeight: 210,
     resize: "contain",
     radio: true,
-    defaultValue: "2"
+    defaultValue: "2f56d81d-a11a-4d22-b2c9-4a0224dc6294"
   },
 };
 
