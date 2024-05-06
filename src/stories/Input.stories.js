@@ -131,6 +131,63 @@ export const Danger = {
   },
 };
 
+export const SelectImages = {
+  args: {
+    type: 'selectImages',
+    options: [
+      {
+        key: "1",
+        value: "https://api.alfa.directual.com/fileUploaded/fpsform2/0037b933-27bc-455b-82d8-afb0cfc011a6.jpeg"
+      },
+      {
+        key: "2",
+        value: "https://api.alfa.directual.com/fileUploaded/fpsform2/d6d8c71e-ed00-49ed-a4ea-4bc6de592bef.jpg"
+      },
+      {
+        key: "3",
+        value: "https://api.alfa.directual.com/fileUploaded/fpsform2/c10bf0be-cdf0-4bf6-b43e-8332784f3634.jpg"
+      },
+      {
+        key: "4",
+        value: "https://api.alfa.directual.com/fileUploaded/fpsform2/d0f8f716-2dfd-4a46-a9be-072693834547.jpg"
+      },
+    ],
+    imageWidth: 140,
+    imageHeight: 105,
+    resize: "cover",
+    defaultValue: "2"
+  },
+};
+
+export const SelectRadioImages = {
+  args: {
+    type: 'selectImages',
+    options: [
+      {
+        key: "1",
+        value: "https://api.alfa.directual.com/fileUploaded/fpsform2/0037b933-27bc-455b-82d8-afb0cfc011a6.jpeg"
+      },
+      {
+        key: "2",
+        value: "https://api.alfa.directual.com/fileUploaded/fpsform2/d6d8c71e-ed00-49ed-a4ea-4bc6de592bef.jpg"
+      },
+      {
+        key: "3",
+        value: "https://api.alfa.directual.com/fileUploaded/fpsform2/c10bf0be-cdf0-4bf6-b43e-8332784f3634.jpg"
+      },
+      {
+        key: "4",
+        value: "https://api.alfa.directual.com/fileUploaded/fpsform2/d0f8f716-2dfd-4a46-a9be-072693834547.jpg"
+      },
+    ],
+    imageWidth: 140,
+    imageHeight: 210,
+    resize: "contain",
+    radio: true,
+    defaultValue: "2"
+  },
+};
+
 export const DimanicSelect = {
   args: {
     type: 'dinamicSelect',

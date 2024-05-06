@@ -1,0 +1,33 @@
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 12px;
+    padding: 1px;
+    .option {
+        position: relative;
+        cursor: pointer;
+        &:hover {
+            box-shadow: 0 0 0 1px var(--form-field-border);
+        }
+        &:active {
+            border:solid 1px var( --form-placeholder);
+            box-shadow: 0 0 0 1px var(--form-placeholder);
+        }
+        &.selected {
+            border:solid 1px var(--form-accent);
+            box-shadow: 0 0 0 1px var(--form-accent);
+        }
+        box-sizing: border-box;
+        border:solid 1px var( --form-field-border);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        display: flex;
+        align-items: flex-end;
+        .checkbox {
+            margin: 0 0 10px 10px;
+        }
+        .radio {
+            margin: 0 0 0px 10px;
+        }
+    }
+}

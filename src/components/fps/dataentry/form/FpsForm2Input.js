@@ -418,7 +418,8 @@ function FieldLink(props) {
 
 
     useEffect(() => {
-        if ((field._field_link_type == "radio")
+        if (
+            (field._field_link_type == "radio" || field._field_link_type == "radioImages")
             && !firstLoad) {
             setFirstLoad(true);
             refreshOptions()
@@ -474,6 +475,34 @@ function FieldLink(props) {
         </div>
     }
 
+    if (field._field_link_type == "radioImages") {
+        if (!field._field_arrayLink_endpoint) return <div>
+            <div className={styles.form2label}>{fieldInfo.name || fieldInfo.sysName}</div>
+            Endpoint for radio buttons is not configured.</div>
+        return <div><Input type="selectImages"
+            radio
+            options={options.map(i => {
+                return {
+                    value: i.key,
+                    label: i.value
+                }
+            })}
+            required={field._field_required}
+            imageWidth={field._field_arrayLink_images_width}
+            imageHeight={field._field_arrayLink_images_height}
+            resize={field._field_arrayLink_images_resize}
+            label={fieldInfo.name || fieldInfo.sysName}
+            description={field._field_add_description && template(field._field_description_text)}
+            defaultValue={model[fieldInfo.sysName]}
+            nomargin
+            {...basicProps}
+        />
+            {error && <Hint margin={{ top: 10, bottom: 0 }} closable error onClose={() => setError("")}>
+                {error}
+            </Hint>}
+        </div>
+    }
+
     return <Input
         type={`${field.format == 'password' ? 'password' : 'textarea'}`}
         rows='auto'
@@ -504,8 +533,10 @@ function FieldArrayLink(props) {
 
     const refreshOptions = (finish, filter, value) => {
         if (!field._field_arrayLink_endpoint) { return; }
-        if (field._field_arrayLink_type !== "checkboxes" &&
-            field._field_arrayLink_type !== "select") {
+        if (field._field_arrayLink_type !== "checkboxes"
+            && field._field_arrayLink_type !== "select"
+            && field._field_arrayLink_type !== "checkboxImages"
+        ) {
             return;
         }
         let reqParams = filter ? { _filter: filter, ...params } : params
@@ -528,13 +559,43 @@ function FieldArrayLink(props) {
     }, [params]) // update options when request params are changed
 
     useEffect(() => {
-        if ((field._field_arrayLink_type == "checkboxes")
+        if ((
+            (field._field_arrayLink_type == "checkboxes") || field._field_arrayLink_type == "checkboxImages")
             && !firstLoad
         ) {
             setFirstLoad(true);
             refreshOptions(undefined, null, model[fieldInfo.sysName])
         }
     }, [])
+
+    if (field._field_arrayLink_type == "checkboxImages") {
+        if (!field._field_arrayLink_endpoint) return <div>
+            <div className={styles.form2label}>{fieldInfo.name || fieldInfo.sysName}</div>
+            Endpoint for radio buttons is not configured.</div>
+        return <div><Input type="selectImages"
+            options={options.map(i => {
+                return {
+                    value: i.key,
+                    label: i.value
+                }
+            })}
+
+            required={field._field_required}
+            imageWidth={field._field_arrayLink_images_width}
+            imageHeight={field._field_arrayLink_images_height}
+            resize={field._field_arrayLink_images_resize}
+            //description={options.length}
+            label={fieldInfo.name || fieldInfo.sysName}
+            description={field._field_add_description && template(field._field_description_text)}
+            defaultValue={model[fieldInfo.sysName]}
+            nomargin
+            {...basicProps}
+        />
+            {error && <Hint margin={{ top: 10, bottom: 0 }} closable error onClose={() => setError("")}>
+                {error}
+            </Hint>}
+        </div>
+    }
 
     // return <div><pre><code>{JSON.stringify(options, 0, 3)}</code></pre></div>
 
