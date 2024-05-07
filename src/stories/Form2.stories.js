@@ -95,6 +95,17 @@ let exampleForm = {
                         "hintText": "Submitted"
                     }
                 ]
+            },
+            {
+                "id": "step_1715087897381",
+                "sysName": "student",
+                "elements": [
+                    {
+                        "id": "elmnt_1715087908131",
+                        "type": "text",
+                        "paraText": "student"
+                    }
+                ]
             }
         ],
         "state": {
@@ -129,7 +140,8 @@ let exampleForm = {
                         "field": "_action",
                         "value": "changeRole__student"
                     }
-                ]
+                ],
+                "actionType": "endpoint"
             },
             {
                 "id": "action_1715086543009",
@@ -141,19 +153,8 @@ let exampleForm = {
                         "field": "_action",
                         "value": "changeRole__parent"
                     }
-                ]
-            },
-            {
-                "id": "action_1715086997996",
-                "name": "test",
-                "endpoint": "changeRole",
-                "mapping": [
-                    {
-                        "id": "mapping_1715087121366",
-                        "field": "_action",
-                        "value": "test"
-                    }
-                ]
+                ],
+                "actionType": "endpoint"
             }
         ]
     },
