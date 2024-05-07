@@ -56,8 +56,6 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
   const defaultModel = { ...emptyValues, ...model, ...transformedState }
   const [loading, setLoading] = useState(false)
 
-  console.log(defaultModel)
-
   const [highlightState, setHighlightState] = useState(false)
   const [highlightModel, setHighlightModel] = useState(false)
 
@@ -82,9 +80,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
       // console.log("update model (socket)")
       const newModel = ({ ...model, ...flatternModel({ ..._.get(data, "data[0]") }) })
       if (!_.isEqual(newModel, model)) {
-        const newState = templateState(state, newModel)
-        console.log("NEW STATE!")
-        console.log(newState)
+        const newState = {...state, ...templateState(_.get(data, "params.state"), newModel)}
         setState(newState)
         setModel(newModel)
       }
@@ -206,7 +202,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
 
   // front-end template engine
   function template(input) {
-    const templateData = {...(model ||{}), ...defaultModel};
+    const templateData = {...defaultModel, ...(model ||{})};
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
     if (!templateData) return ""
     const renderTemplate = (template) => {
@@ -229,7 +225,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
     }
   }
   function templateState(input, model) {
-    const templateData = {...(model ||{}), ...defaultModel}
+    const templateData = {...defaultModel, ...(model || {})}
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
     // Custom function to handle undefined variables by replacing them with ""
     if (!templateData) return {}
