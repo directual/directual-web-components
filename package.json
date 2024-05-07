@@ -1,6 +1,6 @@
 {
   "name": "directual-web-components",
-  "version": "3.2.65",
+  "version": "3.2.64",
   "description": "fps components",
   "author": "Directual",
   "license": "MIT",
@@ -101,7 +101,9 @@
     "react-table": "^7.7.0",
     "recharts": "^2.6.2",
     "remark-gfm": "^1.0.0",
-    "storybook-css-modules": "^1.0.8"
+    "storybook-css-modules": "^1.0.8",
+    "react-map-gl": "^7.1.7",
+    "mapbox-gl": "^3.0.1"
   },
   "eslintConfig": {
     "extends": [

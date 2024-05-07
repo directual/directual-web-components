@@ -112,7 +112,8 @@ function ElementAction(props) {
         if (action.resetModel) {
             setModel({})
         }
-        if (action.actionType == "endpoint") {
+        if (action.actionType == "endpoint" || !action.actionType) {
+            console.log("endpoint")
             const payload = transformObject(action.mapping)
             setLoading(true)
             callEndpointPOST(action.endpoint, payload, (result) => {
