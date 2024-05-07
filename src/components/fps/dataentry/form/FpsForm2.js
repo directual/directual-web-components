@@ -27,7 +27,9 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
     } catch (err) {
       console.error(err)
     }
-    array = [...array, ..._.map(_.sortedUniq(_.sortBy((fieldScheme || []).map(item => item[0]))), i => i.split(".")[0])]
+    array = [...array, 
+        ..._.map(_.sortedUniq(_.sortBy((fieldScheme || []).map(item => item[0]))), i => i.split(".")[0]),
+      ]
     return _.zipObject(array, Array(array.length).fill(''))
   }
 
@@ -54,6 +56,8 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
   const defaultModel = { ...emptyValues, ...model, ...transformedState }
   const [loading, setLoading] = useState(false)
 
+  console.log(defaultModel)
+
   const [highlightState, setHighlightState] = useState(false)
   const [highlightModel, setHighlightModel] = useState(false)
 
@@ -79,6 +83,8 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
       const newModel = ({ ...model, ...flatternModel({ ..._.get(data, "data[0]") }) })
       if (!_.isEqual(newModel, model)) {
         const newState = templateState(state, newModel)
+        console.log("NEW STATE!")
+        console.log(newState)
         setState(newState)
         setModel(newModel)
       }
@@ -200,7 +206,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
 
   // front-end template engine
   function template(input) {
-    const templateData = defaultModel;
+    const templateData = {...(model ||{}), ...defaultModel};
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
     if (!templateData) return ""
     const renderTemplate = (template) => {
@@ -223,7 +229,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
     }
   }
   function templateState(input, model) {
-    const templateData = model || defaultModel
+    const templateData = {...(model ||{}), ...defaultModel}
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
     // Custom function to handle undefined variables by replacing them with ""
     if (!templateData) return {}
