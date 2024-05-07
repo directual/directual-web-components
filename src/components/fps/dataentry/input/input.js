@@ -985,6 +985,7 @@ export default function Input(props) {
                 <StructureField
                     defaultValue={defVal}
                     noHint={props.noHint}
+                    FPSForm2={props.FPSForm2}
                     fixHeight={props.fixHeight}
                     hideSysFields={props.hideSysFields}
                     hideId={props.hideId}

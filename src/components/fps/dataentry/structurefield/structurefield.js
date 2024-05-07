@@ -147,7 +147,7 @@ export default function StructureField(props) {
         const typename = getValueDetails(value).dataType + (getValueDetails(value).dataSubType ? `_${getValueDetails(value).dataSubType}` : '')
         return dataTypesIcons[typename] || typename
     }
-    
+
 
     // console.log('DEBUG')
     // console.log(value)
@@ -183,7 +183,7 @@ export default function StructureField(props) {
                         {value ?
                             <div className={`${styles.currentInlineField} 
                             ${getValueDetails(value).dataType !== "unknown" && getIconName(getValueDetails(value).dataType, getValueDetails(value).dataSubType) // && !isAltList 
-                            ? styles.withIcon : ''} 
+                                    ? styles.withIcon : ''} 
                             ${focus && styles.transparent}`}>
                                 {!filter ? <span>{`{{`}{getValueDetails(value).sysName}{`}}`}</span> : <span>&nbsp;</span>}
                             </div> :
@@ -215,6 +215,7 @@ export default function StructureField(props) {
                     <ListFields
                         fields={props.fields}
                         filter={filter}
+                        FPSForm2={props.FPSForm2}
                         focus={focus}
                         noHint={props.noHint}
                         isAltList={isAltList}
@@ -304,6 +305,7 @@ export default function StructureField(props) {
                     filter={filter}
                     focus={focus}
                     noHint={props.noHint}
+                    FPSForm2={props.FPSForm2}
                     keyFocus={keyFocus}
                     showGlobalVars={props.showGlobalVars}
                     showContextVars={props.showContextVars}
@@ -389,6 +391,7 @@ function ListFields(props) {
             <StructListFields
                 odd={false}
                 focus={props.focus}
+                FPSForm2={props.FPSForm2}
                 noHint={props.noHint}
                 fields={props.fields}
                 filter={props.filter}
@@ -492,9 +495,14 @@ function StructListFields(props) {
 
     const selectOption = (field, close) => {
         props.onChoose(field.sysName,
-            (field && field.dataType != 'link' ||
+            (field && field.dataType !== 'link' ||
                 (props.filterLinkFields && true) ||
-                (!props.noPropagation && field.dataType != 'link' && field.sysName != 'ContextVar') ||
+                (!props.noPropagation && field.dataType !== 'link' &&
+                    (field.sysName !== 'ContextVar') &&
+                    (field.sysName !== 'GlobalVar') &&
+                    (field.sysName !== 'WebUser' || !props.FPSForm2) &&
+                    (field.sysName !== 'FormState' || !props.FPSForm2)
+                ) ||
                 close),
             field.link || '',
             field && field.dataType)
@@ -548,7 +556,7 @@ function StructListFields(props) {
         //const allFields = [...fields, ...GlobalVars, ...ContextVars]
         if (allFields && (props.filter || props.filterFields) && isLast()) {
             const SaveFiltFields = allFields.filter(el => {
-                let filt = _.head(props.filter) == '^' ? "\\" + props.filter : props.filter 
+                let filt = _.head(props.filter) == '^' ? "\\" + props.filter : props.filter
                 if (el) {
                     try {
                         return (String(el.sysName).toLowerCase().match(new RegExp(String(filt).toLowerCase())) ||
@@ -694,7 +702,12 @@ function StructListFields(props) {
                                     <div className={`${styles.objectDetails} ${field.name && styles.small}`}>
                                         {field.name && <span className={styles.sysName}>{`{{`}{field.sysName}{`}} `}</span>}
                                         <span className={styles.dataType}>{`${field && field.dataType}${field.dataSubType ? ` (${field.dataSubType})` : ''}${field.link ? ` → ${field.link}` : ''}`}</span></div>
-                                    {field && field.dataType == 'link' && !props.filterLinkFields && (!props.noPropagation || field.sysName == 'ContextVar') &&
+                                    {field && field.dataType == 'link' && !props.filterLinkFields &&
+                                        (!props.noPropagation
+                                            || field.sysName == 'ContextVar'
+                                            || field.sysName == 'GlobalVar'
+                                            || (field.sysName == 'WebUser' && props.FPSForm2)
+                                            || (field.sysName == 'FormState' && props.FPSForm2)) &&
                                         <div className={`${styles.goToLink} icon icon-forward`}></div>}
                                 </li>
 
@@ -713,6 +726,9 @@ function StructListFields(props) {
             {props.value && !props.filterLinkFields && (
                 !props.noPropagation
                 || props.value.startsWith('ContextVar')
+                || props.value.startsWith('GlobalVar')
+                || (props.value.startsWith('FormState') && props.FPSForm2)
+                || (props.value.startsWith('WebUser') && props.FPSForm2)
             ) && (shiftPath(props.value) || (getFieldDetails(currentField, props.structSysName) && getFieldDetails(currentField, props.structSysName).dataType == 'link')) &&
                 <StructListFields
                     fields={props.fields}

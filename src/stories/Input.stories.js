@@ -123,11 +123,163 @@ export const Select = {
   },
 };
 
-export const Danger = {
+const testFields = [
+  {
+    "structName": "alfaWebHookData",
+    "fields": [
+      {
+        "sysName": "id",
+        "name": "id",
+        "dataType": "id",
+        "link": ""
+      },
+      {
+        "sysName": "body",
+        "name": "body",
+        "dataType": "json",
+        "link": ""
+      },
+      {
+        "sysName": "FormState",
+        "name": "headers",
+        "dataType": "link",
+        "link": "alfaWebHookData"
+      },
+      {
+        "sysName": "urlData",
+        "name": "urlData",
+        "dataType": "json",
+        "link": ""
+      },
+      {
+        "sysName": "@who",
+        "name": "who changed",
+        "dataType": "string",
+        "link": ""
+      },
+      {
+        "sysName": "@dateCreated",
+        "name": "date created",
+        "dataType": "date",
+        "link": ""
+      },
+      {
+        "sysName": "@dateChanged",
+        "name": "date changed",
+        "dataType": "date",
+        "link": ""
+      },
+      {
+        "sysName": "GlobalVar",
+        "name": "Global Constants (2)",
+        "dataType": "link",
+        "link": "GlobalVars",
+        "vars": "global"
+      },
+      {
+        "sysName": "ContextVar",
+        "name": "Context Variables (3)",
+        "dataType": "link",
+        "link": "ContextVars",
+        "vars": "context"
+      }
+    ]
+  },
+  {
+    "structName": "ContextVars",
+    "fields": [
+      {
+        "sysName": "orderId",
+        "name": "",
+        "dataType": "string",
+        "link": ""
+      },
+      {
+        "sysName": "job_id",
+        "name": "",
+        "dataType": "link",
+        "link": "Jobs"
+      },
+      {
+        "sysName": "status",
+        "name": "",
+        "dataType": "string",
+        "link": ""
+      }
+    ]
+  },
+  {
+    "structName": "FormState",
+    "fields": [
+      {
+        "sysName": "orderId",
+        "name": "",
+        "dataType": "string",
+        "link": ""
+      },
+      {
+        "sysName": "job_id",
+        "name": "",
+        "dataType": "link",
+        "link": "Jobs"
+      },
+      {
+        "sysName": "status",
+        "name": "",
+        "dataType": "string",
+        "link": ""
+      }
+    ]
+  },
+  {
+    "structName": "GlobalVars",
+    "fields": [
+      {
+        "sysName": "jobPrice",
+        "name": "",
+        "dataType": "string"
+      },
+      {
+        "sysName": "luxaryJobPrice",
+        "name": "",
+        "dataType": "string"
+      }
+    ]
+  },
+  {
+    "structName": "ContextVars",
+    "fields": [
+      {
+        "sysName": "orderId",
+        "name": "",
+        "dataType": "string",
+        "link": ""
+      },
+      {
+        "sysName": "job_id",
+        "name": "",
+        "dataType": "link",
+        "link": "Jobs"
+      },
+      {
+        "sysName": "status",
+        "name": "",
+        "dataType": "string",
+        "link": ""
+      }
+    ]
+  }
+]
+
+
+export const FtructureField = {
   args: {
-    danger: true,
-    children: 'button',
-    icon: 'delete'
+    type: 'structurefield',
+    noHint: true,
+    FPSForm2: true,
+    noPropagation: true,
+    fields: testFields,
+    structSysName: 'alfaWebHookData'
   },
 };
 
