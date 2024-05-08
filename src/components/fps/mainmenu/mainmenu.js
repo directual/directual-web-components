@@ -934,7 +934,7 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
     const checkIfOpened = () => {
         let result = false;
         (item.children || []).forEach(element => {
-            if (menuConfig[element.id].linkToPage == currentRoute) {
+            if (_.get(menuConfig,`[${element.id}].linkToPage`) == currentRoute) {
                 result = true;
             }
         });
