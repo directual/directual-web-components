@@ -27,9 +27,9 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
     } catch (err) {
       console.error(err)
     }
-    array = [...array, 
-        ..._.map(_.sortedUniq(_.sortBy((fieldScheme || []).map(item => item[0]))), i => i.split(".")[0]),
-      ]
+    array = [...array,
+    ..._.map(_.sortedUniq(_.sortBy((fieldScheme || []).map(item => item[0]))), i => i.split(".")[0]),
+    ]
     return _.zipObject(array, Array(array.length).fill(''))
   }
 
@@ -67,10 +67,24 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
     return ref.current;
   }
 
+  const [autoSubmitStep, setAutoSubminStep] = useState(state.step)
+
   useEffect(() => {
     if (!_.isEqual(previousState, state)) {
       setHighlightState(true)
       setTimeout(() => setHighlightState(false), 300)
+    }
+    if (_.get(params, "general.autosubmit") == "always" && autoSubmitStep !== state.step) {
+      console.log("AUTOSUBMIT!")
+      setAutoSubminStep(state.step)
+      submit()
+    }
+    if (_.get(params, "general.autosubmit") == "steps"
+      && _.includes(_.get(params, "general.autosubmit_steps").split(","), state.step 
+      && autoSubmitStep !== state.step)) {
+      console.log("AUTOSUBMIT!")
+      setAutoSubminStep(state.step)
+      submit()
     }
   }, [state])
 
@@ -80,7 +94,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
       // console.log("update model (socket)")
       const newModel = ({ ...model, ...flatternModel({ ..._.get(data, "data[0]") }) })
       if (!_.isEqual(newModel, model)) {
-        const newState = {...state, ...templateState(_.get(data, "params.state"), newModel)}
+        const newState = { ...state, ...templateState(_.get(data, "params.state"), newModel) }
         setState(newState)
         setModel(newModel)
       }
@@ -106,7 +120,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
   }
   // =======
 
-  const submit = (finish) => {
+  function submit(finish) {
     setState({ ...state, _submitError: "" })
     const modelToSend = {}
     for (const f in model) {
@@ -202,7 +216,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
 
   // front-end template engine
   function template(input) {
-    const templateData = {...defaultModel, ...(model ||{})};
+    const templateData = { ...defaultModel, ...(model || {}) };
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
     if (!templateData) return ""
     const renderTemplate = (template) => {
@@ -225,7 +239,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
     }
   }
   function templateState(input, model) {
-    const templateData = {...defaultModel, ...(model || {})}
+    const templateData = { ...defaultModel, ...(model || {}) }
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
     // Custom function to handle undefined variables by replacing them with ""
     if (!templateData) return {}
@@ -271,99 +285,119 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
 
   const checkHidden = element => {
 
-    let isHidden = false
-    if (element._conditionalView) {
-      let field = template("{{" + element._conditionalView_field + "}}")
-      let value = template(element._conditionalView_value)
+    const checkHiddenCondition = element => {
+      let isHidden = false
 
-      // { key: "==", value: "is equal" },
-      if (element._conditionalView_operator == "==") {
-        if (!_.isEqual(field, value)) {
-          console.log("element is hidden")
-          console.log("{{" + element._conditionalView_field + "}} → " + field + " !== " + value)
-          isHidden = true
-        }
-      }
+      if (element._conditionalView) {
+        let field = template("{{" + element._conditionalView_field + "}}")
+        let value = template(element._conditionalView_value)
 
-      // { key: "!==", value: "is NOT equal" },
-      if (element._conditionalView_operator == "!==") {
-        if (_.isEqual(field, value)) {
-          console.log("element is hidden")
-          console.log("{{" + element._conditionalView_field + "}} → " + field + " == " + value)
-          isHidden = true
+        // { key: "==", value: "is equal" },
+        if (element._conditionalView_operator == "==") {
+          if (!_.isEqual(field, value)) {
+            _.get(params, "general.showModel") && console.log("element is hidden")
+            _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " !== " + value)
+            isHidden = true
+          }
         }
-      }
 
-      // { key: "contains", value: "contains" },
-      if (element._conditionalView_operator == "contains") {
-        value = value ? value.split(",") : null
-        field = field ? field.split(",") : null
-        if ((field && field.length > 0 &&
-          value && value.length > 0
-          && _.intersection(value, field).length == 0) || !field || !value) {
-          console.log("element is hidden")
-          console.log("{{" + element._conditionalView_field + "}} → " + field + " does NOT contain " + value)
-          isHidden = true
+        // { key: "!==", value: "is NOT equal" },
+        if (element._conditionalView_operator == "!==") {
+          if (_.isEqual(field, value)) {
+            _.get(params, "general.showModel") && console.log("element is hidden")
+            _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " == " + value)
+            isHidden = true
+          }
         }
-      }
-      // { key: "notContains", value: "does NOT contain" },
-      if (element._conditionalView_operator == "notContains") {
-        value = value ? value.split(",") : null
-        field = field ? field.split(",") : null
-        if ((field && field.length > 0 &&
-          value && value.length > 0
-          && _.intersection(value, field).length > 0) || !field || !value) {
-          console.log("element is hidden")
-          console.log("{{" + element._conditionalView_field + "}} → " + field + " contains " + value)
-          isHidden = true
-        }
-      }
 
-      // { key: "in", value: "in" },
-      if (element._conditionalView_operator == "in") {
-        value = value ? value.split(",") : null
-        field = field ? field.split(",") : null
-        if ((field && field.length > 0 &&
-          value && value.length > 0
-          && _.intersection(value, field).length == 0) || !field || !value) {
-          console.log("element is hidden")
-          console.log(value + " does NOT contain " + "{{" + element._conditionalView_field + "}} → " + field)
-          isHidden = true
+        // { key: "contains", value: "contains" },
+        if (element._conditionalView_operator == "contains") {
+          value = value ? value.split(",") : null
+          field = field ? field.split(",") : null
+          if ((field && field.length > 0 &&
+            value && value.length > 0
+            && _.intersection(value, field).length == 0) || !field || !value) {
+            _.get(params, "general.showModel") && console.log("element is hidden")
+            _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " does NOT contain " + value)
+            isHidden = true
+          }
         }
-      }
+        // { key: "notContains", value: "does NOT contain" },
+        if (element._conditionalView_operator == "notContains") {
+          value = value ? value.split(",") : null
+          field = field ? field.split(",") : null
+          if ((field && field.length > 0 &&
+            value && value.length > 0
+            && _.intersection(value, field).length > 0) || !field || !value) {
+            _.get(params, "general.showModel") && console.log("element is hidden")
+            _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " contains " + value)
+            isHidden = true
+          }
+        }
 
-      // { key: "notIn", value: "NOT in" }
-      if (element._conditionalView_operator == "notIn") {
-        value = value ? value.split(",") : null
-        field = field ? field.split(",") : null
-        if ((field && field.length > 0 &&
-          value && value.length > 0
-          && _.intersection(value, field).length > 0) || !field || !value) {
-          console.log("element is hidden")
-          console.log(value + " contains " + "{{" + element._conditionalView_field + "}} → " + field)
-          isHidden = true
+        // { key: "in", value: "in" },
+        if (element._conditionalView_operator == "in") {
+          value = value ? value.split(",") : null
+          field = field ? field.split(",") : null
+          if ((field && field.length > 0 &&
+            value && value.length > 0
+            && _.intersection(value, field).length == 0) || !field || !value) {
+            _.get(params, "general.showModel") && console.log("element is hidden")
+            _.get(params, "general.showModel") && console.log(value + " does NOT contain " + "{{" + element._conditionalView_field + "}} → " + field)
+            isHidden = true
+          }
         }
-      }
 
-      // { key: "isNull", value: "is empty" },
-      if (element._conditionalView_operator == "isNull") {
-        if (!_.isEmpty(field)) {
-          console.log("element is hidden")
-          console.log("{{" + element._conditionalView_field + "}} → " + field + " is empty")
-          isHidden = true
+        // { key: "notIn", value: "NOT in" }
+        if (element._conditionalView_operator == "notIn") {
+          value = value ? value.split(",") : null
+          field = field ? field.split(",") : null
+          if ((field && field.length > 0 &&
+            value && value.length > 0
+            && _.intersection(value, field).length > 0) || !field || !value) {
+            _.get(params, "general.showModel") && console.log("element is hidden")
+            _.get(params, "general.showModel") && console.log(value + " contains " + "{{" + element._conditionalView_field + "}} → " + field)
+            isHidden = true
+          }
         }
-      }
 
-      // { key: "isNotNull", value: "is NOT empty" },
-      if (element._conditionalView_operator == "isNotNull") {
-        if (_.isEmpty(field)) {
-          console.log("element is hidden")
-          console.log("{{" + element._conditionalView_field + "}} → " + field + " is NOT empty")
-          isHidden = true
+        // { key: "isNull", value: "is empty" },
+        if (element._conditionalView_operator == "isNull") {
+          if (!_.isEmpty(field)) {
+            _.get(params, "general.showModel") && console.log("element is hidden")
+            _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " is empty")
+            isHidden = true
+          }
+        }
+
+        // { key: "isNotNull", value: "is NOT empty" },
+        if (element._conditionalView_operator == "isNotNull") {
+          if (_.isEmpty(field)) {
+            _.get(params, "general.showModel") && console.log("element is hidden")
+            _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " is NOT empty")
+            isHidden = true
+          }
         }
       }
+      return isHidden
     }
-    return isHidden
+
+    let result = false
+    if (!_.get(element, "_conditionalView")) return false;
+    if (_.get(element, "_conditions").length == 0) return false;
+
+    if (_.get(element, "_action_conditionals_and_or") == "OR") {
+      result = true
+      _.get(element, "_conditions").forEach(element => {
+        if (!checkHiddenCondition(element)) { result = false }
+      })
+    } else {
+      _.get(element, "_conditions").forEach(element => {
+        if (checkHiddenCondition(element)) { result = true }
+      })
+    }
+
+    return result
   }
 
   if (_.get(data, 'error') == '403') {
@@ -406,6 +440,8 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
     {_.get(params, "general.showModel") && <pre className={`${styles.debug} ${highlightModel ? styles.highlight : ''}`}>
       <code>{JSON.stringify(model, 0, 3)}</code>
       <span>debug mode: MODEL</span>
+      {_.get(params, "general.autosubmit") == "always" && <code className='icon icon-move'>Autosubmit on each step change</code>}
+      {_.get(params, "general.autosubmit") == "steps" && <code className='icon icon-move'>Autosubmit on: {_.get(params, "general.autosubmit_steps")}</code>}
     </pre>}
 
     {state._apiError && <Hint error closable onClose={() => setState({ ...state, _apiError: "" })}>

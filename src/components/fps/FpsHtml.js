@@ -19,8 +19,8 @@ export default function FpsHtml(props) {
   const html = (data || {}).html || ''
   if (data && data.isHidden == 'true') { return <div /> }
 
-  console.log('=== FpsHTML ===')
-  console.log(data)
+  // console.log('=== FpsHTML ===')
+  // console.log(data)
 
   return (
     <ComponentWrapper>
