@@ -455,7 +455,8 @@ export default function Input(props) {
             {props.label && <label>{props.label}{props.required && '*'}</label>}
             {props.description &&
                 <div className={styles.description}>
-                    {props.description && <InnerHTML allowRerender={true} html={props.description} />}
+                    {props.description && (typeof props.description == "string" ? <InnerHTML allowRerender={true} html={props.description} />
+                        : props.description)}
                 </div>}
             {(props.debug) && <div>
                 <div className="dd-debug">searchValue: {JSON.stringify(searchValue)}</div>
