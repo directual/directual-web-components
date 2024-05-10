@@ -14,7 +14,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
   // console.log(data)
 
   const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
-  const defaultState = { "step": null }
+  const defaultState = { "step": "default step" }
   const params = _.get(data, "params")
   const fields = _.get(data, "fileds")
   const edditingOn = _.get(params, "general.edittingOn")
