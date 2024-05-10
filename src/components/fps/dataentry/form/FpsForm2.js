@@ -187,7 +187,7 @@ export default function FpsForm2({ auth, data, callEndpoint, onEvent, id, locale
           setState({ ...saveState, step: "submitted" })
           setModel({}) // reset model
         } else {
-          setState({ ...model, _apiError: data.msg })
+          setState({ ...state, _apiError: data.msg })
           setLoading(false)
           finish && finish()
         }
