@@ -6,7 +6,6 @@ import _ from 'lodash'
 export default function FpsForm2Action(props) {
     const { actionFormat, action, loading, onPerform, checkHidden } = props
 
-    console.log(actionFormat)
     if (!action) return <div>No action <code>action_1715086004658</code></div>
 
     if (actionFormat._conditionalView &&

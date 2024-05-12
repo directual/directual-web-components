@@ -58,14 +58,48 @@ function FieldText(props) {
     const { field, locale, lang, template, model, state, onChange, fieldInfo, code } = props
     const basicProps = { onChange, locale, lang }
 
+    const parseJson = json => {
+        if (!json) return []
+        let parsedJson = []
+        if (typeof json == 'object') return json
+        try {
+            parsedJson = JSON.parse(json)
+        }
+        catch (e) {
+            console.log(json);
+            console.log(e);
+        }
+        return parsedJson
+    }
+
     if (field._input_type == "state") {
+
+        let options = field._edit_state_options || []
+        if (field._edit_state_manual_json == "json") {
+            if (field._edit_state_json_source) {
+                options = parseJson(template(`{{${field._edit_state_json_source}}}`))
+            } else {
+                options = []
+            }
+        }
+
         if (field._edit_state_type == "select") {
             return <Input nomargin
                 type="select"
-                options={field._edit_state_options}
+                options={options}
                 label={field._edit_state_input_label || field._state_field}
                 defaultValue={_.get(state, field._state_field)}
                 {...basicProps}
+            />
+        }
+        if (field._edit_state_type == "multiselect") {
+            return <Input nomargin
+                type="multiselect"
+                options={options}
+                label={field._edit_state_input_label || field._state_field}
+                defaultValue={_.get(state, field._state_field).split(",")}
+                {...basicProps}
+                onChange={value => (value && value.length) ? onChange(value.join(",")) : onChange("")}
             />
         }
         return <Input nomargin

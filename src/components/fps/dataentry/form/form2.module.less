@@ -124,3 +124,40 @@
         }
     }
   }
+
+  .popup_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+  }
+  
+  .popup {
+    > div {
+        max-width: calc(100% - 36px);
+        margin: 18px;
+        position: relative;
+    }
+    background-color: var(--layout-bgr);
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    animation: popupAnimation 0.3s ease;
+    max-width: 96vw;
+  }
+  
+  @keyframes popupAnimation {
+    from {
+      transform: scale(0.2);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
