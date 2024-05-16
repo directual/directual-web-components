@@ -1,5 +1,5 @@
 import Button from '../components/fps/button/button';
-import { icon_options } from  '../components/fps/dataentry/input/input'
+import { icon_options } from '../components/fps/dataentry/input/input'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 
@@ -39,6 +39,21 @@ export const Danger = {
   args: {
     danger: true,
     children: 'button',
+    icon: 'delete'
+  },
+};
+
+export const NoText = {
+  args: {
+    accent: true,
+    icon: 'delete'
+  },
+};
+
+export const NoTextLoading = {
+  args: {
+    accent: true,
+    loading: true,
     icon: 'delete'
   },
 };

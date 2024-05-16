@@ -102,6 +102,17 @@ function FieldText(props) {
                 onChange={value => (value && value.length) ? onChange(value.join(",")) : onChange("")}
             />
         }
+        if (field._edit_state_type == "buttons") {
+            return <Input nomargin
+                type="pedal"
+                options={options}
+                // label={field._edit_state_input_label || field._state_field}
+                defaultValue={_.get(state, field._state_field)}
+                width={field._edit_state_pedal_width || undefined}
+                stretch={field._edit_state_pedal_stretch}
+                {...basicProps}
+            />
+        }
         return <Input nomargin
             type="textarea"
             rows='auto'
@@ -727,10 +738,10 @@ function FieldArrayLink(props) {
             Endpoint for radio buttons is not configured.</div>
         return <div>
             <Input type="tags"
-
                 FpsForm2
+                onlySelected={field._field_arrayLink_tags_onlySelected}
                 tags={filterTags}
-                onClick={tagId => changeTags(tagId, 'onClick')}
+                onClick={tagId => field._field_arrayLink_tags_onlySelected ? undefined : changeTags(tagId, 'onClick')}
                 onResetSelect={tagId => changeTags(tagId, 'onResetSelect')}
 
                 required={field._field_required}

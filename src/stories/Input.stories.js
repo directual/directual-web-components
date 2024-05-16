@@ -18,111 +18,6 @@ export default {
   },
 };
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const String = {
-  args: {
-    type: 'string',
-    icon: 'babai'
-  },
-};
-
-export const Select = {
-  args: {
-    type: 'select',
-    options: [
-      {
-        "key": "shareAmount",
-        "value": "Количество акций"
-      },
-      {
-        "key": "nomSharePrice",
-        "value": "Номинальная стоимость акции"
-      },
-      {
-        "key": "shareCostNominal",
-        "value": "Стоимость акции"
-      },
-      {
-        "key": "target",
-        "value": "Цель раунда"
-      },
-      {
-        "key": "id",
-        "value": "id"
-      },
-      {
-        "key": "project",
-        "value": "Проект"
-      },
-      {
-        "key": "dealStatusT",
-        "value": "Статус сделки (Тинькофф)"
-      },
-      {
-        "key": "dealIdT",
-        "value": "ID сделки (Тинькофф)"
-      },
-      {
-        "key": "shareAmount",
-        "value": "Количество акций"
-      },
-      {
-        "key": "nomSharePrice",
-        "value": "Номинальная стоимость акции"
-      },
-      {
-        "key": "shareCostNominal",
-        "value": "Стоимость акции"
-      },
-      {
-        "key": "target",
-        "value": "Цель раунда"
-      },
-      {
-        "key": "activeOffer",
-        "value": "Активное Инвестпредложение"
-      },
-      {
-        "key": "offers",
-        "value": "Инвестпредложения"
-      },
-      {
-        "key": "endDate",
-        "value": "Дата окончания"
-      },
-      {
-        "key": "startDate",
-        "value": "Дата начала"
-      },
-      {
-        "key": "projectName",
-        "value": "Название проекта"
-      },
-      {
-        "key": "number",
-        "value": "Номер инвестпредложения"
-      },
-      {
-        "key": "status",
-        "value": "Статус"
-      },
-      {
-        "key": "statusColor",
-        "value": "Цвет Статуса"
-      },
-      {
-        "key": "statusName",
-        "value": "Название статуса"
-      },
-      {
-        "key": "createDealT",
-        "value": "Создание сделки"
-      }
-    ],
-    icon: 'babai'
-  },
-};
-
 const testFields = [
   {
     "structName": "alfaWebHookData",
@@ -271,6 +166,112 @@ const testFields = [
   }
 ]
 
+// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
+export const String = {
+  args: {
+    type: 'string',
+    icon: 'babai'
+  },
+};
+
+export const Select = {
+  args: {
+    type: 'select',
+    options: [
+      {
+        "key": "shareAmount",
+        "value": "Количество акций"
+      },
+      {
+        "key": "nomSharePrice",
+        "value": "Номинальная стоимость акции"
+      },
+      {
+        "key": "shareCostNominal",
+        "value": "Стоимость акции"
+      },
+      {
+        "key": "target",
+        "value": "Цель раунда"
+      },
+      {
+        "key": "id",
+        "value": "id"
+      },
+      {
+        "key": "project",
+        "value": "Проект"
+      },
+      {
+        "key": "dealStatusT",
+        "value": "Статус сделки (Тинькофф)"
+      },
+      {
+        "key": "dealIdT",
+        "value": "ID сделки (Тинькофф)"
+      },
+      {
+        "key": "shareAmount",
+        "value": "Количество акций"
+      },
+      {
+        "key": "nomSharePrice",
+        "value": "Номинальная стоимость акции"
+      },
+      {
+        "key": "shareCostNominal",
+        "value": "Стоимость акции"
+      },
+      {
+        "key": "target",
+        "value": "Цель раунда"
+      },
+      {
+        "key": "activeOffer",
+        "value": "Активное Инвестпредложение"
+      },
+      {
+        "key": "offers",
+        "value": "Инвестпредложения"
+      },
+      {
+        "key": "endDate",
+        "value": "Дата окончания"
+      },
+      {
+        "key": "startDate",
+        "value": "Дата начала"
+      },
+      {
+        "key": "projectName",
+        "value": "Название проекта"
+      },
+      {
+        "key": "number",
+        "value": "Номер инвестпредложения"
+      },
+      {
+        "key": "status",
+        "value": "Статус"
+      },
+      {
+        "key": "statusColor",
+        "value": "Цвет Статуса"
+      },
+      {
+        "key": "statusName",
+        "value": "Название статуса"
+      },
+      {
+        "key": "createDealT",
+        "value": "Создание сделки"
+      }
+    ],
+    icon: 'babai'
+  },
+};
+
+
 
 export const FtructureField = {
   args: {
@@ -360,6 +361,31 @@ export const DimanicSelect = {
       }, 2000)
     },
     icon: 'actions'
+  },
+};
+
+export const Pedal = {
+  args: {
+    type: 'pedal',
+    options: [
+      {
+        "icon": "babai",
+        "key": "1",
+        "value": "Раз"
+      },
+      {
+        "icon": "twitter",
+        "key": "2",
+        "value": "Два"
+      },
+      {
+        "key": "3",
+        "value": "Три"
+      },
+    ],
+    defaultValue: "1",
+    stretch: true,
+    width: 400,
   },
 };
 

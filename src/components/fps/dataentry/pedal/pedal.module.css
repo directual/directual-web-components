@@ -1,0 +1,44 @@
+.pedal {
+  display: flex;
+  margin: 1px;
+}
+.pedal.stretch {
+  justify-content: stretch;
+}
+.pedal.stretch .pedalButton {
+  flex-grow: 1;
+}
+.pedalButton {
+  display: flex;
+  align-items: center;
+  border: solid 1px var(--button-border);
+  height: 46px;
+  cursor: pointer;
+  user-select: none;
+  padding: 0 22px;
+  justify-content: center;
+  background-color: var(--button-bgr);
+  color: var(--button-text);
+}
+.pedalButton.icon {
+  padding-left: 10px;
+}
+.pedalButton:hover {
+  box-shadow: 0 0 0 1px var(--button-hover-border);
+  border: solid 1px var(--button-hover-border);
+  background-color: var(--button-hover-bgr);
+  color: var(--button-hover-text);
+}
+.pedalButton:active,
+.pedalButton.selected {
+  box-shadow: 0 0 0 1px var(--button-active-border);
+  border: solid 1px var(--button-active-border);
+  background-color: var(--button-active-bgr);
+  color: var(--button-active-text);
+}
+.pedalButton.first {
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+.pedalButton.last {
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}

@@ -6,6 +6,7 @@ import Datepicker from '../datepicker/datepicker'
 import Colorpicker from '../colorpicker/colorpicker'
 import Slider from '../slider/slider'
 import Checkbox from '../checkbox/checkbox'
+import Pedal from '../pedal/pedal'
 import StructureField from '../structurefield/structurefield'
 import { Markdown } from '../../article/mkd'
 import OptionsHandler, { AdvancedOptionsHandler } from '../optionsHandler/optionsHandler'
@@ -477,6 +478,7 @@ export default function Input(props) {
                 props.type != 'structurefield' &&
                 props.type != 'radio' &&
                 props.type != 'radioJson' &&
+                props.type != 'pedal' &&
                 props.type != 'select' &&
                 props.type != 'tags' &&
                 props.type != 'multiselect' &&
@@ -790,6 +792,14 @@ export default function Input(props) {
                         {...props}
                         selectedTags={defVal}
                         onChange={e => e ? (e.target ? submit(e.target.value) : submit(e)) : submit(null)}
+                        dict={dict[lang]}
+                    />
+                </div>}
+
+            {props.type == 'pedal' &&
+                <div className={styles.field_wrapper}>
+                    <Pedal
+                        {...props}
                         dict={dict[lang]}
                     />
                 </div>}

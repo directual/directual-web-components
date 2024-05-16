@@ -10,7 +10,7 @@ export default function Loader(props) {
                 ${props.accent && styles.accent}
                 ${props.small && styles.small}
             `}><div></div><div></div><div></div><div></div></div>
-            <div className={styles.loaderLabel}>{props.children}</div>
+            {props.children && <div className={styles.loaderLabel}>{props.children}</div>}
         </div>
     )
 }

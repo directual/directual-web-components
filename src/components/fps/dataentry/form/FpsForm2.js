@@ -73,6 +73,7 @@ export default function FpsForm2(props) {
 
   const [autoSubmitStep, setAutoSubminStep] = useState(state.step)
 
+  // AUTOSUBMIT
   useEffect(() => {
     if (!_.isEqual(previousState, state)) {
       setHighlightState(true)
@@ -92,17 +93,37 @@ export default function FpsForm2(props) {
     }
   }, [state])
 
+  const parseJson = json => {
+    if (!json) return {}
+    let parsedJson = {}
+    if (typeof json == 'object') return json
+    try {
+      parsedJson = JSON.parse(json)
+    }
+    catch (e) {
+      console.log(json);
+      console.log(e);
+    }
+    return parsedJson
+  }
+
   // process Socket.io update
   useEffect(() => {
     if (edditingOn) {
       // console.log("update model (socket)")
+      let saveSate = { ...state }
       const newModel = ({ ...model, ...flatternModel({ ..._.get(data, "data[0]") }) })
       if (!_.isEqual(newModel, model)) {
-        const newState = { ...state, ...templateState(_.get(data, "params.state"), newModel) }
-        setState(newState)
+        saveSate = { ...saveSate, ...templateState(_.get(data, "params.state"), newModel) }
         setModel(newModel)
       }
+      // RESTORE STATE:
+      if (_.get(params,"general.restoreState") && _.get(params,"general.saveStateTo")) {
+        saveSate={...saveSate, ...parseJson(newModel[_.get(params,"general.saveStateTo")])}
+      }
+      setState(saveSate)
     }
+
   }, [_.get(data, "data[0]")])
 
   useEffect(() => {
@@ -126,11 +147,15 @@ export default function FpsForm2(props) {
 
   function submit(finish) {
     setState({ ...state, _submitError: "" })
-    const modelToSend = {}
+    let modelToSend = {}
     for (const f in model) {
       if (_.includes(_.get(data, 'writeFields'), f)) {
         modelToSend[f] = model[f]
       }
+    }
+    // State to object
+    if (_.get(params, "general.saveState") && _.get(params, "general.saveStateTo")) {
+      modelToSend[_.get(params, "general.saveStateTo")] = JSON.stringify(state)
     }
 
     // REQUIRED:
@@ -391,7 +416,7 @@ export default function FpsForm2(props) {
 
     let result = false
     if (!_.get(element, "_conditionalView")) return false;
-    if (_.get(element, "_conditions").length == 0) return false;
+    if (!_.get(element, "_conditions") || _.get(element, "_conditions").length == 0) return false;
 
     if (_.get(element, "_action_conditionals_and_or") == "OR") {
       result = true
@@ -493,6 +518,7 @@ export default function FpsForm2(props) {
       <span>debug mode: MODEL</span>
       {_.get(params, "general.autosubmit") == "always" && <code className='icon icon-move'>Autosubmit on each step change</code>}
       {_.get(params, "general.autosubmit") == "steps" && <code className='icon icon-move'>Autosubmit on: {_.get(params, "general.autosubmit_steps")}</code>}
+      {/* <code className='icon icon-info'>Model is changed</code> */}
     </pre>}
 
     {state._apiError && <Hint error closable onClose={() => setState({ ...state, _apiError: "" })}>
@@ -570,28 +596,20 @@ function RenderStep(props) {
           (result, data) => {
             if (result == "ok") {
               finish && finish(data)
-              // console.log('finish')
-              // console.log(data)
               try {
                 const response = JSON.parse(data)
                 // update state
                 if (!isEmpty(_.get(response, "state"))) {
                   const stateUpdate = _.get(response, "state")
-                  // console.log("update state")
-                  // console.log(stateUpdate)
                   setState({ ...state, ...stateUpdate })
                 }
                 // update model/object
                 if (!isEmpty(_.get(response, "object"))) {
                   const modelUpdate = _.get(response, "object")
-                  // console.log("update object")
-                  // console.log(modelUpdate)
                   setModel({ ...model, ...modelUpdate })
                 }
                 if (!isEmpty(_.get(response, "model"))) {
                   const modelUpdate = _.get(response, "model")
-                  // console.log("update model")
-                  // console.log(modelUpdate)
                   setModel({ ...model, ...modelUpdate })
                 }
               } catch (err) {
@@ -629,47 +647,37 @@ function RenderStep(props) {
         });
 
         // fake request
-        // setTimeout(() => {
-        //   const data = [
-        //     {
-        //       "firstName": "Иван",
-        //       "lastName": "Бунин",
-        //       "userpic": "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg",
-        //       "id": "2ee9f1d7-cafe-420a-941e-0c87e9f0f71f"
-        //     },
-        //     {
-        //       "firstName": "Александр",
-        //       "lastName": "Пушкин",
-        //       "userpic": "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg",
-        //       "id": "88fca6be-338a-4b50-aeb0-7e7302a28241"
-        //     },
-        //     {
-        //       "userpic": "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg",
-        //       "firstName": "Сергей",
-        //       "lastName": "Есенин",
-        //       "id": "6fc2a69e-f73c-4196-85af-5fb2deb38344"
-        //     },
-        //     {
-        //       "firstName": "Зинаида",
-        //       "lastName": "Гиппиус",
-        //       "id": "9cecb091-2817-4fe9-93b8-512ce7661724"
-        //     },
-        //     {
-        //       "lastName": "Ахматова",
-        //       "firstName": "Анна",
-        //       "id": "c6af8c44-6a4d-4d11-a7d3-2301649d91c2"
-        //     },
-        //     {
-        //       "lastName": "Цветаева",
-        //       "userpic": "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg",
-        //       "firstName": "Марина",
-        //       "id": "c9146676-73b1-42d9-995a-825c62519624"
-        //     }
-        //   ]
-        //   const visibleNames = '[{"sysName":"firstName"},{"sysName":"lastName"}]'
-        //   finish && finish(transformedArray(data, visibleNames))
-        //   setOptions && setOptions(transformedArray(data, visibleNames))
-        // }, 1000)
+        setTimeout(() => {
+          const data = [
+            {
+              "name": "John",
+              "id": "310846eb-460e-452b-9c4b-a2e1f71e773e"
+            },
+            {
+              "name": "Paul",
+              "id": "ac32238e-e7cd-4038-90eb-752f97edbaf6"
+            },
+            {
+              "name": "Peter",
+              "id": "9100a8fb-4743-402a-b1f1-0081c7e2e777"
+            },
+            {
+              "name": "Kate",
+              "id": "31560763-541e-4643-be51-6e6041e2868e"
+            },
+            {
+              "name": "Julia",
+              "id": "66628fb9-07cb-4e4f-9e51-c03bd64d67d6"
+            },
+            {
+              "name": "Monica",
+              "id": "1d37d760-2f64-498a-9432-d9895ad5da00"
+            }
+          ]
+          const visibleNames = '[{"sysName":"firstName"},{"sysName":"lastName"}]'
+          finish && finish(transformedArray(data, visibleNames))
+          setOptions && setOptions(transformedArray(data, visibleNames))
+        }, 1000)
 
         callEndpoint && callEndpoint(
           endpoint,

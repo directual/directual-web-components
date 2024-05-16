@@ -10,6 +10,7 @@
 }
 .tabsPane.fixedScroll .tabWrapper {
   overflow-y: auto;
+  overflow-x: hidden;
 }
 .tabsMenu {
   display: flex;

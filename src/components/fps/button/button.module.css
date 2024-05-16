@@ -50,6 +50,10 @@ a.button:hover:not(.disabled):not(.transparent) {
 .button.loading {
   padding-left: 6px;
 }
+.button.loading.empty {
+  padding-left: 10px;
+  padding-right: 10px;
+}
 .button.small {
   font-size: var(--text-small-size);
 }

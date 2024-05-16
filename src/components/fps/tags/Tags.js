@@ -4,19 +4,21 @@ import _ from 'lodash'
 
 export function Tags(props) {
 
-    const { FpsForm2 } = props
+    const { FpsForm2, onlySelected } = props
 
     const tagList = props.tags ? props.tags.data : []
     const addButton = props.tags ? props.tags.addButton : false
 
-    if (!tagList || tagList.length == 0) return <div>{_.get(props.dict, 'noOptions')}</div>
+    if (!tagList || tagList.filter(tag => !onlySelected || (_.get(props, `selectedTags[${tag.id}]`))).length == 0) return <div>{_.get(props.dict, 'noOptions')}</div>
 
     return (
         <React.Fragment>
             <div
                 style={props.style}
                 className={styles.tagList}>
-                {tagList.map(tag => <Tag
+                {tagList
+                .filter(tag => !onlySelected || (_.get(props, `selectedTags[${tag.id}]`)))
+                .map(tag => <Tag
                     tag={tag}
                     FpsForm2={FpsForm2}
                     tags={props.tags}
