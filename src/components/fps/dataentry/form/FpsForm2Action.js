@@ -6,8 +6,20 @@ import _ from 'lodash'
 export default function FpsForm2Action(props) {
     const { actionFormat, action, loading, onPerform, checkHidden } = props
 
-    if (!action) return <div>No action <code>action_1715086004658</code></div>
+    const [performed, setPerformed] = useState(false)
 
+    useEffect(() => {
+        if (action.autoAction) {
+            const delay = (action.autoAction_delay || 0) * 1000
+            setTimeout(() => {
+                !performed && onPerform()
+                setPerformed(true)
+            }, delay)
+        }
+    }, [])
+
+    if (!action) return <div>No action <code>action_1715086004658</code></div>
+    if (action.autoAction) return <React.Fragment></React.Fragment>
     if (actionFormat._conditionalView &&
         !checkHidden(actionFormat) &&
         actionFormat._action_conditional_disable_or_hide !== "disable"

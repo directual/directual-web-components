@@ -83,7 +83,7 @@ function ElementInput(props) {
 }
 
 function ElementAction(props) {
-    const { element, templateState, template, callEndpointPOST, setState, setModel, model, data, state } = props
+    const { element, templateState, template, callEndpointPOST, setState, setModel, model, data, state, originalModel } = props
     const [loading, setLoading] = useState(false)
 
     const action_list = _.get(element, "_actions") || []
@@ -112,8 +112,10 @@ function ElementAction(props) {
         if (action.resetModel) {
             setModel({})
         }
-        if (action.actionType == "endpoint" || !action.actionType) {
-            console.log("endpoint")
+        if (action.discardModel) {
+            setModel(originalModel)
+        }
+        if ((action.actionType == "endpoint" || !action.actionType) && action.endpoint) {
             const payload = transformObject(action.mapping)
             setLoading(true)
             callEndpointPOST(action.endpoint, payload, (result) => {

@@ -24,38 +24,22 @@ let exampleForm = {
     "params": {
         "steps": [
             {
-                "id": "default_step",
-                "sysName": "default step",
+                "id": "step_1715854081782",
+                "sysName": "step1",
                 "elements": [
                     {
-                        "id": "elmnt_1715508401601",
+                        "id": "elmnt_1715854087662",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17155084045190.12034124333143401220314",
-                                "_input_type": "state",
-                                "_state_field": "test",
-                                "_edit_state_type": "buttons",
-                                "_edit_state_manual_json": "manual",
-                                "_edit_state_json_source": "options",
-                                "_edit_state_options": [
-                                    {
-                                        "key": "step1",
-                                        "value": "ШАГ 1"
-                                    },
-                                    {
-                                        "key": "step2",
-                                        "value": "ШАГ 2"
-                                    }
-                                ],
-                                "_edit_state_pedal_stretch": true,
-                                "_edit_state_pedal_width": 350
+                                "id": "17158540903060.024230014112004323432101",
+                                "_field": "people",
+                                "_field_arrayLink_type": "tags",
+                                "_field_arrayLink_endpoint": "getPeopleDropdown",
+                                "_field_hidden": false,
+                                "_field_link_pageSize": 4
                             }
                         ]
-                    },
-                    {
-                        "id": "elmnt_1715583082804",
-                        "type": "submit"
                     }
                 ]
             },
@@ -75,37 +59,18 @@ let exampleForm = {
         ],
         "actions": [
             {
-                "id": "action_1715501953817",
-                "name": "open popup",
+                "id": "action_1715849919348",
+                "name": "AUTOACTION",
+                "discardModel": false,
+                "resetModel": false,
+                "autoAction": true,
+                "autoAction_delay": 2,
                 "actionType": "state",
                 "stateMapping": [
                     {
-                        "id": "stateMapping1715501959561",
-                        "field": "FormState.popup",
-                        "value": "popup1"
-                    }
-                ]
-            },
-            {
-                "id": "action_1715502005947",
-                "name": "close popup",
-                "actionType": "state",
-                "stateMapping": [
-                    {
-                        "id": "stateMapping1715502024146",
-                        "field": "FormState.popup"
-                    }
-                ]
-            },
-            {
-                "id": "action_1715505782080",
-                "name": "go to popup2",
-                "actionType": "state",
-                "stateMapping": [
-                    {
-                        "id": "stateMapping1715505788737",
-                        "field": "FormState.popup",
-                        "value": "popup2"
+                        "id": "stateMapping1715852058564",
+                        "field": "FormState.test",
+                        "value": "{{FormState.test}}_A"
                     }
                 ]
             }
@@ -121,10 +86,12 @@ let exampleForm = {
         },
         "popup_width": 200,
         "state": {
-            "step": "default step",
+            "step": "step1",
             "popup": null,
-            "test": ""
-        }
+            "test": "hey"
+        },
+        "hideActionsHint": true,
+        "hideHint": true
     },
     "tableTitle": null,
     "actions": null,
@@ -149,13 +116,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "arrayLink": false,
+            "array": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "typeVariable": {},
-            "indexExists": false,
             "linkType": false,
-            "array": false
+            "arrayLink": false,
+            "typeVariable": {},
+            "indexExists": false
         },
         {
             "sysName": "people",
@@ -177,13 +144,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "arrayLink": true,
+            "array": false,
             "json": false,
             "linkOrArrayLinkType": true,
-            "typeVariable": {},
-            "indexExists": false,
             "linkType": false,
-            "array": false
+            "arrayLink": true,
+            "typeVariable": {},
+            "indexExists": false
         },
         {
             "sysName": "name",
@@ -205,13 +172,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "arrayLink": false,
+            "array": false,
             "json": false,
             "linkOrArrayLinkType": true,
-            "typeVariable": {},
-            "indexExists": false,
             "linkType": true,
-            "array": false
+            "arrayLink": false,
+            "typeVariable": {},
+            "indexExists": false
         },
         {
             "sysName": "gender",
@@ -233,13 +200,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "arrayLink": false,
+            "array": false,
             "json": false,
             "linkOrArrayLinkType": true,
-            "typeVariable": {},
-            "indexExists": false,
             "linkType": true,
-            "array": false
+            "arrayLink": false,
+            "typeVariable": {},
+            "indexExists": false
         },
         {
             "sysName": "options",
@@ -261,13 +228,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "arrayLink": false,
+            "array": false,
             "json": true,
             "linkOrArrayLinkType": false,
-            "typeVariable": {},
-            "indexExists": false,
             "linkType": false,
-            "array": false
+            "arrayLink": false,
+            "typeVariable": {},
+            "indexExists": false
         },
         {
             "sysName": "storeState",
@@ -289,13 +256,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "arrayLink": false,
+            "array": false,
             "json": true,
             "linkOrArrayLinkType": false,
-            "typeVariable": {},
-            "indexExists": false,
             "linkType": false,
-            "array": false
+            "arrayLink": false,
+            "typeVariable": {},
+            "indexExists": false
         }
     ],
     "data": [
@@ -366,11 +333,11 @@ let exampleForm = {
     ],
     "structures": {
         "99310331": {
-            "networkID": 20686,
             "id": 99310331,
             "dateCreated": "2024-05-06T18:33:58Z",
             "hidden": false,
             "dateHidden": null,
+            "networkID": 20686,
             "name": "gender",
             "sysName": "gender",
             "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"gender\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"35891715020441941\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false}]",
@@ -386,6 +353,7 @@ let exampleForm = {
             "changedBy": 1,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "dataType": "id",
@@ -406,26 +374,25 @@ let exampleForm = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "arrayLink": false,
+                "array": false,
                 "json": false,
                 "linkOrArrayLinkType": false,
-                "typeVariable": {},
-                "indexExists": false,
                 "linkType": false,
-                "array": false
+                "arrayLink": false,
+                "typeVariable": {},
+                "indexExists": false
             },
-            "objectIDSysName": "id",
             "folderId": null
         },
         "99310332": {
-            "networkID": 20686,
             "id": 99310332,
             "dateCreated": "2024-05-06T19:05:49Z",
             "hidden": false,
             "dateHidden": null,
+            "networkID": 20686,
             "name": "people",
             "sysName": "people",
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"gender\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"44461715022352603\",\"link\":\"gender\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":true,\"json\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Name\",\"id\":\"91911715022364368\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false}]",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"gender\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"44461715022352603\",\"link\":\"gender\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Name\",\"id\":\"91911715022364368\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false}]",
             "jsonGroupSettings": null,
             "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
             "jsonSettings": null,
@@ -438,6 +405,7 @@ let exampleForm = {
             "changedBy": 1,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "dataType": "id",
@@ -458,23 +426,22 @@ let exampleForm = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "arrayLink": false,
+                "array": false,
                 "json": false,
                 "linkOrArrayLinkType": false,
-                "typeVariable": {},
-                "indexExists": false,
                 "linkType": false,
-                "array": false
+                "arrayLink": false,
+                "typeVariable": {},
+                "indexExists": false
             },
-            "objectIDSysName": "id",
             "folderId": null
         },
         "99310333": {
-            "networkID": 20686,
             "id": 99310333,
             "dateCreated": "2024-05-06T19:07:59Z",
             "hidden": false,
             "dateHidden": null,
+            "networkID": 20686,
             "name": "request",
             "sysName": "request",
             "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"people\",\"dataType\":\"arrayLink\",\"name\":\"people\",\"id\":\"28621715333642402\",\"link\":\"people\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"array\":false},{\"sysName\":\"options\",\"dataType\":\"json\",\"name\":\"\",\"id\":\"40321715508164793\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"storeState\",\"dataType\":\"json\",\"name\":\"\",\"id\":\"43151715508157761\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"gender\",\"dataType\":\"link\",\"name\":\"Whom are you looking for?\",\"id\":\"66281715022483586\",\"link\":\"gender\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"link\",\"name\":\"People\",\"id\":\"68451715022511853\",\"link\":\"people\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"array\":false}]",
@@ -490,6 +457,7 @@ let exampleForm = {
             "changedBy": 1,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "dataType": "id",
@@ -510,15 +478,14 @@ let exampleForm = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "arrayLink": false,
+                "array": false,
                 "json": false,
                 "linkOrArrayLinkType": false,
-                "typeVariable": {},
-                "indexExists": false,
                 "linkType": false,
-                "array": false
+                "arrayLink": false,
+                "typeVariable": {},
+                "indexExists": false
             },
-            "objectIDSysName": "id",
             "folderId": null
         }
     },
@@ -546,13 +513,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "arrayLink": false,
+            "array": false,
             "json": false,
             "linkOrArrayLinkType": true,
-            "typeVariable": {},
-            "indexExists": false,
             "linkType": true,
-            "array": false
+            "arrayLink": false,
+            "typeVariable": {},
+            "indexExists": false
         },
         {
             "sysName": "gender",
@@ -574,13 +541,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "arrayLink": false,
+            "array": false,
             "json": false,
             "linkOrArrayLinkType": true,
-            "typeVariable": {},
-            "indexExists": false,
             "linkType": true,
-            "array": false
+            "arrayLink": false,
+            "typeVariable": {},
+            "indexExists": false
         },
         {
             "sysName": "people",
@@ -602,13 +569,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "arrayLink": true,
+            "array": false,
             "json": false,
             "linkOrArrayLinkType": true,
-            "typeVariable": {},
-            "indexExists": false,
             "linkType": false,
-            "array": false
+            "arrayLink": true,
+            "typeVariable": {},
+            "indexExists": false
         },
         {
             "sysName": "id",
@@ -630,13 +597,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "arrayLink": false,
+            "array": false,
             "json": false,
             "linkOrArrayLinkType": false,
-            "typeVariable": {},
-            "indexExists": false,
             "linkType": false,
-            "array": false
+            "arrayLink": false,
+            "typeVariable": {},
+            "indexExists": false
         },
         {
             "sysName": "options",
@@ -658,13 +625,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "arrayLink": false,
+            "array": false,
             "json": true,
             "linkOrArrayLinkType": false,
-            "typeVariable": {},
-            "indexExists": false,
             "linkType": false,
-            "array": false
+            "arrayLink": false,
+            "typeVariable": {},
+            "indexExists": false
         },
         {
             "sysName": "storeState",
@@ -686,13 +653,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "arrayLink": false,
+            "array": false,
             "json": true,
             "linkOrArrayLinkType": false,
-            "typeVariable": {},
-            "indexExists": false,
             "linkType": false,
-            "array": false
+            "arrayLink": false,
+            "typeVariable": {},
+            "indexExists": false
         }
     ],
     "quickSearch": null,

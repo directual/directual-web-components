@@ -53,6 +53,7 @@ export default function FpsForm2(props) {
     return tempModel
   }
   const [model, setModel] = useState({ ...gatherDefaults() })
+  const [originalModel, setOriginalModel] = useState({ ...gatherDefaults() })
   const previousModel = usePrevious(model);
   const [state, setState] = useState(_.get(data, "params.state") || defaultState)
   const previousState = usePrevious(state);
@@ -116,6 +117,7 @@ export default function FpsForm2(props) {
       if (!_.isEqual(newModel, model)) {
         saveSate = { ...saveSate, ...templateState(_.get(data, "params.state"), newModel) }
         setModel(newModel)
+        setOriginalModel(newModel)
       }
       // RESTORE STATE:
       if (_.get(params,"general.restoreState") && _.get(params,"general.saveStateTo")) {
@@ -215,6 +217,7 @@ export default function FpsForm2(props) {
           finish && finish(data)
           setState({ ...saveState, step: "submitted" })
           setModel({}) // reset model
+          setOriginalModel({})
         } else {
           setState({ ...state, _apiError: data.msg })
           setLoading(false)
@@ -305,6 +308,7 @@ export default function FpsForm2(props) {
   const closePopupOnClick = _.get(params, "general.closePopupOnClick") || false
   const object = _.get(data, "data[0]")
   const formSteps = _.get(params, "steps") || []
+  const modelIsChanged = !_.isEqual(model, originalModel)
 
   //const currentStep = (state.step ? _.find(formSteps, { sysName: state.step }) : _.get(formSteps, "[0]")) || {}
   // =============
@@ -323,6 +327,24 @@ export default function FpsForm2(props) {
 
       let field = template("{{" + element._conditionalView_field + "}}")
       let value = template(element._conditionalView_value)
+
+      // { key: "modelNotChanged" },
+      if (element._conditionalView_operator == "modelNotChanged") {
+        if (modelIsChanged) {
+          _.get(params, "general.showModel") && console.log("element is hidden")
+          _.get(params, "general.showModel") && console.log("model is changed")
+          isHidden = true
+        }
+      }
+
+      // { key: "modelChanged" },
+      if (element._conditionalView_operator == "modelChanged") {
+        if (!modelIsChanged) {
+          _.get(params, "general.showModel") && console.log("element is hidden")
+          _.get(params, "general.showModel") && console.log("model is NOT changed")
+          isHidden = true
+        }
+      }
 
       // { key: "==", value: "is equal" },
       if (element._conditionalView_operator == "==") {
@@ -455,6 +477,7 @@ export default function FpsForm2(props) {
     return false;
   }
 
+
   return <div className={`${styles.formWrapper} D_FPS_FORM2_WRAPPER`}
     style={{ maxWidth }}
   >
@@ -485,6 +508,7 @@ export default function FpsForm2(props) {
               checkHidden={checkHidden}
               dict={dict}
               state={state}
+              originalModel={originalModel}
               templateState={templateState}
               loading={loading}
               template={template}
@@ -518,7 +542,7 @@ export default function FpsForm2(props) {
       <span>debug mode: MODEL</span>
       {_.get(params, "general.autosubmit") == "always" && <code className='icon icon-move'>Autosubmit on each step change</code>}
       {_.get(params, "general.autosubmit") == "steps" && <code className='icon icon-move'>Autosubmit on: {_.get(params, "general.autosubmit_steps")}</code>}
-      {/* <code className='icon icon-info'>Model is changed</code> */}
+      {modelIsChanged && <code className='icon icon-info'>Model is changed</code> }
     </pre>}
 
     {state._apiError && <Hint error closable onClose={() => setState({ ...state, _apiError: "" })}>
@@ -545,6 +569,7 @@ export default function FpsForm2(props) {
             model={model}
             checkHidden={checkHidden}
             dict={dict}
+            originalModel={originalModel}
             state={state}
             templateState={templateState}
             loading={loading}
@@ -563,7 +588,7 @@ export default function FpsForm2(props) {
 }
 
 function RenderStep(props) {
-  const { auth, data, callEndpoint, onEvent, id, handleRoute, currentStep, templateState, checkIfAllInputsHidden, editModel,
+  const { auth, data, callEndpoint, onEvent, id, handleRoute, currentStep, templateState, checkIfAllInputsHidden, editModel, originalModel,
     model, checkHidden, dict, locale, state, loading, template, setState, lang, submit, params, setModel } = props
 
   return (currentStep.elements || [])
@@ -572,6 +597,7 @@ function RenderStep(props) {
       model={model}
       data={data}
       checkHidden={checkHidden}
+      originalModel={originalModel}
       dict={dict}
       locale={locale}
       handleRoute={handleRoute}
@@ -647,37 +673,37 @@ function RenderStep(props) {
         });
 
         // fake request
-        setTimeout(() => {
-          const data = [
-            {
-              "name": "John",
-              "id": "310846eb-460e-452b-9c4b-a2e1f71e773e"
-            },
-            {
-              "name": "Paul",
-              "id": "ac32238e-e7cd-4038-90eb-752f97edbaf6"
-            },
-            {
-              "name": "Peter",
-              "id": "9100a8fb-4743-402a-b1f1-0081c7e2e777"
-            },
-            {
-              "name": "Kate",
-              "id": "31560763-541e-4643-be51-6e6041e2868e"
-            },
-            {
-              "name": "Julia",
-              "id": "66628fb9-07cb-4e4f-9e51-c03bd64d67d6"
-            },
-            {
-              "name": "Monica",
-              "id": "1d37d760-2f64-498a-9432-d9895ad5da00"
-            }
-          ]
-          const visibleNames = '[{"sysName":"firstName"},{"sysName":"lastName"}]'
-          finish && finish(transformedArray(data, visibleNames))
-          setOptions && setOptions(transformedArray(data, visibleNames))
-        }, 1000)
+        // setTimeout(() => {
+        //   const data = [
+        //     {
+        //       "name": "John",
+        //       "id": "310846eb-460e-452b-9c4b-a2e1f71e773e"
+        //     },
+        //     {
+        //       "name": "Paul",
+        //       "id": "ac32238e-e7cd-4038-90eb-752f97edbaf6"
+        //     },
+        //     {
+        //       "name": "Peter",
+        //       "id": "9100a8fb-4743-402a-b1f1-0081c7e2e777"
+        //     },
+        //     {
+        //       "name": "Kate",
+        //       "id": "31560763-541e-4643-be51-6e6041e2868e"
+        //     },
+        //     {
+        //       "name": "Julia",
+        //       "id": "66628fb9-07cb-4e4f-9e51-c03bd64d67d6"
+        //     },
+        //     {
+        //       "name": "Monica",
+        //       "id": "1d37d760-2f64-498a-9432-d9895ad5da00"
+        //     }
+        //   ]
+        //   const visibleNames = '[{"sysName":"firstName"},{"sysName":"lastName"}]'
+        //   finish && finish(transformedArray(data, visibleNames))
+        //   setOptions && setOptions(transformedArray(data, visibleNames))
+        // }, 1000)
 
         callEndpoint && callEndpoint(
           endpoint,

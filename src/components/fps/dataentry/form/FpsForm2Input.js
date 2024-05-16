@@ -446,6 +446,7 @@ function FieldLink(props) {
             return;
         }
         let reqParams = filter ? { _filter: filter, ...params } : params
+        reqParams = { ...reqParams, pageSize: field._field_link_pageSize || 10 }
         reqParams = value ? { ...reqParams, _value: value.key || value } : reqParams
         setCurrentParams(params)
         callEndpoint(field._field_arrayLink_endpoint, reqParams, finish, data => {
@@ -659,6 +660,7 @@ function FieldArrayLink(props) {
             return;
         }
         let reqParams = filter ? { _filter: filter, ...params } : params
+        reqParams = { ...reqParams, pageSize: field._field_link_pageSize || 10 }
         reqParams = value ? { ...reqParams, _value: value.key || value } : reqParams
         setCurrentParams(params)
         callEndpoint(field._field_arrayLink_endpoint, reqParams, finish, data => {
@@ -764,27 +766,27 @@ function FieldArrayLink(props) {
             Endpoint for radio buttons is not configured.</div>
         return <div>
             <Input type="selectImages"
-            options={
+                options={
                     options.map(i => {
-                    return {
-                        key: i.key,
-                        value: i.value
-                    }
-                })
-                // [{ key: '1', value: "https://api.alfa.directual.com/fileUploaded/fpsform2/0037b933-27bc-455b-82d8-afb0cfc011a6.jpeg" },
-                // { key: '2', value: "https://api.alfa.directual.com/fileUploaded/fpsform2/0037b933-27bc-455b-82d8-afb0cfc011a6.jpeg" }]
-            }
-            required={field._field_required}
-            imageWidth={field._field_arrayLink_images_width}
-            imageHeight={field._field_arrayLink_images_height}
-            resize={field._field_arrayLink_images_resize}
-            //description={options.length}
-            label={fieldInfo.name || fieldInfo.sysName}
-            description={field._field_add_description && template(field._field_description_text)}
-            defaultValue={model[fieldInfo.sysName]}
-            nomargin
-            {...basicProps}
-        />
+                        return {
+                            key: i.key,
+                            value: i.value
+                        }
+                    })
+                    // [{ key: '1', value: "https://api.alfa.directual.com/fileUploaded/fpsform2/0037b933-27bc-455b-82d8-afb0cfc011a6.jpeg" },
+                    // { key: '2', value: "https://api.alfa.directual.com/fileUploaded/fpsform2/0037b933-27bc-455b-82d8-afb0cfc011a6.jpeg" }]
+                }
+                required={field._field_required}
+                imageWidth={field._field_arrayLink_images_width}
+                imageHeight={field._field_arrayLink_images_height}
+                resize={field._field_arrayLink_images_resize}
+                //description={options.length}
+                label={fieldInfo.name || fieldInfo.sysName}
+                description={field._field_add_description && template(field._field_description_text)}
+                defaultValue={model[fieldInfo.sysName]}
+                nomargin
+                {...basicProps}
+            />
             {error && <Hint margin={{ top: 10, bottom: 0 }} closable error onClose={() => setError("")}>
                 {error}
             </Hint>}
