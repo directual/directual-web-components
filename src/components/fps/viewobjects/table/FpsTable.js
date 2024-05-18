@@ -17,12 +17,12 @@ import _ from 'lodash'
 import debounce from 'lodash.debounce';
 import PropTypes from 'prop-types';
 
-function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
+function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute, callEndpoint }) {
     if (!data) { data = {} }
 
-    const [currentData,setCurrentData] = useState(data)
+    const [currentData, setCurrentData] = useState(data)
 
-    useEffect(()=>{
+    useEffect(() => {
         // console.log('=== update data ===')
         // console.log(currentData)
         // console.log(' vvv ')
@@ -418,6 +418,28 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 tableFilters={_.get(params, 'filterParams') || {}}
                 displayFilters={_.get(params, 'filterParams.isFiltering') || _.get(params, 'filterParams.isSorting')}
                 performFiltering={dqlService}
+                callEndpoint={(endpoint, params, finish, setOptions, setError) => {
+                    callEndpoint && callEndpoint(
+                        endpoint,
+                        "GET",
+                        undefined,
+                        params,
+                        (result, data, visibleNames) => {
+                            // console.log(result)
+                            // console.log(data)
+
+                            if (result == "ok") {
+                                finish && finish(transformedArray(data, visibleNames))
+                                setOptions && setOptions(transformedArray(data, visibleNames))
+                            }
+                            else {
+                                setError && setError(data)
+                                finish && finish([])
+                                setOptions && setOptions([])
+                            }
+                        }
+                    )
+                }}
                 params={params}
                 currentBP={currentBP}
                 tableTitle={tableTitle}

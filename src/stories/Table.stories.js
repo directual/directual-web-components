@@ -18,7 +18,7 @@ export default {
 };
 
 let exampleTable = {
-    "sl": "assessment1",
+    "sl": "testTable",
     "pageSize": "10",
     "headerField": null,
     "params": {
@@ -44,7 +44,7 @@ let exampleTable = {
                     "link": ""
                 },
                 {
-                    "fieldSysName": "grades_ids",
+                    "fieldSysName": "type",
                     "fetch": [
                         {
                             "fieldSysName": "id",
@@ -52,75 +52,58 @@ let exampleTable = {
                             "fetch": []
                         },
                         {
-                            "fieldSysName": "grade",
+                            "fieldSysName": "type",
                             "condition": null,
-                            "fetch": [
-                                {
-                                    "fieldSysName": "id",
-                                    "condition": null,
-                                    "fetch": []
-                                },
-                                {
-                                    "fieldSysName": "grade",
-                                    "condition": null,
-                                    "fetch": []
-                                }
-                            ]
+                            "fetch": []
                         }
                     ],
-                    "sysName": "grades_ids",
-                    "name": "",
+                    "sysName": "type",
+                    "name": "Type",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "types"
+                },
+                {
+                    "fieldSysName": "types",
+                    "fetch": [
+                        {
+                            "fieldSysName": "id",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "type",
+                            "condition": null,
+                            "fetch": []
+                        }
+                    ],
+                    "sysName": "types",
+                    "name": "Types",
                     "dataType": "arrayLink",
                     "format": "",
                     "formatOptions": {},
-                    "link": "assessment"
+                    "link": "types"
                 },
                 {
-                    "fieldSysName": "subject_id",
-                    "fetch": [
-                        {
-                            "fieldSysName": "id",
-                            "condition": null,
-                            "fetch": []
-                        },
-                        {
-                            "fieldSysName": "Subject",
-                            "condition": null,
-                            "fetch": []
-                        }
-                    ],
-                    "sysName": "subject_id",
-                    "name": "",
-                    "dataType": "link",
+                    "fieldSysName": "title",
+                    "fetch": [],
+                    "sysName": "title",
+                    "name": "Title",
+                    "dataType": "string",
                     "format": "",
                     "formatOptions": {},
-                    "link": "subject"
+                    "link": ""
                 },
                 {
-                    "fieldSysName": "student",
-                    "fetch": [
-                        {
-                            "fieldSysName": "id",
-                            "condition": null,
-                            "fetch": []
-                        },
-                        {
-                            "fieldSysName": "firstName",
-                            "condition": null,
-                            "fetch": []
-                        },
-                        {
-                            "fieldSysName": "lastName",
-                            "condition": null,
-                            "fetch": []
-                        }
-                    ],
-                    "sysName": "student",
+                    "fieldSysName": "date",
+                    "fetch": [],
+                    "sysName": "date",
                     "name": "",
-                    "dataType": "link",
+                    "dataType": "date",
                     "format": "",
                     "formatOptions": {},
-                    "link": "WebUser"
+                    "link": ""
                 }
             ],
             "writeFields": [],
@@ -136,37 +119,48 @@ let exampleTable = {
                     "link": "",
                     "actions": []
                 },
-                "grades_ids": {
-                    "id": "grades_ids",
-                    "content": "",
+                "type": {
+                    "id": "type",
+                    "content": "Type",
+                    "type": "field",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "types",
+                    "actions": []
+                },
+                "types": {
+                    "id": "types",
+                    "content": "Types",
                     "type": "field",
                     "dataType": "arrayLink",
                     "format": "",
                     "formatOptions": {},
                     "read": true,
-                    "link": "assessment",
+                    "link": "types",
                     "actions": []
                 },
-                "subject_id": {
-                    "id": "subject_id",
-                    "content": "",
+                "title": {
+                    "id": "title",
+                    "content": "Title",
                     "type": "field",
-                    "dataType": "link",
+                    "dataType": "string",
                     "format": "",
                     "formatOptions": {},
                     "read": true,
-                    "link": "subject",
+                    "link": "",
                     "actions": []
                 },
-                "student": {
-                    "id": "student",
+                "date": {
+                    "id": "date",
                     "content": "",
                     "type": "field",
-                    "dataType": "link",
+                    "dataType": "date",
                     "format": "",
                     "formatOptions": {},
                     "read": true,
-                    "link": "WebUser",
+                    "link": "",
                     "actions": []
                 }
             },
@@ -179,105 +173,7 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "grades_ids": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": true,
-                    "configureLinkedCard": {
-                        "fields": {
-                            "id": {
-                                "id": "id",
-                                "content": "id",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "id",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "grade": {
-                                "id": "grade",
-                                "content": "Оценка",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "arrayLink",
-                                "format": null,
-                                "formatOptions": null
-                            }
-                        },
-                        "fieldParams": {
-                            "id": {
-                                "include": false,
-                                "disableEditing": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "grade": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            }
-                        },
-                        "fieldOrder": [
-                            "id",
-                            "grade"
-                        ]
-                    },
-                    "sortArrayLink": false,
-                    "sortByField": "grade"
-                },
-                "subject_id": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false,
-                    "configureLinkedCard": {
-                        "fields": {
-                            "id": {
-                                "id": "id",
-                                "content": "id",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "id",
-                                "format": null,
-                                "formatOptions": {}
-                            },
-                            "Subject": {
-                                "id": "Subject",
-                                "content": "Предмет",
-                                "type": "field",
-                                "read": true,
-                                "dataType": "string",
-                                "format": null,
-                                "formatOptions": {}
-                            }
-                        },
-                        "fieldParams": {
-                            "id": {
-                                "include": false,
-                                "disableEditing": true,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            },
-                            "Subject": {
-                                "include": true,
-                                "disableEditing": false,
-                                "fileImageFormat": "square",
-                                "fileImageSize": 200
-                            }
-                        },
-                        "fieldOrder": [
-                            "id",
-                            "Subject"
-                        ]
-                    }
-                },
-                "student": {
+                "type": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -285,7 +181,7 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "firstName": {
+                "types": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -293,7 +189,7 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "lastName": {
+                "title": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -301,15 +197,7 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "role": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "userpic": {
+                "date": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -324,9 +212,10 @@ let exampleTable = {
                     "title": "New section",
                     "fieldIds": [
                         "id",
-                        "grades_ids",
-                        "subject_id",
-                        "student"
+                        "type",
+                        "types",
+                        "title",
+                        "date"
                     ]
                 }
             },
@@ -344,105 +233,7 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "grades_ids": {
-                "include": true,
-                "disableEditing": false,
-                "fileImageFormat": "square",
-                "quickSearch": false,
-                "fileImageSize": 200,
-                "clickable": true,
-                "configureLinkedCard": {
-                    "fields": {
-                        "id": {
-                            "id": "id",
-                            "content": "id",
-                            "type": "field",
-                            "read": true,
-                            "dataType": "id",
-                            "format": null,
-                            "formatOptions": {}
-                        },
-                        "grade": {
-                            "id": "grade",
-                            "content": "Оценка",
-                            "type": "field",
-                            "read": true,
-                            "dataType": "arrayLink",
-                            "format": null,
-                            "formatOptions": null
-                        }
-                    },
-                    "fieldParams": {
-                        "id": {
-                            "include": false,
-                            "disableEditing": true,
-                            "fileImageFormat": "square",
-                            "fileImageSize": 200
-                        },
-                        "grade": {
-                            "include": true,
-                            "disableEditing": false,
-                            "fileImageFormat": "square",
-                            "fileImageSize": 200
-                        }
-                    },
-                    "fieldOrder": [
-                        "id",
-                        "grade"
-                    ]
-                },
-                "sortArrayLink": false,
-                "sortByField": "grade"
-            },
-            "subject_id": {
-                "include": true,
-                "disableEditing": false,
-                "fileImageFormat": "square",
-                "quickSearch": false,
-                "fileImageSize": 200,
-                "clickable": false,
-                "configureLinkedCard": {
-                    "fields": {
-                        "id": {
-                            "id": "id",
-                            "content": "id",
-                            "type": "field",
-                            "read": true,
-                            "dataType": "id",
-                            "format": null,
-                            "formatOptions": {}
-                        },
-                        "Subject": {
-                            "id": "Subject",
-                            "content": "Предмет",
-                            "type": "field",
-                            "read": true,
-                            "dataType": "string",
-                            "format": null,
-                            "formatOptions": {}
-                        }
-                    },
-                    "fieldParams": {
-                        "id": {
-                            "include": false,
-                            "disableEditing": true,
-                            "fileImageFormat": "square",
-                            "fileImageSize": 200
-                        },
-                        "Subject": {
-                            "include": true,
-                            "disableEditing": false,
-                            "fileImageFormat": "square",
-                            "fileImageSize": 200
-                        }
-                    },
-                    "fieldOrder": [
-                        "id",
-                        "Subject"
-                    ]
-                }
-            },
-            "student": {
+            "type": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -450,7 +241,7 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "firstName": {
+            "types": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -458,7 +249,7 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "lastName": {
+            "title": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -466,15 +257,7 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "role": {
-                "include": true,
-                "disableEditing": false,
-                "fileImageFormat": "square",
-                "quickSearch": false,
-                "fileImageSize": 200,
-                "clickable": false
-            },
-            "userpic": {
+            "date": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -496,7 +279,7 @@ let exampleTable = {
                     "link": ""
                 },
                 {
-                    "fieldSysName": "grades_ids",
+                    "fieldSysName": "type",
                     "fetch": [
                         {
                             "fieldSysName": "id",
@@ -504,75 +287,48 @@ let exampleTable = {
                             "fetch": []
                         },
                         {
-                            "fieldSysName": "grade",
+                            "fieldSysName": "type",
                             "condition": null,
-                            "fetch": [
-                                {
-                                    "fieldSysName": "id",
-                                    "condition": null,
-                                    "fetch": []
-                                },
-                                {
-                                    "fieldSysName": "grade",
-                                    "condition": null,
-                                    "fetch": []
-                                }
-                            ]
+                            "fetch": []
                         }
                     ],
-                    "sysName": "grades_ids",
-                    "name": "",
+                    "sysName": "type",
+                    "name": "Type",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "types"
+                },
+                {
+                    "fieldSysName": "types",
+                    "fetch": [
+                        {
+                            "fieldSysName": "id",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "type",
+                            "condition": null,
+                            "fetch": []
+                        }
+                    ],
+                    "sysName": "types",
+                    "name": "Types",
                     "dataType": "arrayLink",
                     "format": "",
                     "formatOptions": {},
-                    "link": "assessment"
+                    "link": "types"
                 },
                 {
-                    "fieldSysName": "subject_id",
-                    "fetch": [
-                        {
-                            "fieldSysName": "id",
-                            "condition": null,
-                            "fetch": []
-                        },
-                        {
-                            "fieldSysName": "Subject",
-                            "condition": null,
-                            "fetch": []
-                        }
-                    ],
-                    "sysName": "subject_id",
-                    "name": "",
-                    "dataType": "link",
+                    "fieldSysName": "title",
+                    "fetch": [],
+                    "sysName": "title",
+                    "name": "Title",
+                    "dataType": "string",
                     "format": "",
                     "formatOptions": {},
-                    "link": "subject"
-                },
-                {
-                    "fieldSysName": "student",
-                    "fetch": [
-                        {
-                            "fieldSysName": "id",
-                            "condition": null,
-                            "fetch": []
-                        },
-                        {
-                            "fieldSysName": "firstName",
-                            "condition": null,
-                            "fetch": []
-                        },
-                        {
-                            "fieldSysName": "lastName",
-                            "condition": null,
-                            "fetch": []
-                        }
-                    ],
-                    "sysName": "student",
-                    "name": "",
-                    "dataType": "link",
-                    "format": "",
-                    "formatOptions": {},
-                    "link": "WebUser"
+                    "link": ""
                 }
             ],
             "writeFields": [],
@@ -586,32 +342,32 @@ let exampleTable = {
                     "read": true,
                     "link": ""
                 },
-                "grades_ids": {
-                    "id": "grades_ids",
-                    "content": "",
+                "type": {
+                    "id": "type",
+                    "content": "Type",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "types"
+                },
+                "types": {
+                    "id": "types",
+                    "content": "Types",
                     "dataType": "arrayLink",
                     "format": "",
                     "formatOptions": {},
                     "read": true,
-                    "link": "assessment"
+                    "link": "types"
                 },
-                "subject_id": {
-                    "id": "subject_id",
-                    "content": "",
-                    "dataType": "link",
+                "title": {
+                    "id": "title",
+                    "content": "Title",
+                    "dataType": "string",
                     "format": "",
                     "formatOptions": {},
                     "read": true,
-                    "link": "subject"
-                },
-                "student": {
-                    "id": "student",
-                    "content": "",
-                    "dataType": "link",
-                    "format": "",
-                    "formatOptions": {},
-                    "read": true,
-                    "link": "WebUser"
+                    "link": ""
                 }
             },
             "fieldParams": {
@@ -623,7 +379,7 @@ let exampleTable = {
                     "colorFormat": "square",
                     "colorSize": 40
                 },
-                "grades_ids": {
+                "type": {
                     "include": true,
                     "fileImageFormat": "square",
                     "fileImageSize": 80,
@@ -631,7 +387,7 @@ let exampleTable = {
                     "colorFormat": "square",
                     "colorSize": 40
                 },
-                "subject_id": {
+                "types": {
                     "include": true,
                     "fileImageFormat": "square",
                     "fileImageSize": 80,
@@ -639,39 +395,7 @@ let exampleTable = {
                     "colorFormat": "square",
                     "colorSize": 40
                 },
-                "student": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "fileImageSize": 80,
-                    "colorCode": false,
-                    "colorFormat": "square",
-                    "colorSize": 40
-                },
-                "firstName": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "fileImageSize": 80,
-                    "colorCode": false,
-                    "colorFormat": "square",
-                    "colorSize": 40
-                },
-                "lastName": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "fileImageSize": 80,
-                    "colorCode": false,
-                    "colorFormat": "square",
-                    "colorSize": 40
-                },
-                "role": {
-                    "include": true,
-                    "fileImageFormat": "square",
-                    "fileImageSize": 80,
-                    "colorCode": false,
-                    "colorFormat": "square",
-                    "colorSize": 40
-                },
-                "userpic": {
+                "title": {
                     "include": true,
                     "fileImageFormat": "square",
                     "fileImageSize": 80,
@@ -682,10 +406,47 @@ let exampleTable = {
             },
             "fieldOrder": [
                 "id",
-                "grades_ids",
-                "subject_id",
-                "student"
+                "title",
+                "type",
+                "types"
             ]
+        },
+        "filterParams": {
+            "isFiltering": true,
+            "filterFields": {
+                "type": {
+                    "active": true,
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "name": "Type",
+                    "textsearch": "endpoint",
+                    "endpoint": "filterTypes"
+                },
+                "types": {
+                    "active": true,
+                    "dataType": "arrayLink",
+                    "format": "",
+                    "formatOptions": {},
+                    "name": "Types",
+                    "textsearch": "endpoint",
+                    "endpoint": "filterTypes"
+                },
+                "title": {
+                    "active": true,
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "name": "Title"
+                },
+                "date": {
+                    "active": true,
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {},
+                    "name": "date"
+                }
+            }
         }
     },
     "tableTitle": "",
@@ -711,48 +472,20 @@ let exampleTable = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "typeVariable": {},
+            "array": false,
             "json": false,
             "linkOrArrayLinkType": false,
+            "linkType": false,
             "arrayLink": false,
-            "linkType": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "grades_ids",
-            "dataType": "arrayLink",
-            "name": "",
-            "id": "92431713189909500",
-            "link": "assessment",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 3,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
             "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "arrayLink": true,
-            "linkType": false,
-            "indexExists": false,
-            "array": false
+            "indexExists": false
         },
         {
-            "sysName": "subject_id",
+            "sysName": "type",
             "dataType": "link",
-            "name": "",
-            "id": "14331713189863393",
-            "link": "subject",
+            "name": "Type",
+            "id": "52051715859147835",
+            "link": "types",
             "group": "0",
             "tags": "",
             "indexing": false,
@@ -767,20 +500,48 @@ let exampleTable = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "typeVariable": {},
+            "array": false,
             "json": false,
             "linkOrArrayLinkType": true,
-            "arrayLink": false,
             "linkType": true,
-            "indexExists": false,
-            "array": false
+            "arrayLink": false,
+            "typeVariable": {},
+            "indexExists": false
         },
         {
-            "sysName": "student",
-            "dataType": "link",
-            "name": "",
-            "id": "38451713189829104",
-            "link": "WebUser",
+            "sysName": "types",
+            "dataType": "arrayLink",
+            "name": "Types",
+            "id": "31981715859158032",
+            "link": "types",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": false,
+            "arrayLink": true,
+            "typeVariable": {},
+            "indexExists": false
+        },
+        {
+            "sysName": "title",
+            "dataType": "string",
+            "name": "Title",
+            "id": "54811715859141654",
+            "link": "",
             "group": "0",
             "tags": "",
             "indexing": false,
@@ -795,61 +556,81 @@ let exampleTable = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "typeVariable": {},
+            "array": false,
             "json": false,
-            "linkOrArrayLinkType": true,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
             "arrayLink": false,
-            "linkType": true,
-            "indexExists": false,
-            "array": false
+            "typeVariable": {},
+            "indexExists": false
+        },
+        {
+            "sysName": "date",
+            "dataType": "date",
+            "name": "",
+            "id": "40301715861056784",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "indexExists": false
         }
     ],
     "data": [
         {
-            "student": {
-                "lastName": "Черняк",
-                "firstName": "Арон",
-                "id": "achernyak@eg-1.ru"
+            "id": "b43612c2-91c3-4145-8a72-df1e86450b34",
+            "date": 1714942800000,
+            "title": "еби хохлов — спасай Россию",
+            "type": {
+                "id": "1",
+                "type": "раз"
             },
-            "grades_ids": [
+            "types": [
                 {
-                    "grade": [
-                        {
-                            "grade": "3",
-                            "id": "3"
-                        }
-                    ],
-                    "id": "3653bf0d-e299-42ec-a230-bb819634841f"
+                    "type": "раз",
+                    "id": "1"
                 },
                 {
-                    "grade": [
-                        {
-                            "grade": "5",
-                            "id": "5"
-                        }
-                    ],
-                    "id": "4b00640f-987a-4d37-bda8-7277c2ffa5a7"
-                },
-                {
-                    "grade": [
-                        {
-                            "grade": "3",
-                            "id": "3"
-                        }
-                    ],
-                    "id": "f9bb4726-ce79-4e4e-9faa-725972ce573c"
-                },
-                {
-                    "grade": [
-                        {
-                            "grade": "7",
-                            "id": "7"
-                        }
-                    ],
-                    "id": "c31947c0-6b7d-4062-9286-0f644a232bdf"
+                    "type": "три",
+                    "id": "3"
                 }
-            ],
-            "id": "9f28c4b7-8d3e-4b8f-87aa-d9b011091ae3"
+            ]
+        },
+        {
+            "id": "75937849-64a8-4621-b06c-430f5e596621",
+            "date": 1715720400000,
+            "title": "ще не вмерла усраина",
+            "type": {
+                "id": "2",
+                "type": "два"
+            },
+            "types": [
+                {
+                    "type": "два",
+                    "id": "2"
+                },
+                {
+                    "type": "три",
+                    "id": "3"
+                }
+            ]
         }
     ],
     "totalPages": 1,
@@ -858,69 +639,62 @@ let exampleTable = {
     "fieldScheme": [
         [
             "id",
-            99306255
+            99312189
         ],
         [
-            "grades_ids.id",
-            99305474
+            "type.id",
+            99312190
         ],
         [
-            "grades_ids.grade.id",
-            99305473
+            "type.type",
+            99312190
         ],
         [
-            "grades_ids.grade.grade",
-            99305473
+            "types.id",
+            99312190
         ],
         [
-            "subject_id.id",
-            99305471
+            "types.type",
+            99312190
         ],
         [
-            "subject_id.Subject",
-            99305471
+            "title",
+            99312189
         ],
         [
-            "student.id",
-            99305002
-        ],
-        [
-            "student.firstName",
-            99305002
-        ],
-        [
-            "student.lastName",
-            99305002
+            "date",
+            99312189
         ]
     ],
     "writeFields": [],
     "structures": {
-        "99305002": {
-            "networkID": 20582,
-            "sysName": "WebUser",
-            "name": "App users",
-            "id": 99305002,
-            "dateCreated": "2024-04-09T08:16:29Z",
+        "99312189": {
+            "id": 99312189,
+            "dateCreated": "2024-05-16T11:31:34Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"dateLastActivity\",\"dataType\":\"string\",\"name\":\"dateLastActivity\",\"id\":\"10\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"dateCreated\",\"dataType\":\"string\",\"name\":\"dateCreated\",\"id\":\"13\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isAuthorization\",\"dataType\":\"boolean\",\"name\":\"isAuthorization\",\"id\":\"9\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"notifications_counter\",\"dataType\":\"string\",\"name\":\"Notifications Counter\",\"id\":\"1\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"custom_labels\",\"dataType\":\"json\",\"name\":\"Custom labels\",\"id\":\"2\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"phone\",\"dataType\":\"string\",\"name\":\"Phone\",\"id\":\"12\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"email\",\"dataType\":\"string\",\"name\":\"Email\",\"id\":\"11\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"userpic\",\"dataType\":\"file\",\"name\":\"User pic\",\"id\":\"3\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":\"Contacts\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"Username (login)\",\"id\":\"15\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"role\",\"dataType\":\"array\",\"name\":\"Roles\",\"id\":\"8\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":true},{\"sysName\":\"password\",\"dataType\":\"string\",\"name\":\"Password (hash)\",\"id\":\"14\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"firstName\",\"dataType\":\"string\",\"name\":\"First name\",\"id\":\"7\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"lastName\",\"dataType\":\"string\",\"name\":\"Last name\",\"id\":\"6\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"gender\",\"dataType\":\"string\",\"name\":\"Gender\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isBlocked\",\"dataType\":\"boolean\",\"name\":\"Block user\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"systemMessage\",\"dataType\":\"string\",\"name\":\"System message\",\"id\":\"56921641637265680\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"secret\",\"dataType\":\"string\",\"name\":\"secret\",\"id\":\"81131636839496227\",\"link\":\"\",\"group\":\"1636839487957\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"notif_Email\",\"dataType\":\"boolean\",\"name\":\"Notify me by Email\",\"id\":\"61231639915065277\",\"link\":\"\",\"group\":\"1639915049523\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Yes\",\"No\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"Class\",\"dataType\":\"link\",\"name\":\"Класс\",\"id\":\"98141713089796004\",\"link\":\"groups\",\"group\":\"1713089785235\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[\"class\",\"id\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":true,\"array\":false},{\"sysName\":\"t1\",\"dataType\":\"arrayLink\",\"name\":\"Task\",\"id\":\"76671713265494758\",\"link\":\"assessment\",\"group\":\"1713089785235\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"MarksA\",\"dataType\":\"arrayLink\",\"name\":\"Оценки по критерию А\",\"id\":\"51401713670095371\",\"link\":\"assessment\",\"group\":\"1713089785235\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"MarksB\",\"dataType\":\"arrayLink\",\"name\":\"Оценки по критерию В\",\"id\":\"18821713670150595\",\"link\":\"assessment\",\"group\":\"1713089785235\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"array\":false}]",
-            "jsonGroupSettings": "[{\"id\":1636839487957,\"name\":\"Password restoring\",\"order\":2},{\"id\":1713089785235,\"name\":\"School\",\"order\":4},{\"id\":-1776115286,\"name\":\"System fields (LEGACY)\",\"order\":3},{\"id\":1639915049523,\"name\":\"Notifications\",\"order\":1},{\"id\":-502807437,\"name\":\"Contacts\",\"order\":0}]",
-            "jsonViewIdSettings": "[{\"sysName\":\"firstName\"},{\"sysName\":\"lastName\"}]",
-            "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
+            "networkID": 20570,
+            "name": "objects",
+            "sysName": "objects",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"types\",\"dataType\":\"arrayLink\",\"name\":\"Types\",\"id\":\"31981715859158032\",\"link\":\"types\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"date\",\"dataType\":\"date\",\"name\":\"\",\"id\":\"40301715861056784\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"type\",\"dataType\":\"link\",\"name\":\"Type\",\"id\":\"52051715859147835\",\"link\":\"types\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"title\",\"dataType\":\"string\",\"name\":\"Title\",\"id\":\"54811715859141654\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": null,
+            "jsonSettings": null,
             "jsonNativeIndexSettings": null,
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2024-04-21T03:30:15Z",
-            "createBy": 0,
-            "changedBy": 23982,
+            "dateChanged": "2024-05-16T12:04:24Z",
+            "createBy": 21,
+            "changedBy": 21,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "dataType": "id",
-                "name": "Username (login)",
-                "id": "15",
+                "name": "id",
+                "id": "0",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -936,38 +710,38 @@ let exampleTable = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "typeVariable": {},
+                "array": false,
                 "json": false,
                 "linkOrArrayLinkType": false,
-                "arrayLink": false,
                 "linkType": false,
-                "indexExists": false,
-                "array": false
+                "arrayLink": false,
+                "typeVariable": {},
+                "indexExists": false
             },
-            "objectIDSysName": "id",
             "folderId": null
         },
-        "99305471": {
-            "networkID": 20582,
-            "sysName": "subject",
-            "name": "Subject",
-            "id": 99305471,
-            "dateCreated": "2024-04-12T09:21:09Z",
+        "99312190": {
+            "id": 99312190,
+            "dateCreated": "2024-05-16T11:31:41Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"Subject\",\"dataType\":\"string\",\"name\":\"Предмет\",\"id\":\"39301712913673945\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false}]",
+            "networkID": 20570,
+            "name": "types",
+            "sysName": "types",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"type\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"36981715859104914\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false}]",
             "jsonGroupSettings": null,
-            "jsonViewIdSettings": "[{\"sysName\":\"Subject\"}]",
+            "jsonViewIdSettings": "[{\"sysName\":\"type\"}]",
             "jsonSettings": null,
             "jsonNativeIndexSettings": null,
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2024-04-12T09:21:33Z",
-            "createBy": 23982,
-            "changedBy": 23982,
+            "dateChanged": "2024-05-16T11:31:49Z",
+            "createBy": 21,
+            "changedBy": 21,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "dataType": "id",
@@ -988,172 +762,15 @@ let exampleTable = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "typeVariable": {},
+                "array": false,
                 "json": false,
                 "linkOrArrayLinkType": false,
-                "arrayLink": false,
                 "linkType": false,
-                "indexExists": false,
-                "array": false
-            },
-            "objectIDSysName": "id",
-            "folderId": 33800449
-        },
-        "99305473": {
-            "networkID": 20582,
-            "sysName": "grades",
-            "name": "Grades",
-            "id": 99305473,
-            "dateCreated": "2024-04-12T11:50:41Z",
-            "hidden": false,
-            "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"grade\",\"dataType\":\"string\",\"name\":\"Оценка\",\"id\":\"18021713345491877\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false}]",
-            "jsonGroupSettings": null,
-            "jsonViewIdSettings": "[{\"sysName\":\"grade\"}]",
-            "jsonSettings": null,
-            "jsonNativeIndexSettings": null,
-            "indexEnabled": true,
-            "lastIndexUpdate": 0,
-            "indexName": "",
-            "dateChanged": "2024-04-17T09:20:03Z",
-            "createBy": 23982,
-            "changedBy": 23982,
-            "_settings": null,
-            "_nativeIndexSettings": null,
-            "innerIDField": {
-                "sysName": "id",
-                "dataType": "id",
-                "name": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
+                "arrayLink": false,
                 "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "array": false
+                "indexExists": false
             },
-            "objectIDSysName": "id",
-            "folderId": 33800638
-        },
-        "99305474": {
-            "networkID": 20582,
-            "sysName": "assessment",
-            "name": "Assessment",
-            "id": 99305474,
-            "dateCreated": "2024-04-12T11:55:47Z",
-            "hidden": false,
-            "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"grade\",\"dataType\":\"arrayLink\",\"name\":\"Оценка\",\"id\":\"94661712922974922\",\"link\":\"grades\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"task\",\"dataType\":\"link\",\"name\":\"Задача\",\"id\":\"39291712923034503\",\"link\":\"tasks\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"Student\",\"dataType\":\"link\",\"name\":\"Студент\",\"id\":\"13381712923089800\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":true,\"array\":false},{\"sysName\":\"teacher\",\"dataType\":\"link\",\"name\":\"Учитель\",\"id\":\"55301712923128336\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"subject\",\"dataType\":\"link\",\"name\":\"Предмет\",\"id\":\"70721712923153938\",\"link\":\"subject\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"criteria\",\"dataType\":\"link\",\"name\":\"Критерий\",\"id\":\"31601712923209424\",\"link\":\"criteria\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"comment\",\"dataType\":\"string\",\"name\":\"Комментарий\",\"id\":\"76161712923272098\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false}]",
-            "jsonGroupSettings": null,
-            "jsonViewIdSettings": "[{\"sysName\":\"grade\"}]",
-            "jsonSettings": null,
-            "jsonNativeIndexSettings": null,
-            "indexEnabled": true,
-            "lastIndexUpdate": 0,
-            "indexName": "",
-            "dateChanged": "2024-04-15T14:07:35Z",
-            "createBy": 23982,
-            "changedBy": 23982,
-            "_settings": null,
-            "_nativeIndexSettings": null,
-            "innerIDField": {
-                "sysName": "id",
-                "dataType": "id",
-                "name": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "array": false
-            },
-            "objectIDSysName": "id",
-            "folderId": 33800449
-        },
-        "99306255": {
-            "networkID": 20582,
-            "sysName": "assessment1",
-            "name": "Assessment1",
-            "id": 99306255,
-            "dateCreated": "2024-04-15T14:03:39Z",
-            "hidden": false,
-            "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false},{\"sysName\":\"subject_id\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"14331713189863393\",\"link\":\"subject\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkType\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false},{\"sysName\":\"student\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"38451713189829104\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkType\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false},{\"sysName\":\"grades_ids\",\"dataType\":\"arrayLink\",\"name\":\"\",\"id\":\"92431713189909500\",\"link\":\"assessment\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkType\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true}]",
-            "jsonGroupSettings": null,
-            "jsonViewIdSettings": "[{\"sysName\":\"grades_ids\"}]",
-            "jsonSettings": null,
-            "jsonNativeIndexSettings": null,
-            "indexEnabled": true,
-            "lastIndexUpdate": 0,
-            "indexName": "",
-            "dateChanged": "2024-04-16T11:17:27Z",
-            "createBy": 23982,
-            "changedBy": 23982,
-            "_settings": null,
-            "_nativeIndexSettings": null,
-            "innerIDField": {
-                "sysName": "id",
-                "dataType": "id",
-                "name": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false,
-                "array": false
-            },
-            "objectIDSysName": "id",
-            "folderId": 33800449
+            "folderId": null
         }
     },
     "isSuccessWrite": false,

@@ -201,21 +201,19 @@ export default function FpsForm2(props) {
           // console.log("FINISH SUBMIT")
           // console.log(data)
           let saveState = { ...state }
+          let stateUpdate = {}
           try {
             const response = JSON.parse(data)
             // update state
             if (!isEmpty(_.get(response, "state"))) {
-              const stateUpdate = _.get(response, "state")
-              // console.log("update state")
-              // console.log(stateUpdate)
-              saveState = { ...state, ...stateUpdate }
+              stateUpdate = _.get(response, "state") || {}
             }
           } catch (err) {
             console.log(err)
           }
           setLoading(false)
           finish && finish(data)
-          setState({ ...saveState, step: "submitted" })
+          setState({ ...saveState, step: "submitted", ...stateUpdate })
           setModel({}) // reset model
           setOriginalModel({})
         } else {
@@ -645,7 +643,7 @@ function RenderStep(props) {
           }
         )
       }}
-      callEndpoint={(endpoint, params, finish, setOptions, setError, dataStruct) => {
+      callEndpoint={(endpoint, params, finish, setOptions, setError) => {
         // console.log('===> calling endpoint /' + endpoint)
         // console.log(params)
         const transformedArray = (inputArray, visibleNames) => _.map(inputArray, (item) => {
