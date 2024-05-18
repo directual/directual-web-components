@@ -202,11 +202,19 @@ export default function FpsForm2(props) {
           // console.log(data)
           let saveState = { ...state }
           let stateUpdate = {}
+          let modelUpdate = {}
           try {
             const response = JSON.parse(data)
             // update state
             if (!isEmpty(_.get(response, "state"))) {
               stateUpdate = _.get(response, "state") || {}
+            }
+            // update model
+            if (!isEmpty(_.get(response, "model"))) {
+              modelUpdate = _.get(response, "model") || {}
+            }
+            if (!isEmpty(_.get(response, "object"))) {
+              modelUpdate = _.get(response, "object") || {}
             }
           } catch (err) {
             console.log(err)
@@ -214,8 +222,8 @@ export default function FpsForm2(props) {
           setLoading(false)
           finish && finish(data)
           setState({ ...saveState, step: "submitted", ...stateUpdate })
-          setModel({}) // reset model
-          setOriginalModel({})
+          setModel(modelUpdate) // reset model
+          setOriginalModel(modelUpdate)
         } else {
           setState({ ...state, _apiError: data.msg })
           setLoading(false)
