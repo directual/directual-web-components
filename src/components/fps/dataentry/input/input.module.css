@@ -1,4 +1,5 @@
 .input_wrapper {
+  box-sizing: border-box;
   line-height: normal;
   display: flex;
   flex-direction: column;

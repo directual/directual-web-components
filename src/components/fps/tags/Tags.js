@@ -9,7 +9,7 @@ export function Tags(props) {
     const tagList = props.tags ? props.tags.data : []
     const addButton = props.tags ? props.tags.addButton : false
 
-    if (!tagList || tagList.filter(tag => !onlySelected || (_.get(props, `selectedTags[${tag.id}]`))).length == 0) return <div>{_.get(props.dict, 'noOptions')}</div>
+    if ((!tagList || tagList.filter(tag => !onlySelected || (_.get(props, `selectedTags[${tag.id}]`))).length == 0) && !addButton) return <div>{_.get(props.dict, 'noOptions')}</div>
 
     return (
         <React.Fragment>
