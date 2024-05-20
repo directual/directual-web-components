@@ -13,8 +13,7 @@ import PropTypes from 'prop-types';
 
 // import { Map, Marker } from "pigeon-maps"
 
-// export default function FpsMap({ }) {
-
+export default function FpsMap({ }) {
     return <div>
         map is not supported
         {/* <Map height={300} defaultCenter={[50.879, 4.6997]} defaultZoom={11}>
