@@ -53,8 +53,8 @@ const columnsFromBackend = {
 };
 
 
-export function Kanban({ data, onExpand, setLoading, edenrichConds, loading, 
-    searchValue, auth, submit, submitAction, params, checkActionCond, currentBP }) {
+export function Kanban({ data, onExpand, setLoading, edenrichConds, loading,
+    searchValue, auth, submit, submitAction, params, callEndpoint, checkActionCond, currentBP }) {
 
     const kanbanData = data.data || []
 
@@ -68,14 +68,23 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading,
     const tableFieldScheme = data.fieldScheme || []
     const tableStructures = data.structures || {}
 
-    const kanbanParams = _.get(data, 'params.kanbanParams') || {
+    console.log(_.get(data, 'params.kanbanParams'))
+
+    let kanbanParams = _.get(data, 'params.kanbanParams') || {
         columns: [],
         dragndropOption: 'none'
     }
+
+    if (_.get(kanbanParams, 'columnsOption') == "endpoint" && _.get(kanbanParams, 'endpoint')) {
+        _.set(kanbanParams, "columns", [])
+    }
+
+
+
+
     const columnWidth = _.get(kanbanParams, 'columnWidth') || 250
     const columnField = _.get(kanbanParams, 'columnField') || ''
     const sortField = _.get(kanbanParams, 'sortField') || ''
-    const dragndropOption = _.get(kanbanParams, 'dragndropOption') || ''
     const [successWeb3, setSuccessWeb3] = useState(false)
     const [kostyl, setKostyl] = useState(false)
 
@@ -241,7 +250,7 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading,
                             auth={auth}
                             submitAction={submitAction}
                             checkActionCond={checkActionCond}
-                            onExpand={row=> {
+                            onExpand={row => {
                                 onExpand(row)
                                 console.log('onExpand')
                                 console.log(row)
@@ -266,8 +275,8 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading,
     const onDragEnd = (result, columns, setColumns) => {
         if (!result.destination) return;
         const { source, destination } = result;
-        const userID = _.get(kanbanParams,'userIDfield') ? 
-            auth.isAuth ? { [_.get(kanbanParams,'userIDfield')] : auth.user } : {} : {}
+        const userID = _.get(kanbanParams, 'userIDfield') ?
+            auth.isAuth ? { [_.get(kanbanParams, 'userIDfield')]: auth.user } : {} : {}
 
         if (source.droppableId !== destination.droppableId) {
             const sourceColumn = columns[source.droppableId];
@@ -316,14 +325,28 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading,
     };
 
     useEffect(() => {
-        if (kanbanParams.columns && kanbanParams.columns.length > 0 && columns !== enrichColumns(kanbanParams.columns)) {
+        if (_.get(kanbanParams, 'columnsOption') !== "endpoint" && 
+            kanbanParams.columns && kanbanParams.columns.length > 0 && columns !== enrichColumns(kanbanParams.columns)) {
             console.log('reset kanban')
             setColumns(enrichColumns(kanbanParams.columns))
         }
     }, [kanbanParams.columns])
 
+    const pullColumns = () => {
+        callEndpoint(_.get(kanbanParams, 'endpoint'), {}, undefined, data => {
+            console.log("finish")
+            console.log(data)
+            let newColumns = (data || []).map(i => { return { id: i.key, name: i.value } })
+            setColumns(enrichColumns(newColumns))
+        }, err => {
+            console.error(err.msg)
+            // setError(err.msg)
+        }, _.get(kanbanParams, 'columnsStruct'))
+    }
+
     useEffect(() => {
-        if (kanbanParams.columns && kanbanParams.columns.length > 0 && columns !== enrichColumns(kanbanParams.columns)) {
+        if (_.get(kanbanParams, 'columnsOption') == "endpoint" && _.get(kanbanParams, 'endpoint')) pullColumns()
+        if (_.get(kanbanParams, 'columnsOption') !== "endpoint" && kanbanParams.columns && kanbanParams.columns.length > 0 && columns !== enrichColumns(kanbanParams.columns)) {
             console.log('reset kanban')
             setColumns(enrichColumns(kanbanParams.columns))
             setKostyl(true)
@@ -332,6 +355,8 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading,
             }, 300)
         }
     }, [])
+
+    
 
     console.log('columns')
     console.log(columns)

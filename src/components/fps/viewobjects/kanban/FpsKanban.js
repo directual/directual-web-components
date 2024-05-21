@@ -14,9 +14,10 @@ import { addUrlParam, removeUrlParam, clearURL } from '../../queryParams'
 import Hint from '../../hint/hint'
 import _ from "lodash";
 import debounce from 'lodash.debounce';
+import PropTypes from 'prop-types';
 
 
-function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
+function FpsKanban({ auth, data, callEndpoint, onEvent, id, currentBP, locale, handleRoute }) {
     if (!data) { data = {} }
 
     console.log('---data FpsKanban---')
@@ -86,27 +87,28 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
             console.log('nothing to submit...')
             return
         }
-        console.log('---')
-        console.log(msg)
-        console.log('---')
+        // console.log('---')
+        // console.log(msg)
+        // console.log('---')
         pageInfo = pageInfo || { page: currentPage }
         if (sl === "") { sl = undefined }
         // костылек для даты
         for (const prop in msg) {
-            if (typeof msg[prop] == 'number' && msg[prop] > 1000000000000) { 
-                const dataType = data.headers.filter(i=> i.sysName == prop) &&
-                    data.headers.filter(i=> i.sysName == prop)[0] &&
-                    data.headers.filter(i=> i.sysName == prop)[0].dataType
-                if (dataType == 'date') { msg[prop] = moment(msg[prop]) } 
+            if (typeof msg[prop] == 'number' && msg[prop] > 1000000000000) {
+                const dataType = data.headers.filter(i => i.sysName == prop) &&
+                    data.headers.filter(i => i.sysName == prop)[0] &&
+                    data.headers.filter(i => i.sysName == prop)[0].dataType
+                if (dataType == 'date') { msg[prop] = moment(msg[prop]) }
             }
         }
         let cloneData = _.isArray(msg) ? { _array_: [...msg] } : msg
-        const message = 
-            { //...{ dql: currentDQL, sort: currentSort }, 
-                ...cloneData, _id: 'form_' + id, _sl_name: sl, _options: options }
-        console.log('vvv')
-        console.log(message)
-        console.log(pageInfo)
+        const message =
+        { //...{ dql: currentDQL, sort: currentSort }, 
+            ...cloneData, _id: 'form_' + id, _sl_name: sl, _options: options
+        }
+        // console.log('vvv')
+        // console.log(message)
+        // console.log(pageInfo)
         setLoading(true)
         if (onEvent) {
             let prom = onEvent(message, pageInfo)
@@ -170,7 +172,7 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
             if (saveModel) {
                 for (const field in saveModel) {
                     console.log(field)
-                    if (saveModel[field] && typeof saveModel[field] == 'object' && _.get(data,`params.data.fields[${field}].dataType`) != 'date') {
+                    if (saveModel[field] && typeof saveModel[field] == 'object' && _.get(data, `params.data.fields[${field}].dataType`) != 'date') {
                         // console.log('removing links')
                         delete saveModel[field]
                     }  // removing links
@@ -178,7 +180,7 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
                         // console.log(`removing ${field} as a field not for writing`)
                         delete saveModel[field]
                     } // removing fields not for writing
-                    if (data.params.data.fields[field] && _.get(data,`params.data.fields[${field}].dataType`) == 'date' && typeof saveModel[field] == 'number') {
+                    if (data.params.data.fields[field] && _.get(data, `params.data.fields[${field}].dataType`) == 'date' && typeof saveModel[field] == 'number') {
                         saveModel[field] = moment(saveModel[field])
                     }
                 }
@@ -304,10 +306,6 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
 
     const edenrichConds = (conds, object) => {
         let eConds = conds ? [...conds] : null
-        // console.log('edenrichConds')
-        // console.log(conds)
-        // console.log(object)
-        // console.log(auth)
         eConds && eConds.forEach(cond => {
             if ((cond.target == 'id' || cond.target == 'id_in' || cond.target == 'id_not_in') && cond.type == 'const') {
                 cond.checkValue = cond.value
@@ -374,9 +372,6 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
     return (
         <ComponentWrapper currentBP={currentBP}>
             {data.writeError && data.writeError != 'dql is not allowed for write' && <Hint title={dict[lang].form.error} error>{data.writeError}</Hint>}
-            {/* <Button onClick={() => updateURL([{ key: "objectID", value: "100500" } ])} icon='refresh'>updateURL</Button>
-            <Button onClick={() => clearURL()} icon='refresh'>clearURL</Button> */}
-            {/* <Button onClick={() => removeUrlParam(id + '_page')} icon='refresh'>refresh page</Button> */}
             {showObject &&
                 <React.Fragment>
                     <Backdrop onClick={handleCloseShowObject} hoverable />
@@ -439,6 +434,76 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
                 submitAction={submitAction}
                 loading={loading}
                 id={id}
+                callEndpoint={(endpoint, params, finish, setOptions, setError) => {
+                    // console.log('===> calling endpoint /' + endpoint)
+                    // console.log(params)
+                    const transformedArray = (inputArray, visibleNames) => _.map(inputArray, (item) => {
+                        const parseJson = json => {
+                            if (!json) return {}
+                            let parsedJson = {}
+                            if (typeof json == 'object') return json
+                            try {
+                                parsedJson = JSON.parse(json)
+                            }
+                            catch (e) {
+                                console.log(json);
+                                console.log(e);
+                            }
+                            return parsedJson
+                        }
+
+                        const { id, ...rest } = item; // Destructure `id` and the rest of the properties
+                        const value = _.trim(_.map(parseJson(visibleNames), field => _.get(item, field.sysName)).join(' ')) ||
+                            _.values(_.pickBy(rest, _.isString)).join(' '); // Concatenate string values
+                        return {
+                            key: id,
+                            value: _.trim(value) || id
+                        };
+                    });
+
+                    // fake request
+                    // setTimeout(() => {
+                    //   const data = [
+                    //     {
+                    //       "name": "John",
+                    //       "id": "1"
+                    //     },
+                    //     {
+                    //       "name": "Paul",
+                    //       "id": "2"
+                    //     },
+                    //     {
+                    //       "name": "Peter",
+                    //       "id": "3"
+                    //     },
+                    //   ]
+                    //   const visibleNames = '[{"sysName":"firstName"},{"sysName":"lastName"}]'
+                    //   finish && finish(transformedArray(data, visibleNames))
+                    //   setOptions && setOptions(transformedArray(data, visibleNames))
+                    // }, 1000)
+                    // ==============
+
+                    callEndpoint && callEndpoint(
+                        endpoint,
+                        "GET",
+                        undefined,
+                        params,
+                        (result, data, visibleNames) => {
+                            // console.log(result)
+                            // console.log(data)
+
+                            if (result == "ok") {
+                                finish && finish(transformedArray(data, visibleNames))
+                                setOptions && setOptions(transformedArray(data, visibleNames))
+                            }
+                            else {
+                                setError && setError(data)
+                                finish && finish([])
+                                setOptions && setOptions([])
+                            }
+                        }
+                    )
+                }}
                 data={data}
                 setLoading={value => setLoading(value)}
             />
@@ -446,6 +511,23 @@ function FpsKanban({ auth, data, onEvent, id, currentBP, locale, handleRoute }) 
         </ComponentWrapper>
     )
 }
+
+FpsKanban.propTypes = {
+    data: PropTypes.object.isRequired,
+    auth: PropTypes.object,
+    locale: PropTypes.string,
+    onChange: PropTypes.func,
+    handleRoute: PropTypes.func
+};
+
+FpsKanban.defaultProps = {
+    data: {},
+    auth: {},
+    locale: "ENG",
+    onChange: undefined,
+    handleRoute: undefined
+};
+
 FpsKanban.settings = {
     icon: icon,
     name: 'Kanban',
