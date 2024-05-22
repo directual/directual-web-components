@@ -499,6 +499,7 @@ function StructListFields(props) {
                 (props.filterLinkFields && true) ||
                 (!props.noPropagation && field.dataType !== 'link' &&
                     (field.sysName !== 'ContextVar') &&
+                    (field.sysName !== 'HttpRequest') &&
                     (field.sysName !== 'GlobalVar') &&
                     (field.sysName !== 'WebUser' || !props.FPSForm2) &&
                     (field.sysName !== 'FormState' || !props.FPSForm2)
@@ -705,6 +706,7 @@ function StructListFields(props) {
                                     {field && field.dataType == 'link' && !props.filterLinkFields &&
                                         (!props.noPropagation
                                             || field.sysName == 'ContextVar'
+                                            || field.sysName == 'HttpRequest'
                                             || field.sysName == 'GlobalVar'
                                             || (field.sysName == 'WebUser' && props.FPSForm2)
                                             || (field.sysName == 'FormState' && props.FPSForm2)) &&
@@ -726,6 +728,7 @@ function StructListFields(props) {
             {props.value && !props.filterLinkFields && (
                 !props.noPropagation
                 || props.value.startsWith('ContextVar')
+                || props.value.startsWith('HttpRequest')
                 || props.value.startsWith('GlobalVar')
                 || (props.value.startsWith('FormState') && props.FPSForm2)
                 || (props.value.startsWith('WebUser') && props.FPSForm2)
