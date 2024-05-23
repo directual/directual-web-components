@@ -24,24 +24,60 @@ let exampleForm = {
     "params": {
         "steps": [
             {
-                "id": "step_1715854081782",
-                "sysName": "step1",
+                "id": "step_1716465415121",
+                "sysName": "progress bar",
+                "sectionVisibility": "always",
                 "elements": [
                     {
-                        "id": "elmnt_1715854087662",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17158540903060.024230014112004323432101",
-                                "_field": "people",
-                                "_field_arrayLink_type": "tags",
-                                "_field_arrayLink_endpoint": "getPeopleDropdown",
-                                "_field_hidden": false,
-                                "_field_link_pageSize": 4
+                        "id": "elmnt_1716465427353",
+                        "type": "steps",
+                        "_formSteps": {
+                            "stepsOrder": [
+                                "2. Согласование HR Admin",
+                                "3. Согласование CnB",
+                                "4. Согласование HR BP",
+                                "5. Согласование Руководитель",
+                                "6. Согласование Директор (опциональный шаг)",
+                                "7. Ожидание кандидата (финальный шаг)"
+                            ],
+                            "settings": {
+                                "steps": {
+                                    "2. Согласование HR Admin": true,
+                                    "3. Согласование CnB": true,
+                                    "4. Согласование HR BP": true,
+                                    "5. Согласование Руководитель": true,
+                                    "6. Согласование Директор (опциональный шаг)": true,
+                                    "7. Ожидание кандидата (финальный шаг)": true
+                                }
                             }
-                        ]
+                        }
                     }
                 ]
+            },
+            {
+                "id": "default_step",
+                "sysName": "2. Согласование HR Admin",
+                "elements": []
+            },
+            {
+                "id": "step_1716465475966",
+                "sysName": "3. Согласование CnB"
+            },
+            {
+                "id": "step_1716465494304",
+                "sysName": "4. Согласование HR BP"
+            },
+            {
+                "id": "step_1716465511323",
+                "sysName": "5. Согласование Руководитель"
+            },
+            {
+                "id": "step_1716465535759",
+                "sysName": "6. Согласование Директор (опциональный шаг)"
+            },
+            {
+                "id": "step_1716465589005",
+                "sysName": "7. Ожидание кандидата (финальный шаг)"
             },
             {
                 "id": "step_submitted",
@@ -57,40 +93,6 @@ let exampleForm = {
                 ]
             }
         ],
-        "actions": [
-            {
-                "id": "action_1715849919348",
-                "name": "AUTOACTION",
-                "discardModel": false,
-                "resetModel": false,
-                "autoAction": true,
-                "autoAction_delay": 2,
-                "actionType": "state",
-                "stateMapping": [
-                    {
-                        "id": "stateMapping1715852058564",
-                        "field": "FormState.test",
-                        "value": "{{FormState.test}}_A"
-                    }
-                ]
-            }
-        ],
-        "general": {
-            "showState": true,
-            "closePopupOnClick": true,
-            "edittingOn": false,
-            "showModel": true,
-            "saveState": false,
-            "saveStateTo": "storeState",
-            "restoreState": false
-        },
-        "popup_width": 200,
-        "state": {
-            "step": "step1",
-            "popup": null,
-            "test": "hey"
-        },
-        "hideActionsHint": true,
         "hideHint": true
     },
     "tableTitle": null,

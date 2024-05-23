@@ -29,7 +29,7 @@ export default function Hint(props) {
 }
 
 Hint.propTypes = {
-    title: PropTypes.bool,
+    title: PropTypes.string,
     children: PropTypes.element,
     error: PropTypes.bool,
     ok: PropTypes.bool,

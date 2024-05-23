@@ -12,7 +12,7 @@ export default function FormSteps(props) {
         steps: _.uniq([...Object.keys(formStepsSettings.stepSettings || {}), ...(formStepsSettings.stepsOrder || [])]).map(i => {
             return {
                 sysName: i,
-                ...formStepsSettings.stepSettings[i]
+                ...(_.get(formStepsSettings,`stepSettings[${i}]`) || {})
             }
         })
     }
