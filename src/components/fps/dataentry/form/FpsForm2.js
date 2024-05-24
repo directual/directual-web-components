@@ -755,7 +755,7 @@ FpsForm2.settings = {
   name: 'Multistep Form',
   sysName: 'FpsForm2',
   isLegacy: false,
-  isMarketplace: true,
+  //isMarketplace: true,
   form: [
     { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
     { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
