@@ -120,8 +120,8 @@ export default function FpsForm2(props) {
         setOriginalModel(newModel)
       }
       // RESTORE STATE:
-      if (_.get(params,"general.restoreState") && _.get(params,"general.saveStateTo")) {
-        saveSate={...saveSate, ...parseJson(newModel[_.get(params,"general.saveStateTo")])}
+      if (_.get(params, "general.restoreState") && _.get(params, "general.saveStateTo")) {
+        saveSate = { ...saveSate, ...parseJson(newModel[_.get(params, "general.saveStateTo")]) }
       }
       setState(saveSate)
     }
@@ -147,7 +147,7 @@ export default function FpsForm2(props) {
   }
   // =======
 
-  function submit(finish) {
+  function submit(finish, submitKeepModel) {
     setState({ ...state, _submitError: "" })
     let modelToSend = {}
     for (const f in model) {
@@ -222,7 +222,8 @@ export default function FpsForm2(props) {
           setLoading(false)
           finish && finish(data)
           setState({ ...saveState, step: "submitted", ...stateUpdate })
-          setModel(modelUpdate) // reset model
+          if (submitKeepModel) { modelUpdate = { ...model, ...modelUpdate } }
+          setModel(modelUpdate)
           setOriginalModel(modelUpdate)
         } else {
           setState({ ...state, _apiError: data.msg })
@@ -548,7 +549,7 @@ export default function FpsForm2(props) {
       <span>debug mode: MODEL</span>
       {_.get(params, "general.autosubmit") == "always" && <code className='icon icon-move'>Autosubmit on each step change</code>}
       {_.get(params, "general.autosubmit") == "steps" && <code className='icon icon-move'>Autosubmit on: {_.get(params, "general.autosubmit_steps")}</code>}
-      {modelIsChanged && <code className='icon icon-info'>Model is changed</code> }
+      {modelIsChanged && <code className='icon icon-info'>Model is changed</code>}
     </pre>}
 
     {state._apiError && <Hint error closable onClose={() => setState({ ...state, _apiError: "" })}>
