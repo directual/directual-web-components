@@ -18,30 +18,36 @@ export default {
 };
 
 let exampleForm = {
-    "sl": "newRequest",
+    "sl": "editApplicationByID",
     "pageSize": "10",
     "headerField": null,
     "params": {
         "steps": [
             {
                 "id": "step_1716465415121",
-                "sysName": "progress bar",
-                "sectionVisibility": "always",
+                "sysName": "progress bar (always visible)",
+                "sectionVisibility": "custom",
                 "elements": [
                     {
                         "id": "elmnt_1716465427353",
                         "type": "steps",
                         "_formSteps": {
                             "stepsOrder": [
-                                "2. Согласование HR Admin",
-                                "3. Согласование CnB",
-                                "4. Согласование HR BP",
-                                "5. Согласование Руководитель",
-                                "6. Согласование Директор (опциональный шаг)",
-                                "7. Ожидание кандидата (финальный шаг)"
+                                "2",
+                                "3",
+                                "4",
+                                "5",
+                                "6",
+                                "7"
                             ],
                             "settings": {
                                 "steps": {
+                                    "2": true,
+                                    "3": true,
+                                    "4": true,
+                                    "5": true,
+                                    "6": true,
+                                    "7": true,
                                     "2. Согласование HR Admin": true,
                                     "3. Согласование CnB": true,
                                     "4. Согласование HR BP": true,
@@ -49,35 +55,130 @@ let exampleForm = {
                                     "6. Согласование Директор (опциональный шаг)": true,
                                     "7. Ожидание кандидата (финальный шаг)": true
                                 }
-                            }
+                            },
+                            "stepSettings": [
+                                null,
+                                null,
+                                {
+                                    "title": "Согласование HR админом"
+                                },
+                                {
+                                    "title": "Согласование CnB"
+                                },
+                                {
+                                    "title": "Согласование HR BP"
+                                },
+                                {
+                                    "title": "Согласование Руководитель"
+                                },
+                                {
+                                    "title": "Согласование Директор"
+                                },
+                                {
+                                    "title": "Ожидание Кандидата"
+                                }
+                            ]
                         }
+                    }
+                ],
+                "sectionCustomVisibility": "2,3,4,5,6,7"
+            },
+            {
+                "id": "default_step",
+                "sysName": "2",
+                "elements": [
+                    {
+                        "id": "elmnt_1716531870847",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17165318757680.32031212202332003212023",
+                                "_field": "field4"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1716469848841",
+                        "type": "action",
+                        "_actions": [
+                            {
+                                "id": "17164698505690.21134011342110014230333",
+                                "_action": "action_1716469400300",
+                                "_action_icon": "back",
+                                "_action_button_type": "danger",
+                                "_conditionalView": true,
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1716542791775",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "hr_admin,admin"
+                                    }
+                                ],
+                                "_action_customRequired": false
+                            },
+                            {
+                                "id": "17165427558220.23340110224012431000414",
+                                "_action": "action_1716542614611",
+                                "_action_icon": "ban",
+                                "_action_button_type": "danger",
+                                "_conditionalView": false,
+                                "_action_customRequired": true,
+                                "_action_customRequired_fields": [
+                                    "field4"
+                                ]
+                            },
+                            {
+                                "id": "17165428373630.3213241002130201300022",
+                                "_action": "action_1716542677798",
+                                "_action_button_type": "accent",
+                                "_action_icon": "forward"
+                            }
+                        ],
+                        "_conditionalView": false,
+                        "_conditions": [
+                            {
+                                "id": "condition_1716469862081",
+                                "_conditionalView_field": "WebUser.role",
+                                "_conditionalView_operator": "in",
+                                "_conditionalView_value": "hr_admin,admin"
+                            }
+                        ],
+                        "_actions_in_a_row": 3
                     }
                 ]
             },
             {
-                "id": "default_step",
-                "sysName": "2. Согласование HR Admin",
-                "elements": []
-            },
-            {
                 "id": "step_1716465475966",
-                "sysName": "3. Согласование CnB"
+                "sysName": "3"
             },
             {
                 "id": "step_1716465494304",
-                "sysName": "4. Согласование HR BP"
+                "sysName": "4"
             },
             {
                 "id": "step_1716465511323",
-                "sysName": "5. Согласование Руководитель"
+                "sysName": "5"
             },
             {
                 "id": "step_1716465535759",
-                "sysName": "6. Согласование Директор (опциональный шаг)"
+                "sysName": "6"
             },
             {
                 "id": "step_1716465589005",
-                "sysName": "7. Ожидание кандидата (финальный шаг)"
+                "sysName": "7"
+            },
+            {
+                "id": "step_1716470081647",
+                "sysName": "cancelled",
+                "elements": [
+                    {
+                        "id": "elmnt_1716470091847",
+                        "type": "hint",
+                        "hintColor": "error",
+                        "hintTitle": "Заявка отозвана"
+                    }
+                ]
             },
             {
                 "id": "step_submitted",
@@ -91,9 +192,94 @@ let exampleForm = {
                         "hintText": "Submitted"
                     }
                 ]
+            },
+            {
+                "id": "step_1716530982278",
+                "sysName": "error",
+                "elements": [
+                    {
+                        "id": "elmnt_1716530999178",
+                        "type": "hint",
+                        "hintColor": "error",
+                        "hintTitle": "Ошибка",
+                        "hintText": "{{FormState.errorMessage}}"
+                    }
+                ]
+            },
+            {
+                "id": "step_copy_1716543101019",
+                "sysName": "denied",
+                "elements": [
+                    {
+                        "id": "elmnt_1716470091847",
+                        "type": "hint",
+                        "hintColor": "error",
+                        "hintTitle": "Заявка отклонена"
+                    }
+                ]
             }
         ],
-        "hideHint": true
+        "hideHint": true,
+        "form_maxWidth": 650,
+        "general": {
+            "edittingOn": true
+        },
+        "state": {
+            "step": "{{status_id}}",
+            "popup": null,
+            "errorMessage": "",
+            "prevStep": ""
+        },
+        "actions": [
+            {
+                "id": "action_1716469400300",
+                "name": "Отозвать",
+                "actionType": "endpoint",
+                "endpoint": "applicationAction",
+                "mapping": [
+                    {
+                        "id": "mapping_1716469827636",
+                        "field": "action",
+                        "value": "cancel_application"
+                    }
+                ],
+                "resetModel": false,
+                "discardModel": false,
+                "autoAction": false,
+                "fieldChangeAction": false,
+                "sendModel": false
+            },
+            {
+                "id": "action_1716542614611",
+                "name": "Отклонить",
+                "actionType": "endpoint",
+                "endpoint": "editApplicationByID",
+                "sendModel": true,
+                "mapping": [
+                    {
+                        "id": "mapping_1716542625435",
+                        "field": "status_id",
+                        "value": "denied"
+                    }
+                ]
+            },
+            {
+                "id": "action_1716542677798",
+                "name": "Согласовать",
+                "actionType": "endpoint",
+                "endpoint": "editApplicationByID",
+                "sendModel": true,
+                "mapping": [
+                    {
+                        "id": "mapping_1716542712007",
+                        "field": "status_id",
+                        "value": "3"
+                    }
+                ]
+            }
+        ],
+        "hideActionsHint": true,
+        "form_title": ""
     },
     "tableTitle": null,
     "actions": null,
@@ -119,110 +305,54 @@ let exampleForm = {
             "formatOptions": {},
             "groupName": null,
             "array": false,
-            "json": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "indexExists": false
+            "json": false
         },
         {
-            "sysName": "people",
-            "dataType": "arrayLink",
-            "name": "people",
-            "id": "28621715333642402",
-            "link": "people",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 3,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": false,
-            "arrayLink": true,
-            "typeVariable": {},
-            "indexExists": false
-        },
-        {
-            "sysName": "name",
+            "sysName": "status_id",
             "dataType": "link",
-            "name": "People",
-            "id": "68451715022511853",
-            "link": "people",
+            "name": "Статус заявки",
+            "id": "51161716293463975",
+            "link": "application_statuses",
             "group": "0",
-            "tags": "",
+            "tags": null,
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
             "order": 2,
             "linkIndexFieldSysName": [],
-            "defaultValue": "",
+            "defaultValue": null,
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": {},
+            "formatOptions": null,
             "groupName": null,
             "array": false,
-            "json": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "indexExists": false
+            "json": false
         },
         {
-            "sysName": "gender",
-            "dataType": "link",
-            "name": "Whom are you looking for?",
-            "id": "66281715022483586",
-            "link": "gender",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "typeVariable": {},
-            "indexExists": false
-        },
-        {
-            "sysName": "options",
-            "dataType": "json",
-            "name": "",
-            "id": "40321715508164793",
+            "sysName": "field4",
+            "dataType": "string",
+            "name": "Поле для второго шага",
+            "id": "25761716530387143",
             "link": "",
-            "group": "0",
+            "group": "1716530372249",
             "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 5,
+            "order": 0,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -231,57 +361,21 @@ let exampleForm = {
             "formatOptions": {},
             "groupName": null,
             "array": false,
-            "json": true,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "indexExists": false
-        },
-        {
-            "sysName": "storeState",
-            "dataType": "json",
-            "name": "",
-            "id": "43151715508157761",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 4,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "json": true,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "indexExists": false
+            "json": false
         }
     ],
     "data": [
         {
-            "people": [
-                {
-                    "name": "Peter",
-                    "id": "9100a8fb-4743-402a-b1f1-0081c7e2e777"
-                },
-                {
-                    "name": "Paul",
-                    "id": "ac32238e-e7cd-4038-90eb-752f97edbaf6"
-                }
-            ],
-            "options": "[\n   {\n      \"key\": \"foo\",\n      \"value\": \"_foo\"\n   },\n   {\n      \"key\": \"bar\",\n      \"value\": \"_bar\"\n   }\n]",
-            "storeState": "{\n   \"test\": \"hello world!\"\n}",
-            "id": "8eaea1be-a6f4-461d-96ee-9b7aeadf1114"
+            "status_id": {
+                "id": "2",
+                "status": "Согласование HR админ"
+            },
+            "id": "7f1eaf27-988d-432a-9afc-c41e6d6465ce"
         }
     ],
     "totalPages": 1,
@@ -290,67 +384,48 @@ let exampleForm = {
     "fieldScheme": [
         [
             "id",
-            99310333
+            99313120
         ],
         [
-            "people.id",
-            99310332
+            "status_id.id",
+            99313122
         ],
         [
-            "people.name",
-            99310332
+            "status_id.status",
+            99313122
         ],
         [
-            "name.id",
-            99310332
+            "status_id.id",
+            99313122
         ],
         [
-            "name.name",
-            99310332
-        ],
-        [
-            "gender.id",
-            99310331
-        ],
-        [
-            "gender.gender",
-            99310331
-        ],
-        [
-            "options",
-            99310333
-        ],
-        [
-            "storeState",
-            99310333
+            "field4",
+            99313120
         ]
     ],
     "writeFields": [
-        "name",
-        "gender",
-        "people",
         "id",
-        "options",
-        "storeState"
+        "field4",
+        "status_id"
     ],
     "structures": {
-        "99310331": {
-            "id": 99310331,
-            "dateCreated": "2024-05-06T18:33:58Z",
+        "99313120": {
+            "id": 99313120,
+            "dateCreated": "2024-05-21T11:59:40Z",
             "hidden": false,
             "dateHidden": null,
-            "networkID": 20686,
-            "name": "gender",
-            "sysName": "gender",
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"gender\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"35891715020441941\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false}]",
-            "jsonGroupSettings": null,
-            "jsonViewIdSettings": "[{\"sysName\":\"gender\"}]",
+            "networkID": 20879,
+            "name": "📜 Заявки",
+            "sysName": "applications",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"type_id\",\"dataType\":\"link\",\"name\":\"Тип заявки\",\"id\":\"23081716293484376\",\"link\":\"application_type\",\"group\":\"1716293471829\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"field4\",\"dataType\":\"string\",\"name\":\"Поле для второго шага\",\"id\":\"25761716530387143\",\"link\":\"\",\"group\":\"1716530372249\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"prev_status_id\",\"dataType\":\"link\",\"name\":\"Предыдущий статус\",\"id\":\"31931716293890656\",\"link\":\"application_statuses\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"app_number\",\"dataType\":\"string\",\"name\":\"Номер заявки\",\"id\":\"37171716293405564\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"date_created\",\"dataType\":\"date\",\"name\":\"Дата создания заявки\",\"id\":\"50321716294000672\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD MMM, Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"status_id\",\"dataType\":\"link\",\"name\":\"Статус заявки\",\"id\":\"51161716293463975\",\"link\":\"application_statuses\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"field1\",\"dataType\":\"string\",\"name\":\"Поле для первого шага (для n-1 и n-3)\",\"id\":\"56551716293383921\",\"link\":null,\"group\":\"1716293471829\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"field3\",\"dataType\":\"string\",\"name\":\"Поле для первого шага (для n-2 и n-4)\",\"id\":\"57801716295500644\",\"link\":null,\"group\":\"1716293471829\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"last_user_id\",\"dataType\":\"link\",\"name\":\"Последнее изменение\",\"id\":\"60431716293846869\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"log_ids\",\"dataType\":\"arrayLink\",\"name\":\"История заявки\",\"id\":\"70181716293864479\",\"link\":\"application_logs\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"array\":false},{\"sysName\":\"field2\",\"dataType\":\"string\",\"name\":\"Поле для первого шага (для n-1 и n-3)\",\"id\":\"84221716295491497\",\"link\":null,\"group\":\"1716293471829\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false}]",
+            "jsonGroupSettings": "[{\"name\":\"Этап 1. Создание заявки\",\"id\":1716293471829,\"order\":0},{\"name\":\"Этап 2. Согласование HR admin\",\"id\":1716530372249,\"order\":1}]",
+            "jsonViewIdSettings": "[{\"sysName\":\"app_number\"}]",
             "jsonSettings": null,
             "jsonNativeIndexSettings": null,
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2024-05-06T18:34:06Z",
+            "dateChanged": "2024-05-24T06:00:00Z",
             "createBy": 1,
             "changedBy": 1,
             "_settings": null,
@@ -377,32 +452,32 @@ let exampleForm = {
                 "formatOptions": {},
                 "groupName": null,
                 "array": false,
-                "json": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "typeVariable": {},
-                "indexExists": false
+                "json": false
             },
-            "folderId": null
+            "folderId": 33804727
         },
-        "99310332": {
-            "id": 99310332,
-            "dateCreated": "2024-05-06T19:05:49Z",
+        "99313122": {
+            "id": 99313122,
+            "dateCreated": "2024-05-21T12:05:55Z",
             "hidden": false,
             "dateHidden": null,
-            "networkID": 20686,
-            "name": "people",
-            "sysName": "people",
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"gender\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"44461715022352603\",\"link\":\"gender\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Name\",\"id\":\"91911715022364368\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false}]",
+            "networkID": 20879,
+            "name": "Статус заявки",
+            "sysName": "application_statuses",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"status\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"19681716293163254\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false}]",
             "jsonGroupSettings": null,
-            "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+            "jsonViewIdSettings": "[{\"sysName\":\"status\"}]",
             "jsonSettings": null,
             "jsonNativeIndexSettings": null,
-            "indexEnabled": true,
+            "indexEnabled": false,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2024-05-06T19:06:14Z",
+            "dateChanged": "2024-05-24T06:42:53Z",
             "createBy": 1,
             "changedBy": 1,
             "_settings": null,
@@ -429,156 +504,20 @@ let exampleForm = {
                 "formatOptions": {},
                 "groupName": null,
                 "array": false,
-                "json": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "typeVariable": {},
-                "indexExists": false
+                "json": false
             },
-            "folderId": null
-        },
-        "99310333": {
-            "id": 99310333,
-            "dateCreated": "2024-05-06T19:07:59Z",
-            "hidden": false,
-            "dateHidden": null,
-            "networkID": 20686,
-            "name": "request",
-            "sysName": "request",
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"people\",\"dataType\":\"arrayLink\",\"name\":\"people\",\"id\":\"28621715333642402\",\"link\":\"people\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"array\":false},{\"sysName\":\"options\",\"dataType\":\"json\",\"name\":\"\",\"id\":\"40321715508164793\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"storeState\",\"dataType\":\"json\",\"name\":\"\",\"id\":\"43151715508157761\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"gender\",\"dataType\":\"link\",\"name\":\"Whom are you looking for?\",\"id\":\"66281715022483586\",\"link\":\"gender\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"link\",\"name\":\"People\",\"id\":\"68451715022511853\",\"link\":\"people\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"array\":false}]",
-            "jsonGroupSettings": null,
-            "jsonViewIdSettings": null,
-            "jsonSettings": null,
-            "jsonNativeIndexSettings": null,
-            "indexEnabled": true,
-            "lastIndexUpdate": 0,
-            "indexName": "",
-            "dateChanged": "2024-05-12T10:02:53Z",
-            "createBy": 1,
-            "changedBy": 1,
-            "_settings": null,
-            "_nativeIndexSettings": null,
-            "objectIDSysName": "id",
-            "innerIDField": {
-                "sysName": "id",
-                "dataType": "id",
-                "name": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "array": false,
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "indexExists": false
-            },
-            "folderId": null
+            "folderId": 33804728
         }
     },
     "isSuccessWrite": false,
     "writeError": null,
     "writeResponse": null,
     "fileds": [
-        {
-            "sysName": "name",
-            "dataType": "link",
-            "name": "People",
-            "id": "68451715022511853",
-            "link": "people",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 2,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "typeVariable": {},
-            "indexExists": false
-        },
-        {
-            "sysName": "gender",
-            "dataType": "link",
-            "name": "Whom are you looking for?",
-            "id": "66281715022483586",
-            "link": "gender",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "typeVariable": {},
-            "indexExists": false
-        },
-        {
-            "sysName": "people",
-            "dataType": "arrayLink",
-            "name": "people",
-            "id": "28621715333642402",
-            "link": "people",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 3,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": false,
-            "arrayLink": true,
-            "typeVariable": {},
-            "indexExists": false
-        },
         {
             "sysName": "id",
             "dataType": "id",
@@ -600,26 +539,26 @@ let exampleForm = {
             "formatOptions": {},
             "groupName": null,
             "array": false,
-            "json": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "indexExists": false
+            "json": false
         },
         {
-            "sysName": "options",
-            "dataType": "json",
-            "name": "",
-            "id": "40321715508164793",
+            "sysName": "field4",
+            "dataType": "string",
+            "name": "Поле для второго шага",
+            "id": "25761716530387143",
             "link": "",
-            "group": "0",
+            "group": "1716530372249",
             "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 5,
+            "order": 0,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -628,47 +567,47 @@ let exampleForm = {
             "formatOptions": {},
             "groupName": null,
             "array": false,
-            "json": true,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "indexExists": false
+            "json": false
         },
         {
-            "sysName": "storeState",
-            "dataType": "json",
-            "name": "",
-            "id": "43151715508157761",
-            "link": "",
+            "sysName": "status_id",
+            "dataType": "link",
+            "name": "Статус заявки",
+            "id": "51161716293463975",
+            "link": "application_statuses",
             "group": "0",
-            "tags": "",
+            "tags": null,
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 4,
+            "order": 2,
             "linkIndexFieldSysName": [],
-            "defaultValue": "",
+            "defaultValue": null,
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": {},
+            "formatOptions": null,
             "groupName": null,
             "array": false,
-            "json": true,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
+            "indexExists": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "indexExists": false
+            "json": false
         }
     ],
     "quickSearch": null,
     "httpParams": null,
     "cardCustomHtml": null,
     "cardCustomLayout": null,
-    "comment": null
+    "comment": "Редактирование и согласование заявки"
 }
 
 let authExample = {

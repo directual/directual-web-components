@@ -56,7 +56,7 @@ function ElementSteps(props) {
         {...props}
         type='progress'
         currentStep={state.step}
-        filter={template(_.get(element,"_formSteps.settings.filter"))}
+        filter={template(_.get(element, "_formSteps.settings.filter"))}
         formStepsSettings={element._formSteps}
     />
 }
@@ -83,11 +83,12 @@ function ElementInput(props) {
 }
 
 function ElementAction(props) {
-    const { element, templateState, template, callEndpointPOST, setState, setModel, model, data, state, originalModel } = props
+    const { element, templateState, template, callEndpointPOST, setState, setModel, model, data, state, originalModel, dict, lang } = props
     const [loading, setLoading] = useState(false)
 
     const action_list = _.get(element, "_actions") || []
     const actions = _.get(data, "params.actions")
+    const fields = _.get(data, "fileds")
 
     const transformObject = array => _.reduce(array, (result, item) => {
         if (!array || array.length == 0) return {};
@@ -108,7 +109,30 @@ function ElementAction(props) {
         return result;
     }, {});
 
-    const performAction = (action) => {
+    const [error, setError] = useState("")
+
+    const performAction = (action, actionFormat) => {
+        console.log(action)
+        console.log(actionFormat)
+        if (actionFormat._action_customRequired_fields && actionFormat._action_customRequired_fields.length > 0) {
+            function excludeNonEmptyValues(obj, keys) {
+                const filteredKeys = _.pickBy(obj, (value, key) => {
+                    return !_.isEmpty(value); // Exclude keys with non-empty values
+                });
+                return keys.filter(key => !(key in filteredKeys));
+            }
+            let emptyFields = excludeNonEmptyValues(model, actionFormat._action_customRequired_fields)
+
+            if (emptyFields.length > 0) {
+                emptyFields = emptyFields.map(i => {
+                    const fieldName = _.find(fields, { sysName: i }).name
+                    return fieldName ? '"' + fieldName + '"' : '"' + i + '"'
+                })
+                const errMessage = dict[lang].form.emptyRequired + emptyFields.join(", ")
+                setError(errMessage)
+                return;
+            }
+        }
         if (action.resetModel) {
             setModel({})
         }
@@ -116,7 +140,10 @@ function ElementAction(props) {
             setModel(originalModel)
         }
         if ((action.actionType == "endpoint" || !action.actionType) && action.endpoint) {
-            const payload = transformObject(action.mapping)
+            let payload = transformObject(action.mapping)
+            if (action.sendModel) {
+                payload = { ...model, ...payload }
+            }
             setLoading(true)
             callEndpointPOST(action.endpoint, payload, (result) => {
                 setLoading(false)
@@ -131,18 +158,23 @@ function ElementAction(props) {
         }
     }
 
-    return <ActionPanel margin={{ left: 1 }}>
-        {action_list.map(action => action._action ? <FpsForm2Action
-            {...props}
-            key={action.id}
-            loading={loading}
-            setLoading={setLoading}
-            actionFormat={action}
-            action={_.find(actions, { id: action._action })}
-            onPerform={() => performAction(_.find(actions, { id: action._action }))}
-        /> : <div>Action is not configured</div>
-        )}
-    </ActionPanel>
+    return <React.Fragment>
+        {error && <Hint margin={{ top: 0, bottom: 18 }} error closable onClose={() => setError("")}>
+            {error}
+        </Hint>}
+        <ActionPanel margin={{ left: 1 }}>
+            {action_list.map(action => action._action ? <FpsForm2Action
+                {...props}
+                key={action.id}
+                loading={loading}
+                setLoading={setLoading}
+                actionFormat={action}
+                action={_.find(actions, { id: action._action })}
+                onPerform={() => performAction(_.find(actions, { id: action._action }), action)}
+            /> : <div>Action is not configured</div>
+            )}
+        </ActionPanel>
+    </React.Fragment>
 }
 
 function ElementSubheader(props) {
