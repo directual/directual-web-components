@@ -15,7 +15,7 @@ const brakePoints = {
     wideDesktop: { from: 1202, to: '∞', display: 1400 },
 }
 
-export function FpsLayout({ layout, onChangeTab, localLoading, locale }) {
+export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpoint }) {
 
     const layoutRef = useRef(null);
     const [currentBP, setCurrentBP] = useState('desktop')
@@ -57,14 +57,13 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale }) {
     // console.log("LAYOUT")
     // console.log(layout)
 
-
     if (!layout) { return <div className={styles.error}>no layout</div> }
 
     const composeTabsContent = (tabId) => {
         if (localLoading) return <div style={{ margin: 24 }}><Loader>{dict[lang].loading}</Loader></div>
         if (!layout.sections[tabId] || layout.sections[tabId].length == 0) return <div />
         return <div>
-            {layout.sections[tabId].map(section => <Section key={section.id} section={section} currentBP={currentBP} />)}
+            {layout.sections[tabId].map(section => <Section callEndpoint={callEndpoint} key={section.id} section={section} currentBP={currentBP} />)}
         </div>
     }
     const tabs = layout.tabs.map(tab => { return { ...tab, key: tab.id, content: composeTabsContent(tab.id) } })
@@ -78,10 +77,33 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale }) {
         </div> : <div />)
 }
 
-const Section = ({ section, currentBP }) => {
+const Section = ({ section, currentBP, callEndpoint }) => {
 
-    // console.log('section')
-    // console.log(section)
+    console.log('section')
+    console.log(section)
+
+    const callEndpointHandle = ( params ) => {
+        const finish = data => {
+            console.log(data)
+        }
+        // fake request
+        callEndpoint(section._visibilityEndpoint, "GET", {}, {}, finish)
+    }
+
+    const [hideSection, setHideSection] = useState(
+        !!section._visibilityEndpoint &&
+        _.get(section, "_visibilityConditions._conditions").length > 0
+    )
+
+    useEffect(() => {
+        if (!!section._visibilityEndpoint &&
+            _.get(section, "_visibilityConditions._conditions").length > 0) {
+            // call endpoint and check conditions
+            callEndpointHandle()
+        }
+    }, [])
+
+    if (hideSection) return <div />
 
     if (!section.columns || section.columns.length == 0) return <div>no columns</div>
     const correctedBP = currentBP == 'wideDesktop' ? 'desktop' : currentBP;
@@ -106,7 +128,7 @@ const Section = ({ section, currentBP }) => {
     const maxWidth = _.get(section, 'maxWidth') || _.get(section, 'maxWidth') === 0 ? _.get(section, 'maxWidth') : 'none'
     const align = _.get(section, 'align')
 
-    return <div className={`${styles.section} ${_.get(section,"cssClass")} ${align == 'center' ? styles.alignCenter : ''}`}
+    return <div className={`${styles.section} ${_.get(section, "cssClass")} ${align == 'center' ? styles.alignCenter : ''}`}
         style={{
             flexDirection: section.flexDirection[correctedBP],
             marginTop: parseInt(marginTop),
@@ -187,8 +209,8 @@ function ComponentWrapper(props) {
             }}>
 
             {/* For Production / For Storybook testing:  */}
-            {props.children ? props.children(currentBP) : 
-                <div style={{ height: 100, backgroundColor: 'lightcoral', display:'flex', alignItems: 'center', justifyContent: 'center', opacity: 0.5 }}>
+            {props.children ? props.children(currentBP) :
+                <div style={{ height: 100, backgroundColor: 'lightcoral', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0.5 }}>
                     <code>development mode</code></div>}
 
         </div>)
