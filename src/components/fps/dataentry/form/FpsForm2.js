@@ -356,6 +356,7 @@ export default function FpsForm2(props) {
 
       // { key: "==", value: "is equal" },
       if (element._conditionalView_operator == "==") {
+        if (typeof field == 'boolean') { field = JSON.stringify(field) }
         if (!_.isEqual(field, value)) {
           _.get(params, "general.showModel") && console.log("element is hidden")
           _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " !== " + value)
@@ -365,6 +366,7 @@ export default function FpsForm2(props) {
 
       // { key: "!==", value: "is NOT equal" },
       if (element._conditionalView_operator == "!==") {
+        if (typeof field == 'boolean') { field = JSON.stringify(field) }
         if (_.isEqual(field, value)) {
           _.get(params, "general.showModel") && console.log("element is hidden")
           _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " == " + value)
@@ -459,7 +461,7 @@ export default function FpsForm2(props) {
       })
     }
 
-    console.log(result)
+    //console.log(result)
 
     return result
   }

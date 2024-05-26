@@ -82,20 +82,166 @@ const Section = ({ section, currentBP, callEndpoint }) => {
     // console.log('section')
     // console.log(section)
 
-    const callEndpointHandle = () => {
-
-        const finish = data => {
-            console.log("finish")
-            console.log(data)
-        }
-        // fake request
-        callEndpoint && callEndpoint(section._visibilityEndpoint, "GET", {}, {}, finish)
-    }
-
     const [hideSection, setHideSection] = useState(
         !!section._visibilityEndpoint &&
         _.get(section, "_visibilityConditions._conditions").length > 0
     )
+
+    const checkHidden = (element, object) => {
+        if (!object) return true
+
+        const checkHiddenCondition = element => {
+          let isHidden = false
+    
+          let field = _.get(object,element._conditionalView_field)
+          let value = element._conditionalView_value
+    
+          // { key: "modelNotChanged" },
+          if (element._conditionalView_operator == "modelNotChanged") {
+            if (modelIsChanged) {
+              console.log("element is hidden")
+              console.log("model is changed")
+              isHidden = true
+            }
+          }
+    
+          // { key: "modelChanged" },
+          if (element._conditionalView_operator == "modelChanged") {
+            if (!modelIsChanged) {
+              console.log("element is hidden")
+              console.log("model is NOT changed")
+              isHidden = true
+            }
+          }
+    
+          // { key: "==", value: "is equal" },
+          if (element._conditionalView_operator == "==") {
+            if (typeof field == 'boolean') { field = JSON.stringify(field) }
+            if (!_.isEqual(field, value)) {
+              console.log("element is hidden")
+              console.log("{{" + element._conditionalView_field + "}} → " + field + " !== " + value)
+              isHidden = true
+            }
+          }
+    
+          // { key: "!==", value: "is NOT equal" },
+          if (element._conditionalView_operator == "!==") {
+            if (typeof field == 'boolean') { field = JSON.stringify(field) }
+            if (_.isEqual(field, value)) {
+              console.log("element is hidden")
+              console.log("{{" + element._conditionalView_field + "}} → " + field + " == " + value)
+              isHidden = true
+            }
+          }
+    
+          // { key: "contains", value: "contains" },
+          if (element._conditionalView_operator == "contains") {
+            value = value ? value.split(",") : null
+            field = field ? field.split(",") : null
+            if ((field && field.length > 0 &&
+              value && value.length > 0
+              && _.intersection(value, field).length == 0) || !field || !value) {
+              console.log("element is hidden")
+              console.log("{{" + element._conditionalView_field + "}} → " + field + " does NOT contain " + value)
+              isHidden = true
+            }
+          }
+          // { key: "notContains", value: "does NOT contain" },
+          if (element._conditionalView_operator == "notContains") {
+            value = value ? value.split(",") : null
+            field = field ? field.split(",") : null
+            if ((field && field.length > 0 &&
+              value && value.length > 0
+              && _.intersection(value, field).length > 0) || !field || !value) {
+              console.log("element is hidden")
+              console.log("{{" + element._conditionalView_field + "}} → " + field + " contains " + value)
+              isHidden = true
+            }
+          }
+    
+          // { key: "in", value: "in" },
+          if (element._conditionalView_operator == "in") {
+            value = value ? value.split(",") : null
+            field = field ? field.split(",") : null
+            if ((field && field.length > 0 &&
+              value && value.length > 0
+              && _.intersection(value, field).length == 0) || !field || !value) {
+              console.log("element is hidden")
+              console.log(value + " does NOT contain " + "{{" + element._conditionalView_field + "}} → " + field)
+              isHidden = true
+            }
+          }
+    
+          // { key: "notIn", value: "NOT in" }
+          if (element._conditionalView_operator == "notIn") {
+            value = value ? value.split(",") : null
+            field = field ? field.split(",") : null
+            if ((field && field.length > 0 &&
+              value && value.length > 0
+              && _.intersection(value, field).length > 0) || !field || !value) {
+              console.log("element is hidden")
+              console.log(value + " contains " + "{{" + element._conditionalView_field + "}} → " + field)
+              isHidden = true
+            }
+          }
+    
+          // { key: "isNull", value: "is empty" },
+          if (element._conditionalView_operator == "isNull") {
+            if (!_.isEmpty(field)) {
+              console.log("element is hidden")
+              console.log("{{" + element._conditionalView_field + "}} → " + field + " is empty")
+              isHidden = true
+            }
+          }
+    
+          // { key: "isNotNull", value: "is NOT empty" },
+          if (element._conditionalView_operator == "isNotNull") {
+            if (_.isEmpty(field)) {
+              console.log("element is hidden")
+              console.log("{{" + element._conditionalView_field + "}} → " + field + " is NOT empty")
+              isHidden = true
+            }
+          }
+    
+          return isHidden
+        }
+    
+        let result = false
+        if (!_.get(element, "_conditions") || _.get(element, "_conditions").length == 0) return false;
+    
+        if (_.get(element, "_action_conditionals_and_or") == "OR") {
+          result = true
+          _.get(element, "_conditions").forEach(element => {
+            if (!checkHiddenCondition(element)) { result = false }
+          })
+        } else {
+          _.get(element, "_conditions").forEach(element => {
+            if (checkHiddenCondition(element)) { result = true }
+          })
+        }
+
+        return result
+      }
+
+    const callEndpointHandle = () => {
+
+        const finish = (status, data) => {
+            setHideSection(checkHidden(_.get(section, "_visibilityConditions"), _.get(data,"[0]")))
+        }
+        // fake request
+        
+        // setTimeout(()=>{
+        //     const fakeData = [
+        //         {
+        //             "Sum": 10,
+        //             "isPaid": true
+        //         }
+        //     ]
+        //     finish('ok', fakeData)
+        // }, 1000)
+
+        callEndpoint && callEndpoint(section._visibilityEndpoint, "GET", {}, {}, finish)
+    }
 
     useEffect(() => {
         if (!!section._visibilityEndpoint &&
@@ -105,7 +251,7 @@ const Section = ({ section, currentBP, callEndpoint }) => {
         }
     }, [])
 
-    if (hideSection) return <div><button onClick={e => callEndpointHandle()}>check api</button></div>
+    if (hideSection) return <div /> //<button onClick={e => callEndpointHandle()}>check api</button></div>
 
     if (!section.columns || section.columns.length == 0) return <div>no columns</div>
     const correctedBP = currentBP == 'wideDesktop' ? 'desktop' : currentBP;
