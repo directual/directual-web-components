@@ -79,15 +79,17 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
 
 const Section = ({ section, currentBP, callEndpoint }) => {
 
-    console.log('section')
-    console.log(section)
+    // console.log('section')
+    // console.log(section)
 
-    const callEndpointHandle = ( params ) => {
+    const callEndpointHandle = () => {
+
         const finish = data => {
+            console.log("finish")
             console.log(data)
         }
         // fake request
-        callEndpoint(section._visibilityEndpoint, "GET", {}, {}, finish)
+        callEndpoint && callEndpoint(section._visibilityEndpoint, "GET", {}, {}, finish)
     }
 
     const [hideSection, setHideSection] = useState(
@@ -103,7 +105,7 @@ const Section = ({ section, currentBP, callEndpoint }) => {
         }
     }, [])
 
-    if (hideSection) return <div />
+    if (hideSection) return <div><button onClick={e => callEndpointHandle()}>check api</button></div>
 
     if (!section.columns || section.columns.length == 0) return <div>no columns</div>
     const correctedBP = currentBP == 'wideDesktop' ? 'desktop' : currentBP;
