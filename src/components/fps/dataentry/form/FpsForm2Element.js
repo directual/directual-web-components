@@ -198,7 +198,7 @@ function ElementSubmit(props) {
         setLoading(true)
         onSubmit(result => {
             setLoading(false)
-        }, element.submitKeepModel)
+        }, element.submitKeepModel, element.submitStep)
     }
     return <div>
         {state._submitError && <Hint margin={{ top: 0, bottom: 18 }} error closable onClose={() => setState({ ...state, _submitError: "" })}>

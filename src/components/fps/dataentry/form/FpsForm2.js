@@ -147,7 +147,7 @@ export default function FpsForm2(props) {
   }
   // =======
 
-  function submit(finish, submitKeepModel) {
+  function submit(finish, submitKeepModel, targetStep) {
     setState({ ...state, _submitError: "" })
     let modelToSend = {}
     for (const f in model) {
@@ -155,6 +155,7 @@ export default function FpsForm2(props) {
         modelToSend[f] = model[f]
       }
     }
+
     // State to object
     if (_.get(params, "general.saveState") && _.get(params, "general.saveStateTo")) {
       modelToSend[_.get(params, "general.saveStateTo")] = JSON.stringify(state)
@@ -221,7 +222,7 @@ export default function FpsForm2(props) {
           }
           setLoading(false)
           finish && finish(data)
-          setState({ ...saveState, step: "submitted", ...stateUpdate })
+          setState({ ...saveState, step: targetStep || "submitted", ...stateUpdate })
           if (submitKeepModel) { modelUpdate = { ...model, ...modelUpdate } }
           setModel(modelUpdate)
           setOriginalModel(modelUpdate)
