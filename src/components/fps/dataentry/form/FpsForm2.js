@@ -83,14 +83,14 @@ export default function FpsForm2(props) {
     if (_.get(params, "general.autosubmit") == "always" && autoSubmitStep !== state.step) {
       console.log("AUTOSUBMIT!")
       setAutoSubminStep(state.step)
-      submit()
+      submit(undefined, undefined, undefined, true)
     }
     if (_.get(params, "general.autosubmit") == "steps"
       && _.includes(_.get(params, "general.autosubmit_steps").split(","), state.step
         && autoSubmitStep !== state.step)) {
       console.log("AUTOSUBMIT!")
       setAutoSubminStep(state.step)
-      submit()
+      submit(undefined, undefined, undefined, true)
     }
   }, [state])
 
@@ -147,7 +147,7 @@ export default function FpsForm2(props) {
   }
   // =======
 
-  function submit(finish, submitKeepModel, targetStep) {
+  function submit(finish, submitKeepModel, targetStep, autoSubmit) {
     setState({ ...state, _submitError: "" })
     let modelToSend = {}
     for (const f in model) {
@@ -177,7 +177,7 @@ export default function FpsForm2(props) {
     }
     let emptyFields = excludeNonEmptyValues(modelToSend, requiredFieldValues)
 
-    if (emptyFields.length > 0) {
+    if (emptyFields.length > 0 && !autoSubmit) {
       emptyFields = emptyFields.map(i => {
         const fieldName = _.find(fields, { sysName: i }).name
         return fieldName ? '"' + fieldName + '"' : '"' + i + '"'
@@ -222,7 +222,9 @@ export default function FpsForm2(props) {
           }
           setLoading(false)
           finish && finish(data)
-          setState({ ...saveState, step: targetStep || "submitted", ...stateUpdate })
+          autoSubmit ?
+            setState({ ...saveState })
+            : setState({ ...saveState, step: targetStep || "submitted", ...stateUpdate })
           if (submitKeepModel) { modelUpdate = { ...model, ...modelUpdate } }
           setModel(modelUpdate)
           setOriginalModel(modelUpdate)
