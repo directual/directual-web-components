@@ -247,19 +247,19 @@ const Section = ({ section, currentBP, callEndpoint }) => {
         }
         // fake request
         
-        setTimeout(()=>{
-            const fakeData = [
-              {
-                  "status": {
-                      "id": "new",
-                      "status": "New"
-                  },
-                  "amount_tons": 0.1,
-                  "id": "d074abd8-293c-40ae-ae8f-32f1564ce031"
-              }
-          ]
-            finish('ok', fakeData)
-        }, 1000)
+        // setTimeout(()=>{
+        //     const fakeData = [
+        //       {
+        //           "status": {
+        //               "id": "new",
+        //               "status": "New"
+        //           },
+        //           "amount_tons": 0.1,
+        //           "id": "d074abd8-293c-40ae-ae8f-32f1564ce031"
+        //       }
+        //   ]
+        //     finish('ok', fakeData)
+        // }, 1000)
 
         callEndpoint && callEndpoint(section._visibilityEndpoint, "GET", {}, {}, finish)
     }
