@@ -87,8 +87,23 @@ const Section = ({ section, currentBP, callEndpoint }) => {
         _.get(section, "_visibilityConditions._conditions").length > 0
     )
 
+    function flatternModel(m) {
+      const flatternObject = a => {
+        if (Array.isArray(a)) {
+          return a.map(i => i.id || i).join(",")
+        }
+        if (typeof a == 'object') {
+          return _.get(a, "id")
+        }
+        return a
+      }
+      return _.mapValues(m, flatternObject)
+    }
+
+
     const checkHidden = (element, object) => {
         if (!object) return true
+
 
         const checkHiddenCondition = element => {
           let isHidden = false
@@ -119,6 +134,7 @@ const Section = ({ section, currentBP, callEndpoint }) => {
             if (typeof field == 'boolean') { field = JSON.stringify(field) }
             if (!_.isEqual(field, value)) {
               console.log("element is hidden")
+              console.log(element._conditionalView_operator)
               console.log("{{" + element._conditionalView_field + "}} → " + field + " !== " + value)
               isHidden = true
             }
@@ -129,6 +145,7 @@ const Section = ({ section, currentBP, callEndpoint }) => {
             if (typeof field == 'boolean') { field = JSON.stringify(field) }
             if (_.isEqual(field, value)) {
               console.log("element is hidden")
+              console.log(element._conditionalView_operator)
               console.log("{{" + element._conditionalView_field + "}} → " + field + " == " + value)
               isHidden = true
             }
@@ -226,19 +243,23 @@ const Section = ({ section, currentBP, callEndpoint }) => {
     const callEndpointHandle = () => {
 
         const finish = (status, data) => {
-            setHideSection(checkHidden(_.get(section, "_visibilityConditions"), _.get(data,"[0]")))
+            setHideSection(checkHidden(_.get(section, "_visibilityConditions"), flatternModel(_.get(data,"[0]")) ))
         }
         // fake request
         
-        // setTimeout(()=>{
-        //     const fakeData = [
-        //         {
-        //             "Sum": 10,
-        //             "isPaid": true
-        //         }
-        //     ]
-        //     finish('ok', fakeData)
-        // }, 1000)
+        setTimeout(()=>{
+            const fakeData = [
+              {
+                  "status": {
+                      "id": "new",
+                      "status": "New"
+                  },
+                  "amount_tons": 0.1,
+                  "id": "d074abd8-293c-40ae-ae8f-32f1564ce031"
+              }
+          ]
+            finish('ok', fakeData)
+        }, 1000)
 
         callEndpoint && callEndpoint(section._visibilityEndpoint, "GET", {}, {}, finish)
     }

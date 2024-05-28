@@ -4,60 +4,56 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 
 const layoutExample = {
-    "showHeader": false,
-    "header": "",
+    "isCustom": "custom",
     "tabs": [
         {
-            "id": "tab_01",
+            "id": "tab_1716886796808",
             "title": "Tab 1",
             "onlyAuth": false,
             "roles": null
         }
     ],
     "sections": {
-        "tab_01": [
+        "tab_1716886796808": [
             {
-                "id": "section_01",
-                "onlyAuth": false,
-                "roles": null,
+                "id": "section_1716887302488",
+                "tab": "tab_1716886796808",
+                "columns": [
+                    {
+                        "id": "column_1716887302488",
+                        "content": {
+                            "clazz": "FpsHint",
+                            "id": "comp_1716887452263"
+                        },
+                        "size": 100
+                    }
+                ],
                 "flexDirection": {
                     "mobile": "column",
                     "tablet": "row",
                     "desktop": "row"
                 },
-                "columns": [
-                    {
-                        "id": "column_1716724389574",
-                        "content": {
-                            "clazz": "FpsMarkdown",
-                            "id": "comp_1716729175035"
-                        },
-                        "size": 100
-                    }
-                ],
-                "endpoint": "resetPwdFromProfile",
-                "_visibilityEndpoint": "getOrders",
+                "_visibilityEndpoint": "getBillByID",
                 "_visibilityConditions": {
                     "_conditions": [
                         {
-                            "id": "condition_1716729238905",
-                            "_conditionalView_field": "isPaid",
-                            "_conditionalView_operator": "==",
-                            "_conditionalView_value": "true"
+                            "id": "condition_1716887423885",
+                            "_conditionalView_field": "status",
+                            "_conditionalView_operator": "!==",
+                            "_conditionalView_value": "new"
                         }
-                    ],
-                    "_action_conditionals_and_or": "OR"
+                    ]
                 }
             },
             {
-                "id": "section_1716729135423",
-                "tab": "tab_01",
+                "id": "section_1716887302488_copy_1716887468798",
+                "tab": "tab_1716886796808",
                 "columns": [
                     {
-                        "id": "column_1716729135423",
+                        "id": "column_1716887302488_copy_1716887468798",
                         "content": {
-                            "clazz": "FpsMarkdown",
-                            "id": "comp_1716729140641"
+                            "clazz": "FpsHint",
+                            "id": "copy_comp_.hukj8fslr67"
                         },
                         "size": 100
                     }
@@ -66,6 +62,17 @@ const layoutExample = {
                     "mobile": "column",
                     "tablet": "row",
                     "desktop": "row"
+                },
+                "_visibilityEndpoint": "getBillByID",
+                "_visibilityConditions": {
+                    "_conditions": [
+                        {
+                            "id": "condition_1716887423885",
+                            "_conditionalView_field": "status",
+                            "_conditionalView_operator": "!==",
+                            "_conditionalView_value": "new"
+                        }
+                    ]
                 }
             }
         ]
