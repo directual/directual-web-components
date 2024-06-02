@@ -41,7 +41,9 @@ let exampleForm = {
                                 "id": "17173179443340.33040143432104442113332",
                                 "_field": "language_id",
                                 "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "getlangs"
+                                "_field_arrayLink_endpoint": "getlangs",
+                                "_field_link_reset": false,
+                                "_field_link_saveQuantity": false
                             },
                             {
                                 "id": "17173179447280.1113304324411431113301",
@@ -52,7 +54,9 @@ let exampleForm = {
                                     "lang": "language_id"
                                 },
                                 "_field_link_pageSize": null,
-                                "_field_link_reset": true
+                                "_field_link_reset": true,
+                                "_field_link_saveQuantity": true,
+                                "_field_link_saveQuantity_Field": "FormSate.objects"
                             }
                         ],
                         "_input_fields_in_a_row": 3,
@@ -80,15 +84,16 @@ let exampleForm = {
             }
         ],
         "state": {
-            "step": "default step"
+            "step": "default step",
+            "objects": "",
+            "popup": ""
         },
         "general": {
             "autosubmit": "model",
-            "autosubmit_model": [
-                "language_id"
-            ],
+            "autosubmit_model": null,
             "showState": true,
-            "showModel": true
+            "showModel": true,
+            "edittingOn": true
         },
         "actions": [
             {
@@ -127,10 +132,103 @@ let exampleForm = {
             "json": false,
             "indexExists": false,
             "array": false
+        },
+        {
+            "sysName": "language_id",
+            "name": "Language",
+            "dataType": "link",
+            "id": "50021714023334973",
+            "link": "language",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "title",
+            "name": "Title",
+            "dataType": "string",
+            "id": "44401714022921250",
+            "link": null,
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "author_id",
+            "name": "Author",
+            "dataType": "link",
+            "id": "14461714022891212",
+            "link": "authors",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
         }
     ],
     "data": [
         {
+            "language_id": {
+                "id": "ru",
+                "lang": "Russian"
+            },
+            "title": "12",
+            "author_id": {
+                "name": "Nikolai Gogol",
+                "id": "3cf0b37f-2e54-416f-973b-338b276902f8"
+            },
             "id": "b4ad0c0a-526a-46f1-b9e2-8f0feec3caf4"
         }
     ],
@@ -141,14 +239,139 @@ let exampleForm = {
         [
             "id",
             99307837
+        ],
+        [
+            "language_id.id",
+            99307836
+        ],
+        [
+            "language_id.lang",
+            99307836
+        ],
+        [
+            "title",
+            99307837
+        ],
+        [
+            "author_id.id",
+            99307835
+        ],
+        [
+            "author_id.name",
+            99307835
         ]
     ],
     "writeFields": [
         "title",
         "language_id",
-        "author_id"
+        "author_id",
+        "id"
     ],
     "structures": {
+        "99307835": {
+            "id": 99307835,
+            "dateCreated": "2024-04-25T05:21:24Z",
+            "hidden": false,
+            "dateHidden": null,
+            "networkID": 20686,
+            "name": "Authors",
+            "sysName": "authors",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Name\",\"id\":\"93081714022495438\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"language\",\"dataType\":\"link\",\"name\":\"Language\",\"id\":\"30211714022497442\",\"link\":\"language\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"array\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2024-04-25T05:28:02Z",
+            "createBy": 21,
+            "changedBy": 21,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "innerIDField": {
+                "sysName": "id",
+                "name": "id",
+                "dataType": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            "objectIDSysName": "id",
+            "folderId": 0
+        },
+        "99307836": {
+            "id": 99307836,
+            "dateCreated": "2024-04-25T05:22:06Z",
+            "hidden": false,
+            "dateHidden": null,
+            "networkID": 20686,
+            "name": "Language",
+            "sysName": "language",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"lang\",\"dataType\":\"string\",\"name\":\"Language\",\"id\":\"40561714022531042\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": "[{\"sysName\":\"lang\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2024-04-25T05:22:19Z",
+            "createBy": 21,
+            "changedBy": 21,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "innerIDField": {
+                "sysName": "id",
+                "name": "id",
+                "dataType": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            "objectIDSysName": "id",
+            "folderId": null
+        },
         "99307837": {
             "id": 99307837,
             "dateCreated": "2024-04-25T05:28:08Z",
@@ -284,6 +507,34 @@ let exampleForm = {
             "groupName": null,
             "linkOrArrayLinkType": true,
             "linkType": true,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "id",
+            "name": "id",
+            "dataType": "id",
+            "id": "0",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
             "json": false,

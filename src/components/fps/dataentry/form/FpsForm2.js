@@ -8,6 +8,7 @@ import InnerHTML from 'dangerously-set-html-content'
 import FormElement from './FpsForm2Element'
 import FpsFormPopup from './FpsForm2Popup'
 import Hint from '../../hint/hint'
+import debounce from 'lodash.debounce';
 
 export default function FpsForm2(props) {
 
@@ -16,6 +17,8 @@ export default function FpsForm2(props) {
 
   // console.log("=== FpsForm2 data ===")
   // console.log(data)
+
+  
 
   const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
   const defaultState = { "step": "default step", "popup": "" }
@@ -74,6 +77,9 @@ export default function FpsForm2(props) {
 
   const [autoSubmitStep, setAutoSubminStep] = useState(state.step)
 
+  const cx = null
+  const submitOnModel = debounce(submit, 700);
+
   // AUTOSUBMIT ON STATE
   useEffect(() => {
     if (_.get(params, "general.autosubmit") == "model") {
@@ -101,14 +107,14 @@ export default function FpsForm2(props) {
     if (_.get(params, "general.autosubmit") == "always" && autoSubmitStep !== state.step) {
       console.log("AUTOSUBMIT!")
       setAutoSubminStep(state.step)
-      submit(undefined, true, undefined, true)
+      submitOnModel(undefined, true, undefined, true)
     }
     if (_.get(params, "general.autosubmit") == "steps"
       && _.includes(_.get(params, "general.autosubmit_steps").split(","), state.step
         && autoSubmitStep !== state.step)) {
       console.log("AUTOSUBMIT!")
       setAutoSubminStep(state.step)
-      submit(undefined, true, undefined, true)
+      submitOnModel(undefined, true, undefined, true)
     }
   }, [state])
 
@@ -155,6 +161,7 @@ export default function FpsForm2(props) {
 
 
   function submit(finish, submitKeepModel, targetStep, autoSubmit) {
+    clearTimeout(cx);
 
     if (_.isEqual(model, originalModel)) { return }
 
