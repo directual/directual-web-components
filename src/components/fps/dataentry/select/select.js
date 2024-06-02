@@ -246,7 +246,7 @@ export default function Select(props) {
     // call endpoint when request params are changed
     useEffect(() => {
         if (!_.isEqual(callParams, prevCallParams) && props.dinamicSelect && props.onLoad) {
-            filterOptions()
+            filterOptions(undefined, undefined, undefined, true)
         }
     }, [callParams])
 

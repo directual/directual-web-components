@@ -20,7 +20,7 @@ export default function FpsForm2Input(props) {
     const fieldInfo = _.find(_.get(data, "fileds"), { sysName: field._field }) || {}
     const type = `${fieldInfo.dataType}${fieldInfo.format ? `_${fieldInfo.format}` : ''}`
 
-    const debouncedCallEndpint = debounce(callEndpoint, 700);
+    const debouncedCallEndpint = debounce(callEndpoint, 300);
 
 
     switch (type) {
@@ -492,7 +492,6 @@ function FieldLink(props) {
         }
     }, [])
 
-    // return <div><pre><code>{JSON.stringify(options, 0, 3)}</code></pre></div>
 
     if (field._field_link_type == "select") {
         if (!field._field_arrayLink_endpoint) return <div>
@@ -664,7 +663,7 @@ function FieldArrayLink(props) {
     const params = _.omitBy(_.mapValues(field._field_arrayLink_endpoint_params || {}, i => template("{{" + i + "}}")), _.isEmpty)
     const [error, setError] = useState("")
 
-    const refreshOptions = (finish, filter, value) => {
+    const refreshOptions = (finish, filter, value, resetValue) => {
         if (!field._field_arrayLink_endpoint) { return; }
         if (field._field_arrayLink_type !== "checkboxes"
             && field._field_arrayLink_type !== "select"
@@ -680,6 +679,14 @@ function FieldArrayLink(props) {
         callEndpoint(field._field_arrayLink_endpoint, reqParams, finish, data => {
             // console.log("finish")
             // console.log(data)
+            
+            // механизм сброса если из-за новых параметров среди опций нет значения:
+            const currentValue = model[fieldInfo.sysName]
+            if (resetValue && (currentValue || currentValue == 0)) {
+                if (!_.some(data, { key: currentValue })) {
+                    onChange(null)
+                }
+            }
             setOptions(data)
         }, err => {
             setError(err.msg)
@@ -689,7 +696,7 @@ function FieldArrayLink(props) {
     useEffect(i => {
         if (!_.isEqual(currentParams, params) && field._field_arrayLink_type !== "select") {
             // у селекта другой механизм обновления опций — функция дергается прямо из компонента
-            refreshOptions()
+            refreshOptions(undefined, undefined, undefined, true)
         }
     }, [params]) // update options when request params are changed
 
