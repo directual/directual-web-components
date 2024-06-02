@@ -155,6 +155,9 @@ export default function FpsForm2(props) {
 
 
   function submit(finish, submitKeepModel, targetStep, autoSubmit) {
+
+    if (_.isEqual(model, originalModel)) { return }
+
     setState({ ...state, _submitError: "" })
     let modelToSend = {}
     for (const f in model) {
