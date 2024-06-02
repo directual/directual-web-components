@@ -87,12 +87,12 @@ function ElementInput(props) {
             {...props}
             key={field.id}
             field={field}
-            onChange={value => {
-                field._input_type == "state" ?
-                    setState({ ...state, [field._state_field]: value })
-                    :
-                    editModel(field._field)(value)
-            }}
+            // onChange={value => {
+            //     field._input_type == "state" ?
+            //         setState({ ...state, [field._state_field]: value })
+            //         :
+            //         editModel(field._field)(value)
+            // }}
         /> : <div>Field is not configured</div>
         )}
     </InputRow>

@@ -62,8 +62,7 @@ export function FpsForm2HiddenInput(props) {
     const type = `${fieldInfo.dataType}${fieldInfo.format ? `_${fieldInfo.format}` : ''}`
 
     const debouncedCallEndpint = debounce(callEndpoint, 300);
-
-    let comp
+    let comp = <FieldText {...props} fieldInfo={fieldInfo} />
 
     switch (type) {
         case 'json':
@@ -74,29 +73,36 @@ export function FpsForm2HiddenInput(props) {
         case 'json_keyValue':
         case 'json_geo':
             comp = <FieldJson {...props} fieldInfo={fieldInfo} />
+            break;
         case 'file_multipleFiles':
         case 'file_multipleImages':
         case 'file_image':
         case 'file':
             comp =  <FieldFile {...props} fieldInfo={fieldInfo} />
+            break;
         case 'date':
             comp =  <FieldDate {...props} fieldInfo={fieldInfo} />
+            break;
         case 'boolean':
             comp =  <FieldBoolean {...props} fieldInfo={fieldInfo} />
+            break;
         case 'link':
             comp =  <FieldLink {...props} callEndpoint={debouncedCallEndpint} fieldInfo={fieldInfo} />
+            break;
         case 'arrayLink':
             comp =  <FieldArrayLink {...props} callEndpoint={debouncedCallEndpint}  fieldInfo={fieldInfo} />
+            break;
         case 'string_markdown':
             comp =  <FieldMkd {...props} fieldInfo={fieldInfo} />
+            break;
         case 'string_html':
             comp =  <FieldHTML {...props} fieldInfo={fieldInfo} />
+            break;
         case 'string_color':
             comp =  <FieldColor {...props} fieldInfo={fieldInfo} />
-        default:
-            comp =  <FieldText {...props} fieldInfo={fieldInfo} />
+            break;
     }
-    return <div style={{visibility:'hidden'}}>{comp}</div>
+    return <div style={{display: 'none'}}>{comp}</div>
 }
 
 
@@ -187,7 +193,7 @@ function FieldText(props) {
 
 function FieldColor(props) {
 
-    const { field, locale, template, model, state, onChange, fieldInfo, code } = props
+    const { field, locale, template, model, state, onChange, fieldInfo, code, lang } = props
     const basicProps = { onChange, locale, lang }
 
     return <Input
@@ -204,7 +210,7 @@ function FieldColor(props) {
 }
 
 function FieldMkd(props) {
-    const { field, locale, template, model, state, onChange, fieldInfo, code } = props
+    const { field, locale, template, model, state, onChange, fieldInfo, code, lang } = props
     const basicProps = { onChange, locale, lang }
     const defaultValue = model[fieldInfo.sysName]
 
