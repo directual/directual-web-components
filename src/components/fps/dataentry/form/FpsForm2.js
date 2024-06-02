@@ -712,37 +712,37 @@ function RenderStep(props) {
         });
 
         // fake request
-        setTimeout(() => {
-          const data = [
-            {
-              "name": "John",
-              "id": "310846eb-460e-452b-9c4b-a2e1f71e773e"
-            },
-            {
-              "name": "Paul",
-              "id": "ac32238e-e7cd-4038-90eb-752f97edbaf6"
-            },
-            {
-              "name": "Peter",
-              "id": "9100a8fb-4743-402a-b1f1-0081c7e2e777"
-            },
-            {
-              "name": "Kate",
-              "id": "31560763-541e-4643-be51-6e6041e2868e"
-            },
-            {
-              "name": "Julia",
-              "id": "66628fb9-07cb-4e4f-9e51-c03bd64d67d6"
-            },
-            {
-              "name": "Monica",
-              "id": "1d37d760-2f64-498a-9432-d9895ad5da00"
-            }
-          ]
-          const visibleNames = '[{"sysName":"firstName"},{"sysName":"lastName"}]'
-          finish && finish(transformedArray(data, visibleNames))
-          setOptions && setOptions(transformedArray(data, visibleNames))
-        }, 1000)
+        // setTimeout(() => {
+        //   const data = [
+        //     {
+        //       "name": "John",
+        //       "id": "310846eb-460e-452b-9c4b-a2e1f71e773e"
+        //     },
+        //     {
+        //       "name": "Paul",
+        //       "id": "ac32238e-e7cd-4038-90eb-752f97edbaf6"
+        //     },
+        //     {
+        //       "name": "Peter",
+        //       "id": "9100a8fb-4743-402a-b1f1-0081c7e2e777"
+        //     },
+        //     {
+        //       "name": "Kate",
+        //       "id": "31560763-541e-4643-be51-6e6041e2868e"
+        //     },
+        //     {
+        //       "name": "Julia",
+        //       "id": "66628fb9-07cb-4e4f-9e51-c03bd64d67d6"
+        //     },
+        //     {
+        //       "name": "Monica",
+        //       "id": "1d37d760-2f64-498a-9432-d9895ad5da00"
+        //     }
+        //   ]
+        //   const visibleNames = '[{"sysName":"firstName"},{"sysName":"lastName"}]'
+        //   finish && finish(transformedArray(data, visibleNames))
+        //   setOptions && setOptions(transformedArray(data, visibleNames))
+        // }, 1000)
 
         callEndpoint && callEndpoint(
           endpoint,
