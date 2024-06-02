@@ -431,7 +431,7 @@ function FieldBoolean(props) {
 
 function FieldLink(props) {
 
-    const { field, locale, template, model, state, onChange, fieldInfo, code, callEndpoint } = props
+    const { field, locale, template, model, state, setState, onChange, fieldInfo, code, callEndpoint } = props
     const basicProps = { onChange, locale }
 
     const [firstLoad, setFirstLoad] = useState(false)
@@ -460,12 +460,16 @@ function FieldLink(props) {
             // механизм сброса если из-за новых параметров среди опций нет значения:
             const currentValue = model[fieldInfo.sysName]
             if (resetValue && (currentValue || currentValue == 0)) {
-                if (!_.some(data, { key: currentValue })) {
+                if (!_.some(data, { key: currentValue }) && field._field_link_reset) {
                     onChange(null)
                 }
             }
 
-            //
+            if(field._field_link_saveQuantity && field._field_link_saveQuantity_Field) {
+                const fieldName = field._field_link_saveQuantity_Field.substring(9)
+                setState({...state, [fieldName]: data.length})
+            }
+
             setOptions(data)
         }, err => {
             setError(err.msg)
@@ -653,7 +657,7 @@ function FieldLink(props) {
 
 function FieldArrayLink(props) {
 
-    const { field, locale, template, model, state, onChange, fieldInfo, code, callEndpoint } = props
+    const { field, locale, template, model, state, setState, onChange, fieldInfo, code, callEndpoint } = props
     const basicProps = { onChange, locale }
 
     const [firstLoad, setFirstLoad] = useState(false)
@@ -683,9 +687,13 @@ function FieldArrayLink(props) {
             // механизм сброса если из-за новых параметров среди опций нет значения:
             const currentValue = model[fieldInfo.sysName]
             if (resetValue && (currentValue || currentValue == 0)) {
-                if (!_.some(data, { key: currentValue })) {
+                if (!_.some(data, { key: currentValue }) && field._field_link_reset) {
                     onChange(null)
                 }
+            }
+            if(field._field_link_saveQuantity && field._field_link_saveQuantity_Field) {
+                const fieldName = field._field_link_saveQuantity_Field.substring(9)
+                setState({...state, [fieldName]: data.length})
             }
             setOptions(data)
         }, err => {
