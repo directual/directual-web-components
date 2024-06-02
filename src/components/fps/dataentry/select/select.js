@@ -230,13 +230,13 @@ export default function Select(props) {
         });
         return ref.current;
     }
-    function performFiltering() {
+    function performFiltering(resetValue) {
         setLoading(true)
         props.onLoad((data) => {
             setLoading(false)
             setFilteredOptions(data)
             setKeySelected('')
-        }, filter, props.defaultValue)
+        }, filter, props.defaultValue, resetValue)
     }
 
     const { callParams, defaultValue } = props
@@ -246,7 +246,7 @@ export default function Select(props) {
     // call endpoint when request params are changed
     useEffect(() => {
         if (!_.isEqual(callParams, prevCallParams) && props.dinamicSelect && props.onLoad) {
-            filterOptions(undefined, undefined, undefined, true)
+            filterOptions(true)
         }
     }, [callParams])
 
