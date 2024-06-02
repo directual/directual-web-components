@@ -81,13 +81,13 @@ export default function FpsForm2(props) {
       if (_.get(params, "general.autosubmit_model") && _.get(params, "general.autosubmit_model").length > 0) {
         let send = false
         _.get(params, "general.autosubmit_model").forEach(field => {
-          if (_.get(previousModel,field) !== _.get(model,field)) { send = true }
+          if (_.get(previousModel, field) !== _.get(model, field)) { send = true }
         })
         if (send) {
-          submit(undefined, undefined, undefined, true)
+          submit(undefined, true, undefined, true)
         }
       } else {
-        submit(undefined, undefined, undefined, true)
+        submit(undefined, true, undefined, true)
       }
     }
   }, [model])
@@ -101,14 +101,14 @@ export default function FpsForm2(props) {
     if (_.get(params, "general.autosubmit") == "always" && autoSubmitStep !== state.step) {
       console.log("AUTOSUBMIT!")
       setAutoSubminStep(state.step)
-      submit(undefined, undefined, undefined, true)
+      submit(undefined, true, undefined, true)
     }
     if (_.get(params, "general.autosubmit") == "steps"
       && _.includes(_.get(params, "general.autosubmit_steps").split(","), state.step
         && autoSubmitStep !== state.step)) {
       console.log("AUTOSUBMIT!")
       setAutoSubminStep(state.step)
-      submit(undefined, undefined, undefined, true)
+      submit(undefined, true, undefined, true)
     }
   }, [state])
 
@@ -154,17 +154,6 @@ export default function FpsForm2(props) {
   }, [model])
 
 
-
-  // LEGACY:
-  const sendMsg = (msg) => {
-    const message = { ...msg, _id: 'form_' + id }
-    setLoading(true)
-    if (onEvent) {
-      onEvent(message)
-    }
-  }
-  // =======
-
   function submit(finish, submitKeepModel, targetStep, autoSubmit) {
     setState({ ...state, _submitError: "" })
     let modelToSend = {}
@@ -205,6 +194,7 @@ export default function FpsForm2(props) {
       finish()
       return;
     }
+
     console.log('submitting form...')
     console.log(modelToSend)
     setLoading(true)
@@ -222,28 +212,32 @@ export default function FpsForm2(props) {
           let saveState = { ...state }
           let stateUpdate = {}
           let modelUpdate = {}
-          try {
-            const response = JSON.parse(data)
-            // update state
-            if (!isEmpty(_.get(response, "state"))) {
-              stateUpdate = _.get(response, "state") || {}
+          if (data && data.length > 0) {
+            try {
+              const response = JSON.parse(data)
+              // update state
+              if (!isEmpty(_.get(response, "state"))) {
+                stateUpdate = _.get(response, "state") || {}
+              }
+              // update model
+              if (!isEmpty(_.get(response, "model"))) {
+                modelUpdate = _.get(response, "model") || {}
+              }
+              if (!isEmpty(_.get(response, "object"))) {
+                modelUpdate = _.get(response, "object") || {}
+              }
+            } catch (err) {
+              console.log(err)
             }
-            // update model
-            if (!isEmpty(_.get(response, "model"))) {
-              modelUpdate = _.get(response, "model") || {}
-            }
-            if (!isEmpty(_.get(response, "object"))) {
-              modelUpdate = _.get(response, "object") || {}
-            }
-          } catch (err) {
-            console.log(err)
           }
           setLoading(false)
           finish && finish(data)
           autoSubmit ?
             setState({ ...saveState })
             : setState({ ...saveState, step: targetStep || "submitted", ...stateUpdate })
+
           if (submitKeepModel) { modelUpdate = { ...model, ...modelUpdate } }
+
           setModel(modelUpdate)
           setOriginalModel(modelUpdate)
         } else {
