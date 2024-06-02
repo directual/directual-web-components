@@ -441,7 +441,7 @@ function FieldLink(props) {
     const params = _.omitBy(_.mapValues(field._field_arrayLink_endpoint_params || {}, i => template("{{" + i + "}}")), _.isEmpty)
     const [error, setError] = useState("")
 
-    const refreshOptions = (finish, filter, value) => {
+    const refreshOptions = (finish, filter, value, resetValue) => {
         if (!field._field_arrayLink_endpoint) { return; }
         if (field._field_link_type !== "radio" &&
             field._field_link_type !== "radioImages" &&
@@ -456,6 +456,16 @@ function FieldLink(props) {
         callEndpoint(field._field_arrayLink_endpoint, reqParams, finish, data => {
             // console.log("finish")
             // console.log(data)
+
+            // механизм сброса если из-за новых параметров среди опций нет значения:
+            const currentValue = model[fieldInfo.sysName]
+            if (resetValue && (currentValue || currentValue == 0)) {
+                if (!_.some(data, { key: currentValue })) {
+                    onChange(null)
+                }
+            }
+
+            //
             setOptions(data)
         }, err => {
             setError(err.msg)
@@ -465,7 +475,7 @@ function FieldLink(props) {
     useEffect(i => {
         if (!_.isEqual(currentParams, params) && field._field_link_type !== "select") {
             // у селекта другой механизм обновления опций — функция дергается прямо из компонента
-            refreshOptions()
+            refreshOptions(undefined, undefined, undefined, true)
         }
     }, [params]) // update options when request params are changed
 
