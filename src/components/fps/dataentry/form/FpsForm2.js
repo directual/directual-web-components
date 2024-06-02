@@ -8,7 +8,8 @@ import InnerHTML from 'dangerously-set-html-content'
 import FormElement from './FpsForm2Element'
 import FpsFormPopup from './FpsForm2Popup'
 import Hint from '../../hint/hint'
-import debounce from 'lodash.debounce';
+//import debounce from 'lodash.debounce';
+import { debounce } from 'lodash'
 
 export default function FpsForm2(props) {
 
@@ -18,7 +19,6 @@ export default function FpsForm2(props) {
   // console.log("=== FpsForm2 data ===")
   // console.log(data)
 
-  
 
   const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
   const defaultState = { "step": "default step", "popup": "" }
@@ -79,6 +79,7 @@ export default function FpsForm2(props) {
 
   const cx = null
   const submitOnModel = debounce(submit, 700);
+  const debouncedCallEndpint = debounce(callEndpoint, 700);
 
   // AUTOSUBMIT ON STATE
   useEffect(() => {
@@ -553,6 +554,7 @@ export default function FpsForm2(props) {
               setModel={setModel}
               params={params}
               checkIfAllInputsHidden={checkIfAllInputsHidden}
+              callEndpoint={debouncedCallEndpint}
             />
           </div>
         })}
@@ -617,6 +619,7 @@ export default function FpsForm2(props) {
             setModel={setModel}
             params={params}
             checkIfAllInputsHidden={checkIfAllInputsHidden}
+            callEndpoint={debouncedCallEndpint}
           />
         </div>
       })}
