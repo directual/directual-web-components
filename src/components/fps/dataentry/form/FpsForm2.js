@@ -74,7 +74,25 @@ export default function FpsForm2(props) {
 
   const [autoSubmitStep, setAutoSubminStep] = useState(state.step)
 
-  // AUTOSUBMIT
+  // AUTOSUBMIT ON STATE
+  useEffect(() => {
+    if (_.get(params, "general.autosubmit") == "model") {
+      // any field:
+      if (_.get(params, "general.autosubmit_model") && _.get(params, "general.autosubmit_model").length > 0) {
+        let send = false
+        _.get(params, "general.autosubmit_model").forEach(field => {
+          if (_.get(previousModel,field) !== _.get(model,field)) { send = true }
+        })
+        if (send) {
+          submit(undefined, undefined, undefined, true)
+        }
+      } else {
+        submit(undefined, undefined, undefined, true)
+      }
+    }
+  }, [model])
+
+  // AUTOSUBMIT ON STATE
   useEffect(() => {
     if (!_.isEqual(previousState, state)) {
       setHighlightState(true)
@@ -554,6 +572,8 @@ export default function FpsForm2(props) {
       <span>debug mode: MODEL</span>
       {_.get(params, "general.autosubmit") == "always" && <code className='icon icon-move'>Autosubmit on each step change</code>}
       {_.get(params, "general.autosubmit") == "steps" && <code className='icon icon-move'>Autosubmit on: {_.get(params, "general.autosubmit_steps")}</code>}
+      {_.get(params, "general.autosubmit") == "model" && <code className='icon icon-move'>Autosubmit on model change
+        {_.get(params, "general.autosubmit_model") && _.get(params, "general.autosubmit_model").length > 0 ? `. Trigger fields: ${_.get(params, "general.autosubmit_model").join(", ")}` : ''}</code>}
       {modelIsChanged && <code className='icon icon-info'>Model is changed</code>}
     </pre>}
 
@@ -685,37 +705,37 @@ function RenderStep(props) {
         });
 
         // fake request
-        // setTimeout(() => {
-        //   const data = [
-        //     {
-        //       "name": "John",
-        //       "id": "310846eb-460e-452b-9c4b-a2e1f71e773e"
-        //     },
-        //     {
-        //       "name": "Paul",
-        //       "id": "ac32238e-e7cd-4038-90eb-752f97edbaf6"
-        //     },
-        //     {
-        //       "name": "Peter",
-        //       "id": "9100a8fb-4743-402a-b1f1-0081c7e2e777"
-        //     },
-        //     {
-        //       "name": "Kate",
-        //       "id": "31560763-541e-4643-be51-6e6041e2868e"
-        //     },
-        //     {
-        //       "name": "Julia",
-        //       "id": "66628fb9-07cb-4e4f-9e51-c03bd64d67d6"
-        //     },
-        //     {
-        //       "name": "Monica",
-        //       "id": "1d37d760-2f64-498a-9432-d9895ad5da00"
-        //     }
-        //   ]
-        //   const visibleNames = '[{"sysName":"firstName"},{"sysName":"lastName"}]'
-        //   finish && finish(transformedArray(data, visibleNames))
-        //   setOptions && setOptions(transformedArray(data, visibleNames))
-        // }, 1000)
+        setTimeout(() => {
+          const data = [
+            {
+              "name": "John",
+              "id": "310846eb-460e-452b-9c4b-a2e1f71e773e"
+            },
+            {
+              "name": "Paul",
+              "id": "ac32238e-e7cd-4038-90eb-752f97edbaf6"
+            },
+            {
+              "name": "Peter",
+              "id": "9100a8fb-4743-402a-b1f1-0081c7e2e777"
+            },
+            {
+              "name": "Kate",
+              "id": "31560763-541e-4643-be51-6e6041e2868e"
+            },
+            {
+              "name": "Julia",
+              "id": "66628fb9-07cb-4e4f-9e51-c03bd64d67d6"
+            },
+            {
+              "name": "Monica",
+              "id": "1d37d760-2f64-498a-9432-d9895ad5da00"
+            }
+          ]
+          const visibleNames = '[{"sysName":"firstName"},{"sysName":"lastName"}]'
+          finish && finish(transformedArray(data, visibleNames))
+          setOptions && setOptions(transformedArray(data, visibleNames))
+        }, 1000)
 
         callEndpoint && callEndpoint(
           endpoint,

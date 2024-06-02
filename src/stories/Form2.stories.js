@@ -18,7 +18,7 @@ export default {
 };
 
 let exampleForm = {
-    "sl": "profile",
+    "sl": "newBook",
     "pageSize": "10",
     "headerField": null,
     "params": {
@@ -28,48 +28,40 @@ let exampleForm = {
                 "sysName": "default step",
                 "elements": [
                     {
-                        "id": "elmnt_1716624006917",
-                        "type": "text",
-                        "paraText": "{{id}}"
-                    },
-                    {
-                        "id": "elmnt_1716624013382",
+                        "id": "elmnt_1715014589926",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17166240156140.03433011042303012011443",
-                                "_field": "userpic"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1716624023092",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17166240252180.30443444240242300200443",
-                                "_field": "firstName"
+                                "id": "17150148642050.32232224043302224100203",
+                                "_field": "title",
+                                "_field_required": false,
+                                "_field_add_description": false
                             },
                             {
-                                "id": "17166240261890.41210301010011403112343",
-                                "_field": "lastName"
+                                "id": "17173179443340.33040143432104442113332",
+                                "_field": "language_id",
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "getlangs"
+                            },
+                            {
+                                "id": "17173179447280.1113304324411431113301",
+                                "_field": "author_id",
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "getAutors",
+                                "_field_arrayLink_endpoint_params": {
+                                    "lang": "language_id"
+                                },
+                                "_field_link_pageSize": null,
+                                "_field_link_reset": true
                             }
                         ],
-                        "_input_fields_in_a_row": 2
+                        "_input_fields_in_a_row": 3,
+                        "_input_fields_in_a_row_column": "column"
                     },
                     {
-                        "id": "elmnt_1716624297630",
+                        "id": "elmnt_1715015400606",
                         "type": "submit",
-                        "submitLabel": "Save profile",
-                        "submitKeepModel": true,
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1716624309643",
-                                "_conditionalView_operator": "modelChanged"
-                            }
-                        ],
-                        "submitStep": "hello_world"
+                        "submitIcon": "done"
                     }
                 ]
             },
@@ -81,41 +73,27 @@ let exampleForm = {
                         "id": "elmnt_1712052683797",
                         "type": "hint",
                         "hintColor": "ok",
-                        "hintTitle": "",
-                        "hintText": "Profile is saved"
-                    },
-                    {
-                        "id": "elmnt_1716624358290",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17166243601840.01140230041120330414334",
-                                "_action": "action_1716624328963"
-                            }
-                        ]
+                        "hintTitle": "Thank you!",
+                        "hintText": "Submitted"
                     }
                 ]
             }
         ],
-        "form_maxWidth": 550,
+        "state": {
+            "step": "default step"
+        },
         "general": {
-            "edittingOn": true,
-            "showModel": false
+            "autosubmit": "model",
+            "autosubmit_model": [
+                "language_id"
+            ],
+            "showState": true,
+            "showModel": true
         },
         "actions": [
             {
-                "id": "action_1716624328963",
-                "name": "back to profile",
-                "actionType": "state",
-                "stateMapping": [
-                    {
-                        "id": "stateMapping1716624336817",
-                        "field": "FormState.step",
-                        "value": "default step"
-                    }
-                ],
-                "autoAction": true,
-                "autoAction_delay": 3
+                "id": "action_1717318528828",
+                "name": "test"
             }
         ]
     },
@@ -123,46 +101,18 @@ let exampleForm = {
     "actions": null,
     "headers": [
         {
-            "sysName": "firstName",
-            "dataType": "string",
-            "name": "First name",
-            "id": "7",
-            "link": "",
-            "group": "",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 4,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
             "sysName": "id",
+            "name": "id",
             "dataType": "id",
-            "name": "Username (login)",
-            "id": "15",
+            "id": "0",
             "link": "",
-            "group": "",
+            "group": "0",
             "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 1,
+            "order": 0,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -170,118 +120,6 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "lastName",
-            "dataType": "string",
-            "name": "Last name",
-            "id": "6",
-            "link": "",
-            "group": "",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 5,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "phone",
-            "dataType": "string",
-            "name": "Phone",
-            "id": "12",
-            "link": "",
-            "group": "-502807437",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 8,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": "Contacts",
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "role",
-            "dataType": "array",
-            "name": "Roles",
-            "id": "8",
-            "link": "",
-            "group": "",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 2,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": true
-        },
-        {
-            "sysName": "userpic",
-            "dataType": "file",
-            "name": "User pic",
-            "id": "3",
-            "link": "",
-            "group": "-502807437",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 13,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": "image",
-            "formatOptions": {},
-            "groupName": "Contacts",
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
@@ -293,13 +131,7 @@ let exampleForm = {
     ],
     "data": [
         {
-            "role": [
-                ""
-            ],
-            "lastName": "ershov",
-            "firstName": "pavel",
-            "id": "pavel",
-            "userpic": "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg"
+            "id": "b4ad0c0a-526a-46f1-b9e2-8f0feec3caf4"
         }
     ],
     "totalPages": 1,
@@ -307,72 +139,50 @@ let exampleForm = {
     "error": null,
     "fieldScheme": [
         [
-            "firstName",
-            99312266
-        ],
-        [
             "id",
-            99312266
-        ],
-        [
-            "lastName",
-            99312266
-        ],
-        [
-            "phone",
-            99312266
-        ],
-        [
-            "role",
-            99312266
-        ],
-        [
-            "userpic",
-            99312266
+            99307837
         ]
     ],
     "writeFields": [
-        "firstName",
-        "id",
-        "lastName",
-        "phone",
-        "userpic"
+        "title",
+        "language_id",
+        "author_id"
     ],
     "structures": {
-        "99312266": {
-            "id": 99312266,
-            "dateCreated": "2024-05-16T18:21:55Z",
+        "99307837": {
+            "id": 99307837,
+            "dateCreated": "2024-04-25T05:28:08Z",
             "hidden": false,
             "dateHidden": null,
-            "networkID": 20849,
-            "name": "App users",
-            "sysName": "WebUser",
-            "jsonObject": "[{\"sysName\":\"dateLastActivity\",\"dataType\":\"string\",\"name\":\"dateLastActivity\",\"id\":\"10\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"dateCreated\",\"dataType\":\"string\",\"name\":\"dateCreated\",\"id\":\"13\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isAuthorization\",\"dataType\":\"boolean\",\"name\":\"isAuthorization\",\"id\":\"9\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"notifications_counter\",\"dataType\":\"string\",\"name\":\"Notifications Counter\",\"id\":\"1\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"custom_labels\",\"dataType\":\"json\",\"name\":\"Custom labels\",\"id\":\"2\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"phone\",\"dataType\":\"string\",\"name\":\"Phone\",\"id\":\"12\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"email\",\"dataType\":\"string\",\"name\":\"Email\",\"id\":\"11\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"userpic\",\"dataType\":\"file\",\"name\":\"User pic\",\"id\":\"3\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":\"Contacts\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"Username (login)\",\"id\":\"15\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"role\",\"dataType\":\"array\",\"name\":\"Roles\",\"id\":\"8\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":true},{\"sysName\":\"password\",\"dataType\":\"string\",\"name\":\"Password (hash)\",\"id\":\"14\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"firstName\",\"dataType\":\"string\",\"name\":\"First name\",\"id\":\"7\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"lastName\",\"dataType\":\"string\",\"name\":\"Last name\",\"id\":\"6\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"gender\",\"dataType\":\"string\",\"name\":\"Gender\",\"id\":\"5\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isBlocked\",\"dataType\":\"boolean\",\"name\":\"Block user\",\"id\":\"4\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"systemMessage\",\"dataType\":\"string\",\"name\":\"System message\",\"id\":\"56921641637265680\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"secret\",\"dataType\":\"string\",\"name\":\"secret\",\"id\":\"81131636839496227\",\"link\":\"\",\"group\":\"1636839487957\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"notif_Email\",\"dataType\":\"boolean\",\"name\":\"Notify me by Email\",\"id\":\"61231639915065277\",\"link\":\"\",\"group\":\"1639915049523\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Yes\",\"No\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false}]",
-            "jsonGroupSettings": "[{\"id\":-502807437,\"name\":\"Contacts\",\"order\":0},{\"id\":1639915049523,\"name\":\"Notifications\",\"order\":1},{\"id\":1636839487957,\"name\":\"Password restoring\",\"order\":2},{\"id\":-1776115286,\"name\":\"System fields (LEGACY)\",\"order\":3}]",
-            "jsonViewIdSettings": "[{\"sysName\":\"firstName\"},{\"sysName\":\"lastName\"}]",
-            "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
+            "networkID": 20686,
+            "name": "Books",
+            "sysName": "books",
+            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"author_id\",\"name\":\"Author\",\"dataType\":\"link\",\"id\":\"14461714022891212\",\"link\":\"authors\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":true,\"array\":false},{\"sysName\":\"title\",\"name\":\"Title\",\"dataType\":\"string\",\"id\":\"44401714022921250\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"language_id\",\"name\":\"Language\",\"dataType\":\"link\",\"id\":\"50021714023334973\",\"link\":\"language\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"linkType\":true,\"array\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": null,
+            "jsonSettings": null,
             "jsonNativeIndexSettings": null,
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2024-05-24T14:11:19Z",
-            "createBy": 0,
-            "changedBy": 0,
+            "dateChanged": "2024-04-25T16:11:40Z",
+            "createBy": 21,
+            "changedBy": 1,
             "_settings": null,
             "_nativeIndexSettings": null,
             "innerIDField": {
                 "sysName": "id",
+                "name": "id",
                 "dataType": "id",
-                "name": "Username (login)",
-                "id": "15",
+                "id": "0",
                 "link": "",
-                "group": "",
+                "group": "0",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 1,
+                "order": 0,
                 "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
@@ -397,24 +207,24 @@ let exampleForm = {
     "writeResponse": null,
     "fileds": [
         {
-            "sysName": "firstName",
+            "sysName": "title",
+            "name": "Title",
             "dataType": "string",
-            "name": "First name",
-            "id": "7",
-            "link": "",
-            "group": "",
-            "tags": "",
+            "id": "44401714022921250",
+            "link": null,
+            "group": "0",
+            "tags": null,
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 4,
+            "order": 2,
             "linkIndexFieldSysName": [],
-            "defaultValue": "",
+            "defaultValue": null,
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": {},
+            "formatOptions": null,
             "groupName": null,
             "linkOrArrayLinkType": false,
             "linkType": false,
@@ -425,111 +235,55 @@ let exampleForm = {
             "array": false
         },
         {
-            "sysName": "id",
-            "dataType": "id",
-            "name": "Username (login)",
-            "id": "15",
-            "link": "",
-            "group": "",
-            "tags": "",
+            "sysName": "language_id",
+            "name": "Language",
+            "dataType": "link",
+            "id": "50021714023334973",
+            "link": "language",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "author_id",
+            "name": "Author",
+            "dataType": "link",
+            "id": "14461714022891212",
+            "link": "authors",
+            "group": "0",
+            "tags": null,
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
             "order": 1,
             "linkIndexFieldSysName": [],
-            "defaultValue": "",
+            "defaultValue": null,
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": {},
+            "formatOptions": null,
             "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "lastName",
-            "dataType": "string",
-            "name": "Last name",
-            "id": "6",
-            "link": "",
-            "group": "",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 5,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "phone",
-            "dataType": "string",
-            "name": "Phone",
-            "id": "12",
-            "link": "",
-            "group": "-502807437",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 8,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": "Contacts",
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "userpic",
-            "dataType": "file",
-            "name": "User pic",
-            "id": "3",
-            "link": "",
-            "group": "-502807437",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 13,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": "image",
-            "formatOptions": {},
-            "groupName": "Contacts",
-            "linkOrArrayLinkType": false,
-            "linkType": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
             "json": false,
@@ -542,7 +296,7 @@ let exampleForm = {
     "cardCustomHtml": null,
     "cardCustomLayout": null,
     "comment": null,
-    "response": false
+    "response": null
 }
 
 let authExample = {
