@@ -12,12 +12,16 @@ import Media from '../../media/media'
 import _ from 'lodash'
 import Hint from '../../hint/hint'
 import { Tags } from '../../tags/Tags'
+import { debounce } from 'lodash'
 
 export default function FpsForm2Input(props) {
-    const { field, template, dict, lang, loading, editModel, model, data, state, locale } = props
+    const { field, template, dict, lang, loading, editModel, callEndpoint, model, data, state, locale } = props
 
     const fieldInfo = _.find(_.get(data, "fileds"), { sysName: field._field }) || {}
     const type = `${fieldInfo.dataType}${fieldInfo.format ? `_${fieldInfo.format}` : ''}`
+
+    const debouncedCallEndpint = debounce(callEndpoint, 700);
+
 
     switch (type) {
         case 'json':
@@ -38,9 +42,9 @@ export default function FpsForm2Input(props) {
         case 'boolean':
             return <FieldBoolean {...props} fieldInfo={fieldInfo} />
         case 'link':
-            return <FieldLink {...props} fieldInfo={fieldInfo} />
+            return <FieldLink {...props} callEndpoint={debouncedCallEndpint} fieldInfo={fieldInfo} />
         case 'arrayLink':
-            return <FieldArrayLink {...props} fieldInfo={fieldInfo} />
+            return <FieldArrayLink {...props} callEndpoint={debouncedCallEndpint}  fieldInfo={fieldInfo} />
         case 'string_markdown':
             return <FieldMkd {...props} fieldInfo={fieldInfo} />
         case 'string_html':

@@ -79,7 +79,7 @@ export default function FpsForm2(props) {
 
   const cx = null
   const submitOnModel = debounce(submit, 700);
-  const debouncedCallEndpint = debounce(callEndpoint, 700);
+  //const debouncedCallEndpint = debounce(callEndpoint, 700);
 
   // AUTOSUBMIT ON STATE
   useEffect(() => {
@@ -554,7 +554,7 @@ export default function FpsForm2(props) {
               setModel={setModel}
               params={params}
               checkIfAllInputsHidden={checkIfAllInputsHidden}
-              callEndpoint={debouncedCallEndpint}
+              //callEndpoint={debouncedCallEndpint}
             />
           </div>
         })}
@@ -619,7 +619,7 @@ export default function FpsForm2(props) {
             setModel={setModel}
             params={params}
             checkIfAllInputsHidden={checkIfAllInputsHidden}
-            callEndpoint={debouncedCallEndpint}
+            //callEndpoint={debouncedCallEndpint}
           />
         </div>
       })}
