@@ -22,7 +22,6 @@ export default function FpsForm2Input(props) {
 
     const debouncedCallEndpint = debounce(callEndpoint, 300);
 
-
     switch (type) {
         case 'json':
         case 'json_checkboxes':
@@ -54,6 +53,50 @@ export default function FpsForm2Input(props) {
         default:
             return <FieldText {...props} fieldInfo={fieldInfo} />
     }
+}
+
+export function FpsForm2HiddenInput(props) {
+    const { field, template, dict, lang, loading, editModel, callEndpoint, model, data, state, locale } = props
+
+    const fieldInfo = _.find(_.get(data, "fileds"), { sysName: field._field }) || {}
+    const type = `${fieldInfo.dataType}${fieldInfo.format ? `_${fieldInfo.format}` : ''}`
+
+    const debouncedCallEndpint = debounce(callEndpoint, 300);
+
+    let comp
+
+    switch (type) {
+        case 'json':
+        case 'json_checkboxes':
+        case 'json_slider':
+        case 'json_rangeSlider':
+        case 'json_radioOptions':
+        case 'json_keyValue':
+        case 'json_geo':
+            comp = <FieldJson {...props} fieldInfo={fieldInfo} />
+        case 'file_multipleFiles':
+        case 'file_multipleImages':
+        case 'file_image':
+        case 'file':
+            comp =  <FieldFile {...props} fieldInfo={fieldInfo} />
+        case 'date':
+            comp =  <FieldDate {...props} fieldInfo={fieldInfo} />
+        case 'boolean':
+            comp =  <FieldBoolean {...props} fieldInfo={fieldInfo} />
+        case 'link':
+            comp =  <FieldLink {...props} callEndpoint={debouncedCallEndpint} fieldInfo={fieldInfo} />
+        case 'arrayLink':
+            comp =  <FieldArrayLink {...props} callEndpoint={debouncedCallEndpint}  fieldInfo={fieldInfo} />
+        case 'string_markdown':
+            comp =  <FieldMkd {...props} fieldInfo={fieldInfo} />
+        case 'string_html':
+            comp =  <FieldHTML {...props} fieldInfo={fieldInfo} />
+        case 'string_color':
+            comp =  <FieldColor {...props} fieldInfo={fieldInfo} />
+        default:
+            comp =  <FieldText {...props} fieldInfo={fieldInfo} />
+    }
+    return <div style={{visibility:'hidden'}}>{comp}</div>
 }
 
 

@@ -8,7 +8,7 @@ import ActionPanel from '../../actionspanel/actionspanel'
 import Input from '../input/input'
 import { InputRow } from '../input/input'
 import { InputForm } from './InputForm'
-import FpsForm2Input from './FpsForm2Input'
+import FpsForm2Input, { FpsForm2HiddenInput } from './FpsForm2Input'
 import FpsForm2Action from './FpsForm2Action'
 import FormSteps from './FormSteps'
 import _ from 'lodash'
@@ -67,7 +67,23 @@ function ElementInput(props) {
     const inputs = _.get(element, "_input_fields") || []
 
     return <InputRow column={_.get(element, "_input_fields_in_a_row_column") == "column"}>
-        {inputs.filter(field => !field._field_hidden).map(field => (field._field || field._state_field) ? <FpsForm2Input
+        {inputs
+            .filter(field => !field._field_hidden)
+            .map(field => (field._field || field._state_field) ? <FpsForm2Input
+            {...props}
+            key={field.id}
+            field={field}
+            onChange={value => {
+                field._input_type == "state" ?
+                    setState({ ...state, [field._state_field]: value })
+                    :
+                    editModel(field._field)(value)
+            }}
+        /> : <div>Field is not configured</div>
+        )}
+        {inputs
+            .filter(field => field._field_hidden)
+            .map(field => (field._field || field._state_field) ? <FpsForm2HiddenInput
             {...props}
             key={field.id}
             field={field}

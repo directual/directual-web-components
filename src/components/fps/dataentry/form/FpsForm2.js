@@ -554,7 +554,7 @@ export default function FpsForm2(props) {
               setModel={setModel}
               params={params}
               checkIfAllInputsHidden={checkIfAllInputsHidden}
-              //callEndpoint={debouncedCallEndpint}
+            //callEndpoint={debouncedCallEndpint}
             />
           </div>
         })}
@@ -619,7 +619,7 @@ export default function FpsForm2(props) {
             setModel={setModel}
             params={params}
             checkIfAllInputsHidden={checkIfAllInputsHidden}
-            //callEndpoint={debouncedCallEndpint}
+          //callEndpoint={debouncedCallEndpint}
           />
         </div>
       })}
@@ -630,7 +630,7 @@ function RenderStep(props) {
   const { auth, data, callEndpoint, onEvent, id, handleRoute, currentStep, templateState, checkIfAllInputsHidden, editModel, originalModel,
     model, checkHidden, dict, locale, state, loading, template, setState, lang, submit, params, setModel } = props
 
-  return (currentStep.elements || [])
+  return <div>{(currentStep.elements || [])
     .filter(element => !checkHidden(element) && !checkIfAllInputsHidden(element))
     .map(element => <FormElement
       model={model}
@@ -765,7 +765,144 @@ function RenderStep(props) {
           }
         )
       }}
-      key={element.id} />)
+      key={element.id} />)}
+    {(currentStep.elements || [])
+      .filter(element => checkIfAllInputsHidden(element))
+      .map(element => <FormElement
+        model={model}
+        data={data}
+        checkHidden={checkHidden}
+        originalModel={originalModel}
+        dict={dict}
+        locale={locale}
+        handleRoute={handleRoute}
+        state={state}
+        templateState={templateState}
+        loading={loading}
+        setState={setState}
+        lang={lang}
+        onSubmit={submit}
+        template={template}
+        editModel={editModel}
+        setModel={setModel}
+        element={element}
+        callEndpointPOST={(endpoint, body, finish) => {
+          console.log('===> calling endpoint /' + endpoint)
+          console.log(body)
+          callEndpoint && callEndpoint(
+            endpoint,
+            "POST",
+            body,
+            undefined,
+            (result, data) => {
+              if (result == "ok") {
+                finish && finish(data)
+                try {
+                  const response = JSON.parse(data)
+                  // update state
+                  if (!isEmpty(_.get(response, "state"))) {
+                    const stateUpdate = _.get(response, "state")
+                    setState({ ...state, ...stateUpdate })
+                  }
+                  // update model/object
+                  if (!isEmpty(_.get(response, "object"))) {
+                    const modelUpdate = _.get(response, "object")
+                    setModel({ ...model, ...modelUpdate })
+                  }
+                  if (!isEmpty(_.get(response, "model"))) {
+                    const modelUpdate = _.get(response, "model")
+                    setModel({ ...model, ...modelUpdate })
+                  }
+                } catch (err) {
+                  console.log(err)
+                }
+              }
+            }
+          )
+        }}
+        callEndpoint={(endpoint, params, finish, setOptions, setError) => {
+          // console.log('===> calling endpoint /' + endpoint)
+          // console.log(params)
+          const transformedArray = (inputArray, visibleNames) => _.map(inputArray, (item) => {
+            const parseJson = json => {
+              if (!json) return {}
+              let parsedJson = {}
+              if (typeof json == 'object') return json
+              try {
+                parsedJson = JSON.parse(json)
+              }
+              catch (e) {
+                console.log(json);
+                console.log(e);
+              }
+              return parsedJson
+            }
+
+            const { id, ...rest } = item; // Destructure `id` and the rest of the properties
+            const value = _.trim(_.map(parseJson(visibleNames), field => _.get(item, field.sysName)).join(' ')) ||
+              _.values(_.pickBy(rest, _.isString)).join(' '); // Concatenate string values
+            return {
+              key: id,
+              value: _.trim(value) || id
+            };
+          });
+
+          // fake request
+          // setTimeout(() => {
+          //   const data = [
+          //     {
+          //       "name": "John",
+          //       "id": "310846eb-460e-452b-9c4b-a2e1f71e773e"
+          //     },
+          //     {
+          //       "name": "Paul",
+          //       "id": "ac32238e-e7cd-4038-90eb-752f97edbaf6"
+          //     },
+          //     {
+          //       "name": "Peter",
+          //       "id": "9100a8fb-4743-402a-b1f1-0081c7e2e777"
+          //     },
+          //     {
+          //       "name": "Kate",
+          //       "id": "31560763-541e-4643-be51-6e6041e2868e"
+          //     },
+          //     {
+          //       "name": "Julia",
+          //       "id": "66628fb9-07cb-4e4f-9e51-c03bd64d67d6"
+          //     },
+          //     {
+          //       "name": "Monica",
+          //       "id": "1d37d760-2f64-498a-9432-d9895ad5da00"
+          //     }
+          //   ]
+          //   const visibleNames = '[{"sysName":"firstName"},{"sysName":"lastName"}]'
+          //   finish && finish(transformedArray(data, visibleNames))
+          //   setOptions && setOptions(transformedArray(data, visibleNames))
+          // }, 1000)
+
+          callEndpoint && callEndpoint(
+            endpoint,
+            "GET",
+            undefined,
+            params,
+            (result, data, visibleNames) => {
+              // console.log(result)
+              // console.log(data)
+
+              if (result == "ok") {
+                finish && finish(transformedArray(data, visibleNames))
+                setOptions && setOptions(transformedArray(data, visibleNames))
+              }
+              else {
+                setError && setError(data)
+                finish && finish([])
+                setOptions && setOptions([])
+              }
+            }
+          )
+        }}
+        key={element.id} />)}
+  </div>
 }
 
 FpsForm2.propTypes = {
