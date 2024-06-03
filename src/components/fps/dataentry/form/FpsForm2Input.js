@@ -510,7 +510,7 @@ function FieldLink(props) {
             const currentValue = model[fieldInfo.sysName]
             if (resetValue && (currentValue || currentValue == 0)) {
                 if (!_.some(data, { key: currentValue }) && field._field_link_reset) {
-                    onChange(null)
+                    onChange && onChange(null)
                 }
             }
 
@@ -737,7 +737,7 @@ function FieldArrayLink(props) {
             const currentValue = model[fieldInfo.sysName]
             if (resetValue && (currentValue || currentValue == 0)) {
                 if (!_.some(data, { key: currentValue }) && field._field_link_reset) {
-                    onChange(null)
+                    onChange && onChange(null)
                 }
             }
             if(field._field_link_saveQuantity && field._field_link_saveQuantity_Field) {

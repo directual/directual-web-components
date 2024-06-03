@@ -237,6 +237,16 @@ export default function FpsForm2(props) {
               if (!isEmpty(_.get(response, "object"))) {
                 modelUpdate = _.get(response, "object") || {}
               }
+              if (!isEmpty(_.get(response, "redirect")) &&
+                !isEmpty(_.get(response, "redirect.target"))) {
+                let delay = 0
+                if (!isEmpty(_.get(response, "redirect.delay"))) {
+                  delay = typeof _.get(response, "redirect.delay") == 'number' ? _.get(response, "redirect.delay") : parseInt(_.get(response, "redirect.delay"))
+                }
+                setTimeout(() => {
+                  handleRoute(_.get(response, "redirect.target"))()
+                }, delay)
+              }
             } catch (err) {
               console.log(err)
             }
@@ -677,6 +687,16 @@ function RenderStep(props) {
                   const modelUpdate = _.get(response, "model")
                   setModel({ ...model, ...modelUpdate })
                 }
+                if (!isEmpty(_.get(response, "redirect")) &&
+                  !isEmpty(_.get(response, "redirect.target"))) {
+                  let delay = 0
+                  if (!isEmpty(_.get(response, "redirect.delay"))) {
+                    delay = typeof _.get(response, "redirect.delay") == 'number' ? _.get(response, "redirect.delay") : parseInt(_.get(response, "redirect.delay"))
+                  }
+                  setTimeout(() => {
+                    handleRoute(_.get(response, "redirect.target"))()
+                  }, delay)
+                }
               } catch (err) {
                 console.log(err)
               }
@@ -812,6 +832,16 @@ function RenderStep(props) {
                   if (!isEmpty(_.get(response, "model"))) {
                     const modelUpdate = _.get(response, "model")
                     setModel({ ...model, ...modelUpdate })
+                  }
+                  if (!isEmpty(_.get(response, "redirect")) &&
+                    !isEmpty(_.get(response, "redirect.target"))) {
+                    let delay = 0
+                    if (!isEmpty(_.get(response, "redirect.delay"))) {
+                      delay = typeof _.get(response, "redirect.delay") == 'number' ? _.get(response, "redirect.delay") : parseInt(_.get(response, "redirect.delay"))
+                    }
+                    setTimeout(() => {
+                      handleRoute(_.get(response, "redirect.target"))()
+                    }, delay)
                   }
                 } catch (err) {
                   console.log(err)
