@@ -218,8 +218,8 @@ export default function FpsForm2(props) {
       (result, data) => {
         if (result == "ok") {
           finish && finish(data)
-          // console.log("FINISH SUBMIT")
-          // console.log(data)
+          console.log("FINISH SUBMIT")
+          console.log(data)
           let saveState = { ...state }
           let stateUpdate = {}
           let modelUpdate = {}
