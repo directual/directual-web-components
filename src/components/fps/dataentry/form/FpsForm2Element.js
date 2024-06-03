@@ -14,7 +14,7 @@ import FormSteps from './FormSteps'
 import _ from 'lodash'
 
 export default function FormElement(props) {
-    const { element, template, checkHidden } = props
+    const { element, template, checkHidden, hidden } = props
 
     let render
     switch (element.type) {
@@ -47,7 +47,7 @@ export default function FormElement(props) {
             break;
     }
 
-    return <div className={`${styles.elementWrapper} D_FPS_FORM2_ELEMENT_WRAPPER`}>{render}</div>
+    return <div style={hidden ? { display: 'none' } : {}} className={`${styles.elementWrapper} D_FPS_FORM2_ELEMENT_WRAPPER`}>{render}</div>
 }
 
 function ElementSteps(props) {
@@ -70,31 +70,31 @@ function ElementInput(props) {
         {inputs
             .filter(field => !field._field_hidden)
             .map(field => (field._field || field._state_field) ? <FpsForm2Input
-            {...props}
-            key={field.id}
-            field={field}
-            onChange={value => {
-                field._input_type == "state" ?
-                    setState({ ...state, [field._state_field]: value })
-                    :
-                    editModel(field._field)(value)
-            }}
-        /> : <div>Field is not configured</div>
-        )}
+                {...props}
+                key={field.id}
+                field={field}
+                onChange={value => {
+                    field._input_type == "state" ?
+                        setState({ ...state, [field._state_field]: value })
+                        :
+                        editModel(field._field)(value)
+                }}
+            /> : <div>Field is not configured</div>
+            )}
         {inputs
             .filter(field => field._field_hidden)
             .map(field => (field._field || field._state_field) ? <FpsForm2HiddenInput
-            {...props}
-            key={field.id}
-            field={field}
+                {...props}
+                key={field.id}
+                field={field}
             // onChange={value => {
             //     field._input_type == "state" ?
             //         setState({ ...state, [field._state_field]: value })
             //         :
             //         editModel(field._field)(value)
             // }}
-        /> : <div>Field is not configured</div>
-        )}
+            /> : <div>Field is not configured</div>
+            )}
     </InputRow>
 }
 

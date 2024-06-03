@@ -641,9 +641,10 @@ function RenderStep(props) {
     model, checkHidden, dict, locale, state, loading, template, setState, lang, submit, params, setModel } = props
 
   return <React.Fragment>{(currentStep.elements || [])
-    .filter(element => !checkHidden(element) && !checkIfAllInputsHidden(element))
+    //.filter(element => !checkHidden(element) && !checkIfAllInputsHidden(element))
     .map(element => <FormElement
       model={model}
+      hidden={checkHidden(element)}
       data={data}
       checkHidden={checkHidden}
       originalModel={originalModel}
