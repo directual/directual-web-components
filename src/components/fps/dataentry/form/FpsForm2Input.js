@@ -516,7 +516,7 @@ function FieldLink(props) {
 
             if(field._field_link_saveQuantity && field._field_link_saveQuantity_Field) {
                 const fieldName = field._field_link_saveQuantity_Field.substring(9)
-                setState({...state, [fieldName]: data.length})
+                if (state[fieldName] !== data.length) { setState({...state, [fieldName]: data.length}) }
             }
 
             setOptions(data)
@@ -742,7 +742,7 @@ function FieldArrayLink(props) {
             }
             if(field._field_link_saveQuantity && field._field_link_saveQuantity_Field) {
                 const fieldName = field._field_link_saveQuantity_Field.substring(9)
-                setState({...state, [fieldName]: data.length})
+                if (state[fieldName] !== data.length) { setState({...state, [fieldName]: data.length}) }
             }
             setOptions(data)
         }, err => {
