@@ -10,6 +10,7 @@ import FpsFormPopup from './FpsForm2Popup'
 import Hint from '../../hint/hint'
 //import debounce from 'lodash.debounce';
 import { debounce } from 'lodash'
+import moment from 'moment'
 
 export default function FpsForm2(props) {
 
@@ -160,18 +161,34 @@ export default function FpsForm2(props) {
     }
   }, [model])
 
-
   function submit(finish, submitKeepModel, targetStep, autoSubmit) {
     clearTimeout(cx);
-
-    if (_.isEqual(model, originalModel)) { return }
 
     setState({ ...state, _submitError: "" })
     let modelToSend = {}
     for (const f in model) {
       if (_.includes(_.get(data, 'writeFields'), f)) {
-        modelToSend[f] = model[f]
+
+        // проверка на дату
+        const type = _.filter(_.get(data, 'fileds'), i => i.sysName == f) 
+          && _.filter(_.get(data, 'fileds'), i => i.sysName == f)[0]
+          && _.filter(_.get(data, 'fileds'), i => i.sysName == f)[0].dataType
+
+        if (type == 'date') { 
+          modelToSend[f] = moment(model[f]).toISOString()
+        } else {
+          modelToSend[f] = model[f]
+        }
+
       }
+    }
+
+    if (_.isEqual(model, originalModel) && !_.isEqual(gatherDefaults(), model) &&
+      !(_.get(params, "general.saveState") && _.get(params, "general.saveStateTo"))) {
+      setState({ ...state, _submitError: "" })
+      console.log('Model is not changed. submit does not submin anything')
+      setLoading(false)
+      finish && finish()
     }
 
     // State to object
