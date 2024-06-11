@@ -498,9 +498,11 @@ function FieldLink(props) {
             field._field_link_type !== "select") {
             return;
         }
-        let reqParams = filter ? { _filter: filter, ...params } : params
+        let reqParams = params
         reqParams = { ...reqParams, pageSize: field._field_link_pageSize || 10 }
-        reqParams = value ? { ...reqParams, _value: value.key || value } : reqParams
+        reqParams = value ? { ...reqParams, _filter: value.key || value } : reqParams
+        reqParams = filter ? { _filter: filter, ...reqParams } : reqParams
+        
         setCurrentParams(params)
         callEndpoint(field._field_arrayLink_endpoint, reqParams, finish, data => {
             // console.log("finish")
