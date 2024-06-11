@@ -501,8 +501,8 @@ function FieldLink(props) {
         let reqParams = params
         reqParams = { ...reqParams, pageSize: field._field_link_pageSize || 10 }
         reqParams = value ? { ...reqParams, _filter: value.key || value } : reqParams
-        reqParams = filter ? { _filter: filter, ...reqParams } : reqParams
-        
+        reqParams = filter ? { ...reqParams, _filter: filter } : reqParams
+
         setCurrentParams(params)
         callEndpoint(field._field_arrayLink_endpoint, reqParams, finish, data => {
             // console.log("finish")
