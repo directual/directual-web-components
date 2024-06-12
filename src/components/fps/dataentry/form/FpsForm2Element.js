@@ -133,7 +133,7 @@ function ElementAction(props) {
         if (actionFormat._action_customRequired_fields && actionFormat._action_customRequired_fields.length > 0) {
             function excludeNonEmptyValues(obj, keys) {
                 const filteredKeys = _.pickBy(obj, (value, key) => {
-                    return !_.isEmpty(value); // Exclude keys with non-empty values
+                    return !_.isEmpty(value.toString()); // Exclude keys with non-empty values
                 });
                 return keys.filter(key => !(key in filteredKeys));
             }

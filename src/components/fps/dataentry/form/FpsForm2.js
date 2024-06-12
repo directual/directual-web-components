@@ -205,12 +205,15 @@ export default function FpsForm2(props) {
       .value();
 
     function excludeNonEmptyValues(obj, keys) {
+      console.log(obj)
       const filteredKeys = _.pickBy(obj, (value, key) => {
-        return !_.isEmpty(value); // Exclude keys with non-empty values
+        return !_.isEmpty(value.toString()); // Exclude keys with non-empty values
       });
       return keys.filter(key => !(key in filteredKeys));
     }
+
     let emptyFields = excludeNonEmptyValues(modelToSend, requiredFieldValues)
+
 
     if (emptyFields.length > 0 && !autoSubmit) {
       emptyFields = emptyFields.map(i => {
