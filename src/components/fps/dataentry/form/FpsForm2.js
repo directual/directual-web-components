@@ -64,6 +64,7 @@ export default function FpsForm2(props) {
   const transformedState = { FormState: state, WebUser: auth }
   const defaultModel = { ...emptyValues, ...model, ...transformedState }
   const [loading, setLoading] = useState(false)
+  const modelIsChanged = !_.isEqual(model, originalModel)
 
   const [highlightState, setHighlightState] = useState(false)
   const [highlightModel, setHighlightModel] = useState(false)
@@ -79,8 +80,8 @@ export default function FpsForm2(props) {
   const [autoSubmitStep, setAutoSubminStep] = useState(state.step)
 
   const cx = null
-  const submitOnModel = debounce(fakeSubmit, 3000);
-  const submitOnState = debounce(fakeSubmit, 700);
+  const submitOnModel = debounce(submit, 3000);
+  const submitOnState = debounce(submit, 700);
   //const debouncedCallEndpint = debounce(callEndpoint, 700);
 
   // AUTOSUBMIT ON MODEL
@@ -162,10 +163,6 @@ export default function FpsForm2(props) {
     }
   }, [model])
 
-  function fakeSubmit() {
-    console.log("FAKE SUBMIT")
-  }
-
   function submit(finish, submitKeepModel, targetStep, autoSubmit) {
     clearTimeout(cx);
 
@@ -188,12 +185,13 @@ export default function FpsForm2(props) {
       }
     }
 
-    if (_.isEqual(model, originalModel) && !_.isEqual(gatherDefaults(), model) &&
+    if (!modelIsChanged && !_.isEqual(gatherDefaults(), model && !autoSubmit) &&
       !(_.get(params, "general.saveState") && _.get(params, "general.saveStateTo"))) {
       setState({ ...state, _submitError: "" })
-      console.log('Model is not changed. submit does not submit anything')
+      console.log('Model is not changed. Submit does not submit anything')
       setLoading(false)
       finish && finish()
+      return;
     }
 
     // State to object
@@ -376,7 +374,6 @@ export default function FpsForm2(props) {
   const closePopupOnClick = _.get(params, "general.closePopupOnClick") || false
   const object = _.get(data, "data[0]")
   const formSteps = _.get(params, "steps") || []
-  const modelIsChanged = !_.isEqual(model, originalModel)
 
   //const currentStep = (state.step ? _.find(formSteps, { sysName: state.step }) : _.get(formSteps, "[0]")) || {}
   // =============
