@@ -79,8 +79,8 @@ export default function FpsForm2(props) {
   const [autoSubmitStep, setAutoSubminStep] = useState(state.step)
 
   const cx = null
-  const submitOnModel = debounce(submit, 3000);
-  const submitOnState = debounce(submit, 700);
+  const submitOnModel = debounce(fakeSubmit, 3000);
+  const submitOnState = debounce(fakeSubmit, 700);
   //const debouncedCallEndpint = debounce(callEndpoint, 700);
 
   // AUTOSUBMIT ON MODEL
@@ -161,6 +161,10 @@ export default function FpsForm2(props) {
       setTimeout(() => setHighlightModel(false), 300)
     }
   }, [model])
+
+  function fakeSubmit() {
+    console.log("FAKE SUBMIT")
+  }
 
   function submit(finish, submitKeepModel, targetStep, autoSubmit) {
     clearTimeout(cx);
@@ -395,8 +399,8 @@ export default function FpsForm2(props) {
       // { key: "modelNotChanged" },
       if (element._conditionalView_operator == "modelNotChanged") {
         if (modelIsChanged) {
-          _.get(params, "general.showModel") && console.log("element is hidden")
-          _.get(params, "general.showModel") && console.log("model is changed")
+          // _.get(params, "general.showModel") && console.log("element is hidden")
+          // _.get(params, "general.showModel") && console.log("model is changed")
           isHidden = true
         }
       }
@@ -404,8 +408,8 @@ export default function FpsForm2(props) {
       // { key: "modelChanged" },
       if (element._conditionalView_operator == "modelChanged") {
         if (!modelIsChanged) {
-          _.get(params, "general.showModel") && console.log("element is hidden")
-          _.get(params, "general.showModel") && console.log("model is NOT changed")
+          // _.get(params, "general.showModel") && console.log("element is hidden")
+          // _.get(params, "general.showModel") && console.log("model is NOT changed")
           isHidden = true
         }
       }
@@ -414,8 +418,8 @@ export default function FpsForm2(props) {
       if (element._conditionalView_operator == "==") {
         if (typeof field == 'boolean') { field = JSON.stringify(field) }
         if (!_.isEqual(field, value)) {
-          _.get(params, "general.showModel") && console.log("element is hidden")
-          _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " !== " + value)
+          // _.get(params, "general.showModel") && console.log("element is hidden")
+          // _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " !== " + value)
           isHidden = true
         }
       }
@@ -424,8 +428,8 @@ export default function FpsForm2(props) {
       if (element._conditionalView_operator == "!==") {
         if (typeof field == 'boolean') { field = JSON.stringify(field) }
         if (_.isEqual(field, value)) {
-          _.get(params, "general.showModel") && console.log("element is hidden")
-          _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " == " + value)
+          // _.get(params, "general.showModel") && console.log("element is hidden")
+          // _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " == " + value)
           isHidden = true
         }
       }
@@ -437,8 +441,8 @@ export default function FpsForm2(props) {
         if ((field && field.length > 0 &&
           value && value.length > 0
           && _.intersection(value, field).length == 0) || !field || !value) {
-          _.get(params, "general.showModel") && console.log("element is hidden")
-          _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " does NOT contain " + value)
+          // _.get(params, "general.showModel") && console.log("element is hidden")
+          // _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " does NOT contain " + value)
           isHidden = true
         }
       }
@@ -449,8 +453,8 @@ export default function FpsForm2(props) {
         if ((field && field.length > 0 &&
           value && value.length > 0
           && _.intersection(value, field).length > 0) || !field || !value) {
-          _.get(params, "general.showModel") && console.log("element is hidden")
-          _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " contains " + value)
+          // _.get(params, "general.showModel") && console.log("element is hidden")
+          // _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " contains " + value)
           isHidden = true
         }
       }
@@ -462,8 +466,8 @@ export default function FpsForm2(props) {
         if ((field && field.length > 0 &&
           value && value.length > 0
           && _.intersection(value, field).length == 0) || !field || !value) {
-          _.get(params, "general.showModel") && console.log("element is hidden")
-          _.get(params, "general.showModel") && console.log(value + " does NOT contain " + "{{" + element._conditionalView_field + "}} → " + field)
+          // _.get(params, "general.showModel") && console.log("element is hidden")
+          // _.get(params, "general.showModel") && console.log(value + " does NOT contain " + "{{" + element._conditionalView_field + "}} → " + field)
           isHidden = true
         }
       }
@@ -475,8 +479,8 @@ export default function FpsForm2(props) {
         if ((field && field.length > 0 &&
           value && value.length > 0
           && _.intersection(value, field).length > 0) || !field || !value) {
-          _.get(params, "general.showModel") && console.log("element is hidden")
-          _.get(params, "general.showModel") && console.log(value + " contains " + "{{" + element._conditionalView_field + "}} → " + field)
+          // _.get(params, "general.showModel") && console.log("element is hidden")
+          // _.get(params, "general.showModel") && console.log(value + " contains " + "{{" + element._conditionalView_field + "}} → " + field)
           isHidden = true
         }
       }
@@ -484,8 +488,8 @@ export default function FpsForm2(props) {
       // { key: "isNull", value: "is empty" },
       if (element._conditionalView_operator == "isNull") {
         if (!_.isEmpty(field)) {
-          _.get(params, "general.showModel") && console.log("element is hidden")
-          _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " is empty")
+          // _.get(params, "general.showModel") && console.log("element is hidden")
+          // _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " is empty")
           isHidden = true
         }
       }
@@ -493,8 +497,8 @@ export default function FpsForm2(props) {
       // { key: "isNotNull", value: "is NOT empty" },
       if (element._conditionalView_operator == "isNotNull") {
         if (_.isEmpty(field)) {
-          _.get(params, "general.showModel") && console.log("element is hidden")
-          _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " is NOT empty")
+          // _.get(params, "general.showModel") && console.log("element is hidden")
+          // _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " is NOT empty")
           isHidden = true
         }
       }
