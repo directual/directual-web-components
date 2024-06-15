@@ -18,77 +18,128 @@ export default {
 };
 
 let exampleForm = {
-    "sl": "NewTransaction",
+    "sl": "newRequest",
     "pageSize": "10",
     "headerField": null,
     "params": {
         "steps": [
             {
-                "id": "default_step",
-                "sysName": "default step",
+                "id": "step_1716390177590",
+                "sysName": "progress",
                 "elements": [
                     {
-                        "id": "elmnt_1717820877141",
+                        "id": "elmnt_1716390181363",
+                        "type": "steps",
+                        "_formSteps": {
+                            "stepsOrder": [
+                                "step1",
+                                "step2",
+                                "step3"
+                            ],
+                            "settings": {
+                                "steps": {
+                                    "step1": true,
+                                    "step2": true,
+                                    "step3": true
+                                }
+                            },
+                            "stepSettings": {
+                                "step1": {
+                                    "title": "Step 1",
+                                    "description": "Step description"
+                                },
+                                "step2": {
+                                    "title": "Step 2"
+                                },
+                                "step3": {
+                                    "title": "Step 3"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "sectionVisibility": "always"
+            },
+            {
+                "id": "step_1715854081782",
+                "sysName": "step1",
+                "elements": [
+                    {
+                        "id": "elmnt_1715854087662",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17178208800850.00121333414034044224214313",
-                                "_field": "account_id",
-                                "_field_use_mask": false,
-                                "_field_set_default": false,
-                                "_field_add_description": false,
+                                "id": "17158540903060.024230014112004323432101",
+                                "_field": "people",
+                                "_field_arrayLink_type": "select",
+                                "_field_arrayLink_endpoint": "getPeopleDropdown",
                                 "_field_hidden": false,
-                                "_field_required": false,
-                                "_field_link_type": "tags",
-                                "_field_link_pageSize": 0,
-                                "_field_arrayLink_endpoint": "accounsList",
-                                "_input_type": "object",
-                                "_field_arrayLink_endpoint_params": {}
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717829399929",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17178294073990.41042320311001114233034",
-                                "_field": "category_id",
-                                "_field_link_type": "tags",
-                                "_field_link_pageSize": 0,
-                                "_field_arrayLink_endpoint": "category",
-                                "_field_arrayLink_tags_width": 0,
-                                "_field_link_saveQuantity": false,
-                                "_field_arrayLink_endpoint_params": {},
-                                "_field_required": true
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717820883181",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17178208857010.3010433104033442410141",
-                                "_field": "amount",
-                                "_field_link_type": "tags",
-                                "_field_arrayLink_endpoint": "accounsList",
-                                "_input_type": "object",
-                                "_field_required": true,
-                                "_field_add_description": false,
-                                "_field_set_default": false,
-                                "_field_default_value": "0"
+                                "_field_link_pageSize": null,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718471084257",
+                                        "_conditionalView_field": "FormState.pedal",
+                                        "_conditionalView_operator": "==",
+                                        "_conditionalView_value": "1"
+                                    }
+                                ]
                             }
                         ],
                         "_conditionalView": false,
-                        "_input_fields_in_a_row": 1
+                        "_conditionalView_disable_or_hide": "disable",
+                        "_conditions": [
+                            {
+                                "id": "condition_1718470365215",
+                                "_conditionalView_field": "FormState.pedal",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "1"
+                            }
+                        ]
                     },
                     {
-                        "id": "elmnt_1717828934507",
-                        "type": "submit",
-                        "submitKeepModel": false,
-                        "submitIcon": "plus",
-                        "submitLabel": "Добавить"
+                        "id": "elmnt_1716387998746",
+                        "type": "action",
+                        "_actions": [
+                            {
+                                "id": "17163880005370.30034130114414220304422",
+                                "_action": "action_1715849919348",
+                                "_action_label": "Next step",
+                                "_action_button_type": "accent",
+                                "_action_icon": "forward",
+                                "_conditionalView": true,
+                                "_action_conditional_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1716390475925",
+                                        "_conditionalView_operator": "modelNotChanged"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1718470308660",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17184703105740.41120114034310410244403",
+                                "_input_type": "state",
+                                "_state_field": "pedal",
+                                "_edit_state_type": "buttons",
+                                "_edit_state_options": [
+                                    {
+                                        "key": "1",
+                                        "value": "1"
+                                    },
+                                    {
+                                        "key": "2",
+                                        "value": "2"
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
             },
@@ -97,44 +148,72 @@ let exampleForm = {
                 "sysName": "submitted",
                 "elements": [
                     {
-                        "id": "elmnt_1717831255926",
+                        "id": "elmnt_1712052683797",
                         "type": "hint",
                         "hintColor": "ok",
-                        "hintTitle": "Расход записан!"
-                    },
-                    {
-                        "id": "elmnt_1712052683797",
-                        "type": "redirect",
-                        "hintColor": "ok",
                         "hintTitle": "Thank you!",
-                        "hintText": "Submitted",
-                        "redirect_url": "/{{type}}management",
-                        "redirect_delay": 1,
-                        "redirect_urlRaw": false
+                        "hintText": "Submitted"
+                    }
+                ]
+            },
+            {
+                "id": "step_1716390164650",
+                "sysName": "step2",
+                "elements": [
+                    {
+                        "id": "elmnt_1716390287766",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17163902897620.0031214142333144424043004",
+                                "_input_type": "state",
+                                "_state_field": "Name"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "step_1716390174036",
+                "sysName": "step3"
+            }
+        ],
+        "actions": [
+            {
+                "id": "action_1715849919348",
+                "name": "create new user",
+                "discardModel": false,
+                "resetModel": false,
+                "autoAction": false,
+                "autoAction_delay": 2,
+                "actionType": "state",
+                "stateMapping": [
+                    {
+                        "id": "stateMapping1716387955293",
+                        "field": "FormState.step",
+                        "value": "step2"
                     }
                 ]
             }
         ],
         "general": {
-            "edittingOn": false,
-            "saveState": false,
-            "saveStateTo": "type",
             "showState": false,
-            "autosubmit": "no_autosubmit",
-            "autosubmit_model": null,
-            "showModel": true
+            "closePopupOnClick": true,
+            "edittingOn": false,
+            "showModel": false,
+            "saveState": false,
+            "saveStateTo": "storeState",
+            "restoreState": true
         },
+        "popup_width": 200,
         "state": {
-            "step": "default step",
-            "popup": null
+            "step": "step1",
+            "popup": null,
+            "Name": "",
+            "pedal": "1"
         },
-        "actions": [
-            {
-                "id": "action_1717939532041",
-                "name": "Вернуться",
-                "discardModel": true
-            }
-        ]
+        "hideActionsHint": true,
+        "hideHint": true
     },
     "tableTitle": null,
     "actions": null,
@@ -159,297 +238,20 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "typeVariable": {},
-            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "category_id",
-            "dataType": "link",
-            "name": "категория",
-            "id": "29671717829161473",
-            "link": "category",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
             "typeVariable": {},
             "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
             "array": false
         },
         {
-            "sysName": "date",
-            "dataType": "date",
-            "name": "дата создания",
-            "id": "87761717831641822",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 7,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "month",
-            "dataType": "date",
-            "name": "месяц",
-            "id": "74201717831644005",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 9,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "MM/Y",
-                "timeFormat": "",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "year",
-            "dataType": "date",
-            "name": "год",
-            "id": "42391717831662505",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 10,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "Y",
-                "timeFormat": "",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "day",
-            "dataType": "date",
-            "name": "дата",
-            "id": "51781717831709890",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 8,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD/MM/Y",
-                "timeFormat": "",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "amount",
-            "dataType": "number",
-            "name": "величина",
-            "id": "97891717829237571",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 4,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": "positiveNum",
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "account_id",
-            "dataType": "link",
-            "name": "счет",
-            "id": "86821717829198205",
-            "link": "accounts",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 2,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "user_id",
-            "dataType": "link",
-            "name": "пользователь",
-            "id": "65791717829211521",
-            "link": "WebUser",
+            "sysName": "people",
+            "dataType": "arrayLink",
+            "name": "people",
+            "id": "28621715333642402",
+            "link": "people",
             "group": "0",
             "tags": "",
             "indexing": false,
@@ -464,19 +266,75 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "linkOrArrayLinkType": true,
+            "linkType": false,
+            "arrayLink": true,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
+            "array": false
+        },
+        {
+            "sysName": "name",
+            "dataType": "link",
+            "name": "People",
+            "id": "68451715022511853",
+            "link": "people",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "indexExists": false,
+            "typeVariable": {},
+            "json": false,
             "array": false
         },
         {
-            "sysName": "type",
-            "dataType": "string",
-            "name": "тип",
-            "id": "88631717829261254",
+            "sysName": "gender",
+            "dataType": "link",
+            "name": "Whom are you looking for?",
+            "id": "66281715022483586",
+            "link": "gender",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
+        },
+        {
+            "sysName": "options",
+            "dataType": "json",
+            "name": "",
+            "id": "40321715508164793",
             "link": "",
             "group": "0",
             "tags": "",
@@ -492,431 +350,19 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "typeVariable": {},
-            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "dateStr",
-            "dataType": "string",
-            "name": "dateStr",
-            "id": "44181718076191304",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 11,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
             "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
+            "json": true,
             "array": false
-        }
-    ],
-    "data": [
-        {
-            "dateStr": "11.06.24",
-            "year": 1704067200000,
-            "amount": 235,
-            "id": "dc4eca74-49c0-429b-8102-b14284d23e3c",
-            "account_id": {
-                "accountName": "Сбер",
-                "currencySymbol": "RUB",
-                "id": "f7102244-8500-4806-8262-c82c32fc6134"
-            },
-            "date": 1718078664000,
-            "category_id": {
-                "id": "564e6d13-6109-4df1-8501-6d4f154a22c1",
-                "category": "Спорт"
-            },
-            "type": "expenses",
-            "day": 1718064000000,
-            "month": 1717200000000
         },
         {
-            "dateStr": "01.05.24",
-            "year": 1704067200000,
-            "amount": 556,
-            "id": "656956d8-7ddd-452c-9169-586d1c925aa7",
-            "account_id": {
-                "accountName": "Сбер",
-                "currencySymbol": "RUB",
-                "id": "f7102244-8500-4806-8262-c82c32fc6134"
-            },
-            "date": 1718078675000,
-            "category_id": {
-                "id": "8958d92c-5cb6-48e3-8004-4ab7067ca6d0",
-                "category": "Еда"
-            },
-            "type": "expenses",
-            "day": 1714521600000,
-            "month": 1714521600000
-        },
-        {
-            "dateStr": "11.06.24",
-            "year": 1704067200000,
-            "amount": 6565,
-            "id": "1c0a76d1-9c52-4540-b04d-fbc4d5c6c762",
-            "account_id": {
-                "accountName": "Сбер",
-                "currencySymbol": "RUB",
-                "id": "f7102244-8500-4806-8262-c82c32fc6134"
-            },
-            "date": 1718108679000,
-            "category_id": {
-                "id": "8958d92c-5cb6-48e3-8004-4ab7067ca6d0",
-                "category": "Еда"
-            },
-            "type": "expenses",
-            "day": 1718064000000,
-            "month": 1717200000000
-        },
-        {
-            "dateStr": "11.06.24",
-            "year": 1704067200000,
-            "amount": 13,
-            "id": "392b8833-d57d-4399-9dbc-15dc22243422",
-            "account_id": {
-                "accountName": "Сбер",
-                "currencySymbol": "RUB",
-                "id": "f7102244-8500-4806-8262-c82c32fc6134"
-            },
-            "date": 1718119661000,
-            "category_id": {
-                "id": "8958d92c-5cb6-48e3-8004-4ab7067ca6d0",
-                "category": "Еда"
-            },
-            "type": "expenses",
-            "day": 1718064000000,
-            "month": 1717200000000
-        },
-        {
-            "dateStr": "11.06.24",
-            "year": 1704067200000,
-            "amount": 1,
-            "id": "7e333053-c356-4a98-aac8-11e4a45cc11f",
-            "account_id": {
-                "accountName": "USD",
-                "currencySymbol": "USD",
-                "id": "1dc603e1-0906-44e1-a056-f2720889c82b"
-            },
-            "date": 1718119724000,
-            "category_id": {
-                "id": "8958d92c-5cb6-48e3-8004-4ab7067ca6d0",
-                "category": "Еда"
-            },
-            "type": "expenses",
-            "day": 1718064000000,
-            "month": 1717200000000
-        }
-    ],
-    "totalPages": 1,
-    "pageNumber": 0,
-    "error": null,
-    "fieldScheme": [
-        [
-            "id",
-            99317778
-        ],
-        [
-            "category_id.id",
-            99316876
-        ],
-        [
-            "category_id.category",
-            99316876
-        ],
-        [
-            "date",
-            99317778
-        ],
-        [
-            "month",
-            99317778
-        ],
-        [
-            "year",
-            99317778
-        ],
-        [
-            "day",
-            99317778
-        ],
-        [
-            "amount",
-            99317778
-        ],
-        [
-            "account_id.id",
-            99317482
-        ],
-        [
-            "account_id.currencySymbol",
-            99317482
-        ],
-        [
-            "account_id.accountName",
-            99317482
-        ],
-        [
-            "user_id.id",
-            99316829
-        ],
-        [
-            "type",
-            99317778
-        ],
-        [
-            "dateStr",
-            99317778
-        ]
-    ],
-    "writeFields": [
-        "amount",
-        "id",
-        "user_id",
-        "account_id",
-        "category_id",
-        "day",
-        "year",
-        "month",
-        "type"
-    ],
-    "structures": {
-        "99316829": {
-            "networkID": 21014,
-            "id": 99316829,
-            "dateCreated": "2024-06-04T09:37:31Z",
-            "hidden": false,
-            "dateHidden": null,
-            "name": "App users",
-            "sysName": "WebUser",
-            "jsonObject": "[{\"sysName\":\"dateLastActivity\",\"dataType\":\"string\",\"name\":\"dateLastActivity\",\"id\":\"10\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"dateCreated\",\"dataType\":\"string\",\"name\":\"dateCreated\",\"id\":\"13\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isAuthorization\",\"dataType\":\"boolean\",\"name\":\"isAuthorization\",\"id\":\"9\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"notifications_counter\",\"dataType\":\"string\",\"name\":\"Notifications Counter\",\"id\":\"1\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"custom_labels\",\"dataType\":\"json\",\"name\":\"Custom labels\",\"id\":\"2\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"phone\",\"dataType\":\"string\",\"name\":\"Phone\",\"id\":\"12\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"email\",\"dataType\":\"string\",\"name\":\"Email\",\"id\":\"11\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"userpic\",\"dataType\":\"file\",\"name\":\"User pic\",\"id\":\"3\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":\"Contacts\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"Username (login)\",\"id\":\"15\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"role\",\"dataType\":\"array\",\"name\":\"Roles\",\"id\":\"8\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":true},{\"sysName\":\"password\",\"dataType\":\"string\",\"name\":\"Password (hash)\",\"id\":\"14\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"firstName\",\"dataType\":\"string\",\"name\":\"First name\",\"id\":\"7\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"lastName\",\"dataType\":\"string\",\"name\":\"Last name\",\"id\":\"6\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"gender\",\"dataType\":\"string\",\"name\":\"Gender\",\"id\":\"5\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isBlocked\",\"dataType\":\"boolean\",\"name\":\"Block user\",\"id\":\"4\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"@who\",\"dataType\":\"string\",\"name\":\"who changed\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"@dateCreated\",\"dataType\":\"date\",\"name\":\"date created\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"@dateChanged\",\"dataType\":\"date\",\"name\":\"date changed\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
-            "jsonGroupSettings": "[{\"id\":-502807437,\"name\":\"Contacts\",\"order\":null},{\"id\":-1776115286,\"name\":\"System fields\",\"order\":null}]",
-            "jsonViewIdSettings": "[]",
-            "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":false,\"lowPriority\":false}",
-            "jsonNativeIndexSettings": null,
-            "indexEnabled": false,
-            "lastIndexUpdate": 0,
-            "indexName": "",
-            "dateChanged": "2024-06-04T09:37:33Z",
-            "createBy": 0,
-            "changedBy": 0,
-            "_settings": null,
-            "_nativeIndexSettings": null,
-            "innerIDField": {
-                "sysName": "id",
-                "dataType": "id",
-                "name": "Username (login)",
-                "id": "15",
-                "link": "",
-                "group": "",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            "objectIDSysName": "id",
-            "folderId": null
-        },
-        "99316876": {
-            "networkID": 21014,
-            "id": 99316876,
-            "dateCreated": "2024-06-04T09:44:31Z",
-            "hidden": false,
-            "dateHidden": null,
-            "name": "category",
-            "sysName": "category",
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"category\",\"dataType\":\"string\",\"name\":\"категория\",\"id\":\"87511717494277157\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"user\",\"dataType\":\"string\",\"name\":\"пользователь\",\"id\":\"52841717494282380\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"type\",\"dataType\":\"string\",\"name\":\"type\",\"id\":\"37781717753368704\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"@who\",\"dataType\":\"string\",\"name\":\"who changed\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"@dateCreated\",\"dataType\":\"date\",\"name\":\"date created\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"@dateChanged\",\"dataType\":\"date\",\"name\":\"date changed\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
-            "jsonGroupSettings": null,
-            "jsonViewIdSettings": "[{\"sysName\":\"category\"}]",
-            "jsonSettings": null,
-            "jsonNativeIndexSettings": null,
-            "indexEnabled": true,
-            "lastIndexUpdate": 0,
-            "indexName": "",
-            "dateChanged": "2024-06-08T07:37:00Z",
-            "createBy": 25006,
-            "changedBy": 25006,
-            "_settings": null,
-            "_nativeIndexSettings": null,
-            "innerIDField": {
-                "sysName": "id",
-                "dataType": "id",
-                "name": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            "objectIDSysName": "id",
-            "folderId": 33806716
-        },
-        "99317482": {
-            "networkID": 21014,
-            "id": 99317482,
-            "dateCreated": "2024-06-06T13:28:50Z",
-            "hidden": false,
-            "dateHidden": null,
-            "name": "accounts",
-            "sysName": "accounts",
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"currency\",\"dataType\":\"link\",\"name\":\"валюта\",\"id\":\"30811717680549585\",\"link\":\"currencyList\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"accountName\",\"dataType\":\"string\",\"name\":\"название\",\"id\":\"82781717680554118\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"user\",\"dataType\":\"string\",\"name\":\"user\",\"id\":\"51451717819809370\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"currencyName\",\"dataType\":\"string\",\"name\":\"валюта\",\"id\":\"25861717904945865\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"currencySymbol\",\"dataType\":\"string\",\"name\":\"символ\",\"id\":\"19151717905491128\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"@who\",\"dataType\":\"string\",\"name\":\"who changed\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"@dateCreated\",\"dataType\":\"date\",\"name\":\"date created\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"@dateChanged\",\"dataType\":\"date\",\"name\":\"date changed\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
-            "jsonGroupSettings": null,
-            "jsonViewIdSettings": "[{\"sysName\":\"accountName\"},{\"sysName\":\"currencySymbol\"}]",
-            "jsonSettings": null,
-            "jsonNativeIndexSettings": null,
-            "indexEnabled": true,
-            "lastIndexUpdate": 0,
-            "indexName": "",
-            "dateChanged": "2024-06-09T04:01:02Z",
-            "createBy": 25006,
-            "changedBy": 25006,
-            "_settings": null,
-            "_nativeIndexSettings": null,
-            "innerIDField": {
-                "sysName": "id",
-                "dataType": "id",
-                "name": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            "objectIDSysName": "id",
-            "folderId": 33806716
-        },
-        "99317778": {
-            "networkID": 21014,
-            "id": 99317778,
-            "dateCreated": "2024-06-08T06:45:53Z",
-            "hidden": false,
-            "dateHidden": null,
-            "name": "transactions",
-            "sysName": "transactions",
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"category_id\",\"dataType\":\"link\",\"name\":\"категория\",\"id\":\"29671717829161473\",\"link\":\"category\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"account_id\",\"dataType\":\"link\",\"name\":\"счет\",\"id\":\"86821717829198205\",\"link\":\"accounts\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"user_id\",\"dataType\":\"link\",\"name\":\"пользователь\",\"id\":\"65791717829211521\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"amount\",\"dataType\":\"number\",\"name\":\"величина\",\"id\":\"97891717829237571\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"type\",\"dataType\":\"string\",\"name\":\"тип\",\"id\":\"88631717829261254\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"jsonPath\",\"dataType\":\"json\",\"name\":\"JSON\",\"id\":\"74981717831403229\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"date\",\"dataType\":\"date\",\"name\":\"дата создания\",\"id\":\"87761717831641822\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"day\",\"dataType\":\"date\",\"name\":\"дата\",\"id\":\"51781717831709890\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"month\",\"dataType\":\"date\",\"name\":\"месяц\",\"id\":\"74201717831644005\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"MM/Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"year\",\"dataType\":\"date\",\"name\":\"год\",\"id\":\"42391717831662505\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"dateStr\",\"dataType\":\"string\",\"name\":\"dateStr\",\"id\":\"44181718076191304\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"@who\",\"dataType\":\"string\",\"name\":\"who changed\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"@dateCreated\",\"dataType\":\"date\",\"name\":\"date created\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"@dateChanged\",\"dataType\":\"date\",\"name\":\"date changed\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
-            "jsonGroupSettings": null,
-            "jsonViewIdSettings": "[{\"sysName\":\"category_id\"}]",
-            "jsonSettings": null,
-            "jsonNativeIndexSettings": null,
-            "indexEnabled": true,
-            "lastIndexUpdate": 0,
-            "indexName": "",
-            "dateChanged": "2024-06-11T03:23:17Z",
-            "createBy": 25006,
-            "changedBy": 25006,
-            "_settings": null,
-            "_nativeIndexSettings": null,
-            "innerIDField": {
-                "sysName": "id",
-                "dataType": "id",
-                "name": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            "objectIDSysName": "id",
-            "folderId": 33806716
-        }
-    },
-    "isSuccessWrite": false,
-    "writeError": null,
-    "writeResponse": null,
-    "fileds": [
-        {
-            "sysName": "amount",
-            "dataType": "number",
-            "name": "величина",
-            "id": "97891717829237571",
+            "sysName": "storeState",
+            "dataType": "json",
+            "name": "",
+            "id": "43151715508157761",
             "link": "",
             "group": "0",
             "tags": "",
@@ -929,15 +375,328 @@ let exampleForm = {
             "defaultValue": "",
             "constraints": null,
             "synthetic": false,
-            "format": "positiveNum",
+            "format": null,
             "formatOptions": {},
             "groupName": null,
-            "typeVariable": {},
-            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "indexExists": false,
+            "typeVariable": {},
+            "json": true,
+            "array": false
+        }
+    ],
+    "data": [
+        {
+            "people": [
+                {
+                    "name": "Peter",
+                    "id": "9100a8fb-4743-402a-b1f1-0081c7e2e777"
+                },
+                {
+                    "name": "Paul",
+                    "id": "ac32238e-e7cd-4038-90eb-752f97edbaf6"
+                }
+            ],
+            "options": "[\n   {\n      \"key\": \"foo\",\n      \"value\": \"_foo\"\n   },\n   {\n      \"key\": \"bar\",\n      \"value\": \"_bar\"\n   }\n]",
+            "storeState": "{\n   \"test\": \"hello world!\"\n}",
+            "id": "8eaea1be-a6f4-461d-96ee-9b7aeadf1114"
+        }
+    ],
+    "totalPages": 1,
+    "pageNumber": 0,
+    "error": null,
+    "fieldScheme": [
+        [
+            "id",
+            99310333
+        ],
+        [
+            "people.id",
+            99310332
+        ],
+        [
+            "people.name",
+            99310332
+        ],
+        [
+            "name.id",
+            99310332
+        ],
+        [
+            "name.name",
+            99310332
+        ],
+        [
+            "gender.id",
+            99310331
+        ],
+        [
+            "gender.gender",
+            99310331
+        ],
+        [
+            "options",
+            99310333
+        ],
+        [
+            "storeState",
+            99310333
+        ]
+    ],
+    "writeFields": [
+        "name",
+        "gender",
+        "people",
+        "id",
+        "options",
+        "storeState"
+    ],
+    "structures": {
+        "99310331": {
+            "networkID": 20686,
+            "sysName": "gender",
+            "name": "gender",
+            "id": 99310331,
+            "dateCreated": "2024-05-06T18:33:58Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"gender\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"35891715020441941\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": "[{\"sysName\":\"gender\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2024-05-06T18:34:06Z",
+            "createBy": 1,
+            "changedBy": 1,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "array": false
+            },
+            "objectIDSysName": "id",
+            "folderId": null
+        },
+        "99310332": {
+            "networkID": 20686,
+            "sysName": "people",
+            "name": "people",
+            "id": 99310332,
+            "dateCreated": "2024-05-06T19:05:49Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"gender\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"44461715022352603\",\"link\":\"gender\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":true,\"json\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"Name\",\"id\":\"91911715022364368\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"json\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2024-05-06T19:06:14Z",
+            "createBy": 1,
+            "changedBy": 1,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "array": false
+            },
+            "objectIDSysName": "id",
+            "folderId": null
+        },
+        "99310333": {
+            "networkID": 20686,
+            "sysName": "request",
+            "name": "request",
+            "id": 99310333,
+            "dateCreated": "2024-05-06T19:07:59Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"people\",\"dataType\":\"arrayLink\",\"name\":\"people\",\"id\":\"28621715333642402\",\"link\":\"people\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"array\":false},{\"sysName\":\"options\",\"dataType\":\"json\",\"name\":\"\",\"id\":\"40321715508164793\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"storeState\",\"dataType\":\"json\",\"name\":\"\",\"id\":\"43151715508157761\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"array\":false},{\"sysName\":\"gender\",\"dataType\":\"link\",\"name\":\"Whom are you looking for?\",\"id\":\"66281715022483586\",\"link\":\"gender\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"link\",\"name\":\"People\",\"id\":\"68451715022511853\",\"link\":\"people\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"array\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": null,
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2024-05-12T10:02:53Z",
+            "createBy": 1,
+            "changedBy": 1,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "array": false
+            },
+            "objectIDSysName": "id",
+            "folderId": null
+        }
+    },
+    "isSuccessWrite": false,
+    "writeError": null,
+    "writeResponse": null,
+    "fileds": [
+        {
+            "sysName": "name",
+            "dataType": "link",
+            "name": "People",
+            "id": "68451715022511853",
+            "link": "people",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
+        },
+        {
+            "sysName": "gender",
+            "dataType": "link",
+            "name": "Whom are you looking for?",
+            "id": "66281715022483586",
+            "link": "gender",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
+        },
+        {
+            "sysName": "people",
+            "dataType": "arrayLink",
+            "name": "people",
+            "id": "28621715333642402",
+            "link": "people",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": true,
+            "linkType": false,
+            "arrayLink": true,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
             "array": false
         },
         {
@@ -960,268 +719,19 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "typeVariable": {},
-            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "user_id",
-            "dataType": "link",
-            "name": "пользователь",
-            "id": "65791717829211521",
-            "link": "WebUser",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 3,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
             "typeVariable": {},
             "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
             "array": false
         },
         {
-            "sysName": "account_id",
-            "dataType": "link",
-            "name": "счет",
-            "id": "86821717829198205",
-            "link": "accounts",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 2,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "category_id",
-            "dataType": "link",
-            "name": "категория",
-            "id": "29671717829161473",
-            "link": "category",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "day",
-            "dataType": "date",
-            "name": "дата",
-            "id": "51781717831709890",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 8,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD/MM/Y",
-                "timeFormat": "",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "year",
-            "dataType": "date",
-            "name": "год",
-            "id": "42391717831662505",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 10,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "Y",
-                "timeFormat": "",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "month",
-            "dataType": "date",
-            "name": "месяц",
-            "id": "74201717831644005",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 9,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "MM/Y",
-                "timeFormat": "",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "type",
-            "dataType": "string",
-            "name": "тип",
-            "id": "88631717829261254",
+            "sysName": "options",
+            "dataType": "json",
+            "name": "",
+            "id": "40321715508164793",
             "link": "",
             "group": "0",
             "tags": "",
@@ -1237,23 +747,49 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "typeVariable": {},
-            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "indexExists": false,
+            "typeVariable": {},
+            "json": true,
+            "array": false
+        },
+        {
+            "sysName": "storeState",
+            "dataType": "json",
+            "name": "",
+            "id": "43151715508157761",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": true,
             "array": false
         }
     ],
     "quickSearch": null,
-    "httpParams": {
-        "type": ""
-    },
+    "httpParams": null,
     "cardCustomHtml": null,
     "cardCustomLayout": null,
     "comment": null,
-    "response": false
+    "response": null
 }
 
 let authExample = {

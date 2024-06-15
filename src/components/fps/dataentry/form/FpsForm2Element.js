@@ -31,7 +31,7 @@ export default function FormElement(props) {
             render = <ElementSubmit {...props} />
             break;
         case "input":
-            render = <ElementInput {...props} />
+            render = <ElementInput {...props} checkHidden={checkHidden}/>
             break;
         case "action":
             render = <ElementAction {...props} checkHidden={checkHidden} />
@@ -128,8 +128,6 @@ function ElementAction(props) {
     const [error, setError] = useState("")
 
     const performAction = (action, actionFormat) => {
-        console.log(action)
-        console.log(actionFormat)
         if (actionFormat._action_customRequired_fields && actionFormat._action_customRequired_fields.length > 0) {
             function excludeNonEmptyValues(obj, keys) {
                 const filteredKeys = _.pickBy(obj, (value, key) => {

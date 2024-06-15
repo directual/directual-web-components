@@ -79,10 +79,11 @@ export default function FpsForm2(props) {
   const [autoSubmitStep, setAutoSubminStep] = useState(state.step)
 
   const cx = null
-  const submitOnModel = debounce(submit, 700);
+  const submitOnModel = debounce(submit, 3000);
+  const submitOnState = debounce(submit, 700);
   //const debouncedCallEndpint = debounce(callEndpoint, 700);
 
-  // AUTOSUBMIT ON STATE
+  // AUTOSUBMIT ON MODEL
   useEffect(() => {
     if (_.get(params, "general.autosubmit") == "model") {
       // any field:
@@ -92,10 +93,10 @@ export default function FpsForm2(props) {
           if (_.get(previousModel, field) !== _.get(model, field)) { send = true }
         })
         if (send) {
-          submit(undefined, true, undefined, true)
+          submitOnModel(undefined, true, undefined, true)
         }
       } else {
-        submit(undefined, true, undefined, true)
+        submitOnModel(undefined, true, undefined, true)
       }
     }
   }, [model])
@@ -109,14 +110,14 @@ export default function FpsForm2(props) {
     if (_.get(params, "general.autosubmit") == "always" && autoSubmitStep !== state.step) {
       console.log("AUTOSUBMIT!")
       setAutoSubminStep(state.step)
-      submitOnModel(undefined, true, undefined, true)
+      submitOnState(undefined, true, undefined, true)
     }
     if (_.get(params, "general.autosubmit") == "steps"
       && _.includes(_.get(params, "general.autosubmit_steps").split(","), state.step
         && autoSubmitStep !== state.step)) {
       console.log("AUTOSUBMIT!")
       setAutoSubminStep(state.step)
-      submitOnModel(undefined, true, undefined, true)
+      submitOnState(undefined, true, undefined, true)
     }
   }, [state])
 
@@ -186,7 +187,7 @@ export default function FpsForm2(props) {
     if (_.isEqual(model, originalModel) && !_.isEqual(gatherDefaults(), model) &&
       !(_.get(params, "general.saveState") && _.get(params, "general.saveStateTo"))) {
       setState({ ...state, _submitError: "" })
-      console.log('Model is not changed. submit does not submin anything')
+      console.log('Model is not changed. submit does not submit anything')
       setLoading(false)
       finish && finish()
     }

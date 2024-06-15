@@ -15,12 +15,21 @@ import { Tags } from '../../tags/Tags'
 import { debounce } from 'lodash'
 
 export default function FpsForm2Input(props) {
-    const { field, template, dict, lang, loading, editModel, callEndpoint, model, data, state, locale } = props
+    const { field, template, dict, lang, loading, editModel, callEndpoint, model, data, state, locale, checkHidden } = props
 
     const fieldInfo = _.find(_.get(data, "fileds"), { sysName: field._field }) || {}
     const type = `${fieldInfo.dataType}${fieldInfo.format ? `_${fieldInfo.format}` : ''}`
 
     const debouncedCallEndpint = debounce(callEndpoint, 300);
+
+    if (field._conditionalView &&
+        !checkHidden(field) &&
+        field._conditionalView_disable_or_hide !== "disable"
+    ) return <React.Fragment></React.Fragment>
+
+    const disabled = field._conditionalView &&
+        !checkHidden(field) &&
+        field._conditionalView_disable_or_hide == "disable"
 
     switch (type) {
         case 'json':
@@ -30,28 +39,28 @@ export default function FpsForm2Input(props) {
         case 'json_radioOptions':
         case 'json_keyValue':
         case 'json_geo':
-            return <FieldJson {...props} fieldInfo={fieldInfo} />
+            return <FieldJson {...props} fieldInfo={fieldInfo} disabled={disabled}/>
         case 'file_multipleFiles':
         case 'file_multipleImages':
         case 'file_image':
         case 'file':
-            return <FieldFile {...props} fieldInfo={fieldInfo} />
+            return <FieldFile {...props} fieldInfo={fieldInfo} disabled={disabled}/>
         case 'date':
-            return <FieldDate {...props} fieldInfo={fieldInfo} />
+            return <FieldDate {...props} fieldInfo={fieldInfo} disabled={disabled}/>
         case 'boolean':
-            return <FieldBoolean {...props} fieldInfo={fieldInfo} />
+            return <FieldBoolean {...props} fieldInfo={fieldInfo} disabled={disabled}/>
         case 'link':
-            return <FieldLink {...props} callEndpoint={debouncedCallEndpint} fieldInfo={fieldInfo} />
+            return <FieldLink {...props} callEndpoint={debouncedCallEndpint} fieldInfo={fieldInfo} disabled={disabled}/>
         case 'arrayLink':
-            return <FieldArrayLink {...props} callEndpoint={debouncedCallEndpint}  fieldInfo={fieldInfo} />
+            return <FieldArrayLink {...props} callEndpoint={debouncedCallEndpint} fieldInfo={fieldInfo} disabled={disabled}/>
         case 'string_markdown':
-            return <FieldMkd {...props} fieldInfo={fieldInfo} />
+            return <FieldMkd {...props} fieldInfo={fieldInfo} disabled={disabled}/>
         case 'string_html':
-            return <FieldHTML {...props} fieldInfo={fieldInfo} />
+            return <FieldHTML {...props} fieldInfo={fieldInfo} disabled={disabled}/>
         case 'string_color':
-            return <FieldColor {...props} fieldInfo={fieldInfo} />
+            return <FieldColor {...props} fieldInfo={fieldInfo} disabled={disabled}/>
         default:
-            return <FieldText {...props} fieldInfo={fieldInfo} />
+            return <FieldText {...props} fieldInfo={fieldInfo} disabled={disabled}/>
     }
 }
 
@@ -78,38 +87,37 @@ export function FpsForm2HiddenInput(props) {
         case 'file_multipleImages':
         case 'file_image':
         case 'file':
-            comp =  <FieldFile {...props} fieldInfo={fieldInfo} />
+            comp = <FieldFile {...props} fieldInfo={fieldInfo} />
             break;
         case 'date':
-            comp =  <FieldDate {...props} fieldInfo={fieldInfo} />
+            comp = <FieldDate {...props} fieldInfo={fieldInfo} />
             break;
         case 'boolean':
-            comp =  <FieldBoolean {...props} fieldInfo={fieldInfo} />
+            comp = <FieldBoolean {...props} fieldInfo={fieldInfo} />
             break;
         case 'link':
-            comp =  <FieldLink {...props} callEndpoint={debouncedCallEndpint} fieldInfo={fieldInfo} />
+            comp = <FieldLink {...props} callEndpoint={debouncedCallEndpint} fieldInfo={fieldInfo} />
             break;
         case 'arrayLink':
-            comp =  <FieldArrayLink {...props} callEndpoint={debouncedCallEndpint}  fieldInfo={fieldInfo} />
+            comp = <FieldArrayLink {...props} callEndpoint={debouncedCallEndpint} fieldInfo={fieldInfo} />
             break;
         case 'string_markdown':
-            comp =  <FieldMkd {...props} fieldInfo={fieldInfo} />
+            comp = <FieldMkd {...props} fieldInfo={fieldInfo} />
             break;
         case 'string_html':
-            comp =  <FieldHTML {...props} fieldInfo={fieldInfo} />
+            comp = <FieldHTML {...props} fieldInfo={fieldInfo} />
             break;
         case 'string_color':
-            comp =  <FieldColor {...props} fieldInfo={fieldInfo} />
+            comp = <FieldColor {...props} fieldInfo={fieldInfo} />
             break;
     }
-    return <div style={{display: 'none'}}>{comp}</div>
+    return <div style={{ display: 'none' }}>{comp}</div>
 }
-
 
 function FieldText(props) {
 
-    const { field, locale, lang, template, model, state, onChange, fieldInfo, code } = props
-    const basicProps = { onChange, locale, lang }
+    const { field, locale, lang, template, model, state, onChange, fieldInfo, code, disabled } = props
+    const basicProps = { onChange, locale, lang, disabled }
 
     const parseJson = json => {
         if (!json) return []
@@ -193,8 +201,8 @@ function FieldText(props) {
 
 function FieldColor(props) {
 
-    const { field, locale, template, model, state, onChange, fieldInfo, code, lang } = props
-    const basicProps = { onChange, locale, lang }
+    const { field, locale, template, model, state, onChange, fieldInfo, code, lang, disabled } = props
+    const basicProps = { onChange, locale, lang, disabled }
 
     return <Input
         type="color"
@@ -210,8 +218,8 @@ function FieldColor(props) {
 }
 
 function FieldMkd(props) {
-    const { field, locale, template, model, state, onChange, fieldInfo, code, lang } = props
-    const basicProps = { onChange, locale, lang }
+    const { field, locale, template, model, state, onChange, fieldInfo, code, lang, disabled } = props
+    const basicProps = { onChange, locale, lang, disabled }
     const defaultValue = model[fieldInfo.sysName]
 
     return <React.Fragment>
@@ -224,13 +232,14 @@ function FieldMkd(props) {
             label={fieldInfo.name || fieldInfo.sysName}
             description={field._field_add_description && template(field._field_description_text)}
             defaultValue={defaultValue || (field.defaultValueOn && field.defaultValue)}
+            disabled={disabled}
         />
     </React.Fragment>
 }
 
 function FieldHTML(props) {
 
-    const { field, locale, template, model, state, onChange, fieldInfo, code } = props
+    const { field, locale, template, model, state, onChange, fieldInfo, code, disabled } = props
     const basicProps = { onChange, locale }
     const defaultValue = model[fieldInfo.sysName]
 
@@ -250,6 +259,7 @@ function FieldHTML(props) {
                 : <Input
                     type='textarea'
                     onChange={onChange}
+                    disabled={disabled}
                     required={field._field_required}
                     code
                     locale={locale}
@@ -264,7 +274,7 @@ function FieldHTML(props) {
 }
 
 function FieldFile(props) {
-    const { field, locale, template, model, state, onChange, fieldInfo, code } = props
+    const { field, locale, template, model, state, onChange, fieldInfo, code, disabled } = props
     const basicProps = { onChange, locale }
     const defaultValue = model[fieldInfo.sysName]
 
@@ -273,6 +283,7 @@ function FieldFile(props) {
         //allowUpload={field.fileUpload}
         locale={locale}
         edit
+        disabled={disabled}
         required={field._field_required}
         allowUpload
         multiple={fieldInfo.format == 'multipleFiles' || fieldInfo.format == 'multipleImages'}
@@ -287,7 +298,7 @@ function FieldFile(props) {
 
 function FieldDate(props) {
 
-    const { field, locale, template, model, state, onChange, fieldInfo, code } = props
+    const { field, locale, template, model, state, onChange, fieldInfo, code, disabled } = props
     const basicProps = { onChange, locale }
     const defaultValue = model[fieldInfo.sysName]
 
@@ -301,6 +312,7 @@ function FieldDate(props) {
         onChange={onChange}
         required={field._field_required}
         nomargin
+        disabled={disabled}
         label={fieldInfo.name || fieldInfo.sysName}
         description={field._field_add_description && template(field._field_description_text)}
         defaultValue={defaultValue}
@@ -309,7 +321,7 @@ function FieldDate(props) {
 
 function FieldJson(props) {
 
-    const { field, locale, template, model, state, onChange, fieldInfo, code } = props
+    const { field, locale, template, model, state, onChange, fieldInfo, code, disabled } = props
     const basicProps = { onChange, locale }
 
     const defaultValue = model[fieldInfo.sysName]
@@ -337,6 +349,7 @@ function FieldJson(props) {
             <Input type='json'
                 onChange={onChange}
                 rows='auto'
+                disabled={disabled}
                 required={field._field_required}
                 nomargin
                 label={fieldInfo.name || fieldInfo.sysName}
@@ -348,6 +361,7 @@ function FieldJson(props) {
             <Input type='checkboxGroup'
                 required={field._field_required}
                 nomargin
+                disabled={disabled}
                 onChange={value => onChange(JSON.stringify(value))}
                 label={fieldInfo.name || fieldInfo.sysName}
                 description={field._field_add_description && template(field._field_description_text)}
@@ -367,6 +381,7 @@ function FieldJson(props) {
                     <FpsMap
                         // mapRefreshOff={mapRefreshOff}
                         edit
+                        disabled={disabled}
                         required={field._field_required}
                         nomargin
                         oneMarker={_.get(fieldInfo, 'formatOptions.oneMarker')}
@@ -385,6 +400,7 @@ function FieldJson(props) {
                 onChange={value => onChange(JSON.stringify(value))}
                 required={field._field_required}
                 nomargin
+                disabled={disabled}
                 label={fieldInfo.name || fieldInfo.sysName}
                 description={field._field_add_description && template(field._field_description_text)}
                 customOptionType={fieldInfo.formatOptions.customOptionType}
@@ -400,6 +416,7 @@ function FieldJson(props) {
                 onChange={value => onChange(JSON.stringify(value))}
                 required={field._field_required}
                 nomargin
+                disabled={disabled}
                 label={fieldInfo.name || fieldInfo.sysName}
                 description={field._field_add_description && template(field._field_description_text)}
                 objectStructure={fieldInfo.formatOptions.keyValue ?
@@ -413,6 +430,7 @@ function FieldJson(props) {
                 onChange={value => onChange(JSON.stringify(value))}
                 required={field._field_required}
                 nomargin
+                disabled={disabled}
                 label={fieldInfo.name || fieldInfo.sysName}
                 description={field._field_add_description && template(field._field_description_text)}
                 defaultValue={(defaultValue && parseJson(defaultValue)) || ((fieldInfo.defaultValueOn && fieldInfo.defaultValue) ? { firstValue: fieldInfo.defaultValue.firstValue } :
@@ -436,6 +454,7 @@ function FieldJson(props) {
                 onChange={value => onChange && onChange(JSON.stringify(value))}
                 required={field._field_required}
                 nomargin
+                disabled={disabled}
                 label={fieldInfo.name || fieldInfo.sysName}
                 description={field._field_add_description && template(field._field_description_text)}
                 defaultValue={(defaultValue && parseJson(defaultValue)) || ((fieldInfo.defaultValueOn && fieldInfo.defaultValue) ? fieldInfo.defaultValue :
@@ -454,7 +473,7 @@ function FieldJson(props) {
 
 function FieldBoolean(props) {
 
-    const { field, locale, template, model, state, onChange, fieldInfo, code } = props
+    const { field, locale, template, model, state, onChange, fieldInfo, code, disabled } = props
     const basicProps = { onChange, locale }
 
     const getBooleanDefaultValue = defVal => {
@@ -463,6 +482,7 @@ function FieldBoolean(props) {
         if (defVal) { return 'true' } else { return 'false' }
     }
     return <Input type='radio'
+        disabled={disabled}
         options={[
             { value: 'true', label: !fieldInfo.formatOptions ? 'true' : fieldInfo.formatOptions.booleanOptions && fieldInfo.formatOptions.booleanOptions[0] ? fieldInfo.formatOptions.booleanOptions[0] : 'true' },
             { value: 'false', label: !fieldInfo.formatOptions ? 'false' : fieldInfo.formatOptions.booleanOptions && fieldInfo.formatOptions.booleanOptions[1] ? fieldInfo.formatOptions.booleanOptions[1] : 'false' }
@@ -480,8 +500,8 @@ function FieldBoolean(props) {
 
 function FieldLink(props) {
 
-    const { field, locale, template, model, state, setState, onChange, fieldInfo, code, callEndpoint } = props
-    const basicProps = { onChange, locale }
+    const { field, locale, template, model, state, setState, onChange, fieldInfo, code, callEndpoint, disabled } = props
+    const basicProps = { onChange, locale, disabled }
 
     const [firstLoad, setFirstLoad] = useState(false)
     const [options, setOptions] = useState([])
@@ -516,9 +536,9 @@ function FieldLink(props) {
                 }
             }
 
-            if(field._field_link_saveQuantity && field._field_link_saveQuantity_Field) {
+            if (field._field_link_saveQuantity && field._field_link_saveQuantity_Field) {
                 const fieldName = field._field_link_saveQuantity_Field.substring(9)
-                if (state[fieldName] !== data.length) { setState({...state, [fieldName]: data.length}) }
+                if (state[fieldName] !== data.length) { setState({ ...state, [fieldName]: data.length }) }
             }
 
             setOptions(data)
@@ -628,6 +648,7 @@ function FieldLink(props) {
                 defaultValue={transfromValue(model[fieldInfo.sysName])}
                 nomargin
                 locale={locale}
+                disabled={disabled}
             // {...basicProps}
             />
             {error && <Hint margin={{ top: 10, bottom: 0 }} closable error onClose={() => setError("")}>
@@ -695,6 +716,7 @@ function FieldLink(props) {
         rows='auto'
         required={field._field_required}
         code={code}
+        disabled={disabled}
         nomargin
         locale={locale}
         onChange={onChange}
@@ -708,8 +730,8 @@ function FieldLink(props) {
 
 function FieldArrayLink(props) {
 
-    const { field, locale, template, model, state, setState, onChange, fieldInfo, code, callEndpoint } = props
-    const basicProps = { onChange, locale }
+    const { field, locale, template, model, state, setState, onChange, fieldInfo, code, callEndpoint, disabled } = props
+    const basicProps = { onChange, locale, disabled }
 
     const [firstLoad, setFirstLoad] = useState(false)
     const [options, setOptions] = useState([])
@@ -734,7 +756,7 @@ function FieldArrayLink(props) {
         callEndpoint(field._field_arrayLink_endpoint, reqParams, finish, data => {
             // console.log("finish")
             // console.log(data)
-            
+
             // механизм сброса если из-за новых параметров среди опций нет значения:
             const currentValue = model[fieldInfo.sysName]
             if (resetValue && (currentValue || currentValue == 0)) {
@@ -742,9 +764,9 @@ function FieldArrayLink(props) {
                     onChange && onChange(null)
                 }
             }
-            if(field._field_link_saveQuantity && field._field_link_saveQuantity_Field) {
+            if (field._field_link_saveQuantity && field._field_link_saveQuantity_Field) {
                 const fieldName = field._field_link_saveQuantity_Field.substring(9)
-                if (state[fieldName] !== data.length) { setState({...state, [fieldName]: data.length}) }
+                if (state[fieldName] !== data.length) { setState({ ...state, [fieldName]: data.length }) }
             }
             setOptions(data)
         }, err => {
@@ -831,6 +853,7 @@ function FieldArrayLink(props) {
                 description={field._field_add_description && template(field._field_description_text)}
                 defaultValue={transfromValue(model[fieldInfo.sysName])}
                 nomargin
+                disabled={disabled}
                 locale={locale}
             // {...basicProps}
             />
@@ -846,6 +869,7 @@ function FieldArrayLink(props) {
             Endpoint for radio buttons is not configured.</div>
         return <div>
             <Input type="selectImages"
+            disabled={disabled}
                 options={
                     options.map(i => {
                         return {
@@ -887,6 +911,7 @@ function FieldArrayLink(props) {
             description={field._field_add_description && template(field._field_description_text)}
             callParams={params}
             nomargin
+            disabled={disabled}
             defaultValue={(model[fieldInfo.sysName] || "").split(",").filter(i => !!i)}
             onChange={value => {
                 value ? onChange(value.join(",")) : onChange(null)
@@ -911,6 +936,7 @@ function FieldArrayLink(props) {
                 }
             })}
             required={field._field_required}
+            disabled={disabled}
             //description={options.length}
             horizontal={field._field_arrayLink_checkbox_type == "horizontal"}
             label={fieldInfo.name || fieldInfo.sysName}
@@ -933,6 +959,7 @@ function FieldArrayLink(props) {
         rows='auto'
         required={field._field_required}
         code={code}
+        disabled={disabled}
         nomargin
         locale={locale}
         onChange={onChange}
