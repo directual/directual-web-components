@@ -18,7 +18,6 @@
      font-weight: var( --text-font-weight);
      font-size: var(--text-font-size);
      opacity: 1;
-     cursor: pointer;
      .cb_wrapper {
          &.nopadding {
              padding : 0
@@ -34,6 +33,7 @@
          .pretty_checkbox {
              background-color: var(--layout-secondary-bgr);
              height: 20px;
+             cursor: pointer;
              width: 20px;
              display: flex;
              align-items: center;
@@ -50,9 +50,9 @@
              }
             }
      }
-     &:hover:not(.disabled) {
+     &:not(.disabled) {
         .cb_wrapper {
-            .pretty_checkbox {
+            .pretty_checkbox:hover {
                 border: solid 2px var(--form-field-border);
                 height: 18px;
                 width: 18px;
@@ -63,9 +63,9 @@
             }
         }
      }
-     &:active:not(.disabled) {
+     &:not(.disabled) {
         .cb_wrapper {
-            .pretty_checkbox {
+            .pretty_checkbox:active {
                 background-color: var(--layout-text);
                 &.checked {
                     background-color: var(--layout-text);

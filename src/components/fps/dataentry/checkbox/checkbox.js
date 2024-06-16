@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styles from './checkbox.module.css'
 import Input from '../input/input'
+import PropTypes from 'prop-types';
 
 export default function Checkbox(props) {
     const defaultValue = props.checked || props.defaultValue || false
@@ -32,27 +33,28 @@ export default function Checkbox(props) {
     return (
         <div className={`${props.className || ''}`}>
             <div className={`${styles.cb_wrap}`}>
-                <label
+                <div
                     className={`${styles.checkbox} ${disabled && styles.disabled}`}
                     style={{ whiteSpace: props.nowrap ? 'nowrap' : 'normal' }}
                 >
                     <div className={`${styles.cb_wrapper} ${!label && styles.nopadding}`}>
                         <input
                             type='checkbox'
-                            onClick={e => {
-                                if (!disabled) {
-                                    e.stopPropagation()
-                                    e.preventDefault();
-                                    props.onChange && !customOption && props.onChange(!checked);
-                                    props.onChange && customOption && props.onChange(!checked, customOptionVal);
-                                    setChecked(!checked)
-                                }
-                            }}
+
                             checked={checked} />
-                        <span className={`${styles.pretty_checkbox} ${checked && `${styles.checked} icon icon-done`}`}></span>
+                        <span onClick={e => {
+                            if (!disabled) {
+                                e.stopPropagation()
+                                e.preventDefault();
+                                props.onChange && !customOption && props.onChange(!checked);
+                                props.onChange && customOption && props.onChange(!checked, customOptionVal);
+                                setChecked(!checked)
+                            }
+                        }}
+                            className={`${styles.pretty_checkbox} ${checked && `${styles.checked} icon icon-done`}`}></span>
                     </div>
                     <span className={styles.label}>{label}</span>
-                </label>
+                </div>
             </div>
             {customOption && checked &&
                 <div className={styles.customOptionWrapper}>
@@ -72,3 +74,15 @@ export default function Checkbox(props) {
         </div>
     )
 }
+
+Checkbox.propTypes = {
+    label: PropTypes.string,
+    onChange: PropTypes.func,
+    defaultValue: PropTypes.object
+};
+
+Checkbox.defaultProps = {
+    label: 'My checkbox',
+    onChange: undefined,
+    defaultValue: null
+};
