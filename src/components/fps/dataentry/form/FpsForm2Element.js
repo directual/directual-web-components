@@ -199,7 +199,8 @@ function ElementSubheader(props) {
 
 function ElementText(props) {
     const { element, template } = props
-    const text = template(element.paraText)
+    const text = //element.paraText + " - " + 
+        template(element.paraText)
     return text ? <InnerHTML allowRerender={true} html={text} /> : ""
 }
 
@@ -212,7 +213,12 @@ function ElementSubmit(props) {
         setLoading(true)
         onSubmit(result => {
             setLoading(false)
-        }, element.submitKeepModel, element.submitStep)
+        }, 
+        element.submitKeepModel, 
+        element.submitStep, 
+        false,
+        element.submitAdditionalMapping && element.submitMapping && element.submitMapping.length > 0 
+        ? element.submitMapping : undefined)
     }
     return <div>
         {state._submitError && <Hint margin={{ top: 0, bottom: 18 }} error closable onClose={() => setState({ ...state, _submitError: "" })}>

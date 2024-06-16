@@ -34,7 +34,7 @@
 }
 .tabWrapper.singleTab {
   padding: 0;
-  margin-top: 12px;
+  margin-top: 0;
 }
 .tabWrapper.current {
   display: block;

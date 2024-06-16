@@ -20,7 +20,6 @@ export default function FpsForm2(props) {
   // console.log("=== FpsForm2 data ===")
   // console.log(data)
 
-
   const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
   const defaultState = { "step": "default step", "popup": "" }
   const params = _.get(data, "params")
@@ -57,12 +56,14 @@ export default function FpsForm2(props) {
     return tempModel
   }
   const [model, setModel] = useState({ ...gatherDefaults() })
+  const [extendedModel, setExtendedModel] = useState({ ...gatherDefaults() })
   const [originalModel, setOriginalModel] = useState({ ...gatherDefaults() })
   const previousModel = usePrevious(model);
   const [state, setState] = useState(_.get(data, "params.state") || defaultState)
   const previousState = usePrevious(state);
   const transformedState = { FormState: state, WebUser: auth }
   const defaultModel = { ...emptyValues, ...model, ...transformedState }
+  const defaultExtModel = { ...emptyValues, ...extendedModel, ...transformedState }
   const [loading, setLoading] = useState(false)
   const modelIsChanged = !_.isEqual(model, originalModel)
 
@@ -139,7 +140,7 @@ export default function FpsForm2(props) {
   // process Socket.io update
   useEffect(() => {
     if (edditingOn) {
-      // console.log("update model (socket)")
+      setExtendedModel({ ..._.get(data, "data[0]") })
       let saveSate = { ...state }
       const newModel = ({ ...model, ...flatternModel({ ..._.get(data, "data[0]") }) })
       if (!_.isEqual(newModel, model)) {
@@ -163,14 +164,14 @@ export default function FpsForm2(props) {
     }
   }, [model])
 
-  function submit(finish, submitKeepModel, targetStep, autoSubmit) {
+  function submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping) {
     clearTimeout(cx);
 
     setState({ ...state, _submitError: "" })
     let modelToSend = {}
+
     for (const f in model) {
       if (_.includes(_.get(data, 'writeFields'), f)) {
-
         // проверка на дату
         const type = _.filter(_.get(data, 'fileds'), i => i.sysName == f) 
           && _.filter(_.get(data, 'fileds'), i => i.sysName == f)[0]
@@ -184,6 +185,24 @@ export default function FpsForm2(props) {
 
       }
     }
+
+    // submit mapping:
+    submitMapping.forEach(mapping => {
+      const f = mapping.field
+      const value = template(mapping.value)
+      if (_.includes(_.get(data, 'writeFields'), f)) {
+        // проверка на дату
+        const type = _.filter(_.get(data, 'fileds'), i => i.sysName == f) 
+          && _.filter(_.get(data, 'fileds'), i => i.sysName == f)[0]
+          && _.filter(_.get(data, 'fileds'), i => i.sysName == f)[0].dataType
+
+        if (type == 'date') { 
+          modelToSend[f] = moment(value).toISOString()
+        } else {
+          modelToSend[f] = value
+        }
+      }
+    })
 
     if (!modelIsChanged && !_.isEqual(gatherDefaults(), model && !autoSubmit) &&
       !(_.get(params, "general.saveState") && _.get(params, "general.saveStateTo"))) {
@@ -313,10 +332,58 @@ export default function FpsForm2(props) {
   }
 
   // front-end template engine
+  // function template(input) {
+  //   const templateData = { ...defaultExtModel, ...(extendedModel || {}) };
+  //   _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
+  //   if (!templateData) return ""
+  //   const renderTemplate = (template) => {
+  //     return _.template(template, {
+  //       interpolate: /{{([\s\S]+?)}}/g
+  //     })(templateData, {
+  //       variable: '',
+  //       evaluate: /<%([\s\S]+?)%>/g,
+  //       escape: /<%-([\s\S]+?)%>/g
+  //     });
+  //   };
+  //   try {
+  //     const result = renderTemplate(input);
+  //     return result;
+  //   } catch (error) {
+  //     console.error("template")
+  //     console.error(input)
+  //     console.error(templateData)
+  //     console.error('Error rendering template:', error);
+  //     return '';
+  //   }
+  // }
+
   function template(input) {
-    const templateData = { ...defaultModel, ...(model || {}) };
+    if (!input) return ""
+    const templateData = { ...defaultExtModel, ...(extendedModel || {}) };
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
-    if (!templateData) return ""
+    if (!templateData) return "";
+  
+    // Function to convert object references to their desired string representation paths
+    const preprocessTemplate = (str, data) => {
+      const regex = /{{\s*([\w.]+)\s*}}/g;
+      return str.replace(regex, (match, p1) => {
+        const keys = p1.split('.');
+        let value = data;
+        keys.forEach(key => {
+          if (value && value[key]) {
+            value = value[key];
+          }
+        });
+        // Check if the value is an object and replace it with the id property if it exists
+        if (typeof value === 'object' && value !== null && value.id) {
+          return `{{${p1}.id}}`;
+        }
+        return match;
+      });
+    };
+  
+    const preprocessedInput = preprocessTemplate(input, templateData);
+  
     const renderTemplate = (template) => {
       return _.template(template, {
         interpolate: /{{([\s\S]+?)}}/g
@@ -326,17 +393,19 @@ export default function FpsForm2(props) {
         escape: /<%-([\s\S]+?)%>/g
       });
     };
+  
     try {
-      const result = renderTemplate(input);
+      const result = renderTemplate(preprocessedInput);
       return result;
     } catch (error) {
-      console.error("template")
-      console.error(input)
-      console.error(templateData)
+      console.error("template");
+      console.error(input);
+      console.error(templateData);
       console.error('Error rendering template:', error);
       return '';
     }
   }
+
   function templateState(input, model) {
     const templateData = { ...defaultModel, ...(model || {}) }
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
@@ -535,6 +604,7 @@ export default function FpsForm2(props) {
 
   const showSection = section => {
     if (section.sectionVisibility == "always") return true;
+    if (section.sectionVisibility == "empty" && !state.step) return true;
     if (section.sectionVisibility == "custom") {
       let current = state.step ? [state.step] : []
       let steps = section.sectionCustomVisibility ? section.sectionCustomVisibility.split(",") : []
@@ -603,6 +673,11 @@ export default function FpsForm2(props) {
     {_.get(params, "general.showState") && <pre className={`${styles.debug} ${highlightState ? styles.highlight : ''}`}>
       <code>{JSON.stringify(state, 0, 3)}</code>
       <span>debug mode: STATE</span>
+    </pre>}
+
+    {_.get(params, "general.showFullModel") && <pre className={`${styles.debug} ${highlightState ? styles.highlight : ''}`}>
+      <code>{JSON.stringify(extendedModel, 0, 3)}</code>
+      <span>debug mode: EXT. MODEL</span>
     </pre>}
 
     {_.get(params, "general.showModel") && <pre className={`${styles.debug} ${highlightModel ? styles.highlight : ''}`}>
@@ -754,39 +829,28 @@ function RenderStep(props) {
           };
         });
 
-        // fake request
-        // setTimeout(() => {
-        //   const data = [
-        //     {
-        //       "name": "John",
-        //       "id": "310846eb-460e-452b-9c4b-a2e1f71e773e"
-        //     },
-        //     {
-        //       "name": "Paul",
-        //       "id": "ac32238e-e7cd-4038-90eb-752f97edbaf6"
-        //     },
-        //     {
-        //       "name": "Peter",
-        //       "id": "9100a8fb-4743-402a-b1f1-0081c7e2e777"
-        //     },
-        //     {
-        //       "name": "Kate",
-        //       "id": "31560763-541e-4643-be51-6e6041e2868e"
-        //     },
-        //     {
-        //       "name": "Julia",
-        //       "id": "66628fb9-07cb-4e4f-9e51-c03bd64d67d6"
-        //     },
-        //     {
-        //       "name": "Monica",
-        //       "id": "1d37d760-2f64-498a-9432-d9895ad5da00"
-        //     }
-        //   ]
-        //   const visibleNames = '[{"sysName":"firstName"},{"sysName":"lastName"}]'
-        //   finish && finish(transformedArray(data, visibleNames))
-        //   setOptions && setOptions(transformedArray(data, visibleNames))
-        // }, 1000)
+        //fake request
+        setTimeout(() => {
+          const data = [
+              {
+                  "lang": "Russian",
+                  "id": "ru"
+              },
+              {
+                  "lang": "Spanish",
+                  "id": "es"
+              },
+              {
+                  "lang": "English",
+                  "id": "en"
+              }
+          ]
+          const visibleNames = '[{"sysName":"lang"}]'
+          finish && finish(transformedArray(data, visibleNames))
+          setOptions && setOptions(transformedArray(data, visibleNames))
+        }, 1000)
 
+        false &&
         callEndpoint && callEndpoint(
           endpoint,
           "GET",
