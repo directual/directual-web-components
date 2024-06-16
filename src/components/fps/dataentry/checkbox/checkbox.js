@@ -34,20 +34,20 @@ export default function Checkbox(props) {
             <div className={`${styles.cb_wrap}`}>
                 <label
                     className={`${styles.checkbox} ${disabled && styles.disabled}`}
-                    style={{whiteSpace: props.nowrap ? 'nowrap' : 'normal'}}
-                    onClick={e => {
-                        if (!disabled) {
-                            e.stopPropagation()
-                            e.preventDefault();
-                            props.onChange && !customOption && props.onChange(!checked);
-                            props.onChange && customOption && props.onChange(!checked, customOptionVal);
-                            setChecked(!checked)
-                        }
-                    }}
+                    style={{ whiteSpace: props.nowrap ? 'nowrap' : 'normal' }}
                 >
                     <div className={`${styles.cb_wrapper} ${!label && styles.nopadding}`}>
                         <input
                             type='checkbox'
+                            onClick={e => {
+                                if (!disabled) {
+                                    e.stopPropagation()
+                                    e.preventDefault();
+                                    props.onChange && !customOption && props.onChange(!checked);
+                                    props.onChange && customOption && props.onChange(!checked, customOptionVal);
+                                    setChecked(!checked)
+                                }
+                            }}
                             checked={checked} />
                         <span className={`${styles.pretty_checkbox} ${checked && `${styles.checked} icon icon-done`}`}></span>
                     </div>
