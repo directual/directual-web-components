@@ -187,7 +187,7 @@ export default function FpsForm2(props) {
     }
 
     // submit mapping:
-    submitMapping.forEach(mapping => {
+    submitMapping && submitMapping.forEach(mapping => {
       const f = mapping.field
       const value = template(mapping.value)
       if (_.includes(_.get(data, 'writeFields'), f)) {
@@ -831,27 +831,27 @@ function RenderStep(props) {
         });
 
         //fake request
-        // setTimeout(() => {
-        //   const data = [
-        //     {
-        //       "lang": "Russian",
-        //       "id": "ru"
-        //     },
-        //     {
-        //       "lang": "Spanish",
-        //       "id": "es"
-        //     },
-        //     {
-        //       "lang": "English",
-        //       "id": "en"
-        //     }
-        //   ]
-        //   const visibleNames = '[{"sysName":"lang"}]'
-        //   finish && finish(transformedArray(data, visibleNames))
-        //   setOptions && setOptions(transformedArray(data, visibleNames))
-        // }, 1000)
+        setTimeout(() => {
+          const data = [
+            {
+              "lang": "Russian",
+              "id": "ru"
+            },
+            {
+              "lang": "Spanish",
+              "id": "es"
+            },
+            {
+              "lang": "English",
+              "id": "en"
+            }
+          ]
+          const visibleNames = '[{"sysName":"lang"}]'
+          finish && finish(transformedArray(data, visibleNames))
+          setOptions && setOptions(transformedArray(data, visibleNames))
+        }, 1000)
 
-        callEndpoint && callEndpoint(
+        false && callEndpoint && callEndpoint(
             endpoint,
             "GET",
             undefined,
