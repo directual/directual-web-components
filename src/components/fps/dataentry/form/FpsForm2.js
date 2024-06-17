@@ -831,27 +831,27 @@ function RenderStep(props) {
         });
 
         //fake request
-        setTimeout(() => {
-          const data = [
-            {
-              "lang": "Russian",
-              "id": "ru"
-            },
-            {
-              "lang": "Spanish",
-              "id": "es"
-            },
-            {
-              "lang": "English",
-              "id": "en"
-            }
-          ]
-          const visibleNames = '[{"sysName":"lang"}]'
-          finish && finish(transformedArray(data, visibleNames))
-          setOptions && setOptions(transformedArray(data, visibleNames))
-        }, 1000)
+        // setTimeout(() => {
+        //   const data = [
+        //     {
+        //       "lang": "Russian",
+        //       "id": "ru"
+        //     },
+        //     {
+        //       "lang": "Spanish",
+        //       "id": "es"
+        //     },
+        //     {
+        //       "lang": "English",
+        //       "id": "en"
+        //     }
+        //   ]
+        //   const visibleNames = '[{"sysName":"lang"}]'
+        //   finish && finish(transformedArray(data, visibleNames))
+        //   setOptions && setOptions(transformedArray(data, visibleNames))
+        // }, 1000)
 
-        false && callEndpoint && callEndpoint(
+        callEndpoint && callEndpoint(
             endpoint,
             "GET",
             undefined,
