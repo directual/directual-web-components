@@ -59,7 +59,7 @@ export default function FpsForm2(props) {
   const [extendedModel, setExtendedModel] = useState({ ...gatherDefaults() })
   const [originalModel, setOriginalModel] = useState({ ...gatherDefaults() })
   const previousModel = usePrevious(model);
-  const [state, setState] = useState(templateState(_.get(data, "params.state")) || defaultState)
+  const [state, setState] = useState(_.get(data, "params.state") || defaultState)
   const previousState = usePrevious(state);
   const transformedState = { FormState: state, WebUser: auth }
   const defaultModel = { ...emptyValues, ...model, ...transformedState }
@@ -831,28 +831,27 @@ function RenderStep(props) {
         });
 
         //fake request
-        setTimeout(() => {
-          const data = [
-            {
-              "lang": "Russian",
-              "id": "ru"
-            },
-            {
-              "lang": "Spanish",
-              "id": "es"
-            },
-            {
-              "lang": "English",
-              "id": "en"
-            }
-          ]
-          const visibleNames = '[{"sysName":"lang"}]'
-          finish && finish(transformedArray(data, visibleNames))
-          setOptions && setOptions(transformedArray(data, visibleNames))
-        }, 1000)
+        // setTimeout(() => {
+        //   const data = [
+        //     {
+        //       "lang": "Russian",
+        //       "id": "ru"
+        //     },
+        //     {
+        //       "lang": "Spanish",
+        //       "id": "es"
+        //     },
+        //     {
+        //       "lang": "English",
+        //       "id": "en"
+        //     }
+        //   ]
+        //   const visibleNames = '[{"sysName":"lang"}]'
+        //   finish && finish(transformedArray(data, visibleNames))
+        //   setOptions && setOptions(transformedArray(data, visibleNames))
+        // }, 1000)
 
-        false &&
-          callEndpoint && callEndpoint(
+        callEndpoint && callEndpoint(
             endpoint,
             "GET",
             undefined,
