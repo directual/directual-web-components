@@ -59,7 +59,7 @@ export default function FpsForm2(props) {
   const [extendedModel, setExtendedModel] = useState({ ...gatherDefaults() })
   const [originalModel, setOriginalModel] = useState({ ...gatherDefaults() })
   const previousModel = usePrevious(model);
-  const [state, setState] = useState(_.get(data, "params.state") || defaultState)
+  const [state, setState] = useState(templateState(_.get(data, "params.state")) || defaultState)
   const previousState = usePrevious(state);
   const transformedState = { FormState: state, WebUser: auth }
   const defaultModel = { ...emptyValues, ...model, ...transformedState }
@@ -173,11 +173,11 @@ export default function FpsForm2(props) {
     for (const f in model) {
       if (_.includes(_.get(data, 'writeFields'), f)) {
         // проверка на дату
-        const type = _.filter(_.get(data, 'fileds'), i => i.sysName == f) 
+        const type = _.filter(_.get(data, 'fileds'), i => i.sysName == f)
           && _.filter(_.get(data, 'fileds'), i => i.sysName == f)[0]
           && _.filter(_.get(data, 'fileds'), i => i.sysName == f)[0].dataType
 
-        if (type == 'date') { 
+        if (type == 'date') {
           modelToSend[f] = moment(model[f]).toISOString()
         } else {
           modelToSend[f] = model[f]
@@ -192,11 +192,11 @@ export default function FpsForm2(props) {
       const value = template(mapping.value)
       if (_.includes(_.get(data, 'writeFields'), f)) {
         // проверка на дату
-        const type = _.filter(_.get(data, 'fileds'), i => i.sysName == f) 
+        const type = _.filter(_.get(data, 'fileds'), i => i.sysName == f)
           && _.filter(_.get(data, 'fileds'), i => i.sysName == f)[0]
           && _.filter(_.get(data, 'fileds'), i => i.sysName == f)[0].dataType
 
-        if (type == 'date') { 
+        if (type == 'date') {
           modelToSend[f] = moment(value).toISOString()
         } else {
           modelToSend[f] = value
@@ -362,7 +362,7 @@ export default function FpsForm2(props) {
     const templateData = { ...defaultExtModel, ...(extendedModel || {}) };
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
     if (!templateData) return "";
-  
+
     // Function to convert object references to their desired string representation paths
     const preprocessTemplate = (str, data) => {
       const regex = /{{\s*([\w.]+)\s*}}/g;
@@ -381,9 +381,9 @@ export default function FpsForm2(props) {
         return match;
       });
     };
-  
+
     const preprocessedInput = preprocessTemplate(input, templateData);
-  
+
     const renderTemplate = (template) => {
       return _.template(template, {
         interpolate: /{{([\s\S]+?)}}/g
@@ -393,7 +393,7 @@ export default function FpsForm2(props) {
         escape: /<%-([\s\S]+?)%>/g
       });
     };
-  
+
     try {
       const result = renderTemplate(preprocessedInput);
       return result;
@@ -410,6 +410,7 @@ export default function FpsForm2(props) {
     const templateData = { ...defaultModel, ...(model || {}) }
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
     // Custom function to handle undefined variables by replacing them with ""
+
     if (!templateData) return {}
     const renderTemplate = (template) => {
       return _.template(template, {
@@ -832,18 +833,18 @@ function RenderStep(props) {
         //fake request
         setTimeout(() => {
           const data = [
-              {
-                  "lang": "Russian",
-                  "id": "ru"
-              },
-              {
-                  "lang": "Spanish",
-                  "id": "es"
-              },
-              {
-                  "lang": "English",
-                  "id": "en"
-              }
+            {
+              "lang": "Russian",
+              "id": "ru"
+            },
+            {
+              "lang": "Spanish",
+              "id": "es"
+            },
+            {
+              "lang": "English",
+              "id": "en"
+            }
           ]
           const visibleNames = '[{"sysName":"lang"}]'
           finish && finish(transformedArray(data, visibleNames))
@@ -851,26 +852,26 @@ function RenderStep(props) {
         }, 1000)
 
         false &&
-        callEndpoint && callEndpoint(
-          endpoint,
-          "GET",
-          undefined,
-          params,
-          (result, data, visibleNames) => {
-            // console.log(result)
-            // console.log(data)
+          callEndpoint && callEndpoint(
+            endpoint,
+            "GET",
+            undefined,
+            params,
+            (result, data, visibleNames) => {
+              // console.log(result)
+              // console.log(data)
 
-            if (result == "ok") {
-              finish && finish(transformedArray(data, visibleNames))
-              setOptions && setOptions(transformedArray(data, visibleNames))
+              if (result == "ok") {
+                finish && finish(transformedArray(data, visibleNames))
+                setOptions && setOptions(transformedArray(data, visibleNames))
+              }
+              else {
+                setError && setError(data)
+                finish && finish([])
+                setOptions && setOptions([])
+              }
             }
-            else {
-              setError && setError(data)
-              finish && finish([])
-              setOptions && setOptions([])
-            }
-          }
-        )
+          )
       }}
       key={element.id} />)}
     {(currentStep.elements || [])
