@@ -359,7 +359,7 @@ export default function FpsForm2(props) {
 
   function template(input) {
     if (!input) return ""
-    const templateData = { ...defaultExtModel, ...(extendedModel || {}) };
+    const templateData = { ...defaultExtModel, ...(model || {}), ...(extendedModel || {}) };
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
     if (!templateData) return "";
 
@@ -564,8 +564,11 @@ export default function FpsForm2(props) {
       // { key: "isNotNull", value: "is NOT empty" },
       if (element._conditionalView_operator == "isNotNull") {
         if (_.isEmpty(field)) {
-          // _.get(params, "general.showModel") && console.log("element is hidden")
-          // _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " is NOT empty")
+          console.log("field")
+          console.log("'" + field + "'")
+          console.log(_.isEmpty(field))
+          _.get(params, "general.showModel") && console.log("element is hidden")
+          _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " is NOT empty")
           isHidden = true
         }
       }
