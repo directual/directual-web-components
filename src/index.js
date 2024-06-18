@@ -54,6 +54,7 @@ import { Tree } from './components/fps/tree/tree'
 import Stopwatch from './components/fps/media/stopwatch'
 import Colorpicker from './components/fps/dataentry/colorpicker/colorpicker'
 import Chart from './components/fps/chart/chart'
+import Comments from './components/fps/comments/comments'
 
 import FpsTheme, { SetTheme } from './components/fps/theme/theme'
 
@@ -62,6 +63,7 @@ export {
   Fps400,
   Spacing,
   Fps500,
+  Comments,
   FormSteps,
   FpsForm2,
   FpsBlocked,

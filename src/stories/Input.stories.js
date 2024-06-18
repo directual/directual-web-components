@@ -273,7 +273,7 @@ export const Select = {
 
 
 
-export const FtructureField = {
+export const StructureField = {
   args: {
     type: 'structurefield',
     noHint: true,
@@ -361,6 +361,28 @@ export const DimanicSelect = {
       }, 2000)
     },
     icon: 'actions'
+  },
+};
+
+export const DimanicComplexSelect = {
+  args: {
+    type: 'dinamicComplexSelect',
+    displayKey: true,
+    width: 400,
+    onLoad: (finish) => {
+      console.log('call onLoad')
+      console.log('loading...')
+      setTimeout(() => {
+        const salt1 = Math.random().toString(5)
+        const salt2 = Math.random().toString(5)
+        const salt3 = Math.random().toString(5)
+        finish && finish([
+          { key: Date.now().toString() + salt1, value: "option_" + salt1, description: "однажды в суровую зимнюю пору", image: "https://api.alfa.directual.com/fileUploaded/dev/be1ae50d-d24f-4ad8-bb3a-6765390d2c9f.jpg" },
+          { key: Date.now().toString() + salt2, value: "option_" + salt2, description: "я из лесу вышел был сильный мороз — гляжу забирается медленно в гору телега", image: "https://api.alfa.directual.com/fileUploaded/dev/be1ae50d-d24f-4ad8-bb3a-6765390d2c9f.jpg" },
+          { key: Date.now().toString() + salt3, value: "option_" + salt3, description: "откуда дровишки? из лесу, вестимо", image: "https://api.alfa.directual.com/fileUploaded/dev/be1ae50d-d24f-4ad8-bb3a-6765390d2c9f.jpg" },
+        ])
+      }, 2000)
+    },
   },
 };
 

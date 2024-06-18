@@ -320,7 +320,9 @@ export default function Input(props) {
     useEffect(() => {
         if (props.highlightEmpty && !value) { setWarningMesg({ type: 'error', msg: 'This field is required' }) }
         else { inputEl.current == document.activeElement && !props.error && setWarningMesg({}); }
-        if ((props.type == 'select' || props.type == 'multiselect' || props.type == 'dinamicSelect' || props.type == 'dinamicMultiSelect' || props.type == 'structurefield') &&
+        if ((props.type == 'select' || props.type == 'multiselect' || props.type == 'dinamicSelect' 
+            || props.type == 'dinamicComplexSelect'
+            || props.type == 'dinamicMultiSelect' || props.type == 'structurefield') &&
             props.highlightEmpty && value && !props.error) {
             setWarningMesg({});
         }
@@ -483,6 +485,7 @@ export default function Input(props) {
                 props.type != 'tags' &&
                 props.type != 'multiselect' &&
                 props.type != 'dinamicSelect' &&
+                props.type != 'dinamicComplexSelect' &&
                 props.type != 'dinamicMultiSelect' &&
                 props.type != 'date' &&
                 props.type != 'slider' &&
@@ -933,6 +936,29 @@ export default function Input(props) {
                     onChangeSubselect={props.onChangeSubselect}
                 />
             }
+            {props.type == 'dinamicComplexSelect' &&
+                <Select
+                    warning={warningMsg.type}
+                    placeholder={props.placeholder}
+                    //options={props.options}
+                    callParams={props.callParams}
+                    onLoad={props.onLoad}
+                    dinamicComplexSelect
+                    icon={props.icon}
+                    dict={dict[lang]}
+                    code={props.code}
+                    height={props.height}
+                    bottomSelect={props.bottomSelect}
+                    disabled={props.disabled}
+                    displayKey={props.displayKey}
+                    displayKeyShort={props.displayKeyShort}
+                    defaultValue={defVal}
+                    iconOptions={props.iconOptions}
+                    onChange={e => submit(e)}
+                    subSelect={props.subSelect}
+                    onChangeSubselect={props.onChangeSubselect}
+                />
+            }
             {props.type == 'dinamicMultiSelect' &&
                 <Select
                     warning={warningMsg.type}
@@ -1113,6 +1139,7 @@ Input.propTypes = {
     onClick: PropTypes.func,
     displayKey: PropTypes.bool,
     icon: PropTypes.string,
+    width: PropTypes.number
 };
 
 Input.defaultProps = {
@@ -1120,5 +1147,6 @@ Input.defaultProps = {
     options: [],
     displayKey: false,
     onClick: undefined,
-    icon: null
+    icon: null,
+    width: undefined
 };

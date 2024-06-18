@@ -187,22 +187,26 @@ export default function FpsForm2(props) {
     }
 
     // submit mapping:
-    submitMapping && submitMapping.forEach(mapping => {
-      const f = mapping.field
-      const value = template(mapping.value)
-      if (_.includes(_.get(data, 'writeFields'), f)) {
-        // проверка на дату
-        const type = _.filter(_.get(data, 'fileds'), i => i.sysName == f)
-          && _.filter(_.get(data, 'fileds'), i => i.sysName == f)[0]
-          && _.filter(_.get(data, 'fileds'), i => i.sysName == f)[0].dataType
+    if (submitMapping) {
+      submitMapping.forEach(mapping => {
+        const f = mapping.field
+        const value = template(mapping.value)
+        if (_.includes(_.get(data, 'writeFields'), f)) {
+          // проверка на дату
+          const type = _.filter(_.get(data, 'fileds'), i => i.sysName == f)
+            && _.filter(_.get(data, 'fileds'), i => i.sysName == f)[0]
+            && _.filter(_.get(data, 'fileds'), i => i.sysName == f)[0].dataType
 
-        if (type == 'date') {
-          modelToSend[f] = moment(value).toISOString()
-        } else {
-          modelToSend[f] = value
+          if (type == 'date') {
+            modelToSend[f] = moment(value).toISOString()
+          } else {
+            modelToSend[f] = value
+          }
         }
-      }
-    })
+      })
+      // до кучи сохраняем автомаппинг в модель, чтобы сокетом не дрочить
+      setModel(modelToSend)
+    }
 
     if (!modelIsChanged && !_.isEqual(gatherDefaults(), model && !autoSubmit) &&
       !(_.get(params, "general.saveState") && _.get(params, "general.saveStateTo"))) {
@@ -564,9 +568,6 @@ export default function FpsForm2(props) {
       // { key: "isNotNull", value: "is NOT empty" },
       if (element._conditionalView_operator == "isNotNull") {
         if (_.isEmpty(field)) {
-          console.log("field")
-          console.log("'" + field + "'")
-          console.log(_.isEmpty(field))
           _.get(params, "general.showModel") && console.log("element is hidden")
           _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " is NOT empty")
           isHidden = true
@@ -855,25 +856,25 @@ function RenderStep(props) {
         // }, 1000)
 
         callEndpoint && callEndpoint(
-            endpoint,
-            "GET",
-            undefined,
-            params,
-            (result, data, visibleNames) => {
-              // console.log(result)
-              // console.log(data)
+          endpoint,
+          "GET",
+          undefined,
+          params,
+          (result, data, visibleNames) => {
+            // console.log(result)
+            // console.log(data)
 
-              if (result == "ok") {
-                finish && finish(transformedArray(data, visibleNames))
-                setOptions && setOptions(transformedArray(data, visibleNames))
-              }
-              else {
-                setError && setError(data)
-                finish && finish([])
-                setOptions && setOptions([])
-              }
+            if (result == "ok") {
+              finish && finish(transformedArray(data, visibleNames))
+              setOptions && setOptions(transformedArray(data, visibleNames))
             }
-          )
+            else {
+              setError && setError(data)
+              finish && finish([])
+              setOptions && setOptions([])
+            }
+          }
+        )
       }}
       key={element.id} />)}
     {(currentStep.elements || [])
