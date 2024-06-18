@@ -205,7 +205,6 @@ export default function FpsForm2(props) {
         }
       })
       // до кучи сохраняем автомаппинг в модель, чтобы сокетом не дрочить
-      setModel(modelToSend)
     }
 
     if (!modelIsChanged && !_.isEqual(gatherDefaults(), model && !autoSubmit) &&
@@ -303,7 +302,7 @@ export default function FpsForm2(props) {
             setState({ ...saveState })
             : setState({ ...saveState, step: targetStep || "submitted", ...stateUpdate })
 
-          if (submitKeepModel) { modelUpdate = { ...model, ...modelUpdate } }
+          if (submitKeepModel) { modelUpdate = { ...model, ...modelToSend, ...modelUpdate } }
 
           setModel(modelUpdate)
           setOriginalModel(modelUpdate)
