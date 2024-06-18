@@ -20,7 +20,7 @@ export default function FpsForm2Input(props) {
     const fieldInfo = _.find(_.get(data, "fileds"), { sysName: field._field }) || {}
     const type = `${fieldInfo.dataType}${fieldInfo.format ? `_${fieldInfo.format}` : ''}`
 
-    const debouncedCallEndpint = debounce(callEndpoint, 300);
+    const debouncedCallEndpint = debounce(callEndpoint, 100);
 
     if (field._conditionalView &&
         !checkHidden(field) &&

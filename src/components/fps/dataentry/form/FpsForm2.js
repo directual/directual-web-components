@@ -82,7 +82,7 @@ export default function FpsForm2(props) {
 
   const cx = null
   const submitOnModel = debounce(submit, 3000);
-  const submitOnState = debounce(submit, 700);
+  const submitOnState = debounce(submit, 300);
   //const debouncedCallEndpint = debounce(callEndpoint, 700);
 
   // AUTOSUBMIT ON MODEL
@@ -264,7 +264,7 @@ export default function FpsForm2(props) {
         if (result == "ok") {
           finish && finish(data)
           console.log("FINISH SUBMIT")
-          console.log(data)
+          //console.log(data)
           let saveState = { ...state }
           let stateUpdate = {}
           let modelUpdate = {}
@@ -303,7 +303,8 @@ export default function FpsForm2(props) {
             : setState({ ...saveState, step: targetStep || "submitted", ...stateUpdate })
 
           if (submitKeepModel) { modelUpdate = { ...model, ...modelToSend, ...modelUpdate } }
-
+          console.log("modelUpdate")
+          console.log(modelUpdate)
           setModel(modelUpdate)
           setOriginalModel(modelUpdate)
         } else {
