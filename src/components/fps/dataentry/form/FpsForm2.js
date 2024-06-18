@@ -303,8 +303,6 @@ export default function FpsForm2(props) {
             : setState({ ...saveState, step: targetStep || "submitted", ...stateUpdate })
 
           if (submitKeepModel) { modelUpdate = { ...model, ...modelToSend, ...modelUpdate } }
-          console.log("modelUpdate")
-          console.log(modelUpdate)
           setModel(modelUpdate)
           setOriginalModel(modelUpdate)
         } else {
@@ -457,6 +455,10 @@ export default function FpsForm2(props) {
     const copyModel = _.cloneDeep(model)
     _.set(copyModel, field, value)
     setModel(copyModel)
+
+    const copyExtendedModel = _.cloneDeep(extendedModel)
+    _.set(copyExtendedModel, field, value)
+    setExtendedModel(copyExtendedModel)
   }
 
   const checkHidden = element => {
