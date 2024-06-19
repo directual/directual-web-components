@@ -99,7 +99,8 @@ function ElementInput(props) {
 }
 
 function ElementAction(props) {
-    const { element, templateState, template, callEndpointPOST, setState, setModel, model, data, state, originalModel, dict, lang } = props
+    const { element, templateState, template, callEndpointPOST, setState, extendedModel,
+        setExtendedModel, setModel, model, data, state, originalModel, dict, lang } = props
     const [loading, setLoading] = useState(false)
 
     const action_list = _.get(element, "_actions") || []
@@ -149,9 +150,11 @@ function ElementAction(props) {
         }
         if (action.resetModel) {
             setModel({})
+            setExtendedModel({})
         }
         if (action.discardModel) {
             setModel(originalModel)
+            setExtendedModel(originalModel)
         }
         if ((action.actionType == "endpoint" || !action.actionType) && action.endpoint) {
             let payload = transformObject(action.mapping)
@@ -169,6 +172,7 @@ function ElementAction(props) {
             const payloadModel = transformState(action.stateMapping, "model")
             setState({ ...state, ...payloadState })
             setModel({ ...model, ...payloadModel })
+            setExtendedModel({ ...extendedModel, ...payloadModel })
         }
     }
 

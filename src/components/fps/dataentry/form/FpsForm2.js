@@ -651,6 +651,8 @@ export default function FpsForm2(props) {
               model={model}
               checkHidden={checkHidden}
               dict={dict}
+              extendedModel={extendedModel}
+              setExtendedModel={setExtendedModel}
               state={state}
               originalModel={originalModel}
               templateState={templateState}
@@ -719,6 +721,8 @@ export default function FpsForm2(props) {
             {...props}
             currentStep={currentStep}
             model={model}
+            extendedModel={extendedModel}
+            setExtendedModel={setExtendedModel}
             checkHidden={checkHidden}
             dict={dict}
             originalModel={originalModel}
@@ -742,7 +746,7 @@ export default function FpsForm2(props) {
 
 function RenderStep(props) {
   const { auth, data, callEndpoint, onEvent, id, handleRoute, currentStep, templateState, checkIfAllInputsHidden, editModel, originalModel,
-    model, checkHidden, dict, locale, state, loading, template, setState, lang, submit, params, setModel } = props
+    model, checkHidden, dict, locale, state, extendedModel, setExtendedModel, loading, template, setState, lang, submit, params, setModel } = props
 
   return <React.Fragment>{(currentStep.elements || [])
     //.filter(element => !checkHidden(element) && !checkIfAllInputsHidden(element))
@@ -762,6 +766,8 @@ function RenderStep(props) {
       lang={lang}
       onSubmit={submit}
       template={template}
+      extendedModel={extendedModel}
+      setExtendedModel={setExtendedModel}
       editModel={editModel}
       setModel={setModel}
       element={element}
