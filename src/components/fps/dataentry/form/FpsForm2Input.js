@@ -520,14 +520,13 @@ function FieldLink(props) {
         }
         let reqParams = params
         reqParams = { ...reqParams, pageSize: field._field_link_pageSize || 10 }
-        reqParams = value ? { ...reqParams, _filter: value.key || value } : reqParams
+        reqParams = value && value.length > 0 ? { ...reqParams, _value: value.key || value } : reqParams
         reqParams = filter ? { ...reqParams, _filter: filter } : reqParams
 
         setCurrentParams(params)
         callEndpoint(field._field_arrayLink_endpoint, reqParams, finish, data => {
             // console.log("finish")
             // console.log(data)
-
             // механизм сброса если из-за новых параметров среди опций нет значения:
             const currentValue = model[fieldInfo.sysName]
             if (resetValue && (currentValue || currentValue == 0)) {

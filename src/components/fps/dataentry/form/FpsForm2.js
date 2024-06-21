@@ -61,7 +61,9 @@ export default function FpsForm2(props) {
   const previousModel = usePrevious(model);
   const [state, setState] = useState(_.get(data, "params.state") || defaultState)
   const previousState = usePrevious(state);
-  const transformedState = { FormState: state, WebUser: auth }
+  const transformedState = {
+    FormState: state, WebUser: { ...auth, ...{ id: auth.user } }
+  }
   const defaultModel = { ...emptyValues, ...model, ...transformedState }
   const defaultExtModel = { ...emptyValues, ...extendedModel, ...transformedState }
   const [loading, setLoading] = useState(false)
@@ -139,6 +141,13 @@ export default function FpsForm2(props) {
 
   // process Socket.io update
   useEffect(() => {
+
+    // костыль под баг сокетов с левыми данными
+    if (_.get(model,"id") && _.get(data, "data[0].id") && _.get(model,"id") !== _.get(data, "data[0].id")) {
+      // хуйня пришла
+      return;
+    }
+
     if (edditingOn) {
       setExtendedModel({ ..._.get(data, "data[0]") })
       let saveSate = { ...state }
@@ -665,7 +674,6 @@ export default function FpsForm2(props) {
               setModel={setModel}
               params={params}
               checkIfAllInputsHidden={checkIfAllInputsHidden}
-            //callEndpoint={debouncedCallEndpint}
             />
           </div>
         })}
@@ -737,7 +745,6 @@ export default function FpsForm2(props) {
             setModel={setModel}
             params={params}
             checkIfAllInputsHidden={checkIfAllInputsHidden}
-          //callEndpoint={debouncedCallEndpint}
           />
         </div>
       })}
@@ -816,8 +823,12 @@ function RenderStep(props) {
         )
       }}
       callEndpoint={(endpoint, params, finish, setOptions, setError) => {
-        // console.log('===> calling endpoint /' + endpoint)
-        // console.log(params)
+
+        //params= {...params, _value: "a"} // убрать это для проверки корректности запроса!
+
+        console.log('===> calling endpoint /' + endpoint)
+        console.log(params)
+
         const transformedArray = (inputArray, visibleNames) => _.map(inputArray, (item) => {
           const parseJson = json => {
             if (!json) return {}
@@ -871,6 +882,8 @@ function RenderStep(props) {
           (result, data, visibleNames) => {
             // console.log(result)
             // console.log(data)
+            // console.log('===> calling endpoint /' + endpoint)
+            // console.log(params)
 
             if (result == "ok") {
               finish && finish(transformedArray(data, visibleNames))
@@ -906,8 +919,8 @@ function RenderStep(props) {
         setModel={setModel}
         element={element}
         callEndpointPOST={(endpoint, body, finish) => {
-          console.log('===> calling endpoint /' + endpoint)
-          console.log(body)
+          // console.log('===> calling endpoint /' + endpoint)
+          // console.log(body)
           callEndpoint && callEndpoint(
             endpoint,
             "POST",
