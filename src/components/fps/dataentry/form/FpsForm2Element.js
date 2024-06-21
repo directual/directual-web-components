@@ -31,7 +31,7 @@ export default function FormElement(props) {
             render = <ElementSubmit {...props} />
             break;
         case "input":
-            render = <ElementInput {...props} checkHidden={checkHidden}/>
+            render = <ElementInput {...props} checkHidden={checkHidden} />
             break;
         case "action":
             render = <ElementAction {...props} checkHidden={checkHidden} />
@@ -99,7 +99,7 @@ function ElementInput(props) {
 }
 
 function ElementAction(props) {
-    const { element, templateState, template, callEndpointPOST, setState, extendedModel,
+    const { element, templateState, template, onSubmit, callEndpointPOST, setState, extendedModel,
         setExtendedModel, setModel, model, data, state, originalModel, dict, lang } = props
     const [loading, setLoading] = useState(false)
 
@@ -162,12 +162,21 @@ function ElementAction(props) {
                 payload = { ...model, ...payload }
             }
             setLoading(true)
-            callEndpointPOST(action.endpoint, payload, (result) => {
-                setLoading(false)
-                // console.log(result)
-            })
+
+            if (action.actionSubmit) {
+                onSubmit(() => callEndpointPOST(action.endpoint, payload, (result) => {
+                    setLoading(false)
+                    // console.log(result)
+                }))
+            } else {
+                callEndpointPOST(action.endpoint, payload, (result) => {
+                    setLoading(false)
+                    // console.log(result)
+                })
+            }
         }
         if (action.actionType == "state") {
+            if (action.actionSubmit) { onSubmit() }
             const payloadState = transformState(action.stateMapping, "state")
             const payloadModel = transformState(action.stateMapping, "model")
             setState({ ...state, ...payloadState })
@@ -217,12 +226,12 @@ function ElementSubmit(props) {
         setLoading(true)
         onSubmit(result => {
             setLoading(false)
-        }, 
-        element.submitKeepModel, 
-        element.submitStep, 
-        false,
-        element.submitAdditionalMapping && element.submitMapping && element.submitMapping.length > 0 
-        ? element.submitMapping : undefined)
+        },
+            element.submitKeepModel,
+            element.submitStep,
+            false,
+            element.submitAdditionalMapping && element.submitMapping && element.submitMapping.length > 0
+                ? element.submitMapping : undefined)
     }
     return <div>
         {state._submitError && <Hint margin={{ top: 0, bottom: 18 }} error closable onClose={() => setState({ ...state, _submitError: "" })}>
