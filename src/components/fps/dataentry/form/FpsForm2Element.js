@@ -167,7 +167,7 @@ function ElementAction(props) {
                 onSubmit(() => callEndpointPOST(action.endpoint, payload, (result) => {
                     setLoading(false)
                     // console.log(result)
-                }))
+                }), true, undefined, true)
             } else {
                 callEndpointPOST(action.endpoint, payload, (result) => {
                     setLoading(false)
@@ -176,7 +176,7 @@ function ElementAction(props) {
             }
         }
         if (action.actionType == "state") {
-            if (action.actionSubmit) { onSubmit() }
+            if (action.actionSubmit) { onSubmit(undefined, true, undefined, true) }
             const payloadState = transformState(action.stateMapping, "state")
             const payloadModel = transformState(action.stateMapping, "model")
             setState({ ...state, ...payloadState })
