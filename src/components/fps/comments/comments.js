@@ -4,9 +4,11 @@ import '../theme/theme.module.css'
 import Button from '../button/button'
 import Input from '../dataentry/input/input'
 import FileUpload from '../dataentry/fileupload/fileupload'
+import moment from 'moment'
 
 import styles from './comments.module.css'
 import PropTypes from 'prop-types';
+import icon from './../../../icons/fps-form2.svg'
 
 
 export default function Comments(props) {
@@ -68,12 +70,25 @@ function Comment(props) {
         </div>
         <div className={styles.commentBody}>
             <div className={styles.commentBodyHeader}>
-
+                <div className={styles.commentBodyHeaderUserpic}>
+                    <img src={comment.author.userpic} />
+                </div>
+                <div className={styles.commentBodyHeaderName}>
+                    {comment.author.firstName} {comment.author.lastName}
+                </div>
+                <div className={styles.commentBodyHeaderDate}>
+                    {moment(comment.dateCreated).format("DD MMM YYYY")}
+                </div>
             </div>
             <div className={styles.commentBodyText}>
                 {comment.text}
             </div>
-
+            <div className={styles.commentBodyFiles}>
+                <a className={`icon icon-clip small ${styles.commentFileLink}`}>file name</a>
+            </div>
+            <div className={styles.commentBodyFooter}>
+                <div className={`icon icon-bubble small ${styles.commentReplyButton}`}>Reply</div>
+            </div>
         </div>
     </div>
 }
@@ -124,3 +139,17 @@ Comments.defaultProps = {
     auth: {},
     locale: "ENG"
 };
+
+
+Comments.settings = {
+    icon: icon,
+    name: 'Comments',
+    sysName: 'FpsComments',
+    isLegacy: false,
+    isMarketplace: true,
+    form: [
+      { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
+      { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
+      { name: 'Component comment', sysName: 'comment', type: 'comment' },
+    ]
+  }

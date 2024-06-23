@@ -1084,9 +1084,10 @@ export default function Input(props) {
                             <div className={`${styles.checkbox_wrapper} ${props.horizontal ? styles.hor : ""}`} style={props.horWidth ? { width: props.horWidth } : {}}>
                                 <Checkbox
                                     disabled={props.disabled}
+                                    debug
                                     label={option.label}
                                     nowrap={props.nowrap}
-                                    defaultValue={_.get(value, `[${option.value}]`)}
+                                    defaultValue={_.get(value, `${option.value}`)}
                                     //defaultValue={_.get(props.defaultValue, `[${option.value}]`)}
                                     onChange={val => {
                                         const saveValue = { ...value }

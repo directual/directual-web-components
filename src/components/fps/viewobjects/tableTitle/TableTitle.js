@@ -124,9 +124,10 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
         // console.log(filters)
         console.log(tableFilters)
         function composeExpression(exp, fieldName) {
-            if (exp.type == "string") { 
-                const operator = _.get(tableFilters,`filterFields.${fieldName}.exactMatch`) == "exact" ? " = " : " like "
-                return "('" + fieldName + "'" + operator + "'" + exp.value + "')" }
+            if (exp.type == "string") {
+                const operator = _.get(tableFilters, `filterFields.${fieldName}.exactMatch`) == "exact" ? " = " : " like "
+                return "('" + fieldName + "'" + operator + "'" + exp.value + "')"
+            }
             if (exp.type == "boolean") { return "('" + fieldName + "'" + ' = ' + "'" + exp.value + "')" }
             if (exp.type == "date") {
                 if (exp.valueTo && exp.valueFrom) {
@@ -153,7 +154,7 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
                 }
             }
             if (exp.type == "multiOptions") {
-                const operator = _.get(tableFilters,`filterFields.${fieldName}.dataType`) == "link" ? ' = ' : ' like '
+                const operator = _.get(tableFilters, `filterFields.${fieldName}.dataType`) == "link" ? ' = ' : ' like '
                 return "(" + Object.keys(exp.value).map(i => { return "('" + fieldName + `'${operator}'` + i + "')" }).join(" OR ") + ")"
             }
         }
@@ -201,7 +202,8 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
                         type: 'chartLines',
                         options: (chartLines || []).map(i => {
                             return {
-                                value: i.line_data, label: <span className={styles.pupka}><span
+                                value: i.line_data,
+                                label: <span className={styles.pupka}><span
                                     style={{ backgroundColor: i.color }}
                                     className={styles.pipka} /> {i.line_label || i.line_data}</span>
                             }
@@ -229,7 +231,7 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
                         id: filterField,
                         name: tableFilters.filterFields[filterField].name,
                         type: tableFilters.filterFields[filterField].dataType,
-                        operator: _.get(tableFilters,`filterFields.${filterField}.exactMatch`) == "exact" ? "exact match" : "like", 
+                        operator: _.get(tableFilters, `filterFields.${filterField}.exactMatch`) == "exact" ? "exact match" : "like",
                         textsearch: tableFilters.filterFields[filterField].textsearch,
                         format: tableFilters.filterFields[filterField].format,
                         formatOptions: tableFilters.filterFields[filterField].formatOptions,

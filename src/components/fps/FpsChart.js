@@ -12,6 +12,7 @@ import iconChart from './../../icons/fps-chart.svg'
 import Loader from './loader/loader'
 import Button from './button/button'
 import { Paging } from './viewobjects/paging/paging'
+import PropTypes from 'prop-types';
 
 import styles from './viewobjects/cards/cards.module.css'
 
@@ -350,16 +351,22 @@ function FpsChart({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
   const [chartFilters, setChartFilters] = useState({})
 
+  // console.log("chartFilters")
+  // console.log(chartFilters)
+
   const defaultColorsPalette = [
-    '#731FF2', '#3FCA52', '#F2901F', '#F21FCF', '#F21F22', '#8B572A', "#0088FE", "#00C49F", "#FFBB28", "#FF8042"
+    '#731FF2', '#3FCA52', '#F2901F', '#F21FCF', '#F21F22', '#8B572A', "#0088FE", "#00C49F", "#FFBB28", "#FF8042",
+    "#5A1FF2", "#2FAE41", "#D2791F", "#D11FA8", "#D11F1D", "#734021", "#0070DB", "#00A680", "#D19E21", "#D16537",
+    "#502C8B", "#2E8B57", "#BF8040", "#B03060", "#B22222", "#5C4033", "#0066CC", "#008080", "#FF8C00", "#FF4500"
   ]
+
   const usersColorsPalette = _.get(data.params, 'pie_colors') ? _.get(data.params, 'pie_colors').split(",") : []
   const usersColorsPalette2 = _.get(data.params, 'lines_colors') ? _.get(data.params, 'lines_colors').split(",") : []
   const colorsPalette = _.concat(usersColorsPalette, usersColorsPalette2, defaultColorsPalette)
 
   const composeChartLinesForFiltering = () => {
-    const fromData = ((_.get(data,"params.chart_type") == "line" || _.get(data,"params.chart_type") == "area"
-      || _.get(data,"params.chart_type") == "bar") &&
+    const fromData = ((_.get(data, "params.chart_type") == "line" || _.get(data, "params.chart_type") == "area"
+      || _.get(data, "params.chart_type") == "bar") &&
       _.get(data.params, 'lines_from_data') == "from_data"
       && _.get(data.params, 'line_labels')) ? true : false
     if (fromData) {
@@ -383,7 +390,7 @@ function FpsChart({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     setRerender(true)
   }
 
-  const [updateData,setUpdateData] = useState({})
+  const [updateData, setUpdateData] = useState({})
 
   // get direct link ID
   useEffect(() => {
@@ -414,7 +421,7 @@ function FpsChart({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     setTimeout(() => { setLoading(false) }, 100)
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     if (JSON.stringify(data.data) !== JSON.stringify(updateData)) {
       reset()
       setUpdateData(data.data)
@@ -504,6 +511,18 @@ function FpsChart({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     </ComponentWrapper>
   )
 }
+
+FpsChart.propTypes = {
+  data: PropTypes.object.isRequired,
+  auth: PropTypes.object,
+  locale: PropTypes.string,
+};
+
+FpsChart.defaultProps = {
+  data: {},
+  auth: {},
+  locale: "ENG",
+};
 
 FpsChart.settings = {
   icon: iconChart,

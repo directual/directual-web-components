@@ -207,10 +207,14 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
 
             let newData = [] 
 
+            // console.log("transformData")
+            // console.log(data)
+
             data.forEach(dataLine => {
-                dataLine[dataLine[_.get(chartParams, 'line_labels')]] = dataLine[_.get(chartParams, 'chart_lines[0].line_data')]
+                dataLine[dataLine[_.get(chartParams, 'line_labels')]] = dataLine[_.get(chartParams, 'chart_lines[0].line_data')];
+                dataLine.period = moment(dataLine[_.get(chartParams, 'x_axis')]).format("YYYY-MM-DD")
             })
-            const union = _.unionBy(data, 'period')
+            const union = _.unionBy(data, "period")
             union.forEach(i => {
                 const items = data.filter(j => j.period == i.period) || []
                 let newItem = { period: i.period }
@@ -323,7 +327,9 @@ export default function Chart({ data, lang, globalLoading, chartFilters, resetCh
     };
 
     const defaultColorsPalette = [
-        '#731FF2', '#3FCA52', '#F2901F', '#F21FCF', '#F21F22', '#8B572A', "#0088FE", "#00C49F", "#FFBB28", "#FF8042"
+        '#731FF2', '#3FCA52', '#F2901F', '#F21FCF', '#F21F22', '#8B572A', "#0088FE", "#00C49F", "#FFBB28", "#FF8042",
+        "#5A1FF2", "#2FAE41", "#D2791F", "#D11FA8", "#D11F1D", "#734021", "#0070DB", "#00A680", "#D19E21", "#D16537", 
+        "#502C8B", "#2E8B57", "#BF8040", "#B03060", "#B22222", "#5C4033", "#0066CC", "#008080", "#FF8C00", "#FF4500"
     ]
 
     const usersColorsPalette = _.get(chartParams, 'pie_colors') ? _.get(chartParams, 'pie_colors').split(",") : []
