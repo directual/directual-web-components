@@ -22,18 +22,25 @@
   flex-wrap: wrap;
   gap: 10px 10px;
 }
+.comments .commentsAdditionslControls {
+  margin-right: 12px;
+}
 .comments .commentsAddPanel {
   display: flex;
   align-items: center;
   margin-top: 6px;
   flex-wrap: wrap;
-  gap: 10px 10px;
+  gap: 6px 6px;
   justify-content: flex-end;
 }
 .comments .commentsAddPanel .commentActions {
   opacity: 0.5;
   transition: 0.5s;
   cursor: pointer;
+}
+.comments .commentsAddPanel .commentActions.active {
+  color: #058efc;
+  opacity: 1;
 }
 .comments .commentsAddPanel .commentActions:hover {
   opacity: 1;
@@ -43,6 +50,10 @@
   flex-direction: column;
   align-items: stretch;
   gap: 12px 12px;
+  margin-top: 12px;
+}
+.comments .childComments {
+  margin-left: 22px;
   margin-top: 12px;
 }
 .comments .commentWrapper {
@@ -91,6 +102,10 @@
   flex-direction: column;
   gap: 12px 0;
 }
+.comments .commentWrapper .commentParent {
+  font-size: var(--text-small-size);
+  opacity: 0.5;
+}
 .comments .commentWrapper .commentBodyHeader {
   display: flex;
   align-items: center;
@@ -99,6 +114,7 @@
 }
 .comments .commentWrapper .commentBodyHeader .commentBodyHeaderUserpic {
   width: 30px;
+  flex-shrink: 0;
   height: 30px;
   overflow: hidden;
   border-radius: 100%;
@@ -120,6 +136,12 @@
 }
 .comments .commentWrapper .commentFileLink {
   font-size: var(--text-small-size);
+}
+.comments .commentWrapper .commentBodyFiles {
+  display: flex;
+}
+.comments .commentWrapper .commentBodyFooter {
+  display: flex;
 }
 .comments .commentWrapper .commentBodyFooter .commentReplyButton {
   font-size: var(--text-small-size);
