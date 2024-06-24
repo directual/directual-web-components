@@ -202,7 +202,7 @@ function AddComment(props) {
     const [isSent, setIsSent] = useState(false)
 
     function finish() {
-        onCancel()
+        onCancel && onCancel()
         setComment(defaultComment)
         setIsSent(true)
         setTimeout(() => setIsSent(false), 5000)
