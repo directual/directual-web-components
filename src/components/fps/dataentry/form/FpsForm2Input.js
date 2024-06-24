@@ -976,7 +976,7 @@ function FieldArrayLink(props) {
                     <img src={user.userpic} />
                 </div>
                 <div className={styles.userListIteInfo}>
-                    <div className={styles.userListItemName}>{user.value || user.label}</div>
+                    <div className={styles.userListItemName}>{user.label || user.value}</div>
                     <div className={styles.userListItemPosition}>{user.position}</div>
                 </div>
             </div>)}
