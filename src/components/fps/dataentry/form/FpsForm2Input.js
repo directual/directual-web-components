@@ -39,28 +39,28 @@ export default function FpsForm2Input(props) {
         case 'json_radioOptions':
         case 'json_keyValue':
         case 'json_geo':
-            return <FieldJson {...props} fieldInfo={fieldInfo} disabled={disabled}/>
+            return <FieldJson {...props} fieldInfo={fieldInfo} disabled={disabled} />
         case 'file_multipleFiles':
         case 'file_multipleImages':
         case 'file_image':
         case 'file':
-            return <FieldFile {...props} fieldInfo={fieldInfo} disabled={disabled}/>
+            return <FieldFile {...props} fieldInfo={fieldInfo} disabled={disabled} />
         case 'date':
-            return <FieldDate {...props} fieldInfo={fieldInfo} disabled={disabled}/>
+            return <FieldDate {...props} fieldInfo={fieldInfo} disabled={disabled} />
         case 'boolean':
-            return <FieldBoolean {...props} fieldInfo={fieldInfo} disabled={disabled}/>
+            return <FieldBoolean {...props} fieldInfo={fieldInfo} disabled={disabled} />
         case 'link':
-            return <FieldLink {...props} callEndpoint={debouncedCallEndpint} fieldInfo={fieldInfo} disabled={disabled}/>
+            return <FieldLink {...props} callEndpoint={debouncedCallEndpint} fieldInfo={fieldInfo} disabled={disabled} />
         case 'arrayLink':
-            return <FieldArrayLink {...props} callEndpoint={debouncedCallEndpint} fieldInfo={fieldInfo} disabled={disabled}/>
+            return <FieldArrayLink {...props} callEndpoint={debouncedCallEndpint} fieldInfo={fieldInfo} disabled={disabled} />
         case 'string_markdown':
-            return <FieldMkd {...props} fieldInfo={fieldInfo} disabled={disabled}/>
+            return <FieldMkd {...props} fieldInfo={fieldInfo} disabled={disabled} />
         case 'string_html':
-            return <FieldHTML {...props} fieldInfo={fieldInfo} disabled={disabled}/>
+            return <FieldHTML {...props} fieldInfo={fieldInfo} disabled={disabled} />
         case 'string_color':
-            return <FieldColor {...props} fieldInfo={fieldInfo} disabled={disabled}/>
+            return <FieldColor {...props} fieldInfo={fieldInfo} disabled={disabled} />
         default:
-            return <FieldText {...props} fieldInfo={fieldInfo} disabled={disabled}/>
+            return <FieldText {...props} fieldInfo={fieldInfo} disabled={disabled} />
     }
 }
 
@@ -744,6 +744,7 @@ function FieldArrayLink(props) {
         if (field._field_arrayLink_type !== "checkboxes"
             && field._field_arrayLink_type !== "select"
             && field._field_arrayLink_type !== "tags"
+            && field._field_arrayLink_type !== "userList"
             && field._field_arrayLink_type !== "checkboxImages"
         ) {
             return;
@@ -784,6 +785,7 @@ function FieldArrayLink(props) {
         if ((
             (field._field_arrayLink_type == "checkboxes")
             || field._field_arrayLink_type == "checkboxImages"
+            || field._field_arrayLink_type == "userList"
             || field._field_arrayLink_type == "tags"
         )
             && !firstLoad
@@ -868,7 +870,7 @@ function FieldArrayLink(props) {
             Endpoint for radio buttons is not configured.</div>
         return <div>
             <Input type="selectImages"
-            disabled={disabled}
+                disabled={disabled}
                 options={
                     options.map(i => {
                         return {
@@ -947,6 +949,57 @@ function FieldArrayLink(props) {
             }}
             locale={locale}
         />
+            {error && <Hint margin={{ top: 10, bottom: 0 }} closable error onClose={() => setError("")}>
+                {error}
+            </Hint>}
+        </div>
+    }
+
+    if (field._field_arrayLink_type == "userList") {
+        const users = options
+        .filter(i => _.includes(model[fieldInfo.sysName].split(","), i.key))
+        .map(i => {
+            return {
+                value: i.key,
+                label: i.value,
+                userpic: i.userpic,
+                position: i.position
+            }
+        }) || []
+
+        if (!field._field_arrayLink_endpoint) return <div>
+            <div className={styles.form2label}>{fieldInfo.name || fieldInfo.sysName}</div>
+            Endpoint for user list is not configured.</div>
+        return <div className={styles.userList}>
+            {users.map(user => <div className={styles.userListItem}>
+                <div className={styles.userListItemPicture}>
+                    <img src={user.userpic} />
+                </div>
+                <div className={styles.userListIteInfo}>
+                    <div className={styles.userListItemName}>{user.value || user.label}</div>
+                    <div className={styles.userListItemPosition}>{user.position}</div>
+                </div>
+            </div>)}
+            {/* <Input type="checkboxGroup"
+            options={options.map(i => {
+                return {
+                    value: i.key,
+                    label: i.value
+                }
+            })}
+            required={field._field_required}
+            disabled={disabled}
+            //description={options.length}
+            horizontal={field._field_arrayLink_checkbox_type == "horizontal"}
+            label={fieldInfo.name || fieldInfo.sysName}
+            description={field._field_add_description && template(field._field_description_text)}
+            nomargin
+            defaultValue={_.mapValues(_.keyBy((model[fieldInfo.sysName] || "").split(",")), () => true)}
+            onChange={value => {
+                onChange(_.keys(_.pickBy(value, (val, key) => key !== '')).join(","))
+            }}
+            locale={locale}
+        /> */}
             {error && <Hint margin={{ top: 10, bottom: 0 }} closable error onClose={() => setError("")}>
                 {error}
             </Hint>}

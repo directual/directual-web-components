@@ -14,7 +14,7 @@ import FormSteps from './FormSteps'
 import _ from 'lodash'
 
 export default function FormElement(props) {
-    const { element, template, checkHidden, hidden } = props
+    const { element, template, checkHidden, hidden, setModel } = props
 
     let render
     switch (element.type) {
@@ -34,7 +34,13 @@ export default function FormElement(props) {
             render = <ElementInput {...props} checkHidden={checkHidden} />
             break;
         case "action":
-            render = <ElementAction {...props} checkHidden={checkHidden} />
+            render = <ElementAction {...props}
+                // setModel={m => {
+                //     console.log("m")
+                //     console.log(m)
+                //     setModel(m)
+                // }}
+                checkHidden={checkHidden} />
             break;
         case "redirect":
             render = <ElementRedirect {...props} />
@@ -129,6 +135,10 @@ function ElementAction(props) {
     const [error, setError] = useState("")
 
     const performAction = (action, actionFormat) => {
+        console.log("performAction")
+        console.log(action)
+        console.log(actionFormat)
+
         if (actionFormat._action_customRequired_fields && actionFormat._action_customRequired_fields.length > 0) {
             function excludeNonEmptyValues(obj, keys) {
                 const filteredKeys = _.pickBy(obj, (value, key) => {
@@ -153,6 +163,8 @@ function ElementAction(props) {
             setExtendedModel({})
         }
         if (action.discardModel) {
+            console.log("originalModel")
+            console.log(originalModel)
             setModel(originalModel)
             setExtendedModel(originalModel)
         }

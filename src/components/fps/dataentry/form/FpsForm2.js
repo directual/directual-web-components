@@ -143,7 +143,7 @@ export default function FpsForm2(props) {
   useEffect(() => {
 
     // костыль под баг сокетов с левыми данными
-    if (_.get(model,"id") && _.get(data, "data[0].id") && _.get(model,"id") !== _.get(data, "data[0].id")) {
+    if (_.get(model, "id") && _.get(data, "data[0].id") && _.get(model, "id") !== _.get(data, "data[0].id")) {
       // хуйня пришла
       return;
     }
@@ -369,7 +369,8 @@ export default function FpsForm2(props) {
   // }
 
   function template(input) {
-    if (!input) return ""
+
+    if (!input || input == "{{undefined}}") return ""
     const templateData = { ...defaultExtModel, ...(model || {}), ...(extendedModel || {}) };
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
     if (!templateData) return "";
@@ -409,7 +410,7 @@ export default function FpsForm2(props) {
       const result = renderTemplate(preprocessedInput);
       return result;
     } catch (error) {
-      console.error("template");
+      console.error("template error");
       console.error(input);
       console.error(templateData);
       console.error('Error rendering template:', error);
@@ -742,7 +743,11 @@ export default function FpsForm2(props) {
             lang={lang}
             submit={submit}
             editModel={editModel}
-            setModel={setModel}
+            setModel={m => {
+              // console.log("m")
+              // console.log(m)
+              setModel(m)
+            }}
             params={params}
             checkIfAllInputsHidden={checkIfAllInputsHidden}
           />
@@ -777,6 +782,11 @@ function RenderStep(props) {
       setExtendedModel={setExtendedModel}
       editModel={editModel}
       setModel={setModel}
+      // setModel={m => {
+      //   console.log("m")
+      //   console.log(m)
+      //   setModel(m)
+      // }}
       element={element}
       callEndpointPOST={(endpoint, body, finish) => {
         console.log('===> calling endpoint /' + endpoint)
@@ -849,7 +859,9 @@ function RenderStep(props) {
             _.values(_.pickBy(rest, _.isString)).join(' '); // Concatenate string values
           return {
             key: id,
-            value: _.trim(value) || id
+            value: _.trim(value) || id,
+            userpic: _.get(rest, "userpic"),
+            position: _.get(rest, "position"),
           };
         });
 
@@ -857,19 +869,17 @@ function RenderStep(props) {
         // setTimeout(() => {
         //   const data = [
         //     {
-        //       "lang": "Russian",
-        //       "id": "ru"
+        //       "firstName": "Paul",
+        //       "position": "человек-работник",
+        //       "userpic": "https://cdn.prod.website-files.com/5d07a67a0a061929b6559525/63d7fe438ced734abd058268_author-pavel.jpg"
         //     },
         //     {
-        //       "lang": "Spanish",
-        //       "id": "es"
+        //       "firstName": "Павел",
+        //       "position": "человек-работник",
+        //       "userpic": "https://cdn.prod.website-files.com/5d07a67a0a061929b6559525/63d7fe438ced734abd058268_author-pavel.jpg"
         //     },
-        //     {
-        //       "lang": "English",
-        //       "id": "en"
-        //     }
         //   ]
-        //   const visibleNames = '[{"sysName":"lang"}]'
+        //   const visibleNames = '[{"sysName":"firstName"}]'
         //   finish && finish(transformedArray(data, visibleNames))
         //   setOptions && setOptions(transformedArray(data, visibleNames))
         // }, 1000)
