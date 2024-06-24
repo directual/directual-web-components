@@ -23,7 +23,7 @@ export default function Comments(props) {
     console.log(data)
 
     const [comments, setComments] = useState(_.get(data, "data") || [])
-    const [loading,setLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     function sendComment(comment) {
         console.log("=== sending comment...")
@@ -115,9 +115,10 @@ function Comment(props) {
                 <div className={styles.commentBodyHeaderUserpic}>
                     <img src={_.get(commentAuthor, "userpic")} />
                 </div>
-                <div className={styles.commentBodyHeaderName}>
+                {commentAuthor ? <div className={styles.commentBodyHeaderName}>
                     {_.get(commentAuthor, "firstName")} {_.get(commentAuthor, "lastName")}
-                </div>
+                </div> :
+                    <div className={styles.commentBodyHeaderName} style={{opacity:".5"}}>Anonymous</div>}
                 <div className={styles.commentBodyHeaderDate}>
                     {formatDate(commentDate, formatCommentDate)}
                 </div>
@@ -172,20 +173,26 @@ function AddComment(props) {
         { key: 'pavel@directual.com', value: 'Pavel Ershov' },
         { key: 'nikita@directual.com', value: 'Nikita Navalikhin' },
     ]
+    const defaultComment = {
+        [_.get(data, "params._textField")]: "",
+        [_.get(data, "params._fileField")]: "",
+        [_.get(data, "params._replyField")]: parentID
+    }
 
     const [addFile, setAddFile] = useState(false)
     const [showLock, setShowLock] = useState(!!roles)
     const [showAssignTo, setShowAssignTo] = useState(!!roles)
-    const [comment, setComment] = useState({
-        [_.get(data, "params._textField")]: "",
-        [_.get(data, "params._fileField")]: "",
-        [_.get(data, "params._replyField")]: parentID
-    })
+    const [comment, setComment] = useState(defaultComment)
 
     const setCommentField = field => value => {
         const copyComment = { ...comment }
         _.set(copyComment, field, value)
         setComment(copyComment)
+    }
+
+    function finish() {
+        onCancel()
+        setComment(defaultComment)
     }
 
     return <div className={styles.commentsAdd}>
@@ -218,9 +225,9 @@ function AddComment(props) {
             <div className={`icon icon-clip ${styles.commentActions} ${addFile ? styles.active : ''}`} onClick={e => setAddFile(!addFile)} />
             <div className={`icon icon-lock ${styles.commentActions} ${showLock ? styles.active : ''}`} onClick={e => setShowLock(!showLock)} />
             <div className={`icon icon-checkbox ${styles.commentActions} ${showAssignTo ? styles.active : ''}`} onClick={e => setShowAssignTo(!showAssignTo)} />
-            <Button loading={loading} 
+            <Button loading={loading}
                 disabled={!comment[_.get(data, "params._fileField")] && !comment[_.get(data, "params._textField")]}
-                accent icon="bubble" onClick={() => sendComment(comment)}>Send</Button>
+                accent icon="bubble" onClick={() => sendComment(comment, finish)}>Send</Button>
             {onCancel && <Button onClick={onCancel}>Cancel</Button>}
         </div>
     </div>
