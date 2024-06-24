@@ -374,7 +374,8 @@ const commentsData = {
   ],
   "writeFields": [
       "text",
-      "files"
+      "files",
+      "parent_id"
   ],
   "structures": {
       "99320062": {
@@ -539,6 +540,34 @@ const commentsData = {
           "linkOrArrayLinkType": false,
           "arrayLink": false,
           "linkType": false,
+          "indexExists": false,
+          "array": false
+      },
+      {
+          "sysName": "parent_id",
+          "dataType": "link",
+          "name": "",
+          "id": "49741719167394297",
+          "link": "comments",
+          "group": "0",
+          "tags": "",
+          "indexing": false,
+          "ordering": false,
+          "description": null,
+          "weight": null,
+          "order": 6,
+          "linkIndexFieldSysName": [],
+          "defaultValue": "",
+          "constraints": null,
+          "synthetic": false,
+          "format": null,
+          "formatOptions": {},
+          "groupName": null,
+          "typeVariable": {},
+          "json": false,
+          "linkOrArrayLinkType": true,
+          "arrayLink": false,
+          "linkType": true,
           "indexExists": false,
           "array": false
       }

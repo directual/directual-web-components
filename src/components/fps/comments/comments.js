@@ -6,6 +6,7 @@ import Input from '../dataentry/input/input'
 import FileUpload from '../dataentry/fileupload/fileupload'
 import moment from 'moment'
 import { dict } from '../locale'
+import Hint from '../hint/hint'
 
 import styles from './comments.module.css'
 import PropTypes from 'prop-types';
@@ -21,57 +22,58 @@ export default function Comments(props) {
     console.log("=== comments data ===")
     console.log(data)
 
-
-    const commentsExample = [
-        {
-            id: "1",
-            author:
-            {
-                id: "pavel@directual.com",
-                firstName: "Pavel",
-                lastName: "Ershov",
-                userpic: "https://api.alfa.directual.com/fileUploaded/dev/be1ae50d-d24f-4ad8-bb3a-6765390d2c9f.jpg"
-            },
-            dateCreated: "2024-05-13T22:04",
-            isEdited: "",
-            dateEdited: "",
-            text: "Бей свиней, спасай Россию!",
-            likes: 12,
-            dislikes: 3
-        },
-        {
-            id: "2",
-            author:
-            {
-                id: "vlad@directual.com",
-                firstName: "Vladlen",
-                lastName: "Tatarsky",
-                userpic: "https://api.alfa.directual.com/fileUploaded/dev/be1ae50d-d24f-4ad8-bb3a-6765390d2c9f.jpg"
-            },
-            dateCreated: "2024-04-13T22:04",
-            isEdited: "",
-            dateEdited: "",
-            text: "Будет Новороссия! Будет!!!",
-            likes: 132,
-            dislikes: 0
-        }
-    ]
-
     const [comments, setComments] = useState(_.get(data, "data") || [])
+    const [loading,setLoading] = useState(false)
+
+    function sendComment(comment) {
+        console.log("=== sending comment...")
+        console.log(comment)
+        setLoading(true)
+        const endpoint = _.get(data, "sl")
+        callEndpoint && callEndpoint(
+            endpoint,
+            "POST",
+            comment,
+            undefined,
+            (result, data) => {
+                if (result == "ok") {
+                    console.log("FINISH SUBMIT")
+                    console.log(data)
+                    setLoading(false)
+                } else {
+                    setLoading(false)
+                }
+            }
+        )
+    }
+
+    const allowAttachment = _.includes(data.writeFields, _.get(data, "params._fileField"))
+    const allowSend = _.includes(data.writeFields, _.get(data, "params._textField"))
 
     return <div className={`${styles.comments} FPS_COMMENTS`}>
         <CommentsHeader header="Comments" counter={comments.length} {...props} />
-        <AddComment {...props} />
+        {allowSend && <AddComment
+            {...props}
+            loading={loading}
+            sendComment={sendComment}
+            allowAttachment={allowAttachment} />}
         <div className={styles.commentsList}>
             {comments
                 .filter(comment => !_.get(comment, _.get(data, "params._replyField")) || _.get(comment, _.get(data, "params._replyField")) == 'root')
-                .map(comment => <Comment {...props} comments={comments} comment={comment} key={comment.id} />)}
+                .map(comment => <Comment {...props}
+                    sendComment={sendComment}
+                    allowSend={allowSend}
+                    loading={loading}
+                    allowAttachment={allowAttachment}
+                    comments={comments}
+                    comment={comment}
+                    key={comment.id} />)}
         </div>
     </div>
 }
 
 function Comment(props) {
-    const { comment, auth, data, comments, parent } = props
+    const { comment, auth, data, comments, parent, allowSend, sendComment } = props
 
     const [addReply, setAddReply] = useState(false)
 
@@ -100,7 +102,6 @@ function Comment(props) {
         }
         return str;
     }
-
 
     return <div><div className={`${styles.commentWrapper} FPS_COMMENT_WRAPPER`}>
         {/* <div className={styles.commentVote}>
@@ -132,13 +133,13 @@ function Comment(props) {
                             className={`icon icon-clip small ${styles.commentFileLink}`}>{fileName}</a>
                     </div>
                 })}
-            <div className={styles.commentBodyFooter}>
+            {_.includes(data.writeFields, _.get(data, "params._replyField")) && allowSend && <div className={styles.commentBodyFooter}>
                 <div onClick={e => setAddReply(true)} className={`icon icon-bubble small ${styles.commentReplyButton}`}>Reply</div>
-            </div>
+            </div>}
         </div>
     </div>
         {addReply && <div className={styles.childComments}>
-            <AddComment {...props} onCancel={() => setAddReply(false)} header="Reply" />
+            <AddComment {...props} parentID={commentID} onCancel={() => setAddReply(false)} header="Reply" />
         </div>}
         {(childComments || []).length > 0 && <div className={`${styles.commentsList} ${styles.childComments}`}>
             {(childComments || []).map(childComment => <Comment
@@ -160,7 +161,7 @@ function CommentsHeader(props) {
 
 function AddComment(props) {
 
-    const { locale, onCancel, header, roles, assignTo } = props
+    const { locale, onCancel, header, roles, assignTo, allowAttachment, sendComment, parentID, data, loading } = props
 
     const rolesExample = [
         { key: 'admin', value: 'Admin' },
@@ -175,31 +176,51 @@ function AddComment(props) {
     const [addFile, setAddFile] = useState(false)
     const [showLock, setShowLock] = useState(!!roles)
     const [showAssignTo, setShowAssignTo] = useState(!!roles)
+    const [comment, setComment] = useState({
+        [_.get(data, "params._textField")]: "",
+        [_.get(data, "params._fileField")]: "",
+        [_.get(data, "params._replyField")]: parentID
+    })
+
+    const setCommentField = field => value => {
+        const copyComment = { ...comment }
+        _.set(copyComment, field, value)
+        setComment(copyComment)
+    }
+
     return <div className={styles.commentsAdd}>
-        <Input label={header} type='textarea' rows='auto' placeholder="Write text here..." />
+        <Input label={header} type='textarea'
+            defaultValue={comment[_.get(data, "params._textField")]}
+            onChange={setCommentField(_.get(data, "params._textField"))}
+            rows='auto' placeholder="Write text here..." />
         <div className={styles.commentsAdditionslControls}>
-            {addFile && <FileUpload
+            {addFile && allowAttachment && <FileUpload
                 locale={locale}
                 edit
                 allowUpload
-                host={'host'}
+                host='/api/upload'
                 multiple={true}
-                onChange={value => console.log(value)}
+                defaultValue={comment[_.get(data, "params._fileField")]}
+                onChange={setCommentField(_.get(data, "params._fileField"))}
             />}
             {showLock && <Input
                 label="User roles, who can see this comment"
                 options={rolesExample}
                 type='multiselect' icon='lock' placeholder="Choose roles..." />}
+            {showLock && <Hint>The feature is under development</Hint>}
             {showAssignTo && <Input
                 label="Assign to"
                 options={usersExample}
                 type='select' icon='checkbox' placeholder="Choose the user..." />}
+            {showAssignTo && <Hint>The feature is under development</Hint>}
         </div>
         <div className={styles.commentsAddPanel}>
             <div className={`icon icon-clip ${styles.commentActions} ${addFile ? styles.active : ''}`} onClick={e => setAddFile(!addFile)} />
             <div className={`icon icon-lock ${styles.commentActions} ${showLock ? styles.active : ''}`} onClick={e => setShowLock(!showLock)} />
             <div className={`icon icon-checkbox ${styles.commentActions} ${showAssignTo ? styles.active : ''}`} onClick={e => setShowAssignTo(!showAssignTo)} />
-            <Button accent icon="bubble">Send</Button>
+            <Button loading={loading} 
+                disabled={!comment[_.get(data, "params._fileField")] && !comment[_.get(data, "params._textField")]}
+                accent icon="bubble" onClick={() => sendComment(comment)}>Send</Button>
             {onCancel && <Button onClick={onCancel}>Cancel</Button>}
         </div>
     </div>
