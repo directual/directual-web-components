@@ -32,7 +32,7 @@ export default function Comments(props) {
         }
     }, [_.get(data, "data")])
 
-    function sendComment(comment) {
+    function sendComment(comment, finish) {
         console.log("=== sending comment...")
         console.log(comment)
         setLoading(true)
@@ -47,8 +47,10 @@ export default function Comments(props) {
                     console.log("FINISH SUBMIT")
                     console.log(data)
                     setLoading(false)
+                    finish && finish()
                 } else {
                     setLoading(false)
+                    finish && finish()
                 }
             }
         )
