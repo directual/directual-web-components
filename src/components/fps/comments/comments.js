@@ -25,6 +25,13 @@ export default function Comments(props) {
     const [comments, setComments] = useState(_.get(data, "data") || [])
     const [loading, setLoading] = useState(false)
 
+    // process Socket.io update
+    useEffect(() => {
+        if (!_.isEqual(_.get(data, "data"), comments)) {
+            setComments(_.get(data, "data"))
+        }
+    }, [_.get(data, "data")])
+
     function sendComment(comment) {
         console.log("=== sending comment...")
         console.log(comment)
@@ -118,7 +125,7 @@ function Comment(props) {
                 {commentAuthor ? <div className={styles.commentBodyHeaderName}>
                     {_.get(commentAuthor, "firstName")} {_.get(commentAuthor, "lastName")}
                 </div> :
-                    <div className={styles.commentBodyHeaderName} style={{opacity:".5"}}>Anonymous</div>}
+                    <div className={styles.commentBodyHeaderName} style={{ opacity: ".5" }}>Anonymous</div>}
                 <div className={styles.commentBodyHeaderDate}>
                     {formatDate(commentDate, formatCommentDate)}
                 </div>
@@ -190,10 +197,16 @@ function AddComment(props) {
         setComment(copyComment)
     }
 
+    const [isSent, setIsSent] = useState(false)
+
     function finish() {
         onCancel()
         setComment(defaultComment)
+        setIsSent(true)
+        setTimeout(() => setIsSent(false), 5000)
     }
+
+    if (isSent) return <Hint margin={{ top: 0, bottom: 0 }} ok>Comment is submitted</Hint>
 
     return <div className={styles.commentsAdd}>
         <Input label={header} type='textarea'
