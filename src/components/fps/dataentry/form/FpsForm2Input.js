@@ -957,7 +957,7 @@ function FieldArrayLink(props) {
 
     if (field._field_arrayLink_type == "userList") {
         const users = options
-        .filter(i => _.includes(model[fieldInfo.sysName].split(","), i.key))
+        .filter(i => _.includes((model[fieldInfo.sysName] || "").split(","), i.key))
         .map(i => {
             return {
                 value: i.key,
