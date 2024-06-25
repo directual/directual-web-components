@@ -551,8 +551,11 @@ function FieldLink(props) {
             // у селекта другой механизм обновления опций — функция дергается прямо из компонента
             refreshOptions(undefined, undefined, undefined, true)
         }
-    }, [params, refresh]) // update options when request params are changed
+    }, [params]) // update options when request params are changed
 
+    useEffect(()=> {
+        refresh && refresh !== 0 && refreshOptions(undefined, undefined, model[fieldInfo.sysName])
+    }, [refresh])
 
     useEffect(() => {
         if (
@@ -779,7 +782,11 @@ function FieldArrayLink(props) {
             // у селекта другой механизм обновления опций — функция дергается прямо из компонента
             refreshOptions(undefined, undefined, undefined, true)
         }
-    }, [params, refresh]) // update options when request params are changed
+    }, [params]) // update options when request params are changed
+
+    useEffect(()=> {
+        refresh && refresh !== 0 && refreshOptions(undefined, undefined, model[fieldInfo.sysName])
+    }, [refresh])
 
     useEffect(() => {
         if ((

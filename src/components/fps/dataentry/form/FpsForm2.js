@@ -638,7 +638,7 @@ export default function FpsForm2(props) {
   }
 
   function refreshOptions() {
-    console.log('refresh options ~ ' + refresh + 1)
+    console.log('refresh options ~ ' + refresh)
     setRefresh(refresh + 1)
   }
 
