@@ -68,6 +68,7 @@ export default function FpsForm2(props) {
   const defaultExtModel = { ...emptyValues, ...extendedModel, ...transformedState }
   const [loading, setLoading] = useState(false)
   const modelIsChanged = !_.isEqual(model, originalModel)
+  const [refresh, setRefresh] = useState(0)
 
   const [highlightState, setHighlightState] = useState(false)
   const [highlightModel, setHighlightModel] = useState(false)
@@ -291,6 +292,11 @@ export default function FpsForm2(props) {
               if (!isEmpty(_.get(response, "object"))) {
                 modelUpdate = _.get(response, "object") || {}
               }
+              // refresh
+              if (_.get(response, "refresh")) {
+                refreshOptions()
+              }
+              // redirect
               if (!isEmpty(_.get(response, "redirect")) &&
                 !isEmpty(_.get(response, "redirect.target"))) {
                 let delay = 0
@@ -631,6 +637,11 @@ export default function FpsForm2(props) {
     return false;
   }
 
+  function refreshOptions() {
+    console.log('refresh options ~ ' + refresh + 1)
+    setRefresh(refresh + 1)
+  }
+
 
   return <div className={`${styles.formWrapper} D_FPS_FORM2_WRAPPER`}
     style={{ maxWidth }}
@@ -657,7 +668,9 @@ export default function FpsForm2(props) {
             </pre>}
             <RenderStep
               {...props}
+              refresh={refresh}
               currentStep={currentStep}
+              refreshOptions={refreshOptions}
               model={model}
               checkHidden={checkHidden}
               dict={dict}
@@ -728,6 +741,8 @@ export default function FpsForm2(props) {
           </pre>}
           <RenderStep
             {...props}
+            refresh={refresh}
+            refreshOptions={refreshOptions}
             currentStep={currentStep}
             model={model}
             extendedModel={extendedModel}
@@ -758,12 +773,63 @@ export default function FpsForm2(props) {
 
 function RenderStep(props) {
   const { auth, data, callEndpoint, onEvent, id, handleRoute, currentStep, templateState, checkIfAllInputsHidden, editModel, originalModel,
-    model, checkHidden, dict, locale, state, extendedModel, setExtendedModel, loading, template, setState, lang, submit, params, setModel } = props
+    model, checkHidden, dict, locale, state, refreshOptions, refresh, extendedModel, setExtendedModel, loading, template, setState, lang, submit, params, setModel } = props
+
+
+  const callEndpointPOST = (endpoint, body, finish) => {
+    console.log('===> calling endpoint /' + endpoint)
+    console.log(body)
+    callEndpoint && callEndpoint(
+      endpoint,
+      "POST",
+      body,
+      undefined,
+      (result, data) => {
+        if (result == "ok") {
+          finish && finish(data)
+          try {
+            const response = JSON.parse(data)
+            // update state
+            if (!isEmpty(_.get(response, "state"))) {
+              const stateUpdate = _.get(response, "state")
+              setState({ ...state, ...stateUpdate })
+            }
+            // update model/object
+            if (!isEmpty(_.get(response, "object"))) {
+              const modelUpdate = _.get(response, "object")
+              setModel({ ...model, ...modelUpdate })
+            }
+            if (!isEmpty(_.get(response, "model"))) {
+              const modelUpdate = _.get(response, "model")
+              setModel({ ...model, ...modelUpdate })
+            }
+            if (!isEmpty(_.get(response, "redirect")) &&
+              !isEmpty(_.get(response, "redirect.target"))) {
+              let delay = 0
+              if (!isEmpty(_.get(response, "redirect.delay"))) {
+                delay = typeof _.get(response, "redirect.delay") == 'number' ? _.get(response, "redirect.delay") : parseInt(_.get(response, "redirect.delay"))
+              }
+              setTimeout(() => {
+                handleRoute(_.get(response, "redirect.target"))()
+              }, delay)
+            }
+            // refresh
+            if (_.get(response, "refresh")) {
+              refreshOptions()
+            }
+          } catch (err) {
+            console.log(err)
+          }
+        }
+      }
+    )
+  }
 
   return <React.Fragment>{(currentStep.elements || [])
     //.filter(element => !checkHidden(element) && !checkIfAllInputsHidden(element))
     .map(element => <FormElement
       model={model}
+      refresh={refresh}
       hidden={checkHidden(element)}
       data={data}
       checkHidden={checkHidden}
@@ -788,50 +854,7 @@ function RenderStep(props) {
       //   setModel(m)
       // }}
       element={element}
-      callEndpointPOST={(endpoint, body, finish) => {
-        console.log('===> calling endpoint /' + endpoint)
-        console.log(body)
-        callEndpoint && callEndpoint(
-          endpoint,
-          "POST",
-          body,
-          undefined,
-          (result, data) => {
-            if (result == "ok") {
-              finish && finish(data)
-              try {
-                const response = JSON.parse(data)
-                // update state
-                if (!isEmpty(_.get(response, "state"))) {
-                  const stateUpdate = _.get(response, "state")
-                  setState({ ...state, ...stateUpdate })
-                }
-                // update model/object
-                if (!isEmpty(_.get(response, "object"))) {
-                  const modelUpdate = _.get(response, "object")
-                  setModel({ ...model, ...modelUpdate })
-                }
-                if (!isEmpty(_.get(response, "model"))) {
-                  const modelUpdate = _.get(response, "model")
-                  setModel({ ...model, ...modelUpdate })
-                }
-                if (!isEmpty(_.get(response, "redirect")) &&
-                  !isEmpty(_.get(response, "redirect.target"))) {
-                  let delay = 0
-                  if (!isEmpty(_.get(response, "redirect.delay"))) {
-                    delay = typeof _.get(response, "redirect.delay") == 'number' ? _.get(response, "redirect.delay") : parseInt(_.get(response, "redirect.delay"))
-                  }
-                  setTimeout(() => {
-                    handleRoute(_.get(response, "redirect.target"))()
-                  }, delay)
-                }
-              } catch (err) {
-                console.log(err)
-              }
-            }
-          }
-        )
-      }}
+      callEndpointPOST={callEndpointPOST}
       callEndpoint={(endpoint, params, finish, setOptions, setError) => {
 
         //params= {...params, _value: "a"} // убрать это для проверки корректности запроса!
@@ -912,6 +935,7 @@ function RenderStep(props) {
       .filter(element => checkIfAllInputsHidden(element))
       .map(element => <FormElement
         model={model}
+        refresh={refresh}
         data={data}
         checkHidden={checkHidden}
         originalModel={originalModel}
@@ -928,50 +952,7 @@ function RenderStep(props) {
         editModel={editModel}
         setModel={setModel}
         element={element}
-        callEndpointPOST={(endpoint, body, finish) => {
-          // console.log('===> calling endpoint /' + endpoint)
-          // console.log(body)
-          callEndpoint && callEndpoint(
-            endpoint,
-            "POST",
-            body,
-            undefined,
-            (result, data) => {
-              if (result == "ok") {
-                finish && finish(data)
-                try {
-                  const response = JSON.parse(data)
-                  // update state
-                  if (!isEmpty(_.get(response, "state"))) {
-                    const stateUpdate = _.get(response, "state")
-                    setState({ ...state, ...stateUpdate })
-                  }
-                  // update model/object
-                  if (!isEmpty(_.get(response, "object"))) {
-                    const modelUpdate = _.get(response, "object")
-                    setModel({ ...model, ...modelUpdate })
-                  }
-                  if (!isEmpty(_.get(response, "model"))) {
-                    const modelUpdate = _.get(response, "model")
-                    setModel({ ...model, ...modelUpdate })
-                  }
-                  if (!isEmpty(_.get(response, "redirect")) &&
-                    !isEmpty(_.get(response, "redirect.target"))) {
-                    let delay = 0
-                    if (!isEmpty(_.get(response, "redirect.delay"))) {
-                      delay = typeof _.get(response, "redirect.delay") == 'number' ? _.get(response, "redirect.delay") : parseInt(_.get(response, "redirect.delay"))
-                    }
-                    setTimeout(() => {
-                      handleRoute(_.get(response, "redirect.target"))()
-                    }, delay)
-                  }
-                } catch (err) {
-                  console.log(err)
-                }
-              }
-            }
-          )
-        }}
+        callEndpointPOST={callEndpointPOST}
         callEndpoint={(endpoint, params, finish, setOptions, setError) => {
           // console.log('===> calling endpoint /' + endpoint)
           // console.log(params)

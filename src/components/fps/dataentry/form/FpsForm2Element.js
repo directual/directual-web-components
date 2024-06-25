@@ -135,9 +135,9 @@ function ElementAction(props) {
     const [error, setError] = useState("")
 
     const performAction = (action, actionFormat) => {
-        console.log("performAction")
-        console.log(action)
-        console.log(actionFormat)
+        // console.log("performAction")
+        // console.log(action)
+        // console.log(actionFormat)
 
         if (actionFormat._action_customRequired_fields && actionFormat._action_customRequired_fields.length > 0) {
             function excludeNonEmptyValues(obj, keys) {

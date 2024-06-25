@@ -500,7 +500,7 @@ function FieldBoolean(props) {
 
 function FieldLink(props) {
 
-    const { field, locale, template, model, state, setState, onChange, fieldInfo, code, callEndpoint, disabled } = props
+    const { field, locale, template, model, state, setState, refresh, onChange, fieldInfo, code, callEndpoint, disabled } = props
     const basicProps = { onChange, locale, disabled }
 
     const [firstLoad, setFirstLoad] = useState(false)
@@ -551,7 +551,7 @@ function FieldLink(props) {
             // у селекта другой механизм обновления опций — функция дергается прямо из компонента
             refreshOptions(undefined, undefined, undefined, true)
         }
-    }, [params]) // update options when request params are changed
+    }, [params, refresh]) // update options when request params are changed
 
 
     useEffect(() => {
@@ -729,7 +729,7 @@ function FieldLink(props) {
 
 function FieldArrayLink(props) {
 
-    const { field, locale, template, model, state, setState, onChange, fieldInfo, code, callEndpoint, disabled } = props
+    const { field, locale, template, model, state, setState, refresh, onChange, fieldInfo, code, callEndpoint, disabled } = props
     const basicProps = { onChange, locale, disabled }
 
     const [firstLoad, setFirstLoad] = useState(false)
@@ -779,7 +779,7 @@ function FieldArrayLink(props) {
             // у селекта другой механизм обновления опций — функция дергается прямо из компонента
             refreshOptions(undefined, undefined, undefined, true)
         }
-    }, [params]) // update options when request params are changed
+    }, [params, refresh]) // update options when request params are changed
 
     useEffect(() => {
         if ((
