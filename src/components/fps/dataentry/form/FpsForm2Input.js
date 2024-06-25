@@ -578,6 +578,7 @@ function FieldLink(props) {
             onLoad={refreshOptions}
             required={field._field_required}
             //debug
+            refresh={refresh}
             label={fieldInfo.name || fieldInfo.sysName}
             description={field._field_add_description && template(field._field_description_text)}
             defaultValue={model[fieldInfo.sysName]}
@@ -914,6 +915,7 @@ function FieldArrayLink(props) {
         return <div><Input type="dinamicMultiSelect"
             onLoad={refreshOptions}
             required={field._field_required}
+            refresh={refresh}
             // debug
             label={fieldInfo.name || fieldInfo.sysName}
             description={field._field_add_description && template(field._field_description_text)}

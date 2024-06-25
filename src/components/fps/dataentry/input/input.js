@@ -920,6 +920,7 @@ export default function Input(props) {
                     //options={props.options}
                     callParams={props.callParams}
                     onLoad={props.onLoad}
+                    refresh={props.refresh}
                     dinamicSelect
                     icon={props.icon}
                     dict={dict[lang]}
@@ -942,6 +943,7 @@ export default function Input(props) {
                     placeholder={props.placeholder}
                     //options={props.options}
                     callParams={props.callParams}
+                    refresh={props.refresh}
                     onLoad={props.onLoad}
                     dinamicComplexSelect
                     icon={props.icon}

@@ -250,6 +250,10 @@ export default function Select(props) {
         }
     }, [callParams])
 
+    useEffect(()=> {
+        props.refresh && props.refresh !== 0 && filterOptions()
+    }, [props.refresh])
+
     useEffect(() => {
         if (props.dinamicSelect && props.onLoad) {
             filterOptions()
