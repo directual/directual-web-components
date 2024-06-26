@@ -122,10 +122,8 @@ function ListOption(props) {
 
 export default function Select(props) {
 
-    // console.log('select props')
-    // console.log(props)
-
-
+    console.log('select props')
+    console.log(props)
 
     const [focus, setFocus] = useState(false);
     const [filteredOptions, setFilteredOptions] = useState(props.options ? props.options.filter(i => i && i.key) : [])
@@ -231,6 +229,7 @@ export default function Select(props) {
         return ref.current;
     }
     function performFiltering(resetValue) {
+        console.log("select performFiltering")
         setLoading(true)
         props.onLoad((data) => {
             setLoading(false)
