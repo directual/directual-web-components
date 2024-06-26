@@ -150,18 +150,16 @@ export default function Select(props) {
         if (props.multi && def) {
             if (Array.isArray(def)) {
                 let convDef = []
-                if (props.dinamicSelect) {
-                    convDef = (def || []).map(i => i.key)
-                }
-                else {
-                    // эта хуйня ебучая не работает с динамическим мультиселектом
-                    def.forEach(j => {
-                        if (options.filter(i => i && i.key == j)[0]) {
-                            convDef.push(options.filter(i => i && i.key == j)[0])
-                        }
+
+                console.log("def")
+                console.log(def)
+
+                def.forEach(j => {
+                    if (options.filter(i => i && i.key == j)[0]) {
+                        convDef.push(options.filter(i => i && i.key == j)[0])
                     }
-                    )
                 }
+                )
 
                 return convDef
             }
