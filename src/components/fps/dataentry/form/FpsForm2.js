@@ -777,8 +777,8 @@ function RenderStep(props) {
 
 
   const callEndpointPOST = (endpoint, body, finish) => {
-    console.log('===> calling endpoint /' + endpoint)
-    console.log(body)
+    // console.log('===> calling endpoint /' + endpoint)
+    // console.log(body)
     callEndpoint && callEndpoint(
       endpoint,
       "POST",
@@ -856,12 +856,9 @@ function RenderStep(props) {
       element={element}
       callEndpointPOST={callEndpointPOST}
       callEndpoint={(endpoint, params, finish, setOptions, setError) => {
-
         //params= {...params, _value: "a"} // убрать это для проверки корректности запроса!
-
-        console.log('===> calling endpoint /' + endpoint)
-        console.log(params)
-
+        // console.log('===> calling endpoint /' + endpoint)
+        // console.log(params)
         const transformedArray = (inputArray, visibleNames) => _.map(inputArray, (item) => {
           const parseJson = json => {
             if (!json) return {}

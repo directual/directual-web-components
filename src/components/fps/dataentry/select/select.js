@@ -229,7 +229,6 @@ export default function Select(props) {
         return ref.current;
     }
     function performFiltering(resetValue) {
-        console.log("select performFiltering")
         setLoading(true)
         props.onLoad((data) => {
             setLoading(false)
