@@ -295,15 +295,16 @@ export default function Select(props) {
 
     useEffect(() => {
         setKeySelected();
+        console.log("value is changed")
+        console.log(value)
         // value && !props.multi && props.onChange(value.key)
         // value && value.length > 0 && props.onChange(value.map(i => i.key))
         // if (!value || value.length == 0) { props.onChange(null); }
     }, [value])
 
     const submit = (val) => {
-        console.log('select submit')
-        console.log(val)
-
+        // console.log('select submit')
+        // console.log(val)
         setValue(val)
         setKeySelected();
         val && !props.multi && props.onChange(val.key)
@@ -313,18 +314,10 @@ export default function Select(props) {
 
 
     const chooseOption = (option) => {
-        console.log("chooseOption")
-        console.log(option)
         !props.multi && submit(option)
         if (props.multi) {
-            console.log(value)
-            console.log("value")
             let arr = _.get(value, '[0].key') ? [...value] : []
-            console.log("arr")
-            console.log(arr)
             arr.indexOf(option) == -1 && arr.push(option)
-            console.log("arr")
-            console.log(arr)
             submit(arr)
         }
     }
@@ -340,9 +333,6 @@ export default function Select(props) {
 
     return (
         <div className={styles.select_wrapper} style={{ maxWidth: props.width || 'auto' }}>
-            {/* <div className="debug">
-            select value: {JSON.stringify(value)}<br />
-            </div> */}
             <div
                 id='selectElement'
                 className=
