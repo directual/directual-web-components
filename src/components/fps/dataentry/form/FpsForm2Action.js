@@ -9,7 +9,7 @@ export default function FpsForm2Action(props) {
     const [performed, setPerformed] = useState(false)
 
     useEffect(() => {
-        if (action.autoAction) {
+        if (action && action.autoAction) {
             const delay = (action.autoAction_delay || 0) * 1000
             setTimeout(() => {
                 !performed && onPerform()

@@ -84,8 +84,8 @@ export default function FpsForm2(props) {
   const [autoSubmitStep, setAutoSubminStep] = useState(state.step)
 
   const cx = null
-  const submitOnModel = debounce(submit, 3000);
-  const submitOnState = debounce(submit, 300);
+  const submitOnModel = debounce(submit, 400);
+  const submitOnState = debounce(submit, 400);
   //const debouncedCallEndpint = debounce(callEndpoint, 700);
 
   // AUTOSUBMIT ON MODEL
@@ -242,7 +242,7 @@ export default function FpsForm2(props) {
     function excludeNonEmptyValues(obj, keys) {
       console.log(obj)
       const filteredKeys = _.pickBy(obj, (value, key) => {
-        return !_.isEmpty(value.toString()); // Exclude keys with non-empty values
+        return !_.isEmpty((value || "").toString()); // Exclude keys with non-empty values
       });
       return keys.filter(key => !(key in filteredKeys));
     }
