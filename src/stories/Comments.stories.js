@@ -290,12 +290,7 @@ const commentsData = {
           "files": "https://api.directual.com/fileUploaded/directual-site/e/message-2-line.svg,https://api.directual.com/fileUploaded/directual-site/e/message-2-line.svg",
           "id": "5b7e73b2-fa47-4a90-b337-8c181cb34ff0",
           "date": 1719090000000,
-          "user": {
-              "lastName": "Ershov",
-              "firstName": "Pavel",
-              "userpic": "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg",
-              "id": "pavel"
-          }
+          "user": {}
       },
       {
           "parent_id": "5b7e73b2-fa47-4a90-b337-8c181cb34ff0",
@@ -609,7 +604,7 @@ let authExample = {
 export const Regular = {
   args: {
     data: commentsData,
-    locale: "RUS",
+    locale: "ENG",
     auth: authExample,
   },
 };
