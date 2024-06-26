@@ -151,7 +151,6 @@ export default function Select(props) {
             if (Array.isArray(def)) {
                 let convDef = []
 
-
                 // лютый костыль под динамический инпут
 
                 def.forEach(j => {
@@ -163,7 +162,7 @@ export default function Select(props) {
                 if (props.dinamicSelect 
                         && val && val.length > 0
                         && _.intersection(def, options.map(i => i.key)).length < 2) {
-                    convDef = [...val, ...convDef]
+                    convDef = _.uniqBy([...val, ...convDef],'key')
                 }
 
                 return convDef
