@@ -301,6 +301,9 @@ export default function Select(props) {
     }, [value])
 
     const submit = (val) => {
+        console.log('select submit')
+        console.log(val)
+
         setValue(val)
         setKeySelected();
         val && !props.multi && props.onChange(val.key)
@@ -310,10 +313,18 @@ export default function Select(props) {
 
 
     const chooseOption = (option) => {
+        console.log("chooseOption")
+        console.log(option)
         !props.multi && submit(option)
         if (props.multi) {
+            console.log(value)
+            console.log("value")
             let arr = _.get(value, '[0].key') ? [...value] : []
+            console.log("arr")
+            console.log(arr)
             arr.indexOf(option) == -1 && arr.push(option)
+            console.log("arr")
+            console.log(arr)
             submit(arr)
         }
     }
