@@ -916,7 +916,7 @@ function FieldArrayLink(props) {
             onLoad={refreshOptions}
             required={field._field_required}
             refresh={refresh}
-            debug
+            //debug
             label={fieldInfo.name || fieldInfo.sysName}
             description={field._field_add_description && template(field._field_description_text)}
             callParams={params}
