@@ -966,6 +966,7 @@ export default function Input(props) {
                     warning={warningMsg.type}
                     placeholder={props.placeholder}
                     //options={props.options}
+                    refresh={props.refresh}
                     callParams={props.callParams}
                     onLoad={props.onLoad}
                     dinamicSelect

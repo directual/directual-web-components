@@ -122,8 +122,8 @@ function ListOption(props) {
 
 export default function Select(props) {
 
-    console.log('select props')
-    console.log(props)
+    // console.log('select props')
+    // console.log(props)
 
     const [focus, setFocus] = useState(false);
     const [filteredOptions, setFilteredOptions] = useState(props.options ? props.options.filter(i => i && i.key) : [])
