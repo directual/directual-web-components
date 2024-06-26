@@ -136,7 +136,7 @@ export default function Select(props) {
 
     // const forceUpdate = useForceUpdate();
 
-    function convertDefaultValue(def) {
+    function convertDefaultValue(def, val) {
         const options = props.options || filteredOptions
         if (def === '[]' || (Array.isArray(def) && def.length == 1 && def[0] == "")) {
             def = null
@@ -151,8 +151,8 @@ export default function Select(props) {
             if (Array.isArray(def)) {
                 let convDef = []
 
-                console.log("def")
-                console.log(def)
+
+                // лютый костыль под динамический инпут
 
                 def.forEach(j => {
                     if (options.filter(i => i && i.key == j)[0]) {
@@ -160,6 +160,11 @@ export default function Select(props) {
                     }
                 }
                 )
+                if (props.dinamicSelect 
+                        && val && val.length > 0
+                        && _.intersection(def, options.map(i => i.key)).length < 2) {
+                    convDef = [...val, ...convDef]
+                }
 
                 return convDef
             }
@@ -172,7 +177,7 @@ export default function Select(props) {
     }
 
     useEffect(() => {
-        let D = convertDefaultValue(props.defaultValue);
+        let D = convertDefaultValue(props.defaultValue, value);
         setValue(D)
     }, [props.defaultValue])
 
