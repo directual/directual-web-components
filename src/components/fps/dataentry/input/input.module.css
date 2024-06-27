@@ -290,10 +290,12 @@
 .input_row {
   display: flex;
   gap: 18px 8px;
-  justify-content: stretch;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 .input_row.column {
   flex-direction: column;
+  align-items: stretch;
 }
 .input_row > div {
   flex: 1;

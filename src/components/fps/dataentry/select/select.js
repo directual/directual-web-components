@@ -304,8 +304,6 @@ export default function Select(props) {
 
     useEffect(() => {
         setKeySelected();
-        console.log("value is changed")
-        console.log(value)
         // value && !props.multi && props.onChange(value.key)
         // value && value.length > 0 && props.onChange(value.map(i => i.key))
         // if (!value || value.length == 0) { props.onChange(null); }

@@ -349,37 +349,45 @@ export default function FpsForm2(props) {
   }
 
   // front-end template engine
-  // function template(input) {
-  //   const templateData = { ...defaultExtModel, ...(extendedModel || {}) };
-  //   _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
-  //   if (!templateData) return ""
-  //   const renderTemplate = (template) => {
-  //     return _.template(template, {
-  //       interpolate: /{{([\s\S]+?)}}/g
-  //     })(templateData, {
-  //       variable: '',
-  //       evaluate: /<%([\s\S]+?)%>/g,
-  //       escape: /<%-([\s\S]+?)%>/g
-  //     });
-  //   };
-  //   try {
-  //     const result = renderTemplate(input);
-  //     return result;
-  //   } catch (error) {
-  //     console.error("template")
-  //     console.error(input)
-  //     console.error(templateData)
-  //     console.error('Error rendering template:', error);
-  //     return '';
-  //   }
-  // }
+
+  const formatDate = (value, formatOptions) => {
+    if (!value) { return null }
+    formatOptions = formatOptions || {}
+    const formattedDate = formatOptions.isUTC == 'true' ?
+      moment.utc(value).locale(formatOptions.dateLocale || 'ed-gb').format(formatOptions.dateFormat + formatOptions.timeFormat || 'DD/MM/Y, HH:mm, Z')
+      :
+      moment(value).locale(formatOptions.dateLocale || 'ed-gb').format(formatOptions.dateFormat + formatOptions.timeFormat || 'DD/MM/Y, HH:mm, Z')
+    return formattedDate
+  }
+
+  const getDateFields = () => {
+    let dates = {}
+    _.get(data, "headers", []).forEach(i => {
+      if (i.dataType == 'date') {
+        _.set(dates, i.sysName, i.formatOptions || {})
+      }
+    })
+    _.get(data, "fileds", []).forEach(i => {
+      if (i.dataType == 'date') {
+        _.set(dates, i.sysName, i.formatOptions || {})
+      }
+    })
+    return dates
+  }
 
   function template(input) {
 
     if (!input || input == "{{undefined}}") return ""
-    const templateData = { ...defaultExtModel, ...(model || {}), ...(extendedModel || {}) };
+    let templateData = { ...defaultExtModel, ...(model || {}), ...(extendedModel || {}) };
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
     if (!templateData) return "";
+
+    templateData = _.mapValues(templateData, (value, key) => {
+      if (getDateFields().hasOwnProperty(key)) {
+        return formatDate(value,getDateFields()[key])
+      }
+      return value;
+    });
 
     // Function to convert object references to their desired string representation paths
     const preprocessTemplate = (str, data) => {
