@@ -514,6 +514,7 @@ function FieldLink(props) {
         if (!field._field_arrayLink_endpoint) { return; }
         if (field._field_link_type !== "radio" &&
             field._field_link_type !== "radioImages" &&
+            field._field_link_type !== "complexSelect" &&
             field._field_link_type !== "tags" &&
             field._field_link_type !== "select") {
             return;
@@ -600,25 +601,21 @@ function FieldLink(props) {
             <div className={styles.form2label}>{fieldInfo.name || fieldInfo.sysName}</div>
             Endpoint for the dropdown is not configured.</div>
         return <div><Input type="dinamicComplexSelect"
-            onLoad={refreshOptions}
-            required={field._field_required}
-            refresh={refresh}
-            //debug
-            label={fieldInfo.name || fieldInfo.sysName}
-            description={field._field_add_description && template(field._field_description_text)}
-            callParams={params}
-            nomargin
-            disabled={disabled}
-            defaultValue={(model[fieldInfo.sysName] || "").split(",").filter(i => !!i)}
-            onChange={value => {
-                value ? onChange(value.join(",")) : onChange(null)
-            }}
-            locale={locale}
-        />
-            {error && <Hint margin={{ top: 10, bottom: 0 }} closable error onClose={() => setError("")}>
-                {error}
-            </Hint>}
-        </div>
+        onLoad={refreshOptions}
+        required={field._field_required}
+        //debug
+        refresh={refresh}
+        label={fieldInfo.name || fieldInfo.sysName}
+        description={field._field_add_description && template(field._field_description_text)}
+        defaultValue={model[fieldInfo.sysName]}
+        callParams={params}
+        nomargin
+        {...basicProps}
+    />
+        {error && <Hint margin={{ top: 10, bottom: 0 }} closable error onClose={() => setError("")}>
+            {error}
+        </Hint>}
+    </div>
     }
 
     if (field._field_link_type == "tags") {

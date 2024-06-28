@@ -260,7 +260,6 @@ export default function Select(props) {
             setLoading(false)
             setFilteredOptions(data)
             setKeySelected('')
-            // console.log(data)
         }, filter, props.defaultValue, resetValue)
     }
 
@@ -322,7 +321,7 @@ export default function Select(props) {
 
     useEffect(() => {
         setKeySelected();
-        console.log(value)
+        // console.log(value)
         // value && !props.multi && props.onChange(value.key)
         // value && value.length > 0 && props.onChange(value.map(i => i.key))
         // if (!value || value.length == 0) { props.onChange(null); }

@@ -870,7 +870,7 @@ function RenderStep(props) {
       callEndpointPOST={callEndpointPOST}
       callEndpoint={(endpoint, params, finish, setOptions, setError) => {
         //params= {...params, _value: "a"} // убрать это для проверки корректности запроса!
-        // console.log('===> calling endpoint /' + endpoint)
+        console.log('===> calling endpoint /' + endpoint)
         // console.log(params)
         const transformedArray = (inputArray, visibleNames) => _.map(inputArray, (item) => {
           const parseJson = json => {
@@ -899,35 +899,32 @@ function RenderStep(props) {
         });
 
         //fake request
-        // setTimeout(() => {
-        //   const data = [
-        //     {
-        //       "firstName": "Paul",
-        //       "position": "человек-работник",
-        //       "userpic": "https://cdn.prod.website-files.com/5d07a67a0a061929b6559525/63d7fe438ced734abd058268_author-pavel.jpg"
-        //     },
-        //     {
-        //       "firstName": "Павел",
-        //       "position": "человек-работник",
-        //       "userpic": "https://cdn.prod.website-files.com/5d07a67a0a061929b6559525/63d7fe438ced734abd058268_author-pavel.jpg"
-        //     },
-        //   ]
-        //   const visibleNames = '[{"sysName":"firstName"}]'
-        //   finish && finish(transformedArray(data, visibleNames))
-        //   setOptions && setOptions(transformedArray(data, visibleNames))
-        // }, 1000)
+        setTimeout(() => {
+          const data = [
+            {
+              "id": "1",
+              "firstName": "Paul",
+              "position": "человек-работник",
+              "userpic": "https://cdn.prod.website-files.com/5d07a67a0a061929b6559525/63d7fe438ced734abd058268_author-pavel.jpg"
+            },
+            {
+              "id": "2",
+              "firstName": "Павел",
+              "position": "человек-работник",
+              "userpic": "https://cdn.prod.website-files.com/5d07a67a0a061929b6559525/63d7fe438ced734abd058268_author-pavel.jpg"
+            },
+          ]
+          const visibleNames = '[{"sysName":"firstName"}]'
+          finish && finish(transformedArray(data, visibleNames))
+          setOptions && setOptions(transformedArray(data, visibleNames))
+        }, 1000)
 
-        callEndpoint && callEndpoint(
+        false && callEndpoint && callEndpoint(
           endpoint,
           "GET",
           undefined,
           params,
           (result, data, visibleNames) => {
-            // console.log(result)
-            // console.log(data)
-            // console.log('===> calling endpoint /' + endpoint)
-            // console.log(params)
-
             if (result == "ok") {
               finish && finish(transformedArray(data, visibleNames))
               setOptions && setOptions(transformedArray(data, visibleNames))
@@ -964,8 +961,8 @@ function RenderStep(props) {
         element={element}
         callEndpointPOST={callEndpointPOST}
         callEndpoint={(endpoint, params, finish, setOptions, setError) => {
-          // console.log('===> calling endpoint /' + endpoint)
-          // console.log(params)
+          console.log('===> calling endpoint /' + endpoint)
+          console.log(params)
           const transformedArray = (inputArray, visibleNames) => _.map(inputArray, (item) => {
             const parseJson = json => {
               if (!json) return {}
@@ -1021,7 +1018,7 @@ function RenderStep(props) {
           //   const visibleNames = '[{"sysName":"firstName"},{"sysName":"lastName"}]'
           //   finish && finish(transformedArray(data, visibleNames))
           //   setOptions && setOptions(transformedArray(data, visibleNames))
-          // }, 1000)
+          // }, 300)
 
           callEndpoint && callEndpoint(
             endpoint,
