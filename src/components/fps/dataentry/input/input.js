@@ -320,7 +320,7 @@ export default function Input(props) {
     useEffect(() => {
         if (props.highlightEmpty && !value) { setWarningMesg({ type: 'error', msg: 'This field is required' }) }
         else { inputEl.current == document.activeElement && !props.error && setWarningMesg({}); }
-        if ((props.type == 'select' || props.type == 'multiselect' || props.type == 'dinamicSelect' 
+        if ((props.type == 'select' || props.type == 'multiselect' || props.type == 'dinamicSelect'
             || props.type == 'dinamicComplexSelect'
             || props.type == 'dinamicMultiSelect' || props.type == 'structurefield') &&
             props.highlightEmpty && value && !props.error) {
@@ -943,16 +943,17 @@ export default function Input(props) {
                     placeholder={props.placeholder}
                     //options={props.options}
                     callParams={props.callParams}
-                    refresh={props.refresh}
                     onLoad={props.onLoad}
-                    dinamicComplexSelect
+                    refresh={props.refresh}
+                    complexSelect
+                    dinamicSelect
                     icon={props.icon}
                     dict={dict[lang]}
                     code={props.code}
                     height={props.height}
                     bottomSelect={props.bottomSelect}
                     disabled={props.disabled}
-                    displayKey={props.displayKey}
+                    //displayKey={props.displayKey}
                     displayKeyShort={props.displayKeyShort}
                     defaultValue={defVal}
                     iconOptions={props.iconOptions}

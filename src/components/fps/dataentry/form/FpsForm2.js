@@ -384,7 +384,7 @@ export default function FpsForm2(props) {
 
     templateData = _.mapValues(templateData, (value, key) => {
       if (getDateFields().hasOwnProperty(key)) {
-        return formatDate(value,getDateFields()[key])
+        return formatDate(value, getDateFields()[key])
       }
       return value;
     });
@@ -717,6 +717,11 @@ export default function FpsForm2(props) {
     {_.get(params, "general.showFullModel") && <pre className={`${styles.debug} ${highlightState ? styles.highlight : ''}`}>
       <code>{JSON.stringify(extendedModel, 0, 3)}</code>
       <span>debug mode: EXT. MODEL</span>
+    </pre>}
+
+    {_.get(params, "general.showAuthModel") && <pre className={`${styles.debug} ${highlightState ? styles.highlight : ''}`}>
+      <code>{JSON.stringify({ ...auth, id: auth.user }, 0, 3)}</code>
+      <span>debug mode: USER INFO</span>
     </pre>}
 
     {_.get(params, "general.showModel") && <pre className={`${styles.debug} ${highlightModel ? styles.highlight : ''}`}>

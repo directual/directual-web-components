@@ -547,13 +547,16 @@ function FieldLink(props) {
     }
 
     useEffect(i => {
-        if (!_.isEqual(currentParams, params) && field._field_link_type !== "select") {
+        if (!_.isEqual(currentParams, params)
+            && field._field_link_type !== "select"
+            && field._field_link_type !== "complexSelect"
+        ) {
             // у селекта другой механизм обновления опций — функция дергается прямо из компонента
             refreshOptions(undefined, undefined, undefined, true)
         }
     }, [params]) // update options when request params are changed
 
-    useEffect(()=> {
+    useEffect(() => {
         refresh && refresh !== 0 && refreshOptions(undefined, undefined, model[fieldInfo.sysName])
     }, [refresh])
 
@@ -585,6 +588,32 @@ function FieldLink(props) {
             callParams={params}
             nomargin
             {...basicProps}
+        />
+            {error && <Hint margin={{ top: 10, bottom: 0 }} closable error onClose={() => setError("")}>
+                {error}
+            </Hint>}
+        </div>
+    }
+
+    if (field._field_link_type == "complexSelect") {
+        if (!field._field_arrayLink_endpoint) return <div>
+            <div className={styles.form2label}>{fieldInfo.name || fieldInfo.sysName}</div>
+            Endpoint for the dropdown is not configured.</div>
+        return <div><Input type="dinamicComplexSelect"
+            onLoad={refreshOptions}
+            required={field._field_required}
+            refresh={refresh}
+            //debug
+            label={fieldInfo.name || fieldInfo.sysName}
+            description={field._field_add_description && template(field._field_description_text)}
+            callParams={params}
+            nomargin
+            disabled={disabled}
+            defaultValue={(model[fieldInfo.sysName] || "").split(",").filter(i => !!i)}
+            onChange={value => {
+                value ? onChange(value.join(",")) : onChange(null)
+            }}
+            locale={locale}
         />
             {error && <Hint margin={{ top: 10, bottom: 0 }} closable error onClose={() => setError("")}>
                 {error}
@@ -747,6 +776,7 @@ function FieldArrayLink(props) {
         if (!field._field_arrayLink_endpoint) { return; }
         if (field._field_arrayLink_type !== "checkboxes"
             && field._field_arrayLink_type !== "select"
+            && field._field_arrayLink_type !== "complexSelect"
             && field._field_arrayLink_type !== "tags"
             && field._field_arrayLink_type !== "userList"
             && field._field_arrayLink_type !== "checkboxImages"
@@ -779,13 +809,16 @@ function FieldArrayLink(props) {
     }
 
     useEffect(i => {
-        if (!_.isEqual(currentParams, params) && field._field_arrayLink_type !== "select") {
+        if (!_.isEqual(currentParams, params)
+            && field._field_arrayLink_type !== "select"
+            && field._field_arrayLink_type !== "complexSelect"
+        ) {
             // у селекта другой механизм обновления опций — функция дергается прямо из компонента
             refreshOptions(undefined, undefined, undefined, true)
         }
     }, [params]) // update options when request params are changed
 
-    useEffect(()=> {
+    useEffect(() => {
         refresh && refresh !== 0 && refreshOptions(undefined, undefined, model[fieldInfo.sysName])
     }, [refresh])
 
@@ -934,6 +967,8 @@ function FieldArrayLink(props) {
         </div>
     }
 
+
+
     if (field._field_arrayLink_type == "checkboxes") {
         if (!field._field_arrayLink_endpoint) return <div>
             <div className={styles.form2label}>{fieldInfo.name || fieldInfo.sysName}</div>
@@ -966,15 +1001,15 @@ function FieldArrayLink(props) {
 
     if (field._field_arrayLink_type == "userList") {
         const users = options
-        .filter(i => _.includes((model[fieldInfo.sysName] || "").split(","), i.key))
-        .map(i => {
-            return {
-                value: i.key,
-                label: i.value,
-                userpic: i.userpic,
-                position: i.position
-            }
-        }) || []
+            .filter(i => _.includes((model[fieldInfo.sysName] || "").split(","), i.key))
+            .map(i => {
+                return {
+                    value: i.key,
+                    label: i.value,
+                    userpic: i.userpic,
+                    position: i.position
+                }
+            }) || []
 
         if (!field._field_arrayLink_endpoint) return <div>
             <div className={styles.form2label}>{fieldInfo.name || fieldInfo.sysName}</div>

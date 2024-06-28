@@ -25,6 +25,7 @@
   border: solid 1px var(--form-field-border);
   border-radius: var(--border-radius);
   background-color: var(--form-field-bgr);
+  margin: 1px;
   display: flex;
   align-items: center;
   padding: 7px 36px 7px 18px;
@@ -107,18 +108,15 @@
   cursor: not-allowed;
 }
 .select_wrapper .select_field.error {
-  border-width: 2px;
-  padding: 6px 35px 6px 17px;
   border-color: var(--hint-error);
+  box-shadow: 0 0 0 1px var(--hint-error);
 }
 .select_wrapper .select_field.ok {
-  border-width: 2px;
-  padding: 6px 35px 6px 17px;
   border-color: var(--hint-ok);
+  box-shadow: 0 0 0 1px var(--hint-ok);
 }
 .select_wrapper .select_field:hover:not(.disabled) {
-  border-width: 2px;
-  padding: 6px 35px 6px 17px;
+  box-shadow: 0 0 0 1px var(--form-field-border);
 }
 .select_wrapper .select_field .currentValue {
   opacity: 1;
@@ -128,9 +126,8 @@
   text-overflow: ellipsis;
 }
 .select_wrapper .select_field.focus:not(.disabled) {
-  border-width: 2px;
-  padding: 6px 35px 6px 17px;
   border-color: var(--form-accent);
+  box-shadow: 0 0 0 1px var(--form-accent);
 }
 .select_wrapper .select_field.focus:not(.disabled) .multilist {
   min-width: calc(100% - 56px);
@@ -158,13 +155,11 @@
   border: solid 1px var(--table-borders);
 }
 .select_wrapper .select_field.error {
-  border-width: 2px;
-  padding: 6px 35px 6px 17px;
   border-color: var(--hint-error);
+  box-shadow: 0 0 0 1px var(--hint-error);
 }
 .select_wrapper .select_field:active:not(.disabled) {
-  padding: 6px 35px 6px 17px;
-  border: solid 2px var(--form-placeholder);
+  box-shadow: 0 0 0 1px var(--form-placeholder);
 }
 .select_wrapper .select_field .icon {
   margin-left: -8px;
@@ -172,12 +167,19 @@
 }
 .select_wrapper .select_field .value_wrapper {
   position: relative;
+  max-width: 100%;
   display: flex;
   align-items: center;
   height: 30px;
   flex: 1;
   min-width: 50px;
   overflow: hidden;
+}
+.select_wrapper .select_field .value_wrapper.complex {
+  flex-direction: column;
+  align-items: flex-start;
+  height: auto;
+  min-height: 30px;
 }
 .select_wrapper .select_field .value_wrapper .filter {
   border: none;
@@ -214,12 +216,35 @@
 .select_wrapper .select_field .list.flat {
   width: 100%;
 }
+.select_wrapper .select_field .list .complexOption {
+  display: flex;
+}
+.select_wrapper .select_field .list .complexOption .complexOptionDescription {
+  font-size: var(--text-small-size);
+  opacity: 0.5;
+}
+.select_wrapper .select_field .list .complexOption .complexOptionImage {
+  margin-right: 10px;
+  flex-shrink: 0;
+  border: solid 1px var(--form-field-border);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  border-radius: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.select_wrapper .select_field .list .complexOption .complexOptionImage img {
+  max-width: 100%;
+  max-height: 100%;
+}
 .select_wrapper .select_field .list .option {
   flex-shrink: 0;
   padding: 8px 12px;
   margin: 2px;
   border-radius: var(--border-radius);
   cursor: pointer;
+  position: relative;
 }
 .select_wrapper .select_field .list .option.optionIcon {
   padding: 2px 8px;
@@ -237,12 +262,18 @@
 .select_wrapper .select_field .list .option.selected .displayKeyShort {
   color: var(--form-field-bgr);
 }
-.select_wrapper .select_field .list .option.keySelected {
-  padding: 6px 10px;
+.select_wrapper .select_field .list .option .borderSelect {
+  display: none;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
   border: solid 2px var(--form-placeholder);
+  border-radius: var(--border-radius);
 }
-.select_wrapper .select_field .list .option.keySelected.optionIcon {
-  padding: 0px 6px;
+.select_wrapper .select_field .list .option.keySelected .borderSelect {
+  display: block;
 }
 .select_wrapper .select_field .list .option:active:not(.disabled) {
   background: var(--form-placeholder);
@@ -336,4 +367,22 @@
   font-family: 'Source Code Pro', monospace;
   color: var(--form-placeholder);
   opacity: 0.6;
+}
+.complexSelectImage {
+  flex-shrink: 0;
+  border: solid 1px var(--form-field-border);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  border-radius: 100%;
+  margin: -3px 8px -3px -10px;
+}
+.currentComplexValueDescription {
+  font-size: var(--text-small-size);
+  opacity: 0.5;
+  margin-top: -1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }

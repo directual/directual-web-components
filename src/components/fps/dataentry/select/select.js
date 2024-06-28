@@ -92,7 +92,8 @@ function List(props) {
 }
 
 function ListOption(props) {
-    const { option, i } = props
+    const { option, i, complexSelect } = props
+
     return <li
         className={`
         ${styles.option}
@@ -109,8 +110,24 @@ function ListOption(props) {
                 props.current && props.current.length >= 0 && props.removeOption(props.current.filter(i => i.key == option.key)[0])
             props.onClick()
         }}
-    >
-        {option.value}
+    >   <div className={styles.borderSelect} />
+        {complexSelect ?
+            <div className={`${styles.complexOption}`}>
+                {option.image && <div className={`${styles.complexOptionImage}`}
+                    style={{
+                        backgroundImage: `url(${option.image})`,
+                        backgroundPosition: `center center`,
+                        backgroundRepeat: `no-repeat`,
+                        backgroundSize: 'cover'
+                    }}
+                />}
+                <div>
+                    <div className={`${styles.complexOptionTitle}`}>{option.value}</div>
+                    {option.description && <div className={`${styles.complexOptionDescription}`}>{option.description}</div>}
+                </div>
+            </div>
+            : option.value}
+
         <span className={styles.displayKey}>
             {`${props.displayKey ? ` {{${option.key}}}` : ''}`}
         </span>
@@ -159,10 +176,10 @@ export default function Select(props) {
                     }
                 }
                 )
-                if (props.dinamicSelect 
-                        && val && val.length > 0
-                        && _.intersection(def, options.map(i => i.key)).length < 2) {
-                    convDef = _.uniqBy([...val, ...convDef],'key')
+                if (props.dinamicSelect
+                    && val && val.length > 0
+                    && _.intersection(def, options.map(i => i.key)).length < 2) {
+                    convDef = _.uniqBy([...val, ...convDef], 'key')
                 }
 
                 return convDef
@@ -243,6 +260,7 @@ export default function Select(props) {
             setLoading(false)
             setFilteredOptions(data)
             setKeySelected('')
+            // console.log(data)
         }, filter, props.defaultValue, resetValue)
     }
 
@@ -304,6 +322,7 @@ export default function Select(props) {
 
     useEffect(() => {
         setKeySelected();
+        console.log(value)
         // value && !props.multi && props.onChange(value.key)
         // value && value.length > 0 && props.onChange(value.map(i => i.key))
         // if (!value || value.length == 0) { props.onChange(null); }
@@ -352,6 +371,16 @@ export default function Select(props) {
                 onClick={() => { !focus && setFocus(true) }}
                 ref={selectRef}
             >
+                {props.complexSelect && value && value.image && <div className={`${styles.complexSelectImage}`}
+                    style={{
+                        backgroundImage: `url(${value.image})`,
+                        backgroundPosition: `center center`,
+                        backgroundRepeat: `no-repeat`,
+                        backgroundSize: 'cover'
+                    }}
+                />
+                }
+
                 {props.icon && !(value && value.icon && props.iconOptions) &&
                     <div className={`${styles.icon} icon icon-${props.icon}`}></div>}
                 {props.iconOptions && value && value.icon &&
@@ -406,21 +435,29 @@ export default function Select(props) {
                     </ul>
                 }
 
-                <div className={`${styles.value_wrapper}`}>
+                <div className={`${styles.value_wrapper} ${value && value.description && props.complexSelect ? styles.complex : ""}`}>
 
                     {!props.multi && <React.Fragment>
                         {!value && !filter &&
                             <div className={`${styles.placeholder}`}>
                                 {props.placeholder ? props.placeholder : _.get(props.dict, 'select')}</div>}
                         {value && !filter &&
-                            <div className={styles.currentValue}>{value.value}
-                                <span className={styles.displayKey}>
-                                    {`${props.displayKey ? ` {{${value.key}}}` : ''}`}
-                                </span>
-                                <span className={styles.displayKeyShort}>
-                                    {`${props.displayKeyShort ? ` [${value.key}]` : ''}`}
-                                </span>
-                            </div>}
+                            <React.Fragment>
+                                {value.description && props.complexSelect ?
+                                    <React.Fragment>
+                                        <div className={styles.currentValue}>{value.value || value.key}</div>
+                                        <div className={styles.currentComplexValueDescription}>{value.description}</div>
+                                    </React.Fragment>
+                                    : <div className={styles.currentValue}>{value.value}
+                                        <span className={styles.displayKey}>
+                                            {`${props.displayKey ? ` {{${value.key}}}` : ''}`}
+                                        </span>
+                                        <span className={styles.displayKeyShort}>
+                                            {`${props.displayKeyShort ? ` [${value.key}]` : ''}`}
+                                        </span>
+                                    </div>}
+                            </React.Fragment>
+                        }
                         {focus &&
                             <input
                                 onKeyDown={handleKeyboard}
@@ -438,6 +475,7 @@ export default function Select(props) {
                 <List
                     chooseOption={option => chooseOption(option)}
                     dict={props.dict}
+                    complexSelect={props.complexSelect}
                     loading={loading}
                     dinamicSelect={props.dinamicSelect}
                     onLoad={props.onLoad}
