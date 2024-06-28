@@ -890,36 +890,38 @@ function RenderStep(props) {
           const { id, ...rest } = item; // Destructure `id` and the rest of the properties
           const value = _.trim(_.map(parseJson(visibleNames), field => _.get(item, field.sysName)).join(' ')) ||
             _.values(_.pickBy(rest, _.isString)).join(' '); // Concatenate string values
+          const excludeFields = [..._.map(parseJson(visibleNames), i => i.sysName), ...["userpic", "image", "picture", "photo"]]
+          const description = _.trim((_.keys(_.omit(rest, excludeFields)) || []).map(i=> rest[i]).join(" "))
           return {
             key: id,
             value: _.trim(value) || id,
-            userpic: _.get(rest, "userpic"),
-            position: _.get(rest, "position"),
+            image: _.get(rest, "userpic") || _.get(rest, "image") || _.get(rest, "picture") || _.get(rest, "photo"),
+            description: description,
           };
         });
 
         //fake request
-        setTimeout(() => {
-          const data = [
-            {
-              "id": "1",
-              "firstName": "Paul",
-              "position": "человек-работник",
-              "userpic": "https://cdn.prod.website-files.com/5d07a67a0a061929b6559525/63d7fe438ced734abd058268_author-pavel.jpg"
-            },
-            {
-              "id": "2",
-              "firstName": "Павел",
-              "position": "человек-работник",
-              "userpic": "https://cdn.prod.website-files.com/5d07a67a0a061929b6559525/63d7fe438ced734abd058268_author-pavel.jpg"
-            },
-          ]
-          const visibleNames = '[{"sysName":"firstName"}]'
-          finish && finish(transformedArray(data, visibleNames))
-          setOptions && setOptions(transformedArray(data, visibleNames))
-        }, 1000)
+        // setTimeout(() => {
+        //   const data = [
+        //     {
+        //       "id": "1",
+        //       "firstName": "Paul",
+        //       "userpic": "https://cdn.prod.website-files.com/5d07a67a0a061929b6559525/63d7fe438ced734abd058268_author-pavel.jpg"
+        //     },
+        //     {
+        //       "id": "2",
+        //       "firstName": "Павел",
+        //       "position": "человек-работник",
+        //       "userpic": "https://cdn.prod.website-files.com/5d07a67a0a061929b6559525/63d7fe438ced734abd058268_author-pavel.jpg"
+        //     },
+        //   ]
+        //   const visibleNames = '[{"sysName":"firstName"}]'
+        //   finish && finish(transformedArray(data, visibleNames))
+        //   setOptions && setOptions(transformedArray(data, visibleNames))
+        // }, 1000)
 
-        false && callEndpoint && callEndpoint(
+        // false && 
+        callEndpoint && callEndpoint(
           endpoint,
           "GET",
           undefined,

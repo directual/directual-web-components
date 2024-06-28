@@ -121,7 +121,7 @@ function ListOption(props) {
                         backgroundSize: 'cover'
                     }}
                 />}
-                <div>
+                <div className={`${styles.complexOptionWrapper}`}>
                     <div className={`${styles.complexOptionTitle}`}>{option.value}</div>
                     {option.description && <div className={`${styles.complexOptionDescription}`}>{option.description}</div>}
                 </div>
