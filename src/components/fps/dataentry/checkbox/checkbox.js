@@ -82,7 +82,7 @@ Checkbox.propTypes = {
 };
 
 Checkbox.defaultProps = {
-    label: 'My checkbox',
+    label: undefined,
     onChange: undefined,
     defaultValue: null
 };
