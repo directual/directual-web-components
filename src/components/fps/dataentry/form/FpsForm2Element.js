@@ -188,12 +188,12 @@ function ElementAction(props) {
             }
         }
         if (action.actionType == "state") {
-            if (action.actionSubmit) { onSubmit(undefined, true, undefined, true) }
             const payloadState = transformState(action.stateMapping, "state")
             const payloadModel = transformState(action.stateMapping, "model")
             setState({ ...state, ...payloadState })
             setModel({ ...model, ...payloadModel })
             setExtendedModel({ ...extendedModel, ...payloadModel })
+            if (action.actionSubmit) { setTimeout(() => onSubmit(undefined, true, undefined, true), 500) }
         }
     }
 
