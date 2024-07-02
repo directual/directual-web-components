@@ -174,13 +174,19 @@ export default function FpsForm2(props) {
     }
   }, [model])
 
-  function submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping) {
+  function submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData) {
     clearTimeout(cx);
+
+
+    newData = newData || {}
+
+    let localState = {...state, ...newData.state}
+    let localModel = {...model, ...newData.model}
 
     setState({ ...state, _submitError: "" })
     let modelToSend = {}
 
-    for (const f in model) {
+    for (const f in localModel) {
       if (_.includes(_.get(data, 'writeFields'), f)) {
         // проверка на дату
         const type = _.filter(_.get(data, 'fileds'), i => i.sysName == f)
@@ -188,9 +194,9 @@ export default function FpsForm2(props) {
           && _.filter(_.get(data, 'fileds'), i => i.sysName == f)[0].dataType
 
         if (type == 'date') {
-          modelToSend[f] = moment(model[f]).toISOString()
+          modelToSend[f] = moment(localModel[f]).toISOString()
         } else {
-          modelToSend[f] = model[f]
+          modelToSend[f] = localModel[f]
         }
 
       }
@@ -217,7 +223,7 @@ export default function FpsForm2(props) {
       // до кучи сохраняем автомаппинг в модель, чтобы сокетом не дрочить
     }
 
-    if (!modelIsChanged && !submitMapping && !_.isEqual(gatherDefaults(), model && !autoSubmit) &&
+    if (!modelIsChanged && !submitMapping && !_.isEqual(gatherDefaults(), localModel && !autoSubmit) &&
       !(_.get(params, "general.saveState") && _.get(params, "general.saveStateTo"))) {
       setState({ ...state, _submitError: "" })
       console.log('Model is not changed. Submit does not submit anything')
@@ -228,7 +234,7 @@ export default function FpsForm2(props) {
 
     // State to object
     if (_.get(params, "general.saveState") && _.get(params, "general.saveStateTo")) {
-      modelToSend[_.get(params, "general.saveStateTo")] = JSON.stringify(state)
+      modelToSend[_.get(params, "general.saveStateTo")] = JSON.stringify(localState)
     }
 
     // REQUIRED:

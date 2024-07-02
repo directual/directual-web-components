@@ -193,7 +193,7 @@ function ElementAction(props) {
             setState({ ...state, ...payloadState })
             setModel({ ...model, ...payloadModel })
             setExtendedModel({ ...extendedModel, ...payloadModel })
-            if (action.actionSubmit) { setTimeout(() => onSubmit(undefined, true, undefined, true), 500) }
+            onSubmit(undefined, true, undefined, true, undefined, {state: { ...state, ...payloadState }, model: { ...model, ...payloadModel }})
         }
     }
 
