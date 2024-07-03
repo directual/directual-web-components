@@ -193,7 +193,7 @@ function ElementAction(props) {
             setState({ ...state, ...payloadState })
             setModel({ ...model, ...payloadModel })
             setExtendedModel({ ...extendedModel, ...payloadModel })
-            action.sendModel && onSubmit(undefined, true, undefined, true, undefined, {state: { ...state, ...payloadState }, model: { ...model, ...payloadModel }})
+            action.actionSubmit && onSubmit(undefined, true, undefined, true, undefined, {state: { ...state, ...payloadState }, model: { ...model, ...payloadModel }})
         }
     }
 

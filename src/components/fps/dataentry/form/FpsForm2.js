@@ -223,7 +223,7 @@ export default function FpsForm2(props) {
       // до кучи сохраняем автомаппинг в модель, чтобы сокетом не дрочить
     }
 
-    if (!modelIsChanged && !submitMapping && !_.isEqual(gatherDefaults(), localModel && !autoSubmit) &&
+    if (!modelIsChanged && !submitMapping && !_.isEqual(gatherDefaults(), localModel) && !autoSubmit &&
       !(_.get(params, "general.saveState") && _.get(params, "general.saveStateTo"))) {
       setState({ ...state, _submitError: "" })
       console.log('Model is not changed. Submit does not submit anything')
