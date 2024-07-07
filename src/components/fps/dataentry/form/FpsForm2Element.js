@@ -139,7 +139,9 @@ function ElementAction(props) {
         console.log(action)
         console.log(actionFormat)
 
-        if (actionFormat._action_customRequired_fields && actionFormat._action_customRequired_fields.length > 0) {
+        if (actionFormat._action_customRequired && 
+            actionFormat._action_customRequired_fields && 
+            actionFormat._action_customRequired_fields.length > 0) {
             function excludeNonEmptyValues(obj, keys) {
                 const filteredKeys = _.pickBy(obj, (value, key) => {
                     return !_.isEmpty((value || "").toString()); // Exclude keys with non-empty values
@@ -158,13 +160,14 @@ function ElementAction(props) {
                 return;
             }
         }
+
         if (action.resetModel) {
             setModel({})
             setExtendedModel({})
         }
         if (action.discardModel) {
-            console.log("originalModel")
-            console.log(originalModel)
+            // console.log("originalModel")
+            // console.log(originalModel)
             setModel(originalModel)
             setExtendedModel(originalModel)
         }
@@ -176,10 +179,18 @@ function ElementAction(props) {
             setLoading(true)
 
             if (action.actionSubmit) {
-                onSubmit(() => callEndpointPOST(action.endpoint, payload, (result) => {
+                onSubmit(
+                    () => callEndpointPOST(action.endpoint, payload, (result) => {
                     setLoading(false)
                     // console.log(result)
-                }), true, undefined, true)
+                }), 
+                true, 
+                undefined, 
+                true,
+                undefined,
+                {},
+                actionFormat._action_standardRequired,
+                setError)
             } else {
                 callEndpointPOST(action.endpoint, payload, (result) => {
                     setLoading(false)
@@ -193,7 +204,16 @@ function ElementAction(props) {
             setState({ ...state, ...payloadState })
             setModel({ ...model, ...payloadModel })
             setExtendedModel({ ...extendedModel, ...payloadModel })
-            action.actionSubmit && onSubmit(undefined, true, undefined, true, undefined, {state: { ...state, ...payloadState }, model: { ...model, ...payloadModel }})
+            action.actionSubmit && onSubmit(
+                undefined, 
+                true, 
+                undefined, 
+                true, 
+                undefined, 
+                {state: { ...state, ...payloadState }, model: { ...model, ...payloadModel }},
+                actionFormat._action_standardRequired,
+                setError
+            )
         }
     }
 

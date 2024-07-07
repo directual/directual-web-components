@@ -122,7 +122,7 @@ export default function FpsForm2(props) {
         && autoSubmitStep !== state.step)) {
       console.log("AUTOSUBMIT!")
       setAutoSubminStep(state.step)
-      submitOnState(undefined, true, undefined, true)
+      submitOnState(undefined, true, undefined, true, undefined, { state: state })
     }
   }, [state])
 
@@ -174,16 +174,173 @@ export default function FpsForm2(props) {
     }
   }, [model])
 
-  function submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData) {
-    clearTimeout(cx);
+  const checkHidden = (element, debug) => {
 
+    const checkHiddenCondition = element => {
+      let isHidden = false
+
+      let field = template("{{" + element._conditionalView_field + "}}")
+      let value = template(element._conditionalView_value)
+
+      // { key: "modelNotChanged" },
+      if (element._conditionalView_operator == "modelNotChanged") {
+        if (modelIsChanged) {
+          // _.get(params, "general.showModel") && console.log("element is hidden")
+          // _.get(params, "general.showModel") && console.log("model is changed")
+          isHidden = true
+        }
+      }
+
+      // { key: "modelChanged" },
+      if (element._conditionalView_operator == "modelChanged") {
+        if (!modelIsChanged) {
+          // _.get(params, "general.showModel") && console.log("element is hidden")
+          // _.get(params, "general.showModel") && console.log("model is NOT changed")
+          isHidden = true
+        }
+      }
+
+      // { key: "==", value: "is equal" },
+      if (element._conditionalView_operator == "==") {
+        if (typeof field == 'boolean') { field = JSON.stringify(field) }
+        if (!_.isEqual(field, value)) {
+          // _.get(params, "general.showModel") && console.log("element is hidden")
+          // _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " !== " + value)
+          isHidden = true
+        }
+      }
+
+      // { key: "!==", value: "is NOT equal" },
+      if (element._conditionalView_operator == "!==") {
+        if (typeof field == 'boolean') { field = JSON.stringify(field) }
+        if (_.isEqual(field, value)) {
+          // _.get(params, "general.showModel") && console.log("element is hidden")
+          // _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " == " + value)
+          isHidden = true
+        }
+      }
+
+      // { key: "contains", value: "contains" },
+      if (element._conditionalView_operator == "contains") {
+        value = value ? value.split(",") : null
+        field = field ? field.split(",") : null
+        if ((field && field.length > 0 &&
+          value && value.length > 0
+          && _.intersection(value, field).length == 0) || !field || !value) {
+          // _.get(params, "general.showModel") && console.log("element is hidden")
+          // _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " does NOT contain " + value)
+          isHidden = true
+        }
+      }
+      // { key: "notContains", value: "does NOT contain" },
+      if (element._conditionalView_operator == "notContains") {
+        value = value ? value.split(",") : null
+        field = field ? field.split(",") : null
+        if ((field && field.length > 0 &&
+          value && value.length > 0
+          && _.intersection(value, field).length > 0) || !field || !value) {
+          // _.get(params, "general.showModel") && console.log("element is hidden")
+          // _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " contains " + value)
+          isHidden = true
+        }
+      }
+
+      // { key: "in", value: "in" },
+      if (element._conditionalView_operator == "in") {
+        value = value ? value.split(",") : null
+        field = field ? field.split(",") : null
+        if ((field && field.length > 0 &&
+          value && value.length > 0
+          && _.intersection(value, field).length == 0) || !field || !value) {
+          // _.get(params, "general.showModel") && console.log("element is hidden")
+          // _.get(params, "general.showModel") && console.log(value + " does NOT contain " + "{{" + element._conditionalView_field + "}} → " + field)
+          isHidden = true
+        }
+      }
+
+      // { key: "notIn", value: "NOT in" }
+      if (element._conditionalView_operator == "notIn") {
+        value = value ? value.split(",") : null
+        field = field ? field.split(",") : null
+        if ((field && field.length > 0 &&
+          value && value.length > 0
+          && _.intersection(value, field).length > 0) || !field || !value) {
+          // _.get(params, "general.showModel") && console.log("element is hidden")
+          // _.get(params, "general.showModel") && console.log(value + " contains " + "{{" + element._conditionalView_field + "}} → " + field)
+          isHidden = true
+        }
+      }
+
+      // { key: "isNull", value: "is empty" },
+      if (element._conditionalView_operator == "isNull") {
+        if (!_.isEmpty(field)) {
+          // _.get(params, "general.showModel") && console.log("element is hidden")
+          // _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " is empty")
+          isHidden = true
+        }
+      }
+
+      // { key: "isNotNull", value: "is NOT empty" },
+      if (element._conditionalView_operator == "isNotNull") {
+        if (_.isEmpty(field)) {
+          _.get(params, "general.showModel") && console.log("element is hidden")
+          _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " is NOT empty")
+          isHidden = true
+        }
+      }
+
+      return isHidden
+    }
+
+    if (!element) return false
+
+    let result = false
+    if (!_.get(element, "_conditionalView")) { } else {
+      if (!_.get(element, "_conditions") || _.get(element, "_conditions").length == 0) { } else {
+
+        if (_.get(element, "_action_conditionals_and_or") == "OR") {
+          result = true
+          _.get(element, "_conditions").forEach(element => {
+            if (!checkHiddenCondition(element)) { result = false }
+          })
+        } else {
+          _.get(element, "_conditions").forEach(element => {
+            if (checkHiddenCondition(element)) { result = true }
+          })
+        }
+      };
+    };
+
+    if (debug) {
+      console.log("checkHidden")
+      console.log(element)
+      console.log(result)
+    }
+
+    return result
+  }
+
+  const showSection = section => {
+    if (section.sectionVisibility == "always") return true;
+    if (section.sectionVisibility == "empty" && !state.step) return true;
+    if (section.sectionVisibility == "custom") {
+      let current = state.step ? [state.step] : []
+      let steps = section.sectionCustomVisibility ? section.sectionCustomVisibility.split(",") : []
+      if (_.intersection(current, steps).length > 0) return true;
+    }
+    if (section.sysName == state.step) return true;
+    return false;
+  }
+
+  function submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData, actionReq, setActionError) {
+    clearTimeout(cx);
 
     newData = newData || {}
 
-    let localState = {...state, ...newData.state}
-    let localModel = {...model, ...newData.model}
+    let localState = { ...state, ...newData.state }
+    let localModel = { ...model, ...newData.model }
 
-    setState({ ...state, _submitError: "" })
+    setState({ ...localState, _submitError: "" })
     let modelToSend = {}
 
     for (const f in localModel) {
@@ -238,15 +395,17 @@ export default function FpsForm2(props) {
     }
 
     // REQUIRED:
-    const requiredFieldValues = _.chain(_.get(params, "steps"))
+    let requiredFieldValues = _.chain(_.get(params, "steps"))
+      .filter(showSection)
       .flatMap('elements')
+      .filter(i => !checkHidden(i))
       .flatMap('_input_fields')
+      .filter(i => !_.get(i, "_conditionalView") || checkHidden(i))
       .filter('_field_required')
       .map('_field')
       .value();
 
     function excludeNonEmptyValues(obj, keys) {
-      console.log(obj)
       const filteredKeys = _.pickBy(obj, (value, key) => {
         return !_.isEmpty((value || "").toString()); // Exclude keys with non-empty values
       });
@@ -263,6 +422,18 @@ export default function FpsForm2(props) {
       })
       const errMessage = dict[lang].form.emptyRequired + emptyFields.join(", ")
       setState({ ...state, _submitError: errMessage })
+      finish()
+      return;
+    }
+
+    if (actionReq && emptyFields.length > 0) {
+      emptyFields = emptyFields.map(i => {
+        const fieldName = _.find(fields, { sysName: i }).name
+        return fieldName ? '"' + fieldName + '"' : '"' + i + '"'
+      })
+      const errMessage = dict[lang].form.emptyRequired + emptyFields.join(", ")
+      setActionError(errMessage)
+      //setState({ ...state, _submitError: errMessage })
       finish()
       return;
     }
@@ -491,144 +662,6 @@ export default function FpsForm2(props) {
     setExtendedModel(copyExtendedModel)
   }
 
-  const checkHidden = element => {
-
-    const checkHiddenCondition = element => {
-      let isHidden = false
-
-      let field = template("{{" + element._conditionalView_field + "}}")
-      let value = template(element._conditionalView_value)
-
-      // { key: "modelNotChanged" },
-      if (element._conditionalView_operator == "modelNotChanged") {
-        if (modelIsChanged) {
-          // _.get(params, "general.showModel") && console.log("element is hidden")
-          // _.get(params, "general.showModel") && console.log("model is changed")
-          isHidden = true
-        }
-      }
-
-      // { key: "modelChanged" },
-      if (element._conditionalView_operator == "modelChanged") {
-        if (!modelIsChanged) {
-          // _.get(params, "general.showModel") && console.log("element is hidden")
-          // _.get(params, "general.showModel") && console.log("model is NOT changed")
-          isHidden = true
-        }
-      }
-
-      // { key: "==", value: "is equal" },
-      if (element._conditionalView_operator == "==") {
-        if (typeof field == 'boolean') { field = JSON.stringify(field) }
-        if (!_.isEqual(field, value)) {
-          // _.get(params, "general.showModel") && console.log("element is hidden")
-          // _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " !== " + value)
-          isHidden = true
-        }
-      }
-
-      // { key: "!==", value: "is NOT equal" },
-      if (element._conditionalView_operator == "!==") {
-        if (typeof field == 'boolean') { field = JSON.stringify(field) }
-        if (_.isEqual(field, value)) {
-          // _.get(params, "general.showModel") && console.log("element is hidden")
-          // _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " == " + value)
-          isHidden = true
-        }
-      }
-
-      // { key: "contains", value: "contains" },
-      if (element._conditionalView_operator == "contains") {
-        value = value ? value.split(",") : null
-        field = field ? field.split(",") : null
-        if ((field && field.length > 0 &&
-          value && value.length > 0
-          && _.intersection(value, field).length == 0) || !field || !value) {
-          // _.get(params, "general.showModel") && console.log("element is hidden")
-          // _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " does NOT contain " + value)
-          isHidden = true
-        }
-      }
-      // { key: "notContains", value: "does NOT contain" },
-      if (element._conditionalView_operator == "notContains") {
-        value = value ? value.split(",") : null
-        field = field ? field.split(",") : null
-        if ((field && field.length > 0 &&
-          value && value.length > 0
-          && _.intersection(value, field).length > 0) || !field || !value) {
-          // _.get(params, "general.showModel") && console.log("element is hidden")
-          // _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " contains " + value)
-          isHidden = true
-        }
-      }
-
-      // { key: "in", value: "in" },
-      if (element._conditionalView_operator == "in") {
-        value = value ? value.split(",") : null
-        field = field ? field.split(",") : null
-        if ((field && field.length > 0 &&
-          value && value.length > 0
-          && _.intersection(value, field).length == 0) || !field || !value) {
-          // _.get(params, "general.showModel") && console.log("element is hidden")
-          // _.get(params, "general.showModel") && console.log(value + " does NOT contain " + "{{" + element._conditionalView_field + "}} → " + field)
-          isHidden = true
-        }
-      }
-
-      // { key: "notIn", value: "NOT in" }
-      if (element._conditionalView_operator == "notIn") {
-        value = value ? value.split(",") : null
-        field = field ? field.split(",") : null
-        if ((field && field.length > 0 &&
-          value && value.length > 0
-          && _.intersection(value, field).length > 0) || !field || !value) {
-          // _.get(params, "general.showModel") && console.log("element is hidden")
-          // _.get(params, "general.showModel") && console.log(value + " contains " + "{{" + element._conditionalView_field + "}} → " + field)
-          isHidden = true
-        }
-      }
-
-      // { key: "isNull", value: "is empty" },
-      if (element._conditionalView_operator == "isNull") {
-        if (!_.isEmpty(field)) {
-          // _.get(params, "general.showModel") && console.log("element is hidden")
-          // _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " is empty")
-          isHidden = true
-        }
-      }
-
-      // { key: "isNotNull", value: "is NOT empty" },
-      if (element._conditionalView_operator == "isNotNull") {
-        if (_.isEmpty(field)) {
-          _.get(params, "general.showModel") && console.log("element is hidden")
-          _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " is NOT empty")
-          isHidden = true
-        }
-      }
-
-      return isHidden
-    }
-
-    let result = false
-    if (!_.get(element, "_conditionalView")) return false;
-    if (!_.get(element, "_conditions") || _.get(element, "_conditions").length == 0) return false;
-
-    if (_.get(element, "_action_conditionals_and_or") == "OR") {
-      result = true
-      _.get(element, "_conditions").forEach(element => {
-        if (!checkHiddenCondition(element)) { result = false }
-      })
-    } else {
-      _.get(element, "_conditions").forEach(element => {
-        if (checkHiddenCondition(element)) { result = true }
-      })
-    }
-
-    //console.log(result)
-
-    return result
-  }
-
   if (_.get(data, 'error') == '403') {
     return <Hint error title="403" margin={{ top: 0, bottom: 0 }}>
       <p>{dict[lang].form.noPermissions}</p>
@@ -637,18 +670,6 @@ export default function FpsForm2(props) {
 
   const checkIfAllInputsHidden = element => {
     return element.type == "input" && _.every(element._input_fields, item => item._field_hidden === true);
-  }
-
-  const showSection = section => {
-    if (section.sectionVisibility == "always") return true;
-    if (section.sectionVisibility == "empty" && !state.step) return true;
-    if (section.sectionVisibility == "custom") {
-      let current = state.step ? [state.step] : []
-      let steps = section.sectionCustomVisibility ? section.sectionCustomVisibility.split(",") : []
-      if (_.intersection(current, steps).length > 0) return true;
-    }
-    if (section.sysName == state.step) return true;
-    return false;
   }
 
   function refreshOptions() {
@@ -897,7 +918,7 @@ function RenderStep(props) {
           const value = _.trim(_.map(parseJson(visibleNames), field => _.get(item, field.sysName)).join(' ')) ||
             _.values(_.pickBy(rest, _.isString)).join(' '); // Concatenate string values
           const excludeFields = [..._.map(parseJson(visibleNames), i => i.sysName), ...["userpic", "image", "picture", "photo"]]
-          const description = _.trim((_.keys(_.omit(rest, excludeFields)) || []).map(i=> rest[i]).join(" "))
+          const description = _.trim((_.keys(_.omit(rest, excludeFields)) || []).map(i => rest[i]).join(" "))
           return {
             key: id,
             value: _.trim(value) || id,
@@ -907,43 +928,40 @@ function RenderStep(props) {
         });
 
         //fake request
-        // setTimeout(() => {
-        //   const data = [
-        //     {
-        //       "id": "1",
-        //       "firstName": "Paul",
-        //       "userpic": "https://cdn.prod.website-files.com/5d07a67a0a061929b6559525/63d7fe438ced734abd058268_author-pavel.jpg"
-        //     },
-        //     {
-        //       "id": "2",
-        //       "firstName": "Павел",
-        //       "position": "человек-работник",
-        //       "userpic": "https://cdn.prod.website-files.com/5d07a67a0a061929b6559525/63d7fe438ced734abd058268_author-pavel.jpg"
-        //     },
-        //   ]
-        //   const visibleNames = '[{"sysName":"firstName"}]'
-        //   finish && finish(transformedArray(data, visibleNames))
-        //   setOptions && setOptions(transformedArray(data, visibleNames))
-        // }, 1000)
+        setTimeout(() => {
+          const data = [
+            {
+              "name": "Paul",
+              "id": "paul"
+            },
+            {
+              "name": "Peter",
+              "id": "peter"
+            }
+          ]
+          const visibleNames = '[{"sysName":"firstName"}]'
+          finish && finish(transformedArray(data, visibleNames))
+          setOptions && setOptions(transformedArray(data, visibleNames))
+        }, 1000)
 
-        // false && 
-        callEndpoint && callEndpoint(
-          endpoint,
-          "GET",
-          undefined,
-          params,
-          (result, data, visibleNames) => {
-            if (result == "ok") {
-              finish && finish(transformedArray(data, visibleNames))
-              setOptions && setOptions(transformedArray(data, visibleNames))
+        false &&
+          callEndpoint && callEndpoint(
+            endpoint,
+            "GET",
+            undefined,
+            params,
+            (result, data, visibleNames) => {
+              if (result == "ok") {
+                finish && finish(transformedArray(data, visibleNames))
+                setOptions && setOptions(transformedArray(data, visibleNames))
+              }
+              else {
+                setError && setError(data)
+                finish && finish([])
+                setOptions && setOptions([])
+              }
             }
-            else {
-              setError && setError(data)
-              finish && finish([])
-              setOptions && setOptions([])
-            }
-          }
-        )
+          )
       }}
       key={element.id} />)}
     {(currentStep.elements || [])
@@ -999,35 +1017,20 @@ function RenderStep(props) {
           // setTimeout(() => {
           //   const data = [
           //     {
-          //       "name": "John",
-          //       "id": "310846eb-460e-452b-9c4b-a2e1f71e773e"
+          //         "name": "Paul",
+          //         "id": "paul"
           //     },
           //     {
-          //       "name": "Paul",
-          //       "id": "ac32238e-e7cd-4038-90eb-752f97edbaf6"
-          //     },
-          //     {
-          //       "name": "Peter",
-          //       "id": "9100a8fb-4743-402a-b1f1-0081c7e2e777"
-          //     },
-          //     {
-          //       "name": "Kate",
-          //       "id": "31560763-541e-4643-be51-6e6041e2868e"
-          //     },
-          //     {
-          //       "name": "Julia",
-          //       "id": "66628fb9-07cb-4e4f-9e51-c03bd64d67d6"
-          //     },
-          //     {
-          //       "name": "Monica",
-          //       "id": "1d37d760-2f64-498a-9432-d9895ad5da00"
+          //         "name": "Peter",
+          //         "id": "peter"
           //     }
-          //   ]
+          // ]
           //   const visibleNames = '[{"sysName":"firstName"},{"sysName":"lastName"}]'
           //   finish && finish(transformedArray(data, visibleNames))
           //   setOptions && setOptions(transformedArray(data, visibleNames))
           // }, 300)
 
+          // false &&
           callEndpoint && callEndpoint(
             endpoint,
             "GET",
