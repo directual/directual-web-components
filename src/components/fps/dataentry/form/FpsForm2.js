@@ -434,7 +434,7 @@ export default function FpsForm2(props) {
       const errMessage = dict[lang].form.emptyRequired + emptyFields.join(", ")
       setActionError(errMessage)
       //setState({ ...state, _submitError: errMessage })
-      finish()
+      //finish()
       return;
     }
 
