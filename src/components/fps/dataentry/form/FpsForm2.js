@@ -25,7 +25,7 @@ export default function FpsForm2(props) {
   const params = _.get(data, "params")
   const fields = _.get(data, "fileds")
   const edditingOn = _.get(params, "general.edittingOn")
-  const emptyValues = fakeSchemeForTemplating(_.get(data, "fileds"), _.get(data, "fieldScheme")) //  формируем джейсончик для шаблонизации (пустой)
+  const emptyValues = fakeSchemeForTemplating(_.get(data, "headers", []), _.get(data, "fieldScheme")) //  формируем джейсончик для шаблонизации (пустой)
 
   function fakeSchemeForTemplating(fields, fieldScheme) {
     let array = []
@@ -556,6 +556,7 @@ export default function FpsForm2(props) {
 
     if (!input || input == "{{undefined}}") return ""
     let templateData = { ...defaultExtModel, ...(model || {}), ...(extendedModel || {}) };
+    const replaceNullWithEmptyString = obj => _.mapValues(obj, value => value === null ? "" : value);
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
     if (!templateData) return "";
 
@@ -584,6 +585,7 @@ export default function FpsForm2(props) {
         return match;
       });
     };
+    templateData = replaceNullWithEmptyString(templateData)
 
     const preprocessedInput = preprocessTemplate(input, templateData);
 
