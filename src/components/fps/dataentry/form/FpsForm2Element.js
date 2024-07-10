@@ -208,6 +208,7 @@ function ElementAction(props) {
                         setState({ ...state, ...payloadState })
                         setModel({ ...model, ...payloadModel })
                         setExtendedModel({ ...extendedModel, ...payloadModel })
+                        setLoading(false)
                     },
                     true,
                     undefined,
@@ -215,12 +216,13 @@ function ElementAction(props) {
                     undefined,
                     { state: { ...state, ...payloadState }, model: { ...model, ...payloadModel } },
                     actionFormat._action_standardRequired,
-                    setError
+                    err => { setError(err); setLoading(false) }
                 )
             } else {
                 setState({ ...state, ...payloadState })
                 setModel({ ...model, ...payloadModel })
                 setExtendedModel({ ...extendedModel, ...payloadModel })
+                setLoading(false)
             }
         }
     }
