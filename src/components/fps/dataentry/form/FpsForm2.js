@@ -449,9 +449,6 @@ export default function FpsForm2(props) {
       undefined,
       (result, data) => {
         if (result == "ok") {
-          finish && finish(data)
-          console.log("FINISH SUBMIT")
-          //console.log(data)
           let saveState = { ...state }
           let stateUpdate = {}
           let modelUpdate = {}
@@ -489,6 +486,7 @@ export default function FpsForm2(props) {
             }
           }
           setLoading(false)
+          console.log("FINISH SUBMIT")
           finish && finish(data)
           autoSubmit ?
             setState({ ...saveState })

@@ -135,9 +135,9 @@ function ElementAction(props) {
     const [error, setError] = useState("")
 
     const performAction = (action, actionFormat) => {
-        // console.log("performAction")
-        // console.log(action)
-        // console.log(actionFormat)
+        console.log("performAction")
+        console.log(action)
+        console.log(actionFormat)
 
         if (actionFormat._action_customRequired &&
             actionFormat._action_customRequired_fields &&
@@ -180,10 +180,12 @@ function ElementAction(props) {
 
             if (action.actionSubmit) {
                 onSubmit(
-                    () => callEndpointPOST(action.endpoint, payload, (result) => {
-                        setLoading(false)
-                        // console.log(result)
-                    }),
+                    () => {
+                        callEndpointPOST(action.endpoint, payload, (result) => {
+                            setLoading(false)
+                            // console.log(result)
+                        })
+                    },
                     true,
                     undefined,
                     true,
