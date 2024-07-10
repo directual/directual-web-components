@@ -190,7 +190,10 @@ function ElementAction(props) {
                     undefined,
                     {},
                     actionFormat._action_standardRequired,
-                    setError)
+                    err => {
+                        setError(err);
+                        setLoading(false)
+                    })
             } else {
                 callEndpointPOST(action.endpoint, payload, (result) => {
                     setLoading(false)
@@ -216,7 +219,10 @@ function ElementAction(props) {
                     undefined,
                     { state: { ...state, ...payloadState }, model: { ...model, ...payloadModel } },
                     actionFormat._action_standardRequired,
-                    err => { setError(err); setLoading(false) }
+                    err => {
+                        setError(err);
+                        setLoading(false)
+                    }
                 )
             } else {
                 setState({ ...state, ...payloadState })

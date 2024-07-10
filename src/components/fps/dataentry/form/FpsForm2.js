@@ -25,7 +25,7 @@ export default function FpsForm2(props) {
   const params = _.get(data, "params")
   const fields = _.get(data, "fileds")
   const edditingOn = _.get(params, "general.edittingOn")
-  const emptyValues = fakeSchemeForTemplating(_.get(data, "headers", []), _.get(data, "fieldScheme")) //  формируем джейсончик для шаблонизации (пустой)
+  const emptyValues = fakeSchemeForTemplating([..._.get(data, "fileds", []), _.get(data, "headers", [])], _.get(data, "fieldScheme")) //  формируем джейсончик для шаблонизации (пустой)
 
   function fakeSchemeForTemplating(fields, fieldScheme) {
     let array = []
