@@ -754,6 +754,7 @@ export default function FpsForm2(props) {
     {_.get(params, "general.showModel") && <pre className={`${styles.debug} ${highlightModel ? styles.highlight : ''}`}>
       <code>{JSON.stringify(model, 0, 3)}</code>
       <span>debug mode: MODEL</span>
+      {edditingOn && <code className='icon icon-edit'>Editting object is on</code>}
       {_.get(params, "general.autosubmit") == "always" && <code className='icon icon-move'>Autosubmit on each step change</code>}
       {_.get(params, "general.autosubmit") == "steps" && <code className='icon icon-move'>Autosubmit on: {_.get(params, "general.autosubmit_steps")}</code>}
       {_.get(params, "general.autosubmit") == "model" && <code className='icon icon-move'>Autosubmit on model change
@@ -928,23 +929,23 @@ function RenderStep(props) {
         });
 
         //fake request
-        // setTimeout(() => {
-        //   const data = [
-        //     {
-        //       "name": "Paul",
-        //       "id": "paul"
-        //     },
-        //     {
-        //       "name": "Peter",
-        //       "id": "peter"
-        //     }
-        //   ]
-        //   const visibleNames = '[{"sysName":"firstName"}]'
-        //   finish && finish(transformedArray(data, visibleNames))
-        //   setOptions && setOptions(transformedArray(data, visibleNames))
-        // }, 1000)
+        setTimeout(() => {
+          const data = [
+            {
+              "name": "Paul",
+              "id": "paul"
+            },
+            {
+              "name": "Peter",
+              "id": "peter"
+            }
+          ]
+          const visibleNames = '[{"sysName":"firstName"}]'
+          finish && finish(transformedArray(data, visibleNames))
+          setOptions && setOptions(transformedArray(data, visibleNames))
+        }, 1000)
 
-        // false &&
+        false &&
           callEndpoint && callEndpoint(
             endpoint,
             "GET",

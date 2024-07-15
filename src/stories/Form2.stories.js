@@ -18,7 +18,7 @@ export default {
 };
 
 let exampleForm = {
-    "sl": "obj",
+    "sl": "getSpecificSite",
     "pageSize": "10",
     "headerField": null,
     "params": {
@@ -28,59 +28,111 @@ let exampleForm = {
                 "sysName": "default step",
                 "elements": [
                     {
-                        "id": "elmnt_1720626378637",
+                        "id": "elmnt_1719702350589",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17206263801340.043321331242204333233103",
-                                "_field": "string"
+                                "id": "17197023522470.3102011130144044010021",
+                                "_field": "name",
+                                "_field_required": true
                             }
                         ]
                     },
                     {
-                        "id": "elmnt_1720626451314",
+                        "id": "elmnt_1719702395773",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17197023983670.3311240030234243204323",
+                                "_field": "address"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1719702403020",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17197024092670.31203412321403200344141",
+                                "_field": "city",
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "getAllCities",
+                                "_field_arrayLink_endpoint_params": {
+                                    "_value": "city"
+                                },
+                                "_field_required": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1720031451614",
                         "type": "action",
                         "_actions": [
                             {
-                                "id": "17206264528950.44332143430411310314232",
-                                "_action": "action_1720626390614"
+                                "id": "17200314546600.141003443341033240112002",
+                                "_action": "action_1720031416802",
+                                "_action_label": "Сохранить",
+                                "_action_icon": "done",
+                                "_action_button_type": "accent",
+                                "_action_customRequired": false,
+                                "_action_customRequired_fields": [
+                                    "name"
+                                ],
+                                "_conditionalView": true,
+                                "_action_conditional_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1720031508452",
+                                        "_conditionalView_field": "name",
+                                        "_conditionalView_operator": "isNull"
+                                    },
+                                    {
+                                        "id": "condition_1720031651766",
+                                        "_conditionalView_field": "city",
+                                        "_conditionalView_operator": "isNull"
+                                    }
+                                ],
+                                "_action_conditionals_and_or": "OR"
                             }
                         ]
                     }
                 ]
             },
             {
-                "id": "step_submitted",
-                "sysName": "submitted",
+                "id": "step_1721035556295",
+                "sysName": "sumbmitted_final",
                 "elements": [
                     {
-                        "id": "elmnt_1712052683797",
+                        "id": "elmnt_1721035571202",
                         "type": "hint",
                         "hintColor": "ok",
-                        "hintTitle": "Thank you!",
-                        "hintText": "Submitted"
+                        "hintTitle": "Объект был успешно создан"
                     }
                 ]
             }
         ],
-        "hideHint": true,
+        "form_title": "Новый объект",
         "general": {
-            "edittingOn": true
+            "edittingOn": true,
+            "showFullModel": false,
+            "showModel": true,
+            "showState": true
         },
+        "hideHint": true,
         "actions": [
             {
-                "id": "action_1720626390614",
-                "name": "action",
-                "actionType": "endpoint",
-                "endpoint": "actionReq",
-                "mapping": [
+                "id": "action_1720031416802",
+                "name": "Submit",
+                "actionType": "state",
+                "stateMapping": [
                     {
-                        "id": "mapping_1720626416869",
-                        "field": "text",
-                        "value": "hello"
+                        "id": "stateMapping1720031425821",
+                        "field": "FormState.step",
+                        "value": "sumbmitted_final"
                     }
                 ],
-                "actionSubmit": true
+                "actionSubmit": true,
+                "resetModel": true
             }
         ]
     },
@@ -107,86 +159,243 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "typeVariable": {},
-            "indexExists": false,
-            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
+            "json": false,
+            "typeVariable": {},
+            "indexExists": false,
             "array": false
         },
         {
-            "sysName": "string",
+            "sysName": "name",
             "dataType": "string",
-            "name": "",
-            "id": "42301720626299022",
-            "link": "",
+            "name": "Имя",
+            "id": "68301690461423595",
+            "link": null,
             "group": "0",
-            "tags": "",
+            "tags": null,
             "indexing": false,
-            "ordering": false,
+            "ordering": true,
             "description": null,
             "weight": null,
             "order": 1,
             "linkIndexFieldSysName": [],
-            "defaultValue": "",
+            "defaultValue": null,
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": {},
+            "formatOptions": null,
             "groupName": null,
-            "typeVariable": {},
-            "indexExists": false,
-            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
+            "json": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "country",
+            "dataType": "link",
+            "name": "Страна",
+            "id": "11451690461482941",
+            "link": "countries",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "json": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "address",
+            "dataType": "string",
+            "name": "Адрес",
+            "id": "49381690461449567",
+            "link": "",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "json": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "city",
+            "dataType": "link",
+            "name": "Город",
+            "id": "19011690461430091",
+            "link": "cities",
+            "group": "0",
+            "tags": null,
+            "indexing": true,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [
+                "id"
+            ],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "json": false,
+            "typeVariable": {},
+            "indexExists": true,
             "array": false
         }
     ],
-    "data": [
-        {
-            "string": "sdfsdf",
-            "id": "f0aaf740-0500-462f-8bce-7c867839d0ac"
-        }
-    ],
-    "totalPages": 1,
+    "data": [],
+    "totalPages": 0,
     "pageNumber": 0,
     "error": null,
     "fieldScheme": [
         [
             "id",
-            99327629
+            99237025
         ],
         [
-            "string",
-            99327629
+            "name",
+            99237025
+        ],
+        [
+            "country.id",
+            99235608
+        ],
+        [
+            "country.country",
+            99235608
+        ],
+        [
+            "address",
+            99237025
+        ],
+        [
+            "city.id",
+            99236992
+        ],
+        [
+            "city.cityName",
+            99236992
         ]
     ],
     "writeFields": [
         "id",
-        "string"
+        "country",
+        "address",
+        "city",
+        "toBeDeleted",
+        "name"
     ],
     "structures": {
-        "99327629": {
-            "networkID": 21358,
-            "sysName": "object",
-            "name": "object",
-            "id": 99327629,
-            "dateCreated": "2024-07-10T15:44:55Z",
+        "99235608": {
+            "networkID": 17932,
+            "id": 99235608,
+            "dateCreated": "2020-11-30T18:08:07Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"string\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"42301720626299022\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false}]",
+            "name": "Countries",
+            "sysName": "countries",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"area\",\"dataType\":\"number\",\"name\":\"area, sq. mi.\",\"id\":\"13101606759887970\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"population\",\"dataType\":\"number\",\"name\":\"population\",\"id\":\"43731606759884481\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"region\",\"dataType\":\"string\",\"name\":\"Регион\",\"id\":\"49221606759873348\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"country\",\"dataType\":\"string\",\"name\":\"Страна\",\"id\":\"59791606759871290\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"priority\",\"dataType\":\"number\",\"name\":\"Приоритет для сортировки\",\"id\":\"92161695996189435\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false}]",
             "jsonGroupSettings": null,
-            "jsonViewIdSettings": null,
+            "jsonViewIdSettings": "[{\"sysName\":\"country\"}]",
             "jsonSettings": null,
             "jsonNativeIndexSettings": null,
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2024-07-10T15:45:01Z",
+            "dateChanged": "2023-09-29T14:14:04Z",
             "createBy": 21,
-            "changedBy": 21,
+            "changedBy": 19088,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": null,
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "json": false,
+                "typeVariable": {},
+                "indexExists": false,
+                "array": false
+            },
+            "folderId": 33770521
+        },
+        "99236992": {
+            "networkID": 17932,
+            "id": 99236992,
+            "dateCreated": "2023-07-27T11:10:11Z",
+            "hidden": false,
+            "dateHidden": null,
+            "name": "Cities",
+            "sysName": "cities",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"priority\",\"dataType\":\"number\",\"name\":\"Приоритет для сортировки\",\"id\":\"33301694637243475\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"country\",\"dataType\":\"link\",\"name\":\"Страна\",\"id\":\"36561692805878681\",\"link\":\"countries\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"cityName\",\"dataType\":\"string\",\"name\":\"Город\",\"id\":\"62311690456227499\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":true,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": "[{\"sysName\":\"cityName\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2023-09-23T17:28:17Z",
+            "createBy": 19088,
+            "changedBy": 19088,
             "_settings": null,
             "_nativeIndexSettings": null,
             "objectIDSysName": "id",
@@ -210,15 +419,67 @@ let exampleForm = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "typeVariable": {},
-                "indexExists": false,
-                "json": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
+                "json": false,
+                "typeVariable": {},
+                "indexExists": false,
                 "array": false
             },
-            "folderId": null
+            "folderId": 33770521
+        },
+        "99237025": {
+            "networkID": 17932,
+            "id": 99237025,
+            "dateCreated": "2023-07-27T12:37:00Z",
+            "hidden": false,
+            "dateHidden": null,
+            "name": "Объекты",
+            "sysName": "sites",
+            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"country\",\"name\":\"Страна\",\"dataType\":\"link\",\"id\":\"11451690461482941\",\"link\":\"countries\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"city\",\"name\":\"Город\",\"dataType\":\"link\",\"id\":\"19011690461430091\",\"link\":\"cities\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":true},{\"sysName\":\"referenceCheckResult\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"26641720041301086\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"inRecycleBin\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"28191720033144463\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"toBeDeleted\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"37441693917345959\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"address\",\"name\":\"Адрес\",\"dataType\":\"string\",\"id\":\"49381690461449567\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"name\",\"name\":\"Имя\",\"dataType\":\"string\",\"id\":\"68301690461423595\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":true,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2024-07-03T21:15:37Z",
+            "createBy": 19088,
+            "changedBy": 20579,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "json": false,
+                "typeVariable": {},
+                "indexExists": false,
+                "array": false
+            },
+            "folderId": 33808178
         }
     },
     "isSuccessWrite": false,
@@ -245,19 +506,105 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "typeVariable": {},
-            "indexExists": false,
-            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
+            "json": false,
+            "typeVariable": {},
+            "indexExists": false,
             "array": false
         },
         {
-            "sysName": "string",
+            "sysName": "country",
+            "dataType": "link",
+            "name": "Страна",
+            "id": "11451690461482941",
+            "link": "countries",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "json": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "address",
             "dataType": "string",
+            "name": "Адрес",
+            "id": "49381690461449567",
+            "link": "",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "json": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "city",
+            "dataType": "link",
+            "name": "Город",
+            "id": "19011690461430091",
+            "link": "cities",
+            "group": "0",
+            "tags": null,
+            "indexing": true,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [
+                "id"
+            ],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "json": false,
+            "typeVariable": {},
+            "indexExists": true,
+            "array": false
+        },
+        {
+            "sysName": "toBeDeleted",
+            "dataType": "boolean",
             "name": "",
-            "id": "42301720626299022",
+            "id": "37441693917345959",
             "link": "",
             "group": "0",
             "tags": "",
@@ -265,7 +612,7 @@ let exampleForm = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 1,
+            "order": 5,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -273,12 +620,40 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "typeVariable": {},
-            "indexExists": false,
-            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
+            "json": false,
+            "typeVariable": {},
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "name",
+            "dataType": "string",
+            "name": "Имя",
+            "id": "68301690461423595",
+            "link": null,
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": true,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "json": false,
+            "typeVariable": {},
+            "indexExists": false,
             "array": false
         }
     ],
