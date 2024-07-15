@@ -195,7 +195,8 @@ function ElementAction(props) {
                     err => {
                         setError(err);
                         setLoading(false)
-                    })
+                    }, 
+                    action.resetModel)
             } else {
                 callEndpointPOST(action.endpoint, payload, (result) => {
                     setLoading(false)
@@ -224,7 +225,8 @@ function ElementAction(props) {
                     err => {
                         setError(err);
                         setLoading(false)
-                    }
+                    },
+                    action.resetModel
                 )
             } else {
                 setState({ ...state, ...payloadState })

@@ -150,6 +150,7 @@ export default function FpsForm2(props) {
     }
 
     if (edditingOn) {
+      console.log("Socket form update")
       setExtendedModel({ ..._.get(data, "data[0]") })
       let saveSate = { ...state }
       const newModel = ({ ...model, ...flatternModel({ ..._.get(data, "data[0]") }) })
@@ -332,7 +333,8 @@ export default function FpsForm2(props) {
     return false;
   }
 
-  function submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData, actionReq, setActionError) {
+  function submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData, 
+      actionReq, setActionError, resetModel) {
     clearTimeout(cx);
 
     newData = newData || {}
@@ -449,7 +451,7 @@ export default function FpsForm2(props) {
       undefined,
       (result, data) => {
         if (result == "ok") {
-          let saveState = { ...state }
+          let saveState = { ...localState }
           let stateUpdate = {}
           let modelUpdate = {}
           if (data && data.length > 0) {
@@ -492,7 +494,7 @@ export default function FpsForm2(props) {
             setState({ ...saveState })
             : setState({ ...saveState, step: targetStep || "submitted", ...stateUpdate })
 
-          if (submitKeepModel) { modelUpdate = { ...model, ...modelToSend, ...modelUpdate } }
+          if (submitKeepModel && !resetModel) { modelUpdate = { ...model, ...modelToSend, ...modelUpdate } }
           setModel(modelUpdate)
           setOriginalModel(modelUpdate)
         } else {
