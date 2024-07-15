@@ -931,23 +931,23 @@ function RenderStep(props) {
         });
 
         //fake request
-        setTimeout(() => {
-          const data = [
-            {
-              "name": "Paul",
-              "id": "paul"
-            },
-            {
-              "name": "Peter",
-              "id": "peter"
-            }
-          ]
-          const visibleNames = '[{"sysName":"firstName"}]'
-          finish && finish(transformedArray(data, visibleNames))
-          setOptions && setOptions(transformedArray(data, visibleNames))
-        }, 1000)
+        // setTimeout(() => {
+        //   const data = [
+        //     {
+        //       "name": "Paul",
+        //       "id": "paul"
+        //     },
+        //     {
+        //       "name": "Peter",
+        //       "id": "peter"
+        //     }
+        //   ]
+        //   const visibleNames = '[{"sysName":"firstName"}]'
+        //   finish && finish(transformedArray(data, visibleNames))
+        //   setOptions && setOptions(transformedArray(data, visibleNames))
+        // }, 1000)
 
-        false &&
+        // false &&
           callEndpoint && callEndpoint(
             endpoint,
             "GET",
