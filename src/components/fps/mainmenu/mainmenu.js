@@ -5,6 +5,7 @@ import Button, { ButtonDropDown } from '../button/button'
 import ActionPanel from '../actionspanel/actionspanel'
 import _ from 'lodash'
 import { dict } from '../locale'
+import InnerHTML from 'dangerously-set-html-content'
 
 
 function DropDown(props) {
@@ -934,7 +935,7 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
     const checkIfOpened = () => {
         let result = false;
         (item.children || []).forEach(element => {
-            if (_.get(menuConfig,`[${element.id}].linkToPage`) == currentRoute) {
+            if (_.get(menuConfig, `[${element.id}].linkToPage`) == currentRoute) {
                 result = true;
             }
         });
@@ -1034,6 +1035,8 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
         </div>
     }
 
+    if (menuItem.linkToType == "customHTML") return <InnerHTML allowRerender={true} html={menuItem.codeItem || ""} />
+
     return <a
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -1078,10 +1081,10 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
                     viewBox={`0 0 24 24`}
                 >
                     <path
-                        fill={currentRoute == 
+                        fill={currentRoute ==
                             menuItem.linkToPage ? (menuItem.menuRemixIconColorSelected || '#000000') :
                             isHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
-                            (menuItem.menuRemixIconColor || '#000000')}
+                                (menuItem.menuRemixIconColor || '#000000')}
                         d={menuItem.menuRemixIcon.Content}
                     ></path>
                 </svg>
