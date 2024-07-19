@@ -455,6 +455,8 @@ export default function FpsForm2(props) {
           let stateUpdate = {}
           let modelUpdate = {}
           if (data && data.length > 0) {
+            console.log("response data")
+            console.log(data)
             try {
               const response = JSON.parse(data)
               // update state
@@ -831,6 +833,8 @@ function RenderStep(props) {
         if (result == "ok") {
           finish && finish(data)
           try {
+            console.log("response data")
+            console.log(data)
             const response = JSON.parse(data)
             // update state
             if (!isEmpty(_.get(response, "state"))) {
