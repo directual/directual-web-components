@@ -106,9 +106,9 @@ function FpsKanban({ auth, data, callEndpoint, onEvent, id, currentBP, locale, h
         { //...{ dql: currentDQL, sort: currentSort }, 
             ...cloneData, _id: 'form_' + id, _sl_name: sl, _options: options
         }
-        // console.log('vvv')
-        // console.log(message)
-        // console.log(pageInfo)
+        console.log('vvv === message === pageInfo')
+        console.log(message)
+        console.log(pageInfo)
         setLoading(true)
         if (onEvent) {
             let prom = onEvent(message, pageInfo)

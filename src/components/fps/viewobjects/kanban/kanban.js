@@ -327,7 +327,7 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading,
     useEffect(() => {
         if (_.get(kanbanParams, 'columnsOption') !== "endpoint" && 
             kanbanParams.columns && kanbanParams.columns.length > 0 && columns !== enrichColumns(kanbanParams.columns)) {
-            console.log('reset kanban')
+            // console.log('reset kanban')
             setColumns(enrichColumns(kanbanParams.columns))
         }
     }, [kanbanParams.columns])
@@ -358,8 +358,8 @@ export function Kanban({ data, onExpand, setLoading, edenrichConds, loading,
 
     
 
-    console.log('columns')
-    console.log(columns)
+    // console.log('columns')
+    // console.log(columns)
 
     return (<React.Fragment>
         {/* <Button small icon='refresh'
