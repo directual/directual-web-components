@@ -491,6 +491,7 @@ export default function FpsForm2(props) {
           }
           setLoading(false)
           console.log("FINISH SUBMIT")
+          console.log(data)
           finish && finish(data)
           autoSubmit ?
             setState({ ...saveState })
@@ -556,7 +557,7 @@ export default function FpsForm2(props) {
 
   function template(input) {
 
-    if (!input || input == "{{undefined}}") return ""
+    if (!input || input == "{{undefined}}" || input == "{{null}}") return ""
     let templateData = { ...defaultExtModel, ...(model || {}), ...(extendedModel || {}) };
     const replaceNullWithEmptyString = obj => _.mapValues(obj, value => value === null ? "" : value);
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;

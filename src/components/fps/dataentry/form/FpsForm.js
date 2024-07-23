@@ -74,12 +74,12 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
   const fileds = []
   const formWidth = (data.maxWidth && parseInt(data.maxWidth)) || 'auto'
 
-  console.log('------------ form data: -------------')
-  console.log(data)
+  // console.log('------------ form data: -------------')
+  // console.log(data)
   // console.log('------------ auth: -------------')
   // console.log(auth)
-  console.log('------------ form model: -------------')
-  console.log(model)
+  // console.log('------------ form model: -------------')
+  // console.log(model)
 
   const sendMsg = (msg) => {
     const message = { ...msg, _id: 'form_' + id }
@@ -519,8 +519,8 @@ function FpsFormOld({ auth, data, onEvent, id, locale }) {
 
 
 
-  console.log('------------ form data: -------------')
-  console.log(data)
+  // console.log('------------ form data: -------------')
+  // console.log(data)
   // console.log('------------ auth: -------------')
   // console.log(auth)
   // console.log('------------ form model: -------------')
