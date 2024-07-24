@@ -15,7 +15,7 @@ const brakePoints = {
   wideDesktop: { from: 1202, to: '∞', display: 1400 },
 }
 
-export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpoint, data }) {
+export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpoint, data, auth }) {
 
   const layoutRef = useRef(null);
   const [currentBP, setCurrentBP] = useState('desktop')
@@ -63,7 +63,7 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
     if (localLoading) return <div style={{ margin: 24 }}><Loader>{dict[lang].loading}</Loader></div>
     if (!layout.sections[tabId] || layout.sections[tabId].length == 0) return <div />
     return <div>
-      {layout.sections[tabId].map(section => <Section callEndpoint={callEndpoint} data={data} key={section.id} section={section} currentBP={currentBP} />)}
+      {layout.sections[tabId].map(section => <Section auth={auth} callEndpoint={callEndpoint} data={data} key={section.id} section={section} currentBP={currentBP} />)}
     </div>
   }
   const tabs = layout.tabs.map(tab => { return { ...tab, key: tab.id, content: composeTabsContent(tab.id) } })
@@ -77,7 +77,7 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
     </div> : <div />)
 }
 
-const Section = ({ section, currentBP, callEndpoint, data }) => {
+const Section = ({ section, currentBP, callEndpoint, data, auth }) => {
 
   // console.log('section')
   // console.log(section)
@@ -100,6 +100,54 @@ const Section = ({ section, currentBP, callEndpoint, data }) => {
     return _.mapValues(m, flatternObject)
   }
 
+  function template(input) {
+
+    if (!input || input == "{{undefined}}" || input == "{{null}}") return ""
+    let templateData = { WebUser: auth };
+
+    // Function to convert object references to their desired string representation paths
+    const preprocessTemplate = (str, data) => {
+      const regex = /{{\s*([\w.]+)\s*}}/g;
+      return str.replace(regex, (match, p1) => {
+        const keys = p1.split('.');
+        let value = data;
+        keys.forEach(key => {
+          if (value && value[key]) {
+            value = value[key];
+          }
+        });
+        // Check if the value is an object and replace it with the id property if it exists
+        if (typeof value === 'object' && value !== null && value.id) {
+          return `{{${p1}.id}}`;
+        }
+        return match;
+      });
+    };
+
+    const preprocessedInput = preprocessTemplate(input, templateData);
+
+    const renderTemplate = (template) => {
+      return _.template(template, {
+        interpolate: /{{([\s\S]+?)}}/g
+      })(templateData, {
+        variable: '',
+        evaluate: /<%([\s\S]+?)%>/g,
+        escape: /<%-([\s\S]+?)%>/g
+      });
+    };
+
+    try {
+      const result = renderTemplate(preprocessedInput);
+      return result;
+    } catch (error) {
+      console.error("template error");
+      console.error(input);
+      console.error(templateData);
+      console.error('Error rendering template:', error);
+      return '';
+    }
+  }
+
 
   const checkHidden = (element, object) => {
     if (!object) return true
@@ -109,7 +157,7 @@ const Section = ({ section, currentBP, callEndpoint, data }) => {
       let isHidden = false
 
       let field = _.get(object, element._conditionalView_field)
-      let value = element._conditionalView_value
+      let value = template(element._conditionalView_value)
 
       // { key: "modelNotChanged" },
       if (element._conditionalView_operator == "modelNotChanged") {
