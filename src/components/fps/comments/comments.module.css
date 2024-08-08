@@ -60,9 +60,11 @@
   background-color: var(--cards-bgr);
   border-radius: var(--border-radius);
   border: solid 1px var(--cards-border);
-  padding: 22px;
+  overflow: hidden;
   align-items: flex-start;
   display: flex;
+  align-items: stretch;
+  flex-direction: column;
 }
 .comments .commentWrapper .commentVote {
   flex-shrink: 0;
@@ -97,8 +99,21 @@
 .comments .commentWrapper .commentVote div.commentVoteDown:hover {
   background-color: var(--table-raw-hover);
 }
+.comments .commentWrapper .commentWrapperAssignTo {
+  padding: 12px 22px;
+  background-color: var(--hint-alert-light);
+  color: var(--hint-text-color);
+  display: flex;
+  min-height: 32px;
+  justify-content: space-between;
+  align-items: center;
+}
+.comments .commentWrapper .commentWrapperAssignTo.taskResolved {
+  background-color: var(--hint-ok-light);
+}
 .comments .commentWrapper .commentBody {
   display: flex;
+  padding: 22px;
   flex-direction: column;
   gap: 12px 0;
 }

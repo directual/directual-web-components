@@ -62,9 +62,11 @@
         background-color: var(--cards-bgr);
         border-radius: var(--border-radius);
         border: solid 1px var(--cards-border);
-        padding: 22px;
+        overflow: hidden;
         align-items: flex-start;
         display: flex;
+        align-items: stretch;
+        flex-direction: column;
         .commentVote {
             flex-shrink: 0;
             margin-right: 24px;
@@ -95,9 +97,22 @@
             }
             
         }
+        .commentWrapperAssignTo {
+            padding: 12px 22px;
+            background-color: var(--hint-alert-light);
+            color: var(--hint-text-color);
+            display: flex;
+            min-height: 32px;
+            justify-content: space-between;
+            align-items: center;
+            &.taskResolved {
+                background-color: var(--hint-ok-light);
+            }
+        }
 
         .commentBody {
             display: flex;
+            padding: 22px;
             flex-direction: column;
             gap: 12px 0;
         }

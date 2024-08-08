@@ -34,10 +34,10 @@ export default function Comments(props) {
         }
     }, [_.get(data, "data")])
 
-    function sendComment(comment, finish) {
+    function sendComment(comment, finish, local) {
         // console.log("=== sending comment...")
         // console.log(comment)
-        setLoading(true)
+        !local && setLoading(true)
         const endpoint = _.get(data, "sl")
         callEndpoint && callEndpoint(
             endpoint,
@@ -116,45 +116,85 @@ function Comment(props) {
         return str;
     }
 
+    const [localLoading, setLocalLoading] = useState(false)
+
     let name = `${_.get(commentAuthor, "firstName", "")} ${_.get(commentAuthor, "lastName", "")}`
     if (name == " ") { name = dict[lang].comments.anon }
 
-    return <div><div className={`${styles.commentWrapper} FPS_COMMENT_WRAPPER`}>
-        {/* <div className={styles.commentVote}>
-            <div className={styles.commentVoteUp}>+</div>
-            <div className={styles.commentVoteResult}>{comment.likes - comment.dislikes}</div>
-            <div className={styles.commentVoteDown}>–</div>
-        </div> */}
-        <div className={styles.commentBody}>
-            {parent && <div className={`${styles.commentParent} icon icon-arrowRight small`}>{parent}</div>}
-            <div className={styles.commentBodyHeader}>
-                <div className={styles.commentBodyHeaderUserpic}>
-                    <img src={_.get(commentAuthor, "userpic")} />
-                </div>
-                {(_.get(commentAuthor, "firstName") || _.get(commentAuthor, "lastName")) ? <div className={styles.commentBodyHeaderName}>
-                    {_.get(commentAuthor, "firstName")} {_.get(commentAuthor, "lastName")}
-                </div> :
-                    <div className={styles.commentBodyHeaderName} style={{ opacity: ".5" }}>{dict[lang].comments.anon}</div>}
-                <div className={styles.commentBodyHeaderDate}>
-                    {formatDate(commentDate, formatCommentDate)}
-                </div>
-            </div>
-            <div className={styles.commentBodyText}>
-                {commentText}
-            </div>
-            {commentAttachment && commentAttachment.length > 0 &&
-                commentAttachment.map(file => {
-                    const fileName = file.split("/")[file.split("/").length - 1]
-                    return <div className={styles.commentBodyFiles}>
-                        <a target="_blank" href={file}
-                            className={`icon icon-clip small ${styles.commentFileLink}`}>{fileName}</a>
-                    </div>
-                })}
-            {_.includes(data.writeFields, _.get(data, "params._replyField")) && allowSend && <div className={styles.commentBodyFooter}>
-                <div onClick={e => setAddReply(true)} className={`icon icon-bubble small ${styles.commentReplyButton}`}>{dict[lang].comments.reply}</div>
+    const isTask = !!_.get(comment, _.get(data, "params.assignmentOn_assignee"))
+
+    const isAssignedToMe = (_.get(auth, "user") == _.get(comment, _.get(data, "params.assignmentOn_assignee")) ||
+        _.get(auth, "user") == _.get(comment, _.get(data, "params.assignmentOn_assignee") + ".id")) &&
+        _.get(auth, "isAuth")
+
+    const assigneName = isTask ?
+        (_.get(comment, _.get(data, "params.assignmentOn_assignee") + ".firstName") ?
+            _.get(comment, _.get(data, "params.assignmentOn_assignee") + ".firstName") + ' ' + _.get(comment, _.get(data, "params.assignmentOn_assignee") + ".lastName") :
+            (_.get(comment, _.get(data, "params.assignmentOn_assignee") + ".id") || _.get(comment, _.get(data, "params.assignmentOn_assignee"))))
+        : ''
+
+    const isResoled = isAssignedToMe && (_.get(comment, _.get(data, "params.assignmentOn_bool")))
+
+    const resolvedDate = _.get(comment, _.get(data, "params.assignmentOn_dateClosed"))
+    const formatResolvedDate = _.get(_.find(_.get(data, "headers"), { sysName: _.get(data, "params.assignmentOn_dateClosed") }), "formatOptions")
+
+    const resolveTask = () => {
+        setLocalLoading(true)
+        let payload = { ...comment }
+        _.set(payload, _.get(data, "params.assignmentOn_bool"), true)
+        _.set(payload, _.get(data, "params.assignmentOn_dateClosed"), moment().toISOString())
+        sendComment(payload, () => setLocalLoading(false), true)
+    }
+
+    return <div>
+
+        <div className={`${styles.commentWrapper} FPS_COMMENT_WRAPPER`}>
+            {isTask && <div className={`${styles.commentWrapperAssignTo} ${isResoled ? styles.taskResolved : ""}  FPS_COMMENT_WRAPPER__ASSIGN`}>
+                {isAssignedToMe ? <span>{dict[lang].comments.assignedToMe}</span>
+                    : <span>{dict[lang].comments.assignedTo} <b>{assigneName}</b></span>}
+                {isResoled ?
+                    <span>{dict[lang].comments.taskResolved} {formatDate(resolvedDate, formatResolvedDate)}</span> :
+                    isAssignedToMe ? <Button
+                        loading={localLoading}
+                        onClick={resolveTask}
+                        small height={32}
+                        icon='done'>{dict[lang].comments.resolveTask}</Button> : ''}
             </div>}
+            {/* <div className={styles.commentVote}>
+                <div className={styles.commentVoteUp}>+</div>
+                <div className={styles.commentVoteResult}>{comment.likes - comment.dislikes}</div>
+                <div className={styles.commentVoteDown}>–</div>
+            </div> */}
+            <div className={styles.commentBody}>
+                {parent && <div className={`${styles.commentParent} icon icon-arrowRight small`}>{parent}</div>}
+                <div className={styles.commentBodyHeader}>
+                    <div className={styles.commentBodyHeaderUserpic}>
+                        <img src={_.get(commentAuthor, "userpic")} />
+                    </div>
+                    {(_.get(commentAuthor, "firstName") || _.get(commentAuthor, "lastName")) ? <div className={styles.commentBodyHeaderName}>
+                        {_.get(commentAuthor, "firstName")} {_.get(commentAuthor, "lastName")}
+                    </div> :
+                        <div className={styles.commentBodyHeaderName} style={{ opacity: ".5" }}>{dict[lang].comments.anon}</div>}
+                    <div className={styles.commentBodyHeaderDate}>
+                        {formatDate(commentDate, formatCommentDate)}
+                    </div>
+                </div>
+                <div className={styles.commentBodyText}>
+                    {commentText}
+                </div>
+                {commentAttachment && commentAttachment.length > 0 &&
+                    commentAttachment.map(file => {
+                        const fileName = file.split("/")[file.split("/").length - 1]
+                        return <div className={styles.commentBodyFiles}>
+                            <a target="_blank" href={file}
+                                className={`icon icon-clip small ${styles.commentFileLink}`}>{fileName}</a>
+                        </div>
+                    })}
+                {_.includes(data.writeFields, _.get(data, "params._replyField")) && allowSend && <div className={styles.commentBodyFooter}>
+                    <div onClick={e => setAddReply(true)} className={`icon icon-bubble small ${styles.commentReplyButton}`}>{dict[lang].comments.reply}</div>
+                </div>}
+            </div>
         </div>
-    </div>
         {addReply && <div className={styles.childComments}>
             <AddComment {...props} parentID={commentID} onCancel={() => setAddReply(false)} header="Reply" />
         </div>}
@@ -212,6 +252,9 @@ function AddComment(props) {
         onCancel && onCancel()
         setComment(defaultComment)
         setIsSent(true)
+        setShowAssignTo(false)
+        setShowLock(false)
+        setAddFile(false)
         setTimeout(() => setIsSent(false), 5000)
     }
 

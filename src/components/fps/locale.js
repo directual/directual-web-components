@@ -26,7 +26,11 @@ export const dict = {
             write: "Write text here...",
             send: "Send",
             cancel: "Cancel",
-            assignTo: "Assign to"
+            assignTo: "Assign to",
+            assignedToMe: "Assigned to me",
+            assignedTo: "Assigned to",
+            taskResolved: "Task is resolved",
+            resolveTask: "Resolve task"
         },
         sortField: 'Sort field',
         error: 'Error',
@@ -130,7 +134,11 @@ export const dict = {
             "submitted": "Kommentar eingereicht",
             "write": "Hier schreiben...",
             "cancel": "Abbrechen",
-            assignTo: "Zuweisen an"
+            assignTo: "Zuweisen an",
+            "assignedToMe": "Mir zugewiesen",
+            "assignedTo": "Zugewiesen an",
+            "taskResolved": "Aufgabe gelöst",
+            "resolveTask": "Aufgabe lösen"
         },
         error: 'Fehler',
         "auth": {
@@ -232,7 +240,11 @@ export const dict = {
             "submitted": "Comentario enviado",
             "write": "Escribe aquí...",
             "cancel": "Cancelar",
-            assignTo: "Asignar a"
+            assignTo: "Asignar a",
+            "assignedToMe": "Asignado a mí",
+            "assignedTo": "Asignado a",
+            "taskResolved": "Tarea resuelta",
+            "resolveTask": "Resolver tarea"
         },
         sortField: 'Campo de ordenación',
         error: 'Error',
@@ -336,7 +348,11 @@ export const dict = {
             "submitted": "Commentaire soumis",
             "write": "Écrire ici...",
             "cancel": "Annuler",
-            assignTo: "Assigner à"
+            assignTo: "Assigner à",
+            "assignedToMe": "Attribué à moi",
+            "assignedTo": "Attribué à",
+            "taskResolved": "Tâche résolue",
+            "resolveTask": "Résoudre la tâche"
         },
         error: 'Erreur',
         success: 'Succès',
@@ -440,7 +456,11 @@ export const dict = {
             "submitted": "Комментарий отправлен",
             "write": "Пишите здесь...",
             "cancel": "Отмена",
-            assignTo: "Назначить на"
+            assignTo: "Назначить на",
+            assignedToMe: "Назначено на меня",
+            assignedTo: "Назначено на",
+            taskResolved: "Задача закрыта",
+            resolveTask: "Закрыть задачу"
         },
         success: 'Успех',
         "auth": {
@@ -542,7 +562,11 @@ export const dict = {
             "submitted": "コメントが送信されました",
             "write": "ここにテキストを入力...",
             "cancel": "キャンセル",
-            assignTo: "割り当てる"
+            assignTo: "割り当てる",
+            "assignedToMe": "自分に割り当てられた",
+            "assignedTo": "割り当てられた",
+            "taskResolved": "タスクが解決されました",
+            "resolveTask": "タスクを解決する"
         },
         "lastMonth": "先月",
         "last2Weeks": "過去2週間",
@@ -644,7 +668,11 @@ export const dict = {
             "submitted": "Comentário enviado",
             "write": "Escreva aqui...",
             "cancel": "Cancelar",
-            assignTo: "Atribuir a"
+            assignTo: "Atribuir a",
+            "assignedToMe": "Atribuído a mim",
+            "assignedTo": "Atribuído a",
+            "taskResolved": "Tarefa resolvida",
+            "resolveTask": "Resolver tarefa"
         },
         "lastMonth": "mês passado",
         "last2Weeks": "últimas 2 semanas",
@@ -745,7 +773,11 @@ export const dict = {
             "submitted": "टिप्पणी सबमिट की गई है",
             "write": "यहाँ लिखें...",
             "cancel": "रद्द करें",
-            assignTo: "असाइन करें"
+            assignTo: "असाइन करें",
+            "assignedToMe": "मुझे सौंपा गया",
+            "assignedTo": "सौंपा गया",
+            "taskResolved": "कार्य हल हो गया",
+            "resolveTask": "कार्य हल करें"
         },
         "lastMonth": "पिछले महीने",
         "last2Weeks": "पिछले 2 सप्ताह",
@@ -846,7 +878,11 @@ export const dict = {
             "submitted": "댓글이 제출되었습니다",
             "write": "여기에 작성...",
             "cancel": "취소",
-            assignTo: "할당하다"
+            assignTo: "할당하다",
+            "assignedToMe": "나에게 할당됨",
+            "assignedTo": "할당된",
+            "taskResolved": "작업이 해결됨",
+            "resolveTask": "작업 해결"
         },
         "success": "성공",
         "madeOn": "작성 날짜",
