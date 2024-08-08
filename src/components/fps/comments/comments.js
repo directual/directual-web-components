@@ -26,6 +26,7 @@ export default function Comments(props) {
 
     const [comments, setComments] = useState(_.get(data, "data") || [])
     const [loading, setLoading] = useState(false)
+    const [error,setError] = useState('палундра!')
 
     // process Socket.io update
     useEffect(() => {
@@ -51,6 +52,7 @@ export default function Comments(props) {
                     setLoading(false)
                     finish && finish()
                 } else {
+                    data.msg && setError(data.msg)
                     setLoading(false)
                     finish && finish()
                 }
@@ -69,6 +71,7 @@ export default function Comments(props) {
             loading={loading}
             sendComment={sendComment}
             allowAttachment={allowAttachment} />}
+        {error && <Hint error closable onClose={() => setError("")}>{error}</Hint>}
         <div className={styles.commentsList}>
             {comments
                 .filter(comment => !_.get(comment, _.get(data, "params._replyField")) || _.get(comment, _.get(data, "params._replyField")) == 'root')
@@ -142,7 +145,7 @@ function Comment(props) {
         setLocalLoading(true)
         let payload = { ...comment }
         _.set(payload, _.get(data, "params.assignmentOn_bool"), true)
-        _.set(payload, _.get(data, "params.assignmentOn_dateClosed"), moment().toISOString())
+        _.get(data, "params.assignmentOn_dateClosed") && _.set(payload, _.get(data, "params.assignmentOn_dateClosed"), moment().toISOString())
         sendComment(payload, () => setLocalLoading(false), true)
     }
 
