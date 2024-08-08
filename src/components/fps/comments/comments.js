@@ -240,11 +240,14 @@ function AddComment(props) {
             {showAssignTo &&
                 <FieldLink
                     field={{
-                        _field_link_type: "select",
+                        _field_link_type: "complexSelect",
                         _field_arrayLink_endpoint: _.get(data, "params.assignmentOn_endpoint")
                     }}
                     fieldInfo={{
 
+                    }}
+                    onChange={value => {
+                        console.log(value)
                     }}
                     model={{
 
@@ -279,12 +282,13 @@ function AddComment(props) {
                             };
                         });
 
-                        //fake request
+                        // fake request
                         // setTimeout(() => {
                         //   const data = [
                         //     {
                         //       "name": "Paul",
-                        //       "id": "paul"
+                        //       "id": "paul",
+                        //       "userpic": "https://cdn.jpg.wtf/futurico/8a/c5/1723104957-8ac578d40e056a4b98acdd34ac41526f.jpeg"
                         //     },
                         //     {
                         //       "name": "Peter",

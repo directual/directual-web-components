@@ -940,7 +940,8 @@ function RenderStep(props) {
         //   const data = [
         //     {
         //       "name": "Paul",
-        //       "id": "paul"
+        //       "id": "paul",
+        //       "userpic": "https://cdn.jpg.wtf/futurico/8a/c5/1723104957-8ac578d40e056a4b98acdd34ac41526f.jpeg"
         //     },
         //     {
         //       "name": "Peter",
@@ -952,7 +953,7 @@ function RenderStep(props) {
         //   setOptions && setOptions(transformedArray(data, visibleNames))
         // }, 1000)
 
-        // false &&
+        //  false &&
           callEndpoint && callEndpoint(
             endpoint,
             "GET",
