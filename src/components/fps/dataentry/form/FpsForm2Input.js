@@ -498,7 +498,7 @@ function FieldBoolean(props) {
     />
 }
 
-function FieldLink(props) {
+export function FieldLink(props) {
 
     const { field, locale, template, model, state, setState, refresh, onChange, fieldInfo, code, callEndpoint, disabled } = props
     const basicProps = { onChange, locale, disabled }

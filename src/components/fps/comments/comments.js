@@ -12,6 +12,8 @@ import styles from './comments.module.css'
 import PropTypes from 'prop-types';
 import icon from './../../../icons/fps-form2.svg'
 
+import { FieldLink } from '../dataentry/form/FpsForm2Input'
+
 
 export default function Comments(props) {
 
@@ -19,8 +21,8 @@ export default function Comments(props) {
     const { auth, data, callEndpoint, onEvent, id, locale, handleRoute } = props
     const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
 
-    // console.log("=== comments data ===")
-    // console.log(data)
+    console.log("=== comments data ===")
+    console.log(data)
 
     const [comments, setComments] = useState(_.get(data, "data") || [])
     const [loading, setLoading] = useState(false)
@@ -115,7 +117,7 @@ function Comment(props) {
     }
 
     let name = `${_.get(commentAuthor, "firstName", "")} ${_.get(commentAuthor, "lastName", "")}`
-    if (name == " ") { name = dict[lang].comments.anon}
+    if (name == " ") { name = dict[lang].comments.anon }
 
     return <div><div className={`${styles.commentWrapper} FPS_COMMENT_WRAPPER`}>
         {/* <div className={styles.commentVote}>
@@ -176,7 +178,7 @@ function CommentsHeader(props) {
 
 function AddComment(props) {
 
-    const { locale, onCancel, lang, header, roles, assignTo, allowAttachment, sendComment, parentID, data, loading } = props
+    const { locale, onCancel, lang, header, roles, callEndpoint, allowAttachment, sendComment, parentID, data, loading } = props
 
     const rolesExample = [
         { key: 'admin', value: 'Admin' },
@@ -234,17 +236,33 @@ function AddComment(props) {
                 label={dict[lang].comments.roles}
                 options={rolesExample}
                 type='multiselect' icon='lock' placeholder={dict[lang].comments.roles_ph} />}
-            {showLock && <Hint>The feature is under development</Hint>}
-            {showAssignTo && <Input
-                label={dict[lang].comments.assign}
-                options={usersExample}
-                type='select' icon='checkbox' placeholder={dict[lang].comments.assign_ph} />}
-            {showAssignTo && <Hint>The feature is under development</Hint>}
+            {/* {showLock && <Hint>The feature is under development</Hint>} */}
+            {showAssignTo &&
+                <FieldLink
+                    field={{
+                        _field_link_type: "select",
+                        _field_arrayLink_endpoint: _.get(data,"params.assignmentOn_endpoint")
+                    }}
+                    fieldInfo={{
+
+                    }}
+                    model={{
+
+                    }}
+                    callEndpoint={callEndpoint}
+                    template={() => { }}
+                />
+                // <Input
+                // label={dict[lang].comments.assign}
+                // options={usersExample}
+                // type='select' icon='checkbox' placeholder={dict[lang].comments.assign_ph} />
+            }
+            {/* {showAssignTo && <Hint>The feature is under development</Hint>} */}
         </div>
         <div className={styles.commentsAddPanel}>
             <div className={`icon icon-clip ${styles.commentActions} ${addFile ? styles.active : ''}`} onClick={e => setAddFile(!addFile)} />
-            {/* <div className={`icon icon-lock ${styles.commentActions} ${showLock ? styles.active : ''}`} onClick={e => setShowLock(!showLock)} />
-            <div className={`icon icon-checkbox ${styles.commentActions} ${showAssignTo ? styles.active : ''}`} onClick={e => setShowAssignTo(!showAssignTo)} /> */}
+            {/* <div className={`icon icon-lock ${styles.commentActions} ${showLock ? styles.active : ''}`} onClick={e => setShowLock(!showLock)} /> */}
+            {_.get(data, "params.assignmentOn") && <div className={`icon icon-checkbox ${styles.commentActions} ${showAssignTo ? styles.active : ''}`} onClick={e => setShowAssignTo(!showAssignTo)} />}
             <Button loading={loading}
                 disabled={!comment[_.get(data, "params._fileField")] && !comment[_.get(data, "params._textField")]}
                 accent icon="bubble" onClick={() => sendComment(comment, finish)}>{dict[lang].comments.send}</Button>
