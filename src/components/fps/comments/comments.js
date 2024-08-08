@@ -136,7 +136,7 @@ function Comment(props) {
             (_.get(comment, _.get(data, "params.assignmentOn_assignee") + ".id") || _.get(comment, _.get(data, "params.assignmentOn_assignee"))))
         : ''
 
-    const isResoled = isAssignedToMe && (_.get(comment, _.get(data, "params.assignmentOn_bool")))
+    const isResoled = isTask && (_.get(comment, _.get(data, "params.assignmentOn_bool")))
 
     const resolvedDate = _.get(comment, _.get(data, "params.assignmentOn_dateClosed"))
     const formatResolvedDate = _.get(_.find(_.get(data, "headers"), { sysName: _.get(data, "params.assignmentOn_dateClosed") }), "formatOptions")
@@ -157,7 +157,7 @@ function Comment(props) {
                 {isAssignedToMe ? <span>{dict[lang].comments.assignedToMe}</span>
                     : <span>{dict[lang].comments.assignedTo} <b>{assigneName}</b></span>}
                 {isResoled ?
-                    <span>{dict[lang].comments.taskResolved} {formatDate(resolvedDate, formatResolvedDate)}</span> :
+                    <span className='icon icon-done'>{dict[lang].comments.taskResolved} {formatDate(resolvedDate, formatResolvedDate)}</span> :
                     isAssignedToMe ? <Button
                         loading={localLoading}
                         onClick={resolveTask}

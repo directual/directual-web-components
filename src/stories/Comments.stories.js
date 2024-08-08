@@ -378,10 +378,47 @@ const commentsData = {
     ],
     "data": [
         {
+            "text": "два",
+            "id": "9d0d8da4-b429-41bf-b1c7-17201411f12e",
+            "date": 1723140511000,
+            "assign_to": {
+                "lastName": "Ershov",
+                "firstName": "Pavel",
+                "id": "pavel"
+            },
+            "user": {
+                "lastName": "Ershov",
+                "firstName": "Pavel",
+                "userpic": "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg",
+                "id": "pavel"
+            }
+        },
+        {
+            "text": "раз",
+            "id": "356f5ca4-b040-42ba-9552-d91c68093768",
+            "date": 1723140498000,
+            "assign_to": {
+                "lastName": "Navalikhin",
+                "firstName": "Nikita",
+                "id": "nikita"
+            },
+            "user": {
+                "lastName": "Ershov",
+                "firstName": "Pavel",
+                "userpic": "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg",
+                "id": "pavel"
+            }
+        },
+        {
+            "isCompleted": true,
             "text": "Родился орком — защищай Мордор!",
             "id": "e387e50d-633d-480f-8d89-072eaff64767",
             "date": 1723111780000,
-            "assign_to": "pavel",
+            "assign_to": {
+                "lastName": "Ershov",
+                "firstName": "Pavel",
+                "id": "pavel"
+            },
             "user": {
                 "lastName": "Ershov",
                 "firstName": "Pavel",
@@ -472,6 +509,14 @@ const commentsData = {
         [
             "assign_to.id",
             99320062
+        ],
+        [
+            "assign_to.firstName",
+            99320062
+        ],
+        [
+            "assign_to.lastName",
+            99320062
         ]
     ],
     "writeFields": [
@@ -480,7 +525,8 @@ const commentsData = {
         "parent_id",
         "isCompleted",
         "id",
-        "assign_to"
+        "assign_to",
+        "date_close"
     ],
     "structures": {
         "99320062": {
@@ -759,6 +805,34 @@ const commentsData = {
             "linkOrArrayLinkType": true,
             "arrayLink": false,
             "linkType": true
+        },
+        {
+            "sysName": "date_close",
+            "name": "",
+            "dataType": "date",
+            "id": "65611723063546526",
+            "link": "",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 9,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false
         }
     ],
     "quickSearch": null,
@@ -778,7 +852,7 @@ let authExample = {
   "token": "1a9f10d0-d45f-4bf2-9e7e-d6ce2e752d03",
   "notifications_counter": "",
   "nid": 18924,
-  "user": "pavel",
+  "user": "nikita",
   //"userpic": "https://api.directual.com/fileUploaded/basic-template/efdd480a-d36a-4a01-ac82-baf871ffd2fd.jpg"
 }
 
