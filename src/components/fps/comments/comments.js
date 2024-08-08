@@ -26,7 +26,7 @@ export default function Comments(props) {
 
     const [comments, setComments] = useState(_.get(data, "data") || [])
     const [loading, setLoading] = useState(false)
-    const [error,setError] = useState('палундра!')
+    const [error,setError] = useState('')
 
     // process Socket.io update
     useEffect(() => {
@@ -142,8 +142,9 @@ function Comment(props) {
     const formatResolvedDate = _.get(_.find(_.get(data, "headers"), { sysName: _.get(data, "params.assignmentOn_dateClosed") }), "formatOptions")
 
     const resolveTask = () => {
+        if (!comment.id) return;
         setLocalLoading(true)
-        let payload = { ...comment }
+        let payload = { id: comment.id }
         _.set(payload, _.get(data, "params.assignmentOn_bool"), true)
         _.get(data, "params.assignmentOn_dateClosed") && _.set(payload, _.get(data, "params.assignmentOn_dateClosed"), moment().toISOString())
         sendComment(payload, () => setLocalLoading(false), true)
