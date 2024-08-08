@@ -25,7 +25,8 @@ export const dict = {
             submitted: "Comment is submitted",
             write: "Write text here...",
             send: "Send",
-            cancel: "Cancel"
+            cancel: "Cancel",
+            assignTo: "Assign to"
         },
         sortField: 'Sort field',
         error: 'Error',
@@ -128,7 +129,8 @@ export const dict = {
             "assign_ph": "Benutzer auswählen...",
             "submitted": "Kommentar eingereicht",
             "write": "Hier schreiben...",
-            "cancel": "Abbrechen"
+            "cancel": "Abbrechen",
+            assignTo: "Zuweisen an"
         },
         error: 'Fehler',
         "auth": {
@@ -229,7 +231,8 @@ export const dict = {
             "assign_ph": "Elegir usuario...",
             "submitted": "Comentario enviado",
             "write": "Escribe aquí...",
-            "cancel": "Cancelar"
+            "cancel": "Cancelar",
+            assignTo: "Asignar a"
         },
         sortField: 'Campo de ordenación',
         error: 'Error',
@@ -332,7 +335,8 @@ export const dict = {
             "assign_ph": "Choisir l'utilisateur...",
             "submitted": "Commentaire soumis",
             "write": "Écrire ici...",
-            "cancel": "Annuler"
+            "cancel": "Annuler",
+            assignTo: "Assigner à"
         },
         error: 'Erreur',
         success: 'Succès',
@@ -435,7 +439,8 @@ export const dict = {
             "assign_ph": "Выберите пользователя...",
             "submitted": "Комментарий отправлен",
             "write": "Пишите здесь...",
-            "cancel": "Отмена"
+            "cancel": "Отмена",
+            assignTo: "Назначить на"
         },
         success: 'Успех',
         "auth": {
@@ -536,7 +541,8 @@ export const dict = {
             "assign_ph": "ユーザーを選択...",
             "submitted": "コメントが送信されました",
             "write": "ここにテキストを入力...",
-            "cancel": "キャンセル"
+            "cancel": "キャンセル",
+            assignTo: "割り当てる"
         },
         "lastMonth": "先月",
         "last2Weeks": "過去2週間",
@@ -637,7 +643,8 @@ export const dict = {
             "assign_ph": "Escolher o usuário...",
             "submitted": "Comentário enviado",
             "write": "Escreva aqui...",
-            "cancel": "Cancelar"
+            "cancel": "Cancelar",
+            assignTo: "Atribuir a"
         },
         "lastMonth": "mês passado",
         "last2Weeks": "últimas 2 semanas",
@@ -737,7 +744,8 @@ export const dict = {
             "assign_ph": "उपयोगकर्ता चुनें...",
             "submitted": "टिप्पणी सबमिट की गई है",
             "write": "यहाँ लिखें...",
-            "cancel": "रद्द करें"
+            "cancel": "रद्द करें",
+            assignTo: "असाइन करें"
         },
         "lastMonth": "पिछले महीने",
         "last2Weeks": "पिछले 2 सप्ताह",
@@ -837,7 +845,8 @@ export const dict = {
             "assign_ph": "사용자 선택...",
             "submitted": "댓글이 제출되었습니다",
             "write": "여기에 작성...",
-            "cancel": "취소"
+            "cancel": "취소",
+            assignTo: "할당하다"
         },
         "success": "성공",
         "madeOn": "작성 날짜",

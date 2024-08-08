@@ -244,14 +244,10 @@ function AddComment(props) {
                         _field_arrayLink_endpoint: _.get(data, "params.assignmentOn_endpoint")
                     }}
                     fieldInfo={{
-
+                        name: dict[lang].comments.assignTo
                     }}
-                    onChange={value => {
-                        console.log(value)
-                    }}
-                    model={{
-
-                    }}
+                    onChange={setCommentField(_.get(data, "params.assignmentOn_assignee"))}
+                    model={{}} // костылек из мультиформы
                     callEndpoint={(endpoint, params, finish, setOptions, setError) => {
                         console.log('===> calling endpoint /' + endpoint)
                         const transformedArray = (inputArray, visibleNames) => _.map(inputArray, (item) => {
@@ -321,10 +317,6 @@ function AddComment(props) {
                     }}
                     template={() => { }}
                 />
-                // <Input
-                // label={dict[lang].comments.assign}
-                // options={usersExample}
-                // type='select' icon='checkbox' placeholder={dict[lang].comments.assign_ph} />
             }
             {/* {showAssignTo && <Hint>The feature is under development</Hint>} */}
         </div>
