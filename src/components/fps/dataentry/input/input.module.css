@@ -319,3 +319,16 @@ a.checkbox_clearOption {
   margin-bottom: 8px;
   display: inline-block;
 }
+.input_label_tooltip {
+  display: flex;
+  align-items: center;
+}
+.input_label_tooltip .tooltip {
+  opacity: 0.5;
+}
+.input_label_tooltip .tooltip:hover {
+  opacity: 1;
+}
+:global .react-tooltip {
+  z-index: 1000;
+}

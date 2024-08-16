@@ -336,3 +336,18 @@
     margin-bottom: 8px;
     display: inline-block;
  }
+
+ .input_label_tooltip {
+    display: flex;
+    align-items: center;
+    .tooltip {
+        opacity: .5;
+        &:hover {
+            opacity: 1;
+        }
+    }
+ }
+
+ :global .react-tooltip {
+    z-index: 1000;
+  }

@@ -3,11 +3,13 @@ import styles from './button.module.css'
 import '../theme/theme.module.css'
 import Loader from '../loader/loader'
 import PropTypes from 'prop-types';
+import { Tooltip } from 'react-tooltip'
 
 export default function Button(props) {
 
     return (
-        <React.Fragment>
+        <div className={styles.buttonWrapper}>
+            <Tooltip id="my-tooltip" />
             {!props.link ?
                 <button
                     onClick={e => {
@@ -62,7 +64,10 @@ export default function Button(props) {
                     {props.children || props.label}
                 </a>
             }
-        </React.Fragment>
+            {props.tooltip && <span 
+                data-tooltip-html={props.tooltip}
+                data-tooltip-id="my-tooltip" className={`icon icon-help ${styles.tooltip}`}/>}
+        </div>
     )
 }
 

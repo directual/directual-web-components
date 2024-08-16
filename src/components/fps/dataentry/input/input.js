@@ -16,6 +16,7 @@ import PropTypes from 'prop-types';
 import InnerHTML from 'dangerously-set-html-content'
 import SelectImages from '../selectImages/selectImages'
 import { Tags } from '../../tags/Tags'
+import { Tooltip } from 'react-tooltip'
 
 export function InputGroup(props) {
     return (
@@ -455,7 +456,10 @@ export default function Input(props) {
                     marginTop: inputMargins.marginTop
                 }
             }>
-            {props.label && <label>{props.label}{props.required && '*'}</label>}
+            {props.label && <label className={`${styles.input_label_tooltip} FPS_Input_label`}>
+                {props.label}{props.required && '*'}{props.tooltip && <span 
+                data-tooltip-html={props.tooltip}
+                data-tooltip-id="my-tooltip" className={`icon icon-help small ${styles.tooltip}`}/>}</label>}
             {props.description &&
                 <div className={styles.description}>
                     {props.description && (typeof props.description == "string" ? <InnerHTML allowRerender={true} html={props.description} />
@@ -469,7 +473,7 @@ export default function Input(props) {
                 <div className="dd-debug"> countlLnes: {countLines(inputEl.current, value)}</div>
                 <div className='dd-debug'>auto width: {calcTextareaWidth()}</div>
             </div>}
-
+            <Tooltip id="my-tooltip" />
             {props.type != 'email' &&
                 props.type != 'checkboxGroup' &&
                 props.type != 'number' &&

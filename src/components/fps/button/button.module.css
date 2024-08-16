@@ -1,3 +1,14 @@
+.buttonWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0 2px;
+}
+.buttonWrapper .tooltip {
+  opacity: 0.5;
+}
+.buttonWrapper .tooltip:hover {
+  opacity: 1;
+}
 a.button {
   height: 48px;
   -webkit-touch-callout: none;

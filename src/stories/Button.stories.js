@@ -31,7 +31,8 @@ export const Regular = {
   args: {
     accent: false,
     children: 'button',
-    icon: 'babai'
+    icon: 'babai',
+    tooltip: 'дратути'
   },
 };
 

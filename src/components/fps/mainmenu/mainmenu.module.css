@@ -834,7 +834,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   position: relative;
-  color: var(--menu-item-hover);
+  color: var(--menu-item);
 }
 :global .ural .D_MainMenu_Mobile_Tabs_Tab .D_MainMenu_Item_Label {
   position: absolute;
