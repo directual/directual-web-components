@@ -185,6 +185,8 @@ export default function Input(props) {
     const lang = props.locale ? props.locale.length == 3 ? props.locale : 'ENG' : 'ENG'
     const pickerRef = useRef(null);
 
+    const tooltipId = "tooltip_" + Math.floor(Math.random()*1000000000)
+
     const checkValue = () => {
         // console.log('checking...');
         // ((!value || (value && value.length == 0)) && (value != 0) && props.required) ?
@@ -459,7 +461,7 @@ export default function Input(props) {
             {props.label && <label className={`${styles.input_label_tooltip} FPS_Input_label`}>
                 {props.label}{props.required && '*'}{props.tooltip && <span 
                 data-tooltip-html={props.tooltip}
-                data-tooltip-id="my-tooltip" className={`icon icon-help small ${styles.tooltip}`}/>}</label>}
+                data-tooltip-id={tooltipId} className={`icon icon-help small ${styles.tooltip}`}/>}</label>}
             {props.description &&
                 <div className={styles.description}>
                     {props.description && (typeof props.description == "string" ? <InnerHTML allowRerender={true} html={props.description} />
@@ -473,7 +475,7 @@ export default function Input(props) {
                 <div className="dd-debug"> countlLnes: {countLines(inputEl.current, value)}</div>
                 <div className='dd-debug'>auto width: {calcTextareaWidth()}</div>
             </div>}
-            <Tooltip id="my-tooltip" />
+            <Tooltip id={tooltipId} />
             {props.type != 'email' &&
                 props.type != 'checkboxGroup' &&
                 props.type != 'number' &&

@@ -6,10 +6,11 @@ import PropTypes from 'prop-types';
 import { Tooltip } from 'react-tooltip'
 
 export default function Button(props) {
+    const tooltipId = "tooltip_" + Math.floor(Math.random()*1000000000)
 
     return (
         <div className={styles.buttonWrapper}>
-            <Tooltip id="my-tooltip" />
+            <Tooltip id={tooltipId} />
             {!props.link ?
                 <button
                     onClick={e => {
@@ -66,7 +67,7 @@ export default function Button(props) {
             }
             {props.tooltip && <span 
                 data-tooltip-html={props.tooltip}
-                data-tooltip-id="my-tooltip" className={`icon icon-help ${styles.tooltip}`}/>}
+                data-tooltip-id={tooltipId} className={`icon icon-help ${styles.tooltip}`}/>}
         </div>
     )
 }

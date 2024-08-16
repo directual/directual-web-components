@@ -40,14 +40,16 @@ export const Danger = {
   args: {
     danger: true,
     children: 'button',
-    icon: 'delete'
+    icon: 'delete',
+    tooltip: 'дратутb2'
   },
 };
 
 export const NoText = {
   args: {
     accent: true,
-    icon: 'delete'
+    icon: 'delete',
+    tooltip: 'дратутb2'
   },
 };
 
