@@ -18,7 +18,61 @@ export default {
   },
 };
 
-const carouselData = {}
+const carouselData = {
+    "type": "Photo carousel",
+    "photo_source": "all objects",
+    "height": 350,
+    "loop": "true",
+    "api": "banners",
+    "photo": "image",
+    "link": "{{link}}",
+    "__libs__": [
+        "https://api.alfa.directual.com/fileUploaded/directual-site/65343282-baff-4f5b-816b-6976c77f0a66.js"
+    ],
+    "__header__": "",
+    "__initialize__": null,
+    "__update__": null,
+    "__destroy__": null,
+    "__data__": {
+        "photo_source": "all objects",
+        "loop": "true",
+        "link": "{{link}}",
+        "photo": "image",
+        "api": [
+            {
+                "arrayLink": [
+                    "https://api.alfa.directual.com/fileUploaded/rubrick-shop/43aa6eab-db85-40b7-a70a-62c47b97b7fb.jpg",
+                    "https://api.alfa.directual.com/fileUploaded/rubrick-shop/f099f744-689f-469d-b938-914ea68a3373.jpg",
+                    "https://api.alfa.directual.com/fileUploaded/rubrick-shop/06c83391-e629-47ef-95d4-0dce33556b56.jpg",
+                    "https://api.alfa.directual.com/fileUploaded/rubrick-shop/efceb19a-a224-4543-8f8e-4340f9baa717.jpg"
+                ],
+                "link": "/competition",
+                "image": "https://api.alfa.directual.com/fileUploaded/rubrick-shop/efceb19a-a224-4543-8f8e-4340f9baa717.jpg",
+                "id": "1"
+            },
+            {
+                "image": "https://api.alfa.directual.com/fileUploaded/rubrick-shop/06c83391-e629-47ef-95d4-0dce33556b56.jpg",
+                "link": "/feedback",
+                "id": "2"
+            },
+            {
+                "image": "https://api.alfa.directual.com/fileUploaded/rubrick-shop/f099f744-689f-469d-b938-914ea68a3373.jpg",
+                "link": "/feedback",
+                "id": "3"
+            },
+            {
+                "link": "/competition",
+                "image": "https://api.alfa.directual.com/fileUploaded/rubrick-shop/43aa6eab-db85-40b7-a70a-62c47b97b7fb.jpg",
+                "id": "4"
+            }
+        ],
+        "type": "Photo carousel",
+        "_api_": {
+            "api": "https://api.directual.com/good/api/v5/data/banners/banners?appID=57a414d4-c47c-4731-88d7-eca69e2115f8"
+        },
+        "height": "350"
+    }
+}
 
 let authExample = {
   "isAuth": true,
