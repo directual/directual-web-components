@@ -4,6 +4,7 @@ import useEmblaCarousel from 'embla-carousel-react'
 import styles from './carousel.module.css'
 import Button from '../button/button'
 import ActionPanel from '../actionspanel/actionspanel'
+import _ from 'lodash'
 
 export default function Carousel(props) {
 

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import icon from './../../../icons/fps-form2.svg'
 import Carousel from './carousel'
 import { template } from '../templating/template'
+import _ from 'lodash'
 
 export default function FpsCarousel(props) {
 
