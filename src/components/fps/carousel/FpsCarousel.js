@@ -43,9 +43,9 @@ FpsCarousel.settings = {
     sysName: 'FpsCarousel',
     isLegacy: false,
     isMarketplace: true,
-    form: [
-        { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
-        { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
-        { name: 'Component comment', sysName: 'comment', type: 'comment' },
-    ]
+    // form: [
+    //     { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
+    //     { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
+    //     { name: 'Component comment', sysName: 'comment', type: 'comment' },
+    // ]
 }
