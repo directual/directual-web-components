@@ -67,8 +67,8 @@ export default function Datepicker(props) {
         return (
             <div onClick={e => {
                 e.stopPropagation()
-                openCalendar(e)
-            }} className={styles.datePicker}>
+                !props.disabled && openCalendar(e)
+            }} className={`${styles.datePicker} ${props.disabled && styles.disabled}`}>
                 <div className={`${styles.icon} icon icon-calendar`} />
                 <div className={styles.value}>{props.value}</div>
                 {props.value && <div onClick={clear} className={`${styles.clear} icon icon-close`} />}

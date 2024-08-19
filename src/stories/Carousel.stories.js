@@ -26,18 +26,37 @@ const carouselData = {
     "api": "banners",
     "photo": "image",
     "link": "{{link}}",
-    "__libs__": [
-        "https://api.alfa.directual.com/fileUploaded/directual-site/65343282-baff-4f5b-816b-6976c77f0a66.js"
-    ],
+    "nav_buttons": "true",
+    "dot_buttons": "true",
+    "nav_buttons_style": "transparent buttons on the sides",
+    "thumbnails": "false",
+    "autoplay": "true",
+    "comment": "Баннеры на главной",
+    "alignment": "center",
+    "max_width": 150,
+    "css_class": "karusel",
+    "slide_gaps": "10",
+    "__libs__": [],
     "__header__": "",
     "__initialize__": null,
     "__update__": null,
     "__destroy__": null,
     "__data__": {
-        "photo_source": "all objects",
-        "loop": "true",
+        "slide_gaps": "10",
+        "nav_buttons_style": "transparent buttons on the sides",
         "link": "{{link}}",
         "photo": "image",
+        "dot_buttons": "true",
+        "_api_": {
+            "api": "https://api.directual.com/good/api/v5/data/banners/banners?appID=57a414d4-c47c-4731-88d7-eca69e2115f8"
+        },
+        "autoplay": "true",
+        "max_width": "150",
+        "css_class": "karusel",
+        "nav_buttons": "true",
+        "photo_source": "all objects",
+        "loop": "true",
+        "comment": "Баннеры на главной",
         "api": [
             {
                 "arrayLink": [
@@ -66,10 +85,8 @@ const carouselData = {
                 "id": "4"
             }
         ],
-        "type": "Photo carousel",
-        "_api_": {
-            "api": "https://api.directual.com/good/api/v5/data/banners/banners?appID=57a414d4-c47c-4731-88d7-eca69e2115f8"
-        },
+        "alignment": "center",
+        "thumbnails": "false",
         "height": "350"
     }
 }

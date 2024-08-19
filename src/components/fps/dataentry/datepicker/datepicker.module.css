@@ -13,6 +13,10 @@
   display: flex;
   align-items: center;
 }
+.datePicker.disabled {
+  opacity: 0.6;
+  background-color: var(--form-field-bgr-disabled);
+}
 .datePicker:hover .clear {
   opacity: 0.3;
 }

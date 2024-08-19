@@ -15,6 +15,10 @@
   appearance: none;
   display: flex;
   align-items: center;
+  &.disabled {
+    opacity: .6;
+    background-color: var(--form-field-bgr-disabled);
+  }
   &:hover {
     .clear {
     opacity: .3;

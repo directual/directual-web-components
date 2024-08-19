@@ -332,3 +332,6 @@ a.checkbox_clearOption {
 :global .react-tooltip {
   z-index: 1000;
 }
+:global .react-tooltip * {
+  color: #fff;
+}

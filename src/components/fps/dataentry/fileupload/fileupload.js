@@ -58,12 +58,12 @@ export default function FileUpload(props) {
         // console.log("newFiles")
         // console.log(newFiles)
 
-        let resultFileList = Array.isArray(files) ? [...files] : files.split(",").length  > 0 ? files.split(",") : [ files ]
+        let resultFileList = Array.isArray(files) ? [...files] : files.split(",").length > 0 ? files.split(",") : [files]
 
         if (newFiles.length == 0) { props.onChange && props.onChange(null); return undefined }
 
         newFiles.forEach((file, i) => {
-            resultFileList.push('https://api.directual.com/fileUploaded/' + ( file.finalFileName || file.file ))
+            resultFileList.push('https://api.directual.com/fileUploaded/' + (file.finalFileName || file.file))
         })
         const resultFileString = resultFileList.join(",")
         setFiles(resultFileList)
@@ -81,6 +81,7 @@ export default function FileUpload(props) {
                 <Input
                     label={props.label}
                     tip={props.tip}
+                    disabled={props.disabled}
                     description={props.description}
                     height={48}
                     required={props.required}
@@ -99,10 +100,11 @@ export default function FileUpload(props) {
                         <Dropzone
                             multiple={props.multiple ? true : false}
                             {...props}
+                            disabled={props.disabled}
                             accept={props.images ? 'image/*' : undefined}
                             onDrop={(acceptedFiles, rej, event) => {
                                 setUploading(true)
-                                let counter = 0 
+                                let counter = 0
                                 let uploadedFiles = []
                                 acceptedFiles.forEach(file => {
                                     const body = new FormData
@@ -158,6 +160,7 @@ export default function FileUpload(props) {
                     fileList={files}
                     images={props.images}
                     edit={props.edit}
+                    disabled={props.disabled}
                     lang={lang}
                     onDelete={index => {
                         console.log('deleting file: ' + index)
@@ -166,7 +169,7 @@ export default function FileUpload(props) {
                             updateFiles([])
                             return
                         }
-                        const saveNewFiles = typeof files == 'string' ? [...files.split(",")]: [...files]
+                        const saveNewFiles = typeof files == 'string' ? [...files.split(",")] : [...files]
                         saveNewFiles.splice(index, 1)
                         updateFiles(saveNewFiles)
                     }}
@@ -178,7 +181,7 @@ export default function FileUpload(props) {
     )
 }
 
-function FileList({ fileList, images, onDelete, edit, lang }) {
+function FileList({ fileList, images, onDelete, edit, lang, disabled }) {
 
     // console.log("fileList1")
     // console.log(fileList)
@@ -187,7 +190,7 @@ function FileList({ fileList, images, onDelete, edit, lang }) {
         fileList
         : []
     fileList = Array.isArray(fileList) ? fileList : fileList.split(',')
-    
+
     // console.log("fileList2")
     // console.log(fileList)
 
@@ -217,15 +220,17 @@ function FileList({ fileList, images, onDelete, edit, lang }) {
             {fileList.length > 0 && Array.isArray(fileList) ? fileList.map((image, i) => <ImagePreview
                 key={i}
                 edit={edit}
+                disabled={disabled}
                 imageUrl={image}
                 openImage={() => setLargeView(i)}
-                onDelete={() => onDelete(i)}
+                onDelete={() => !disabled && onDelete(i)}
             />) : fileList && fileList.split(",").map((image, i) => <ImagePreview
                 key={i}
+                disabled={disabled}
                 edit={edit}
                 imageUrl={image}
                 openImage={() => setLargeView(i)}
-                onDelete={() => onDelete(i)}
+                onDelete={() => !disabled && onDelete(i)}
             />)
             }
         </div> :
@@ -233,14 +238,16 @@ function FileList({ fileList, images, onDelete, edit, lang }) {
                 {fileList.length > 0 && Array.isArray(fileList) ? fileList.map((file, i) => <FilePreview
                     key={i}
                     edit={edit}
+                    disabled={disabled}
                     fileUrl={file}
-                    onDelete={() => onDelete(i)}
+                    onDelete={() => !disabled && onDelete(i)}
                 />) : fileList && fileList.split(",").map((image, i) => <ImagePreview
                     key={i}
                     edit={edit}
                     imageUrl={image}
+                    disabled={disabled}
                     openImage={() => setLargeView(i)}
-                    onDelete={() => onDelete(i)}
+                    onDelete={() => !disabled && onDelete(i)}
                 />)}
             </div>}
 
@@ -296,12 +303,12 @@ function ShowImage({ imageUrl, swipe, swipable, close, lang }) {
     </div>
 }
 
-function ImagePreview({ imageUrl, onDelete, openImage, edit }) {
+function ImagePreview({ imageUrl, onDelete, openImage, edit, disabled }) {
     return <div className={styles.imagePreview}>
         <img src={imageUrl}
             onClick={() => openImage()}
         />
-        {edit && <div className={`icon icon-close ${styles.deleteImage}`}
+        {edit && !disabled && <div className={`icon icon-close ${styles.deleteImage}`}
             onClick={e => {
                 e.stopPropagation()
                 onDelete()
@@ -310,7 +317,7 @@ function ImagePreview({ imageUrl, onDelete, openImage, edit }) {
     </div>
 }
 
-function FilePreview({ fileUrl, onDelete, edit }) {
+function FilePreview({ fileUrl, onDelete, edit, disabled }) {
 
     const getResolution = line => {
         if (!line) return null
@@ -326,7 +333,7 @@ function FilePreview({ fileUrl, onDelete, edit }) {
         <div className={styles.fileUrl}>
             <a href={fileUrl} target="_blank">{fileUrl}</a>
         </div>
-        {edit && <div className={`${styles.delete} icon icon-delete`} onClick={onDelete} />}
+        {edit && !disabled && <div className={`${styles.delete} icon icon-delete`} onClick={onDelete} />}
     </div>
 }
 
