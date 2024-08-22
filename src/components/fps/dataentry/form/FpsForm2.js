@@ -333,8 +333,8 @@ export default function FpsForm2(props) {
     return false;
   }
 
-  function submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData, 
-      actionReq, setActionError, resetModel) {
+  function submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData,
+    actionReq, setActionError, resetModel) {
     clearTimeout(cx);
 
     newData = newData || {}
@@ -481,8 +481,13 @@ export default function FpsForm2(props) {
                 if (!isEmpty(_.get(response, "redirect.delay"))) {
                   delay = typeof _.get(response, "redirect.delay") == 'number' ? _.get(response, "redirect.delay") : parseInt(_.get(response, "redirect.delay"))
                 }
+                let target = _.get(response, "redirect.target")
                 setTimeout(() => {
-                  handleRoute(_.get(response, "redirect.target"))()
+                  if (target.startsWith("http")) {
+                    window.location.href = target;
+                  } else {
+                    handleRoute(target)()
+                  }
                 }, delay)
               }
             } catch (err) {
@@ -857,8 +862,13 @@ function RenderStep(props) {
               if (!isEmpty(_.get(response, "redirect.delay"))) {
                 delay = typeof _.get(response, "redirect.delay") == 'number' ? _.get(response, "redirect.delay") : parseInt(_.get(response, "redirect.delay"))
               }
+              let target = _.get(response, "redirect.target")
               setTimeout(() => {
-                handleRoute(_.get(response, "redirect.target"))()
+                if (target.startsWith("http")) {
+                  window.location.href = target;
+                } else {
+                  handleRoute(target)()
+                }
               }, delay)
             }
             // refresh
@@ -954,23 +964,23 @@ function RenderStep(props) {
         // }, 1000)
 
         //  false &&
-          callEndpoint && callEndpoint(
-            endpoint,
-            "GET",
-            undefined,
-            params,
-            (result, data, visibleNames) => {
-              if (result == "ok") {
-                finish && finish(transformedArray(data, visibleNames))
-                setOptions && setOptions(transformedArray(data, visibleNames))
-              }
-              else {
-                setError && setError(data)
-                finish && finish([])
-                setOptions && setOptions([])
-              }
+        callEndpoint && callEndpoint(
+          endpoint,
+          "GET",
+          undefined,
+          params,
+          (result, data, visibleNames) => {
+            if (result == "ok") {
+              finish && finish(transformedArray(data, visibleNames))
+              setOptions && setOptions(transformedArray(data, visibleNames))
             }
-          )
+            else {
+              setError && setError(data)
+              finish && finish([])
+              setOptions && setOptions([])
+            }
+          }
+        )
       }}
       key={element.id} />)}
     {(currentStep.elements || [])
