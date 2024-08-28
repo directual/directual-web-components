@@ -299,6 +299,7 @@
 }
 .input_row > div {
   flex: 1;
+  max-width: 100%;
 }
 .fieldUnitsWrapper {
   padding-right: 30px;

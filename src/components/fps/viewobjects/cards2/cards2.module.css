@@ -1,0 +1,18 @@
+.cards2 * {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+.layout_grid {
+  display: grid;
+}
+.cards2_header {
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cards2_card {
+  border: solid 1px red;
+  border-radius: var(--border-radius);
+}

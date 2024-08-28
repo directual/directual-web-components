@@ -9,6 +9,7 @@ import FpsLogin from './components/fps/FpsLogin'
 import Spacing from './components/fps/dataentry/spacing/spacing'
 import CodeInput from './components/fps/dataentry/codeinput/codeinput'
 import FpsCards from './components/fps/viewobjects/cards/FpsCards'
+import FpsCards2 from './components/fps/viewobjects/cards2/FpsCards2'
 import FpsChart from './components/fps/FpsChart'
 import FpsHtml, { FpsMarkdown } from './components/fps/FpsHtml'
 import FpsButton from './components/fps/button/FpsButton'
@@ -65,6 +66,7 @@ export {
   Fps400,
   Spacing,
   Fps500,
+  FpsCards2,
   FpsCarousel,
   Comments,
   FormSteps,

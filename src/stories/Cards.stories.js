@@ -1,4 +1,3 @@
-import 'mapbox-gl/dist/mapbox-gl.css'
 import FpsCards from '../components/fps/viewobjects/cards/FpsCards'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
