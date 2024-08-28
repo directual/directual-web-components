@@ -414,8 +414,9 @@ export default function FpsForm2(props) {
       return keys.filter(key => !(key in filteredKeys));
     }
 
-    let emptyFields = excludeNonEmptyValues(modelToSend, requiredFieldValues)
-
+    let emptyFields = excludeNonEmptyValues(modelToSend, requiredFieldValues).filter(i => {
+      !!_.get(_.find(fields, { sysName: i }), "name")
+    })
 
     if (emptyFields.length > 0 && !autoSubmit) {
       emptyFields = emptyFields.map(i => {
@@ -430,7 +431,8 @@ export default function FpsForm2(props) {
 
     if (actionReq && emptyFields.length > 0) {
       emptyFields = emptyFields.map(i => {
-        const fieldName = _.find(fields, { sysName: i }).name
+        const fieldName = _.get(_.find(fields, { sysName: i }), "name")
+        if (!fieldName) { console.log("!!! " + i); console.log(fields) }
         return fieldName ? '"' + fieldName + '"' : '"' + i + '"'
       })
       const errMessage = dict[lang].form.emptyRequired + emptyFields.join(", ")
