@@ -6,6 +6,10 @@ import _ from 'lodash'
 
 function FpsCards2({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
 
+    console.log("== FpsCards2 data ===")
+    console.log(data)
+    console.log("currentBP = " + currentBP)
+
     currentBP = currentBP || 'desktop' // костылек, чтобы хоть какой-то BP передавался
     //currentBP = 'tablet'
     //currentBP = 'mobile'
@@ -76,8 +80,8 @@ FpsCards2.settings = {
     icon: icon,
     name: 'Cards view',
     sysName: 'FpsCards',
-    // isLegacy: false,
-    isMarketplace: true,
+    isLegacy: false,
+    isMarketplace: false,
     form: [
         { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
         { name: 'Page size', sysName: 'pageSize', type: 'number' },
