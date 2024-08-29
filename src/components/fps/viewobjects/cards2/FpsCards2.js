@@ -78,10 +78,10 @@ FpsCards2.defaultProps = {
 
 FpsCards2.settings = {
     icon: icon,
-    name: 'Cards view',
-    sysName: 'FpsCards',
+    name: 'Cards view (2024)',
+    sysName: 'FpsCards2',
     isLegacy: false,
-    isMarketplace: false,
+    isMarketplace: true,
     form: [
         { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
         { name: 'Page size', sysName: 'pageSize', type: 'number' },
