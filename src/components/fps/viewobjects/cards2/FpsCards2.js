@@ -81,7 +81,7 @@ FpsCards2.settings = {
     name: 'Cards view (2024)',
     sysName: 'FpsCards2',
     isLegacy: false,
-    isMarketplace: true,
+    isMarketplace: false,
     form: [
         { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
         { name: 'Page size', sysName: 'pageSize', type: 'number' },
