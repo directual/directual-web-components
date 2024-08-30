@@ -89,16 +89,16 @@ function Card(props) {
     const field_description = _.get(data, "params.card_type_cart.description")
     const field_price = _.get(data, "params.card_type_cart.price")
 
-    let header = "loading..."
-    let image = "loading..."
-    let description = "loading..."
-    let price = "loading..."
+    const [header,setHeader] = useState("loading...")
+    const [image,setImage] = useState("loading...")
+    const [description,setDescription] = useState("loading...")
+    const [price,setPrice] = useState("loading...")
 
     useEffect(() => {
-        template && template(field_image, object, value => image = value )
-        template && template(field_description, object, value => description = value)
-        template && template(field_header, object, value => header = value)
-        template && template(field_price, object, value => price = value)
+        template && template(field_image, object, setHeader )
+        template && template(field_description, object, setImage)
+        template && template(field_header, object, setDescription)
+        template && template(field_price, object, setPrice)
     }, [])
 
     if (cardType == "cart") return <div
