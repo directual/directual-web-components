@@ -55,12 +55,12 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, template, id, currentBP,
                     borderRadius: card_border_radius
                 }}
                 className={`FPS_CARDS2__CARD ${styles.cards2_card}`}>
-                <Card
-                    key={object.id}
-                    data={data}
+                <Card 
+                    key={object.id} 
+                    data={data} 
                     object={object}
-                    template={(input, templateDate) => template ? JSON.stringify(template(input, templateDate)) : 'Template engine error'}
-                />
+                    template={template}
+                    />
             </div>)}
 
         </div>}
@@ -78,14 +78,13 @@ function Card(props) {
 
     const { object, data, template } = props
 
-
-
     const cardType = _.get(data, "params.card_layout_type")
     const card_padding = _.get(data, "params.card_padding", 12)
     const image_shape = _.get(data, "params.card_type_cart.image_shape")
     const field_image = _.get(data, "params.card_type_cart.image")
     const image_padding = _.get(data, "params.card_type_cart.image_padding", 0)
     const image_border_radius = _.get(data, "params.card_type_cart.image_border_radius", 0)
+
     const field_header = _.get(data, "params.card_type_cart.header")
     const field_description = _.get(data, "params.card_type_cart.description")
     const field_price = _.get(data, "params.card_type_cart.price")
@@ -96,12 +95,11 @@ function Card(props) {
     let price = "loading..."
 
     useEffect(() => {
-        template(field_image, object, value => image = value)
-        template(field_description, object, value => description = value)
-        template(field_header, object, value => header = value)
-        template(field_price, object, value => price = value)
+        template && template(field_image, object, value => image = value )
+        template && template(field_description, object, value => description = value)
+        template && template(field_header, object, value => header = value)
+        template && template(field_price, object, value => price = value)
     }, [])
-
 
     if (cardType == "cart") return <div
         className={`Cards2_typeCart ${styles.cards2_typeCart}`}>
@@ -115,7 +113,7 @@ function Card(props) {
                     overflow: "hidden",
                     margin: image_padding,
                     borderRadius: image_shape == "circle" ? "100%" : image_border_radius,
-                    backgroundImage: `url(${})`
+                    backgroundImage: `url(${image})`
                 }}
             />
         </div>}
@@ -125,13 +123,13 @@ function Card(props) {
             }}
             className={`Cards2_typeCart__bodyWrapper ${styles.cards2_typeCart__bodyWrapper}`}>
             <div className={`Cards2_typeCart__header ${styles.cards2_typeCart__header}`}>
-                {template(field_header, object)}
+                {header}
             </div>
             <div className={`Cards2_typeCart__description ${styles.cards2_typeCart__description}`}>
-                {template(field_description, object)}
+                {description}
             </div>
             <div className={`Cards2_typeCart__price ${styles.cards2_typeCart__price}`}>
-                {template(field_price, object)}
+                {price}
             </div>
             <CartControls />
         </div>
