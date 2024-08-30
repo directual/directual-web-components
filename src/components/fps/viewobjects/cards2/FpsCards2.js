@@ -55,12 +55,12 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, template, id, currentBP,
                     borderRadius: card_border_radius
                 }}
                 className={`FPS_CARDS2__CARD ${styles.cards2_card}`}>
-                <Card 
-                    key={object.id} 
-                    data={data} 
+                <Card
+                    key={object.id}
+                    data={data}
                     object={object}
                     template={template}
-                    />
+                />
             </div>)}
 
         </div>}
@@ -81,24 +81,28 @@ function Card(props) {
     const cardType = _.get(data, "params.card_layout_type")
     const card_padding = _.get(data, "params.card_padding", 12)
     const image_shape = _.get(data, "params.card_type_cart.image_shape")
-    const field_image = _.get(data, "params.card_type_cart.image")
     const image_padding = _.get(data, "params.card_type_cart.image_padding", 0)
     const image_border_radius = _.get(data, "params.card_type_cart.image_border_radius", 0)
 
     const field_header = _.get(data, "params.card_type_cart.header")
+    const field_image = _.get(data, "params.card_type_cart.image")
     const field_description = _.get(data, "params.card_type_cart.description")
     const field_price = _.get(data, "params.card_type_cart.price")
 
-    const [header,setHeader] = useState("loading...")
-    const [image,setImage] = useState("loading...")
-    const [description,setDescription] = useState("loading...")
-    const [price,setPrice] = useState("loading...")
+    const [header, setHeader] = useState("loading...")
+    const [image, setImage] = useState("loading...")
+    const [description, setDescription] = useState("loading...")
+    const [price, setPrice] = useState("loading...")
 
     useEffect(() => {
-        template && template(field_image, object, setHeader )
-        template && template(field_description, object, setImage)
-        template && template(field_header, object, setDescription)
-        template && template(field_price, object, setPrice)
+        const fetchData = async (payload, setValue) => {
+            const templValue = await template(payload, object);
+            setValue(templValue);
+        };
+        fetchData(field_header,setHeader);
+        fetchData(field_image,setImage);
+        fetchData(field_description,setDescription);
+        fetchData(field_price,setPrice);
     }, [])
 
     if (cardType == "cart") return <div
