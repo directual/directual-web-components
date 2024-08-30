@@ -59,7 +59,7 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, template, id, currentBP,
                     key={object.id} 
                     data={data} 
                     object={object}
-                    template={(input, templateDate) => template ? template(input, templateDate) : 'Template engine error'}
+                    template={(input, templateDate) => template ? JSON.stringify(template(input, templateDate)) : 'Template engine error'}
                     />
             </div>)}
 
