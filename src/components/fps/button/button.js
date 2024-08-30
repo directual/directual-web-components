@@ -18,7 +18,8 @@ export default function Button(props) {
                         !props.disabled && props.onClick && props.onClick(e)
                     }}
                     style={{
-                        height: props.height || 48
+                        height: props.height || 48,
+                        width: props.width || "auto"
                     }}
                     className={`${styles.button} FPS_BUTTON
                         ${props.small && styles.small}

@@ -17,83 +17,437 @@ export default {
 };
 
 let exampleTable = {
+    "sl": "cart",
+    "pageSize": "10",
+    "headerField": null,
     "params": {
-        "comp_ID": "UgVgHL",
-        "cards_title": "Корзинка",
-        "general": {
-            "showObjCount": true
-        },
+        "comp_ID": "1YBKAG",
+        "cards_title": "Хей хой!",
         "cards_layout": "grid",
         "card_layout_type": "cart",
+        "card_border": 1,
+        "grid_layout__gap": 12,
+        "card_border_radius": 12,
+        "card_padding": 12,
         "card_type_cart": {
             "image_shape": "rect",
-            "image_height": 80,
+            "image_height": 150,
+            "image_width": 100,
+            "image_padding": 12,
+            "image_border_radius": 8,
+            "image": "{{item_id.image}}",
             "header": "{{item_id.title}}",
             "description": "{{item_id.description}}",
-            "price": "{{item_id.price}}",
+            "price": "{{quantity}} x {{item_id.price}} ₽",
             "quantity": "quantity",
             "isDeleted": "isDeleted"
         }
     },
-    "sl": "cart",
-    "__libs__": [
-        "https://api.alfa.directual.com/fileUploaded/directual-site/65343282-baff-4f5b-816b-6976c77f0a66.js"
-    ],
-    "__header__": "",
-    "__initialize__": null,
-    "__update__": null,
-    "__destroy__": null,
-    "__data__": {
-        "sl": [
-            {
-                "item_id": {
-                    "image": "https://api.alfa.directual.com/fileUploaded/new-cards/a1c74623-ea51-46e5-bae5-78a29f9eb5af.webp",
-                    "description": "C-3PO longs for more peaceful times, but his continued service to the Resistance — and his knowledge of more than seven million forms of communication — keeps the worry-prone droid in the frontlines of galactic conflict. Programmed for etiquette and protocol, Threepio was built by a young Anakin Skywalker, and has been a constant companion to astromech R2-D2. Over the years, he was involved in some of the galaxy’s most defining moments and thrilling battles. Since the Empire’s defeat, C-3PO has served Leia Organa, head of a Resistance spy ring aimed at undermining the First Order.",
-                    "price": 12,
-                    "id": "c3po",
-                    "title": "C-3PO"
-                },
-                "quantity": 3,
-                "id": "8657b3a5-3f79-430c-b4c4-6a1b68a4679f"
-            },
-            {
-                "item_id": {
-                    "image": "https://api.alfa.directual.com/fileUploaded/new-cards/a1c74623-ea51-46e5-bae5-78a29f9eb5af.webp",
-                    "description": "C-3PO longs for more peaceful times, but his continued service to the Resistance — and his knowledge of more than seven million forms of communication — keeps the worry-prone droid in the frontlines of galactic conflict. Programmed for etiquette and protocol, Threepio was built by a young Anakin Skywalker, and has been a constant companion to astromech R2-D2. Over the years, he was involved in some of the galaxy’s most defining moments and thrilling battles. Since the Empire’s defeat, C-3PO has served Leia Organa, head of a Resistance spy ring aimed at undermining the First Order.",
-                    "price": 12,
-                    "id": "c3po",
-                    "title": "C-3PO"
-                },
-                "quantity": 1,
-                "id": "befc3ba3-1404-4bfe-ad95-040f0484dcd8"
-            },
-            {
-                "item_id": {
-                    "image": "https://api.alfa.directual.com/fileUploaded/new-cards/a1c74623-ea51-46e5-bae5-78a29f9eb5af.webp",
-                    "description": "C-3PO longs for more peaceful times, but his continued service to the Resistance — and his knowledge of more than seven million forms of communication — keeps the worry-prone droid in the frontlines of galactic conflict. Programmed for etiquette and protocol, Threepio was built by a young Anakin Skywalker, and has been a constant companion to astromech R2-D2. Over the years, he was involved in some of the galaxy’s most defining moments and thrilling battles. Since the Empire’s defeat, C-3PO has served Leia Organa, head of a Resistance spy ring aimed at undermining the First Order.",
-                    "price": 12,
-                    "id": "c3po",
-                    "title": "C-3PO"
-                },
-                "quantity": 5,
-                "id": "ee62e95a-d87e-4306-9dfb-15e2e909e8c7"
-            },
-            {
-                "quantity": 2,
-                "item_id": {
-                    "image": "https://api.alfa.directual.com/fileUploaded/new-cards/a1c74623-ea51-46e5-bae5-78a29f9eb5af.webp",
-                    "description": "C-3PO longs for more peaceful times, but his continued service to the Resistance — and his knowledge of more than seven million forms of communication — keeps the worry-prone droid in the frontlines of galactic conflict. Programmed for etiquette and protocol, Threepio was built by a young Anakin Skywalker, and has been a constant companion to astromech R2-D2. Over the years, he was involved in some of the galaxy’s most defining moments and thrilling battles. Since the Empire’s defeat, C-3PO has served Leia Organa, head of a Resistance spy ring aimed at undermining the First Order.",
-                    "price": 12,
-                    "id": "c3po",
-                    "title": "C-3PO"
-                },
-                "id": "97d3fdc3-1738-48e5-ac32-2b1105b26bfc"
-            }
-        ],
-        "_api_": {
-            "sl": "https://api.directual.com/good/api/v5/data/cart_items/cart?appID=b4269309-9f7e-4072-9246-8003bc608a08"
+    "tableTitle": null,
+    "actions": null,
+    "headers": [
+        {
+            "sysName": "id",
+            "dataType": "id",
+            "name": "id",
+            "id": "0",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "item_id",
+            "dataType": "link",
+            "name": "",
+            "id": "50021724742679567",
+            "link": "cards",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "quantity",
+            "dataType": "number",
+            "name": "",
+            "id": "41441724742629245",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "positiveNum",
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "isDeleted",
+            "dataType": "boolean",
+            "name": "",
+            "id": "45611724743949253",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
         }
-    }
+    ],
+    "data": [
+        {
+            "item_id": {
+                "image": "https://api.alfa.directual.com/fileUploaded/new-cards/a1c74623-ea51-46e5-bae5-78a29f9eb5af.webp",
+                "description": "C-3PO longs for more peaceful times, but his continued service to the Resistance — and his knowledge of more than seven million forms of communication — keeps the worry-prone droid in the frontlines of galactic conflict. Programmed for etiquette and protocol, Threepio was built by a young Anakin Skywalker, and has been a constant companion to astromech R2-D2. Over the years, he was involved in some of the galaxy’s most defining moments and thrilling battles. Since the Empire’s defeat, C-3PO has served Leia Organa, head of a Resistance spy ring aimed at undermining the First Order.",
+                "price": 12,
+                "id": "c3po",
+                "title": "C-3PO"
+            },
+            "quantity": 3,
+            "id": "8657b3a5-3f79-430c-b4c4-6a1b68a4679f"
+        },
+        {
+            "item_id": {
+                "image": "https://api.alfa.directual.com/fileUploaded/new-cards/a1c74623-ea51-46e5-bae5-78a29f9eb5af.webp",
+                "description": "C-3PO longs for more peaceful times, but his continued service to the Resistance — and his knowledge of more than seven million forms of communication — keeps the worry-prone droid in the frontlines of galactic conflict. Programmed for etiquette and protocol, Threepio was built by a young Anakin Skywalker, and has been a constant companion to astromech R2-D2. Over the years, he was involved in some of the galaxy’s most defining moments and thrilling battles. Since the Empire’s defeat, C-3PO has served Leia Organa, head of a Resistance spy ring aimed at undermining the First Order.",
+                "price": 12,
+                "id": "c3po",
+                "title": "C-3PO"
+            },
+            "quantity": 1,
+            "id": "befc3ba3-1404-4bfe-ad95-040f0484dcd8"
+        },
+        {
+            "item_id": {
+                "image": "https://api.alfa.directual.com/fileUploaded/new-cards/a1c74623-ea51-46e5-bae5-78a29f9eb5af.webp",
+                "description": "C-3PO longs for more peaceful times, but his continued service to the Resistance — and his knowledge of more than seven million forms of communication — keeps the worry-prone droid in the frontlines of galactic conflict. Programmed for etiquette and protocol, Threepio was built by a young Anakin Skywalker, and has been a constant companion to astromech R2-D2. Over the years, he was involved in some of the galaxy’s most defining moments and thrilling battles. Since the Empire’s defeat, C-3PO has served Leia Organa, head of a Resistance spy ring aimed at undermining the First Order.",
+                "price": 12,
+                "id": "c3po",
+                "title": "C-3PO"
+            },
+            "quantity": 5,
+            "id": "ee62e95a-d87e-4306-9dfb-15e2e909e8c7"
+        },
+        {
+            "quantity": 2,
+            "item_id": {
+                "image": "https://api.alfa.directual.com/fileUploaded/new-cards/a1c74623-ea51-46e5-bae5-78a29f9eb5af.webp",
+                "description": "C-3PO longs for more peaceful times, but his continued service to the Resistance — and his knowledge of more than seven million forms of communication — keeps the worry-prone droid in the frontlines of galactic conflict. Programmed for etiquette and protocol, Threepio was built by a young Anakin Skywalker, and has been a constant companion to astromech R2-D2. Over the years, he was involved in some of the galaxy’s most defining moments and thrilling battles. Since the Empire’s defeat, C-3PO has served Leia Organa, head of a Resistance spy ring aimed at undermining the First Order.",
+                "price": 12,
+                "id": "c3po",
+                "title": "C-3PO"
+            },
+            "id": "97d3fdc3-1738-48e5-ac32-2b1105b26bfc"
+        }
+    ],
+    "totalPages": 1,
+    "pageNumber": 0,
+    "error": null,
+    "fieldScheme": [
+        [
+            "id",
+            99339473
+        ],
+        [
+            "item_id.id",
+            99339472
+        ],
+        [
+            "item_id.price",
+            99339472
+        ],
+        [
+            "item_id.image",
+            99339472
+        ],
+        [
+            "item_id.description",
+            99339472
+        ],
+        [
+            "item_id.title",
+            99339472
+        ],
+        [
+            "quantity",
+            99339473
+        ],
+        [
+            "isDeleted",
+            99339473
+        ]
+    ],
+    "writeFields": [
+        "id",
+        "quantity",
+        "isDeleted"
+    ],
+    "structures": {
+        "99339472": {
+            "id": 99339472,
+            "dateCreated": "2024-08-27T07:07:48Z",
+            "hidden": false,
+            "dateHidden": null,
+            "networkID": 21836,
+            "name": "CARDS",
+            "sysName": "cards",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"title\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"74991724742535513\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"36491724742538019\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"image\",\"dataType\":\"file\",\"name\":\"\",\"id\":\"26671724742541202\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"price\",\"dataType\":\"number\",\"name\":\"\",\"id\":\"21351724742610679\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": null,
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": false,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2024-08-27T07:10:18Z",
+            "createBy": 21,
+            "changedBy": 21,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            "folderId": null
+        },
+        "99339473": {
+            "id": 99339473,
+            "dateCreated": "2024-08-27T07:10:04Z",
+            "hidden": false,
+            "dateHidden": null,
+            "networkID": 21836,
+            "name": "cart items",
+            "sysName": "cart_items",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"quantity\",\"dataType\":\"number\",\"name\":\"\",\"id\":\"41441724742629245\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isDeleted\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"45611724743949253\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"item_id\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"50021724742679567\",\"link\":\"cards\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": null,
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2024-08-27T07:32:35Z",
+            "createBy": 21,
+            "changedBy": 21,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
+                "indexExists": false,
+                "array": false
+            },
+            "folderId": null
+        }
+    },
+    "isSuccessWrite": false,
+    "writeError": null,
+    "writeResponse": null,
+    "fileds": [
+        {
+            "sysName": "id",
+            "dataType": "id",
+            "name": "id",
+            "id": "0",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "quantity",
+            "dataType": "number",
+            "name": "",
+            "id": "41441724742629245",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "positiveNum",
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "isDeleted",
+            "dataType": "boolean",
+            "name": "",
+            "id": "45611724743949253",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        }
+    ],
+    "quickSearch": null,
+    "httpParams": null,
+    "cardCustomHtml": null,
+    "cardCustomLayout": null,
+    "comment": null,
+    "response": false
 }
 
 let authExample = {
