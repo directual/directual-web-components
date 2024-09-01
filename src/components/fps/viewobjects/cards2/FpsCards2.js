@@ -165,7 +165,6 @@ function Card(props) {
     }, [])
 
     const changeQuantity = (count) => {
-        alert('Change!')
         callEndpointPOST(_.get(data, "sl"), { id: object.id, [field_quantity]: count })
     }
 
