@@ -5,8 +5,9 @@ import icon from './../../../../icons/fps-cards.svg'
 import _ from 'lodash'
 import Button from '../../button/button';
 import Input, { InputRow } from '../../dataentry/input/input';
+import { debounce } from 'lodash'
 
-function FpsCards2({ auth, data, onEvent, callEndpoint, template, id, currentBP, locale, handleRoute }) {
+function FpsCards2({ auth, data, onEvent, callEndpoint, templateEngine, id, currentBP, locale, handleRoute }) {
 
     console.log("== FpsCards2 data ===")
     console.log(data)
@@ -29,6 +30,68 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, template, id, currentBP,
         mobile: _.get(data, "params.grid_layout__mobile", 1),
     }
     const grid_layout__gap = _.get(data, "params.grid_layout__gap", 22)
+    const field_quantity = _.get(data, "params.card_type_cart.quantity")
+
+    // edit object from card
+
+    const callEndpointPOST = (endpoint, body, finish) => {
+        console.log('===> calling endpoint /' + endpoint)
+        console.log(body)
+        callEndpoint && callEndpoint(
+            endpoint,
+            "POST",
+            body,
+            undefined,
+            (result, data) => {
+                if (result == "ok") {
+                    console.log('finish')
+                    console.log(data)
+                    //   try {
+                    //     console.log("response data")
+                    //     console.log(data)
+                    //     const response = JSON.parse(data)
+                    //     // update state
+                    //     if (!isEmpty(_.get(response, "state"))) {
+                    //       const stateUpdate = _.get(response, "state")
+                    //       setState({ ...state, ...stateUpdate })
+                    //     }
+                    //     // update model/object
+                    //     if (!isEmpty(_.get(response, "object"))) {
+                    //       const modelUpdate = _.get(response, "object")
+                    //       setModel({ ...model, ...modelUpdate })
+                    //     }
+                    //     if (!isEmpty(_.get(response, "model"))) {
+                    //       const modelUpdate = _.get(response, "model")
+                    //       setModel({ ...model, ...modelUpdate })
+                    //     }
+                    //     if (!isEmpty(_.get(response, "redirect")) &&
+                    //       !isEmpty(_.get(response, "redirect.target"))) {
+                    //       let delay = 0
+                    //       if (!isEmpty(_.get(response, "redirect.delay"))) {
+                    //         delay = typeof _.get(response, "redirect.delay") == 'number' ? _.get(response, "redirect.delay") : parseInt(_.get(response, "redirect.delay"))
+                    //       }
+                    //       let target = _.get(response, "redirect.target")
+                    //       setTimeout(() => {
+                    //         if (target.startsWith("http")) {
+                    //           window.location.href = target;
+                    //         } else {
+                    //           handleRoute(target)()
+                    //         }
+                    //       }, delay)
+                    //     }
+                    //     // refresh
+                    //     if (_.get(response, "refresh")) {
+                    //       refreshOptions()
+                    //     }
+                    //   } catch (err) {
+                    //     console.log(err)
+                    //   }
+                } else {
+                    console.log('callEndpoint result is not OK')
+                }
+            }
+        )
+    }
 
     return <div className={`FPS_CARDS2 ${styles.cards2}`}>
 
@@ -46,21 +109,24 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, template, id, currentBP,
                 gridTemplateColumns: _.join(_.times(breakPoints[currentBP], _.constant('1fr')), ' ')
             }}
         >
-            {objects.map(object => <div
-                style={(!card_border_radius && card_border_radius !== 0) ? {
-                    borderWidth: card_border,
-                } : {
-                    borderWidth: card_border,
-                    borderRadius: card_border_radius
-                }}
-                className={`FPS_CARDS2__CARD ${styles.cards2_card}`}>
-                <Card
-                    key={object.id}
-                    data={data}
-                    object={object}
-                    template={template}
-                />
-            </div>)}
+            {objects
+                .filter(object => !!_.get(object, field_quantity, 1)) // filter items with quantity == 0
+                .map(object => <div
+                    style={(!card_border_radius && card_border_radius !== 0) ? {
+                        borderWidth: card_border,
+                    } : {
+                        borderWidth: card_border,
+                        borderRadius: card_border_radius
+                    }}
+                    className={`FPS_CARDS2__CARD ${styles.cards2_card}`}>
+                    <Card
+                        key={object.id}
+                        data={data}
+                        callEndpointPOST={callEndpointPOST}
+                        object={object}
+                        templateEngine={templateEngine}
+                    />
+                </div>)}
 
         </div>}
     </div>
@@ -68,7 +134,7 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, template, id, currentBP,
 
 function Card(props) {
 
-    const { object, data, template } = props
+    const { object, data, templateEngine, callEndpointPOST } = props
 
     const cardType = _.get(data, "params.card_layout_type")
     const card_padding = _.get(data, "params.card_padding", 12)
@@ -80,6 +146,7 @@ function Card(props) {
     const field_image = _.get(data, "params.card_type_cart.image")
     const field_description = _.get(data, "params.card_type_cart.description")
     const field_price = _.get(data, "params.card_type_cart.price")
+    const field_quantity = _.get(data, "params.card_type_cart.quantity")
 
     const [header, setHeader] = useState("loading...")
     const [image, setImage] = useState("loading...")
@@ -88,14 +155,22 @@ function Card(props) {
 
     useEffect(() => {
         const fetchData = async (payload, setValue) => {
-            const templValue = await template(payload, object);
+            const templValue = await templateEngine(payload, object);
             setValue(templValue);
         };
-        fetchData(field_header,setHeader);
-        fetchData(field_image,setImage);
-        fetchData(field_description,setDescription);
-        fetchData(field_price,setPrice);
+        fetchData(field_header, setHeader);
+        fetchData(field_image, setImage);
+        fetchData(field_description, setDescription);
+        fetchData(field_price, setPrice);
     }, [])
+
+    const changeQuantity = (count) => {
+        alert('Change!')
+        callEndpointPOST(_.get(data, "sl"), { id: object.id, [field_quantity]: count })
+    }
+
+    const cx = null
+    const onChangeQuantity = debounce(changeQuantity, 2000);
 
     if (cardType == "cart") return <div
         className={`Cards2_typeCart ${styles.cards2_typeCart}`}>
@@ -127,7 +202,10 @@ function Card(props) {
             <div className={`Cards2_typeCart__price ${styles.cards2_typeCart__price}`}>
                 {price}
             </div>
-            <CartControls />
+            <CartControls
+                object={object}
+                quantity={_.get(object, field_quantity, 1)}
+                changeQuantity={onChangeQuantity} />
         </div>
     </div>
 
@@ -138,7 +216,9 @@ function Card(props) {
 
 function CartControls(props) {
 
-    const [count, setCount] = useState(1)
+    const { object, changeQuantity, quantity } = props
+
+    const [count, setCount] = useState(quantity)
 
     const saveCount = val => {
         setCount(val)
@@ -155,6 +235,10 @@ function CartControls(props) {
     const substrCount = () => {
         count > 0 && setCount(count - 1)
     }
+
+    useEffect(() => {
+        count !== quantity && changeQuantity(count)
+    }, [count])
 
     return <div className={`Cards2_typeCart__controls ${styles.cards2_typeCart__controls}`}>
         <div onClick={substrCount}
