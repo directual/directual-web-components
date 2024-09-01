@@ -11,10 +11,8 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, template, id, currentBP,
     console.log("== FpsCards2 data ===")
     console.log(data)
 
-    currentBP = currentBP || 'mobile' // костылек, чтобы хоть какой-то BP передавался
-    //currentBP = 'tablet'
-    //currentBP = 'mobile'
-    console.log("currentBP = " + currentBP)
+    currentBP = currentBP || 'tablet' // костылек, чтобы хоть какой-то BP передавался
+    //console.log("currentBP = " + currentBP)
 
     const title = _.get(data, "params.cards_title")
     const showCounter = _.get(data, "params.general.showObjCount")
@@ -25,8 +23,9 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, template, id, currentBP,
 
     // grid settings
     const breakPoints = {
-        desktop: _.get(data, "params.grid_layout__desktop", 4),
-        tablet: _.get(data, "params.grid_layout__tablet", 3),
+        wideDesktop: _.get(data, "params.grid_layout__wideDesktop", 4),
+        desktop: _.get(data, "params.grid_layout__desktop", 3),
+        tablet: _.get(data, "params.grid_layout__tablet", 2),
         mobile: _.get(data, "params.grid_layout__mobile", 1),
     }
     const grid_layout__gap = _.get(data, "params.grid_layout__gap", 22)
@@ -66,13 +65,6 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, template, id, currentBP,
         </div>}
     </div>
 }
-
-// TO ADD:
-// card_type_cart.image_border_radius
-// card_type_cart.image_padding
-// card_border_radius
-// card_border
-// card_padding
 
 function Card(props) {
 
