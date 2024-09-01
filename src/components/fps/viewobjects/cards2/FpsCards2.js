@@ -6,6 +6,8 @@ import _ from 'lodash'
 import Button from '../../button/button';
 import Input, { InputRow } from '../../dataentry/input/input';
 import { debounce } from 'lodash'
+import { template } from '../../templating/template'
+import InnerHTML from 'dangerously-set-html-content'
 
 function FpsCards2({ auth, data, onEvent, callEndpoint, templateEngine, id, currentBP, locale, handleRoute }) {
 
@@ -151,7 +153,7 @@ function Card(props) {
     const [header, setHeader] = useState("loading...")
     const [image, setImage] = useState("loading...")
     const [description, setDescription] = useState("loading...")
-    const [price, setPrice] = useState("loading...")
+    //const [price, setPrice] = useState("loading...")
 
     useEffect(() => {
         const fetchData = async (payload, setValue) => {
@@ -161,7 +163,7 @@ function Card(props) {
         fetchData(field_header, setHeader);
         fetchData(field_image, setImage);
         fetchData(field_description, setDescription);
-        fetchData(field_price, setPrice);
+        //fetchData(field_price, setPrice);
     }, [])
 
     const changeQuantity = (count) => {
@@ -193,13 +195,13 @@ function Card(props) {
             }}
             className={`Cards2_typeCart__bodyWrapper ${styles.cards2_typeCart__bodyWrapper}`}>
             <div className={`Cards2_typeCart__header ${styles.cards2_typeCart__header}`}>
-                {header}
+                <InnerHTML allowRerender={true} html={header} />
             </div>
             <div className={`Cards2_typeCart__description ${styles.cards2_typeCart__description}`}>
-                {description}
+                <InnerHTML allowRerender={true} html={description} />
             </div>
             <div className={`Cards2_typeCart__price ${styles.cards2_typeCart__price}`}>
-                {price}
+                <InnerHTML allowRerender={true} html={template(field_price, object)} />
             </div>
             <CartControls
                 object={object}

@@ -44,11 +44,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.cards2_typeCart__price {
-  font-size: var(--text-small-size);
-  font-weight: 600;
-  color: var(--label);
-}
 .cards2_typeCart__controls {
   margin-top: 10px;
   display: flex;
