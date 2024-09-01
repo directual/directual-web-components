@@ -150,18 +150,18 @@ function Card(props) {
     const field_price = _.get(data, "params.card_type_cart.price")
     const field_quantity = _.get(data, "params.card_type_cart.quantity")
 
-    const [header, setHeader] = useState("loading...")
-    const [image, setImage] = useState("loading...")
     const [description, setDescription] = useState("loading...")
-    //const [price, setPrice] = useState("loading...")
+    // const [header, setHeader] = useState("loading...")
+    // const [image, setImage] = useState("loading...")
+    // const [price, setPrice] = useState("loading...")
 
     useEffect(() => {
         const fetchData = async (payload, setValue) => {
             const templValue = await templateEngine(payload, object);
             setValue(templValue);
         };
-        fetchData(field_header, setHeader);
-        fetchData(field_image, setImage);
+        //fetchData(field_header, setHeader);
+        //fetchData(field_image, setImage);
         fetchData(field_description, setDescription);
         //fetchData(field_price, setPrice);
     }, [])
@@ -185,7 +185,7 @@ function Card(props) {
                     overflow: "hidden",
                     margin: image_padding,
                     borderRadius: image_shape == "circle" ? "100%" : image_border_radius,
-                    backgroundImage: `url(${image})`
+                    backgroundImage: `url(${template(field_image, object)})`
                 }}
             />
         </div>}
@@ -195,7 +195,7 @@ function Card(props) {
             }}
             className={`Cards2_typeCart__bodyWrapper ${styles.cards2_typeCart__bodyWrapper}`}>
             <div className={`Cards2_typeCart__header ${styles.cards2_typeCart__header}`}>
-                <InnerHTML allowRerender={true} html={header} />
+                <InnerHTML allowRerender={true} html={template(field_header, object)} />
             </div>
             <div className={`Cards2_typeCart__description ${styles.cards2_typeCart__description}`}>
                 <InnerHTML allowRerender={true} html={description} />

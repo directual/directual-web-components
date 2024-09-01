@@ -147,6 +147,7 @@ function FieldText(props) {
         if (field._edit_state_type == "select") {
             return <Input nomargin
                 type="select"
+                bottomSelect={field._field_link_bottomSelect}
                 options={options}
                 label={field._edit_state_input_label || field._state_field}
                 defaultValue={_.get(state, field._state_field)}
@@ -156,6 +157,7 @@ function FieldText(props) {
         if (field._edit_state_type == "multiselect") {
             return <Input nomargin
                 type="multiselect"
+                bottomSelect={field._field_link_bottomSelect}
                 options={options}
                 label={field._edit_state_input_label || field._state_field}
                 defaultValue={_.get(state, field._state_field).split(",")}
@@ -594,6 +596,7 @@ export function FieldLink(props) {
         return <div><Input type="dinamicSelect"
             onLoad={refreshOptions}
             required={field._field_required}
+            bottomSelect={field._field_link_bottomSelect}
             //debug
             refresh={refresh}
             label={fieldInfo.name || fieldInfo.sysName}
@@ -617,6 +620,7 @@ export function FieldLink(props) {
         return <div><Input type="dinamicComplexSelect"
             onLoad={refreshOptions}
             required={field._field_required}
+            bottomSelect={field._field_link_bottomSelect}
             //debug
             refresh={refresh}
             label={fieldInfo.name || fieldInfo.sysName}
@@ -966,6 +970,7 @@ function FieldArrayLink(props) {
         return <div><Input type="dinamicMultiSelect"
             onLoad={refreshOptions}
             required={field._field_required}
+            bottomSelect={field._field_link_bottomSelect}
             refresh={refresh}
             //debug
             label={fieldInfo.name || fieldInfo.sysName}
