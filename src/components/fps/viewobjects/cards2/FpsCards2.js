@@ -171,7 +171,7 @@ function Card(props) {
     }
 
     const cx = null
-    const onChangeQuantity = debounce(changeQuantity, 2000);
+    const onChangeQuantity = debounce(changeQuantity, 500);
 
     if (cardType == "cart") return <div
         className={`Cards2_typeCart ${styles.cards2_typeCart}`}>
