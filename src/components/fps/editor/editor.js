@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback, useRef } from 'react'
 import EditorJS from '@editorjs/editorjs';
 import edjsParser from 'editorjs-parser'
 import ToolConfiguration from './editor-tools'
-import icon from './../../../icons/fps-form2.svg'
 import PropTypes, { object } from 'prop-types'
 import Button from '../button/button'
 import _ from 'lodash'
@@ -123,9 +122,9 @@ Editor.defaultProps = {
 };
 
 Editor.settings = {
-    icon: icon,
-    name: 'editor',
-    sysName: 'editor',
+    //icon: icon,
+    name: 'CustomEditor',
+    sysName: 'CustomEditor',
     isLegacy: false,
     isMarketplace: true
 };
