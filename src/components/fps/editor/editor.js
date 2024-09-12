@@ -94,6 +94,7 @@ export default function Editor(props) {
 
     return (
         <div className={`FPS_EDITOR_WRAPPER`}>
+            EDITOR
             <div>
                 <div id={EDITOR_HOLDER_ID}/>
             </div>
