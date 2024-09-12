@@ -123,8 +123,8 @@ Editor.defaultProps = {
 
 Editor.settings = {
     //icon: icon,
-    name: 'CustomEditor',
-    sysName: 'CustomEditor',
+    name: 'Editor',
+    sysName: 'Editor',
     isLegacy: false,
     isMarketplace: true
 };
