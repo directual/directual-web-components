@@ -92,6 +92,10 @@ export default function Editor(props) {
 		};
 	}, []);
 
+    if (typeof window == 'undefined') {
+        return <div />
+    }
+
     return (
         <div className={`FPS_EDITOR_WRAPPER`}>
             <div>
