@@ -79,18 +79,18 @@ export default function Editor(props) {
         return editor;
     };
 
-    useEffect(() => {
-		if (_.isNil(editorCore.current)) {
-			editorCore.current = initEditor();
-		}
+    // useEffect(() => {
+	// 	if (_.isNil(editorCore.current)) {
+	// 		editorCore.current = initEditor();
+	// 	}
 
-		return () => {
-			if (editorCore.current?.destroy) {
-				editorCore.current?.destroy();
-				editorCore.current = null;
-			}
-		};
-	}, []);
+	// 	return () => {
+	// 		if (editorCore.current?.destroy) {
+	// 			editorCore.current?.destroy();
+	// 			editorCore.current = null;
+	// 		}
+	// 	};
+	// }, []);
 
     if (typeof window == 'undefined') {
         return <div />
