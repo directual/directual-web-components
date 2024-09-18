@@ -57,7 +57,7 @@ import Colorpicker from './components/fps/dataentry/colorpicker/colorpicker'
 import Chart from './components/fps/chart/chart'
 import Comments from './components/fps/comments/comments'
 import FpsCarousel from './components/fps/carousel/FpsCarousel'
-import Editor from './components/fps/editor/editor'
+// import Editor from './components/fps/editor/editor'
 
 
 import FpsTheme, { SetTheme } from './components/fps/theme/theme'
@@ -66,7 +66,6 @@ export {
   Fps404,
   Fps400,
   Spacing,
-  Editor,
   Fps500,
   FpsCards2,
   FpsCarousel,
