@@ -284,8 +284,8 @@ export default function FpsForm2(props) {
       // { key: "isNotNull", value: "is NOT empty" },
       if (element._conditionalView_operator == "isNotNull") {
         if (_.isEmpty(field)) {
-          _.get(params, "general.showModel") && console.log("element is hidden")
-          _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " is NOT empty")
+          // _.get(params, "general.showModel") && console.log("element is hidden")
+          // _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " is NOT empty")
           isHidden = true
         }
       }
@@ -464,13 +464,19 @@ export default function FpsForm2(props) {
               // update state
               if (!isEmpty(_.get(response, "state"))) {
                 stateUpdate = _.get(response, "state") || {}
+                console.log("stateUpdate")
+                console.log(stateUpdate)
               }
               // update model
               if (!isEmpty(_.get(response, "model"))) {
                 modelUpdate = _.get(response, "model") || {}
+                console.log("modelUpdate")
+                console.log(modelUpdate)
               }
               if (!isEmpty(_.get(response, "object"))) {
                 modelUpdate = _.get(response, "object") || {}
+                console.log("modelUpdate")
+                console.log(modelUpdate)
               }
               // refresh
               if (_.get(response, "refresh")) {
@@ -505,6 +511,8 @@ export default function FpsForm2(props) {
             : setState({ ...saveState, step: targetStep || "submitted", ...stateUpdate })
 
           if (submitKeepModel && !resetModel) { modelUpdate = { ...model, ...modelToSend, ...modelUpdate } }
+          console.log("final modelUpdate")
+          console.log(modelUpdate)
           setModel(modelUpdate)
           setOriginalModel(modelUpdate)
         } else {
@@ -613,10 +621,10 @@ export default function FpsForm2(props) {
       const result = renderTemplate(preprocessedInput);
       return result;
     } catch (error) {
-      console.error("template error");
-      console.error(input);
-      console.error(templateData);
-      console.error('Error rendering template:', error);
+      console.warn("template error");
+      console.warn(input);
+      console.warn(templateData);
+      console.warn('Error rendering template:', error);
       return '';
     }
   }
