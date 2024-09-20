@@ -266,7 +266,7 @@ export default function FpsForm2(props) {
         console.log(value)
         value = value ? value.split(",") : null
         field = field ? field.split(",") : null
-       
+
         if ((field && field.length > 0 &&
           value && value.length > 0
           && _.intersection(value, field).length > 0) || !field || !value) {
@@ -588,7 +588,6 @@ export default function FpsForm2(props) {
       return value;
     });
 
-    // Function to convert object references to their desired string representation paths
     const preprocessTemplate = (str, data) => {
       const regex = /{{\s*([\w.]+)\s*}}/g;
       return str.replace(regex, (match, p1) => {
@@ -608,11 +607,23 @@ export default function FpsForm2(props) {
     };
     templateData = replaceNullWithEmptyString(templateData)
 
-    // подпорка для Ламоды!
-    // убрать когда переедем на серверный шаблонизатор!
-    if (!_.get(templateData,"user_creator.webuser_id.whom_delegate_ids")) {
-      _.set(templateData,"user_creator.webuser_id.whom_delegate_ids","")
+    function extractStringsWithinBraces(str) {
+      // Regular expression to match strings within {{}}
+      const matches = str.match(/\{\{(.*?)\}\}/g);
+      // If there are matches, remove the curly braces and return the result
+      if (matches) {
+        return matches.map(match => match.replace(/\{\{|\}\}/g, '').trim());
+      }
+      // Return an empty array if no matches found
+      return [];
     }
+    (extractStringsWithinBraces(input) || []).forEach(i => {
+      if (!_.get(templateData, i)) {
+        _.set(templateData, i, "")
+      }
+    })
+
+
     // =============
 
     const preprocessedInput = preprocessTemplate(input, templateData);
