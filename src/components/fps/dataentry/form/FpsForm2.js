@@ -263,11 +263,12 @@ export default function FpsForm2(props) {
       if (element._conditionalView_operator == "notIn") {
         value = value ? value.split(",") : null
         field = field ? field.split(",") : null
+        console.log(" == element is hidden == NOT IN")
+        console.log(element)
         if ((field && field.length > 0 &&
           value && value.length > 0
           && _.intersection(value, field).length > 0) || !field || !value) {
-          // console.log("element is hidden")
-          // console.log(value + " contains " + "{{" + element._conditionalView_field + "}} → " + field)
+          console.log(value + " contains " + "{{" + element._conditionalView_field + "}} → " + field)
           isHidden = true
         }
       }
@@ -838,8 +839,8 @@ function RenderStep(props) {
 
 
   const callEndpointPOST = (endpoint, body, finish) => {
-    console.log('===> calling endpoint /' + endpoint)
-    console.log(body)
+    // console.log('===> calling endpoint /' + endpoint)
+    // console.log(body)
     callEndpoint && callEndpoint(
       endpoint,
       "POST",
@@ -925,7 +926,7 @@ function RenderStep(props) {
       callEndpointPOST={callEndpointPOST}
       callEndpoint={(endpoint, params, finish, setOptions, setError) => {
         //params= {...params, _value: "a"} // убрать это для проверки корректности запроса!
-        console.log('===> calling endpoint /' + endpoint)
+        // console.log('===> calling endpoint /' + endpoint)
         // console.log(params)
         const transformedArray = (inputArray, visibleNames) => _.map(inputArray, (item) => {
           const parseJson = json => {
@@ -1016,8 +1017,8 @@ function RenderStep(props) {
         element={element}
         callEndpointPOST={callEndpointPOST}
         callEndpoint={(endpoint, params, finish, setOptions, setError) => {
-          console.log('===> calling endpoint /' + endpoint)
-          console.log(params)
+          // console.log('===> calling endpoint /' + endpoint)
+          // console.log(params)
           const transformedArray = (inputArray, visibleNames) => _.map(inputArray, (item) => {
             const parseJson = json => {
               if (!json) return {}
