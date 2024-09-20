@@ -261,14 +261,16 @@ export default function FpsForm2(props) {
 
       // { key: "notIn", value: "NOT in" }
       if (element._conditionalView_operator == "notIn") {
-        value = value ? value.split(",") : null
-        field = field ? field.split(",") : null
         console.log(" == element is hidden == NOT IN")
         console.log(element)
+        console.log(value)
+        value = value ? value.split(",") : null
+        field = field ? field.split(",") : null
+       
         if ((field && field.length > 0 &&
           value && value.length > 0
           && _.intersection(value, field).length > 0) || !field || !value) {
-          console.log(value + " contains " + "{{" + element._conditionalView_field + "}} → " + field)
+          console.log((value || []).join(",") + " contains " + "{{" + element._conditionalView_field + "}} → " + field)
           isHidden = true
         }
       }
@@ -605,6 +607,13 @@ export default function FpsForm2(props) {
       });
     };
     templateData = replaceNullWithEmptyString(templateData)
+
+    // подпорка для Ламоды!
+    // убрать когда переедем на серверный шаблонизатор!
+    if (!_.get(templateData,"user_creator.webuser_id.whom_delegate_ids")) {
+      _.set(templateData,"user_creator.webuser_id.whom_delegate_ids","")
+    }
+    // =============
 
     const preprocessedInput = preprocessTemplate(input, templateData);
 
