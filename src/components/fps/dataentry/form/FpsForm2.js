@@ -410,7 +410,11 @@ export default function FpsForm2(props) {
       .map('_field')
       .value();
 
+
     function excludeNonEmptyValues(obj, keys) {
+      console.log("excludeNonEmptyValues")
+      console.log(obj)
+      console.log(keys)
       const filteredKeys = _.pickBy(obj, (value, key) => {
         return !_.isEmpty((value || "").toString()); // Exclude keys with non-empty values
       });
@@ -431,6 +435,7 @@ export default function FpsForm2(props) {
       finish()
       return;
     }
+
 
     if (actionReq && emptyFields.length > 0) {
       emptyFields = emptyFields.map(i => {
@@ -506,8 +511,8 @@ export default function FpsForm2(props) {
             }
           }
           setLoading(false)
-          console.log("FINISH SUBMIT")
-          console.log(data)
+          // console.log("FINISH SUBMIT")
+          // console.log(data)
           finish && finish(data)
           let extendedModelUpdate = { ...extendedModel }
           autoSubmit ?
@@ -520,7 +525,7 @@ export default function FpsForm2(props) {
           console.log("final modelUpdate")
           console.log(modelUpdate)
           setModel(modelUpdate)
-          setExtendedModel(extendedModelUpdate)
+          // setExtendedModel(extendedModelUpdate)
           setOriginalModel(modelUpdate)
         } else {
           setState({ ...state, _apiError: data.msg })
@@ -889,14 +894,13 @@ function RenderStep(props) {
               const modelUpdate = _.get(response, "object")
               setModel({ ...model, ...modelUpdate })
               setOriginalModel({ ...model, ...modelUpdate })
-              setExtendedModel({ ...extendedModel, ...modelUpdate })
-
+              // setExtendedModel({ ...extendedModel, ...modelUpdate })
             }
             if (!isEmpty(_.get(response, "model"))) {
               const modelUpdate = _.get(response, "model")
               setModel({ ...model, ...modelUpdate })
               setOriginalModel({ ...model, ...modelUpdate })
-              setExtendedModel({ ...extendedModel, ...modelUpdate })
+              // setExtendedModel({ ...extendedModel, ...modelUpdate })
             }
             if (!isEmpty(_.get(response, "redirect")) &&
               !isEmpty(_.get(response, "redirect.target"))) {

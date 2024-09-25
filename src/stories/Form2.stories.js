@@ -504,7 +504,589 @@ let exampleForm = {
                 ]
             },
             {
-                "id": "step_copy_1727083993937",
+                "id": "step_copy_1726139578959",
+                "sysName": "approval_out_hrbp",
+                "elements": [
+                    {
+                        "id": "elmnt_1726040565916",
+                        "type": "text",
+                        "paraText": "<b>Общие данные о переводе</b>"
+                    },
+                    {
+                        "id": "elmnt_1726040568221",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17260406078490.022004404043104003301343",
+                                "_field": "employee_name",
+                                "_field_link_type": "complexSelect",
+                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1726040626841",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1726040600291",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17260406498510.0031120303022104021434203",
+                                "_field": "current_direct_name",
+                                "_field_link_type": "complexSelect",
+                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1726040663730",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1726040671676",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17260406741410.33113103323333123304412",
+                                "_field": "planned_date",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1726040688242",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1726040697758",
+                        "type": "text",
+                        "paraText": "<b>Текущие данные по сотруднику</b>"
+                    },
+                    {
+                        "id": "elmnt_1726139945744",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17261399509360.23233222301113414324202",
+                                "_field": "company",
+                                "_field_required": true,
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "st_company",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1726140007449",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "notContains",
+                                        "_conditionalView_value": "st_hrbp"
+                                    },
+                                    {
+                                        "id": "condition_1726640645042",
+                                        "_conditionalView_field": "WebUser.id",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}}",
+                                        "_conditionalView_value_RAW": true
+                                    }
+                                ],
+                                "_action_conditionals_and_or": "OR"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1726139944505",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17261400449420.24300030143243141031321",
+                                "_field": "position_id",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1726140065875",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "notContains",
+                                        "_conditionalView_value": "st_hrbp"
+                                    },
+                                    {
+                                        "id": "condition_1726641036065",
+                                        "_conditionalView_field": "WebUser.id",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}}",
+                                        "_conditionalView_value_RAW": true
+                                    }
+                                ],
+                                "_action_conditionals_and_or": "OR"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1726040737501",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17260407451930.14341411222424303134003",
+                                "_field": "current_position",
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1726040805444",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull",
+                                        "_conditionalView_value": "st_hrbp"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1726040738773",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17260408195960.32041300442304243223301",
+                                "_field": "current_division",
+                                "_field_link_type": "complexSelect",
+                                "_field_arrayLink_endpoint": "divisionDropdown",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1726040859585",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull",
+                                        "_conditionalView_value": "st_hrbp"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1726640522813",
+                        "type": "text",
+                        "paraText": "<div class=\"form_label\">Организационная структура:</div>\n{{current_org_structure}}"
+                    },
+                    {
+                        "id": "elmnt_1726644534728",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17266445370370.42144130232143343031342",
+                                "_field": "analytics_ops",
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "analytics_for_ops",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1726644557661",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "notContains",
+                                        "_conditionalView_value": "st_hrbp"
+                                    },
+                                    {
+                                        "id": "condition_1726644559584",
+                                        "_conditionalView_field": "WebUser.id",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}}",
+                                        "_conditionalView_value_RAW": true
+                                    }
+                                ],
+                                "_action_conditionals_and_or": "OR"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1726040868442",
+                        "type": "text",
+                        "paraText": "<b>Новые данные по сотруднику</b>"
+                    },
+                    {
+                        "id": "elmnt_1726040900634",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17260409027810.32012120130304431032131",
+                                "_field": "new_position",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1726040915145",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1726040901379",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17260409337130.34044234300421202120444",
+                                "_field": "new_division",
+                                "_field_link_type": "complexSelect",
+                                "_field_arrayLink_endpoint": "divisionDropdown",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1726040946656",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1726656518310",
+                        "type": "text",
+                        "paraText": "<div class=\"form_label\">Организационная структура:</div>\n{{new_org_structure}}"
+                    },
+                    {
+                        "id": "elmnt_1726140215089",
+                        "type": "text",
+                        "paraText": "<b>Текущие условия компенсации</b>"
+                    },
+                    {
+                        "id": "elmnt_1726140213974",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17261406779720.42330342322444101241032",
+                                "_field": "current_salary_with_rkisn",
+                                "_field_required": true,
+                                "_field_set_default": false,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1726140710257",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "notContains",
+                                        "_conditionalView_value": "st_hrbp"
+                                    },
+                                    {
+                                        "id": "condition_1726641180269",
+                                        "_conditionalView_field": "WebUser.id",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}}",
+                                        "_conditionalView_value_RAW": true
+                                    }
+                                ],
+                                "_action_conditionals_and_or": "OR",
+                                "_field_add_description": true,
+                                "_field_description_text": "например: 15000,55"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1726140214925",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17261402466010.30202232231102313241314",
+                                "_field": "period_bonus",
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "st_bonus",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1726140556234",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "notContains",
+                                        "_conditionalView_value": "st_hrbp"
+                                    },
+                                    {
+                                        "id": "condition_1726641119457",
+                                        "_conditionalView_field": "WebUser.id",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}}",
+                                        "_conditionalView_value_RAW": true
+                                    }
+                                ],
+                                "_action_conditionals_and_or": "OR"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1726140212896",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17261407345820.40101131300413230120004",
+                                "_field": "per_bonus",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1726140750266",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "notContains",
+                                        "_conditionalView_value": "st_hrbp"
+                                    },
+                                    {
+                                        "id": "condition_1726641242534",
+                                        "_conditionalView_field": "WebUser.id",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}}",
+                                        "_conditionalView_value_RAW": true
+                                    }
+                                ],
+                                "_action_conditionals_and_or": "OR",
+                                "_field_add_description": true,
+                                "_field_description_text": "например: 12(без процента)"
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1726140773505",
+                                "_conditionalView_field": "period_bonus",
+                                "_conditionalView_operator": "!==",
+                                "_conditionalView_value": "without_bonus"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1726140820029",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17261408219140.40311412313203400103412",
+                                "_field": "current_total_salary",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1726140832626",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1726040955528",
+                        "type": "text",
+                        "paraText": "<b>Согласующие лица</b>"
+                    },
+                    {
+                        "id": "elmnt_1726040992596",
+                        "type": "input",
+                        "_actions": [
+                            {
+                                "id": "17260410272230.11040442112144113000233"
+                            }
+                        ],
+                        "_input_fields": [
+                            {
+                                "id": "17260410288100.03430142330212410110333",
+                                "_field": "current_hrbp",
+                                "_field_link_type": "complexSelect",
+                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1726041053030",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "notContains",
+                                        "_conditionalView_value": "st_hrbp"
+                                    },
+                                    {
+                                        "id": "condition_1726644782463",
+                                        "_conditionalView_field": "WebUser.id",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "{{responsible_employee_id.webuser_id.whom_delegate_ids}},{{responsible_employee_id.webuser_id.id}}",
+                                        "_conditionalView_value_RAW": true
+                                    }
+                                ],
+                                "_action_conditionals_and_or": "OR"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1726644817335",
+                        "type": "action",
+                        "_actions": [
+                            {
+                                "id": "17266448219070.103213000213012203344341",
+                                "_action": "action_1726644921945",
+                                "_action_button_type": "accent",
+                                "_action_icon": "gates",
+                                "_action_oneTime": true,
+                                "_action_oneTime_message": "Новый ответственный назначен",
+                                "_action_addTooltip": true,
+                                "_action_addTooltip_text": "если согласование данной заявки не входит в твою зону ответственности, то проверь матрицу и переназначь",
+                                "_conditionalView": true,
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1726657419319",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "notContains",
+                                        "_conditionalView_value": "st_hrbp"
+                                    },
+                                    {
+                                        "id": "condition_1726657530854",
+                                        "_conditionalView_field": "WebUser.id",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "{{responsible_employee_id.webuser_id.whom_delegate_ids}},{{responsible_employee_id.webuser_id.id}}",
+                                        "_conditionalView_value_RAW": true
+                                    }
+                                ],
+                                "_action_conditionals_and_or": "OR"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1726140860330",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17261408902280.10320242310224014214242",
+                                "_field": "new_up_direct",
+                                "_field_link_type": "complexSelect",
+                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1726140904060",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1727073054838",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17270734429980.22034004303120041342314",
+                                "_field": "add_approval_out",
+                                "_field_link_type": "complexSelect",
+                                "_field_arrayLink_endpoint": "st_add_approval",
+                                "_field_add_description": true,
+                                "_field_description_text": "при необходимости укажите HR директора направления",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1727073480782",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "notContains",
+                                        "_conditionalView_value": "st_hrbp"
+                                    },
+                                    {
+                                        "id": "condition_1727073521765",
+                                        "_conditionalView_field": "WebUser.id",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}}",
+                                        "_conditionalView_value_RAW": true
+                                    }
+                                ],
+                                "_action_conditionals_and_or": "OR"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1726140862257",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17261410312950.3114013431030304013414",
+                                "_field": "new_hrbp",
+                                "_field_link_type": "complexSelect",
+                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1726141048176",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "notContains",
+                                        "_conditionalView_value": "st_hrbp"
+                                    },
+                                    {
+                                        "id": "condition_1726644691208",
+                                        "_conditionalView_field": "WebUser.id",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}} ",
+                                        "_conditionalView_value_RAW": true
+                                    }
+                                ],
+                                "_action_conditionals_and_or": "OR"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1726141098274",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17261410998130.33241304321442303004334",
+                                "_field": "current_cnb",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1726141108328",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "notContains",
+                                        "_conditionalView_value": "st_hrbp"
+                                    },
+                                    {
+                                        "id": "condition_1726644717344",
+                                        "_conditionalView_field": "WebUser.id",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}}",
+                                        "_conditionalView_value_RAW": true
+                                    }
+                                ],
+                                "_field_link_type": "complexSelect",
+                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
+                                "_action_conditionals_and_or": "OR"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "step_copy_1727247879006",
                 "sysName": "add_approval_out",
                 "elements": [
                     {
@@ -936,43 +1518,6 @@ let exampleForm = {
                         ]
                     },
                     {
-                        "id": "elmnt_1726644817335",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17266448219070.103213000213012203344341",
-                                "_action": "action_1726644921945",
-                                "_action_button_type": "accent",
-                                "_action_icon": "gates",
-                                "_action_oneTime": true,
-                                "_action_oneTime_message": "Новый ответственный назначен",
-                                "_action_addTooltip": true,
-                                "_action_addTooltip_text": "если согласование данной заявки не входит в твою зону ответственности, то проверь матрицу и переназначь",
-                                "_conditionalView": true,
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1726657419319",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "st_hrbp"
-                                    },
-                                    {
-                                        "id": "condition_1726657530854",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR",
-                                "_action_customRequired": false,
-                                "_action_customRequired_fields": [
-                                    "current_hrbp"
-                                ]
-                            }
-                        ]
-                    },
-                    {
                         "id": "elmnt_1726140860330",
                         "type": "input",
                         "_input_fields": [
@@ -1022,42 +1567,6 @@ let exampleForm = {
                                     }
                                 ],
                                 "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1727073440513",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17270735675720.20123040143133211043443",
-                                "_field": "role_add_approval_out",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1727073598010",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "st_hrbp"
-                                    },
-                                    {
-                                        "id": "condition_1727073621147",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1727073642073",
-                                "_conditionalView_field": "add_approval_out",
-                                "_conditionalView_operator": "isNotNull"
                             }
                         ]
                     },
@@ -2035,42 +2544,6 @@ let exampleForm = {
                         "_conditionalView": false
                     },
                     {
-                        "id": "elmnt_1727073685230",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17270737678560.23344342002311203403433",
-                                "_field": "role_add_approval_in",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1727073778231",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "st_hrbp"
-                                    },
-                                    {
-                                        "id": "condition_1727073800646",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1727073823725",
-                                "_conditionalView_field": "add_approval_in",
-                                "_conditionalView_operator": "isNotNull"
-                            }
-                        ]
-                    },
-                    {
                         "id": "elmnt_1726655135493",
                         "type": "input",
                         "_input_fields": [
@@ -2144,625 +2617,7 @@ let exampleForm = {
                 ]
             },
             {
-                "id": "step_copy_1726139578959",
-                "sysName": "approval_out_hrbp",
-                "elements": [
-                    {
-                        "id": "elmnt_1726040565916",
-                        "type": "text",
-                        "paraText": "<b>Общие данные о переводе</b>"
-                    },
-                    {
-                        "id": "elmnt_1726040568221",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17260406078490.022004404043104003301343",
-                                "_field": "employee_name",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1726040626841",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1726040600291",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17260406498510.0031120303022104021434203",
-                                "_field": "current_direct_name",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1726040663730",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1726040671676",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17260406741410.33113103323333123304412",
-                                "_field": "planned_date",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1726040688242",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1726040697758",
-                        "type": "text",
-                        "paraText": "<b>Текущие данные по сотруднику</b>"
-                    },
-                    {
-                        "id": "elmnt_1726139945744",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17261399509360.23233222301113414324202",
-                                "_field": "company",
-                                "_field_required": true,
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "st_company",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1726140007449",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "st_hrbp"
-                                    },
-                                    {
-                                        "id": "condition_1726640645042",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1726139944505",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17261400449420.24300030143243141031321",
-                                "_field": "position_id",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1726140065875",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "st_hrbp"
-                                    },
-                                    {
-                                        "id": "condition_1726641036065",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1726040737501",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17260407451930.14341411222424303134003",
-                                "_field": "current_position",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1726040805444",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "st_hrbp"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1726040738773",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17260408195960.32041300442304243223301",
-                                "_field": "current_division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1726040859585",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "st_hrbp"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1726640522813",
-                        "type": "text",
-                        "paraText": "<div class=\"form_label\">Организационная структура:</div>\n{{current_org_structure}}"
-                    },
-                    {
-                        "id": "elmnt_1726644534728",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17266445370370.42144130232143343031342",
-                                "_field": "analytics_ops",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "analytics_for_ops",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1726644557661",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "st_hrbp"
-                                    },
-                                    {
-                                        "id": "condition_1726644559584",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1726040868442",
-                        "type": "text",
-                        "paraText": "<b>Новые данные по сотруднику</b>"
-                    },
-                    {
-                        "id": "elmnt_1726040900634",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17260409027810.32012120130304431032131",
-                                "_field": "new_position",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1726040915145",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1726040901379",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17260409337130.34044234300421202120444",
-                                "_field": "new_division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1726040946656",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1726656518310",
-                        "type": "text",
-                        "paraText": "<div class=\"form_label\">Организационная структура:</div>\n{{new_org_structure}}"
-                    },
-                    {
-                        "id": "elmnt_1726140215089",
-                        "type": "text",
-                        "paraText": "<b>Текущие условия компенсации</b>"
-                    },
-                    {
-                        "id": "elmnt_1726140213974",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17261406779720.42330342322444101241032",
-                                "_field": "current_salary_with_rkisn",
-                                "_field_required": true,
-                                "_field_set_default": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1726140710257",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "st_hrbp"
-                                    },
-                                    {
-                                        "id": "condition_1726641180269",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_add_description": true,
-                                "_field_description_text": "например: 15000,55"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1726140214925",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17261402466010.30202232231102313241314",
-                                "_field": "period_bonus",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "st_bonus",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1726140556234",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "st_hrbp"
-                                    },
-                                    {
-                                        "id": "condition_1726641119457",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1726140212896",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17261407345820.40101131300413230120004",
-                                "_field": "per_bonus",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1726140750266",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "st_hrbp"
-                                    },
-                                    {
-                                        "id": "condition_1726641242534",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_add_description": true,
-                                "_field_description_text": "например: 12(без процента)"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1726140773505",
-                                "_conditionalView_field": "period_bonus",
-                                "_conditionalView_operator": "!==",
-                                "_conditionalView_value": "without_bonus"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1726140820029",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17261408219140.40311412313203400103412",
-                                "_field": "current_total_salary",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1726140832626",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1726040955528",
-                        "type": "text",
-                        "paraText": "<b>Согласующие лица</b>"
-                    },
-                    {
-                        "id": "elmnt_1726040992596",
-                        "type": "input",
-                        "_actions": [
-                            {
-                                "id": "17260410272230.11040442112144113000233"
-                            }
-                        ],
-                        "_input_fields": [
-                            {
-                                "id": "17260410288100.03430142330212410110333",
-                                "_field": "current_hrbp",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1726041053030",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "st_hrbp"
-                                    },
-                                    {
-                                        "id": "condition_1726644782463",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1726644817335",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17266448219070.103213000213012203344341",
-                                "_action": "action_1726644921945",
-                                "_action_button_type": "accent",
-                                "_action_icon": "gates",
-                                "_action_oneTime": true,
-                                "_action_oneTime_message": "Новый ответственный назначен",
-                                "_action_addTooltip": true,
-                                "_action_addTooltip_text": "если согласование данной заявки не входит в твою зону ответственности, то проверь матрицу и переназначь",
-                                "_conditionalView": true,
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1726657419319",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "st_hrbp"
-                                    },
-                                    {
-                                        "id": "condition_1726657530854",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1726140860330",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17261408902280.10320242310224014214242",
-                                "_field": "new_up_direct",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1726140904060",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1727073054838",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17270734429980.22034004303120041342314",
-                                "_field": "add_approval_out",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "st_add_approval",
-                                "_field_add_description": true,
-                                "_field_description_text": "при необходимости укажите HR директора направления",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1727073480782",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "st_hrbp"
-                                    },
-                                    {
-                                        "id": "condition_1727073521765",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1727073440513",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17270735675720.20123040143133211043443",
-                                "_field": "role_add_approval_out",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1727073598010",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "st_hrbp"
-                                    },
-                                    {
-                                        "id": "condition_1727073621147",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1727073642073",
-                                "_conditionalView_field": "add_approval_out",
-                                "_conditionalView_operator": "isNotNull"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1726140862257",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17261410312950.3114013431030304013414",
-                                "_field": "new_hrbp",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1726141048176",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "st_hrbp"
-                                    },
-                                    {
-                                        "id": "condition_1726644691208",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}} ",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1726141098274",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17261410998130.33241304321442303004334",
-                                "_field": "current_cnb",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1726141108328",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "st_hrbp"
-                                    },
-                                    {
-                                        "id": "condition_1726644717344",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "id": "step_copy_1727084105505",
+                "id": "step_copy_1727247956508",
                 "sysName": "add_approval_in",
                 "elements": [
                     {
@@ -3605,39 +3460,6 @@ let exampleForm = {
                         ]
                     },
                     {
-                        "id": "elmnt_1726655142061",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17266551453330.43201024012432131411122",
-                                "_action": "action_1726644921945",
-                                "_action_icon": "gates",
-                                "_action_button_type": "accent",
-                                "_action_oneTime": true,
-                                "_action_addTooltip": true,
-                                "_conditionalView": true,
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1726655173683",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "st_hrbp"
-                                    },
-                                    {
-                                        "id": "condition_1726655188819",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{new_hrbp.webuser_id.whom_delegate_ids}},{{new_hrbp.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR",
-                                "_action_addTooltip_text": "если согласование данной заявки не входит в твою зону ответственности, то проверь матрицу и переназначь",
-                                "_action_oneTime_message": "Новый ответственный назначен"
-                            }
-                        ]
-                    },
-                    {
                         "id": "elmnt_1727073683672",
                         "type": "input",
                         "_input_fields": [
@@ -3669,42 +3491,6 @@ let exampleForm = {
                             }
                         ],
                         "_conditionalView": false
-                    },
-                    {
-                        "id": "elmnt_1727073685230",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17270737678560.23344342002311203403433",
-                                "_field": "role_add_approval_in",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1727073778231",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "st_hrbp"
-                                    },
-                                    {
-                                        "id": "condition_1727073800646",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{current_hrbp.webuser_id.whom_delegate_ids}},{{current_hrbp.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1727073823725",
-                                "_conditionalView_field": "add_approval_in",
-                                "_conditionalView_operator": "isNotNull"
-                            }
-                        ]
                     },
                     {
                         "id": "elmnt_1726655135493",
@@ -4332,8 +4118,15 @@ let exampleForm = {
                                     {
                                         "id": "condition_1726140710257",
                                         "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "st_cnb"
+                                        "_conditionalView_operator": "notContains",
+                                        "_conditionalView_value": "st_hrbp"
+                                    },
+                                    {
+                                        "id": "condition_1727254619394",
+                                        "_conditionalView_field": "WebUser.id",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "{{new_hrbp.webuser_id.whom_delegate_ids}},{{new_hrbp.webuser_id.id}} ",
+                                        "_conditionalView_value_RAW": true
                                     }
                                 ],
                                 "_action_conditionals_and_or": "OR"
@@ -4356,8 +4149,15 @@ let exampleForm = {
                                     {
                                         "id": "condition_1726140556234",
                                         "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "st_cnb"
+                                        "_conditionalView_operator": "notContains",
+                                        "_conditionalView_value": "st_hrbp"
+                                    },
+                                    {
+                                        "id": "condition_1727254665270",
+                                        "_conditionalView_field": "WebUser.id",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "{{new_hrbp.webuser_id.whom_delegate_ids}},{{new_hrbp.webuser_id.id}}",
+                                        "_conditionalView_value_RAW": true
                                     }
                                 ],
                                 "_action_conditionals_and_or": "OR"
@@ -4378,8 +4178,15 @@ let exampleForm = {
                                     {
                                         "id": "condition_1726140750266",
                                         "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "st_cnb"
+                                        "_conditionalView_operator": "notContains",
+                                        "_conditionalView_value": "st_hrbp"
+                                    },
+                                    {
+                                        "id": "condition_1727254708041",
+                                        "_conditionalView_field": "WebUser.id",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "{{new_hrbp.webuser_id.whom_delegate_ids}},{{new_hrbp.webuser_id.id}}",
+                                        "_conditionalView_value_RAW": true
                                     }
                                 ],
                                 "_action_conditionals_and_or": "OR"
@@ -4499,6 +4306,43 @@ let exampleForm = {
                         ]
                     },
                     {
+                        "id": "elmnt_1727254843612",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17272548489260.22323403033433104013401",
+                                "_field": "role_budget_holder",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1727254865447",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "notContains",
+                                        "_conditionalView_value": "st_cnb"
+                                    },
+                                    {
+                                        "id": "condition_1727254885394",
+                                        "_conditionalView_field": "WebUser.id",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "{{new_cnb.webuser_id.whom_delegate_ids}},{{new_cnb.webuser_id.id}}",
+                                        "_conditionalView_value_RAW": true
+                                    }
+                                ],
+                                "_action_conditionals_and_or": "OR"
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1727254927294",
+                                "_conditionalView_field": "budget_holder",
+                                "_conditionalView_operator": "isNotNull"
+                            }
+                        ]
+                    },
+                    {
                         "id": "elmnt_1726040992596",
                         "type": "input",
                         "_actions": [
@@ -4517,6 +4361,27 @@ let exampleForm = {
                                 "_conditions": [
                                     {
                                         "id": "condition_1726041053030",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1727254750669",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17272547538940.212024340433330430231142",
+                                "_field": "add_approval_out",
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "st_add_approval",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1727254780374",
                                         "_conditionalView_field": "WebUser.role",
                                         "_conditionalView_operator": "isNotNull"
                                     }
@@ -4566,6 +4431,27 @@ let exampleForm = {
                                     }
                                 ],
                                 "_action_conditionals_and_or": "OR"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1727254746624",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17272547936610.221301324434134412013243",
+                                "_field": "add_approval_in",
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "st_add_approval",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1727254810641",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -7310,7 +7196,7 @@ let exampleForm = {
                                 "_conditions": [
                                     {
                                         "id": "condition_1726137365646",
-                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_field": "WebUser.id",
                                         "_conditionalView_operator": "notIn",
                                         "_conditionalView_value": "{{current_direct_name.webuser_id.whom_delegate_ids}},{{current_direct_name.webuser_id.id}}",
                                         "_conditionalView_value_RAW": true
@@ -7344,7 +7230,7 @@ let exampleForm = {
                                 "_action_label": "Согласовать",
                                 "_action_icon": "done",
                                 "_action_button_type": "accent",
-                                "_action_oneTime": true,
+                                "_action_oneTime": false,
                                 "_action_standardRequired": true,
                                 "_action_oneTime_message": "Заявка согласована",
                                 "_conditionalView": true,
@@ -7942,7 +7828,7 @@ let exampleForm = {
                 "new_total_salary"
             ],
             "showFullModel": true,
-            "showAuthModel": true
+            "showAuthModel": false
         },
         "state": {
             "step": "{{status}}",
@@ -7978,13 +7864,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_hrbp",
@@ -8006,13 +7892,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "current_up_direct",
@@ -8034,13 +7920,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_division",
@@ -8062,13 +7948,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_position",
@@ -8090,13 +7976,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "current_division",
@@ -8118,13 +8004,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "current_position",
@@ -8146,13 +8032,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "planned_date",
@@ -8201,13 +8087,13 @@ let exampleForm = {
                 "isUTC": "false"
             },
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "current_direct_name",
@@ -8229,13 +8115,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "employee_name",
@@ -8257,13 +8143,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "last_change_date",
@@ -8312,13 +8198,13 @@ let exampleForm = {
                 "isUTC": "false"
             },
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "all_user_ids",
@@ -8340,13 +8226,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": false,
             "arrayLink": true,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "responsible_roles",
@@ -8368,13 +8254,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": false,
             "arrayLink": true,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "responsible_employee_id",
@@ -8396,13 +8282,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "date_text",
@@ -8424,13 +8310,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "date",
@@ -8479,13 +8365,13 @@ let exampleForm = {
                 "isUTC": "false"
             },
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "number",
@@ -8507,13 +8393,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "logs",
@@ -8535,13 +8421,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": false,
             "arrayLink": true,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "user_creator",
@@ -8563,13 +8449,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "last_user",
@@ -8591,13 +8477,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "prev_status",
@@ -8619,13 +8505,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "status",
@@ -8649,13 +8535,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": true,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": true,
-            "array": false
+            "json": false
         },
         {
             "sysName": "current_total_salary",
@@ -8677,13 +8563,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "per_bonus",
@@ -8705,13 +8591,13 @@ let exampleForm = {
             "format": "positiveNum",
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "current_salary_with_rkisn",
@@ -8733,13 +8619,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "rkisn",
@@ -8761,13 +8647,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "current_salary_without_rkisn",
@@ -8789,13 +8675,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "period_bonus",
@@ -8817,13 +8703,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "analytics_ops",
@@ -8845,13 +8731,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "position_id",
@@ -8873,13 +8759,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "company",
@@ -8901,13 +8787,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "contract_end_date",
@@ -8956,13 +8842,13 @@ let exampleForm = {
                 "isUTC": "false"
             },
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "replacement_type",
@@ -8984,13 +8870,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "repl_empl_name",
@@ -9012,13 +8898,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "replacement",
@@ -9067,13 +8953,13 @@ let exampleForm = {
                 "isUTC": "false"
             },
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "current_hrbp",
@@ -9095,13 +8981,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "position_rate",
@@ -9123,13 +9009,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_analytics_ops",
@@ -9151,13 +9037,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_position_id",
@@ -9179,13 +9065,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_company",
@@ -9207,13 +9093,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_total_salary",
@@ -9235,13 +9121,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_per_bonus",
@@ -9263,13 +9149,13 @@ let exampleForm = {
             "format": "positiveNum",
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_salary_with_rkisn",
@@ -9291,13 +9177,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_rkisn",
@@ -9319,13 +9205,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_salary_without_rkisn",
@@ -9347,13 +9233,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_period_bonus",
@@ -9375,13 +9261,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_org_structure",
@@ -9403,13 +9289,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "current_org_structure",
@@ -9431,18 +9317,18 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_up_direct",
             "dataType": "link",
-            "name": "Новый верхнеуровневый руководитель (руководитель нанимающего менеджера) для Non-TECH / Директор департамента для TECH",
+            "name": "Верхнеуровневый руководитель (руководитель нанимающего менеджера) для Non-TECH / Директор департамента для TECH",
             "id": "49461726638728534",
             "link": "employees",
             "group": "1725431710596",
@@ -9459,13 +9345,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "comment_orgdev",
@@ -9487,13 +9373,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_cnb",
@@ -9507,7 +9393,7 @@ let exampleForm = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 9,
+            "order": 7,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -9515,13 +9401,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "orgdev",
@@ -9570,13 +9456,13 @@ let exampleForm = {
                 "isUTC": "false"
             },
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "current_cnb",
@@ -9590,7 +9476,7 @@ let exampleForm = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 8,
+            "order": 6,
             "linkIndexFieldSysName": [],
             "defaultValue": null,
             "constraints": null,
@@ -9598,13 +9484,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "hr_admin",
@@ -9618,7 +9504,7 @@ let exampleForm = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 10,
+            "order": 8,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -9626,13 +9512,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "budget_holder",
@@ -9646,7 +9532,7 @@ let exampleForm = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 11,
+            "order": 9,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -9654,13 +9540,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_cost_center",
@@ -9682,13 +9568,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "current_cost_center",
@@ -9710,13 +9596,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "budget_date",
@@ -9765,13 +9651,13 @@ let exampleForm = {
                 "isUTC": "false"
             },
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "add_approval_in",
@@ -9793,68 +9679,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "role_add_approval_out",
-            "dataType": "boolean",
-            "name": "Добавить доп согласующего в качестве:",
-            "id": "38031727073169601",
-            "link": "",
-            "group": "1725431710596",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 7,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "Согласователь в заявке",
-                    "Получатель уведомления"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD/MM/Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "add_approval_out",
@@ -9868,7 +9699,7 @@ let exampleForm = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 6,
+            "order": 5,
             "linkIndexFieldSysName": [],
             "defaultValue": null,
             "constraints": null,
@@ -9876,68 +9707,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "role_add_approval_in",
-            "dataType": "boolean",
-            "name": "Добавить доп согласующего в качестве:",
-            "id": "75221727073076578",
-            "link": "",
-            "group": "1725431710596",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 5,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "Согласователь в заявке",
-                    "Получатель уведомления"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD/MM/Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "replacement_reason",
@@ -9959,13 +9735,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "actual_date",
@@ -10014,13 +9790,13 @@ let exampleForm = {
                 "isUTC": "false"
             },
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "total_increase_per",
@@ -10042,81 +9818,301 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
+            "json": false
+        },
+        {
+            "sysName": "role_budget_holder",
+            "dataType": "boolean",
+            "name": "Добавить Владельца бюджета в качестве:",
+            "id": "86541727248705190",
+            "link": "",
+            "group": "1725431710596",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 10,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "Cогласующего лица",
+                    "Получателя уведомления"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "array": false,
             "indexExists": false,
-            "array": false
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false
         }
     ],
     "data": [
         {
-            "number": "ST-841990",
-            "prev_status": "approval_current_direct",
+            "number": "ST-123187",
+            "prev_status": {
+                "id": "approval_out_hrbp",
+                "status": "Согласование Отдающий HRBP"
+            },
             "current_org_structure": "Распределительный центр",
-            "hr_admin": "aleksandra.kalina@lamoda.ru",
-            "new_up_direct": "aleksandra.kalina@lamoda.ru",
-            "planned_date": 1727298000000,
-            "new_cnb": "aleksandra.kalina@lamoda.ru",
-            "current_hrbp": "aleksandra.kalina@lamoda.ru",
-            "current_direct_name": {
+            "new_up_direct": {
+                "email": "aleksandra.kalina@lamoda.ru",
+                "division_name": "Группа бизнес-анализа",
+                "id": "aleksandra.kalina@lamoda.ru",
+                "position": "Аналитик по развитию корпоративных бизнес-приложений",
                 "webuser_id": {
+                    "who_delegated_ids": [],
+                    "role": [
+                        "st_hrbp",
+                        "admin",
+                        "jo_recruiter"
+                    ],
                     "whom_delegate_ids": [],
                     "id": "aleksandra.kalina@lamoda.ru"
                 },
-                "id": "aleksandra.kalina@lamoda.ru"
-            },
-            "add_approval_in": "aleksandra.kalina@lamoda.ru",
-            "user_creator": "aleksandra.kalina@lamoda.ru",
-            "current_cnb": "aleksandra.kalina@lamoda.ru",
-            "employee_name": "employee",
-            "new_org_structure": "Распределительный центр\\Складской отдел\\Смена №1\\Зона хранения товара\\Участок размещения М2",
-            "new_division": "2439278",
-            "new_position": "Специалист",
-            "last_change_date": 1727091541000,
-            "current_division": "1358",
-            "responsible_employee_id": {
-                "id": "aleksandra.kalina@lamoda.ru",
                 "employee_full_name": "Александра Калина"
             },
-            "responsible_roles": [
-                ""
-            ],
-            "id": "e50065a3-968b-48b2-95a7-1b702916fbf9",
-            "budget_holder": "aleksandra.kalina@lamoda.ru",
+            "per_bonus": 3,
+            "planned_date": 1726779600000,
+            "analytics_ops": {
+                "name": "Network",
+                "id": "network"
+            },
+            "current_hrbp": {
+                "email": "aleksandra.kalina@lamoda.ru",
+                "division_name": "Группа бизнес-анализа",
+                "id": "aleksandra.kalina@lamoda.ru",
+                "position": "Аналитик по развитию корпоративных бизнес-приложений",
+                "webuser_id": {
+                    "who_delegated_ids": [],
+                    "role": [
+                        "st_hrbp",
+                        "admin",
+                        "jo_recruiter"
+                    ],
+                    "whom_delegate_ids": [],
+                    "id": "aleksandra.kalina@lamoda.ru"
+                },
+                "employee_full_name": "Александра Калина"
+            },
+            "current_direct_name": {
+                "email": "aleksandra.kalina@lamoda.ru",
+                "division_name": "Группа бизнес-анализа",
+                "id": "aleksandra.kalina@lamoda.ru",
+                "position": "Аналитик по развитию корпоративных бизнес-приложений",
+                "webuser_id": {
+                    "who_delegated_ids": [],
+                    "role": [
+                        "st_hrbp",
+                        "admin",
+                        "jo_recruiter"
+                    ],
+                    "whom_delegate_ids": [],
+                    "id": "aleksandra.kalina@lamoda.ru"
+                },
+                "employee_full_name": "Александра Калина"
+            },
+            "user_creator": {
+                "email": "aleksandra.kalina@lamoda.ru",
+                "division_name": "Группа бизнес-анализа",
+                "id": "aleksandra.kalina@lamoda.ru",
+                "position": "Аналитик по развитию корпоративных бизнес-приложений",
+                "webuser_id": {
+                    "who_delegated_ids": [],
+                    "role": [
+                        "st_hrbp",
+                        "admin",
+                        "jo_recruiter"
+                    ],
+                    "whom_delegate_ids": [],
+                    "id": "aleksandra.kalina@lamoda.ru"
+                },
+                "employee_full_name": "Александра Калина"
+            },
+            "current_cnb": {
+                "email": "aleksandra.kalina@lamoda.ru",
+                "division_name": "Группа бизнес-анализа",
+                "id": "aleksandra.kalina@lamoda.ru",
+                "position": "Аналитик по развитию корпоративных бизнес-приложений",
+                "webuser_id": {
+                    "who_delegated_ids": [],
+                    "role": [
+                        "st_hrbp",
+                        "admin",
+                        "jo_recruiter"
+                    ],
+                    "whom_delegate_ids": [],
+                    "id": "aleksandra.kalina@lamoda.ru"
+                },
+                "employee_full_name": "Александра Калина"
+            },
+            "employee_name": {
+                "division_name": "Распределительный центр",
+                "id": "employee",
+                "position": "Позиция",
+                "webuser_id": "employee",
+                "employee_full_name": "Тестовый Сотрудник"
+            },
+            "new_org_structure": "Распределительный центр => Складской отдел => Смена №1 => Зона хранения товара => Участок размещения  => М2",
+            "new_division": {
+                "division_name": "Участок размещения М2",
+                "id": "2439278"
+            },
+            "period_bonus": {
+                "bonus": "Квартал",
+                "id": "quarter"
+            },
+            "current_total_salary": 10298.97,
+            "new_position": "а",
+            "current_salary_with_rkisn": 9999,
+            "last_change_date": 1727255916000,
+            "current_division": {
+                "division_name": "Распределительный центр",
+                "id": "1358"
+            },
+            "responsible_employee_id": {
+                "division_name": "Группа бизнес-анализа",
+                "id": "aleksandra.kalina@lamoda.ru",
+                "position": "Аналитик по развитию корпоративных бизнес-приложений",
+                "webuser_id": {
+                    "who_delegated_ids": [],
+                    "role": [
+                        "st_hrbp",
+                        "admin",
+                        "jo_recruiter"
+                    ],
+                    "whom_delegate_ids": [],
+                    "id": "aleksandra.kalina@lamoda.ru"
+                },
+                "employee_full_name": "Александра Калина"
+            },
+            "company": {
+                "company": "КУПИШУЗ",
+                "id": "kupishoes"
+            },
+            "position_id": "12345",
+            "id": "a935aa8d-894b-40e7-817f-ee007bd2241b",
             "current_position": "Позиция",
-            "last_user": "aleksandra.kalina@lamoda.ru",
-            "current_up_direct": "aleksandra.kalina@lamoda.ru",
-            "all_user_ids": [
-                "aleksandra.kalina@lamoda.ru"
-            ],
-            "date": 1727091515000,
-            "add_approval_out": "aleksandra.kalina@lamoda.ru",
+            "last_user": {
+                "role": [
+                    "jo_recruiter",
+                    "jo_cnb",
+                    "jo_hrd",
+                    "jo_hrbp",
+                    "jo_agreement",
+                    "st_hrbp",
+                    "admin"
+                ],
+                "who_delegated_ids": [],
+                "division": "Directual",
+                "lastName": "Ershov",
+                "firstName": "Pavel",
+                "id": "pavel@directual.com",
+                "whom_delegate_ids": []
+            },
+            "all_user_ids": [],
+            "date": 1727255496000,
+            "add_approval_out": {
+                "email": "aleksandrmaslov@lamoda.ru",
+                "full_name": "Александр Маслов",
+                "division": "aleksandrmaslov@lamoda.ru",
+                "id": "aleksandrmaslov@lamoda.ru",
+                "position": "Директор по персоналу операционного направления",
+                "webuser_id": {
+                    "whom_delegate_ids": "",
+                    "id": ""
+                }
+            },
             "status": {
-                "id": "approval_current_direct",
-                "status": "Согласование Руководитель"
+                "id": "approval_out_hrbp",
+                "status": "Согласование Отдающий HRBP"
             },
             "logs": [
                 {
-                    "date_display": "23 сент. 2024, 14:39",
-                    "text": "Согласование Новый Верхнеуровневый руководитель. Назначен ответственный: ",
-                    "ticket": "e50065a3-968b-48b2-95a7-1b702916fbf9",
-                    "id": "826d57da-8949-4c6f-943a-2089abdb490c",
-                    "date": 1727091541000,
+                    "date_display": "25 сент. 2024, 12:18",
+                    "text": "Согласование Отдающий HRBP. Назначен ответственный: aleksandra.kalina@lamoda.ru",
+                    "ticket": "a935aa8d-894b-40e7-817f-ee007bd2241b",
+                    "id": "833ec66f-6c51-4cd5-9ad5-34a4bbad5ca1",
+                    "date": 1727255916000,
                     "user": "aleksandra.kalina@lamoda.ru"
                 },
                 {
-                    "date_display": "23 сент. 2024, 14:38",
+                    "date_display": "25 сент. 2024, 12:16",
+                    "text": "Согласование Текущий руководитель. Назначен ответственный: aleksandra.kalina@lamoda.ru",
+                    "ticket": "a935aa8d-894b-40e7-817f-ee007bd2241b",
+                    "id": "9fcb3d8a-7ea6-4d43-9ffe-82db5a586874",
+                    "date": 1727255768000,
+                    "user": "aleksandra.kalina@lamoda.ru"
+                },
+                {
+                    "date_display": "25 сент. 2024, 12:11",
+                    "text": "Согласование Новый Верхнеуровневый руководитель. Назначен ответственный: aleksandra.kalina@lamoda.ru",
+                    "ticket": "a935aa8d-894b-40e7-817f-ee007bd2241b",
+                    "id": "f662ad58-858e-48ef-ad10-55cd0cc340ca",
+                    "date": 1727255514000,
+                    "user": "aleksandra.kalina@lamoda.ru"
+                },
+                {
+                    "date_display": "25 сент. 2024, 12:11",
                     "text": "Создание заявки: Aleksandra Kalina",
-                    "ticket": "e50065a3-968b-48b2-95a7-1b702916fbf9",
-                    "id": "9f4013d7-faef-442d-acf3-c1838dd214ca",
-                    "date": 1727091515000,
+                    "ticket": "a935aa8d-894b-40e7-817f-ee007bd2241b",
+                    "id": "eee14bd9-e534-4904-a7fb-6469cbb278fe",
+                    "date": 1727255496000,
                     "user": "aleksandra.kalina@lamoda.ru"
                 }
             ],
-            "new_hrbp": "aleksandra.kalina@lamoda.ru"
+            "new_hrbp": {
+                "email": "aleksandra.kalina@lamoda.ru",
+                "division_name": "Группа бизнес-анализа",
+                "id": "aleksandra.kalina@lamoda.ru",
+                "position": "Аналитик по развитию корпоративных бизнес-приложений",
+                "webuser_id": {
+                    "who_delegated_ids": [],
+                    "role": [
+                        "st_hrbp",
+                        "admin",
+                        "jo_recruiter"
+                    ],
+                    "whom_delegate_ids": [],
+                    "id": "aleksandra.kalina@lamoda.ru"
+                },
+                "employee_full_name": "Александра Калина"
+            }
         }
     ],
     "totalPages": 1,
@@ -10132,7 +10128,111 @@ let exampleForm = {
             99325487
         ],
         [
+            "new_hrbp.employee_full_name",
+            99325487
+        ],
+        [
+            "new_hrbp.email",
+            99325487
+        ],
+        [
+            "new_hrbp.webuser_id.id",
+            99325452
+        ],
+        [
+            "new_hrbp.webuser_id.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "new_hrbp.webuser_id.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "new_hrbp.webuser_id.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "new_hrbp.webuser_id.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "new_hrbp.webuser_id.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "new_hrbp.webuser_id.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "new_hrbp.webuser_id.email",
+            99325452
+        ],
+        [
+            "new_hrbp.webuser_id.role",
+            99325452
+        ],
+        [
+            "new_hrbp.division_name",
+            99325487
+        ],
+        [
+            "new_hrbp.position",
+            99325487
+        ],
+        [
             "current_up_direct.id",
+            99325487
+        ],
+        [
+            "current_up_direct.employee_full_name",
+            99325487
+        ],
+        [
+            "current_up_direct.email",
+            99325487
+        ],
+        [
+            "current_up_direct.webuser_id.id",
+            99325452
+        ],
+        [
+            "current_up_direct.webuser_id.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "current_up_direct.webuser_id.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "current_up_direct.webuser_id.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "current_up_direct.webuser_id.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "current_up_direct.webuser_id.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "current_up_direct.webuser_id.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "current_up_direct.webuser_id.email",
+            99325452
+        ],
+        [
+            "current_up_direct.webuser_id.role",
+            99325452
+        ],
+        [
+            "current_up_direct.division_name",
+            99325487
+        ],
+        [
+            "current_up_direct.position",
             99325487
         ],
         [
@@ -10140,11 +10240,27 @@ let exampleForm = {
             99325488
         ],
         [
+            "new_division.division_name",
+            99325488
+        ],
+        [
             "new_position.id",
             99325487
         ],
         [
+            "new_position.employee_full_name",
+            99325487
+        ],
+        [
+            "new_position.webuser_id.id",
+            99325452
+        ],
+        [
             "current_division.id",
+            99325488
+        ],
+        [
+            "current_division.division_name",
             99325488
         ],
         [
@@ -10168,11 +10284,63 @@ let exampleForm = {
             99325452
         ],
         [
+            "current_direct_name.webuser_id.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "current_direct_name.webuser_id.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "current_direct_name.webuser_id.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "current_direct_name.webuser_id.role",
+            99325452
+        ],
+        [
+            "current_direct_name.webuser_id.email",
+            99325452
+        ],
+        [
             "current_direct_name.id",
             99325487
         ],
         [
+            "current_direct_name.employee_full_name",
+            99325487
+        ],
+        [
+            "current_direct_name.email",
+            99325487
+        ],
+        [
+            "current_direct_name.position",
+            99325487
+        ],
+        [
+            "current_direct_name.division_name",
+            99325487
+        ],
+        [
             "employee_name.id",
+            99325487
+        ],
+        [
+            "employee_name.employee_full_name",
+            99325487
+        ],
+        [
+            "employee_name.webuser_id.id",
+            99325452
+        ],
+        [
+            "employee_name.position",
+            99325487
+        ],
+        [
+            "employee_name.division_name",
             99325487
         ],
         [
@@ -10184,6 +10352,46 @@ let exampleForm = {
             99325487
         ],
         [
+            "all_user_ids.employee_full_name",
+            99325487
+        ],
+        [
+            "all_user_ids.webuser_id.id",
+            99325452
+        ],
+        [
+            "all_user_ids.webuser_id.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "all_user_ids.webuser_id.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "all_user_ids.webuser_id.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "all_user_ids.webuser_id.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "all_user_ids.webuser_id.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "all_user_ids.webuser_id.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "all_user_ids.webuser_id.role",
+            99325452
+        ],
+        [
+            "all_user_ids.webuser_id.email",
+            99325452
+        ],
+        [
             "responsible_roles.id",
             99325477
         ],
@@ -10193,6 +10401,50 @@ let exampleForm = {
         ],
         [
             "responsible_employee_id.employee_full_name",
+            99325487
+        ],
+        [
+            "responsible_employee_id.webuser_id.id",
+            99325452
+        ],
+        [
+            "responsible_employee_id.webuser_id.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "responsible_employee_id.webuser_id.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "responsible_employee_id.webuser_id.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "responsible_employee_id.webuser_id.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "responsible_employee_id.webuser_id.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "responsible_employee_id.webuser_id.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "responsible_employee_id.webuser_id.role",
+            99325452
+        ],
+        [
+            "responsible_employee_id.webuser_id.email",
+            99325452
+        ],
+        [
+            "responsible_employee_id.position",
+            99325487
+        ],
+        [
+            "responsible_employee_id.division_name",
             99325487
         ],
         [
@@ -10236,12 +10488,116 @@ let exampleForm = {
             99325487
         ],
         [
+            "user_creator.employee_full_name",
+            99325487
+        ],
+        [
+            "user_creator.email",
+            99325487
+        ],
+        [
+            "user_creator.webuser_id.id",
+            99325452
+        ],
+        [
+            "user_creator.webuser_id.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "user_creator.webuser_id.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "user_creator.webuser_id.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "user_creator.webuser_id.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "user_creator.webuser_id.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "user_creator.webuser_id.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "user_creator.webuser_id.role",
+            99325452
+        ],
+        [
+            "user_creator.webuser_id.email",
+            99325452
+        ],
+        [
+            "user_creator.position",
+            99325487
+        ],
+        [
+            "user_creator.division_name",
+            99325487
+        ],
+        [
             "last_user.id",
             99325452
         ],
         [
-            "prev_status",
-            99340946
+            "last_user.firstName",
+            99325452
+        ],
+        [
+            "last_user.lastName",
+            99325452
+        ],
+        [
+            "last_user.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "last_user.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "last_user.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "last_user.position",
+            99325452
+        ],
+        [
+            "last_user.division",
+            99325452
+        ],
+        [
+            "last_user.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "last_user.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "last_user.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "last_user.role",
+            99325452
+        ],
+        [
+            "last_user.email",
+            99325452
+        ],
+        [
+            "prev_status.status",
+            99340948
+        ],
+        [
+            "prev_status.id",
+            99340948
         ],
         [
             "status.id",
@@ -10272,31 +10628,67 @@ let exampleForm = {
             99340946
         ],
         [
-            "period_bonus",
-            99340946
+            "period_bonus.id",
+            99342651
         ],
         [
-            "analytics_ops",
-            99340946
+            "period_bonus.bonus",
+            99342651
+        ],
+        [
+            "analytics_ops.id",
+            99325500
+        ],
+        [
+            "analytics_ops.name",
+            99325500
         ],
         [
             "position_id",
             99340946
         ],
         [
-            "company",
-            99340946
+            "company.id",
+            99342650
+        ],
+        [
+            "company.company",
+            99342650
         ],
         [
             "contract_end_date",
             99340946
         ],
         [
-            "replacement_type",
-            99340946
+            "replacement_type.id",
+            99342653
+        ],
+        [
+            "replacement_type.type",
+            99342653
         ],
         [
             "repl_empl_name.id",
+            99325487
+        ],
+        [
+            "repl_empl_name.employee_full_name",
+            99325487
+        ],
+        [
+            "repl_empl_name.email",
+            99325487
+        ],
+        [
+            "repl_empl_name.webuser_id.id",
+            99325452
+        ],
+        [
+            "repl_empl_name.position",
+            99325487
+        ],
+        [
+            "repl_empl_name.division_name",
             99325487
         ],
         [
@@ -10308,11 +10700,67 @@ let exampleForm = {
             99325487
         ],
         [
+            "current_hrbp.employee_full_name",
+            99325487
+        ],
+        [
+            "current_hrbp.email",
+            99325487
+        ],
+        [
+            "current_hrbp.webuser_id.id",
+            99325452
+        ],
+        [
+            "current_hrbp.webuser_id.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "current_hrbp.webuser_id.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "current_hrbp.webuser_id.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "current_hrbp.webuser_id.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "current_hrbp.webuser_id.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "current_hrbp.webuser_id.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "current_hrbp.webuser_id.email",
+            99325452
+        ],
+        [
+            "current_hrbp.webuser_id.role",
+            99325452
+        ],
+        [
+            "current_hrbp.division_name",
+            99325487
+        ],
+        [
+            "current_hrbp.position",
+            99325487
+        ],
+        [
             "position_rate",
             99340946
         ],
         [
             "new_analytics_ops.id",
+            99325500
+        ],
+        [
+            "new_analytics_ops.name",
             99325500
         ],
         [
@@ -10352,6 +10800,10 @@ let exampleForm = {
             99342651
         ],
         [
+            "new_period_bonus.bonus",
+            99342651
+        ],
+        [
             "new_org_structure",
             99340946
         ],
@@ -10364,11 +10816,111 @@ let exampleForm = {
             99325487
         ],
         [
+            "new_up_direct.employee_full_name",
+            99325487
+        ],
+        [
+            "new_up_direct.email",
+            99325487
+        ],
+        [
+            "new_up_direct.webuser_id.id",
+            99325452
+        ],
+        [
+            "new_up_direct.webuser_id.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "new_up_direct.webuser_id.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "new_up_direct.webuser_id.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "new_up_direct.webuser_id.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "new_up_direct.webuser_id.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "new_up_direct.webuser_id.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "new_up_direct.webuser_id.role",
+            99325452
+        ],
+        [
+            "new_up_direct.division_name",
+            99325487
+        ],
+        [
+            "new_up_direct.position",
+            99325487
+        ],
+        [
             "comment_orgdev",
             99340946
         ],
         [
             "new_cnb.id",
+            99325487
+        ],
+        [
+            "new_cnb.employee_full_name",
+            99325487
+        ],
+        [
+            "new_cnb.email",
+            99325487
+        ],
+        [
+            "new_cnb.webuser_id.id",
+            99325452
+        ],
+        [
+            "new_cnb.webuser_id.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "new_cnb.webuser_id.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "new_cnb.webuser_id.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "new_cnb.webuser_id.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "new_cnb.webuser_id.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "new_cnb.webuser_id.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "new_cnb.webuser_id.email",
+            99325452
+        ],
+        [
+            "new_cnb.webuser_id.role",
+            99325452
+        ],
+        [
+            "new_cnb.position",
+            99325487
+        ],
+        [
+            "new_cnb.division_name",
             99325487
         ],
         [
@@ -10380,11 +10932,159 @@ let exampleForm = {
             99325487
         ],
         [
+            "current_cnb.employee_full_name",
+            99325487
+        ],
+        [
+            "current_cnb.email",
+            99325487
+        ],
+        [
+            "current_cnb.webuser_id.id",
+            99325452
+        ],
+        [
+            "current_cnb.webuser_id.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "current_cnb.webuser_id.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "current_cnb.webuser_id.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "current_cnb.webuser_id.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "current_cnb.webuser_id.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "current_cnb.webuser_id.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "current_cnb.webuser_id.role",
+            99325452
+        ],
+        [
+            "current_cnb.division_name",
+            99325487
+        ],
+        [
+            "current_cnb.position",
+            99325487
+        ],
+        [
             "hr_admin.id",
             99325487
         ],
         [
+            "hr_admin.employee_full_name",
+            99325487
+        ],
+        [
+            "hr_admin.email",
+            99325487
+        ],
+        [
+            "hr_admin.webuser_id.id",
+            99325452
+        ],
+        [
+            "hr_admin.webuser_id.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "hr_admin.webuser_id.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "hr_admin.webuser_id.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "hr_admin.webuser_id.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "hr_admin.webuser_id.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "hr_admin.webuser_id.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "hr_admin.webuser_id.role",
+            99325452
+        ],
+        [
+            "hr_admin.division_name",
+            99325487
+        ],
+        [
+            "hr_admin.position",
+            99325487
+        ],
+        [
             "budget_holder.id",
+            99325487
+        ],
+        [
+            "budget_holder.employee_full_name",
+            99325487
+        ],
+        [
+            "budget_holder.webuser_id.id",
+            99325452
+        ],
+        [
+            "budget_holder.webuser_id.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "budget_holder.webuser_id.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "budget_holder.webuser_id.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "budget_holder.webuser_id.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "budget_holder.webuser_id.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "budget_holder.webuser_id.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "budget_holder.webuser_id.email",
+            99325452
+        ],
+        [
+            "budget_holder.webuser_id.role",
+            99325452
+        ],
+        [
+            "budget_holder.position",
+            99325487
+        ],
+        [
+            "budget_holder.division_name",
+            99325487
+        ],
+        [
+            "budget_holder.email",
             99325487
         ],
         [
@@ -10404,19 +11104,119 @@ let exampleForm = {
             99344956
         ],
         [
-            "role_add_approval_out",
-            99340946
+            "add_approval_in.full_name.id",
+            99325487
+        ],
+        [
+            "add_approval_in.full_name.webuser_id.id",
+            99325452
+        ],
+        [
+            "add_approval_in.full_name.webuser_id.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "add_approval_in.full_name.webuser_id.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "add_approval_in.full_name.webuser_id.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "add_approval_in.full_name.webuser_id.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "add_approval_in.full_name.webuser_id.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "add_approval_in.full_name.webuser_id.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "add_approval_in.full_name.webuser_id.role",
+            99325452
+        ],
+        [
+            "add_approval_in.full_name.webuser_id.email",
+            99325452
+        ],
+        [
+            "add_approval_in.position",
+            99344956
+        ],
+        [
+            "add_approval_in.email.id",
+            99325452
+        ],
+        [
+            "add_approval_in.division.id",
+            99325488
         ],
         [
             "add_approval_out.id",
             99344956
         ],
         [
-            "role_add_approval_in",
-            99340946
+            "add_approval_out.division.id",
+            99325488
+        ],
+        [
+            "add_approval_out.email.id",
+            99325452
+        ],
+        [
+            "add_approval_out.position",
+            99344956
+        ],
+        [
+            "add_approval_out.full_name.id",
+            99325487
+        ],
+        [
+            "add_approval_out.full_name.webuser_id.id",
+            99325452
+        ],
+        [
+            "add_approval_out.full_name.webuser_id.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "add_approval_out.full_name.webuser_id.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "add_approval_out.full_name.webuser_id.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "add_approval_out.full_name.webuser_id.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "add_approval_out.full_name.webuser_id.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "add_approval_out.full_name.webuser_id.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "add_approval_out.full_name.webuser_id.role",
+            99325452
+        ],
+        [
+            "add_approval_out.full_name.webuser_id.email",
+            99325452
         ],
         [
             "replacement_reason.id",
+            99344980
+        ],
+        [
+            "replacement_reason.reason",
             99344980
         ],
         [
@@ -10425,6 +11225,10 @@ let exampleForm = {
         ],
         [
             "total_increase_per",
+            99340946
+        ],
+        [
+            "role_budget_holder",
             99340946
         ]
     ],
@@ -10460,7 +11264,6 @@ let exampleForm = {
         "replacement_type",
         "repl_empl_name",
         "current_hrbp",
-        "status",
         "user_creator",
         "position_rate",
         "new_analytics_ops",
@@ -10484,24 +11287,23 @@ let exampleForm = {
         "current_cost_center",
         "budget_date",
         "add_approval_in",
-        "role_add_approval_out",
         "add_approval_out",
-        "role_add_approval_in",
         "replacement_reason",
         "replacement",
         "actual_date",
-        "total_increase_per"
+        "total_increase_per",
+        "role_budget_holder"
     ],
     "structures": {
         "99325452": {
             "networkID": 21335,
-            "sysName": "WebUser",
-            "name": "App users",
             "id": 99325452,
             "dateCreated": "2024-07-04T06:41:34Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"roles_ad\",\"dataType\":\"arrayLink\",\"name\":\"\",\"id\":\"31521720185270928\",\"link\":\"roles_ad\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"dateLastActivity\",\"dataType\":\"string\",\"name\":\"dateLastActivity\",\"id\":\"10\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"dateCreated\",\"dataType\":\"string\",\"name\":\"dateCreated\",\"id\":\"13\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isAuthorization\",\"dataType\":\"boolean\",\"name\":\"isAuthorization\",\"id\":\"9\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"notifications_counter\",\"dataType\":\"string\",\"name\":\"Notifications Counter\",\"id\":\"1\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"custom_labels\",\"dataType\":\"json\",\"name\":\"Custom labels\",\"id\":\"2\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"phone\",\"dataType\":\"string\",\"name\":\"Phone\",\"id\":\"12\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"email\",\"dataType\":\"string\",\"name\":\"Email\",\"id\":\"11\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"userpic\",\"dataType\":\"file\",\"name\":\"User pic\",\"id\":\"3\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":\"Contacts\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"Username (login)\",\"id\":\"15\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"role\",\"dataType\":\"array\",\"name\":\"Roles\",\"id\":\"8\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":true},{\"sysName\":\"password\",\"dataType\":\"string\",\"name\":\"Password (hash)\",\"id\":\"14\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"firstName\",\"dataType\":\"string\",\"name\":\"First name\",\"id\":\"7\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"lastName\",\"dataType\":\"string\",\"name\":\"Last name\",\"id\":\"6\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"gender\",\"dataType\":\"string\",\"name\":\"Gender\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isBlocked\",\"dataType\":\"boolean\",\"name\":\"Block user\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"systemMessage\",\"dataType\":\"string\",\"name\":\"System message\",\"id\":\"56921641637265680\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"employee\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"65621717669435431\",\"link\":\"employees\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"position\",\"dataType\":\"string\",\"name\":\"Position\",\"id\":\"21611718980485707\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"division\",\"dataType\":\"string\",\"name\":\"Division\",\"id\":\"13761718980504077\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isActive\",\"dataType\":\"boolean\",\"name\":\"isActive\",\"id\":\"28091718982360994\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"who_delegated_ids\",\"dataType\":\"arrayLink\",\"name\":\"Кто делегировал права?\",\"id\":\"18431723207371481\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"whom_delegate_ids\",\"dataType\":\"arrayLink\",\"name\":\"Кому делегировал права?\",\"id\":\"29491723207412497\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"secret\",\"dataType\":\"string\",\"name\":\"secret\",\"id\":\"81131636839496227\",\"link\":\"\",\"group\":\"1636839487957\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"notif_Email\",\"dataType\":\"boolean\",\"name\":\"Notify me by Email\",\"id\":\"61231639915065277\",\"link\":\"\",\"group\":\"1639915049523\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Yes\",\"No\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false}]",
+            "name": "App users",
+            "sysName": "WebUser",
+            "jsonObject": "[{\"sysName\":\"roles_ad\",\"dataType\":\"arrayLink\",\"name\":\"\",\"id\":\"31521720185270928\",\"link\":\"roles_ad\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false},{\"sysName\":\"dateLastActivity\",\"dataType\":\"string\",\"name\":\"dateLastActivity\",\"id\":\"10\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"dateCreated\",\"dataType\":\"string\",\"name\":\"dateCreated\",\"id\":\"13\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"isAuthorization\",\"dataType\":\"boolean\",\"name\":\"isAuthorization\",\"id\":\"9\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"notifications_counter\",\"dataType\":\"string\",\"name\":\"Notifications Counter\",\"id\":\"1\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"custom_labels\",\"dataType\":\"json\",\"name\":\"Custom labels\",\"id\":\"2\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true},{\"sysName\":\"phone\",\"dataType\":\"string\",\"name\":\"Phone\",\"id\":\"12\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"email\",\"dataType\":\"string\",\"name\":\"Email\",\"id\":\"11\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"userpic\",\"dataType\":\"file\",\"name\":\"User pic\",\"id\":\"3\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":\"Contacts\",\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"Username (login)\",\"id\":\"15\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"role\",\"dataType\":\"array\",\"name\":\"Roles\",\"id\":\"8\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":true,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"password\",\"dataType\":\"string\",\"name\":\"Password (hash)\",\"id\":\"14\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"firstName\",\"dataType\":\"string\",\"name\":\"First name\",\"id\":\"7\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"lastName\",\"dataType\":\"string\",\"name\":\"Last name\",\"id\":\"6\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"gender\",\"dataType\":\"string\",\"name\":\"Gender\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"isBlocked\",\"dataType\":\"boolean\",\"name\":\"Block user\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"systemMessage\",\"dataType\":\"string\",\"name\":\"System message\",\"id\":\"56921641637265680\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"employee\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"65621717669435431\",\"link\":\"employees\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"position\",\"dataType\":\"string\",\"name\":\"Position\",\"id\":\"21611718980485707\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"division\",\"dataType\":\"string\",\"name\":\"Division\",\"id\":\"13761718980504077\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"isActive\",\"dataType\":\"boolean\",\"name\":\"isActive\",\"id\":\"28091718982360994\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"who_delegated_ids\",\"dataType\":\"arrayLink\",\"name\":\"Кто делегировал права?\",\"id\":\"18431723207371481\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false},{\"sysName\":\"whom_delegate_ids\",\"dataType\":\"arrayLink\",\"name\":\"Кому делегировал права?\",\"id\":\"29491723207412497\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false},{\"sysName\":\"secret\",\"dataType\":\"string\",\"name\":\"secret\",\"id\":\"81131636839496227\",\"link\":\"\",\"group\":\"1636839487957\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"notif_Email\",\"dataType\":\"boolean\",\"name\":\"Notify me by Email\",\"id\":\"61231639915065277\",\"link\":\"\",\"group\":\"1639915049523\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Yes\",\"No\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false}]",
             "jsonGroupSettings": "[{\"name\":\"Contacts\",\"id\":-502807437,\"order\":0},{\"name\":\"Notifications\",\"id\":1639915049523,\"order\":1},{\"name\":\"Password restoring\",\"id\":1636839487957,\"order\":2},{\"name\":\"System fields (LEGACY)\",\"id\":-1776115286,\"order\":3}]",
             "jsonViewIdSettings": "[{\"sysName\":\"firstName\"},{\"sysName\":\"lastName\"}]",
             "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
@@ -10514,6 +11316,7 @@ let exampleForm = {
             "changedBy": 1,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "dataType": "id",
@@ -10534,25 +11337,24 @@ let exampleForm = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "array": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
+                "json": false
             },
-            "objectIDSysName": "id",
             "folderId": null
         },
         "99325477": {
             "networkID": 21335,
-            "sysName": "roles",
-            "name": "Roles",
             "id": 99325477,
             "dateCreated": "2024-05-20T16:01:07Z",
             "hidden": false,
             "dateHidden": null,
+            "name": "Roles",
+            "sysName": "roles",
             "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"ad_group\",\"dataType\":\"link\",\"name\":\"Ad group\",\"id\":\"37371716221203585\",\"link\":\"roles_ad\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":true,\"array\":false},{\"sysName\":\"role_name\",\"dataType\":\"string\",\"name\":\"Role name\",\"id\":\"62051716220877472\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"visual_name\",\"dataType\":\"string\",\"name\":\"Роль\",\"id\":\"75311724655382921\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"roles_group\",\"dataType\":\"string\",\"name\":\"Группа ролей\",\"id\":\"86651726602951238\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false}]",
             "jsonGroupSettings": "[]",
             "jsonViewIdSettings": "[{\"sysName\":\"visual_name\"}]",
@@ -10566,6 +11368,7 @@ let exampleForm = {
             "changedBy": 23015,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "dataType": "id",
@@ -10586,25 +11389,24 @@ let exampleForm = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "array": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
+                "json": false
             },
-            "objectIDSysName": "id",
             "folderId": 33811341
         },
         "99325487": {
             "networkID": 21335,
-            "sysName": "employees",
-            "name": "Employees",
             "id": 99325487,
             "dateCreated": "2024-05-14T07:46:19Z",
             "hidden": false,
             "dateHidden": null,
+            "name": "Employees",
+            "sysName": "employees",
             "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"employee_first_name\",\"name\":\"Employee First name\",\"dataType\":\"string\",\"id\":\"68431715675181675\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"employee_last_name\",\"name\":\"Employee Last name\",\"dataType\":\"string\",\"id\":\"60151715675210149\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"employee_full_name\",\"name\":\"Employee Full name\",\"dataType\":\"string\",\"id\":\"68071715777917101\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"email\",\"name\":\"Email\",\"dataType\":\"string\",\"id\":\"26531716224439241\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"direct_first_name\",\"name\":\"Direct First name\",\"dataType\":\"string\",\"id\":\"29311715675220848\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"direct_last_name\",\"name\":\"Direct Last name\",\"dataType\":\"string\",\"id\":\"20511715675238230\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"direct_full_name\",\"name\":\"Direct Full name\",\"dataType\":\"string\",\"id\":\"40141715777939624\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"direct_email\",\"name\":\"Direct email\",\"dataType\":\"string\",\"id\":\"36721717097550149\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"position_id\",\"name\":\"Position ID\",\"dataType\":\"string\",\"id\":\"80581717093206114\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"position\",\"name\":\"Position\",\"dataType\":\"string\",\"id\":\"28531715675330046\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"position_name_eng\",\"name\":\"Position name eng\",\"dataType\":\"string\",\"id\":\"14771717094032672\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"division_id\",\"name\":\"Division id\",\"dataType\":\"link\",\"id\":\"46921715675477884\",\"link\":\"structure\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"division_name\",\"name\":\"Division name\",\"dataType\":\"string\",\"id\":\"31271717093221879\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"webuser_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"21401717671535287\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[\"role\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":true,\"array\":false}]",
             "jsonGroupSettings": "[]",
             "jsonViewIdSettings": "[{\"sysName\":\"employee_full_name\"}]",
@@ -10618,6 +11420,7 @@ let exampleForm = {
             "changedBy": 23015,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "dataType": "id",
@@ -10638,25 +11441,24 @@ let exampleForm = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "array": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
+                "json": false
             },
-            "objectIDSysName": "id",
             "folderId": 33820256
         },
         "99325488": {
             "networkID": 21335,
-            "sysName": "structure",
-            "name": "Structure",
             "id": 99325488,
             "dateCreated": "2024-05-14T07:49:49Z",
             "hidden": false,
             "dateHidden": null,
+            "name": "Structure",
+            "sysName": "structure",
             "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"division_id\",\"name\":\"Division id\",\"dataType\":\"number\",\"id\":\"58271715673541979\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"division_name\",\"name\":\"Division name\",\"dataType\":\"string\",\"id\":\"63201715673599255\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"full_hierarchy\",\"name\":\"Full hierarchy\",\"dataType\":\"string\",\"id\":\"24721715777762327\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"division_num\",\"name\":\"Division num\",\"dataType\":\"string\",\"id\":\"62831721209206145\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false}]",
             "jsonGroupSettings": "[]",
             "jsonViewIdSettings": "[{\"sysName\":\"division_name\"},{\"sysName\":\"full_hierarchy\"}]",
@@ -10670,6 +11472,7 @@ let exampleForm = {
             "changedBy": 23015,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "dataType": "id",
@@ -10690,25 +11493,24 @@ let exampleForm = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "array": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
+                "json": false
             },
-            "objectIDSysName": "id",
             "folderId": 33820256
         },
         "99325500": {
             "networkID": 21335,
-            "sysName": "analytics_for_ops",
-            "name": "Analytics for OPS",
             "id": 99325500,
             "dateCreated": "2024-05-30T20:59:17Z",
             "hidden": false,
             "dateHidden": null,
+            "name": "Analytics for OPS",
+            "sysName": "analytics_for_ops",
             "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"name\",\"dataType\":\"string\",\"name\":\"name\",\"id\":\"88871717102762537\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false}]",
             "jsonGroupSettings": "[]",
             "jsonViewIdSettings": "[]",
@@ -10722,6 +11524,7 @@ let exampleForm = {
             "changedBy": 23015,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "dataType": "id",
@@ -10742,26 +11545,25 @@ let exampleForm = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "array": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
+                "json": false
             },
-            "objectIDSysName": "id",
             "folderId": 33811358
         },
         "99340946": {
             "networkID": 21335,
-            "sysName": "staff_transfer",
-            "name": "staff_transfer",
             "id": 99340946,
             "dateCreated": "2024-09-04T06:24:48Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"current_org_structure\",\"name\":\"Текущая организационная структура\",\"dataType\":\"string\",\"id\":\"10551726596275813\",\"link\":\"\",\"group\":\"1725431445711\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"new_company\",\"name\":\"Новая организация\",\"dataType\":\"link\",\"id\":\"15551726142220035\",\"link\":\"st_company\",\"group\":\"1725431600480\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"current_position\",\"name\":\"Текущая должность сотрудника\",\"dataType\":\"string\",\"id\":\"18221725431460573\",\"link\":\"\",\"group\":\"1725431445711\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"current_direct_name\",\"name\":\"ФИО текущего руководителя \",\"dataType\":\"link\",\"id\":\"22651725431263787\",\"link\":\"employees\",\"group\":\"1725431234450\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"new_org_structure\",\"name\":\"Новая организационная структура\",\"dataType\":\"string\",\"id\":\"22651726596356199\",\"link\":\"\",\"group\":\"1725431600480\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"user_creator\",\"name\":\"Кто создал заявку\",\"dataType\":\"link\",\"id\":\"24901725433580444\",\"link\":\"employees\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"company\",\"name\":\"Текущая организация\",\"dataType\":\"link\",\"id\":\"27451726045070790\",\"link\":\"st_company\",\"group\":\"1725431445711\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"current_cost_center\",\"name\":\"Текущий кост-центр (Optimacros)\",\"dataType\":\"string\",\"id\":\"28041726656199647\",\"link\":\"\",\"group\":\"1726051810227\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"all_user_ids\",\"name\":\"Все пользователи, относящиеся к заявке\",\"dataType\":\"arrayLink\",\"id\":\"29371725433750833\",\"link\":\"employees\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false},{\"sysName\":\"number\",\"name\":\"Номер заявки\",\"dataType\":\"string\",\"id\":\"29661725433629762\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"logs\",\"name\":\"История изменений\",\"dataType\":\"arrayLink\",\"id\":\"30101725433610853\",\"link\":\"st_logs\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false},{\"sysName\":\"planned_date\",\"name\":\"Планируемая дата перевода\",\"dataType\":\"date\",\"id\":\"30281725431329024\",\"link\":\"\",\"group\":\"1725431234450\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"budget_holder\",\"name\":\"Владелец бюджета (или лицо его заменяющее)\",\"dataType\":\"link\",\"id\":\"30591726656292225\",\"link\":\"employees\",\"group\":\"1725431710596\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"new_position_id\",\"name\":\"Новый код позиции (из УШР) \",\"dataType\":\"string\",\"id\":\"33951726142259108\",\"link\":null,\"group\":\"1725431600480\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"analytics_ops\",\"name\":\"Текущая категория персонала (Analytics for Ops)\",\"dataType\":\"link\",\"id\":\"36071726045140500\",\"link\":\"analytics_for_ops\",\"group\":\"1725431445711\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"role_add_approval_out\",\"name\":\"Добавить доп согласующего в качестве:\",\"dataType\":\"boolean\",\"id\":\"38031727073169601\",\"link\":\"\",\"group\":\"1725431710596\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Согласователь в заявке\",\"Получатель уведомления\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"add_approval_in\",\"name\":\"Дополнительный согласующий\",\"dataType\":\"link\",\"id\":\"38281727073206486\",\"link\":\"add_approval\",\"group\":\"1725431710596\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"new_total_salary\",\"name\":\"Новый совокупный доход, gross руб/мес\",\"dataType\":\"decimal\",\"id\":\"38891726145546263\",\"link\":\"\",\"group\":\"1726145208794\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"new_rkisn\",\"name\":\"Новый РКиСН\",\"dataType\":\"decimal\",\"id\":\"40591726145349693\",\"link\":\"\",\"group\":\"1726145208794\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"replacement_type\",\"name\":\"Тип перевода\",\"dataType\":\"link\",\"id\":\"42371726044856787\",\"link\":\"st_contract_type\",\"group\":\"1725431234450\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"current_salary_without_rkisn\",\"name\":\"Текущий оклад без РКиСН, gross руб/мес\",\"dataType\":\"decimal\",\"id\":\"42431726051884641\",\"link\":\"\",\"group\":\"1726051810227\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"current_up_direct\",\"name\":\"Текущий верхнеуровневый руководитель (руководитель нанимающего менеджера) для Non-TECH / Директор департамента для TECH\",\"dataType\":\"link\",\"id\":\"43321725431723921\",\"link\":\"employees\",\"group\":\"1725431710596\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"replacement\",\"name\":\"Замена сотрудника\",\"dataType\":\"boolean\",\"id\":\"44491726044721571\",\"link\":\"\",\"group\":\"1725431234450\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"position_id\",\"name\":\"Текущий код позиции (из УШР)\",\"dataType\":\"string\",\"id\":\"45681726045097116\",\"link\":null,\"group\":\"1725431445711\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"new_position\",\"name\":\"Новая должность сотрудника\",\"dataType\":\"link\",\"id\":\"46231725431618308\",\"link\":\"employees\",\"group\":\"1725431600480\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"new_division\",\"name\":\"Новое подразделение сотрудника\",\"dataType\":\"link\",\"id\":\"47731725431619206\",\"link\":\"structure\",\"group\":\"1725431600480\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"new_cost_center\",\"name\":\"Новый кост-центр (Optimacros)\",\"dataType\":\"string\",\"id\":\"48901726656261119\",\"link\":\"\",\"group\":\"1726145208794\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"period_bonus\",\"name\":\"Текущая периодичность выплаты премии\",\"dataType\":\"link\",\"id\":\"48991726051831109\",\"link\":\"st_bonus\",\"group\":\"1726051810227\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"new_period_bonus\",\"name\":\"Новая периодичность выплаты премии\",\"dataType\":\"link\",\"id\":\"49131726145232067\",\"link\":\"st_bonus\",\"group\":\"1726145208794\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"budget_date\",\"name\":\"Бюджетная дата преревода\",\"dataType\":\"date\",\"id\":\"49131726656143374\",\"link\":\"\",\"group\":\"1725431234450\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"new_up_direct\",\"name\":\"Новый верхнеуровневый руководитель (руководитель нанимающего менеджера) для Non-TECH / Директор департамента для TECH\",\"dataType\":\"link\",\"id\":\"49461726638728534\",\"link\":\"employees\",\"group\":\"1725431710596\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"status\",\"name\":\"Статус\",\"dataType\":\"link\",\"id\":\"53231725433518277\",\"link\":\"st_statuses\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"orgdev\",\"name\":\"Добавить Оргдев\",\"dataType\":\"boolean\",\"id\":\"54541726653864757\",\"link\":\"\",\"group\":\"1726145208794\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"responsible_roles\",\"name\":\"Ответственные роли\",\"dataType\":\"arrayLink\",\"id\":\"55271725433718683\",\"link\":\"roles\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false},{\"sysName\":\"current_cnb\",\"name\":\"Текущий C&B\",\"dataType\":\"link\",\"id\":\"58661726052187313\",\"link\":\"employees\",\"group\":\"1725431710596\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"replacement_reason\",\"name\":\"Причина замены\",\"dataType\":\"link\",\"id\":\"61451727074752275\",\"link\":\"st_reason_replacement\",\"group\":\"1725431234450\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"actual_date\",\"name\":\"Фактическая дата перевода\",\"dataType\":\"date\",\"id\":\"64531727078660236\",\"link\":\"\",\"group\":\"1725431600480\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"repl_empl_name\",\"name\":\"ФИО заменяемого сотрудника\",\"dataType\":\"link\",\"id\":\"65551726044774422\",\"link\":\"employees\",\"group\":\"1725431234450\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"current_hrbp\",\"name\":\"Текущий HR BP\",\"dataType\":\"link\",\"id\":\"68841726044632237\",\"link\":\"employees\",\"group\":\"1725431710596\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"total_increase_per\",\"name\":\"Процент прироста совокупного дохода(%)\",\"dataType\":\"decimal\",\"id\":\"69461727080268194\",\"link\":\"\",\"group\":\"1726145208794\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"new_hrbp\",\"name\":\"Новый HR BP\",\"dataType\":\"link\",\"id\":\"69701725431725005\",\"link\":\"employees\",\"group\":\"1725431710596\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"new_per_bonus\",\"name\":\"Новый процент премии\",\"dataType\":\"number\",\"id\":\"71771726145483919\",\"link\":\"\",\"group\":\"1726145208794\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"comment_orgdev\",\"name\":\"Примечание для Оргдев\",\"dataType\":\"string\",\"id\":\"71921726653914186\",\"link\":\"\",\"group\":\"1726145208794\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"position_rate\",\"name\":\"Количество ставок на новой позиции\",\"dataType\":\"string\",\"id\":\"72981726142316557\",\"link\":null,\"group\":\"1725431600480\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"last_change_date\",\"name\":\"Дата последнего изменения\",\"dataType\":\"date\",\"id\":\"73651725433775126\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"employee_name\",\"name\":\"ФИО сотрудника\",\"dataType\":\"link\",\"id\":\"74491725431250990\",\"link\":\"employees\",\"group\":\"1725431234450\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"current_total_salary\",\"name\":\"Текущий совокупный доход, gross руб/мес\",\"dataType\":\"decimal\",\"id\":\"74621726052058609\",\"link\":\"\",\"group\":\"1726051810227\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"add_approval_out\",\"name\":\"Дополнительный согласующий\",\"dataType\":\"link\",\"id\":\"74711727073168576\",\"link\":\"add_approval\",\"group\":\"1725431710596\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"role_add_approval_in\",\"name\":\"Добавить доп согласующего в качестве:\",\"dataType\":\"boolean\",\"id\":\"75221727073076578\",\"link\":\"\",\"group\":\"1725431710596\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Согласователь в заявке\",\"Получатель уведомления\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"current_division\",\"name\":\"Текущее подразделение сотрудника\",\"dataType\":\"link\",\"id\":\"75661725431461525\",\"link\":\"structure\",\"group\":\"1725431445711\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"new_cnb\",\"name\":\"Принимающий С&B\",\"dataType\":\"link\",\"id\":\"75681726654003783\",\"link\":\"employees\",\"group\":\"1725431710596\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"responsible_employee_id\",\"name\":\"Ответственный за текущий этап\",\"dataType\":\"link\",\"id\":\"77841725433699314\",\"link\":\"employees\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"hr_admin\",\"name\":\"HR Admin\",\"dataType\":\"link\",\"id\":\"80691726655523102\",\"link\":\"employees\",\"group\":\"1725431710596\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"date_text\",\"name\":\"Дата\",\"dataType\":\"string\",\"id\":\"82361725433675003\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"last_user\",\"name\":\"Кем изменено\",\"dataType\":\"link\",\"id\":\"85461725433561607\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"rkisn\",\"name\":\"РКиСН\",\"dataType\":\"decimal\",\"id\":\"85731726051943563\",\"link\":\"\",\"group\":\"1726051810227\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"new_salary_without_rkisn\",\"name\":\"Новый оклад без РКиСН, gross руб/мес\",\"dataType\":\"decimal\",\"id\":\"87511726145291105\",\"link\":\"\",\"group\":\"1726145208794\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"prev_status\",\"name\":\"Предыдущий статус\",\"dataType\":\"link\",\"id\":\"94001725433553894\",\"link\":\"st_statuses\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"contract_end_date\",\"name\":\"Дата окончания договора\",\"dataType\":\"date\",\"id\":\"94091726044922925\",\"link\":\"\",\"group\":\"1725431234450\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"new_analytics_ops\",\"name\":\"Новая категория персонала (Analytics for Ops)\",\"dataType\":\"link\",\"id\":\"94121726142293084\",\"link\":\"analytics_for_ops\",\"group\":\"1725431600480\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"date\",\"name\":\"Дата создания заявки\",\"dataType\":\"date\",\"id\":\"96891725433646615\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"per_bonus\",\"name\":\"Текущий процент премии\",\"dataType\":\"number\",\"id\":\"97081726052045965\",\"link\":\"\",\"group\":\"1726051810227\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"current_salary_with_rkisn\",\"name\":\"Текущий оклад, включая РКиСН и другие надбавки, gross руб/мес\",\"dataType\":\"decimal\",\"id\":\"98801726051969675\",\"link\":\"\",\"group\":\"1726051810227\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"new_salary_with_rkisn\",\"name\":\"Новый оклад, включая РКиСН и другие надбавки, gross руб/мес\",\"dataType\":\"decimal\",\"id\":\"99131726145453730\",\"link\":\"\",\"group\":\"1726145208794\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false}]",
+            "name": "staff_transfer",
+            "sysName": "staff_transfer",
+            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"current_org_structure\",\"name\":\"Текущая организационная структура\",\"dataType\":\"string\",\"id\":\"10551726596275813\",\"link\":\"\",\"group\":\"1725431445711\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"new_company\",\"name\":\"Новая организация\",\"dataType\":\"link\",\"id\":\"15551726142220035\",\"link\":\"st_company\",\"group\":\"1725431600480\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"current_position\",\"name\":\"Текущая должность сотрудника\",\"dataType\":\"string\",\"id\":\"18221725431460573\",\"link\":\"\",\"group\":\"1725431445711\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"current_direct_name\",\"name\":\"ФИО текущего руководителя \",\"dataType\":\"link\",\"id\":\"22651725431263787\",\"link\":\"employees\",\"group\":\"1725431234450\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"new_org_structure\",\"name\":\"Новая организационная структура\",\"dataType\":\"string\",\"id\":\"22651726596356199\",\"link\":\"\",\"group\":\"1725431600480\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"user_creator\",\"name\":\"Кто создал заявку\",\"dataType\":\"link\",\"id\":\"24901725433580444\",\"link\":\"employees\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"company\",\"name\":\"Текущая организация\",\"dataType\":\"link\",\"id\":\"27451726045070790\",\"link\":\"st_company\",\"group\":\"1725431445711\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"current_cost_center\",\"name\":\"Текущий кост-центр (Optimacros)\",\"dataType\":\"string\",\"id\":\"28041726656199647\",\"link\":\"\",\"group\":\"1726051810227\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"all_user_ids\",\"name\":\"Все пользователи, относящиеся к заявке\",\"dataType\":\"arrayLink\",\"id\":\"29371725433750833\",\"link\":\"employees\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false},{\"sysName\":\"number\",\"name\":\"Номер заявки\",\"dataType\":\"string\",\"id\":\"29661725433629762\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"logs\",\"name\":\"История изменений\",\"dataType\":\"arrayLink\",\"id\":\"30101725433610853\",\"link\":\"st_logs\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false},{\"sysName\":\"planned_date\",\"name\":\"Планируемая дата перевода\",\"dataType\":\"date\",\"id\":\"30281725431329024\",\"link\":\"\",\"group\":\"1725431234450\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"budget_holder\",\"name\":\"Владелец бюджета (или лицо его заменяющее)\",\"dataType\":\"link\",\"id\":\"30591726656292225\",\"link\":\"employees\",\"group\":\"1725431710596\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"new_position_id\",\"name\":\"Новый код позиции (из УШР) \",\"dataType\":\"string\",\"id\":\"33951726142259108\",\"link\":null,\"group\":\"1725431600480\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"analytics_ops\",\"name\":\"Текущая категория персонала (Analytics for Ops)\",\"dataType\":\"link\",\"id\":\"36071726045140500\",\"link\":\"analytics_for_ops\",\"group\":\"1725431445711\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"add_approval_in\",\"name\":\"Дополнительный согласующий\",\"dataType\":\"link\",\"id\":\"38281727073206486\",\"link\":\"add_approval\",\"group\":\"1725431710596\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"new_total_salary\",\"name\":\"Новый совокупный доход, gross руб/мес\",\"dataType\":\"decimal\",\"id\":\"38891726145546263\",\"link\":\"\",\"group\":\"1726145208794\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"new_rkisn\",\"name\":\"Новый РКиСН\",\"dataType\":\"decimal\",\"id\":\"40591726145349693\",\"link\":\"\",\"group\":\"1726145208794\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"replacement_type\",\"name\":\"Тип перевода\",\"dataType\":\"link\",\"id\":\"42371726044856787\",\"link\":\"st_contract_type\",\"group\":\"1725431234450\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"current_salary_without_rkisn\",\"name\":\"Текущий оклад без РКиСН, gross руб/мес\",\"dataType\":\"decimal\",\"id\":\"42431726051884641\",\"link\":\"\",\"group\":\"1726051810227\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"current_up_direct\",\"name\":\"Текущий верхнеуровневый руководитель (руководитель нанимающего менеджера) для Non-TECH / Директор департамента для TECH\",\"dataType\":\"link\",\"id\":\"43321725431723921\",\"link\":\"employees\",\"group\":\"1725431710596\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"replacement\",\"name\":\"Замена сотрудника\",\"dataType\":\"boolean\",\"id\":\"44491726044721571\",\"link\":\"\",\"group\":\"1725431234450\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"position_id\",\"name\":\"Текущий код позиции (из УШР)\",\"dataType\":\"string\",\"id\":\"45681726045097116\",\"link\":null,\"group\":\"1725431445711\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"new_position\",\"name\":\"Новая должность сотрудника\",\"dataType\":\"link\",\"id\":\"46231725431618308\",\"link\":\"employees\",\"group\":\"1725431600480\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"new_division\",\"name\":\"Новое подразделение сотрудника\",\"dataType\":\"link\",\"id\":\"47731725431619206\",\"link\":\"structure\",\"group\":\"1725431600480\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"new_cost_center\",\"name\":\"Новый кост-центр (Optimacros)\",\"dataType\":\"string\",\"id\":\"48901726656261119\",\"link\":\"\",\"group\":\"1726145208794\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"period_bonus\",\"name\":\"Текущая периодичность выплаты премии\",\"dataType\":\"link\",\"id\":\"48991726051831109\",\"link\":\"st_bonus\",\"group\":\"1726051810227\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"new_period_bonus\",\"name\":\"Новая периодичность выплаты премии\",\"dataType\":\"link\",\"id\":\"49131726145232067\",\"link\":\"st_bonus\",\"group\":\"1726145208794\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"budget_date\",\"name\":\"Бюджетная дата преревода\",\"dataType\":\"date\",\"id\":\"49131726656143374\",\"link\":\"\",\"group\":\"1725431234450\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"new_up_direct\",\"name\":\"Верхнеуровневый руководитель (руководитель нанимающего менеджера) для Non-TECH / Директор департамента для TECH\",\"dataType\":\"link\",\"id\":\"49461726638728534\",\"link\":\"employees\",\"group\":\"1725431710596\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"status\",\"name\":\"Статус\",\"dataType\":\"link\",\"id\":\"53231725433518277\",\"link\":\"st_statuses\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":true,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"orgdev\",\"name\":\"Добавить Оргдев\",\"dataType\":\"boolean\",\"id\":\"54541726653864757\",\"link\":\"\",\"group\":\"1726145208794\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"responsible_roles\",\"name\":\"Ответственные роли\",\"dataType\":\"arrayLink\",\"id\":\"55271725433718683\",\"link\":\"roles\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false},{\"sysName\":\"current_cnb\",\"name\":\"Текущий C&B\",\"dataType\":\"link\",\"id\":\"58661726052187313\",\"link\":\"employees\",\"group\":\"1725431710596\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"replacement_reason\",\"name\":\"Причина замены\",\"dataType\":\"link\",\"id\":\"61451727074752275\",\"link\":\"st_reason_replacement\",\"group\":\"1725431234450\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"actual_date\",\"name\":\"Фактическая дата перевода\",\"dataType\":\"date\",\"id\":\"64531727078660236\",\"link\":\"\",\"group\":\"1725431600480\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"repl_empl_name\",\"name\":\"ФИО заменяемого сотрудника\",\"dataType\":\"link\",\"id\":\"65551726044774422\",\"link\":\"employees\",\"group\":\"1725431234450\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"current_hrbp\",\"name\":\"Текущий HR BP\",\"dataType\":\"link\",\"id\":\"68841726044632237\",\"link\":\"employees\",\"group\":\"1725431710596\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"total_increase_per\",\"name\":\"Процент прироста совокупного дохода(%)\",\"dataType\":\"decimal\",\"id\":\"69461727080268194\",\"link\":\"\",\"group\":\"1726145208794\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"new_hrbp\",\"name\":\"Новый HR BP\",\"dataType\":\"link\",\"id\":\"69701725431725005\",\"link\":\"employees\",\"group\":\"1725431710596\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"new_per_bonus\",\"name\":\"Новый процент премии\",\"dataType\":\"number\",\"id\":\"71771726145483919\",\"link\":\"\",\"group\":\"1726145208794\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"comment_orgdev\",\"name\":\"Примечание для Оргдев\",\"dataType\":\"string\",\"id\":\"71921726653914186\",\"link\":\"\",\"group\":\"1726145208794\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"position_rate\",\"name\":\"Количество ставок на новой позиции\",\"dataType\":\"string\",\"id\":\"72981726142316557\",\"link\":null,\"group\":\"1725431600480\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"last_change_date\",\"name\":\"Дата последнего изменения\",\"dataType\":\"date\",\"id\":\"73651725433775126\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"employee_name\",\"name\":\"ФИО сотрудника\",\"dataType\":\"link\",\"id\":\"74491725431250990\",\"link\":\"employees\",\"group\":\"1725431234450\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"current_total_salary\",\"name\":\"Текущий совокупный доход, gross руб/мес\",\"dataType\":\"decimal\",\"id\":\"74621726052058609\",\"link\":\"\",\"group\":\"1726051810227\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"add_approval_out\",\"name\":\"Дополнительный согласующий\",\"dataType\":\"link\",\"id\":\"74711727073168576\",\"link\":\"add_approval\",\"group\":\"1725431710596\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"current_division\",\"name\":\"Текущее подразделение сотрудника\",\"dataType\":\"link\",\"id\":\"75661725431461525\",\"link\":\"structure\",\"group\":\"1725431445711\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"new_cnb\",\"name\":\"Принимающий С&B\",\"dataType\":\"link\",\"id\":\"75681726654003783\",\"link\":\"employees\",\"group\":\"1725431710596\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"responsible_employee_id\",\"name\":\"Ответственный за текущий этап\",\"dataType\":\"link\",\"id\":\"77841725433699314\",\"link\":\"employees\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"hr_admin\",\"name\":\"HR Admin\",\"dataType\":\"link\",\"id\":\"80691726655523102\",\"link\":\"employees\",\"group\":\"1725431710596\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"date_text\",\"name\":\"Дата\",\"dataType\":\"string\",\"id\":\"82361725433675003\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"last_user\",\"name\":\"Кем изменено\",\"dataType\":\"link\",\"id\":\"85461725433561607\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"rkisn\",\"name\":\"РКиСН\",\"dataType\":\"decimal\",\"id\":\"85731726051943563\",\"link\":\"\",\"group\":\"1726051810227\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"role_budget_holder\",\"name\":\"Добавить Владельца бюджета в качестве:\",\"dataType\":\"boolean\",\"id\":\"86541727248705190\",\"link\":\"\",\"group\":\"1725431710596\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Cогласующего лица\",\"Получателя уведомления\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"new_salary_without_rkisn\",\"name\":\"Новый оклад без РКиСН, gross руб/мес\",\"dataType\":\"decimal\",\"id\":\"87511726145291105\",\"link\":\"\",\"group\":\"1726145208794\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"prev_status\",\"name\":\"Предыдущий статус\",\"dataType\":\"link\",\"id\":\"94001725433553894\",\"link\":\"st_statuses\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"contract_end_date\",\"name\":\"Дата окончания договора\",\"dataType\":\"date\",\"id\":\"94091726044922925\",\"link\":\"\",\"group\":\"1725431234450\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"new_analytics_ops\",\"name\":\"Новая категория персонала (Analytics for Ops)\",\"dataType\":\"link\",\"id\":\"94121726142293084\",\"link\":\"analytics_for_ops\",\"group\":\"1725431600480\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"date\",\"name\":\"Дата создания заявки\",\"dataType\":\"date\",\"id\":\"96891725433646615\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"per_bonus\",\"name\":\"Текущий процент премии\",\"dataType\":\"number\",\"id\":\"97081726052045965\",\"link\":\"\",\"group\":\"1726051810227\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"current_salary_with_rkisn\",\"name\":\"Текущий оклад, включая РКиСН и другие надбавки, gross руб/мес\",\"dataType\":\"decimal\",\"id\":\"98801726051969675\",\"link\":\"\",\"group\":\"1726051810227\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"new_salary_with_rkisn\",\"name\":\"Новый оклад, включая РКиСН и другие надбавки, gross руб/мес\",\"dataType\":\"decimal\",\"id\":\"99131726145453730\",\"link\":\"\",\"group\":\"1726145208794\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false}]",
             "jsonGroupSettings": "[{\"name\":\"Новые данные по сотруднику\",\"id\":1725431600480,\"order\":2},{\"name\":\"Согласующие лица\",\"id\":1725431710596,\"order\":5},{\"name\":\"Новые условия компенсации\",\"id\":1726145208794,\"order\":4},{\"name\":\"Текущие данные по сотруднику\",\"id\":1725431445711,\"order\":1},{\"name\":\"Общие данные о переводе\",\"id\":1725431234450,\"order\":0},{\"name\":\"Текущие условия компенсации\",\"id\":1726051810227,\"order\":3}]",
             "jsonViewIdSettings": null,
             "jsonSettings": null,
@@ -10769,11 +11571,12 @@ let exampleForm = {
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2024-09-23T12:37:47Z",
+            "dateChanged": "2024-09-25T09:18:14Z",
             "createBy": 23015,
             "changedBy": 23015,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "dataType": "id",
@@ -10794,25 +11597,24 @@ let exampleForm = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "array": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
+                "json": false
             },
-            "objectIDSysName": "id",
             "folderId": 33819483
         },
         "99340948": {
             "networkID": 21335,
-            "sysName": "st_statuses",
-            "name": "st_statuses",
             "id": 99340948,
             "dateCreated": "2024-09-04T07:14:59Z",
             "hidden": false,
             "dateHidden": null,
+            "name": "st_statuses",
+            "sysName": "st_statuses",
             "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"status\",\"dataType\":\"string\",\"name\":\"Cтатус\",\"id\":\"30001725434156506\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"prev_status\",\"dataType\":\"arrayLink\",\"name\":\"Предыдущий статус\",\"id\":\"60381725434163644\",\"link\":\"statuses\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false}]",
             "jsonGroupSettings": null,
             "jsonViewIdSettings": "[{\"sysName\":\"status\"}]",
@@ -10826,6 +11628,7 @@ let exampleForm = {
             "changedBy": 23015,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "dataType": "id",
@@ -10846,25 +11649,24 @@ let exampleForm = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "array": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
+                "json": false
             },
-            "objectIDSysName": "id",
             "folderId": 33819484
         },
         "99342344": {
             "networkID": 21335,
-            "sysName": "st_logs",
-            "name": "st_logs",
             "id": 99342344,
             "dateCreated": "2024-09-11T06:48:58Z",
             "hidden": false,
             "dateHidden": null,
+            "name": "st_logs",
+            "sysName": "st_logs",
             "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"date\",\"dataType\":\"date\",\"name\":\"Дата изменения\",\"id\":\"58751717136726535\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"text\",\"dataType\":\"string\",\"name\":\"Изменение заявки\",\"id\":\"13041717136793732\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false},{\"sysName\":\"user\",\"dataType\":\"link\",\"name\":\"Кто внес изменения\",\"id\":\"83101717136837464\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":true,\"array\":false},{\"sysName\":\"ticket\",\"dataType\":\"link\",\"name\":\"Номер заявки\",\"id\":\"45681717136838095\",\"link\":\"staff_transfer\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":true,\"array\":false},{\"sysName\":\"date_display\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"87491717137718793\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"linkType\":false,\"array\":false}]",
             "jsonGroupSettings": "[]",
             "jsonViewIdSettings": null,
@@ -10878,6 +11680,7 @@ let exampleForm = {
             "changedBy": 23015,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "dataType": "id",
@@ -10898,25 +11701,24 @@ let exampleForm = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "array": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
+                "json": false
             },
-            "objectIDSysName": "id",
             "folderId": 33819484
         },
         "99342650": {
             "networkID": 21335,
-            "sysName": "st_company",
-            "name": "st_company",
             "id": 99342650,
             "dateCreated": "2024-09-12T11:15:50Z",
             "hidden": false,
             "dateHidden": null,
+            "name": "st_company",
+            "sysName": "st_company",
             "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"company\",\"name\":\"Company\",\"dataType\":\"string\",\"id\":\"72701726139775701\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false}]",
             "jsonGroupSettings": null,
             "jsonViewIdSettings": "[{\"sysName\":\"company\"}]",
@@ -10930,6 +11732,7 @@ let exampleForm = {
             "changedBy": 23015,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "dataType": "id",
@@ -10950,25 +11753,24 @@ let exampleForm = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "array": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
+                "json": false
             },
-            "objectIDSysName": "id",
             "folderId": 33819484
         },
         "99342651": {
             "networkID": 21335,
-            "sysName": "st_bonus",
-            "name": "st_bonus",
             "id": 99342651,
             "dateCreated": "2024-09-12T11:26:07Z",
             "hidden": false,
             "dateHidden": null,
+            "name": "st_bonus",
+            "sysName": "st_bonus",
             "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"bonus\",\"name\":\"Бонус\",\"dataType\":\"string\",\"id\":\"89351726140385687\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false}]",
             "jsonGroupSettings": null,
             "jsonViewIdSettings": "[{\"sysName\":\"bonus\"}]",
@@ -10982,6 +11784,7 @@ let exampleForm = {
             "changedBy": 23015,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "dataType": "id",
@@ -11002,25 +11805,76 @@ let exampleForm = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "array": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
+                "json": false
             },
+            "folderId": 33819484
+        },
+        "99342653": {
+            "networkID": 21335,
+            "id": 99342653,
+            "dateCreated": "2024-09-12T11:48:36Z",
+            "hidden": false,
+            "dateHidden": null,
+            "name": "st_contract_type",
+            "sysName": "st_contract_type",
+            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"type\",\"name\":\"Тип\",\"dataType\":\"string\",\"id\":\"68131726141720189\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": "[{\"sysName\":\"type\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2024-09-12T11:48:48Z",
+            "createBy": 23015,
+            "changedBy": 23015,
+            "_settings": null,
+            "_nativeIndexSettings": null,
             "objectIDSysName": "id",
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "array": false,
+                "indexExists": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "typeVariable": {},
+                "json": false
+            },
             "folderId": 33819484
         },
         "99344956": {
             "networkID": 21335,
-            "sysName": "add_approval",
-            "name": "Add approval",
             "id": 99344956,
             "dateCreated": "2024-09-23T06:21:50Z",
             "hidden": false,
             "dateHidden": null,
+            "name": "Add approval",
+            "sysName": "add_approval",
             "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"position\",\"name\":\"Должность\",\"dataType\":\"string\",\"id\":\"23441727072534412\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"email\",\"name\":\"Email\",\"dataType\":\"link\",\"id\":\"30331727072535530\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"full_name\",\"name\":\"Полное имя\",\"dataType\":\"link\",\"id\":\"82061727072516196\",\"link\":\"employees\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"division\",\"name\":\"Подразделение\",\"dataType\":\"link\",\"id\":\"94381727072585670\",\"link\":\"structure\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true}]",
             "jsonGroupSettings": null,
             "jsonViewIdSettings": "[{\"sysName\":\"full_name\"},{\"sysName\":\"position\"},{\"sysName\":\"email\"},{\"sysName\":\"division\"}]",
@@ -11034,6 +11888,7 @@ let exampleForm = {
             "changedBy": 23015,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "dataType": "id",
@@ -11054,25 +11909,24 @@ let exampleForm = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "array": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
+                "json": false
             },
-            "objectIDSysName": "id",
             "folderId": 33819484
         },
         "99344980": {
             "networkID": 21335,
-            "sysName": "st_reason_replacement",
-            "name": "st_reason_replacement",
             "id": 99344980,
             "dateCreated": "2024-09-23T06:53:51Z",
             "hidden": false,
             "dateHidden": null,
+            "name": "st_reason_replacement",
+            "sysName": "st_reason_replacement",
             "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"reason\",\"name\":\"Причина\",\"dataType\":\"string\",\"id\":\"26151726141366314\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false}]",
             "jsonGroupSettings": "[]",
             "jsonViewIdSettings": null,
@@ -11086,6 +11940,7 @@ let exampleForm = {
             "changedBy": null,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "dataType": "id",
@@ -11106,15 +11961,14 @@ let exampleForm = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "array": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "typeVariable": {},
-                "json": false,
-                "indexExists": false,
-                "array": false
+                "json": false
             },
-            "objectIDSysName": "id",
             "folderId": 33819484
         }
     },
@@ -11142,13 +11996,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_hrbp",
@@ -11170,13 +12024,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "current_up_direct",
@@ -11198,13 +12052,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_division",
@@ -11226,13 +12080,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_position",
@@ -11254,13 +12108,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "current_division",
@@ -11282,13 +12136,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "current_position",
@@ -11310,13 +12164,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "planned_date",
@@ -11365,13 +12219,13 @@ let exampleForm = {
                 "isUTC": "false"
             },
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "current_direct_name",
@@ -11393,13 +12247,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "employee_name",
@@ -11421,13 +12275,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "last_user",
@@ -11449,13 +12303,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "number",
@@ -11477,13 +12331,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "date",
@@ -11532,13 +12386,13 @@ let exampleForm = {
                 "isUTC": "false"
             },
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "date_text",
@@ -11560,13 +12414,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "last_change_date",
@@ -11615,13 +12469,13 @@ let exampleForm = {
                 "isUTC": "false"
             },
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "logs",
@@ -11643,13 +12497,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": false,
             "arrayLink": true,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "prev_status",
@@ -11671,13 +12525,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "current_cnb",
@@ -11691,7 +12545,7 @@ let exampleForm = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 8,
+            "order": 6,
             "linkIndexFieldSysName": [],
             "defaultValue": null,
             "constraints": null,
@@ -11699,13 +12553,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "current_total_salary",
@@ -11727,13 +12581,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "per_bonus",
@@ -11755,13 +12609,13 @@ let exampleForm = {
             "format": "positiveNum",
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "current_salary_with_rkisn",
@@ -11783,13 +12637,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "rkisn",
@@ -11811,13 +12665,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "current_salary_without_rkisn",
@@ -11839,13 +12693,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "period_bonus",
@@ -11867,13 +12721,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "analytics_ops",
@@ -11895,13 +12749,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "position_id",
@@ -11923,13 +12777,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "company",
@@ -11951,13 +12805,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "contract_end_date",
@@ -12006,13 +12860,13 @@ let exampleForm = {
                 "isUTC": "false"
             },
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "replacement_type",
@@ -12034,13 +12888,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "repl_empl_name",
@@ -12062,13 +12916,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "current_hrbp",
@@ -12090,43 +12944,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
+            "array": false,
             "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "status",
-            "dataType": "link",
-            "name": "Статус",
-            "id": "53231725433518277",
-            "link": "st_statuses",
-            "group": "0",
-            "tags": "",
-            "indexing": true,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [
-                "id"
-            ],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": true,
-            "array": false
+            "json": false
         },
         {
             "sysName": "user_creator",
@@ -12148,13 +12972,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "position_rate",
@@ -12176,13 +13000,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_analytics_ops",
@@ -12204,13 +13028,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_position_id",
@@ -12232,13 +13056,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_company",
@@ -12260,13 +13084,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_per_bonus",
@@ -12288,13 +13112,13 @@ let exampleForm = {
             "format": "positiveNum",
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_total_salary",
@@ -12316,13 +13140,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_salary_with_rkisn",
@@ -12344,13 +13168,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_rkisn",
@@ -12372,13 +13196,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_salary_without_rkisn",
@@ -12400,13 +13224,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_period_bonus",
@@ -12428,13 +13252,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_org_structure",
@@ -12456,13 +13280,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "current_org_structure",
@@ -12484,18 +13308,18 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_up_direct",
             "dataType": "link",
-            "name": "Новый верхнеуровневый руководитель (руководитель нанимающего менеджера) для Non-TECH / Директор департамента для TECH",
+            "name": "Верхнеуровневый руководитель (руководитель нанимающего менеджера) для Non-TECH / Директор департамента для TECH",
             "id": "49461726638728534",
             "link": "employees",
             "group": "1725431710596",
@@ -12512,13 +13336,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_cnb",
@@ -12532,7 +13356,7 @@ let exampleForm = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 9,
+            "order": 7,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -12540,13 +13364,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "comment_orgdev",
@@ -12568,13 +13392,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "orgdev",
@@ -12623,13 +13447,13 @@ let exampleForm = {
                 "isUTC": "false"
             },
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "hr_admin",
@@ -12643,7 +13467,7 @@ let exampleForm = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 10,
+            "order": 8,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -12651,13 +13475,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "budget_holder",
@@ -12671,7 +13495,7 @@ let exampleForm = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 11,
+            "order": 9,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -12679,13 +13503,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "new_cost_center",
@@ -12707,13 +13531,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "current_cost_center",
@@ -12735,13 +13559,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "budget_date",
@@ -12790,13 +13614,13 @@ let exampleForm = {
                 "isUTC": "false"
             },
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "add_approval_in",
@@ -12818,68 +13642,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "role_add_approval_out",
-            "dataType": "boolean",
-            "name": "Добавить доп согласующего в качестве:",
-            "id": "38031727073169601",
-            "link": "",
-            "group": "1725431710596",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 7,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "Согласователь в заявке",
-                    "Получатель уведомления"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD/MM/Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "add_approval_out",
@@ -12893,7 +13662,7 @@ let exampleForm = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 6,
+            "order": 5,
             "linkIndexFieldSysName": [],
             "defaultValue": null,
             "constraints": null,
@@ -12901,68 +13670,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "role_add_approval_in",
-            "dataType": "boolean",
-            "name": "Добавить доп согласующего в качестве:",
-            "id": "75221727073076578",
-            "link": "",
-            "group": "1725431710596",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 5,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "Согласователь в заявке",
-                    "Получатель уведомления"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD/MM/Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "replacement_reason",
@@ -12984,13 +13698,13 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "replacement",
@@ -13039,13 +13753,13 @@ let exampleForm = {
                 "isUTC": "false"
             },
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "actual_date",
@@ -13094,13 +13808,13 @@ let exampleForm = {
                 "isUTC": "false"
             },
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "json": false
         },
         {
             "sysName": "total_increase_per",
@@ -13122,13 +13836,68 @@ let exampleForm = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
-            "json": false,
+            "json": false
+        },
+        {
+            "sysName": "role_budget_holder",
+            "dataType": "boolean",
+            "name": "Добавить Владельца бюджета в качестве:",
+            "id": "86541727248705190",
+            "link": "",
+            "group": "1725431710596",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 10,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "Cогласующего лица",
+                    "Получателя уведомления"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "array": false,
             "indexExists": false,
-            "array": false
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false
         }
     ],
     "quickSearch": null,
@@ -13142,7 +13911,7 @@ let exampleForm = {
 let authExample = {
     "isAuth": true,
     "custom_labels": "",
-    "role": "jo_hrd,jo_recruiter,st_agreement",
+    "role": "jo_hrd,jo_recruiter,st_agreement,st_hrbp",
     "who_delegated_ids": "",
     "lastName": "Ershov",
     "firstName": "Pavel",
