@@ -261,16 +261,16 @@ export default function FpsForm2(props) {
 
       // { key: "notIn", value: "NOT in" }
       if (element._conditionalView_operator == "notIn") {
-        console.log(" == element is hidden == NOT IN")
-        console.log(element)
-        console.log(value)
+        // console.log(" == element is hidden == NOT IN")
+        // console.log(element)
+        // console.log(value)
         value = value ? value.split(",") : null
         field = field ? field.split(",") : null
 
         if ((field && field.length > 0 &&
           value && value.length > 0
           && _.intersection(value, field).length > 0) || !field || !value) {
-          console.log((value || []).join(",") + " contains " + "{{" + element._conditionalView_field + "}} → " + field)
+          // console.log((value || []).join(",") + " contains " + "{{" + element._conditionalView_field + "}} → " + field)
           isHidden = true
         }
       }
@@ -509,14 +509,18 @@ export default function FpsForm2(props) {
           console.log("FINISH SUBMIT")
           console.log(data)
           finish && finish(data)
+          let extendedModelUpdate = { ...extendedModel }
           autoSubmit ?
             setState({ ...saveState })
             : setState({ ...saveState, step: targetStep || "submitted", ...stateUpdate })
-
-          if (submitKeepModel && !resetModel) { modelUpdate = { ...model, ...modelToSend, ...modelUpdate } }
+          if (submitKeepModel && !resetModel) {
+            modelUpdate = { ...model, ...modelToSend, ...modelUpdate };
+            extendedModelUpdate = { ...extendedModelUpdate, ...modelToSend, ...modelUpdate }
+          }
           console.log("final modelUpdate")
           console.log(modelUpdate)
           setModel(modelUpdate)
+          setExtendedModel(extendedModelUpdate)
           setOriginalModel(modelUpdate)
         } else {
           setState({ ...state, _apiError: data.msg })
@@ -745,6 +749,7 @@ export default function FpsForm2(props) {
             <RenderStep
               {...props}
               refresh={refresh}
+              setOriginalModel={setOriginalModel}
               currentStep={currentStep}
               refreshOptions={refreshOptions}
               model={model}
@@ -827,6 +832,7 @@ export default function FpsForm2(props) {
             refreshOptions={refreshOptions}
             currentStep={currentStep}
             model={model}
+            setOriginalModel={setOriginalModel}
             extendedModel={extendedModel}
             setExtendedModel={setExtendedModel}
             checkHidden={checkHidden}
@@ -855,7 +861,7 @@ export default function FpsForm2(props) {
 
 function RenderStep(props) {
   const { auth, data, callEndpoint, onEvent, id, handleRoute, currentStep, templateState, checkIfAllInputsHidden, editModel, originalModel,
-    model, checkHidden, dict, locale, state, refreshOptions, refresh, extendedModel, setExtendedModel, loading, template, setState, lang, submit, params, setModel } = props
+    model, checkHidden, dict, locale, state, refreshOptions, refresh, extendedModel, setOriginalModel, setExtendedModel, loading, template, setState, lang, submit, params, setModel } = props
 
 
   const callEndpointPOST = (endpoint, body, finish) => {
@@ -882,10 +888,15 @@ function RenderStep(props) {
             if (!isEmpty(_.get(response, "object"))) {
               const modelUpdate = _.get(response, "object")
               setModel({ ...model, ...modelUpdate })
+              setOriginalModel({ ...model, ...modelUpdate })
+              setExtendedModel({ ...extendedModel, ...modelUpdate })
+
             }
             if (!isEmpty(_.get(response, "model"))) {
               const modelUpdate = _.get(response, "model")
               setModel({ ...model, ...modelUpdate })
+              setOriginalModel({ ...model, ...modelUpdate })
+              setExtendedModel({ ...extendedModel, ...modelUpdate })
             }
             if (!isEmpty(_.get(response, "redirect")) &&
               !isEmpty(_.get(response, "redirect.target"))) {
