@@ -412,22 +412,30 @@ export default function FpsForm2(props) {
 
 
     function excludeNonEmptyValues(obj, keys) {
-      console.log("excludeNonEmptyValues")
-      console.log(obj)
-      console.log(keys)
+      // console.log("excludeNonEmptyValues")
+      // console.log(obj)
+      // console.log(keys)
       const filteredKeys = _.pickBy(obj, (value, key) => {
         return !_.isEmpty((value || "").toString()); // Exclude keys with non-empty values
       });
+      // console.log(filteredKeys)
+      // console.log(keys.filter(key => !(key in filteredKeys)))
       return keys.filter(key => !(key in filteredKeys));
     }
 
-    let emptyFields = excludeNonEmptyValues(modelToSend, requiredFieldValues).filter(i => {
-      !!_.get(_.find(fields, { sysName: i }), "name")
-    })
+    // console.log(excludeNonEmptyValues(modelToSend, requiredFieldValues))
+    // console.log(fields)
+
+    let emptyFields = excludeNonEmptyValues(modelToSend, requiredFieldValues)
+    // .filter(i => {
+    //   !!_.get(_.find(fields, { sysName: i }), "name")
+    // }) 
+    // Я, блять, в душе не ебу что это и зачем это я сюда добавил...
+
 
     if (emptyFields.length > 0 && !autoSubmit) {
       emptyFields = emptyFields.map(i => {
-        const fieldName = _.find(fields, { sysName: i }).name
+        const fieldName = _.find(fields, { sysName: i }).name || _.find(fields, { sysName: i }).sysName
         return fieldName ? '"' + fieldName + '"' : '"' + i + '"'
       })
       const errMessage = dict[lang].form.emptyRequired + emptyFields.join(", ")
