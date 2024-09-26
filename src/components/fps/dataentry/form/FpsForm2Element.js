@@ -160,8 +160,12 @@ function ElementAction(props) {
                 return;
             }
         }
+        const copyModel = {...model}
+        const copyExtendedModel = {...extendedModel}
 
         if (action.resetModel) {
+            copyModel = {}
+            copyExtendedModel = {}
             setModel({})
             setExtendedModel({})
         }
@@ -230,8 +234,8 @@ function ElementAction(props) {
                 )
             } else {
                 setState({ ...state, ...payloadState })
-                setModel({ ...model, ...payloadModel })
-                setExtendedModel({ ...extendedModel, ...payloadModel })
+                setModel({ ...copyModel, ...payloadModel })
+                setExtendedModel({ ...copyExtendedModel, ...payloadModel })
                 setLoading(false)
             }
         }
