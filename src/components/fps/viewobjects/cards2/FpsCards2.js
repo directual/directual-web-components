@@ -24,6 +24,8 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, templateEngine, id, curr
     const card_border = _.get(data, "params.card_border", 1)
     const card_border_radius = _.get(data, "params.card_border_radius")
 
+    const [error, setError] = useState("")
+
     // grid settings
     const breakPoints = {
         wideDesktop: _.get(data, "params.grid_layout__wideDesktop", 4),
@@ -37,7 +39,7 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, templateEngine, id, curr
     // edit object from card
 
     const callEndpointPOST = (endpoint, body, finish) => {
-        console.log('===> calling endpoint /' + endpoint)
+        console.log('===> calling endpoint POST /' + endpoint)
         console.log(body)
         callEndpoint && callEndpoint(
             endpoint,
@@ -48,6 +50,7 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, templateEngine, id, curr
                 if (result == "ok") {
                     console.log('finish')
                     console.log(data)
+                    finish && finish()
                     //   try {
                     //     console.log("response data")
                     //     console.log(data)
@@ -95,6 +98,25 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, templateEngine, id, curr
         )
     }
 
+    const callEndpointGET = (endpoint, params, finish) => {
+        console.log('===> calling endpoint GET /' + endpoint)
+        callEndpoint && callEndpoint(
+            endpoint,
+            "GET",
+            undefined,
+            params,
+            (result, data) => {
+                if (result == "ok") {
+                    finish && finish(data)
+                }
+                else {
+                    setError && setError(data)
+                    finish && finish([])
+                }
+            }
+        )
+    }
+
     return <div className={`FPS_CARDS2 ${styles.cards2}`}>
 
         {(title || showCounter) && <div className={`FPS_CARDS2__HEADER ${styles.cards2_header}`}>
@@ -124,6 +146,7 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, templateEngine, id, curr
                     <Card
                         key={object.id}
                         data={data}
+                        callEndpointGET={callEndpointGET}
                         callEndpointPOST={callEndpointPOST}
                         object={object}
                         templateEngine={templateEngine}
@@ -136,7 +159,7 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, templateEngine, id, curr
 
 function Card(props) {
 
-    const { object, data, templateEngine, callEndpointPOST } = props
+    const { object, data, templateEngine, callEndpointPOST, callEndpointGET } = props
 
     const cardType = _.get(data, "params.card_layout_type")
     const card_padding = _.get(data, "params.card_padding", 12)
@@ -145,25 +168,40 @@ function Card(props) {
     const image_border_radius = _.get(data, "params.card_type_cart.image_border_radius", 0)
 
     const field_header = _.get(data, "params.card_type_cart.header")
-    const field_image = _.get(data, "params.card_type_cart.image")
+    const field_image = "{{" + _.get(data, "params.card_type_cart.image") + "}}"
     const field_description = _.get(data, "params.card_type_cart.description")
     const field_price = _.get(data, "params.card_type_cart.price")
     const field_quantity = _.get(data, "params.card_type_cart.quantity")
 
+    const dir_image_field = "{{" + _.get(data, "params.card_type_dir.image") + "}}"
+    const dir_image_height = _.get(data, "params.card_type_dir.image_height", 50)
+    const dir_image_radius = _.get(data, "params.card_type_dir.image_border_radius", 0)
+    const dir_image_padding = _.get(data, "params.card_type_dir.image_padding", 0)
+    const dir_cardBody = _.get(data, "params.card_type_dir.body", "")
+
+    const favoritesOn = _.get(data, "params.card_type_dir.favoritesOn", false)
+    const favoritesEndpoint = _.get(data, "params.card_type_dir.favoritesEndpoint", "")
+    const favoritesField = _.get(data, "params.card_type_dir.favoritesField", "")
+    const favoritesIconOn = _.get(data, "params.card_type_dir.favoritesIconOn", "starFill")
+    const favoritesIconOff = _.get(data, "params.card_type_dir.favoritesIconOff", "star")
+
     const [description, setDescription] = useState("loading...")
-    // const [header, setHeader] = useState("loading...")
-    // const [image, setImage] = useState("loading...")
-    // const [price, setPrice] = useState("loading...")
+    const [cardBody, setCardBody] = useState("loading...")
+
+    const [favorites, setFavorites] = useState([])
 
     useEffect(() => {
         const fetchData = async (payload, setValue) => {
-            const templValue = await templateEngine(payload, object);
+            const templValue = templateEngine ? await templateEngine(payload, object) : "Templating error";
             setValue(templValue);
         };
-        //fetchData(field_header, setHeader);
-        //fetchData(field_image, setImage);
         fetchData(field_description, setDescription);
-        //fetchData(field_price, setPrice);
+        fetchData(dir_cardBody, setCardBody);
+        favoritesOn && favoritesEndpoint && callEndpointGET(favoritesEndpoint, {}, data => {
+            console.log("favorites")
+            console.log(data)
+            setFavorites(data)
+        })
     }, [])
 
     const changeQuantity = (count) => {
@@ -210,7 +248,28 @@ function Card(props) {
         </div>
     </div>
 
-    return <div>
+    if (cardType == "regular") return <div
+        className={`Cards2_typeRegular ${styles.cards2_typeRegular}`}>
+        <div
+            className={`Cards2_typeRegular__image ${styles.cards2_typeRegular__image}`}
+            style={{
+                height: dir_image_height,
+                overflow: "hidden",
+                margin: dir_image_padding,
+                borderRadius: dir_image_radius,
+                backgroundImage: `url(${template(dir_image_field, object)})`,
+                backgroundColor: 'red'
+            }} />
+        {favoritesOn && <div
+            className={`Cards2_typeRegular__favButton ${styles.cards2_typeRegular__favButton}`}>
+                <div className={`${styles.cards2_typeRegular__favButton__icon} icon icon-${favoritesIconOn}`}/>
+        </div>}
+        <div style={{ padding: card_padding }}>
+            <InnerHTML allowRerender={true} html={cardBody} />
+        </div>
+    </div>
+
+    return <div >
         —
     </div>
 }

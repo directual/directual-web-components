@@ -21,9 +21,27 @@
 .cards2_typeCart {
   display: flex;
 }
-.cards2_typeCart__image {
+.cards2_typeRegular {
+  position: relative;
+}
+.cards2_typeRegular__favButton {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  background-color: var(--cards-bgr);
+  border-radius: 100%;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: 0.5s;
+}
+.cards2_typeRegular__favButton:hover {
+  opacity: 1;
+}
+.cards2_typeCart__image,
+.cards2_typeRegular__image {
   background-color: var(--layout-bgr);
   background-size: cover;
+  background-position: center center;
 }
 .cards2_typeCart__bodyWrapper {
   display: flex;

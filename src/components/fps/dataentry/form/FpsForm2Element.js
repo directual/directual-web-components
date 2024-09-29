@@ -160,8 +160,8 @@ function ElementAction(props) {
                 return;
             }
         }
-        const copyModel = {...model}
-        const copyExtendedModel = {...extendedModel}
+        var copyModel = {...model}
+        var copyExtendedModel = {...extendedModel}
 
         if (action.resetModel) {
             copyModel = {}
