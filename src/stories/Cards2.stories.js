@@ -28,7 +28,7 @@ let exampleTable = {
         "card_layout_type": "regular",
         "card_border_radius": 0,
         "card_border": 0,
-        "card_padding": 6,
+        "card_padding": 12,
         "actions": [
             {
                 "id": "action_1725283854992",
@@ -42,15 +42,15 @@ let exampleTable = {
         "cards_title": "",
         "card_type_dir": {
             "image": "mainPhoto",
-            "image_height": 120,
+            "image_height": 239,
             "favoritesOn": true,
             "favoritesEndpoint": "newCatalogueFavorites",
             "favoritesField": "productId",
-            "body": "<h3>{{title}}</h3>\n<div><b>{{price}} ₽</b></div>",
-            "image_border_radius": 8,
-            "image_padding": 8,
-            "favoritesIconOff": "love",
-            "favoritesIconOn": "done"
+            "body": "<p style=\"margin-bottom:12px; line-height:normal\"><b>{{title}}</b><p>\n<div class=\"cat_item_tag\">{{productCategoryID.title}}</div><div style=\"margin-top:12px\" >{{price}} ₽</div>",
+            "image_border_radius": 0,
+            "image_padding": 0,
+            "favoritesIconOff": "star",
+            "favoritesIconOn": "starFill"
         }
     },
     "tableTitle": null,

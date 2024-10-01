@@ -117,7 +117,16 @@ export function FpsForm2HiddenInput(props) {
 function FieldText(props) {
 
     const { field, locale, lang, template, model, state, onChange, fieldInfo, code, disabled } = props
-    const basicProps = { onChange, locale, lang, disabled }
+    const basicProps = { locale, lang, disabled }
+
+    const debounceTime = _.get(field,"_field_set_debounce") ? _.get(field,"_field_debounce_value", 0) : 0
+    const cx = null
+    const debouncedOnChange = debounce(onChangeHandler, debounceTime)
+
+    function onChangeHandler(value) {
+        clearTimeout(cx);
+        onChange(value)
+    }
 
     const parseJson = json => {
         if (!json) return []
@@ -152,6 +161,7 @@ function FieldText(props) {
                 label={field._edit_state_input_label || field._state_field}
                 defaultValue={_.get(state, field._state_field)}
                 {...basicProps}
+                onChange={debouncedOnChange}
             />
         }
         if (field._edit_state_type == "multiselect") {
@@ -162,7 +172,7 @@ function FieldText(props) {
                 label={field._edit_state_input_label || field._state_field}
                 defaultValue={_.get(state, field._state_field).split(",")}
                 {...basicProps}
-                onChange={value => (value && value.length) ? onChange(value.join(",")) : onChange("")}
+                onChange={value => (value && value.length) ? debouncedOnChange(value.join(",")) : debouncedOnChange("")}
             />
         }
         if (field._edit_state_type == "buttons") {
@@ -174,6 +184,7 @@ function FieldText(props) {
                 width={field._edit_state_pedal_width || undefined}
                 stretch={field._edit_state_pedal_stretch}
                 {...basicProps}
+                onChange={debouncedOnChange}
             />
         }
         return <Input nomargin
@@ -183,6 +194,7 @@ function FieldText(props) {
             label={field._edit_state_input_label || field._state_field}
             defaultValue={_.get(state, field._state_field)}
             {...basicProps}
+            onChange={debouncedOnChange}
         />
     }
 
@@ -194,6 +206,7 @@ function FieldText(props) {
         rows='auto'
         required={field._field_required}
         {...basicProps}
+        onChange={debouncedOnChange}
         nomargin
         label={fieldInfo.name || fieldInfo.sysName}
         description={field._field_add_description && template(field._field_description_text)}
