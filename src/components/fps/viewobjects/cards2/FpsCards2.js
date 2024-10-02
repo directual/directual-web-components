@@ -178,6 +178,10 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, templateEngine, id, curr
                                     let copyFav = [...favorites]
                                     _.remove(copyFav, (obj) => obj[favoritesField] === object.id)
                                     setFavorites(copyFav)
+                                } else {
+                                    let copyFav = [...favorites]
+                                    copyFav.push({ [favoritesField]: object.id })
+                                    setFavorites(copyFav)
                                 }
                                 const payload = {
                                     [favoritesField]: object.id,
@@ -290,7 +294,7 @@ function Card(props) {
                 if (path[0] !== '.' && path[0] !== '/') {
                     path = './' + path
                 }
-                handleRoute(path, object)
+                handleRoute(path)(e)
             }
         }}>
         <div
