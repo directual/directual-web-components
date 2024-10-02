@@ -182,8 +182,8 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, templateEngine, id, curr
                                     let copyFav = [...favorites]
                                     _.remove(copyFav, (obj) => obj[favoritesField] === object.id)
                                     setFavorites(copyFav)
-                                    constFavID = _.get(favorites.filter(i => i[favoritesField] == object.id)[0],"id")
-                                    if (constFavID) _.set(payload, "id", constFavID)
+                                    const favID = _.get(favorites.filter(i => i[favoritesField] == object.id)[0],"id")
+                                    if (favID) _.set(payload, "id", favID)
                                 } else {
                                     let copyFav = [...favorites]
                                     copyFav.push({ [favoritesField]: object.id })
