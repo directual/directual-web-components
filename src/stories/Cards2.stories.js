@@ -31,10 +31,6 @@ let exampleTable = {
         "card_padding": 12,
         "actions": [
             {
-                "id": "action_1725283854992",
-                "name": "В избранное"
-            },
-            {
                 "id": "action_1725283869283",
                 "name": "В корзину"
             }
@@ -51,15 +47,17 @@ let exampleTable = {
             "image_padding": 0,
             "favoritesIconOff": "star",
             "favoritesIconOn": "starFill"
-        }
+        },
+        "routing": "redirect",
+        "routing_where": "{{id}}"
     },
     "tableTitle": null,
     "actions": null,
     "headers": [
         {
             "sysName": "id",
-            "dataType": "id",
             "name": "SKU",
+            "dataType": "id",
             "id": "0",
             "link": "",
             "group": "0",
@@ -76,18 +74,18 @@ let exampleTable = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "array": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "indexExists": false
+            "array": false
         },
         {
             "sysName": "title",
-            "dataType": "string",
             "name": "Наименование",
+            "dataType": "string",
             "id": "72911721208849150",
             "link": null,
             "group": "1721208844635",
@@ -104,18 +102,18 @@ let exampleTable = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
-            "array": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "indexExists": false
+            "array": false
         },
         {
             "sysName": "productCollectionID",
-            "dataType": "link",
             "name": "Коллекция",
+            "dataType": "link",
             "id": "67661721209011891",
             "link": "ProductCollection",
             "group": "1721208991936",
@@ -132,18 +130,18 @@ let exampleTable = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
-            "array": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
-            "indexExists": false
+            "array": false
         },
         {
             "sysName": "productCategoryID",
-            "dataType": "link",
             "name": "Категория",
+            "dataType": "link",
             "id": "17861721209011230",
             "link": "ProductCategory",
             "group": "1721208991936",
@@ -160,18 +158,18 @@ let exampleTable = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
-            "array": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": true,
             "linkType": true,
             "arrayLink": false,
-            "indexExists": false
+            "array": false
         },
         {
             "sysName": "yandexMarket",
-            "dataType": "string",
             "name": "Яндекс маркет",
+            "dataType": "string",
             "id": "47961721208931365",
             "link": null,
             "group": "1721208925948",
@@ -188,18 +186,18 @@ let exampleTable = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
-            "array": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "indexExists": false
+            "array": false
         },
         {
             "sysName": "ozon",
-            "dataType": "string",
             "name": "Ozon",
+            "dataType": "string",
             "id": "39661721208930902",
             "link": null,
             "group": "1721208925948",
@@ -216,18 +214,18 @@ let exampleTable = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
-            "array": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "indexExists": false
+            "array": false
         },
         {
             "sysName": "wildberries",
-            "dataType": "string",
             "name": "Wildberries",
+            "dataType": "string",
             "id": "61651721208930228",
             "link": null,
             "group": "1721208925948",
@@ -244,18 +242,18 @@ let exampleTable = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
-            "array": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "indexExists": false
+            "array": false
         },
         {
             "sysName": "additionalPhotos",
-            "dataType": "file",
             "name": "Дополнительные фото",
+            "dataType": "file",
             "id": "48711721208894486",
             "link": "",
             "group": "1721208844635",
@@ -272,18 +270,18 @@ let exampleTable = {
             "format": "multipleImages",
             "formatOptions": null,
             "groupName": null,
-            "array": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "indexExists": false
+            "array": false
         },
         {
             "sysName": "mainPhoto",
-            "dataType": "file",
             "name": "Фото",
+            "dataType": "file",
             "id": "31971721208886150",
             "link": "",
             "group": "1721208844635",
@@ -300,18 +298,18 @@ let exampleTable = {
             "format": "image",
             "formatOptions": null,
             "groupName": null,
-            "array": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "indexExists": false
+            "array": false
         },
         {
             "sysName": "quantity",
-            "dataType": "number",
             "name": "Остатки",
+            "dataType": "number",
             "id": "18351721208850819",
             "link": "",
             "group": "1721208844635",
@@ -328,18 +326,18 @@ let exampleTable = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
-            "array": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "indexExists": false
+            "array": false
         },
         {
             "sysName": "price",
-            "dataType": "decimal",
             "name": "Стоимость",
+            "dataType": "decimal",
             "id": "38571721208850461",
             "link": "",
             "group": "1721208844635",
@@ -356,18 +354,18 @@ let exampleTable = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
-            "array": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "indexExists": false
+            "array": false
         },
         {
             "sysName": "description",
-            "dataType": "string",
             "name": "Описание",
+            "dataType": "string",
             "id": "38291721208849781",
             "link": null,
             "group": "1721208844635",
@@ -384,18 +382,18 @@ let exampleTable = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
-            "array": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "indexExists": false
+            "array": false
         },
         {
             "sysName": "status",
-            "dataType": "string",
             "name": "",
+            "dataType": "string",
             "id": "40191721211193024",
             "link": null,
             "group": "1721211188835",
@@ -412,18 +410,18 @@ let exampleTable = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
-            "array": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "indexExists": false
+            "array": false
         },
         {
             "sysName": "alert",
-            "dataType": "string",
             "name": "",
+            "dataType": "string",
             "id": "19371721734507443",
             "link": "",
             "group": "1721211188835",
@@ -440,13 +438,13 @@ let exampleTable = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "array": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "indexExists": false
+            "array": false
         }
     ],
     "data": [
@@ -461,7 +459,7 @@ let exampleTable = {
                 "title": "Новогодняя коллекция"
             },
             "mainPhoto": "https://api.directual.com/fileUploaded/rubrick-shop/web/3ea96f11-b510-4b27-bde3-6dd3cc869c0d.jpg",
-            "id": "1",
+            "id": "RU-0004",
             "yandexMarket": "https://market.yandex.ru",
             "title": "Конструктор детский пластиковый «Морозик»",
             "additionalPhotos": [
@@ -480,7 +478,7 @@ let exampleTable = {
                 "title": "Новогодняя коллекция"
             },
             "mainPhoto": "https://api.directual.com/fileUploaded/rubrick-shop/web/c73e8cb0-8aff-499a-8ec1-f8c1f203003b.jpg",
-            "id": "2",
+            "id": "RU-0005",
             "yandexMarket": "https://market.yandex.ru",
             "title": "Конструктор детский пластиковый «Снежка»",
             "additionalPhotos": [
@@ -590,8 +588,8 @@ let exampleTable = {
             "_nativeIndexSettings": null,
             "innerIDField": {
                 "sysName": "id",
-                "dataType": "id",
                 "name": "SKU",
+                "dataType": "id",
                 "id": "0",
                 "link": "",
                 "group": "0",
@@ -608,13 +606,13 @@ let exampleTable = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "array": false,
+                "indexExists": false,
                 "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "indexExists": false
+                "array": false
             },
             "objectIDSysName": "id",
             "folderId": 33813299
@@ -642,8 +640,8 @@ let exampleTable = {
             "_nativeIndexSettings": null,
             "innerIDField": {
                 "sysName": "id",
-                "dataType": "id",
                 "name": "id",
+                "dataType": "id",
                 "id": "0",
                 "link": "",
                 "group": "0",
@@ -660,13 +658,13 @@ let exampleTable = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "array": false,
+                "indexExists": false,
                 "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "indexExists": false
+                "array": false
             },
             "objectIDSysName": "id",
             "folderId": 33813299
@@ -694,8 +692,8 @@ let exampleTable = {
             "_nativeIndexSettings": null,
             "innerIDField": {
                 "sysName": "id",
-                "dataType": "id",
                 "name": "id",
+                "dataType": "id",
                 "id": "0",
                 "link": "",
                 "group": "0",
@@ -712,13 +710,13 @@ let exampleTable = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "array": false,
+                "indexExists": false,
                 "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "indexExists": false
+                "array": false
             },
             "objectIDSysName": "id",
             "folderId": 33813299
@@ -730,8 +728,8 @@ let exampleTable = {
     "fileds": [
         {
             "sysName": "id",
-            "dataType": "id",
             "name": "SKU",
+            "dataType": "id",
             "id": "0",
             "link": "",
             "group": "0",
@@ -748,18 +746,18 @@ let exampleTable = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "array": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "indexExists": false
+            "array": false
         },
         {
             "sysName": "description",
-            "dataType": "string",
             "name": "Описание",
+            "dataType": "string",
             "id": "38291721208849781",
             "link": null,
             "group": "1721208844635",
@@ -776,18 +774,18 @@ let exampleTable = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
-            "array": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "indexExists": false
+            "array": false
         },
         {
             "sysName": "price",
-            "dataType": "decimal",
             "name": "Стоимость",
+            "dataType": "decimal",
             "id": "38571721208850461",
             "link": "",
             "group": "1721208844635",
@@ -804,18 +802,18 @@ let exampleTable = {
             "format": null,
             "formatOptions": null,
             "groupName": null,
-            "array": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "indexExists": false
+            "array": false
         },
         {
             "sysName": "mainPhoto",
-            "dataType": "file",
             "name": "Фото",
+            "dataType": "file",
             "id": "31971721208886150",
             "link": "",
             "group": "1721208844635",
@@ -832,18 +830,18 @@ let exampleTable = {
             "format": "image",
             "formatOptions": null,
             "groupName": null,
-            "array": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "indexExists": false
+            "array": false
         },
         {
             "sysName": "additionalPhotos",
-            "dataType": "file",
             "name": "Дополнительные фото",
+            "dataType": "file",
             "id": "48711721208894486",
             "link": "",
             "group": "1721208844635",
@@ -860,13 +858,13 @@ let exampleTable = {
             "format": "multipleImages",
             "formatOptions": null,
             "groupName": null,
-            "array": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "indexExists": false
+            "array": false
         }
     ],
     "quickSearch": null,

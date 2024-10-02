@@ -117,6 +117,19 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, templateEngine, id, curr
         )
     }
 
+    const favoritesOn = _.get(data, "params.card_type_dir.favoritesOn", false)
+    const favoritesEndpoint = _.get(data, "params.card_type_dir.favoritesEndpoint", "")
+    const favoritesField = _.get(data, "params.card_type_dir.favoritesField", "")
+    const favoritesIconOn = _.get(data, "params.card_type_dir.favoritesIconOn", "starFill")
+    const favoritesIconOff = _.get(data, "params.card_type_dir.favoritesIconOff", "star")
+    const [favorites, setFavorites] = useState([])
+
+    useEffect(() => {
+        favoritesOn && favoritesEndpoint && callEndpointGET(favoritesEndpoint, { pageSize: 100 }, data => {
+            setFavorites(data)
+        })
+    }, [])
+
     return <div className={`FPS_CARDS2 ${styles.cards2}`}>
 
         {(title || showCounter) && <div className={`FPS_CARDS2__HEADER ${styles.cards2_header}`}>
@@ -146,6 +159,7 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, templateEngine, id, curr
                     <Card
                         key={object.id}
                         data={data}
+                        favorites={favorites}
                         callEndpointGET={callEndpointGET}
                         callEndpointPOST={callEndpointPOST}
                         object={object}
@@ -159,7 +173,7 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, templateEngine, id, curr
 
 function Card(props) {
 
-    const { object, data, templateEngine, callEndpointPOST, callEndpointGET } = props
+    const { object, data, addToFavorites, templateEngine, favorites, callEndpointPOST, callEndpointGET } = props
 
     const cardType = _.get(data, "params.card_layout_type")
     const card_padding = _.get(data, "params.card_padding", 12)
@@ -178,17 +192,12 @@ function Card(props) {
     const dir_image_radius = _.get(data, "params.card_type_dir.image_border_radius", 0)
     const dir_image_padding = _.get(data, "params.card_type_dir.image_padding", 0)
     const dir_cardBody = _.get(data, "params.card_type_dir.body", "")
-
-    const favoritesOn = _.get(data, "params.card_type_dir.favoritesOn", false)
-    const favoritesEndpoint = _.get(data, "params.card_type_dir.favoritesEndpoint", "")
-    const favoritesField = _.get(data, "params.card_type_dir.favoritesField", "")
-    const favoritesIconOn = _.get(data, "params.card_type_dir.favoritesIconOn", "starFill")
-    const favoritesIconOff = _.get(data, "params.card_type_dir.favoritesIconOff", "star")
-
     const [description, setDescription] = useState("loading...")
     const [cardBody, setCardBody] = useState("loading...")
 
-    const [favorites, setFavorites] = useState([])
+    const favoritesOn = _.get(data, "params.card_type_dir.favoritesOn", false)
+    const favoritesIconOn = _.get(data, "params.card_type_dir.favoritesIconOn", "starFill")
+    const favoritesIconOff = _.get(data, "params.card_type_dir.favoritesIconOff", "star")
 
     useEffect(() => {
         const fetchData = async (payload, setValue) => {
@@ -197,11 +206,6 @@ function Card(props) {
         };
         fetchData(field_description, setDescription);
         fetchData(dir_cardBody, setCardBody);
-        favoritesOn && favoritesEndpoint && callEndpointGET(favoritesEndpoint, {}, data => {
-            console.log("favorites")
-            console.log(data)
-            setFavorites(data)
-        })
     }, [])
 
     const changeQuantity = (count) => {
@@ -210,6 +214,8 @@ function Card(props) {
 
     const cx = null
     const onChangeQuantity = debounce(changeQuantity, 500);
+
+    const isFavorite = _.some(favorites, { id: object.id })
 
     if (cardType == "cart") return <div
         className={`Cards2_typeCart ${styles.cards2_typeCart}`}>
@@ -233,13 +239,13 @@ function Card(props) {
             }}
             className={`Cards2_typeCart__bodyWrapper ${styles.cards2_typeCart__bodyWrapper}`}>
             <div className={`Cards2_typeCart__header ${styles.cards2_typeCart__header}`}>
-                <InnerHTML allowRerender={true} html={template(field_header, object)} />
+                {template(field_header, object) && <InnerHTML allowRerender={true} html={template(field_header, object)} />}
             </div>
             <div className={`Cards2_typeCart__description ${styles.cards2_typeCart__description}`}>
-                <InnerHTML allowRerender={true} html={description} />
+                {description && <InnerHTML allowRerender={true} html={description} />}
             </div>
             <div className={`Cards2_typeCart__price ${styles.cards2_typeCart__price}`}>
-                <InnerHTML allowRerender={true} html={template(field_price, object)} />
+                {template(field_price, object) && <InnerHTML allowRerender={true} html={template(field_price, object)} />}
             </div>
             <CartControls
                 object={object}
@@ -258,14 +264,13 @@ function Card(props) {
                 margin: dir_image_padding,
                 borderRadius: dir_image_radius,
                 backgroundImage: `url(${template(dir_image_field, object)})`,
-                backgroundColor: 'red'
             }} />
         {favoritesOn && <div
             className={`Cards2_typeRegular__favButton ${styles.cards2_typeRegular__favButton}`}>
-                <div className={`${styles.cards2_typeRegular__favButton__icon} icon icon-${favoritesIconOn}`}/>
+            <div className={`${styles.cards2_typeRegular__favButton__icon} icon icon-${isFavorite ? favoritesIconOn : favoritesIconOff}`} />
         </div>}
         <div style={{ padding: card_padding }}>
-            <InnerHTML allowRerender={true} html={cardBody} />
+            {cardBody && <InnerHTML allowRerender={true} html={cardBody} />}
         </div>
     </div>
 
