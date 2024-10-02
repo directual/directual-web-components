@@ -174,19 +174,22 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, templateEngine, id, curr
                             console.log("addToFavorites")
                             if (favoritesEndpoint && favoritesField && favoritesHiddenField) {
                                 setFavLoading(true)
+                                let payload = {
+                                    [favoritesField]: object.id,
+                                    [favoritesHiddenField]: !value
+                                }
                                 if (!value) {
                                     let copyFav = [...favorites]
                                     _.remove(copyFav, (obj) => obj[favoritesField] === object.id)
                                     setFavorites(copyFav)
+                                    constFavID = _.get(favorites.filter(i => i[favoritesField] == object.id)[0],"id")
+                                    if (constFavID) _.set(payload, "id", constFavID)
                                 } else {
                                     let copyFav = [...favorites]
                                     copyFav.push({ [favoritesField]: object.id })
                                     setFavorites(copyFav)
                                 }
-                                const payload = {
-                                    [favoritesField]: object.id,
-                                    [favoritesHiddenField]: !value
-                                }
+                                
                                 callEndpointPOST(favoritesEndpoint, payload, () => setFavLoading(false))
 
                             }
