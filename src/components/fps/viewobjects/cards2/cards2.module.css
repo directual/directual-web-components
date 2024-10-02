@@ -21,8 +21,10 @@
 .cards2_typeCart {
   display: flex;
 }
-.cards2_typeRegular {
+.cards2_typeRegular,
+.cards2_typeRegular:hover {
   position: relative;
+  color: var(--layout-text);
 }
 .cards2_typeRegular__favButton {
   position: absolute;

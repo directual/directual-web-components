@@ -120,6 +120,7 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, templateEngine, id, curr
     const favoritesOn = _.get(data, "params.card_type_dir.favoritesOn", false)
     const favoritesEndpoint = _.get(data, "params.card_type_dir.favoritesEndpoint", "")
     const favoritesField = _.get(data, "params.card_type_dir.favoritesField", "")
+    const favoritesHiddenField = _.get(data, "params.card_type_dir.favoritesHiddenField", "")
     const favoritesIconOn = _.get(data, "params.card_type_dir.favoritesIconOn", "starFill")
     const favoritesIconOff = _.get(data, "params.card_type_dir.favoritesIconOff", "star")
     const [favorites, setFavorites] = useState([])
@@ -164,14 +165,27 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, templateEngine, id, curr
                         data={data}
                         favLoading={favLoading}
                         favorites={favorites}
+                        handleRoute={handleRoute}
                         callEndpointGET={callEndpointGET}
                         callEndpointPOST={callEndpointPOST}
                         object={object}
                         templateEngine={templateEngine}
                         addToFavorites={(value) => {
                             console.log("addToFavorites")
-                            console.log(object.id)
-                            console.log(value)
+                            if (favoritesEndpoint && favoritesField && favoritesHiddenField) {
+                                setFavLoading(true)
+                                if (!value) {
+                                    let copyFav = [...favorites]
+                                    _.remove(copyFav, (obj) => obj[favoritesField] === object.id)
+                                    setFavorites(copyFav)
+                                }
+                                const payload = {
+                                    [favoritesField]: object.id,
+                                    [favoritesHiddenField]: !value
+                                }
+                                callEndpointPOST(favoritesEndpoint, payload, () => setFavLoading(false))
+
+                            }
                         }}
                     />
                 </div>)}
@@ -182,7 +196,7 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, templateEngine, id, curr
 
 function Card(props) {
 
-    const { object, data, addToFavorites, favLoading, templateEngine, favorites, callEndpointPOST, callEndpointGET } = props
+    const { object, data, addToFavorites, favLoading, templateEngine, handleRoute, favorites, callEndpointPOST, callEndpointGET } = props
 
     const cardType = _.get(data, "params.card_layout_type")
     const card_padding = _.get(data, "params.card_padding", 12)
@@ -207,6 +221,10 @@ function Card(props) {
     const favoritesOn = _.get(data, "params.card_type_dir.favoritesOn", false)
     const favoritesIconOn = _.get(data, "params.card_type_dir.favoritesIconOn", "starFill")
     const favoritesIconOff = _.get(data, "params.card_type_dir.favoritesIconOff", "star")
+
+    const isRouting = _.get(data, "params.routing") == "redirect"
+    const routingPath = _.get(data, "params.routing_where", '')
+
 
     useEffect(() => {
         const fetchData = async (payload, setValue) => {
@@ -263,8 +281,18 @@ function Card(props) {
         </div>
     </div>
 
-    if (cardType == "regular") return <div
-        className={`Cards2_typeRegular ${styles.cards2_typeRegular}`}>
+    if (cardType == "regular") return <a
+        className={`Cards2_typeRegular ${styles.cards2_typeRegular}`}
+        onClick={e => {
+            e.preventDefault()
+            if (isRouting && routingPath) {
+                let path = template(routingPath, object)
+                if (path[0] !== '.' && path[0] !== '/') {
+                    path = './' + path
+                }
+                handleRoute(path, object)
+            }
+        }}>
         <div
             className={`Cards2_typeRegular__image ${styles.cards2_typeRegular__image}`}
             style={{
@@ -276,14 +304,14 @@ function Card(props) {
             }} />
         {favoritesOn && <div
             style={{ opacity: favLoading ? .1 : .6 }}
-            onClick={e=> { favLoading ? undefined : addToFavorites(!isFavorite)}}
+            onClick={e => { favLoading ? undefined : addToFavorites(!isFavorite) }}
             className={`Cards2_typeRegular__favButton ${styles.cards2_typeRegular__favButton}`}>
             <div className={`${styles.cards2_typeRegular__favButton__icon} icon icon-${isFavorite ? favoritesIconOn : favoritesIconOff}`} />
         </div>}
         <div style={{ padding: card_padding }}>
             {cardBody && <InnerHTML allowRerender={true} html={cardBody} />}
         </div>
-    </div>
+    </a>
 
     return <div >
         —

@@ -46,7 +46,8 @@ let exampleTable = {
             "image_border_radius": 0,
             "image_padding": 0,
             "favoritesIconOff": "star",
-            "favoritesIconOn": "starFill"
+            "favoritesIconOn": "starFill",
+            "favoritesHiddenField": "is_hidden"
         },
         "routing": "redirect",
         "routing_where": "{{id}}"
