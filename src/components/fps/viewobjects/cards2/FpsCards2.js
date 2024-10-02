@@ -137,7 +137,7 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, templateEngine, id, curr
     return <div className={`FPS_CARDS2 ${styles.cards2}`}>
 
         {(title || showCounter) && <div className={`FPS_CARDS2__HEADER ${styles.cards2_header}`}>
-            {title && <h2>{title}</h2>}
+            {title && <h2>{title && <InnerHTML allowRerender={true} html={title} />}</h2>}
             {showCounter && <div className={`FPS_CARDS2__HEADER-counter ${styles.cards2_header_counter}`}>5 items</div>}
         </div>}
 
