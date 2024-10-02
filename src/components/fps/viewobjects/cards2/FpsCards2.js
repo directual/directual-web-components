@@ -308,7 +308,7 @@ function Card(props) {
             }} />
         {favoritesOn && <div
             style={{ opacity: favLoading ? .1 : .6 }}
-            onClick={e => { favLoading ? undefined : addToFavorites(!isFavorite) }}
+            onClick={e => { e.stopPropagation(); favLoading ? undefined : addToFavorites(!isFavorite) }}
             className={`Cards2_typeRegular__favButton ${styles.cards2_typeRegular__favButton}`}>
             <div className={`${styles.cards2_typeRegular__favButton__icon} icon icon-${isFavorite ? favoritesIconOn : favoritesIconOff}`} />
         </div>}
