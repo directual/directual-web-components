@@ -24,6 +24,7 @@
 .cards2_typeRegular,
 .cards2_typeRegular:hover {
   position: relative;
+  display: block;
   color: var(--layout-text);
 }
 .cards2_typeRegular__favButton {
@@ -35,6 +36,11 @@
   cursor: pointer;
   opacity: 0.6;
   transition: 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  width: 38px;
 }
 .cards2_typeRegular__favButton:hover {
   opacity: 1;
