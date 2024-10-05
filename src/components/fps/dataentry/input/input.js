@@ -100,6 +100,7 @@ export const icon_options =
         { key: 'logoutAlt', value: 'logoutAlt', icon: 'logoutAlt' },
         { key: 'logout', value: 'logout', icon: 'logout' },
         { key: 'love', value: 'love', icon: 'love' },
+        { key: 'loveFill', value: 'loveFill', icon: 'loveFill' },
         { key: 'mail', value: 'mail', icon: 'mail' },
         { key: 'menu', value: 'menu', icon: 'menu' },
         { key: 'minus', value: 'minus', icon: 'minus' },
