@@ -8,6 +8,7 @@ import Input, { InputRow } from '../../dataentry/input/input';
 import { debounce } from 'lodash'
 import { template } from '../../templating/template'
 import InnerHTML from 'dangerously-set-html-content'
+import Cards2Paging from './Cards2Paging'
 
 function FpsCards2({ auth, data, onEvent, callEndpoint, templateEngine, id, currentBP, locale, handleRoute }) {
 
@@ -182,14 +183,14 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, templateEngine, id, curr
                                     let copyFav = [...favorites]
                                     _.remove(copyFav, (obj) => obj[favoritesField] === object.id)
                                     setFavorites(copyFav)
-                                    const favID = _.get(favorites.filter(i => i[favoritesField] == object.id)[0],"id")
+                                    const favID = _.get(favorites.filter(i => i[favoritesField] == object.id)[0], "id")
                                     if (favID) _.set(payload, "id", favID)
                                 } else {
                                     let copyFav = [...favorites]
                                     copyFav.push({ [favoritesField]: object.id })
                                     setFavorites(copyFav)
                                 }
-                                
+
                                 callEndpointPOST(favoritesEndpoint, payload, () => setFavLoading(false))
 
                             }
@@ -222,12 +223,14 @@ function Card(props) {
     const dir_image_radius = _.get(data, "params.card_type_dir.image_border_radius", 0)
     const dir_image_padding = _.get(data, "params.card_type_dir.image_padding", 0)
     const dir_cardBody = _.get(data, "params.card_type_dir.body", "")
+    const dir_image_position = _.get(data, "params.card_type_dir.image_position", "top")
     const [description, setDescription] = useState("loading...")
     const [cardBody, setCardBody] = useState("loading...")
 
     const favoritesOn = _.get(data, "params.card_type_dir.favoritesOn", false)
     const favoritesIconOn = _.get(data, "params.card_type_dir.favoritesIconOn", "starFill")
     const favoritesIconOff = _.get(data, "params.card_type_dir.favoritesIconOff", "star")
+    const favoritesPosition = _.get(data, "params.card_type_dir.favoritesPosition", "left")
 
     const isRouting = _.get(data, "params.routing") == "redirect"
     const routingPath = _.get(data, "params.routing_where", '')
@@ -275,9 +278,9 @@ function Card(props) {
             <div className={`Cards2_typeCart__header ${styles.cards2_typeCart__header}`}>
                 {template(field_header, object) && <InnerHTML allowRerender={true} html={template(field_header, object)} />}
             </div>
-            <div className={`Cards2_typeCart__description ${styles.cards2_typeCart__description}`}>
-                {description && <InnerHTML allowRerender={true} html={description} />}
-            </div>
+            {field_description && description && <div className={`Cards2_typeCart__description ${styles.cards2_typeCart__description}`}>
+                <InnerHTML allowRerender={true} html={description} />
+            </div>}
             <div className={`Cards2_typeCart__price ${styles.cards2_typeCart__price}`}>
                 {template(field_price, object) && <InnerHTML allowRerender={true} html={template(field_price, object)} />}
             </div>
@@ -288,8 +291,31 @@ function Card(props) {
         </div>
     </div>
 
+    let flexDirection = 'column'
+    let imagePos = 'vert'
+
+    switch (dir_image_position) {
+        case 'left':
+            flexDirection = 'row'
+            imagePos = 'hor'
+            break;
+        case 'right':
+            flexDirection = 'row-reverse'
+            imagePos = 'hor'
+            break;
+        case 'top':
+            flexDirection = 'column'
+            break;
+        case 'bottom':
+            flexDirection = 'column-reverse'
+            break;
+    }
+
     if (cardType == "regular") return <a
         className={`Cards2_typeRegular ${styles.cards2_typeRegular}`}
+        style={{
+            flexDirection: flexDirection
+        }}
         onClick={e => {
             e.preventDefault()
             if (isRouting && routingPath) {
@@ -300,24 +326,36 @@ function Card(props) {
                 handleRoute(path)(e)
             }
         }}>
+
+        {/* IMAGE */}
         <div
             className={`Cards2_typeRegular__image ${styles.cards2_typeRegular__image}`}
             style={{
-                height: dir_image_height,
+                height: imagePos =='vert' ? dir_image_height : 'auto',
+                width: imagePos =='hor' ? dir_image_height : 'auto',
                 overflow: "hidden",
                 margin: dir_image_padding,
                 borderRadius: dir_image_radius,
                 backgroundImage: `url(${template(dir_image_field, object)})`,
-            }} />
-        {favoritesOn && <div
-            style={{ opacity: favLoading ? .1 : .6 }}
-            onClick={e => { e.stopPropagation(); favLoading ? undefined : addToFavorites(!isFavorite) }}
-            className={`Cards2_typeRegular__favButton ${styles.cards2_typeRegular__favButton}`}>
-            <div className={`${styles.cards2_typeRegular__favButton__icon} icon icon-${isFavorite ? favoritesIconOn : favoritesIconOff}`} />
-        </div>}
+            }}>
+            {favoritesOn && <div
+                style={
+                    {
+                        opacity: favLoading ? .1 : .6,
+                        left: favoritesPosition == 'left' ? 10 : 'auto',
+                        right: favoritesPosition == 'right' ? 10 : 'auto',
+                    }}
+                onClick={e => { e.stopPropagation(); favLoading ? undefined : addToFavorites(!isFavorite) }}
+                className={`Cards2_typeRegular__favButton ${styles.cards2_typeRegular__favButton}`}>
+                <div className={`${styles.cards2_typeRegular__favButton__icon} icon icon-${isFavorite ? favoritesIconOn : favoritesIconOff}`} />
+            </div>}
+        </div>
+
+        {/* CARD BODY */}
         <div style={{ padding: card_padding }}>
             {cardBody && <InnerHTML allowRerender={true} html={cardBody} />}
         </div>
+
     </a>
 
     return <div >

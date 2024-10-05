@@ -30,13 +30,14 @@
 
 .cards2_typeRegular, &.cards2_typeRegular:hover {
     position: relative;
-    display: block;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
     color: var(--layout-text);
 }
 
 .cards2_typeRegular__favButton {
     position: absolute;
-    left: 10px;
     top: 10px;
     background-color: var(--cards-bgr);
     border-radius: 100%;
@@ -57,6 +58,7 @@
     background-color: var(--layout-bgr);
     background-size: cover;
     background-position: center center;
+    position: relative;
 }
 
 .cards2_typeCart__bodyWrapper {

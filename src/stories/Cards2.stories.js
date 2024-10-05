@@ -18,7 +18,7 @@ export default {
 
 let exampleTable = {
     "sl": "getAllProductToCatalog",
-    "pageSize": "10",
+    "pageSize": "2",
     "headerField": null,
     "params": {
         "comp_ID": "TcxKkG",
@@ -35,19 +35,21 @@ let exampleTable = {
                 "name": "В корзину"
             }
         ],
-        "cards_title": "",
+        "cards_title": "<span style=\"padding-left:22px\">Каталог товаров</span>",
         "card_type_dir": {
             "image": "mainPhoto",
             "image_height": 239,
             "favoritesOn": true,
             "favoritesEndpoint": "newCatalogueFavorites",
             "favoritesField": "productId",
-            "body": "<p style=\"margin-bottom:12px; line-height:normal\"><b>{{title}}</b><p>\n<div class=\"cat_item_tag\">{{productCategoryID.title}}</div><div style=\"margin-top:12px\" >{{price}} ₽</div>",
+            "body": "<div style=\"margin-bottom:6px\"><b>{{price}} ₽</b></div>\n<p style=\"margin-bottom:6px; line-height:normal\">{{title}}<p>\n<div class=\"cat_item_tag\">{{productCategoryID.title}}</div>",
             "image_border_radius": 0,
-            "image_padding": 0,
-            "favoritesIconOff": "star",
-            "favoritesIconOn": "starFill",
-            "favoritesHiddenField": "is_hidden"
+            "image_padding": 1,
+            "favoritesIconOff": "love",
+            "favoritesIconOn": "loveFill",
+            "favoritesHiddenField": "is_hidden",
+            "favoritesPosition": "right",
+            "image_position": "left"
         },
         "routing": "redirect",
         "routing_where": "{{id}}"
@@ -394,9 +396,9 @@ let exampleTable = {
         {
             "sysName": "status",
             "name": "",
-            "dataType": "string",
+            "dataType": "link",
             "id": "40191721211193024",
-            "link": null,
+            "link": "ProductStatus",
             "group": "1721211188835",
             "tags": null,
             "indexing": false,
@@ -414,8 +416,8 @@ let exampleTable = {
             "indexExists": false,
             "typeVariable": {},
             "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
             "arrayLink": false,
             "array": false
         },
@@ -451,45 +453,33 @@ let exampleTable = {
     "data": [
         {
             "quantity": 0,
-            "ozon": "https://www.ozon.ru",
-            "description": "Задача организации, в особенности же дальнейшее развитие различных форм деятельности требуют определения и уточнения соответствующий условий активизации. Повседневная практика показывает, что реализация намеченных плановых заданий позволяет оценить значение направлений прогрессивного развития. \n\nЗначимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности позволяет оценить значение существенных финансовых и административных условий. Задача организации, в особенности же укрепление и развитие структуры влечет за собой процесс внедрения и модернизации направлений прогрессивного развития. \n\nНе следует, однако забывать, что новая модель организационной деятельности в значительной степени обуславливает создание существенных финансовых и административных условий.",
+            "ozon": "—",
             "alert": "alert",
-            "price": 999,
+            "price": 6999,
             "productCategoryID": {
                 "id": "b89ff0d4-3888-46d0-bc92-d7adfe4f0fb2",
                 "title": "Новогодняя коллекция"
             },
-            "mainPhoto": "https://api.directual.com/fileUploaded/rubrick-shop/web/3ea96f11-b510-4b27-bde3-6dd3cc869c0d.jpg",
-            "id": "RU-0004",
-            "yandexMarket": "https://market.yandex.ru",
-            "title": "Конструктор детский пластиковый «Морозик»",
-            "additionalPhotos": [
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/cc85395a-8eef-4724-9602-cda97d4f2fa5.jpg",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/388b9885-4d01-4401-9491-33f70a407edc.jpg"
-            ],
-            "wildberries": "https://www.wildberries.ru"
+            "mainPhoto": "https://api.directual.com/fileUploaded/rubrick-shop/web/e4b5a9dd-5518-403a-9513-75f4431120c6.jpg",
+            "id": "646912c8-5484-403a-8008-a1941fa223d7",
+            "yandexMarket": "—",
+            "title": "Дед Мороз",
+            "wildberries": "—"
         },
         {
             "quantity": 0,
-            "ozon": "https://www.ozon.ru",
-            "description": "Задача организации, в особенности же дальнейшее развитие различных форм деятельности требуют определения и уточнения соответствующий условий активизации. \n\nПовседневная практика показывает, что реализация намеченных плановых заданий позволяет оценить значение направлений прогрессивного развития. Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности позволяет оценить значение существенных финансовых и административных условий. \n\nЗадача организации, в особенности же укрепление и развитие структуры влечет за собой процесс внедрения и модернизации направлений прогрессивного развития. Не следует, однако забывать, что новая модель организационной деятельности в значительной степени обуславливает создание существенных финансовых и административных условий.",
-            "price": 999,
+            "alert": "alert",
+            "price": 5999,
             "productCategoryID": {
                 "id": "b89ff0d4-3888-46d0-bc92-d7adfe4f0fb2",
                 "title": "Новогодняя коллекция"
             },
-            "mainPhoto": "https://api.directual.com/fileUploaded/rubrick-shop/web/c73e8cb0-8aff-499a-8ec1-f8c1f203003b.jpg",
-            "id": "RU-0005",
-            "yandexMarket": "https://market.yandex.ru",
-            "title": "Конструктор детский пластиковый «Снежка»",
-            "additionalPhotos": [
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/afb190dc-a0d2-421c-a1a4-df56d00b8499.jpg",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/9da4cbe0-99c1-4c27-8335-faf09255a69b.jpg"
-            ],
-            "wildberries": "https://www.wildberries.ru"
+            "mainPhoto": "https://api.directual.com/fileUploaded/rubrick-shop/web/2dc5f041-ed75-468a-a762-baf88a2a3f09.jpg",
+            "id": "fb61c824-b68e-448c-92f5-76de440556ec",
+            "title": "Ёлочка Балет"
         }
     ],
-    "totalPages": 1,
+    "totalPages": 2,
     "pageNumber": 0,
     "error": null,
     "fieldScheme": [
@@ -574,7 +564,7 @@ let exampleTable = {
             "networkID": 21464,
             "name": "Product",
             "sysName": "Product",
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"SKU\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"productCategoryID\",\"dataType\":\"link\",\"name\":\"Категория\",\"id\":\"17861721209011230\",\"link\":\"ProductCategory\",\"group\":\"1721208991936\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"quantity\",\"dataType\":\"number\",\"name\":\"Остатки\",\"id\":\"18351721208850819\",\"link\":\"\",\"group\":\"1721208844635\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"visibleName\",\"dataType\":\"string\",\"name\":\"Тайтл\",\"id\":\"19211721725957111\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"alert\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"19371721734507443\",\"link\":\"\",\"group\":\"1721211188835\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"mainPhoto\",\"dataType\":\"file\",\"name\":\"Фото\",\"id\":\"31971721208886150\",\"link\":\"\",\"group\":\"1721208844635\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"Описание\",\"id\":\"38291721208849781\",\"link\":null,\"group\":\"1721208844635\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"price\",\"dataType\":\"decimal\",\"name\":\"Стоимость\",\"id\":\"38571721208850461\",\"link\":\"\",\"group\":\"1721208844635\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"ozon\",\"dataType\":\"string\",\"name\":\"Ozon\",\"id\":\"39661721208930902\",\"link\":null,\"group\":\"1721208925948\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"status\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"40191721211193024\",\"link\":null,\"group\":\"1721211188835\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"yandexMarket\",\"dataType\":\"string\",\"name\":\"Яндекс маркет\",\"id\":\"47961721208931365\",\"link\":null,\"group\":\"1721208925948\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"additionalPhotos\",\"dataType\":\"file\",\"name\":\"Дополнительные фото\",\"id\":\"48711721208894486\",\"link\":\"\",\"group\":\"1721208844635\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"multipleImages\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"weight\",\"dataType\":\"decimal\",\"name\":\"Вес (за единицу товара, в граммах)\",\"id\":\"51391724146144147\",\"link\":\"\",\"group\":\"1721208844635\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"wildberries\",\"dataType\":\"string\",\"name\":\"Wildberries\",\"id\":\"61651721208930228\",\"link\":null,\"group\":\"1721208925948\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"productCollectionID\",\"dataType\":\"link\",\"name\":\"Коллекция\",\"id\":\"67661721209011891\",\"link\":\"ProductCollection\",\"group\":\"1721208991936\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true},{\"sysName\":\"title\",\"dataType\":\"string\",\"name\":\"Наименование\",\"id\":\"72911721208849150\",\"link\":null,\"group\":\"1721208844635\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false},{\"sysName\":\"wareKey\",\"dataType\":\"string\",\"name\":\"Артикул\",\"id\":\"77501724146246999\",\"link\":\"\",\"group\":\"1721208844635\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false}]",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"SKU\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"productCategoryID\",\"dataType\":\"link\",\"name\":\"Категория\",\"id\":\"17861721209011230\",\"link\":\"ProductCategory\",\"group\":\"1721208991936\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"quantity\",\"dataType\":\"number\",\"name\":\"Остатки\",\"id\":\"18351721208850819\",\"link\":\"\",\"group\":\"1721208844635\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"visibleName\",\"dataType\":\"string\",\"name\":\"Тайтл\",\"id\":\"19211721725957111\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"alert\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"19371721734507443\",\"link\":\"\",\"group\":\"1721211188835\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"mainPhoto\",\"dataType\":\"file\",\"name\":\"Фото\",\"id\":\"31971721208886150\",\"link\":\"\",\"group\":\"1721208844635\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"Описание\",\"id\":\"38291721208849781\",\"link\":null,\"group\":\"1721208844635\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"price\",\"dataType\":\"decimal\",\"name\":\"Стоимость\",\"id\":\"38571721208850461\",\"link\":\"\",\"group\":\"1721208844635\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"ozon\",\"dataType\":\"string\",\"name\":\"Ozon\",\"id\":\"39661721208930902\",\"link\":null,\"group\":\"1721208925948\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"status\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"40191721211193024\",\"link\":\"ProductStatus\",\"group\":\"1721211188835\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"yandexMarket\",\"dataType\":\"string\",\"name\":\"Яндекс маркет\",\"id\":\"47961721208931365\",\"link\":null,\"group\":\"1721208925948\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"additionalPhotos\",\"dataType\":\"file\",\"name\":\"Дополнительные фото\",\"id\":\"48711721208894486\",\"link\":\"\",\"group\":\"1721208844635\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"multipleImages\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"weight\",\"dataType\":\"decimal\",\"name\":\"Вес (за единицу товара, в граммах)\",\"id\":\"51391724146144147\",\"link\":\"\",\"group\":\"1721208844635\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"wildberries\",\"dataType\":\"string\",\"name\":\"Wildberries\",\"id\":\"61651721208930228\",\"link\":null,\"group\":\"1721208925948\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"productCollectionID\",\"dataType\":\"link\",\"name\":\"Коллекция\",\"id\":\"67661721209011891\",\"link\":\"ProductCollection\",\"group\":\"1721208991936\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"title\",\"dataType\":\"string\",\"name\":\"Наименование\",\"id\":\"72911721208849150\",\"link\":null,\"group\":\"1721208844635\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"wareKey\",\"dataType\":\"string\",\"name\":\"Артикул\",\"id\":\"77501724146246999\",\"link\":\"\",\"group\":\"1721208844635\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false}]",
             "jsonGroupSettings": "[{\"id\":1721208844635,\"name\":\"Base info\",\"order\":0},{\"id\":1721208925948,\"name\":\"Link to\",\"order\":1},{\"id\":1721208991936,\"name\":\"Link to structures\",\"order\":2},{\"id\":1721211188835,\"name\":\"System\",\"order\":3}]",
             "jsonViewIdSettings": "[{\"sysName\":\"visibleName\"}]",
             "jsonSettings": null,
@@ -582,9 +572,9 @@ let exampleTable = {
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2024-08-20T09:31:06Z",
+            "dateChanged": "2024-10-05T11:03:00Z",
             "createBy": 7868,
-            "changedBy": 7868,
+            "changedBy": 6452,
             "_settings": null,
             "_nativeIndexSettings": null,
             "innerIDField": {
