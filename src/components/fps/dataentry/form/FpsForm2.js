@@ -590,8 +590,7 @@ export default function FpsForm2(props) {
     return dates
   }
 
-  function template(input) {
-
+  function template(input, noDate) {
     if (!input || input == "{{undefined}}" || input == "{{null}}") return ""
     let templateData = { ...defaultExtModel, ...(model || {}), ...(extendedModel || {}) };
     const replaceNullWithEmptyString = obj => _.mapValues(obj, value => value === null ? "" : value);
@@ -599,7 +598,7 @@ export default function FpsForm2(props) {
     if (!templateData) return "";
 
     templateData = _.mapValues(templateData, (value, key) => {
-      if (getDateFields().hasOwnProperty(key)) {
+      if (getDateFields().hasOwnProperty(key) && !noDate) {
         return formatDate(value, getDateFields()[key])
       }
       return value;

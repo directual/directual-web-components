@@ -116,7 +116,7 @@ function ElementAction(props) {
     const transformObject = array => _.reduce(array, (result, item) => {
         if (!array || array.length == 0) return {};
         const { field, value } = item;
-        result[field] = template(value);
+        result[field] = template(value, true);
         return result;
     }, {});
 
@@ -181,7 +181,8 @@ function ElementAction(props) {
                 payload = { ...model, ...payload }
             }
             setLoading(true)
-
+            console.log("payload")
+            console.log(payload)
             if (action.actionSubmit) {
                 onSubmit(
                     () => {
