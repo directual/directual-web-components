@@ -149,11 +149,22 @@ export default function FpsForm2(props) {
       return;
     }
 
+    const timestampToISO = (timestamp) => new Date(timestamp).toISOString();
+
     if (edditingOn) {
       console.log("Socket form update")
-      setExtendedModel({ ..._.get(data, "data[0]") })
+
+      const convertedDates = _.reduce(_.get(data, "fileds"), (result, field) => {
+        // Ensure the field exists in the objectModel
+        if (field.dataType === 'date' && _.get(data, "data[0]")[field.sysName]) {
+            result[field.sysName] = timestampToISO(_.get(data, "data[0]")[field.sysName]);
+        }
+        return result;
+    }, {});
+      
+      setExtendedModel({ ..._.get(data, "data[0]"), ...convertedDates })
       let saveSate = { ...state }
-      const newModel = ({ ...model, ...flatternModel({ ..._.get(data, "data[0]") }) })
+      const newModel = ({ ...model, ...flatternModel({ ..._.get(data, "data[0]"), ...convertedDates }) })
       if (!_.isEqual(newModel, model)) {
         saveSate = { ...saveSate, ...templateState(_.get(data, "params.state"), newModel) }
         setModel(newModel)
