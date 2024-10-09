@@ -11,18 +11,40 @@ export default function FpsCarousel(props) {
 
     const { data, auth, locale, handleRoute } = props
 
-    // console.log("=== CAROUSEL DATA ===")
-    // console.log(data)
+    console.log("=== CAROUSEL DATA ===")
+    console.log(data)
 
     const OPTIONS = { loop: _.get(data, "loop") == "true" }
-    const HEIGHT = _.get(data, "height")
+    const HEIGHT = parseInt(_.get(data, "height"))
 
     // console.log()
 
     const getSlides = () => {
         let slides = []
-        if (_.get(data, "photo_source") == "first object") {
-            // TODO
+        if (_.get(data, "photo_source") == "first object (multiple images field)") {
+            const images = _.get(data, `__data__.api[0][${_.get(data, "array_photos")}]`, [])
+            slides = images.map(obj => {
+                const videoExtensions = ['mov', 'mp4', 'avi', 'mkv', 'flv', 'wmv', 'webm'];
+                const urlExtension = obj.split('.').pop().toLowerCase();
+                const isVideo = _.includes(videoExtensions, urlExtension);
+                if (isVideo) {
+                    return {
+                        id: "slide_" + Math.floor(Math.random() * 1000000000),
+                        content: <video width="100%" height={HEIGHT} controls playsinline autoplay muted loop>
+                            <source src={obj} />
+                        </video>
+                    }
+                } else {
+                    return {
+                        id: "slide_" + Math.floor(Math.random() * 1000000000),
+                        content: <PhotoSlide
+                            photo={obj}
+                            height={HEIGHT}
+                            handleRoute={handleRoute}
+                        />
+                    }
+                }
+            })
         } else {
             slides = _.get(data, "__data__.api", []).map(obj => {
                 return {
@@ -35,6 +57,8 @@ export default function FpsCarousel(props) {
                 }
             })
         }
+        console.log("slides")
+        console.log(slides)
         return slides
     }
 
@@ -45,20 +69,26 @@ export default function FpsCarousel(props) {
     />
 }
 
+function VideoSlide({ }) {
+
+    return <div>VIDEO</div>
+}
+
 function PhotoSlide({ photo, link, height, handleRoute }) {
 
     const onClickLink = e => {
+        if (!link) return;
         if (!_.startsWith(link, 'http')) {
             e.preventDefault()
             handleRoute && handleRoute(link)(e)
         }
     }
-
     return <a
         onClick={onClickLink}
         href={link}
         style={{
             height: height,
+            border: 'solid 1px red',
             display: 'block',
             width: '100%',
             backgroundImage: `url(${photo})`,

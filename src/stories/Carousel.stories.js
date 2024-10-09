@@ -19,76 +19,63 @@ export default {
 };
 
 const carouselData = {
-    "type": "Photo carousel",
-    "photo_source": "all objects",
-    "height": 350,
-    "loop": "true",
-    "api": "banners",
-    "photo": "image",
-    "link": "{{link}}",
-    "nav_buttons": "true",
-    "dot_buttons": "true",
-    "nav_buttons_style": "transparent buttons on the sides",
-    "thumbnails": "false",
-    "autoplay": "true",
-    "comment": "Баннеры на главной",
-    "alignment": "center",
-    "max_width": 150,
-    "css_class": "karusel",
-    "slide_gaps": "10",
-    "__libs__": [],
-    "__header__": "",
-    "__initialize__": null,
-    "__update__": null,
-    "__destroy__": null,
-    "__data__": {
-        "slide_gaps": "10",
-        "nav_buttons_style": "transparent buttons on the sides",
-        "link": "{{link}}",
-        "photo": "image",
-        "dot_buttons": "true",
-        "_api_": {
-            "api": "https://api.directual.com/good/api/v5/data/banners/banners?appID=57a414d4-c47c-4731-88d7-eca69e2115f8"
-        },
-        "autoplay": "true",
-        "max_width": "150",
-        "css_class": "karusel",
-        "nav_buttons": "true",
-        "photo_source": "all objects",
-        "loop": "true",
-        "comment": "Баннеры на главной",
-        "api": [
-            {
-                "arrayLink": [
-                    "https://api.alfa.directual.com/fileUploaded/rubrick-shop/43aa6eab-db85-40b7-a70a-62c47b97b7fb.jpg",
-                    "https://api.alfa.directual.com/fileUploaded/rubrick-shop/f099f744-689f-469d-b938-914ea68a3373.jpg",
-                    "https://api.alfa.directual.com/fileUploaded/rubrick-shop/06c83391-e629-47ef-95d4-0dce33556b56.jpg",
-                    "https://api.alfa.directual.com/fileUploaded/rubrick-shop/efceb19a-a224-4543-8f8e-4340f9baa717.jpg"
-                ],
-                "link": "/competition",
-                "image": "https://api.alfa.directual.com/fileUploaded/rubrick-shop/efceb19a-a224-4543-8f8e-4340f9baa717.jpg",
-                "id": "1"
-            },
-            {
-                "image": "https://api.alfa.directual.com/fileUploaded/rubrick-shop/06c83391-e629-47ef-95d4-0dce33556b56.jpg",
-                "link": "/feedback",
-                "id": "2"
-            },
-            {
-                "image": "https://api.alfa.directual.com/fileUploaded/rubrick-shop/f099f744-689f-469d-b938-914ea68a3373.jpg",
-                "link": "/feedback",
-                "id": "3"
-            },
-            {
-                "link": "/competition",
-                "image": "https://api.alfa.directual.com/fileUploaded/rubrick-shop/43aa6eab-db85-40b7-a70a-62c47b97b7fb.jpg",
-                "id": "4"
-            }
-        ],
-        "alignment": "center",
-        "thumbnails": "false",
-        "height": "350"
-    }
+  "photo_source": "first object (multiple images field)",
+  "height": "250",
+  "slide_gaps": "10",
+  "alignment": "center",
+  "nav_buttons": "true",
+  "dot_buttons": "false",
+  "nav_buttons_style": "transparent buttons on the sides",
+  "thumbnails": "false",
+  "loop": "true",
+  "autoplay": "false",
+  "api": "getProductByID",
+  "array_photos": "additionalPhotos",
+  "__libs__": [],
+  "__header__": "",
+  "__initialize__": null,
+  "__update__": null,
+  "__destroy__": null,
+  "__data__": {
+      "slide_gaps": "10",
+      "nav_buttons_style": "transparent buttons on the sides",
+      "dot_buttons": "false",
+      "_api_": {
+          "api": "https://api.directual.com/good/api/v5/data/Product/getProductByID?appID=57a414d4-c47c-4731-88d7-eca69e2115f8"
+      },
+      "autoplay": "false",
+      "array_photos": "additionalPhotos",
+      "nav_buttons": "true",
+      "photo_source": "first object (multiple images field)",
+      "loop": "true",
+      "api": [
+          {
+              "weight": 1500,
+              "visibleName": "Дед Мороз",
+              "ozon": "—",
+              "price": 1,
+              "productCategoryID": {
+                  "id": "b89ff0d4-3888-46d0-bc92-d7adfe4f0fb2",
+                  "title": "Новогодняя коллекция"
+              },
+              "mainPhoto": "https://api.directual.com/fileUploaded/rubrick-shop/web/e4b5a9dd-5518-403a-9513-75f4431120c6.jpg",
+              "id": "646912c8-5484-403a-8008-a1941fa223d7",
+              "wareKey": "4680707180111",
+              "yandexMarket": "—",
+              "title": "Дед Мороз",
+              "additionalPhotos": [
+                  "https://api.directual.com/fileUploaded/rubrick-shop/web/b82e8cc3-5f60-47e0-b5d2-6bb9e6543d86.jpg",
+                  "https://api.directual.com/fileUploaded/rubrick-shop/web/14feeb93-f76c-4c00-aca9-233b48cd57d9.jpg",
+                  "https://api.directual.com/fileUploaded/rubrick-shop/web/56e2a7ab-f6fd-40bb-ac3d-27bb0e92ffc0.jpg",
+                  "https://api.directual.com/fileUploaded/rubrick-shop/web/246c6115-93a7-473a-bccc-8401f45e3782.mp4"
+              ],
+              "wildberries": "—"
+          }
+      ],
+      "alignment": "center",
+      "thumbnails": "false",
+      "height": "250"
+  }
 }
 
 let authExample = {
