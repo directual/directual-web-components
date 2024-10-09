@@ -16,6 +16,8 @@ export default function FpsCarousel(props) {
 
     const OPTIONS = { loop: _.get(data, "loop") == "true" }
     const HEIGHT = parseInt(_.get(data, "height"))
+    const showDots = _.get(data, "dot_buttons") == "true"
+    const showNavButtons = _.get(data, "nav_buttons") == "true"
 
     // console.log()
 
@@ -30,8 +32,8 @@ export default function FpsCarousel(props) {
                 if (isVideo) {
                     return {
                         id: "slide_" + Math.floor(Math.random() * 1000000000),
-                        content: <video width="100%" height={HEIGHT} controls playsinline autoplay muted loop>
-                            <source src={obj} />
+                        content: <video data-test="video" width="100%" controls loop height={HEIGHT} playsInline muted autoplay>
+                            <source src={obj} type="video/mp4"/>
                         </video>
                     }
                 } else {
@@ -57,8 +59,6 @@ export default function FpsCarousel(props) {
                 }
             })
         }
-        console.log("slides")
-        console.log(slides)
         return slides
     }
 
@@ -66,12 +66,9 @@ export default function FpsCarousel(props) {
         options={OPTIONS}
         slides={getSlides()}
         height={HEIGHT}
+        showNavButtons={showNavButtons}
+        showDots={showDots}
     />
-}
-
-function VideoSlide({ }) {
-
-    return <div>VIDEO</div>
 }
 
 function PhotoSlide({ photo, link, height, handleRoute }) {
@@ -88,7 +85,6 @@ function PhotoSlide({ photo, link, height, handleRoute }) {
         href={link}
         style={{
             height: height,
-            border: 'solid 1px red',
             display: 'block',
             width: '100%',
             backgroundImage: `url(${photo})`,

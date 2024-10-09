@@ -20,15 +20,15 @@ export default {
 
 const carouselData = {
   "photo_source": "first object (multiple images field)",
-  "height": "250",
+  "height": 400,
   "slide_gaps": "10",
   "alignment": "center",
   "nav_buttons": "true",
-  "dot_buttons": "false",
+  "dot_buttons": "true",
   "nav_buttons_style": "transparent buttons on the sides",
   "thumbnails": "false",
   "loop": "true",
-  "autoplay": "false",
+  "autoplay": "true",
   "api": "getProductByID",
   "array_photos": "additionalPhotos",
   "__libs__": [],
@@ -39,11 +39,11 @@ const carouselData = {
   "__data__": {
       "slide_gaps": "10",
       "nav_buttons_style": "transparent buttons on the sides",
-      "dot_buttons": "false",
+      "dot_buttons": "true",
       "_api_": {
           "api": "https://api.directual.com/good/api/v5/data/Product/getProductByID?appID=57a414d4-c47c-4731-88d7-eca69e2115f8"
       },
-      "autoplay": "false",
+      "autoplay": "true",
       "array_photos": "additionalPhotos",
       "nav_buttons": "true",
       "photo_source": "first object (multiple images field)",
@@ -74,7 +74,7 @@ const carouselData = {
       ],
       "alignment": "center",
       "thumbnails": "false",
-      "height": "250"
+      "height": "400"
   }
 }
 
