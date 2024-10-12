@@ -18,6 +18,7 @@ export default function FpsCarousel(props) {
     const HEIGHT = parseInt(_.get(data, "height"))
     const showDots = _.get(data, "dot_buttons") == "true"
     const showNavButtons = _.get(data, "nav_buttons") == "true"
+    const dotsOnSlide = _.get(data, "dot_buttons_placement") == "on the slide"
 
     // console.log()
 
@@ -32,7 +33,7 @@ export default function FpsCarousel(props) {
                 if (isVideo) {
                     return {
                         id: "slide_" + Math.floor(Math.random() * 1000000000),
-                        content: <video data-test="video" width="100%" controls loop height={HEIGHT} playsInline muted autoplay>
+                        content: <video data-test="video" width="100%" controls loop height={HEIGHT} playsInline muted autoPlay>
                             <source src={obj} type="video/mp4"/>
                         </video>
                     }
@@ -68,6 +69,7 @@ export default function FpsCarousel(props) {
         height={HEIGHT}
         showNavButtons={showNavButtons}
         showDots={showDots}
+        dotsOnSlide={dotsOnSlide}
     />
 }
 

@@ -8,7 +8,7 @@ import _ from 'lodash'
 
 export default function Carousel(props) {
 
-    const { options, slides, height, showDots, showNavButtons } = props
+    const { options, slides, height, showDots, showNavButtons, dotsOnSlide } = props
 
     // const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay()])
     const [emblaRef, emblaApi] = useEmblaCarousel(options)
@@ -37,7 +37,11 @@ export default function Carousel(props) {
                 <Button icon='back' transparent={true} small onClick={scrollPrev} />
                 <Button icon='forward' transparent={true} onClick={scrollNext} />
             </div>}
-            {showDots && <div className={`${styles.embla__dots} embla__dots`}>
+            {showDots && <div className={`${styles.embla__dots} embla__dots`}
+                style={ dotsOnSlide ? {
+                    marginTop: -60
+                } : {}}
+            >
                 {scrollSnaps.map((_, index) => (
                     <DotButton
                         key={index}

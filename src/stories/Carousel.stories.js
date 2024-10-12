@@ -28,9 +28,11 @@ const carouselData = {
   "nav_buttons_style": "transparent buttons on the sides",
   "thumbnails": "false",
   "loop": "true",
-  "autoplay": "true",
+  "autoplay": "false",
   "api": "getProductByID",
   "array_photos": "additionalPhotos",
+  "comment": "Фотки",
+  "dot_buttons_placement": "on the slide",
   "__libs__": [],
   "__header__": "",
   "__initialize__": null,
@@ -43,11 +45,13 @@ const carouselData = {
       "_api_": {
           "api": "https://api.directual.com/good/api/v5/data/Product/getProductByID?appID=57a414d4-c47c-4731-88d7-eca69e2115f8"
       },
-      "autoplay": "true",
+      "autoplay": "false",
+      "dot_buttons_placement": "on the slide",
       "array_photos": "additionalPhotos",
       "nav_buttons": "true",
       "photo_source": "first object (multiple images field)",
       "loop": "true",
+      "comment": "Фотки",
       "api": [
           {
               "weight": 1500,
