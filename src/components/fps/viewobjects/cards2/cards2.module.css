@@ -1,6 +1,4 @@
 .cards2 * {
-  margin: 0px;
-  padding: 0px;
   box-sizing: border-box;
 }
 .layout_grid {
@@ -108,4 +106,7 @@
   flex-grow: 2;
   display: flex;
   justify-content: flex-end;
+}
+.FPS_Cards_ActionPanel {
+  margin-top: 12px;
 }

@@ -6,7 +6,7 @@ export function template(input, model) {
     
 
     let templateData = { ...model };
-    const fields = input.match(/{{(.*?)}}/g).map(x => x.replace(/[{}]/g, ''));
+    const fields = (input.match(/{{(.*?)}}/g) || []).map(x => x.replace(/[{}]/g, ''));
     templateData = _.merge({}, _.zipObject(fields, _.fill(Array(fields.length), "")), templateData);
 
     const replaceNullWithEmptyString = obj => _.mapValues(obj, value => value === null ? "" : value);

@@ -4,16 +4,20 @@ import styles from './cards2.module.css'
 import icon from './../../../../icons/fps-cards.svg'
 import _ from 'lodash'
 import Button from '../../button/button';
+import Hint from '../../hint/hint';
 import Input, { InputRow } from '../../dataentry/input/input';
 import { debounce } from 'lodash'
 import { template } from '../../templating/template'
 import InnerHTML from 'dangerously-set-html-content'
 import Cards2Paging from './Cards2Paging'
+import { dict } from '../../locale'
+import ActionPanel from '../../actionspanel/actionspanel';
 
-function FpsCards2({ auth, data, onEvent, callEndpoint, templateEngine, id, currentBP, locale, handleRoute }) {
+function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine, id, currentBP, locale, handleRoute }) {
 
     console.log("== FpsCards2 data ===")
     console.log(data)
+    const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
 
     currentBP = currentBP || 'tablet' // костылек, чтобы хоть какой-то BP передавался
     //console.log("currentBP = " + currentBP)
@@ -164,6 +168,8 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, templateEngine, id, curr
                     <Card
                         key={object.id}
                         data={data}
+                        context={context}
+                        lang={lang}
                         favLoading={favLoading}
                         favorites={favorites}
                         handleRoute={handleRoute}
@@ -204,10 +210,11 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, templateEngine, id, curr
 
 function Card(props) {
 
-    const { object, data, addToFavorites, favLoading, templateEngine, handleRoute, favorites, callEndpointPOST, callEndpointGET } = props
+    const { object, data, lang, addToFavorites, favLoading, templateEngine, handleRoute, favorites, callEndpointPOST, callEndpointGET, context } = props
 
     const cardType = _.get(data, "params.card_layout_type")
     const card_padding = _.get(data, "params.card_padding", 12)
+    const card_min_height = _.get(data, "params.card_min_height") || "none"
     const image_shape = _.get(data, "params.card_type_cart.image_shape")
     const image_padding = _.get(data, "params.card_type_cart.image_padding", 0)
     const image_border_radius = _.get(data, "params.card_type_cart.image_border_radius", 0)
@@ -224,13 +231,17 @@ function Card(props) {
     const dir_image_padding = _.get(data, "params.card_type_dir.image_padding", 0)
     const dir_cardBody = _.get(data, "params.card_type_dir.body", "")
     const dir_image_position = _.get(data, "params.card_type_dir.image_position", "top")
-    const [description, setDescription] = useState("loading...")
-    const [cardBody, setCardBody] = useState("loading...")
+    const [description, setDescription] = useState(dict[lang].loading || "loading...")
+    const [cardBody, setCardBody] = useState(dict[lang].loading || "loading...")
 
     const favoritesOn = _.get(data, "params.card_type_dir.favoritesOn", false)
-    const favoritesIconOn = _.get(data, "params.card_type_dir.favoritesIconOn", "starFill")
-    const favoritesIconOff = _.get(data, "params.card_type_dir.favoritesIconOff", "star")
+    const favoritesIconOn = _.get(data, "params.card_type_dir.favoritesIconOn") || "starFill"
+    const favoritesIconOff = _.get(data, "params.card_type_dir.favoritesIconOff") || "star"
     const favoritesPosition = _.get(data, "params.card_type_dir.favoritesPosition", "left")
+
+    const actionsOn = _.get(data, "params.card_type_dir.actionsOn", false)
+    const actionsArray = _.get(data, "params.card_type_dir._actions", [])
+    const actionsSettings = _.get(data, "params.actions", [])
 
     const isRouting = _.get(data, "params.routing") == "redirect"
     const routingPath = _.get(data, "params.routing_where", '')
@@ -273,6 +284,7 @@ function Card(props) {
         <div
             style={{
                 padding: card_padding,
+                minHeight: card_min_height,
             }}
             className={`Cards2_typeCart__bodyWrapper ${styles.cards2_typeCart__bodyWrapper}`}>
             <div className={`Cards2_typeCart__header ${styles.cards2_typeCart__header}`}>
@@ -328,11 +340,11 @@ function Card(props) {
         }}>
 
         {/* IMAGE */}
-        <div
+        {dir_image_position !== "no_image" && <div
             className={`Cards2_typeRegular__image ${styles.cards2_typeRegular__image}`}
             style={{
-                height: imagePos =='vert' ? dir_image_height : 'auto',
-                width: imagePos =='hor' ? dir_image_height : 'auto',
+                height: imagePos == 'vert' ? dir_image_height : 'auto',
+                width: imagePos == 'hor' ? dir_image_height : 'auto',
                 overflow: "hidden",
                 margin: dir_image_padding,
                 borderRadius: dir_image_radius,
@@ -349,11 +361,33 @@ function Card(props) {
                 className={`Cards2_typeRegular__favButton ${styles.cards2_typeRegular__favButton}`}>
                 <div className={`${styles.cards2_typeRegular__favButton__icon} icon icon-${isFavorite ? favoritesIconOn : favoritesIconOff}`} />
             </div>}
-        </div>
+        </div>}
 
         {/* CARD BODY */}
-        <div style={{ padding: card_padding }}>
+        <div style={{ padding: card_padding, position: "relative", minHeight: card_min_height, }}>
+            {dir_image_position == "no_image" && favoritesOn && <div
+                style={
+                    {
+                        opacity: favLoading ? .1 : .6,
+                        left: favoritesPosition == 'left' ? 10 : 'auto',
+                        right: favoritesPosition == 'right' ? 10 : 'auto',
+                    }}
+                onClick={e => { e.stopPropagation(); favLoading ? undefined : addToFavorites(!isFavorite) }}
+                className={`Cards2_typeRegular__favButton ${styles.cards2_typeRegular__favButton}`}>
+                <div className={`${styles.cards2_typeRegular__favButton__icon} icon icon-${isFavorite ? favoritesIconOn : favoritesIconOff}`} />
+            </div>}
+
             {cardBody && <InnerHTML allowRerender={true} html={cardBody} />}
+
+            {actionsOn && actionsArray.length > 0 && <div className={`${styles.FPS_Cards_ActionPanel} FPS_Cards_ActionPanel`}>
+                <CardActions
+                    actionsArray={actionsArray}
+                    object={object}
+                    context={context}
+                    callEndpointPOST={callEndpointPOST}
+                    actionsSettings={actionsSettings}
+                />
+            </div>}
         </div>
 
     </a>
@@ -361,6 +395,66 @@ function Card(props) {
     return <div >
         —
     </div>
+}
+
+function CardActions(props) {
+    const { actionsSettings, callEndpointPOST, object, context, actionsArray } = props
+    return <ActionPanel>
+        {actionsArray.map(action => <CardAction
+            {...props}
+            action={action}
+            key={action.id}
+        />)}
+    </ActionPanel>
+}
+
+function CardAction(props) {
+    const { action, actionsSettings, object, callEndpointPOST } = props
+
+    const settings = _.find(actionsSettings, { id: action.action_id });
+    const label = action._action_label || settings.name
+    const [isClicked, setIsClicked] = useState(false)
+    const [localLoading, setLocalLoading] = useState(false)
+
+    const handleClick = e => {
+        // console.log("performAction")
+        // console.log(action)
+        // console.log(settings)
+
+        setLocalLoading(true)
+
+        const transformObject = array => _.reduce(array, (result, item) => {
+            if (!array || array.length == 0) return {};
+            const { field, value } = item;
+            result[field] = template(value, object);
+            return result;
+        }, {});
+
+        if ((settings.actionType == "endpoint" || !action.actionType) && settings.endpoint) {
+            let payload = transformObject(settings.mapping)
+
+            console.log("payload")
+            console.log(payload)
+
+            callEndpointPOST(settings.endpoint, payload, (result) => {
+                setLocalLoading(false)
+                setIsClicked(true)
+                console.log("callEndpointPOST result")
+                console.log(result)
+            })
+        }
+    }
+
+    if (isClicked && action._action_oneTime) return <Hint margin={{ top: 0, bottom: 0 }}>
+        {action._action_oneTime_message && <InnerHTML allowRerender={true} html={action._action_oneTime_message} />}
+    </Hint>
+
+    return <Button
+        onClick={handleClick}
+        loading={localLoading}
+        tooltip={action._action_addTooltip && action._action_addTooltip_text}
+        icon={action._action_icon}
+    >{label}</Button>
 }
 
 function CartControls(props) {
