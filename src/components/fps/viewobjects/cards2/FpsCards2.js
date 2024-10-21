@@ -220,12 +220,12 @@ function Card(props) {
     const image_border_radius = _.get(data, "params.card_type_cart.image_border_radius", 0)
 
     const field_header = _.get(data, "params.card_type_cart.header")
-    const field_image = "{{" + _.get(data, "params.card_type_cart.image") + "}}"
+    const field_image = _.get(data, "params.card_type_cart.image[0]") !== "{" ? "{{" + _.get(data, "params.card_type_cart.image") + "}}" : _.get(data, "params.card_type_cart.image")
     const field_description = _.get(data, "params.card_type_cart.description")
     const field_price = _.get(data, "params.card_type_cart.price")
     const field_quantity = _.get(data, "params.card_type_cart.quantity")
 
-    const dir_image_field = "{{" + _.get(data, "params.card_type_dir.image") + "}}"
+    const dir_image_field = _.get(data, "params.card_type_dir.image[0]") !== "{" ? "{{" + _.get(data, "params.card_type_dir.image") + "}}" : _.get(data, "params.card_type_dir.image")
     const dir_image_height = _.get(data, "params.card_type_dir.image_height", 50)
     const dir_image_radius = _.get(data, "params.card_type_dir.image_border_radius", 0)
     const dir_image_padding = _.get(data, "params.card_type_dir.image_padding", 0)
@@ -414,7 +414,7 @@ function CardAction(props) {
     const { action, actionsSettings, object, callEndpointPOST } = props
 
     const settings = _.find(actionsSettings, { id: action.action_id });
-    const label = action._action_label || settings.name
+    const label = action._action_label // || settings.name
     const [isClicked, setIsClicked] = useState(false)
     const [localLoading, setLocalLoading] = useState(false)
 

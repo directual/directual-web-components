@@ -48,6 +48,7 @@
 .cards2_typeRegular__image {
   background-color: var(--layout-bgr);
   background-size: cover;
+  flex-shrink: 0;
   background-position: center center;
   position: relative;
 }

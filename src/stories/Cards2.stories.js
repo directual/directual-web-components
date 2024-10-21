@@ -17,93 +17,61 @@ export default {
 };
 
 let exampleTable = {
-    "sl": "getAllProductToCatalog",
-    "pageSize": "12",
+    "sl": "userGetFavorites",
+    "pageSize": "10",
     "headerField": null,
     "params": {
-        "comp_ID": "TcxKkG",
+        "comp_ID": "CYfuuA",
+        "cards_title": "ИЗБРАННЫЕ ТОВАРЫ",
         "cards_layout": "grid",
-        "grid_layout__mobile": 2,
-        "grid_layout__gap": 0,
+        "grid_layout__mobile": 1,
+        "grid_layout__gap": 12,
         "card_layout_type": "regular",
         "card_border_radius": 0,
         "card_border": 0,
-        "card_padding": 12,
-        "actions": [
-            {
-                "id": "action_1725283869283",
-                "name": "В корзину",
-                "actionType": "endpoint",
-                "endpoint": "addProductToCart",
-                "mapping": [
-                    {
-                        "id": "mapping_1729413174994",
-                        "field": "_action",
-                        "value": "addProductToCart"
-                    },
-                    {
-                        "id": "mapping_1729413177950",
-                        "field": "productID",
-                        "value": "{{id}}"
-                    },
-                    {
-                        "id": "mapping_1729413186714",
-                        "field": "numberProduct",
-                        "value": "1"
-                    }
-                ]
-            }
-        ],
-        "cards_title": "<span style=\"padding-left:22px\">КАТАЛОГ ТОВАРОВ</span>",
         "card_type_dir": {
-            "image": "mainPhoto",
-            "image_height": 239,
-            "favoritesOn": true,
-            "favoritesEndpoint": "newCatalogueFavorites",
-            "favoritesField": "productId",
-            "body": "<div style=\"margin-bottom:6px\"><b>{{price}} ₽</b></div>\n<p style=\"margin-bottom:6px; line-height:normal\">{{title}}<p>\n  <div class=\"cat_item_tag\">{{productCategoryID.title}}</div>",
-            "image_border_radius": 0,
+            "image_height": 139,
             "image_padding": 1,
+            "image": "{{productId.mainPhoto}}",
+            "favoritesOn": false,
+            "favoritesEndpoint": "newCatalogueFavorites",
             "favoritesIconOff": "love",
             "favoritesIconOn": "loveFill",
+            "favoritesField": "productId",
             "favoritesHiddenField": "is_hidden",
-            "favoritesPosition": "right",
-            "image_position": "top",
+            "image_position": "left",
+            "body": "<div>\n  <b>{{productId.price}} ₽</b><div>\n  <div style=\"margin:6px 0\">{{productId.visibleName}}</div>\n  <div class=\"cat_item_tag\">{{productId.productCategoryID.title}}</div>",
+            "actionsOn": true,
             "_actions": [
                 {
-                    "id": "action_1729426204172",
-                    "action_id": "action_1725283869283",
-                    "_conditionalView": false,
-                    "_action_conditional_disable_or_hide": "disable",
-                    "_conditions": [
-                        {
-                            "id": "condition_1729435115378"
-                        }
-                    ],
-                    "_action_addTooltip": true,
-                    "_action_oneTime": true,
-                    "_action_icon": "cart",
+                    "id": "action_1729520301663",
+                    "action_id": "action_1729520279694",
                     "_action_button_type": "accent",
-                    "_action_oneTime_message": "большое спасибо",
-                    "_action_addTooltip_text": "тултипъ"
+                    "_action_icon": "cart"
                 },
                 {
-                    "id": "action_1729426208372",
-                    "action_id": "action_1725283869283",
-                    "_action_label": "намек понял",
-                    "_action_icon": "babai",
-                    "_action_button_type": "accent",
-                    "_action_oneTime": false,
-                    "_action_button_size": "small"
+                    "id": "action_1729520314652",
+                    "action_id": "action_1729520284655",
+                    "_action_button_type": "danger",
+                    "_action_icon": "delete"
                 }
-            ],
-            "_actions_in_a_row": 2,
-            "actionsOn": true,
-            "actionsLayout": "column"
+            ]
         },
         "routing": "redirect",
-        "routing_where": "{{id}}",
-        "card_min_height": null
+        "routing_where": "/catalog/{{id}}",
+        "grid_layout__wideDesktop": 1,
+        "grid_layout__desktop": 1,
+        "grid_layout__tablet": 1,
+        "actions": [
+            {
+                "id": "action_1729520279694",
+                "name": "В корзину!"
+            },
+            {
+                "id": "action_1729520284655",
+                "name": "Удалить из избранного"
+            }
+        ]
     },
     "tableTitle": null,
     "actions": null,
@@ -111,7 +79,7 @@ let exampleTable = {
         {
             "sysName": "id",
             "dataType": "id",
-            "name": "SKU",
+            "name": "id",
             "id": "0",
             "link": "",
             "group": "0",
@@ -137,356 +105,18 @@ let exampleTable = {
             "array": false
         },
         {
-            "sysName": "title",
-            "dataType": "string",
-            "name": "Наименование",
-            "id": "72911721208849150",
-            "link": null,
-            "group": "1721208844635",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 0,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "productCollectionID",
+            "sysName": "productId",
             "dataType": "link",
-            "name": "Коллекция",
-            "id": "67661721209011891",
-            "link": "ProductCollection",
-            "group": "1721208991936",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "productCategoryID",
-            "dataType": "link",
-            "name": "Категория",
-            "id": "17861721209011230",
-            "link": "ProductCategory",
-            "group": "1721208991936",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 0,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "yandexMarket",
-            "dataType": "string",
-            "name": "Яндекс маркет",
-            "id": "47961721208931365",
-            "link": null,
-            "group": "1721208925948",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 2,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "ozon",
-            "dataType": "string",
-            "name": "Ozon",
-            "id": "39661721208930902",
-            "link": null,
-            "group": "1721208925948",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "wildberries",
-            "dataType": "string",
-            "name": "Wildberries",
-            "id": "61651721208930228",
-            "link": null,
-            "group": "1721208925948",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 0,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "additionalPhotos",
-            "dataType": "file",
-            "name": "Дополнительные фото",
-            "id": "48711721208894486",
-            "link": "",
-            "group": "1721208844635",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 5,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": "multipleImages",
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "mainPhoto",
-            "dataType": "file",
-            "name": "Фото",
-            "id": "31971721208886150",
-            "link": "",
-            "group": "1721208844635",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 4,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": "image",
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "quantity",
-            "dataType": "number",
-            "name": "Остатки",
-            "id": "18351721208850819",
-            "link": "",
-            "group": "1721208844635",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 3,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "price",
-            "dataType": "decimal",
-            "name": "Стоимость",
-            "id": "38571721208850461",
-            "link": "",
-            "group": "1721208844635",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 2,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "description",
-            "dataType": "string",
-            "name": "Описание",
-            "id": "38291721208849781",
-            "link": "",
-            "group": "1721208844635",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": "markdown",
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "status",
-            "dataType": "link",
-            "name": "Статус",
-            "id": "40191721211193024",
-            "link": "ProductStatus",
-            "group": "1721211188835",
-            "tags": null,
-            "indexing": true,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 0,
-            "linkIndexFieldSysName": [
-                "id"
-            ],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": true,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "alert",
-            "dataType": "string",
             "name": "",
-            "id": "19371721734507443",
-            "link": "",
-            "group": "1721211188835",
+            "id": "77031727080919763",
+            "link": "Product",
+            "group": "0",
             "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 1,
+            "order": 2,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -494,8 +124,8 @@ let exampleTable = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
             "arrayLink": false,
             "indexExists": false,
             "typeVariable": {},
@@ -505,227 +135,49 @@ let exampleTable = {
     ],
     "data": [
         {
-            "quantity": 0,
-            "description": "Этот киберконструктор посвящен ЕЙ - легендарной советской буханке. Всего за пару движений аэротранспорт, бороздящий марсианские просторы, превращается в старую добрую Булю, и наоборот. Подвозить Робогозина, проводить космические экскурсии, поддавать “газку”, переводя колеса в киберрежим или просто доставлять почту - выбирать тебе. Ведь сюжеты для игр бесконечны, как наша Вселенная.\n\n_Размер коробки: 28х18х10_\n\n_Высота собранной буханки с подставкой: 17 см, без подставки: 10 см._\n\n_В наборе: детальки, сепаратор, подставка, инструкция, космическое настроение_\n",
-            "alert": "alert",
-            "price": 4999,
-            "productCategoryID": {
-                "id": "e259da2f-6990-496c-bc72-8bee7aa43d5c",
-                "title": "Кинопоиск"
+            "productId": {
+                "visibleName": "Ёлочка «Балет» Музыкальная",
+                "description": "Музыкальная Ёлочка-шкатулка по мотивам балета «Щелкунчик»\n\nАх, это чувство, будто вот-вот произойдёт что-то такое удивительное, такое замечательное! И кто знает, может быть, именно для тебя, прямо как в “Щелкунчике”, скоро начнут происходить чудеса.\n\nМари, Крысиный Король, стойкие оловянные солдатики и, конечно, храбрый главный герой не дадут заскучать, а прекрасная мелодия “Танец Феи Драже” создаст новогоднее настроение! \nТем более, что сцена у нашей ёлочки не хуже, чем в театре!\n\nФишки набора:\n- Музыка из балета\n- Сюрприз под сценой\n- Возможность выиграть семейную поездку на Родину Деда Мороза\n\n_Размер коробки: 32х25х11_\n\n_Высота собранной ёлочки: 28 см_\n\n_В наборе: детальки, сепаратор, музыкальный механизм, инструкция, театральное настроение_",
+                "price": 5999,
+                "productCategoryID": {
+                    "id": "b89ff0d4-3888-46d0-bc92-d7adfe4f0fb2",
+                    "title": "Новогодняя коллекция"
+                },
+                "mainPhoto": "https://api.directual.com/fileUploaded/rubrick-shop/web/59894f1a-1450-4f53-b7ad-94bd8e28e3c0.webp",
+                "id": "fb61c824-b68e-448c-92f5-76de440556ec",
+                "title": "Ёлочка «Балет» Музыкальная"
             },
-            "mainPhoto": "https://api.directual.com/fileUploaded/rubrick-shop/web/447dff10-db02-4e60-b955-c3c5d4e680f6.webp",
-            "id": "0f04c128-0b58-4044-83cc-b9b114075fd2",
-            "status": "inStock",
-            "title": "Кибербуханка",
-            "additionalPhotos": [
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/5a3c86ef-1a1a-49b6-a280-fd701183b49f.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/8d6e6f85-151c-4306-b5ca-07cb55d3a0e5.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/0415f6f1-072c-4573-91e8-b7842ad9bf94.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/ae5c563e-8adc-46ec-be66-54815d4a2fe6.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/dc63e976-27f0-437b-b123-03cc9098bfe3.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/758882c2-fb47-4c14-bb35-47f44dba28fd.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/40fc9932-d77c-4ff1-ad69-85dae38bf48b.mp4"
-            ]
+            "id": "b368feb1-fe49-402d-878e-73ba07e8d62a"
         },
         {
-            "quantity": 0,
-            "description": "Добро пожаловать на Патриаршие!\n\nКусочек “волшебной страны с другим воздухом и гравитацией” прямо у вас в руках. Легендарные лавочки, домик для лебедей, вездесущий чёрный кот и листья деревьев в форме сердечек — беспринципно симпатичный конструктор. \n\nА если подключить фантазию и догадаться, что оставил здесь каждый из героев сериала — становится еще интереснее.\n\n_Размер коробки: 37х28х10_\n\n_Размер собранного панно: 32х12х19 см_\n\n_В наборе: детальки, сепаратор, инструкция, роскошное настроение_\n",
-            "alert": "alert",
-            "price": 4999,
-            "productCategoryID": {
-                "id": "e259da2f-6990-496c-bc72-8bee7aa43d5c",
-                "title": "Кинопоиск"
+            "productId": {
+                "visibleName": "Морозик",
+                "description": "Наш Дед Морозик размером с ладошку, но не думай, что он так прост! \n\nСмотри, что он может:\n- Украшать ёлочку\n- Стоять на полочке\n- Прятаться за оливье\n- Поднимать настроение\n\nФишки набора:\n- Возможность выиграть семейную поездку на Родину Деда Мороза\n\n_Размер коробки: 17х12х6_\n\n_Высота собранной фигурки: 12 см_\n\n_В наборе: детальки, инструкция, новогоднее настроение_\n",
+                "price": 999,
+                "productCategoryID": {
+                    "id": "b89ff0d4-3888-46d0-bc92-d7adfe4f0fb2",
+                    "title": "Новогодняя коллекция"
+                },
+                "mainPhoto": "https://api.directual.com/fileUploaded/rubrick-shop/web/2d6881af-7709-402e-8c2a-1e200d5ca55c.webp",
+                "id": "RU-0004",
+                "title": "Морозик"
             },
-            "mainPhoto": "https://api.directual.com/fileUploaded/rubrick-shop/web/ddb04ae6-85f0-4b3d-8286-99bfd87e3db8.webp",
-            "id": "4437ca6f-976e-4b11-bef0-4508bc7c01b8",
-            "status": "inStock",
-            "title": "Беспринципные",
-            "additionalPhotos": [
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/1919566f-edbc-4366-bad1-b1c25e7bc90c.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/33259381-803a-4f8d-bfce-9d0f1e61ca9e.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/12189ef0-77eb-4734-b7c6-78dcd20a4118.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/a0b6fa8f-56fe-4a08-99af-849331d3a959.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/a9046255-0221-474b-ae58-747b54151fa0.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/b446d234-96fe-4fd2-af43-a49fb9f8440b.mp4"
-            ]
+            "id": "c51b2532-30b3-4b3d-a79c-06e7930ab11f"
         },
         {
-            "quantity": 6,
-            "description": "Наш Дед Морозик размером с ладошку, но не думай, что он так прост! \n\nСмотри, что он может:\n- Украшать ёлочку\n- Стоять на полочке\n- Прятаться за оливье\n- Поднимать настроение\n\nФишки набора:\n- Возможность выиграть семейную поездку на Родину Деда Мороза\n\n_Размер коробки: 17х12х6_\n\n_Высота собранной фигурки: 12 см_\n\n_В наборе: детальки, инструкция, новогоднее настроение_\n",
-            "alert": "alert",
-            "price": 999,
-            "productCategoryID": {
-                "id": "b89ff0d4-3888-46d0-bc92-d7adfe4f0fb2",
-                "title": "Новогодняя коллекция"
+            "productId": {
+                "visibleName": "Снежка",
+                "description": "Наша Снегурочка размером с ладошку, но не думай, что она так проста!\n\nСмотри, что она умеет:\n- Хихикать под ёлочкой\n- Красоваться на полочке\n- Прятаться в мандаринках\n- Поднимать настроение\n\nФишки набора:\n- Возможность выиграть семейную поездку на Родину Деда Мороза\n\n_Размер коробки: 17х12х6_\n\n_Высота собранной фигурки: 11 см_\n\n_В наборе: детальки, инструкция, новогоднее настроение_\n",
+                "price": 999,
+                "productCategoryID": {
+                    "id": "b89ff0d4-3888-46d0-bc92-d7adfe4f0fb2",
+                    "title": "Новогодняя коллекция"
+                },
+                "mainPhoto": "https://api.directual.com/fileUploaded/rubrick-shop/web/cd644f96-ca7a-4a2d-aca7-996fd7cf8d44.webp",
+                "id": "RU-0005",
+                "title": "Снежка"
             },
-            "mainPhoto": "https://api.directual.com/fileUploaded/rubrick-shop/web/2d6881af-7709-402e-8c2a-1e200d5ca55c.webp",
-            "id": "RU-0004",
-            "status": "inStock",
-            "title": "Морозик",
-            "additionalPhotos": [
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/5261f62c-7f97-47da-99f7-cea7b568e5f4.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/affabe32-6b3e-41f9-b89c-7cde20ff4d57.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/0b989566-b9ac-486c-843f-9b515b534939.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/6ae91bd3-ffa6-4775-830b-bc17cf816d14.mp4"
-            ]
-        },
-        {
-            "quantity": 0,
-            "description": "Наша Снегурочка размером с ладошку, но не думай, что она так проста!\n\nСмотри, что она умеет:\n- Хихикать под ёлочкой\n- Красоваться на полочке\n- Прятаться в мандаринках\n- Поднимать настроение\n\nФишки набора:\n- Возможность выиграть семейную поездку на Родину Деда Мороза\n\n_Размер коробки: 17х12х6_\n\n_Высота собранной фигурки: 11 см_\n\n_В наборе: детальки, инструкция, новогоднее настроение_\n",
-            "alert": "alert",
-            "price": 999,
-            "productCategoryID": {
-                "id": "b89ff0d4-3888-46d0-bc92-d7adfe4f0fb2",
-                "title": "Новогодняя коллекция"
-            },
-            "mainPhoto": "https://api.directual.com/fileUploaded/rubrick-shop/web/cd644f96-ca7a-4a2d-aca7-996fd7cf8d44.webp",
-            "id": "RU-0005",
-            "status": "inStock",
-            "title": "Снежка",
-            "additionalPhotos": [
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/3d931674-199e-4aec-a3ec-9f0f1084df83.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/2e059603-cf3b-4e26-989c-afbb6f0eb33a.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/1fe37dfa-531a-425f-b2bf-e238fbba9566.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/e42e71ae-eca7-4f60-90c9-672b3619c765.mp4"
-            ]
-        },
-        {
-            "quantity": 0,
-            "ozon": "—",
-            "description": "Большая фигура Деда Мороза в роскошной шубе, боярской шапке, с тяжелым волшебным посохом и солидной бородой. Скучать не придется: мы сделали процесс сборки очень увлекательным! Поставьте Деда Мороза под ёлку, чтобы получить больше подарков или на праздничный стол, чтобы оливье наутро было еще вкуснее.\n\nФишки набора:\n- Специальная подставка с защитой от хвостатых\n- Письмо Деду Морозу в Великий Устюг внутри\n- Возможность выиграть семейную поездку на Родину Деда Мороза\n\n_Размер коробки: 32х25х11_\n\n_Высота собранной фигурки: 32 см_\n\n_В наборе: детальки, инструкция, сепаратор, письмо Деду Морозу в Великий Устюг, новогоднее настроение_\n",
-            "alert": "alert",
-            "price": 5999,
-            "productCategoryID": {
-                "id": "b89ff0d4-3888-46d0-bc92-d7adfe4f0fb2",
-                "title": "Новогодняя коллекция"
-            },
-            "mainPhoto": "https://api.directual.com/fileUploaded/rubrick-shop/web/b5a94f2a-5ef9-4be1-bfe4-9e4aaf2146b2.webp",
-            "id": "646912c8-5484-403a-8008-a1941fa223d7",
-            "status": "inStock",
-            "yandexMarket": "—",
-            "title": "Дед Мороз",
-            "additionalPhotos": [
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/f8579c59-2ca9-4568-af87-71af05dbbd93.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/dd20b065-45fd-4e11-80aa-1f32369144bc.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/268f87f4-60f3-4aa0-ae76-765659b6cc18.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/5f2c0ff8-9f4f-455d-b156-511e26ea6b83.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/e9110e21-f214-4d19-9698-f448bcaa91b8.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/51feae7b-4578-488c-9e07-3256920144b5.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/83c592a5-c6d7-4e32-804d-a0a7c1b8208b.mp4"
-            ],
-            "wildberries": "—"
-        },
-        {
-            "quantity": -12,
-            "description": "Музыкальная Ёлочка-шкатулка по мотивам балета «Щелкунчик»\n\nАх, это чувство, будто вот-вот произойдёт что-то такое удивительное, такое замечательное! И кто знает, может быть, именно для тебя, прямо как в “Щелкунчике”, скоро начнут происходить чудеса.\n\nМари, Крысиный Король, стойкие оловянные солдатики и, конечно, храбрый главный герой не дадут заскучать, а прекрасная мелодия “Танец Феи Драже” создаст новогоднее настроение! \nТем более, что сцена у нашей ёлочки не хуже, чем в театре!\n\nФишки набора:\n- Музыка из балета\n- Сюрприз под сценой\n- Возможность выиграть семейную поездку на Родину Деда Мороза\n\n_Размер коробки: 32х25х11_\n\n_Высота собранной ёлочки: 28 см_\n\n_В наборе: детальки, сепаратор, музыкальный механизм, инструкция, театральное настроение_",
-            "alert": "alert",
-            "price": 5999,
-            "productCategoryID": {
-                "id": "b89ff0d4-3888-46d0-bc92-d7adfe4f0fb2",
-                "title": "Новогодняя коллекция"
-            },
-            "mainPhoto": "https://api.directual.com/fileUploaded/rubrick-shop/web/59894f1a-1450-4f53-b7ad-94bd8e28e3c0.webp",
-            "id": "fb61c824-b68e-448c-92f5-76de440556ec",
-            "status": "inStock",
-            "title": "Ёлочка «Балет» Музыкальная",
-            "additionalPhotos": [
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/0ea36fd8-f1b8-4889-90be-2468539fe825.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/7e8a2a06-c715-4153-a735-260c897bab22.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/1a15e1db-3d63-4263-8845-e428b34fb2b5.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/493bfb0c-8dc7-4145-816b-8d1274223efb.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/a9c49d6b-85e3-42fd-ab29-8e11c8af6ee0.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/9b2efef0-8418-4410-aed7-9517d8e9dce7.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/f16c6d53-dd54-435f-a641-373efc6c6cb3.mp4"
-            ]
-        },
-        {
-            "quantity": 0,
-            "description": "Самая новогодняя мини-команда! Эти ребята точно знают, как провести праздники. Забавные, миниатюрные и добродушные, они всегда готовы собраться, чтобы украсить праздник! Они будут отлично смотреться и на ёлочке, и на полочке, и даже между салатами на вашем столе. \n\n*Ёлочка*\n- Добрая, но иногда подкалывает\n- Любит наряжаться\n- Родилась в лесу, но это не точно\n\n*Снеговичок*\n- Охраняет холодильник: “Это на новый год!”\n- Не снимает шапку-ушанку \n- Приносит письма Морозику \n\n*Снежка*\n- Всегда ждет, когда ее позовут \n- Часто хихикает с Ёлочкой\n- Никогда не выйдет из дома без кокошника\n\n*Морозик*\n- Вообще-то настоящий волшебник\n- Носит в посохе магический кристалл\n- Иногда охлаждается рядом с детским шампанским \n\nФишки набора:\n- Возможность выиграть семейную поездку на Родину Деда Мороза\n\n_Размер коробки: 32х20х7_\n\n_Высота собранных фигурок: 9-12 см_\n\n_В наборе: детальки, сепаратор, 4 инструкции, новогоднее настроение_\n",
-            "alert": "alert",
-            "price": 2999,
-            "productCategoryID": {
-                "id": "b89ff0d4-3888-46d0-bc92-d7adfe4f0fb2",
-                "title": "Новогодняя коллекция"
-            },
-            "mainPhoto": "https://api.directual.com/fileUploaded/rubrick-shop/web/ac4ecb1a-a49e-4336-921c-c3efec73d4ff.webp",
-            "id": "b039a222-4e12-420d-9a36-8f97d1874d9d",
-            "status": "inStock",
-            "title": "Милахи новогодние",
-            "additionalPhotos": [
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/05227971-48f8-495f-88fc-ea1d57b64ef9.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/e84f74a8-7b0b-4fd6-a7a0-fbc7eb215b18.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/b8df4b9b-82c1-404b-b40e-764f97ddd470.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/41e90484-1f92-47c9-9bf0-7fc337209e9e.mp4"
-            ]
-        },
-        {
-            "quantity": 0,
-            "description": "Помнишь, как в детстве вырезали снежинки из бумаги (а иногда из маминого платья и бабушкиных занавесок)? Мы тоже очень любим эту традицию! И теперь ты можешь повторить те самые снежинки без ножниц и клея. Выбирай один из вариантов сборки или собирай свой орнамент не по инструкции. \n\nФишки набора:\n- Возможность выиграть семейную поездку на Родину Деда Мороза\n\n_Размер коробки: 19х17х6_\n\n_Диаметр снежинок: 10-13 см_\n\n_В наборе: детальки, инструкция, верёвочки, ностальгия_\n",
-            "alert": "alert",
-            "price": 1999,
-            "productCategoryID": {
-                "id": "b89ff0d4-3888-46d0-bc92-d7adfe4f0fb2",
-                "title": "Новогодняя коллекция"
-            },
-            "mainPhoto": "https://api.directual.com/fileUploaded/rubrick-shop/web/f2c4a893-6323-4816-9e9d-9910f51d3a7f.webp",
-            "id": "be50dc28-1740-435f-9b19-97d735246bed",
-            "status": "inStock",
-            "title": "Цветные снежинки",
-            "additionalPhotos": [
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/411f2969-e167-4efb-9992-4d8440327062.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/67dac854-1496-4098-918c-086b13107227.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/d2bc13d3-ba8f-4f65-9526-b964cfbfce0b.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/68829ade-5bce-454d-ad0f-ce4287140aaa.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/699ffaf6-03d7-4abe-9370-5c1d3d4b19e4.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/5b2e790d-a153-4a5d-b00f-8f9cc6d22903.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/195a19fa-6a13-438a-84d2-3f2a70f6e289.webp"
-            ]
-        },
-        {
-            "quantity": 0,
-            "description": "Учёные НИИ Рубрик обнаружили, что не все снежинки состоят из воздуха и воды.\nЕсть и те, что сделаны из пластиковых деталек. \nНе веришь? Загляни в наш творческий набор!\n\nФишки набора:\n- Змееснежинка в честь символа Нового Года - как тебе такое, Илон Маск?\n- Возможность выиграть семейную поездку на Родину Деда Мороза\n\n_Размер коробки: 19х17х6_\n\n_Диаметр снежинок: 9-12 см_\n\n_В наборе: детальки, инструкция, верёвочки, снежное настроение_",
-            "alert": "alert",
-            "price": 1999,
-            "productCategoryID": {
-                "id": "b89ff0d4-3888-46d0-bc92-d7adfe4f0fb2",
-                "title": "Новогодняя коллекция"
-            },
-            "mainPhoto": "https://api.directual.com/fileUploaded/rubrick-shop/web/c3266dd7-f177-4e9b-a4bc-72f2bcec0b62.webp",
-            "id": "39e9bdfe-2c40-48b6-b76e-5a1aec0b730c",
-            "status": "inStock",
-            "title": "Льдинки-снежинки",
-            "additionalPhotos": [
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/af64c325-02ab-4e01-bb87-7cf6a809238b.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/79fc50e4-f35b-419b-93e3-ea01edb2a2cc.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/af0390d2-4adb-48ba-9263-a56d843fc7e3.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/b36ca8d7-b34d-41f2-9cfa-ca6090d4cbb0.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/5e11217c-1d6e-4e52-a2cd-bfe973444baa.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/5bc6c155-2b6e-404e-abad-7d3cb4511015.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/5674776a-d310-464d-9091-f3c8e2e1899d.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/50585b1c-007d-4c18-9ce9-8681a9b4c728.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/7108276d-b763-4c1f-a708-1b43b85c98e8.webp"
-            ]
-        },
-        {
-            "quantity": 0,
-            "description": "Смотри-смотри, звездопад! Вот удача, три звезды как раз упали в эту коробочку. Только падая с неба, они разбились на детальки. Соберешь? \n \nФишки набора:\n- Возможность выиграть семейную поездку на Родину Деда Мороза\n\n_Размер коробки: 19х17х6_\n\n_Диаметр звезд: 10 см_\n\n_В наборе: детальки, инструкция, верёвочки, настроение «я — звезда»_\n",
-            "alert": "alert",
-            "price": 1999,
-            "productCategoryID": {
-                "id": "b89ff0d4-3888-46d0-bc92-d7adfe4f0fb2",
-                "title": "Новогодняя коллекция"
-            },
-            "mainPhoto": "https://api.directual.com/fileUploaded/rubrick-shop/web/7fe578af-1776-46d5-b0fa-894a60c4a7fe.webp",
-            "id": "907ecd57-a57f-4cb9-9d41-82873d1fbebe",
-            "status": "inStock",
-            "title": "Новогодние звёзды",
-            "additionalPhotos": [
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/1bf340b4-056e-4442-814f-ac690e5007f7.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/6374a7ee-968a-442c-abde-b8c89c9ccd03.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/38114d0c-9f14-41e7-8c71-abf14448ce8f.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/db889eba-6615-44b2-b578-7e37f5302ddd.webp",
-                "https://api.directual.com/fileUploaded/rubrick-shop/web/dae208f7-3b2c-429a-b955-022596cb14e1.webp"
-            ]
+            "id": "5a4b9e8e-b6a9-4a94-b5f0-22110b52b140"
         }
     ],
     "totalPages": 1,
@@ -734,75 +186,45 @@ let exampleTable = {
     "fieldScheme": [
         [
             "id",
+            99345029
+        ],
+        [
+            "productId.id",
             99329233
         ],
         [
-            "title",
+            "productId.visibleName",
             99329233
         ],
         [
-            "productCollectionID.id",
-            99329235
+            "productId.mainPhoto",
+            99329233
         ],
         [
-            "productCollectionID.title",
-            99329235
+            "productId.price",
+            99329233
         ],
         [
-            "productCategoryID.id",
+            "productId.description",
+            99329233
+        ],
+        [
+            "productId.title",
+            99329233
+        ],
+        [
+            "productId.productCategoryID.id",
             99329234
         ],
         [
-            "productCategoryID.title",
+            "productId.productCategoryID.title",
             99329234
-        ],
-        [
-            "yandexMarket",
-            99329233
-        ],
-        [
-            "ozon",
-            99329233
-        ],
-        [
-            "wildberries",
-            99329233
-        ],
-        [
-            "additionalPhotos",
-            99329233
-        ],
-        [
-            "mainPhoto",
-            99329233
-        ],
-        [
-            "quantity",
-            99329233
-        ],
-        [
-            "price",
-            99329233
-        ],
-        [
-            "description",
-            99329233
-        ],
-        [
-            "status",
-            99329233
-        ],
-        [
-            "alert",
-            99329233
         ]
     ],
     "writeFields": [
         "id",
-        "description",
-        "price",
-        "mainPhoto",
-        "additionalPhotos"
+        "is_hidden",
+        "productId"
     ],
     "structures": {
         "99329233": {
@@ -909,25 +331,25 @@ let exampleTable = {
             "objectIDSysName": "id",
             "folderId": 33813299
         },
-        "99329235": {
+        "99345029": {
             "networkID": 21464,
-            "sysName": "ProductCollection",
-            "name": "ProductCollection",
-            "id": 99329235,
-            "dateCreated": "2024-07-17T09:26:54Z",
+            "sysName": "favoriteGoods",
+            "name": "favoriteGoods",
+            "id": 99345029,
+            "dateCreated": "2024-09-23T08:32:51Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"description\",\"name\":\"Описание\",\"dataType\":\"string\",\"id\":\"32331721214853861\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"photo\",\"name\":\"Фото\",\"dataType\":\"file\",\"id\":\"32601721214854252\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"title\",\"name\":\"Наименование\",\"dataType\":\"string\",\"id\":\"85321721209123359\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"indexExists\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"status\",\"name\":\"Статус\",\"dataType\":\"link\",\"id\":\"95151721215232658\",\"link\":\"ProductCollectionStatus\",\"group\":\"1721215228626\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkType\":true,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"indexExists\":false,\"arrayLink\":false,\"array\":false}]",
-            "jsonGroupSettings": "[{\"id\":1721215228626,\"name\":\"System\",\"order\":0}]",
-            "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
+            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"is_hidden\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"69661727874767012\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"productId\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"77031727080919763\",\"link\":\"Product\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"array\":false},{\"sysName\":\"userId\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"89781727080375073\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"array\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": null,
             "jsonSettings": null,
             "jsonNativeIndexSettings": null,
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2024-07-17T11:38:38Z",
-            "createBy": 7868,
-            "changedBy": 7868,
+            "dateChanged": "2024-10-02T13:12:54Z",
+            "createBy": 6452,
+            "changedBy": 1,
             "_settings": null,
             "_nativeIndexSettings": null,
             "innerIDField": {
@@ -959,7 +381,7 @@ let exampleTable = {
                 "array": false
             },
             "objectIDSysName": "id",
-            "folderId": 33813299
+            "folderId": 33821638
         }
     },
     "isSuccessWrite": false,
@@ -969,7 +391,7 @@ let exampleTable = {
         {
             "sysName": "id",
             "dataType": "id",
-            "name": "SKU",
+            "name": "id",
             "id": "0",
             "link": "",
             "group": "0",
@@ -995,46 +417,18 @@ let exampleTable = {
             "array": false
         },
         {
-            "sysName": "description",
-            "dataType": "string",
-            "name": "Описание",
-            "id": "38291721208849781",
+            "sysName": "is_hidden",
+            "dataType": "boolean",
+            "name": "",
+            "id": "69661727874767012",
             "link": "",
-            "group": "1721208844635",
+            "group": "0",
             "tags": null,
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": "markdown",
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "price",
-            "dataType": "decimal",
-            "name": "Стоимость",
-            "id": "38571721208850461",
-            "link": "",
-            "group": "1721208844635",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 2,
+            "order": 3,
             "linkIndexFieldSysName": [],
             "defaultValue": null,
             "constraints": null,
@@ -1051,55 +445,27 @@ let exampleTable = {
             "array": false
         },
         {
-            "sysName": "mainPhoto",
-            "dataType": "file",
-            "name": "Фото",
-            "id": "31971721208886150",
-            "link": "",
-            "group": "1721208844635",
-            "tags": null,
+            "sysName": "productId",
+            "dataType": "link",
+            "name": "",
+            "id": "77031727080919763",
+            "link": "Product",
+            "group": "0",
+            "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 4,
+            "order": 2,
             "linkIndexFieldSysName": [],
-            "defaultValue": null,
+            "defaultValue": "",
             "constraints": null,
             "synthetic": false,
-            "format": "image",
-            "formatOptions": null,
+            "format": null,
+            "formatOptions": {},
             "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "additionalPhotos",
-            "dataType": "file",
-            "name": "Дополнительные фото",
-            "id": "48711721208894486",
-            "link": "",
-            "group": "1721208844635",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 5,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": "multipleImages",
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
             "arrayLink": false,
             "indexExists": false,
             "typeVariable": {},
@@ -1111,7 +477,7 @@ let exampleTable = {
     "httpParams": null,
     "cardCustomHtml": null,
     "cardCustomLayout": null,
-    "comment": "НОВЫЙ КАТАЛОГ",
+    "comment": "ИЗБРАННОЕ",
     "response": false
 }
 

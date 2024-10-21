@@ -25,7 +25,7 @@ export default function FpsForm2Action(props) {
         setPerformed(true)
     }
 
-    if (!action) return <div>No action <code>action_1715086004658</code></div>
+    if (!action) return <div>No action <code>{_.get(actionFormat,"id")}</code></div>
     if (action.autoAction) return <React.Fragment></React.Fragment>
     if (actionFormat._conditionalView &&
         !checkHidden(actionFormat) &&
