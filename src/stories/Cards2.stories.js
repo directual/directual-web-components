@@ -93,11 +93,13 @@ let exampleTable = {
                     "_action_label": "намек понял",
                     "_action_icon": "babai",
                     "_action_button_type": "accent",
-                    "_action_oneTime": false
+                    "_action_oneTime": false,
+                    "_action_button_size": "small"
                 }
             ],
             "_actions_in_a_row": 2,
-            "actionsOn": true
+            "actionsOn": true,
+            "actionsLayout": "column"
         },
         "routing": "redirect",
         "routing_where": "{{id}}",

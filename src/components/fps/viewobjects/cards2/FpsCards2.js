@@ -242,6 +242,7 @@ function Card(props) {
     const actionsOn = _.get(data, "params.card_type_dir.actionsOn", false)
     const actionsArray = _.get(data, "params.card_type_dir._actions", [])
     const actionsSettings = _.get(data, "params.actions", [])
+    const actionsLayout = _.get(data, "params.card_type_dir.actionsLayout", "line")
 
     const isRouting = _.get(data, "params.routing") == "redirect"
     const routingPath = _.get(data, "params.routing_where", '')
@@ -383,6 +384,7 @@ function Card(props) {
                 <CardActions
                     actionsArray={actionsArray}
                     object={object}
+                    actionsLayout={actionsLayout}
                     context={context}
                     callEndpointPOST={callEndpointPOST}
                     actionsSettings={actionsSettings}
@@ -398,8 +400,8 @@ function Card(props) {
 }
 
 function CardActions(props) {
-    const { actionsSettings, callEndpointPOST, object, context, actionsArray } = props
-    return <ActionPanel>
+    const { actionsSettings, actionsLayout, callEndpointPOST, object, context, actionsArray } = props
+    return <ActionPanel column={actionsLayout == 'column'}>
         {actionsArray.map(action => <CardAction
             {...props}
             action={action}
@@ -451,6 +453,8 @@ function CardAction(props) {
 
     return <Button
         onClick={handleClick}
+        height={action._action_button_size == "small" ? 32 : 48}
+        small={action._action_button_size == "small"}
         loading={localLoading}
         tooltip={action._action_addTooltip && action._action_addTooltip_text}
         icon={action._action_icon}
