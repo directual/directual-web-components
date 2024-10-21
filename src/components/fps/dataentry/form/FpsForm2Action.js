@@ -46,6 +46,6 @@ export default function FpsForm2Action(props) {
         onClick={sendAction}
         loading={loading}
         icon={actionFormat._action_icon}
-    >{actionFormat._action_label || action.name}</Button>
+    >{template(actionFormat._action_label || action.name)}</Button>
 
 }

@@ -242,11 +242,14 @@ function ElementAction(props) {
         }
     }
 
+    console.log("element")
+    console.log(element)
+
     return <React.Fragment>
         {error && <Hint margin={{ top: 0, bottom: 18 }} error closable onClose={() => setError("")}>
             {error}
         </Hint>}
-        <ActionPanel margin={{ left: 1 }}>
+        <ActionPanel margin={{ left: 1 }} column={_.get(element,"_input_actions_in_a_row_column") == "column"}>
             {action_list.map(action => action._action ? <FpsForm2Action
                 {...props}
                 key={action.id}
