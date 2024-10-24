@@ -149,7 +149,11 @@ export default function FpsForm2(props) {
       return;
     }
 
-    const timestampToISO = (timestamp) => new Date(timestamp).toISOString();
+    const timestampToISO = (timestamp) => {
+      console.log("timestamp")
+      console.log(timestamp)
+      if (timestamp) { return new Date(timestamp).toISOString() } else { return null }
+    }
 
     if (edditingOn) {
       console.log("Socket form update")
@@ -157,20 +161,20 @@ export default function FpsForm2(props) {
       const convertedDates = _.reduce(_.get(data, "fileds"), (result, field) => {
         // Ensure the field exists in the objectModel
         if (field.dataType === 'date' && _.get(data, "data[0]") && [field.sysName]) {
-            result[field.sysName] = timestampToISO(_.get(data, "data[0]")[field.sysName]);
+          result[field.sysName] = timestampToISO(_.get(data, "data[0]")[field.sysName]);
         }
         return result;
-    }, {});
+      }, {});
 
-    const convertedBools = _.reduce(_.get(data, "fileds"), (result, field) => {
-      // Ensure the field exists in the objectModel
-      if (field.dataType === "boolean" && _.get(data, "data[0]") && _.get(data, "data[0]")[field.sysName] !== undefined) {
+      const convertedBools = _.reduce(_.get(data, "fileds"), (result, field) => {
+        // Ensure the field exists in the objectModel
+        if (field.dataType === "boolean" && _.get(data, "data[0]") && _.get(data, "data[0]")[field.sysName] !== undefined) {
           console.log(field)
           result[field.sysName] = _.get(data, "data[0]")[field.sysName] ? "true" : "false";
-      }
-      return result;
-  }, {});
-      
+        }
+        return result;
+      }, {});
+
       setExtendedModel({ ..._.get(data, "data[0]"), ...convertedDates })
       let saveSate = { ...state }
       const newModel = ({ ...model, ...flatternModel({ ..._.get(data, "data[0]"), ...convertedDates, ...convertedBools }) })
