@@ -242,9 +242,6 @@ function ElementAction(props) {
         }
     }
 
-    console.log("element")
-    console.log(element)
-
     return <React.Fragment>
         {error && <Hint margin={{ top: 0, bottom: 18 }} error closable onClose={() => setError("")}>
             {error}
