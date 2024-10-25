@@ -159,7 +159,13 @@ export default function FpsForm2(props) {
       const convertedDates = _.reduce(_.get(data, "fileds"), (result, field) => {
         // Ensure the field exists in the objectModel
         if (field.dataType === 'date' && _.get(data, "data[0]") && _.get(data, "data[0]")[field.sysName]) {
-          result[field.sysName] = timestampToISO(_.get(data, "data[0]")[field.sysName]);
+          try {
+            result[field.sysName] = timestampToISO(_.get(data, "data[0]")[field.sysName]);
+          }
+          catch (e) {
+            console.log(e);
+            console.log(_.get(data, "data[0]")[field.sysName])
+          }
         }
         return result;
       }, {});
