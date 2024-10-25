@@ -150,8 +150,6 @@ export default function FpsForm2(props) {
     }
 
     const timestampToISO = (timestamp) => {
-      console.log("timestamp")
-      console.log(timestamp)
       if (timestamp) { return new Date(timestamp).toISOString() } else { return null }
     }
 
@@ -160,7 +158,7 @@ export default function FpsForm2(props) {
 
       const convertedDates = _.reduce(_.get(data, "fileds"), (result, field) => {
         // Ensure the field exists in the objectModel
-        if (field.dataType === 'date' && _.get(data, "data[0]") && [field.sysName]) {
+        if (field.dataType === 'date' && _.get(data, "data[0]") && _.get(data, "data[0]")[field.sysName]) {
           result[field.sysName] = timestampToISO(_.get(data, "data[0]")[field.sysName]);
         }
         return result;
