@@ -166,8 +166,7 @@ export default function FpsForm2(props) {
 
       const convertedBools = _.reduce(_.get(data, "fileds"), (result, field) => {
         // Ensure the field exists in the objectModel
-        if (field.dataType === "boolean" && _.get(data, "data[0]") && _.get(data, "data[0]")[field.sysName] !== undefined) {
-          console.log(field)
+        if (field.dataType === "boolean" && (_.get(data, "data[0]") || _.get(data, "data[0]")[field.sysName] === false)) {
           result[field.sysName] = _.get(data, "data[0]")[field.sysName] ? "true" : "false";
         }
         return result;
