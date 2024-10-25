@@ -18,7 +18,7 @@ export default {
 };
 
 let exampleForm = {
-    "sl": "job_offers_n-3",
+    "sl": "job_offers_n_2",
     "pageSize": "10",
     "headerField": null,
     "params": {
@@ -37,7 +37,7 @@ let exampleForm = {
                                 "id": "condition_1723491359168",
                                 "_conditionalView_field": "type_id",
                                 "_conditionalView_operator": "==",
-                                "_conditionalView_value": "N-3"
+                                "_conditionalView_value": "N-2"
                             }
                         ]
                     },
@@ -139,1511 +139,13 @@ let exampleForm = {
                                 "id": "condition_1723491336953",
                                 "_conditionalView_field": "type_id",
                                 "_conditionalView_operator": "==",
-                                "_conditionalView_value": "N-3"
+                                "_conditionalView_value": "N-2"
                             }
                         ]
                     }
                 ],
                 "sectionVisibility": "always",
                 "sectionCustomVisibility": "approval_cnb"
-            },
-            {
-                "id": "default_step",
-                "sysName": "approval_cnb",
-                "elements": [
-                    {
-                        "id": "elmnt_1717401969375",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174019861660.44033242412004300134131",
-                                "_field": "reason_vacancy",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "reason_of_vacancy",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718897734563",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717401973476",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174020816510.12114333434113323312312",
-                                "_field": "vacancy_id",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1724364113227",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "AND",
-                                "_field_add_description": true,
-                                "_field_description_text": "если вакансия в OPS и ID не существует, то укажите в поле \"нет\""
-                            }
-                        ],
-                        "_conditionalView": false,
-                        "_conditions": [
-                            {
-                                "id": "condition_1724403398274",
-                                "_conditionalView_value": "replacement",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_field": "reason_vacancy"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1719251541841",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17192515476320.21032443211403234430322",
-                                "_field": "id_position",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1719252236244",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717401972782",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174020491080.040423420111410243244003",
-                                "_field": "resigning_empl_full_name",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718897878781",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1717402099495",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "replacement,transfer"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1725270141294",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17252701802860.03322104313011200041031",
-                                "_field": "resigning_empl_full_name_strng",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1725270195797",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1725270209542",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717401976342",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174022385390.41413003113212134344013",
-                                "_field": "position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898233989",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717401977901",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174022611150.034404033342112410322443",
-                                "_field": "division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898259239",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1718907011548",
-                        "type": "text",
-                        "paraText": "<div class=\"form_label\">Организационная структура:</div>\n{{org_structure_text}}"
-                    },
-                    {
-                        "id": "elmnt_1717401971964",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174020239580.034443214424020322312221",
-                                "_field": "company",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "company",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898133049",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ],
-                                "_field_required": true
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717401974161",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174022108360.42432332032431101343242",
-                                "_field": "country_city",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898176513",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717401975581",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174022292800.41233342331013140101322",
-                                "_field": "candidate_full_name",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898203916",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717401980266",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174034095080.204034201400132330433023",
-                                "_field": "direct_full_name",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "employee",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898302974",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717401981568",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174034417050.3313104212013141213002",
-                                "_field": "contract_type",
-                                "_field_link_type": "select",
-                                "_field_link_pageSize": 0,
-                                "_field_arrayLink_endpoint": "contract_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898330358",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717403456249",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174034624150.121233343410212143130322",
-                                "_field": "contract_period",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898352523",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1717403483837",
-                                "_conditionalView_field": "contract_type",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "fixed_term"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717403457018",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174035278340.33101024023140002031314",
-                                "_field": "reason_contract",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898372391",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1717403537149",
-                                "_conditionalView_field": "contract_type",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "fixed_term"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717403458048",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174035504160.111023104414034231320012",
-                                "_field": "employment_type",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "employment_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898391739",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717403458753",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174035776140.14144124233210031011332",
-                                "_field": "probation",
-                                "_field_set_default": true,
-                                "_field_default_value": "3 месяца",
-                                "_field_use_mask": false,
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898409792",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717403459511",
-                        "type": "input",
-                        "_actions": [
-                            {
-                                "id": "17174037621020.03103013304004423013203"
-                            }
-                        ],
-                        "_input_fields": [
-                            {
-                                "id": "17174037643110.03143223331032342444034",
-                                "_field": "assessment_type",
-                                "_field_set_default": true,
-                                "_field_default_value": "Perfomance review",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898432724",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "PerfomanceReview",
-                                "_field_required": true
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717403790993",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174037928860.201343434142011013233443",
-                                "_field": "cost_center",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898449373",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717403803414",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174038054740.13023132041203302304222",
-                                "_field": "name_position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898472825",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717403818332",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174038283770.11114422230112401311221",
-                                "_field": "analytics_ops",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898489537",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ],
-                                "_field_add_description": true,
-                                "_field_description_text": "укажите категорию персонала",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "analytics_for_ops"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717618621517",
-                        "type": "text",
-                        "paraText": "<b>Блок C&B</b>"
-                    },
-                    {
-                        "id": "elmnt_1717618692210",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17176187132000.203242424112144324403322",
-                                "_field": "company_name",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898718124",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_admin"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717618694976",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17176187499670.20203144142142111134322",
-                                "_field": "current_position",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898949178",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_admin,jo_cnb"
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "17176187512460.40344110231333121101124",
-                                "_field": "desired_position",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898778641",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_admin,jo_cnb"
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "17234931981930.33134044122131121200044",
-                                "_field": "offer_position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723493270657",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ],
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 3
-                    },
-                    {
-                        "id": "elmnt_1717618697756",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17176187721430.2123314340231314444413",
-                                "_field": "count_empl_direct",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898974944",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_admin,jo_cnb"
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "17176187737450.2323003024303223112313",
-                                "_field": "desired_count_empl_direct",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898800858",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_admin,jo_cnb"
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "17234937443760.20001224440014430411332",
-                                "_field": "offer_count_empl_direct",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723493792699",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_input_fields_in_a_row": 3
-                    },
-                    {
-                        "id": "elmnt_1717618700298",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17176188322270.211013232204120400211132",
-                                "_field": "current_salary_bonus",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898866688",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_admin,jo_cnb"
-                                    }
-                                ],
-                                "_field_add_description": true,
-                                "_field_description_text": "в гросс"
-                            },
-                            {
-                                "id": "17176188340780.04130102032020214243111",
-                                "_field": "desired_salary",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718899017658",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_admin,jo_cnb"
-                                    }
-                                ],
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "bonus",
-                                "_field_add_description": true,
-                                "_field_description_text": "в гросс"
-                            },
-                            {
-                                "id": "17234938412540.0123103404440440202144033",
-                                "_field": "offer_salary_bonus",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723494043381",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "AND",
-                                "_field_required": true,
-                                "_field_add_description": true,
-                                "_field_description_text": "в гросс, включая районный коэффициент и северную надбавку"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 3,
-                        "_conditionalView": false,
-                        "_conditions": [
-                            {
-                                "id": "condition_1718898902711"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1719252295305",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17192522973860.032203343112203341324143",
-                                "_field": "current_bonus",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "bonus",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1719252324631",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_admin,jo_cnb"
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "17234943869230.41111013120430221130404",
-                                "_field": "desired_bonus",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "bonus",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723494443583",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "17234943883970.014433100013400334241303",
-                                "_field": "offer_bonus",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723494483552",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "AND",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "bonus",
-                                "_field_required": true
-                            }
-                        ],
-                        "_input_fields_in_a_row": 3
-                    },
-                    {
-                        "id": "elmnt_1719252466442",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17192524685940.041340443342044122223201",
-                                "_field": "current_bonus_amount",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1719252481491",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "without_bonus"
-                                    }
-                                ],
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "bonus"
-                            },
-                            {
-                                "id": "17234945777270.34304114101244230121442",
-                                "_field": "desired_bonus_amount",
-                                "_field_link_type": "input",
-                                "_field_arrayLink_endpoint": "bonus",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723494640633",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "without_bonus"
-                                    }
-                                ],
-                                "_field_required": true
-                            },
-                            {
-                                "id": "17234945791900.3134441213012004431021",
-                                "_field": "offer_bonus_amount",
-                                "_conditionalView": true,
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723494710984",
-                                        "_conditionalView_field": "offer_bonus",
-                                        "_conditionalView_operator": "==",
-                                        "_conditionalView_value": "without_bonus"
-                                    },
-                                    {
-                                        "id": "condition_1723502622149",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ],
-                                "_field_required": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 3
-                    },
-                    {
-                        "id": "elmnt_1719252526395",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17192525290670.004104300323223222030424",
-                                "_field": "budget_date",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1719252547101",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "!==",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_conditionalView": false,
-                        "_conditions": []
-                    },
-                    {
-                        "id": "elmnt_1723495457901",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234954684260.43400314402331013441041",
-                                "_field": "hr_dep",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723495498576",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723495517175",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234955330720.21220114143243242014043",
-                                "_field": "add_hr_dir",
-                                "_field_required": true,
-                                "_field_add_description": true,
-                                "_field_description_text": "HR Director нужно добавить, если это руководящая роль, ассистенты ТОП-ов и ключевые позиции",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723495555644",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723495999473",
-                        "type": "text",
-                        "paraText": "<b>Блок HR Director</b>",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723496009015",
-                                "_conditionalView_field": "add_hr_dir",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723496032265",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234961978210.41344121002010120223203",
-                                "_field": "process_participants",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723496242736",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            },
-                            {
-                                "id": "17234965549020.43404144303320343101404",
-                                "_field": "risks",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723496603202",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            },
-                            {
-                                "id": "17234965557030.110234144411134232303212",
-                                "_field": "add_benefits",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723496627773",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            },
-                            {
-                                "id": "17234965574440.14320140331242041112333",
-                                "_field": "candidate_motivation",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723496657958",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            },
-                            {
-                                "id": "17234965583220.11302230320242331100014",
-                                "_field": "resume_link",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723496706460",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": false
-                            },
-                            {
-                                "id": "17234965720900.033402123440344020111202",
-                                "_field": "resume_file",
-                                "_conditionalView": true,
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723496732674",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_field_required": false
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723496259985",
-                                "_conditionalView_field": "add_hr_dir",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 6,
-                        "_input_fields_in_a_row_column": "column"
-                    },
-                    {
-                        "id": "elmnt_1723496222008",
-                        "type": "text",
-                        "paraText": "<b>Рекомендация 1</b>",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723496796719",
-                                "_conditionalView_field": "add_hr_dir",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723496814920",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234968688950.0043301322010301240403333",
-                                "_field": "full_name_recommender_1",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723496894003",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            },
-                            {
-                                "id": "17234968709930.31411110033244003244041",
-                                "_field": "period_and_company_1",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723497078222",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "17234968726010.1344321233402310203103",
-                                "_field": "interacted_as_1",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723497103867",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_input_fields_in_a_row": 3,
-                        "_input_fields_in_a_row_column": "row",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723497118831",
-                                "_conditionalView_field": "add_hr_dir",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723497152392",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234971556660.023224224311430423032341",
-                                "_field": "feedback_1",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723497164566",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723497181748",
-                                "_conditionalView_field": "add_hr_dir",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723497208275",
-                        "type": "text",
-                        "paraText": "<b>Рекомендация 2</b>",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723497236155",
-                                "_conditionalView_field": "add_recommendation_2",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723497269792",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234972727740.10332343243301411040124",
-                                "_field": "full_name_recommender_2",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723497287733",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            },
-                            {
-                                "id": "17234972747960.22201322103242311200422",
-                                "_field": "period_and_company_2",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723497313391",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "true"
-                                    }
-                                ],
-                                "_field_required": true
-                            },
-                            {
-                                "id": "17234972764900.14134201140313331042412",
-                                "_field": "interacted_as_2",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723497356357",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            }
-                        ],
-                        "_input_fields_in_a_row": 3,
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723497372066",
-                                "_conditionalView_field": "add_recommendation_2",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723497399355",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234974031940.40434430412323313002002",
-                                "_field": "feedback_2",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723497422924",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723497435089",
-                                "_conditionalView_field": "add_recommendation_2",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723497503908",
-                        "type": "text",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723497596401",
-                                "_conditionalView_field": "add_recommendation_3",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            }
-                        ],
-                        "paraText": "<b>Рекомендация 3</b>"
-                    },
-                    {
-                        "id": "elmnt_1723497630260",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234976353620.3342140124112030033331",
-                                "_field": "full_name_recommender_3",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723497647990",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            },
-                            {
-                                "id": "17234976375130.044201243440320302322404",
-                                "_field": "period_and_company_3",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723497674309",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            },
-                            {
-                                "id": "17234976383850.141334332243314242012403",
-                                "_field": "interacted_as_3",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723497697575",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            }
-                        ],
-                        "_input_fields_in_a_row": 3,
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723497713007",
-                                "_conditionalView_field": "add_recommendation_3",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723497732101",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234977371620.10401421324222410334234",
-                                "_field": "feedback_3",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723497751210",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723497770707",
-                                "_conditionalView_field": "add_recommendation_3",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723497809439",
-                        "type": "text",
-                        "paraText": "<b>Согласующие лица HR</b>"
-                    },
-                    {
-                        "id": "elmnt_1723497820332",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234978414090.32033433303443002220233",
-                                "_field": "cnb",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723497922273",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "jo_cnb"
-                                    },
-                                    {
-                                        "id": "condition_1729708241723",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{cnb.webuser_id.whom_delegate_ids}},{{cnb.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1729707940726",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17297079453570.20004114241404134412042",
-                                "_action": "action_1729707048762",
-                                "_action_icon": "gates",
-                                "_action_button_type": "accent",
-                                "_action_oneTime": true,
-                                "_action_addTooltip": true,
-                                "_action_addTooltip_text": "Если согласование данной заявки не входит в Вашу зону ответственности, то проверьте матрицу и переназначьте заявку",
-                                "_action_oneTime_message": "Новый ответственный назначен",
-                                "_conditionalView": true,
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1729707992337",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "jo_cnb"
-                                    },
-                                    {
-                                        "id": "condition_1729708004025",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{cnb.webuser_id.whom_delegate_ids}},{{cnb.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723497822039",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234980377150.033402113433130023424402",
-                                "_field": "hr_bp",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723498068355",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "!==",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ],
-                                "_field_required": true
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723497838060",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234981251810.032443422024421120421031",
-                                "_field": "hrd",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723498147790",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723498161893",
-                                "_conditionalView_field": "add_hr_dir",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723498186861",
-                        "type": "text",
-                        "paraText": "<b>Согласующие лица Бизнес</b>"
-                    },
-                    {
-                        "id": "elmnt_1723498221979",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234982461180.14431332134121243022231",
-                                "_field": "budget_holder",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723498301156",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_conditionalView": false,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723498338996"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723498223720",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234984176310.33220410114100212334411",
-                                "_field": "manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723498442922",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723498225505",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234984695250.0011203300021410122110213",
-                                "_field": "up_manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723498505524",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ],
-                "sectionVisibility": "default"
             },
             {
                 "id": "step_copy_1723498717786",
@@ -1751,46 +253,38 @@ let exampleForm = {
                             {
                                 "id": "condition_1717402099495",
                                 "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "==",
+                                "_conditionalView_operator": "in",
                                 "_conditionalView_value": "replacement,transfer"
                             }
                         ]
                     },
                     {
-                        "id": "elmnt_1725270255792",
+                        "id": "elmnt_1725005301428",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17252703007300.222003414034311340423212",
+                                "id": "17250053098310.021440431334403103432012",
                                 "_field": "resigning_empl_full_name_strng",
                                 "_field_required": true,
                                 "_conditionalView": true,
                                 "_conditionalView_disable_or_hide": "disable",
                                 "_conditions": [
                                     {
-                                        "id": "condition_1725270316265",
+                                        "id": "condition_1725005331638",
                                         "_conditionalView_field": "WebUser.role",
                                         "_conditionalView_operator": "notContains",
                                         "_conditionalView_value": "jo_hrbp"
-                                    },
-                                    {
-                                        "id": "condition_1725270319200",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.whom_delegate_ids}},{{hr_bp.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
                                     }
-                                ],
-                                "_action_conditionals_and_or": "OR"
+                                ]
                             }
                         ],
                         "_conditionalView": true,
                         "_conditions": [
                             {
-                                "id": "condition_1725270326932",
+                                "id": "condition_1725005412167",
                                 "_conditionalView_field": "reason_vacancy",
                                 "_conditionalView_operator": "in",
-                                "_conditionalView_value": "another_company"
+                                "_conditionalView_value": "transfer"
                             }
                         ]
                     },
@@ -2150,9 +644,7 @@ let exampleForm = {
                                 ],
                                 "_field_set_default": false,
                                 "_field_add_description": true,
-                                "_field_description_text": "укажите категорию персонала",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "analytics_for_ops"
+                                "_field_description_text": "укажите категорию персонала"
                             }
                         ]
                     },
@@ -2482,7 +974,7 @@ let exampleForm = {
                             {
                                 "id": "17192525290670.004104300323223222030424",
                                 "_field": "budget_date",
-                                "_field_required": true,
+                                "_field_required": false,
                                 "_conditionalView": true,
                                 "_conditionalView_disable_or_hide": "disable",
                                 "_conditions": [
@@ -2534,29 +1026,6 @@ let exampleForm = {
                                         "id": "condition_1723495498576",
                                         "_conditionalView_field": "WebUser.role",
                                         "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723495517175",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234955330720.21220114143243242014043",
-                                "_field": "add_hr_dir",
-                                "_field_required": true,
-                                "_field_add_description": true,
-                                "_field_description_text": "HR Director нужно добавить, если это руководящая роль, ассистенты ТОП-ов и ключевые позиции",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723495555644",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "jo_hrbp"
                                     }
                                 ]
                             }
@@ -3080,8 +1549,8 @@ let exampleForm = {
                                     {
                                         "id": "condition_1723497922273",
                                         "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_cnb,jo_hrbp"
+                                        "_conditionalView_operator": "notContains",
+                                        "_conditionalView_value": "jo_hrbp"
                                     }
                                 ]
                             }
@@ -3106,7 +1575,7 @@ let exampleForm = {
                                         "_conditionalView_value": "jo_hrbp"
                                     },
                                     {
-                                        "id": "condition_1729708377346",
+                                        "id": "condition_1729708765062",
                                         "_conditionalView_field": "WebUser.id",
                                         "_conditionalView_operator": "notIn",
                                         "_conditionalView_value": "{{hr_bp.webuser_id.whom_delegate_ids}},{{hr_bp.webuser_id.id}}",
@@ -3119,24 +1588,22 @@ let exampleForm = {
                         ]
                     },
                     {
-                        "id": "elmnt_1729708336718",
+                        "id": "elmnt_1729708788214",
                         "type": "action",
                         "_actions": [
                             {
-                                "id": "17297083421540.34223414213231202132401",
-                                "_action": "action_1729707048762",
-                                "_action_icon": "gates",
-                                "_action_button_type": "accent",
+                                "id": "17297087930720.110013211232024423103121",
+                                "_action": "action_1729707112575",
                                 "_conditionalView": true,
                                 "_conditions": [
                                     {
-                                        "id": "condition_1729708478669",
+                                        "id": "condition_1729708834409",
                                         "_conditionalView_field": "WebUser.role",
                                         "_conditionalView_operator": "notContains",
                                         "_conditionalView_value": "jo_hrbp"
                                     },
                                     {
-                                        "id": "condition_1729708485902",
+                                        "id": "condition_1729708836966",
                                         "_conditionalView_field": "WebUser.id",
                                         "_conditionalView_operator": "notIn",
                                         "_conditionalView_value": "{{hr_bp.webuser_id.whom_delegate_ids}},{{hr_bp.webuser_id.id}}",
@@ -3146,8 +1613,10 @@ let exampleForm = {
                                 "_action_conditionals_and_or": "OR",
                                 "_action_oneTime": true,
                                 "_action_addTooltip": true,
-                                "_action_oneTime_message": "Новый ответственный назначен",
-                                "_action_addTooltip_text": "Если согласование данной заявки не входит в Вашу зону ответственности, то проверьте матрицу и переназначьте заявку"
+                                "_action_icon": "gates",
+                                "_action_button_type": "accent",
+                                "_action_addTooltip_text": "Если согласование данной заявки не входит в Вашу зону ответственности, то проверьте матрицу и переназначьте заявку",
+                                "_action_oneTime_message": "Новый ответственный назначен"
                             }
                         ]
                     },
@@ -3238,14 +1707,1290 @@ let exampleForm = {
                                 ]
                             }
                         ]
-                    },
+                    }
+                ],
+                "sectionVisibility": "default"
+            },
+            {
+                "id": "default_step",
+                "sysName": "approval_cnb",
+                "elements": [
                     {
-                        "id": "elmnt_1723498225505",
+                        "id": "elmnt_1717401969375",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17234984695250.0011203300021410122110213",
-                                "_field": "up_manager",
+                                "id": "17174019861660.44033242412004300134131",
+                                "_field": "reason_vacancy",
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "reason_of_vacancy",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718897734563",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1717401973476",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17174020816510.12114333434113323312312",
+                                "_field": "vacancy_id",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1724364113227",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "jo_cnb"
+                                    }
+                                ],
+                                "_action_conditionals_and_or": "AND",
+                                "_field_add_description": true,
+                                "_field_description_text": "если вакансия в OPS и ID не существует, то укажите в поле \"нет\""
+                            }
+                        ],
+                        "_conditionalView": false,
+                        "_conditions": [
+                            {
+                                "id": "condition_1724403398274",
+                                "_conditionalView_value": "replacement",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_field": "reason_vacancy"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1719251541841",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17192515476320.21032443211403234430322",
+                                "_field": "id_position",
+                                "_field_required": false,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1719252236244",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "jo_cnb"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1717401972782",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17174020491080.040423420111410243244003",
+                                "_field": "resigning_empl_full_name",
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718897878781",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull",
+                                        "_conditionalView_value": "jo_cnb"
+                                    }
+                                ]
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1717402099495",
+                                "_conditionalView_field": "reason_vacancy",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "replacement,transfer"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1725005563436",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17250055720560.012421434413430341002041",
+                                "_field": "resigning_empl_full_name_strng",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1725005593065",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1725005625301",
+                                "_conditionalView_field": "reason_vacancy",
+                                "_conditionalView_operator": "in",
+                                "_conditionalView_value": "another_company"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1717401976342",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17174022385390.41413003113212134344013",
+                                "_field": "position",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718898233989",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull",
+                                        "_conditionalView_value": "jo_cnb"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1717401977901",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17174022611150.034404033342112410322443",
+                                "_field": "division",
+                                "_field_link_type": "complexSelect",
+                                "_field_arrayLink_endpoint": "divisionDropdown",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718898259239",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull",
+                                        "_conditionalView_value": "jo_cnb"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1718907011548",
+                        "type": "text",
+                        "paraText": "<div class=\"form_label\">Организационная структура:</div>\n{{org_structure_text}}"
+                    },
+                    {
+                        "id": "elmnt_1717401971964",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17174020239580.034443214424020322312221",
+                                "_field": "company",
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "company",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718898133049",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull",
+                                        "_conditionalView_value": "jo_cnb"
+                                    }
+                                ],
+                                "_field_required": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1717401974161",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17174022108360.42432332032431101343242",
+                                "_field": "country_city",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718898176513",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1717401975581",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17174022292800.41233342331013140101322",
+                                "_field": "candidate_full_name",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718898203916",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1717401980266",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17174034095080.204034201400132330433023",
+                                "_field": "direct_full_name",
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "employee",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718898302974",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ],
+                                "_field_required": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1717401981568",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17174034417050.3313104212013141213002",
+                                "_field": "contract_type",
+                                "_field_link_type": "select",
+                                "_field_link_pageSize": 0,
+                                "_field_arrayLink_endpoint": "contract_type",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718898330358",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1717403456249",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17174034624150.121233343410212143130322",
+                                "_field": "contract_period",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718898352523",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1717403483837",
+                                "_conditionalView_field": "contract_type",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "fixed_term"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1717403457018",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17174035278340.33101024023140002031314",
+                                "_field": "reason_contract",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718898372391",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1717403537149",
+                                "_conditionalView_field": "contract_type",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "fixed_term"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1717403458048",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17174035504160.111023104414034231320012",
+                                "_field": "employment_type",
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "employment_type",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718898391739",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1717403458753",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17174035776140.14144124233210031011332",
+                                "_field": "probation",
+                                "_field_set_default": true,
+                                "_field_default_value": "3 месяца",
+                                "_field_use_mask": false,
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718898409792",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1717403459511",
+                        "type": "input",
+                        "_actions": [
+                            {
+                                "id": "17174037621020.03103013304004423013203"
+                            }
+                        ],
+                        "_input_fields": [
+                            {
+                                "id": "17174037643110.03143223331032342444034",
+                                "_field": "assessment_type",
+                                "_field_set_default": true,
+                                "_field_default_value": "Perfomance review",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718898432724",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ],
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "PerfomanceReview",
+                                "_field_required": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1717403790993",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17174037928860.201343434142011013233443",
+                                "_field": "cost_center",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718898449373",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "jo_cnb"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1717403803414",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17174038054740.13023132041203302304222",
+                                "_field": "name_position",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718898472825",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "jo_cnb"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1717403818332",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17174038283770.11114422230112401311221",
+                                "_field": "analytics_ops",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718898489537",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "jo_cnb"
+                                    }
+                                ],
+                                "_field_add_description": true,
+                                "_field_description_text": "укажите категорию персонала"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1717618621517",
+                        "type": "text",
+                        "paraText": "<b>Блок C&B</b>"
+                    },
+                    {
+                        "id": "elmnt_1717618692210",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17176187132000.203242424112144324403322",
+                                "_field": "company_name",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718898718124",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull",
+                                        "_conditionalView_value": "jo_admin"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1717618694976",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17176187499670.20203144142142111134322",
+                                "_field": "current_position",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718898949178",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull",
+                                        "_conditionalView_value": "jo_admin,jo_cnb"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "17176187512460.40344110231333121101124",
+                                "_field": "desired_position",
+                                "_field_required": false,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718898778641",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull",
+                                        "_conditionalView_value": "jo_admin,jo_cnb"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "17234931981930.33134044122131121200044",
+                                "_field": "offer_position",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723493270657",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull",
+                                        "_conditionalView_value": "jo_cnb"
+                                    }
+                                ],
+                                "_conditionalView_disable_or_hide": "disable"
+                            }
+                        ],
+                        "_input_fields_in_a_row": 3
+                    },
+                    {
+                        "id": "elmnt_1717618697756",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17176187721430.2123314340231314444413",
+                                "_field": "count_empl_direct",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718898974944",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull",
+                                        "_conditionalView_value": "jo_admin,jo_cnb"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "17176187737450.2323003024303223112313",
+                                "_field": "desired_count_empl_direct",
+                                "_field_required": false,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718898800858",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull",
+                                        "_conditionalView_value": "jo_admin,jo_cnb"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "17234937443760.20001224440014430411332",
+                                "_field": "offer_count_empl_direct",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723493792699",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull",
+                                        "_conditionalView_value": "jo_cnb"
+                                    }
+                                ]
+                            }
+                        ],
+                        "_input_fields_in_a_row": 3
+                    },
+                    {
+                        "id": "elmnt_1717618700298",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17176188322270.211013232204120400211132",
+                                "_field": "current_salary_bonus",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718898866688",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull",
+                                        "_conditionalView_value": "jo_admin,jo_cnb"
+                                    }
+                                ],
+                                "_field_add_description": true,
+                                "_field_description_text": "в гросс"
+                            },
+                            {
+                                "id": "17176188340780.04130102032020214243111",
+                                "_field": "desired_salary",
+                                "_field_required": false,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1718899017658",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull",
+                                        "_conditionalView_value": "jo_admin,jo_cnb"
+                                    }
+                                ],
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "bonus",
+                                "_field_add_description": true,
+                                "_field_description_text": "в гросс"
+                            },
+                            {
+                                "id": "17234938412540.0123103404440440202144033",
+                                "_field": "offer_salary_bonus",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723494043381",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "jo_cnb"
+                                    }
+                                ],
+                                "_action_conditionals_and_or": "AND",
+                                "_field_required": true,
+                                "_field_add_description": true,
+                                "_field_description_text": "в гросс, включая районный коэффициент и северную надбавку"
+                            }
+                        ],
+                        "_input_fields_in_a_row": 3,
+                        "_conditionalView": false,
+                        "_conditions": [
+                            {
+                                "id": "condition_1718898902711"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1719252295305",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17192522973860.032203343112203341324143",
+                                "_field": "current_bonus",
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "bonus",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1719252324631",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull",
+                                        "_conditionalView_value": "jo_admin,jo_cnb"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "17234943869230.41111013120430221130404",
+                                "_field": "desired_bonus",
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "bonus",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723494443583",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "17234943883970.014433100013400334241303",
+                                "_field": "offer_bonus",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723494483552",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "jo_cnb"
+                                    }
+                                ],
+                                "_action_conditionals_and_or": "AND",
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "bonus",
+                                "_field_required": true
+                            }
+                        ],
+                        "_input_fields_in_a_row": 3
+                    },
+                    {
+                        "id": "elmnt_1719252466442",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17192524685940.041340443342044122223201",
+                                "_field": "current_bonus_amount",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1719252481491",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull",
+                                        "_conditionalView_value": "without_bonus"
+                                    }
+                                ],
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "bonus"
+                            },
+                            {
+                                "id": "17234945777270.34304114101244230121442",
+                                "_field": "desired_bonus_amount",
+                                "_field_link_type": "input",
+                                "_field_arrayLink_endpoint": "bonus",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723494640633",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull",
+                                        "_conditionalView_value": "without_bonus"
+                                    }
+                                ],
+                                "_field_required": true
+                            },
+                            {
+                                "id": "17234945791900.3134441213012004431021",
+                                "_field": "offer_bonus_amount",
+                                "_conditionalView": true,
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723494710984",
+                                        "_conditionalView_field": "offer_bonus",
+                                        "_conditionalView_operator": "==",
+                                        "_conditionalView_value": "without_bonus"
+                                    },
+                                    {
+                                        "id": "condition_1723502622149",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "jo_cnb"
+                                    }
+                                ],
+                                "_field_required": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_action_conditionals_and_or": "OR"
+                            }
+                        ],
+                        "_input_fields_in_a_row": 3
+                    },
+                    {
+                        "id": "elmnt_1719252526395",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17192525290670.004104300323223222030424",
+                                "_field": "budget_date",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1719252547101",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "!==",
+                                        "_conditionalView_value": "jo_cnb"
+                                    }
+                                ]
+                            }
+                        ],
+                        "_conditionalView": false,
+                        "_conditions": []
+                    },
+                    {
+                        "id": "elmnt_1723495457901",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17234954684260.43400314402331013441041",
+                                "_field": "hr_dep",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723495498576",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1723495999473",
+                        "type": "text",
+                        "paraText": "<b>Блок HR Director</b>",
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1723496009015",
+                                "_conditionalView_field": "add_hr_dir",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "true"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1723496032265",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17234961978210.41344121002010120223203",
+                                "_field": "process_participants",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723496242736",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ],
+                                "_field_required": true
+                            },
+                            {
+                                "id": "17234965549020.43404144303320343101404",
+                                "_field": "risks",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723496603202",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ],
+                                "_field_required": true
+                            },
+                            {
+                                "id": "17234965557030.110234144411134232303212",
+                                "_field": "add_benefits",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723496627773",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ],
+                                "_field_required": true
+                            },
+                            {
+                                "id": "17234965574440.14320140331242041112333",
+                                "_field": "candidate_motivation",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723496657958",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ],
+                                "_field_required": true
+                            },
+                            {
+                                "id": "17234965583220.11302230320242331100014",
+                                "_field": "resume_link",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723496706460",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ],
+                                "_field_required": false
+                            },
+                            {
+                                "id": "17234965720900.033402123440344020111202",
+                                "_field": "resume_file",
+                                "_conditionalView": true,
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723496732674",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ],
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_field_required": false
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1723496259985",
+                                "_conditionalView_field": "add_hr_dir",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "true"
+                            }
+                        ],
+                        "_input_fields_in_a_row": 6,
+                        "_input_fields_in_a_row_column": "column"
+                    },
+                    {
+                        "id": "elmnt_1723496222008",
+                        "type": "text",
+                        "paraText": "<b>Рекомендация 1</b>",
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1723496796719",
+                                "_conditionalView_field": "add_hr_dir",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "true"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1723496814920",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17234968688950.0043301322010301240403333",
+                                "_field": "full_name_recommender_1",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723496894003",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ],
+                                "_field_required": true
+                            },
+                            {
+                                "id": "17234968709930.31411110033244003244041",
+                                "_field": "period_and_company_1",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723497078222",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "17234968726010.1344321233402310203103",
+                                "_field": "interacted_as_1",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723497103867",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ],
+                        "_input_fields_in_a_row": 3,
+                        "_input_fields_in_a_row_column": "row",
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1723497118831",
+                                "_conditionalView_field": "add_hr_dir",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "true"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1723497152392",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17234971556660.023224224311430423032341",
+                                "_field": "feedback_1",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723497164566",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ],
+                                "_field_required": true
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1723497181748",
+                                "_conditionalView_field": "add_hr_dir",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "true"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1723497208275",
+                        "type": "text",
+                        "paraText": "<b>Рекомендация 2</b>",
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1723497236155",
+                                "_conditionalView_field": "add_recommendation_2",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "{\"add\":true}"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1723497269792",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17234972727740.10332343243301411040124",
+                                "_field": "full_name_recommender_2",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723497287733",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ],
+                                "_field_required": true
+                            },
+                            {
+                                "id": "17234972747960.22201322103242311200422",
+                                "_field": "period_and_company_2",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723497313391",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull",
+                                        "_conditionalView_value": "true"
+                                    }
+                                ],
+                                "_field_required": true
+                            },
+                            {
+                                "id": "17234972764900.14134201140313331042412",
+                                "_field": "interacted_as_2",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723497356357",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ],
+                                "_field_required": true
+                            }
+                        ],
+                        "_input_fields_in_a_row": 3,
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1723497372066",
+                                "_conditionalView_field": "add_recommendation_2",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "{\"add\":true}"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1723497399355",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17234974031940.40434430412323313002002",
+                                "_field": "feedback_2",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723497422924",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ],
+                                "_field_required": true
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1723497435089",
+                                "_conditionalView_field": "add_recommendation_2",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "{\"add\":true}"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1723497503908",
+                        "type": "text",
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1723497596401",
+                                "_conditionalView_field": "add_recommendation_3",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "{\"add\":true}"
+                            }
+                        ],
+                        "paraText": "<b>Рекомендация 3</b>"
+                    },
+                    {
+                        "id": "elmnt_1723497630260",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17234976353620.3342140124112030033331",
+                                "_field": "full_name_recommender_3",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723497647990",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ],
+                                "_field_required": true
+                            },
+                            {
+                                "id": "17234976375130.044201243440320302322404",
+                                "_field": "period_and_company_3",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723497674309",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ],
+                                "_field_required": true
+                            },
+                            {
+                                "id": "17234976383850.141334332243314242012403",
+                                "_field": "interacted_as_3",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723497697575",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ],
+                                "_field_required": true
+                            }
+                        ],
+                        "_input_fields_in_a_row": 3,
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1723497713007",
+                                "_conditionalView_field": "add_recommendation_3",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "{\"add\":true}"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1723497732101",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17234977371620.10401421324222410334234",
+                                "_field": "feedback_3",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723497751210",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ],
+                                "_field_required": true
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1723497770707",
+                                "_conditionalView_field": "add_recommendation_3",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "{\"add\":true}"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1723497809439",
+                        "type": "text",
+                        "paraText": "<b>Согласующие лица HR</b>"
+                    },
+                    {
+                        "id": "elmnt_1723497820332",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17234978414090.32033433303443002220233",
+                                "_field": "cnb",
                                 "_field_link_type": "complexSelect",
                                 "_field_arrayLink_endpoint": "employees_full_name_dropdown",
                                 "_field_required": true,
@@ -3253,10 +2998,162 @@ let exampleForm = {
                                 "_conditionalView_disable_or_hide": "disable",
                                 "_conditions": [
                                     {
-                                        "id": "condition_1723498505524",
+                                        "id": "condition_1723497922273",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "notContains",
+                                        "_conditionalView_value": "jo_cnb"
+                                    },
+                                    {
+                                        "id": "condition_1729709125843",
+                                        "_conditionalView_field": "WebUser.id",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "{{cnb.webuser_id.whom_delegate_ids}},{{cnb.webuser_id.id}}",
+                                        "_conditionalView_value_RAW": true
+                                    }
+                                ],
+                                "_action_conditionals_and_or": "OR"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1729709024531",
+                        "type": "action",
+                        "_actions": [
+                            {
+                                "id": "17297090289930.24030030030314421424313",
+                                "_action": "action_1729707112575",
+                                "_conditionalView": true,
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1729709052388",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "notContains",
+                                        "_conditionalView_value": "jo_cnb"
+                                    },
+                                    {
+                                        "id": "condition_1729709056027",
+                                        "_conditionalView_field": "WebUser.id",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "{{cnb.webuser_id.whom_delegate_ids}},{{cnb.webuser_id.id}}",
+                                        "_conditionalView_value_RAW": true
+                                    }
+                                ],
+                                "_action_conditionals_and_or": "OR",
+                                "_action_icon": "gates",
+                                "_action_button_type": "accent",
+                                "_action_oneTime": true,
+                                "_action_addTooltip": true,
+                                "_action_oneTime_message": "Новый ответственный назначен",
+                                "_action_addTooltip_text": "Если согласование данной заявки не входит в Вашу зону ответственности, то проверьте матрицу и переназначьте заявку"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1723497822039",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17234980377150.033402113433130023424402",
+                                "_field": "hr_bp",
+                                "_field_link_type": "complexSelect",
+                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723498068355",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull",
+                                        "_conditionalView_value": "jo_cnb"
+                                    }
+                                ],
+                                "_field_required": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1723497838060",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17234981251810.032443422024421120421031",
+                                "_field": "hrd",
+                                "_field_link_type": "complexSelect",
+                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723498147790",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ],
+                                "_field_required": true
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1723498161893",
+                                "_conditionalView_field": "add_hr_dir",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "true"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1723498186861",
+                        "type": "text",
+                        "paraText": "<b>Согласующие лица Бизнес</b>"
+                    },
+                    {
+                        "id": "elmnt_1723498221979",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17234982461180.14431332134121243022231",
+                                "_field": "budget_holder",
+                                "_field_link_type": "complexSelect",
+                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723498301156",
                                         "_conditionalView_field": "WebUser.role",
                                         "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "jo_cnb,jo_hrbp"
+                                        "_conditionalView_value": "jo_cnb"
+                                    }
+                                ]
+                            }
+                        ],
+                        "_conditionalView": false,
+                        "_conditions": [
+                            {
+                                "id": "condition_1723498338996"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1723498223720",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17234984176310.33220410114100212334411",
+                                "_field": "manager",
+                                "_field_link_type": "complexSelect",
+                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1723498442922",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "notIn",
+                                        "_conditionalView_value": "jo_cnb"
                                     }
                                 ]
                             }
@@ -3377,29 +3274,21 @@ let exampleForm = {
                         ]
                     },
                     {
-                        "id": "elmnt_1725270679270",
+                        "id": "elmnt_1725005779732",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17252706914100.44412221121221303200132",
-                                "_input_type": "object",
+                                "id": "17250057840480.31313412114310103234122",
                                 "_field": "resigning_empl_full_name_strng",
                                 "_field_required": true,
                                 "_conditionalView": true,
                                 "_conditionalView_disable_or_hide": "disable",
                                 "_conditions": [
                                     {
-                                        "id": "condition_1725270718752",
+                                        "id": "condition_1725005807631",
                                         "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
+                                        "_conditionalView_operator": "in",
                                         "_conditionalView_value": "jo_hrbp"
-                                    },
-                                    {
-                                        "id": "condition_1725270764117",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.whom_delegate_ids}},{{hr_bp.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
                                     }
                                 ]
                             }
@@ -3407,7 +3296,7 @@ let exampleForm = {
                         "_conditionalView": true,
                         "_conditions": [
                             {
-                                "id": "condition_1725270784320",
+                                "id": "condition_1725005816652",
                                 "_conditionalView_field": "reason_vacancy",
                                 "_conditionalView_operator": "in",
                                 "_conditionalView_value": "another_company"
@@ -3769,10 +3658,7 @@ let exampleForm = {
                                     }
                                 ],
                                 "_field_add_description": true,
-                                "_field_description_text": "укажите категорию персонала",
-                                "_input_type": "object",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "analytics_for_ops"
+                                "_field_description_text": "укажите категорию персонала"
                             }
                         ]
                     },
@@ -4141,28 +4027,6 @@ let exampleForm = {
                                 "_conditions": [
                                     {
                                         "id": "condition_1723495498576",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723495517175",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234955330720.21220114143243242014043",
-                                "_field": "add_hr_dir",
-                                "_field_required": true,
-                                "_field_add_description": true,
-                                "_field_description_text": "HR Director нужно добавить, если это руководящая роль, ассистенты ТОП-ов и ключевые позиции",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723495555644",
                                         "_conditionalView_field": "WebUser.role",
                                         "_conditionalView_operator": "isNotNull"
                                     }
@@ -4760,34 +4624,46 @@ let exampleForm = {
                         ]
                     },
                     {
-                        "id": "elmnt_1723498225505",
+                        "id": "elmnt_1725960902587",
+                        "type": "text",
+                        "paraText": "<b>Согласование с CEO</b>",
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1725960990942",
+                                "_conditionalView_value": "true",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_field": "add_hr_dir"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1725959955303",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17234984695250.0011203300021410122110213",
-                                "_field": "up_manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
+                                "id": "17259599603450.203020322442240233310222",
+                                "_field": "ceo_checkbox",
                                 "_field_required": true,
                                 "_conditionalView": true,
                                 "_conditionalView_disable_or_hide": "disable",
                                 "_conditions": [
                                     {
-                                        "id": "condition_1723498505524",
+                                        "id": "condition_1725959995202",
                                         "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "jo_cnb,jo_hrbp"
+                                        "_conditionalView_operator": "notContains",
+                                        "_conditionalView_value": "jo_hrd"
                                     }
                                 ]
                             }
                         ],
-                        "_conditionalView": false,
+                        "_conditionalView": true,
                         "_conditions": [
                             {
-                                "id": "condition_1723551845361",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "jo_cnb,jo_hrbp"
+                                "id": "condition_1725960633347",
+                                "_conditionalView_field": "add_hr_dir",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "true"
                             }
                         ]
                     }
@@ -4843,7 +4719,14 @@ let exampleForm = {
                             }
                         ],
                         "_conditionalView": false,
-                        "_conditions": []
+                        "_conditions": [
+                            {
+                                "id": "condition_1724404899600",
+                                "_conditionalView_field": "reason_vacancy",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "replacement"
+                            }
+                        ]
                     },
                     {
                         "id": "elmnt_1719251541841",
@@ -4894,7 +4777,36 @@ let exampleForm = {
                                 "id": "condition_1717402099495",
                                 "_conditionalView_field": "reason_vacancy",
                                 "_conditionalView_operator": "==",
-                                "_conditionalView_value": "replacement"
+                                "_conditionalView_value": "replacement,transfer"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1725005938865",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17250059433260.40341041022112043000001",
+                                "_field": "resigning_empl_full_name_strng",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1725005959805",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1725005975111",
+                                "_conditionalView_field": "reason_vacancy",
+                                "_conditionalView_operator": "in",
+                                "_conditionalView_value": "another_company"
                             }
                         ]
                     },
@@ -5253,9 +5165,7 @@ let exampleForm = {
                                     }
                                 ],
                                 "_field_add_description": true,
-                                "_field_description_text": "укажите категорию персонала",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "analytics_for_ops"
+                                "_field_description_text": "укажите категорию персонала"
                             }
                         ]
                     },
@@ -6443,1695 +6353,49 @@ let exampleForm = {
                         ]
                     },
                     {
-                        "id": "elmnt_1724405742766",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17244058710750.0141034144332234321",
-                                "_field": "up_manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1724405905330",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ],
-                "sectionVisibility": "default"
-            },
-            {
-                "id": "step_copy_1724821272410",
-                "sysName": "approval_direct_up1",
-                "elements": [
-                    {
-                        "id": "elmnt_1717401969375",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174019861660.44033242412004300134131",
-                                "_field": "reason_vacancy",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "reason_of_vacancy",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718897734563",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717401973476",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174020816510.12114333434113323312312",
-                                "_field": "vacancy_id",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898098066",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_cnb,jo_hrbp"
-                                    }
-                                ],
-                                "_field_add_description": true,
-                                "_field_description_text": "если вакансия в OPS и ID не существует, то укажите в поле \"нет\""
-                            }
-                        ],
-                        "_conditionalView": false,
-                        "_conditions": []
-                    },
-                    {
-                        "id": "elmnt_1719251541841",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17192515476320.21032443211403234430322",
-                                "_field": "id_position",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1719252236244",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_hrbp"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717401972782",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174020491080.040423420111410243244003",
-                                "_field": "resigning_empl_full_name",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718897878781",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_cnb,jo_hrbp"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1717402099495",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "replacement"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717401976342",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174022385390.41413003113212134344013",
-                                "_field": "position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898233989",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_cnb,jo_hrbp"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717401977901",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174022611150.034404033342112410322443",
-                                "_field": "division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898259239",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_cnb,jo_hrbp"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1718907011548",
+                        "id": "elmnt_1725961239597",
                         "type": "text",
-                        "paraText": "<div class=\"form_label\">Организационная структура:</div>\n{{org_structure_text}}"
-                    },
-                    {
-                        "id": "elmnt_1717401971964",
-                        "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17174020239580.034443214424020322312221",
-                                "_field": "company",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "company",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898133049",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_cnb,jo_hrbp"
-                                    }
-                                ],
-                                "_field_required": true
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717401974161",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174022108360.42432332032431101343242",
-                                "_field": "country_city",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898176513",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717401975581",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174022292800.41233342331013140101322",
-                                "_field": "candidate_full_name",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898203916",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717401980266",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174034095080.204034201400132330433023",
-                                "_field": "direct_full_name",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "employee",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898302974",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_hrbp"
-                                    }
-                                ],
-                                "_field_required": true
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717401981568",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174034417050.3313104212013141213002",
-                                "_field": "contract_type",
-                                "_field_link_type": "select",
-                                "_field_link_pageSize": 0,
-                                "_field_arrayLink_endpoint": "contract_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898330358",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_hrbp"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717403456249",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174034624150.121233343410212143130322",
-                                "_field": "contract_period",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898352523",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_hrbp"
-                                    }
-                                ]
+                                "id": "17259612463270.142112210304013131433403"
                             }
                         ],
+                        "paraText": "<b>Согласование с CEO</b>",
                         "_conditionalView": true,
                         "_conditions": [
                             {
-                                "id": "condition_1717403483837",
-                                "_conditionalView_field": "contract_type",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "fixed_term"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717403457018",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174035278340.33101024023140002031314",
-                                "_field": "reason_contract",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898372391",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_hrbp"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1717403537149",
-                                "_conditionalView_field": "contract_type",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "fixed_term"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717403458048",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174035504160.111023104414034231320012",
-                                "_field": "employment_type",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "employment_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898391739",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_hrbp"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717403458753",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174035776140.14144124233210031011332",
-                                "_field": "probation",
-                                "_field_set_default": true,
-                                "_field_default_value": "3 месяца",
-                                "_field_use_mask": false,
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898409792",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_hrbp"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717403459511",
-                        "type": "input",
-                        "_actions": [
-                            {
-                                "id": "17174037621020.03103013304004423013203"
-                            }
-                        ],
-                        "_input_fields": [
-                            {
-                                "id": "17174037643110.03143223331032342444034",
-                                "_field": "assessment_type",
-                                "_field_set_default": true,
-                                "_field_default_value": "Perfomance review",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898432724",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_hrbp"
-                                    }
-                                ],
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "PerfomanceReview",
-                                "_field_required": true
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717403790993",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174037928860.201343434142011013233443",
-                                "_field": "cost_center",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898449373",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717403803414",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174038054740.13023132041203302304222",
-                                "_field": "name_position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898472825",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_cnb,jo_hrbp"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717403818332",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17174038283770.11114422230112401311221",
-                                "_field": "analytics_ops",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898489537",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ],
-                                "_field_add_description": true,
-                                "_field_description_text": "укажите категорию персонала",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "analytics_for_ops"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717618621517",
-                        "type": "text",
-                        "paraText": "<b>Блок C&B</b>"
-                    },
-                    {
-                        "id": "elmnt_1717618692210",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17176187132000.203242424112144324403322",
-                                "_field": "company_name",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898718124",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_admin"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723552107243",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717618694976",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17176187499670.20203144142142111134322",
-                                "_field": "current_position",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898949178",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_admin,jo_cnb"
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "17176187512460.40344110231333121101124",
-                                "_field": "desired_position",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898778641",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_admin,jo_cnb"
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "17234931981930.33134044122131121200044",
-                                "_field": "offer_position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723493270657",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_cnb,jo_hrbp"
-                                    }
-                                ],
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 3,
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723552400475",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723552436993",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17235524426970.4324011001421302304422",
-                                "_field": "offer_position",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723552463193",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723552483469",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717618697756",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17176187721430.2123314340231314444413",
-                                "_field": "count_empl_direct",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898974944",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_admin,jo_cnb"
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "17176187737450.2323003024303223112313",
-                                "_field": "desired_count_empl_direct",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898800858",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_admin,jo_cnb"
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "17234937443760.20001224440014430411332",
-                                "_field": "offer_count_empl_direct",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723493792699",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_cnb,jo_hrbp"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_input_fields_in_a_row": 3,
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723552555708",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723552596601",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17235526022800.024041001201322220404303",
-                                "_field": "offer_count_empl_direct",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723552617524",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723552653990",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1717618700298",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17176188322270.211013232204120400211132",
-                                "_field": "current_salary_bonus",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718898866688",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_admin,jo_cnb"
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "17176188340780.04130102032020214243111",
-                                "_field": "desired_salary",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1718899017658",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_admin,jo_cnb"
-                                    }
-                                ],
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "bonus"
-                            },
-                            {
-                                "id": "17234938412540.0123103404440440202144033",
-                                "_field": "offer_salary_bonus",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723494043381",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "without_bonus"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 3,
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1718898902711",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1719252295305",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17192522973860.032203343112203341324143",
-                                "_field": "current_bonus",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "bonus",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1719252324631",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_admin,jo_cnb"
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "17234943869230.41111013120430221130404",
-                                "_field": "desired_bonus",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "bonus",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723494443583",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "17234943883970.014433100013400334241303",
-                                "_field": "offer_bonus",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723494483552",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "without_bonus"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "bonus"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 3,
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723552719411",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1724405209708",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17244052145600.0100212321204143020413003",
-                                "_field": "current_bonus_amount",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1724405243193",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "17244052175140.033210331201104321041033",
-                                "_field": "desired_bonus_amount",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1724405275595",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "17244052185590.30124221221340033120314",
-                                "_field": "offer_bonus_amount",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1724405311011",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_input_fields_in_a_row": 3,
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1724405332094",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1719252466442",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17192524685940.041340443342044122223201",
-                                "_field": "offer_salary_bonus",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1719252481491",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ],
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "bonus"
-                            },
-                            {
-                                "id": "17234945777270.34304114101244230121442",
-                                "_field": "offer_bonus",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "bonus",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723494640633",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "17234945791900.3134441213012004431021",
-                                "_field": "offer_bonus_amount",
-                                "_conditionalView": true,
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723494710984",
-                                        "_conditionalView_field": "offer_bonus",
-                                        "_conditionalView_operator": "==",
-                                        "_conditionalView_value": "without_bonus"
-                                    },
-                                    {
-                                        "id": "condition_1723502471739",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ],
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 3,
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1724405378102",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1719252526395",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17192525290670.004104300323223222030424",
-                                "_field": "budget_date",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1719252547101",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_cnb"
-                                    }
-                                ],
-                                "_input_type": "object"
-                            }
-                        ],
-                        "_conditionalView": false,
-                        "_conditions": []
-                    },
-                    {
-                        "id": "elmnt_1723502753504",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17235027618600.101004240122422232343033",
-                                "_field": "org_dev",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723502790729",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "jo_hrbp"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723553187998",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723495457901",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234954684260.43400314402331013441041",
-                                "_field": "hr_dep",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723495498576",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723552984377",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723495517175",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234955330720.21220114143243242014043",
-                                "_field": "add_hr_dir",
-                                "_field_required": true,
-                                "_field_add_description": true,
-                                "_field_description_text": "HR Director нужно добавить, если это руководящая роль, ассистенты ТОП-ов и ключевые позиции",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723495555644",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723553073228",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723495999473",
-                        "type": "text",
-                        "paraText": "<b>Блок HR Director</b>",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723496009015",
+                                "id": "condition_1725961332480",
                                 "_conditionalView_field": "add_hr_dir",
                                 "_conditionalView_operator": "==",
                                 "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1723553699162",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
                             }
                         ]
                     },
                     {
-                        "id": "elmnt_1723496032265",
+                        "id": "elmnt_1724929563293",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17234961978210.41344121002010120223203",
-                                "_field": "process_participants",
+                                "id": "17249295673590.24122102324422402132412",
+                                "_field": "ceo_checkbox",
                                 "_conditionalView": true,
                                 "_conditionalView_disable_or_hide": "disable",
                                 "_conditions": [
                                     {
-                                        "id": "condition_1723496242736",
+                                        "id": "condition_1724929606905",
                                         "_conditionalView_field": "WebUser.role",
                                         "_conditionalView_operator": "isNotNull"
                                     }
-                                ],
-                                "_field_required": true
-                            },
-                            {
-                                "id": "17234965549020.43404144303320343101404",
-                                "_field": "risks",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723496603202",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            },
-                            {
-                                "id": "17234965557030.110234144411134232303212",
-                                "_field": "add_benefits",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723496627773",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            },
-                            {
-                                "id": "17234965574440.14320140331242041112333",
-                                "_field": "candidate_motivation",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723496657958",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            },
-                            {
-                                "id": "17234965583220.11302230320242331100014",
-                                "_field": "resume_link",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723496706460",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": false
-                            },
-                            {
-                                "id": "17234965720900.033402123440344020111202",
-                                "_field": "resume_file",
-                                "_conditionalView": true,
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723496732674",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_field_required": false
+                                ]
                             }
                         ],
                         "_conditionalView": true,
                         "_conditions": [
                             {
-                                "id": "condition_1723496259985",
+                                "id": "condition_1725961492922",
                                 "_conditionalView_field": "add_hr_dir",
                                 "_conditionalView_operator": "==",
                                 "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1723553744286",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 6,
-                        "_input_fields_in_a_row_column": "column"
-                    },
-                    {
-                        "id": "elmnt_1723496222008",
-                        "type": "text",
-                        "paraText": "<b>Рекомендация 1</b>",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723496796719",
-                                "_conditionalView_field": "add_hr_dir",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1723553780270",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723496814920",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234968688950.0043301322010301240403333",
-                                "_field": "full_name_recommender_1",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723496894003",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            },
-                            {
-                                "id": "17234968709930.31411110033244003244041",
-                                "_field": "period_and_company_1",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723497078222",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            },
-                            {
-                                "id": "17234968726010.1344321233402310203103",
-                                "_field": "interacted_as_1",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723497103867",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_input_fields_in_a_row": 3,
-                        "_input_fields_in_a_row_column": "row",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723497118831",
-                                "_conditionalView_field": "add_hr_dir",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1723553817688",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723497152392",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234971556660.023224224311430423032341",
-                                "_field": "feedback_1",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723497164566",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723497181748",
-                                "_conditionalView_field": "add_hr_dir",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1723553857360",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723497208275",
-                        "type": "text",
-                        "paraText": "<b>Рекомендация 2</b>",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723497236155",
-                                "_conditionalView_field": "add_recommendation_2",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            },
-                            {
-                                "id": "condition_1723553892958",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723497269792",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234972727740.10332343243301411040124",
-                                "_field": "full_name_recommender_2",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723497287733",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            },
-                            {
-                                "id": "17234972747960.22201322103242311200422",
-                                "_field": "period_and_company_2",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723497313391",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull",
-                                        "_conditionalView_value": "true"
-                                    }
-                                ],
-                                "_field_required": true
-                            },
-                            {
-                                "id": "17234972764900.14134201140313331042412",
-                                "_field": "interacted_as_2",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723497356357",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            }
-                        ],
-                        "_input_fields_in_a_row": 3,
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723497372066",
-                                "_conditionalView_field": "add_recommendation_2",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            },
-                            {
-                                "id": "condition_1723553932390",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723497399355",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234974031940.40434430412323313002002",
-                                "_field": "feedback_2",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723497422924",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723497435089",
-                                "_conditionalView_field": "add_recommendation_2",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            },
-                            {
-                                "id": "condition_1723553972903",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723497503908",
-                        "type": "text",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723497596401",
-                                "_conditionalView_field": "add_recommendation_3",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            },
-                            {
-                                "id": "condition_1723554011474",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ],
-                        "paraText": "<b>Рекомендация 3</b>"
-                    },
-                    {
-                        "id": "elmnt_1723497630260",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234976353620.3342140124112030033331",
-                                "_field": "full_name_recommender_3",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723497647990",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            },
-                            {
-                                "id": "17234976375130.044201243440320302322404",
-                                "_field": "period_and_company_3",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723497674309",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            },
-                            {
-                                "id": "17234976383850.141334332243314242012403",
-                                "_field": "interacted_as_3",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723497697575",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            }
-                        ],
-                        "_input_fields_in_a_row": 3,
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723497713007",
-                                "_conditionalView_field": "add_recommendation_3",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            },
-                            {
-                                "id": "condition_1723554051314",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723497732101",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234977371620.10401421324222410334234",
-                                "_field": "feedback_3",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723497751210",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ],
-                                "_field_required": true
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723497770707",
-                                "_conditionalView_field": "add_recommendation_3",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            },
-                            {
-                                "id": "condition_1723554111428",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1724405407630",
-                        "type": "text",
-                        "_input_fields": [
-                            {
-                                "id": "17244054127250.03013033123214414044104"
-                            }
-                        ],
-                        "paraText": "<b>Согласующие лица HR</b>"
-                    },
-                    {
-                        "id": "elmnt_1724405419734",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17244055506850.43411233213110302430013",
-                                "_field": "cnb",
-                                "_conditionalView": true,
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1724405586189",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1724405421952",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17244056120360.4030203343031011411203",
-                                "_field": "hr_bp",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1724405643986",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1724405424164",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17244056233070.201204242040042321240343",
-                                "_field": "hrd",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1724405696465",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1724405715022",
-                        "type": "text",
-                        "paraText": "<b>Согласующие лица Бизнес</b>"
-                    },
-                    {
-                        "id": "elmnt_1724405738230",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17244057590650.3114403340242121203321",
-                                "_field": "budget_holder",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1724405789284",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1724405740471",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17244058109250.23010244011103212000221",
-                                "_field": "manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1724405852497",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1724405742766",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17244058710750.0141034144332234321",
-                                "_field": "up_manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1724405905330",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
                             }
                         ]
                     }
@@ -8187,7 +6451,14 @@ let exampleForm = {
                             }
                         ],
                         "_conditionalView": false,
-                        "_conditions": []
+                        "_conditions": [
+                            {
+                                "id": "condition_1724404899600",
+                                "_conditionalView_field": "reason_vacancy",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "replacement"
+                            }
+                        ]
                     },
                     {
                         "id": "elmnt_1719251541841",
@@ -8238,7 +6509,36 @@ let exampleForm = {
                                 "id": "condition_1717402099495",
                                 "_conditionalView_field": "reason_vacancy",
                                 "_conditionalView_operator": "==",
-                                "_conditionalView_value": "replacement"
+                                "_conditionalView_value": "replacement,transfer"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1725006031680",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17250060370540.12223233343400104134404",
+                                "_field": "resigning_empl_full_name_strng",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1725006053462",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1725006069727",
+                                "_conditionalView_field": "reason_vacancy",
+                                "_conditionalView_operator": "in",
+                                "_conditionalView_value": "another_company"
                             }
                         ]
                     },
@@ -8597,9 +6897,7 @@ let exampleForm = {
                                     }
                                 ],
                                 "_field_add_description": true,
-                                "_field_description_text": "укажите категорию персонала",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "analytics_for_ops"
+                                "_field_description_text": "укажите категорию персонала"
                             }
                         ]
                     },
@@ -9143,37 +7441,6 @@ let exampleForm = {
                         "_conditions": [
                             {
                                 "id": "condition_1723552984377",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723495517175",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234955330720.21220114143243242014043",
-                                "_field": "add_hr_dir",
-                                "_field_required": true,
-                                "_field_add_description": true,
-                                "_field_description_text": "HR Director нужно добавить, если это руководящая роль, ассистенты ТОП-ов и ключевые позиции",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723495555644",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723553073228",
                                 "_conditionalView_field": "WebUser.role",
                                 "_conditionalView_operator": "notIn",
                                 "_conditionalView_value": "jo_agreement,jo_budget_holder"
@@ -9787,23 +8054,45 @@ let exampleForm = {
                         ]
                     },
                     {
-                        "id": "elmnt_1724405742766",
+                        "id": "elmnt_1725961640300",
+                        "type": "text",
+                        "paraText": "<b>Согласование с CEO</b>",
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1725961797927",
+                                "_conditionalView_field": "add_hr_dir",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "true"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1724929678475",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17244058710750.0141034144332234321",
-                                "_field": "up_manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
+                                "id": "17249297013280.004014241431243303433302",
+                                "_field": "ceo_checkbox",
                                 "_conditionalView": true,
                                 "_conditionalView_disable_or_hide": "disable",
                                 "_conditions": [
                                     {
-                                        "id": "condition_1724405905330",
+                                        "id": "condition_1724929740721",
                                         "_conditionalView_field": "WebUser.role",
                                         "_conditionalView_operator": "isNotNull"
                                     }
-                                ]
+                                ],
+                                "_field_required": true
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1725961871011",
+                                "_conditionalView_field": "add_hr_dir",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "true"
                             }
                         ]
                     }
@@ -9858,8 +8147,15 @@ let exampleForm = {
                                 "_field_description_text": "если вакансия в OPS и ID не существует, то укажите в поле \"нет\""
                             }
                         ],
-                        "_conditionalView": false,
-                        "_conditions": []
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1724404899600",
+                                "_conditionalView_field": "reason_vacancy",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "replacement"
+                            }
+                        ]
                     },
                     {
                         "id": "elmnt_1719251541841",
@@ -10269,9 +8565,7 @@ let exampleForm = {
                                     }
                                 ],
                                 "_field_add_description": true,
-                                "_field_description_text": "укажите категорию персонала",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "analytics_for_ops"
+                                "_field_description_text": "укажите категорию персонала"
                             }
                         ]
                     },
@@ -10815,37 +9109,6 @@ let exampleForm = {
                         "_conditions": [
                             {
                                 "id": "condition_1723552984377",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1723495517175",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234955330720.21220114143243242014043",
-                                "_field": "add_hr_dir",
-                                "_field_required": true,
-                                "_field_add_description": true,
-                                "_field_description_text": "HR Director нужно добавить, если это руководящая роль, ассистенты ТОП-ов и ключевые позиции",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723495555644",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723553073228",
                                 "_conditionalView_field": "WebUser.role",
                                 "_conditionalView_operator": "notIn",
                                 "_conditionalView_value": "jo_agreement,jo_budget_holder"
@@ -11476,6 +9739,49 @@ let exampleForm = {
                                         "_conditionalView_operator": "isNotNull"
                                     }
                                 ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1725962024133",
+                        "type": "text",
+                        "paraText": "<b>Согласование с CEO</b>",
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1725962292040",
+                                "_conditionalView_field": "add_hr_dir",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "true"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1724930106578",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17249301130300.33030042322112041214221",
+                                "_field": "ceo_checkbox",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1724930162958",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ],
+                                "_field_required": false
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1725962428377",
+                                "_conditionalView_field": "add_hr_dir",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "true"
                             }
                         ]
                     }
@@ -11530,8 +9836,15 @@ let exampleForm = {
                                 "_field_description_text": "если вакансия в OPS и ID не существует, то укажите в поле \"нет\""
                             }
                         ],
-                        "_conditionalView": false,
-                        "_conditions": []
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1724404899600",
+                                "_conditionalView_field": "reason_vacancy",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "replacement"
+                            }
+                        ]
                     },
                     {
                         "id": "elmnt_1719251541841",
@@ -11941,9 +10254,7 @@ let exampleForm = {
                                     }
                                 ],
                                 "_field_add_description": true,
-                                "_field_description_text": "укажите категорию персонала",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "analytics_for_ops"
+                                "_field_description_text": "укажите категорию персонала"
                             }
                         ]
                     },
@@ -13131,23 +11442,44 @@ let exampleForm = {
                         ]
                     },
                     {
-                        "id": "elmnt_1724405742766",
+                        "id": "elmnt_1726056497985",
+                        "type": "text",
+                        "paraText": "<b>Согласование с CEO</b>",
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1726056531567",
+                                "_conditionalView_field": "add_hr_dir",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "true"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1726056568594",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17244058710750.0141034144332234321",
-                                "_field": "up_manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
+                                "id": "17260565756990.41240342304104120141131",
                                 "_conditionalView": true,
                                 "_conditionalView_disable_or_hide": "disable",
                                 "_conditions": [
                                     {
-                                        "id": "condition_1724405905330",
+                                        "id": "condition_1726056585430",
                                         "_conditionalView_field": "WebUser.role",
                                         "_conditionalView_operator": "isNotNull"
                                     }
-                                ]
+                                ],
+                                "_field": "ceo_checkbox"
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1726056629237",
+                                "_conditionalView_field": "add_hr_dir",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "true"
                             }
                         ]
                     }
@@ -13203,7 +11535,14 @@ let exampleForm = {
                             }
                         ],
                         "_conditionalView": false,
-                        "_conditions": []
+                        "_conditions": [
+                            {
+                                "id": "condition_1724404899600",
+                                "_conditionalView_field": "reason_vacancy",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "replacement"
+                            }
+                        ]
                     },
                     {
                         "id": "elmnt_1719251541841",
@@ -13254,7 +11593,36 @@ let exampleForm = {
                                 "id": "condition_1717402099495",
                                 "_conditionalView_field": "reason_vacancy",
                                 "_conditionalView_operator": "==",
-                                "_conditionalView_value": "replacement"
+                                "_conditionalView_value": "replacement,transfer"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1725006135860",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17250061398740.400313344432144213013",
+                                "_field": "resigning_empl_full_name_strng",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1725006159913",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1725006173813",
+                                "_conditionalView_field": "reason_vacancy",
+                                "_conditionalView_operator": "in",
+                                "_conditionalView_value": "another_company"
                             }
                         ]
                     },
@@ -14164,37 +12532,6 @@ let exampleForm = {
                         ]
                     },
                     {
-                        "id": "elmnt_1723495517175",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234955330720.21220114143243242014043",
-                                "_field": "add_hr_dir",
-                                "_field_required": true,
-                                "_field_add_description": true,
-                                "_field_description_text": "HR Director нужно добавить, если это руководящая роль, ассистенты ТОП-ов и ключевые позиции",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723495555644",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723553073228",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
                         "id": "elmnt_1723495999473",
                         "type": "text",
                         "paraText": "<b>Блок HR Director</b>",
@@ -14801,23 +13138,44 @@ let exampleForm = {
                         ]
                     },
                     {
-                        "id": "elmnt_1724405742766",
+                        "id": "elmnt_1726056689049",
+                        "type": "text",
+                        "paraText": "<b>Согласование с CEO</b>",
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1726056713879",
+                                "_conditionalView_field": "add_hr_dir",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "true"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1726056705064",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17244058710750.0141034144332234321",
-                                "_field": "up_manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
+                                "id": "17260567112270.022233210431024033143033",
+                                "_field": "ceo_checkbox",
                                 "_conditionalView": true,
                                 "_conditionalView_disable_or_hide": "disable",
                                 "_conditions": [
                                     {
-                                        "id": "condition_1724405905330",
+                                        "id": "condition_1726056806031",
                                         "_conditionalView_field": "WebUser.role",
                                         "_conditionalView_operator": "isNotNull"
                                     }
                                 ]
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1726056827748",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_field": "add_hr_dir",
+                                "_conditionalView_value": "true"
                             }
                         ]
                     }
@@ -14873,7 +13231,14 @@ let exampleForm = {
                             }
                         ],
                         "_conditionalView": false,
-                        "_conditions": []
+                        "_conditions": [
+                            {
+                                "id": "condition_1724404899600",
+                                "_conditionalView_field": "reason_vacancy",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "replacement"
+                            }
+                        ]
                     },
                     {
                         "id": "elmnt_1719251541841",
@@ -14924,7 +13289,36 @@ let exampleForm = {
                                 "id": "condition_1717402099495",
                                 "_conditionalView_field": "reason_vacancy",
                                 "_conditionalView_operator": "==",
-                                "_conditionalView_value": "replacement"
+                                "_conditionalView_value": "replacement,transfer"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1725006231695",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17250062355760.211220011330413040242422",
+                                "_field": "resigning_empl_full_name_strng",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1725006253500",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1725006271200",
+                                "_conditionalView_field": "reason_vacancy",
+                                "_conditionalView_operator": "in",
+                                "_conditionalView_value": "another_company"
                             }
                         ]
                     },
@@ -15834,37 +14228,6 @@ let exampleForm = {
                         ]
                     },
                     {
-                        "id": "elmnt_1723495517175",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234955330720.21220114143243242014043",
-                                "_field": "add_hr_dir",
-                                "_field_required": true,
-                                "_field_add_description": true,
-                                "_field_description_text": "HR Director нужно добавить, если это руководящая роль, ассистенты ТОП-ов и ключевые позиции",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723495555644",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723553073228",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
                         "id": "elmnt_1723495999473",
                         "type": "text",
                         "paraText": "<b>Блок HR Director</b>",
@@ -16471,23 +14834,44 @@ let exampleForm = {
                         ]
                     },
                     {
-                        "id": "elmnt_1724405742766",
+                        "id": "elmnt_1726056932343",
+                        "type": "text",
+                        "paraText": "<b>Согласование с CEO</b>",
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1726056956610",
+                                "_conditionalView_field": "add_hr_dir",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "true"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1726056941636",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17244058710750.0141034144332234321",
-                                "_field": "up_manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
+                                "id": "17260574546300.23110313402034134240313",
+                                "_field": "ceo_checkbox",
                                 "_conditionalView": true,
                                 "_conditionalView_disable_or_hide": "disable",
                                 "_conditions": [
                                     {
-                                        "id": "condition_1724405905330",
+                                        "id": "condition_1726057486233",
                                         "_conditionalView_field": "WebUser.role",
                                         "_conditionalView_operator": "isNotNull"
                                     }
                                 ]
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1726057535502",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_field": "add_hr_dir",
+                                "_conditionalView_value": "true"
                             }
                         ]
                     }
@@ -16543,7 +14927,14 @@ let exampleForm = {
                             }
                         ],
                         "_conditionalView": false,
-                        "_conditions": []
+                        "_conditions": [
+                            {
+                                "id": "condition_1724404899600",
+                                "_conditionalView_field": "reason_vacancy",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "replacement"
+                            }
+                        ]
                     },
                     {
                         "id": "elmnt_1719251541841",
@@ -16594,7 +14985,36 @@ let exampleForm = {
                                 "id": "condition_1717402099495",
                                 "_conditionalView_field": "reason_vacancy",
                                 "_conditionalView_operator": "==",
-                                "_conditionalView_value": "replacement"
+                                "_conditionalView_value": "replacement,transfer"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1725006352901",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17250063570550.32414220113410141101443",
+                                "_field": "resigning_empl_full_name_strng",
+                                "_field_required": true,
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1725006370070",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1725006385732",
+                                "_conditionalView_field": "reason_vacancy",
+                                "_conditionalView_operator": "in",
+                                "_conditionalView_value": "another_company"
                             }
                         ]
                     },
@@ -17504,37 +15924,6 @@ let exampleForm = {
                         ]
                     },
                     {
-                        "id": "elmnt_1723495517175",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234955330720.21220114143243242014043",
-                                "_field": "add_hr_dir",
-                                "_field_required": true,
-                                "_field_add_description": true,
-                                "_field_description_text": "HR Director нужно добавить, если это руководящая роль, ассистенты ТОП-ов и ключевые позиции",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723495555644",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723553073228",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
                         "id": "elmnt_1723495999473",
                         "type": "text",
                         "paraText": "<b>Блок HR Director</b>",
@@ -18021,6 +16410,25 @@ let exampleForm = {
                         ]
                     },
                     {
+                        "id": "elmnt_1724930643144",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17249306571850.34102114413113240322003",
+                                "_field": "ceo_approval",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1724930699644",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
                         "id": "elmnt_1724405407630",
                         "type": "text",
                         "_input_fields": [
@@ -18133,27 +16541,6 @@ let exampleForm = {
                                 "_conditions": [
                                     {
                                         "id": "condition_1724405852497",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1724405742766",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17244058710750.0141034144332234321",
-                                "_field": "up_manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1724405905330",
                                         "_conditionalView_field": "WebUser.role",
                                         "_conditionalView_operator": "isNotNull"
                                     }
@@ -18212,8 +16599,15 @@ let exampleForm = {
                                 "_field_description_text": "если вакансия в OPS и ID не существует, то укажите в поле \"нет\""
                             }
                         ],
-                        "_conditionalView": false,
-                        "_conditions": []
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1724404899600",
+                                "_conditionalView_field": "reason_vacancy",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "replacement"
+                            }
+                        ]
                     },
                     {
                         "id": "elmnt_1719251541841",
@@ -19174,37 +17568,6 @@ let exampleForm = {
                         ]
                     },
                     {
-                        "id": "elmnt_1723495517175",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234955330720.21220114143243242014043",
-                                "_field": "add_hr_dir",
-                                "_field_required": true,
-                                "_field_add_description": true,
-                                "_field_description_text": "HR Director нужно добавить, если это руководящая роль, ассистенты ТОП-ов и ключевые позиции",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723495555644",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723553073228",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
                         "id": "elmnt_1723495999473",
                         "type": "text",
                         "paraText": "<b>Блок HR Director</b>",
@@ -19687,6 +18050,25 @@ let exampleForm = {
                                 "_conditionalView_field": "WebUser.role",
                                 "_conditionalView_operator": "notIn",
                                 "_conditionalView_value": "jo_agreement,jo_budget_holder"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1724930750106",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17249307657390.42311222234103310413223",
+                                "_field": "ceo_approval",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1724930799482",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -19882,8 +18264,15 @@ let exampleForm = {
                                 "_field_description_text": "если вакансия в OPS и ID не существует, то укажите в поле \"нет\""
                             }
                         ],
-                        "_conditionalView": false,
-                        "_conditions": []
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1724404899600",
+                                "_conditionalView_field": "reason_vacancy",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "replacement"
+                            }
+                        ]
                     },
                     {
                         "id": "elmnt_1719251541841",
@@ -20844,37 +19233,6 @@ let exampleForm = {
                         ]
                     },
                     {
-                        "id": "elmnt_1723495517175",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234955330720.21220114143243242014043",
-                                "_field": "add_hr_dir",
-                                "_field_required": true,
-                                "_field_add_description": true,
-                                "_field_description_text": "HR Director нужно добавить, если это руководящая роль, ассистенты ТОП-ов и ключевые позиции",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723495555644",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723553073228",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
                         "id": "elmnt_1723495999473",
                         "type": "text",
                         "paraText": "<b>Блок HR Director</b>",
@@ -21357,6 +19715,25 @@ let exampleForm = {
                                 "_conditionalView_field": "WebUser.role",
                                 "_conditionalView_operator": "notIn",
                                 "_conditionalView_value": "jo_agreement,jo_budget_holder"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1724930849348",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17249308901360.40442142130412101044112",
+                                "_field": "ceo_approval",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1724931092139",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -21552,8 +19929,15 @@ let exampleForm = {
                                 "_field_description_text": "если вакансия в OPS и ID не существует, то укажите в поле \"нет\""
                             }
                         ],
-                        "_conditionalView": false,
-                        "_conditions": []
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1724404899600",
+                                "_conditionalView_field": "reason_vacancy",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "replacement"
+                            }
+                        ]
                     },
                     {
                         "id": "elmnt_1719251541841",
@@ -22514,37 +20898,6 @@ let exampleForm = {
                         ]
                     },
                     {
-                        "id": "elmnt_1723495517175",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17234955330720.21220114143243242014043",
-                                "_field": "add_hr_dir",
-                                "_field_required": true,
-                                "_field_add_description": true,
-                                "_field_description_text": "HR Director нужно добавить, если это руководящая роль, ассистенты ТОП-ов и ключевые позиции",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1723495555644",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "isNotNull"
-                                    }
-                                ]
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1723553073228",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "jo_agreement,jo_budget_holder"
-                            }
-                        ]
-                    },
-                    {
                         "id": "elmnt_1723495999473",
                         "type": "text",
                         "paraText": "<b>Блок HR Director</b>",
@@ -23027,6 +21380,25 @@ let exampleForm = {
                                 "_conditionalView_field": "WebUser.role",
                                 "_conditionalView_operator": "notIn",
                                 "_conditionalView_value": "jo_agreement,jo_budget_holder"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1724931153789",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17249311763940.30302102140041132031031",
+                                "_field": "ceo_approval",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1724931219542",
+                                        "_conditionalView_field": "WebUser.role",
+                                        "_conditionalView_operator": "isNotNull"
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -23488,52 +21860,6 @@ let exampleForm = {
                         ]
                     },
                     {
-                        "id": "elmnt_1724827103867",
-                        "type": "action",
-                        "_input_fields": [
-                            {
-                                "id": "17248271068490.31241310102302044341001"
-                            }
-                        ],
-                        "_actions": [
-                            {
-                                "id": "17248271135970.3421224120223310220411",
-                                "_action": "action_1724826975667",
-                                "_action_icon": "done",
-                                "_action_button_type": "accent",
-                                "_action_standardRequired": true,
-                                "_conditionalView": true,
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1724827192586",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true,
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_field": "WebUser.id"
-                                    }
-                                ],
-                                "_action_label": "Подтвердить",
-                                "_action_oneTime": true,
-                                "_action_oneTime_message": "Подтверждено"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1724827215857",
-                                "_conditionalView_field": "status",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "approval_direct_up1"
-                            },
-                            {
-                                "id": "condition_1724846910119",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "jo_agreement"
-                            }
-                        ]
-                    },
-                    {
                         "id": "elmnt_1718959014993",
                         "type": "action",
                         "_actions": [
@@ -23915,7 +22241,7 @@ let exampleForm = {
                     {
                         "id": "mapping_1718110015823",
                         "field": "pay_load",
-                        "value": "approval_hr_bp"
+                        "value": "approval_hrd"
                     }
                 ],
                 "stateMapping": [
@@ -23988,7 +22314,7 @@ let exampleForm = {
                     {
                         "id": "mapping_1718110015823",
                         "field": "pay_load",
-                        "value": "approval_direct"
+                        "value": "approval_cnb"
                     }
                 ],
                 "stateMapping": [
@@ -24024,7 +22350,7 @@ let exampleForm = {
                     {
                         "id": "mapping_1718110015823",
                         "field": "pay_load",
-                        "value": "approval_direct_up1"
+                        "value": "present_offer"
                     }
                 ],
                 "stateMapping": [
@@ -24330,32 +22656,13 @@ let exampleForm = {
                 ]
             },
             {
-                "id": "action_1724826975667",
-                "name": "Подтвердить up direct",
-                "actionType": "endpoint",
-                "endpoint": "createJobAction",
-                "mapping": [
-                    {
-                        "id": "mapping_1724827011881",
-                        "field": "action",
-                        "value": "change_status"
-                    },
-                    {
-                        "id": "mapping_1724827013715",
-                        "field": "pay_load",
-                        "value": "present_offer"
-                    }
-                ],
-                "actionSubmit": true
-            },
-            {
-                "id": "action_1729707048762",
+                "id": "action_1729707112575",
                 "name": "Переназначить",
                 "actionType": "endpoint",
                 "endpoint": "createJobAction",
                 "mapping": [
                     {
-                        "id": "mapping_1729707070831",
+                        "id": "mapping_1729707139542",
                         "field": "action",
                         "value": "new_responsible"
                     }
@@ -24380,398 +22687,6 @@ let exampleForm = {
     "tableTitle": null,
     "actions": null,
     "headers": [
-        {
-            "sysName": "analytics_ops",
-            "name": "Analytics for OPS",
-            "dataType": "link",
-            "id": "44501715676533202",
-            "link": "analytics_for_ops",
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 22,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "assessment_type",
-            "name": "Форма оценки",
-            "dataType": "link",
-            "id": "53871715676486789",
-            "link": "perf_review",
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 19,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "candidate_full_name",
-            "name": "ФИО кандидата",
-            "dataType": "string",
-            "id": "29091715676143182",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 11,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "company",
-            "name": "Юр. лицо",
-            "dataType": "link",
-            "id": "25501715676080911",
-            "link": "company",
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 9,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "contract_type",
-            "name": "Тип договора",
-            "dataType": "link",
-            "id": "94821715676273371",
-            "link": "contract_type",
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 14,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "cost_center",
-            "name": "Кост-центр",
-            "dataType": "string",
-            "id": "68901715676530998",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 20,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "count_empl_direct",
-            "name": "Текущее количество подчиненных",
-            "dataType": "string",
-            "id": "25431715676819516",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 27,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "country_city",
-            "name": "Страна, город",
-            "dataType": "string",
-            "id": "83591715676107813",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 10,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "cr",
-            "name": "CR Lamoda(только для TECH)",
-            "dataType": "string",
-            "id": "82611715677377022",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 42,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "current_position",
-            "name": "Текущая должность",
-            "dataType": "string",
-            "id": "16321715676814870",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 24,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "current_salary_bonus",
-            "name": "Текущий ежемесячный оклад",
-            "dataType": "string",
-            "id": "62881715676822167",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 30,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "direct_full_name",
-            "name": "ФИО руководителя",
-            "dataType": "link",
-            "id": "64721715676272622",
-            "link": "employees",
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 13,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "division",
-            "name": "Подразделение",
-            "dataType": "link",
-            "id": "40821715676271880",
-            "link": "structure",
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 6,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "employment_type",
-            "name": "Тип занятости",
-            "dataType": "link",
-            "id": "24381715676484262",
-            "link": "employment_type",
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 17,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
         {
             "sysName": "id",
             "name": "id",
@@ -24801,290 +22716,10 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "name_position",
-            "name": "Name position",
-            "dataType": "string",
-            "id": "83421715676531827",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 21,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "offer_count_empl_direct",
-            "name": "Количество подчиненных в Lamoda",
-            "dataType": "string",
-            "id": "36501715676821342",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 29,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "offer_position",
-            "name": "Должность в Lamoda",
-            "dataType": "string",
-            "id": "56891715677420164",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 26,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "offer_salary_bonus",
-            "name": "Предложение Lamoda по окладу",
-            "dataType": "string",
-            "id": "15821715677132698",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 32,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "position",
-            "name": "Должность",
-            "dataType": "string",
-            "id": "68721715676198986",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 12,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "probation",
-            "name": "Испытательный период",
-            "dataType": "string",
-            "id": "77291715676484957",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 18,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "reason_vacancy",
-            "name": "Причина появления вакансии",
-            "dataType": "link",
-            "id": "13591715675968084",
-            "link": "reason_of_vacancy",
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "resigning_empl_full_name",
-            "name": "ФИО заменяемого сотрудника",
-            "dataType": "link",
-            "id": "72911715692442960",
-            "link": "employees",
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 4,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "vacancy_id",
-            "name": "ID вакансии (из Optimacros)",
-            "dataType": "string",
-            "id": "78501715676487437",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 3,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "org_structure",
-            "name": "Организационная структура",
-            "dataType": "link",
-            "id": "19641716190989070",
-            "link": "structure",
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 7,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "company_name",
-            "name": "Название текущей компании",
-            "dataType": "string",
-            "id": "84321716235575717",
+            "sysName": "add_recommendation_3",
+            "name": "Добавить рекомендацию 3",
+            "dataType": "json",
+            "id": "65201723223302028",
             "link": "",
             "group": "1717136273468",
             "tags": "",
@@ -25092,486 +22727,12 @@ let exampleForm = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 23,
+            "order": 47,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
             "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "number",
-            "name": "Номер заявки",
-            "dataType": "string",
-            "id": "95231716236207376",
-            "link": "",
-            "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 6,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "id_position",
-            "name": "Код позиции (из УШР)",
-            "dataType": "link",
-            "id": "15801717092329369",
-            "link": "position",
-            "group": "1717136273468",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 2,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "offer_bonus_amount",
-            "name": "Предложение Lamoda по размеру премии",
-            "dataType": "string",
-            "id": "14291717102608159",
-            "link": "",
-            "group": "1717136273468",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 38,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "contract_period",
-            "name": "Укажите период",
-            "dataType": "string",
-            "id": "23561717102136707",
-            "link": "",
-            "group": "1717136273468",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 15,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "reason_contract",
-            "name": "Обоснование Срочного ТД",
-            "dataType": "string",
-            "id": "38571717102233946",
-            "link": "",
-            "group": "1717136273468",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 16,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "current_bonus_amount",
-            "name": "Текущий размер премии",
-            "dataType": "string",
-            "id": "63161717102594756",
-            "link": "",
-            "group": "1717136273468",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 36,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "date",
-            "name": "Дата создания заявки",
-            "dataType": "date",
-            "id": "91361717138808760",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 8,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "ru",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD.MM.Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "type_id",
-            "name": "Тип заявки",
-            "dataType": "string",
-            "id": "43711717138677778",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 7,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "logs",
-            "name": "История изменений",
-            "dataType": "arrayLink",
-            "id": "28171717136570915",
-            "link": "logs",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 5,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": false,
-            "arrayLink": true,
-            "indexExists": false
-        },
-        {
-            "sysName": "last_user",
-            "name": "Кем изменено",
-            "dataType": "link",
-            "id": "21921717136519307",
-            "link": "WebUser",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 3,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "prev_status",
-            "name": "Предыдущий статус",
-            "dataType": "link",
-            "id": "45271717136281092",
-            "link": "statuses",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 2,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "budget_holder",
-            "name": "Держатель бюджета",
-            "dataType": "link",
-            "id": "45251717611164564",
-            "link": "employees",
-            "group": "1722956166046",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 3,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "first_work_day",
-            "name": "Предварительная дата выхода сотрудника",
-            "dataType": "date",
-            "id": "84761717610566294",
-            "link": "",
-            "group": "1717136273468",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 0,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "ru",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD.MM.Y",
-                "timeFormat": " ",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "up_manager",
-            "name": "Верхнеуровневый руководитель (руководитель нанимающего менеджера) для Non-TECH / Директор департамента для TECH",
-            "dataType": "link",
-            "id": "66111717611097029",
-            "link": "employees",
-            "group": "1722956166046",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 5,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "org_dev",
-            "name": "Орг. дев",
-            "dataType": "boolean",
-            "id": "28311717610790667",
-            "link": "",
-            "group": "1717136273468",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 43,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
+            "format": "checkboxes",
             "formatOptions": {
                 "customOptionLabel": "My option",
                 "keyValue": {
@@ -25581,10 +22742,9 @@ let exampleForm = {
                 },
                 "dateLocale": "en-gb",
                 "booleanOptions": [
-                    "Да",
-                    "Нет"
+                    "True",
+                    "False"
                 ],
-                "hideStandardBooleanIcons": false,
                 "validWeekDays": {
                     "mon": true,
                     "thu": true,
@@ -25599,152 +22759,103 @@ let exampleForm = {
                 "customOptionType": "textarea",
                 "dateFormat": "DD/MM/Y",
                 "timeFormat": " HH:mm",
-                "isUTC": "false"
+                "isUTC": "false",
+                "multipleChoice": [
+                    {
+                        "value": "add",
+                        "label": ""
+                    }
+                ]
             },
             "groupName": null,
             "array": false,
             "typeVariable": {},
-            "json": false,
+            "json": true,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "indexExists": false
         },
         {
-            "sysName": "cnb",
-            "name": "C&B",
-            "dataType": "link",
-            "id": "79741717610837855",
-            "link": "employees",
-            "group": "1722956166046",
-            "tags": "",
-            "indexing": true,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 0,
-            "linkIndexFieldSysName": [
-                "webuser_id"
-            ],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": true
-        },
-        {
-            "sysName": "manager",
-            "name": "Руководитель (непосредственно нанимающий менеджер) для Non-TECH / Руководитель отдела для TECH",
-            "dataType": "link",
-            "id": "93801717611067099",
-            "link": "employees",
-            "group": "1722956166046",
+            "sysName": "add_recommendation_2",
+            "name": "Добавить рекомендацию 2",
+            "dataType": "json",
+            "id": "24611723223280015",
+            "link": "",
+            "group": "1717136273468",
             "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 4,
+            "order": 46,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
             "synthetic": false,
-            "format": null,
-            "formatOptions": {},
+            "format": "checkboxes",
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false",
+                "multipleChoice": [
+                    {
+                        "value": "add",
+                        "label": ""
+                    }
+                ]
+            },
             "groupName": null,
             "array": false,
             "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
+            "json": true,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
             "arrayLink": false,
             "indexExists": false
         },
         {
-            "sysName": "hr_bp",
-            "name": "HR BP",
-            "dataType": "link",
-            "id": "15621717611052206",
-            "link": "employees",
-            "group": "1722956166046",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "user_creator",
-            "name": "Кто создал заявку",
-            "dataType": "link",
-            "id": "10641717669243064",
-            "link": "employees",
-            "group": "0",
-            "tags": null,
-            "indexing": true,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 4,
-            "linkIndexFieldSysName": [
-                "webuser_id"
-            ],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": true
-        },
-        {
-            "sysName": "initial_step",
-            "name": "",
+            "sysName": "cr_desired",
+            "name": "СR ожидание (только для TECH)",
             "dataType": "string",
-            "id": "61681718370382220",
-            "link": null,
-            "group": "1720080628323",
-            "tags": null,
+            "id": "85371723034344516",
+            "link": "",
+            "group": "1717136273468",
+            "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 1,
+            "order": 41,
             "linkIndexFieldSysName": [],
-            "defaultValue": null,
+            "defaultValue": "",
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": null,
+            "formatOptions": {},
             "groupName": null,
             "array": false,
             "typeVariable": {},
@@ -25755,12 +22866,124 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "responsible_roles",
-            "name": "Ответственные роли",
-            "dataType": "arrayLink",
-            "id": "42551718111539315",
-            "link": "roles",
-            "group": "0",
+            "sysName": "cr_current",
+            "name": "CR текущий (только для TECH)",
+            "dataType": "string",
+            "id": "83941723034298011",
+            "link": "",
+            "group": "1717136273468",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 40,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "desired_count_empl_direct",
+            "name": "Ожидаемое количество подчиненных",
+            "dataType": "string",
+            "id": "33431723034099026",
+            "link": "",
+            "group": "1717136273468",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 28,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "desired_position",
+            "name": "Ожидаемая должность",
+            "dataType": "string",
+            "id": "56861723034037117",
+            "link": "",
+            "group": "1717136273468",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 25,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "hrd",
+            "name": "HR Director",
+            "dataType": "link",
+            "id": "22411723027680985",
+            "link": "employees",
+            "group": "1722956166046",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "feedback_3",
+            "name": "Обратная связь (3)",
+            "dataType": "string",
+            "id": "33591723026902223",
+            "link": "",
+            "group": "1723026548996",
             "tags": "",
             "indexing": false,
             "ordering": false,
@@ -25777,74 +23000,18 @@ let exampleForm = {
             "array": false,
             "typeVariable": {},
             "json": false,
-            "linkOrArrayLinkType": true,
+            "linkOrArrayLinkType": false,
             "linkType": false,
-            "arrayLink": true,
-            "indexExists": false
-        },
-        {
-            "sysName": "offer_bonus",
-            "name": "Предложение Lamoda по периодичности выплаты премии",
-            "dataType": "link",
-            "id": "86661718369709109",
-            "link": "bonus",
-            "group": "1717136273468",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 35,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
             "arrayLink": false,
             "indexExists": false
         },
         {
-            "sysName": "current_bonus",
-            "name": "Текущая периодичность выплаты премии",
-            "dataType": "link",
-            "id": "41941718369676191",
-            "link": "bonus",
-            "group": "1717136273468",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 33,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "responsible_employee_id",
-            "name": "Ответственный за текущий этап",
-            "dataType": "link",
-            "id": "89061718111406513",
-            "link": "employees",
-            "group": "0",
+            "sysName": "feedback_2",
+            "name": "Обратная связь (2)",
+            "dataType": "string",
+            "id": "34531723026899674",
+            "link": "",
+            "group": "1723026548996",
             "tags": "",
             "indexing": false,
             "ordering": false,
@@ -25861,74 +23028,18 @@ let exampleForm = {
             "array": false,
             "typeVariable": {},
             "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "org_structure_text",
-            "name": "Организационная структура",
-            "dataType": "string",
-            "id": "43811718379566902",
-            "link": "",
-            "group": "1717136273468",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 8,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "indexExists": false
         },
         {
-            "sysName": "all_user_ids",
-            "name": "Все пользователи, относящиеся к заявке",
-            "dataType": "arrayLink",
-            "id": "64121718609008711",
-            "link": "employees",
-            "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 12,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": false,
-            "arrayLink": true,
-            "indexExists": false
-        },
-        {
-            "sysName": "date_text",
-            "name": "Дата",
+            "sysName": "feedback_1",
+            "name": "Обратная связь (1)",
             "dataType": "string",
-            "id": "44611718913748411",
+            "id": "62281723026898586",
             "link": "",
-            "group": "0",
+            "group": "1723026548996",
             "tags": "",
             "indexing": false,
             "ordering": false,
@@ -25951,51 +23062,24 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "last_change_date",
-            "name": "Дата последнего изменения",
-            "dataType": "date",
-            "id": "12411720039745113",
+            "sysName": "interacted_as_3",
+            "name": "Взаимодействовали как (3)",
+            "dataType": "string",
+            "id": "38371723026792952",
             "link": "",
-            "group": "0",
-            "tags": null,
+            "group": "1723026548996",
+            "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 13,
+            "order": 8,
             "linkIndexFieldSysName": [],
-            "defaultValue": null,
+            "defaultValue": "",
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "ru",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD.MM.YYYY",
-                "timeFormat": " HH:mm",
-                "isUTC": "false"
-            },
+            "formatOptions": {},
             "groupName": null,
             "array": false,
             "typeVariable": {},
@@ -26006,24 +23090,220 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "prev_resigning_empl_full_name",
-            "name": "",
+            "sysName": "interacted_as_2",
+            "name": "Взаимодействовали как (2)",
             "dataType": "string",
-            "id": "34051720080635679",
-            "link": null,
-            "group": "1720080628323",
-            "tags": null,
+            "id": "92571723026791805",
+            "link": "",
+            "group": "1723026548996",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 7,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "interacted_as_1",
+            "name": "Взаимодействовали как (1)",
+            "dataType": "string",
+            "id": "91581723026791139",
+            "link": "",
+            "group": "1723026548996",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 6,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "period_and_company_3",
+            "name": "Период совместной работы + название компании (3)",
+            "dataType": "string",
+            "id": "96891723026678461",
+            "link": "",
+            "group": "1723026548996",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 5,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "period_and_company_2",
+            "name": "Период совместной работы + название компании (2)",
+            "dataType": "string",
+            "id": "12301723026677690",
+            "link": "",
+            "group": "1723026548996",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "period_and_company_1",
+            "name": "Период совместной работы + название компании (1)",
+            "dataType": "string",
+            "id": "32261723026675847",
+            "link": "",
+            "group": "1723026548996",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "full_name_recommender_3",
+            "name": "ФИО и должность рекомендателя 3",
+            "dataType": "string",
+            "id": "61711723026650455",
+            "link": "",
+            "group": "1723026548996",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "full_name_recommender_2",
+            "name": "ФИО и должность рекомендателя 2",
+            "dataType": "string",
+            "id": "65801723026642796",
+            "link": "",
+            "group": "1723026548996",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "full_name_recommender_1",
+            "name": "ФИО и должность рекомендателя 1",
+            "dataType": "string",
+            "id": "98861723026560889",
+            "link": "",
+            "group": "1723026548996",
+            "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
             "order": 0,
             "linkIndexFieldSysName": [],
-            "defaultValue": null,
+            "defaultValue": "",
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": null,
+            "formatOptions": {},
             "groupName": null,
             "array": false,
             "typeVariable": {},
@@ -26031,34 +23311,6 @@ let exampleForm = {
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "delegation_users",
-            "name": "Делегирование",
-            "dataType": "arrayLink",
-            "id": "89841722360454366",
-            "link": "employees",
-            "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 14,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": false,
-            "arrayLink": true,
             "indexExists": false
         },
         {
@@ -26480,24 +23732,52 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "feedback_3",
-            "name": "Обратная связь (3)",
-            "dataType": "string",
-            "id": "33591723026902223",
-            "link": "",
-            "group": "1723026548996",
-            "tags": "",
+            "sysName": "delegation_users",
+            "name": "Делегирование",
+            "dataType": "arrayLink",
+            "id": "89841722360454366",
+            "link": "employees",
+            "group": "0",
+            "tags": null,
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 11,
+            "order": 14,
             "linkIndexFieldSysName": [],
-            "defaultValue": "",
+            "defaultValue": null,
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": {},
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": false,
+            "arrayLink": true,
+            "indexExists": false
+        },
+        {
+            "sysName": "prev_resigning_empl_full_name",
+            "name": "",
+            "dataType": "string",
+            "id": "34051720080635679",
+            "link": null,
+            "group": "1720080628323",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
             "groupName": null,
             "array": false,
             "typeVariable": {},
@@ -26508,24 +23788,51 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "feedback_2",
-            "name": "Обратная связь (2)",
-            "dataType": "string",
-            "id": "34531723026899674",
+            "sysName": "last_change_date",
+            "name": "Дата последнего изменения",
+            "dataType": "date",
+            "id": "12411720039745113",
             "link": "",
-            "group": "1723026548996",
-            "tags": "",
+            "group": "0",
+            "tags": null,
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 10,
+            "order": 13,
             "linkIndexFieldSysName": [],
-            "defaultValue": "",
+            "defaultValue": null,
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": {},
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "ru",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD.MM.YYYY",
+                "timeFormat": " HH:mm",
+                "isUTC": "false"
+            },
             "groupName": null,
             "array": false,
             "typeVariable": {},
@@ -26536,12 +23843,12 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "feedback_1",
-            "name": "Обратная связь (1)",
+            "sysName": "date_text",
+            "name": "Дата",
             "dataType": "string",
-            "id": "62281723026898586",
+            "id": "44611718913748411",
             "link": "",
-            "group": "1723026548996",
+            "group": "0",
             "tags": "",
             "indexing": false,
             "ordering": false,
@@ -26564,12 +23871,40 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "interacted_as_3",
-            "name": "Взаимодействовали как (3)",
+            "sysName": "all_user_ids",
+            "name": "Все пользователи, относящиеся к заявке",
+            "dataType": "arrayLink",
+            "id": "64121718609008711",
+            "link": "employees",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 12,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": false,
+            "arrayLink": true,
+            "indexExists": false
+        },
+        {
+            "sysName": "org_structure_text",
+            "name": "Организационная структура",
             "dataType": "string",
-            "id": "38371723026792952",
+            "id": "43811718379566902",
             "link": "",
-            "group": "1723026548996",
+            "group": "1717136273468",
             "tags": "",
             "indexing": false,
             "ordering": false,
@@ -26592,12 +23927,490 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "interacted_as_2",
-            "name": "Взаимодействовали как (2)",
+            "sysName": "initial_step",
+            "name": "",
             "dataType": "string",
-            "id": "92571723026791805",
+            "id": "61681718370382220",
+            "link": null,
+            "group": "1720080628323",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "offer_bonus",
+            "name": "Предложение Lamoda по периодичности выплаты премии",
+            "dataType": "link",
+            "id": "86661718369709109",
+            "link": "bonus",
+            "group": "1717136273468",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 35,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "current_bonus",
+            "name": "Текущая периодичность выплаты премии",
+            "dataType": "link",
+            "id": "41941718369676191",
+            "link": "bonus",
+            "group": "1717136273468",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 33,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "responsible_roles",
+            "name": "Ответственные роли",
+            "dataType": "arrayLink",
+            "id": "42551718111539315",
+            "link": "roles",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 11,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": false,
+            "arrayLink": true,
+            "indexExists": false
+        },
+        {
+            "sysName": "responsible_employee_id",
+            "name": "Ответственный за текущий этап",
+            "dataType": "link",
+            "id": "89061718111406513",
+            "link": "employees",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 10,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "user_creator",
+            "name": "Кто создал заявку",
+            "dataType": "link",
+            "id": "10641717669243064",
+            "link": "employees",
+            "group": "0",
+            "tags": null,
+            "indexing": true,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [
+                "webuser_id"
+            ],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": true
+        },
+        {
+            "sysName": "budget_holder",
+            "name": "Держатель бюджета",
+            "dataType": "link",
+            "id": "45251717611164564",
+            "link": "employees",
+            "group": "1722956166046",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "up_manager",
+            "name": "Верхнеуровневый руководитель (руководитель нанимающего менеджера) для Non-TECH / Директор департамента для TECH",
+            "dataType": "link",
+            "id": "66111717611097029",
+            "link": "employees",
+            "group": "1722956166046",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 5,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "manager",
+            "name": "Руководитель (непосредственно нанимающий менеджер) для Non-TECH / Руководитель отдела для TECH",
+            "dataType": "link",
+            "id": "93801717611067099",
+            "link": "employees",
+            "group": "1722956166046",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "hr_bp",
+            "name": "HR BP",
+            "dataType": "link",
+            "id": "15621717611052206",
+            "link": "employees",
+            "group": "1722956166046",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "cnb",
+            "name": "C&B",
+            "dataType": "link",
+            "id": "79741717610837855",
+            "link": "employees",
+            "group": "1722956166046",
+            "tags": "",
+            "indexing": true,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [
+                "webuser_id"
+            ],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": true
+        },
+        {
+            "sysName": "org_dev",
+            "name": "Орг. дев",
+            "dataType": "boolean",
+            "id": "28311717610790667",
             "link": "",
-            "group": "1723026548996",
+            "group": "1717136273468",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 43,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "Да",
+                    "Нет"
+                ],
+                "hideStandardBooleanIcons": false,
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "first_work_day",
+            "name": "Предварительная дата выхода сотрудника",
+            "dataType": "date",
+            "id": "84761717610566294",
+            "link": "",
+            "group": "1717136273468",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "ru",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD.MM.Y",
+                "timeFormat": " ",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "date",
+            "name": "Дата создания заявки",
+            "dataType": "date",
+            "id": "91361717138808760",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 8,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "ru",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD.MM.Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "type_id",
+            "name": "Тип заявки",
+            "dataType": "string",
+            "id": "43711717138677778",
+            "link": "",
+            "group": "0",
             "tags": "",
             "indexing": false,
             "ordering": false,
@@ -26620,40 +24433,12 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "interacted_as_1",
-            "name": "Взаимодействовали как (1)",
-            "dataType": "string",
-            "id": "91581723026791139",
-            "link": "",
-            "group": "1723026548996",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 6,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "period_and_company_3",
-            "name": "Период совместной работы + название компании (3)",
-            "dataType": "string",
-            "id": "96891723026678461",
-            "link": "",
-            "group": "1723026548996",
+            "sysName": "logs",
+            "name": "История изменений",
+            "dataType": "arrayLink",
+            "id": "28171717136570915",
+            "link": "logs",
+            "group": "0",
             "tags": "",
             "indexing": false,
             "ordering": false,
@@ -26670,46 +24455,18 @@ let exampleForm = {
             "array": false,
             "typeVariable": {},
             "json": false,
-            "linkOrArrayLinkType": false,
+            "linkOrArrayLinkType": true,
             "linkType": false,
-            "arrayLink": false,
+            "arrayLink": true,
             "indexExists": false
         },
         {
-            "sysName": "period_and_company_2",
-            "name": "Период совместной работы + название компании (2)",
-            "dataType": "string",
-            "id": "12301723026677690",
-            "link": "",
-            "group": "1723026548996",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 4,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "period_and_company_1",
-            "name": "Период совместной работы + название компании (1)",
-            "dataType": "string",
-            "id": "32261723026675847",
-            "link": "",
-            "group": "1723026548996",
+            "sysName": "last_user",
+            "name": "Кем изменено",
+            "dataType": "link",
+            "id": "21921717136519307",
+            "link": "WebUser",
+            "group": "0",
             "tags": "",
             "indexing": false,
             "ordering": false,
@@ -26726,102 +24483,18 @@ let exampleForm = {
             "array": false,
             "typeVariable": {},
             "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
             "arrayLink": false,
             "indexExists": false
         },
         {
-            "sysName": "full_name_recommender_3",
-            "name": "ФИО и должность рекомендателя 3",
-            "dataType": "string",
-            "id": "61711723026650455",
-            "link": "",
-            "group": "1723026548996",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 2,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "full_name_recommender_2",
-            "name": "ФИО и должность рекомендателя 2",
-            "dataType": "string",
-            "id": "65801723026642796",
-            "link": "",
-            "group": "1723026548996",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "full_name_recommender_1",
-            "name": "ФИО и должность рекомендателя 1",
-            "dataType": "string",
-            "id": "98861723026560889",
-            "link": "",
-            "group": "1723026548996",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 0,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "hrd",
-            "name": "HR Director",
+            "sysName": "prev_status",
+            "name": "Предыдущий статус",
             "dataType": "link",
-            "id": "22411723027680985",
-            "link": "employees",
-            "group": "1722956166046",
+            "id": "45271717136281092",
+            "link": "statuses",
+            "group": "0",
             "tags": "",
             "indexing": false,
             "ordering": false,
@@ -26844,10 +24517,10 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "cr_desired",
-            "name": "СR ожидание (только для TECH)",
+            "sysName": "offer_bonus_amount",
+            "name": "Предложение Lamoda по размеру премии",
             "dataType": "string",
-            "id": "85371723034344516",
+            "id": "14291717102608159",
             "link": "",
             "group": "1717136273468",
             "tags": "",
@@ -26855,7 +24528,7 @@ let exampleForm = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 41,
+            "order": 38,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -26872,10 +24545,10 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "cr_current",
-            "name": "CR текущий (только для TECH)",
+            "sysName": "current_bonus_amount",
+            "name": "Текущий размер премии",
             "dataType": "string",
-            "id": "83941723034298011",
+            "id": "63161717102594756",
             "link": "",
             "group": "1717136273468",
             "tags": "",
@@ -26883,7 +24556,7 @@ let exampleForm = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 40,
+            "order": 36,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -26900,10 +24573,10 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "desired_count_empl_direct",
-            "name": "Ожидаемое количество подчиненных",
+            "sysName": "reason_contract",
+            "name": "Обоснование Срочного ТД",
             "dataType": "string",
-            "id": "33431723034099026",
+            "id": "38571717102233946",
             "link": "",
             "group": "1717136273468",
             "tags": "",
@@ -26911,7 +24584,7 @@ let exampleForm = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 28,
+            "order": 16,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -26928,10 +24601,10 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "desired_position",
-            "name": "Ожидаемая должность",
+            "sysName": "contract_period",
+            "name": "Укажите период",
             "dataType": "string",
-            "id": "56861723034037117",
+            "id": "23561717102136707",
             "link": "",
             "group": "1717136273468",
             "tags": "",
@@ -26939,7 +24612,7 @@ let exampleForm = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 25,
+            "order": 15,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -26956,71 +24629,96 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "add_recommendation_3",
-            "name": "Добавить рекомендацию 3",
-            "dataType": "json",
-            "id": "65201723223302028",
-            "link": "",
+            "sysName": "id_position",
+            "name": "Код позиции (из УШР)",
+            "dataType": "link",
+            "id": "15801717092329369",
+            "link": "position",
             "group": "1717136273468",
             "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 47,
+            "order": 2,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
             "synthetic": false,
-            "format": "checkboxes",
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD/MM/Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false",
-                "multipleChoice": [
-                    {
-                        "value": "add",
-                        "label": ""
-                    }
-                ]
-            },
+            "format": null,
+            "formatOptions": {},
             "groupName": null,
             "array": false,
             "typeVariable": {},
-            "json": true,
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "status",
+            "name": "Статус",
+            "dataType": "link",
+            "id": "33981716236672620",
+            "link": "statuses",
+            "group": "0",
+            "tags": null,
+            "indexing": true,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [
+                "id"
+            ],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": true
+        },
+        {
+            "sysName": "number",
+            "name": "Номер заявки",
+            "dataType": "string",
+            "id": "95231716236207376",
+            "link": "",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 6,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "indexExists": false
         },
         {
-            "sysName": "add_recommendation_2",
-            "name": "Добавить рекомендацию 2",
-            "dataType": "json",
-            "id": "24611723223280015",
+            "sysName": "company_name",
+            "name": "Название текущей компании",
+            "dataType": "string",
+            "id": "84321716235575717",
             "link": "",
             "group": "1717136273468",
             "tags": "",
@@ -27028,50 +24726,717 @@ let exampleForm = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 46,
+            "order": 23,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
             "synthetic": false,
-            "format": "checkboxes",
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD/MM/Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false",
-                "multipleChoice": [
-                    {
-                        "value": "add",
-                        "label": ""
-                    }
-                ]
-            },
+            "format": null,
+            "formatOptions": {},
             "groupName": null,
             "array": false,
             "typeVariable": {},
-            "json": true,
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "org_structure",
+            "name": "Организационная структура",
+            "dataType": "link",
+            "id": "19641716190989070",
+            "link": "structure",
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 7,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "resigning_empl_full_name",
+            "name": "ФИО заменяемого сотрудника",
+            "dataType": "link",
+            "id": "72911715692442960",
+            "link": "employees",
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "offer_position",
+            "name": "Должность в Lamoda",
+            "dataType": "string",
+            "id": "56891715677420164",
+            "link": null,
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 26,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "cr",
+            "name": "CR Lamoda(только для TECH)",
+            "dataType": "string",
+            "id": "82611715677377022",
+            "link": null,
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 42,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "offer_salary_bonus",
+            "name": "Предложение Lamoda по окладу",
+            "dataType": "string",
+            "id": "15821715677132698",
+            "link": null,
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 32,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "current_salary_bonus",
+            "name": "Текущий ежемесячный оклад",
+            "dataType": "string",
+            "id": "62881715676822167",
+            "link": null,
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 30,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "offer_count_empl_direct",
+            "name": "Количество подчиненных в Lamoda",
+            "dataType": "string",
+            "id": "36501715676821342",
+            "link": null,
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 29,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "count_empl_direct",
+            "name": "Текущее количество подчиненных",
+            "dataType": "string",
+            "id": "25431715676819516",
+            "link": null,
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 27,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "current_position",
+            "name": "Текущая должность",
+            "dataType": "string",
+            "id": "16321715676814870",
+            "link": null,
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 24,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "analytics_ops",
+            "name": "Analytics for OPS",
+            "dataType": "link",
+            "id": "44501715676533202",
+            "link": "analytics_for_ops",
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 22,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "name_position",
+            "name": "Name position",
+            "dataType": "string",
+            "id": "83421715676531827",
+            "link": null,
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 21,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "cost_center",
+            "name": "Кост-центр",
+            "dataType": "string",
+            "id": "68901715676530998",
+            "link": null,
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 20,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "vacancy_id",
+            "name": "ID вакансии (из Optimacros)",
+            "dataType": "string",
+            "id": "78501715676487437",
+            "link": null,
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "assessment_type",
+            "name": "Форма оценки",
+            "dataType": "link",
+            "id": "53871715676486789",
+            "link": "perf_review",
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 19,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "probation",
+            "name": "Испытательный период",
+            "dataType": "string",
+            "id": "77291715676484957",
+            "link": null,
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 18,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "employment_type",
+            "name": "Тип занятости",
+            "dataType": "link",
+            "id": "24381715676484262",
+            "link": "employment_type",
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 17,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "contract_type",
+            "name": "Тип договора",
+            "dataType": "link",
+            "id": "94821715676273371",
+            "link": "contract_type",
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 14,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "direct_full_name",
+            "name": "ФИО руководителя",
+            "dataType": "link",
+            "id": "64721715676272622",
+            "link": "employees",
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 13,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "division",
+            "name": "Подразделение",
+            "dataType": "link",
+            "id": "40821715676271880",
+            "link": "structure",
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 6,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "position",
+            "name": "Должность",
+            "dataType": "string",
+            "id": "68721715676198986",
+            "link": null,
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 12,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "candidate_full_name",
+            "name": "ФИО кандидата",
+            "dataType": "string",
+            "id": "29091715676143182",
+            "link": null,
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 11,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "country_city",
+            "name": "Страна, город",
+            "dataType": "string",
+            "id": "83591715676107813",
+            "link": null,
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 10,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "company",
+            "name": "Юр. лицо",
+            "dataType": "link",
+            "id": "25501715676080911",
+            "link": "company",
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 9,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "reason_vacancy",
+            "name": "Причина появления вакансии",
+            "dataType": "link",
+            "id": "13591715675968084",
+            "link": "reason_of_vacancy",
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "ceo_approval",
+            "name": "Cогласование с СЕО",
+            "dataType": "file",
+            "id": "86101724394507146",
+            "link": "",
+            "group": "1722958207971",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 6,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "image",
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
@@ -27106,1038 +25471,199 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "status",
-            "name": "Статус",
-            "dataType": "link",
-            "id": "33981716236672620",
-            "link": "statuses",
-            "group": "0",
+            "sysName": "ceo_checkbox",
+            "name": "Согласование CEO получено",
+            "dataType": "json",
+            "id": "54321725959729890",
+            "link": "",
+            "group": "1722958207971",
             "tags": null,
-            "indexing": true,
+            "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [
-                "id"
-            ],
+            "order": 7,
+            "linkIndexFieldSysName": [],
             "defaultValue": null,
             "constraints": null,
             "synthetic": false,
-            "format": null,
-            "formatOptions": null,
+            "format": "checkboxes",
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false",
+                "multipleChoice": [
+                    {
+                        "value": "add",
+                        "label": "Согласовано"
+                    }
+                ]
+            },
             "groupName": null,
             "array": false,
             "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
+            "json": true,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
             "arrayLink": false,
-            "indexExists": true
+            "indexExists": false
         }
     ],
-    "data": [
-        {
-            "offer_count_empl_direct": "1",
-            "number": "N-3-627806",
-            "name_position": "Team Lead telecommunications",
-            "current_salary_bonus": "1",
-            "desired_count_empl_direct": "11",
-            "feedback_1": "1",
-            "prev_status": {
-                "id": "approval_hr_bp",
-                "status": "Согласование HR BP"
-            },
-            "company_name": "1",
-            "org_structure_text": "Дирекция информационных технологий\\Департамент сопровождения информационных технологий\\Отдел информационной инфраструктуры\\Группа телекоммуникаций",
-            "candidate_full_name": "1",
-            "analytics_ops": {
-                "name": "Fleet",
-                "id": "fleet"
-            },
-            "risks": "1",
-            "cost_center": "122",
-            "country_city": "1",
-            "delegation_users": [
-                ""
-            ],
-            "resigning_empl_full_name": {
-                "id": "anatoly.zhunin@lamoda.ru",
-                "employee_full_name": "Анатолий Жунин"
-            },
-            "direct_full_name": {
-                "id": "emil.abdulnasyrov@lamoda.ru",
-                "employee_full_name": "Эмиль Абдулнасыров"
-            },
-            "hr_dep": true,
-            "vacancy_id": "1",
-            "user_creator": {
-                "email": "aleksandra.kalina@lamoda.ru",
-                "division_name": "Группа бизнес-анализа",
-                "id": "aleksandra.kalina@lamoda.ru",
-                "position": "Аналитик по развитию корпоративных бизнес-приложений",
-                "webuser_id": {
-                    "who_delegated_ids": [],
-                    "role": [
-                        "jo_recruiter",
-                        "jo_agreement",
-                        "jo_cnb",
-                        "st_agreement",
-                        "st_hrbp"
-                    ],
-                    "whom_delegate_ids": [],
-                    "id": "aleksandra.kalina@lamoda.ru"
-                },
-                "employee_full_name": "Александра Калина"
-            },
-            "interacted_as_1": "1",
-            "offer_salary_bonus": "1",
-            "assessment_type": {
-                "name": "Отсутствует",
-                "id": "none"
-            },
-            "prev_resigning_empl_full_name": "anatoly.zhunin@lamoda.ru",
-            "add_hr_dir": true,
-            "hrd": "pavel@directual.com",
-            "candidate_motivation": "1",
-            "last_change_date": 1727793963000,
-            "budget_date": 1724360400000,
-            "division": {
-                "division_name": "Группа телекоммуникаций",
-                "id": "9002443"
-            },
-            "offer_position": "1",
-            "responsible_employee_id": {
-                "email": "aleksandra.kalina@lamoda.ru",
-                "id": "aleksandra.kalina@lamoda.ru",
-                "position": "Аналитик по развитию корпоративных бизнес-приложений",
-                "webuser_id": {
-                    "who_delegated_ids": [],
-                    "role": [
-                        "jo_recruiter",
-                        "jo_agreement",
-                        "jo_cnb",
-                        "st_agreement",
-                        "st_hrbp"
-                    ],
-                    "whom_delegate_ids": [],
-                    "id": "aleksandra.kalina@lamoda.ru"
-                },
-                "employee_full_name": "Александра Калина"
-            },
-            "probation": "3 месяца",
-            "company": {
-                "company": "КУПИШУЗ",
-                "id": "kupishoes"
-            },
-            "full_name_recommender_1": "1",
-            "hr_bp": {
-                "email": "aleksandra.kalina@lamoda.ru",
-                "division_name": "Группа бизнес-анализа",
-                "id": "aleksandra.kalina@lamoda.ru",
-                "position": "Аналитик по развитию корпоративных бизнес-приложений",
-                "webuser_id": {
-                    "who_delegated_ids": [],
-                    "role": [
-                        "jo_recruiter",
-                        "jo_agreement",
-                        "jo_cnb",
-                        "st_agreement",
-                        "st_hrbp"
-                    ],
-                    "whom_delegate_ids": [],
-                    "id": "aleksandra.kalina@lamoda.ru"
-                },
-                "employee_full_name": "Александра Калина"
-            },
-            "responsible_roles": [
-                ""
-            ],
-            "add_benefits": "1",
-            "offer_bonus_amount": "1",
-            "id": "01cdaa6a-8157-48a5-88ce-5b61472160e4",
-            "budget_holder": {
-                "email": "aleksandra.kalina@lamoda.ru",
-                "division_name": "Группа бизнес-анализа",
-                "id": "aleksandra.kalina@lamoda.ru",
-                "position": "Аналитик по развитию корпоративных бизнес-приложений",
-                "webuser_id": {
-                    "who_delegated_ids": [],
-                    "role": [
-                        "jo_recruiter",
-                        "jo_agreement",
-                        "jo_cnb",
-                        "st_agreement",
-                        "st_hrbp"
-                    ],
-                    "whom_delegate_ids": [],
-                    "id": "aleksandra.kalina@lamoda.ru"
-                },
-                "employee_full_name": "Александра Калина"
-            },
-            "current_position": "1",
-            "last_user": {
-                "firstName": "Aleksandra",
-                "lastName": "Kalina",
-                "id": "aleksandra.kalina@lamoda.ru"
-            },
-            "all_user_ids": [
-                {
-                    "webuser_id": {
-                        "who_delegated_ids": [],
-                        "role": [
-                            "jo_recruiter",
-                            "jo_agreement",
-                            "jo_cnb",
-                            "st_agreement",
-                            "st_hrbp"
-                        ],
-                        "whom_delegate_ids": [],
-                        "id": "aleksandra.kalina@lamoda.ru"
-                    },
-                    "id": "aleksandra.kalina@lamoda.ru"
-                },
-                {
-                    "webuser_id": {
-                        "role": [
-                            "jo_agreement",
-                            "jo_budget_holder",
-                            "st_agreement"
-                        ],
-                        "id": "stanislav.gots@lamoda.ru"
-                    },
-                    "id": "stanislav.gots@lamoda.ru"
-                }
-            ],
-            "date": 1724827998000,
-            "reason_vacancy": {
-                "reason": "Замена сотрудника",
-                "id": "replacement"
-            },
-            "org_dev": true,
-            "manager": {
-                "email": "aleksandra.kalina@lamoda.ru",
-                "division_name": "Группа бизнес-анализа",
-                "id": "aleksandra.kalina@lamoda.ru",
-                "position": "Аналитик по развитию корпоративных бизнес-приложений",
-                "webuser_id": {
-                    "who_delegated_ids": [],
-                    "role": [
-                        "jo_recruiter",
-                        "jo_agreement",
-                        "jo_cnb",
-                        "st_agreement",
-                        "st_hrbp"
-                    ],
-                    "whom_delegate_ids": [],
-                    "id": "aleksandra.kalina@lamoda.ru"
-                },
-                "employee_full_name": "Александра Калина"
-            },
-            "status": {
-                "id": "approval_hr_bp",
-                "status": "Согласование HR BP"
-            },
-            "resume_link": "1",
-            "desired_position": "1",
-            "desired_bonus_amount": "1",
-            "cnb": {
-                "email": "aleksandra.kalina@lamoda.ru",
-                "division_name": "Группа бизнес-анализа",
-                "id": "aleksandra.kalina@lamoda.ru",
-                "position": "Аналитик по развитию корпоративных бизнес-приложений",
-                "webuser_id": {
-                    "who_delegated_ids": [],
-                    "role": [
-                        "jo_recruiter",
-                        "jo_agreement",
-                        "jo_cnb",
-                        "st_agreement",
-                        "st_hrbp"
-                    ],
-                    "whom_delegate_ids": [],
-                    "id": "aleksandra.kalina@lamoda.ru"
-                },
-                "employee_full_name": "Александра Калина"
-            },
-            "type_id": "N-3",
-            "position": "1",
-            "contract_type": {
-                "contract_type": "Бессрочный",
-                "id": "open_ended"
-            },
-            "up_manager": {
-                "email": "aleksandra.kalina@lamoda.ru",
-                "division_name": "Группа бизнес-анализа",
-                "id": "aleksandra.kalina@lamoda.ru",
-                "position": "Аналитик по развитию корпоративных бизнес-приложений",
-                "webuser_id": {
-                    "who_delegated_ids": [],
-                    "role": [
-                        "jo_recruiter",
-                        "jo_agreement",
-                        "jo_cnb",
-                        "st_agreement",
-                        "st_hrbp"
-                    ],
-                    "whom_delegate_ids": [],
-                    "id": "aleksandra.kalina@lamoda.ru"
-                },
-                "employee_full_name": "Александра Калина"
-            },
-            "logs": [
-                {
-                    "date_display": "01 окт. 2024, 17:46",
-                    "text": "Согласование HR BP. Назначен ответственный: aleksandra.kalina@lamoda.ru",
-                    "ticket": "01cdaa6a-8157-48a5-88ce-5b61472160e4",
-                    "id": "c35b015a-d0a4-4fb9-889f-309c8f484658",
-                    "user": {
-                        "firstName": "Aleksandra",
-                        "lastName": "Kalina",
-                        "id": "aleksandra.kalina@lamoda.ru"
-                    }
-                },
-                {
-                    "date_display": "01 окт. 2024, 17:46",
-                    "text": "Согласование HR BP. Назначен ответственный: aleksandra.kalina@lamoda.ru",
-                    "ticket": "01cdaa6a-8157-48a5-88ce-5b61472160e4",
-                    "id": "23d6d3cf-bed1-4b37-873d-f349ca565215",
-                    "user": {
-                        "firstName": "Aleksandra",
-                        "lastName": "Kalina",
-                        "id": "aleksandra.kalina@lamoda.ru"
-                    }
-                },
-                {
-                    "date_display": "28 авг. 2024, 09:56",
-                    "text": "Согласование HR Director. Назначен ответственный: aleksandra.kalina@lamoda.ru",
-                    "ticket": "01cdaa6a-8157-48a5-88ce-5b61472160e4",
-                    "id": "2976ee5e-a80d-46c7-bb5c-46083333e7fe",
-                    "user": {
-                        "firstName": "Aleksandra",
-                        "lastName": "Kalina",
-                        "id": "aleksandra.kalina@lamoda.ru"
-                    }
-                },
-                {
-                    "date_display": "28 авг. 2024, 09:56",
-                    "text": "Согласование HR BP. Назначен ответственный: aleksandra.kalina@lamoda.ru",
-                    "ticket": "01cdaa6a-8157-48a5-88ce-5b61472160e4",
-                    "id": "f80b682a-62d4-49e7-a4a3-17d019713a41",
-                    "user": {
-                        "firstName": "Aleksandra",
-                        "lastName": "Kalina",
-                        "id": "aleksandra.kalina@lamoda.ru"
-                    }
-                },
-                {
-                    "date_display": "28 авг. 2024, 09:55",
-                    "text": "Согласование C&B. Назначен ответственный: Александра Калина (aleksandra.kalina@lamoda.ru)",
-                    "ticket": "01cdaa6a-8157-48a5-88ce-5b61472160e4",
-                    "id": "9fed47e7-b9cb-4947-b660-af3070ccf026",
-                    "user": {
-                        "firstName": "Aleksandra",
-                        "lastName": "Kalina",
-                        "id": "aleksandra.kalina@lamoda.ru"
-                    }
-                }
-            ],
-            "employment_type": {
-                "employment_type": "Flex",
-                "id": "flex"
-            },
-            "current_bonus": {
-                "bonus": "Год",
-                "id": "year"
-            },
-            "desired_bonus": {
-                "bonus": "Год",
-                "id": "year"
-            },
-            "id_position": "1",
-            "desired_salary": "1",
-            "current_bonus_amount": "1",
-            "process_participants": "1",
-            "org_structure": "9002443",
-            "offer_bonus": {
-                "bonus": "Год",
-                "id": "year"
-            },
-            "count_empl_direct": "1",
-            "period_and_company_1": "1"
-        }
-    ],
-    "totalPages": 1,
+    "data": [],
+    "totalPages": 0,
     "pageNumber": 0,
     "error": null,
     "fieldScheme": [
-        [
-            "analytics_ops.id",
-            99325500
-        ],
-        [
-            "analytics_ops.name",
-            99325500
-        ],
-        [
-            "assessment_type.id",
-            99325507
-        ],
-        [
-            "assessment_type.name",
-            99325507
-        ],
-        [
-            "candidate_full_name",
-            99325489
-        ],
-        [
-            "company.company",
-            99325495
-        ],
-        [
-            "company.id",
-            99325495
-        ],
-        [
-            "contract_type.id",
-            99325496
-        ],
-        [
-            "contract_type.contract_type",
-            99325496
-        ],
-        [
-            "cost_center",
-            99325489
-        ],
-        [
-            "count_empl_direct",
-            99325489
-        ],
-        [
-            "country_city",
-            99325489
-        ],
-        [
-            "cr",
-            99325489
-        ],
-        [
-            "current_position",
-            99325489
-        ],
-        [
-            "current_salary_bonus",
-            99325489
-        ],
-        [
-            "direct_full_name.id",
-            99325487
-        ],
-        [
-            "direct_full_name.employee_full_name",
-            99325487
-        ],
-        [
-            "division.id",
-            99325488
-        ],
-        [
-            "division.division_name",
-            99325488
-        ],
-        [
-            "employment_type.id",
-            99325497
-        ],
-        [
-            "employment_type.employment_type",
-            99325497
-        ],
         [
             "id",
             99325489
         ],
         [
-            "name_position",
+            "add_recommendation_3",
             99325489
         ],
         [
-            "offer_count_empl_direct",
+            "add_recommendation_2",
             99325489
         ],
         [
-            "offer_position",
+            "cr_desired",
             99325489
         ],
         [
-            "offer_salary_bonus",
+            "cr_current",
             99325489
         ],
         [
-            "position",
+            "desired_count_empl_direct",
             99325489
         ],
         [
-            "probation",
+            "desired_position",
             99325489
         ],
         [
-            "reason_vacancy.id",
-            99325494
-        ],
-        [
-            "reason_vacancy.reason",
-            99325494
-        ],
-        [
-            "resigning_empl_full_name.employee_full_name",
+            "hrd.id",
             99325487
         ],
         [
-            "resigning_empl_full_name.id",
+            "hrd.webuser_id.id",
+            99325452
+        ],
+        [
+            "hrd.webuser_id.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "hrd.webuser_id.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "hrd.webuser_id.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "hrd.webuser_id.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "hrd.webuser_id.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "hrd.webuser_id.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "hrd.webuser_id.role",
+            99325452
+        ],
+        [
+            "hrd.employee_full_name",
             99325487
         ],
         [
-            "vacancy_id",
+            "hrd.position",
+            99325487
+        ],
+        [
+            "hrd.division_name",
+            99325487
+        ],
+        [
+            "hrd.email",
+            99325487
+        ],
+        [
+            "feedback_3",
             99325489
         ],
         [
-            "org_structure",
+            "feedback_2",
             99325489
         ],
         [
-            "company_name",
+            "feedback_1",
             99325489
         ],
         [
-            "number",
+            "interacted_as_3",
             99325489
         ],
         [
-            "id_position.id",
-            99325499
-        ],
-        [
-            "offer_bonus_amount",
+            "interacted_as_2",
             99325489
         ],
         [
-            "contract_period",
+            "interacted_as_1",
             99325489
         ],
         [
-            "reason_contract",
+            "period_and_company_3",
             99325489
         ],
         [
-            "current_bonus_amount",
+            "period_and_company_2",
             99325489
         ],
         [
-            "date",
+            "period_and_company_1",
             99325489
         ],
         [
-            "type_id",
+            "full_name_recommender_3",
             99325489
         ],
         [
-            "logs.id",
-            99325502
-        ],
-        [
-            "logs.ticket.id",
+            "full_name_recommender_2",
             99325489
         ],
         [
-            "logs.user.id",
-            99325452
-        ],
-        [
-            "logs.user.firstName",
-            99325452
-        ],
-        [
-            "logs.user.lastName",
-            99325452
-        ],
-        [
-            "logs.date_display",
-            99325502
-        ],
-        [
-            "logs.text",
-            99325502
-        ],
-        [
-            "last_user.id",
-            99325452
-        ],
-        [
-            "last_user.firstName",
-            99325452
-        ],
-        [
-            "last_user.lastName",
-            99325452
-        ],
-        [
-            "prev_status.id",
-            99325498
-        ],
-        [
-            "prev_status.status",
-            99325498
-        ],
-        [
-            "budget_holder.id",
-            99325487
-        ],
-        [
-            "budget_holder.email",
-            99325487
-        ],
-        [
-            "budget_holder.employee_full_name",
-            99325487
-        ],
-        [
-            "budget_holder.webuser_id.id",
-            99325452
-        ],
-        [
-            "budget_holder.webuser_id.whom_delegate_ids.id",
-            99325452
-        ],
-        [
-            "budget_holder.webuser_id.whom_delegate_ids.firstName",
-            99325452
-        ],
-        [
-            "budget_holder.webuser_id.whom_delegate_ids.lastName",
-            99325452
-        ],
-        [
-            "budget_holder.webuser_id.who_delegated_ids.id",
-            99325452
-        ],
-        [
-            "budget_holder.webuser_id.who_delegated_ids.firstName",
-            99325452
-        ],
-        [
-            "budget_holder.webuser_id.who_delegated_ids.lastName",
-            99325452
-        ],
-        [
-            "budget_holder.webuser_id.role",
-            99325452
-        ],
-        [
-            "budget_holder.division_name",
-            99325487
-        ],
-        [
-            "budget_holder.position",
-            99325487
-        ],
-        [
-            "first_work_day",
+            "full_name_recommender_1",
             99325489
-        ],
-        [
-            "up_manager.id",
-            99325487
-        ],
-        [
-            "up_manager.email",
-            99325487
-        ],
-        [
-            "up_manager.employee_full_name",
-            99325487
-        ],
-        [
-            "up_manager.webuser_id.id",
-            99325452
-        ],
-        [
-            "up_manager.webuser_id.whom_delegate_ids.id",
-            99325452
-        ],
-        [
-            "up_manager.webuser_id.whom_delegate_ids.firstName",
-            99325452
-        ],
-        [
-            "up_manager.webuser_id.whom_delegate_ids.lastName",
-            99325452
-        ],
-        [
-            "up_manager.webuser_id.who_delegated_ids.id",
-            99325452
-        ],
-        [
-            "up_manager.webuser_id.who_delegated_ids.firstName",
-            99325452
-        ],
-        [
-            "up_manager.webuser_id.who_delegated_ids.lastName",
-            99325452
-        ],
-        [
-            "up_manager.webuser_id.role",
-            99325452
-        ],
-        [
-            "up_manager.division_name",
-            99325487
-        ],
-        [
-            "up_manager.position",
-            99325487
-        ],
-        [
-            "org_dev",
-            99325489
-        ],
-        [
-            "cnb.id",
-            99325487
-        ],
-        [
-            "cnb.email",
-            99325487
-        ],
-        [
-            "cnb.employee_full_name",
-            99325487
-        ],
-        [
-            "cnb.webuser_id.id",
-            99325452
-        ],
-        [
-            "cnb.webuser_id.whom_delegate_ids.id",
-            99325452
-        ],
-        [
-            "cnb.webuser_id.whom_delegate_ids.firstName",
-            99325452
-        ],
-        [
-            "cnb.webuser_id.whom_delegate_ids.lastName",
-            99325452
-        ],
-        [
-            "cnb.webuser_id.who_delegated_ids.id",
-            99325452
-        ],
-        [
-            "cnb.webuser_id.who_delegated_ids.firstName",
-            99325452
-        ],
-        [
-            "cnb.webuser_id.who_delegated_ids.lastName",
-            99325452
-        ],
-        [
-            "cnb.webuser_id.role",
-            99325452
-        ],
-        [
-            "cnb.division_name",
-            99325487
-        ],
-        [
-            "cnb.position",
-            99325487
-        ],
-        [
-            "manager.id",
-            99325487
-        ],
-        [
-            "manager.email",
-            99325487
-        ],
-        [
-            "manager.employee_full_name",
-            99325487
-        ],
-        [
-            "manager.webuser_id.id",
-            99325452
-        ],
-        [
-            "manager.webuser_id.whom_delegate_ids.id",
-            99325452
-        ],
-        [
-            "manager.webuser_id.whom_delegate_ids.firstName",
-            99325452
-        ],
-        [
-            "manager.webuser_id.whom_delegate_ids.lastName",
-            99325452
-        ],
-        [
-            "manager.webuser_id.who_delegated_ids.id",
-            99325452
-        ],
-        [
-            "manager.webuser_id.who_delegated_ids.firstName",
-            99325452
-        ],
-        [
-            "manager.webuser_id.who_delegated_ids.lastName",
-            99325452
-        ],
-        [
-            "manager.webuser_id.role",
-            99325452
-        ],
-        [
-            "manager.division_name",
-            99325487
-        ],
-        [
-            "manager.position",
-            99325487
-        ],
-        [
-            "hr_bp.id",
-            99325487
-        ],
-        [
-            "hr_bp.email",
-            99325487
-        ],
-        [
-            "hr_bp.employee_full_name",
-            99325487
-        ],
-        [
-            "hr_bp.webuser_id.id",
-            99325452
-        ],
-        [
-            "hr_bp.webuser_id.whom_delegate_ids.id",
-            99325452
-        ],
-        [
-            "hr_bp.webuser_id.whom_delegate_ids.firstName",
-            99325452
-        ],
-        [
-            "hr_bp.webuser_id.whom_delegate_ids.lastName",
-            99325452
-        ],
-        [
-            "hr_bp.webuser_id.who_delegated_ids.id",
-            99325452
-        ],
-        [
-            "hr_bp.webuser_id.who_delegated_ids.firstName",
-            99325452
-        ],
-        [
-            "hr_bp.webuser_id.who_delegated_ids.lastName",
-            99325452
-        ],
-        [
-            "hr_bp.webuser_id.role",
-            99325452
-        ],
-        [
-            "hr_bp.division_name",
-            99325487
-        ],
-        [
-            "hr_bp.position",
-            99325487
-        ],
-        [
-            "user_creator.id",
-            99325487
-        ],
-        [
-            "user_creator.email",
-            99325487
-        ],
-        [
-            "user_creator.employee_full_name",
-            99325487
-        ],
-        [
-            "user_creator.position",
-            99325487
-        ],
-        [
-            "user_creator.webuser_id.id",
-            99325452
-        ],
-        [
-            "user_creator.webuser_id.whom_delegate_ids.id",
-            99325452
-        ],
-        [
-            "user_creator.webuser_id.whom_delegate_ids.firstName",
-            99325452
-        ],
-        [
-            "user_creator.webuser_id.whom_delegate_ids.lastName",
-            99325452
-        ],
-        [
-            "user_creator.webuser_id.who_delegated_ids.id",
-            99325452
-        ],
-        [
-            "user_creator.webuser_id.who_delegated_ids.firstName",
-            99325452
-        ],
-        [
-            "user_creator.webuser_id.who_delegated_ids.lastName",
-            99325452
-        ],
-        [
-            "user_creator.webuser_id.role",
-            99325452
-        ],
-        [
-            "user_creator.division_name",
-            99325487
-        ],
-        [
-            "initial_step",
-            99325489
-        ],
-        [
-            "responsible_roles.id",
-            99325477
-        ],
-        [
-            "offer_bonus.id",
-            99325504
-        ],
-        [
-            "offer_bonus.bonus",
-            99325504
-        ],
-        [
-            "current_bonus.id",
-            99325504
-        ],
-        [
-            "current_bonus.bonus",
-            99325504
-        ],
-        [
-            "responsible_employee_id.id",
-            99325487
-        ],
-        [
-            "responsible_employee_id.email",
-            99325487
-        ],
-        [
-            "responsible_employee_id.employee_full_name",
-            99325487
-        ],
-        [
-            "responsible_employee_id.position",
-            99325487
-        ],
-        [
-            "responsible_employee_id.webuser_id.id",
-            99325452
-        ],
-        [
-            "responsible_employee_id.webuser_id.whom_delegate_ids.id",
-            99325452
-        ],
-        [
-            "responsible_employee_id.webuser_id.whom_delegate_ids.firstName",
-            99325452
-        ],
-        [
-            "responsible_employee_id.webuser_id.whom_delegate_ids.lastName",
-            99325452
-        ],
-        [
-            "responsible_employee_id.webuser_id.who_delegated_ids.id",
-            99325452
-        ],
-        [
-            "responsible_employee_id.webuser_id.who_delegated_ids.firstName",
-            99325452
-        ],
-        [
-            "responsible_employee_id.webuser_id.who_delegated_ids.lastName",
-            99325452
-        ],
-        [
-            "responsible_employee_id.webuser_id.role",
-            99325452
-        ],
-        [
-            "org_structure_text",
-            99325489
-        ],
-        [
-            "all_user_ids.id",
-            99325487
-        ],
-        [
-            "all_user_ids.webuser_id.id",
-            99325452
-        ],
-        [
-            "all_user_ids.webuser_id.whom_delegate_ids.id",
-            99325452
-        ],
-        [
-            "all_user_ids.webuser_id.whom_delegate_ids.firstName",
-            99325452
-        ],
-        [
-            "all_user_ids.webuser_id.whom_delegate_ids.lastName",
-            99325452
-        ],
-        [
-            "all_user_ids.webuser_id.who_delegated_ids.id",
-            99325452
-        ],
-        [
-            "all_user_ids.webuser_id.who_delegated_ids.firstName",
-            99325452
-        ],
-        [
-            "all_user_ids.webuser_id.who_delegated_ids.lastName",
-            99325452
-        ],
-        [
-            "all_user_ids.webuser_id.role",
-            99325452
-        ],
-        [
-            "date_text",
-            99325489
-        ],
-        [
-            "last_change_date",
-            99325489
-        ],
-        [
-            "prev_resigning_empl_full_name",
-            99325489
-        ],
-        [
-            "delegation_users.id",
-            99325487
         ],
         [
             "resume_file",
@@ -28192,120 +25718,516 @@ let exampleForm = {
             99325489
         ],
         [
-            "feedback_3",
-            99325489
-        ],
-        [
-            "feedback_2",
-            99325489
-        ],
-        [
-            "feedback_1",
-            99325489
-        ],
-        [
-            "interacted_as_3",
-            99325489
-        ],
-        [
-            "interacted_as_2",
-            99325489
-        ],
-        [
-            "interacted_as_1",
-            99325489
-        ],
-        [
-            "period_and_company_3",
-            99325489
-        ],
-        [
-            "period_and_company_2",
-            99325489
-        ],
-        [
-            "period_and_company_1",
-            99325489
-        ],
-        [
-            "full_name_recommender_3",
-            99325489
-        ],
-        [
-            "full_name_recommender_2",
-            99325489
-        ],
-        [
-            "full_name_recommender_1",
-            99325489
-        ],
-        [
-            "hrd.id",
+            "delegation_users.id",
             99325487
         ],
         [
-            "hrd.webuser_id.id",
-            99325452
+            "prev_resigning_empl_full_name",
+            99325489
         ],
         [
-            "hrd.webuser_id.whom_delegate_ids.id",
-            99325452
+            "last_change_date",
+            99325489
         ],
         [
-            "hrd.webuser_id.whom_delegate_ids.firstName",
-            99325452
+            "date_text",
+            99325489
         ],
         [
-            "hrd.webuser_id.whom_delegate_ids.lastName",
-            99325452
-        ],
-        [
-            "hrd.webuser_id.who_delegated_ids.id",
-            99325452
-        ],
-        [
-            "hrd.webuser_id.who_delegated_ids.firstName",
-            99325452
-        ],
-        [
-            "hrd.webuser_id.who_delegated_ids.lastName",
-            99325452
-        ],
-        [
-            "hrd.webuser_id.role",
-            99325452
-        ],
-        [
-            "hrd.employee_full_name",
+            "all_user_ids.id",
             99325487
         ],
         [
-            "cr_desired",
+            "all_user_ids.webuser_id.id",
+            99325452
+        ],
+        [
+            "all_user_ids.webuser_id.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "all_user_ids.webuser_id.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "all_user_ids.webuser_id.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "all_user_ids.webuser_id.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "all_user_ids.webuser_id.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "all_user_ids.webuser_id.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "all_user_ids.webuser_id.role",
+            99325452
+        ],
+        [
+            "org_structure_text",
             99325489
         ],
         [
-            "cr_current",
+            "initial_step",
             99325489
         ],
         [
-            "desired_count_empl_direct",
+            "offer_bonus.id",
+            99325504
+        ],
+        [
+            "offer_bonus.bonus",
+            99325504
+        ],
+        [
+            "current_bonus.id",
+            99325504
+        ],
+        [
+            "current_bonus.bonus",
+            99325504
+        ],
+        [
+            "responsible_roles.id",
+            99325477
+        ],
+        [
+            "responsible_employee_id.id",
+            99325487
+        ],
+        [
+            "responsible_employee_id.employee_full_name",
+            99325487
+        ],
+        [
+            "responsible_employee_id.webuser_id.id",
+            99325452
+        ],
+        [
+            "responsible_employee_id.webuser_id.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "responsible_employee_id.webuser_id.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "responsible_employee_id.webuser_id.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "responsible_employee_id.webuser_id.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "responsible_employee_id.webuser_id.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "responsible_employee_id.webuser_id.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "responsible_employee_id.webuser_id.role",
+            99325452
+        ],
+        [
+            "responsible_employee_id.division_name",
+            99325487
+        ],
+        [
+            "responsible_employee_id.position",
+            99325487
+        ],
+        [
+            "responsible_employee_id.email",
+            99325487
+        ],
+        [
+            "user_creator.employee_full_name",
+            99325487
+        ],
+        [
+            "user_creator.webuser_id.id",
+            99325452
+        ],
+        [
+            "user_creator.webuser_id.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "user_creator.webuser_id.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "user_creator.webuser_id.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "user_creator.webuser_id.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "user_creator.webuser_id.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "user_creator.webuser_id.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "user_creator.webuser_id.role",
+            99325452
+        ],
+        [
+            "user_creator.id",
+            99325487
+        ],
+        [
+            "user_creator.position",
+            99325487
+        ],
+        [
+            "user_creator.division_name",
+            99325487
+        ],
+        [
+            "user_creator.email",
+            99325487
+        ],
+        [
+            "budget_holder.id",
+            99325487
+        ],
+        [
+            "budget_holder.webuser_id.id",
+            99325452
+        ],
+        [
+            "budget_holder.webuser_id.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "budget_holder.webuser_id.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "budget_holder.webuser_id.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "budget_holder.webuser_id.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "budget_holder.webuser_id.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "budget_holder.webuser_id.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "budget_holder.webuser_id.role",
+            99325452
+        ],
+        [
+            "budget_holder.employee_full_name",
+            99325487
+        ],
+        [
+            "budget_holder.division_name",
+            99325487
+        ],
+        [
+            "budget_holder.position",
+            99325487
+        ],
+        [
+            "budget_holder.email",
+            99325487
+        ],
+        [
+            "up_manager.id",
+            99325487
+        ],
+        [
+            "up_manager.webuser_id.id",
+            99325452
+        ],
+        [
+            "up_manager.webuser_id.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "up_manager.webuser_id.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "up_manager.webuser_id.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "up_manager.webuser_id.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "up_manager.webuser_id.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "up_manager.webuser_id.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "up_manager.webuser_id.role",
+            99325452
+        ],
+        [
+            "up_manager.division_name",
+            99325487
+        ],
+        [
+            "up_manager.position",
+            99325487
+        ],
+        [
+            "up_manager.email",
+            99325487
+        ],
+        [
+            "manager.id",
+            99325487
+        ],
+        [
+            "manager.webuser_id.id",
+            99325452
+        ],
+        [
+            "manager.webuser_id.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "manager.webuser_id.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "manager.webuser_id.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "manager.webuser_id.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "manager.webuser_id.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "manager.webuser_id.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "manager.webuser_id.role",
+            99325452
+        ],
+        [
+            "manager.division_name",
+            99325487
+        ],
+        [
+            "manager.email",
+            99325487
+        ],
+        [
+            "manager.position",
+            99325487
+        ],
+        [
+            "hr_bp.id",
+            99325487
+        ],
+        [
+            "hr_bp.webuser_id.id",
+            99325452
+        ],
+        [
+            "hr_bp.webuser_id.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "hr_bp.webuser_id.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "hr_bp.webuser_id.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "hr_bp.webuser_id.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "hr_bp.webuser_id.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "hr_bp.webuser_id.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "hr_bp.webuser_id.role",
+            99325452
+        ],
+        [
+            "hr_bp.division_name",
+            99325487
+        ],
+        [
+            "hr_bp.position",
+            99325487
+        ],
+        [
+            "hr_bp.email",
+            99325487
+        ],
+        [
+            "cnb.id",
+            99325487
+        ],
+        [
+            "cnb.webuser_id.id",
+            99325452
+        ],
+        [
+            "cnb.webuser_id.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "cnb.webuser_id.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "cnb.webuser_id.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "cnb.webuser_id.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "cnb.webuser_id.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "cnb.webuser_id.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "cnb.webuser_id.role",
+            99325452
+        ],
+        [
+            "cnb.employee_full_name",
+            99325487
+        ],
+        [
+            "cnb.position",
+            99325487
+        ],
+        [
+            "cnb.division_name",
+            99325487
+        ],
+        [
+            "cnb.email",
+            99325487
+        ],
+        [
+            "org_dev",
             99325489
         ],
         [
-            "desired_position",
+            "first_work_day",
             99325489
         ],
         [
-            "add_recommendation_3",
+            "date",
             99325489
         ],
         [
-            "add_recommendation_2",
+            "type_id",
             99325489
         ],
         [
-            "resigning_empl_full_name_strng",
+            "logs.id",
+            99325502
+        ],
+        [
+            "last_user.id",
+            99325452
+        ],
+        [
+            "last_user.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "last_user.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "last_user.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "last_user.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "last_user.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "last_user.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "last_user.role",
+            99325452
+        ],
+        [
+            "prev_status.id",
+            99325498
+        ],
+        [
+            "prev_status.status",
+            99325498
+        ],
+        [
+            "offer_bonus_amount",
             99325489
+        ],
+        [
+            "current_bonus_amount",
+            99325489
+        ],
+        [
+            "reason_contract",
+            99325489
+        ],
+        [
+            "contract_period",
+            99325489
+        ],
+        [
+            "id_position.id",
+            99325499
         ],
         [
             "status.id",
@@ -28314,69 +26236,209 @@ let exampleForm = {
         [
             "status.status",
             99325498
+        ],
+        [
+            "number",
+            99325489
+        ],
+        [
+            "company_name",
+            99325489
+        ],
+        [
+            "org_structure.id",
+            99325488
+        ],
+        [
+            "resigning_empl_full_name.id",
+            99325487
+        ],
+        [
+            "offer_position",
+            99325489
+        ],
+        [
+            "cr",
+            99325489
+        ],
+        [
+            "offer_salary_bonus",
+            99325489
+        ],
+        [
+            "current_salary_bonus",
+            99325489
+        ],
+        [
+            "offer_count_empl_direct",
+            99325489
+        ],
+        [
+            "count_empl_direct",
+            99325489
+        ],
+        [
+            "current_position",
+            99325489
+        ],
+        [
+            "analytics_ops.id",
+            99325500
+        ],
+        [
+            "analytics_ops.name",
+            99325500
+        ],
+        [
+            "name_position",
+            99325489
+        ],
+        [
+            "cost_center",
+            99325489
+        ],
+        [
+            "vacancy_id",
+            99325489
+        ],
+        [
+            "assessment_type.id",
+            99325507
+        ],
+        [
+            "assessment_type.name",
+            99325507
+        ],
+        [
+            "probation",
+            99325489
+        ],
+        [
+            "employment_type.id",
+            99325497
+        ],
+        [
+            "employment_type.employment_type",
+            99325497
+        ],
+        [
+            "contract_type.id",
+            99325496
+        ],
+        [
+            "contract_type.contract_type",
+            99325496
+        ],
+        [
+            "direct_full_name.id",
+            99325487
+        ],
+        [
+            "direct_full_name.employee_full_name",
+            99325487
+        ],
+        [
+            "direct_full_name.webuser_id.id",
+            99325452
+        ],
+        [
+            "direct_full_name.webuser_id.whom_delegate_ids.id",
+            99325452
+        ],
+        [
+            "direct_full_name.webuser_id.whom_delegate_ids.firstName",
+            99325452
+        ],
+        [
+            "direct_full_name.webuser_id.whom_delegate_ids.lastName",
+            99325452
+        ],
+        [
+            "direct_full_name.webuser_id.who_delegated_ids.id",
+            99325452
+        ],
+        [
+            "direct_full_name.webuser_id.who_delegated_ids.firstName",
+            99325452
+        ],
+        [
+            "direct_full_name.webuser_id.who_delegated_ids.lastName",
+            99325452
+        ],
+        [
+            "direct_full_name.webuser_id.role",
+            99325452
+        ],
+        [
+            "direct_full_name.division_name",
+            99325487
+        ],
+        [
+            "direct_full_name.position",
+            99325487
+        ],
+        [
+            "direct_full_name.email",
+            99325487
+        ],
+        [
+            "division.id",
+            99325488
+        ],
+        [
+            "division.division_name",
+            99325488
+        ],
+        [
+            "position",
+            99325489
+        ],
+        [
+            "candidate_full_name",
+            99325489
+        ],
+        [
+            "country_city",
+            99325489
+        ],
+        [
+            "company.id",
+            99325495
+        ],
+        [
+            "company.company",
+            99325495
+        ],
+        [
+            "reason_vacancy.id",
+            99325494
+        ],
+        [
+            "reason_vacancy.reason",
+            99325494
+        ],
+        [
+            "ceo_approval",
+            99325489
+        ],
+        [
+            "resigning_empl_full_name_strng",
+            99325489
+        ],
+        [
+            "ceo_checkbox",
+            99325489
         ]
     ],
     "writeFields": [
-        "analytics_ops",
-        "assessment_type",
-        "candidate_full_name",
-        "company",
-        "contract_type",
-        "cost_center",
-        "count_empl_direct",
-        "country_city",
-        "cr",
-        "current_position",
-        "current_salary_bonus",
-        "direct_full_name",
-        "division",
-        "employment_type",
         "id",
-        "name_position",
-        "offer_count_empl_direct",
-        "offer_position",
-        "offer_salary_bonus",
-        "position",
-        "probation",
-        "reason_vacancy",
-        "resigning_empl_full_name",
-        "org_structure",
-        "company_name",
-        "number",
-        "id_position",
-        "offer_bonus_amount",
-        "current_bonus_amount",
-        "contract_period",
-        "reason_contract",
-        "date",
-        "up_manager",
-        "first_work_day",
-        "budget_holder",
-        "manager",
-        "cnb",
-        "org_dev",
-        "hr_bp",
-        "vacancy_id",
-        "user_creator",
-        "offer_bonus",
-        "current_bonus",
-        "date_text",
-        "last_change_date",
-        "prev_resigning_empl_full_name",
-        "resume_file",
-        "resume_link",
-        "candidate_motivation",
-        "add_benefits",
-        "risks",
-        "process_participants",
-        "add_hr_dir",
-        "hr_dep",
-        "desired_bonus",
-        "budget_date",
-        "desired_salary",
-        "desired_bonus_amount",
-        "initial_step",
-        "org_structure_text",
+        "add_recommendation_3",
+        "add_recommendation_2",
+        "cr_desired",
+        "cr_current",
+        "desired_count_empl_direct",
+        "desired_position",
+        "hrd",
         "feedback_3",
         "feedback_2",
         "feedback_1",
@@ -28389,14 +26451,68 @@ let exampleForm = {
         "full_name_recommender_3",
         "full_name_recommender_2",
         "full_name_recommender_1",
-        "hrd",
-        "cr_desired",
-        "cr_current",
-        "desired_count_empl_direct",
-        "desired_position",
-        "add_recommendation_3",
-        "add_recommendation_2",
-        "resigning_empl_full_name_strng"
+        "resume_file",
+        "resume_link",
+        "candidate_motivation",
+        "add_benefits",
+        "risks",
+        "process_participants",
+        "add_hr_dir",
+        "hr_dep",
+        "desired_bonus",
+        "budget_date",
+        "desired_salary",
+        "desired_bonus_amount",
+        "prev_resigning_empl_full_name",
+        "last_change_date",
+        "date_text",
+        "org_structure_text",
+        "initial_step",
+        "offer_bonus",
+        "current_bonus",
+        "user_creator",
+        "budget_holder",
+        "up_manager",
+        "manager",
+        "hr_bp",
+        "cnb",
+        "org_dev",
+        "first_work_day",
+        "date",
+        "offer_bonus_amount",
+        "current_bonus_amount",
+        "reason_contract",
+        "contract_period",
+        "id_position",
+        "number",
+        "company_name",
+        "org_structure",
+        "resigning_empl_full_name",
+        "offer_position",
+        "cr",
+        "offer_salary_bonus",
+        "current_salary_bonus",
+        "offer_count_empl_direct",
+        "count_empl_direct",
+        "current_position",
+        "analytics_ops",
+        "name_position",
+        "cost_center",
+        "vacancy_id",
+        "assessment_type",
+        "probation",
+        "employment_type",
+        "contract_type",
+        "direct_full_name",
+        "division",
+        "position",
+        "candidate_full_name",
+        "country_city",
+        "company",
+        "reason_vacancy",
+        "ceo_approval",
+        "resigning_empl_full_name_strng",
+        "ceo_checkbox"
     ],
     "structures": {
         "99325452": {
@@ -29185,398 +27301,6 @@ let exampleForm = {
     "writeResponse": null,
     "fileds": [
         {
-            "sysName": "analytics_ops",
-            "name": "Analytics for OPS",
-            "dataType": "link",
-            "id": "44501715676533202",
-            "link": "analytics_for_ops",
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 22,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "assessment_type",
-            "name": "Форма оценки",
-            "dataType": "link",
-            "id": "53871715676486789",
-            "link": "perf_review",
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 19,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "candidate_full_name",
-            "name": "ФИО кандидата",
-            "dataType": "string",
-            "id": "29091715676143182",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 11,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "company",
-            "name": "Юр. лицо",
-            "dataType": "link",
-            "id": "25501715676080911",
-            "link": "company",
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 9,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "contract_type",
-            "name": "Тип договора",
-            "dataType": "link",
-            "id": "94821715676273371",
-            "link": "contract_type",
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 14,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "cost_center",
-            "name": "Кост-центр",
-            "dataType": "string",
-            "id": "68901715676530998",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 20,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "count_empl_direct",
-            "name": "Текущее количество подчиненных",
-            "dataType": "string",
-            "id": "25431715676819516",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 27,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "country_city",
-            "name": "Страна, город",
-            "dataType": "string",
-            "id": "83591715676107813",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 10,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "cr",
-            "name": "CR Lamoda(только для TECH)",
-            "dataType": "string",
-            "id": "82611715677377022",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 42,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "current_position",
-            "name": "Текущая должность",
-            "dataType": "string",
-            "id": "16321715676814870",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 24,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "current_salary_bonus",
-            "name": "Текущий ежемесячный оклад",
-            "dataType": "string",
-            "id": "62881715676822167",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 30,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "direct_full_name",
-            "name": "ФИО руководителя",
-            "dataType": "link",
-            "id": "64721715676272622",
-            "link": "employees",
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 13,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "division",
-            "name": "Подразделение",
-            "dataType": "link",
-            "id": "40821715676271880",
-            "link": "structure",
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 6,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "employment_type",
-            "name": "Тип занятости",
-            "dataType": "link",
-            "id": "24381715676484262",
-            "link": "employment_type",
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 17,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
             "sysName": "id",
             "name": "id",
             "dataType": "id",
@@ -29605,262 +27329,10 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "name_position",
-            "name": "Name position",
-            "dataType": "string",
-            "id": "83421715676531827",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 21,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "offer_count_empl_direct",
-            "name": "Количество подчиненных в Lamoda",
-            "dataType": "string",
-            "id": "36501715676821342",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 29,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "offer_position",
-            "name": "Должность в Lamoda",
-            "dataType": "string",
-            "id": "56891715677420164",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 26,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "offer_salary_bonus",
-            "name": "Предложение Lamoda по окладу",
-            "dataType": "string",
-            "id": "15821715677132698",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 32,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "position",
-            "name": "Должность",
-            "dataType": "string",
-            "id": "68721715676198986",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 12,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "probation",
-            "name": "Испытательный период",
-            "dataType": "string",
-            "id": "77291715676484957",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 18,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "reason_vacancy",
-            "name": "Причина появления вакансии",
-            "dataType": "link",
-            "id": "13591715675968084",
-            "link": "reason_of_vacancy",
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "resigning_empl_full_name",
-            "name": "ФИО заменяемого сотрудника",
-            "dataType": "link",
-            "id": "72911715692442960",
-            "link": "employees",
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 4,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "org_structure",
-            "name": "Организационная структура",
-            "dataType": "link",
-            "id": "19641716190989070",
-            "link": "structure",
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 7,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "company_name",
-            "name": "Название текущей компании",
-            "dataType": "string",
-            "id": "84321716235575717",
+            "sysName": "add_recommendation_3",
+            "name": "Добавить рекомендацию 3",
+            "dataType": "json",
+            "id": "65201723223302028",
             "link": "",
             "group": "1717136273468",
             "tags": "",
@@ -29868,7 +27340,129 @@ let exampleForm = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 23,
+            "order": 47,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "checkboxes",
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false",
+                "multipleChoice": [
+                    {
+                        "value": "add",
+                        "label": ""
+                    }
+                ]
+            },
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": true,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "add_recommendation_2",
+            "name": "Добавить рекомендацию 2",
+            "dataType": "json",
+            "id": "24611723223280015",
+            "link": "",
+            "group": "1717136273468",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 46,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "checkboxes",
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false",
+                "multipleChoice": [
+                    {
+                        "value": "add",
+                        "label": ""
+                    }
+                ]
+            },
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": true,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "cr_desired",
+            "name": "СR ожидание (только для TECH)",
+            "dataType": "string",
+            "id": "85371723034344516",
+            "link": "",
+            "group": "1717136273468",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 41,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -29885,24 +27479,24 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "number",
-            "name": "Номер заявки",
+            "sysName": "cr_current",
+            "name": "CR текущий (только для TECH)",
             "dataType": "string",
-            "id": "95231716236207376",
+            "id": "83941723034298011",
             "link": "",
-            "group": "0",
-            "tags": null,
+            "group": "1717136273468",
+            "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 6,
+            "order": 40,
             "linkIndexFieldSysName": [],
-            "defaultValue": null,
+            "defaultValue": "",
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": null,
+            "formatOptions": {},
             "groupName": null,
             "array": false,
             "typeVariable": {},
@@ -29913,12 +27507,68 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "id_position",
-            "name": "Код позиции (из УШР)",
-            "dataType": "link",
-            "id": "15801717092329369",
-            "link": "position",
+            "sysName": "desired_count_empl_direct",
+            "name": "Ожидаемое количество подчиненных",
+            "dataType": "string",
+            "id": "33431723034099026",
+            "link": "",
             "group": "1717136273468",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 28,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "desired_position",
+            "name": "Ожидаемая должность",
+            "dataType": "string",
+            "id": "56861723034037117",
+            "link": "",
+            "group": "1717136273468",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 25,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "hrd",
+            "name": "HR Director",
+            "dataType": "link",
+            "id": "22411723027680985",
+            "link": "employees",
+            "group": "1722956166046",
             "tags": "",
             "indexing": false,
             "ordering": false,
@@ -29941,18 +27591,18 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "offer_bonus_amount",
-            "name": "Предложение Lamoda по размеру премии",
+            "sysName": "feedback_3",
+            "name": "Обратная связь (3)",
             "dataType": "string",
-            "id": "14291717102608159",
+            "id": "33591723026902223",
             "link": "",
-            "group": "1717136273468",
+            "group": "1723026548996",
             "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 38,
+            "order": 11,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -29969,18 +27619,18 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "current_bonus_amount",
-            "name": "Текущий размер премии",
+            "sysName": "feedback_2",
+            "name": "Обратная связь (2)",
             "dataType": "string",
-            "id": "63161717102594756",
+            "id": "34531723026899674",
             "link": "",
-            "group": "1717136273468",
+            "group": "1723026548996",
             "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 36,
+            "order": 10,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -29997,490 +27647,12 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "contract_period",
-            "name": "Укажите период",
+            "sysName": "feedback_1",
+            "name": "Обратная связь (1)",
             "dataType": "string",
-            "id": "23561717102136707",
+            "id": "62281723026898586",
             "link": "",
-            "group": "1717136273468",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 15,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "reason_contract",
-            "name": "Обоснование Срочного ТД",
-            "dataType": "string",
-            "id": "38571717102233946",
-            "link": "",
-            "group": "1717136273468",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 16,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "date",
-            "name": "Дата создания заявки",
-            "dataType": "date",
-            "id": "91361717138808760",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 8,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "ru",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD.MM.Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "up_manager",
-            "name": "Верхнеуровневый руководитель (руководитель нанимающего менеджера) для Non-TECH / Директор департамента для TECH",
-            "dataType": "link",
-            "id": "66111717611097029",
-            "link": "employees",
-            "group": "1722956166046",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 5,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "first_work_day",
-            "name": "Предварительная дата выхода сотрудника",
-            "dataType": "date",
-            "id": "84761717610566294",
-            "link": "",
-            "group": "1717136273468",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 0,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "ru",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD.MM.Y",
-                "timeFormat": " ",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "budget_holder",
-            "name": "Держатель бюджета",
-            "dataType": "link",
-            "id": "45251717611164564",
-            "link": "employees",
-            "group": "1722956166046",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 3,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "manager",
-            "name": "Руководитель (непосредственно нанимающий менеджер) для Non-TECH / Руководитель отдела для TECH",
-            "dataType": "link",
-            "id": "93801717611067099",
-            "link": "employees",
-            "group": "1722956166046",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 4,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "cnb",
-            "name": "C&B",
-            "dataType": "link",
-            "id": "79741717610837855",
-            "link": "employees",
-            "group": "1722956166046",
-            "tags": "",
-            "indexing": true,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 0,
-            "linkIndexFieldSysName": [
-                "webuser_id"
-            ],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": true
-        },
-        {
-            "sysName": "org_dev",
-            "name": "Орг. дев",
-            "dataType": "boolean",
-            "id": "28311717610790667",
-            "link": "",
-            "group": "1717136273468",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 43,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "Да",
-                    "Нет"
-                ],
-                "hideStandardBooleanIcons": false,
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD/MM/Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "hr_bp",
-            "name": "HR BP",
-            "dataType": "link",
-            "id": "15621717611052206",
-            "link": "employees",
-            "group": "1722956166046",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "vacancy_id",
-            "name": "ID вакансии (из Optimacros)",
-            "dataType": "string",
-            "id": "78501715676487437",
-            "link": null,
-            "group": "1717136273468",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 3,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "user_creator",
-            "name": "Кто создал заявку",
-            "dataType": "link",
-            "id": "10641717669243064",
-            "link": "employees",
-            "group": "0",
-            "tags": null,
-            "indexing": true,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 4,
-            "linkIndexFieldSysName": [
-                "webuser_id"
-            ],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": true
-        },
-        {
-            "sysName": "offer_bonus",
-            "name": "Предложение Lamoda по периодичности выплаты премии",
-            "dataType": "link",
-            "id": "86661718369709109",
-            "link": "bonus",
-            "group": "1717136273468",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 35,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "current_bonus",
-            "name": "Текущая периодичность выплаты премии",
-            "dataType": "link",
-            "id": "41941718369676191",
-            "link": "bonus",
-            "group": "1717136273468",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 33,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "date_text",
-            "name": "Дата",
-            "dataType": "string",
-            "id": "44611718913748411",
-            "link": "",
-            "group": "0",
+            "group": "1723026548996",
             "tags": "",
             "indexing": false,
             "ordering": false,
@@ -30503,51 +27675,24 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "last_change_date",
-            "name": "Дата последнего изменения",
-            "dataType": "date",
-            "id": "12411720039745113",
+            "sysName": "interacted_as_3",
+            "name": "Взаимодействовали как (3)",
+            "dataType": "string",
+            "id": "38371723026792952",
             "link": "",
-            "group": "0",
-            "tags": null,
+            "group": "1723026548996",
+            "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 13,
+            "order": 8,
             "linkIndexFieldSysName": [],
-            "defaultValue": null,
+            "defaultValue": "",
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "ru",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD.MM.YYYY",
-                "timeFormat": " HH:mm",
-                "isUTC": "false"
-            },
+            "formatOptions": {},
             "groupName": null,
             "array": false,
             "typeVariable": {},
@@ -30558,24 +27703,220 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "prev_resigning_empl_full_name",
-            "name": "",
+            "sysName": "interacted_as_2",
+            "name": "Взаимодействовали как (2)",
             "dataType": "string",
-            "id": "34051720080635679",
-            "link": null,
-            "group": "1720080628323",
-            "tags": null,
+            "id": "92571723026791805",
+            "link": "",
+            "group": "1723026548996",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 7,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "interacted_as_1",
+            "name": "Взаимодействовали как (1)",
+            "dataType": "string",
+            "id": "91581723026791139",
+            "link": "",
+            "group": "1723026548996",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 6,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "period_and_company_3",
+            "name": "Период совместной работы + название компании (3)",
+            "dataType": "string",
+            "id": "96891723026678461",
+            "link": "",
+            "group": "1723026548996",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 5,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "period_and_company_2",
+            "name": "Период совместной работы + название компании (2)",
+            "dataType": "string",
+            "id": "12301723026677690",
+            "link": "",
+            "group": "1723026548996",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "period_and_company_1",
+            "name": "Период совместной работы + название компании (1)",
+            "dataType": "string",
+            "id": "32261723026675847",
+            "link": "",
+            "group": "1723026548996",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "full_name_recommender_3",
+            "name": "ФИО и должность рекомендателя 3",
+            "dataType": "string",
+            "id": "61711723026650455",
+            "link": "",
+            "group": "1723026548996",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "full_name_recommender_2",
+            "name": "ФИО и должность рекомендателя 2",
+            "dataType": "string",
+            "id": "65801723026642796",
+            "link": "",
+            "group": "1723026548996",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "full_name_recommender_1",
+            "name": "ФИО и должность рекомендателя 1",
+            "dataType": "string",
+            "id": "98861723026560889",
+            "link": "",
+            "group": "1723026548996",
+            "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
             "order": 0,
             "linkIndexFieldSysName": [],
-            "defaultValue": null,
+            "defaultValue": "",
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": null,
+            "formatOptions": {},
             "groupName": null,
             "array": false,
             "typeVariable": {},
@@ -31004,10 +28345,10 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "initial_step",
+            "sysName": "prev_resigning_empl_full_name",
             "name": "",
             "dataType": "string",
-            "id": "61681718370382220",
+            "id": "34051720080635679",
             "link": null,
             "group": "1720080628323",
             "tags": null,
@@ -31015,13 +28356,96 @@ let exampleForm = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 1,
+            "order": 0,
             "linkIndexFieldSysName": [],
             "defaultValue": null,
             "constraints": null,
             "synthetic": false,
             "format": null,
             "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "last_change_date",
+            "name": "Дата последнего изменения",
+            "dataType": "date",
+            "id": "12411720039745113",
+            "link": "",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 13,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "ru",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD.MM.YYYY",
+                "timeFormat": " HH:mm",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "date_text",
+            "name": "Дата",
+            "dataType": "string",
+            "id": "44611718913748411",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 9,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
             "groupName": null,
             "array": false,
             "typeVariable": {},
@@ -31060,24 +28484,24 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "feedback_3",
-            "name": "Обратная связь (3)",
+            "sysName": "initial_step",
+            "name": "",
             "dataType": "string",
-            "id": "33591723026902223",
-            "link": "",
-            "group": "1723026548996",
-            "tags": "",
+            "id": "61681718370382220",
+            "link": null,
+            "group": "1720080628323",
+            "tags": null,
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 11,
+            "order": 1,
             "linkIndexFieldSysName": [],
-            "defaultValue": "",
+            "defaultValue": null,
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": {},
+            "formatOptions": null,
             "groupName": null,
             "array": false,
             "typeVariable": {},
@@ -31088,18 +28512,18 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "feedback_2",
-            "name": "Обратная связь (2)",
-            "dataType": "string",
-            "id": "34531723026899674",
-            "link": "",
-            "group": "1723026548996",
+            "sysName": "offer_bonus",
+            "name": "Предложение Lamoda по периодичности выплаты премии",
+            "dataType": "link",
+            "id": "86661718369709109",
+            "link": "bonus",
+            "group": "1717136273468",
             "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 10,
+            "order": 35,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -31110,24 +28534,24 @@ let exampleForm = {
             "array": false,
             "typeVariable": {},
             "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
             "arrayLink": false,
             "indexExists": false
         },
         {
-            "sysName": "feedback_1",
-            "name": "Обратная связь (1)",
-            "dataType": "string",
-            "id": "62281723026898586",
-            "link": "",
-            "group": "1723026548996",
+            "sysName": "current_bonus",
+            "name": "Текущая периодичность выплаты премии",
+            "dataType": "link",
+            "id": "41941718369676191",
+            "link": "bonus",
+            "group": "1717136273468",
             "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 9,
+            "order": 33,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -31138,158 +28562,48 @@ let exampleForm = {
             "array": false,
             "typeVariable": {},
             "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
             "arrayLink": false,
             "indexExists": false
         },
         {
-            "sysName": "interacted_as_3",
-            "name": "Взаимодействовали как (3)",
-            "dataType": "string",
-            "id": "38371723026792952",
-            "link": "",
-            "group": "1723026548996",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 8,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "interacted_as_2",
-            "name": "Взаимодействовали как (2)",
-            "dataType": "string",
-            "id": "92571723026791805",
-            "link": "",
-            "group": "1723026548996",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 7,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "interacted_as_1",
-            "name": "Взаимодействовали как (1)",
-            "dataType": "string",
-            "id": "91581723026791139",
-            "link": "",
-            "group": "1723026548996",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 6,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "period_and_company_3",
-            "name": "Период совместной работы + название компании (3)",
-            "dataType": "string",
-            "id": "96891723026678461",
-            "link": "",
-            "group": "1723026548996",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 5,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "period_and_company_2",
-            "name": "Период совместной работы + название компании (2)",
-            "dataType": "string",
-            "id": "12301723026677690",
-            "link": "",
-            "group": "1723026548996",
-            "tags": "",
-            "indexing": false,
+            "sysName": "user_creator",
+            "name": "Кто создал заявку",
+            "dataType": "link",
+            "id": "10641717669243064",
+            "link": "employees",
+            "group": "0",
+            "tags": null,
+            "indexing": true,
             "ordering": false,
             "description": null,
             "weight": null,
             "order": 4,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
+            "linkIndexFieldSysName": [
+                "webuser_id"
+            ],
+            "defaultValue": null,
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": {},
+            "formatOptions": null,
             "groupName": null,
             "array": false,
             "typeVariable": {},
             "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
             "arrayLink": false,
-            "indexExists": false
+            "indexExists": true
         },
         {
-            "sysName": "period_and_company_1",
-            "name": "Период совместной работы + название компании (1)",
-            "dataType": "string",
-            "id": "32261723026675847",
-            "link": "",
-            "group": "1723026548996",
+            "sysName": "budget_holder",
+            "name": "Держатель бюджета",
+            "dataType": "link",
+            "id": "45251717611164564",
+            "link": "employees",
+            "group": "1722956166046",
             "tags": "",
             "indexing": false,
             "ordering": false,
@@ -31306,24 +28620,24 @@ let exampleForm = {
             "array": false,
             "typeVariable": {},
             "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
             "arrayLink": false,
             "indexExists": false
         },
         {
-            "sysName": "full_name_recommender_3",
-            "name": "ФИО и должность рекомендателя 3",
-            "dataType": "string",
-            "id": "61711723026650455",
-            "link": "",
-            "group": "1723026548996",
+            "sysName": "up_manager",
+            "name": "Верхнеуровневый руководитель (руководитель нанимающего менеджера) для Non-TECH / Директор департамента для TECH",
+            "dataType": "link",
+            "id": "66111717611097029",
+            "link": "employees",
+            "group": "1722956166046",
             "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 2,
+            "order": 5,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -31334,18 +28648,46 @@ let exampleForm = {
             "array": false,
             "typeVariable": {},
             "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
             "arrayLink": false,
             "indexExists": false
         },
         {
-            "sysName": "full_name_recommender_2",
-            "name": "ФИО и должность рекомендателя 2",
-            "dataType": "string",
-            "id": "65801723026642796",
-            "link": "",
-            "group": "1723026548996",
+            "sysName": "manager",
+            "name": "Руководитель (непосредственно нанимающий менеджер) для Non-TECH / Руководитель отдела для TECH",
+            "dataType": "link",
+            "id": "93801717611067099",
+            "link": "employees",
+            "group": "1722956166046",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "hr_bp",
+            "name": "HR BP",
+            "dataType": "link",
+            "id": "15621717611052206",
+            "link": "employees",
+            "group": "1722956166046",
             "tags": "",
             "indexing": false,
             "ordering": false,
@@ -31362,24 +28704,220 @@ let exampleForm = {
             "array": false,
             "typeVariable": {},
             "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "cnb",
+            "name": "C&B",
+            "dataType": "link",
+            "id": "79741717610837855",
+            "link": "employees",
+            "group": "1722956166046",
+            "tags": "",
+            "indexing": true,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [
+                "webuser_id"
+            ],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": true
+        },
+        {
+            "sysName": "org_dev",
+            "name": "Орг. дев",
+            "dataType": "boolean",
+            "id": "28311717610790667",
+            "link": "",
+            "group": "1717136273468",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 43,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "Да",
+                    "Нет"
+                ],
+                "hideStandardBooleanIcons": false,
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "indexExists": false
         },
         {
-            "sysName": "full_name_recommender_1",
-            "name": "ФИО и должность рекомендателя 1",
-            "dataType": "string",
-            "id": "98861723026560889",
+            "sysName": "first_work_day",
+            "name": "Предварительная дата выхода сотрудника",
+            "dataType": "date",
+            "id": "84761717610566294",
             "link": "",
-            "group": "1723026548996",
+            "group": "1717136273468",
             "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
             "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "ru",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD.MM.Y",
+                "timeFormat": " ",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "date",
+            "name": "Дата создания заявки",
+            "dataType": "date",
+            "id": "91361717138808760",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 8,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "ru",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD.MM.Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "offer_bonus_amount",
+            "name": "Предложение Lamoda по размеру премии",
+            "dataType": "string",
+            "id": "14291717102608159",
+            "link": "",
+            "group": "1717136273468",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 38,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -31396,12 +28934,96 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "hrd",
-            "name": "HR Director",
+            "sysName": "current_bonus_amount",
+            "name": "Текущий размер премии",
+            "dataType": "string",
+            "id": "63161717102594756",
+            "link": "",
+            "group": "1717136273468",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 36,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "reason_contract",
+            "name": "Обоснование Срочного ТД",
+            "dataType": "string",
+            "id": "38571717102233946",
+            "link": "",
+            "group": "1717136273468",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 16,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "contract_period",
+            "name": "Укажите период",
+            "dataType": "string",
+            "id": "23561717102136707",
+            "link": "",
+            "group": "1717136273468",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 15,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "id_position",
+            "name": "Код позиции (из УШР)",
             "dataType": "link",
-            "id": "22411723027680985",
-            "link": "employees",
-            "group": "1722956166046",
+            "id": "15801717092329369",
+            "link": "position",
+            "group": "1717136273468",
             "tags": "",
             "indexing": false,
             "ordering": false,
@@ -31424,10 +29046,38 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "cr_desired",
-            "name": "СR ожидание (только для TECH)",
+            "sysName": "number",
+            "name": "Номер заявки",
             "dataType": "string",
-            "id": "85371723034344516",
+            "id": "95231716236207376",
+            "link": "",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 6,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "company_name",
+            "name": "Название текущей компании",
+            "dataType": "string",
+            "id": "84321716235575717",
             "link": "",
             "group": "1717136273468",
             "tags": "",
@@ -31435,7 +29085,7 @@ let exampleForm = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 41,
+            "order": 23,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -31452,24 +29102,80 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "cr_current",
-            "name": "CR текущий (только для TECH)",
-            "dataType": "string",
-            "id": "83941723034298011",
-            "link": "",
+            "sysName": "org_structure",
+            "name": "Организационная структура",
+            "dataType": "link",
+            "id": "19641716190989070",
+            "link": "structure",
             "group": "1717136273468",
-            "tags": "",
+            "tags": null,
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 40,
+            "order": 7,
             "linkIndexFieldSysName": [],
-            "defaultValue": "",
+            "defaultValue": null,
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": {},
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "resigning_empl_full_name",
+            "name": "ФИО заменяемого сотрудника",
+            "dataType": "link",
+            "id": "72911715692442960",
+            "link": "employees",
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "offer_position",
+            "name": "Должность в Lamoda",
+            "dataType": "string",
+            "id": "56891715677420164",
+            "link": null,
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 26,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
             "groupName": null,
             "array": false,
             "typeVariable": {},
@@ -31480,24 +29186,24 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "desired_count_empl_direct",
-            "name": "Ожидаемое количество подчиненных",
+            "sysName": "cr",
+            "name": "CR Lamoda(только для TECH)",
             "dataType": "string",
-            "id": "33431723034099026",
-            "link": "",
+            "id": "82611715677377022",
+            "link": null,
             "group": "1717136273468",
-            "tags": "",
+            "tags": null,
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 28,
+            "order": 42,
             "linkIndexFieldSysName": [],
-            "defaultValue": "",
+            "defaultValue": null,
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": {},
+            "formatOptions": null,
             "groupName": null,
             "array": false,
             "typeVariable": {},
@@ -31508,24 +29214,24 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "desired_position",
-            "name": "Ожидаемая должность",
+            "sysName": "offer_salary_bonus",
+            "name": "Предложение Lamoda по окладу",
             "dataType": "string",
-            "id": "56861723034037117",
-            "link": "",
+            "id": "15821715677132698",
+            "link": null,
             "group": "1717136273468",
-            "tags": "",
+            "tags": null,
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 25,
+            "order": 32,
             "linkIndexFieldSysName": [],
-            "defaultValue": "",
+            "defaultValue": null,
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": {},
+            "formatOptions": null,
             "groupName": null,
             "array": false,
             "typeVariable": {},
@@ -31536,122 +29242,560 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "add_recommendation_3",
-            "name": "Добавить рекомендацию 3",
-            "dataType": "json",
-            "id": "65201723223302028",
-            "link": "",
+            "sysName": "current_salary_bonus",
+            "name": "Текущий ежемесячный оклад",
+            "dataType": "string",
+            "id": "62881715676822167",
+            "link": null,
             "group": "1717136273468",
-            "tags": "",
+            "tags": null,
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 47,
+            "order": 30,
             "linkIndexFieldSysName": [],
-            "defaultValue": "",
+            "defaultValue": null,
             "constraints": null,
             "synthetic": false,
-            "format": "checkboxes",
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD/MM/Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false",
-                "multipleChoice": [
-                    {
-                        "value": "add",
-                        "label": ""
-                    }
-                ]
-            },
+            "format": null,
+            "formatOptions": null,
             "groupName": null,
             "array": false,
             "typeVariable": {},
-            "json": true,
+            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "indexExists": false
         },
         {
-            "sysName": "add_recommendation_2",
-            "name": "Добавить рекомендацию 2",
-            "dataType": "json",
-            "id": "24611723223280015",
-            "link": "",
+            "sysName": "offer_count_empl_direct",
+            "name": "Количество подчиненных в Lamoda",
+            "dataType": "string",
+            "id": "36501715676821342",
+            "link": null,
             "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 29,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "count_empl_direct",
+            "name": "Текущее количество подчиненных",
+            "dataType": "string",
+            "id": "25431715676819516",
+            "link": null,
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 27,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "current_position",
+            "name": "Текущая должность",
+            "dataType": "string",
+            "id": "16321715676814870",
+            "link": null,
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 24,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "analytics_ops",
+            "name": "Analytics for OPS",
+            "dataType": "link",
+            "id": "44501715676533202",
+            "link": "analytics_for_ops",
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 22,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "name_position",
+            "name": "Name position",
+            "dataType": "string",
+            "id": "83421715676531827",
+            "link": null,
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 21,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "cost_center",
+            "name": "Кост-центр",
+            "dataType": "string",
+            "id": "68901715676530998",
+            "link": null,
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 20,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "vacancy_id",
+            "name": "ID вакансии (из Optimacros)",
+            "dataType": "string",
+            "id": "78501715676487437",
+            "link": null,
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "assessment_type",
+            "name": "Форма оценки",
+            "dataType": "link",
+            "id": "53871715676486789",
+            "link": "perf_review",
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 19,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "probation",
+            "name": "Испытательный период",
+            "dataType": "string",
+            "id": "77291715676484957",
+            "link": null,
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 18,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "employment_type",
+            "name": "Тип занятости",
+            "dataType": "link",
+            "id": "24381715676484262",
+            "link": "employment_type",
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 17,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "contract_type",
+            "name": "Тип договора",
+            "dataType": "link",
+            "id": "94821715676273371",
+            "link": "contract_type",
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 14,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "direct_full_name",
+            "name": "ФИО руководителя",
+            "dataType": "link",
+            "id": "64721715676272622",
+            "link": "employees",
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 13,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "division",
+            "name": "Подразделение",
+            "dataType": "link",
+            "id": "40821715676271880",
+            "link": "structure",
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 6,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "position",
+            "name": "Должность",
+            "dataType": "string",
+            "id": "68721715676198986",
+            "link": null,
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 12,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "candidate_full_name",
+            "name": "ФИО кандидата",
+            "dataType": "string",
+            "id": "29091715676143182",
+            "link": null,
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 11,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "country_city",
+            "name": "Страна, город",
+            "dataType": "string",
+            "id": "83591715676107813",
+            "link": null,
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 10,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "company",
+            "name": "Юр. лицо",
+            "dataType": "link",
+            "id": "25501715676080911",
+            "link": "company",
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 9,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "reason_vacancy",
+            "name": "Причина появления вакансии",
+            "dataType": "link",
+            "id": "13591715675968084",
+            "link": "reason_of_vacancy",
+            "group": "1717136273468",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "ceo_approval",
+            "name": "Cогласование с СЕО",
+            "dataType": "file",
+            "id": "86101724394507146",
+            "link": "",
+            "group": "1722958207971",
             "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 46,
+            "order": 6,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
             "synthetic": false,
-            "format": "checkboxes",
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD/MM/Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false",
-                "multipleChoice": [
-                    {
-                        "value": "add",
-                        "label": ""
-                    }
-                ]
-            },
+            "format": "image",
+            "formatOptions": {},
             "groupName": null,
             "array": false,
             "typeVariable": {},
-            "json": true,
+            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
@@ -31684,13 +29828,74 @@ let exampleForm = {
             "linkType": false,
             "arrayLink": false,
             "indexExists": false
+        },
+        {
+            "sysName": "ceo_checkbox",
+            "name": "Согласование CEO получено",
+            "dataType": "json",
+            "id": "54321725959729890",
+            "link": "",
+            "group": "1722958207971",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 7,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": "checkboxes",
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false",
+                "multipleChoice": [
+                    {
+                        "value": "add",
+                        "label": "Согласовано"
+                    }
+                ]
+            },
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": true,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
         }
     ],
     "quickSearch": null,
     "httpParams": null,
     "cardCustomHtml": null,
     "cardCustomLayout": null,
-    "comment": "N-3",
+    "comment": "N-2",
     "response": false
 }
 
