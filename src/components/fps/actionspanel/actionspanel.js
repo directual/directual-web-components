@@ -10,6 +10,7 @@ export default function ActionPanel(props) {
                 ${props.column && styles.column}
                 ${props.alignRight && styles.alignRight}
                 ${props.alignCenter && styles.alignCenter}
+                ${props.stretch && styles.stretch}
                 `}
             style={
                 {

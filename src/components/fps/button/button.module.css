@@ -58,6 +58,9 @@ a.button:hover:not(.disabled):not(.transparent) {
   font-weight: var(--text-font-weight);
   margin: 1px;
 }
+.button img {
+  max-height: 25px;
+}
 .button.loading {
   padding-left: 6px;
 }

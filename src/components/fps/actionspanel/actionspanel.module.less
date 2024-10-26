@@ -8,15 +8,9 @@
     }
     &.alignCenter {
         justify-content: center;
-        button, a {
-            //margin: 0 6px 6px 6px;
-        }
     }
     &.alignRight {
         justify-content: flex-end;
-        button, a {
-            //margin: 0 0 6px 6px;
-        }
     }
     &.border {
         border:solid 1px var( --form-field-border);
@@ -28,6 +22,16 @@
     }
     &.column {
         flex-direction: column;
+        button, a {
+            margin-right: 0;
+            flex-grow: 2;
+        }
+    }
+    &.stretch {
+        justify-content: stretch;
+        &> div {
+            flex-grow: 2;
+        }
         button, a {
             margin-right: 0;
             flex-grow: 2;

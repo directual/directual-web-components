@@ -7,6 +7,16 @@ import { Tooltip } from 'react-tooltip'
 
 export default function Button(props) {
     const tooltipId = "tooltip_" + Math.floor(Math.random()*1000000000)
+    const image = props.picture ? <img src={props.picture} /> : null
+    const [hover,setHover] = useState(false)
+    let colors = {}
+    if (props.borderColor) {
+        colors.borderColor = props.borderColor
+        colors.boxShadow = `0 0 0 ${hover ? '1px' : "0"} ${props.borderColor}`
+    }
+    if (props.color) {
+        colors.backgroundColor = props.color
+    }
 
     return (
         <div className={styles.buttonWrapper}>
@@ -19,8 +29,11 @@ export default function Button(props) {
                     }}
                     style={{
                         height: props.height || 48,
-                        width: props.width || "auto"
+                        width: props.width || "auto",
+                        ...colors
                     }}
+                    onMouseEnter={()=>setHover(true)}
+                    onMouseLeave={()=>setHover(false)}
                     className={`${styles.button} FPS_BUTTON
                         ${props.small && styles.small}
                         ${props.active && styles.active}
@@ -41,7 +54,7 @@ export default function Button(props) {
                     disabled={(props.disabled || props.loading) && 'disabled'}
                 >
                     {props.loading && <Loader small accent={props.accent}></Loader>}
-                    {props.children || props.label}</button>
+                    {image || props.children || props.label}</button>
                 :
                 <a className={`${styles.button} FPS_BUTTON
                     ${props.icon && `${styles.icon} icon icon-${props.icon}`}
@@ -57,13 +70,16 @@ export default function Button(props) {
                     ${props.inverseColor && `${styles.inverseColor}`}
                     ${props.transparent && `${styles.transparent}`}
                     `}
+                    onMouseEnter={()=>setHover(true)}
+                    onMouseLeave={()=>setHover(false)}
                     style={{
-                        height: props.height || 48
+                        height: props.height || 48,
+                        ...colors
                     }}
                     href={!props.disabled && props.link}
                     target={props.newWindow && '_blank'}
                 >
-                    {props.children || props.label}
+                    {image || props.children || props.label}
                 </a>
             }
             {props.tooltip && <span 

@@ -25,20 +25,35 @@ export default function FpsForm2Action(props) {
         setPerformed(true)
     }
 
-    if (!action) return <div>No action <code>{_.get(actionFormat,"id")}</code></div>
+    if (!action) return <div>No action <code>{_.get(actionFormat, "id")}</code></div>
     if (action.autoAction) return <React.Fragment></React.Fragment>
     if (actionFormat._conditionalView &&
         !checkHidden(actionFormat) &&
         actionFormat._action_conditional_disable_or_hide !== "disable"
     ) return <React.Fragment></React.Fragment>
 
-    if (performed && actionFormat._action_oneTime) return <Hint margin={{top:0, bottom:0}}>
+    if (performed && actionFormat._action_oneTime) return <Hint margin={{ top: 0, bottom: 0 }}>
         {actionFormat._action_oneTime_message && <InnerHTML allowRerender={true} html={template(actionFormat._action_oneTime_message)} />}
     </Hint>
+
+    console.log(action)
+
+    const buttonPicture = actionFormat._action_label_picture == "picture" ?
+        actionFormat._action_label_picture_source == 'from_tempalte' ?
+            actionFormat._action_picure_templ ? template(actionFormat._action_picure_templ) : null
+            : actionFormat._action_picure : null
+    const externamLink = action.actionType == 'link' ? 
+        template(action._href)
+        : null
 
     return <Button
         danger={actionFormat._action_button_type == "danger"}
         accent={actionFormat._action_button_type == "accent"}
+        picture={buttonPicture}
+        link={externamLink}
+        color={actionFormat._action_picure_color}
+        borderColor={actionFormat._action_picure_border_color}
+        newWindow={action._blank}
         tooltip={actionFormat._action_addTooltip && template(actionFormat._action_addTooltip_text)}
         disabled={actionFormat._conditionalView &&
             !checkHidden(actionFormat) &&

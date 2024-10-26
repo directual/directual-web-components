@@ -26,6 +26,17 @@
   margin-right: 0;
   flex-grow: 2;
 }
+.panel.stretch {
+  justify-content: stretch;
+}
+.panel.stretch > div {
+  flex-grow: 2;
+}
+.panel.stretch button,
+.panel.stretch a {
+  margin-right: 0;
+  flex-grow: 2;
+}
 .panel.with_title {
   padding-top: 16px;
 }
