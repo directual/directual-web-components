@@ -36,7 +36,6 @@ export default function FpsForm2Action(props) {
         {actionFormat._action_oneTime_message && <InnerHTML allowRerender={true} html={template(actionFormat._action_oneTime_message)} />}
     </Hint>
 
-    console.log(action)
 
     const buttonPicture = actionFormat._action_label_picture == "picture" ?
         actionFormat._action_label_picture_source == 'from_tempalte' ?

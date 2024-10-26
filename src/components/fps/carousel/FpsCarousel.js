@@ -11,8 +11,8 @@ export default function FpsCarousel(props) {
 
     const { data, auth, locale, handleRoute } = props
 
-    console.log("=== CAROUSEL DATA ===")
-    console.log(data)
+    // console.log("=== CAROUSEL DATA ===")
+    // console.log(data)
 
     const OPTIONS = { loop: _.get(data, "loop") == "true" }
     const HEIGHT = parseInt(_.get(data, "height"))
