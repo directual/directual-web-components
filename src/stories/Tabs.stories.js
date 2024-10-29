@@ -37,7 +37,7 @@ export const RegularTabs = {
 
 export const SimpleTabs = {
     args: {
-      fpsTabs: false,
+      fpsTabs: true,
       type: "simple",
       saveTabToURL: true, 
       tabs: exampleTabs, 
@@ -49,7 +49,7 @@ export const SimpleTabs = {
 
   export const SolidTabs = {
     args: {
-      fpsTabs: false,
+      fpsTabs: true,
       type: "solid",
       saveTabToURL: true, 
       tabs: exampleTabs, 

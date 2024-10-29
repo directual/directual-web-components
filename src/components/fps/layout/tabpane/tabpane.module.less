@@ -13,12 +13,15 @@
     }
     &.simple {
         .tabsMenu {
+            &.fpsTabs {
+                margin: 16px 0 0 20px;
+            }
             margin: 9px 0;
         }
         .tabMenuItem {
             padding: 4px 10px;
             border-radius: calc(var(--border-radius) / 2);
-            margin-right: 12px;
+            margin-right: 6px;
             font-weight: normal;
             border: solid 2px transparent;
             &.current {
@@ -35,6 +38,9 @@
 
     &.solid {
         .tabsMenu {
+            &.fpsTabs {
+                margin: 16px 28px 0 28px;
+            }
             margin: 9px 0;
             background-color: var(--table-raw-hover);
             padding: 6px;
