@@ -3,8 +3,9 @@ import styles from './tabpane.module.css'
 import Button from '../../button/button'
 import Loader from '../../loader/loader'
 import { addUrlParam, removeUrlParam, clearURL } from '../../queryParams'
+import PropTypes from 'prop-types';
 
-export default function TabsPane({ tabs, onDivRef, loading, currentTabKey, fpsTabs, fixedScroll, hideSingleTab, preloadTabs, saveTabToURL, style, onChangeTab }) {
+export default function TabsPane({ tabs, type, onDivRef, loading, currentTabKey, fpsTabs, fixedScroll, hideSingleTab, preloadTabs, saveTabToURL, style, onChangeTab }) {
 
     const [currentTab, setCurrentTab] = useState(currentTabKey || tabs[0].key || tabs[0].id || '')
 
@@ -19,12 +20,12 @@ export default function TabsPane({ tabs, onDivRef, loading, currentTabKey, fpsTa
         saveTabToURL && addUrlParam({ key: 'tab', value: tabClicked })
     }
 
-    useEffect(()=> {currentTabKey && currentTabKey != currentTab && setCurrentTab(currentTabKey)}, [currentTabKey])
+    useEffect(() => { currentTabKey && currentTabKey != currentTab && setCurrentTab(currentTabKey) }, [currentTabKey])
 
-    useEffect(()=> {
+    useEffect(() => {
         // если выбран таб, которого нет:
         if (
-            currentTab && 
+            currentTab &&
             tabs.filter(tab => tab.id == currentTab).length == 0 &&
             tabs.filter(tab => tab.key == currentTab).length == 0
         ) {
@@ -38,7 +39,7 @@ export default function TabsPane({ tabs, onDivRef, loading, currentTabKey, fpsTa
         const queryString = typeof window !== 'undefined' ? window.location.search : '';
         const urlParams = new URLSearchParams(queryString);
         const urlTab = urlParams && urlParams.get('tab')
-        if (!currentTabKey && urlTab && saveTabToURL && tabs.filter(i => i.key == urlTab).length) { 
+        if (!currentTabKey && urlTab && saveTabToURL && tabs.filter(i => i.key == urlTab).length) {
             console.log('set url tab' + urlTab)
             setCurrentTab(urlTab);
         }
@@ -51,10 +52,10 @@ export default function TabsPane({ tabs, onDivRef, loading, currentTabKey, fpsTa
         }
     }, []);
 
-    return (<div style={{height: "100%"}}
+    return (<div style={{ height: "100%" }}
     >
         {/* current = {currentTab} <br /> */}
-        <div className={`${styles.tabsPane} ${fixedScroll && styles.fixedScroll} D_FPS_TABPANE`} style={style}>
+        <div className={`${styles.tabsPane} ${fixedScroll && styles.fixedScroll} D_FPS_TABPANE ${type ? styles[type] : ""}`} style={style}>
             {(!isSingleTab || (isSingleTab && !hideSingleTab)) &&
                 <TabsMenu
                     tabs={tabs}
@@ -119,3 +120,23 @@ export function Tab({ tabContent, currentTabKey, isSingleTab, loading }) {
         </div>
     )
 }
+
+TabsPane.propTypes = {
+    fpsTabs: PropTypes.bool,
+    saveTabToURL: PropTypes.bool,
+    hideSingleTab: PropTypes.bool,
+    fixedScroll: PropTypes.bool,
+    tabs: PropTypes.object,
+    locale: PropTypes.string,
+    type: PropTypes.string,
+};
+
+TabsPane.defaultProps = {
+    fpsTabs: false,
+    saveTabToURL: false,
+    tabs: {},
+    hideSingleTab: false,
+    fixedScroll: false,
+    locale: 'ENG',
+    type: 'regular'
+};

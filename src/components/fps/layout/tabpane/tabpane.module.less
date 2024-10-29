@@ -11,6 +11,53 @@
             overflow-x: hidden; // я хуй знает  почему это было закомменчено, но без него появляется левый скролл по-горизонтали
         }
     }
+    &.simple {
+        .tabsMenu {
+            margin: 9px 0;
+        }
+        .tabMenuItem {
+            padding: 4px 10px;
+            border-radius: calc(var(--border-radius) / 2);
+            margin-right: 12px;
+            font-weight: normal;
+            border: solid 2px transparent;
+            &.current {
+                opacity: 1;
+                background-color: var(--layout-accent);
+                color: var(--layout-bgr);
+            }
+            &:hover {
+                opacity: 1;
+                border: solid 2px var(--layout-accent);
+            }
+        }
+    }
+
+    &.solid {
+        .tabsMenu {
+            margin: 9px 0;
+            background-color: var(--table-raw-hover);
+            padding: 6px;
+            border-radius: var(--border-radius);
+            border:solid 1px var(--table-borders)
+        }
+        .tabMenuItem {
+            padding: 4px 10px;
+            border-radius: var(--border-radius);
+            margin-right: 12px;
+            font-weight: normal;
+            border: solid 2px transparent;
+            &.current {
+                opacity: 1;
+                background-color: var(--layout-accent);
+                color: var(--layout-bgr);
+            }
+            &:hover {
+                opacity: 1;
+                border: solid 2px var(--table-borders);
+            }
+        }
+    }
 }
 
 .tabsMenu {

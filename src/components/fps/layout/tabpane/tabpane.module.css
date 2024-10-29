@@ -12,6 +12,48 @@
   overflow-y: auto;
   overflow-x: hidden;
 }
+.tabsPane.simple .tabsMenu {
+  margin: 9px 0;
+}
+.tabsPane.simple .tabMenuItem {
+  padding: 4px 10px;
+  border-radius: calc(var(--border-radius) / 2);
+  margin-right: 12px;
+  font-weight: normal;
+  border: solid 2px transparent;
+}
+.tabsPane.simple .tabMenuItem.current {
+  opacity: 1;
+  background-color: var(--layout-accent);
+  color: var(--layout-bgr);
+}
+.tabsPane.simple .tabMenuItem:hover {
+  opacity: 1;
+  border: solid 2px var(--layout-accent);
+}
+.tabsPane.solid .tabsMenu {
+  margin: 9px 0;
+  background-color: var(--table-raw-hover);
+  padding: 6px;
+  border-radius: var(--border-radius);
+  border: solid 1px var(--table-borders);
+}
+.tabsPane.solid .tabMenuItem {
+  padding: 4px 10px;
+  border-radius: var(--border-radius);
+  margin-right: 12px;
+  font-weight: normal;
+  border: solid 2px transparent;
+}
+.tabsPane.solid .tabMenuItem.current {
+  opacity: 1;
+  background-color: var(--layout-accent);
+  color: var(--layout-bgr);
+}
+.tabsPane.solid .tabMenuItem:hover {
+  opacity: 1;
+  border: solid 2px var(--table-borders);
+}
 .tabsMenu {
   display: flex;
   flex-shrink: 0;
