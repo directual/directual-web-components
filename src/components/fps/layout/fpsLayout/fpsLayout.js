@@ -71,7 +71,7 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
   return (
     (tabs && tabs[0]) ? <div className={`${styles.fpsLayout} D_FPS_LAYOUT`} ref={layoutRef}>
       {layout.showHeader && layout.header && <h1 className={`${styles.layoutHeader} D_FPS_LAYOUT_HEADER`}>{layout.header}</h1>}
-      {tabs && <TabsPane fpsTabs hideSingleTab tabs={tabs} saveTabToURL onChangeTab={onChangeTab} //currentTabKey={tabs[0].key}
+      {tabs && <TabsPane type={_.get(data,"themeSettings.tabsStyle")} fpsTabs hideSingleTab tabs={tabs} saveTabToURL onChangeTab={onChangeTab} //currentTabKey={tabs[0].key}
       //fixedScroll
       />}
     </div> : <div />)
