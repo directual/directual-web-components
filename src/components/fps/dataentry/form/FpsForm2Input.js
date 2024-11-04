@@ -206,6 +206,7 @@ function FieldText(props) {
                 fieldInfo.format == 'email' ? 'email' : 'textarea'}`}
         positive={fieldInfo.format == 'positiveNum'}
         rows='auto'
+        //debug
         required={field._field_required}
         {...basicProps}
         onChange={debouncedOnChange}

@@ -172,7 +172,9 @@ function ElementAction(props) {
         if (action.discardModel) {
             // console.log("originalModel")
             // console.log(originalModel)
+            copyModel=originalModel
             setModel(originalModel)
+            copyExtendedModel=originalModel
             setExtendedModel(originalModel)
         }
         if ((action.actionType == "endpoint" || !action.actionType) && action.endpoint) {
@@ -217,8 +219,8 @@ function ElementAction(props) {
                 onSubmit(
                     () => {
                         setState({ ...state, ...payloadState })
-                        setModel({ ...model, ...payloadModel })
-                        setExtendedModel({ ...extendedModel, ...payloadModel })
+                        setModel({ ...copyModel, ...payloadModel })
+                        setExtendedModel({ ...copyExtendedModel, ...payloadModel })
                         setLoading(false)
                     },
                     true,

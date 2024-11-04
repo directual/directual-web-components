@@ -404,7 +404,7 @@ export default function Input(props) {
 
     function getTextWidth(text, font) {
         // re-use canvas object for better performance
-        const lines = text.split("\n")
+        const lines = (text || "").split("\n")
         const canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
         const context = canvas.getContext("2d");
         context.font = font;
@@ -770,7 +770,7 @@ export default function Input(props) {
                         type="text"
                         rows={props.rows == 'auto' ? lines : props.rows}
                         onChange={e => { setLines(countLines(e.target)); handleChange(e.target.value) }}
-                        value={value}
+                        value={value ? value : ""}
                         onBlur={checkValue}
                         placeholder={`${props.placeholder ? props.placeholder : ''}`}
                     />
