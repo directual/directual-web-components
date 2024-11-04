@@ -119,7 +119,7 @@ function FieldText(props) {
     const { field, locale, lang, template, model, state, onChange, fieldInfo, code, disabled } = props
     const basicProps = { locale, lang, disabled }
 
-    const debounceTime = _.get(field,"_field_set_debounce") ? _.get(field,"_field_debounce_value", 0) : 0
+    const debounceTime = _.get(field, "_field_set_debounce") ? _.get(field, "_field_debounce_value", 0) : 0
     const cx = null
     const debouncedOnChange = debounce(onChangeHandler, debounceTime)
 
@@ -158,7 +158,7 @@ function FieldText(props) {
                 type="select"
                 bottomSelect={field._field_link_bottomSelect}
                 options={options}
-                label={field._edit_state_input_label || field._state_field}
+                label={!field._field_hide_label ? (field._edit_state_input_label || field._state_field) : null}
                 defaultValue={_.get(state, field._state_field)}
                 {...basicProps}
                 onChange={debouncedOnChange}
@@ -169,8 +169,9 @@ function FieldText(props) {
                 type="multiselect"
                 bottomSelect={field._field_link_bottomSelect}
                 options={options}
-                label={field._edit_state_input_label || field._state_field}
+                label={!field._field_hide_label ? (field._edit_state_input_label || field._state_field) : null}
                 defaultValue={_.get(state, field._state_field).split(",")}
+                description={field._field_add_description && template(field._field_description_text)}
                 {...basicProps}
                 onChange={value => (value && value.length) ? debouncedOnChange(value.join(",")) : debouncedOnChange("")}
             />
@@ -191,8 +192,9 @@ function FieldText(props) {
             type="textarea"
             rows='auto'
             options={field._edit_state_options}
-            label={field._edit_state_input_label || field._state_field}
+            label={!field._field_hide_label ? (field._edit_state_input_label || field._state_field) : null}
             defaultValue={_.get(state, field._state_field)}
+            description={field._field_add_description && template(field._field_description_text)}
             {...basicProps}
             onChange={debouncedOnChange}
         />
@@ -208,7 +210,7 @@ function FieldText(props) {
         {...basicProps}
         onChange={debouncedOnChange}
         nomargin
-        label={fieldInfo.name || fieldInfo.sysName}
+        label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
         description={field._field_add_description && template(field._field_description_text)}
         tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
         defaultValue={model[fieldInfo.sysName]}
@@ -227,7 +229,7 @@ function FieldColor(props) {
         {...basicProps}
         required={field._field_required}
         nomargin
-        label={fieldInfo.name || fieldInfo.sysName}
+        label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
         description={field._field_add_description && template(field._field_description_text)}
         tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
         defaultValue={model[fieldInfo.sysName]}
@@ -246,7 +248,7 @@ function FieldMkd(props) {
             required={field._field_required}
             edit
             locale={locale}
-            label={fieldInfo.name || fieldInfo.sysName}
+            label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
             description={field._field_add_description && template(field._field_description_text)}
             tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
             defaultValue={defaultValue || (field.defaultValueOn && field.defaultValue)}
@@ -282,7 +284,8 @@ function FieldHTML(props) {
                     code
                     locale={locale}
                     rows='auto'
-                    label={fieldInfo.name || fieldInfo.sysName}
+                    label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
+                    // label={fieldInfo.name || fieldInfo.sysName}
                     description={field._field_add_description && template(field._field_description_text)}
                     tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
                     nomargin
@@ -309,7 +312,8 @@ function FieldFile(props) {
         host='/api/upload'
         images={fieldInfo.format == 'image' || fieldInfo.format == 'multipleImages'}
         nomargin
-        label={fieldInfo.name || fieldInfo.sysName}
+        label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
+        // label={fieldInfo.name || fieldInfo.sysName}
         description={field._field_add_description && template(field._field_description_text)}
         tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
         defaultValue={defaultValue}
@@ -333,7 +337,8 @@ function FieldDate(props) {
         required={field._field_required}
         nomargin
         disabled={disabled}
-        label={fieldInfo.name || fieldInfo.sysName}
+        label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
+        // label={fieldInfo.name || fieldInfo.sysName}
         description={field._field_add_description && template(field._field_description_text)}
         tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
         defaultValue={defaultValue}
@@ -373,7 +378,8 @@ function FieldJson(props) {
                 disabled={disabled}
                 required={field._field_required}
                 nomargin
-                label={fieldInfo.name || fieldInfo.sysName}
+                label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
+                // label={fieldInfo.name || fieldInfo.sysName}
                 description={field._field_add_description && template(field._field_description_text)}
                 tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
                 defaultValue={(model[fieldInfo.sysName] && stringifyJson(defaultValue)) || (fieldInfo.defaultValueOn && fieldInfo.defaultValue)}
@@ -385,7 +391,8 @@ function FieldJson(props) {
                 nomargin
                 disabled={disabled}
                 onChange={value => onChange(JSON.stringify(value))}
-                label={fieldInfo.name || fieldInfo.sysName}
+                label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
+                // label={fieldInfo.name || fieldInfo.sysName}
                 description={field._field_add_description && template(field._field_description_text)}
                 tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
                 customOptionType={fieldInfo.formatOptions.customOptionType}
@@ -412,7 +419,8 @@ function FieldJson(props) {
                         maptoken={_.get(fieldInfo, 'formatOptions.mapToken')}
                         mapStyle={_.get(fieldInfo, 'formatOptions.mapColour')}
                         onChange={value => onChange(JSON.stringify(value))}
-                        label={fieldInfo.name || fieldInfo.sysName}
+                        label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
+                        // label={fieldInfo.name || fieldInfo.sysName}
                         defaultValue={(defaultValue && parseJson(defaultValue)) || (fieldInfo.defaultValueOn && fieldInfo.defaultValue) || {}}
                     />}
 
@@ -424,7 +432,8 @@ function FieldJson(props) {
                 required={field._field_required}
                 nomargin
                 disabled={disabled}
-                label={fieldInfo.name || fieldInfo.sysName}
+                label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
+                // label={fieldInfo.name || fieldInfo.sysName}
                 description={field._field_add_description && template(field._field_description_text)}
                 tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
                 customOptionType={fieldInfo.formatOptions.customOptionType}
@@ -441,7 +450,8 @@ function FieldJson(props) {
                 required={field._field_required}
                 nomargin
                 disabled={disabled}
-                label={fieldInfo.name || fieldInfo.sysName}
+                label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
+                // label={fieldInfo.name || fieldInfo.sysName}
                 description={field._field_add_description && template(field._field_description_text)}
                 tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
                 objectStructure={fieldInfo.formatOptions.keyValue ?
@@ -456,7 +466,8 @@ function FieldJson(props) {
                 required={field._field_required}
                 nomargin
                 disabled={disabled}
-                label={fieldInfo.name || fieldInfo.sysName}
+                label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
+                // label={fieldInfo.name || fieldInfo.sysName}
                 description={field._field_add_description && template(field._field_description_text)}
                 tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
                 defaultValue={(defaultValue && parseJson(defaultValue)) || ((fieldInfo.defaultValueOn && fieldInfo.defaultValue) ? { firstValue: fieldInfo.defaultValue.firstValue } :
@@ -481,7 +492,8 @@ function FieldJson(props) {
                 required={field._field_required}
                 nomargin
                 disabled={disabled}
-                label={fieldInfo.name || fieldInfo.sysName}
+                label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
+                // label={fieldInfo.name || fieldInfo.sysName}
                 description={field._field_add_description && template(field._field_description_text)}
                 tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
                 defaultValue={(defaultValue && parseJson(defaultValue)) || ((fieldInfo.defaultValueOn && fieldInfo.defaultValue) ? fieldInfo.defaultValue :
@@ -519,7 +531,8 @@ function FieldBoolean(props) {
         nomargin
         locale={locale}
         // label={field.content || field.id}
-        label={fieldInfo.name || fieldInfo.sysName}
+        label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
+        // label={fieldInfo.name || fieldInfo.sysName}
         description={field._field_add_description && template(field._field_description_text)}
         tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
         defaultValue={getBooleanDefaultValue(model[fieldInfo.sysName])}
@@ -612,7 +625,8 @@ export function FieldLink(props) {
             bottomSelect={field._field_link_bottomSelect}
             //debug
             refresh={refresh}
-            label={fieldInfo.name || fieldInfo.sysName}
+            label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
+            // label={fieldInfo.name || fieldInfo.sysName}
             description={field._field_add_description && template(field._field_description_text)}
             tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
             defaultValue={model[fieldInfo.sysName]}
@@ -636,7 +650,8 @@ export function FieldLink(props) {
             bottomSelect={field._field_link_bottomSelect}
             //debug
             refresh={refresh}
-            label={fieldInfo.name || fieldInfo.sysName}
+            label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
+            // label={fieldInfo.name || fieldInfo.sysName}
             description={field._field_add_description && template(field._field_description_text)}
             tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
             defaultValue={model[fieldInfo.sysName]}
@@ -704,7 +719,8 @@ export function FieldLink(props) {
                 onResetSelect={tagId => changeTags(tagId, 'onResetSelect')}
 
                 required={field._field_required}
-                label={fieldInfo.name || fieldInfo.sysName}
+                label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
+                // label={fieldInfo.name || fieldInfo.sysName}
                 description={field._field_add_description && template(field._field_description_text)}
                 tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
                 defaultValue={transfromValue(model[fieldInfo.sysName])}
@@ -733,7 +749,8 @@ export function FieldLink(props) {
             required={field._field_required}
             //description={options.length}
             horizontal={field._field_link_radio_layout == "horizontal"}
-            label={fieldInfo.name || fieldInfo.sysName}
+            label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
+            // label={fieldInfo.name || fieldInfo.sysName}
             description={field._field_add_description && template(field._field_description_text)}
             tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
             defaultValue={model[fieldInfo.sysName]}
@@ -762,7 +779,8 @@ export function FieldLink(props) {
             imageWidth={field._field_arrayLink_images_width}
             imageHeight={field._field_arrayLink_images_height}
             resize={field._field_arrayLink_images_resize}
-            label={fieldInfo.name || fieldInfo.sysName}
+            label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
+            // label={fieldInfo.name || fieldInfo.sysName}
             description={field._field_add_description && template(field._field_description_text)}
             tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
             defaultValue={model[fieldInfo.sysName]}
@@ -786,7 +804,8 @@ export function FieldLink(props) {
         onChange={onChange}
         //required={field.required}
         //placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
-        label={fieldInfo.name || fieldInfo.sysName}
+        label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
+        // label={fieldInfo.name || fieldInfo.sysName}
         description={field._field_add_description && template(field._field_description_text)}
         tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
         defaultValue={model[fieldInfo.sysName]}
@@ -924,7 +943,8 @@ function FieldArrayLink(props) {
                 onResetSelect={tagId => changeTags(tagId, 'onResetSelect')}
 
                 required={field._field_required}
-                label={fieldInfo.name || fieldInfo.sysName}
+                label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
+                // label={fieldInfo.name || fieldInfo.sysName}
                 description={field._field_add_description && template(field._field_description_text)}
                 tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
                 defaultValue={transfromValue(model[fieldInfo.sysName])}
@@ -961,7 +981,8 @@ function FieldArrayLink(props) {
                 imageHeight={field._field_arrayLink_images_height}
                 resize={field._field_arrayLink_images_resize}
                 //description={options.length}
-                label={fieldInfo.name || fieldInfo.sysName}
+                label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
+                // label={fieldInfo.name || fieldInfo.sysName}
                 description={field._field_add_description && template(field._field_description_text)}
                 tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
                 defaultValue={model[fieldInfo.sysName]}
@@ -986,7 +1007,8 @@ function FieldArrayLink(props) {
             bottomSelect={field._field_link_bottomSelect}
             refresh={refresh}
             //debug
-            label={fieldInfo.name || fieldInfo.sysName}
+            label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
+            // label={fieldInfo.name || fieldInfo.sysName}
             description={field._field_add_description && template(field._field_description_text)}
             tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
             callParams={params}
@@ -1021,7 +1043,8 @@ function FieldArrayLink(props) {
             disabled={disabled}
             //description={options.length}
             horizontal={field._field_arrayLink_checkbox_type == "horizontal"}
-            label={fieldInfo.name || fieldInfo.sysName}
+            label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
+            // label={fieldInfo.name || fieldInfo.sysName}
             description={field._field_add_description && template(field._field_description_text)}
             tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
             nomargin
@@ -1099,7 +1122,8 @@ function FieldArrayLink(props) {
         onChange={onChange}
         //required={field.required}
         //placeholder={`${placeholder == "true" ? `${field.content}${field.required ? '*' : ''}` : ''}`}
-        label={fieldInfo.name || fieldInfo.sysName}
+        label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
+        // label={fieldInfo.name || fieldInfo.sysName}
         description={field._field_add_description && template(field._field_description_text)}
         tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
         defaultValue={model[fieldInfo.sysName]}
