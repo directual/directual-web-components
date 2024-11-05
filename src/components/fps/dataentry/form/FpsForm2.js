@@ -15,7 +15,7 @@ import moment from 'moment'
 export default function FpsForm2(props) {
 
 
-  const { auth, data, callEndpoint, onEvent, id, locale, handleRoute } = props
+  const { auth, data, callEndpoint, onEvent, id, locale, handleRoute, currentBP } = props
 
   // console.log("=== FpsForm2 data ===")
   // console.log(data)
@@ -484,7 +484,7 @@ export default function FpsForm2(props) {
       //finish()
       return;
     }
-
+    setActionError(null)
     console.log('submitting form...')
     console.log(modelToSend)
     setLoading(true)
@@ -966,6 +966,7 @@ function RenderStep(props) {
   return <React.Fragment>{(currentStep.elements || [])
     //.filter(element => !checkHidden(element) && !checkIfAllInputsHidden(element))
     .map(element => <FormElement
+      {...props}
       model={model}
       refresh={refresh}
       hidden={checkHidden(element)}
@@ -1026,41 +1027,44 @@ function RenderStep(props) {
         });
 
         //fake request
-        // setTimeout(() => {
-        //   const data = [
-        //     {
-        //       "name": "Paul",
-        //       "id": "paul",
-        //       "userpic": "https://cdn.jpg.wtf/futurico/8a/c5/1723104957-8ac578d40e056a4b98acdd34ac41526f.jpeg"
-        //     },
-        //     {
-        //       "name": "Peter",
-        //       "id": "peter"
-        //     }
-        //   ]
-        //   const visibleNames = '[{"sysName":"firstName"}]'
-        //   finish && finish(transformedArray(data, visibleNames))
-        //   setOptions && setOptions(transformedArray(data, visibleNames))
-        // }, 1000)
+        setTimeout(() => {
+          const data = [
+            {
+              "title": "Погрузка/разгрузка",
+              "id": "1"
+            },
+            {
+              "title": "Сортировка",
+              "id": "2"
+            },
+            {
+              "title": "Программирование на Python",
+              "id": "3"
+            }
+          ]
+          const visibleNames = '[{"sysName":"firstName"}]'
+          finish && finish(transformedArray(data, visibleNames))
+          setOptions && setOptions(transformedArray(data, visibleNames))
+        }, 1000)
 
-        //  false &&
-        callEndpoint && callEndpoint(
-          endpoint,
-          "GET",
-          undefined,
-          params,
-          (result, data, visibleNames) => {
-            if (result == "ok") {
-              finish && finish(transformedArray(data, visibleNames))
-              setOptions && setOptions(transformedArray(data, visibleNames))
+        false &&
+          callEndpoint && callEndpoint(
+            endpoint,
+            "GET",
+            undefined,
+            params,
+            (result, data, visibleNames) => {
+              if (result == "ok") {
+                finish && finish(transformedArray(data, visibleNames))
+                setOptions && setOptions(transformedArray(data, visibleNames))
+              }
+              else {
+                setError && setError(data)
+                finish && finish([])
+                setOptions && setOptions([])
+              }
             }
-            else {
-              setError && setError(data)
-              finish && finish([])
-              setOptions && setOptions([])
-            }
-          }
-        )
+          )
       }}
       key={element.id} />)}
     {(currentStep.elements || [])

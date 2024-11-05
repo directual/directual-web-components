@@ -68,11 +68,11 @@ function ElementSteps(props) {
 }
 
 function ElementInput(props) {
-    const { element, setState, editModel, state } = props
+    const { element, setState, editModel, state, currentBP } = props
 
     const inputs = _.get(element, "_input_fields") || []
 
-    return <InputRow column={_.get(element, "_input_fields_in_a_row_column") == "column"}>
+    return <InputRow column={currentBP == "mobile" || _.get(element, "_input_fields_in_a_row_column") == "column"}>
         {inputs
             .filter(field => !field._field_hidden)
             .map(field => (field._field || field._state_field) ? <FpsForm2Input
