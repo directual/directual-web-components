@@ -484,7 +484,7 @@ export default function FpsForm2(props) {
       //finish()
       return;
     }
-    setActionError(null)
+    setActionError && setActionError(null)
     console.log('submitting form...')
     console.log(modelToSend)
     setLoading(true)
