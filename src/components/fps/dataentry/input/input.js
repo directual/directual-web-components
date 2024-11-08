@@ -470,12 +470,13 @@ export default function Input(props) {
                         : props.description)}
                 </div>}
             {(props.debug) && <div>
-                <div className="dd-debug">searchValue: {JSON.stringify(searchValue)}</div>
+                {/* <div className="dd-debug">searchValue: {JSON.stringify(searchValue)}</div> */}
                 <div className="dd-debug">value: {JSON.stringify(value)}</div>
-                <div className="dd-debug"> defVal: {JSON.stringify(defVal)}</div>
+                {props.imask && <div className="dd-debug">imask:<br /><pre>{JSON.stringify(props.imask, 0, 3)}</pre></div>}
+                {/* <div className="dd-debug"> defVal: {JSON.stringify(defVal)}</div>
                 <div className="dd-debug"> lines: {lines}</div>
                 <div className="dd-debug"> countlLnes: {countLines(inputEl.current, value)}</div>
-                <div className='dd-debug'>auto width: {calcTextareaWidth()}</div>
+                <div className='dd-debug'>auto width: {calcTextareaWidth()}</div> */}
             </div>}
             <Tooltip id={tooltipId} />
             {props.type != 'email' &&
@@ -527,7 +528,9 @@ export default function Input(props) {
                                 sketch />
                         </div>}
 
-                        <input
+                        <IMaskInput
+                            {...props.imask}
+                            onAccept={handleChange}
                             disabled={props.disabled}
                             key={props.key}
                             ref={inputEl}
@@ -546,7 +549,7 @@ export default function Input(props) {
                             type="text"
                             onFocus={e => setShowColor(true)}
                             onKeyPress={e => { e.key == 'Enter' ? props.onPressEnter(value) : undefined }}
-                            onChange={e => { !props.copy ? handleChange(e.target.value) : undefined; }}
+                            onChange={e => { props.imask ? undefined : !props.copy ? handleChange(e.target.value) : undefined; }}
                             value={value || ''}
                             onBlur={e => {
                                 //setShowColor(false)
@@ -570,13 +573,13 @@ export default function Input(props) {
                 <div className={styles.field_wrapper}>
                     {props.icon && <div className={`${styles.input_icon_wrapper} icon icon-${props.icon}`} />}
                     <IMaskInput
-                        {...props}
+                        {...props.imask}
+                        onAccept={handleChange}
                         value={value}
                         ref={inputEl}
                         className={`${styles.field} ${props.icon ? styles.icon : ""} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
                         unmask={true}
                         placeholder={props.placeholder}
-                        onAccept={handleChange}
                     />
                     {value && !props.disabled && !props.copy &&
                         <div className={`${styles.clear} icon icon-close`}
@@ -589,7 +592,9 @@ export default function Input(props) {
             {props.type == 'email' &&
                 <div className={styles.field_wrapper}>
                     <div className={`${styles.input_icon_wrapper} icon icon-mail`} />
-                    <input
+                    <IMaskInput
+                        {...props.imask}
+                        onAccept={handleChange}
                         autoComplete={props.autoComplete || "off"}
                         ref={inputEl}
                         disabled={props.disabled}
@@ -598,7 +603,7 @@ export default function Input(props) {
                         style={{
                             height: props.height || 44
                         }}
-                        onChange={e => { handleChange(String(e.target.value).toLowerCase()); e && checkEmailValue(e.target.value) }}
+                        onChange={e => { props.imask ? undefined : handleChange(String(e.target.value).toLowerCase()); e && checkEmailValue(e.target.value) }}
                         value={value}
                         onBlur={e => checkEmailValue(e.target.value)}
                         placeholder={`${props.placeholder ? props.placeholder : 'your@email.com'}`}
@@ -648,15 +653,18 @@ export default function Input(props) {
                 <div className={`${props.unitName && styles.fieldUnitsWrapper}`}>
                     <div className={styles.field_wrapper}>
                         {props.icon && <div className={`${styles.input_icon_wrapper} icon icon-${props.icon}`} />}
-                        <input
+                        <IMaskInput
+                            {...props.imask}
+                            onAccept={handleChange}
+
                             className={`${styles.field} ${props.icon && styles.icon} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                             ref={inputEl}
                             disabled={props.disabled}
-                            type="number"
+                            type={props.imask ? "text" : "number"}
                             style={{
                                 height: props.height || 44
                             }}
-                            onChange={e => { handleChangeDecimalNumber(e.target.value) }}
+                            onChange={e => { props.imask ? undefined : handleChangeDecimalNumber(e.target.value) }}
                             value={value}
                             onBlur={checkValue}
                             placeholder={`${props.placeholder ? props.placeholder : ''}`}
@@ -671,22 +679,25 @@ export default function Input(props) {
             {props.type == 'number' &&
                 <div className={`${props.unitName && styles.fieldUnitsWrapper}`}>
                     <div className={styles.field_wrapper}>
-                        <input
+                        {props.icon && <div className={`${styles.input_icon_wrapper} icon icon-${props.icon}`} />}
+                        <IMaskInput
+                            {...props.imask}
+                            onAccept={handleChange}
                             className={`${styles.field} ${props.icon && styles.icon} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                             disabled={props.disabled}
                             ref={inputEl}
-                            type="number"
+                            type={props.imask ? "text" : "number"}
                             style={{
                                 height: props.height || 44
                             }}
-                            onChange={e => handleChangeNumber(e.target.value)}
+                            onChange={e => props.imask ? undefined : handleChangeNumber(e.target.value)}
                             value={value}
                             onBlur={checkValue}
                             placeholder={`${props.placeholder ? props.placeholder : ''}`}
                         />
 
 
-                        {!props.disabled && <React.Fragment>
+                        {!props.disabled && !props.imask && <React.Fragment>
                             <div className={`${styles.plus} icon icon-up`}
                                 onClick={() => { if (value) { handleChangeNumber(parseInt(value) + 1) } else { handleChangeNumber(1); } }}></div>
                             {props.positive && value > 0 && <div className={`${styles.minus} icon icon-down`}
@@ -702,7 +713,9 @@ export default function Input(props) {
                 <div className={`${props.unitName && styles.fieldUnitsWrapper}`}>
                     <div className={styles.field_wrapper}>
                         <div className={`${styles.input_icon_wrapper} icon icon-phone`} />
-                        <input
+                        <IMaskInput
+                            {...props.imask}
+                            onAccept={handleChange}
                             className={`${styles.field} ${styles.icon} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                             disabled={props.disabled}
                             ref={inputEl}
@@ -710,7 +723,7 @@ export default function Input(props) {
                             style={{
                                 height: props.height || 44
                             }}
-                            onChange={e => handleChange(e.target.value)}
+                            onChange={e => props.imask ? undefined : handleChange(e.target.value)}
                             value={value}
                             onBlur={checkValue}
                             placeholder={`${props.placeholder ? props.placeholder : _.get(dict[lang], 'numbersOnly') || 'numbers only'

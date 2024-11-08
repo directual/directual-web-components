@@ -248,7 +248,10 @@ function ElementAction(props) {
         {error && <Hint margin={{ top: 0, bottom: 18 }} error closable onClose={() => setError("")}>
             {error}
         </Hint>}
-        <ActionPanel stretch={_.get(element,"_stretch_buttons")} margin={{ left: 1 }} column={_.get(element,"_input_actions_in_a_row_column") == "column"}>
+        <ActionPanel 
+            alignRight={_.get(element,"_input_actions_alignment") == "right"} 
+            alignCenter={_.get(element,"_input_actions_alignment") == "center"} 
+            stretch={_.get(element,"_stretch_buttons")} margin={{ left: 1 }} column={_.get(element,"_input_actions_in_a_row_column") == "column"}>
             {action_list.map(action => action._action ? <FpsForm2Action
                 {...props}
                 key={action.id}

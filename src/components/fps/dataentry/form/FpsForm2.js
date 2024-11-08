@@ -363,6 +363,21 @@ export default function FpsForm2(props) {
     return false;
   }
 
+  // для кондишенов мы проверяем по-другому: если открыт попап, то на остальные шаги/секции не обращаем внимания
+  const showSectionForCond = section => {
+    if (section.sysName == state.popup) return true;
+    if (state.popup) return false;
+    if (section.sectionVisibility == "always") return true;
+    if (section.sectionVisibility == "empty" && !state.step) return true;
+    if (section.sectionVisibility == "custom") {
+      let current = state.step ? [state.step] : []
+      let steps = section.sectionCustomVisibility ? section.sectionCustomVisibility.split(",") : []
+      if (_.intersection(current, steps).length > 0) return true;
+    }
+    if (section.sysName == state.step) return true;
+    return false;
+  }
+
   function submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData,
     actionReq, setActionError, resetModel) {
     clearTimeout(cx);
@@ -428,7 +443,7 @@ export default function FpsForm2(props) {
 
     // REQUIRED:
     let requiredFieldValues = _.chain(_.get(params, "steps"))
-      .filter(showSection)
+      .filter(showSectionForCond)
       .flatMap('elements')
       .filter(i => !checkHidden(i))
       .flatMap('_input_fields')
@@ -466,12 +481,11 @@ export default function FpsForm2(props) {
       })
       const errMessage = dict[lang].form.emptyRequired + emptyFields.join(", ")
       actionError = errMessage
-      //setState({ ...state, _submitError: errMessage })
-      //finish()console.log("actionError")
       console.log(actionError)
       setActionError && setActionError(actionError)
       return;
     }
+
     setActionError && setActionError(actionError)
     localState._submitError = ""
     setState({ ...localState })

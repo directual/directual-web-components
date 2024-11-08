@@ -114,6 +114,7 @@
   left: 0;
   width: 100%;
   height: 100%;
+  overflow: auto;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
@@ -121,13 +122,26 @@
   z-index: 100;
 }
 .popup {
-  max-height: 90vh;
-  overflow-y: auto;
+  position: relative;
+  margin: 100px 0;
   background-color: var(--layout-bgr);
   border-radius: var(--border-radius);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   animation: popupAnimation 0.3s ease;
   max-width: 96vw;
+}
+.popup .close_popup {
+  position: absolute;
+  opacity: 0.5;
+  cursor: pointer;
+  right: 6px;
+  top: 6px;
+  transition: 0.5s;
+  margin: 0;
+  z-index: 3;
+}
+.popup .close_popup:hover {
+  opacity: 1;
 }
 .popup > div {
   max-width: calc(100% - 36px);

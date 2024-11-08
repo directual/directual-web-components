@@ -176,6 +176,51 @@ export const String = {
   },
 };
 
+export const MaskedString = {
+  args: {
+    type: 'string',
+    debug: true,
+    icon: 'forward',
+    imask: {
+      mask: Date,  // enable date mask
+
+      // other options are optional
+      pattern: 'Y-`m-`d',  // Pattern mask with defined blocks, default is 'd{.}`m{.}`Y'
+      // you can provide your own blocks definitions, default blocks for date mask are:
+      blocks: {
+        d: {
+          mask: IMask.MaskedRange,
+          from: 1,
+          to: 31,
+          maxLength: 2,
+        },
+        m: {
+          mask: IMask.MaskedRange,
+          from: 1,
+          to: 12,
+          maxLength: 2,
+        },
+        Y: {
+          mask: IMask.MaskedRange,
+          from: 1900,
+          to: 9999,
+        }
+      },
+
+      autofix: true,  // defaults to `false`
+
+      // pattern options can be set as well
+      lazy: false,
+
+      // and other common options
+      overwrite: true  // defaults to `false`
+    },
+    //tip: "value: TV, HD, VR",
+    label: 'Hello!',
+    tooltip: "<div>hello</div><b>world!</b><br /><img width='150' src='https://otvet.imgsmail.ru/download/70090365_fa84df0362d311036a0a62e2c01ecbad_800.gif' />"
+  },
+};
+
 export const Select = {
   args: {
     type: 'select',
@@ -378,15 +423,18 @@ export const DimanicComplexSelect = {
       console.log('loading...')
       setTimeout(() => {
         finish && finish([
-          { key: "1", value: "option_1", 
-            description: "однажды в суровую зимнюю пору", 
+          {
+            key: "1", value: "option_1",
+            description: "однажды в суровую зимнюю пору",
             //image: "https://api.alfa.directual.com/fileUploaded/dev/be1ae50d-d24f-4ad8-bb3a-6765390d2c9f.jpg" 
           },
-          { key: "2", value: "option_2", 
+          {
+            key: "2", value: "option_2",
             //description: "я из лесу вышел был сильный мороз — гляжу забирается медленно в гору телега", 
-            image: "https://api.alfa.directual.com/fileUploaded/dev/be1ae50d-d24f-4ad8-bb3a-6765390d2c9f.jpg" 
+            image: "https://api.alfa.directual.com/fileUploaded/dev/be1ae50d-d24f-4ad8-bb3a-6765390d2c9f.jpg"
           },
-          { key: "3", value: "option_3", 
+          {
+            key: "3", value: "option_3",
             // description: "откуда дровишки? из лесу, вестимо", 
             // image: "https://api.alfa.directual.com/fileUploaded/dev/be1ae50d-d24f-4ad8-bb3a-6765390d2c9f.jpg" 
           },
@@ -424,19 +472,18 @@ export const Pedal = {
 export const MaskedInput = {
   args: {
     type: 'masked',
-    mask: '$num',
-    blocks: {
-      num: {
-        // nested masks are available!
-        mask: Number,
-        thousandsSeparator: ' '
-      }
+    imask: {
+      mask: Number,  // enable number mask
+      scale: 2,  // digits after point, 0 for integers
+      thousandsSeparator: ' ',  // any single char
+      padFractionalZeros: false,  // if true, then pads zeros at end to the length of scale
+      normalizeZeros: true,  // appends or removes zeros at ends
+      radix: ',',  // fractional delimiter
+      mapToRadix: ['.'],  // symbols to process as radix
+      min: -10000,
+      max: 10000,
+      autofix: true,
     },
-    //mask: '+{7}(000)000-00-00',
-    defaultValue: "33311",
-    // placeholder: "+7 915 184 53 61",
-    // icon: 'phone',
-    // tooltip: "<div>hello</div><b>world!</b><br /><img width='150' src='https://otvet.imgsmail.ru/download/70090365_fa84df0362d311036a0a62e2c01ecbad_800.gif' />",
     label: 'Phone number',
     debug: true
   },

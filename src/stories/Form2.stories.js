@@ -44,7 +44,7 @@ let exampleForm = {
                         "_actions": [
                             {
                                 "id": "17310605395640.1421202100410333110303",
-                                "_action": "action_1731060541586",
+                                "_action": "action_1731073718074",
                                 "_action_standardRequired": true
                             }
                         ]
@@ -68,6 +68,85 @@ let exampleForm = {
                         "hintText": "Submitted"
                     }
                 ]
+            },
+            {
+                "id": "step_1731073729664",
+                "sysName": "pop",
+                "elements": [
+                    {
+                        "id": "elmnt_1731073731081",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17310737456120.33430122334420242031243",
+                                "_field": "ddd",
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "dd",
+                                "_field_required": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1731079381686",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17310793838560.33440340441012422212032",
+                                "_field": "text2",
+                                "_field_required": true
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_action_conditionals_manual": "manual",
+                        "_conditions": [
+                            {
+                                "id": "condition_1731079425004",
+                                "_conditionalView_field": "ddd",
+                                "_conditionalView_operator": "isNotNull"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1731074059536",
+                        "type": "action",
+                        "_actions": [
+                            {
+                                "id": "17310740647880.040402244400143023210022",
+                                "_action": "action_1731060541586",
+                                "_action_standardRequired": true,
+                                "_action_label": "стандартные поля"
+                            },
+                            {
+                                "id": "17310815108980.20343141214004304224122",
+                                "_action": "action_1731060541586",
+                                "_action_label": "кастомные",
+                                "_action_standardRequired": false,
+                                "_action_customRequired": true,
+                                "_action_customRequired_fields": [
+                                    "ddd",
+                                    "text2"
+                                ]
+                            }
+                        ],
+                        "_conditionalView": false,
+                        "_conditions": [
+                            {
+                                "id": "condition_1731076548057",
+                                "_conditionalView_field": "text",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "1"
+                            }
+                        ],
+                        "_actions_in_a_row": 2,
+                        "_input_actions_in_a_row_column": "line",
+                        "_stretch_buttons": false,
+                        "_input_actions_alignment": "right"
+                    },
+                    {
+                        "id": "elmnt_1731081528160",
+                        "type": "submit"
+                    }
+                ]
             }
         ],
         "hideHint": true,
@@ -76,21 +155,31 @@ let exampleForm = {
                 "id": "action_1731060541586",
                 "name": "commit",
                 "actionType": "state",
+                "stateMapping": [],
+                "actionSubmit": true
+            },
+            {
+                "id": "action_1731073718074",
+                "name": "popup",
+                "actionType": "state",
                 "stateMapping": [
                     {
-                        "id": "stateMapping1731060545422",
-                        "field": "FormState.step",
-                        "value": "submitted"
+                        "id": "stateMapping1731073722125",
+                        "field": "FormState.popup",
+                        "value": "pop"
                     }
-                ],
-                "actionSubmit": true
+                ]
             }
         ],
         "state": {
             "step": "default step",
             "popup": null,
             "message": ""
-        }
+        },
+        "general": {
+            "closePopupOnClick": true
+        },
+        "popup_width": 600
     },
     "tableTitle": null,
     "actions": null,
@@ -130,6 +219,12 @@ let exampleForm = {
         },
         {
             "id": "f3e3d0be-eeb5-417d-921d-ef40220dc680"
+        },
+        {
+            "id": "9a3b09f4-bfde-4b3e-b86b-42c7bafb821a"
+        },
+        {
+            "id": "244cc241-4f73-4a58-8ce8-4f0b9cea45f6"
         }
     ],
     "totalPages": 1,
@@ -142,7 +237,9 @@ let exampleForm = {
         ]
     ],
     "writeFields": [
-        "text"
+        "text",
+        "ddd",
+        "text2"
     ],
     "structures": {
         "99354115": {
@@ -153,7 +250,7 @@ let exampleForm = {
             "dateCreated": "2024-11-07T08:33:50Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"text\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"63331731059277678\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"json\",\"dataType\":\"json\",\"name\":\"\",\"id\":\"76031730968431323\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false}]",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"text2\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"33501731077950006\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"ddd\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"38781731073755334\",\"link\":\"ddd\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"text\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"63331731059277678\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"json\",\"dataType\":\"json\",\"name\":\"\",\"id\":\"76031730968431323\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false}]",
             "jsonGroupSettings": null,
             "jsonViewIdSettings": null,
             "jsonSettings": null,
@@ -161,7 +258,7 @@ let exampleForm = {
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2024-11-08T09:48:10Z",
+            "dateChanged": "2024-11-08T14:59:17Z",
             "createBy": 1,
             "changedBy": 1,
             "_settings": null,
@@ -215,6 +312,62 @@ let exampleForm = {
             "description": null,
             "weight": null,
             "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "ddd",
+            "dataType": "link",
+            "name": "",
+            "id": "38781731073755334",
+            "link": "ddd",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "text2",
+            "dataType": "string",
+            "name": "",
+            "id": "33501731077950006",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,

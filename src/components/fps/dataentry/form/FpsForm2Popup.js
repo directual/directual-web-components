@@ -7,6 +7,7 @@ export default function FpsFormPopup(props) {
 
     return <div className={`FPS_FORM2_POPUP_OVERLAY ${styles.popup_overlay}`} onClick={onClose}>
         <div className={`FPS_FORM2_POPUP ${styles.popup}`} onClick={e => e.stopPropagation()}>
+            <span className={`icon icon-close ${styles.close_popup}`} onClick={onClose}/>
             <div style={{ width: width }}>
                 {children}
             </div>
