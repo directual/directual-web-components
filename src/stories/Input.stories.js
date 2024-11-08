@@ -421,3 +421,24 @@ export const Pedal = {
   },
 };
 
+export const MaskedInput = {
+  args: {
+    type: 'masked',
+    mask: '$num',
+    blocks: {
+      num: {
+        // nested masks are available!
+        mask: Number,
+        thousandsSeparator: ' '
+      }
+    },
+    //mask: '+{7}(000)000-00-00',
+    defaultValue: "33311",
+    // placeholder: "+7 915 184 53 61",
+    // icon: 'phone',
+    // tooltip: "<div>hello</div><b>world!</b><br /><img width='150' src='https://otvet.imgsmail.ru/download/70090365_fa84df0362d311036a0a62e2c01ecbad_800.gif' />",
+    label: 'Phone number',
+    debug: true
+  },
+};
+

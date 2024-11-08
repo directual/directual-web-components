@@ -17,6 +17,7 @@ import InnerHTML from 'dangerously-set-html-content'
 import SelectImages from '../selectImages/selectImages'
 import { Tags } from '../../tags/Tags'
 import { Tooltip } from 'react-tooltip'
+import { IMaskInput } from 'react-imask';
 
 export function InputGroup(props) {
     return (
@@ -186,7 +187,7 @@ export default function Input(props) {
     const lang = props.locale ? props.locale.length == 3 ? props.locale : 'ENG' : 'ENG'
     const pickerRef = useRef(null);
 
-    const tooltipId = "tooltip_" + Math.floor(Math.random()*1000000000)
+    const tooltipId = "tooltip_" + Math.floor(Math.random() * 1000000000)
 
     const checkValue = () => {
         // console.log('checking...');
@@ -313,7 +314,7 @@ export default function Input(props) {
         checkValue()
     }
 
-    const submit = val => {
+    function submit(val) {
         setValue(val)
         props.onChange && props.onChange(val);
         props.type == 'select' && props.required && value != defVal && checkValue();
@@ -413,7 +414,7 @@ export default function Input(props) {
     }
 
     function getCssStyle(element, prop) {
-        return window ? window.getComputedStyle(element, null).getPropertyValue(prop) : null;
+        return window && typeof element == 'Element' ? window.getComputedStyle(element, null).getPropertyValue(prop) : null;
     }
 
     function getCanvasFont(el) {
@@ -460,9 +461,9 @@ export default function Input(props) {
                 }
             }>
             {props.label && <label className={`${styles.input_label_tooltip} FPS_Input_label`}>
-                {props.label}{props.required && '*'}{props.tooltip && <span 
-                data-tooltip-html={props.tooltip}
-                data-tooltip-id={tooltipId} className={`icon icon-help small ${styles.tooltip}`}/>}</label>}
+                {props.label}{props.required && '*'}{props.tooltip && <span
+                    data-tooltip-html={props.tooltip}
+                    data-tooltip-id={tooltipId} className={`icon icon-help small ${styles.tooltip}`} />}</label>}
             {props.description &&
                 <div className={styles.description}>
                     {props.description && (typeof props.description == "string" ? <InnerHTML allowRerender={true} html={props.description} />
@@ -504,6 +505,7 @@ export default function Input(props) {
                 props.type != 'json' &&
                 props.type != 'selectImages' &&
                 props.type != 'optionsHandler' &&
+                props.type != 'masked' &&
                 <div className={`${styles.field_wrapper} ${(props.addonAfter || props.addonBefore || props.preSelect || (props.type == 'color' || props.type == 'colour' || props.type == 'colorpicker')) && styles.hor}`}>
                     {props.addonBefore &&
                         <div className={styles.addonBefore}>{props.addonBefore}</div>}
@@ -562,6 +564,26 @@ export default function Input(props) {
                     {props.addonAfter &&
                         <div className={styles.addonAfter}>{props.addonAfter}</div>}
 
+                </div>}
+
+            {props.type == 'masked' &&
+                <div className={styles.field_wrapper}>
+                    {props.icon && <div className={`${styles.input_icon_wrapper} icon icon-${props.icon}`} />}
+                    <IMaskInput
+                        {...props}
+                        value={value}
+                        ref={inputEl}
+                        className={`${styles.field} ${props.icon ? styles.icon : ""} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
+                        unmask={true}
+                        placeholder={props.placeholder}
+                        onAccept={handleChange}
+                    />
+                    {value && !props.disabled && !props.copy &&
+                        <div className={`${styles.clear} icon icon-close`}
+                            onClick={clearValue}></div>}
+                    {value && props.copy &&
+                        <div className={`${styles.clear} icon icon-copy`}
+                            onClick={value => copyValue(value)}></div>}
                 </div>}
 
             {props.type == 'email' &&

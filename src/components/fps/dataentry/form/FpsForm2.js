@@ -372,7 +372,7 @@ export default function FpsForm2(props) {
     let localState = { ...state, ...newData.state }
     let localModel = { ...model, ...newData.model }
 
-    setState({ ...localState, _submitError: "" })
+    setState({ ...state, _submitError: "" })
     let modelToSend = {}
 
     for (const f in localModel) {
@@ -439,26 +439,13 @@ export default function FpsForm2(props) {
 
 
     function excludeNonEmptyValues(obj, keys) {
-      // console.log("excludeNonEmptyValues")
-      // console.log(obj)
-      // console.log(keys)
       const filteredKeys = _.pickBy(obj, (value, key) => {
         return !_.isEmpty((value || "").toString()); // Exclude keys with non-empty values
       });
-      // console.log(filteredKeys)
-      // console.log(keys.filter(key => !(key in filteredKeys)))
       return keys.filter(key => !(key in filteredKeys));
     }
 
-    // console.log(excludeNonEmptyValues(modelToSend, requiredFieldValues))
-    // console.log(fields)
-
     let emptyFields = excludeNonEmptyValues(modelToSend, requiredFieldValues)
-    // .filter(i => {
-    //   !!_.get(_.find(fields, { sysName: i }), "name")
-    // }) 
-    // Я, блять, в душе не ебу что это и зачем это я сюда добавил...
-
 
     if (emptyFields.length > 0 && !autoSubmit) {
       emptyFields = emptyFields.map(i => {
@@ -470,21 +457,24 @@ export default function FpsForm2(props) {
       finish()
       return;
     }
-
-
+    let actionError = ""
     if (actionReq && emptyFields.length > 0) {
       emptyFields = emptyFields.map(i => {
-        const fieldName = _.get(_.find(fields, { sysName: i }), "name")
-        if (!fieldName) { console.log("!!! " + i); console.log(fields) }
+        const fieldName = _.get(_.find(fields, { sysName: i }), "name") || _.get(_.find(fields, { sysName: i }), "sysName")
+        if (!fieldName) { console.log("FpsForm2.js !!! " + i); console.log(fields) }
         return fieldName ? '"' + fieldName + '"' : '"' + i + '"'
       })
       const errMessage = dict[lang].form.emptyRequired + emptyFields.join(", ")
-      setActionError && setActionError(errMessage)
+      actionError = errMessage
       //setState({ ...state, _submitError: errMessage })
-      //finish()
+      //finish()console.log("actionError")
+      console.log(actionError)
+      setActionError && setActionError(actionError)
       return;
     }
-    setActionError && setActionError(null)
+    setActionError && setActionError(actionError)
+    localState._submitError = ""
+    setState({ ...localState })
     console.log('submitting form...')
     console.log(modelToSend)
     setLoading(true)
@@ -551,7 +541,7 @@ export default function FpsForm2(props) {
           finish && finish(data)
           let extendedModelUpdate = { ...extendedModel }
           autoSubmit ?
-            setState({ ...saveState })
+            setState({ ...saveState, ...stateUpdate })
             : setState({ ...saveState, step: targetStep || "submitted", ...stateUpdate })
           if (submitKeepModel && !resetModel) {
             modelUpdate = { ...model, ...modelToSend, ...modelUpdate };
@@ -1048,23 +1038,23 @@ function RenderStep(props) {
         // }, 1000)
 
         // false &&
-          callEndpoint && callEndpoint(
-            endpoint,
-            "GET",
-            undefined,
-            params,
-            (result, data, visibleNames) => {
-              if (result == "ok") {
-                finish && finish(transformedArray(data, visibleNames))
-                setOptions && setOptions(transformedArray(data, visibleNames))
-              }
-              else {
-                setError && setError(data)
-                finish && finish([])
-                setOptions && setOptions([])
-              }
+        callEndpoint && callEndpoint(
+          endpoint,
+          "GET",
+          undefined,
+          params,
+          (result, data, visibleNames) => {
+            if (result == "ok") {
+              finish && finish(transformedArray(data, visibleNames))
+              setOptions && setOptions(transformedArray(data, visibleNames))
             }
-          )
+            else {
+              setError && setError(data)
+              finish && finish([])
+              setOptions && setOptions([])
+            }
+          }
+        )
       }}
       key={element.id} />)}
     {(currentStep.elements || [])

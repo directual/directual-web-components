@@ -218,10 +218,10 @@ function ElementAction(props) {
             if (action.actionSubmit) {
                 onSubmit(
                     () => {
-                        setState({ ...state, ...payloadState })
-                        setModel({ ...copyModel, ...payloadModel })
-                        setExtendedModel({ ...copyExtendedModel, ...payloadModel })
-                        setLoading(false)
+                        // setState({ ...state, ...payloadState })
+                        // setModel({ ...copyModel, ...payloadModel })
+                        // setExtendedModel({ ...copyExtendedModel, ...payloadModel })
+                        // setLoading(false)
                     },
                     true,
                     undefined,

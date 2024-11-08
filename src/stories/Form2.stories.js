@@ -18,7 +18,7 @@ export default {
 };
 
 let exampleForm = {
-    "sl": "newPersonnellRequest",
+    "sl": "check",
     "pageSize": "10",
     "headerField": null,
     "params": {
@@ -28,102 +28,26 @@ let exampleForm = {
                 "sysName": "default step",
                 "elements": [
                     {
-                        "id": "elmnt_1730828320765",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17308283222380.31341110302132434020341",
-                                "_action": "action_1730828270356",
-                                "_action_label": "Новая заявка",
-                                "_action_icon": "plus",
-                                "_action_button_type": "accent"
-                            },
-                            {
-                                "id": "17308283231380.2412124214020444222303",
-                                "_action": "action_1730828262756",
-                                "_action_label": "Загрузить CSV/Excel",
-                                "_action_icon": "clip"
-                            }
-                        ],
-                        "_actions_in_a_row": 2
-                    }
-                ]
-            },
-            {
-                "id": "step_1730828303836",
-                "sysName": "new",
-                "elements": [
-                    {
-                        "id": "elmnt_1730829349293",
+                        "id": "elmnt_1731060532260",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17308293557220.22142041243000000200143",
-                                "_field": "date_start",
-                                "_field_required": true
-                            },
-                            {
-                                "id": "17308293639960.12104131404444343220033",
-                                "_field": "date_end",
-                                "_field_required": true
-                            }
-                        ],
-                        "_input_fields_in_a_row": 2
-                    },
-                    {
-                        "id": "elmnt_1730829388233",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17308293901170.02212412110403432011203",
-                                "_field": "place_id",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "ddPlaces",
-                                "_field_required": true
-                            },
-                            {
-                                "id": "17308294126790.211204230134002301011402",
-                                "_field": "skill_id",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "ddSkills",
-                                "_field_required": true
-                            }
-                        ],
-                        "_input_fields_in_a_row": 2
-                    },
-                    {
-                        "id": "elmnt_1730829438404",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17308294406570.212042020144002133314402",
-                                "_field": "personell_number",
+                                "id": "17310605354620.214240043334013311441042",
+                                "_field": "text",
                                 "_field_required": true
                             }
                         ]
                     },
                     {
-                        "id": "elmnt_1730828307002",
+                        "id": "elmnt_1731060537831",
                         "type": "action",
                         "_actions": [
                             {
-                                "id": "17308283087300.33432121434320233232424",
-                                "_action": "action_1730829645054",
-                                "_action_label": "Создать заявку",
-                                "_action_icon": "done",
-                                "_action_button_type": "accent",
+                                "id": "17310605395640.1421202100410333110303",
+                                "_action": "action_1731060541586",
                                 "_action_standardRequired": true
-                            },
-                            {
-                                "id": "17308296840340.12133001211122113114304",
-                                "_action": "action_1730828283682",
-                                "_action_label": "Отменить",
-                                "_action_icon": "back",
-                                "_action_button_type": "normal",
-                                "_action_standardRequired": false
                             }
-                        ],
-                        "_actions_in_a_row": 2
+                        ]
                     }
                 ]
             },
@@ -132,6 +56,11 @@ let exampleForm = {
                 "sysName": "submitted",
                 "elements": [
                     {
+                        "id": "elmnt_1731060611993",
+                        "type": "hint",
+                        "hintText": "{{FormState.message}}"
+                    },
+                    {
                         "id": "elmnt_1712052683797",
                         "type": "hint",
                         "hintColor": "ok",
@@ -139,340 +68,174 @@ let exampleForm = {
                         "hintText": "Submitted"
                     }
                 ]
-            },
-            {
-                "id": "step_copy_1730828389105",
-                "sysName": "excel",
-                "elements": [
-                    {
-                        "id": "elmnt_1730828436899",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17308284407260.22423201133121311300311",
-                                "_field": "excel"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1730828307002",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17308283087300.33432121434320233232424",
-                                "_action": "action_1730828283682",
-                                "_action_label": "Отменить",
-                                "_action_icon": "back"
-                            }
-                        ]
-                    }
-                ]
             }
         ],
+        "hideHint": true,
         "actions": [
             {
-                "id": "action_1730828262756",
-                "name": "EXCEL",
+                "id": "action_1731060541586",
+                "name": "commit",
                 "actionType": "state",
                 "stateMapping": [
                     {
-                        "id": "stateMapping1730828369384",
-                        "value": "excel",
-                        "field": "FormState.step"
-                    }
-                ]
-            },
-            {
-                "id": "action_1730828270356",
-                "name": "NEW",
-                "actionType": "state",
-                "stateMapping": [
-                    {
-                        "id": "stateMapping1730828273744",
+                        "id": "stateMapping1731060545422",
                         "field": "FormState.step",
-                        "value": "new"
+                        "value": "submitted"
                     }
-                ]
-            },
-            {
-                "id": "action_1730828283682",
-                "name": "cancel",
-                "actionType": "state",
-                "stateMapping": [
-                    {
-                        "id": "stateMapping1730828289924",
-                        "field": "FormState.step",
-                        "value": "default step"
-                    }
-                ]
-            },
-            {
-                "id": "action_1730829645054",
-                "name": "submit",
-                "actionType": "endpoint",
-                "endpoint": "newPersonnellRequest",
-                "resetModel": false,
+                ],
                 "actionSubmit": true
             }
         ],
-        "hideActionsHint": true,
-        "hideHint": true,
-        "form_maxWidth": 400,
-        "general": {
-            "showModel": true
+        "state": {
+            "step": "default step",
+            "popup": null,
+            "message": ""
         }
     },
     "tableTitle": null,
     "actions": null,
-    "headers": [],
+    "headers": [
+        {
+            "sysName": "id",
+            "dataType": "id",
+            "name": "id",
+            "id": "0",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        }
+    ],
     "data": [
-        {}
+        {
+            "id": "1"
+        },
+        {
+            "id": "f3e3d0be-eeb5-417d-921d-ef40220dc680"
+        }
     ],
     "totalPages": 1,
     "pageNumber": 0,
     "error": null,
-    "fieldScheme": [],
-    "writeFields": [
-        "skill_id",
-        "place_id",
-        "personell_number",
-        "date_end",
-        "date_start",
-        "excel"
+    "fieldScheme": [
+        [
+            "id",
+            99354115
+        ]
     ],
-    "structures": {},
+    "writeFields": [
+        "text"
+    ],
+    "structures": {
+        "99354115": {
+            "networkID": 22386,
+            "sysName": "trigger",
+            "name": "trigger",
+            "id": 99354115,
+            "dateCreated": "2024-11-07T08:33:50Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"text\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"63331731059277678\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"json\",\"dataType\":\"json\",\"name\":\"\",\"id\":\"76031730968431323\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": null,
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2024-11-08T09:48:10Z",
+            "createBy": 1,
+            "changedBy": 1,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            "objectIDSysName": "id",
+            "folderId": null
+        }
+    },
     "isSuccessWrite": false,
     "writeError": null,
     "writeResponse": null,
     "fileds": [
         {
-            "sysName": "skill_id",
-            "name": "Требуемый навык",
-            "dataType": "link",
-            "id": "82871730828153841",
-            "link": "skills",
-            "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 4,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "place_id",
-            "name": "Участок",
-            "dataType": "link",
-            "id": "18061730828138902",
-            "link": "places",
-            "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 3,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "personell_number",
-            "name": "Количество требуемого персонала с данным навыком на участке",
-            "dataType": "number",
-            "id": "28941730827641043",
+            "sysName": "text",
+            "dataType": "string",
+            "name": "",
+            "id": "63331731059277678",
             "link": "",
             "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 5,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": "positiveNum",
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "date_end",
-            "name": "Дата окончания работ",
-            "dataType": "date",
-            "id": "98231730827585673",
-            "link": "",
-            "group": "0",
-            "tags": null,
+            "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
             "order": 2,
             "linkIndexFieldSysName": [],
-            "defaultValue": null,
+            "defaultValue": "",
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "ru",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD.MM.Y",
-                "timeFormat": "",
-                "isUTC": "false"
-            },
+            "formatOptions": {},
             "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "date_start",
-            "name": "Дата начала работ",
-            "dataType": "date",
-            "id": "14281730827559090",
-            "link": "",
-            "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "ru",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD.MM.Y",
-                "timeFormat": "",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "excel",
-            "name": "Загрузите CSV/XLX/XLSX",
-            "dataType": "file",
-            "id": "86741730828400204",
-            "link": "",
-            "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 6,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "indexExists": false,
-            "array": false
+            "indexExists": false
         }
     ],
     "quickSearch": null,
     "httpParams": null,
     "cardCustomHtml": null,
     "cardCustomLayout": null,
-    "comment": "Новая заявка на персонал",
+    "comment": null,
     "response": false
 }
 
