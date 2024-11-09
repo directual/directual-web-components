@@ -531,6 +531,7 @@ export default function Input(props) {
                         <IMaskInput
                             {...props.imask}
                             onAccept={handleChange}
+                            unmask={true}
                             disabled={props.disabled}
                             key={props.key}
                             ref={inputEl}
@@ -595,6 +596,7 @@ export default function Input(props) {
                     <IMaskInput
                         {...props.imask}
                         onAccept={handleChange}
+                        unmask={true}
                         autoComplete={props.autoComplete || "off"}
                         ref={inputEl}
                         disabled={props.disabled}
@@ -656,7 +658,7 @@ export default function Input(props) {
                         <IMaskInput
                             {...props.imask}
                             onAccept={handleChange}
-
+                            unmask={true}
                             className={`${styles.field} ${props.icon && styles.icon} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                             ref={inputEl}
                             disabled={props.disabled}
@@ -683,6 +685,7 @@ export default function Input(props) {
                         <IMaskInput
                             {...props.imask}
                             onAccept={handleChange}
+                            unmask={true}
                             className={`${styles.field} ${props.icon && styles.icon} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                             disabled={props.disabled}
                             ref={inputEl}
@@ -716,6 +719,7 @@ export default function Input(props) {
                         <IMaskInput
                             {...props.imask}
                             onAccept={handleChange}
+                            unmask={true}
                             className={`${styles.field} ${styles.icon} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                             disabled={props.disabled}
                             ref={inputEl}

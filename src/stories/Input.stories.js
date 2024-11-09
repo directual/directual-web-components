@@ -182,38 +182,7 @@ export const MaskedString = {
     debug: true,
     icon: 'forward',
     imask: {
-      mask: Date,  // enable date mask
-
-      // other options are optional
-      pattern: 'Y-`m-`d',  // Pattern mask with defined blocks, default is 'd{.}`m{.}`Y'
-      // you can provide your own blocks definitions, default blocks for date mask are:
-      blocks: {
-        d: {
-          mask: IMask.MaskedRange,
-          from: 1,
-          to: 31,
-          maxLength: 2,
-        },
-        m: {
-          mask: IMask.MaskedRange,
-          from: 1,
-          to: 12,
-          maxLength: 2,
-        },
-        Y: {
-          mask: IMask.MaskedRange,
-          from: 1900,
-          to: 9999,
-        }
-      },
-
-      autofix: true,  // defaults to `false`
-
-      // pattern options can be set as well
-      lazy: false,
-
-      // and other common options
-      overwrite: true  // defaults to `false`
+      mask: '+{7}(000)000-00-00'
     },
     //tip: "value: TV, HD, VR",
     label: 'Hello!',
@@ -473,16 +442,7 @@ export const MaskedInput = {
   args: {
     type: 'masked',
     imask: {
-      mask: Number,  // enable number mask
-      scale: 2,  // digits after point, 0 for integers
-      thousandsSeparator: ' ',  // any single char
-      padFractionalZeros: false,  // if true, then pads zeros at end to the length of scale
-      normalizeZeros: true,  // appends or removes zeros at ends
-      radix: ',',  // fractional delimiter
-      mapToRadix: ['.'],  // symbols to process as radix
-      min: -10000,
-      max: 10000,
-      autofix: true,
+      mask: '+{7}(000)000-00-00'
     },
     label: 'Phone number',
     debug: true
