@@ -284,7 +284,9 @@ function ElementText(props) {
             const templValue = templateEngine ? await templateEngine(payload, extendedModel) : "Templating error";
             setValue(templValue);
         };
-        if (apiTemplate) { fetchData(element.paraText, setTemplatedText) }
+        if (apiTemplate) { fetchData(element.paraText, setTemplatedText) } else {
+            setTemplatedText(template(element.paraText))
+        }
     }, [extendedModel])
         
     return templatedText ? <InnerHTML allowRerender={true} html={templatedText} /> : ""

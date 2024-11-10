@@ -623,7 +623,21 @@ export default function FpsForm2(props) {
 
   function template(input, noDate) {
     if (!input || input == "{{undefined}}" || input == "{{null}}") return ""
+
+    function convertNumbersToStrings(obj) {
+      for (let key in obj) {
+        if (typeof obj[key] === 'number') {
+          obj[key] = obj[key].toString();
+        } else if (typeof obj[key] === 'object' && obj[key] !== null) {
+          convertNumbersToStrings(obj[key]);
+        }
+      }
+      return obj;
+    }
+
     let templateData = { ...defaultExtModel, ...(model || {}), ...(extendedModel || {}) };
+
+
     const replaceNullWithEmptyString = obj => _.mapValues(obj, value => value === null ? "" : value);
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
     if (!templateData) return "";
@@ -653,6 +667,7 @@ export default function FpsForm2(props) {
       });
     };
     templateData = replaceNullWithEmptyString(templateData)
+    templateData = convertNumbersToStrings(templateData)
 
     function extractStringsWithinBraces(str) {
       // Regular expression to match strings within {{}}
@@ -669,6 +684,7 @@ export default function FpsForm2(props) {
         _.set(templateData, i, "")
       }
     })
+
 
 
     // =============
