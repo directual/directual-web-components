@@ -273,7 +273,7 @@ function ElementSubheader(props) {
 }
 
 function ElementText(props) {
-    const { element, template, templateEngine, dict, lang } = props
+    const { element, template, templateEngine, dict, lang, extendedModel } = props
 
     const apiTemplate = element.paraTemplateEngine == 'api'
 
@@ -281,7 +281,7 @@ function ElementText(props) {
 
     useEffect(() => {
         const fetchData = async (payload, setValue) => {
-            const templValue = templateEngine ? await templateEngine(payload, object) : "Templating error";
+            const templValue = templateEngine ? await templateEngine(payload, extendedModel) : "Templating error";
             setValue(templValue);
         };
         if (apiTemplate) { fetchData(element.paraText, setTemplatedText) }
