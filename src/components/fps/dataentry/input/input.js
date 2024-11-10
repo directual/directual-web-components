@@ -451,6 +451,37 @@ export default function Input(props) {
         }, [ref]);
     }
 
+    const stringifyWithCustomTypes = (obj, tabs = 2) => {
+        const indent = ' '.repeat(tabs);
+        const innerIndent = ' '.repeat(tabs + 2); // Nested indentation with correct levels
+    
+        // Helper function to handle nested objects and arrays
+        const processValue = (value, innerTabs) => {
+            if (value instanceof RegExp) {
+                return value.toString(); // Serialize RegExp
+            } else if (value instanceof Date) {
+                return `new Date('${value.toISOString()}')`; // Serialize Date
+            } else if (typeof value === 'function' && value.name) {
+                return value.name; // Serialize constructor names like Number
+            } else if (Array.isArray(value)) {
+                return `[${value.map(item => processValue(item, innerTabs)).join(', ')}]`; // Handle arrays
+            } else if (typeof value === 'object' && value !== null) {
+                return stringifyWithCustomTypes(value, innerTabs); // Handle nested objects
+            } else if (typeof value === 'string') {
+                return `'${value.replace(/'/g, "\\'")}'`; // Escape single quotes in strings
+            } else {
+                return JSON.stringify(value); // Default for other types (numbers, booleans)
+            }
+        };
+    
+        return `{\n` + 
+            Object.entries(obj).map(([key, value], index, array) => {
+                const keyValue = `${innerIndent}${key}: ${processValue(value, tabs + 2)}`;
+                return index === array.length - 1 ? keyValue : `${keyValue},`;
+            }).join('\n') +
+        `\n${indent}}`; // Properly align the closing brace
+    };
+
     return (
         <div className={`${styles.input_wrapper} ${props.className}`}
             style={
@@ -536,7 +567,7 @@ export default function Input(props) {
                             key={props.key}
                             ref={inputEl}
                             style={{
-                                height: props.height || 44
+                                height: props.height || 48
                             }}
                             className=
                             {`${styles.field}
@@ -603,7 +634,7 @@ export default function Input(props) {
                         className={`${styles.field} ${styles.icon} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
                         type="text"
                         style={{
-                            height: props.height || 44
+                            height: props.height || 48
                         }}
                         onChange={e => { props.imask ? undefined : handleChange(String(e.target.value).toLowerCase()); e && checkEmailValue(e.target.value) }}
                         value={value}
@@ -624,7 +655,7 @@ export default function Input(props) {
                     <input
                         disabled={props.disabled}
                         style={{
-                            height: props.height || 44
+                            height: props.height || 48
                         }}
                         ref={inputEl}
                         className={`
@@ -664,7 +695,7 @@ export default function Input(props) {
                             disabled={props.disabled}
                             type={props.imask ? "text" : "number"}
                             style={{
-                                height: props.height || 44
+                                height: props.height || 48
                             }}
                             onChange={e => { props.imask ? undefined : handleChangeDecimalNumber(e.target.value) }}
                             value={value}
@@ -691,7 +722,7 @@ export default function Input(props) {
                             ref={inputEl}
                             type={props.imask ? "text" : "number"}
                             style={{
-                                height: props.height || 44
+                                height: props.height || 48
                             }}
                             onChange={e => props.imask ? undefined : handleChangeNumber(e.target.value)}
                             value={value}
@@ -723,9 +754,9 @@ export default function Input(props) {
                             className={`${styles.field} ${styles.icon} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                             disabled={props.disabled}
                             ref={inputEl}
-                            type="number"
+                            type={props.imask ? "text" : "number"}
                             style={{
-                                height: props.height || 44
+                                height: props.height || 48
                             }}
                             onChange={e => props.imask ? undefined : handleChange(e.target.value)}
                             value={value}
@@ -753,7 +784,7 @@ export default function Input(props) {
                             disabled={props.disabled}
                             ref={inputEl}
                             style={{
-                                height: props.height || 44
+                                height: props.height || 48
                             }}
                             onChange={e => handleChange(e.target.value)}
                             value={value}
@@ -863,7 +894,7 @@ export default function Input(props) {
                         autoComplete="new-password"
                         disabled={props.disabled}
                         style={{
-                            height: props.height || 44
+                            height: props.height || 48
                         }}
                         className={`${styles.field} ${styles.icon} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                         type={pwdVisible}

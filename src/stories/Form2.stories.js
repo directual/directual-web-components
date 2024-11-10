@@ -18,7 +18,7 @@ export default {
 };
 
 let exampleForm = {
-    "sl": "check",
+    "sl": "mask",
     "pageSize": "10",
     "headerField": null,
     "params": {
@@ -28,26 +28,57 @@ let exampleForm = {
                 "sysName": "default step",
                 "elements": [
                     {
-                        "id": "elmnt_1731060532260",
+                        "id": "elmnt_1731230663682",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17310605354620.214240043334013311441042",
-                                "_field": "text",
-                                "_field_required": true
+                                "id": "17312306650060.4030040312211233114343",
+                                "_field": "text"
+                            },
+                            {
+                                "id": "17312306661120.1112024100442134401404",
+                                "_field": "text2"
+                            },
+                            {
+                                "id": "17312306831150.33212340303044231320243",
+                                "_field": "maskedPhone"
+                            },
+                            {
+                                "id": "17312306835800.031013130002314240420121",
+                                "_field": "maskedNumber"
+                            },
+                            {
+                                "id": "17312383778650.033141202024213130441231",
+                                "_field": "maskedDecimal"
+                            },
+                            {
+                                "id": "17312384054110.32443004420101023410204",
+                                "_field": "maskedString"
                             }
-                        ]
+                        ],
+                        "_input_fields_in_a_row": 6,
+                        "_input_fields_in_a_row_column": "column"
                     },
                     {
-                        "id": "elmnt_1731060537831",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17310605395640.1421202100410333110303",
-                                "_action": "action_1731073718074",
-                                "_action_standardRequired": true
-                            }
-                        ]
+                        "id": "elmnt_1731230696625",
+                        "type": "subheader",
+                        "subheaderTitle": "Regular templating"
+                    },
+                    {
+                        "id": "elmnt_1731230693521",
+                        "type": "text",
+                        "paraText": "{{#array}}\n-{{message}}\n{{/array}}"
+                    },
+                    {
+                        "id": "elmnt_1731230709218",
+                        "type": "subheader",
+                        "subheaderTitle": "backend templating"
+                    },
+                    {
+                        "id": "elmnt_1731230717693",
+                        "type": "text",
+                        "paraText": "{{#array}}\n-{{message}}\n{{/array}}",
+                        "paraRaw": false
                     }
                 ]
             },
@@ -56,11 +87,6 @@ let exampleForm = {
                 "sysName": "submitted",
                 "elements": [
                     {
-                        "id": "elmnt_1731060611993",
-                        "type": "hint",
-                        "hintText": "{{FormState.message}}"
-                    },
-                    {
                         "id": "elmnt_1712052683797",
                         "type": "hint",
                         "hintColor": "ok",
@@ -68,118 +94,8 @@ let exampleForm = {
                         "hintText": "Submitted"
                     }
                 ]
-            },
-            {
-                "id": "step_1731073729664",
-                "sysName": "pop",
-                "elements": [
-                    {
-                        "id": "elmnt_1731073731081",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17310737456120.33430122334420242031243",
-                                "_field": "ddd",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "dd",
-                                "_field_required": true
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1731079381686",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17310793838560.33440340441012422212032",
-                                "_field": "text2",
-                                "_field_required": true
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_action_conditionals_manual": "manual",
-                        "_conditions": [
-                            {
-                                "id": "condition_1731079425004",
-                                "_conditionalView_field": "ddd",
-                                "_conditionalView_operator": "isNotNull"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1731074059536",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17310740647880.040402244400143023210022",
-                                "_action": "action_1731060541586",
-                                "_action_standardRequired": true,
-                                "_action_label": "стандартные поля"
-                            },
-                            {
-                                "id": "17310815108980.20343141214004304224122",
-                                "_action": "action_1731060541586",
-                                "_action_label": "кастомные",
-                                "_action_standardRequired": false,
-                                "_action_customRequired": true,
-                                "_action_customRequired_fields": [
-                                    "ddd",
-                                    "text2"
-                                ]
-                            }
-                        ],
-                        "_conditionalView": false,
-                        "_conditions": [
-                            {
-                                "id": "condition_1731076548057",
-                                "_conditionalView_field": "text",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "1"
-                            }
-                        ],
-                        "_actions_in_a_row": 2,
-                        "_input_actions_in_a_row_column": "line",
-                        "_stretch_buttons": false,
-                        "_input_actions_alignment": "right"
-                    },
-                    {
-                        "id": "elmnt_1731081528160",
-                        "type": "submit"
-                    }
-                ]
             }
-        ],
-        "hideHint": true,
-        "actions": [
-            {
-                "id": "action_1731060541586",
-                "name": "commit",
-                "actionType": "state",
-                "stateMapping": [],
-                "actionSubmit": true
-            },
-            {
-                "id": "action_1731073718074",
-                "name": "popup",
-                "actionType": "state",
-                "stateMapping": [
-                    {
-                        "id": "stateMapping1731073722125",
-                        "field": "FormState.popup",
-                        "value": "pop"
-                    }
-                ]
-            }
-        ],
-        "state": {
-            "step": "default step",
-            "popup": null,
-            "message": ""
-        },
-        "general": {
-            "closePopupOnClick": true
-        },
-        "popup_width": 600
+        ]
     },
     "tableTitle": null,
     "actions": null,
@@ -211,20 +127,469 @@ let exampleForm = {
             "linkType": false,
             "arrayLink": false,
             "indexExists": false
+        },
+        {
+            "sysName": "array",
+            "dataType": "arrayLink",
+            "name": "",
+            "id": "16691731230607720",
+            "link": "socket",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 10,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": false,
+            "arrayLink": true,
+            "indexExists": false
+        },
+        {
+            "sysName": "maskedDecimal",
+            "dataType": "decimal",
+            "name": "",
+            "id": "80161731092819528",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 9,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: Number,\n    scale: 2,\n    thousandsSeparator: '',\n    padFractionalZeros: false,\n    normalizeZeros: true,\n    radix: '.',\n    mapToRadix: ['.',',']\n  }",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "maskedPhone",
+            "dataType": "string",
+            "name": "",
+            "id": "25551731092809653",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 8,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "phone",
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: '+{7}(000)000-00-00',\n    lazy: false\n  }",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "maskedEmail",
+            "dataType": "string",
+            "name": "",
+            "id": "59481731092802195",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 7,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "email",
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "maskedNumber",
+            "dataType": "number",
+            "name": "",
+            "id": "28581731092797759",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 6,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: Number,\n    min: -10000,\n    max: 10000,\n    thousandsSeparator: ' '\n  }",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "maskedString",
+            "dataType": "string",
+            "name": "num",
+            "id": "74181731092791538",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 5,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: Number,\n    min: -10000,\n    max: 10000,\n    thousandsSeparator: ' '\n  }",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "text2",
+            "dataType": "string",
+            "name": "date",
+            "id": "33501731077950006",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: Date,\n    min: new Date('1989-12-31T21:00:00.000Z'),\n    max: new Date('2023-12-31T21:00:00.000Z'),\n    lazy: false\n  }",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "ddd",
+            "dataType": "link",
+            "name": "",
+            "id": "38781731073755334",
+            "link": "ddd",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "text",
+            "dataType": "string",
+            "name": "XXX",
+            "id": "63331731059277678",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: 'XXX-XX-0000',\n    definitions: {\n      X: {\n        mask: '0',\n        displayChar: 'X',\n        placeholderChar: '#'\n      }\n    },\n    lazy: false,\n    overwrite: 'shift'\n  }",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "json",
+            "dataType": "json",
+            "name": "",
+            "id": "76031730968431323",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": true,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
         }
     ],
     "data": [
         {
-            "id": "1"
-        },
-        {
-            "id": "f3e3d0be-eeb5-417d-921d-ef40220dc680"
-        },
-        {
-            "id": "9a3b09f4-bfde-4b3e-b86b-42c7bafb821a"
-        },
-        {
-            "id": "244cc241-4f73-4a58-8ce8-4f0b9cea45f6"
+            "array": [
+                {
+                    "message": "two",
+                    "id": "80021225-37d2-4c00-91ce-25d86bc1424d"
+                },
+                {
+                    "message": "one",
+                    "id": "91048292-c29a-4b51-8899-8cd156ff4900"
+                }
+            ],
+            "id": "fc577862-6389-4a3e-af3f-918f8ac59ab9"
         }
     ],
     "totalPages": 1,
@@ -234,12 +599,64 @@ let exampleForm = {
         [
             "id",
             99354115
+        ],
+        [
+            "array.id",
+            99354116
+        ],
+        [
+            "array.message",
+            99354116
+        ],
+        [
+            "maskedDecimal",
+            99354115
+        ],
+        [
+            "maskedPhone",
+            99354115
+        ],
+        [
+            "maskedEmail",
+            99354115
+        ],
+        [
+            "maskedNumber",
+            99354115
+        ],
+        [
+            "maskedString",
+            99354115
+        ],
+        [
+            "text2",
+            99354115
+        ],
+        [
+            "ddd.id",
+            99354188
+        ],
+        [
+            "text",
+            99354115
+        ],
+        [
+            "json",
+            99354115
         ]
     ],
     "writeFields": [
-        "text",
+        "id",
+        "array",
+        "maskedDecimal",
+        "maskedPhone",
+        "maskedEmail",
+        "maskedNumber",
+        "maskedString",
+        "text2",
         "ddd",
-        "text2"
+        "text",
+        "json"
     ],
     "structures": {
         "99354115": {
@@ -250,7 +667,7 @@ let exampleForm = {
             "dateCreated": "2024-11-07T08:33:50Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"text2\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"33501731077950006\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"ddd\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"38781731073755334\",\"link\":\"ddd\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"text\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"63331731059277678\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"json\",\"dataType\":\"json\",\"name\":\"\",\"id\":\"76031730968431323\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false}]",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"array\",\"dataType\":\"arrayLink\",\"name\":\"\",\"id\":\"16691731230607720\",\"link\":\"socket\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false},{\"sysName\":\"maskedPhone\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"25551731092809653\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"phone\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n    mask: '+{7}(000)000-00-00',\\n    lazy: false\\n  }\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"maskedNumber\",\"dataType\":\"number\",\"name\":\"\",\"id\":\"28581731092797759\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n    mask: Number,\\n    min: -10000,\\n    max: 10000,\\n    thousandsSeparator: ' '\\n  }\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"text2\",\"dataType\":\"string\",\"name\":\"date\",\"id\":\"33501731077950006\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n    mask: Date,\\n    min: new Date('1989-12-31T21:00:00.000Z'),\\n    max: new Date('2023-12-31T21:00:00.000Z'),\\n    lazy: false\\n  }\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"ddd\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"38781731073755334\",\"link\":\"ddd\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"maskedEmail\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"59481731092802195\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"email\",\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"text\",\"dataType\":\"string\",\"name\":\"XXX\",\"id\":\"63331731059277678\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n    mask: 'XXX-XX-0000',\\n    definitions: {\\n      X: {\\n        mask: '0',\\n        displayChar: 'X',\\n        placeholderChar: '#'\\n      }\\n    },\\n    lazy: false,\\n    overwrite: 'shift'\\n  }\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"maskedString\",\"dataType\":\"string\",\"name\":\"num\",\"id\":\"74181731092791538\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n    mask: Number,\\n    min: -10000,\\n    max: 10000,\\n    thousandsSeparator: ' '\\n  }\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"json\",\"dataType\":\"json\",\"name\":\"\",\"id\":\"76031730968431323\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"maskedDecimal\",\"dataType\":\"decimal\",\"name\":\"\",\"id\":\"80161731092819528\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n    mask: Number,\\n    scale: 2,\\n    thousandsSeparator: '',\\n    padFractionalZeros: false,\\n    normalizeZeros: true,\\n    radix: '.',\\n    mapToRadix: ['.',',']\\n  }\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false}]",
             "jsonGroupSettings": null,
             "jsonViewIdSettings": null,
             "jsonSettings": null,
@@ -258,7 +675,111 @@ let exampleForm = {
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2024-11-08T14:59:17Z",
+            "dateChanged": "2024-11-10T11:36:36Z",
+            "createBy": 1,
+            "changedBy": 1,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            "objectIDSysName": "id",
+            "folderId": null
+        },
+        "99354116": {
+            "networkID": 22386,
+            "sysName": "socket",
+            "name": "socket",
+            "id": 99354116,
+            "dateCreated": "2024-11-07T08:51:21Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"message\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"31611730969480930\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": null,
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2024-11-07T08:51:27Z",
+            "createBy": 1,
+            "changedBy": 1,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "array": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false
+            },
+            "objectIDSysName": "id",
+            "folderId": null
+        },
+        "99354188": {
+            "networkID": 22386,
+            "sysName": "ddd",
+            "name": "ddd",
+            "id": 99354188,
+            "dateCreated": "2024-11-08T13:47:37Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"title\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"66311731073665194\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2024-11-08T13:48:28Z",
             "createBy": 1,
             "changedBy": 1,
             "_settings": null,
@@ -300,10 +821,10 @@ let exampleForm = {
     "writeResponse": null,
     "fileds": [
         {
-            "sysName": "text",
-            "dataType": "string",
-            "name": "",
-            "id": "63331731059277678",
+            "sysName": "id",
+            "dataType": "id",
+            "name": "id",
+            "id": "0",
             "link": "",
             "group": "0",
             "tags": "",
@@ -311,13 +832,349 @@ let exampleForm = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 2,
+            "order": 0,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
             "synthetic": false,
             "format": null,
             "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "array",
+            "dataType": "arrayLink",
+            "name": "",
+            "id": "16691731230607720",
+            "link": "socket",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 10,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": false,
+            "arrayLink": true,
+            "indexExists": false
+        },
+        {
+            "sysName": "maskedDecimal",
+            "dataType": "decimal",
+            "name": "",
+            "id": "80161731092819528",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 9,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: Number,\n    scale: 2,\n    thousandsSeparator: '',\n    padFractionalZeros: false,\n    normalizeZeros: true,\n    radix: '.',\n    mapToRadix: ['.',',']\n  }",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "maskedPhone",
+            "dataType": "string",
+            "name": "",
+            "id": "25551731092809653",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 8,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "phone",
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: '+{7}(000)000-00-00',\n    lazy: false\n  }",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "maskedEmail",
+            "dataType": "string",
+            "name": "",
+            "id": "59481731092802195",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 7,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "email",
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "maskedNumber",
+            "dataType": "number",
+            "name": "",
+            "id": "28581731092797759",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 6,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: Number,\n    min: -10000,\n    max: 10000,\n    thousandsSeparator: ' '\n  }",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "maskedString",
+            "dataType": "string",
+            "name": "num",
+            "id": "74181731092791538",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 5,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: Number,\n    min: -10000,\n    max: 10000,\n    thousandsSeparator: ' '\n  }",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "text2",
+            "dataType": "string",
+            "name": "date",
+            "id": "33501731077950006",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: Date,\n    min: new Date('1989-12-31T21:00:00.000Z'),\n    max: new Date('2023-12-31T21:00:00.000Z'),\n    lazy: false\n  }",
+                "isUTC": "false"
+            },
             "groupName": null,
             "array": false,
             "typeVariable": {},
@@ -356,10 +1213,10 @@ let exampleForm = {
             "indexExists": false
         },
         {
-            "sysName": "text2",
+            "sysName": "text",
             "dataType": "string",
-            "name": "",
-            "id": "33501731077950006",
+            "name": "XXX",
+            "id": "63331731059277678",
             "link": "",
             "group": "0",
             "tags": "",
@@ -367,7 +1224,63 @@ let exampleForm = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 4,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: 'XXX-XX-0000',\n    definitions: {\n      X: {\n        mask: '0',\n        displayChar: 'X',\n        placeholderChar: '#'\n      }\n    },\n    lazy: false,\n    overwrite: 'shift'\n  }",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "json",
+            "dataType": "json",
+            "name": "",
+            "id": "76031730968431323",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -377,7 +1290,7 @@ let exampleForm = {
             "groupName": null,
             "array": false,
             "typeVariable": {},
-            "json": false,
+            "json": true,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,

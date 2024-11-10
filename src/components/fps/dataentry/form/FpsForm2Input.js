@@ -14,7 +14,7 @@ import Hint from '../../hint/hint'
 import { Tags } from '../../tags/Tags'
 import { debounce } from 'lodash'
 
-export default function FpsForm2Input(props) {
+export function FpsForm2Input(props) {
     const { field, template, dict, lang, loading, editModel, callEndpoint, model, data, state, locale, checkHidden } = props
 
     const fieldInfo = _.find(_.get(data, "fileds"), { sysName: field._field }) || {}
@@ -200,12 +200,39 @@ function FieldText(props) {
         />
     }
 
+    const parseWithCustomTypes = (str) => {
+        if (!str) return;
+        // Replace recognized type strings with actual constructors or RegExp/Date objects
+        var typeReplacedStr = str
+        try {
+            typeReplacedStr = str
+                .replace(/:\s*Number/g, ': Number')
+                .replace(/:\s*Boolean/g, ': Boolean')
+                .replace(/:\s*String/g, ': String')
+                .replace(/:\s*\/(.*?)\//g, (_, regex) => `: new RegExp(${JSON.stringify(regex)})`)
+                .replace(/:\s*new Date\('(.+?)'\)/g, (_, dateStr) => `: new Date('${dateStr}')`);
+        } catch (error) {
+            console.error("Parsing error:", error);
+        }
+        try {
+            // Evaluate the string safely (ensure the string is from a trusted source)
+            return eval(`(${typeReplacedStr})`);
+        } catch (error) {
+            console.error("Parsing error:", error);
+            return null;
+        }
+    };
+
+    const imask = parseWithCustomTypes(_.get(fieldInfo,"formatOptions.imask"))
+    console.log(imask)
+
     return <Input
         type={fieldInfo.dataType !== 'string' ? fieldInfo.dataType : `${fieldInfo.format == 'password' ? 'password' :
             fieldInfo.format == 'phone' ? 'phone' :
-                fieldInfo.format == 'email' ? 'email' : 'textarea'}`}
+                fieldInfo.format == 'email' ? 'email' : imask ? 'string' : 'textarea'}`}
         positive={fieldInfo.format == 'positiveNum'}
         rows='auto'
+        imask={imask}
         //debug
         required={field._field_required}
         {...basicProps}

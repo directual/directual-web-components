@@ -178,11 +178,12 @@ export const String = {
 
 export const MaskedString = {
   args: {
-    type: 'string',
+    type: 'phone',
     debug: true,
     icon: 'forward',
     imask: {
-      mask: '+{7}(000)000-00-00'
+      "mask": "+{7}(000)000-00-00",
+      "lazy": false
     },
     //tip: "value: TV, HD, VR",
     label: 'Hello!',
