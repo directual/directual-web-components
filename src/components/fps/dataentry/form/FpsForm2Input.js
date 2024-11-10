@@ -142,7 +142,39 @@ function FieldText(props) {
         return parsedJson
     }
 
+    const parseWithCustomTypes = (str) => {
+        if (!str) return;
+        // Replace recognized type strings with actual constructors or RegExp/Date objects
+        var typeReplacedStr = str
+        try {
+            typeReplacedStr = str
+                .replace(/:\s*Number/g, ': Number')
+                .replace(/:\s*Boolean/g, ': Boolean')
+                .replace(/:\s*String/g, ': String')
+                .replace(/:\s*\/(.*?)\//g, (_, regex) => `: new RegExp(${JSON.stringify(regex)})`)
+                .replace(/:\s*new Date\('(.+?)'\)/g, (_, dateStr) => `: new Date('${dateStr}')`);
+        } catch (error) {
+            console.error("Parsing error:", error);
+        }
+        try {
+            // Evaluate the string safely (ensure the string is from a trusted source)
+            return eval(`(${typeReplacedStr})`);
+        } catch (error) {
+            console.error("Parsing error:", error);
+            return null;
+        }
+    };
+
+    let imask = parseWithCustomTypes(_.get(fieldInfo, "formatOptions.imask"))
+
     if (field._input_type == "state") {
+
+        if (field._edit_state_maskOn && field._edit_state_imask) {
+            imask = parseWithCustomTypes(field._edit_state_imask)
+        }
+        else {
+            imask = null
+        }
 
         let options = field._edit_state_options || []
         if (field._edit_state_manual_json == "json") {
@@ -189,8 +221,9 @@ function FieldText(props) {
             />
         }
         return <Input nomargin
-            type="textarea"
+            type={imask ? 'string' : "textarea"}
             rows='auto'
+            imask={imask}
             options={field._edit_state_options}
             label={!field._field_hide_label ? (field._edit_state_input_label || field._state_field) : null}
             defaultValue={_.get(state, field._state_field)}
@@ -200,31 +233,7 @@ function FieldText(props) {
         />
     }
 
-    const parseWithCustomTypes = (str) => {
-        if (!str) return;
-        // Replace recognized type strings with actual constructors or RegExp/Date objects
-        var typeReplacedStr = str
-        try {
-            typeReplacedStr = str
-                .replace(/:\s*Number/g, ': Number')
-                .replace(/:\s*Boolean/g, ': Boolean')
-                .replace(/:\s*String/g, ': String')
-                .replace(/:\s*\/(.*?)\//g, (_, regex) => `: new RegExp(${JSON.stringify(regex)})`)
-                .replace(/:\s*new Date\('(.+?)'\)/g, (_, dateStr) => `: new Date('${dateStr}')`);
-        } catch (error) {
-            console.error("Parsing error:", error);
-        }
-        try {
-            // Evaluate the string safely (ensure the string is from a trusted source)
-            return eval(`(${typeReplacedStr})`);
-        } catch (error) {
-            console.error("Parsing error:", error);
-            return null;
-        }
-    };
 
-    const imask = parseWithCustomTypes(_.get(fieldInfo,"formatOptions.imask"))
-    console.log(imask)
 
     return <Input
         type={fieldInfo.dataType !== 'string' ? fieldInfo.dataType : `${fieldInfo.format == 'password' ? 'password' :

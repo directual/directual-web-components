@@ -15,7 +15,7 @@ import moment from 'moment'
 export default function FpsForm2(props) {
 
 
-  const { auth, data, callEndpoint, onEvent, id, locale, handleRoute, currentBP } = props
+  const { auth, data, callEndpoint, onEvent, id, locale, handleRoute, currentBP, templateEngine } = props
 
   // console.log("=== FpsForm2 data ===")
   // console.log(data)
@@ -1074,6 +1074,7 @@ function RenderStep(props) {
     {(currentStep.elements || [])
       .filter(element => checkIfAllInputsHidden(element))
       .map(element => <FormElement
+        {...props}
         model={model}
         refresh={refresh}
         data={data}

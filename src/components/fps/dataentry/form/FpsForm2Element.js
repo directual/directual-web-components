@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styles from './form2.module.css'
 import { FormSection } from "./FpsForm"
 import InnerHTML from 'dangerously-set-html-content'
@@ -273,10 +273,21 @@ function ElementSubheader(props) {
 }
 
 function ElementText(props) {
-    const { element, template } = props
-    const text = //element.paraText + " - " + 
-        template(element.paraText)
-    return text ? <InnerHTML allowRerender={true} html={text} /> : ""
+    const { element, template, templateEngine, dict, lang } = props
+
+    const apiTemplate = element.paraTemplateEngine == 'api'
+
+    const [templatedText, setTemplatedText] = useState(apiTemplate ? (dict[lang].loading || "loading...") : template(element.paraText))
+
+    useEffect(() => {
+        const fetchData = async (payload, setValue) => {
+            const templValue = templateEngine ? await templateEngine(payload, object) : "Templating error";
+            setValue(templValue);
+        };
+        if (apiTemplate) { fetchData(element.paraText, setTemplatedText) }
+    }, [])
+        
+    return templatedText ? <InnerHTML allowRerender={true} html={templatedText} /> : ""
 }
 
 function ElementSubmit(props) {
