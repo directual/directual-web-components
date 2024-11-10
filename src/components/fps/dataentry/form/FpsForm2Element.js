@@ -285,7 +285,7 @@ function ElementText(props) {
             setValue(templValue);
         };
         if (apiTemplate) { fetchData(element.paraText, setTemplatedText) }
-    }, [])
+    }, [extendedModel])
         
     return templatedText ? <InnerHTML allowRerender={true} html={templatedText} /> : ""
 }

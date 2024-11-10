@@ -115,6 +115,10 @@ let exampleForm = {
             "step": "default step",
             "popup": null,
             "phone": ""
+        },
+        "general": {
+            "edittingOn": true,
+            "showFullModel": true
         }
     },
     "tableTitle": null,

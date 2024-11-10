@@ -765,7 +765,6 @@ export default function FpsForm2(props) {
     setRefresh(refresh + 1)
   }
 
-
   return <div className={`${styles.formWrapper} D_FPS_FORM2_WRAPPER`}
     style={{ maxWidth }}
   >
@@ -1084,6 +1083,7 @@ function RenderStep(props) {
         locale={locale}
         handleRoute={handleRoute}
         state={state}
+        extendedModel={extendedModel}
         templateState={templateState}
         loading={loading}
         setState={setState}
