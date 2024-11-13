@@ -194,3 +194,27 @@
   opacity: 0.5;
   font-size: var(--text-small-size);
 }
+.debugConditions {
+  border: solid 2px darkcyan;
+  padding: 4px;
+  flex-grow: 2;
+}
+.debugConditions.hideDebug {
+  background-color: #F6B856;
+}
+.debugConditions.debugElement {
+  border: solid 2px darkorchid;
+}
+.debugConditions.debugElement.hideElementDebug {
+  background-color: #F99090;
+}
+.debugConditions.debugElement .condDebugDetails {
+  border-color: darkorchid;
+  color: darkorchid;
+}
+.debugConditions .condDebugDetails {
+  border: solid 1px darkcyan;
+  padding: 4px;
+  margin: 4px 0 0 0;
+  color: darkcyan;
+}

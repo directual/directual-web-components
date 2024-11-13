@@ -15,7 +15,7 @@ import { Tags } from '../../tags/Tags'
 import { debounce } from 'lodash'
 
 export function FpsForm2Input(props) {
-    const { field, template, dict, lang, loading, editModel, callEndpoint, model, data, state, locale, checkHidden } = props
+    const { field, template, dict, lang, loading, params, editModel, callEndpoint, model, data, state, locale, checkHidden } = props
 
     const fieldInfo = _.find(_.get(data, "fileds"), { sysName: field._field }) || {}
     const type = `${fieldInfo.dataType}${fieldInfo.format ? `_${fieldInfo.format}` : ''}`
@@ -24,12 +24,15 @@ export function FpsForm2Input(props) {
 
     if (field._conditionalView &&
         !checkHidden(field) &&
+        !_.get(params, "general.debugConditions") &&
         field._conditionalView_disable_or_hide !== "disable"
     ) return <React.Fragment></React.Fragment>
 
     const disabled = field._conditionalView &&
         !checkHidden(field) &&
         field._conditionalView_disable_or_hide == "disable"
+
+    let toRender
 
     switch (type) {
         case 'json':
@@ -39,29 +42,40 @@ export function FpsForm2Input(props) {
         case 'json_radioOptions':
         case 'json_keyValue':
         case 'json_geo':
-            return <FieldJson {...props} fieldInfo={fieldInfo} disabled={disabled} />
+            toRender = <FieldJson {...props} fieldInfo={fieldInfo} disabled={disabled} />
         case 'file_multipleFiles':
         case 'file_multipleImages':
         case 'file_image':
         case 'file':
-            return <FieldFile {...props} fieldInfo={fieldInfo} disabled={disabled} />
+            toRender = <FieldFile {...props} fieldInfo={fieldInfo} disabled={disabled} />
         case 'date':
-            return <FieldDate {...props} fieldInfo={fieldInfo} disabled={disabled} />
+            toRender = <FieldDate {...props} fieldInfo={fieldInfo} disabled={disabled} />
         case 'boolean':
-            return <FieldBoolean {...props} fieldInfo={fieldInfo} disabled={disabled} />
+            toRender = <FieldBoolean {...props} fieldInfo={fieldInfo} disabled={disabled} />
         case 'link':
-            return <FieldLink {...props} callEndpoint={debouncedCallEndpint} fieldInfo={fieldInfo} disabled={disabled} />
+            toRender = <FieldLink {...props} callEndpoint={debouncedCallEndpint} fieldInfo={fieldInfo} disabled={disabled} />
         case 'arrayLink':
-            return <FieldArrayLink {...props} callEndpoint={debouncedCallEndpint} fieldInfo={fieldInfo} disabled={disabled} />
+            toRender = <FieldArrayLink {...props} callEndpoint={debouncedCallEndpint} fieldInfo={fieldInfo} disabled={disabled} />
         case 'string_markdown':
-            return <FieldMkd {...props} fieldInfo={fieldInfo} disabled={disabled} />
+            toRender = <FieldMkd {...props} fieldInfo={fieldInfo} disabled={disabled} />
         case 'string_html':
-            return <FieldHTML {...props} fieldInfo={fieldInfo} disabled={disabled} />
+            toRender = <FieldHTML {...props} fieldInfo={fieldInfo} disabled={disabled} />
         case 'string_color':
-            return <FieldColor {...props} fieldInfo={fieldInfo} disabled={disabled} />
+            toRender = <FieldColor {...props} fieldInfo={fieldInfo} disabled={disabled} />
         default:
-            return <FieldText {...props} fieldInfo={fieldInfo} disabled={disabled} />
+            toRender = <FieldText {...props} fieldInfo={fieldInfo} disabled={disabled} />
     }
+    return <div className={`${field._conditionalView && _.get(params, "general.debugConditions") ? styles.debugConditions : ""}`}>
+        {toRender}
+        {field._conditionalView && _.get(params, "general.debugConditions") && <div className={styles.condDebugDetails}>
+            <code>
+                <p>{field._conditionalView_disable_or_hide == "disable" ? "disable input" : "hide input"} if:</p>
+                <pre  style={{whiteSpace: 'wrap', fontSize: 14}}>{checkHidden(field, true, true).conditions}</pre>
+                <p>Result: <b>{!checkHidden(field, false, true) ? "true" : "false"}</b></p>
+                <pre style={{whiteSpace: 'wrap', fontSize: 14}}>{checkHidden(field, true, true).result}</pre>
+                </code>
+        </div>}
+    </div>
 }
 
 export function FpsForm2HiddenInput(props) {

@@ -14,7 +14,7 @@ import FormSteps from './FormSteps'
 import _ from 'lodash'
 
 export default function FormElement(props) {
-    const { element, template, checkHidden, hidden, setModel } = props
+    const { element, template, params, checkHidden, hidden, setModel } = props
 
     let render
     switch (element.type) {
@@ -34,13 +34,7 @@ export default function FormElement(props) {
             render = <ElementInput {...props} checkHidden={checkHidden} />
             break;
         case "action":
-            render = <ElementAction {...props}
-                // setModel={m => {
-                //     console.log("m")
-                //     console.log(m)
-                //     setModel(m)
-                // }}
-                checkHidden={checkHidden} />
+            render = <ElementAction {...props} checkHidden={checkHidden} />
             break;
         case "redirect":
             render = <ElementRedirect {...props} />
@@ -53,7 +47,23 @@ export default function FormElement(props) {
             break;
     }
 
-    return <div style={hidden ? { display: 'none' } : {}} className={`${styles.elementWrapper} D_FPS_FORM2_ELEMENT_WRAPPER`}>{render}</div>
+    return <div style={hidden && !_.get(params, "general.debugConditions") ? { display: 'none' } : {}} className={`${styles.elementWrapper} D_FPS_FORM2_ELEMENT_WRAPPER`}>
+        <div className={`${(element._conditionalView && _.get(params, "general.debugConditions")) 
+            ? `${styles.debugConditions} ${styles.debugElement}` : ""}
+            ${(element._conditionalView && _.get(params, "general.debugConditions") && checkHidden(element, false, false)) 
+                ? `${styles.hideElementDebug}` : ""}
+            `}>
+            {render}
+            {element._conditionalView && _.get(params, "general.debugConditions") && <div className={styles.condDebugDetails}>
+                <code>
+                    <p>Show element if:</p>
+                    <pre style={{ whiteSpace: 'wrap', fontSize: 14 }}>{checkHidden(element, true, false).conditions}</pre>
+                    <p>Result: <b>{checkHidden(element, false, false) ? "🚫 hidden" : "✅ visible"}</b></p>
+                    <pre style={{ whiteSpace: 'wrap', fontSize: 14 }}>{checkHidden(element, true, false).result}</pre>
+                </code>
+            </div>}
+        </div>
+    </div>
 }
 
 function ElementSteps(props) {
@@ -160,8 +170,8 @@ function ElementAction(props) {
                 return;
             }
         }
-        var copyModel = {...model}
-        var copyExtendedModel = {...extendedModel}
+        var copyModel = { ...model }
+        var copyExtendedModel = { ...extendedModel }
 
         if (action.resetModel) {
             copyModel = {}
@@ -172,9 +182,9 @@ function ElementAction(props) {
         if (action.discardModel) {
             // console.log("originalModel")
             // console.log(originalModel)
-            copyModel=originalModel
+            copyModel = originalModel
             setModel(originalModel)
-            copyExtendedModel=originalModel
+            copyExtendedModel = originalModel
             setExtendedModel(originalModel)
         }
         if ((action.actionType == "endpoint" || !action.actionType) && action.endpoint) {
@@ -202,7 +212,7 @@ function ElementAction(props) {
                     err => {
                         setError(err);
                         setLoading(false)
-                    }, 
+                    },
                     action.resetModel)
             } else {
                 callEndpointPOST(action.endpoint, payload, (result) => {
@@ -248,10 +258,10 @@ function ElementAction(props) {
         {error && <Hint margin={{ top: 0, bottom: 18 }} error closable onClose={() => setError("")}>
             {error}
         </Hint>}
-        <ActionPanel 
-            alignRight={_.get(element,"_input_actions_alignment") == "right"} 
-            alignCenter={_.get(element,"_input_actions_alignment") == "center"} 
-            stretch={_.get(element,"_stretch_buttons")} margin={{ left: 1 }} column={_.get(element,"_input_actions_in_a_row_column") == "column"}>
+        <ActionPanel
+            alignRight={_.get(element, "_input_actions_alignment") == "right"}
+            alignCenter={_.get(element, "_input_actions_alignment") == "center"}
+            stretch={_.get(element, "_stretch_buttons")} margin={{ left: 1 }} column={_.get(element, "_input_actions_in_a_row_column") == "column"}>
             {action_list.map(action => action._action ? <FpsForm2Action
                 {...props}
                 key={action.id}
@@ -288,7 +298,7 @@ function ElementText(props) {
             setTemplatedText(template(element.paraText))
         }
     }, [extendedModel])
-        
+
     return templatedText ? <InnerHTML allowRerender={true} html={templatedText} /> : ""
 }
 

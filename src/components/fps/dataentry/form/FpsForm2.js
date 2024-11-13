@@ -202,151 +202,201 @@ export default function FpsForm2(props) {
     }
   }, [model])
 
-  const checkHidden = (element, debug) => {
+  const checkHidden = (element, debug, reverse) => {
 
-    const checkHiddenCondition = element => {
+    const checkHiddenCondition = (element) => {
       let isHidden = false
+      let details = ""
+      let condition = ""
 
       let field = template("{{" + element._conditionalView_field + "}}")
       let value = template(element._conditionalView_value)
 
       // { key: "modelNotChanged" },
       if (element._conditionalView_operator == "modelNotChanged") {
+        let direct = "model is changed"
+        let indirect = "model is NOT changed"
+        condition = indirect
         if (modelIsChanged) {
-          // console.log("element is hidden")
-          // console.log("model is changed")
+          details = reverse ? "" : direct
           isHidden = true
+        } else {
+          details = reverse ? indirect : ""
+          //details = reverse ? null : direct
         }
       }
 
       // { key: "modelChanged" },
       if (element._conditionalView_operator == "modelChanged") {
+        let direct = "model is NOT changed"
+        let indirect = "model is changed"
+        condition = indirect
         if (!modelIsChanged) {
-          // console.log("element is hidden")
-          // console.log("model is NOT changed")
+          details = reverse ? "" : direct
           isHidden = true
+        } else {
+          details = reverse ? indirect : ""
+          //details = reverse ? indirect : direct
         }
       }
 
       // { key: "==", value: "is equal" },
       if (element._conditionalView_operator == "==") {
         if (typeof field == 'boolean') { field = JSON.stringify(field) }
+        let direct = "{{" + element._conditionalView_field + "}} → " + field + " !== " + value
+        let indirect = "{{" + element._conditionalView_field + "}} → " + field + " == " + value
+        condition = "{{" + element._conditionalView_field + "}} == " + value
         if (!_.isEqual(field, value)) {
-          // console.log("element is hidden")
-          // console.log("{{" + element._conditionalView_field + "}} → " + field + " !== " + value)
+          details = reverse ? "" : direct
           isHidden = true
+        } else {
+          details = reverse ? indirect : ""
         }
       }
 
       // { key: "!==", value: "is NOT equal" },
       if (element._conditionalView_operator == "!==") {
+        let direct = "{{" + element._conditionalView_field + "}} → " + field + " == " + value
+        let indirect = "{{" + element._conditionalView_field + "}} → " + field + " !== " + value
+        condition = "{{" + element._conditionalView_field + "}} !== " + value
         if (typeof field == 'boolean') { field = JSON.stringify(field) }
         if (_.isEqual(field, value)) {
-          // console.log("element is hidden")
-          // console.log("{{" + element._conditionalView_field + "}} → " + field + " == " + value)
+          details = reverse ? "" : direct
           isHidden = true
+        } else {
+          details = reverse ? indirect : ""
+          // details = reverse ? indirect : direct
         }
       }
 
       // { key: "contains", value: "contains" },
       if (element._conditionalView_operator == "contains") {
-        value = value ? value.split(",") : null
-        field = field ? field.split(",") : null
+        value = value ? value.split(",") : '""'
+        field = field ? field.split(",") : '""'
+        let direct = "{{" + element._conditionalView_field + "}} → " + field + " does NOT contain " + value
+        let indirect = "{{" + element._conditionalView_field + "}} → " + field + " contains " + value
+        condition = "{{" + element._conditionalView_field + "}} contains " + value
         if ((field && field.length > 0 &&
           value && value.length > 0
           && _.intersection(value, field).length == 0) || !field || !value) {
-          // console.log("element is hidden")
-          // console.log("{{" + element._conditionalView_field + "}} → " + field + " does NOT contain " + value)
+          details = reverse ? "" : direct
           isHidden = true
+        } else {
+          details = reverse ? indirect : ""
+          // details = reverse ? indirect : direct
         }
       }
       // { key: "notContains", value: "does NOT contain" },
       if (element._conditionalView_operator == "notContains") {
-        value = value ? value.split(",") : null
-        field = field ? field.split(",") : null
+        value = value ? value.split(",") : '""'
+        field = field ? field.split(",") : '""'
+        let direct = "{{" + element._conditionalView_field + "}} → " + field + " contains " + value
+        let indirect = "{{" + element._conditionalView_field + "}} → " + field + " does NOT contain " + value
+        condition = "{{" + element._conditionalView_field + "}} does NOT contain " + value
         if ((field && field.length > 0 &&
           value && value.length > 0
           && _.intersection(value, field).length > 0) || !field || !value) {
-          // console.log("element is hidden")
-          // console.log("{{" + element._conditionalView_field + "}} → " + field + " contains " + value)
+          details = reverse ? "" : direct
           isHidden = true
+        } else {
+          details = reverse ? indirect : ""
+          // details = reverse ? indirect : direct
         }
       }
 
       // { key: "in", value: "in" },
       if (element._conditionalView_operator == "in") {
-        value = value ? value.split(",") : null
-        field = field ? field.split(",") : null
+        value = value ? value.split(",") : '""'
+        field = field ? field.split(",") : '""'
+        let direct = value + " does NOT contain " + "{{" + element._conditionalView_field + "}} → " + field
+        let indirect = value + " contains " + "{{" + element._conditionalView_field + "}} → " + field
+        condition = value + " contains " + "{{" + element._conditionalView_field + "}}"
         if ((field && field.length > 0 &&
           value && value.length > 0
           && _.intersection(value, field).length == 0) || !field || !value) {
-          // console.log("element is hidden")
-          // console.log(value + " does NOT contain " + "{{" + element._conditionalView_field + "}} → " + field)
+          details = reverse ? "" : direct
           isHidden = true
+        } else {
+          details = reverse ? indirect : ""
+          // details = reverse ? indirect : direct
         }
       }
 
       // { key: "notIn", value: "NOT in" }
       if (element._conditionalView_operator == "notIn") {
-        // console.log(" == element is hidden == NOT IN")
-        // console.log(element)
-        // console.log(value)
-        value = value ? value.split(",") : null
-        field = field ? field.split(",") : null
-
+        value = value ? value.split(",") : '""'
+        field = field ? field.split(",") : '""'
+        let direct = (value || []).join(",") + " contains " + "{{" + element._conditionalView_field + "}} → " + field
+        let indirect = (value || []).join(",") + " does NOT contain " + "{{" + element._conditionalView_field + "}} → " + field
+        condition = (value || []).join(",") + " does NOT contain " + "{{" + element._conditionalView_field + "}}"
         if ((field && field.length > 0 &&
           value && value.length > 0
           && _.intersection(value, field).length > 0) || !field || !value) {
-          // console.log((value || []).join(",") + " contains " + "{{" + element._conditionalView_field + "}} → " + field)
+          details = reverse ? "" : direct
           isHidden = true
+        } else {
+          details = reverse ? indirect : ""
+          // details = reverse ? indirect : direct
         }
       }
 
       // { key: "isNull", value: "is empty" },
       if (element._conditionalView_operator == "isNull") {
+        let direct = "{{" + element._conditionalView_field + "}} → " + (field || '""') + " is NOT empty"
+        let indirect = "{{" + element._conditionalView_field + "}} → " + (field || '""') + " is empty"
+        condition = "{{" + element._conditionalView_field + "}} is empty"
         if (!_.isEmpty(field)) {
-          // console.log("element is hidden")
-          // console.log("{{" + element._conditionalView_field + "}} → " + field + " is empty")
+          details = reverse ? "" : direct
           isHidden = true
+        } else {
+          details = reverse ? indirect : ""
+          // details = reverse ? indirect : direct
         }
       }
 
       // { key: "isNotNull", value: "is NOT empty" },
       if (element._conditionalView_operator == "isNotNull") {
+        let direct = "{{" + element._conditionalView_field + "}} → " + (field || '""') + " is empty"
+        let indirect = "{{" + element._conditionalView_field + "}} → " + (field || '""') + " is NOT empty"
+        condition = "{{" + element._conditionalView_field + "}} is NOT empty"
         if (_.isEmpty(field)) {
-          // _.get(params, "general.showModel") && console.log("element is hidden")
-          // _.get(params, "general.showModel") && console.log("{{" + element._conditionalView_field + "}} → " + field + " is NOT empty")
+          details = reverse ? "" : direct
           isHidden = true
+        } else {
+          details = reverse ? indirect : ""
+          // details = reverse ? indirect : direct
         }
       }
 
-      return isHidden
+      return { isHidden, details, condition }
     }
 
     if (!element) return false
 
     let result = false
+    let details = []
+    let conditions = []
     if (!_.get(element, "_conditionalView")) { } else {
       if (!_.get(element, "_conditions") || _.get(element, "_conditions").length == 0) { } else {
 
         if (_.get(element, "_action_conditionals_and_or") == "OR") {
           result = true
           _.get(element, "_conditions").forEach(element => {
-            if (!checkHiddenCondition(element)) { result = false }
+            details && details.push(checkHiddenCondition(element).details)
+            conditions && conditions.push(checkHiddenCondition(element).condition)
+            if (!checkHiddenCondition(element).isHidden) { result = false; }
           })
         } else {
           _.get(element, "_conditions").forEach(element => {
-            if (checkHiddenCondition(element)) { result = true }
+            details && details.push(checkHiddenCondition(element).details)
+            conditions && conditions.push(checkHiddenCondition(element).condition)
+            if (checkHiddenCondition(element).isHidden) { result = true; }
           })
         }
       };
     };
-
-    if (debug) {
-      console.log("checkHidden")
-      console.log(element)
-      console.log(result)
-    }
+    const jouinSymbol = _.get(element, "_action_conditionals_and_or") == "OR" ? " ==OR== " : " ==AND== "
+    if (debug) return { result: _.compact(details).join(", "), conditions: _.compact(conditions).join(jouinSymbol) }
 
     return result
   }
@@ -773,7 +823,7 @@ export default function FpsForm2(props) {
   }
 
   const checkIfAllInputsHidden = element => {
-    return element.type == "input" && _.every(element._input_fields, item => item._field_hidden === true);
+    return element.type == "input" && !_.get(params, "general.debugConditions") && _.every(element._input_fields, item => item._field_hidden === true);
   }
 
   function refreshOptions() {
@@ -858,7 +908,8 @@ export default function FpsForm2(props) {
     {_.get(params, "general.showModel") && <pre className={`${styles.debug} ${highlightModel ? styles.highlight : ''}`}>
       <code>{JSON.stringify(model, 0, 3)}</code>
       <span>debug mode: MODEL</span>
-      {edditingOn && <code className='icon icon-edit'>Editting object is on</code>}
+      {edditingOn && <code className='icon icon-edit'>Editting object is ON</code>}
+      {_.get(params, "general.debugConditions") && <code className='icon icon-help'>Debug conditions in ON</code>}
       {_.get(params, "general.autosubmit") == "always" && <code className='icon icon-move'>Autosubmit on each step change</code>}
       {_.get(params, "general.autosubmit") == "steps" && <code className='icon icon-move'>Autosubmit on: {_.get(params, "general.autosubmit_steps")}</code>}
       {_.get(params, "general.autosubmit") == "model" && <code className='icon icon-move'>Autosubmit on model change
@@ -1006,11 +1057,6 @@ function RenderStep(props) {
       setExtendedModel={setExtendedModel}
       editModel={editModel}
       setModel={setModel}
-      // setModel={m => {
-      //   console.log("m")
-      //   console.log(m)
-      //   setModel(m)
-      // }}
       element={element}
       callEndpointPOST={callEndpointPOST}
       callEndpoint={(endpoint, params, finish, setOptions, setError) => {
