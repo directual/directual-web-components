@@ -267,9 +267,9 @@ let authExample = {
     "whom_delegate_ids": "",
     "notifications_counter": "",
     "nid": 21335,
-    "user": "pavel@ershov.org",
+    "user": "kpd",
     "userpic": "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg",
-    "id": "aleksandra.kalina@lamoda.ru"
+    "id": "akpd"
  }
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args

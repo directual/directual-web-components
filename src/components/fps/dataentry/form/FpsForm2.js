@@ -945,7 +945,7 @@ export default function FpsForm2(props) {
               `18px 0`
           }}
         >
-          {_.get(params, "general.showState") && <pre className={styles.debug}>
+          {_.get(params, "general.showState") && userDebug && <pre className={styles.debug}>
             <code>{currentStep.sysName}</code>
             <span>debug mode: STEP</span>
           </pre>}
