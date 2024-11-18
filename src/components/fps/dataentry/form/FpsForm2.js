@@ -531,12 +531,13 @@ export default function FpsForm2(props) {
       })
       const errMessage = dict[lang].form.emptyRequired + emptyFields.join(", ")
       actionError = errMessage
-      console.log(actionError)
+      // console.log("actionError")
+      // console.log(actionError)
       setActionError && setActionError(actionError)
       return;
     }
 
-    setActionError && setActionError(actionError)
+    
     localState._submitError = ""
     setState({ ...localState })
     console.log('submitting form...')
@@ -549,6 +550,7 @@ export default function FpsForm2(props) {
       modelToSend,
       undefined,
       (result, data) => {
+        setActionError && setActionError(actionError)
         if (result == "ok") {
           let saveState = { ...localState }
           let stateUpdate = {}

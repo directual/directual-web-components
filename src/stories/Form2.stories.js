@@ -46,19 +46,6 @@ let exampleForm = {
                             }
                         ],
                         "_actions_in_a_row": 2
-                    },
-                    {
-                        "id": "elmnt_1731946904845",
-                        "type": "text",
-                        "paraText": "DEBUG",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1731946913135",
-                                "_conditionalView_field": "excel",
-                                "_conditionalView_operator": "isNotNull"
-                            }
-                        ]
                     }
                 ]
             },
@@ -73,7 +60,21 @@ let exampleForm = {
                             {
                                 "id": "17319293656680.4112413323203004040112",
                                 "_field": "excel",
-                                "_field_required": true
+                                "_field_required": false
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1731957542105",
+                        "type": "hint",
+                        "hintColor": "error",
+                        "hintText": "{{FormState.message}}",
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1731957573180",
+                                "_conditionalView_field": "FormState.message",
+                                "_conditionalView_operator": "isNotNull"
                             }
                         ]
                     },
@@ -151,6 +152,11 @@ let exampleForm = {
                         "id": "stateMapping1731928937786",
                         "field": "FormState.step",
                         "value": "default step"
+                    },
+                    {
+                        "id": "stateMapping1731957516202",
+                        "field": "FormState.message",
+                        "value": ""
                     }
                 ]
             },
@@ -158,24 +164,44 @@ let exampleForm = {
                 "id": "action_1731929391479",
                 "name": "Upload",
                 "actionSubmit": true,
-                "actionType": "state"
+                "actionType": "state",
+                "resetModel": true,
+                "stateMapping": [
+                    {
+                        "id": "stateMapping1731957529344",
+                        "field": "FormState.message"
+                    }
+                ]
             }
         ],
         "hideActionsHint": true,
         "general": {
-            "debugForUsers": true,
+            "debugForUsers": false,
             "debugUsers": "pavel@ershov.org, alexandra.kalina@lamoda.ru",
-            "debugConditions": true,
+            "debugConditions": false,
             "showState": true,
-            "showModel": true,
-            "showFullModel": true,
-            "showAuthModel": true
+            "showModel": false,
+            "showFullModel": false,
+            "showAuthModel": false
+        },
+        "state": {
+            "step": "default step",
+            "popup": null,
+            "message": ""
         }
     },
     "tableTitle": null,
     "actions": [],
     "headers": [],
     "data": [
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
         {}
     ],
     "totalPages": 1,
