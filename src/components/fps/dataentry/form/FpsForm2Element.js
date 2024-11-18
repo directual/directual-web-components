@@ -220,12 +220,13 @@ function ElementAction(props) {
             const payloadModel = transformState(action.stateMapping, "model")
 
             if (action.actionSubmit) {
+                setLoading(true)
                 onSubmit(
                     () => {
                         // setState({ ...state, ...payloadState })
                         // setModel({ ...copyModel, ...payloadModel })
                         // setExtendedModel({ ...copyExtendedModel, ...payloadModel })
-                        // setLoading(false)
+                        setLoading(false)
                     },
                     true,
                     undefined,
