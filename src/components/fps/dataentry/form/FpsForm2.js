@@ -245,7 +245,7 @@ export default function FpsForm2(props) {
         if (typeof field == 'boolean') { field = JSON.stringify(field) }
         let direct = "{{" + element._conditionalView_field + "}} → " + field + " !== " + value
         let indirect = "{{" + element._conditionalView_field + "}} → " + field + " == " + value
-        condition = "{{" + element._conditionalView_field + "}} == " + value
+        condition = "{{" + element._conditionalView_field + "}} == " + element._conditionalView_value
         if (!_.isEqual(field, value)) {
           details = reverse ? "" : direct
           isHidden = true
@@ -258,7 +258,7 @@ export default function FpsForm2(props) {
       if (element._conditionalView_operator == "!==") {
         let direct = "{{" + element._conditionalView_field + "}} → " + field + " == " + value
         let indirect = "{{" + element._conditionalView_field + "}} → " + field + " !== " + value
-        condition = "{{" + element._conditionalView_field + "}} !== " + value
+        condition = "{{" + element._conditionalView_field + "}} !== " + element._conditionalView_value
         if (typeof field == 'boolean') { field = JSON.stringify(field) }
         if (_.isEqual(field, value)) {
           details = reverse ? "" : direct
@@ -275,7 +275,7 @@ export default function FpsForm2(props) {
         field = field ? field.split(",") : '""'
         let direct = "{{" + element._conditionalView_field + "}} → " + field + " does NOT contain " + value
         let indirect = "{{" + element._conditionalView_field + "}} → " + field + " contains " + value
-        condition = "{{" + element._conditionalView_field + "}} contains " + value
+        condition = "{{" + element._conditionalView_field + "}} contains " + element._conditionalView_value
         if ((field && field.length > 0 &&
           value && value.length > 0
           && _.intersection(value, field).length == 0) || !field || !value) {
@@ -292,7 +292,7 @@ export default function FpsForm2(props) {
         field = field ? field.split(",") : '""'
         let direct = "{{" + element._conditionalView_field + "}} → " + field + " contains " + value
         let indirect = "{{" + element._conditionalView_field + "}} → " + field + " does NOT contain " + value
-        condition = "{{" + element._conditionalView_field + "}} does NOT contain " + value
+        condition = "{{" + element._conditionalView_field + "}} does NOT contain " + element._conditionalView_value
         if ((field && field.length > 0 &&
           value && value.length > 0
           && _.intersection(value, field).length > 0) || !field || !value) {
@@ -310,7 +310,7 @@ export default function FpsForm2(props) {
         field = field ? field.split(",") : '""'
         let direct = value + " does NOT contain " + "{{" + element._conditionalView_field + "}} → " + field
         let indirect = value + " contains " + "{{" + element._conditionalView_field + "}} → " + field
-        condition = value + " contains " + "{{" + element._conditionalView_field + "}}"
+        condition = element._conditionalView_value + " contains " + "{{" + element._conditionalView_field + "}}"
         if ((field && field.length > 0 &&
           value && value.length > 0
           && _.intersection(value, field).length == 0) || !field || !value) {
@@ -328,7 +328,7 @@ export default function FpsForm2(props) {
         field = field ? field.split(",") : '""'
         let direct = (value || []).join(",") + " contains " + "{{" + element._conditionalView_field + "}} → " + field
         let indirect = (value || []).join(",") + " does NOT contain " + "{{" + element._conditionalView_field + "}} → " + field
-        condition = (value || []).join(",") + " does NOT contain " + "{{" + element._conditionalView_field + "}}"
+        condition = element._conditionalView_value + " does NOT contain " + "{{" + element._conditionalView_field + "}}"
         if ((field && field.length > 0 &&
           value && value.length > 0
           && _.intersection(value, field).length > 0) || !field || !value) {

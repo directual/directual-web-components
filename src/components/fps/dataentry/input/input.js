@@ -353,6 +353,7 @@ export default function Input(props) {
 
     useEffect(() => {
         props.autoFocus && inputEl.current.focus();
+        console.log(inputEl.current)
     }, [])
 
     function countLines(textarea, text) {
@@ -565,7 +566,7 @@ export default function Input(props) {
                             unmask={true}
                             disabled={props.disabled}
                             key={props.key}
-                            ref={inputEl}
+                            inputRef={inputEl}
                             style={{
                                 height: props.height || 48
                             }}
@@ -608,7 +609,7 @@ export default function Input(props) {
                         {...props.imask}
                         onAccept={handleChange}
                         value={value}
-                        ref={inputEl}
+                        inputRef={inputEl}
                         className={`${styles.field} ${props.icon ? styles.icon : ""} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
                         unmask={true}
                         placeholder={props.placeholder}
@@ -629,7 +630,7 @@ export default function Input(props) {
                         onAccept={handleChange}
                         unmask={true}
                         autoComplete={props.autoComplete || "off"}
-                        ref={inputEl}
+                        inputRef={inputEl}
                         disabled={props.disabled}
                         className={`${styles.field} ${styles.icon} ${warningMsg.type && styles[warningMsg.type]} ${props.disabled && styles.disabled}`}
                         type="text"
@@ -657,7 +658,7 @@ export default function Input(props) {
                         style={{
                             height: props.height || 48
                         }}
-                        ref={inputEl}
+                        inputRef={inputEl}
                         className={`
                         ${styles.field}
                         ${styles.icon}
@@ -691,7 +692,7 @@ export default function Input(props) {
                             onAccept={handleChange}
                             unmask={true}
                             className={`${styles.field} ${props.icon && styles.icon} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
-                            ref={inputEl}
+                            inputRef={inputEl}
                             disabled={props.disabled}
                             type={props.imask ? "text" : "number"}
                             style={{
@@ -719,7 +720,7 @@ export default function Input(props) {
                             unmask={true}
                             className={`${styles.field} ${props.icon && styles.icon} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                             disabled={props.disabled}
-                            ref={inputEl}
+                            inputRef={inputEl}
                             type={props.imask ? "text" : "number"}
                             style={{
                                 height: props.height || 48
@@ -753,7 +754,7 @@ export default function Input(props) {
                             unmask={true}
                             className={`${styles.field} ${styles.icon} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                             disabled={props.disabled}
-                            ref={inputEl}
+                            inputRef={inputEl}
                             type={props.imask ? "text" : "number"}
                             style={{
                                 height: props.height || 48
@@ -782,7 +783,7 @@ export default function Input(props) {
                         <input
                             className={`${styles.field} ${styles.icon} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                             disabled={props.disabled}
-                            ref={inputEl}
+                            inputRef={inputEl}
                             style={{
                                 height: props.height || 48
                             }}
@@ -805,7 +806,7 @@ export default function Input(props) {
                 <div className={styles.field_wrapper}>
                     <textarea
                         autoFocus={props.autoFocus}
-                        ref={inputEl}
+                        inputRef={inputEl}
                         disabled={props.disabled}
                         className={`
                         ${styles.field}
@@ -834,7 +835,7 @@ export default function Input(props) {
                 <div className={styles.field_wrapper}>
                     <textarea
                         autoFocus={props.autoFocus}
-                        ref={inputEl}
+                        inputRef={inputEl}
                         disabled={props.disabled}
                         className={`${styles.field} ${props.disabled && styles.disabled} ${props.code && styles.code} ${warningMsg.type && styles[warningMsg.type]}`}
                         type="text"
@@ -890,7 +891,7 @@ export default function Input(props) {
                     <div className={`${styles.input_icon_wrapper} icon icon-lock`} />
                     <input
                         autoFocus={props.autoFocus}
-                        ref={inputEl}
+                        inputRef={inputEl}
                         autoComplete="new-password"
                         disabled={props.disabled}
                         style={{

@@ -171,6 +171,7 @@ export const String = {
   args: {
     type: 'string',
     icon: 'babai',
+    autoFocus: true,
     label: 'Hello!',
     tooltip: "<div>hello</div><b>world!</b><br /><img width='150' src='https://otvet.imgsmail.ru/download/70090365_fa84df0362d311036a0a62e2c01ecbad_800.gif' />"
   },

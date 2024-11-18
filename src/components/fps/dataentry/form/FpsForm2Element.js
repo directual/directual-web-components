@@ -173,12 +173,6 @@ function ElementAction(props) {
         var copyModel = { ...model }
         var copyExtendedModel = { ...extendedModel }
 
-        if (action.resetModel) {
-            copyModel = {}
-            copyExtendedModel = {}
-            setModel({})
-            setExtendedModel({})
-        }
         if (action.discardModel) {
             // console.log("originalModel")
             // console.log(originalModel)
@@ -221,7 +215,7 @@ function ElementAction(props) {
                 })
             }
         }
-        if (action.actionType == "state") {
+        if (action.actionType == "state" || !action.actionType) {
             const payloadState = transformState(action.stateMapping, "state")
             const payloadModel = transformState(action.stateMapping, "model")
 
@@ -252,6 +246,14 @@ function ElementAction(props) {
                 setLoading(false)
             }
         }
+
+        if (action.resetModel) {
+            copyModel = {}
+            copyExtendedModel = {}
+            setModel({})
+            setExtendedModel({})
+        }
+
     }
 
     return <React.Fragment>

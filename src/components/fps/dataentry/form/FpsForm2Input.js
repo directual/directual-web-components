@@ -32,7 +32,7 @@ export function FpsForm2Input(props) {
         !checkHidden(field) &&
         field._conditionalView_disable_or_hide == "disable"
 
-    let toRender
+    var toRender = <div></div>
 
     switch (type) {
         case 'json':
@@ -43,25 +43,34 @@ export function FpsForm2Input(props) {
         case 'json_keyValue':
         case 'json_geo':
             toRender = <FieldJson {...props} fieldInfo={fieldInfo} disabled={disabled} />
+            break;
         case 'file_multipleFiles':
         case 'file_multipleImages':
         case 'file_image':
         case 'file':
             toRender = <FieldFile {...props} fieldInfo={fieldInfo} disabled={disabled} />
+            break;
         case 'date':
             toRender = <FieldDate {...props} fieldInfo={fieldInfo} disabled={disabled} />
+            break;
         case 'boolean':
             toRender = <FieldBoolean {...props} fieldInfo={fieldInfo} disabled={disabled} />
-        case 'link':
+            break;
+            case 'link':
             toRender = <FieldLink {...props} callEndpoint={debouncedCallEndpint} fieldInfo={fieldInfo} disabled={disabled} />
+            break;
         case 'arrayLink':
             toRender = <FieldArrayLink {...props} callEndpoint={debouncedCallEndpint} fieldInfo={fieldInfo} disabled={disabled} />
+            break;
         case 'string_markdown':
             toRender = <FieldMkd {...props} fieldInfo={fieldInfo} disabled={disabled} />
+            break;
         case 'string_html':
             toRender = <FieldHTML {...props} fieldInfo={fieldInfo} disabled={disabled} />
+            break;
         case 'string_color':
             toRender = <FieldColor {...props} fieldInfo={fieldInfo} disabled={disabled} />
+            break;
         default:
             toRender = <FieldText {...props} fieldInfo={fieldInfo} disabled={disabled} />
     }
@@ -350,6 +359,8 @@ function FieldFile(props) {
     const { field, locale, template, model, state, onChange, fieldInfo, code, disabled } = props
     const basicProps = { onChange, locale }
     const defaultValue = model[fieldInfo.sysName]
+
+    // return <div>???</div>
 
     return <FileUpload
         onChange={onChange}
