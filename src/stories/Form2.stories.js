@@ -46,6 +46,19 @@ let exampleForm = {
                             }
                         ],
                         "_actions_in_a_row": 2
+                    },
+                    {
+                        "id": "elmnt_1731946904845",
+                        "type": "text",
+                        "paraText": "DEBUG",
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1731946913135",
+                                "_conditionalView_field": "excel",
+                                "_conditionalView_operator": "isNotNull"
+                            }
+                        ]
                     }
                 ]
             },
@@ -144,10 +157,20 @@ let exampleForm = {
             {
                 "id": "action_1731929391479",
                 "name": "Upload",
-                "actionSubmit": true
+                "actionSubmit": true,
+                "actionType": "state"
             }
         ],
-        "hideActionsHint": true
+        "hideActionsHint": true,
+        "general": {
+            "debugForUsers": true,
+            "debugUsers": "pavel@ershov.org, alexandra.kalina@lamoda.ru",
+            "debugConditions": true,
+            "showState": true,
+            "showModel": true,
+            "showFullModel": true,
+            "showAuthModel": true
+        }
     },
     "tableTitle": null,
     "actions": [],
@@ -244,7 +267,7 @@ let authExample = {
     "whom_delegate_ids": "",
     "notifications_counter": "",
     "nid": 21335,
-    "user": "aleksandra.kalina@lamoda.ru",
+    "user": "pavel@ershov.org",
     "userpic": "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg",
     "id": "aleksandra.kalina@lamoda.ru"
  }

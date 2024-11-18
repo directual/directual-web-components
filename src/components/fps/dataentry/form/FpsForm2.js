@@ -831,6 +831,19 @@ export default function FpsForm2(props) {
     setRefresh(refresh + 1)
   }
 
+  function isDebugUser(targetString, commaSeparatedList) {
+    // Split the comma-separated string into an array and trim spaces
+    const listArray = _.map(_.split(commaSeparatedList, ','), _.trim);
+
+    // Check if the target string is in the array
+    return _.includes(listArray, targetString);
+  }
+
+  const userDebug = !_.get(params, "general.debugForUsers") || (
+    _.get(params, "general.debugForUsers") && _.get(auth, "isAuth") && _.get(auth, "user")
+    && isDebugUser(_.get(auth, "user"), _.get(params, "general.debugUsers"))
+  )
+
   return <div className={`${styles.formWrapper} D_FPS_FORM2_WRAPPER`}
     style={{ maxWidth }}
   >
@@ -850,7 +863,7 @@ export default function FpsForm2(props) {
                 `18px 0`
             }}
           >
-            {_.get(params, "general.showState") && <pre className={styles.debug}>
+            {_.get(params, "general.showState") && userDebug && <pre className={styles.debug}>
               <code>{currentStep.sysName}</code>
               <span>debug mode: STEP</span>
             </pre>}
@@ -858,6 +871,7 @@ export default function FpsForm2(props) {
               {...props}
               refresh={refresh}
               setOriginalModel={setOriginalModel}
+              userDebug={userDebug}
               currentStep={currentStep}
               refreshOptions={refreshOptions}
               model={model}
@@ -890,26 +904,26 @@ export default function FpsForm2(props) {
       className={`${styles.formDescription} D_FPS_FORM2_DESCRIPTION`}>
       <InnerHTML allowRerender={true} html={formDescription} /></div>}
 
-    {_.get(params, "general.showState") && <pre className={`${styles.debug} ${highlightState ? styles.highlight : ''}`}>
+    {_.get(params, "general.showState") && userDebug && <pre className={`${styles.debug} ${highlightState ? styles.highlight : ''}`}>
       <code>{JSON.stringify(state, 0, 3)}</code>
       <span>debug mode: STATE</span>
     </pre>}
 
-    {_.get(params, "general.showFullModel") && <pre className={`${styles.debug} ${highlightState ? styles.highlight : ''}`}>
+    {_.get(params, "general.showFullModel") && userDebug && <pre className={`${styles.debug} ${highlightState ? styles.highlight : ''}`}>
       <code>{JSON.stringify(extendedModel, 0, 3)}</code>
       <span>debug mode: EXT. MODEL</span>
     </pre>}
 
-    {_.get(params, "general.showAuthModel") && <pre className={`${styles.debug} ${highlightState ? styles.highlight : ''}`}>
+    {_.get(params, "general.showAuthModel") && userDebug && <pre className={`${styles.debug} ${highlightState ? styles.highlight : ''}`}>
       <code>{JSON.stringify({ ...auth, id: auth.user }, 0, 3)}</code>
       <span>debug mode: USER INFO</span>
     </pre>}
 
-    {_.get(params, "general.showModel") && <pre className={`${styles.debug} ${highlightModel ? styles.highlight : ''}`}>
+    {_.get(params, "general.showModel") && userDebug && <pre className={`${styles.debug} ${highlightModel ? styles.highlight : ''}`}>
       <code>{JSON.stringify(model, 0, 3)}</code>
       <span>debug mode: MODEL</span>
       {edditingOn && <code className='icon icon-edit'>Editting object is ON</code>}
-      {_.get(params, "general.debugConditions") && <code className='icon icon-help'>Debug conditions in ON</code>}
+      {_.get(params, "general.debugConditions") && <code className='icon icon-help'>Debug conditions is ON</code>}
       {_.get(params, "general.autosubmit") == "always" && <code className='icon icon-move'>Autosubmit on each step change</code>}
       {_.get(params, "general.autosubmit") == "steps" && <code className='icon icon-move'>Autosubmit on: {_.get(params, "general.autosubmit_steps")}</code>}
       {_.get(params, "general.autosubmit") == "model" && <code className='icon icon-move'>Autosubmit on model change
@@ -941,6 +955,7 @@ export default function FpsForm2(props) {
             refreshOptions={refreshOptions}
             currentStep={currentStep}
             model={model}
+            userDebug={userDebug}
             setOriginalModel={setOriginalModel}
             extendedModel={extendedModel}
             setExtendedModel={setExtendedModel}
@@ -970,7 +985,7 @@ export default function FpsForm2(props) {
 
 function RenderStep(props) {
   const { auth, data, callEndpoint, onEvent, id, handleRoute, currentStep, templateState, checkIfAllInputsHidden, editModel, originalModel,
-    model, checkHidden, dict, locale, state, refreshOptions, refresh, extendedModel, setOriginalModel, setExtendedModel, loading, template, setState, lang, submit, params, setModel } = props
+    model, checkHidden, userDebug, dict, locale, state, refreshOptions, refresh, extendedModel, setOriginalModel, setExtendedModel, loading, template, setState, lang, submit, params, setModel } = props
 
 
   const callEndpointPOST = (endpoint, body, finish) => {
@@ -1038,6 +1053,7 @@ function RenderStep(props) {
     .map(element => <FormElement
       {...props}
       model={model}
+      userDebug={userDebug}
       refresh={refresh}
       hidden={checkHidden(element)}
       data={data}
@@ -1137,6 +1153,7 @@ function RenderStep(props) {
       .map(element => <FormElement
         {...props}
         model={model}
+        userDebug={userDebug}
         refresh={refresh}
         data={data}
         checkHidden={checkHidden}

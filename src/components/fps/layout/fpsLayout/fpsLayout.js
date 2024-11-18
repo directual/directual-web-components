@@ -162,8 +162,8 @@ const Section = ({ section, currentBP, callEndpoint, data, auth }) => {
       // { key: "modelNotChanged" },
       if (element._conditionalView_operator == "modelNotChanged") {
         if (modelIsChanged) {
-          console.log("element is hidden")
-          console.log("model is changed")
+          // console.log("element is hidden")
+          // console.log("model is changed")
           isHidden = true
         }
       }
@@ -171,8 +171,8 @@ const Section = ({ section, currentBP, callEndpoint, data, auth }) => {
       // { key: "modelChanged" },
       if (element._conditionalView_operator == "modelChanged") {
         if (!modelIsChanged) {
-          console.log("element is hidden")
-          console.log("model is NOT changed")
+          // console.log("element is hidden")
+          // console.log("model is NOT changed")
           isHidden = true
         }
       }
@@ -181,9 +181,9 @@ const Section = ({ section, currentBP, callEndpoint, data, auth }) => {
       if (element._conditionalView_operator == "==") {
         if (typeof field == 'boolean') { field = JSON.stringify(field) }
         if (!_.isEqual(field, value)) {
-          console.log("element is hidden")
-          console.log(element._conditionalView_operator)
-          console.log("{{" + element._conditionalView_field + "}} → " + field + " !== " + value)
+          // console.log("element is hidden")
+          // console.log(element._conditionalView_operator)
+          // console.log("{{" + element._conditionalView_field + "}} → " + field + " !== " + value)
           isHidden = true
         }
       }
@@ -192,9 +192,9 @@ const Section = ({ section, currentBP, callEndpoint, data, auth }) => {
       if (element._conditionalView_operator == "!==") {
         if (typeof field == 'boolean') { field = JSON.stringify(field) }
         if (_.isEqual(field, value)) {
-          console.log("element is hidden")
-          console.log(element._conditionalView_operator)
-          console.log("{{" + element._conditionalView_field + "}} → " + field + " == " + value)
+          // console.log("element is hidden")
+          // console.log(element._conditionalView_operator)
+          // console.log("{{" + element._conditionalView_field + "}} → " + field + " == " + value)
           isHidden = true
         }
       }
@@ -206,8 +206,8 @@ const Section = ({ section, currentBP, callEndpoint, data, auth }) => {
         if ((field && field.length > 0 &&
           value && value.length > 0
           && _.intersection(value, field).length == 0) || !field || !value) {
-          console.log("element is hidden")
-          console.log("{{" + element._conditionalView_field + "}} → " + field + " does NOT contain " + value)
+          // console.log("element is hidden")
+          // console.log("{{" + element._conditionalView_field + "}} → " + field + " does NOT contain " + value)
           isHidden = true
         }
       }
@@ -218,8 +218,8 @@ const Section = ({ section, currentBP, callEndpoint, data, auth }) => {
         if ((field && field.length > 0 &&
           value && value.length > 0
           && _.intersection(value, field).length > 0) || !field || !value) {
-          console.log("element is hidden")
-          console.log("{{" + element._conditionalView_field + "}} → " + field + " contains " + value)
+          // console.log("element is hidden")
+          // console.log("{{" + element._conditionalView_field + "}} → " + field + " contains " + value)
           isHidden = true
         }
       }
@@ -231,8 +231,8 @@ const Section = ({ section, currentBP, callEndpoint, data, auth }) => {
         if ((field && field.length > 0 &&
           value && value.length > 0
           && _.intersection(value, field).length == 0) || !field || !value) {
-          console.log("element is hidden")
-          console.log(value + " does NOT contain " + "{{" + element._conditionalView_field + "}} → " + field)
+          // console.log("element is hidden")
+          // console.log(value + " does NOT contain " + "{{" + element._conditionalView_field + "}} → " + field)
           isHidden = true
         }
       }
@@ -244,8 +244,8 @@ const Section = ({ section, currentBP, callEndpoint, data, auth }) => {
         if ((field && field.length > 0 &&
           value && value.length > 0
           && _.intersection(value, field).length > 0) || !field || !value) {
-          console.log("element is hidden")
-          console.log(value + " contains " + "{{" + element._conditionalView_field + "}} → " + field)
+          // console.log("element is hidden")
+          // console.log(value + " contains " + "{{" + element._conditionalView_field + "}} → " + field)
           isHidden = true
         }
       }
@@ -253,8 +253,8 @@ const Section = ({ section, currentBP, callEndpoint, data, auth }) => {
       // { key: "isNull", value: "is empty" },
       if (element._conditionalView_operator == "isNull") {
         if (!_.isEmpty(field)) {
-          console.log("element is hidden")
-          console.log("{{" + element._conditionalView_field + "}} → " + field + " is empty")
+          // console.log("element is hidden")
+          // console.log("{{" + element._conditionalView_field + "}} → " + field + " is empty")
           isHidden = true
         }
       }
@@ -262,8 +262,8 @@ const Section = ({ section, currentBP, callEndpoint, data, auth }) => {
       // { key: "isNotNull", value: "is NOT empty" },
       if (element._conditionalView_operator == "isNotNull") {
         if (_.isEmpty(field)) {
-          console.log("element is hidden")
-          console.log("{{" + element._conditionalView_field + "}} → " + field + " is NOT empty")
+          // console.log("element is hidden")
+          // console.log("{{" + element._conditionalView_field + "}} → " + field + " is NOT empty")
           isHidden = true
         }
       }

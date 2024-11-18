@@ -15,7 +15,7 @@ import { Tags } from '../../tags/Tags'
 import { debounce } from 'lodash'
 
 export function FpsForm2Input(props) {
-    const { field, template, dict, lang, loading, params, editModel, callEndpoint, model, data, state, locale, checkHidden } = props
+    const { field, template, dict, userDebug, lang, loading, params, editModel, callEndpoint, model, data, state, locale, checkHidden } = props
 
     const fieldInfo = _.find(_.get(data, "fileds"), { sysName: field._field }) || {}
     const type = `${fieldInfo.dataType}${fieldInfo.format ? `_${fieldInfo.format}` : ''}`
@@ -24,7 +24,7 @@ export function FpsForm2Input(props) {
 
     if (field._conditionalView &&
         !checkHidden(field) &&
-        !_.get(params, "general.debugConditions") &&
+        !(_.get(params, "general.debugConditions") && userDebug) &&
         field._conditionalView_disable_or_hide !== "disable"
     ) return <React.Fragment></React.Fragment>
 
@@ -74,9 +74,9 @@ export function FpsForm2Input(props) {
         default:
             toRender = <FieldText {...props} fieldInfo={fieldInfo} disabled={disabled} />
     }
-    return <div className={`${field._conditionalView && _.get(params, "general.debugConditions") ? styles.debugConditions : ""}`}>
+    return <div className={`${field._conditionalView && userDebug && _.get(params, "general.debugConditions") ? styles.debugConditions : ""}`}>
         {toRender}
-        {field._conditionalView && _.get(params, "general.debugConditions") && <div className={styles.condDebugDetails}>
+        {field._conditionalView && _.get(params, "general.debugConditions") && userDebug && <div className={styles.condDebugDetails}>
             <code>
                 <p>{field._conditionalView_disable_or_hide == "disable" ? "disable input" : "hide input"} if:</p>
                 <pre  style={{whiteSpace: 'wrap', fontSize: 14}}>{checkHidden(field, true, true).conditions}</pre>

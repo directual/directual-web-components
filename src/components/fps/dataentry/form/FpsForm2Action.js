@@ -6,7 +6,7 @@ import Hint from "../../hint/hint"
 import InnerHTML from 'dangerously-set-html-content'
 
 export default function FpsForm2Action(props) {
-    const { actionFormat, action, loading, onPerform, params, checkHidden, template } = props
+    const { actionFormat, action, loading, onPerform, userDebug, params, checkHidden, template } = props
 
     const [performed, setPerformed] = useState(false)
 
@@ -63,13 +63,13 @@ export default function FpsForm2Action(props) {
         icon={actionFormat._action_icon}
     >{template(actionFormat._action_label || action.name)}</Button>
 
-    if (_.get(params, "general.debugConditions")) {
-        return <div className={`${actionFormat._conditionalView && _.get(params, "general.debugConditions") ? styles.debugConditions : ""}
-        ${actionFormat._conditionalView && !checkHidden(actionFormat, false, true) && _.get(params, "general.debugConditions") ?
+    if (_.get(params, "general.debugConditions") && userDebug) {
+        return <div className={`${actionFormat._conditionalView && userDebug && _.get(params, "general.debugConditions") ? styles.debugConditions : ""}
+        ${actionFormat._conditionalView && !checkHidden(actionFormat, false, true) && userDebug && _.get(params, "general.debugConditions") ?
                 styles.hideDebug : ""}
         `}>
             {button}
-            {actionFormat._conditionalView && _.get(params, "general.debugConditions") && <div className={styles.condDebugDetails}>
+            {actionFormat._conditionalView && userDebug && _.get(params, "general.debugConditions") && <div className={styles.condDebugDetails}>
                 <code>
                     <p>{actionFormat._action_conditional_disable_or_hide == "disable" ? "disable button" : "hide button"} if:</p>
                     <pre style={{ whiteSpace: 'wrap', fontSize: 14 }}>{checkHidden(actionFormat, true, true).conditions}</pre>

@@ -14,7 +14,7 @@ import FormSteps from './FormSteps'
 import _ from 'lodash'
 
 export default function FormElement(props) {
-    const { element, template, params, checkHidden, hidden, setModel } = props
+    const { element, template, params, checkHidden, userDebug, hidden, setModel } = props
 
     let render
     switch (element.type) {
@@ -47,14 +47,14 @@ export default function FormElement(props) {
             break;
     }
 
-    return <div style={hidden && !_.get(params, "general.debugConditions") ? { display: 'none' } : {}} className={`${styles.elementWrapper} D_FPS_FORM2_ELEMENT_WRAPPER`}>
+    return <div style={hidden && !(_.get(params, "general.debugConditions") && userDebug) ? { display: 'none' } : {}} className={`${styles.elementWrapper} D_FPS_FORM2_ELEMENT_WRAPPER`}>
         <div className={`${(element._conditionalView && _.get(params, "general.debugConditions")) 
             ? `${styles.debugConditions} ${styles.debugElement}` : ""}
             ${(element._conditionalView && _.get(params, "general.debugConditions") && checkHidden(element, false, false)) 
                 ? `${styles.hideElementDebug}` : ""}
             `}>
             {render}
-            {element._conditionalView && _.get(params, "general.debugConditions") && <div className={styles.condDebugDetails}>
+            {element._conditionalView && _.get(params, "general.debugConditions") && userDebug && <div className={styles.condDebugDetails}>
                 <code>
                     <p>Show element if:</p>
                     <pre style={{ whiteSpace: 'wrap', fontSize: 14 }}>{checkHidden(element, true, false).conditions}</pre>
