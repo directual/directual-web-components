@@ -353,14 +353,13 @@ export default function Input(props) {
 
     useEffect(() => {
         props.autoFocus && inputEl.current.focus();
-        console.log(inputEl.current)
     }, [])
 
     function countLines(textarea, text) {
-        // console.log('counting lines...')
-        // console.log(textarea)
+        console.log('counting lines...')
+        console.log(textarea)
         if (!textarea || !textarea.constructor || textarea.constructor.name != 'HTMLTextAreaElement') {
-            //console.log('not a textarea');
+            console.log('not a textarea');
             return;
         }
         let _buffer;
@@ -401,6 +400,7 @@ export default function Input(props) {
 
         var result = Math.round(_buffer.scrollHeight / lh);
         if (result == 0) result = 1;
+        console.log(result)
         return result;
     }
 
@@ -783,7 +783,7 @@ export default function Input(props) {
                         <input
                             className={`${styles.field} ${styles.icon} ${props.disabled && styles.disabled} ${warningMsg.type && styles[warningMsg.type]}`}
                             disabled={props.disabled}
-                            inputRef={inputEl}
+                            ref={inputEl}
                             style={{
                                 height: props.height || 48
                             }}
@@ -806,7 +806,7 @@ export default function Input(props) {
                 <div className={styles.field_wrapper}>
                     <textarea
                         autoFocus={props.autoFocus}
-                        inputRef={inputEl}
+                        ref={inputEl}
                         disabled={props.disabled}
                         className={`
                         ${styles.field}
@@ -835,11 +835,11 @@ export default function Input(props) {
                 <div className={styles.field_wrapper}>
                     <textarea
                         autoFocus={props.autoFocus}
-                        inputRef={inputEl}
+                        ref={inputEl}
                         disabled={props.disabled}
                         className={`${styles.field} ${props.disabled && styles.disabled} ${props.code && styles.code} ${warningMsg.type && styles[warningMsg.type]}`}
                         type="text"
-                        rows={props.rows == 'auto' ? lines : props.rows}
+                        rows={props.rows == 'auto' ? lines : (props.rows || lines)}
                         onChange={e => { setLines(countLines(e.target)); handleChange(e.target.value) }}
                         value={value ? value : ""}
                         onBlur={checkValue}
