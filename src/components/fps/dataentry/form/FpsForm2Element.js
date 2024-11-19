@@ -227,6 +227,12 @@ function ElementAction(props) {
                         // setModel({ ...copyModel, ...payloadModel })
                         // setExtendedModel({ ...copyExtendedModel, ...payloadModel })
                         setLoading(false)
+                        if (action.resetModel) {
+                            copyModel = {}
+                            copyExtendedModel = {}
+                            setModel({})
+                            setExtendedModel({})
+                        }
                     },
                     true,
                     undefined,
@@ -242,18 +248,20 @@ function ElementAction(props) {
                 )
             } else {
                 setState({ ...state, ...payloadState })
-                setModel({ ...copyModel, ...payloadModel })
-                setExtendedModel({ ...copyExtendedModel, ...payloadModel })
+                if (action.resetModel) {
+                    copyModel = {}
+                    copyExtendedModel = {}
+                    setModel({})
+                    setExtendedModel({})
+                } else {
+                    setModel({ ...copyModel, ...payloadModel })
+                    setExtendedModel({ ...copyExtendedModel, ...payloadModel })
+                }
                 setLoading(false)
             }
         }
 
-        if (action.resetModel) {
-            copyModel = {}
-            copyExtendedModel = {}
-            setModel({})
-            setExtendedModel({})
-        }
+        
 
     }
 

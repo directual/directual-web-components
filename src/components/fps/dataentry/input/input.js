@@ -356,8 +356,8 @@ export default function Input(props) {
     }, [])
 
     function countLines(textarea, text) {
-        console.log('counting lines...')
-        console.log(textarea)
+        // console.log('counting lines...')
+        // console.log(textarea)
         if (!textarea || !textarea.constructor || textarea.constructor.name != 'HTMLTextAreaElement') {
             console.log('not a textarea');
             return;
@@ -400,7 +400,7 @@ export default function Input(props) {
 
         var result = Math.round(_buffer.scrollHeight / lh);
         if (result == 0) result = 1;
-        console.log(result)
+        // console.log(result)
         return result;
     }
 
