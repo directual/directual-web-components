@@ -18,8 +18,8 @@ export default {
 };
 
 let exampleTable = {
-    "sl": "testTable",
-    "pageSize": "10",
+    "sl": "personellReqPositions",
+    "pageSize": "40",
     "headerField": null,
     "params": {
         "cardListLayout": "grid",
@@ -44,53 +44,58 @@ let exampleTable = {
                     "link": ""
                 },
                 {
-                    "fieldSysName": "type",
-                    "fetch": [
-                        {
-                            "fieldSysName": "id",
-                            "condition": null,
-                            "fetch": []
-                        },
-                        {
-                            "fieldSysName": "type",
-                            "condition": null,
-                            "fetch": []
-                        }
-                    ],
-                    "sysName": "type",
-                    "name": "Type",
-                    "dataType": "link",
-                    "format": "",
-                    "formatOptions": {},
-                    "link": "types"
-                },
-                {
-                    "fieldSysName": "types",
-                    "fetch": [
-                        {
-                            "fieldSysName": "id",
-                            "condition": null,
-                            "fetch": []
-                        },
-                        {
-                            "fieldSysName": "type",
-                            "condition": null,
-                            "fetch": []
-                        }
-                    ],
-                    "sysName": "types",
-                    "name": "Types",
-                    "dataType": "arrayLink",
-                    "format": "",
-                    "formatOptions": {},
-                    "link": "types"
-                },
-                {
-                    "fieldSysName": "title",
+                    "fieldSysName": "is_manual",
                     "fetch": [],
-                    "sysName": "title",
-                    "name": "Title",
-                    "dataType": "string",
+                    "sysName": "is_manual",
+                    "name": "Добавлено вручную (не экспорт)",
+                    "dataType": "boolean",
+                    "format": "",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "dateLocale": "en-gb",
+                        "booleanOptions": [
+                            "Из файла",
+                            "Вручную"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "DD/MM/Y",
+                        "timeFormat": " HH:mm",
+                        "isUTC": "false"
+                    },
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "number_required",
+                    "fetch": [],
+                    "sysName": "number_required",
+                    "name": "Необходимое кол-во сотрудников",
+                    "dataType": "number",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "min_performance",
+                    "fetch": [],
+                    "sysName": "min_performance",
+                    "name": "Необходимая минимальная производительность сотрудников",
+                    "dataType": "number",
                     "format": "",
                     "formatOptions": {},
                     "link": ""
@@ -99,14 +104,114 @@ let exampleTable = {
                     "fieldSysName": "date",
                     "fetch": [],
                     "sysName": "date",
-                    "name": "",
+                    "name": "Дата",
                     "dataType": "date",
+                    "format": "",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "dateLocale": "ru",
+                        "booleanOptions": [
+                            "True",
+                            "False"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "DD.MM.Y",
+                        "timeFormat": "",
+                        "isUTC": "false"
+                    },
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "skill_id",
+                    "fetch": [
+                        {
+                            "fieldSysName": "id",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "title",
+                            "condition": null,
+                            "fetch": []
+                        }
+                    ],
+                    "sysName": "skill_id",
+                    "name": "Необходимый навык",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "skills"
+                },
+                {
+                    "fieldSysName": "place_id",
+                    "fetch": [
+                        {
+                            "fieldSysName": "id",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "title",
+                            "condition": null,
+                            "fetch": []
+                        }
+                    ],
+                    "sysName": "place_id",
+                    "name": "Объект",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "places"
+                }
+            ],
+            "writeFields": [
+                {
+                    "fieldSysName": "id",
+                    "fetch": [],
+                    "sysName": "id",
+                    "name": "id",
+                    "dataType": "id",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "number_required",
+                    "fetch": [],
+                    "sysName": "number_required",
+                    "name": "Необходимое кол-во сотрудников",
+                    "dataType": "number",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "min_performance",
+                    "fetch": [],
+                    "sysName": "min_performance",
+                    "name": "Необходимая минимальная производительность сотрудников",
+                    "dataType": "number",
                     "format": "",
                     "formatOptions": {},
                     "link": ""
                 }
             ],
-            "writeFields": [],
             "fields": {
                 "id": {
                     "id": "id",
@@ -115,52 +220,131 @@ let exampleTable = {
                     "dataType": "id",
                     "format": "",
                     "formatOptions": {},
+                    "write": true,
                     "read": true,
                     "link": "",
                     "actions": []
                 },
-                "type": {
-                    "id": "type",
-                    "content": "Type",
+                "is_manual": {
+                    "id": "is_manual",
+                    "content": "Добавлено вручную (не экспорт)",
                     "type": "field",
-                    "dataType": "link",
+                    "dataType": "boolean",
                     "format": "",
-                    "formatOptions": {},
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "dateLocale": "en-gb",
+                        "booleanOptions": [
+                            "Из файла",
+                            "Вручную"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "DD/MM/Y",
+                        "timeFormat": " HH:mm",
+                        "isUTC": "false"
+                    },
                     "read": true,
-                    "link": "types",
+                    "link": "",
                     "actions": []
                 },
-                "types": {
-                    "id": "types",
-                    "content": "Types",
+                "number_required": {
+                    "id": "number_required",
+                    "content": "Необходимое кол-во сотрудников",
                     "type": "field",
-                    "dataType": "arrayLink",
+                    "dataType": "number",
                     "format": "",
                     "formatOptions": {},
+                    "write": true,
                     "read": true,
-                    "link": "types",
+                    "link": "",
                     "actions": []
                 },
-                "title": {
-                    "id": "title",
-                    "content": "Title",
+                "min_performance": {
+                    "id": "min_performance",
+                    "content": "Необходимая минимальная производительность сотрудников",
                     "type": "field",
-                    "dataType": "string",
+                    "dataType": "number",
                     "format": "",
                     "formatOptions": {},
+                    "write": true,
                     "read": true,
                     "link": "",
                     "actions": []
                 },
                 "date": {
                     "id": "date",
-                    "content": "",
+                    "content": "Дата",
                     "type": "field",
                     "dataType": "date",
                     "format": "",
-                    "formatOptions": {},
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "dateLocale": "ru",
+                        "booleanOptions": [
+                            "True",
+                            "False"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "DD.MM.Y",
+                        "timeFormat": "",
+                        "isUTC": "false"
+                    },
                     "read": true,
                     "link": "",
+                    "actions": []
+                },
+                "skill_id": {
+                    "id": "skill_id",
+                    "content": "Необходимый навык",
+                    "type": "field",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "skills",
+                    "actions": []
+                },
+                "place_id": {
+                    "id": "place_id",
+                    "content": "Объект",
+                    "type": "field",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "places",
                     "actions": []
                 }
             },
@@ -173,7 +357,15 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "type": {
+                "is_manual": {
+                    "include": false,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "number_required": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -181,15 +373,7 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "types": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "title": {
+                "min_performance": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -198,6 +382,22 @@ let exampleTable = {
                     "clickable": false
                 },
                 "date": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "skill_id": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "place_id": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -212,10 +412,12 @@ let exampleTable = {
                     "title": "New section",
                     "fieldIds": [
                         "id",
-                        "type",
-                        "types",
-                        "title",
-                        "date"
+                        "place_id",
+                        "date",
+                        "skill_id",
+                        "number_required",
+                        "min_performance",
+                        "is_manual"
                     ]
                 }
             },
@@ -233,7 +435,15 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "type": {
+            "is_manual": {
+                "include": false,
+                "disableEditing": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "number_required": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -241,15 +451,7 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "types": {
-                "include": true,
-                "disableEditing": false,
-                "fileImageFormat": "square",
-                "quickSearch": false,
-                "fileImageSize": 200,
-                "clickable": false
-            },
-            "title": {
+            "min_performance": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -258,6 +460,22 @@ let exampleTable = {
                 "clickable": false
             },
             "date": {
+                "include": true,
+                "disableEditing": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "skill_id": {
+                "include": true,
+                "disableEditing": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "place_id": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -279,7 +497,101 @@ let exampleTable = {
                     "link": ""
                 },
                 {
-                    "fieldSysName": "type",
+                    "fieldSysName": "is_manual",
+                    "fetch": [],
+                    "sysName": "is_manual",
+                    "name": "Добавлено вручную (не экспорт)",
+                    "dataType": "boolean",
+                    "format": "",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "dateLocale": "en-gb",
+                        "booleanOptions": [
+                            "Из файла",
+                            "Вручную"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "DD/MM/Y",
+                        "timeFormat": " HH:mm",
+                        "isUTC": "false"
+                    },
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "number_required",
+                    "fetch": [],
+                    "sysName": "number_required",
+                    "name": "Необходимое кол-во сотрудников",
+                    "dataType": "number",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "min_performance",
+                    "fetch": [],
+                    "sysName": "min_performance",
+                    "name": "Необходимая минимальная производительность сотрудников",
+                    "dataType": "number",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "date",
+                    "fetch": [],
+                    "sysName": "date",
+                    "name": "Дата",
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "dateLocale": "ru",
+                        "booleanOptions": [
+                            "True",
+                            "False"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "DD.MM.Y",
+                        "timeFormat": "",
+                        "isUTC": "false"
+                    },
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "skill_id",
                     "fetch": [
                         {
                             "fieldSysName": "id",
@@ -287,20 +599,20 @@ let exampleTable = {
                             "fetch": []
                         },
                         {
-                            "fieldSysName": "type",
+                            "fieldSysName": "title",
                             "condition": null,
                             "fetch": []
                         }
                     ],
-                    "sysName": "type",
-                    "name": "Type",
+                    "sysName": "skill_id",
+                    "name": "Необходимый навык",
                     "dataType": "link",
                     "format": "",
                     "formatOptions": {},
-                    "link": "types"
+                    "link": "skills"
                 },
                 {
-                    "fieldSysName": "types",
+                    "fieldSysName": "place_id",
                     "fetch": [
                         {
                             "fieldSysName": "id",
@@ -308,30 +620,51 @@ let exampleTable = {
                             "fetch": []
                         },
                         {
-                            "fieldSysName": "type",
+                            "fieldSysName": "title",
                             "condition": null,
                             "fetch": []
                         }
                     ],
-                    "sysName": "types",
-                    "name": "Types",
-                    "dataType": "arrayLink",
+                    "sysName": "place_id",
+                    "name": "Объект",
+                    "dataType": "link",
                     "format": "",
                     "formatOptions": {},
-                    "link": "types"
+                    "link": "places"
+                }
+            ],
+            "writeFields": [
+                {
+                    "fieldSysName": "id",
+                    "fetch": [],
+                    "sysName": "id",
+                    "name": "id",
+                    "dataType": "id",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
                 },
                 {
-                    "fieldSysName": "title",
+                    "fieldSysName": "number_required",
                     "fetch": [],
-                    "sysName": "title",
-                    "name": "Title",
-                    "dataType": "string",
+                    "sysName": "number_required",
+                    "name": "Необходимое кол-во сотрудников",
+                    "dataType": "number",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "min_performance",
+                    "fetch": [],
+                    "sysName": "min_performance",
+                    "name": "Необходимая минимальная производительность сотрудников",
+                    "dataType": "number",
                     "format": "",
                     "formatOptions": {},
                     "link": ""
                 }
             ],
-            "writeFields": [],
             "fields": {
                 "id": {
                     "id": "id",
@@ -339,35 +672,119 @@ let exampleTable = {
                     "dataType": "id",
                     "format": "",
                     "formatOptions": {},
+                    "write": true,
                     "read": true,
                     "link": ""
                 },
-                "type": {
-                    "id": "type",
-                    "content": "Type",
+                "is_manual": {
+                    "id": "is_manual",
+                    "content": "Добавлено вручную (не экспорт)",
+                    "dataType": "boolean",
+                    "format": "",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "dateLocale": "en-gb",
+                        "booleanOptions": [
+                            "Из файла",
+                            "Вручную"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "DD/MM/Y",
+                        "timeFormat": " HH:mm",
+                        "isUTC": "false"
+                    },
+                    "read": true,
+                    "link": ""
+                },
+                "number_required": {
+                    "id": "number_required",
+                    "content": "Необходимое кол-во сотрудников",
+                    "dataType": "number",
+                    "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": ""
+                },
+                "min_performance": {
+                    "id": "min_performance",
+                    "content": "Необходимая минимальная производительность сотрудников",
+                    "dataType": "number",
+                    "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": ""
+                },
+                "date": {
+                    "id": "date",
+                    "content": "Дата",
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "dateLocale": "ru",
+                        "booleanOptions": [
+                            "True",
+                            "False"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "DD.MM.Y",
+                        "timeFormat": "",
+                        "isUTC": "false"
+                    },
+                    "read": true,
+                    "link": ""
+                },
+                "skill_id": {
+                    "id": "skill_id",
+                    "content": "Необходимый навык",
                     "dataType": "link",
                     "format": "",
                     "formatOptions": {},
                     "read": true,
-                    "link": "types"
+                    "link": "skills"
                 },
-                "types": {
-                    "id": "types",
-                    "content": "Types",
-                    "dataType": "arrayLink",
+                "place_id": {
+                    "id": "place_id",
+                    "content": "Объект",
+                    "dataType": "link",
                     "format": "",
                     "formatOptions": {},
                     "read": true,
-                    "link": "types"
-                },
-                "title": {
-                    "id": "title",
-                    "content": "Title",
-                    "dataType": "string",
-                    "format": "",
-                    "formatOptions": {},
-                    "read": true,
-                    "link": ""
+                    "link": "places"
                 }
             },
             "fieldParams": {
@@ -379,7 +796,15 @@ let exampleTable = {
                     "colorFormat": "square",
                     "colorSize": 40
                 },
-                "type": {
+                "is_manual": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "fileImageSize": 80,
+                    "colorCode": false,
+                    "colorFormat": "square",
+                    "colorSize": 40
+                },
+                "number_required": {
                     "include": true,
                     "fileImageFormat": "square",
                     "fileImageSize": 80,
@@ -387,7 +812,7 @@ let exampleTable = {
                     "colorFormat": "square",
                     "colorSize": 40
                 },
-                "types": {
+                "min_performance": {
                     "include": true,
                     "fileImageFormat": "square",
                     "fileImageSize": 80,
@@ -395,7 +820,23 @@ let exampleTable = {
                     "colorFormat": "square",
                     "colorSize": 40
                 },
-                "title": {
+                "date": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "fileImageSize": 80,
+                    "colorCode": false,
+                    "colorFormat": "square",
+                    "colorSize": 40
+                },
+                "skill_id": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "fileImageSize": 80,
+                    "colorCode": false,
+                    "colorFormat": "square",
+                    "colorSize": 40
+                },
+                "place_id": {
                     "include": true,
                     "fileImageFormat": "square",
                     "fileImageSize": 80,
@@ -406,50 +847,101 @@ let exampleTable = {
             },
             "fieldOrder": [
                 "id",
-                "title",
-                "type",
-                "types"
+                "place_id",
+                "date",
+                "skill_id",
+                "is_manual",
+                "number_required",
+                "min_performance"
             ]
         },
+        "tableCellPadding": 6,
         "filterParams": {
+            "isSorting": true,
             "isFiltering": true,
             "filterFields": {
-                "type": {
-                    "active": true,
-                    "dataType": "link",
-                    "format": "",
-                    "formatOptions": {},
-                    "name": "Type",
-                    "textsearch": "endpoint",
-                    "endpoint": "filterTypes"
-                },
-                "types": {
-                    "active": true,
-                    "dataType": "arrayLink",
-                    "format": "",
-                    "formatOptions": {},
-                    "name": "Types",
-                    "textsearch": "endpoint",
-                    "endpoint": "filterTypes"
-                },
-                "title": {
-                    "active": true,
-                    "dataType": "string",
-                    "format": "",
-                    "formatOptions": {},
-                    "name": "Title"
-                },
                 "date": {
                     "active": true,
                     "dataType": "date",
                     "format": "",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "dateLocale": "ru",
+                        "booleanOptions": [
+                            "True",
+                            "False"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "DD.MM.Y",
+                        "timeFormat": "",
+                        "isUTC": "false"
+                    },
+                    "name": "Дата"
+                },
+                "skill_id": {
+                    "active": true,
+                    "dataType": "link",
+                    "format": "",
                     "formatOptions": {},
-                    "name": "date"
+                    "name": "Необходимый навык",
+                    "textsearch": "choice",
+                    "linkDirectory": [
+                        {
+                            "id": "PICKING_TOTAL",
+                            "text": "Сборка"
+                        },
+                        {
+                            "id": "PUTAWAY_TOTAL",
+                            "text": "Размещение на складе"
+                        },
+                        {
+                            "id": "RETURNS_TOTAL",
+                            "text": "Возвраты"
+                        }
+                    ]
+                },
+                "place_id": {
+                    "active": true,
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "name": "Объект",
+                    "textsearch": "choice",
+                    "linkDirectory": [
+                        {
+                            "id": "Объект 1",
+                            "text": "Объект 1"
+                        },
+                        {
+                            "id": "Объект 2",
+                            "text": "Объект 2"
+                        },
+                        {
+                            "id": "Объект 3",
+                            "text": "Объект 3"
+                        }
+                    ]
                 }
             }
         }
     },
-    "tableTitle": "",
+    "tableTitle": "Позиции в заявке",
     "actions": null,
     "headers": [
         {
@@ -472,27 +964,82 @@ let exampleTable = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "array": false,
+            "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "typeVariable": {},
-            "indexExists": false
+            "indexExists": false,
+            "array": false
         },
         {
-            "sysName": "type",
-            "dataType": "link",
-            "name": "Type",
-            "id": "52051715859147835",
-            "link": "types",
+            "sysName": "is_manual",
+            "dataType": "boolean",
+            "name": "Добавлено вручную (не экспорт)",
+            "id": "41031731927536969",
+            "link": "",
             "group": "0",
             "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 2,
+            "order": 7,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "Из файла",
+                    "Вручную"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "number_required",
+            "dataType": "number",
+            "name": "Необходимое кол-во сотрудников",
+            "id": "52631731927336152",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 5,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -500,20 +1047,48 @@ let exampleTable = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "array": false,
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
             "typeVariable": {},
-            "indexExists": false
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
         },
         {
-            "sysName": "types",
-            "dataType": "arrayLink",
-            "name": "Types",
-            "id": "31981715859158032",
-            "link": "types",
+            "sysName": "min_performance",
+            "dataType": "number",
+            "name": "Необходимая минимальная производительность сотрудников",
+            "id": "96111731927152986",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 6,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "date",
+            "dataType": "date",
+            "name": "Дата",
+            "id": "38521731927118737",
+            "link": "",
             "group": "0",
             "tags": "",
             "indexing": false,
@@ -526,50 +1101,49 @@ let exampleTable = {
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": {},
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "ru",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD.MM.Y",
+                "timeFormat": "",
+                "isUTC": "false"
+            },
             "groupName": null,
-            "array": false,
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": false,
-            "arrayLink": true,
             "typeVariable": {},
-            "indexExists": false
-        },
-        {
-            "sysName": "title",
-            "dataType": "string",
-            "name": "Title",
-            "id": "54811715859141654",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
             "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "typeVariable": {},
-            "indexExists": false
+            "indexExists": false,
+            "array": false
         },
         {
-            "sysName": "date",
-            "dataType": "date",
-            "name": "",
-            "id": "40301715861056784",
-            "link": "",
+            "sysName": "skill_id",
+            "dataType": "link",
+            "name": "Необходимый навык",
+            "id": "24981731926898180",
+            "link": "skills",
             "group": "0",
             "tags": "",
             "indexing": false,
@@ -584,53 +1158,358 @@ let exampleTable = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "array": false,
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
             "typeVariable": {},
-            "indexExists": false
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "place_id",
+            "dataType": "link",
+            "name": "Объект",
+            "id": "22451731926881080",
+            "link": "places",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
         }
     ],
     "data": [
         {
-            "id": "b43612c2-91c3-4145-8a72-df1e86450b34",
-            "date": 1714942800000,
-            "title": "еби хохлов — спасай Россию",
-            "type": {
-                "id": "1",
-                "type": "раз"
+            "number_required": 5,
+            "skill_id": {
+                "id": "PICKING_TOTAL",
+                "title": "Сборка"
             },
-            "types": [
-                {
-                    "type": "раз",
-                    "id": "1"
-                },
-                {
-                    "type": "три",
-                    "id": "3"
-                }
-            ]
+            "id": "bf2bba6a-7ad7-4ef3-bc0e-f31ac283683d",
+            "date": 1728950400000,
+            "is_manual": false,
+            "min_performance": 100,
+            "place_id": {
+                "id": "Объект 1",
+                "title": "Объект 1"
+            }
         },
         {
-            "id": "75937849-64a8-4621-b06c-430f5e596621",
-            "date": 1715720400000,
-            "title": "ще не вмерла усраина",
-            "type": {
-                "id": "2",
-                "type": "два"
+            "number_required": 5,
+            "skill_id": {
+                "id": "PUTAWAY_TOTAL",
+                "title": "Размещение на складе"
             },
-            "types": [
-                {
-                    "type": "два",
-                    "id": "2"
-                },
-                {
-                    "type": "три",
-                    "id": "3"
-                }
-            ]
+            "id": "2da71d08-c730-41da-ac5d-507cff157cef",
+            "date": 1728950400000,
+            "is_manual": false,
+            "min_performance": 100,
+            "place_id": {
+                "id": "Объект 1",
+                "title": "Объект 1"
+            }
+        },
+        {
+            "number_required": 5,
+            "skill_id": {
+                "id": "RETURNS_TOTAL",
+                "title": "Возвраты"
+            },
+            "id": "fda14fae-e238-4f12-8bca-d33398e94f12",
+            "date": 1728950400000,
+            "is_manual": false,
+            "min_performance": 100,
+            "place_id": {
+                "id": "Объект 1",
+                "title": "Объект 1"
+            }
+        },
+        {
+            "number_required": 7,
+            "skill_id": {
+                "id": "PICKING_TOTAL",
+                "title": "Сборка"
+            },
+            "id": "dd6008e3-54ef-4b26-87d7-d77090287eca",
+            "date": 1729036800000,
+            "is_manual": false,
+            "min_performance": 100,
+            "place_id": {
+                "id": "Объект 1",
+                "title": "Объект 1"
+            }
+        },
+        {
+            "number_required": 5,
+            "skill_id": {
+                "id": "PUTAWAY_TOTAL",
+                "title": "Размещение на складе"
+            },
+            "id": "cdd2c6a9-0106-475a-8eae-2bf2ee3f6580",
+            "date": 1729036800000,
+            "is_manual": false,
+            "min_performance": 100,
+            "place_id": {
+                "id": "Объект 1",
+                "title": "Объект 1"
+            }
+        },
+        {
+            "number_required": 9,
+            "skill_id": {
+                "id": "RETURNS_TOTAL",
+                "title": "Возвраты"
+            },
+            "id": "e5d68c44-6211-457e-bbc2-421c4890c3e9",
+            "date": 1729036800000,
+            "is_manual": false,
+            "min_performance": 100,
+            "place_id": {
+                "id": "Объект 1",
+                "title": "Объект 1"
+            }
+        },
+        {
+            "number_required": 6,
+            "skill_id": {
+                "id": "PICKING_TOTAL",
+                "title": "Сборка"
+            },
+            "id": "3db23596-a19b-41bf-9511-5aaa2d67b994",
+            "date": 1729123200000,
+            "is_manual": false,
+            "min_performance": 100,
+            "place_id": {
+                "id": "Объект 1",
+                "title": "Объект 1"
+            }
+        },
+        {
+            "number_required": 3,
+            "skill_id": {
+                "id": "PUTAWAY_TOTAL",
+                "title": "Размещение на складе"
+            },
+            "id": "aaaa13c5-3a00-46a6-9b95-4bd750b3da84",
+            "date": 1729123200000,
+            "is_manual": false,
+            "min_performance": 100,
+            "place_id": {
+                "id": "Объект 1",
+                "title": "Объект 1"
+            }
+        },
+        {
+            "number_required": 5,
+            "skill_id": {
+                "id": "RETURNS_TOTAL",
+                "title": "Возвраты"
+            },
+            "id": "d038e362-2690-4972-8475-ae3270322560",
+            "date": 1729123200000,
+            "is_manual": false,
+            "min_performance": 100,
+            "place_id": {
+                "id": "Объект 1",
+                "title": "Объект 1"
+            }
+        },
+        {
+            "number_required": 3,
+            "skill_id": {
+                "id": "PICKING_TOTAL",
+                "title": "Сборка"
+            },
+            "id": "7ef0e67e-28c0-4369-976c-6046d83160f7",
+            "date": 1728950400000,
+            "is_manual": false,
+            "min_performance": 60,
+            "place_id": {
+                "id": "Объект 2",
+                "title": "Объект 2"
+            }
+        },
+        {
+            "number_required": 3,
+            "skill_id": {
+                "id": "PUTAWAY_TOTAL",
+                "title": "Размещение на складе"
+            },
+            "id": "6c0f26ef-7378-4b6c-ae0c-408186681941",
+            "date": 1728950400000,
+            "is_manual": false,
+            "min_performance": 60,
+            "place_id": {
+                "id": "Объект 2",
+                "title": "Объект 2"
+            }
+        },
+        {
+            "number_required": 3,
+            "skill_id": {
+                "id": "RETURNS_TOTAL",
+                "title": "Возвраты"
+            },
+            "id": "50eaebbc-730a-4836-a0b1-ae937c0ceb3a",
+            "date": 1728950400000,
+            "is_manual": false,
+            "min_performance": 60,
+            "place_id": {
+                "id": "Объект 2",
+                "title": "Объект 2"
+            }
+        },
+        {
+            "number_required": 2,
+            "skill_id": {
+                "id": "PICKING_TOTAL",
+                "title": "Сборка"
+            },
+            "id": "0f5f7a55-f563-49da-91cc-fd4385b1d72d",
+            "date": 1729036800000,
+            "is_manual": false,
+            "min_performance": 60,
+            "place_id": {
+                "id": "Объект 2",
+                "title": "Объект 2"
+            }
+        },
+        {
+            "number_required": "",
+            "skill_id": {
+                "id": "PUTAWAY_TOTAL",
+                "title": "Размещение на складе"
+            },
+            "id": "d8a8170b-7df9-472e-87e4-6d261f585b09",
+            "date": 1729036800000,
+            "is_manual": false,
+            "min_performance": 60,
+            "place_id": {
+                "id": "Объект 2",
+                "title": "Объект 2"
+            }
+        },
+        {
+            "number_required": 3,
+            "skill_id": {
+                "id": "RETURNS_TOTAL",
+                "title": "Возвраты"
+            },
+            "id": "73aa4aa6-7833-4645-b4f0-e7c41be47c88",
+            "date": 1729036800000,
+            "is_manual": false,
+            "min_performance": 60,
+            "place_id": {
+                "id": "Объект 2",
+                "title": "Объект 2"
+            }
+        },
+        {
+            "number_required": 3,
+            "skill_id": {
+                "id": "PICKING_TOTAL",
+                "title": "Сборка"
+            },
+            "id": "b0f63bac-63af-4ab4-82a8-72336a1ae3ad",
+            "date": 1729123200000,
+            "is_manual": false,
+            "min_performance": 60,
+            "place_id": {
+                "id": "Объект 2",
+                "title": "Объект 2"
+            }
+        },
+        {
+            "number_required": 1,
+            "skill_id": {
+                "id": "PUTAWAY_TOTAL",
+                "title": "Размещение на складе"
+            },
+            "id": "e48bc79c-1d79-4934-a8d3-f46963aabbbf",
+            "date": 1729123200000,
+            "is_manual": false,
+            "min_performance": 60,
+            "place_id": {
+                "id": "Объект 2",
+                "title": "Объект 2"
+            }
+        },
+        {
+            "number_required": "",
+            "skill_id": {
+                "id": "RETURNS_TOTAL",
+                "title": "Возвраты"
+            },
+            "id": "152d9099-dc62-4590-975d-73cf09dc64d3",
+            "date": 1729123200000,
+            "is_manual": false,
+            "min_performance": 60,
+            "place_id": {
+                "id": "Объект 2",
+                "title": "Объект 2"
+            }
+        },
+        {
+            "number_required": 5,
+            "skill_id": {
+                "id": "PUTAWAY_TOTAL",
+                "title": "Размещение на складе"
+            },
+            "id": "1ba5ded8-b2ba-4815-872e-e1045a78dcbe",
+            "date": 1731542400000,
+            "is_manual": true,
+            "min_performance": 120,
+            "place_id": {
+                "id": "Объект 2",
+                "title": "Объект 2"
+            }
+        },
+        {
+            "number_required": 5,
+            "skill_id": {
+                "id": "PUTAWAY_TOTAL",
+                "title": "Размещение на складе"
+            },
+            "id": "ff5f796c-0bfc-483e-b1a7-5b527a2f3e18",
+            "date": 1732060800000,
+            "is_manual": true,
+            "min_performance": 100,
+            "place_id": {
+                "id": "Объект 3",
+                "title": "Объект 3"
+            }
+        },
+        {
+            "number_required": 100,
+            "skill_id": {
+                "id": "RETURNS_TOTAL",
+                "title": "Возвраты"
+            },
+            "id": "a7128713-49d0-4d89-86bd-6fb221d7ac9a",
+            "date": 1732147200000,
+            "is_manual": true,
+            "min_performance": 10,
+            "place_id": {
+                "id": "Объект 3",
+                "title": "Объект 3"
+            }
         }
     ],
     "totalPages": 1,
@@ -639,54 +1518,66 @@ let exampleTable = {
     "fieldScheme": [
         [
             "id",
-            99312189
+            99355974
         ],
         [
-            "type.id",
-            99312190
+            "is_manual",
+            99355974
         ],
         [
-            "type.type",
-            99312190
+            "number_required",
+            99355974
         ],
         [
-            "types.id",
-            99312190
-        ],
-        [
-            "types.type",
-            99312190
-        ],
-        [
-            "title",
-            99312189
+            "min_performance",
+            99355974
         ],
         [
             "date",
-            99312189
+            99355974
+        ],
+        [
+            "skill_id.id",
+            99353796
+        ],
+        [
+            "skill_id.title",
+            99353796
+        ],
+        [
+            "place_id.id",
+            99353795
+        ],
+        [
+            "place_id.title",
+            99353795
         ]
     ],
-    "writeFields": [],
+    "writeFields": [
+        "id",
+        "number_required",
+        "min_performance"
+    ],
     "structures": {
-        "99312189": {
-            "id": 99312189,
-            "dateCreated": "2024-05-16T11:31:34Z",
+        "99353795": {
+            "networkID": 22351,
+            "sysName": "places",
+            "name": "Объекты",
+            "id": 99353795,
+            "dateCreated": "2024-11-05T17:29:49Z",
             "hidden": false,
             "dateHidden": null,
-            "networkID": 20570,
-            "name": "objects",
-            "sysName": "objects",
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"types\",\"dataType\":\"arrayLink\",\"name\":\"Types\",\"id\":\"31981715859158032\",\"link\":\"types\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"date\",\"dataType\":\"date\",\"name\":\"\",\"id\":\"40301715861056784\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"type\",\"dataType\":\"link\",\"name\":\"Type\",\"id\":\"52051715859147835\",\"link\":\"types\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"title\",\"dataType\":\"string\",\"name\":\"Title\",\"id\":\"54811715859141654\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false}]",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"title\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"15291730827795166\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
             "jsonGroupSettings": null,
-            "jsonViewIdSettings": null,
+            "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
             "jsonSettings": null,
             "jsonNativeIndexSettings": null,
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2024-05-16T12:04:24Z",
-            "createBy": 21,
-            "changedBy": 21,
+            "dateChanged": "2024-11-19T08:41:39Z",
+            "createBy": 1,
+            "changedBy": 1,
             "_settings": null,
             "_nativeIndexSettings": null,
             "objectIDSysName": "id",
@@ -710,35 +1601,35 @@ let exampleTable = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "array": false,
+                "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "typeVariable": {},
-                "indexExists": false
+                "indexExists": false,
+                "array": false
             },
-            "folderId": null
+            "folderId": 33826092
         },
-        "99312190": {
-            "id": 99312190,
-            "dateCreated": "2024-05-16T11:31:41Z",
+        "99353796": {
+            "networkID": 22351,
+            "sysName": "skills",
+            "name": "Навыки ",
+            "id": 99353796,
+            "dateCreated": "2024-11-05T17:31:01Z",
             "hidden": false,
             "dateHidden": null,
-            "networkID": 20570,
-            "name": "types",
-            "sysName": "types",
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false},{\"sysName\":\"type\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"36981715859104914\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"indexExists\":false}]",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"code\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"78051732027311609\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"title\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"86541730827864647\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
             "jsonGroupSettings": null,
-            "jsonViewIdSettings": "[{\"sysName\":\"type\"}]",
+            "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
             "jsonSettings": null,
             "jsonNativeIndexSettings": null,
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2024-05-16T11:31:49Z",
-            "createBy": 21,
-            "changedBy": 21,
+            "dateChanged": "2024-11-19T14:41:54Z",
+            "createBy": 1,
+            "changedBy": 1,
             "_settings": null,
             "_nativeIndexSettings": null,
             "objectIDSysName": "id",
@@ -762,26 +1653,164 @@ let exampleTable = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "array": false,
+                "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
-                "typeVariable": {},
-                "indexExists": false
+                "indexExists": false,
+                "array": false
             },
-            "folderId": null
+            "folderId": 33826092
+        },
+        "99355974": {
+            "networkID": 22351,
+            "sysName": "personell_requests_positions",
+            "name": "Позиции заявки на персонал",
+            "id": 99355974,
+            "dateCreated": "2024-11-18T10:46:51Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"place_id\",\"dataType\":\"link\",\"name\":\"Объект\",\"id\":\"22451731926881080\",\"link\":\"places\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"skill_id\",\"dataType\":\"link\",\"name\":\"Необходимый навык\",\"id\":\"24981731926898180\",\"link\":\"skills\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"personell_request_id\",\"dataType\":\"link\",\"name\":\"Заявка на персонал\",\"id\":\"33471731926908753\",\"link\":\"personell_requests\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isDeleted\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"37881732022173870\",\"link\":\"\",\"group\":\"1732022163927\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"date\",\"dataType\":\"date\",\"name\":\"Дата\",\"id\":\"38521731927118737\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"is_manual\",\"dataType\":\"boolean\",\"name\":\"Добавлено вручную (не экспорт)\",\"id\":\"41031731927536969\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Из файла\",\"Вручную\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"number_required\",\"dataType\":\"number\",\"name\":\"Необходимое кол-во сотрудников\",\"id\":\"52631731927336152\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"min_performance\",\"dataType\":\"number\",\"name\":\"Необходимая минимальная производительность сотрудников\",\"id\":\"96111731927152986\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
+            "jsonGroupSettings": "[{\"name\":\"DELETED\",\"id\":1732022163927,\"order\":0}]",
+            "jsonViewIdSettings": "[{\"sysName\":\"date\"},{\"sysName\":\"place_id\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2024-11-19T13:16:19Z",
+            "createBy": 1,
+            "changedBy": 1,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
+                "indexExists": false,
+                "array": false
+            },
+            "folderId": 33827808
         }
     },
     "isSuccessWrite": false,
     "writeError": null,
     "writeResponse": null,
-    "fileds": [],
+    "fileds": [
+        {
+            "sysName": "id",
+            "dataType": "id",
+            "name": "id",
+            "id": "0",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "number_required",
+            "dataType": "number",
+            "name": "Необходимое кол-во сотрудников",
+            "id": "52631731927336152",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 5,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "min_performance",
+            "dataType": "number",
+            "name": "Необходимая минимальная производительность сотрудников",
+            "id": "96111731927152986",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 6,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        }
+    ],
     "quickSearch": "false",
     "httpParams": {},
     "cardCustomHtml": null,
     "cardCustomLayout": null,
-    "comment": null
+    "comment": null,
+    "response": false
 }
 
 let authExample = {

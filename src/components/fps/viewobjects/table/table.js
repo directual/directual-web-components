@@ -56,7 +56,9 @@ const EditableCell = ({
     const formatOptions = (fieldDetails[id] && fieldDetails[id].formatOptions) || {}
 
     function numberWithSpaces(x) {
-        if (!x && x != 0) return null
+        if (!x && x !== 0) {
+            return "0"
+        }
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
     }
 
