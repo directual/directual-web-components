@@ -17,8 +17,8 @@ export default function FpsForm2(props) {
 
   const { auth, data, callEndpoint, onEvent, id, locale, handleRoute, currentBP, templateEngine } = props
 
-  // console.log("=== FpsForm2 data ===")
-  // console.log(data)
+  console.log("=== FpsForm2 data ===")
+  console.log(data)
 
   const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
   const defaultState = { "step": "default step", "popup": "" }
@@ -540,8 +540,8 @@ export default function FpsForm2(props) {
     
     localState._submitError = ""
     setState({ ...localState })
-    console.log('submitting form...')
-    console.log(modelToSend)
+    // console.log('submitting form...')
+    // console.log(modelToSend)
     setLoading(true)
     const endpoint = _.get(data, "sl")
     callEndpoint && callEndpoint(

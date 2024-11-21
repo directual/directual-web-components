@@ -30,8 +30,8 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute, cal
         setCurrentData(data);
     }, [data])
 
-    console.log('---currentData FpsTable---')
-    console.log(currentData)
+    // console.log('---currentData FpsTable---')
+    // console.log(currentData)
 
     const cx = null
     const dqlService = debounce(performFiltering, 600);

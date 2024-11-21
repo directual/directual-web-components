@@ -15,12 +15,12 @@ import _ from 'lodash'
 
 export function FormSection(props) {
 
-  const [hidden,setHidden] = useState(props.defaultValue)
+  const [hidden, setHidden] = useState(props.defaultValue)
 
   const onChangeState = (val) => {
     setHidden(val)
     props.onHide && props.onHide(val)
-  } 
+  }
 
   if (props.hide) {
     return (
@@ -158,7 +158,9 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
   }
 
   // а если редактирование вырублено, вообще все обнуляем
-  if (!data.params.useEditing) { eidtID = null } else { console.log('eidtID = ' + eidtID) }
+  if (!data.params.useEditing) { eidtID = null } else {
+    // console.log('eidtID = ' + eidtID) 
+  }
 
   const [fetchedObj, setFetchetObj] = useState(false)
   const fetchObjectFields = (objId) => {
@@ -243,12 +245,12 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
       // }
 
       if (dataType == "file" && Array.isArray(getFieldVal)) {
-        getFieldVal =  getFieldVal.join(",")
+        getFieldVal = getFieldVal.join(",")
       }
 
       // костылек для масивов ссылок:
       if (Array.isArray(getFieldVal) && typeof getFieldVal[0] == 'string') {
-        getFieldVal =  getFieldVal.join(",")
+        getFieldVal = getFieldVal.join(",")
       }
 
       if (dataType == 'boolean') {
@@ -393,7 +395,7 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
 
       {/* Standard response processing: */}
       {!showForm && !loading && !getResultAnswer().sync && <React.Fragment>
-        {isSuccessWrite && <Hint 
+        {isSuccessWrite && <Hint
           margin={{ top: wf_noHinned.length > 0 ? 24 : 0, bottom: 24 }}
           title={resultTitle} ok><div dangerouslySetInnerHTML={{ __html: resultMessage }} /></Hint>}
       </React.Fragment>}
@@ -403,13 +405,13 @@ function FpsFormNew({ auth, data, onEvent, id, locale }) {
       {!showForm && !data.error && !loading && getResultAnswer().sync && <React.Fragment>
         {data.response && !getResultAnswer().isSuccess && <React.Fragment>
           <Hint
-            margin={{ top: wf_noHinned.length > 0 ? 24 : 0, bottom: 24 }} 
+            margin={{ top: wf_noHinned.length > 0 ? 24 : 0, bottom: 24 }}
             title={getResultAnswer().answerTitle} error>
             <div dangerouslySetInnerHTML={{ __html: getResultAnswer().answerText }} />
           </Hint>
         </React.Fragment>}
         {data.response && getResultAnswer().isSuccess &&
-          <Hint 
+          <Hint
             margin={{ top: wf_noHinned.length > 0 ? 24 : 0, bottom: 0 }}
             title={getResultAnswer().answerTitle} ok>
             {data.params.result.isLink ? getResultAnswer().answerText :
@@ -813,14 +815,14 @@ function FpsFormOld({ auth, data, onEvent, id, locale }) {
       </React.Fragment>}
 
       {!showForm && !loading && data.error != 'You have no permissions for viewing form' && data.error != 'Form is not configured' &&
-        <ActionPanel margin={{top:12, bottom:0}}>
-        <Button icon='refresh' onClick={() => {
-          setShowForm(true);
-          data.response == [];
-          data.error = '';
-          fetchObjectFields(eidtID)
-          getResultAnswer().isSuccess && !data.error && setModel({ ...hiddenFieldsValues, ...hiddenAuth, ...fetchedObjectFields }) // TODO : скрытые поля, авторизация и фетч
-        }}>{formButtonResubmit}</Button>
+        <ActionPanel margin={{ top: 12, bottom: 0 }}>
+          <Button icon='refresh' onClick={() => {
+            setShowForm(true);
+            data.response == [];
+            data.error = '';
+            fetchObjectFields(eidtID)
+            getResultAnswer().isSuccess && !data.error && setModel({ ...hiddenFieldsValues, ...hiddenAuth, ...fetchedObjectFields }) // TODO : скрытые поля, авторизация и фетч
+          }}>{formButtonResubmit}</Button>
         </ActionPanel>}
 
       {showForm && !loading && (
