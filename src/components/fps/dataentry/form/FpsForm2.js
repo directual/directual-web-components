@@ -179,7 +179,7 @@ export default function FpsForm2(props) {
       }, {});
 
       setExtendedModel({ ..._.get(data, "data[0]"), ...convertedDates, ...convertedBools })
-      let saveSate = { ...state }
+      let saveSate = {} //{ ...state } // фикс чтобы новые пустые значения затирали
       const newModel = ({ ...model, ...flatternModel({ ..._.get(data, "data[0]"), ...convertedDates, ...convertedBools }) })
       if (!_.isEqual(newModel, model)) {
         saveSate = { ...saveSate, ...templateState(_.get(data, "params.state"), newModel) }
@@ -540,8 +540,8 @@ export default function FpsForm2(props) {
     
     localState._submitError = ""
     setState({ ...localState })
-    // console.log('submitting form...')
-    // console.log(modelToSend)
+    console.log('submitting form...')
+    console.log(modelToSend)
     setLoading(true)
     const endpoint = _.get(data, "sl")
     callEndpoint && callEndpoint(
