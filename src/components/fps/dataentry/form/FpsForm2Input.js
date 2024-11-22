@@ -398,6 +398,7 @@ function FieldDate(props) {
         onChange={onChange}
         required={field._field_required}
         nomargin
+        // debug
         disabled={disabled}
         label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
         // label={fieldInfo.name || fieldInfo.sysName}

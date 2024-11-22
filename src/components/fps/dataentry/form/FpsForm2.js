@@ -17,8 +17,8 @@ export default function FpsForm2(props) {
 
   const { auth, data, callEndpoint, onEvent, id, locale, handleRoute, currentBP, templateEngine } = props
 
-  console.log("=== FpsForm2 data ===")
-  console.log(data)
+  // console.log("=== FpsForm2 data ===")
+  // console.log(data)
 
   const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
   const defaultState = { "step": "default step", "popup": "" }
@@ -150,11 +150,11 @@ export default function FpsForm2(props) {
     }
 
     const timestampToISO = (timestamp) => {
-      if (timestamp) { return new Date(timestamp).toISOString() } else { return null }
+      if (timestamp) { return new Date(timestamp).toISOString() } else { return timestamp }
     }
 
     if (edditingOn) {
-      console.log("Socket form update")
+      // console.log("Socket form update")
 
       const convertedDates = _.reduce(_.get(data, "fileds"), (result, field) => {
         // Ensure the field exists in the objectModel
@@ -178,9 +178,20 @@ export default function FpsForm2(props) {
         return result;
       }, {});
 
-      setExtendedModel({ ..._.get(data, "data[0]"), ...convertedDates, ...convertedBools })
-      let saveSate = {} //{ ...state } // фикс чтобы новые пустые значения затирали
-      const newModel = ({ ...model, ...flatternModel({ ..._.get(data, "data[0]"), ...convertedDates, ...convertedBools }) })
+      setExtendedModel({
+        ..._.get(data, "data[0]"),
+        ...convertedDates,
+        ...convertedBools
+      })
+      let saveSate = { ...state }
+      const newModel = ({
+        //...model,  //чтобы старое затиралось
+        ...flatternModel({
+          ..._.get(data, "data[0]"),
+          ...convertedDates,
+          ...convertedBools
+        })
+      })
       if (!_.isEqual(newModel, model)) {
         saveSate = { ...saveSate, ...templateState(_.get(data, "params.state"), newModel) }
         setModel(newModel)
@@ -430,6 +441,9 @@ export default function FpsForm2(props) {
 
   function submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData,
     actionReq, setActionError, resetModel) {
+
+
+
     clearTimeout(cx);
 
     newData = newData || {}
@@ -537,7 +551,6 @@ export default function FpsForm2(props) {
       return;
     }
 
-    
     localState._submitError = ""
     setState({ ...localState })
     console.log('submitting form...')
@@ -810,8 +823,10 @@ export default function FpsForm2(props) {
   const editModel = field => value => {
     console.log("edit " + field + " => " + value)
     const copyModel = _.cloneDeep(model)
+    console.log(copyModel)
     _.set(copyModel, field, value)
     setModel(copyModel)
+    console.log(copyModel.budget_date.toISOString())
 
     const copyExtendedModel = _.cloneDeep(extendedModel)
     _.set(copyExtendedModel, field, value)
