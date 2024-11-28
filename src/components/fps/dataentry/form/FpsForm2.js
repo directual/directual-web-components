@@ -708,7 +708,8 @@ export default function FpsForm2(props) {
     if (!templateData) return "";
 
     templateData = _.mapValues(templateData, (value, key) => {
-      if (getDateFields().hasOwnProperty(key) && !noDate) {
+      if (getDateFields().hasOwnProperty(key) // && !noDate // я хуй знает зачем я добавил этот noDate. В FpsForm2Element.js в функции transformObject это как-то юзалось я не ебу как
+    ) {
         return formatDate(value, getDateFields()[key])
       }
       return value;
@@ -821,12 +822,12 @@ export default function FpsForm2(props) {
   // =============
 
   const editModel = field => value => {
-    console.log("edit " + field + " => " + value)
+    // console.log("edit " + field + " => " + value) 
     const copyModel = _.cloneDeep(model)
-    console.log(copyModel)
     _.set(copyModel, field, value)
     setModel(copyModel)
-    console.log(copyModel.budget_date.toISOString())
+    // console.log(copyModel)
+    // console.log(copyModel.budget_date.toISOString())
 
     const copyExtendedModel = _.cloneDeep(extendedModel)
     _.set(copyExtendedModel, field, value)
