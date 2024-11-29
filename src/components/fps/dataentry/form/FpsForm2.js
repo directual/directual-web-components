@@ -154,7 +154,7 @@ export default function FpsForm2(props) {
     }
 
     if (edditingOn) {
-      // console.log("Socket form update")
+      console.log("Socket form update")
 
       const convertedDates = _.reduce(_.get(data, "fileds"), (result, field) => {
         // Ensure the field exists in the objectModel
@@ -179,6 +179,7 @@ export default function FpsForm2(props) {
       }, {});
 
       setExtendedModel({
+        ...gatherDefaults(),
         ..._.get(data, "data[0]"),
         ...convertedDates,
         ...convertedBools
@@ -187,6 +188,7 @@ export default function FpsForm2(props) {
       const newModel = ({
         //...model,  //чтобы старое затиралось
         ...flatternModel({
+          ...gatherDefaults(),
           ..._.get(data, "data[0]"),
           ...convertedDates,
           ...convertedBools
