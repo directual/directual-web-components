@@ -416,7 +416,7 @@ export default function FpsForm2(props) {
     if (section.sectionVisibility == "always") return true;
     if (section.sectionVisibility == "empty" && !state.step) return true;
     if (section.sectionVisibility == "custom") {
-      let current = state.step ? [state.step] : []
+      let current = state.step ? [state.step] : ["null"]
       let steps = section.sectionCustomVisibility ? section.sectionCustomVisibility.split(",") : []
       if (_.intersection(current, steps).length > 0) return true;
     }
@@ -794,6 +794,10 @@ export default function FpsForm2(props) {
         escape: /<%-([\s\S]+?)%>/g
       });
     };
+    // console.log("template")
+    // console.log(input)
+    // console.log(templateData)
+
     // Use a try-catch block to handle errors gracefully
     try {
       const result = JSON.parse(renderTemplate(JSON.stringify(input)));
