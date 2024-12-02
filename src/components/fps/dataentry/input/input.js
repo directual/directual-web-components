@@ -287,7 +287,9 @@ export default function Input(props) {
         if (props.restrictChars && Array.isArray(props.restrictChars)) {
             let isRestricted = false;
             e && e.split('').forEach(i => isRestricted = isRestricted || (props.restrictChars.indexOf(i) == -1 && true))
-            if (isRestricted) { console.log('restricted character'); return null }
+            if (isRestricted) { console.log('restricted character'); {
+                return null
+            } }
         }
         submit(e)
         //props.required && setWarningMesg({})
@@ -559,10 +561,22 @@ export default function Input(props) {
                                 defaultValue={value}
                                 sketch />
                         </div>}
-
                         <IMaskInput
+                            mask={props.restrictChars ? /.*/ : undefined}
                             {...props.imask}
                             onAccept={handleChange}
+                            
+                            prepare={(str) => {
+                                // Filter out restricted characters
+                                if (props.restrictChars && Array.isArray(props.restrictChars)) {
+                                    const filtered = str
+                                        .split('')
+                                        .filter(char => props.restrictChars.includes(char))
+                                        .join('');
+                                    return filtered;
+                                }
+                                return str;
+                            }}
                             unmask={true}
                             disabled={props.disabled}
                             key={props.key}

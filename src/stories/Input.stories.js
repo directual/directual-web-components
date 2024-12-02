@@ -169,9 +169,12 @@ const testFields = [
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const String = {
   args: {
-    type: 'textarea',
+    //type: 'textarea',
     icon: 'babai',
+    restrictChars: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+      'q', 'r', 's', 't', 'v', 'u', 'w', 'x', 'y', 'z', '0', '1', ' ', 'A', '2', '3', '4', '5', '6', '7', '8', '9', '-'],
     //rows: 'auto',
+    debug: true,
     autoFocus: true,
     label: 'Hello!',
     tooltip: "<div>hello</div><b>world!</b><br /><img width='150' src='https://otvet.imgsmail.ru/download/70090365_fa84df0362d311036a0a62e2c01ecbad_800.gif' />"
