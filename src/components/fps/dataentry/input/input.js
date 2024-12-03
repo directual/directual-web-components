@@ -287,9 +287,11 @@ export default function Input(props) {
         if (props.restrictChars && Array.isArray(props.restrictChars)) {
             let isRestricted = false;
             e && e.split('').forEach(i => isRestricted = isRestricted || (props.restrictChars.indexOf(i) == -1 && true))
-            if (isRestricted) { console.log('restricted character'); {
-                return null
-            } }
+            if (isRestricted) {
+                console.log('restricted character'); {
+                    return null
+                }
+            }
         }
         submit(e)
         //props.required && setWarningMesg({})
@@ -457,7 +459,7 @@ export default function Input(props) {
     const stringifyWithCustomTypes = (obj, tabs = 2) => {
         const indent = ' '.repeat(tabs);
         const innerIndent = ' '.repeat(tabs + 2); // Nested indentation with correct levels
-    
+
         // Helper function to handle nested objects and arrays
         const processValue = (value, innerTabs) => {
             if (value instanceof RegExp) {
@@ -476,13 +478,13 @@ export default function Input(props) {
                 return JSON.stringify(value); // Default for other types (numbers, booleans)
             }
         };
-    
-        return `{\n` + 
+
+        return `{\n` +
             Object.entries(obj).map(([key, value], index, array) => {
                 const keyValue = `${innerIndent}${key}: ${processValue(value, tabs + 2)}`;
                 return index === array.length - 1 ? keyValue : `${keyValue},`;
             }).join('\n') +
-        `\n${indent}}`; // Properly align the closing brace
+            `\n${indent}}`; // Properly align the closing brace
     };
 
     return (
@@ -565,9 +567,8 @@ export default function Input(props) {
                             mask={props.restrictChars ? /.*/ : undefined}
                             {...props.imask}
                             onAccept={handleChange}
-                            
+
                             prepare={(str) => {
-                                // Filter out restricted characters
                                 if (props.restrictChars && Array.isArray(props.restrictChars)) {
                                     const filtered = str
                                         .split('')
@@ -599,7 +600,6 @@ export default function Input(props) {
                             onChange={e => { props.imask ? undefined : !props.copy ? handleChange(e.target.value) : undefined; }}
                             value={value || ''}
                             onBlur={e => {
-                                //setShowColor(false)
                                 props.onBlur ? props.onBlur(e.target.value) : checkValue(e)
                             }}
                             placeholder={`${props.placeholder ? props.placeholder : ''}`}
@@ -713,7 +713,8 @@ export default function Input(props) {
                                 height: props.height || 48
                             }}
                             onChange={e => { props.imask ? undefined : handleChangeDecimalNumber(e.target.value) }}
-                            value={value}
+                            // value={value}
+                            value={props.imask && value ? value.toString() : value}
                             onBlur={checkValue}
                             placeholder={`${props.placeholder ? props.placeholder : ''}`}
                         />
@@ -740,7 +741,7 @@ export default function Input(props) {
                                 height: props.height || 48
                             }}
                             onChange={e => props.imask ? undefined : handleChangeNumber(e.target.value)}
-                            value={value}
+                            value={props.imask && value ? value.toString() : value}
                             onBlur={checkValue}
                             placeholder={`${props.placeholder ? props.placeholder : ''}`}
                         />
@@ -757,6 +758,7 @@ export default function Input(props) {
                     {props.unitName && <div className={styles.unitName}>{props.unitName}</div>}
                 </div>
             }
+
 
             {props.type == 'phone' &&
                 <div className={`${props.unitName && styles.fieldUnitsWrapper}`}>

@@ -828,7 +828,7 @@ export default function FpsForm2(props) {
   // =============
 
   const editModel = field => value => {
-    // console.log("edit " + field + " => " + value) 
+    console.log("edit " + field + " => " + value) 
     const copyModel = _.cloneDeep(model)
     _.set(copyModel, field, value)
     setModel(copyModel)
