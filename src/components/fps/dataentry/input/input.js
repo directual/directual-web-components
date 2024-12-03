@@ -18,6 +18,7 @@ import SelectImages from '../selectImages/selectImages'
 import { Tags } from '../../tags/Tags'
 import { Tooltip } from 'react-tooltip'
 import { IMaskInput } from 'react-imask';
+import { debounce } from 'lodash'
 
 export function InputGroup(props) {
     return (
@@ -178,6 +179,7 @@ export const icon_options =
 
 export default function Input(props) {
     const [value, setValue] = useState(props.defaultValue || props.value)
+    const isTyping = useRef(false); // A flag to track if the user is typing
     const [pwdVisible, setPwdVisible] = useState('password')
     const [warningMsg, setWarningMesg] = useState(props.warning || {})
     const [defVal, setDefVal] = useState(props.defaultValue || props.value)
@@ -249,7 +251,7 @@ export default function Input(props) {
     }, [warningMsg])
 
     useEffect(() => {
-        if (JSON.stringify(props.defaultValue) != JSON.stringify(defVal) && props.type != 'json') {
+        if (JSON.stringify(props.defaultValue) != JSON.stringify(defVal) && props.type != 'json' && !isTyping.current) {
             setValue(props.defaultValue); setDefVal(props.defaultValue);
             setLines(countLines(inputEl.current, props.defaultValue))
         }
@@ -283,7 +285,8 @@ export default function Input(props) {
             setWarningMesg({});
     }
 
-    const handleChange = (e) => {
+    function handleChange(e) {
+        isTyping.current = true; // Mark that the user is typing
         if (props.restrictChars && Array.isArray(props.restrictChars)) {
             let isRestricted = false;
             e && e.split('').forEach(i => isRestricted = isRestricted || (props.restrictChars.indexOf(i) == -1 && true))
@@ -293,6 +296,9 @@ export default function Input(props) {
                 }
             }
         }
+        setTimeout(() => {
+            isTyping.current = false;
+        }, 300);
         submit(e)
         //props.required && setWarningMesg({})
     }
@@ -615,7 +621,6 @@ export default function Input(props) {
                         <div className={styles.addonAfter}>{props.addonAfter}</div>}
 
                 </div>}
-
             {props.type == 'masked' &&
                 <div className={styles.field_wrapper}>
                     {props.icon && <div className={`${styles.input_icon_wrapper} icon icon-${props.icon}`} />}
@@ -1231,6 +1236,31 @@ export default function Input(props) {
         </div>
     )
 }
+
+function DebouncedIMaskInput(props) {
+    const [localValue, setLocalValue] = useState(props.value);
+
+    // Debounced state update
+    const handleChange = (e) => {
+        setValue(e); // Update internal state
+        if (props.onChange) {
+            props.onChange(e); // Notify parent if needed
+        }
+        if (props.onAccept) {
+            props.onAccept(e); // Notify parent if needed
+        }
+    };
+
+    return (
+        <IMaskInput
+            {...props}
+            value={localValue}
+            onAccept={(val) => handleChange(val)}
+            inputRef={props.inputRef}
+            overwrite
+        />
+    );
+};
 
 Input.propTypes = {
     type: PropTypes.string,

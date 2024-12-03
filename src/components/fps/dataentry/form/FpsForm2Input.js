@@ -142,7 +142,8 @@ function FieldText(props) {
     const { field, locale, lang, template, model, state, onChange, fieldInfo, code, disabled } = props
     const basicProps = { locale, lang, disabled }
 
-    const debounceTime = _.get(field, "_field_set_debounce") ? _.get(field, "_field_debounce_value", 0) : 0
+    const defaultDebounce = 0
+    const debounceTime = _.get(field, "_field_set_debounce") ? _.get(field, "_field_debounce_value", defaultDebounce) : defaultDebounce
     const cx = null
     const debouncedOnChange = debounce(onChangeHandler, debounceTime)
 
