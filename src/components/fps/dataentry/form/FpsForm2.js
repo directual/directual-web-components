@@ -55,7 +55,7 @@ export default function FpsForm2(props) {
     })
     return tempModel
   }
-  const [model, setModel] = useState({ ...gatherDefaults() })
+  const [model, setModel] = useState({ ...composeInitialModel() })
   const [extendedModel, setExtendedModel] = useState({ ...gatherDefaults() })
   const [originalModel, setOriginalModel] = useState({ ...gatherDefaults() })
   const previousModel = usePrevious(model);
@@ -140,6 +140,43 @@ export default function FpsForm2(props) {
     return parsedJson
   }
 
+  function composeInitialModel() {
+    const timestampToISO = (timestamp) => {
+      if (timestamp) { return new Date(timestamp).toISOString() } else { return timestamp }
+    }
+    const convertedDates = _.reduce(_.get(data, "fileds"), (result, field) => {
+      // Ensure the field exists in the objectModel
+      if (field.dataType === 'date' && _.get(data, "data[0]") && _.get(data, "data[0]")[field.sysName]) {
+        try {
+          result[field.sysName] = timestampToISO(_.get(data, "data[0]")[field.sysName]);
+        }
+        catch (e) {
+          console.log(e);
+          console.log(_.get(data, "data[0]")[field.sysName])
+        }
+      }
+      return result;
+    }, {});
+
+    const convertedBools = _.reduce(_.get(data, "fileds"), (result, field) => {
+      // Ensure the field exists in the objectModel
+      if (field.dataType === "boolean" && _.get(data, "data[0]") && (_.get(data, "data[0]")[field.sysName] || _.get(data, "data[0]")[field.sysName] === false)) {
+        result[field.sysName] = _.get(data, "data[0]")[field.sysName] ? "true" : "false";
+      }
+      return result;
+    }, {});
+    const newModel = ({
+      //...model,  //чтобы старое затиралось
+      ...flatternModel({
+        ...gatherDefaults(),
+        ..._.get(data, "data[0]"),
+        ...convertedDates,
+        ...convertedBools
+      })
+    })
+    return newModel
+  }
+
   // process Socket.io update
   useEffect(() => {
 
@@ -194,10 +231,14 @@ export default function FpsForm2(props) {
           ...convertedBools
         })
       })
+      
       if (!_.isEqual(newModel, model)) {
-        saveSate = { ...saveSate, ...templateState(_.get(data, "params.state"), newModel) }
+        console.log("newModel")
+        console.log(newModel)
+        console.log(model)
         setModel(newModel)
         setOriginalModel(newModel)
+        saveSate = { ...saveSate, ...templateState(_.get(data, "params.state"), newModel) }
       }
       // RESTORE STATE:
       if (_.get(params, "general.restoreState") && _.get(params, "general.saveStateTo")) {
@@ -209,6 +250,8 @@ export default function FpsForm2(props) {
   }, [_.get(data, "data[0]")])
 
   useEffect(() => {
+    console.log("model change")
+    console.log(model)
     if (!_.isEqual(previousModel, model)) {
       setHighlightModel(true)
       setTimeout(() => setHighlightModel(false), 300)
@@ -829,6 +872,7 @@ export default function FpsForm2(props) {
 
   const editModel = field => value => {
     console.log("edit " + field + " => " + value) 
+    console.log(typeof model[field])
     const copyModel = _.cloneDeep(model)
     _.set(copyModel, field, value)
     setModel(copyModel)

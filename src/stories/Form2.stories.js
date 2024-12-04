@@ -1226,10024 +1226,62 @@ let exampleForm1 = {
 }
 
 let exampleForm =  {
-    "sl": "hiring",
+    "sl": "hiring_create",
     "pageSize": "10",
     "headerField": null,
     "params": {
         "steps": [
             {
-                "id": "step_1732185137168",
-                "sysName": "progress bar",
-                "sectionVisibility": "always",
-                "elements": [
-                    {
-                        "id": "elmnt_1732185158960",
-                        "type": "text",
-                        "paraText": "<style>.lmd-offer p {margin:10px 0}</style>\n<div classs=\"lmd\">\n<h2>Заявка {{number}}</h2>\n<p>Дата создания: {{date}}</p>\n<p>Статус заявки: {{status.status}}</p>\n<p>Кем создано: {{user_creator.employee_full_name}}</p>\n  <p>Ответственный за этап: {{responsible_employee_id.employee_full_name}}</p>\n<p>Дата последнего изменения:\n  {{last_change_date}}</p>\n</div>"
-                    },
-                    {
-                        "id": "elmnt_1732185209565",
-                        "type": "steps",
-                        "_formSteps": {
-                            "stepsOrder": [
-                                "approval_up_direct",
-                                "approval_hrbp",
-                                "add_approval_1",
-                                "add_approval_2",
-                                "approval_cnb",
-                                "approval_budget_holder",
-                                "teamlead",
-                                "recruitment",
-                                "closed"
-                            ],
-                            "settings": {
-                                "steps": {
-                                    "approval_up_direct": true,
-                                    "approval_hrbp": true,
-                                    "add_approval_1": true,
-                                    "approval_cnb": true,
-                                    "approval_budget_holder": true,
-                                    "teamlead": true,
-                                    "recruitment": true,
-                                    "add_approval_2": true,
-                                    "closed": true
-                                }
-                            },
-                            "stepSettings": {
-                                "approval_up_direct": {
-                                    "title": "Согласование с верхнеуровневым руководителем"
-                                },
-                                "approval_hrbp": {
-                                    "title": "Согласование с HRBP"
-                                },
-                                "add_approval_1": {
-                                    "title": "Согласование с доп согласующим 1"
-                                },
-                                "add_approval_2": {
-                                    "title": "Согласование с доп согласующим 2"
-                                },
-                                "approval_cnb": {
-                                    "title": "Согласование с C&B"
-                                },
-                                "approval_budget_holder": {
-                                    "title": "Подтверждение от держателя бюджета"
-                                },
-                                "teamlead": {
-                                    "title": "Назначение рекрутера"
-                                },
-                                "recruitment": {
-                                    "title": "Вакансия в работе"
-                                },
-                                "closed": {
-                                    "title": "Заявка закрыта"
-                                }
-                            }
-                        }
-                    }
-                ]
-            },
-            {
-                "id": "step_copy_1733209576847",
-                "sysName": "approval_direct",
-                "elements": [
-                    {
-                        "id": "elmnt_1732102953656",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321029550580.133131331113240321214422",
-                                "_field": "conf_search",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732535758391",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732535784795",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_add_tooltip": true,
-                                "_field_tooltip_text": "Вакансия не будет публиковаться в открытых ресурсах и не будет участвовать в реферальной программе"
-                            }
-                        ],
-                        "_conditionalView": false,
-                        "_conditions": []
-                    },
-                    {
-                        "id": "elmnt_1732103048806",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321031578130.32404212133424222404414",
-                                "_field": "reason_vacancy",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_reason_of_vacancy",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732535911926",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    },
-                                    {
-                                        "id": "condition_1732535922786",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186397301",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321864096900.12403132324044310231021",
-                                "_field": "replacement_status",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_replacement_status",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732535951752",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732535963696",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732186497701",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement,another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186514664",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321865258300.104014414310000003102322",
-                                "_field": "resigning_empl_full_name",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_action_conditionals_manual": "manual",
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732536000587",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732536054794",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732186544827",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186571711",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321865732680.13024433240441420043002",
-                                "_field": "resigning_empl_full_name_strng",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732536099255",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}} ",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732536115918",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732186583095",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186618606",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321866201540.003120001043112441403343",
-                                "_field": "position_release_date",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732536146789",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732536165541",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732186627349",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement,another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186650611",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321866608570.13422121424022220002211",
-                                "_field": "position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732536288241",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732536303765",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186669394",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321866710570.110224133130311040030424",
-                                "_field": "company",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_company",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732536338475",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732536353281",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186693964",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321866956970.23040120334134102231413",
-                                "_field": "need_virtual_team",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732536385868",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732536407598",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_add_tooltip": true,
-                                "_field_tooltip_text": "Виртуальная команда необходима только для вакансий TECH"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186703094",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321867067050.03133412032322314421003",
-                                "_field": "virtual_team",
-                                "_field_link_type": "select",
-                                "_field_link_pageSize": 0,
-                                "_field_arrayLink_endpoint": "hg_virtual_team",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732536441726",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732536452862",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732186720962",
-                                "_conditionalView_field": "need_virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186704096",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321867390680.014431431330314444101444",
-                                "_field": "virtual_team_other",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732536488877",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732536507353",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732186751162",
-                                "_conditionalView_field": "need_virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732186765116",
-                                "_conditionalView_field": "virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "other"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186791298",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321868482970.044143002024001003233441",
-                                "_field": "division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732536544294",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732536557302",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    },
-                                    {
-                                        "id": "condition_1732801206194",
-                                        "_conditionalView_field": "replacement_status",
-                                        "_conditionalView_operator": "in",
-                                        "_conditionalView_value": "quit,current_position"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186874382",
-                        "type": "text",
-                        "paraText": "<div class=\"form_label\">Организационная структура:</div>\n{{org_structure}}"
-                    },
-                    {
-                        "id": "elmnt_1732186878779",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321869167520.01423103234404403113404",
-                                "_field": "contract_type",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_contract_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732536848537",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732536869834",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186929496",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321869318010.3224123421432413431123",
-                                "_field": "contract_period",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732536905148",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732536921563",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732187382687",
-                                "_conditionalView_field": "contract_type",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "fixed_term"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186949351",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321869514690.142232223210102001122243",
-                                "_field": "reason_contract",
-                                "_field_link_type": "select",
-                                "_field_required": true,
-                                "_field_arrayLink_endpoint": "hg_reason_fixed_contract_type",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732536978549",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732537013249",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732187404603",
-                                "_conditionalView_field": "contract_type",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "fixed_term"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520095714",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325200989910.3102041421103433332404",
-                                "_field": "job_rate",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732537056209",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732537070885",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520096906",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325201156720.022230334023403213323321",
-                                "_field": "employment_type",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_employment_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732537114946",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732537135221",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520097615",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325201384320.34200233433300230322122",
-                                "_field": "work_place",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732537179334",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732537195934",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520147649",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325201510340.030201004302233010434101",
-                                "_field": "work_schedule",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732537243469",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    },
-                                    {
-                                        "id": "condition_1732537254452",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520148382",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325201589280.124414204232201042314442",
-                                "_field": "salary",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732537329368",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732537331502",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520149115",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325201735870.12001221433220412000202",
-                                "_field": "period_bonus",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_period_bonus",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732537488636",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732537516697",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520183183",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325201912710.12440033144103421421201",
-                                "_field": "per_bonus",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732538123898",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732538145402",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732520206833",
-                                "_conditionalView_field": "period_bonus",
-                                "_conditionalView_operator": "isNotNull"
-                            },
-                            {
-                                "id": "condition_1732520224583",
-                                "_conditionalView_field": "period_bonus",
-                                "_conditionalView_operator": "!==",
-                                "_conditionalView_value": "whithout_bonus"
-                            }
-                        ],
-                        "_action_conditionals_and_or": "AND"
-                    },
-                    {
-                        "id": "elmnt_1732520262007",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325202710370.024413240441042110204434",
-                                "_field": "responsibilities",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732538310465",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732538331916",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520263316",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325202806100.31124421041232210202033",
-                                "_field": "prof_skills",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732538398041",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732538416534",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520288637",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325202902760.31201223442344121324023",
-                                "_field": "candidate_description",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732538443750",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732538456831",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520308766",
-                        "type": "text",
-                        "paraText": "<b>Участники процесса согласования</b>"
-                    },
-                    {
-                        "id": "elmnt_1732520389784",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325203919490.21002142312021004132014",
-                                "_field": "hr_bp_creator",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526339757",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325263419810.10010144210430101111114",
-                                "_field": "user_creator",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520417366",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325204222130.31412423322320220223311",
-                                "_field": "manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520457523",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325204730650.13101303040412122233233",
-                                "_field": "up_manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520499732",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325205012190.114243320004242404302443",
-                                "_field": "hr_bp",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732648686199",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732648712342",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
                 "id": "default_step",
-                "sysName": "approval_up_direct",
+                "sysName": "default step",
                 "elements": [
                     {
-                        "id": "elmnt_1732102953656",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321029550580.133131331113240321214422",
-                                "_field": "conf_search",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732535758391",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732535784795",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_add_tooltip": true,
-                                "_field_tooltip_text": "Вакансия не будет публиковаться в открытых ресурсах и не будет участвовать в реферальной программе"
-                            }
-                        ],
-                        "_conditionalView": false,
-                        "_conditions": []
-                    },
-                    {
-                        "id": "elmnt_1732103048806",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321031578130.32404212133424222404414",
-                                "_field": "reason_vacancy",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_reason_of_vacancy",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732535911926",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    },
-                                    {
-                                        "id": "condition_1732535922786",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186397301",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321864096900.12403132324044310231021",
-                                "_field": "replacement_status",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_replacement_status",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732535951752",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732535963696",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732186497701",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement,another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186514664",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321865258300.104014414310000003102322",
-                                "_field": "resigning_empl_full_name",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_action_conditionals_manual": "manual",
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732536000587",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732536054794",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732186544827",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186571711",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321865732680.13024433240441420043002",
-                                "_field": "resigning_empl_full_name_strng",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732536099255",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}} ",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732536115918",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732186583095",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186618606",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321866201540.003120001043112441403343",
-                                "_field": "position_release_date",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732536146789",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732536165541",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732186627349",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement,another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186650611",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321866608570.13422121424022220002211",
-                                "_field": "position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732536288241",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732536303765",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186669394",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321866710570.110224133130311040030424",
-                                "_field": "company",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_company",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732536338475",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732536353281",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186693964",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321866956970.23040120334134102231413",
-                                "_field": "need_virtual_team",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732536385868",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732536407598",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_add_tooltip": true,
-                                "_field_tooltip_text": "Виртуальная команда необходима только для вакансий TECH"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186703094",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321867067050.03133412032322314421003",
-                                "_field": "virtual_team",
-                                "_field_link_type": "select",
-                                "_field_link_pageSize": 0,
-                                "_field_arrayLink_endpoint": "hg_virtual_team",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732536441726",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732536452862",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732186720962",
-                                "_conditionalView_field": "need_virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186704096",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321867390680.014431431330314444101444",
-                                "_field": "virtual_team_other",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732536488877",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732536507353",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732186751162",
-                                "_conditionalView_field": "need_virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732186765116",
-                                "_conditionalView_field": "virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "other"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186791298",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321868482970.044143002024001003233441",
-                                "_field": "division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732536544294",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732536557302",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    },
-                                    {
-                                        "id": "condition_1732801206194",
-                                        "_conditionalView_field": "replacement_status",
-                                        "_conditionalView_operator": "in",
-                                        "_conditionalView_value": "quit,current_position"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186874382",
+                        "id": "elmnt_1732471775477",
                         "type": "text",
-                        "paraText": "<div class=\"form_label\">Организационная структура:</div>\n{{org_structure}}"
+                        "paraText": "<b>Создание заявки на наем</b>"
                     },
                     {
-                        "id": "elmnt_1732186878779",
+                        "id": "elmnt_1731662682651",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17321869167520.01423103234404403113404",
-                                "_field": "contract_type",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_contract_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732536848537",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732536869834",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186929496",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321869318010.3224123421432413431123",
-                                "_field": "contract_period",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732536905148",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732536921563",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732187382687",
-                                "_conditionalView_field": "contract_type",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "fixed_term"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186949351",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321869514690.142232223210102001122243",
-                                "_field": "reason_contract",
-                                "_field_link_type": "select",
-                                "_field_required": true,
-                                "_field_arrayLink_endpoint": "hg_reason_fixed_contract_type",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732536978549",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732537013249",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732187404603",
-                                "_conditionalView_field": "contract_type",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "fixed_term"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520095714",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325200989910.3102041421103433332404",
-                                "_field": "job_rate",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732537056209",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732537070885",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520096906",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325201156720.022230334023403213323321",
-                                "_field": "employment_type",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_employment_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732537114946",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732537135221",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520097615",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325201384320.34200233433300230322122",
-                                "_field": "work_place",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732537179334",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732537195934",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520147649",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325201510340.030201004302233010434101",
-                                "_field": "work_schedule",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732537243469",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    },
-                                    {
-                                        "id": "condition_1732537254452",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520148382",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325201589280.124414204232201042314442",
-                                "_field": "salary",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732537329368",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732537331502",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520149115",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325201735870.12001221433220412000202",
-                                "_field": "period_bonus",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_period_bonus",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732537488636",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732537516697",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520183183",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325201912710.12440033144103421421201",
-                                "_field": "per_bonus",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732538123898",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732538145402",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732520206833",
-                                "_conditionalView_field": "period_bonus",
-                                "_conditionalView_operator": "isNotNull"
-                            },
-                            {
-                                "id": "condition_1732520224583",
-                                "_conditionalView_field": "period_bonus",
-                                "_conditionalView_operator": "!==",
-                                "_conditionalView_value": "whithout_bonus"
-                            }
-                        ],
-                        "_action_conditionals_and_or": "AND"
-                    },
-                    {
-                        "id": "elmnt_1732520262007",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325202710370.024413240441042110204434",
-                                "_field": "responsibilities",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732538310465",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732538331916",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520263316",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325202806100.31124421041232210202033",
-                                "_field": "prof_skills",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732538398041",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732538416534",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520288637",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325202902760.31201223442344121324023",
-                                "_field": "candidate_description",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732538443750",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732538456831",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520308766",
-                        "type": "text",
-                        "paraText": "<b>Участники процесса согласования</b>"
-                    },
-                    {
-                        "id": "elmnt_1732520389784",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325203919490.21002142312021004132014",
-                                "_field": "hr_bp_creator",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526339757",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325263419810.10010144210430101111114",
-                                "_field": "user_creator",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520417366",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325204222130.31412423322320220223311",
-                                "_field": "manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520457523",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325204730650.13101303040412122233233",
-                                "_field": "up_manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520499732",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325205012190.114243320004242404302443",
-                                "_field": "hr_bp",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732648686199",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.whom_delegate_ids}},{{up_manager.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732648712342",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "id": "step_1732185224392",
-                "sysName": "approval_hrbp",
-                "elements": [
-                    {
-                        "id": "elmnt_1732522709882",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227171270.021440113020403112121103",
+                                "id": "17316626898680.4314331433111211211101",
                                 "_field": "conf_search",
                                 "_field_required": true,
                                 "_field_add_tooltip": true,
-                                "_field_tooltip_text": "Вакансия не будет публиковаться в открытых ресурсах и не будет участвовать в реферальной программе",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732660567572",
-                                        "_conditionalView_value": "hg_hrbp",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains"
-                                    },
-                                    {
-                                        "id": "condition_1732660600754",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
+                                "_field_tooltip_text": "Вакансия не будет публиковаться в открытых ресурсах"
                             }
                         ]
                     },
                     {
-                        "id": "elmnt_1732522710625",
+                        "id": "elmnt_1731662683538",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17325227306210.30342241104330113024443",
+                                "id": "17316627066330.030144400323443434421223",
                                 "_field": "reason_vacancy",
                                 "_field_link_type": "select",
                                 "_field_arrayLink_endpoint": "hg_reason_of_vacancy",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732659440152",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732659441561",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": false,
-                        "_conditions": []
-                    },
-                    {
-                        "id": "elmnt_1732522712125",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227540980.031203402433040303004342",
-                                "_field": "replacement_status",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_replacement_status",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732659476128",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732659478103",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694358042",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement,another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522712865",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227661190.14234213244213004413133",
-                                "_field": "resigning_empl_full_name",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732659511296",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732659513471",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694378216",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522713599",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227953600.2132330401333100442143",
-                                "_field": "resigning_empl_full_name_strng",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732659547404",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732659560237",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694419800",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522801958",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228141500.123340021202113043420343",
-                                "_field": "position_release_date",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732659586278",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732659587670",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694452059",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement,another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522803323",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228358970.32433313311121402044002",
-                                "_field": "position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732659626713",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732659639302",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522802625",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228225780.20331220141113244332024",
-                                "_field": "company",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_company",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732659667662",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732659679704",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522804113",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228549140.012121231203123001412211",
-                                "_field": "need_virtual_team",
-                                "_field_required": true,
-                                "_field_add_tooltip": true,
-                                "_field_tooltip_text": "Виртуальная команда необходима только для вакансий TECH",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732659744928",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732659758631",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522860657",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228644190.02331412014322044020034",
-                                "_field": "virtual_team",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_virtual_team",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732659788687",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732659790498",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694505443",
-                                "_conditionalView_field": "need_virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522878779",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228805180.2400134211311333000003",
-                                "_field": "virtual_team_other",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732659834090",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732659835737",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694534476",
-                                "_conditionalView_field": "need_virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732694545610",
-                                "_conditionalView_field": "virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "other"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522861373",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325229005820.40132202401002221013024",
-                                "_field": "division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732659877062",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732659891484",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    },
-                                    {
-                                        "id": "condition_1732801240553",
-                                        "_conditionalView_field": "replacement_status",
-                                        "_conditionalView_operator": "in",
-                                        "_conditionalView_value": "quit,current_position"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522862089",
-                        "type": "text",
-                        "paraText": "<div class=\"form_label\">Организационная структура:</div>\n{{org_structure}}"
-                    },
-                    {
-                        "id": "elmnt_1732522862831",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325251828420.11441130130442300442441",
-                                "_field": "vacancy_id",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732691189539",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732691207332",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525191037",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325252013450.103323401332210230244413",
-                                "_field": "id_position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732691238812",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732691240538",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525211643",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325252208810.104344314403334111312322",
-                                "_field": "org_dev",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732691300205",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732691301988",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": false
-                    },
-                    {
-                        "id": "elmnt_1732525212870",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325252345920.13021021334134343113",
-                                "_field": "select_structure",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_select_structure",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732691367222",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732691370515",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732702518622",
-                                "_conditionalView_field": "org_dev",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525213553",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325252559190.22321401122114313331043",
-                                "_field": "structures_difference",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732691973957",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732691999008",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732691936495",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "both_structures"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732691506342",
-                        "type": "text",
-                        "paraText": "<style>\n.custom_container {\n      display: flex;\n      gap: 20px;\n    }\n\n    .custom_column {\n      flex: 1; /* Оба столбца будут равной ширины */\n    }\n</style>\n<div class=\"custom_container\">\n    <div class=\"custom_column\">\n      <p><b>Управленческая структура</b></p>\n    </div>\n    <div class=\"custom_column\">\n      <p><b>Юридическая структура</b>\n      </p>\n    </div>\n  </div>",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732691859420",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "both_structures"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525741391",
-                        "type": "text",
-                        "paraText": "<b>Управленческая структура</b>",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732525783910",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "management_structure"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525815092",
-                        "type": "text",
-                        "paraText": "<b>Юридическая структура</b>",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732525849943",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "legal_structure"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732692471653",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17326924807090.10031314133323320412124",
-                                "_field": "management_division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732692993454",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732692999362",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR",
-                                "_conditionalView_disable_or_hide": "disable"
-                            },
-                            {
-                                "id": "17326925049640.14402333431030202402323",
-                                "_conditionalView": true,
-                                "_field": "legal_division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_field_required": true,
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732693313862",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732693317044",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    },
-                                    {
-                                        "id": "condition_1732694841596",
-                                        "_conditionalView_field": "structures_difference",
-                                        "_conditionalView_operator": "==",
-                                        "_conditionalView_value": "false"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR",
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 2,
-                        "_input_fields_in_a_row_column": "row",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732693322036",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "both_structures"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732692474734",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17326934241000.21402121331241032322403",
-                                "_field": "management_position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732693466811",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732693468860",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 1000
-                            },
-                            {
-                                "id": "17326934265720.04230223421422403231021",
-                                "_field": "legal_position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732693512143",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732693516140",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    },
-                                    {
-                                        "id": "condition_1732694973046",
-                                        "_conditionalView_field": "structures_difference",
-                                        "_conditionalView_operator": "==",
-                                        "_conditionalView_value": "false"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 2,
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732693580694",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "both_structures"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732692476887",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17326936284660.14242211424312431120114",
-                                "_field": "management_direct",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732693690076",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732693692946",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            },
-                            {
-                                "id": "17326936329910.30114400003001024330133",
-                                "_field": "legal_direct",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732693734126",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732693736409",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    },
-                                    {
-                                        "id": "condition_1732695013348",
-                                        "_conditionalView_field": "structures_difference",
-                                        "_conditionalView_operator": "==",
-                                        "_conditionalView_value": "false"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 2,
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732693762410",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "both_structures"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525247922",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325252877230.234024210004223312343",
-                                "_field": "management_division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732693897904",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732693900742",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            },
-                            {
-                                "id": "17325252895320.213202401300122440233133",
-                                "_field": "management_position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732693942476",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732693944860",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            },
-                            {
-                                "id": "17325253127680.212411204030202234400022",
-                                "_field": "management_direct",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_hidden": false,
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732693980641",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732693983606",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 3,
-                        "_input_fields_in_a_row_column": "column",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732525387593",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "management_structure"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525249070",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325253180980.24032231321443333103442",
-                                "_field": "legal_division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732525895360",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732694092943",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            },
-                            {
-                                "id": "17325253199200.0304412142423220404304",
-                                "_field": "legal_position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732525937043",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732694130709",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            },
-                            {
-                                "id": "17325253204920.34442033124200340001403",
-                                "_field": "legal_direct",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732525952143",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732694168406",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 3,
-                        "_input_fields_in_a_row_column": "column",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732525606243",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "legal_structure"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525968928",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325259829310.20024203143014113412023",
-                                "_field": "contract_type",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_contract_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732696320799",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732696322665",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525970526",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325260025820.34241223330343140340012",
-                                "_field": "contract_period",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732696359466",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732696361116",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526013693",
-                                "_conditionalView_field": "contract_type",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "fixed_term"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525971308",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325260539640.020230124310004011120124",
-                                "_field": "reason_contract",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_reason_fixed_contract_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732696397548",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732696399365",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526073392",
-                                "_conditionalView_field": "contract_type",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "fixed_term"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525973027",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325260996210.0023324424140102214131423",
-                                "_field": "job_rate",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732696430533",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732696431783",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525973942",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261192000.24033141233331402341103",
-                                "_field": "employment_type",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_employment_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732696475219",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732696492000",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526131392",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261489730.43011031002032221114",
-                                "_field": "work_place",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732696531315",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732696532600",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526132308",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261587970.40434201132011220104313",
-                                "_field": "work_schedule",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732696575765",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732696577265",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526156009",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261656250.101001211310001201333043",
-                                "_field": "salary",
-                                "_field_required": true,
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732696613279",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732696615136",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526157143",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261823280.42223144314222101001141",
-                                "_field": "period_bonus",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_period_bonus",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732696667716",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732696669250",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526173029",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262014160.34233132010343233440001",
-                                "_field": "per_bonus",
-                                "_field_required": true,
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732696711348",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732696718984",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526218258",
-                                "_conditionalView_field": "period_bonus",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "without_bonus"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526239942",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262532160.2321123031134220324103",
-                                "_field": "hide_income",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732696783659",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732696785899",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_add_tooltip": true,
-                                "_field_tooltip_text": "Поля дохода будут скрыты от нанимающего менеджера, его руководителя и доп.согласующих"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732869372148",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_cnb,hg_hrbp"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526241042",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262708150.4334321032323433123203",
-                                "_field": "responsibilities",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732696844016",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732696846230",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526241808",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262786790.32332434404241140232024",
-                                "_field": "prof_skills",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732696902286",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true,
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn"
-                                    },
-                                    {
-                                        "id": "condition_1732696904530",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526242799",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262908540.201313200400010411331223",
-                                "_field": "candidate_description",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732696949747",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732696952757",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526296942",
-                        "type": "text",
-                        "paraText": "<b>Участники процесса согласования</b>"
-                    },
-                    {
-                        "id": "elmnt_1732526297841",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325263844770.32424013300243111010004",
-                                "_field": "hr_bp_creator",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526298615",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325264171950.23441434332241300432",
-                                "_field": "user_creator",
-                                "_field_link_type": "complexSelect",
-                                "_field_required": false,
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526448085",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325264502420.44320210143332401141331",
-                                "_field": "manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526486708",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325264925140.30002312121203141400121",
-                                "_field": "up_manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526505725",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325265293170.213302002014110332220133",
-                                "_field": "hr_bp",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732697101402",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{responsible_employee_id.webuser_id.whom_delegate_ids}},{{responsible_employee_id.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732697104380",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732697165144",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17326971691780.3320422203311112100141",
-                                "_action": "action_1732651863436",
-                                "_action_icon": "refresh",
-                                "_action_button_type": "accent",
-                                "_action_oneTime": true,
-                                "_action_oneTime_message": "Новый ответственный назначен",
-                                "_action_addTooltip": true,
-                                "_action_addTooltip_text": "Если согласование данной заявки не входит в Вашу зону ответственности, то проверьте матрицу и переназначьте заявку",
-                                "_conditionalView": true,
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732697239663",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{responsible_employee_id.webuser_id.whom_delegate_ids}},{{responsible_employee_id.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732697258973",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526544899",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325265489340.034224432214204342033224",
-                                "_field": "add_approval_1",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732697538062",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732697540161",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526545935",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325265698590.33011201413442301303023",
-                                "_field": "approval_1",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732697608088",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732697610345",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526592874",
-                                "_conditionalView_field": "add_approval_1",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526546857",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325266953080.211304432113120144240042",
-                                "_field": "add_approval_2",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732697659102",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732697672245",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526707391",
-                                "_conditionalView_field": "add_approval_1",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526726674",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325267286440.11440002103024040314431",
-                                "_field": "approval_2",
-                                "_field_link_type": "complexSelect",
-                                "_field_required": true,
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732697717065",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732697719654",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526751993",
-                                "_conditionalView_field": "add_approval_2",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526774196",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325267850250.30324103201013411302141",
-                                "_field": "cnb",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732697783294",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732697786294",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526782163",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325268012700.2404041140043023323421",
-                                "_field": "budget_holder",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732697837899",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732697840460",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526783141",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325268186860.22443241124233232431112",
-                                "_field": "teamlead",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732697900887",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732697904659",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "id": "step_copy_1732652730074",
-                "sysName": "add_approval_1",
-                "elements": [
-                    {
-                        "id": "elmnt_1732102953656",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321029550580.133131331113240321214422",
-                                "_field": "conf_search",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_add_tooltip": true,
-                                "_field_tooltip_text": "Вакансия не будет публиковаться в открытых ресурсах и не будет участвовать в реферальной программе"
-                            }
-                        ],
-                        "_conditionalView": false,
-                        "_conditions": []
-                    },
-                    {
-                        "id": "elmnt_1732103048806",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321031578130.32404212133424222404414",
-                                "_field": "reason_vacancy",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_reason_of_vacancy",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186397301",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321864096900.12403132324044310231021",
-                                "_field": "replacement_status",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_replacement_status",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732186497701",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement,another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186514664",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321865258300.104014414310000003102322",
-                                "_field": "resigning_empl_full_name",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_action_conditionals_manual": "manual",
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732186544827",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186571711",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321865732680.13024433240441420043002",
-                                "_field": "resigning_empl_full_name_strng",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732186583095",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186618606",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321866201540.003120001043112441403343",
-                                "_field": "position_release_date",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732186627349",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement,another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186650611",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321866608570.13422121424022220002211",
-                                "_field": "position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186669394",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321866710570.110224133130311040030424",
-                                "_field": "company",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_company",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186693964",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321866956970.23040120334134102231413",
-                                "_field": "need_virtual_team",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_add_tooltip": true,
-                                "_field_tooltip_text": "Виртуальная команда необходима только для вакансий TECH"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186703094",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321867067050.03133412032322314421003",
-                                "_field": "virtual_team",
-                                "_field_link_type": "select",
-                                "_field_link_pageSize": 0,
-                                "_field_arrayLink_endpoint": "hg_virtual_team",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732186720962",
-                                "_conditionalView_field": "need_virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186704096",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321867390680.014431431330314444101444",
-                                "_field": "virtual_team_other",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732186751162",
-                                "_conditionalView_field": "need_virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732186765116",
-                                "_conditionalView_field": "virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "other"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186791298",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321868482970.044143002024001003233441",
-                                "_field": "division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186874382",
-                        "type": "text",
-                        "paraText": "<div class=\"form_label\">Организационная структура:</div>\n{{org_structure}}"
-                    },
-                    {
-                        "id": "elmnt_1732186878779",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321869167520.01423103234404403113404",
-                                "_field": "contract_type",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_contract_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186929496",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321869318010.3224123421432413431123",
-                                "_field": "contract_period",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732187382687",
-                                "_conditionalView_field": "contract_type",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "fixed_term"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186949351",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321869514690.142232223210102001122243",
-                                "_field": "reason_contract",
-                                "_field_link_type": "select",
-                                "_field_required": true,
-                                "_field_arrayLink_endpoint": "hg_reason_fixed_contract_type",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732187404603",
-                                "_conditionalView_field": "contract_type",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "fixed_term"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520095714",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325200989910.3102041421103433332404",
-                                "_field": "job_rate",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520096906",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325201156720.022230334023403213323321",
-                                "_field": "employment_type",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_employment_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520097615",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325201384320.34200233433300230322122",
-                                "_field": "work_place",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520147649",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325201510340.030201004302233010434101",
-                                "_field": "work_schedule",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520148382",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325201589280.124414204232201042314442",
-                                "_field": "salary",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732653163321",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520149115",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325201735870.12001221433220412000202",
-                                "_field": "period_bonus",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_period_bonus",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732700038683",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520183183",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325201912710.12440033144103421421201",
-                                "_field": "per_bonus",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732520206833",
-                                "_conditionalView_field": "period_bonus",
-                                "_conditionalView_operator": "isNotNull"
-                            },
-                            {
-                                "id": "condition_1732520224583",
-                                "_conditionalView_field": "period_bonus",
-                                "_conditionalView_operator": "!==",
-                                "_conditionalView_value": "whithout_bonus"
-                            },
-                            {
-                                "id": "condition_1732700058899",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            }
-                        ],
-                        "_action_conditionals_and_or": "AND"
-                    },
-                    {
-                        "id": "elmnt_1732520262007",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325202710370.024413240441042110204434",
-                                "_field": "responsibilities",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520263316",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325202806100.31124421041232210202033",
-                                "_field": "prof_skills",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520288637",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325202902760.31201223442344121324023",
-                                "_field": "candidate_description",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520308766",
-                        "type": "text",
-                        "paraText": "<b>Участники процесса согласования</b>"
-                    },
-                    {
-                        "id": "elmnt_1732520389784",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325203919490.21002142312021004132014",
-                                "_field": "hr_bp_creator",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526339757",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325263419810.10010144210430101111114",
-                                "_field": "user_creator",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520417366",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325204222130.31412423322320220223311",
-                                "_field": "manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520457523",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325204730650.13101303040412122233233",
-                                "_field": "up_manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520499732",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325205012190.114243320004242404302443",
-                                "_field": "hr_bp",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "id": "step_copy_1732700160902",
-                "sysName": "add_approval_2",
-                "elements": [
-                    {
-                        "id": "elmnt_1732102953656",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321029550580.133131331113240321214422",
-                                "_field": "conf_search",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_add_tooltip": true,
-                                "_field_tooltip_text": "Вакансия не будет публиковаться в открытых ресурсах и не будет участвовать в реферальной программе"
-                            }
-                        ],
-                        "_conditionalView": false,
-                        "_conditions": []
-                    },
-                    {
-                        "id": "elmnt_1732103048806",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321031578130.32404212133424222404414",
-                                "_field": "reason_vacancy",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_reason_of_vacancy",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186397301",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321864096900.12403132324044310231021",
-                                "_field": "replacement_status",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_replacement_status",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732186497701",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement,another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186514664",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321865258300.104014414310000003102322",
-                                "_field": "resigning_empl_full_name",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_action_conditionals_manual": "manual",
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732186544827",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186571711",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321865732680.13024433240441420043002",
-                                "_field": "resigning_empl_full_name_strng",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732186583095",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186618606",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321866201540.003120001043112441403343",
-                                "_field": "position_release_date",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732186627349",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement,another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186650611",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321866608570.13422121424022220002211",
-                                "_field": "position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186669394",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321866710570.110224133130311040030424",
-                                "_field": "company",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_company",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186693964",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321866956970.23040120334134102231413",
-                                "_field": "need_virtual_team",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_add_tooltip": true,
-                                "_field_tooltip_text": "Виртуальная команда необходима только для вакансий TECH"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186703094",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321867067050.03133412032322314421003",
-                                "_field": "virtual_team",
-                                "_field_link_type": "select",
-                                "_field_link_pageSize": 0,
-                                "_field_arrayLink_endpoint": "hg_virtual_team",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732186720962",
-                                "_conditionalView_field": "need_virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186704096",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321867390680.014431431330314444101444",
-                                "_field": "virtual_team_other",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732186751162",
-                                "_conditionalView_field": "need_virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732186765116",
-                                "_conditionalView_field": "virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "other"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186791298",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321868482970.044143002024001003233441",
-                                "_field": "division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186874382",
-                        "type": "text",
-                        "paraText": "<div class=\"form_label\">Организационная структура:</div>\n{{org_structure}}"
-                    },
-                    {
-                        "id": "elmnt_1732186878779",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321869167520.01423103234404403113404",
-                                "_field": "contract_type",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_contract_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186929496",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321869318010.3224123421432413431123",
-                                "_field": "contract_period",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732187382687",
-                                "_conditionalView_field": "contract_type",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "fixed_term"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732186949351",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17321869514690.142232223210102001122243",
-                                "_field": "reason_contract",
-                                "_field_link_type": "select",
-                                "_field_required": true,
-                                "_field_arrayLink_endpoint": "hg_reason_fixed_contract_type",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732187404603",
-                                "_conditionalView_field": "contract_type",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "fixed_term"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520095714",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325200989910.3102041421103433332404",
-                                "_field": "job_rate",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520096906",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325201156720.022230334023403213323321",
-                                "_field": "employment_type",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_employment_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520097615",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325201384320.34200233433300230322122",
-                                "_field": "work_place",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520147649",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325201510340.030201004302233010434101",
-                                "_field": "work_schedule",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520148382",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325201589280.124414204232201042314442",
-                                "_field": "salary",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732653163321",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520149115",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325201735870.12001221433220412000202",
-                                "_field": "period_bonus",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_period_bonus",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732700038683",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520183183",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325201912710.12440033144103421421201",
-                                "_field": "per_bonus",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732520206833",
-                                "_conditionalView_field": "period_bonus",
-                                "_conditionalView_operator": "isNotNull"
-                            },
-                            {
-                                "id": "condition_1732520224583",
-                                "_conditionalView_field": "period_bonus",
-                                "_conditionalView_operator": "!==",
-                                "_conditionalView_value": "whithout_bonus"
-                            },
-                            {
-                                "id": "condition_1732700058899",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            }
-                        ],
-                        "_action_conditionals_and_or": "AND"
-                    },
-                    {
-                        "id": "elmnt_1732520262007",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325202710370.024413240441042110204434",
-                                "_field": "responsibilities",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520263316",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325202806100.31124421041232210202033",
-                                "_field": "prof_skills",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520288637",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325202902760.31201223442344121324023",
-                                "_field": "candidate_description",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520308766",
-                        "type": "text",
-                        "paraText": "<b>Участники процесса согласования</b>"
-                    },
-                    {
-                        "id": "elmnt_1732520389784",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325203919490.21002142312021004132014",
-                                "_field": "hr_bp_creator",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526339757",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325263419810.10010144210430101111114",
-                                "_field": "user_creator",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520417366",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325204222130.31412423322320220223311",
-                                "_field": "manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520457523",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325204730650.13101303040412122233233",
-                                "_field": "up_manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732520499732",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325205012190.114243320004242404302443",
-                                "_field": "hr_bp",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "id": "step_copy_1732701550655",
-                "sysName": "approval_cnb",
-                "elements": [
-                    {
-                        "id": "elmnt_1732522709882",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227171270.021440113020403112121103",
-                                "_field": "conf_search",
-                                "_field_required": true,
-                                "_field_add_tooltip": true,
-                                "_field_tooltip_text": "Вакансия не будет публиковаться в открытых ресурсах и не будет участвовать в реферальной программе",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522710625",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227306210.30342241104330113024443",
-                                "_field": "reason_vacancy",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_reason_of_vacancy",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": false,
-                        "_conditions": []
-                    },
-                    {
-                        "id": "elmnt_1732522712125",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227540980.031203402433040303004342",
-                                "_field": "replacement_status",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_replacement_status",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694358042",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement,another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522712865",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227661190.14234213244213004413133",
-                                "_field": "resigning_empl_full_name",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694378216",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522713599",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227953600.2132330401333100442143",
-                                "_field": "resigning_empl_full_name_strng",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694419800",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522801958",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228141500.123340021202113043420343",
-                                "_field": "position_release_date",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694452059",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement,another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732701703769",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327017059640.24040032114431303211341",
-                                "_field": "budget_date",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732701716334",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{cnb.webuser_id.id}},{{cnb.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732701717990",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_cnb"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522803323",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228358970.32433313311121402044002",
-                                "_field": "position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732701834139",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327018364170.41240333110212003141223",
-                                "_field": "position_name",
-                                "_field_use_mask": false,
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732701849927",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{cnb.webuser_id.id}},{{cnb.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732701851462",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_cnb"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522802625",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228225780.20331220141113244332024",
-                                "_field": "company",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_company",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522804113",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228549140.012121231203123001412211",
-                                "_field": "need_virtual_team",
-                                "_field_required": true,
-                                "_field_add_tooltip": true,
-                                "_field_tooltip_text": "Виртуальная команда необходима только для вакансий TECH",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522860657",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228644190.02331412014322044020034",
-                                "_field": "virtual_team",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_virtual_team",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694505443",
-                                "_conditionalView_field": "need_virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522878779",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228805180.2400134211311333000003",
-                                "_field": "virtual_team_other",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694534476",
-                                "_conditionalView_field": "need_virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732694545610",
-                                "_conditionalView_field": "virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "other"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522861373",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325229005820.40132202401002221013024",
-                                "_field": "division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522862089",
-                        "type": "text",
-                        "paraText": "<div class=\"form_label\">Организационная структура:</div>\n{{org_structure}}"
-                    },
-                    {
-                        "id": "elmnt_1732522862831",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325251828420.11441130130442300442441",
-                                "_field": "vacancy_id",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732702069248",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525191037",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325252013450.103323401332210230244413",
-                                "_field": "id_position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732702316120",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525211643",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325252208810.104344314403334111312322",
-                                "_field": "org_dev",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732702339053",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525212870",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325252345920.13021021334134343113",
-                                "_field": "select_structure",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_select_structure",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditions": [],
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732702425671",
-                                "_conditionalView_field": "org_dev",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732702440581",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525213553",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325252559190.22321401122114313331043",
-                                "_field": "structures_difference",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732691936495",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "both_structures"
-                            },
-                            {
-                                "id": "condition_1732702966313",
-                                "_conditionalView_field": "org_dev",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732702981286",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732691506342",
-                        "type": "text",
-                        "paraText": "<style>\n.custom_container {\n      display: flex;\n      gap: 20px;\n    }\n\n    .custom_column {\n      flex: 1; /* Оба столбца будут равной ширины */\n    }\n</style>\n<div class=\"custom_container\">\n    <div class=\"custom_column\">\n      <p><b>Управленческая структура</b></p>\n    </div>\n    <div class=\"custom_column\">\n      <p><b>Юридическая структура</b>\n      </p>\n    </div>\n  </div>",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732691859420",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "both_structures"
-                            },
-                            {
-                                "id": "condition_1732702999027",
-                                "_conditionalView_field": "org_dev",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732703014346",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525741391",
-                        "type": "text",
-                        "paraText": "<b>Управленческая структура</b>",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732525783910",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "management_structure"
-                            },
-                            {
-                                "id": "condition_1732703030264",
-                                "_conditionalView_field": "org_dev",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732703066379",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525815092",
-                        "type": "text",
-                        "paraText": "<b>Юридическая структура</b>",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732525849943",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "legal_structure"
-                            },
-                            {
-                                "id": "condition_1732703084566",
-                                "_conditionalView_field": "org_dev",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732703086287",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732692471653",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17326924807090.10031314133323320412124",
-                                "_field": "management_division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR",
-                                "_conditionalView_disable_or_hide": "disable"
-                            },
-                            {
-                                "id": "17326925049640.14402333431030202402323",
-                                "_conditionalView": true,
-                                "_field": "legal_division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_field_required": true,
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR",
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 2,
-                        "_input_fields_in_a_row_column": "row",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732693322036",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "both_structures"
-                            },
-                            {
-                                "id": "condition_1732703197711",
-                                "_conditionalView_field": "org_dev",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732703214076",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732692474734",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17326934241000.21402121331241032322403",
-                                "_field": "management_position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 1000
-                            },
-                            {
-                                "id": "17326934265720.04230223421422403231021",
-                                "_field": "legal_position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 2,
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732693580694",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "both_structures"
-                            },
-                            {
-                                "id": "condition_1732703251117",
-                                "_conditionalView_field": "org_dev",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732703253106",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732692476887",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17326936284660.14242211424312431120114",
-                                "_field": "management_direct",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            },
-                            {
-                                "id": "17326936329910.30114400003001024330133",
-                                "_field": "legal_direct",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 2,
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732693762410",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "both_structures"
-                            },
-                            {
-                                "id": "condition_1732703302284",
-                                "_conditionalView_field": "org_dev",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732703304389",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525247922",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325252877230.234024210004223312343",
-                                "_field": "management_division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            },
-                            {
-                                "id": "17325252895320.213202401300122440233133",
-                                "_field": "management_position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            },
-                            {
-                                "id": "17325253127680.212411204030202234400022",
-                                "_field": "management_direct",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_hidden": false,
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 3,
-                        "_input_fields_in_a_row_column": "column",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732525387593",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "management_structure"
-                            },
-                            {
-                                "id": "condition_1732703367096",
-                                "_conditionalView_field": "org_dev",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732703369426",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525249070",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325253180980.24032231321443333103442",
-                                "_field": "legal_division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            },
-                            {
-                                "id": "17325253199200.0304412142423220404304",
-                                "_field": "legal_position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            },
-                            {
-                                "id": "17325253204920.34442033124200340001403",
-                                "_field": "legal_direct",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 3,
-                        "_input_fields_in_a_row_column": "column",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732525606243",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "legal_structure"
-                            },
-                            {
-                                "id": "condition_1732703433395",
-                                "_conditionalView_field": "org_dev",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732703436535",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525968928",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325259829310.20024203143014113412023",
-                                "_field": "contract_type",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_contract_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525970526",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325260025820.34241223330343140340012",
-                                "_field": "contract_period",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526013693",
-                                "_conditionalView_field": "contract_type",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "fixed_term"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525971308",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325260539640.020230124310004011120124",
-                                "_field": "reason_contract",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_reason_fixed_contract_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526073392",
-                                "_conditionalView_field": "contract_type",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "fixed_term"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525973027",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325260996210.0023324424140102214131423",
-                                "_field": "job_rate",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525973942",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261192000.24033141233331402341103",
-                                "_field": "employment_type",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_employment_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526131392",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261489730.43011031002032221114",
-                                "_field": "work_place",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526132308",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261587970.40434201132011220104313",
-                                "_field": "work_schedule",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732703647255",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327036538510.100300303222440304030344",
-                                "_field": "analytics_ops",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_analytics_for_ops",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732703679741",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{cnb.webuser_id.id}},{{cnb.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732703682537",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_cnb"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732703649938",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327037630880.0233233313304202314303",
-                                "_field": "cost_center",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732703777405",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{cnb.webuser_id.id}},{{cnb.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732703780304",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_cnb"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526156009",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261656250.101001211310001201333043",
-                                "_field": "salary",
-                                "_field_required": true,
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732696615136",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_cnb"
-                                    },
-                                    {
-                                        "id": "condition_1732703900442",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{cnb.webuser_id.id}},{{cnb.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704065991",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732704090434",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732704060585",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327041171320.44110144044433102302123",
-                                "_field": "salary",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732704131509",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{cnb.webuser_id.id}},{{cnb.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732704136993",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_cnb"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704142795",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526157143",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261823280.42223144314222101001141",
-                                "_field": "period_bonus",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_period_bonus",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732696667716",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{cnb.webuser_id.id}},{{cnb.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732696669250",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_cnb"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704316327",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732704340512",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732704231927",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327042765230.3121413144102123341123",
-                                "_field": "period_bonus",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_period_bonus",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732704385878",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{cnb.webuser_id.id}},{{cnb.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732704388678",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_cnb"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704447925",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526173029",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262014160.34233132010343233440001",
-                                "_field": "per_bonus",
-                                "_field_required": true,
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732696711348",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{cnb.webuser_id.id}},{{cnb.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732696718984",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_cnb"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526218258",
-                                "_conditionalView_field": "period_bonus",
-                                "_conditionalView_operator": "!==",
-                                "_conditionalView_value": "without_bonus"
-                            },
-                            {
-                                "id": "condition_1732704695247",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732704720385",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732704234976",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327045165510.1004101113134411144112",
-                                "_field": "per_bonus",
-                                "_field_required": true,
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732704765482",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{cnb.webuser_id.id}},{{cnb.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732704769065",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_cnb"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704823059",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            },
-                            {
-                                "id": "condition_1732862776040",
-                                "_conditionalView_field": "period_bonus",
-                                "_conditionalView_operator": "!==",
-                                "_conditionalView_value": "without_bonus"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732704246582",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327048634810.30411420132403220222321",
-                                "_field": "comment_salary",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732704901112",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{cnb.webuser_id.id}},{{cnb.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732704904467",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_cnb"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704956967",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732704961466",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732704270086",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327048842900.4022141412311202133244",
-                                "_field": "comment_salary",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732705016900",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_cnb"
-                                    },
-                                    {
-                                        "id": "condition_1732705020599",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{cnb.webuser_id.id}},{{cnb.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ]
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732705027166",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526239942",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262532160.2321123031134220324103",
-                                "_field": "hide_income",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_add_tooltip": true,
-                                "_field_tooltip_text": "Поля дохода будут скрыты от нанимающего менеджера, его руководителя и доп.согласующих"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732869651610",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_cnb,hg_hrbp"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526241042",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262708150.4334321032323433123203",
-                                "_field": "responsibilities",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526241808",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262786790.32332434404241140232024",
-                                "_field": "prof_skills",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526242799",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262908540.201313200400010411331223",
-                                "_field": "candidate_description",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526296942",
-                        "type": "text",
-                        "paraText": "<b>Участники процесса согласования</b>"
-                    },
-                    {
-                        "id": "elmnt_1732526297841",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325263844770.32424013300243111010004",
-                                "_field": "hr_bp_creator",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526298615",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325264171950.23441434332241300432",
-                                "_field": "user_creator",
-                                "_field_link_type": "complexSelect",
-                                "_field_required": false,
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526448085",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325264502420.44320210143332401141331",
-                                "_field": "manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526486708",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325264925140.30002312121203141400121",
-                                "_field": "up_manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526505725",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325265293170.213302002014110332220133",
-                                "_field": "hr_bp",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526544899",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325265489340.034224432214204342033224",
-                                "_field": "add_approval_1",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526545935",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325265698590.33011201413442301303023",
-                                "_field": "approval_1",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526592874",
-                                "_conditionalView_field": "add_approval_1",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526546857",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325266953080.211304432113120144240042",
-                                "_field": "add_approval_2",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526707391",
-                                "_conditionalView_field": "add_approval_1",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526726674",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325267286440.11440002103024040314431",
-                                "_field": "approval_2",
-                                "_field_link_type": "complexSelect",
-                                "_field_required": true,
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526751993",
-                                "_conditionalView_field": "add_approval_2",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526774196",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325267850250.30324103201013411302141",
-                                "_field": "cnb",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732697783294",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{cnb.webuser_id.id}},{{cnb.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732697786294",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_cnb"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732697165144",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17326971691780.3320422203311112100141",
-                                "_action": "action_1732651863436",
-                                "_action_icon": "refresh",
-                                "_action_button_type": "accent",
-                                "_action_oneTime": true,
-                                "_action_oneTime_message": "Новый ответственный назначен",
-                                "_action_addTooltip": true,
-                                "_action_addTooltip_text": "Если согласование данной заявки не входит в Вашу зону ответственности, то проверьте матрицу и переназначьте заявку",
-                                "_conditionalView": true,
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732697239663",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{responsible_employee_id.webuser_id.whom_delegate_ids}},{{responsible_employee_id.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732697258973",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_cnb"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526782163",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325268012700.2404041140043023323421",
-                                "_field": "budget_holder",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732697837899",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{cnb.webuser_id.id}},{{cnb.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732697840460",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_cnb"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526783141",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325268186860.22443241124233232431112",
-                                "_field": "teamlead",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732697900887",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{cnb.webuser_id.id}},{{cnb.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732697904659",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_cnb"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "id": "step_copy_1732705828382",
-                "sysName": "approval_budget_holder",
-                "elements": [
-                    {
-                        "id": "elmnt_1732522709882",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227171270.021440113020403112121103",
-                                "_field": "conf_search",
-                                "_field_required": true,
-                                "_field_add_tooltip": true,
-                                "_field_tooltip_text": "Вакансия не будет публиковаться в открытых ресурсах и не будет участвовать в реферальной программе",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522710625",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227306210.30342241104330113024443",
-                                "_field": "reason_vacancy",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_reason_of_vacancy",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": false,
-                        "_conditions": []
-                    },
-                    {
-                        "id": "elmnt_1732522712125",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227540980.031203402433040303004342",
-                                "_field": "replacement_status",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_replacement_status",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694358042",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement,another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522712865",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227661190.14234213244213004413133",
-                                "_field": "resigning_empl_full_name",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694378216",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522713599",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227953600.2132330401333100442143",
-                                "_field": "resigning_empl_full_name_strng",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694419800",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522801958",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228141500.123340021202113043420343",
-                                "_field": "position_release_date",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694452059",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement,another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732701703769",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327017059640.24040032114431303211341",
-                                "_field": "budget_date",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522803323",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228358970.32433313311121402044002",
-                                "_field": "position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732701834139",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327018364170.41240333110212003141223",
-                                "_field": "position_name",
-                                "_field_use_mask": false,
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522802625",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228225780.20331220141113244332024",
-                                "_field": "company",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_company",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522804113",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228549140.012121231203123001412211",
-                                "_field": "need_virtual_team",
-                                "_field_required": true,
-                                "_field_add_tooltip": true,
-                                "_field_tooltip_text": "Виртуальная команда необходима только для вакансий TECH",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522860657",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228644190.02331412014322044020034",
-                                "_field": "virtual_team",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_virtual_team",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694505443",
-                                "_conditionalView_field": "need_virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522878779",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228805180.2400134211311333000003",
-                                "_field": "virtual_team_other",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694534476",
-                                "_conditionalView_field": "need_virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732694545610",
-                                "_conditionalView_field": "virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "other"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522861373",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325229005820.40132202401002221013024",
-                                "_field": "division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522862089",
-                        "type": "text",
-                        "paraText": "<div class=\"form_label\">Организационная структура:</div>\n{{org_structure}}"
-                    },
-                    {
-                        "id": "elmnt_1732525968928",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325259829310.20024203143014113412023",
-                                "_field": "contract_type",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_contract_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525970526",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325260025820.34241223330343140340012",
-                                "_field": "contract_period",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526013693",
-                                "_conditionalView_field": "contract_type",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "fixed_term"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525971308",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325260539640.020230124310004011120124",
-                                "_field": "reason_contract",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_reason_fixed_contract_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526073392",
-                                "_conditionalView_field": "contract_type",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "fixed_term"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525973027",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325260996210.0023324424140102214131423",
-                                "_field": "job_rate",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525973942",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261192000.24033141233331402341103",
-                                "_field": "employment_type",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_employment_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526131392",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261489730.43011031002032221114",
-                                "_field": "work_place",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526132308",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261587970.40434201132011220104313",
-                                "_field": "work_schedule",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732703647255",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327036538510.100300303222440304030344",
-                                "_field": "analytics_ops",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_analytics_for_ops",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732703649938",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327037630880.0233233313304202314303",
-                                "_field": "cost_center",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526156009",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261656250.101001211310001201333043",
-                                "_field": "salary",
-                                "_field_required": true,
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704065991",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732704090434",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter,hg_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732704060585",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327041171320.44110144044433102302123",
-                                "_field": "salary",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704142795",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526157143",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261823280.42223144314222101001141",
-                                "_field": "period_bonus",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_period_bonus",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704316327",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732704340512",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter,hg_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732704231927",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327042765230.3121413144102123341123",
-                                "_field": "period_bonus",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_period_bonus",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704447925",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526173029",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262014160.34233132010343233440001",
-                                "_field": "per_bonus",
-                                "_field_required": true,
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526218258",
-                                "_conditionalView_field": "period_bonus",
-                                "_conditionalView_operator": "!==",
-                                "_conditionalView_value": "without_bonus"
-                            },
-                            {
-                                "id": "condition_1732704695247",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732704720385",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter,hg_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732704234976",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327045165510.1004101113134411144112",
-                                "_field": "per_bonus",
-                                "_field_required": true,
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704823059",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            },
-                            {
-                                "id": "condition_1732869935825",
-                                "_conditionalView_field": "period_bonus",
-                                "_conditionalView_operator": "!==",
-                                "_conditionalView_value": "without_bonus"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732704246582",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327048634810.30411420132403220222321",
-                                "_field": "comment_salary",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704956967",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732704961466",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter,hg_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732704270086",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327048842900.4022141412311202133244",
-                                "_field": "comment_salary",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": []
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732705027166",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526239942",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262532160.2321123031134220324103",
-                                "_field": "hide_income",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732862253371",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_cnb,hg_hrbp"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526241042",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262708150.4334321032323433123203",
-                                "_field": "responsibilities",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526241808",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262786790.32332434404241140232024",
-                                "_field": "prof_skills",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526242799",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262908540.201313200400010411331223",
-                                "_field": "candidate_description",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526296942",
-                        "type": "text",
-                        "paraText": "<b>Участники процесса согласования</b>"
-                    },
-                    {
-                        "id": "elmnt_1732526297841",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325263844770.32424013300243111010004",
-                                "_field": "hr_bp_creator",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526298615",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325264171950.23441434332241300432",
-                                "_field": "user_creator",
-                                "_field_link_type": "complexSelect",
-                                "_field_required": false,
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526448085",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325264502420.44320210143332401141331",
-                                "_field": "manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526486708",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325264925140.30002312121203141400121",
-                                "_field": "up_manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526505725",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325265293170.213302002014110332220133",
-                                "_field": "hr_bp",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526544899",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325265489340.034224432214204342033224",
-                                "_field": "add_approval_1",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526545935",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325265698590.33011201413442301303023",
-                                "_field": "approval_1",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526592874",
-                                "_conditionalView_field": "add_approval_1",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526546857",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325266953080.211304432113120144240042",
-                                "_field": "add_approval_2",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526707391",
-                                "_conditionalView_field": "add_approval_1",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526726674",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325267286440.11440002103024040314431",
-                                "_field": "approval_2",
-                                "_field_link_type": "complexSelect",
-                                "_field_required": true,
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526751993",
-                                "_conditionalView_field": "add_approval_2",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526774196",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325267850250.30324103201013411302141",
-                                "_field": "cnb",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526782163",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325268012700.2404041140043023323421",
-                                "_field": "budget_holder",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732697837899",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{cnb.webuser_id.id}},{{cnb.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732697840460",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_cnb"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732697165144",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17326971691780.3320422203311112100141",
-                                "_action": "action_1732651863436",
-                                "_action_icon": "refresh",
-                                "_action_button_type": "accent",
-                                "_action_oneTime": true,
-                                "_action_oneTime_message": "Новый ответственный назначен",
-                                "_action_addTooltip": true,
-                                "_action_addTooltip_text": "Если согласование данной заявки не входит в Вашу зону ответственности, то проверьте матрицу и переназначьте заявку",
-                                "_conditionalView": true,
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732697239663",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{cnb.webuser_id.id}},{{cnb.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732697258973",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_cnb"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526783141",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325268186860.22443241124233232431112",
-                                "_field": "teamlead",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "id": "step_copy_1732706664593",
-                "sysName": "teamlead",
-                "elements": [
-                    {
-                        "id": "elmnt_1732522709882",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227171270.021440113020403112121103",
-                                "_field": "conf_search",
-                                "_field_required": true,
-                                "_field_add_tooltip": true,
-                                "_field_tooltip_text": "Вакансия не будет публиковаться в открытых ресурсах и не будет участвовать в реферальной программе",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522710625",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227306210.30342241104330113024443",
-                                "_field": "reason_vacancy",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_reason_of_vacancy",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": false,
-                        "_conditions": []
-                    },
-                    {
-                        "id": "elmnt_1732522712125",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227540980.031203402433040303004342",
-                                "_field": "replacement_status",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_replacement_status",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694358042",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement,another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522712865",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227661190.14234213244213004413133",
-                                "_field": "resigning_empl_full_name",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694378216",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522713599",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227953600.2132330401333100442143",
-                                "_field": "resigning_empl_full_name_strng",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694419800",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522801958",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228141500.123340021202113043420343",
-                                "_field": "position_release_date",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694452059",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement,another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732701703769",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327017059640.24040032114431303211341",
-                                "_field": "budget_date",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522803323",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228358970.32433313311121402044002",
-                                "_field": "position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732701834139",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327018364170.41240333110212003141223",
-                                "_field": "position_name",
-                                "_field_use_mask": false,
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522802625",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228225780.20331220141113244332024",
-                                "_field": "company",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_company",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522804113",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228549140.012121231203123001412211",
-                                "_field": "need_virtual_team",
-                                "_field_required": true,
-                                "_field_add_tooltip": true,
-                                "_field_tooltip_text": "Виртуальная команда необходима только для вакансий TECH",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522860657",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228644190.02331412014322044020034",
-                                "_field": "virtual_team",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_virtual_team",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694505443",
-                                "_conditionalView_field": "need_virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522878779",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228805180.2400134211311333000003",
-                                "_field": "virtual_team_other",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694534476",
-                                "_conditionalView_field": "need_virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732694545610",
-                                "_conditionalView_field": "virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "other"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522861373",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325229005820.40132202401002221013024",
-                                "_field": "division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522862089",
-                        "type": "text",
-                        "paraText": "<div class=\"form_label\">Организационная структура:</div>\n{{org_structure}}"
-                    },
-                    {
-                        "id": "elmnt_1732525968928",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325259829310.20024203143014113412023",
-                                "_field": "contract_type",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_contract_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525970526",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325260025820.34241223330343140340012",
-                                "_field": "contract_period",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526013693",
-                                "_conditionalView_field": "contract_type",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "fixed_term"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525971308",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325260539640.020230124310004011120124",
-                                "_field": "reason_contract",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_reason_fixed_contract_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526073392",
-                                "_conditionalView_field": "contract_type",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "fixed_term"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525973027",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325260996210.0023324424140102214131423",
-                                "_field": "job_rate",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525973942",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261192000.24033141233331402341103",
-                                "_field": "employment_type",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_employment_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526131392",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261489730.43011031002032221114",
-                                "_field": "work_place",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526132308",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261587970.40434201132011220104313",
-                                "_field": "work_schedule",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732703647255",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327036538510.100300303222440304030344",
-                                "_field": "analytics_ops",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_analytics_for_ops",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732703649938",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327037630880.0233233313304202314303",
-                                "_field": "cost_center",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526156009",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261656250.101001211310001201333043",
-                                "_field": "salary",
-                                "_field_required": true,
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704065991",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732704090434",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732704060585",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327041171320.44110144044433102302123",
-                                "_field": "salary",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704142795",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526157143",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261823280.42223144314222101001141",
-                                "_field": "period_bonus",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_period_bonus",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704316327",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732704340512",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732704231927",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327042765230.3121413144102123341123",
-                                "_field": "period_bonus",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_period_bonus",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704447925",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526173029",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262014160.34233132010343233440001",
-                                "_field": "per_bonus",
-                                "_field_required": true,
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526218258",
-                                "_conditionalView_field": "period_bonus",
-                                "_conditionalView_operator": "!==",
-                                "_conditionalView_value": "without_bonus"
-                            },
-                            {
-                                "id": "condition_1732704695247",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732704720385",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732704234976",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327045165510.1004101113134411144112",
-                                "_field": "per_bonus",
-                                "_field_required": true,
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704823059",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            },
-                            {
-                                "id": "condition_1732869987521",
-                                "_conditionalView_field": "period_bonus",
-                                "_conditionalView_operator": "!==",
-                                "_conditionalView_value": "without_bonus"
-                            }
-                        ],
-                        "_action_conditionals_and_or": "AND"
-                    },
-                    {
-                        "id": "elmnt_1732704246582",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327048634810.30411420132403220222321",
-                                "_field": "comment_salary",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704956967",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732704961466",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732704270086",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327048842900.4022141412311202133244",
-                                "_field": "comment_salary",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": []
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732705027166",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526239942",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262532160.2321123031134220324103",
-                                "_field": "hide_income",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_action_conditionals_manual": "manual",
-                        "_conditions": [
-                            {
-                                "id": "condition_1732869702799",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_cnb,hg_hrbp"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526241042",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262708150.4334321032323433123203",
-                                "_field": "responsibilities",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526241808",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262786790.32332434404241140232024",
-                                "_field": "prof_skills",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526242799",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262908540.201313200400010411331223",
-                                "_field": "candidate_description",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526296942",
-                        "type": "text",
-                        "paraText": "<b>Участники процесса согласования</b>"
-                    },
-                    {
-                        "id": "elmnt_1732526297841",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325263844770.32424013300243111010004",
-                                "_field": "hr_bp_creator",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526298615",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325264171950.23441434332241300432",
-                                "_field": "user_creator",
-                                "_field_link_type": "complexSelect",
-                                "_field_required": false,
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526448085",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325264502420.44320210143332401141331",
-                                "_field": "manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526486708",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325264925140.30002312121203141400121",
-                                "_field": "up_manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526505725",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325265293170.213302002014110332220133",
-                                "_field": "hr_bp",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526544899",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325265489340.034224432214204342033224",
-                                "_field": "add_approval_1",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526545935",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325265698590.33011201413442301303023",
-                                "_field": "approval_1",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526592874",
-                                "_conditionalView_field": "add_approval_1",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526546857",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325266953080.211304432113120144240042",
-                                "_field": "add_approval_2",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526707391",
-                                "_conditionalView_field": "add_approval_1",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526726674",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325267286440.11440002103024040314431",
-                                "_field": "approval_2",
-                                "_field_link_type": "complexSelect",
-                                "_field_required": true,
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526751993",
-                                "_conditionalView_field": "add_approval_2",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526774196",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325267850250.30324103201013411302141",
-                                "_field": "cnb",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526782163",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325268012700.2404041140043023323421",
-                                "_field": "budget_holder",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526783141",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325268186860.22443241124233232431112",
-                                "_field": "teamlead",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732706779299",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327067967690.103220311022340400340131",
-                                "_field": "recruiter",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732706812660",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{teamlead.webuser_id.id}},{{teamlead.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732706813876",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_recruiter"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "id": "step_copy_1732707112488",
-                "sysName": "recruitment",
-                "elements": [
-                    {
-                        "id": "elmnt_1732522709882",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227171270.021440113020403112121103",
-                                "_field": "conf_search",
-                                "_field_required": true,
-                                "_field_add_tooltip": true,
-                                "_field_tooltip_text": "Вакансия не будет публиковаться в открытых ресурсах и не будет участвовать в реферальной программе",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522710625",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227306210.30342241104330113024443",
-                                "_field": "reason_vacancy",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_reason_of_vacancy",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": false,
-                        "_conditions": []
-                    },
-                    {
-                        "id": "elmnt_1732522712125",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227540980.031203402433040303004342",
-                                "_field": "replacement_status",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_replacement_status",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694358042",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement,another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522712865",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227661190.14234213244213004413133",
-                                "_field": "resigning_empl_full_name",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694378216",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522713599",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227953600.2132330401333100442143",
-                                "_field": "resigning_empl_full_name_strng",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694419800",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522801958",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228141500.123340021202113043420343",
-                                "_field": "position_release_date",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694452059",
-                                "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "replacement,another_company"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732701703769",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327017059640.24040032114431303211341",
-                                "_field": "budget_date",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522803323",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228358970.32433313311121402044002",
-                                "_field": "position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732701834139",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327018364170.41240333110212003141223",
-                                "_field": "position_name",
-                                "_field_use_mask": false,
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522802625",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228225780.20331220141113244332024",
-                                "_field": "company",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_company",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522804113",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228549140.012121231203123001412211",
-                                "_field": "need_virtual_team",
-                                "_field_required": true,
-                                "_field_add_tooltip": true,
-                                "_field_tooltip_text": "Виртуальная команда необходима только для вакансий TECH",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522860657",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228644190.02331412014322044020034",
-                                "_field": "virtual_team",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_virtual_team",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694505443",
-                                "_conditionalView_field": "need_virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522878779",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228805180.2400134211311333000003",
-                                "_field": "virtual_team_other",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732694534476",
-                                "_conditionalView_field": "need_virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732694545610",
-                                "_conditionalView_field": "virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "other"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522861373",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325229005820.40132202401002221013024",
-                                "_field": "division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522862089",
-                        "type": "text",
-                        "paraText": "<div class=\"form_label\">Организационная структура:</div>\n{{org_structure}}"
-                    },
-                    {
-                        "id": "elmnt_1732525968928",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325259829310.20024203143014113412023",
-                                "_field": "contract_type",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_contract_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525970526",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325260025820.34241223330343140340012",
-                                "_field": "contract_period",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526013693",
-                                "_conditionalView_field": "contract_type",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "fixed_term"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525971308",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325260539640.020230124310004011120124",
-                                "_field": "reason_contract",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_reason_fixed_contract_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526073392",
-                                "_conditionalView_field": "contract_type",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "fixed_term"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525973027",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325260996210.0023324424140102214131423",
-                                "_field": "job_rate",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525973942",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261192000.24033141233331402341103",
-                                "_field": "employment_type",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_employment_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526131392",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261489730.43011031002032221114",
-                                "_field": "work_place",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526132308",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261587970.40434201132011220104313",
-                                "_field": "work_schedule",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732703647255",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327036538510.100300303222440304030344",
-                                "_field": "analytics_ops",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_analytics_for_ops",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732703649938",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327037630880.0233233313304202314303",
-                                "_field": "cost_center",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526156009",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261656250.101001211310001201333043",
-                                "_field": "salary",
-                                "_field_required": true,
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704065991",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732704090434",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732704060585",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327041171320.44110144044433102302123",
-                                "_field": "salary",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704142795",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526157143",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261823280.42223144314222101001141",
-                                "_field": "period_bonus",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_period_bonus",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704316327",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732704340512",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732704231927",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327042765230.3121413144102123341123",
-                                "_field": "period_bonus",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_period_bonus",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704447925",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526173029",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262014160.34233132010343233440001",
-                                "_field": "per_bonus",
-                                "_field_required": true,
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526218258",
-                                "_conditionalView_field": "period_bonus",
-                                "_conditionalView_operator": "!==",
-                                "_conditionalView_value": "without_bonus"
-                            },
-                            {
-                                "id": "condition_1732704695247",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732704720385",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732704234976",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327045165510.1004101113134411144112",
-                                "_field": "per_bonus",
-                                "_field_required": true,
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704823059",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            },
-                            {
-                                "id": "condition_1732870042312",
-                                "_conditionalView_field": "period_bonus",
-                                "_conditionalView_operator": "!==",
-                                "_conditionalView_value": "without_bonus"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732704246582",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327048634810.30411420132403220222321",
-                                "_field": "comment_salary",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704956967",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732704961466",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732704270086",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327048842900.4022141412311202133244",
-                                "_field": "comment_salary",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": []
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732705027166",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526239942",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262532160.2321123031134220324103",
-                                "_field": "hide_income",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732869726558",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_cnb,hg_hrbp"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526241042",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262708150.4334321032323433123203",
-                                "_field": "responsibilities",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526241808",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262786790.32332434404241140232024",
-                                "_field": "prof_skills",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526242799",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262908540.201313200400010411331223",
-                                "_field": "candidate_description",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526296942",
-                        "type": "text",
-                        "paraText": "<b>Участники процесса согласования</b>"
-                    },
-                    {
-                        "id": "elmnt_1732526297841",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325263844770.32424013300243111010004",
-                                "_field": "hr_bp_creator",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526298615",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325264171950.23441434332241300432",
-                                "_field": "user_creator",
-                                "_field_link_type": "complexSelect",
-                                "_field_required": false,
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526448085",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325264502420.44320210143332401141331",
-                                "_field": "manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526486708",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325264925140.30002312121203141400121",
-                                "_field": "up_manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526505725",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325265293170.213302002014110332220133",
-                                "_field": "hr_bp",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526544899",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325265489340.034224432214204342033224",
-                                "_field": "add_approval_1",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526545935",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325265698590.33011201413442301303023",
-                                "_field": "approval_1",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526592874",
-                                "_conditionalView_field": "add_approval_1",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526546857",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325266953080.211304432113120144240042",
-                                "_field": "add_approval_2",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526707391",
-                                "_conditionalView_field": "add_approval_1",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526726674",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325267286440.11440002103024040314431",
-                                "_field": "approval_2",
-                                "_field_link_type": "complexSelect",
-                                "_field_required": true,
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526751993",
-                                "_conditionalView_field": "add_approval_2",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526774196",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325267850250.30324103201013411302141",
-                                "_field": "cnb",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526782163",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325268012700.2404041140043023323421",
-                                "_field": "budget_holder",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526783141",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325268186860.22443241124233232431112",
-                                "_field": "teamlead",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732706779299",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327067967690.103220311022340400340131",
-                                "_field": "recruiter",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732706812660",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{teamlead.webuser_id.id}},{{teamlead.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732706813876",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_recruiter"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732864131398",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17328641351500.42421312440324312131143",
-                                "_action": "action_1732651863436",
-                                "_action_button_type": "accent",
-                                "_conditionalView": true,
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732864155098",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "{{teamlead.webuser_id.id}},{{teamlead.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732864178061",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_recruiter"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR",
-                                "_action_addTooltip": true,
-                                "_action_addTooltip_text": "Если согласование данной заявки не входит в Вашу зону ответственности, то проверьте матрицу и переназначьте заявку"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732707137713",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327071465270.33302434012040303100001",
-                                "_field": "which_candidate",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_which_candidate",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732707161800",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_recruiter"
-                                    },
-                                    {
-                                        "id": "condition_1732707178214",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{recruiter.webuser_id.id}},{{recruiter.webuser_id.whom_delegate_ids}},{{teamlead.webuser_id.id}},{{teamlead.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR",
                                 "_field_required": true
                             }
                         ]
                     },
                     {
-                        "id": "elmnt_1732707138789",
+                        "id": "elmnt_1731662684373",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17327072824850.13043313003401344141321",
-                                "_field": "internal_candidate_name",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732707324215",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{recruiter.webuser_id.id}},{{recruiter.webuser_id.whom_delegate_ids}},{{teamlead.webuser_id.id}},{{teamlead.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732707339482",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_recruiter"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732707312030",
-                                "_conditionalView_field": "which_candidate",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "internal"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "id": "step_copy_1732862828783",
-                "sysName": "closed",
-                "elements": [
-                    {
-                        "id": "elmnt_1732522709882",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227171270.021440113020403112121103",
-                                "_field": "conf_search",
-                                "_field_required": true,
-                                "_field_add_tooltip": true,
-                                "_field_tooltip_text": "Вакансия не будет публиковаться в открытых ресурсах и не будет участвовать в реферальной программе",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522710625",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227306210.30342241104330113024443",
-                                "_field": "reason_vacancy",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_reason_of_vacancy",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": false,
-                        "_conditions": []
-                    },
-                    {
-                        "id": "elmnt_1732522712125",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325227540980.031203402433040303004342",
+                                "id": "17316627495200.34143131142234221131242",
                                 "_field": "replacement_status",
                                 "_field_link_type": "select",
                                 "_field_arrayLink_endpoint": "hg_replacement_status",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
+                                "_field_required": true
                             }
                         ],
                         "_conditionalView": true,
                         "_conditions": [
                             {
-                                "id": "condition_1732694358042",
+                                "id": "condition_1731662772104",
                                 "_conditionalView_field": "reason_vacancy",
                                 "_conditionalView_operator": "in",
                                 "_conditionalView_value": "replacement,another_company"
@@ -11251,73 +1289,62 @@ let exampleForm =  {
                         ]
                     },
                     {
-                        "id": "elmnt_1732522712865",
+                        "id": "elmnt_1731662685567",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17325227661190.14234213244213004413133",
+                                "id": "17316628268850.030203320333442343343022",
                                 "_field": "resigning_empl_full_name",
                                 "_field_link_type": "complexSelect",
                                 "_field_arrayLink_endpoint": "employees_full_name_dropdown",
                                 "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
+                                "_conditionalView": false
                             }
                         ],
                         "_conditionalView": true,
                         "_conditions": [
                             {
-                                "id": "condition_1732694378216",
+                                "id": "condition_1731662846337",
                                 "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
+                                "_conditionalView_operator": "==",
                                 "_conditionalView_value": "replacement"
                             }
                         ]
                     },
                     {
-                        "id": "elmnt_1732522713599",
+                        "id": "elmnt_1731662686982",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17325227953600.2132330401333100442143",
+                                "id": "17316628656720.101444423012404141200241",
                                 "_field": "resigning_empl_full_name_strng",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
+                                "_field_required": true
                             }
                         ],
                         "_conditionalView": true,
                         "_conditions": [
                             {
-                                "id": "condition_1732694419800",
+                                "id": "condition_1731662881202",
                                 "_conditionalView_field": "reason_vacancy",
-                                "_conditionalView_operator": "in",
+                                "_conditionalView_operator": "==",
                                 "_conditionalView_value": "another_company"
                             }
                         ]
                     },
                     {
-                        "id": "elmnt_1732522801958",
+                        "id": "elmnt_1731662895036",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17325228141500.123340021202113043420343",
+                                "id": "17316629529910.32432241302042433332243",
                                 "_field": "position_release_date",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
+                                "_field_required": true
                             }
                         ],
                         "_conditionalView": true,
                         "_conditions": [
                             {
-                                "id": "condition_1732694452059",
+                                "id": "condition_1732103479816",
                                 "_conditionalView_field": "reason_vacancy",
                                 "_conditionalView_operator": "in",
                                 "_conditionalView_value": "replacement,another_company"
@@ -11325,105 +1352,58 @@ let exampleForm =  {
                         ]
                     },
                     {
-                        "id": "elmnt_1732701703769",
+                        "id": "elmnt_1731662949788",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17327017059640.24040032114431303211341",
-                                "_field": "budget_date",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522803323",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228358970.32433313311121402044002",
+                                "id": "17316629635930.024021441333130040102332",
                                 "_field": "position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
+                                "_field_required": true
                             }
                         ]
                     },
                     {
-                        "id": "elmnt_1732701834139",
+                        "id": "elmnt_1731662950430",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17327018364170.41240333110212003141223",
-                                "_field": "position_name",
-                                "_field_use_mask": false,
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732522802625",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325228225780.20331220141113244332024",
+                                "id": "17316629784670.33224011120244303103221",
                                 "_field": "company",
                                 "_field_link_type": "select",
                                 "_field_arrayLink_endpoint": "hg_company",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
+                                "_field_required": true
                             }
                         ]
                     },
                     {
-                        "id": "elmnt_1732522804113",
+                        "id": "elmnt_1731662992568",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17325228549140.012121231203123001412211",
+                                "id": "17316629984640.1111130120024031242233",
                                 "_field": "need_virtual_team",
                                 "_field_required": true,
                                 "_field_add_tooltip": true,
-                                "_field_tooltip_text": "Виртуальная команда необходима только для вакансий TECH",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
+                                "_field_tooltip_text": "Виртуальная команда необходима только для вакансий TECH"
                             }
                         ]
                     },
                     {
-                        "id": "elmnt_1732522860657",
+                        "id": "elmnt_1731662993259",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17325228644190.02331412014322044020034",
+                                "id": "17316630109050.44240114343341144143401",
                                 "_field": "virtual_team",
                                 "_field_link_type": "select",
                                 "_field_arrayLink_endpoint": "hg_virtual_team",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
+                                "_field_required": true
                             }
                         ],
                         "_conditionalView": true,
                         "_conditions": [
                             {
-                                "id": "condition_1732694505443",
+                                "id": "condition_1731663023272",
                                 "_conditionalView_field": "need_virtual_team",
                                 "_conditionalView_operator": "==",
                                 "_conditionalView_value": "true"
@@ -11431,2102 +1411,430 @@ let exampleForm =  {
                         ]
                     },
                     {
-                        "id": "elmnt_1732522878779",
+                        "id": "elmnt_1731662993892",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17325228805180.2400134211311333000003",
+                                "id": "17316630567090.111020432110122033112142",
                                 "_field": "virtual_team_other",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
+                                "_field_required": true
                             }
                         ],
                         "_conditionalView": true,
                         "_conditions": [
                             {
-                                "id": "condition_1732694534476",
-                                "_conditionalView_field": "need_virtual_team",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732694545610",
+                                "id": "condition_1731663065441",
                                 "_conditionalView_field": "virtual_team",
                                 "_conditionalView_operator": "==",
                                 "_conditionalView_value": "other"
+                            },
+                            {
+                                "id": "condition_1732186806152",
+                                "_conditionalView_field": "need_virtual_team",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "true"
                             }
                         ]
                     },
                     {
-                        "id": "elmnt_1732522861373",
+                        "id": "elmnt_1731663076569",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17325229005820.40132202401002221013024",
+                                "id": "17316631947460.23322012004243303313202",
                                 "_field": "division",
                                 "_field_link_type": "complexSelect",
                                 "_field_arrayLink_endpoint": "divisionDropdown",
                                 "_field_required": true,
                                 "_conditionalView": true,
                                 "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1732801118580",
+                                        "_conditionalView_field": "replacement_status",
+                                        "_conditionalView_operator": "in",
+                                        "_conditionalView_value": "quit,current_position"
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "id": "elmnt_1732522862089",
+                        "id": "elmnt_1731663077775",
                         "type": "text",
                         "paraText": "<div class=\"form_label\">Организационная структура:</div>\n{{org_structure}}"
                     },
                     {
-                        "id": "elmnt_1732522862831",
+                        "id": "elmnt_1731663621424",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17325251828420.11441130130442300442441",
-                                "_field": "vacancy_id",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732702069248",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525191037",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325252013450.103323401332210230244413",
-                                "_field": "id_position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732702316120",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525211643",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325252208810.104344314403334111312322",
-                                "_field": "org_dev",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732702339053",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525212870",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325252345920.13021021334134343113",
-                                "_field": "select_structure",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_select_structure",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditions": [],
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732702425671",
-                                "_conditionalView_field": "org_dev",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732702440581",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525213553",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325252559190.22321401122114313331043",
-                                "_field": "structures_difference",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732691936495",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "both_structures"
-                            },
-                            {
-                                "id": "condition_1732702966313",
-                                "_conditionalView_field": "org_dev",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732702981286",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732691506342",
-                        "type": "text",
-                        "paraText": "<style>\n.custom_container {\n      display: flex;\n      gap: 20px;\n    }\n\n    .custom_column {\n      flex: 1; /* Оба столбца будут равной ширины */\n    }\n</style>\n<div class=\"custom_container\">\n    <div class=\"custom_column\">\n      <p><b>Управленческая структура</b></p>\n    </div>\n    <div class=\"custom_column\">\n      <p><b>Юридическая структура</b>\n      </p>\n    </div>\n  </div>",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732691859420",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "both_structures"
-                            },
-                            {
-                                "id": "condition_1732702999027",
-                                "_conditionalView_field": "org_dev",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732703014346",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525741391",
-                        "type": "text",
-                        "paraText": "<b>Управленческая структура</b>",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732525783910",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "management_structure"
-                            },
-                            {
-                                "id": "condition_1732703030264",
-                                "_conditionalView_field": "org_dev",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732703066379",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525815092",
-                        "type": "text",
-                        "paraText": "<b>Юридическая структура</b>",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732525849943",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "legal_structure"
-                            },
-                            {
-                                "id": "condition_1732703084566",
-                                "_conditionalView_field": "org_dev",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732703086287",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732692471653",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17326924807090.10031314133323320412124",
-                                "_field": "management_division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR",
-                                "_conditionalView_disable_or_hide": "disable"
-                            },
-                            {
-                                "id": "17326925049640.14402333431030202402323",
-                                "_conditionalView": true,
-                                "_field": "legal_division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_field_required": true,
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR",
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 2,
-                        "_input_fields_in_a_row_column": "row",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732693322036",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "both_structures"
-                            },
-                            {
-                                "id": "condition_1732703197711",
-                                "_conditionalView_field": "org_dev",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732703214076",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732692474734",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17326934241000.21402121331241032322403",
-                                "_field": "management_position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 1000
-                            },
-                            {
-                                "id": "17326934265720.04230223421422403231021",
-                                "_field": "legal_position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 2,
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732693580694",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "both_structures"
-                            },
-                            {
-                                "id": "condition_1732703251117",
-                                "_conditionalView_field": "org_dev",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732703253106",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732692476887",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17326936284660.14242211424312431120114",
-                                "_field": "management_direct",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            },
-                            {
-                                "id": "17326936329910.30114400003001024330133",
-                                "_field": "legal_direct",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 2,
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732693762410",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "both_structures"
-                            },
-                            {
-                                "id": "condition_1732703302284",
-                                "_conditionalView_field": "org_dev",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732703304389",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525247922",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325252877230.234024210004223312343",
-                                "_field": "management_division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            },
-                            {
-                                "id": "17325252895320.213202401300122440233133",
-                                "_field": "management_position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            },
-                            {
-                                "id": "17325253127680.212411204030202234400022",
-                                "_field": "management_direct",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_hidden": false,
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 3,
-                        "_input_fields_in_a_row_column": "column",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732525387593",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "management_structure"
-                            },
-                            {
-                                "id": "condition_1732703367096",
-                                "_conditionalView_field": "org_dev",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732703369426",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525249070",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325253180980.24032231321443333103442",
-                                "_field": "legal_division",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "divisionDropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            },
-                            {
-                                "id": "17325253199200.0304412142423220404304",
-                                "_field": "legal_position",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            },
-                            {
-                                "id": "17325253204920.34442033124200340001403",
-                                "_field": "legal_direct",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 3,
-                        "_input_fields_in_a_row_column": "column",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732525606243",
-                                "_conditionalView_field": "select_structure",
-                                "_conditionalView_operator": "in",
-                                "_conditionalView_value": "legal_structure"
-                            },
-                            {
-                                "id": "condition_1732703433395",
-                                "_conditionalView_field": "org_dev",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732703436535",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525968928",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325259829310.20024203143014113412023",
+                                "id": "17316636230890.40211103423021432321233",
                                 "_field": "contract_type",
                                 "_field_link_type": "select",
                                 "_field_arrayLink_endpoint": "hg_contract_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525970526",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325260025820.34241223330343140340012",
-                                "_field": "contract_period",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526013693",
-                                "_conditionalView_field": "contract_type",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "fixed_term"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525971308",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325260539640.020230124310004011120124",
-                                "_field": "reason_contract",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_reason_fixed_contract_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526073392",
-                                "_conditionalView_field": "contract_type",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "fixed_term"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525973027",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325260996210.0023324424140102214131423",
-                                "_field": "job_rate",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732525973942",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261192000.24033141233331402341103",
-                                "_field": "employment_type",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_employment_type",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526131392",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261489730.43011031002032221114",
-                                "_field": "work_place",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526132308",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261587970.40434201132011220104313",
-                                "_field": "work_schedule",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732703647255",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327036538510.100300303222440304030344",
-                                "_field": "analytics_ops",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_analytics_for_ops",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732703649938",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327037630880.0233233313304202314303",
-                                "_field": "cost_center",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526156009",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261656250.101001211310001201333043",
-                                "_field": "salary",
-                                "_field_required": true,
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704065991",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732704090434",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter,hg_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732704060585",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327041171320.44110144044433102302123",
-                                "_field": "salary",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR",
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704142795",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526157143",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325261823280.42223144314222101001141",
-                                "_field": "period_bonus",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_period_bonus",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704316327",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732704340512",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter,hg_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732704231927",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327042765230.3121413144102123341123",
-                                "_field": "period_bonus",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_period_bonus",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704447925",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526173029",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262014160.34233132010343233440001",
-                                "_field": "per_bonus",
-                                "_field_required": true,
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526218258",
-                                "_conditionalView_field": "period_bonus",
-                                "_conditionalView_operator": "!==",
-                                "_conditionalView_value": "without_bonus"
-                            },
-                            {
-                                "id": "condition_1732704695247",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732704720385",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter,hg_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732704234976",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327045165510.1004101113134411144112",
-                                "_field": "per_bonus",
-                                "_field_required": true,
-                                "_field_set_debounce": true,
-                                "_field_debounce_value": 500,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704823059",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            },
-                            {
-                                "id": "condition_1732862776040",
-                                "_conditionalView_field": "period_bonus",
-                                "_conditionalView_operator": "!==",
-                                "_conditionalView_value": "without_bonus"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732704246582",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327048634810.30411420132403220222321",
-                                "_field": "comment_salary",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732704956967",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "true"
-                            },
-                            {
-                                "id": "condition_1732704961466",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_hrbp,hg_cnb,hg_orgdev,hg_recruiter,hg_budget_holder"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732704270086",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17327048842900.4022141412311202133244",
-                                "_field": "comment_salary",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": []
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732705027166",
-                                "_conditionalView_field": "hide_income",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "false"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526239942",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262532160.2321123031134220324103",
-                                "_field": "hide_income",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732863039037",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_cnb,hg_hrbp"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526241042",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262708150.4334321032323433123203",
-                                "_field": "responsibilities",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526241808",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262786790.32332434404241140232024",
-                                "_field": "prof_skills",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526242799",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325262908540.201313200400010411331223",
-                                "_field": "candidate_description",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526296942",
-                        "type": "text",
-                        "paraText": "<b>Участники процесса согласования</b>"
-                    },
-                    {
-                        "id": "elmnt_1732526297841",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325263844770.32424013300243111010004",
-                                "_field": "hr_bp_creator",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526298615",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325264171950.23441434332241300432",
-                                "_field": "user_creator",
-                                "_field_link_type": "complexSelect",
-                                "_field_required": false,
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526448085",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325264502420.44320210143332401141331",
-                                "_field": "manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": false,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526486708",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325264925140.30002312121203141400121",
-                                "_field": "up_manager",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526505725",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325265293170.213302002014110332220133",
-                                "_field": "hr_bp",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526544899",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325265489340.034224432214204342033224",
-                                "_field": "add_approval_1",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526545935",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325265698590.33011201413442301303023",
-                                "_field": "approval_1",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526592874",
-                                "_conditionalView_field": "add_approval_1",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526546857",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325266953080.211304432113120144240042",
-                                "_field": "add_approval_2",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526707391",
-                                "_conditionalView_field": "add_approval_1",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526726674",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325267286440.11440002103024040314431",
-                                "_field": "approval_2",
-                                "_field_link_type": "complexSelect",
-                                "_field_required": true,
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732526751993",
-                                "_conditionalView_field": "add_approval_2",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "{\"add\":true}"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526774196",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325267850250.30324103201013411302141",
-                                "_field": "cnb",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526782163",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325268012700.2404041140043023323421",
-                                "_field": "budget_holder",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732526783141",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17325268186860.22443241124233232431112",
-                                "_field": "teamlead",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable",
-                                "_conditions": [],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732863111606",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17328631149280.21440211234304324332221",
-                                "_field": "recruiter",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732863140672",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17328631441790.0122230121433213402411431",
-                                "_field": "which_candidate",
-                                "_field_link_type": "select",
-                                "_field_arrayLink_endpoint": "hg_which_candidate",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732863173755",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17328631771780.04343223244023224330343",
-                                "_field": "internal_candidate_name",
-                                "_field_link_type": "complexSelect",
-                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_conditionalView_disable_or_hide": "disable"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732863203954",
-                                "_conditionalView_field": "which_candidate",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "internal"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "id": "step_1732650668146",
-                "sysName": "popup_cancel",
-                "elements": [
-                    {
-                        "id": "elmnt_1732650683543",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17326506851880.31211043304123140232313",
-                                "_field": "cancel_reason",
                                 "_field_required": true
                             }
                         ]
                     },
                     {
-                        "id": "elmnt_1732652009862",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17326520121640.110333220100000304031341",
-                                "_action": "action_1732651080144",
-                                "_action_label": "Ок",
-                                "_action_button_type": "accent",
-                                "_action_standardRequired": false,
-                                "_action_customRequired": true,
-                                "_action_customRequired_fields": [
-                                    "cancel_reason"
-                                ]
-                            },
-                            {
-                                "id": "17328007176020.41303123041002300132041",
-                                "_action": "action_1732651014844",
-                                "_action_label": "Назад",
-                                "_action_icon": "back"
-                            }
-                        ],
-                        "_input_actions_alignment": "center",
-                        "_actions_in_a_row": 2
-                    }
-                ]
-            },
-            {
-                "id": "step_1732185364550",
-                "sysName": "actions",
-                "elements": [
-                    {
-                        "id": "elmnt_1732482721618",
-                        "type": "action",
+                        "id": "elmnt_1731663677558",
+                        "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17324827245210.0020331102021414322143004"
-                            }
-                        ],
-                        "_actions": [
-                            {
-                                "id": "17324827369470.34313103222233414242021",
-                                "_action": "action_1732482315979",
-                                "_action_icon": "done",
-                                "_action_button_type": "accent",
-                                "_action_oneTime": true,
-                                "_action_oneTime_message": "Заявка согласована",
-                                "_action_customRequired": false,
-                                "_action_standardRequired": true,
-                                "_action_label": "Согласовать",
-                                "_conditionalView": true,
-                                "_action_conditionals_manual": "manual",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732482871351",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{up_manager.webuser_id.id}},{{up_manager.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ]
+                                "id": "17316636790850.102213203320222112344332",
+                                "_field": "contract_period",
+                                "_field_required": true,
+                                "_field_set_default": true,
+                                "_field_default_value": "3 месяца"
                             }
                         ],
                         "_conditionalView": true,
                         "_conditions": [
                             {
-                                "id": "condition_1732482924734",
-                                "_conditionalView_field": "status",
+                                "id": "condition_1731663687705",
+                                "_conditionalView_field": "contract_type",
                                 "_conditionalView_operator": "==",
-                                "_conditionalView_value": "approval_up_direct"
-                            },
-                            {
-                                "id": "condition_1732482956891",
-                                "_conditionalView_value": "hg_agreement",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains"
+                                "_conditionalView_value": "fixed_term"
                             }
                         ]
                     },
                     {
-                        "id": "elmnt_1732658642280",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17326586444180.0131213420032434042440423",
-                                "_action": "action_1732651518110",
-                                "_action_button_type": "accent",
-                                "_action_oneTime": true,
-                                "_action_oneTime_message": "Данные обновлены!",
-                                "_action_standardRequired": true,
-                                "_conditionalView": true,
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732658687048",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732658704584",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR",
-                                "_action_label": "Сохранить"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732658790843",
-                                "_conditionalView_field": "status",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "approval_up_direct"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732658731511",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17326587338440.30031423331122102442104",
-                                "_action": "action_1732651133793",
-                                "_action_button_type": "accent",
-                                "_action_oneTime": true,
-                                "_action_oneTime_message": "Заявка согласована",
-                                "_action_standardRequired": true,
-                                "_conditionalView": true,
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732658779027",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{hr_bp.webuser_id.whom_delegate_ids}},{{hr_bpюwebuser.id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732658854633",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_hrbp"
-                                    }
-                                ],
-                                "_action_label": "Согласовать",
-                                "_action_icon": "done"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732658857260",
-                                "_conditionalView_field": "status",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "approval_hrbp"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732699301472",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17326993037550.31420022343022242323324",
-                                "_action": "action_1732651179526",
-                                "_action_label": "Согласовать",
-                                "_action_button_type": "accent",
-                                "_action_icon": "done",
-                                "_action_oneTime": true,
-                                "_action_oneTime_message": "Заявка согласована",
-                                "_action_standardRequired": true,
-                                "_conditionalView": true,
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732699364605",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{approval_1.webuser_id.id}},{{approval_1.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732699366122",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732699545942",
-                                "_conditionalView_field": "status",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "add_approval_1"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732699667177",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17326996710530.3033114323314242343023",
-                                "_action": "action_1732651236776",
-                                "_action_label": "Согласовать",
-                                "_action_button_type": "accent",
-                                "_action_icon": "done",
-                                "_action_oneTime": true,
-                                "_action_oneTime_message": "Заявка согласована",
-                                "_action_standardRequired": true,
-                                "_conditionalView": true,
-                                "_action_conditional_disable_or_hide": "hide",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732699728094",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{approval_2.webuser_id.id}},{{approval_2.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732699730260",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_agreement"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732699704927",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "add_approval_2",
-                                "_conditionalView_field": "status"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732705481747",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17327054867890.14200341140010014433433",
-                                "_action": "action_1732651299676",
-                                "_action_label": "Согласовать",
-                                "_action_icon": "done",
-                                "_action_button_type": "accent",
-                                "_action_oneTime": true,
-                                "_action_oneTime_message": "Заявка согласована",
-                                "_action_standardRequired": true,
-                                "_conditionalView": true,
-                                "_action_conditional_disable_or_hide": "hide",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732705520630",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{cnb.webuser_id.id}},{{cnb.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732705523263",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_cnb"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732705564314",
-                                "_conditionalView_field": "status",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "approval_cnb"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732706323868",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17327063268330.003443134120314304302114",
-                                "_action": "action_1732651369093",
-                                "_action_label": "Согласовать",
-                                "_action_icon": "done",
-                                "_action_button_type": "accent",
-                                "_action_oneTime": true,
-                                "_action_oneTime_message": "Заявка согласована",
-                                "_action_standardRequired": true,
-                                "_conditionalView": true,
-                                "_action_conditional_disable_or_hide": "hide",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732706358949",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{budget_holder.webuser_id.id}},{{budget_holder.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732706367833",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_budget_holder"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "elmnt_1732706927642",
-                        "type": "action",
+                        "id": "elmnt_1731664011420",
+                        "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17327069310840.04214121341203334334201"
-                            }
-                        ],
-                        "_actions": [
-                            {
-                                "id": "17327069331810.134302434222201124111233",
-                                "_action": "action_1732651413276",
-                                "_action_label": "Подтвердить",
-                                "_action_icon": "done",
-                                "_action_button_type": "accent",
-                                "_action_oneTime": true,
-                                "_action_oneTime_message": "Рекрутер назначен",
-                                "_action_standardRequired": true,
-                                "_conditionalView": true,
-                                "_action_conditional_disable_or_hide": "hide",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732706971725",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{teamlead.webuser_id.id}},{{teamlead.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732706986998",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_recruiter"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
+                                "id": "17316640133890.04044033422302210441021",
+                                "_field": "reason_contract",
+                                "_field_required": true,
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "hg_reason_fixed_contract_type"
                             }
                         ],
                         "_conditionalView": true,
                         "_conditions": [
                             {
-                                "id": "condition_1732707661828",
-                                "_conditionalView_value": "teamlead",
-                                "_conditionalView_field": "status",
-                                "_conditionalView_operator": "=="
+                                "id": "condition_1731664187504",
+                                "_conditionalView_field": "contract_type",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "fixed_term"
                             }
                         ]
                     },
                     {
-                        "id": "elmnt_1732707091921",
-                        "type": "action",
-                        "_actions": [
+                        "id": "elmnt_1732091208592",
+                        "type": "input",
+                        "_input_fields": [
                             {
-                                "id": "17327073896050.42004331340122003034231",
-                                "_action": "action_1732651734130",
-                                "_action_button_type": "accent",
-                                "_action_label": "Сохранить",
-                                "_action_standardRequired": true,
-                                "_action_oneTime": true,
-                                "_action_oneTime_message": "Данные сохранены",
-                                "_conditionalView": true,
-                                "_action_conditional_disable_or_hide": "hide",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732707527382",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{teamlead.webuser_id.id}},{{teamlead.webuser_id.whom_delegate_ids}},{{recruiter.webuser_id.id}},{{recruiter.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732707543050",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_recruiter"
-                                    },
-                                    {
-                                        "id": "condition_1732873878329",
-                                        "_conditionalView_field": "which_candidate",
-                                        "_conditionalView_operator": "isNull"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732707570729",
-                                "_conditionalView_field": "status",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "recruitment"
-                            }
-                        ],
-                        "_actions_in_a_row": 1
-                    },
-                    {
-                        "id": "elmnt_1732877561718",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17328775650380.20012132040143020310024",
-                                "_action": "action_1732651462965",
-                                "_action_label": "Кандидат оформлен",
-                                "_action_button_type": "accent",
-                                "_action_oneTime": true,
-                                "_action_oneTime_message": "Заявка закрыта",
-                                "_action_standardRequired": true,
-                                "_conditionalView": true,
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732877602601",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{recruiter.webuser_id.id}},{{recruiter.webuser_id.whom_delegate_ids}},{{teamlead.webuser_id.id}},{{teamlead.webuser_id.whom_delegate_ids}}",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732877608733",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_recruiter"
-                                    },
-                                    {
-                                        "id": "condition_1732877842433",
-                                        "_conditionalView_field": "which_candidate",
-                                        "_conditionalView_operator": "isNull"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            },
-                            {
-                                "id": "17328775661080.33400434123102020101434",
-                                "_action": "action_1732650623791",
-                                "_action_button_type": "danger",
-                                "_action_oneTime": true,
-                                "_action_oneTime_message": "Заявка отменена",
-                                "_conditionalView": true,
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732877735733",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{teamlead.webuser_id.id}},{{teamlead.webuser_id.whom_delegate_ids}} ",
-                                        "_conditionalView_value_RAW": true
-                                    },
-                                    {
-                                        "id": "condition_1732877744966",
-                                        "_conditionalView_field": "WebUser.role",
-                                        "_conditionalView_operator": "notContains",
-                                        "_conditionalView_value": "hg_recruiter"
-                                    }
-                                ],
-                                "_action_conditionals_and_or": "OR"
-                            }
-                        ],
-                        "_actions_in_a_row": 2,
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1732877782600",
-                                "_conditionalView_field": "status",
-                                "_conditionalView_operator": "==",
-                                "_conditionalView_value": "recruitment"
+                                "id": "17320912113540.41101432322103010013002",
+                                "_field": "job_rate",
+                                "_field_required": true,
+                                "_field_set_default": true,
+                                "_field_default_value": "1,0"
                             }
                         ]
                     },
                     {
-                        "id": "elmnt_1732652198093",
-                        "type": "action",
+                        "id": "elmnt_1732091251222",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17320912602240.020433143041003310231",
+                                "_field": "employment_type",
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "hg_employment_type",
+                                "_field_required": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1732091274156",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17320912775350.2332312301120200304224",
+                                "_field": "work_place",
+                                "_field_required": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1732091275190",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17320912951640.42304211432311433324211",
+                                "_field": "work_schedule",
+                                "_field_required": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1732091275892",
+                        "type": "input",
                         "_actions": [
                             {
-                                "id": "17326522004040.033314343130443333103341",
-                                "_action": "action_1732650623791",
-                                "_action_button_type": "danger",
-                                "_conditionalView": true,
-                                "_action_conditional_disable_or_hide": "hide",
-                                "_conditions": [
-                                    {
-                                        "id": "condition_1732652219336",
-                                        "_conditionalView_field": "WebUser.id",
-                                        "_conditionalView_operator": "notIn",
-                                        "_conditionalView_value": "{{user_creator.webuser_id.whom_delegate_ids}},{{user_creator.webuser_id.id}},{{manager.webuser_id.whom_delegate_ids}},{{manager.webuser_id.id}},{{hr_bp.webuser_id.whom_delegate_ids}},{{hr_bp.webuser_id.id}}",
-                                        "_conditionalView_value_RAW": true
-                                    }
-                                ]
+                                "id": "17320913149490.0111414421240342011211323"
+                            }
+                        ],
+                        "_input_fields": [
+                            {
+                                "id": "17320913170250.4322043232004311414434",
+                                "_field": "salary",
+                                "_field_required": false
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1732091377624",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17320913884850.33110433123001220220341",
+                                "_field": "period_bonus",
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "hg_period_bonus",
+                                "_field_required": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1732091401807",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17320914081760.12141120320432343300111",
+                                "_field": "per_bonus",
+                                "_field_required": true
                             }
                         ],
                         "_conditionalView": true,
                         "_conditions": [
                             {
-                                "id": "condition_1732652276138",
+                                "id": "condition_1732091422924",
+                                "_conditionalView_field": "period_bonus",
+                                "_conditionalView_operator": "!==",
+                                "_conditionalView_value": "without_bonus"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1732091446859",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17320914573240.0014403212334400114243",
+                                "_field": "responsibilities",
+                                "_field_required": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1732091447692",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17320914709390.11434313041223123422131",
+                                "_field": "prof_skills",
+                                "_field_required": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1732091448271",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17320914766390.04322133324014020002443",
+                                "_field": "candidate_description"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1732091490779",
+                        "type": "text",
+                        "paraText": "<b>Участники процесса согласования</b>"
+                    },
+                    {
+                        "id": "elmnt_1732091521661",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17320915556390.0030414023343311133403321",
+                                "_field": "user_creator",
+                                "_field_link_type": "complexSelect",
+                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
+                                "_conditionalView": true,
+                                "_conditionalView_disable_or_hide": "disable"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1732091522366",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17320999299730.011011404431303240113223",
+                                "_field": "hr_bp_creator"
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1732099954182",
                                 "_conditionalView_field": "WebUser.role",
                                 "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "hg_agreement,hg_hrbp"
+                                "_conditionalView_value": "hg_hrbp"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1732100022539",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17321000291010.41103003230413030234332",
+                                "_field": "manager",
+                                "_field_link_type": "complexSelect",
+                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
+                                "_field_required": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1732100023796",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17321000640120.43122000300402040230021",
+                                "_field": "up_manager",
+                                "_field_link_type": "complexSelect",
+                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
+                                "_field_required": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1732100089928",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17321000916940.4212413244140120103334",
+                                "_field": "hr_bp",
+                                "_field_link_type": "complexSelect",
+                                "_field_arrayLink_endpoint": "employees_full_name_dropdown",
+                                "_field_required": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "elmnt_1732091523028",
+                        "type": "submit",
+                        "submitLabel": "Отправить",
+                        "submitKeepModel": true,
+                        "submitStep": "approval_up_direct",
+                        "submitAdditionalMapping": true,
+                        "submitMapping": [
+                            {
+                                "id": "submitMapping1732099622630",
+                                "field": "status",
+                                "value": "approval_up_direct"
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1733212286236",
+                                "_conditionalView_field": "hr_bp_creator",
+                                "_conditionalView_operator": "isNull",
+                                "_conditionalView_value": "{}"
                             },
                             {
-                                "id": "condition_1732652297760",
-                                "_conditionalView_field": "status",
-                                "_conditionalView_operator": "notIn",
-                                "_conditionalView_value": "closed,rejected"
+                                "id": "condition_1733212799847",
+                                "_conditionalView_field": "hr_bp_creator",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "{}"
+                            }
+                        ],
+                        "_action_conditionals_and_or": "OR"
+                    },
+                    {
+                        "id": "elmnt_1733212280552",
+                        "type": "submit",
+                        "submitLabel": "Отправить",
+                        "submitStep": "approval_direct",
+                        "submitKeepModel": true,
+                        "submitAdditionalMapping": true,
+                        "submitMapping": [
+                            {
+                                "id": "submitMapping1733212465320",
+                                "field": "status",
+                                "value": "approval_direct"
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1733212487719",
+                                "_conditionalView_field": "hr_bp_creator",
+                                "_conditionalView_operator": "==",
+                                "_conditionalView_value": "{\"hrbp\":true}"
                             }
                         ]
                     }
                 ],
-                "sectionVisibility": "always"
+                "sectionVisibility": "custom",
+                "sectionCustomVisibility": "{{status}},new,null"
             },
             {
                 "id": "step_submitted",
-                "sysName": "submitted",
-                "elements": []
+                "sysName": "approval_up_direct",
+                "elements": [
+                    {
+                        "id": "elmnt_1712052683797",
+                        "type": "hint",
+                        "hintColor": "ok",
+                        "hintTitle": "Заявка успешно отправлена!",
+                        "hintText": "<p>Отследить статус можно в разделе <a href=\"https://lamoda-hr.directual.app/hiring-list\">Заявки на наем</a></p>"
+                    }
+                ]
+            },
+            {
+                "id": "step_1733212570005",
+                "sysName": "approval_direct",
+                "elements": [
+                    {
+                        "id": "elmnt_1733212577788",
+                        "type": "hint",
+                        "hintColor": "ok",
+                        "hintTitle": "Заявка успешно отправлена!",
+                        "hintText": "<p>Отследить статус можно в разделе <a href=\"https://lamoda-hr.directual.app/hiring-list\">Заявки на наем</a></p>"
+                    }
+                ]
             }
         ],
         "general": {
             "edittingOn": true,
-            "showModel": false,
-            "showFullModel": false,
             "autosubmit": "model",
             "autosubmit_model": [
-                "management_division",
-                "management_position",
-                "management_direct",
-                "resigning_empl_full_name"
-            ]
+                "reason_vacancy",
+                "hr_bp_creator",
+                "division",
+                "resigning_empl_full_name",
+                "replacement_status"
+            ],
+            "showModel": true,
+            "showState": false,
+            "showFullModel": false,
+            "debugForUsers": true,
+            "debugUsers": "hrbp"
         },
         "state": {
             "step": "{{status}}",
-            "popup": null
-        },
-        "actions": [
-            {
-                "id": "action_1732482315979",
-                "name": "Согласовать approval_up_direct",
-                "actionType": "endpoint",
-                "endpoint": "hg_actions",
-                "actionSubmit": true,
-                "stateMapping": [
-                    {
-                        "id": "stateMapping1732482415817"
-                    }
-                ],
-                "mapping": [
-                    {
-                        "id": "mapping_1732482651518",
-                        "field": "action",
-                        "value": "change_status"
-                    },
-                    {
-                        "id": "mapping_1732482681485",
-                        "field": "pay_load",
-                        "value": "approval_hrbp"
-                    }
-                ]
-            },
-            {
-                "id": "action_1732650623791",
-                "name": "Отменить",
-                "actionType": "state",
-                "endpoint": "hg_actions",
-                "stateMapping": [
-                    {
-                        "id": "stateMapping1732651069676",
-                        "field": "FormState.popup",
-                        "value": "popup_cancel"
-                    }
-                ]
-            },
-            {
-                "id": "action_1732651014844",
-                "name": "Закрыть popup",
-                "actionType": "state",
-                "stateMapping": [
-                    {
-                        "id": "stateMapping1732651026525",
-                        "field": "FormState.popup"
-                    }
-                ]
-            },
-            {
-                "id": "action_1732651080144",
-                "name": "Ок (cancel)",
-                "actionType": "endpoint",
-                "endpoint": "hg_actions",
-                "mapping": [
-                    {
-                        "id": "mapping_1732651115709",
-                        "field": "action",
-                        "value": "cancel"
-                    }
-                ],
-                "actionSubmit": true
-            },
-            {
-                "id": "action_1732651133793",
-                "name": "Согласовать approval_hr_bp",
-                "actionType": "endpoint",
-                "endpoint": "hg_actions",
-                "mapping": [
-                    {
-                        "id": "mapping_1732651169112",
-                        "field": "action",
-                        "value": "hrbp"
-                    }
-                ],
-                "actionSubmit": true
-            },
-            {
-                "id": "action_1732651179526",
-                "name": "Согласовать add_approval_1",
-                "actionType": "endpoint",
-                "endpoint": "hg_actions",
-                "mapping": [
-                    {
-                        "id": "mapping_1732651218681",
-                        "field": "action",
-                        "value": "approval_1"
-                    }
-                ],
-                "actionSubmit": true
-            },
-            {
-                "id": "action_1732651236776",
-                "name": "Согласовать add_approval_2",
-                "actionType": "endpoint",
-                "endpoint": "hg_actions",
-                "mapping": [
-                    {
-                        "id": "mapping_1732651272598",
-                        "field": "action",
-                        "value": "change_status"
-                    },
-                    {
-                        "id": "mapping_1732651276279",
-                        "field": "pay_load",
-                        "value": "approval_cnb"
-                    }
-                ],
-                "actionSubmit": true
-            },
-            {
-                "id": "action_1732651299676",
-                "name": "Согласовать approval_cnb",
-                "actionType": "endpoint",
-                "endpoint": "hg_actions",
-                "mapping": [
-                    {
-                        "id": "mapping_1732651330759",
-                        "field": "action",
-                        "value": "change_status"
-                    },
-                    {
-                        "id": "mapping_1732651342761",
-                        "field": "pay_load",
-                        "value": "approval_budget_holder"
-                    }
-                ],
-                "actionSubmit": true
-            },
-            {
-                "id": "action_1732651369093",
-                "name": "Согласовать approval_budget_holder",
-                "actionType": "endpoint",
-                "endpoint": "hg_actions",
-                "mapping": [
-                    {
-                        "id": "mapping_1732651385499",
-                        "field": "action",
-                        "value": "change_status"
-                    },
-                    {
-                        "id": "mapping_1732651396097",
-                        "field": "pay_load",
-                        "value": "teamlead"
-                    }
-                ],
-                "actionSubmit": true
-            },
-            {
-                "id": "action_1732651413276",
-                "name": "Подтвердить teamlead",
-                "actionType": "endpoint",
-                "endpoint": "hg_actions",
-                "mapping": [
-                    {
-                        "id": "mapping_1732651425543",
-                        "field": "action",
-                        "value": "change_status"
-                    },
-                    {
-                        "id": "mapping_1732651426543",
-                        "field": "pay_load",
-                        "value": "recruitment"
-                    }
-                ],
-                "actionSubmit": true
-            },
-            {
-                "id": "action_1732651462965",
-                "name": "Заявка закрыта",
-                "actionType": "endpoint",
-                "endpoint": "hg_actions",
-                "mapping": [
-                    {
-                        "id": "mapping_1732651501797",
-                        "field": "action",
-                        "value": "change_status"
-                    },
-                    {
-                        "id": "mapping_1732654061910",
-                        "field": "pay_load",
-                        "value": "closed"
-                    }
-                ],
-                "actionSubmit": true
-            },
-            {
-                "id": "action_1732651518110",
-                "name": "Сохранить нанимающий",
-                "actionType": "endpoint",
-                "endpoint": "hg_actions",
-                "mapping": [
-                    {
-                        "id": "mapping_1732651532761",
-                        "field": "action",
-                        "value": "save"
-                    }
-                ],
-                "actionSubmit": true
-            },
-            {
-                "id": "action_1732651734130",
-                "name": "Сохранить вакансия в работе",
-                "actionType": "endpoint",
-                "endpoint": "hg_actions",
-                "mapping": [
-                    {
-                        "id": "mapping_1732651767713",
-                        "field": "action",
-                        "value": "save"
-                    }
-                ],
-                "actionSubmit": true
-            },
-            {
-                "id": "action_1732651863436",
-                "name": "Переназначить",
-                "actionType": "endpoint",
-                "endpoint": "hg_actions",
-                "mapping": [
-                    {
-                        "id": "mapping_1732651883566",
-                        "field": "action",
-                        "value": "new_responsible"
-                    }
-                ],
-                "actionSubmit": true
-            },
-            {
-                "id": "action_1733210091604",
-                "name": "Согласовать approval_direct",
-                "actionType": "endpoint",
-                "endpoint": "hg_actions",
-                "mapping": [
-                    {
-                        "id": "mapping_1733210119819",
-                        "field": "action",
-                        "value": "change_status"
-                    },
-                    {
-                        "id": "mapping_1733210121137",
-                        "field": "pay_load",
-                        "value": "approval_up_direct"
-                    }
-                ],
-                "actionSubmit": true
-            }
-        ]
+            "popup": null,
+            "application_id": "",
+            "application_number": ""
+        }
     },
     "tableTitle": null,
     "actions": null,
@@ -13557,6 +1865,862 @@ let exampleForm =  {
             "linkType": false,
             "arrayLink": false,
             "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "internal_candidate_name",
+            "dataType": "link",
+            "name": "ФИО внутреннего кандидата",
+            "id": "51041732098190614",
+            "link": "employees",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 13,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "which_candidate",
+            "dataType": "link",
+            "name": "Кем будет закрыта вакансия?",
+            "id": "65291732098169032",
+            "link": "hg_which_candidate",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 12,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "recruiter",
+            "dataType": "link",
+            "name": "Отвественный рекрутер",
+            "id": "50501732098143748",
+            "link": "employees",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 11,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "teamlead",
+            "dataType": "link",
+            "name": "Руководитель направления подбора персонала",
+            "id": "36711732098134082",
+            "link": "employees",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 10,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "cnb",
+            "dataType": "link",
+            "name": "C&B",
+            "id": "14371732098124414",
+            "link": "employees",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 9,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "budget_holder",
+            "dataType": "link",
+            "name": "Держатель бюджета",
+            "id": "22461732098115380",
+            "link": "employees",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 8,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "approval_2",
+            "dataType": "link",
+            "name": "Дополнительный согласующий (руководитель) 2",
+            "id": "60781732097962282",
+            "link": "employees",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 7,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "approval_1",
+            "dataType": "link",
+            "name": "Дополнительный согласующий (руководитель) 1 ",
+            "id": "85491732097941627",
+            "link": "employees",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 5,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "add_approval_2",
+            "dataType": "json",
+            "name": "Добавить дополнительного согласующего?",
+            "id": "14161732097917550",
+            "link": "",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 6,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "checkboxes",
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOption": false,
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false",
+                "multipleChoice": [
+                    {
+                        "value": "add",
+                        "label": null
+                    }
+                ]
+            },
+            "groupName": null,
+            "typeVariable": {},
+            "json": true,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "add_approval_1",
+            "dataType": "json",
+            "name": "Добавить дополнительного согласующего?",
+            "id": "93711732097810014",
+            "link": "",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "checkboxes",
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false",
+                "multipleChoice": [
+                    {
+                        "value": "add",
+                        "label": null
+                    }
+                ]
+            },
+            "groupName": null,
+            "typeVariable": {},
+            "json": true,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "hr_bp",
+            "dataType": "link",
+            "name": "Cогласующий HR BP",
+            "id": "54801732097785732",
+            "link": "employees",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "up_manager",
+            "dataType": "link",
+            "name": "Верхнеуровневый руководитель",
+            "id": "21751732097711574",
+            "link": "employees",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "hr_bp_creator",
+            "dataType": "json",
+            "name": "Заявка создана HR BP, вместо руководителя",
+            "id": "13741732097541879",
+            "link": "",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "checkboxes",
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false",
+                "multipleChoice": [
+                    {
+                        "value": "hrbp",
+                        "label": null
+                    }
+                ]
+            },
+            "groupName": null,
+            "typeVariable": {},
+            "json": true,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "manager",
+            "dataType": "link",
+            "name": "Нанимающий менеджер",
+            "id": "94501732097520540",
+            "link": "employees",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "last_change_date",
+            "dataType": "date",
+            "name": "Дата последнего изменения",
+            "id": "54871732097356664",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 11,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "ru",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD.MM.YYYY",
+                "timeFormat": " HH:mm",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "all_user_ids",
+            "dataType": "arrayLink",
+            "name": "Все пользователи, относящиеся к заявке",
+            "id": "56911732097330019",
+            "link": "employees",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 10,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": false,
+            "arrayLink": true,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "responsible_roles",
+            "dataType": "arrayLink",
+            "name": "Ответственные роли",
+            "id": "20831732097292042",
+            "link": "roles",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 9,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": false,
+            "arrayLink": true,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "responsible_employee_id",
+            "dataType": "link",
+            "name": "Ответственный за текущий этап",
+            "id": "80521732097268481",
+            "link": "employees",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 8,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "date",
+            "dataType": "date",
+            "name": "Дата создания заявки",
+            "id": "38501732097228191",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 7,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "ru",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD.MM.YYYY",
+                "timeFormat": " HH:mm",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "number",
+            "dataType": "string",
+            "name": "Номер заявки",
+            "id": "19551732097216287",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 6,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "logs",
+            "dataType": "arrayLink",
+            "name": "История изменений",
+            "id": "61921732097200714",
+            "link": "hg_logs",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 5,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": false,
+            "arrayLink": true,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "user_creator",
+            "dataType": "link",
+            "name": "Инициатор заявки",
+            "id": "51381732097181650",
+            "link": "employees",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "last_user",
+            "dataType": "link",
+            "name": "Кем изменено",
+            "id": "27981732097155934",
+            "link": "WebUser",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "prev_status",
+            "dataType": "link",
+            "name": "Предыдущий статус",
+            "id": "50941732097133797",
+            "link": "hg_statuses",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "status",
+            "dataType": "link",
+            "name": "Статус",
+            "id": "77021732097122174",
+            "link": "hg_statuses",
+            "group": "0",
+            "tags": "",
+            "indexing": true,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [
+                "id"
+            ],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": true,
             "array": false
         },
         {
@@ -13661,7 +2825,35 @@ let exampleForm =  {
             "constraints": null,
             "synthetic": false,
             "format": "positiveNum",
-            "formatOptions": {},
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: Number,\n    min: -10000,\n    max: 10000,\n    thousandsSeparator: ' '\n  }",
+                "isUTC": "false"
+            },
             "groupName": null,
             "typeVariable": {},
             "json": false,
@@ -13717,7 +2909,35 @@ let exampleForm =  {
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": {},
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: Number,\n    scale: 2,\n    thousandsSeparator: '',\n    padFractionalZeros: false,\n    normalizeZeros: true,\n    radix: ',',\n    mapToRadix: ['.']\n  }",
+                "isUTC": "false"
+            },
             "groupName": null,
             "typeVariable": {},
             "json": false,
@@ -13829,7 +3049,35 @@ let exampleForm =  {
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": {},
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: Number,\n    scale: 2,\n    thousandsSeparator: '',\n    padFractionalZeros: false,\n    normalizeZeros: true,\n    radix: ',',\n    mapToRadix: ['.']\n  }",
+                "isUTC": "false"
+            },
             "groupName": null,
             "typeVariable": {},
             "json": false,
@@ -14368,1721 +3616,32 @@ let exampleForm =  {
             "arrayLink": false,
             "indexExists": false,
             "array": false
-        },
-        {
-            "sysName": "internal_candidate_name",
-            "dataType": "link",
-            "name": "ФИО внутреннего кандидата",
-            "id": "51041732098190614",
-            "link": "employees",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 13,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "which_candidate",
-            "dataType": "link",
-            "name": "Кем будет закрыта вакансия?",
-            "id": "65291732098169032",
-            "link": "hg_which_candidate",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 12,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "recruiter",
-            "dataType": "link",
-            "name": "Отвественный рекрутер",
-            "id": "50501732098143748",
-            "link": "employees",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 11,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "teamlead",
-            "dataType": "link",
-            "name": "Руководитель направления подбора персонала",
-            "id": "36711732098134082",
-            "link": "employees",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 10,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "cnb",
-            "dataType": "link",
-            "name": "C&B",
-            "id": "14371732098124414",
-            "link": "employees",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 9,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "budget_holder",
-            "dataType": "link",
-            "name": "Держатель бюджета",
-            "id": "22461732098115380",
-            "link": "employees",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 8,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "approval_2",
-            "dataType": "link",
-            "name": "Дополнительный согласующий (руководитель) 2",
-            "id": "60781732097962282",
-            "link": "employees",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 7,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "approval_1",
-            "dataType": "link",
-            "name": "Дополнительный согласующий (руководитель) 1 ",
-            "id": "85491732097941627",
-            "link": "employees",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 5,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "add_approval_2",
-            "dataType": "json",
-            "name": "Добавить дополнительного согласующего?",
-            "id": "14161732097917550",
-            "link": "",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 6,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": "checkboxes",
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOption": false,
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD/MM/Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false",
-                "multipleChoice": [
-                    {
-                        "value": "add",
-                        "label": null
-                    }
-                ]
-            },
-            "groupName": null,
-            "typeVariable": {},
-            "json": true,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "add_approval_1",
-            "dataType": "json",
-            "name": "Добавить дополнительного согласующего?",
-            "id": "93711732097810014",
-            "link": "",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 4,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": "checkboxes",
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD/MM/Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false",
-                "multipleChoice": [
-                    {
-                        "value": "add",
-                        "label": null
-                    }
-                ]
-            },
-            "groupName": null,
-            "typeVariable": {},
-            "json": true,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "hr_bp",
-            "dataType": "link",
-            "name": "HR BP",
-            "id": "54801732097785732",
-            "link": "employees",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 3,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "up_manager",
-            "dataType": "link",
-            "name": "Верхнеуровневый руководитель",
-            "id": "21751732097711574",
-            "link": "employees",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 2,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "hr_bp_creator",
-            "dataType": "json",
-            "name": "Заявка создана HRBP",
-            "id": "13741732097541879",
-            "link": "",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": "checkboxes",
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD/MM/Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false",
-                "multipleChoice": [
-                    {
-                        "value": "hrbp",
-                        "label": null
-                    }
-                ]
-            },
-            "groupName": null,
-            "typeVariable": {},
-            "json": true,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "manager",
-            "dataType": "link",
-            "name": "Нанимающий менеджер",
-            "id": "94501732097520540",
-            "link": "employees",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 0,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "responsible_employee_id",
-            "dataType": "link",
-            "name": "Ответственный за текущий этап",
-            "id": "80521732097268481",
-            "link": "employees",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 8,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "date",
-            "dataType": "date",
-            "name": "Дата создания заявки",
-            "id": "38501732097228191",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 7,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "ru",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD.MM.YYYY",
-                "timeFormat": " HH:mm",
-                "isUTC": "true"
-            },
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "number",
-            "dataType": "string",
-            "name": "Номер заявки",
-            "id": "19551732097216287",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 6,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "logs",
-            "dataType": "arrayLink",
-            "name": "История изменений",
-            "id": "61921732097200714",
-            "link": "hg_logs",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 5,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": false,
-            "arrayLink": true,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "user_creator",
-            "dataType": "link",
-            "name": "Инициатор заявки",
-            "id": "51381732097181650",
-            "link": "employees",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 4,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "prev_status",
-            "dataType": "link",
-            "name": "Предыдущий статус",
-            "id": "50941732097133797",
-            "link": "hg_statuses",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 2,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "status",
-            "dataType": "link",
-            "name": "Статус",
-            "id": "77021732097122174",
-            "link": "hg_statuses",
-            "group": "0",
-            "tags": "",
-            "indexing": true,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [
-                "id"
-            ],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": true,
-            "array": false
-        },
-        {
-            "sysName": "last_change_date",
-            "dataType": "date",
-            "name": "Дата последнего изменения",
-            "id": "54871732097356664",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 11,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "ru",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD.MM.YYYY",
-                "timeFormat": " HH:mm",
-                "isUTC": "true"
-            },
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "all_user_ids",
-            "dataType": "arrayLink",
-            "name": "Все пользователи, относящиеся к заявке",
-            "id": "56911732097330019",
-            "link": "employees",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 10,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": false,
-            "arrayLink": true,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "responsible_roles",
-            "dataType": "arrayLink",
-            "name": "Ответственные роли",
-            "id": "20831732097292042",
-            "link": "roles",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 9,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": false,
-            "arrayLink": true,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "last_user",
-            "dataType": "link",
-            "name": "Кем изменено",
-            "id": "27981732097155934",
-            "link": "WebUser",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 3,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "hide_income",
-            "dataType": "boolean",
-            "name": "Скрыть поля дохода?",
-            "id": "34721732524127128",
-            "link": "",
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 42,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "Да",
-                    "Нет"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD/MM/Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "comment_salary",
-            "dataType": "string",
-            "name": "Комментарий к структуре надбавок",
-            "id": "29541732524051837",
-            "link": null,
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 41,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "cost_center",
-            "dataType": "string",
-            "name": "Кост-центр",
-            "id": "31801732524038668",
-            "link": null,
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 40,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "analytics_ops",
-            "dataType": "link",
-            "name": "Категория персонала (Analytics for OPS)",
-            "id": "21631732523965857",
-            "link": "hg_analytics_for_ops",
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 39,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "position_name",
-            "dataType": "string",
-            "name": "Position name",
-            "id": "39831732523953542",
-            "link": null,
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 38,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "legal_direct",
-            "dataType": "link",
-            "name": "ФИО руководителя",
-            "id": "74661732523748577",
-            "link": "employees",
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 37,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "management_direct",
-            "dataType": "link",
-            "name": "ФИО руководителя",
-            "id": "18191732523739162",
-            "link": "employees",
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 36,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "legal_position",
-            "dataType": "string",
-            "name": "Должность",
-            "id": "47821732523738367",
-            "link": null,
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 35,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "management_position",
-            "dataType": "string",
-            "name": "Должность",
-            "id": "95841732523725558",
-            "link": null,
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 34,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "legal_division",
-            "dataType": "link",
-            "name": "Подразделение",
-            "id": "79361732523718953",
-            "link": "structure",
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 33,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "management_division",
-            "dataType": "link",
-            "name": "Подразделение",
-            "id": "74581732523685221",
-            "link": "structure",
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 32,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "structures_difference",
-            "dataType": "boolean",
-            "name": "Есть ли разница в управленческой и юридической структурах?",
-            "id": "40731732523540970",
-            "link": "",
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 31,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "Да",
-                    "Нет"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD/MM/Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "select_structure",
-            "dataType": "link",
-            "name": "В какой структуре будут происходить изменения?",
-            "id": "26721732523217174",
-            "link": "hg_select_structure",
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 30,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "org_dev",
-            "dataType": "boolean",
-            "name": "Нужен OrgDev?",
-            "id": "75441732523216236",
-            "link": "",
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 29,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "Да",
-                    "Нет"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD/MM/Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "id_position",
-            "dataType": "string",
-            "name": "Код позиции (из УШР)",
-            "id": "37671732523177005",
-            "link": null,
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 28,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "vacancy_id",
-            "dataType": "string",
-            "name": "ID вакансии (из Optimacros)",
-            "id": "85101732523164507",
-            "link": null,
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 27,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "budget_date",
-            "dataType": "date",
-            "name": "Бюджетная дата от C&B",
-            "id": "77191732523054191",
-            "link": "",
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 26,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "ru",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD.MM.YYYY",
-                "timeFormat": "",
-                "isUTC": "true"
-            },
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "cancel_reason",
-            "dataType": "string",
-            "name": "Укажите причину",
-            "id": "13271732534584664",
-            "link": null,
-            "group": "1732097408116",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 0,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
         }
     ],
     "data": [
         {
-            "number": "HG-173749",
-            "prev_status": {
-                "next_status_ids": [
-                    {
-                        "status": "Согласование с C&B",
-                        "id": "approval_cnb"
-                    },
-                    {
-                        "status": "Согласование с доп согласующим 1",
-                        "id": "add_approval_1"
-                    }
-                ],
-                "id": "approval_hrbp",
-                "status": "Согласование с HRBP"
-            },
-            "per_bonus": 1,
-            "conf_search": false,
-            "user_creator": {
-                "email": "aleksandra.kalina@lamoda.ru",
-                "division_name": "Группа бизнес-анализа",
-                "id": "aleksandra.kalina@lamoda.ru",
-                "position": "Аналитик по развитию корпоративных бизнес-приложений",
-                "webuser_id": {
-                    "who_delegated_ids": [],
-                    "role": [
-                        "jo_recruiter",
-                        "jo_agreement",
-                        "jo_hrbp",
-                        "st_orgdev",
-                        "hg_hrbp",
-                        "admin",
-                        "demo"
-                    ],
-                    "whom_delegate_ids": [],
-                    "id": "aleksandra.kalina@lamoda.ru"
-                },
-                "employee_full_name": "Александра Калина"
-            },
-            "period_bonus": {
-                "period": "2. Месяц",
-                "id": "month"
-            },
-            "last_change_date": 1732658288000,
-            "division": {
-                "division_name": "Участок переупаковки",
-                "full_hierarchy": "Распределительный центр\\Складской отдел\\Смена №2\\Входящий поток\\Участок переупаковки",
-                "division_num": "RU000001425",
-                "id": "1539",
-                "division_id": "1539"
-            },
-            "work_place": "1",
-            "responsible_employee_id": {
-                "email": "aleksandra.kalina@lamoda.ru",
-                "division_name": "Группа бизнес-анализа",
-                "id": "aleksandra.kalina@lamoda.ru",
-                "position": "Аналитик по развитию корпоративных бизнес-приложений",
-                "webuser_id": {
-                    "who_delegated_ids": [],
-                    "role": [
-                        "jo_recruiter",
-                        "jo_agreement",
-                        "jo_hrbp",
-                        "st_orgdev",
-                        "hg_hrbp",
-                        "admin",
-                        "demo"
-                    ],
-                    "whom_delegate_ids": [],
-                    "id": "aleksandra.kalina@lamoda.ru"
-                },
-                "employee_full_name": "Александра Калина"
-            },
-            "company": {
-                "company": "ЛАМОДА ТЕХ АМ",
-                "id": "lamoda_tech_am"
-            },
-            "work_schedule": "1",
-            "salary": -1,
-            "hr_bp": {
-                "email": "aleksandra.kalina@lamoda.ru",
-                "division_name": "Группа бизнес-анализа",
-                "id": "aleksandra.kalina@lamoda.ru",
-                "position": "Аналитик по развитию корпоративных бизнес-приложений",
-                "webuser_id": {
-                    "who_delegated_ids": [],
-                    "role": [
-                        "jo_recruiter",
-                        "jo_agreement",
-                        "jo_hrbp",
-                        "st_orgdev",
-                        "hg_hrbp",
-                        "admin",
-                        "demo"
-                    ],
-                    "whom_delegate_ids": [],
-                    "id": "aleksandra.kalina@lamoda.ru"
-                },
-                "employee_full_name": "Александра Калина"
-            },
+            "number": "HG-633961",
+            "contract_period": "3 месяца",
+            "user_creator": "hrbp",
             "responsible_roles": [
-                {
-                    "visual_name": "HG: Все заявки",
-                    "id": "hg_all_requests"
-                }
+                "hg_all_requests"
             ],
-            "id": "97bc1a62-418b-4b97-92c8-74c4bd3d744b",
-            "last_user": {
-                "who_delegated_ids": [],
-                "role": [
-                    "jo_recruiter",
-                    "jo_agreement",
-                    "jo_hrbp",
-                    "st_orgdev",
-                    "hg_hrbp",
-                    "admin",
-                    "demo"
-                ],
-                "whom_delegate_ids": [],
-                "id": "aleksandra.kalina@lamoda.ru"
-            },
+            "id": "795028e3-409a-407d-8db1-ca059bd95a47",
+            "last_user": "hrbp",
             "job_rate": 1,
             "all_user_ids": [
-                {
-                    "email": "aleksandra.kalina@lamoda.ru",
-                    "division_name": "Группа бизнес-анализа",
-                    "id": "aleksandra.kalina@lamoda.ru",
-                    "position": "Аналитик по развитию корпоративных бизнес-приложений",
-                    "webuser_id": {
-                        "who_delegated_ids": [],
-                        "role": [
-                            "jo_recruiter",
-                            "jo_agreement",
-                            "jo_hrbp",
-                            "st_orgdev",
-                            "hg_hrbp",
-                            "admin",
-                            "demo"
-                        ],
-                        "whom_delegate_ids": [],
-                        "id": "aleksandra.kalina@lamoda.ru"
-                    },
-                    "employee_full_name": "Александра Калина"
-                },
-                {
-                    "email": "stanislav.gots@lamoda.ru",
-                    "division_name": "Департамент по бизнес-приложениям и платформам",
-                    "id": "stanislav.gots@lamoda.ru",
-                    "position": "Директор департамента по бизнес-приложениям и платформам",
-                    "webuser_id": {
-                        "role": [
-                            "jo_agreement",
-                            "jo_budget_holder",
-                            "st_agreement",
-                            "st_budget_holder"
-                        ],
-                        "id": "stanislav.gots@lamoda.ru"
-                    },
-                    "employee_full_name": "Станислав Гоц"
-                }
+                "hrbp"
             ],
-            "date": 1732656944000,
-            "reason_vacancy": {
-                "reason": "Новая ставка",
-                "id": "new"
-            },
-            "prof_skills": "1",
-            "manager": {
-                "email": "aleksandra.kalina@lamoda.ru",
-                "division_name": "Группа бизнес-анализа",
-                "id": "aleksandra.kalina@lamoda.ru",
-                "position": "Аналитик по развитию корпоративных бизнес-приложений",
-                "webuser_id": {
-                    "who_delegated_ids": [],
-                    "role": [
-                        "jo_recruiter",
-                        "jo_agreement",
-                        "jo_hrbp",
-                        "st_orgdev",
-                        "hg_hrbp",
-                        "admin",
-                        "demo"
-                    ],
-                    "whom_delegate_ids": [],
-                    "id": "aleksandra.kalina@lamoda.ru"
-                },
-                "employee_full_name": "Александра Калина"
-            },
+            "date": 1733316071000,
+            "reason_vacancy": "new",
+            "manager": "hrbp",
             "status": {
-                "id": "approval_hrbp",
-                "status": "Согласование с HRBP"
+                "id": "new",
+                "status": "Черновик"
             },
-            "need_virtual_team": false,
-            "position": "1",
-            "contract_type": {
-                "id": "open_ended",
-                "type": "Бессрочный"
-            },
-            "up_manager": {
-                "email": "aleksandra.kalina@lamoda.ru",
-                "division_name": "Группа бизнес-анализа",
-                "id": "aleksandra.kalina@lamoda.ru",
-                "position": "Аналитик по развитию корпоративных бизнес-приложений",
-                "webuser_id": {
-                    "who_delegated_ids": [],
-                    "role": [
-                        "jo_recruiter",
-                        "jo_agreement",
-                        "jo_hrbp",
-                        "st_orgdev",
-                        "hg_hrbp",
-                        "admin",
-                        "demo"
-                    ],
-                    "whom_delegate_ids": [],
-                    "id": "aleksandra.kalina@lamoda.ru"
-                },
-                "employee_full_name": "Александра Калина"
-            },
-            "candidate_description": "1",
             "logs": [
-                {
-                    "date_display": "27 нояб. 2024, 00:58",
-                    "text": "Согласование HRBP. Назначен ответственный: aleksandra.kalina@lamoda.ru",
-                    "ticket": "97bc1a62-418b-4b97-92c8-74c4bd3d744b",
-                    "id": "4b4eb169-acad-411c-bbbf-e1119a185b38",
-                    "date": "1732658288000",
-                    "user": "aleksandra.kalina@lamoda.ru"
-                },
-                {
-                    "date_display": "27 нояб. 2024, 00:36",
-                    "text": "Согласование Верхнеуровневый руководитель. Назначен ответственный: aleksandra.kalina@lamoda.ru",
-                    "ticket": "97bc1a62-418b-4b97-92c8-74c4bd3d744b",
-                    "id": "5fc6aa97-3ba3-4ba4-a7e4-c256bf64f776",
-                    "date": "1732656974000",
-                    "user": "aleksandra.kalina@lamoda.ru"
-                }
-            ],
-            "responsibilities": "1",
-            "employment_type": {
-                "employment_type": "Гибрид",
-                "id": "flex"
-            },
-            "org_structure": "Распределительный центр => Складской отдел => Смена №2 => Входящий поток => Участок переупаковки"
+                "9a761ce9-2304-4e30-a83f-436655ba2b00"
+            ]
         }
     ],
     "totalPages": 1,
@@ -16092,6 +3651,114 @@ let exampleForm =  {
         [
             "id",
             99355110
+        ],
+        [
+            "internal_candidate_name.id",
+            99325487
+        ],
+        [
+            "which_candidate.id",
+            99356522
+        ],
+        [
+            "recruiter.id",
+            99325487
+        ],
+        [
+            "teamlead.id",
+            99325487
+        ],
+        [
+            "cnb.id",
+            99325487
+        ],
+        [
+            "budget_holder.id",
+            99325487
+        ],
+        [
+            "approval_2.id",
+            99325487
+        ],
+        [
+            "approval_1.id",
+            99325487
+        ],
+        [
+            "add_approval_2",
+            99355110
+        ],
+        [
+            "add_approval_1",
+            99355110
+        ],
+        [
+            "hr_bp.id",
+            99325487
+        ],
+        [
+            "up_manager.id",
+            99325487
+        ],
+        [
+            "hr_bp_creator",
+            99355110
+        ],
+        [
+            "manager.id",
+            99325487
+        ],
+        [
+            "last_change_date",
+            99355110
+        ],
+        [
+            "all_user_ids.id",
+            99325487
+        ],
+        [
+            "responsible_roles.id",
+            99325477
+        ],
+        [
+            "responsible_employee_id.id",
+            99325487
+        ],
+        [
+            "date",
+            99355110
+        ],
+        [
+            "number",
+            99355110
+        ],
+        [
+            "logs.id",
+            99356520
+        ],
+        [
+            "user_creator.id",
+            99325487
+        ],
+        [
+            "last_user.id",
+            99325452
+        ],
+        [
+            "prev_status.id",
+            99356519
+        ],
+        [
+            "prev_status.status",
+            99356519
+        ],
+        [
+            "status.id",
+            99356519
+        ],
+        [
+            "status.status",
+            99356519
         ],
         [
             "candidate_description",
@@ -16111,10 +3778,6 @@ let exampleForm =  {
         ],
         [
             "period_bonus.id",
-            99355543
-        ],
-        [
-            "period_bonus.period",
             99355543
         ],
         [
@@ -16158,10 +3821,6 @@ let exampleForm =  {
             99355542
         ],
         [
-            "contract_type.type",
-            99355542
-        ],
-        [
             "org_structure",
             99355110
         ],
@@ -16191,10 +3850,6 @@ let exampleForm =  {
         ],
         [
             "virtual_team.id",
-            99355541
-        ],
-        [
-            "virtual_team.team",
             99355541
         ],
         [
@@ -16234,15 +3889,15 @@ let exampleForm =  {
             99325452
         ],
         [
-            "resigning_empl_full_name.division_name",
-            99325487
-        ],
-        [
             "resigning_empl_full_name.email",
             99325487
         ],
         [
             "resigning_empl_full_name.position",
+            99325487
+        ],
+        [
+            "resigning_empl_full_name.division_name",
             99325487
         ],
         [
@@ -16258,923 +3913,37 @@ let exampleForm =  {
             99355533
         ],
         [
-            "reason_vacancy.reason",
-            99355533
-        ],
-        [
             "conf_search",
-            99355110
-        ],
-        [
-            "internal_candidate_name.id",
-            99325487
-        ],
-        [
-            "internal_candidate_name.employee_full_name",
-            99325487
-        ],
-        [
-            "internal_candidate_name.webuser_id.id",
-            99325452
-        ],
-        [
-            "internal_candidate_name.email",
-            99325487
-        ],
-        [
-            "internal_candidate_name.position",
-            99325487
-        ],
-        [
-            "internal_candidate_name.division_name",
-            99325487
-        ],
-        [
-            "which_candidate.id",
-            99356522
-        ],
-        [
-            "recruiter.id",
-            99325487
-        ],
-        [
-            "recruiter.employee_full_name",
-            99325487
-        ],
-        [
-            "recruiter.webuser_id.id",
-            99325452
-        ],
-        [
-            "recruiter.webuser_id.whom_delegate_ids.id",
-            99325452
-        ],
-        [
-            "recruiter.webuser_id.whom_delegate_ids.firstName",
-            99325452
-        ],
-        [
-            "recruiter.webuser_id.whom_delegate_ids.lastName",
-            99325452
-        ],
-        [
-            "recruiter.webuser_id.who_delegated_ids.id",
-            99325452
-        ],
-        [
-            "recruiter.webuser_id.who_delegated_ids.firstName",
-            99325452
-        ],
-        [
-            "recruiter.webuser_id.who_delegated_ids.lastName",
-            99325452
-        ],
-        [
-            "recruiter.webuser_id.role",
-            99325452
-        ],
-        [
-            "recruiter.webuser_id.email",
-            99325452
-        ],
-        [
-            "recruiter.email",
-            99325487
-        ],
-        [
-            "recruiter.division_name",
-            99325487
-        ],
-        [
-            "recruiter.position",
-            99325487
-        ],
-        [
-            "teamlead.id",
-            99325487
-        ],
-        [
-            "teamlead.employee_full_name",
-            99325487
-        ],
-        [
-            "teamlead.webuser_id.id",
-            99325452
-        ],
-        [
-            "teamlead.webuser_id.whom_delegate_ids.id",
-            99325452
-        ],
-        [
-            "teamlead.webuser_id.whom_delegate_ids.firstName",
-            99325452
-        ],
-        [
-            "teamlead.webuser_id.whom_delegate_ids.lastName",
-            99325452
-        ],
-        [
-            "teamlead.webuser_id.who_delegated_ids.id",
-            99325452
-        ],
-        [
-            "teamlead.webuser_id.who_delegated_ids.firstName",
-            99325452
-        ],
-        [
-            "teamlead.webuser_id.who_delegated_ids.lastName",
-            99325452
-        ],
-        [
-            "teamlead.webuser_id.role",
-            99325452
-        ],
-        [
-            "teamlead.webuser_id.email",
-            99325452
-        ],
-        [
-            "teamlead.email",
-            99325487
-        ],
-        [
-            "teamlead.division_name",
-            99325487
-        ],
-        [
-            "teamlead.position",
-            99325487
-        ],
-        [
-            "cnb.id",
-            99325487
-        ],
-        [
-            "cnb.employee_full_name",
-            99325487
-        ],
-        [
-            "cnb.webuser_id.id",
-            99325452
-        ],
-        [
-            "cnb.webuser_id.whom_delegate_ids.id",
-            99325452
-        ],
-        [
-            "cnb.webuser_id.whom_delegate_ids.firstName",
-            99325452
-        ],
-        [
-            "cnb.webuser_id.whom_delegate_ids.lastName",
-            99325452
-        ],
-        [
-            "cnb.webuser_id.who_delegated_ids.id",
-            99325452
-        ],
-        [
-            "cnb.webuser_id.who_delegated_ids.firstName",
-            99325452
-        ],
-        [
-            "cnb.webuser_id.who_delegated_ids.lastName",
-            99325452
-        ],
-        [
-            "cnb.webuser_id.email",
-            99325452
-        ],
-        [
-            "cnb.webuser_id.role",
-            99325452
-        ],
-        [
-            "cnb.division_name",
-            99325487
-        ],
-        [
-            "cnb.email",
-            99325487
-        ],
-        [
-            "cnb.position",
-            99325487
-        ],
-        [
-            "budget_holder.id",
-            99325487
-        ],
-        [
-            "budget_holder.employee_full_name",
-            99325487
-        ],
-        [
-            "budget_holder.webuser_id.id",
-            99325452
-        ],
-        [
-            "budget_holder.webuser_id.whom_delegate_ids.id",
-            99325452
-        ],
-        [
-            "budget_holder.webuser_id.whom_delegate_ids.firstName",
-            99325452
-        ],
-        [
-            "budget_holder.webuser_id.whom_delegate_ids.lastName",
-            99325452
-        ],
-        [
-            "budget_holder.webuser_id.who_delegated_ids.id",
-            99325452
-        ],
-        [
-            "budget_holder.webuser_id.who_delegated_ids.firstName",
-            99325452
-        ],
-        [
-            "budget_holder.webuser_id.who_delegated_ids.lastName",
-            99325452
-        ],
-        [
-            "budget_holder.webuser_id.role",
-            99325452
-        ],
-        [
-            "budget_holder.webuser_id.email",
-            99325452
-        ],
-        [
-            "budget_holder.division_name",
-            99325487
-        ],
-        [
-            "budget_holder.email",
-            99325487
-        ],
-        [
-            "budget_holder.position",
-            99325487
-        ],
-        [
-            "approval_2.id",
-            99325487
-        ],
-        [
-            "approval_2.employee_full_name",
-            99325487
-        ],
-        [
-            "approval_2.webuser_id.id",
-            99325452
-        ],
-        [
-            "approval_2.webuser_id.role",
-            99325452
-        ],
-        [
-            "approval_2.webuser_id.email",
-            99325452
-        ],
-        [
-            "approval_2.webuser_id.who_delegated_ids.id",
-            99325452
-        ],
-        [
-            "approval_2.webuser_id.who_delegated_ids.firstName",
-            99325452
-        ],
-        [
-            "approval_2.webuser_id.who_delegated_ids.lastName",
-            99325452
-        ],
-        [
-            "approval_2.webuser_id.whom_delegate_ids.id",
-            99325452
-        ],
-        [
-            "approval_2.webuser_id.whom_delegate_ids.firstName",
-            99325452
-        ],
-        [
-            "approval_2.webuser_id.whom_delegate_ids.lastName",
-            99325452
-        ],
-        [
-            "approval_2.email",
-            99325487
-        ],
-        [
-            "approval_2.position",
-            99325487
-        ],
-        [
-            "approval_2.division_name",
-            99325487
-        ],
-        [
-            "approval_1.id",
-            99325487
-        ],
-        [
-            "approval_1.employee_full_name",
-            99325487
-        ],
-        [
-            "approval_1.webuser_id.id",
-            99325452
-        ],
-        [
-            "approval_1.webuser_id.whom_delegate_ids.id",
-            99325452
-        ],
-        [
-            "approval_1.webuser_id.whom_delegate_ids.firstName",
-            99325452
-        ],
-        [
-            "approval_1.webuser_id.whom_delegate_ids.lastName",
-            99325452
-        ],
-        [
-            "approval_1.webuser_id.who_delegated_ids.id",
-            99325452
-        ],
-        [
-            "approval_1.webuser_id.who_delegated_ids.firstName",
-            99325452
-        ],
-        [
-            "approval_1.webuser_id.who_delegated_ids.lastName",
-            99325452
-        ],
-        [
-            "approval_1.webuser_id.email",
-            99325452
-        ],
-        [
-            "approval_1.webuser_id.role",
-            99325452
-        ],
-        [
-            "approval_1.division_name",
-            99325487
-        ],
-        [
-            "approval_1.email",
-            99325487
-        ],
-        [
-            "approval_1.position",
-            99325487
-        ],
-        [
-            "add_approval_2",
-            99355110
-        ],
-        [
-            "add_approval_1",
-            99355110
-        ],
-        [
-            "hr_bp.id",
-            99325487
-        ],
-        [
-            "hr_bp.employee_full_name",
-            99325487
-        ],
-        [
-            "hr_bp.webuser_id.id",
-            99325452
-        ],
-        [
-            "hr_bp.webuser_id.whom_delegate_ids.id",
-            99325452
-        ],
-        [
-            "hr_bp.webuser_id.whom_delegate_ids.firstName",
-            99325452
-        ],
-        [
-            "hr_bp.webuser_id.whom_delegate_ids.lastName",
-            99325452
-        ],
-        [
-            "hr_bp.webuser_id.who_delegated_ids.id",
-            99325452
-        ],
-        [
-            "hr_bp.webuser_id.who_delegated_ids.firstName",
-            99325452
-        ],
-        [
-            "hr_bp.webuser_id.who_delegated_ids.lastName",
-            99325452
-        ],
-        [
-            "hr_bp.webuser_id.email",
-            99325452
-        ],
-        [
-            "hr_bp.webuser_id.role",
-            99325452
-        ],
-        [
-            "hr_bp.division_name",
-            99325487
-        ],
-        [
-            "hr_bp.email",
-            99325487
-        ],
-        [
-            "hr_bp.position",
-            99325487
-        ],
-        [
-            "up_manager.id",
-            99325487
-        ],
-        [
-            "up_manager.employee_full_name",
-            99325487
-        ],
-        [
-            "up_manager.webuser_id.id",
-            99325452
-        ],
-        [
-            "up_manager.webuser_id.who_delegated_ids.id",
-            99325452
-        ],
-        [
-            "up_manager.webuser_id.who_delegated_ids.firstName",
-            99325452
-        ],
-        [
-            "up_manager.webuser_id.who_delegated_ids.lastName",
-            99325452
-        ],
-        [
-            "up_manager.webuser_id.whom_delegate_ids.id",
-            99325452
-        ],
-        [
-            "up_manager.webuser_id.whom_delegate_ids.firstName",
-            99325452
-        ],
-        [
-            "up_manager.webuser_id.whom_delegate_ids.lastName",
-            99325452
-        ],
-        [
-            "up_manager.webuser_id.email",
-            99325452
-        ],
-        [
-            "up_manager.webuser_id.role",
-            99325452
-        ],
-        [
-            "up_manager.division_name",
-            99325487
-        ],
-        [
-            "up_manager.email",
-            99325487
-        ],
-        [
-            "up_manager.position",
-            99325487
-        ],
-        [
-            "hr_bp_creator",
-            99355110
-        ],
-        [
-            "manager.id",
-            99325487
-        ],
-        [
-            "manager.employee_full_name",
-            99325487
-        ],
-        [
-            "manager.webuser_id.id",
-            99325452
-        ],
-        [
-            "manager.webuser_id.whom_delegate_ids.id",
-            99325452
-        ],
-        [
-            "manager.webuser_id.whom_delegate_ids.firstName",
-            99325452
-        ],
-        [
-            "manager.webuser_id.whom_delegate_ids.lastName",
-            99325452
-        ],
-        [
-            "manager.webuser_id.who_delegated_ids.id",
-            99325452
-        ],
-        [
-            "manager.webuser_id.who_delegated_ids.firstName",
-            99325452
-        ],
-        [
-            "manager.webuser_id.who_delegated_ids.lastName",
-            99325452
-        ],
-        [
-            "manager.webuser_id.email",
-            99325452
-        ],
-        [
-            "manager.webuser_id.role",
-            99325452
-        ],
-        [
-            "manager.division_name",
-            99325487
-        ],
-        [
-            "manager.email",
-            99325487
-        ],
-        [
-            "manager.position",
-            99325487
-        ],
-        [
-            "responsible_employee_id.id",
-            99325487
-        ],
-        [
-            "responsible_employee_id.employee_full_name",
-            99325487
-        ],
-        [
-            "responsible_employee_id.webuser_id.id",
-            99325452
-        ],
-        [
-            "responsible_employee_id.webuser_id.whom_delegate_ids.id",
-            99325452
-        ],
-        [
-            "responsible_employee_id.webuser_id.whom_delegate_ids.firstName",
-            99325452
-        ],
-        [
-            "responsible_employee_id.webuser_id.whom_delegate_ids.lastName",
-            99325452
-        ],
-        [
-            "responsible_employee_id.webuser_id.who_delegated_ids.id",
-            99325452
-        ],
-        [
-            "responsible_employee_id.webuser_id.who_delegated_ids.firstName",
-            99325452
-        ],
-        [
-            "responsible_employee_id.webuser_id.who_delegated_ids.lastName",
-            99325452
-        ],
-        [
-            "responsible_employee_id.webuser_id.email",
-            99325452
-        ],
-        [
-            "responsible_employee_id.webuser_id.role",
-            99325452
-        ],
-        [
-            "responsible_employee_id.email",
-            99325487
-        ],
-        [
-            "responsible_employee_id.division_name",
-            99325487
-        ],
-        [
-            "responsible_employee_id.position",
-            99325487
-        ],
-        [
-            "date",
-            99355110
-        ],
-        [
-            "number",
-            99355110
-        ],
-        [
-            "logs.id",
-            99356520
-        ],
-        [
-            "logs.date_display",
-            99356520
-        ],
-        [
-            "logs.ticket.id",
-            99355110
-        ],
-        [
-            "logs.user.id",
-            99325452
-        ],
-        [
-            "logs.text",
-            99356520
-        ],
-        [
-            "logs.date",
-            99356520
-        ],
-        [
-            "user_creator.id",
-            99325487
-        ],
-        [
-            "user_creator.employee_full_name",
-            99325487
-        ],
-        [
-            "user_creator.webuser_id.id",
-            99325452
-        ],
-        [
-            "user_creator.webuser_id.whom_delegate_ids.id",
-            99325452
-        ],
-        [
-            "user_creator.webuser_id.whom_delegate_ids.firstName",
-            99325452
-        ],
-        [
-            "user_creator.webuser_id.whom_delegate_ids.lastName",
-            99325452
-        ],
-        [
-            "user_creator.webuser_id.who_delegated_ids.id",
-            99325452
-        ],
-        [
-            "user_creator.webuser_id.who_delegated_ids.firstName",
-            99325452
-        ],
-        [
-            "user_creator.webuser_id.who_delegated_ids.lastName",
-            99325452
-        ],
-        [
-            "user_creator.webuser_id.email",
-            99325452
-        ],
-        [
-            "user_creator.webuser_id.role",
-            99325452
-        ],
-        [
-            "user_creator.email",
-            99325487
-        ],
-        [
-            "user_creator.division_name",
-            99325487
-        ],
-        [
-            "user_creator.position",
-            99325487
-        ],
-        [
-            "prev_status.id",
-            99356519
-        ],
-        [
-            "prev_status.status",
-            99356519
-        ],
-        [
-            "prev_status.next_status_ids.id",
-            99356519
-        ],
-        [
-            "prev_status.next_status_ids.status",
-            99356519
-        ],
-        [
-            "status.id",
-            99356519
-        ],
-        [
-            "status.status",
-            99356519
-        ],
-        [
-            "last_change_date",
-            99355110
-        ],
-        [
-            "all_user_ids.id",
-            99325487
-        ],
-        [
-            "all_user_ids.employee_full_name",
-            99325487
-        ],
-        [
-            "all_user_ids.webuser_id.id",
-            99325452
-        ],
-        [
-            "all_user_ids.webuser_id.whom_delegate_ids.id",
-            99325452
-        ],
-        [
-            "all_user_ids.webuser_id.whom_delegate_ids.firstName",
-            99325452
-        ],
-        [
-            "all_user_ids.webuser_id.whom_delegate_ids.lastName",
-            99325452
-        ],
-        [
-            "all_user_ids.webuser_id.who_delegated_ids.id",
-            99325452
-        ],
-        [
-            "all_user_ids.webuser_id.who_delegated_ids.firstName",
-            99325452
-        ],
-        [
-            "all_user_ids.webuser_id.who_delegated_ids.lastName",
-            99325452
-        ],
-        [
-            "all_user_ids.webuser_id.email",
-            99325452
-        ],
-        [
-            "all_user_ids.webuser_id.role",
-            99325452
-        ],
-        [
-            "all_user_ids.division_name",
-            99325487
-        ],
-        [
-            "all_user_ids.email",
-            99325487
-        ],
-        [
-            "all_user_ids.position",
-            99325487
-        ],
-        [
-            "responsible_roles.id",
-            99325477
-        ],
-        [
-            "responsible_roles.visual_name",
-            99325477
-        ],
-        [
-            "last_user.id",
-            99325452
-        ],
-        [
-            "last_user.whom_delegate_ids.id",
-            99325452
-        ],
-        [
-            "last_user.whom_delegate_ids.firstName",
-            99325452
-        ],
-        [
-            "last_user.whom_delegate_ids.lastName",
-            99325452
-        ],
-        [
-            "last_user.who_delegated_ids.id",
-            99325452
-        ],
-        [
-            "last_user.who_delegated_ids.firstName",
-            99325452
-        ],
-        [
-            "last_user.who_delegated_ids.lastName",
-            99325452
-        ],
-        [
-            "last_user.email",
-            99325452
-        ],
-        [
-            "last_user.role",
-            99325452
-        ],
-        [
-            "hide_income",
-            99355110
-        ],
-        [
-            "comment_salary",
-            99355110
-        ],
-        [
-            "cost_center",
-            99355110
-        ],
-        [
-            "analytics_ops.id",
-            99357340
-        ],
-        [
-            "analytics_ops.name",
-            99357340
-        ],
-        [
-            "position_name",
-            99355110
-        ],
-        [
-            "legal_direct.id",
-            99325487
-        ],
-        [
-            "legal_direct.employee_full_name",
-            99325487
-        ],
-        [
-            "management_direct.id",
-            99325487
-        ],
-        [
-            "management_direct.employee_full_name",
-            99325487
-        ],
-        [
-            "legal_position",
-            99355110
-        ],
-        [
-            "management_position",
-            99355110
-        ],
-        [
-            "legal_division.id",
-            99325488
-        ],
-        [
-            "legal_division.division_name",
-            99325488
-        ],
-        [
-            "management_division.id",
-            99325488
-        ],
-        [
-            "management_division.division_name",
-            99325488
-        ],
-        [
-            "structures_difference",
-            99355110
-        ],
-        [
-            "select_structure.id",
-            99357339
-        ],
-        [
-            "org_dev",
-            99355110
-        ],
-        [
-            "id_position",
-            99355110
-        ],
-        [
-            "vacancy_id",
-            99355110
-        ],
-        [
-            "budget_date",
-            99355110
-        ],
-        [
-            "cancel_reason",
             99355110
         ]
     ],
     "writeFields": [
+        "id",
+        "internal_candidate_name",
+        "which_candidate",
+        "recruiter",
+        "teamlead",
+        "cnb",
+        "budget_holder",
+        "approval_2",
+        "approval_1",
+        "add_approval_2",
+        "add_approval_1",
+        "hr_bp",
+        "up_manager",
+        "hr_bp_creator",
+        "manager",
+        "last_change_date",
+        "all_user_ids",
+        "responsible_roles",
+        "responsible_employee_id",
+        "date",
+        "number",
+        "logs",
+        "user_creator",
+        "last_user",
+        "prev_status",
+        "status",
         "candidate_description",
         "prof_skills",
         "responsibilities",
@@ -17200,41 +3969,7 @@ let exampleForm =  {
         "resigning_empl_full_name",
         "replacement_status",
         "reason_vacancy",
-        "conf_search",
-        "internal_candidate_name",
-        "which_candidate",
-        "recruiter",
-        "teamlead",
-        "cnb",
-        "budget_holder",
-        "approval_2",
-        "approval_1",
-        "add_approval_2",
-        "add_approval_1",
-        "hr_bp",
-        "up_manager",
-        "hr_bp_creator",
-        "manager",
-        "id",
-        "hide_income",
-        "comment_salary",
-        "cost_center",
-        "analytics_ops",
-        "position_name",
-        "legal_direct",
-        "management_direct",
-        "legal_position",
-        "management_position",
-        "legal_division",
-        "management_division",
-        "structures_difference",
-        "select_structure",
-        "org_dev",
-        "id_position",
-        "vacancy_id",
-        "budget_date",
-        "user_creator",
-        "cancel_reason"
+        "conf_search"
     ],
     "structures": {
         "99325452": {
@@ -17453,7 +4188,7 @@ let exampleForm =  {
             "networkID": 21335,
             "name": "hiring",
             "sysName": "hiring",
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"org_structure\",\"dataType\":\"string\",\"name\":\"Организационная структура\",\"id\":\"12681731660914203\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"cancel_reason\",\"dataType\":\"string\",\"name\":\"Укажите причину\",\"id\":\"13271732534584664\",\"link\":null,\"group\":\"1732097408116\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"hr_bp_creator\",\"dataType\":\"json\",\"name\":\"Заявка создана HRBP\",\"id\":\"13741732097541879\",\"link\":\"\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"checkboxes\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"hrbp\",\"label\":null}]},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"add_approval_2\",\"dataType\":\"json\",\"name\":\"Добавить дополнительного согласующего?\",\"id\":\"14161732097917550\",\"link\":\"\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"checkboxes\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOption\":false,\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"add\",\"label\":null}]},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"cnb\",\"dataType\":\"link\",\"name\":\"C&B\",\"id\":\"14371732098124414\",\"link\":\"employees\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"management_direct\",\"dataType\":\"link\",\"name\":\"ФИО руководителя\",\"id\":\"18191732523739162\",\"link\":\"employees\",\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":36,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"employment_type\",\"dataType\":\"link\",\"name\":\"Формат работы\",\"id\":\"18361731661141596\",\"link\":\"hg_employment_type\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"number\",\"dataType\":\"string\",\"name\":\"Номер заявки\",\"id\":\"19551732097216287\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"need_virtual_team\",\"dataType\":\"boolean\",\"name\":\"Нужна виртуальная команда?\",\"id\":\"20311731660658407\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"responsible_roles\",\"dataType\":\"arrayLink\",\"name\":\"Ответственные роли\",\"id\":\"20831732097292042\",\"link\":\"roles\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"analytics_ops\",\"dataType\":\"link\",\"name\":\"Категория персонала (Analytics for OPS)\",\"id\":\"21631732523965857\",\"link\":\"hg_analytics_for_ops\",\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":39,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"up_manager\",\"dataType\":\"link\",\"name\":\"Верхнеуровневый руководитель\",\"id\":\"21751732097711574\",\"link\":\"employees\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"budget_holder\",\"dataType\":\"link\",\"name\":\"Держатель бюджета\",\"id\":\"22461732098115380\",\"link\":\"employees\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"position_release_date\",\"dataType\":\"date\",\"name\":\"Дата освобождения позиции\",\"id\":\"24771731660505528\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\"\",\"isUTC\":\"true\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"prof_skills\",\"dataType\":\"string\",\"name\":\"Профессиональные навыки\",\"id\":\"25741731662089756\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":24,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"select_structure\",\"dataType\":\"link\",\"name\":\"В какой структуре будут происходить изменения?\",\"id\":\"26721732523217174\",\"link\":\"hg_select_structure\",\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":30,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"last_user\",\"dataType\":\"link\",\"name\":\"Кем изменено\",\"id\":\"27981732097155934\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"contract_period\",\"dataType\":\"string\",\"name\":\"Укажите период срочного договора\",\"id\":\"28591731660966461\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"comment_salary\",\"dataType\":\"string\",\"name\":\"Комментарий к структуре надбавок\",\"id\":\"29541732524051837\",\"link\":null,\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":41,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"candidate_description\",\"dataType\":\"string\",\"name\":\"Портрет кандидата (только для OPS)\",\"id\":\"30681731662096240\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":25,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"cost_center\",\"dataType\":\"string\",\"name\":\"Кост-центр\",\"id\":\"31801732524038668\",\"link\":null,\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":40,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"hide_income\",\"dataType\":\"boolean\",\"name\":\"Скрыть поля дохода?\",\"id\":\"34721732524127128\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":42,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"responsibilities\",\"dataType\":\"string\",\"name\":\"Обязанности\",\"id\":\"35381731662082846\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":23,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"teamlead\",\"dataType\":\"link\",\"name\":\"Руководитель направления подбора персонала\",\"id\":\"36711732098134082\",\"link\":\"employees\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"virtual_team_other\",\"dataType\":\"string\",\"name\":\"Другое\",\"id\":\"37631731660847855\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"id_position\",\"dataType\":\"string\",\"name\":\"Код позиции (из УШР)\",\"id\":\"37671732523177005\",\"link\":null,\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":28,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"date\",\"dataType\":\"date\",\"name\":\"Дата создания заявки\",\"id\":\"38501732097228191\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"true\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"position_name\",\"dataType\":\"string\",\"name\":\"Position name\",\"id\":\"39831732523953542\",\"link\":null,\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":38,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"structures_difference\",\"dataType\":\"boolean\",\"name\":\"Есть ли разница в управленческой и юридической структурах?\",\"id\":\"40731732523540970\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":31,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"reason_contract\",\"dataType\":\"link\",\"name\":\"Обоснование срочного ТД\",\"id\":\"41551731661053754\",\"link\":\"hg_reason_fixed_contract_type\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"per_bonus\",\"dataType\":\"number\",\"name\":\"Процент премии\",\"id\":\"43691731662006890\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":22,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"company\",\"dataType\":\"link\",\"name\":\"Юр. лицо\",\"id\":\"45981731660649886\",\"link\":\"hg_company\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"legal_position\",\"dataType\":\"string\",\"name\":\"Должность\",\"id\":\"47821732523738367\",\"link\":null,\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":35,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"recruiter\",\"dataType\":\"link\",\"name\":\"Отвественный рекрутер\",\"id\":\"50501732098143748\",\"link\":\"employees\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"resigning_empl_full_name_strng\",\"dataType\":\"string\",\"name\":\"ФИО заменяемого сотрудника\",\"id\":\"50701731660482112\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"prev_status\",\"dataType\":\"link\",\"name\":\"Предыдущий статус\",\"id\":\"50941732097133797\",\"link\":\"hg_statuses\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"internal_candidate_name\",\"dataType\":\"link\",\"name\":\"ФИО внутреннего кандидата\",\"id\":\"51041732098190614\",\"link\":\"employees\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"user_creator\",\"dataType\":\"link\",\"name\":\"Инициатор заявки\",\"id\":\"51381732097181650\",\"link\":\"employees\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"hr_bp\",\"dataType\":\"link\",\"name\":\"HR BP\",\"id\":\"54801732097785732\",\"link\":\"employees\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"last_change_date\",\"dataType\":\"date\",\"name\":\"Дата последнего изменения\",\"id\":\"54871732097356664\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"true\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"all_user_ids\",\"dataType\":\"arrayLink\",\"name\":\"Все пользователи, относящиеся к заявке\",\"id\":\"56911732097330019\",\"link\":\"employees\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"other_reason_contract\",\"dataType\":\"string\",\"name\":\"Другое\",\"id\":\"58431732878160615\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":43,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"position\",\"dataType\":\"string\",\"name\":\"Должность\",\"id\":\"59801731660584994\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"approval_2\",\"dataType\":\"link\",\"name\":\"Дополнительный согласующий (руководитель) 2\",\"id\":\"60781732097962282\",\"link\":\"employees\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"job_rate\",\"dataType\":\"decimal\",\"name\":\"Коэффициент занятости\",\"id\":\"61351731661078792\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"logs\",\"dataType\":\"arrayLink\",\"name\":\"История изменений\",\"id\":\"61921732097200714\",\"link\":\"hg_logs\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"virtual_team\",\"dataType\":\"link\",\"name\":\"Виртуальная команда, в которой будет работать сотрудник\",\"id\":\"62151731660743623\",\"link\":\"hg_virtual_team\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"resigning_empl_full_name\",\"dataType\":\"link\",\"name\":\"ФИО заменяемого сотрудника\",\"id\":\"64831731660388600\",\"link\":\"employees\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"which_candidate\",\"dataType\":\"link\",\"name\":\"Кем будет закрыта вакансия?\",\"id\":\"65291732098169032\",\"link\":\"hg_which_candidate\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"work_schedule\",\"dataType\":\"string\",\"name\":\"График и время работы\",\"id\":\"66861731661781138\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"reason_vacancy\",\"dataType\":\"link\",\"name\":\"Причина появления вакансии\",\"id\":\"68821731659809724\",\"link\":\"hg_reason_of_vacancy\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"contract_type\",\"dataType\":\"link\",\"name\":\"Тип договора\",\"id\":\"69111731660937960\",\"link\":\"hg_contract_type\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"salary\",\"dataType\":\"decimal\",\"name\":\"Оклад без РКиСН (gross) руб/мес\",\"id\":\"69361731661843194\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":20,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"period_bonus\",\"dataType\":\"link\",\"name\":\"Периодичность выплаты премии\",\"id\":\"70001731661977055\",\"link\":\"hg_period_bonus\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":21,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"replacement_status\",\"dataType\":\"link\",\"name\":\"Статус заменяемого сотрудника\",\"id\":\"73611731660160163\",\"link\":\"hg_replacement_status\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"management_division\",\"dataType\":\"link\",\"name\":\"Подразделение\",\"id\":\"74581732523685221\",\"link\":\"structure\",\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":32,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"legal_direct\",\"dataType\":\"link\",\"name\":\"ФИО руководителя\",\"id\":\"74661732523748577\",\"link\":\"employees\",\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":37,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"org_dev\",\"dataType\":\"boolean\",\"name\":\"Нужен OrgDev?\",\"id\":\"75441732523216236\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":29,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"conf_search\",\"dataType\":\"boolean\",\"name\":\"Конфиденциальный поиск\",\"id\":\"75771731659760040\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"hideStandardBooleanIcons\":false,\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"status\",\"dataType\":\"link\",\"name\":\"Статус\",\"id\":\"77021732097122174\",\"link\":\"hg_statuses\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":true,\"array\":false},{\"sysName\":\"budget_date\",\"dataType\":\"date\",\"name\":\"Бюджетная дата от C&B\",\"id\":\"77191732523054191\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":26,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\"\",\"isUTC\":\"true\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"legal_division\",\"dataType\":\"link\",\"name\":\"Подразделение\",\"id\":\"79361732523718953\",\"link\":\"structure\",\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":33,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"responsible_employee_id\",\"dataType\":\"link\",\"name\":\"Ответственный за текущий этап\",\"id\":\"80521732097268481\",\"link\":\"employees\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"vacancy_id\",\"dataType\":\"string\",\"name\":\"ID вакансии (из Optimacros)\",\"id\":\"85101732523164507\",\"link\":null,\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":27,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"approval_1\",\"dataType\":\"link\",\"name\":\"Дополнительный согласующий (руководитель) 1 \",\"id\":\"85491732097941627\",\"link\":\"employees\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"add_approval_1\",\"dataType\":\"json\",\"name\":\"Добавить дополнительного согласующего?\",\"id\":\"93711732097810014\",\"link\":\"\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"checkboxes\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"add\",\"label\":null}]},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"division\",\"dataType\":\"link\",\"name\":\"Подразделение\",\"id\":\"93991731660871577\",\"link\":\"structure\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"manager\",\"dataType\":\"link\",\"name\":\"Нанимающий менеджер\",\"id\":\"94501732097520540\",\"link\":\"employees\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"management_position\",\"dataType\":\"string\",\"name\":\"Должность\",\"id\":\"95841732523725558\",\"link\":null,\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":34,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"work_place\",\"dataType\":\"string\",\"name\":\"Место работы\",\"id\":\"99931731661775579\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false}]",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"org_structure\",\"dataType\":\"string\",\"name\":\"Организационная структура\",\"id\":\"12681731660914203\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"cancel_reason\",\"dataType\":\"string\",\"name\":\"Укажите причину\",\"id\":\"13271732534584664\",\"link\":null,\"group\":\"1732097408116\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"hr_bp_creator\",\"dataType\":\"json\",\"name\":\"Заявка создана HR BP, вместо руководителя\",\"id\":\"13741732097541879\",\"link\":\"\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"checkboxes\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"hrbp\",\"label\":null}]},\"groupName\":null,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"add_approval_2\",\"dataType\":\"json\",\"name\":\"Добавить дополнительного согласующего?\",\"id\":\"14161732097917550\",\"link\":\"\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"checkboxes\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOption\":false,\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"add\",\"label\":null}]},\"groupName\":null,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"cnb\",\"dataType\":\"link\",\"name\":\"C&B\",\"id\":\"14371732098124414\",\"link\":\"employees\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"management_direct\",\"dataType\":\"link\",\"name\":\"ФИО руководителя\",\"id\":\"18191732523739162\",\"link\":\"employees\",\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":36,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"employment_type\",\"dataType\":\"link\",\"name\":\"Формат работы\",\"id\":\"18361731661141596\",\"link\":\"hg_employment_type\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"number\",\"dataType\":\"string\",\"name\":\"Номер заявки\",\"id\":\"19551732097216287\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"need_virtual_team\",\"dataType\":\"boolean\",\"name\":\"Нужна виртуальная команда?\",\"id\":\"20311731660658407\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"responsible_roles\",\"dataType\":\"arrayLink\",\"name\":\"Ответственные роли\",\"id\":\"20831732097292042\",\"link\":\"roles\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"analytics_ops\",\"dataType\":\"link\",\"name\":\"Категория персонала (Analytics for OPS)\",\"id\":\"21631732523965857\",\"link\":\"hg_analytics_for_ops\",\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":39,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"up_manager\",\"dataType\":\"link\",\"name\":\"Верхнеуровневый руководитель\",\"id\":\"21751732097711574\",\"link\":\"employees\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"budget_holder\",\"dataType\":\"link\",\"name\":\"Держатель бюджета\",\"id\":\"22461732098115380\",\"link\":\"employees\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"position_release_date\",\"dataType\":\"date\",\"name\":\"Дата освобождения позиции\",\"id\":\"24771731660505528\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\"\",\"isUTC\":\"true\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"prof_skills\",\"dataType\":\"string\",\"name\":\"Профессиональные навыки\",\"id\":\"25741731662089756\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":24,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"select_structure\",\"dataType\":\"link\",\"name\":\"В какой структуре будут происходить изменения?\",\"id\":\"26721732523217174\",\"link\":\"hg_select_structure\",\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":30,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"last_user\",\"dataType\":\"link\",\"name\":\"Кем изменено\",\"id\":\"27981732097155934\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"contract_period\",\"dataType\":\"string\",\"name\":\"Укажите период срочного договора\",\"id\":\"28591731660966461\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"comment_salary\",\"dataType\":\"string\",\"name\":\"Комментарий к структуре надбавок\",\"id\":\"29541732524051837\",\"link\":null,\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":41,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"candidate_description\",\"dataType\":\"string\",\"name\":\"Портрет кандидата (только для OPS)\",\"id\":\"30681731662096240\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":25,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"cost_center\",\"dataType\":\"string\",\"name\":\"Кост-центр\",\"id\":\"31801732524038668\",\"link\":null,\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":40,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"hide_income\",\"dataType\":\"boolean\",\"name\":\"Скрыть поля дохода?\",\"id\":\"34721732524127128\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":42,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"responsibilities\",\"dataType\":\"string\",\"name\":\"Обязанности\",\"id\":\"35381731662082846\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":23,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"teamlead\",\"dataType\":\"link\",\"name\":\"Руководитель направления подбора персонала\",\"id\":\"36711732098134082\",\"link\":\"employees\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"virtual_team_other\",\"dataType\":\"string\",\"name\":\"Другое\",\"id\":\"37631731660847855\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"id_position\",\"dataType\":\"string\",\"name\":\"Код позиции (из УШР)\",\"id\":\"37671732523177005\",\"link\":null,\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":28,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"date\",\"dataType\":\"date\",\"name\":\"Дата создания заявки\",\"id\":\"38501732097228191\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"position_name\",\"dataType\":\"string\",\"name\":\"Position name\",\"id\":\"39831732523953542\",\"link\":null,\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":38,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"structures_difference\",\"dataType\":\"boolean\",\"name\":\"Есть ли разница в управленческой и юридической структурах?\",\"id\":\"40731732523540970\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":31,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"reason_contract\",\"dataType\":\"link\",\"name\":\"Обоснование срочного ТД\",\"id\":\"41551731661053754\",\"link\":\"hg_reason_fixed_contract_type\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"per_bonus\",\"dataType\":\"number\",\"name\":\"Процент премии\",\"id\":\"43691731662006890\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":22,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n    mask: Number,\\n    min: -10000,\\n    max: 10000,\\n    thousandsSeparator: ' '\\n  }\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"company\",\"dataType\":\"link\",\"name\":\"Юр. лицо\",\"id\":\"45981731660649886\",\"link\":\"hg_company\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"legal_position\",\"dataType\":\"string\",\"name\":\"Должность\",\"id\":\"47821732523738367\",\"link\":null,\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":35,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"recruiter\",\"dataType\":\"link\",\"name\":\"Отвественный рекрутер\",\"id\":\"50501732098143748\",\"link\":\"employees\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"resigning_empl_full_name_strng\",\"dataType\":\"string\",\"name\":\"ФИО заменяемого сотрудника\",\"id\":\"50701731660482112\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"prev_status\",\"dataType\":\"link\",\"name\":\"Предыдущий статус\",\"id\":\"50941732097133797\",\"link\":\"hg_statuses\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"internal_candidate_name\",\"dataType\":\"link\",\"name\":\"ФИО внутреннего кандидата\",\"id\":\"51041732098190614\",\"link\":\"employees\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"user_creator\",\"dataType\":\"link\",\"name\":\"Инициатор заявки\",\"id\":\"51381732097181650\",\"link\":\"employees\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"hr_bp\",\"dataType\":\"link\",\"name\":\"Cогласующий HR BP\",\"id\":\"54801732097785732\",\"link\":\"employees\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"last_change_date\",\"dataType\":\"date\",\"name\":\"Дата последнего изменения\",\"id\":\"54871732097356664\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"all_user_ids\",\"dataType\":\"arrayLink\",\"name\":\"Все пользователи, относящиеся к заявке\",\"id\":\"56911732097330019\",\"link\":\"employees\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"other_reason_contract\",\"dataType\":\"string\",\"name\":\"Другое\",\"id\":\"58431732878160615\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":43,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"position\",\"dataType\":\"string\",\"name\":\"Должность\",\"id\":\"59801731660584994\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"approval_2\",\"dataType\":\"link\",\"name\":\"Дополнительный согласующий (руководитель) 2\",\"id\":\"60781732097962282\",\"link\":\"employees\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"job_rate\",\"dataType\":\"decimal\",\"name\":\"Коэффициент занятости\",\"id\":\"61351731661078792\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n    mask: Number,\\n    scale: 2,\\n    thousandsSeparator: '',\\n    padFractionalZeros: false,\\n    normalizeZeros: true,\\n    radix: ',',\\n    mapToRadix: ['.']\\n  }\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"logs\",\"dataType\":\"arrayLink\",\"name\":\"История изменений\",\"id\":\"61921732097200714\",\"link\":\"hg_logs\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"virtual_team\",\"dataType\":\"link\",\"name\":\"Виртуальная команда, в которой будет работать сотрудник\",\"id\":\"62151731660743623\",\"link\":\"hg_virtual_team\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"resigning_empl_full_name\",\"dataType\":\"link\",\"name\":\"ФИО заменяемого сотрудника\",\"id\":\"64831731660388600\",\"link\":\"employees\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"which_candidate\",\"dataType\":\"link\",\"name\":\"Кем будет закрыта вакансия?\",\"id\":\"65291732098169032\",\"link\":\"hg_which_candidate\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"work_schedule\",\"dataType\":\"string\",\"name\":\"График и время работы\",\"id\":\"66861731661781138\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"reason_vacancy\",\"dataType\":\"link\",\"name\":\"Причина появления вакансии\",\"id\":\"68821731659809724\",\"link\":\"hg_reason_of_vacancy\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"contract_type\",\"dataType\":\"link\",\"name\":\"Тип договора\",\"id\":\"69111731660937960\",\"link\":\"hg_contract_type\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"salary\",\"dataType\":\"decimal\",\"name\":\"Оклад без РКиСН (gross) руб/мес\",\"id\":\"69361731661843194\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":20,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n    mask: Number,\\n    scale: 2,\\n    thousandsSeparator: '',\\n    padFractionalZeros: false,\\n    normalizeZeros: true,\\n    radix: ',',\\n    mapToRadix: ['.']\\n  }\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"period_bonus\",\"dataType\":\"link\",\"name\":\"Периодичность выплаты премии\",\"id\":\"70001731661977055\",\"link\":\"hg_period_bonus\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":21,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"replacement_status\",\"dataType\":\"link\",\"name\":\"Статус заменяемого сотрудника\",\"id\":\"73611731660160163\",\"link\":\"hg_replacement_status\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"management_division\",\"dataType\":\"link\",\"name\":\"Подразделение\",\"id\":\"74581732523685221\",\"link\":\"structure\",\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":32,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"legal_direct\",\"dataType\":\"link\",\"name\":\"ФИО руководителя\",\"id\":\"74661732523748577\",\"link\":\"employees\",\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":37,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"org_dev\",\"dataType\":\"boolean\",\"name\":\"Нужен OrgDev?\",\"id\":\"75441732523216236\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":29,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"conf_search\",\"dataType\":\"boolean\",\"name\":\"Конфиденциальный поиск\",\"id\":\"75771731659760040\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"hideStandardBooleanIcons\":false,\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"status\",\"dataType\":\"link\",\"name\":\"Статус\",\"id\":\"77021732097122174\",\"link\":\"hg_statuses\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":true,\"array\":false},{\"sysName\":\"budget_date\",\"dataType\":\"date\",\"name\":\"Бюджетная дата от C&B\",\"id\":\"77191732523054191\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":26,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.YYYY\",\"timeFormat\":\"\",\"isUTC\":\"true\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"legal_division\",\"dataType\":\"link\",\"name\":\"Подразделение\",\"id\":\"79361732523718953\",\"link\":\"structure\",\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":33,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"responsible_employee_id\",\"dataType\":\"link\",\"name\":\"Ответственный за текущий этап\",\"id\":\"80521732097268481\",\"link\":\"employees\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"vacancy_id\",\"dataType\":\"string\",\"name\":\"ID вакансии (из Optimacros)\",\"id\":\"85101732523164507\",\"link\":null,\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":27,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"approval_1\",\"dataType\":\"link\",\"name\":\"Дополнительный согласующий (руководитель) 1 \",\"id\":\"85491732097941627\",\"link\":\"employees\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"add_approval_1\",\"dataType\":\"json\",\"name\":\"Добавить дополнительного согласующего?\",\"id\":\"93711732097810014\",\"link\":\"\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"checkboxes\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"add\",\"label\":null}]},\"groupName\":null,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"division\",\"dataType\":\"link\",\"name\":\"Подразделение\",\"id\":\"93991731660871577\",\"link\":\"structure\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"manager\",\"dataType\":\"link\",\"name\":\"Нанимающий менеджер\",\"id\":\"94501732097520540\",\"link\":\"employees\",\"group\":\"1731662124558\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"management_position\",\"dataType\":\"string\",\"name\":\"Должность\",\"id\":\"95841732523725558\",\"link\":null,\"group\":\"1731661738585\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":34,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"work_place\",\"dataType\":\"string\",\"name\":\"Место работы\",\"id\":\"99931731661775579\",\"link\":\"\",\"group\":\"1731661738585\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
             "jsonGroupSettings": "[{\"id\":1732097408116,\"name\":\"Отмена заявок\",\"order\":0},{\"id\":1731661738585,\"name\":\"Общие данные\",\"order\":1},{\"id\":1731662124558,\"name\":\"Участники процесса согласования\",\"order\":2}]",
             "jsonViewIdSettings": null,
             "jsonSettings": null,
@@ -17461,7 +4196,7 @@ let exampleForm =  {
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2024-11-29T11:02:55Z",
+            "dateChanged": "2024-12-04T10:31:27Z",
             "createBy": 23015,
             "changedBy": 23015,
             "_settings": null,
@@ -17869,7 +4604,7 @@ let exampleForm =  {
             "networkID": 21335,
             "name": "hg_statuses",
             "sysName": "hg_statuses",
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"next_status_ids\",\"dataType\":\"arrayLink\",\"name\":\"Допустимый следующий статус\",\"id\":\"27461729716723723\",\"link\":\"hg_statuses\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"prev_stat\",\"dataType\":\"arrayLink\",\"name\":\"Предыдущий статус\",\"id\":\"58011723473133112\",\"link\":\"hg_statuses\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"status\",\"dataType\":\"string\",\"name\":\"Cтатус\",\"id\":\"68061716237170513\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false}]",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"status\",\"dataType\":\"string\",\"name\":\"Cтатус\",\"id\":\"68061716237170513\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"prev_stat\",\"dataType\":\"arrayLink\",\"name\":\"Предыдущий статус\",\"id\":\"58011723473133112\",\"link\":\"hg_statuses\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"next_status_ids\",\"dataType\":\"arrayLink\",\"name\":\"Допустимый следующий статус\",\"id\":\"27461729716723723\",\"link\":\"hg_statuses\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"array\":false}]",
             "jsonGroupSettings": "[]",
             "jsonViewIdSettings": "[{\"sysName\":\"status\"}]",
             "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":false,\"lowPriority\":false}",
@@ -17921,7 +4656,7 @@ let exampleForm =  {
             "networkID": 21335,
             "name": "hg_logs",
             "sysName": "hg_logs",
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"date\",\"dataType\":\"date\",\"name\":\"Дата изменения\",\"id\":\"58751717136726535\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"text\",\"dataType\":\"string\",\"name\":\"Изменение заявки\",\"id\":\"13041717136793732\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"user\",\"dataType\":\"link\",\"name\":\"Кто внес изменения\",\"id\":\"83101717136837464\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ticket\",\"dataType\":\"link\",\"name\":\"Номер заявки\",\"id\":\"45681717136838095\",\"link\":\"hiring\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"date_display\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"87491717137718793\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false}]",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"date\",\"dataType\":\"date\",\"name\":\"Дата изменения\",\"id\":\"58751717136726535\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"ru\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD.MM.Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"text\",\"dataType\":\"string\",\"name\":\"Изменение заявки\",\"id\":\"13041717136793732\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"user\",\"dataType\":\"link\",\"name\":\"Кто внес изменения\",\"id\":\"83101717136837464\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"ticket\",\"dataType\":\"link\",\"name\":\"Номер заявки\",\"id\":\"45681717136838095\",\"link\":\"hiring\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"date_display\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"87491717137718793\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
             "jsonGroupSettings": "[]",
             "jsonViewIdSettings": null,
             "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
@@ -18068,116 +4803,896 @@ let exampleForm =  {
                 "array": false
             },
             "folderId": 33827350
-        },
-        "99357339": {
-            "id": 99357339,
-            "dateCreated": "2024-11-25T08:29:03Z",
-            "hidden": false,
-            "dateHidden": null,
-            "networkID": 21335,
-            "name": "hg_select_structure",
-            "sysName": "hg_select_structure",
-            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"structure\",\"name\":\"Structure\",\"dataType\":\"string\",\"id\":\"75581732523349715\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
-            "jsonGroupSettings": null,
-            "jsonViewIdSettings": "[{\"sysName\":\"structure\"}]",
-            "jsonSettings": null,
-            "jsonNativeIndexSettings": null,
-            "indexEnabled": true,
-            "lastIndexUpdate": 0,
-            "indexName": "",
-            "dateChanged": "2024-11-25T08:29:31Z",
-            "createBy": 23015,
-            "changedBy": 23015,
-            "_settings": null,
-            "_nativeIndexSettings": null,
-            "objectIDSysName": "id",
-            "innerIDField": {
-                "sysName": "id",
-                "dataType": "id",
-                "name": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            "folderId": 33827350
-        },
-        "99357340": {
-            "id": 99357340,
-            "dateCreated": "2024-11-25T08:45:28Z",
-            "hidden": false,
-            "dateHidden": null,
-            "networkID": 21335,
-            "name": "hg_analytics_for_ops",
-            "sysName": "hg_analytics_for_ops",
-            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"name\",\"name\":\"name\",\"dataType\":\"string\",\"id\":\"88871717102762537\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
-            "jsonGroupSettings": "[]",
-            "jsonViewIdSettings": null,
-            "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
-            "jsonNativeIndexSettings": null,
-            "indexEnabled": true,
-            "lastIndexUpdate": 0,
-            "indexName": "",
-            "dateChanged": null,
-            "createBy": 23015,
-            "changedBy": null,
-            "_settings": null,
-            "_nativeIndexSettings": null,
-            "objectIDSysName": "id",
-            "innerIDField": {
-                "sysName": "id",
-                "dataType": "id",
-                "name": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "typeVariable": {},
-                "json": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "indexExists": false,
-                "array": false
-            },
-            "folderId": 33827350
         }
     },
     "isSuccessWrite": false,
     "writeError": null,
     "writeResponse": null,
     "fileds": [
+        {
+            "sysName": "id",
+            "dataType": "id",
+            "name": "id",
+            "id": "0",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "internal_candidate_name",
+            "dataType": "link",
+            "name": "ФИО внутреннего кандидата",
+            "id": "51041732098190614",
+            "link": "employees",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 13,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "which_candidate",
+            "dataType": "link",
+            "name": "Кем будет закрыта вакансия?",
+            "id": "65291732098169032",
+            "link": "hg_which_candidate",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 12,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "recruiter",
+            "dataType": "link",
+            "name": "Отвественный рекрутер",
+            "id": "50501732098143748",
+            "link": "employees",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 11,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "teamlead",
+            "dataType": "link",
+            "name": "Руководитель направления подбора персонала",
+            "id": "36711732098134082",
+            "link": "employees",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 10,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "cnb",
+            "dataType": "link",
+            "name": "C&B",
+            "id": "14371732098124414",
+            "link": "employees",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 9,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "budget_holder",
+            "dataType": "link",
+            "name": "Держатель бюджета",
+            "id": "22461732098115380",
+            "link": "employees",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 8,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "approval_2",
+            "dataType": "link",
+            "name": "Дополнительный согласующий (руководитель) 2",
+            "id": "60781732097962282",
+            "link": "employees",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 7,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "approval_1",
+            "dataType": "link",
+            "name": "Дополнительный согласующий (руководитель) 1 ",
+            "id": "85491732097941627",
+            "link": "employees",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 5,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "add_approval_2",
+            "dataType": "json",
+            "name": "Добавить дополнительного согласующего?",
+            "id": "14161732097917550",
+            "link": "",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 6,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "checkboxes",
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOption": false,
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false",
+                "multipleChoice": [
+                    {
+                        "value": "add",
+                        "label": null
+                    }
+                ]
+            },
+            "groupName": null,
+            "typeVariable": {},
+            "json": true,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "add_approval_1",
+            "dataType": "json",
+            "name": "Добавить дополнительного согласующего?",
+            "id": "93711732097810014",
+            "link": "",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "checkboxes",
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false",
+                "multipleChoice": [
+                    {
+                        "value": "add",
+                        "label": null
+                    }
+                ]
+            },
+            "groupName": null,
+            "typeVariable": {},
+            "json": true,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "hr_bp",
+            "dataType": "link",
+            "name": "Cогласующий HR BP",
+            "id": "54801732097785732",
+            "link": "employees",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "up_manager",
+            "dataType": "link",
+            "name": "Верхнеуровневый руководитель",
+            "id": "21751732097711574",
+            "link": "employees",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "hr_bp_creator",
+            "dataType": "json",
+            "name": "Заявка создана HR BP, вместо руководителя",
+            "id": "13741732097541879",
+            "link": "",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "checkboxes",
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false",
+                "multipleChoice": [
+                    {
+                        "value": "hrbp",
+                        "label": null
+                    }
+                ]
+            },
+            "groupName": null,
+            "typeVariable": {},
+            "json": true,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "manager",
+            "dataType": "link",
+            "name": "Нанимающий менеджер",
+            "id": "94501732097520540",
+            "link": "employees",
+            "group": "1731662124558",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "last_change_date",
+            "dataType": "date",
+            "name": "Дата последнего изменения",
+            "id": "54871732097356664",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 11,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "ru",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD.MM.YYYY",
+                "timeFormat": " HH:mm",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "all_user_ids",
+            "dataType": "arrayLink",
+            "name": "Все пользователи, относящиеся к заявке",
+            "id": "56911732097330019",
+            "link": "employees",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 10,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": false,
+            "arrayLink": true,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "responsible_roles",
+            "dataType": "arrayLink",
+            "name": "Ответственные роли",
+            "id": "20831732097292042",
+            "link": "roles",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 9,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": false,
+            "arrayLink": true,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "responsible_employee_id",
+            "dataType": "link",
+            "name": "Ответственный за текущий этап",
+            "id": "80521732097268481",
+            "link": "employees",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 8,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "date",
+            "dataType": "date",
+            "name": "Дата создания заявки",
+            "id": "38501732097228191",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 7,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "ru",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD.MM.YYYY",
+                "timeFormat": " HH:mm",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "number",
+            "dataType": "string",
+            "name": "Номер заявки",
+            "id": "19551732097216287",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 6,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "logs",
+            "dataType": "arrayLink",
+            "name": "История изменений",
+            "id": "61921732097200714",
+            "link": "hg_logs",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 5,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": false,
+            "arrayLink": true,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "user_creator",
+            "dataType": "link",
+            "name": "Инициатор заявки",
+            "id": "51381732097181650",
+            "link": "employees",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "last_user",
+            "dataType": "link",
+            "name": "Кем изменено",
+            "id": "27981732097155934",
+            "link": "WebUser",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "prev_status",
+            "dataType": "link",
+            "name": "Предыдущий статус",
+            "id": "50941732097133797",
+            "link": "hg_statuses",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "status",
+            "dataType": "link",
+            "name": "Статус",
+            "id": "77021732097122174",
+            "link": "hg_statuses",
+            "group": "0",
+            "tags": "",
+            "indexing": true,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [
+                "id"
+            ],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "indexExists": true,
+            "array": false
+        },
         {
             "sysName": "candidate_description",
             "dataType": "string",
@@ -18280,7 +5795,35 @@ let exampleForm =  {
             "constraints": null,
             "synthetic": false,
             "format": "positiveNum",
-            "formatOptions": {},
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: Number,\n    min: -10000,\n    max: 10000,\n    thousandsSeparator: ' '\n  }",
+                "isUTC": "false"
+            },
             "groupName": null,
             "typeVariable": {},
             "json": false,
@@ -18336,7 +5879,35 @@ let exampleForm =  {
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": {},
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: Number,\n    scale: 2,\n    thousandsSeparator: '',\n    padFractionalZeros: false,\n    normalizeZeros: true,\n    radix: ',',\n    mapToRadix: ['.']\n  }",
+                "isUTC": "false"
+            },
             "groupName": null,
             "typeVariable": {},
             "json": false,
@@ -18448,7 +6019,35 @@ let exampleForm =  {
             "constraints": null,
             "synthetic": false,
             "format": null,
-            "formatOptions": {},
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: Number,\n    scale: 2,\n    thousandsSeparator: '',\n    padFractionalZeros: false,\n    normalizeZeros: true,\n    radix: ',',\n    mapToRadix: ['.']\n  }",
+                "isUTC": "false"
+            },
             "groupName": null,
             "typeVariable": {},
             "json": false,
@@ -18987,1166 +6586,6 @@ let exampleForm =  {
             "arrayLink": false,
             "indexExists": false,
             "array": false
-        },
-        {
-            "sysName": "internal_candidate_name",
-            "dataType": "link",
-            "name": "ФИО внутреннего кандидата",
-            "id": "51041732098190614",
-            "link": "employees",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 13,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "which_candidate",
-            "dataType": "link",
-            "name": "Кем будет закрыта вакансия?",
-            "id": "65291732098169032",
-            "link": "hg_which_candidate",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 12,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "recruiter",
-            "dataType": "link",
-            "name": "Отвественный рекрутер",
-            "id": "50501732098143748",
-            "link": "employees",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 11,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "teamlead",
-            "dataType": "link",
-            "name": "Руководитель направления подбора персонала",
-            "id": "36711732098134082",
-            "link": "employees",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 10,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "cnb",
-            "dataType": "link",
-            "name": "C&B",
-            "id": "14371732098124414",
-            "link": "employees",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 9,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "budget_holder",
-            "dataType": "link",
-            "name": "Держатель бюджета",
-            "id": "22461732098115380",
-            "link": "employees",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 8,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "approval_2",
-            "dataType": "link",
-            "name": "Дополнительный согласующий (руководитель) 2",
-            "id": "60781732097962282",
-            "link": "employees",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 7,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "approval_1",
-            "dataType": "link",
-            "name": "Дополнительный согласующий (руководитель) 1 ",
-            "id": "85491732097941627",
-            "link": "employees",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 5,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "add_approval_2",
-            "dataType": "json",
-            "name": "Добавить дополнительного согласующего?",
-            "id": "14161732097917550",
-            "link": "",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 6,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": "checkboxes",
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOption": false,
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD/MM/Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false",
-                "multipleChoice": [
-                    {
-                        "value": "add",
-                        "label": null
-                    }
-                ]
-            },
-            "groupName": null,
-            "typeVariable": {},
-            "json": true,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "add_approval_1",
-            "dataType": "json",
-            "name": "Добавить дополнительного согласующего?",
-            "id": "93711732097810014",
-            "link": "",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 4,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": "checkboxes",
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD/MM/Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false",
-                "multipleChoice": [
-                    {
-                        "value": "add",
-                        "label": null
-                    }
-                ]
-            },
-            "groupName": null,
-            "typeVariable": {},
-            "json": true,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "hr_bp",
-            "dataType": "link",
-            "name": "HR BP",
-            "id": "54801732097785732",
-            "link": "employees",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 3,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "up_manager",
-            "dataType": "link",
-            "name": "Верхнеуровневый руководитель",
-            "id": "21751732097711574",
-            "link": "employees",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 2,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "hr_bp_creator",
-            "dataType": "json",
-            "name": "Заявка создана HRBP",
-            "id": "13741732097541879",
-            "link": "",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": "checkboxes",
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD/MM/Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false",
-                "multipleChoice": [
-                    {
-                        "value": "hrbp",
-                        "label": null
-                    }
-                ]
-            },
-            "groupName": null,
-            "typeVariable": {},
-            "json": true,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "manager",
-            "dataType": "link",
-            "name": "Нанимающий менеджер",
-            "id": "94501732097520540",
-            "link": "employees",
-            "group": "1731662124558",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 0,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "id",
-            "dataType": "id",
-            "name": "id",
-            "id": "0",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 0,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "hide_income",
-            "dataType": "boolean",
-            "name": "Скрыть поля дохода?",
-            "id": "34721732524127128",
-            "link": "",
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 42,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "Да",
-                    "Нет"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD/MM/Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "comment_salary",
-            "dataType": "string",
-            "name": "Комментарий к структуре надбавок",
-            "id": "29541732524051837",
-            "link": null,
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 41,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "cost_center",
-            "dataType": "string",
-            "name": "Кост-центр",
-            "id": "31801732524038668",
-            "link": null,
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 40,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "analytics_ops",
-            "dataType": "link",
-            "name": "Категория персонала (Analytics for OPS)",
-            "id": "21631732523965857",
-            "link": "hg_analytics_for_ops",
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 39,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "position_name",
-            "dataType": "string",
-            "name": "Position name",
-            "id": "39831732523953542",
-            "link": null,
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 38,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "legal_direct",
-            "dataType": "link",
-            "name": "ФИО руководителя",
-            "id": "74661732523748577",
-            "link": "employees",
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 37,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "management_direct",
-            "dataType": "link",
-            "name": "ФИО руководителя",
-            "id": "18191732523739162",
-            "link": "employees",
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 36,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "legal_position",
-            "dataType": "string",
-            "name": "Должность",
-            "id": "47821732523738367",
-            "link": null,
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 35,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "management_position",
-            "dataType": "string",
-            "name": "Должность",
-            "id": "95841732523725558",
-            "link": null,
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 34,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "legal_division",
-            "dataType": "link",
-            "name": "Подразделение",
-            "id": "79361732523718953",
-            "link": "structure",
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 33,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "management_division",
-            "dataType": "link",
-            "name": "Подразделение",
-            "id": "74581732523685221",
-            "link": "structure",
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 32,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "structures_difference",
-            "dataType": "boolean",
-            "name": "Есть ли разница в управленческой и юридической структурах?",
-            "id": "40731732523540970",
-            "link": "",
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 31,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "Да",
-                    "Нет"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD/MM/Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "select_structure",
-            "dataType": "link",
-            "name": "В какой структуре будут происходить изменения?",
-            "id": "26721732523217174",
-            "link": "hg_select_structure",
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 30,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "org_dev",
-            "dataType": "boolean",
-            "name": "Нужен OrgDev?",
-            "id": "75441732523216236",
-            "link": "",
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 29,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "Да",
-                    "Нет"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD/MM/Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "id_position",
-            "dataType": "string",
-            "name": "Код позиции (из УШР)",
-            "id": "37671732523177005",
-            "link": null,
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 28,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "vacancy_id",
-            "dataType": "string",
-            "name": "ID вакансии (из Optimacros)",
-            "id": "85101732523164507",
-            "link": null,
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 27,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "budget_date",
-            "dataType": "date",
-            "name": "Бюджетная дата от C&B",
-            "id": "77191732523054191",
-            "link": "",
-            "group": "1731661738585",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 26,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "ru",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "DD.MM.YYYY",
-                "timeFormat": "",
-                "isUTC": "true"
-            },
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "user_creator",
-            "dataType": "link",
-            "name": "Инициатор заявки",
-            "id": "51381732097181650",
-            "link": "employees",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 4,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "cancel_reason",
-            "dataType": "string",
-            "name": "Укажите причину",
-            "id": "13271732534584664",
-            "link": null,
-            "group": "1732097408116",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 0,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
         }
     ],
     "quickSearch": null,
@@ -20168,9 +6607,9 @@ let authExample = {
     "whom_delegate_ids": "",
     "notifications_counter": "",
     "nid": 21335,
-    "user": "aleksandra.kalina@lamoda.ru",
+    "user": "hrbp",
     "userpic": "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg",
-    "id": "aleksandra.kalina@lamoda.ru"
+    "id": "hrbp"
  }
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
