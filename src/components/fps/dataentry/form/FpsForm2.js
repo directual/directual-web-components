@@ -169,14 +169,12 @@ export default function FpsForm2(props) {
       }
       return result;
     }, {});
-    const dataObject = edditingOn ? convertedDates : {}
+    const dataObject = edditingOn ? {..._.get(data, "data[0]"), ...convertedDates, ...convertedBools} : {}
     const newModel = ({
       //...model,  //чтобы старое затиралось
       ...flatternModel({
         ...gatherDefaults(),
-        ..._.get(data, "data[0]"),
-        ...dataObject,
-        ...convertedBools
+        ...dataObject
       })
     })
     return newModel
