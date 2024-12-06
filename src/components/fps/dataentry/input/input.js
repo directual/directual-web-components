@@ -369,7 +369,7 @@ export default function Input(props) {
         // console.log('counting lines...')
         // console.log(textarea)
         if (!textarea || !textarea.constructor || textarea.constructor.name != 'HTMLTextAreaElement') {
-            console.log('not a textarea');
+            // console.log('not a textarea');
             return;
         }
         let _buffer;

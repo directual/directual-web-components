@@ -90,11 +90,15 @@ export default function FpsForm2(props) {
 
   // AUTOSUBMIT ON MODEL
   useEffect(() => {
+
     if (_.get(params, "general.autosubmit") == "model") {
       // any field:
       if (_.get(params, "general.autosubmit_model") && _.get(params, "general.autosubmit_model").length > 0) {
         let send = false
         _.get(params, "general.autosubmit_model").forEach(field => {
+          // console.log("AUTOSUBMIT ON MODEL")
+          // console.log(_.get(previousModel, field))
+          // console.log(_.get(model, field))
           if (_.get(previousModel, field) !== _.get(model, field)) { send = true }
         })
         if (send) {
@@ -165,12 +169,13 @@ export default function FpsForm2(props) {
       }
       return result;
     }, {});
+    const dataObject = edditingOn ? convertedDates : {}
     const newModel = ({
       //...model,  //чтобы старое затиралось
       ...flatternModel({
         ...gatherDefaults(),
         ..._.get(data, "data[0]"),
-        ...convertedDates,
+        ...dataObject,
         ...convertedBools
       })
     })
@@ -495,16 +500,14 @@ export default function FpsForm2(props) {
   function submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData,
     actionReq, setActionError, resetModel) {
 
-
-
     clearTimeout(cx);
 
     newData = newData || {}
 
-    let localState = { ...state, ...newData.state }
     let localModel = { ...model, ...newData.model }
+    let localState = { ...templateState(state,localModel), ...newData.state }
 
-    setState({ ...state, _submitError: "" })
+    //setState({ ...templateState(state,localModel), _submitError: "" })
     let modelToSend = {}
 
     for (const f in localModel) {
@@ -546,7 +549,7 @@ export default function FpsForm2(props) {
 
     if (!modelIsChanged && !submitMapping && !_.isEqual(gatherDefaults(), localModel) && !autoSubmit &&
       !(_.get(params, "general.saveState") && _.get(params, "general.saveStateTo"))) {
-      setState({ ...state, _submitError: "" })
+      //setState({ ...state, _submitError: "" })
       console.log('Model is not changed. Submit does not submit anything')
       setLoading(false)
       finish && finish()
@@ -585,7 +588,7 @@ export default function FpsForm2(props) {
         return fieldName ? '"' + fieldName + '"' : '"' + i + '"'
       })
       const errMessage = dict[lang].form.emptyRequired + emptyFields.join(", ")
-      setState({ ...state, _submitError: errMessage })
+      setState({ ...templateState(state,localModel), _submitError: errMessage })
       finish()
       return;
     }
@@ -880,7 +883,6 @@ export default function FpsForm2(props) {
 
   const editModel = field => value => {
     console.log("edit " + field + " => " + value)
-    console.log(typeof model[field])
     const copyModel = _.cloneDeep(model)
     _.set(copyModel, field, value)
     setModel(copyModel)
