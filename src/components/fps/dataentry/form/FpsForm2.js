@@ -221,6 +221,7 @@ export default function FpsForm2(props) {
         ...convertedDates,
         ...convertedBools
       })
+      let saveSate = { ...state }
       const newModel = ({
         //...model,  //чтобы старое затиралось
         ...flatternModel({
@@ -237,8 +238,8 @@ export default function FpsForm2(props) {
         setModel(newModel)
         setOriginalModel(newModel)
       }
+      saveSate = { ...saveSate, ...templateState(_.get(data, "params.state"), newModel) }
       // RESTORE STATE:
-      let saveSate = { ...saveSate, ...templateState(_.get(data, "params.state"), newModel) }
       if (_.get(params, "general.restoreState") && _.get(params, "general.saveStateTo")) {
         saveSate = { ...saveSate, ...parseJson(newModel[_.get(params, "general.saveStateTo")]) }
       }
