@@ -174,7 +174,6 @@ export default function FpsForm2(props) {
         ...convertedBools
       })
     })
-    saveSate = { ...saveSate, ...templateState(_.get(data, "params.state"), newModel) }
     return newModel
   }
 
@@ -239,7 +238,7 @@ export default function FpsForm2(props) {
         setOriginalModel(newModel)
       }
       // RESTORE STATE:
-      saveSate = { ...saveSate, ...templateState(_.get(data, "params.state"), newModel) }
+      let saveSate = { ...saveSate, ...templateState(_.get(data, "params.state"), newModel) }
       if (_.get(params, "general.restoreState") && _.get(params, "general.saveStateTo")) {
         saveSate = { ...saveSate, ...parseJson(newModel[_.get(params, "general.saveStateTo")]) }
       }
