@@ -174,6 +174,7 @@ export default function FpsForm2(props) {
         ...convertedBools
       })
     })
+    saveSate = { ...saveSate, ...templateState(_.get(data, "params.state"), newModel) }
     return newModel
   }
 
@@ -221,7 +222,6 @@ export default function FpsForm2(props) {
         ...convertedDates,
         ...convertedBools
       })
-      let saveSate = { ...state }
       const newModel = ({
         //...model,  //чтобы старое затиралось
         ...flatternModel({
@@ -234,13 +234,12 @@ export default function FpsForm2(props) {
 
       if (!_.isEqual(newModel, model)) {
         console.log("newModel")
-        console.log(newModel)
-        console.log(model)
+        // console.log(model)
         setModel(newModel)
         setOriginalModel(newModel)
-        saveSate = { ...saveSate, ...templateState(_.get(data, "params.state"), newModel) }
       }
       // RESTORE STATE:
+      saveSate = { ...saveSate, ...templateState(_.get(data, "params.state"), newModel) }
       if (_.get(params, "general.restoreState") && _.get(params, "general.saveStateTo")) {
         saveSate = { ...saveSate, ...parseJson(newModel[_.get(params, "general.saveStateTo")]) }
       }
@@ -250,8 +249,6 @@ export default function FpsForm2(props) {
   }, [_.get(data, "data[0]")])
 
   useEffect(() => {
-    console.log("model change")
-    console.log(model)
     if (!_.isEqual(previousModel, model)) {
       setHighlightModel(true)
       setTimeout(() => setHighlightModel(false), 300)
