@@ -385,8 +385,8 @@ export default function FpsForm2(props) {
         let direct = ""
         let indirect = ""
         try {
-          direct = (value || []).join(",") + " contains " + "{{" + element._conditionalView_field + "}} → " + field
-          indirect = (value || []).join(",") + " does NOT contain " + "{{" + element._conditionalView_field + "}} → " + field
+          direct = (Array.isArray(value) ? value : []).join(",") + " contains " + "{{" + element._conditionalView_field + "}} → " + field
+          indirect = (Array.isArray(value) ? value : []).join(",") + " does NOT contain " + "{{" + element._conditionalView_field + "}} → " + field
         } catch (err) {
           console.error(err)
           console.log("value")
