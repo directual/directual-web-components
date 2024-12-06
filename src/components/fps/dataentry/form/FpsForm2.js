@@ -231,7 +231,7 @@ export default function FpsForm2(props) {
           ...convertedBools
         })
       })
-      
+
       if (!_.isEqual(newModel, model)) {
         console.log("newModel")
         console.log(newModel)
@@ -382,8 +382,19 @@ export default function FpsForm2(props) {
       if (element._conditionalView_operator == "notIn") {
         value = value ? value.split(",") : '""'
         field = field ? field.split(",") : '""'
-        let direct = (value || []).join(",") + " contains " + "{{" + element._conditionalView_field + "}} → " + field
-        let indirect = (value || []).join(",") + " does NOT contain " + "{{" + element._conditionalView_field + "}} → " + field
+        let direct = ""
+        let indirect = ""
+        try {
+          direct = (value || []).join(",") + " contains " + "{{" + element._conditionalView_field + "}} → " + field
+          indirect = (value || []).join(",") + " does NOT contain " + "{{" + element._conditionalView_field + "}} → " + field
+        } catch (err) {
+          console.error(err)
+          console.log("value")
+          console.log(value)
+          console.log("field")
+          console.log(field)
+        }
+
         condition = element._conditionalView_value + " does NOT contain " + "{{" + element._conditionalView_field + "}}"
         if ((field && field.length > 0 &&
           value && value.length > 0
@@ -754,7 +765,7 @@ export default function FpsForm2(props) {
 
     templateData = _.mapValues(templateData, (value, key) => {
       if (getDateFields().hasOwnProperty(key) // && !noDate // я хуй знает зачем я добавил этот noDate. В FpsForm2Element.js в функции transformObject это как-то юзалось я не ебу как
-    ) {
+      ) {
         return formatDate(value, getDateFields()[key])
       }
       return value;
@@ -871,7 +882,7 @@ export default function FpsForm2(props) {
   // =============
 
   const editModel = field => value => {
-    console.log("edit " + field + " => " + value) 
+    console.log("edit " + field + " => " + value)
     console.log(typeof model[field])
     const copyModel = _.cloneDeep(model)
     _.set(copyModel, field, value)
