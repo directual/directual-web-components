@@ -144,10 +144,10 @@ function ElementAction(props) {
 
     const [error, setError] = useState("")
 
-    const performAction = (action, actionFormat) => {
-        console.log("performAction")
-        console.log(action)
-        console.log(actionFormat)
+    const performAction = (action, actionFormat, finish) => {
+        // console.log("performAction")
+        // console.log(action)
+        // console.log(actionFormat)
 
         if (actionFormat._action_customRequired &&
             actionFormat._action_customRequired_fields &&
@@ -191,9 +191,10 @@ function ElementAction(props) {
             console.log(payload)
             if (action.actionSubmit) {
                 onSubmit(
-                    () => {
+                    (res) => {
                         callEndpointPOST(action.endpoint, payload, (result) => {
                             setLoading(false)
+                            finish && finish(!!res)
                             // console.log(result)
                         })
                     },
@@ -205,12 +206,14 @@ function ElementAction(props) {
                     actionFormat._action_standardRequired,
                     err => {
                         setError(err);
+                        finish && finish(false);
                         setLoading(false)
                     },
                     action.resetModel)
             } else {
                 callEndpointPOST(action.endpoint, payload, (result) => {
                     setLoading(false)
+                    finish && finish(true);
                     // console.log(result)
                 })
             }
@@ -222,11 +225,12 @@ function ElementAction(props) {
             if (action.actionSubmit) {
                 setLoading(true)
                 onSubmit(
-                    () => {
+                    (res) => {
                         // setState({ ...state, ...payloadState })
                         // setModel({ ...copyModel, ...payloadModel })
                         // setExtendedModel({ ...copyExtendedModel, ...payloadModel })
-                        setLoading(false)
+                        setLoading(false);
+                        finish && finish(!!res);
                         if (action.resetModel) {
                             copyModel = {}
                             copyExtendedModel = {}
@@ -242,6 +246,7 @@ function ElementAction(props) {
                     actionFormat._action_standardRequired,
                     err => {
                         setError(err);
+                        finish && finish(false);
                         setLoading(false)
                     },
                     action.resetModel
@@ -280,7 +285,7 @@ function ElementAction(props) {
                 setLoading={setLoading}
                 actionFormat={action}
                 action={_.find(actions, { id: action._action })}
-                onPerform={() => performAction(_.find(actions, { id: action._action }), action)}
+                onPerform={(finish) => performAction(_.find(actions, { id: action._action }), action, finish)}
             /> : <div>Action is not configured</div>
             )}
         </ActionPanel>

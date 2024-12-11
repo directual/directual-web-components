@@ -550,7 +550,7 @@ export default function FpsForm2(props) {
       //setState({ ...state, _submitError: "" })
       console.log('Model is not changed. Submit does not submit anything')
       setLoading(false)
-      finish && finish()
+      finish && finish(false)
       return;
     }
 
@@ -587,7 +587,7 @@ export default function FpsForm2(props) {
       })
       const errMessage = dict[lang].form.emptyRequired + emptyFields.join(", ")
       setState({ ...templateState(state,localModel), _submitError: errMessage })
-      finish()
+      finish && finish(false)
       return;
     }
     let actionError = ""
@@ -688,7 +688,7 @@ export default function FpsForm2(props) {
         } else {
           setState({ ...state, _apiError: data.msg })
           setLoading(false)
-          finish && finish()
+          finish && finish(true)
         }
       }
     )

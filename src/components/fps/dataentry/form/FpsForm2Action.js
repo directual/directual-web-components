@@ -6,7 +6,7 @@ import Hint from "../../hint/hint"
 import InnerHTML from 'dangerously-set-html-content'
 
 export default function FpsForm2Action(props) {
-    const { actionFormat, action, loading, onPerform, userDebug, params, checkHidden, template } = props
+    const { actionFormat, action, loading, handleRoute, onPerform, userDebug, params, checkHidden, template } = props
 
     const [performed, setPerformed] = useState(false)
 
@@ -14,15 +14,26 @@ export default function FpsForm2Action(props) {
         if (action && action.autoAction) {
             const delay = (action.autoAction_delay || 0) * 1000
             setTimeout(() => {
-                !performed && onPerform()
-                setPerformed(true)
+                !performed && onPerform(res => setPerformed(res))
             }, delay)
         }
     }, [])
 
+    const link = action.actionType == 'link' ?
+        template(action._href)
+        : null
+
+    let externalLink
+    if (_.startsWith(link, 'https')) {
+        externalLink = link
+    }
+
     const sendAction = e => {
-        onPerform()
-        setPerformed(true)
+        if (link) {
+            handleRoute(link)(e)
+        } else {
+            onPerform((res)=>setPerformed(res))
+        }
     }
 
     if (!action) return <div>No action <code>{_.get(actionFormat, "id")}</code></div>
@@ -42,15 +53,13 @@ export default function FpsForm2Action(props) {
         actionFormat._action_label_picture_source == 'from_tempalte' ?
             actionFormat._action_picure_templ ? template(actionFormat._action_picure_templ) : null
             : actionFormat._action_picure : null
-    const externamLink = action.actionType == 'link' ?
-        template(action._href)
-        : null
+
 
     const button = <Button
         danger={actionFormat._action_button_type == "danger"}
         accent={actionFormat._action_button_type == "accent"}
         picture={buttonPicture}
-        link={externamLink}
+        link={externalLink}
         color={actionFormat._action_picure_color}
         borderColor={actionFormat._action_picure_border_color}
         newWindow={action._blank}

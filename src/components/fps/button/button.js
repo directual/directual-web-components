@@ -70,7 +70,7 @@ export default function Button(props) {
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
             style={{
-                height: props.height || 48,
+                height: props.height || 44,
                 ...colors
             }}
             href={!props.disabled && props.link}
