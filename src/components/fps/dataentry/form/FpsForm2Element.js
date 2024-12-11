@@ -148,6 +148,7 @@ function ElementAction(props) {
         // console.log("performAction")
         // console.log(action)
         // console.log(actionFormat)
+        finish(true)
 
         if (actionFormat._action_customRequired &&
             actionFormat._action_customRequired_fields &&
@@ -194,7 +195,7 @@ function ElementAction(props) {
                     (res) => {
                         callEndpointPOST(action.endpoint, payload, (result) => {
                             setLoading(false)
-                            finish && finish(!!res)
+                            finish && finish(true)
                             // console.log(result)
                         })
                     },
@@ -206,7 +207,7 @@ function ElementAction(props) {
                     actionFormat._action_standardRequired,
                     err => {
                         setError(err);
-                        finish && finish(false);
+                        err && finish && finish(false);
                         setLoading(false)
                     },
                     action.resetModel)
@@ -230,7 +231,7 @@ function ElementAction(props) {
                         // setModel({ ...copyModel, ...payloadModel })
                         // setExtendedModel({ ...copyExtendedModel, ...payloadModel })
                         setLoading(false);
-                        finish && finish(!!res);
+                        finish && finish(true);
                         if (action.resetModel) {
                             copyModel = {}
                             copyExtendedModel = {}
@@ -246,7 +247,7 @@ function ElementAction(props) {
                     actionFormat._action_standardRequired,
                     err => {
                         setError(err);
-                        finish && finish(false);
+                        err && finish && finish(false);
                         setLoading(false)
                     },
                     action.resetModel
@@ -285,7 +286,7 @@ function ElementAction(props) {
                 setLoading={setLoading}
                 actionFormat={action}
                 action={_.find(actions, { id: action._action })}
-                onPerform={(finish) => performAction(_.find(actions, { id: action._action }), action, finish)}
+                onPerform={finish => performAction(_.find(actions, { id: action._action }), action, finish)}
             /> : <div>Action is not configured</div>
             )}
         </ActionPanel>

@@ -32,7 +32,10 @@ export default function FpsForm2Action(props) {
         if (link) {
             handleRoute(link)(e)
         } else {
-            onPerform((res)=>setPerformed(res))
+            onPerform(res => {
+                //console.log(res); 
+                setPerformed(res);
+            })
         }
     }
 
