@@ -719,7 +719,7 @@ export default function Input(props) {
                             }}
                             onChange={e => { props.imask ? undefined : handleChangeDecimalNumber(e.target.value) }}
                             // value={value}
-                            value={props.imask && value ? value.toString() : value}
+                            value={props.imask && (value || value === 0) ? value.toString() : value}
                             onBlur={checkValue}
                             placeholder={`${props.placeholder ? props.placeholder : ''}`}
                         />
@@ -746,7 +746,7 @@ export default function Input(props) {
                                 height: props.height || 48
                             }}
                             onChange={e => props.imask ? undefined : handleChangeNumber(e.target.value)}
-                            value={props.imask && value ? value.toString() : value}
+                            value={props.imask && (value || value === 0) ? value.toString() : value}
                             onBlur={checkValue}
                             placeholder={`${props.placeholder ? props.placeholder : ''}`}
                         />
@@ -781,7 +781,7 @@ export default function Input(props) {
                                 height: props.height || 48
                             }}
                             onChange={e => props.imask ? undefined : handleChange(e.target.value)}
-                            value={value}
+                            value={props.imask && (value || value === 0) ? value.toString() : value}
                             onBlur={checkValue}
                             placeholder={`${props.placeholder ? props.placeholder : _.get(dict[lang], 'numbersOnly') || 'numbers only'
                                 }`
