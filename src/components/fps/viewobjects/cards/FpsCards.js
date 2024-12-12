@@ -21,8 +21,8 @@ import PropTypes from 'prop-types';
 function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
     if (!data) { data = {} }
 
-    console.log('---data FpsCards---')
-    console.log(data)
+    // console.log('---data FpsCards---')
+    // console.log(data)
 
     const cx = null
     const dqlService = debounce(performFiltering, 600);

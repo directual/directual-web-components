@@ -365,7 +365,7 @@ function Card(props) {
         </div>}
 
         {/* CARD BODY */}
-        <div style={{ padding: card_padding, position: "relative", minHeight: card_min_height, }}>
+        <div style={{ padding: card_padding, position: "relative", minHeight: card_min_height, flexGrow: 2 }}>
             {dir_image_position == "no_image" && favoritesOn && <div
                 style={
                     {

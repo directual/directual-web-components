@@ -28,12 +28,18 @@
     display: flex;
 }
 
-.cards2_typeRegular, &.cards2_typeRegular:hover {
+.cards2_typeRegular, &.cards2_typeRegular:hover 
+{
     position: relative;
     display: flex;
     align-items: stretch;
     justify-content: stretch;
     color: var(--layout-text);
+}
+
+.cards2_card:hover {
+    background-color: var(--cards-hover-bgr);
+    border:solid 1px var(--cards-hover-border);
 }
 
 .cards2_typeRegular__favButton {

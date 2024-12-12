@@ -27,6 +27,10 @@
   justify-content: stretch;
   color: var(--layout-text);
 }
+.cards2_card:hover {
+  background-color: var(--cards-hover-bgr);
+  border: solid 1px var(--cards-hover-border);
+}
 .cards2_typeRegular__favButton {
   position: absolute;
   top: 10px;
