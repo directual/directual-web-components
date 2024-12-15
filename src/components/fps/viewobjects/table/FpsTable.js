@@ -448,27 +448,27 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute, cal
                         };
                     });
                     //fake request
-                    setTimeout(() => {
-                        const data = [
-                            {
-                                "title": "Погрузка/разгрузка",
-                                "id": "1"
-                            },
-                            {
-                                "title": "Сортировка",
-                                "id": "2"
-                            },
-                            {
-                                "title": "Программирование на Python",
-                                "id": "3"
-                            }
-                        ]
-                        const visibleNames = '[{"sysName":"firstName"}]'
-                        finish && finish(transformedArray(data, visibleNames))
-                        setOptions && setOptions(transformedArray(data, visibleNames))
-                    }, 1000)
+                    // setTimeout(() => {
+                    //     const data = [
+                    //         {
+                    //             "title": "Погрузка/разгрузка",
+                    //             "id": "1"
+                    //         },
+                    //         {
+                    //             "title": "Сортировка",
+                    //             "id": "2"
+                    //         },
+                    //         {
+                    //             "title": "Программирование на Python",
+                    //             "id": "3"
+                    //         }
+                    //     ]
+                    //     const visibleNames = '[{"sysName":"firstName"}]'
+                    //     finish && finish(transformedArray(data, visibleNames))
+                    //     setOptions && setOptions(transformedArray(data, visibleNames))
+                    // }, 1000)
 
-                    false &&
+                    // false &&
                     callEndpoint && callEndpoint(
                         endpoint,
                         "GET",
