@@ -347,7 +347,9 @@ function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters
             //     const fieldName = field._field_link_saveQuantity_Field.substring(9)
             //     if (state[fieldName] !== data.length) { setState({ ...state, [fieldName]: data.length }) }
             // }
-            setOptions(data)
+            console.log("callEndpoint")
+            console.log(data)
+            //setOptions(data)
         }, err => {
             setError(err.msg)
         })
