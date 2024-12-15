@@ -329,8 +329,8 @@ function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters
     const refreshOptions = (finish, filter, value, resetValue) => {
         let reqParams = {}
         reqParams = { ...reqParams, pageSize: 10 }
-        //reqParams = value && value.length > 0 ? { ...reqParams, _value: value.key || value } : reqParams
-        //reqParams = filter ? { ...reqParams, _filter: filter } : reqParams
+        reqParams = value && value.length > 0 ? { ...reqParams, _value: value.key || value } : reqParams
+        reqParams = filter ? { ...reqParams, _filter: filter } : reqParams
 
         //setCurrentParams(params)
         callEndpoint(_.get(field, 'endpoint'), reqParams, finish, data => {
@@ -347,8 +347,8 @@ function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters
             //     const fieldName = field._field_link_saveQuantity_Field.substring(9)
             //     if (state[fieldName] !== data.length) { setState({ ...state, [fieldName]: data.length }) }
             // }
-            console.log("callEndpoint")
-            console.log(data)
+            // console.log("callEndpoint")
+            // console.log(data)
             //setOptions(data)
         }, err => {
             setError(err.msg)
