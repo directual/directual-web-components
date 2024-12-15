@@ -419,6 +419,35 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute, cal
                 displayFilters={_.get(params, 'filterParams.isFiltering') || _.get(params, 'filterParams.isSorting')}
                 performFiltering={dqlService}
                 callEndpoint={(endpoint, params, finish, setOptions, setError) => {
+
+                    const transformedArray = (inputArray, visibleNames) => _.map(inputArray, (item) => {
+                        const parseJson = json => {
+                            if (!json) return {}
+                            let parsedJson = {}
+                            if (typeof json == 'object') return json
+                            try {
+                                parsedJson = JSON.parse(json)
+                            }
+                            catch (e) {
+                                console.log(json);
+                                console.log(e);
+                            }
+                            return parsedJson
+                        }
+
+                        const { id, ...rest } = item; // Destructure `id` and the rest of the properties
+                        const value = _.trim(_.map(parseJson(visibleNames), field => _.get(item, field.sysName)).join(' ')) ||
+                            _.values(_.pickBy(rest, _.isString)).join(' '); // Concatenate string values
+                        const excludeFields = [..._.map(parseJson(visibleNames), i => i.sysName), ...["userpic", "image", "picture", "photo"]]
+                        const description = _.trim((_.keys(_.omit(rest, excludeFields)) || []).map(i => rest[i]).join(" "))
+                        return {
+                            key: id,
+                            value: _.trim(value) || id,
+                            image: _.get(rest, "userpic") || _.get(rest, "image") || _.get(rest, "picture") || _.get(rest, "photo"),
+                            description: description,
+                        };
+                    });
+
                     callEndpoint && callEndpoint(
                         endpoint,
                         "GET",
