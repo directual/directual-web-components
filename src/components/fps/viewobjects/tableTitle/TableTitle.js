@@ -10,7 +10,7 @@ import _ from 'lodash'
 import moment from 'moment'
 
 export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters, onFilter, currentDQL,
-    chartFilters, displayChartFilters, updateChartFilters, chartLines, clearChartFilters,
+    chartFilters, displayChartFilters, updateChartFilters, chartLines, clearChartFilters, callEndpoint,
     onSearch, loading, searchValue, currentBP, displayFilters, lang, dict, performFiltering, params }) {
     const [showSearch, setShowSearch] = useState(search)
     //const [showFilters, setShowFilters] = useState(false)
@@ -38,6 +38,7 @@ export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters,
                         <NewFilters
                             tableFilters={tableFilters}
                             dict={dict[lang]}
+                            callEndpoint={callEndpoint}
                             lang={lang}
                             chartLines={chartLines}
                             displayFilters={displayFilters}
@@ -84,7 +85,7 @@ export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters,
 }
 
 function NewFilters({ tableFilters, performFiltering, lang, dict, loading, fieldOptions, alignRight, currentBP, tableTitle,
-    chartFilters, displayChartFilters, updateChartFilters, displayFilters, chartLines, clearChartFilters }) {
+    chartFilters, displayChartFilters, updateChartFilters, displayFilters, chartLines, clearChartFilters, callEndpoint }) {
 
 
     const defaultFilters = {
@@ -225,6 +226,7 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
                     currentBP={currentBP}
                     alignRight={alignRight}
                     lang={lang}
+                    callEndpoint={callEndpoint}
                     dict={dict}
                     key={filterField}
                     field={{
@@ -234,6 +236,7 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
                         operator: _.get(tableFilters, `filterFields.${filterField}.exactMatch`) == "exact" ? "exact match" : "like",
                         textsearch: tableFilters.filterFields[filterField].textsearch,
                         format: tableFilters.filterFields[filterField].format,
+                        endpoint: tableFilters.filterFields[filterField].endpoint,
                         formatOptions: tableFilters.filterFields[filterField].formatOptions,
                         options: (_.get(tableFilters, `filterFields[${filterField}].linkDirectory`) || [])
                             .map(i => { return { value: i.id, label: i.text } })
@@ -288,7 +291,7 @@ function OpenAI({ saveAIFilters, openAI, alignRight }) {
 }
 
 function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters, dict, alignRight, currentBP,
-    saveChartFilters, chartFilters, lang }) {
+    saveChartFilters, chartFilters, lang, callEndpoint }) {
 
     const filterWrapper = useRef(null);
 
@@ -319,6 +322,36 @@ function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters
 
     const shiftDropdown = -1 * (left - 6)
 
+    // console.log("field")
+    // console.log(field)
+
+    const refreshOptions = (finish, filter, value, resetValue) => {
+        let reqParams = {}
+        reqParams = { ...reqParams, pageSize: 10 }
+        //reqParams = value && value.length > 0 ? { ...reqParams, _value: value.key || value } : reqParams
+        //reqParams = filter ? { ...reqParams, _filter: filter } : reqParams
+
+        //setCurrentParams(params)
+        callEndpoint(field._field_arrayLink_endpoint, reqParams, finish, data => {
+            // console.log("finish")
+            // console.log(data)
+            // механизм сброса если из-за новых параметров среди опций нет значения:
+            // const currentValue = _.get(filters, `filters[${field.id}].value`)
+            // if (resetValue && (currentValue || currentValue == 0)) {
+            //     if (!_.some(data, { key: currentValue }) && field._field_link_reset) {
+            //         onChange && onChange(null)
+            //     }
+            // }
+            // if (field._field_link_saveQuantity && field._field_link_saveQuantity_Field) {
+            //     const fieldName = field._field_link_saveQuantity_Field.substring(9)
+            //     if (state[fieldName] !== data.length) { setState({ ...state, [fieldName]: data.length }) }
+            // }
+            setOptions(data)
+        }, err => {
+            setError(err.msg)
+        })
+    }
+
     return <div ref={filterWrapper}>
         <ButtonDropDown key={_.get(field, 'id')} lockDD={true}
             currentBP={currentBP}
@@ -340,6 +373,7 @@ function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters
 
                 {(_.get(field, 'type') == 'link' || _.get(field, 'type') == 'arrayLink') &&
                     _.get(field, 'textsearch') !== 'fulltext' &&
+                    _.get(field, 'textsearch') !== "endpoint" &&
                     <Input type="checkboxGroup"
                         nomargin
                         nowrap
@@ -359,6 +393,50 @@ function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters
                         clearOption
                         options={field.options || []}
                     />
+                }
+
+                {(_.get(field, 'type') == 'link' || _.get(field, 'type') == 'arrayLink') &&
+                    _.get(field, 'textsearch') == "endpoint" &&
+                    <div>
+                        {!_.get(field, 'endpoint') ? <div>Endpoint is not configured</div> : <div>
+                            <Input type="dinamicMultiSelect"
+                                width={250}
+                                nomargin
+                                //defaultValue={_.get(filters, `filters[${field.id}].value`)}
+                                onChange={value => {
+                                    console.log(value)
+                                    // const newFilters = { ...filters };
+                                    // _.set(newFilters, `filters[${field.id}].value`, value);
+                                    // _.set(newFilters, `filters[${field.id}].type`, 'multiOptions');
+                                    // saveFilters(newFilters);
+                                }}
+                                locale={lang}
+                                // callParams={params}
+                                onLoad={refreshOptions}
+                                // refresh={refresh}
+                            />
+                        </div>}
+
+                    </div>
+                    // <Input type="checkboxGroup"
+                    //     nomargin
+                    //     nowrap
+                    //     defaultValue={_.get(filters, `filters[${field.id}].value`)}
+                    //     onChange={value => {
+                    //         if (JSON.stringify(value) == '{}') {
+                    //             const newFilters = { ...filters };
+                    //             _.set(newFilters, `filters[${field.id}].value`, null);
+                    //             saveFilters(newFilters);
+                    //         } else {
+                    //             const newFilters = { ...filters };
+                    //             _.set(newFilters, `filters[${field.id}].value`, value);
+                    //             _.set(newFilters, `filters[${field.id}].type`, 'multiOptions');
+                    //             saveFilters(newFilters);
+                    //         }
+                    //     }}
+                    //     clearOption
+                    //     options={field.options || []}
+                    // />
                 }
 
                 {(_.get(field, 'type') == 'string' || _.get(field, 'type') == 'array' || _.get(field, 'type') == 'id' ||
