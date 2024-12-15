@@ -296,6 +296,7 @@ function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters
     const filterWrapper = useRef(null);
 
     const [left, setLeft] = useState(0)
+    const [error, setError] = useState("")
 
     useEffect(() => {
         if (filterWrapper.current && filterWrapper.current.getBoundingClientRect().left != left) {
@@ -332,7 +333,7 @@ function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters
         //reqParams = filter ? { ...reqParams, _filter: filter } : reqParams
 
         //setCurrentParams(params)
-        callEndpoint(field._field_arrayLink_endpoint, reqParams, finish, data => {
+        callEndpoint(_.get(field, 'endpoint'), reqParams, finish, data => {
             // console.log("finish")
             // console.log(data)
             // механизм сброса если из-за новых параметров среди опций нет значения:
@@ -413,9 +414,12 @@ function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters
                                 locale={lang}
                                 // callParams={params}
                                 onLoad={refreshOptions}
-                                // refresh={refresh}
+                            // refresh={refresh}
                             />
                         </div>}
+                        {error && <Hint margin={{ top: 10, bottom: 0 }} closable error onClose={() => setError("")}>
+                            {error}
+                        </Hint>}
 
                     </div>
                     // <Input type="checkboxGroup"
