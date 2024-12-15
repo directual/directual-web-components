@@ -397,15 +397,13 @@ function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters
                                         _.set(newFilters, `filters[${field.id}].type`, 'multiOptions');
                                     }
                                     else {
-                                        _.set(newFilters, `filters[${field.id}].value`, {});
-                                        _.set(newFilters, `filters[${field.id}].type`, 'multiOptions');
+                                        _.set(newFilters, `filters[${field.id}].value`, null);
+                                        saveFilters(newFilters);
                                     }
                                     saveFilters(newFilters);
                                 }}
                                 locale={lang}
-                                // callParams={params}
                                 onLoad={refreshOptions}
-                            // refresh={refresh}
                             />
                         </div>}
                         {error && <Hint margin={{ top: 10, bottom: 0 }} closable error onClose={() => setError("")}>
