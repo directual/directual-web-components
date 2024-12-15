@@ -323,9 +323,6 @@ function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters
 
     const shiftDropdown = -1 * (left - 6)
 
-    // console.log("field")
-    // console.log(field)
-
     const refreshOptions = (finish, filter, value, resetValue) => {
         let reqParams = {}
         reqParams = { ...reqParams, pageSize: 10 }
@@ -334,26 +331,13 @@ function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters
 
         //setCurrentParams(params)
         callEndpoint(_.get(field, 'endpoint'), reqParams, finish, data => {
-            // console.log("finish")
-            // console.log(data)
-            // механизм сброса если из-за новых параметров среди опций нет значения:
-            // const currentValue = _.get(filters, `filters[${field.id}].value`)
-            // if (resetValue && (currentValue || currentValue == 0)) {
-            //     if (!_.some(data, { key: currentValue }) && field._field_link_reset) {
-            //         onChange && onChange(null)
-            //     }
-            // }
-            // if (field._field_link_saveQuantity && field._field_link_saveQuantity_Field) {
-            //     const fieldName = field._field_link_saveQuantity_Field.substring(9)
-            //     if (state[fieldName] !== data.length) { setState({ ...state, [fieldName]: data.length }) }
-            // }
-            // console.log("callEndpoint")
-            // console.log(data)
-            //setOptions(data)
         }, err => {
             setError(err.msg)
         })
     }
+
+    console.log("filters")
+    console.log(filters)
 
     return <div ref={filterWrapper}>
         <ButtonDropDown key={_.get(field, 'id')} lockDD={true}
@@ -405,13 +389,18 @@ function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters
                             <Input type="dinamicMultiSelect"
                                 width={250}
                                 nomargin
-                                //defaultValue={_.get(filters, `filters[${field.id}].value`)}
+                                defaultValue={_.keys(_.get(filters, `filters[${field.id}].value`))}
                                 onChange={value => {
-                                    console.log(value)
-                                    // const newFilters = { ...filters };
-                                    // _.set(newFilters, `filters[${field.id}].value`, value);
-                                    // _.set(newFilters, `filters[${field.id}].type`, 'multiOptions');
-                                    // saveFilters(newFilters);
+                                    const newFilters = { ...filters };
+                                    if (value && value.length) {
+                                        _.set(newFilters, `filters[${field.id}].value`, _.zipObject(value, _.fill(Array(value), true)));
+                                        _.set(newFilters, `filters[${field.id}].type`, 'multiOptions');
+                                    }
+                                    else {
+                                        _.set(newFilters, `filters[${field.id}].value`, {});
+                                        _.set(newFilters, `filters[${field.id}].type`, 'multiOptions');
+                                    }
+                                    saveFilters(newFilters);
                                 }}
                                 locale={lang}
                                 // callParams={params}

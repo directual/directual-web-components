@@ -69,6 +69,32 @@ let exampleTable = {
                     "format": "",
                     "formatOptions": {},
                     "link": null
+                },
+                {
+                    "fieldSysName": "old",
+                    "fetch": [
+                        {
+                            "fieldSysName": "id",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "title",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "descr",
+                            "condition": null,
+                            "fetch": []
+                        }
+                    ],
+                    "sysName": "old",
+                    "name": "",
+                    "dataType": "arrayLink",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "filter"
                 }
             ],
             "writeFields": [
@@ -117,6 +143,17 @@ let exampleTable = {
                     "read": true,
                     "link": null,
                     "actions": []
+                },
+                "old": {
+                    "id": "old",
+                    "content": "",
+                    "type": "field",
+                    "dataType": "arrayLink",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "filter",
+                    "actions": []
                 }
             },
             "fieldParams": {
@@ -143,6 +180,14 @@ let exampleTable = {
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
+                },
+                "old": {
+                    "include": true,
+                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
                 }
             },
             "columns": {
@@ -152,7 +197,8 @@ let exampleTable = {
                     "fieldIds": [
                         "id",
                         "fruits",
-                        "mask"
+                        "mask",
+                        "old"
                     ]
                 }
             },
@@ -179,6 +225,14 @@ let exampleTable = {
                 "clickable": false
             },
             "mask": {
+                "include": true,
+                "disableEditing": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "old": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -321,6 +375,24 @@ let exampleTable = {
                     "name": "fruits",
                     "textsearch": "endpoint",
                     "endpoint": "dd"
+                },
+                "old": {
+                    "active": true,
+                    "dataType": "arrayLink",
+                    "format": "",
+                    "formatOptions": {},
+                    "name": "old",
+                    "textsearch": "choice",
+                    "linkDirectory": [
+                        {
+                            "id": "5953667f-b4b6-4365-9e40-da983da68475",
+                            "text": "oranges"
+                        },
+                        {
+                            "id": "bae9ca94-7d13-47f3-80f7-623b9633728a",
+                            "text": "apples"
+                        }
+                    ]
                 }
             }
         }
@@ -411,6 +483,34 @@ let exampleTable = {
             "typeVariable": {},
             "json": false,
             "array": false
+        },
+        {
+            "sysName": "old",
+            "dataType": "arrayLink",
+            "name": "",
+            "id": "55671734276044879",
+            "link": "filter",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "indexExists": false,
+            "linkOrArrayLinkType": true,
+            "linkType": false,
+            "arrayLink": true,
+            "typeVariable": {},
+            "json": false,
+            "array": false
         }
     ],
     "data": [
@@ -462,6 +562,18 @@ let exampleTable = {
         [
             "mask",
             99358839
+        ],
+        [
+            "old.id",
+            99360804
+        ],
+        [
+            "old.title",
+            99360804
+        ],
+        [
+            "old.descr",
+            99360804
         ]
     ],
     "writeFields": [
@@ -476,7 +588,7 @@ let exampleTable = {
             "networkID": 22556,
             "name": "test table",
             "sysName": "test_table",
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"mask\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"32811733750256971\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"fruits\",\"dataType\":\"link\",\"name\":\"fruits\",\"id\":\"68751734264999151\",\"link\":\"filter\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false}]",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"mask\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"32811733750256971\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"old\",\"dataType\":\"arrayLink\",\"name\":\"\",\"id\":\"55671734276044879\",\"link\":\"filter\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"fruits\",\"dataType\":\"link\",\"name\":\"fruits\",\"id\":\"68751734264999151\",\"link\":\"filter\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false}]",
             "jsonGroupSettings": null,
             "jsonViewIdSettings": null,
             "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":false,\"lowPriority\":false,\"onlinePriority\":false}",
@@ -484,7 +596,7 @@ let exampleTable = {
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2024-12-15T12:18:19Z",
+            "dateChanged": "2024-12-15T15:20:56Z",
             "createBy": 1,
             "changedBy": 1,
             "_settings": null,
