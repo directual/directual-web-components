@@ -886,7 +886,6 @@ export default function FpsForm2(props) {
     setModel(copyModel)
     // console.log(copyModel)
     // console.log(copyModel.budget_date.toISOString())
-
     const copyExtendedModel = _.cloneDeep(extendedModel)
     _.set(copyExtendedModel, field, value)
     setExtendedModel(copyExtendedModel)

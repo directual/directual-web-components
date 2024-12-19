@@ -252,7 +252,7 @@ export default function Input(props) {
 
     useEffect(() => {
         if (JSON.stringify(props.defaultValue) != JSON.stringify(defVal) && props.type != 'json' && !isTyping.current) {
-            setValue(props.defaultValue); setDefVal(props.defaultValue);
+            //setValue(props.defaultValue); setDefVal(props.defaultValue);
             setLines(countLines(inputEl.current, props.defaultValue))
         }
         if (props.type == 'json' && inputEl.current) {
@@ -286,7 +286,6 @@ export default function Input(props) {
     }
 
     function handleChange(e) {
-        isTyping.current = true; // Mark that the user is typing
         if (props.restrictChars && Array.isArray(props.restrictChars)) {
             let isRestricted = false;
             e && e.split('').forEach(i => isRestricted = isRestricted || (props.restrictChars.indexOf(i) == -1 && true))
@@ -296,9 +295,7 @@ export default function Input(props) {
                 }
             }
         }
-        setTimeout(() => {
-            isTyping.current = false;
-        }, 300);
+        
         submit(e)
         //props.required && setWarningMesg({})
     }
@@ -327,6 +324,10 @@ export default function Input(props) {
     function submit(val) {
         setValue(val)
         props.onChange && props.onChange(val);
+        isTyping.current = true; // Mark that the user is typing
+        setTimeout(() => {
+            isTyping.current = false;
+        }, 1000);
         props.type == 'select' && props.required && value != defVal && checkValue();
         props.type == 'icon' && props.required && value != defVal && checkValue();
         props.type == 'multiselect' && props.required && value != defVal && checkValue();
