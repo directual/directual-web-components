@@ -18,7 +18,7 @@ import debounce from 'lodash.debounce';
 import PropTypes from 'prop-types';
 
 
-function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
+function FpsCards({ auth, data, onEvent, callEndpoint, id, currentBP, locale, handleRoute }) {
     if (!data) { data = {} }
 
     // console.log('---data FpsCards---')
@@ -390,6 +390,78 @@ function FpsCards({ auth, data, onEvent, id, currentBP, locale, handleRoute }) {
                 tableFilters={_.get(data.params, 'filterParams') || {}}
                 displayFilters={_.get(data.params, 'filterParams.isFiltering') || _.get(data.params, 'filterParams.isSorting')}
                 performFiltering={dqlService}
+                callEndpoint={(endpoint, params, finish, setOptions, setError) => {
+
+                    const transformedArray = (inputArray, visibleNames) => _.map(inputArray, (item) => {
+                        const parseJson = json => {
+                            if (!json) return {}
+                            let parsedJson = {}
+                            if (typeof json == 'object') return json
+                            try {
+                                parsedJson = JSON.parse(json)
+                            }
+                            catch (e) {
+                                console.log(json);
+                                console.log(e);
+                            }
+                            return parsedJson
+                        }
+
+                        const { id, ...rest } = item; // Destructure `id` and the rest of the properties
+                        const value = _.trim(_.map(parseJson(visibleNames), field => _.get(item, field.sysName)).join(' ')) ||
+                            _.values(_.pickBy(rest, _.isString)).join(' '); // Concatenate string values
+                        const excludeFields = [..._.map(parseJson(visibleNames), i => i.sysName), ...["userpic", "image", "picture", "photo"]]
+                        const description = _.trim((_.keys(_.omit(rest, excludeFields)) || []).map(i => rest[i]).join(" "))
+                        return {
+                            key: id,
+                            value: _.trim(value) || id,
+                            image: _.get(rest, "userpic") || _.get(rest, "image") || _.get(rest, "picture") || _.get(rest, "photo"),
+                            description: description,
+                        };
+                    });
+                    //fake request
+                    // setTimeout(() => {
+                    //     const data = [
+                    //         {
+                    //             "title": "Погрузка/разгрузка",
+                    //             "id": "1"
+                    //         },
+                    //         {
+                    //             "title": "Сортировка",
+                    //             "id": "2"
+                    //         },
+                    //         {
+                    //             "title": "Программирование на Python",
+                    //             "id": "3"
+                    //         }
+                    //     ]
+                    //     const visibleNames = '[{"sysName":"firstName"}]'
+                    //     finish && finish(transformedArray(data, visibleNames))
+                    //     setOptions && setOptions(transformedArray(data, visibleNames))
+                    // }, 1000)
+
+                    // false &&
+                    callEndpoint && callEndpoint(
+                        endpoint,
+                        "GET",
+                        undefined,
+                        params,
+                        (result, data, visibleNames) => {
+                            // console.log(result)
+                            // console.log(data)
+
+                            if (result == "ok") {
+                                finish && finish(transformedArray(data, visibleNames))
+                                setOptions && setOptions(transformedArray(data, visibleNames))
+                            }
+                            else {
+                                setError && setError(data)
+                                finish && finish([])
+                                setOptions && setOptions([])
+                            }
+                        }
+                    )
+                }}
                 params={data.params}
                 currentBP={currentBP}
                 tableTitle={tableTitle}

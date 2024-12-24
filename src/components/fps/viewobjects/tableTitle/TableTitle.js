@@ -337,8 +337,8 @@ function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters
         })
     }
 
-    console.log("filters")
-    console.log(filters)
+    // console.log("filters")
+    // console.log(filters)
 
     return <div ref={filterWrapper}>
         <ButtonDropDown key={_.get(field, 'id')} lockDD={true}
