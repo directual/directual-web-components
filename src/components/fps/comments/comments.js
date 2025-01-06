@@ -21,8 +21,8 @@ export default function Comments(props) {
     const { auth, data, callEndpoint, onEvent, id, locale, handleRoute } = props
     const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
 
-    console.log("=== comments data ===")
-    console.log(data)
+    // console.log("=== comments data ===")
+    // console.log(data)
 
     const [comments, setComments] = useState(_.get(data, "data") || [])
     const [loading, setLoading] = useState(false)

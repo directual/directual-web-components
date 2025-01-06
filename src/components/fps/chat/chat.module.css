@@ -1,0 +1,13 @@
+.chat {
+  display: flex;
+  border: solid 1px var();
+}
+.chat_contacts {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px blue;
+}
+.chat_messages {
+  flex-grow: 2;
+  overflow: auto;
+}
