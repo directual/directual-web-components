@@ -57,6 +57,7 @@ import Colorpicker from './components/fps/dataentry/colorpicker/colorpicker'
 import Chart from './components/fps/chart/chart'
 import Comments from './components/fps/comments/comments'
 import FpsCarousel from './components/fps/carousel/FpsCarousel'
+import FpsChat from './components/fps/chat/chat'
 // import Editor from './components/fps/editor/editor'
 
 
@@ -69,6 +70,7 @@ export {
   Fps500,
   FpsCards2,
   FpsCarousel,
+  FpsChat,
   Comments,
   FormSteps,
   FpsForm2,

@@ -1,10 +1,10 @@
 import React from 'react';
-import Chat from '../components/fps/chat/chat';
+import FpsChat from '../components/fps/chat/chat';
 
 
 export default {
   title: 'FPS/Components/Chat',
-  component: Chat,
+  component: FpsChat,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'left',
