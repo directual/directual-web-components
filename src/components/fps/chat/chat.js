@@ -163,9 +163,10 @@ FpsChat.settings = {
     isLegacy: false,
     isMarketplace: true,
     form: [
-        { name: 'API-endpoint for contacts', sysName: 'api', type: 'api-endpoint' },
-        { name: 'API-endpoint for messages', sysName: 'api_messages', type: 'api-endpoint' },
-        { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
-        { name: 'Component comment', sysName: 'comment', type: 'comment' },
+        // { name: 'API-endpoint for contacts', sysName: 'api', type: 'api-endpoint' },
+        // { name: 'API-endpoint for messages', sysName: 'api_messages', type: 'api-endpoint' },
+        // { name: 'API-endpoint for message types', sysName: 'api_messages', type: 'api-endpoint' },
+        // { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
+        // { name: 'Component comment', sysName: 'comment', type: 'comment' },
     ]
 }
