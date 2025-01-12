@@ -56,7 +56,7 @@ export function FpsForm2Input(props) {
         case 'boolean':
             toRender = <FieldBoolean {...props} fieldInfo={fieldInfo} disabled={disabled} />
             break;
-            case 'link':
+        case 'link':
             toRender = <FieldLink {...props} callEndpoint={debouncedCallEndpint} fieldInfo={fieldInfo} disabled={disabled} />
             break;
         case 'arrayLink':
@@ -79,10 +79,10 @@ export function FpsForm2Input(props) {
         {field._conditionalView && _.get(params, "general.debugConditions") && userDebug && <div className={styles.condDebugDetails}>
             <code>
                 <p>{field._conditionalView_disable_or_hide == "disable" ? "disable input" : "hide input"} if:</p>
-                <pre  style={{whiteSpace: 'wrap', fontSize: 14}}>{checkHidden(field, true, true).conditions}</pre>
+                <pre style={{ whiteSpace: 'wrap', fontSize: 14 }}>{checkHidden(field, true, true).conditions}</pre>
                 <p>Result: <b>{!checkHidden(field, false, true) ? "true" : "false"}</b></p>
-                <pre style={{whiteSpace: 'wrap', fontSize: 14}}>{checkHidden(field, true, true).result}</pre>
-                </code>
+                <pre style={{ whiteSpace: 'wrap', fontSize: 14 }}>{checkHidden(field, true, true).result}</pre>
+            </code>
         </div>}
     </div>
 }
@@ -257,7 +257,10 @@ function FieldText(props) {
         />
     }
 
-
+    // if (fieldInfo.sysName == 'question2' || true) {
+    //     console.log(fieldInfo)
+    //     console.log(model)
+    //     console.log(model[fieldInfo.sysName])
 
     return <Input
         type={fieldInfo.dataType !== 'string' ? fieldInfo.dataType : `${fieldInfo.format == 'password' ? 'password' :
@@ -276,6 +279,8 @@ function FieldText(props) {
         tooltip={field._field_add_tooltip && template(field._field_tooltip_text)}
         defaultValue={model[fieldInfo.sysName]}
     />
+    // }
+    // return <div />
 }
 
 function FieldColor(props) {
