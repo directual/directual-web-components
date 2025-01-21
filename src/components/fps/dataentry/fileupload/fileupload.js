@@ -8,11 +8,13 @@ import { relativeTimeRounding } from 'moment'
 import Hint from '../../hint/hint'
 import { dict } from '../../locale'
 import _ from "lodash"
+import { Tooltip } from 'react-tooltip'
 
 export default function FileUpload(props) {
 
     const [uploading, setUploading] = useState(false)
     const lang = props.locale ? props.locale.length == 3 ? props.locale : 'ENG' : 'ENG'
+    const tooltipId = "tooltip_" + Math.floor(Math.random() * 1000000000)
 
     function bytesToSize(bytes) {
         const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']
@@ -74,8 +76,20 @@ export default function FileUpload(props) {
 
     const [error, setError] = useState(null)
 
+    const parseJson = (str) => {
+        if (!str) return undefined
+        try {
+            return JSON.parse(str)
+        } catch (e) {
+            console.log(str)
+            console.log(e)
+            return str
+        }
+    }
+
     return (
         <React.Fragment>
+            <Tooltip id={tooltipId} />
             {oldView && props.edit && <div className={styles.uploadWrapper}>
                 {props.allowUpload && <a onClick={() => setOldView(!oldView)} className={styles.switchView}>upload to Directual storage</a>}
                 <Input
@@ -90,18 +104,22 @@ export default function FileUpload(props) {
                     placeholder={props.multiple ? "Files URLs, comma separated, no spaces" : "File URL"}
                     type='file' defaultValue={files} />
             </div>}
-
             <div className={styles.fileUpload} style={{ marginBottom: props.nomargin ? 0 : 22, maxWidth: '100%' }}>
                 {(!oldView || !props.edit) && <React.Fragment>
                     {(props.multiple || files.length == 0) && props.edit && <a onClick={() => setOldView(!oldView)} className={styles.switchView}>paste file URL</a>}
-                    {props.label && <label>{props.label}{props.required && '*'}</label>}
+                    {props.label && <label className={`${styles.input_label_tooltip} FPS_Input_label`}>{props.label}{props.required && '*'}
+                        {props.tooltip && <span
+                            data-tooltip-html={props.tooltip}
+                            data-tooltip-id={tooltipId} className={`icon icon-help small ${styles.tooltip}`} />}
+                    </label>}
                     {props.description && <div className={styles.description}>{props.description}</div>}
-                    {(props.multiple || files.length == 0) && props.edit &&
+                    {(props.multiple || props.maxFiles > 1 || files.length == 0) && props.edit && !props.disabled &&
                         <Dropzone
                             multiple={props.multiple ? true : false}
                             {...props}
                             disabled={props.disabled}
-                            accept={props.images ? 'image/*' : undefined}
+                            maxFiles={props.maxFiles || undefined}
+                            accept={props.images ? 'image/*' : parseJson(props.accept)}
                             onDrop={(acceptedFiles, rej, event) => {
                                 setUploading(true)
                                 let counter = 0
@@ -175,9 +193,9 @@ export default function FileUpload(props) {
                     }}
                 />
                 {error && <Hint error margin={{ top: 12, bottom: 1 }}>{JSON.stringify(error)}</Hint>}
-            </div>
+            </div >
 
-        </React.Fragment>
+        </React.Fragment >
     )
 }
 

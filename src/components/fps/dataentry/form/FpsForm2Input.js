@@ -372,6 +372,8 @@ function FieldFile(props) {
         onChange={onChange}
         //allowUpload={field.fileUpload}
         locale={locale}
+        maxFiles={fieldInfo.formatOptions ? fieldInfo.formatOptions.maxFiles : undefined}
+        accept={fieldInfo.formatOptions ? fieldInfo.formatOptions.accept : undefined}
         edit
         disabled={disabled}
         required={field._field_required}

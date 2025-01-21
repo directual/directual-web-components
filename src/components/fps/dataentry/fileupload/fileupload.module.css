@@ -35,6 +35,16 @@
   padding-bottom: 6px;
   font-weight: var(--strong-font-weight);
 }
+.input_label_tooltip {
+  display: flex;
+  align-items: center;
+}
+.input_label_tooltip .tooltip {
+  opacity: 0.5;
+}
+.input_label_tooltip .tooltip:hover {
+  opacity: 1;
+}
 .uploadWrapper {
   position: relative;
 }
