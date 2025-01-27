@@ -53,7 +53,7 @@ export function FpsWrapper(props) {
     return <div className={`${styles.newWrapper} FPS_Wrapper`}>
         <div style={{ width: '100%', position: 'absolute', height: 0 }} ref={layoutRef}></div>
         <SetTheme themeName={currentTheme} onLoadComplete={setOnLoadComplete} />
-        {onLoadComplete ? <div>
+        {onLoadComplete ? <React.Fragment>
             <div className={`${styles.mainWrapper} FPS_Main_Wrapper ${props.horizontal || currentBP == 'mobile' ? styles.horizontal : ''}`}>
                 <div className={`${styles.content_menu} FPS_Content_Menu`}>
                     {props.mainMenu}
@@ -85,7 +85,7 @@ export function FpsWrapper(props) {
                 <span><span className={styles.madeon}>{dict[lang].madeOn} </span><a target="_blank" href="https://directual.com?ref=fps_footer">Directual</a>
                 </span>
             </div>}
-        </div> : <Loader />}
+        </React.Fragment> : <Loader />}
     </div>
 }
 
