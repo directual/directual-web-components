@@ -1221,7 +1221,7 @@ const customThemeColorNames = {
     },
 }
 
-export function SetTheme({ themeName }) {
+export function SetTheme({ themeName, onLoadComplete }) {
     useEffect(() => {
         setTheme(themeName)
     }, [themeName])
@@ -1258,7 +1258,7 @@ export function SetTheme({ themeName }) {
                 document.documentElement.style.setProperty(param, customThemeColors[theme.colorScheme][param])
             }
         }
-
+        onLoadComplete(true)
     }
     return null
 }

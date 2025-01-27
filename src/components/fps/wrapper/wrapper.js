@@ -3,6 +3,7 @@ import styles from './wrapper.module.css'
 import { SetTheme } from '../theme/theme'
 import { dict } from '../locale'
 import PropTypes from 'prop-types';
+import Loader from '../loader/loader'
 
 export function FpsWrapper(props) {
 
@@ -20,6 +21,8 @@ export function FpsWrapper(props) {
     const layoutRef = useRef(null);
     const [currentBP, setCurrentBP] = useState('desktop')
     const [layoutWidth, setLayoutWidth] = useState(brakePoints[currentBP].display)
+
+    const [onLoadComplete, setOnLoadComplete] = useState(false)
 
     // Calculating layout width:
     useEffect(() => {
@@ -49,38 +52,40 @@ export function FpsWrapper(props) {
 
     return <div className={`${styles.newWrapper} FPS_Wrapper`}>
         <div style={{ width: '100%', position: 'absolute', height: 0 }} ref={layoutRef}></div>
-        <SetTheme themeName={currentTheme} />
-        <div className={`${styles.mainWrapper} FPS_Main_Wrapper ${props.horizontal || currentBP == 'mobile' ? styles.horizontal : ''}`}>
-            <div className={`${styles.content_menu} FPS_Content_Menu`}>
-                {props.mainMenu}
-            </div>
+        <SetTheme themeName={currentTheme} onLoadComplete={setOnLoadComplete} />
+        {onLoadComplete ? <div>
+            <div className={`${styles.mainWrapper} FPS_Main_Wrapper ${props.horizontal || currentBP == 'mobile' ? styles.horizontal : ''}`}>
+                <div className={`${styles.content_menu} FPS_Content_Menu`}>
+                    {props.mainMenu}
+                </div>
 
-            {currentBP == 'mobile' && props.showMobileTabs ?
-                <div className={`${styles.mobileTabsWrapper}`}
-                    style={{
-                        flexDirection: props.mobileTabsPlace == 'bottom' ? 'column' : 'column-reverse'
-                    }}
-                >
+                {currentBP == 'mobile' && props.showMobileTabs ?
+                    <div className={`${styles.mobileTabsWrapper}`}
+                        style={{
+                            flexDirection: props.mobileTabsPlace == 'bottom' ? 'column' : 'column-reverse'
+                        }}
+                    >
+                        <div className={`${styles.content_components} FPS_Content_Components`}>
+                            {props.components}
+                        </div>
+                        {currentBP == 'mobile' && <div>
+                            {props.mobileTabs}
+                        </div>}
+                    </div> :
                     <div className={`${styles.content_components} FPS_Content_Components`}>
                         {props.components}
-                    </div>
-                    {currentBP == 'mobile' && <div>
-                        {props.mobileTabs}
                     </div>}
-                </div> :
-                <div className={`${styles.content_components} FPS_Content_Components`}>
-                {props.components}
-                </div>}
-        </div>
-        {!props.whiteLabel && <div className={`${styles.newBrandedFooter} FPS_Branded_footer`}>
-            <div className={styles.version}>
-                <a target="_blank" className={styles.logo} href="https://directual.com?ref=fps_footer">
-                    <img src={logoUrl} />
-                </a>
             </div>
-            <span><span className={styles.madeon}>{dict[lang].madeOn} </span><a target="_blank" href="https://directual.com?ref=fps_footer">Directual</a>
-            </span>
-        </div>}
+            {!props.whiteLabel && <div className={`${styles.newBrandedFooter} FPS_Branded_footer`}>
+                <div className={styles.version}>
+                    <a target="_blank" className={styles.logo} href="https://directual.com?ref=fps_footer">
+                        <img src={logoUrl} />
+                    </a>
+                </div>
+                <span><span className={styles.madeon}>{dict[lang].madeOn} </span><a target="_blank" href="https://directual.com?ref=fps_footer">Directual</a>
+                </span>
+            </div>}
+        </div> : <Loader />}
     </div>
 }
 
