@@ -55,6 +55,12 @@
   background-color: var(--menu-item-selected-bgr);
   color: var(--menu-item-selected);
 }
+.chat_messages_blank {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .chat_messages_wrapper {
   background-color: var(--layout-bgr);
   padding: 12px;

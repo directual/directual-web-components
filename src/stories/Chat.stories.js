@@ -17,7 +17,66 @@ export default {
   },
 };
 
-const chatData = {}
+const chatData = {
+  "sl": "-",
+  "pageSize": null,
+  "headerField": null,
+  "params": {
+      "chats": {
+          "appearence": [
+              {
+                  "id": "chat_1739092856920",
+                  "type": "personal",
+                  "layout": "default",
+                  "imageField": "image",
+                  "title": "{{title}}"
+              },
+              {
+                  "id": "chat_1739092917913",
+                  "layout": "html"
+              }
+          ],
+          "useDifferentTypes": false,
+          "chatTypeField": "type"
+      },
+      "chat_format": "full",
+      "sl_chats": "chat_contacts",
+      "sl_messages": "chat_messages",
+      "sl_actions": "chatAction",
+      "messages": {
+          "userIDField": "author_id",
+          "textField": "text",
+          "attachmentsField": "files",
+          "typeField": "type",
+          "dateTimeField": "date"
+      },
+      "actions": {
+          "textField": "payload",
+          "attachmentsField": "files",
+          "chatLinkField": "chat_id"
+      }
+  },
+  "tableTitle": null,
+  "actions": null,
+  "headers": null,
+  "data": null,
+  "totalPages": 0,
+  "pageNumber": 0,
+  "error": "511",
+  "fieldScheme": null,
+  "writeFields": null,
+  "structures": null,
+  "isSuccessWrite": false,
+  "writeError": null,
+  "writeResponse": null,
+  "fileds": null,
+  "quickSearch": null,
+  "httpParams": null,
+  "cardCustomHtml": null,
+  "cardCustomLayout": null,
+  "comment": null,
+  "response": null
+}
 
 let authExample = {
   "isAuth": true,

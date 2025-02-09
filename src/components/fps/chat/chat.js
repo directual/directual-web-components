@@ -11,13 +11,14 @@ import Hint from '../hint/hint'
 import styles from './chat.module.css'
 import PropTypes from 'prop-types';
 import icon from './../../../icons/fps-form2.svg'
+import SomethingWentWrong from '../SomethingWentWrong/SomethingWentWrong'
 
 // import { FieldLink } from '../dataentry/form/FpsForm2Input'
 
 
 export default function FpsChat(props) {
 
-    const { auth, data, callEndpoint, onEvent, id, locale, handleRoute } = props
+    const { auth, data, callEndpoint, onEvent, socket, id, locale, handleRoute } = props
     const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
     const scrollableDivRef = useRef(null);
 
@@ -38,8 +39,10 @@ export default function FpsChat(props) {
     }
 
     return <div className={`${styles.chat} FPS_CHAT`}>
+        socket = {socket}<br />
         <Contacts {...props} />
-        <ChatMessages {...props} height={300} scrollToBottom={scrollToBottom} scrollableDivRef={scrollableDivRef} />
+        <ChatMessages chatID={null} 
+            {...props} height={300} scrollToBottom={scrollToBottom} scrollableDivRef={scrollableDivRef} />
     </div>
 }
 
@@ -72,25 +75,29 @@ function Contact(props) {
 }
 
 function ChatMessages(props) {
-    const { scrollableDivRef, scrollToBottom } = props
+    const { scrollableDivRef, scrollToBottom, chatID } = props
 
     useEffect(() => {
         scrollToBottom()
     }, [])
 
     return <div className={`${styles.chat_messages_wrapper}`}>
+        {chatID ? <React.Fragment>
         <div
             ref={scrollableDivRef}
             className={`${styles.chat_messages}`} style={{ height: props.height }}>
-            <Button icon='refresh'>Load more...</Button>
-            <ChatMessage />
+            {/* <Button icon='refresh'>Load more...</Button> */}
+            {/* <ChatMessage />
             <ChatMessage author />
             <ChatMessage />
             <ChatMessage />
             <ChatMessage />
-            <ChatMessage author />
+            <ChatMessage author /> */}
         </div>
         <ChatInput {...props} />
+        </React.Fragment> : <div className={styles.chat_messages_blank}>
+            <SomethingWentWrong icon="bubble" />    
+        </div>}
     </div>
 }
 
