@@ -27,10 +27,9 @@ export default function FpsChat(props) {
 
     // process Socket.io update
     useEffect(() => {
-        // if (!_.isEqual(_.get(data, "data"), comments)) {
-
-        // }
-    }, [_.get(data, "data")])
+        console.log("socket update")
+        console.log(socket)
+    }, [socket])
 
     const scrollToBottom = () => {
         if (scrollableDivRef && scrollableDivRef.current) {
@@ -39,7 +38,6 @@ export default function FpsChat(props) {
     }
 
     return <div className={`${styles.chat} FPS_CHAT`}>
-        socket = {socket}<br />
         <Contacts {...props} />
         <ChatMessages chatID={null} 
             {...props} height={300} scrollToBottom={scrollToBottom} scrollableDivRef={scrollableDivRef} />
