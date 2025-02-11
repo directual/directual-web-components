@@ -29,14 +29,23 @@ export default function FpsChat(props) {
     const [firstLoading, setFirstLoading] = useState(false)
     const [chatsLoading, setChatsLoading] = useState(false)
     const [messageLoading, setMessageLoading] = useState(false)
+    const [chatsError, setChatsError] = useState(null)
+
+    // CURRENT CHAT STATE
+    const [state, setState] = useState(
+        {
+            full: _.get(data, "params.chat_format") !== 'compact' && _.get(data, "params.sl_chats"),
+            chats: [],
+            messages: [],
+            chatID: null // current active chat id
+        }
+    )
 
     // process Socket.io update
     useEffect(() => {
         console.log("CHATS REFRESH")
         // CHATS REFRESH
-        if (_.get(data, "params.chat_format") !== 'compact'
-            && _.get(data, "params.sl_chats")
-        ) {
+        if (state.full) {
             refreshChats(!firstLoading)
         }
         // ====================
@@ -46,19 +55,32 @@ export default function FpsChat(props) {
     function refreshChats(skipLoading) {
         setChatsLoading(skipLoading)
         const endpoint = _.get(data, "params.sl_chats")
-        callEndpoint && callEndpoint(
-            endpoint,
-            "GET",
-            undefined,
-            {},
-            (result, data) => {
-                setChatsLoading(false)
-                setFirstLoading(true)
-                console.log("CHATS REFRESH")
-                console.log(result)
-                console.log(data)
-            }
-        )
+
+        // FAKE REQUEST
+        false &&
+        setTimeout(() => {
+            setChatsLoading(false)
+            setFirstLoading(true)
+            setChatsError({ msg: "AUTHENTICATION_FAILED", code: "403" })
+        }, 1500)
+
+        //false &&
+            callEndpoint && callEndpoint(
+                endpoint,
+                "GET",
+                undefined,
+                {},
+                (result, data) => {
+                    setChatsLoading(false)
+                    setFirstLoading(true)
+                    if (result = 'error') {
+                        setChatsError({ msg: data.msg, code: data.code })
+                    } else {
+                        setChatsError(null)
+
+                    }
+                }
+            )
     }
 
     const scrollToBottom = () => {
@@ -68,24 +90,30 @@ export default function FpsChat(props) {
     }
 
     return <div className={`${styles.chat} FPS_CHAT`}>
-        <Contacts {...props} loading={chatsLoading} />
-        <ChatMessages chatID={null}
+        <Contacts {...props} loading={chatsLoading} chatsError={chatsError} state={state}/>
+        <ChatMessages 
+            chatID={_.get(state, "chatID")}
+            state={state}
             {...props} height={300} scrollToBottom={scrollToBottom} scrollableDivRef={scrollableDivRef} />
     </div>
 }
 
 function Contacts(props) {
 
-    const { loading } = props
+    const { loading, chatsError } = props
     const name = "Pavel Ershov"
     const avatar = "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg"
 
     return <div className={`${styles.chat_contacts}`}>
         <Input icon='search' placeholder='Search contacts' nomargin disabled />
         {loading ? <Loader>Loading chats...</Loader> : <React.Fragment>
-            <Contact name={name} avatar={avatar} {...props} />
-            <Contact name={name} avatar={avatar} {...props} selected />
-            <Contact name={name} avatar={avatar} {...props} />
+            {chatsError ? <Hint error title={"Error " + chatsError.code} margin={{ top: 0, bottom: 0 }}>
+                <p>{chatsError.msg}</p>
+            </Hint> : <React.Fragment>
+                <Contact name={name} avatar={avatar} {...props} />
+                <Contact name={name} avatar={avatar} {...props} selected />
+                <Contact name={name} avatar={avatar} {...props} />
+            </React.Fragment>}
         </React.Fragment>}
     </div>
 
@@ -134,7 +162,7 @@ function ChatMessages(props) {
 
 function ChatInput(props) {
 
-    const { locale, data } = props
+    const { locale, data, state } = props
     const [addFile, setAddFile] = useState(false)
 
     return <div className={`${styles.chat_input_outer_wrapper}`}>
