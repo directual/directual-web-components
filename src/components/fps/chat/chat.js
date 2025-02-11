@@ -12,6 +12,7 @@ import styles from './chat.module.css'
 import PropTypes from 'prop-types';
 import icon from './../../../icons/fps-form2.svg'
 import SomethingWentWrong from '../SomethingWentWrong/SomethingWentWrong'
+import Loader from '../loader/loader'
 
 // import { FieldLink } from '../dataentry/form/FpsForm2Input'
 
@@ -25,11 +26,40 @@ export default function FpsChat(props) {
     console.log("=== chat data ===")
     console.log(data)
 
+    const [firstLoading, setFirstLoading] = useState(false)
+    const [chatsLoading, setChatsLoading] = useState(false)
+    const [messageLoading, setMessageLoading] = useState(false)
+
     // process Socket.io update
     useEffect(() => {
-        console.log("socket update")
-        console.log(socket)
+        console.log("CHATS REFRESH")
+        // CHATS REFRESH
+        if (_.get(data, "params.chat_format") !== 'compact'
+            && _.get(data, "params.sl_chats")
+        ) {
+            refreshChats(!firstLoading)
+        }
+        // ====================
+
     }, [socket])
+
+    function refreshChats(skipLoading) {
+        setChatsLoading(skipLoading)
+        const endpoint = _.get(data, "params.sl_chats")
+        callEndpoint && callEndpoint(
+            endpoint,
+            "GET",
+            undefined,
+            {},
+            (result, data) => {
+                setChatsLoading(false)
+                setFirstLoading(true)
+                console.log("CHATS REFRESH")
+                console.log(result)
+                console.log(data)
+            }
+        )
+    }
 
     const scrollToBottom = () => {
         if (scrollableDivRef && scrollableDivRef.current) {
@@ -38,22 +68,25 @@ export default function FpsChat(props) {
     }
 
     return <div className={`${styles.chat} FPS_CHAT`}>
-        <Contacts {...props} />
-        <ChatMessages chatID={null} 
+        <Contacts {...props} loading={chatsLoading} />
+        <ChatMessages chatID={null}
             {...props} height={300} scrollToBottom={scrollToBottom} scrollableDivRef={scrollableDivRef} />
     </div>
 }
 
 function Contacts(props) {
 
+    const { loading } = props
     const name = "Pavel Ershov"
     const avatar = "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg"
 
     return <div className={`${styles.chat_contacts}`}>
-        <Input icon='search' placeholder='Search contacts' nomargin disabled/>
-        <Contact name={name} avatar={avatar} {...props} />
-        <Contact name={name} avatar={avatar} {...props} selected />
-        <Contact name={name} avatar={avatar} {...props} />
+        <Input icon='search' placeholder='Search contacts' nomargin disabled />
+        {loading ? <Loader>Loading chats...</Loader> : <React.Fragment>
+            <Contact name={name} avatar={avatar} {...props} />
+            <Contact name={name} avatar={avatar} {...props} selected />
+            <Contact name={name} avatar={avatar} {...props} />
+        </React.Fragment>}
     </div>
 
 }
@@ -81,20 +114,20 @@ function ChatMessages(props) {
 
     return <div className={`${styles.chat_messages_wrapper}`}>
         {chatID ? <React.Fragment>
-        <div
-            ref={scrollableDivRef}
-            className={`${styles.chat_messages}`} style={{ height: props.height }}>
-            {/* <Button icon='refresh'>Load more...</Button> */}
-            {/* <ChatMessage />
+            <div
+                ref={scrollableDivRef}
+                className={`${styles.chat_messages}`} style={{ height: props.height }}>
+                {/* <Button icon='refresh'>Load more...</Button> */}
+                {/* <ChatMessage />
             <ChatMessage author />
             <ChatMessage />
             <ChatMessage />
             <ChatMessage />
             <ChatMessage author /> */}
-        </div>
-        <ChatInput {...props} />
+            </div>
+            <ChatInput {...props} />
         </React.Fragment> : <div className={styles.chat_messages_blank}>
-            <SomethingWentWrong icon="bubble" />    
+            <SomethingWentWrong icon="bubble" />
         </div>}
     </div>
 }
