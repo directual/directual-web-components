@@ -73,6 +73,9 @@ export default function FpsChat(props) {
                 (result, data) => {
                     setChatsLoading(false)
                     setFirstLoading(true)
+                    console.log('refreshChats')
+                    console.log(result)
+                    console.log(data)
                     if (result = 'error') {
                         setChatsError({ msg: data.msg, code: data.code })
                     } else {
