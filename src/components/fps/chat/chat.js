@@ -64,40 +64,40 @@ export default function FpsChat(props) {
         const endpoint = _.get(data, "params.sl_chats")
 
         // FAKE REQUEST
-        //false &&
-        setTimeout(() => {
-            setChatsLoading(false)
-            setFirstLoading(true)
-            //setChatsError({ msg: "AUTHENTICATION_FAILED", code: "403" })
-            setState({
-                ...state, chats: [
-                    { id: "1", title: "First chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
-                    { id: "2", title: "Second chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
-                    { id: "3", title: "Third chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
-                ]
-            })
-        }, 1500)
-
         false &&
-            callEndpoint && callEndpoint(
-                endpoint,
-                "GET",
-                undefined,
-                {},
-                (result, data) => {
-                    setChatsLoading(false)
-                    setFirstLoading(true)
-                    console.log('refreshChats')
-                    console.log(result)
-                    console.log(data)
-                    if (result == 'error') {
-                        setChatsError({ msg: data.msg, code: data.code })
-                    } else {
-                        setChatsError(null)
-                        setState({ ...state, chats: data })
-                    }
+            setTimeout(() => {
+                setChatsLoading(false)
+                setFirstLoading(true)
+                //setChatsError({ msg: "AUTHENTICATION_FAILED", code: "403" })
+                setState({
+                    ...state, chats: [
+                        { id: "1", title: "First chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
+                        { id: "2", title: "Second chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
+                        { id: "3", title: "Third chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
+                    ]
+                })
+            }, 1500)
+
+        //false &&
+        callEndpoint && callEndpoint(
+            endpoint,
+            "GET",
+            undefined,
+            {},
+            (result, data) => {
+                setChatsLoading(false)
+                setFirstLoading(true)
+                console.log('refreshChats')
+                console.log(result)
+                console.log(data)
+                if (result == 'error') {
+                    setChatsError({ msg: data.msg, code: data.code })
+                } else {
+                    setChatsError(null)
+                    setState({ ...state, chats: data })
                 }
-            )
+            }
+        )
     }
 
     function refreshMessages() {
