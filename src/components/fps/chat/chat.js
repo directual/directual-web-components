@@ -7,6 +7,7 @@ import FileUpload from '../dataentry/fileupload/fileupload'
 import moment from 'moment'
 import { dict } from '../locale'
 import Hint from '../hint/hint'
+import { template } from '../templating/template'
 
 import styles from './chat.module.css'
 import PropTypes from 'prop-types';
@@ -23,13 +24,14 @@ export default function FpsChat(props) {
     const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
     const scrollableDivRef = useRef(null);
 
-    console.log("=== chat data ===")
-    console.log(data)
+    // console.log("FPS CHAT data")
+    // console.log(data)
 
     const [firstLoading, setFirstLoading] = useState(false)
     const [chatsLoading, setChatsLoading] = useState(false)
     const [messageLoading, setMessageLoading] = useState(false)
     const [chatsError, setChatsError] = useState(null)
+    const [globalLoading, setGlobalLoading] = useState(false)
 
     // CURRENT CHAT STATE
     const [state, setState] = useState(
@@ -43,28 +45,40 @@ export default function FpsChat(props) {
 
     // process Socket.io update
     useEffect(() => {
-        console.log("CHATS REFRESH")
         // CHATS REFRESH
         if (state.full) {
             refreshChats(!firstLoading)
         }
+        refreshMessages()
         // ====================
-
     }, [socket])
 
+    // Switch chats
+    useEffect(() => {
+        refreshMessages()
+    }, [state.chatID])
+
     function refreshChats(skipLoading) {
+        console.log("CHATS REFRESH")
         setChatsLoading(skipLoading)
         const endpoint = _.get(data, "params.sl_chats")
 
         // FAKE REQUEST
-        false &&
+        //false &&
         setTimeout(() => {
             setChatsLoading(false)
             setFirstLoading(true)
-            setChatsError({ msg: "AUTHENTICATION_FAILED", code: "403" })
+            //setChatsError({ msg: "AUTHENTICATION_FAILED", code: "403" })
+            setState({
+                ...state, chats: [
+                    { id: "1", title: "First chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
+                    { id: "2", title: "Second chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
+                    { id: "3", title: "Third chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
+                ]
+            })
         }, 1500)
 
-        //false &&
+        false &&
             callEndpoint && callEndpoint(
                 endpoint,
                 "GET",
@@ -76,14 +90,55 @@ export default function FpsChat(props) {
                     console.log('refreshChats')
                     console.log(result)
                     console.log(data)
-                    if (result = 'error') {
+                    if (result == 'error') {
                         setChatsError({ msg: data.msg, code: data.code })
                     } else {
                         setChatsError(null)
-
+                        setState({ ...state, chats: data })
                     }
                 }
             )
+    }
+
+    function refreshMessages() {
+        console.log("MESSAGES REFRESH")
+        const endpoint = _.get(data, "params.sl_messages")
+
+        // FAKE REQUEST
+        false &&
+            setTimeout(() => {
+                setMessageLoading(false)
+                setState({
+                    ...state, chats: [
+                        { id: "1", title: "First chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
+                        { id: "2", title: "Second chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
+                        { id: "3", title: "Third chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
+                    ]
+                })
+            }, 1500)
+
+        if (
+            //false &&
+            ((state.full && state.chatID) || !state.full)) {
+            setMessageLoading(true)
+            callEndpoint && callEndpoint(
+                endpoint,
+                "GET",
+                undefined,
+                state.full ? { _chat: state.chatID } : {},
+                (result, data) => {
+                    setMessageLoading(false)
+                    console.log('refreshMessages')
+                    console.log(result)
+                    console.log(data)
+                    if (result == 'error') {
+                        setState({ ...state, messages: [] })
+                    } else {
+                        setState({ ...state, messages: data })
+                    }
+                }
+            )
+        }
     }
 
     const scrollToBottom = () => {
@@ -92,9 +147,16 @@ export default function FpsChat(props) {
         }
     }
 
+    const chooseChat = (chatID) => {
+        setState({ ...state, chatID: chatID })
+    }
+
     return <div className={`${styles.chat} FPS_CHAT`}>
-        <Contacts {...props} loading={chatsLoading} chatsError={chatsError} state={state}/>
-        <ChatMessages 
+        <Contacts
+            chooseChat={chooseChat}
+            globalLoading={globalLoading}
+            {...props} loading={chatsLoading} chatsError={chatsError} state={state} />
+        <ChatMessages
             chatID={_.get(state, "chatID")}
             state={state}
             {...props} height={300} scrollToBottom={scrollToBottom} scrollableDivRef={scrollableDivRef} />
@@ -103,20 +165,19 @@ export default function FpsChat(props) {
 
 function Contacts(props) {
 
-    const { loading, chatsError } = props
-    const name = "Pavel Ershov"
-    const avatar = "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg"
+    const { loading, chatsError, state, chooseChat, globalLoading } = props
 
     return <div className={`${styles.chat_contacts}`}>
         <Input icon='search' placeholder='Search contacts' nomargin disabled />
         {loading ? <Loader>Loading chats...</Loader> : <React.Fragment>
             {chatsError ? <Hint error title={"Error " + chatsError.code} margin={{ top: 0, bottom: 0 }}>
                 <p>{chatsError.msg}</p>
-            </Hint> : <React.Fragment>
-                <Contact name={name} avatar={avatar} {...props} />
-                <Contact name={name} avatar={avatar} {...props} selected />
-                <Contact name={name} avatar={avatar} {...props} />
-            </React.Fragment>}
+            </Hint> : state.chats.map(chat => <Contact
+                {...props}
+                chooseChat={() => !globalLoading ? chooseChat(chat.id) : undefined}
+                selected={chat.id == state.chatID}
+                key={chat.id}
+                chat={chat} />)}
         </React.Fragment>}
     </div>
 
@@ -124,14 +185,18 @@ function Contacts(props) {
 
 function Contact(props) {
 
-    const { selected, name, avatar } = props
+    const { selected, data, chat, state, chooseChat } = props
 
-    return <div className={`${styles.chat_contact} ${selected ? styles.selected : ''}`}>
+    const appearence = _.get(data, "params.chats.appearence[0]")
+
+    return <div className={`${styles.chat_contact} ${selected ? styles.selected : ''}`}
+        onClick={chooseChat}
+    >
         <div className={`${styles.chat_contact_avatar}`}>
-            <img src={avatar} />
+            <img src={template(`{{${_.get(appearence, "imageField")}}}`, chat)} />
         </div>
         <div className={`${styles.chat_contact_text}`}>
-            <p className={`${styles.chat_contact_name}`}>{name}</p>
+            <p className={`${styles.chat_contact_name}`}>{template(_.get(appearence, "title"), chat)}</p>
         </div>
     </div>
 }

@@ -741,8 +741,8 @@ export default function FpsForm2(props) {
   }
 
   function template(input, noDate) {
-    if (!input || input == "{{undefined}}" || input == "{{null}}") return ""
-
+    if (!input || input == "{{undefined}}" || input == "{{null}}") return "";
+  
     function convertNumbersToStrings(obj) {
       for (let key in obj) {
         if (typeof obj[key] === 'number') {
@@ -753,22 +753,21 @@ export default function FpsForm2(props) {
       }
       return obj;
     }
-
-    let templateData = { ...defaultExtModel, ...(model || {}), ...(extendedModel || {}) };
-
-
+  
+    let templateData = { ...defaultExtModel, ...(model || {}), ...(extendedModel || {}), ...(state || {}) };
+  
     const replaceNullWithEmptyString = obj => _.mapValues(obj, value => value === null ? "" : value);
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
     if (!templateData) return "";
-
+  
     templateData = _.mapValues(templateData, (value, key) => {
-      if (getDateFields().hasOwnProperty(key) // && !noDate // я хуй знает зачем я добавил этот noDate. В FpsForm2Element.js в функции transformObject это как-то юзалось я не ебу как
+      if (getDateFields().hasOwnProperty(key)
       ) {
         return formatDate(value, getDateFields()[key])
       }
       return value;
     });
-
+  
     const preprocessTemplate = (str, data) => {
       const regex = /{{\s*([\w.]+)\s*}}/g;
       return str.replace(regex, (match, p1) => {
@@ -779,38 +778,32 @@ export default function FpsForm2(props) {
             value = value[key];
           }
         });
-        // Check if the value is an object and replace it with the id property if it exists
         if (typeof value === 'object' && value !== null && value.id) {
           return `{{${p1}.id}}`;
         }
         return match;
       });
     };
-    templateData = replaceNullWithEmptyString(templateData)
-    templateData = convertNumbersToStrings(templateData)
-
+  
+    templateData = replaceNullWithEmptyString(templateData);
+    templateData = convertNumbersToStrings(templateData);
+  
     function extractStringsWithinBraces(str) {
-      // Regular expression to match strings within {{}}
       const matches = str.match(/\{\{(.*?)\}\}/g);
-      // If there are matches, remove the curly braces and return the result
       if (matches) {
         return matches.map(match => match.replace(/\{\{|\}\}/g, '').trim());
       }
-      // Return an empty array if no matches found
       return [];
     }
+  
     (extractStringsWithinBraces(input) || []).forEach(i => {
       if (!_.get(templateData, i)) {
         _.set(templateData, i, "")
       }
     })
-
-
-
-    // =============
-
+  
     const preprocessedInput = preprocessTemplate(input, templateData);
-
+  
     const renderTemplate = (template) => {
       return _.template(template, {
         interpolate: /{{([\s\S]+?)}}/g
@@ -820,7 +813,7 @@ export default function FpsForm2(props) {
         escape: /<%-([\s\S]+?)%>/g
       });
     };
-
+  
     try {
       const result = renderTemplate(preprocessedInput);
       return result;
