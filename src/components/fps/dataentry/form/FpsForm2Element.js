@@ -300,23 +300,26 @@ function ElementSubheader(props) {
 }
 
 function ElementText(props) {
-    const { element, template, templateEngine, dict, lang, extendedModel } = props
+    const { element, template, templateEngine, dict, lang, extendedModel, state } = props;
 
-    const apiTemplate = element.paraTemplateEngine == 'api'
+    const apiTemplate = element.paraTemplateEngine === 'api';
 
-    const [templatedText, setTemplatedText] = useState(apiTemplate ? (dict[lang].loading || "loading...") : template(element.paraText))
+    // Use state for templatedText and include state and extendedModel in the dependencies
+    const [templatedText, setTemplatedText] = useState(apiTemplate ? (dict[lang].loading || "loading...") : template(element.paraText, state));
 
     useEffect(() => {
         const fetchData = async (payload, setValue) => {
-            const templValue = templateEngine ? await templateEngine(payload, extendedModel) : "Templating error";
+            const templValue = templateEngine ? await templateEngine(payload, { ...extendedModel, ...state }) : "Templating error";
             setValue(templValue);
         };
-        if (apiTemplate) { fetchData(element.paraText, setTemplatedText) } else {
-            setTemplatedText(template(element.paraText))
+        if (apiTemplate) {
+            fetchData(element.paraText, setTemplatedText);
+        } else {
+            setTemplatedText(template(element.paraText, state));
         }
-    }, [extendedModel])
+    }, [extendedModel, state, templateEngine, element.paraText, apiTemplate]);
 
-    return templatedText ? <InnerHTML allowRerender={true} html={templatedText} /> : ""
+    return templatedText ? <InnerHTML allowRerender={true} html={templatedText} /> : "";
 }
 
 function ElementSubmit(props) {
