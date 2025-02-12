@@ -23,6 +23,7 @@ export default function FpsChat(props) {
     const { auth, data, callEndpoint, onEvent, socket, id, locale, handleRoute } = props
     const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
     const scrollableDivRef = useRef(null);
+    const abortControllerRef = useRef(null);
 
     // console.log("FPS CHAT data")
     // console.log(data)
@@ -49,19 +50,21 @@ export default function FpsChat(props) {
         if (state.full) {
             refreshChats(!firstLoading)
         }
-        refreshMessages()
+        //refreshMessages()
         // ====================
     }, [socket])
 
     // Switch chats
     useEffect(() => {
-        refreshMessages()
+        if ((state.full && state.chatID) || !state.full) { refreshMessages() }
     }, [state.chatID])
 
-    function refreshChats(skipLoading) {
+    function refreshChats(skipLoading, finish) {
         console.log("CHATS REFRESH")
         setChatsLoading(skipLoading)
         const endpoint = _.get(data, "params.sl_chats")
+        abortExistingRequest();
+        abortControllerRef.current = new AbortController();
 
         // FAKE REQUEST
         false &&
@@ -96,26 +99,39 @@ export default function FpsChat(props) {
                     setChatsError(null)
                     setState({ ...state, chats: data })
                 }
-            }
+                finish && finish()
+            },
+            { signal: abortControllerRef.current.signal }
         )
     }
 
     function refreshMessages() {
         console.log("MESSAGES REFRESH")
         const endpoint = _.get(data, "params.sl_messages")
+        abortExistingRequest();
+        abortControllerRef.current = new AbortController();
 
         // FAKE REQUEST
         false &&
-            setTimeout(() => {
-                setMessageLoading(false)
-                setState({
-                    ...state, chats: [
-                        { id: "1", title: "First chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
-                        { id: "2", title: "Second chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
-                        { id: "3", title: "Third chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
-                    ]
-                })
-            }, 1500)
+        setTimeout(() => {
+            setMessageLoading(false)
+            setState({
+                ...state, messages: [
+                    {
+                        "text": "Здарова заебал",
+                        "chat_id": "aa0d8d19-993b-408a-9db7-2e0a9d644acc",
+                        "author_id": "1",
+                        "id": "4641f494-d026-4053-bbc2-3219659c4d1c"
+                    },
+                    {
+                        "text": "как дела ебать",
+                        "author_id": "2",
+                        "chat_id": "aa0d8d19-993b-408a-9db7-2e0a9d644acc",
+                        "id": "701a5bc2-5de8-49ce-b6be-9bd6679d5dd1"
+                    }
+                ]
+            })
+        }, 1500)
 
         if (
             //false &&
@@ -136,7 +152,8 @@ export default function FpsChat(props) {
                     } else {
                         setState({ ...state, messages: data })
                     }
-                }
+                },
+                { signal: abortControllerRef.current.signal }
             )
         }
     }
@@ -146,6 +163,13 @@ export default function FpsChat(props) {
             scrollableDivRef.current.scrollTop = scrollableDivRef.current.scrollHeight
         }
     }
+
+    function abortExistingRequest() {
+        if (abortControllerRef.current) {
+            abortControllerRef.current.abort();
+            abortControllerRef.current = null;
+        }
+    };
 
     const chooseChat = (chatID) => {
         setState({ ...state, chatID: chatID })
