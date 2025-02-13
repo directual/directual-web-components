@@ -27,7 +27,7 @@ export default function FpsChat(props) {
 
     const user = auth.user
 
-    const debug = true
+    const debug = false
 
     // console.log("FPS CHAT data")
     // console.log(data)
@@ -194,13 +194,14 @@ export default function FpsChat(props) {
 
     const performAction = (action) => {
         const endpoint = _.get(data, "params.sl_actions")
+        const currentChat = _.cloneDeep(state.chatID)
         if (!endpoint) return;
         if (action == "send") {
             setActionLoading("send")
             const body = {
-                [_.get(data, "params.actions.textField")]: "Hello, world!",
-                [_.get(data, "params.actions.chatLinkField")]: "1",
-                [_.get(data, "params.actions.attachmentsField")]: ""
+                [_.get(data, "params.actions.textField")]: message[`[${currentChat}]msg`],
+                [_.get(data, "params.actions.chatLinkField")]: currentChat,
+                [_.get(data, "params.actions.attachmentsField")]: message[`[${currentChat}]attachment`]
             }
             callEndpoint && callEndpoint(
                 endpoint,
@@ -209,15 +210,19 @@ export default function FpsChat(props) {
                 undefined,
                 (result, data) => {
                     setActionLoading("")
-                    // if (result == "ok") {
-                    // }
-                }
+                    const newMessage = _.cloneDeep(message)
+                    _.set(newMessage, `[${currentChat}]msg`, "")
+                    _.set(newMessage, `[${currentChat}]attachment`, "")
+                    setMessage(newMessage)
+                    console.log(result)
+                    console.log(data)
+                },
             )
         }
     }
 
-    console.log(state)
-    console.log(message)
+    // console.log(state)
+    // console.log(message)
 
     return <div className={`${styles.chat} FPS_CHAT`}>
         <Contacts
