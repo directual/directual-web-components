@@ -194,7 +194,7 @@ export default function FpsChat(props) {
 
     const performAction = (action) => {
         const endpoint = _.get(data, "params.sl_actions")
-        const currentChat = _.cloneDeep(state.chatID)
+        const currentChat = state.chatID + ""
         if (!endpoint) return;
         if (action == "send") {
             setActionLoading("send")

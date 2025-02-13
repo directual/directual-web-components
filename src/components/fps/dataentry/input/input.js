@@ -255,7 +255,6 @@ export default function Input(props) {
             //console.log("is typing")
         }
         if (JSON.stringify(props.defaultValue) != JSON.stringify(defVal) && props.type != 'json' && !isTyping.current) {
-            console.log("PING")
             setValue(props.defaultValue); setDefVal(props.defaultValue); // я комментил эту хероту. Надо перепроверить у ламоды!
             setLines(countLines(inputEl.current, props.defaultValue))
         }
