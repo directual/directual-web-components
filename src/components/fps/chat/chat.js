@@ -25,6 +25,10 @@ export default function FpsChat(props) {
     const scrollableDivRef = useRef(null);
     const abortControllerRef = useRef(null);
 
+    const user = auth.user
+
+    const debug = false
+
     // console.log("FPS CHAT data")
     // console.log(data)
 
@@ -67,42 +71,42 @@ export default function FpsChat(props) {
         abortControllerRef.current = new AbortController();
 
         // FAKE REQUEST
-        false &&
-            setTimeout(() => {
-                setChatsLoading(false)
-                setFirstLoading(true)
-                //setChatsError({ msg: "AUTHENTICATION_FAILED", code: "403" })
-                setState({
-                    ...state, chats: [
-                        { id: "1", title: "First chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
-                        { id: "2", title: "Second chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
-                        { id: "3", title: "Third chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
-                    ]
-                })
-            }, 1500)
+        debug &&
+        setTimeout(() => {
+            setChatsLoading(false)
+            setFirstLoading(true)
+            //setChatsError({ msg: "AUTHENTICATION_FAILED", code: "403" })
+            setState({
+                ...state, chats: [
+                    { id: "1", title: "First chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
+                    { id: "2", title: "Second chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
+                    { id: "3", title: "Third chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
+                ]
+            })
+        }, 1500)
 
-        //false &&
-        callEndpoint && callEndpoint(
-            endpoint,
-            "GET",
-            undefined,
-            {},
-            (result, data) => {
-                setChatsLoading(false)
-                setFirstLoading(true)
-                console.log('refreshChats')
-                console.log(result)
-                console.log(data)
-                if (result == 'error') {
-                    setChatsError({ msg: data.msg, code: data.code })
-                } else {
-                    setChatsError(null)
-                    setState({ ...state, chats: data })
-                }
-                finish && finish()
-            },
-            { signal: abortControllerRef.current.signal }
-        )
+        !debug &&
+            callEndpoint && callEndpoint(
+                endpoint,
+                "GET",
+                undefined,
+                {},
+                (result, data) => {
+                    setChatsLoading(false)
+                    setFirstLoading(true)
+                    console.log('refreshChats')
+                    console.log(result)
+                    console.log(data)
+                    if (result == 'error') {
+                        setChatsError({ msg: data.msg, code: data.code })
+                    } else {
+                        setChatsError(null)
+                        setState({ ...state, chats: data })
+                    }
+                    finish && finish()
+                },
+                { signal: abortControllerRef.current.signal }
+            )
     }
 
     function refreshMessages() {
@@ -112,21 +116,21 @@ export default function FpsChat(props) {
         abortControllerRef.current = new AbortController();
 
         // FAKE REQUEST
-        false &&
+        debug &&
         setTimeout(() => {
             setMessageLoading(false)
             setState({
                 ...state, messages: [
                     {
                         "text": "Здарова заебал",
-                        "chat_id": "aa0d8d19-993b-408a-9db7-2e0a9d644acc",
+                        "chat_id": "1",
                         "author_id": "1",
                         "id": "4641f494-d026-4053-bbc2-3219659c4d1c"
                     },
                     {
                         "text": "как дела ебать",
                         "author_id": "2",
-                        "chat_id": "aa0d8d19-993b-408a-9db7-2e0a9d644acc",
+                        "chat_id": "2",
                         "id": "701a5bc2-5de8-49ce-b6be-9bd6679d5dd1"
                     }
                 ]
@@ -134,7 +138,7 @@ export default function FpsChat(props) {
         }, 1500)
 
         if (
-            //false &&
+            !debug &&
             ((state.full && state.chatID) || !state.full)) {
             setMessageLoading(true)
             callEndpoint && callEndpoint(
@@ -144,9 +148,9 @@ export default function FpsChat(props) {
                 state.full ? { _chat: state.chatID } : {},
                 (result, data) => {
                     setMessageLoading(false)
-                    console.log('refreshMessages')
-                    console.log(result)
-                    console.log(data)
+                    // console.log('refreshMessages')
+                    // console.log(result)
+                    // console.log(data)
                     if (result == 'error') {
                         setState({ ...state, messages: [] })
                     } else {
@@ -175,6 +179,8 @@ export default function FpsChat(props) {
         setState({ ...state, chatID: chatID })
     }
 
+    // console.log(state)
+
     return <div className={`${styles.chat} FPS_CHAT`}>
         <Contacts
             chooseChat={chooseChat}
@@ -183,7 +189,11 @@ export default function FpsChat(props) {
         <ChatMessages
             chatID={_.get(state, "chatID")}
             state={state}
-            {...props} height={300} scrollToBottom={scrollToBottom} scrollableDivRef={scrollableDivRef} />
+            user={user}
+            {...props}
+            height={300}
+            scrollToBottom={scrollToBottom}
+            scrollableDivRef={scrollableDivRef} />
     </div>
 }
 
@@ -226,24 +236,27 @@ function Contact(props) {
 }
 
 function ChatMessages(props) {
-    const { scrollableDivRef, scrollToBottom, chatID } = props
+    const { scrollableDivRef, data, scrollToBottom, chatID, state, user } = props
 
     useEffect(() => {
         scrollToBottom()
-    }, [])
+    }, [state.messages])
+
+    const fields = _.get(data, "params.messages")
 
     return <div className={`${styles.chat_messages_wrapper}`}>
         {chatID ? <React.Fragment>
             <div
                 ref={scrollableDivRef}
                 className={`${styles.chat_messages}`} style={{ height: props.height }}>
+
                 {/* <Button icon='refresh'>Load more...</Button> */}
-                {/* <ChatMessage />
-            <ChatMessage author />
-            <ChatMessage />
-            <ChatMessage />
-            <ChatMessage />
-            <ChatMessage author /> */}
+                {state.messages.map(message => <ChatMessage
+                    {...props}
+                    message={message}
+                    fields={fields}
+                    author={template(`{{${fields.userIDField}}}`, message) == user}
+                />)}
             </div>
             <ChatInput {...props} />
         </React.Fragment> : <div className={styles.chat_messages_blank}>
@@ -284,17 +297,13 @@ function ChatInput(props) {
 
 function ChatMessage(props) {
 
-    const { author } = props;
+    const { author, fields, message } = props;
 
     return <div className={`${styles.chat_message_wrapper} ${author ? styles.chat_message_author : styles.chat_message_normal}`}>
         <div className={`${styles.chat_message}`}>
             <div className={`${styles.chat_message_text}`}>
                 <pre>
-                    {`Hello!
-
-How do you do? How do you do? How do you do? How do you do? How do you do? How do you do? How do you do? How do you do?
-
-I have a question`}
+                    {`${template(`{{${fields.textField}}}`, message)}`}
                 </pre>
             </div>
         </div>

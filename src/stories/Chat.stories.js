@@ -87,7 +87,7 @@ let authExample = {
   "token": "1a9f10d0-d45f-4bf2-9e7e-d6ce2e752d03",
   "notifications_counter": "",
   "nid": 18924,
-  "user": "nikita",
+  "user": "1",
   //"userpic": "https://api.directual.com/fileUploaded/basic-template/efdd480a-d36a-4a01-ac82-baf871ffd2fd.jpg"
 }
 
