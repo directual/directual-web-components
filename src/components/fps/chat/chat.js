@@ -38,6 +38,8 @@ export default function FpsChat(props) {
     const [chatsError, setChatsError] = useState(null)
     const [globalLoading, setGlobalLoading] = useState(false)
 
+    const [actionLoading, setActionLoading] = useState("")
+
     // CURRENT CHAT STATE
     const [state, setState] = useState(
         {
@@ -47,6 +49,16 @@ export default function FpsChat(props) {
             chatID: null // current active chat id
         }
     )
+
+    // message
+    const [message, setMessage] = useState({})
+
+    const editMessage = (msg, attachment) => {
+        const newMessage = _.cloneDeep(message)
+        _.set(newMessage, `[${state.chatID}]msg`, msg)
+        _.set(newMessage, `[${state.chatID}]attachment`, attachment)
+        setMessage(newMessage)
+    }
 
     // process Socket.io update
     useEffect(() => {
@@ -72,18 +84,18 @@ export default function FpsChat(props) {
 
         // FAKE REQUEST
         debug &&
-        setTimeout(() => {
-            setChatsLoading(false)
-            setFirstLoading(true)
-            //setChatsError({ msg: "AUTHENTICATION_FAILED", code: "403" })
-            setState({
-                ...state, chats: [
-                    { id: "1", title: "First chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
-                    { id: "2", title: "Second chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
-                    { id: "3", title: "Third chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
-                ]
-            })
-        }, 1500)
+            setTimeout(() => {
+                setChatsLoading(false)
+                setFirstLoading(true)
+                //setChatsError({ msg: "AUTHENTICATION_FAILED", code: "403" })
+                setState({
+                    ...state, chats: [
+                        { id: "1", title: "First chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
+                        { id: "2", title: "Second chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
+                        { id: "3", title: "Third chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
+                    ]
+                })
+            }, 1500)
 
         !debug &&
             callEndpoint && callEndpoint(
@@ -117,25 +129,26 @@ export default function FpsChat(props) {
 
         // FAKE REQUEST
         debug &&
-        setTimeout(() => {
-            setMessageLoading(false)
-            setState({
-                ...state, messages: [
-                    {
-                        "text": "Здарова заебал",
-                        "chat_id": "1",
-                        "author_id": "1",
-                        "id": "4641f494-d026-4053-bbc2-3219659c4d1c"
-                    },
-                    {
-                        "text": "как дела ебать",
-                        "author_id": "2",
-                        "chat_id": "2",
-                        "id": "701a5bc2-5de8-49ce-b6be-9bd6679d5dd1"
-                    }
-                ]
-            })
-        }, 1500)
+            setTimeout(() => {
+                setMessageLoading(false)
+                setState({
+                    ...state, messages:
+                        [
+                            {
+                                "text": "Здарова заебал",
+                                "chat_id": "1",
+                                "author_id": "1",
+                                "id": "4641f494-d026-4053-bbc2-3219659c4d1c"
+                            },
+                            {
+                                "text": "как дела ебать",
+                                "author_id": "2",
+                                "chat_id": "2",
+                                "id": "701a5bc2-5de8-49ce-b6be-9bd6679d5dd1"
+                            }
+                        ]
+                })
+            }, 1500)
 
         if (
             !debug &&
@@ -179,7 +192,32 @@ export default function FpsChat(props) {
         setState({ ...state, chatID: chatID })
     }
 
-    // console.log(state)
+    const performAction = (action) => {
+        const endpoint = _.get(data, "params.sl_actions")
+        if (!endpoint) return;
+        if (action == "send") {
+            setActionLoading("send")
+            const body = {
+                [_.get(data, "params.actions.textField")]: "Hello, world!",
+                [_.get(data, "params.actions.chatLinkField")]: "1",
+                [_.get(data, "params.actions.attachmentsField")]: ""
+            }
+            callEndpoint && callEndpoint(
+                endpoint,
+                "POST",
+                body,
+                undefined,
+                (result, data) => {
+                    setActionLoading("")
+                    // if (result == "ok") {
+                    // }
+                }
+            )
+        }
+    }
+
+    console.log(state)
+    console.log(message)
 
     return <div className={`${styles.chat} FPS_CHAT`}>
         <Contacts
@@ -192,6 +230,10 @@ export default function FpsChat(props) {
             user={user}
             {...props}
             height={300}
+            message={message}
+            editMessage={editMessage}
+            actionLoading={actionLoading}
+            performAction={performAction}
             scrollToBottom={scrollToBottom}
             scrollableDivRef={scrollableDivRef} />
     </div>
@@ -236,7 +278,7 @@ function Contact(props) {
 }
 
 function ChatMessages(props) {
-    const { scrollableDivRef, data, scrollToBottom, chatID, state, user } = props
+    const { scrollableDivRef, data, actionLoading, performAction, scrollToBottom, chatID, state, user, message, editMessage } = props
 
     useEffect(() => {
         scrollToBottom()
@@ -251,14 +293,22 @@ function ChatMessages(props) {
                 className={`${styles.chat_messages}`} style={{ height: props.height }}>
 
                 {/* <Button icon='refresh'>Load more...</Button> */}
-                {state.messages.map(message => <ChatMessage
+                {state.messages.length == 0 && <div className={styles.chat_messages_blank}>
+                    <SomethingWentWrong icon="ban" message='No messages yet' />
+                </div>}
+                {state.messages.map(text => <ChatMessage
                     {...props}
                     message={message}
+                    text={text}
+                    key={text.id}
+                    editMessage={editMessage}
                     fields={fields}
                     author={template(`{{${fields.userIDField}}}`, message) == user}
                 />)}
             </div>
-            <ChatInput {...props} />
+            <ChatInput {...props} performAction={performAction}
+                message={message} editMessage={editMessage}
+                actionLoading={actionLoading} />
         </React.Fragment> : <div className={styles.chat_messages_blank}>
             <SomethingWentWrong icon="bubble" />
         </div>}
@@ -267,7 +317,7 @@ function ChatMessages(props) {
 
 function ChatInput(props) {
 
-    const { locale, data, state } = props
+    const { locale, data, state, actionLoading, performAction, message, editMessage } = props
     const [addFile, setAddFile] = useState(false)
 
     return <div className={`${styles.chat_input_outer_wrapper}`}>
@@ -277,10 +327,13 @@ function ChatInput(props) {
                 className={styles.chat_input}
                 type='textarea'
                 rows='auto'
+                defaultValue={_.get(message, `[${state.chatID}]msg`) || ""}
+                onChange={value => editMessage(value, _.get(message, `[${state.chatID}]attachment`))}
                 placeholder='Type your message'
             />
             <div className={`icon icon-clip ${styles.chat_input_attach}`} onClick={e => setAddFile(!addFile)} />
-            <Button accent icon='bubble' onClick={() => { }} width={120}>Send</Button>
+            <Button accent icon='bubble' loading={actionLoading == "send"}
+                onClick={() => performAction("send")} width={120}>Send</Button>
         </div>
         {addFile && <FileUpload
             locale={locale}
@@ -289,21 +342,21 @@ function ChatInput(props) {
             host='/api/upload'
             multiple={false}
             nomargin
-        // defaultValue={comment[_.get(data, "params._fileField")]}
-        // onChange={setCommentField(_.get(data, "params._fileField"))}
+            defaultValue={_.get(message, `[${state.chatID}]attachment`) || ""}
+            onChange={value => editMessage(_.get(message, `[${state.chatID}]msg`), value)}
         />}
     </div>
 }
 
 function ChatMessage(props) {
 
-    const { author, fields, message } = props;
+    const { author, fields, message, editMessage, text } = props;
 
     return <div className={`${styles.chat_message_wrapper} ${author ? styles.chat_message_author : styles.chat_message_normal}`}>
         <div className={`${styles.chat_message}`}>
             <div className={`${styles.chat_message_text}`}>
                 <pre>
-                    {`${template(`{{${fields.textField}}}`, message)}`}
+                    {`${template(`{{${fields.textField}}}`, text)}`}
                 </pre>
             </div>
         </div>
