@@ -79,26 +79,27 @@ export default function FpsChat(props) {
 
     function refreshChats(skipLoading, finish) {
         console.log("CHATS REFRESH")
-        setChatsLoading(skipLoading)
-        const endpoint = _.get(data, "params.sl_chats")
+        setChatsLoading(skipLoading);
+        const endpoint = _.get(data, "params.sl_chats");
         abortExistingRequest();
         abortControllerRef.current = new AbortController();
-
+    
         // FAKE REQUEST
         debug &&
             setTimeout(() => {
-                setChatsLoading(false)
-                setFirstLoading(true)
-                //setChatsError({ msg: "AUTHENTICATION_FAILED", code: "403" })
-                setState({
-                    ...state, chats: [
+                setChatsLoading(false);
+                setFirstLoading(true);
+                //setChatsError({ msg: "AUTHENTICATION_FAILED", code: "403" });
+                setState((prevState) => ({
+                    ...prevState, 
+                    chats: [
                         { id: "1", title: "First chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
                         { id: "2", title: "Second chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
                         { id: "3", title: "Third chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
                     ]
-                })
-            }, 1500)
-
+                }));
+            }, 1500);
+    
         !debug &&
             callEndpoint && callEndpoint(
                 endpoint,
@@ -106,74 +107,72 @@ export default function FpsChat(props) {
                 undefined,
                 {},
                 (result, data) => {
-                    setChatsLoading(false)
-                    setFirstLoading(true)
-                    console.log('refreshChats')
-                    console.log(result)
-                    console.log(data)
+                    setChatsLoading(false);
+                    setFirstLoading(true);
+                    console.log('refreshChats');
+                    console.log(result);
+                    console.log(data);
                     if (result == 'error') {
-                        setChatsError({ msg: data.msg, code: data.code })
+                        setChatsError({ msg: data.msg, code: data.code });
                     } else {
-                        setChatsError(null)
-                        setState({ ...state, chats: data })
+                        setChatsError(null);
+                        setState((prevState) => ({
+                            ...prevState, 
+                            chats: data 
+                        }));
                     }
-                    finish && finish()
+                    finish && finish();
                 },
                 { signal: abortControllerRef.current.signal }
-            )
+            );
     }
 
     function refreshMessages() {
-        console.log("MESSAGES REFRESH")
-        const endpoint = _.get(data, "params.sl_messages")
+        console.log("MESSAGES REFRESH");
+        const endpoint = _.get(data, "params.sl_messages");
         abortExistingRequest();
         abortControllerRef.current = new AbortController();
-
+    
         // FAKE REQUEST
         debug &&
             setTimeout(() => {
-                setMessageLoading(false)
-                setState({
-                    ...state, messages:
-                        [
-                            {
-                                "text": "Здарова заебал",
-                                "chat_id": "1",
-                                "author_id": "1",
-                                "id": "4641f494-d026-4053-bbc2-3219659c4d1c"
-                            },
-                            {
-                                "text": "как дела ебать",
-                                "author_id": "2",
-                                "chat_id": "2",
-                                "id": "701a5bc2-5de8-49ce-b6be-9bd6679d5dd1"
-                            }
-                        ]
-                })
-            }, 1500)
-
-        if (
-            !debug &&
-            ((state.full && state.chatID) || !state.full)) {
-            setMessageLoading(true)
+                setMessageLoading(false);
+                setState((prevState) => ({
+                    ...prevState,
+                    messages: [
+                        {
+                            "text": "Здарова заебал",
+                            "chat_id": "1",
+                            "author_id": "1",
+                            "id": "4641f494-d026-4053-bbc2-3219659c4d1c"
+                        },
+                        {
+                            "text": "как дела ебать",
+                            "author_id": "2",
+                            "chat_id": "2",
+                            "id": "701a5bc2-5de8-49ce-b6be-9bd6679d5dd1"
+                        }
+                    ]
+                }));
+            }, 1500);
+    
+        if (!debug && ((state.full && state.chatID) || !state.full)) {
+            setMessageLoading(true);
             callEndpoint && callEndpoint(
                 endpoint,
                 "GET",
                 undefined,
                 state.full ? { _chat: state.chatID } : {},
                 (result, data) => {
-                    setMessageLoading(false)
-                    // console.log('refreshMessages')
-                    // console.log(result)
-                    // console.log(data)
+                    setMessageLoading(false);
                     if (result == 'error') {
-                        setState({ ...state, messages: [] })
+                        setState((prevState) => ({ ...prevState, messages: [] }));
                     } else {
-                        setState({ ...state, messages: data })
+                        setState((prevState) => ({ ...prevState, messages: data }));
                     }
                 },
                 { signal: abortControllerRef.current.signal }
-            )
+            );
         }
     }
 
