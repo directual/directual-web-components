@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import styles from './input.module.css'
 import Radio from '../radio/radio'
 import Select from '../select/select'
@@ -255,6 +255,7 @@ export default function Input(props) {
             //console.log("is typing")
         }
         if (JSON.stringify(props.defaultValue) != JSON.stringify(defVal) && props.type != 'json' && !isTyping.current) {
+            console.log("PING")
             setValue(props.defaultValue); setDefVal(props.defaultValue); // я комментил эту хероту. Надо перепроверить у ламоды!
             setLines(countLines(inputEl.current, props.defaultValue))
         }
@@ -325,12 +326,18 @@ export default function Input(props) {
     }
 
     function submit(val) {
-        setValue(val)
+        setValue(val);
         props.onChange && props.onChange(val);
         isTyping.current = true; // Mark that the user is typing
-        setTimeout(() => {
-            isTyping.current = false;
-        }, 1000);
+        
+        // Debounced function to reset isTyping and update defVal
+        const debouncedUpdate = debounce(() => {
+            isTyping.current = false; // User has stopped typing
+            setDefVal(val); // Update defVal
+        }, 1000); // Adjust the debounce interval as necessary
+    
+        debouncedUpdate();
+    
         props.type == 'select' && props.required && value != defVal && checkValue();
         props.type == 'icon' && props.required && value != defVal && checkValue();
         props.type == 'multiselect' && props.required && value != defVal && checkValue();
@@ -519,8 +526,8 @@ export default function Input(props) {
                 {/* <div className="dd-debug">searchValue: {JSON.stringify(searchValue)}</div> */}
                 <div className="dd-debug">value: {JSON.stringify(value)}</div>
                 {props.imask && <div className="dd-debug">imask:<br /><pre>{JSON.stringify(props.imask, 0, 3)}</pre></div>}
-                {/* <div className="dd-debug"> defVal: {JSON.stringify(defVal)}</div>
-                <div className="dd-debug"> lines: {lines}</div>
+                <div className="dd-debug"> defVal: {JSON.stringify(defVal)}</div>
+                {/* <div className="dd-debug"> lines: {lines}</div>
                 <div className="dd-debug"> countlLnes: {countLines(inputEl.current, value)}</div>
                 <div className='dd-debug'>auto width: {calcTextareaWidth()}</div> */}
             </div>}

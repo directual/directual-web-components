@@ -221,8 +221,8 @@ export default function FpsChat(props) {
         }
     }
 
-    // console.log(state)
-    // console.log(message)
+    console.log(state)
+    console.log(message)
 
     return <div className={`${styles.chat} FPS_CHAT`}>
         <Contacts
@@ -329,10 +329,12 @@ function ChatInput(props) {
         <div className={`${styles.chat_input_wrapper}`}>
             <Input
                 nomargin
+                // debug
                 className={styles.chat_input}
                 type='textarea'
                 rows='auto'
-                defaultValue={_.get(message, `[${state.chatID}]msg`) || ""}
+                disabled={actionLoading == "send"}
+                defaultValue={_.get(message, `[${state.chatID}]msg`)}
                 onChange={value => editMessage(value, _.get(message, `[${state.chatID}]attachment`))}
                 placeholder='Type your message'
             />
