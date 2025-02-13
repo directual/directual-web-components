@@ -27,7 +27,7 @@ export default function FpsChat(props) {
 
     const user = auth.user
 
-    const debug = false
+    const debug = true
 
     // console.log("FPS CHAT data")
     // console.log(data)
@@ -303,7 +303,7 @@ function ChatMessages(props) {
                     key={text.id}
                     editMessage={editMessage}
                     fields={fields}
-                    author={template(`{{${fields.userIDField}}}`, message) == user}
+                    author={template(`{{${fields.userIDField}}}`, text) == user}
                 />)}
             </div>
             <ChatInput {...props} performAction={performAction}
