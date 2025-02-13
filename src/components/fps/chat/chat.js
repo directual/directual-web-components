@@ -55,8 +55,8 @@ export default function FpsChat(props) {
 
     const editMessage = (msg, attachment) => {
         const newMessage = _.cloneDeep(message)
-        _.set(newMessage, `[${state.chatID}]msg`, msg)
-        _.set(newMessage, `[${state.chatID}]attachment`, attachment)
+        _.set(newMessage, `${state.chatID}.msg`, msg)
+        _.set(newMessage, `${state.chatID}.attachment`, attachment)
         setMessage(newMessage)
     }
 
@@ -199,10 +199,13 @@ export default function FpsChat(props) {
         if (action == "send") {
             setActionLoading("send")
             const body = {
-                [_.get(data, "params.actions.textField")]: message[`[${currentChat}]msg`],
+                [_.get(data, "params.actions.textField")]: message[`${currentChat}`].msg,
                 [_.get(data, "params.actions.chatLinkField")]: currentChat,
-                [_.get(data, "params.actions.attachmentsField")]: message[`[${currentChat}]attachment`]
+                [_.get(data, "params.actions.attachmentsField")]: message[`${currentChat}`].attachment
             }
+            console.log(message)
+            console.log(currentChat)
+            console.log(body)
             callEndpoint && callEndpoint(
                 endpoint,
                 "POST",
@@ -211,8 +214,8 @@ export default function FpsChat(props) {
                 (result, data) => {
                     setActionLoading("")
                     const newMessage = _.cloneDeep(message)
-                    _.set(newMessage, `[${currentChat}]msg`, "")
-                    _.set(newMessage, `[${currentChat}]attachment`, "")
+                    _.set(newMessage, `${currentChat}.msg`, "")
+                    _.set(newMessage, `${currentChat}.attachment`, "")
                     setMessage(newMessage)
                     console.log(result)
                     console.log(data)
@@ -221,8 +224,8 @@ export default function FpsChat(props) {
         }
     }
 
-    console.log(state)
-    console.log(message)
+    // console.log(state)
+    // console.log(message)
 
     return <div className={`${styles.chat} FPS_CHAT`}>
         <Contacts
@@ -334,8 +337,8 @@ function ChatInput(props) {
                 type='textarea'
                 rows='auto'
                 disabled={actionLoading == "send"}
-                defaultValue={_.get(message, `[${state.chatID}]msg`)}
-                onChange={value => editMessage(value, _.get(message, `[${state.chatID}]attachment`))}
+                defaultValue={_.get(message, `${state.chatID}.msg`)}
+                onChange={value => editMessage(value, _.get(message, `${state.chatID}.attachment`))}
                 placeholder='Type your message'
             />
             <div className={`icon icon-clip ${styles.chat_input_attach}`} onClick={e => setAddFile(!addFile)} />
@@ -349,8 +352,8 @@ function ChatInput(props) {
             host='/api/upload'
             multiple={false}
             nomargin
-            defaultValue={_.get(message, `[${state.chatID}]attachment`) || ""}
-            onChange={value => editMessage(_.get(message, `[${state.chatID}]msg`), value)}
+            defaultValue={_.get(message, `${state.chatID}.attachment`) || ""}
+            onChange={value => editMessage(_.get(message, `${state.chatID}.msg`), value)}
         />}
     </div>
 }
