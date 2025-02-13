@@ -64,7 +64,9 @@ export default function FpsChat(props) {
     useEffect(() => {
         // CHATS REFRESH
         if (state.full) {
-            refreshChats(!firstLoading)
+            refreshChats(!firstLoading, refreshMessages())
+        } else {
+            refreshMessages()
         }
         //refreshMessages()
         // ====================
@@ -201,11 +203,9 @@ export default function FpsChat(props) {
             const body = {
                 [_.get(data, "params.actions.textField")]: message[`${currentChat}`].msg,
                 [_.get(data, "params.actions.chatLinkField")]: currentChat,
+                [_.get(data, "params.actions.actionTypeField")]: action,
                 [_.get(data, "params.actions.attachmentsField")]: message[`${currentChat}`].attachment
             }
-            console.log(message)
-            console.log(currentChat)
-            console.log(body)
             callEndpoint && callEndpoint(
                 endpoint,
                 "POST",
