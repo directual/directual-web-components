@@ -132,11 +132,19 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
     const [favLoading, setFavLoading] = useState(false)
 
     useEffect(() => {
-        setFavLoading(true)
-        favoritesOn && favoritesEndpoint && callEndpointGET(favoritesEndpoint, { pageSize: 100 }, data => {
-            setFavorites(data);
-            setFavLoading(false)
-        })
+        // setFavLoading(true)
+        // favoritesOn && favoritesEndpoint && callEndpointGET(favoritesEndpoint, { pageSize: 100 }, data => {
+        //     setFavorites(data);
+        //     setFavLoading(false)
+        // })
+        setFavorites([
+            {
+                "user_tg": "test",
+                "subject": "e0454b76-6da1-4260-a0e6-cf7de6f2b686",
+                "is_hidden": false,
+                "id": "9c23963f-b162-49b8-8856-734789c91867"
+            }
+        ])
     }, [])
 
     return <div className={`FPS_CARDS2 ${styles.cards2}`}>
@@ -176,6 +184,7 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
                         callEndpointGET={callEndpointGET}
                         callEndpointPOST={callEndpointPOST}
                         object={object}
+                        favoritesField={favoritesField}
                         templateEngine={templateEngine}
                         addToFavorites={(value) => {
                             console.log("addToFavorites")
@@ -210,7 +219,7 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
 
 function Card(props) {
 
-    const { object, data, lang, addToFavorites, favLoading, templateEngine, handleRoute, favorites, callEndpointPOST, callEndpointGET, context } = props
+    const { object, data, lang, favoritesField, addToFavorites, favLoading, templateEngine, handleRoute, favorites, callEndpointPOST, callEndpointGET, context } = props
 
     const cardType = _.get(data, "params.card_layout_type")
     const card_padding = _.get(data, "params.card_padding", 12)
@@ -264,7 +273,13 @@ function Card(props) {
     const cx = null
     const onChangeQuantity = debounce(changeQuantity, 500);
 
-    const isFavorite = _.some(favorites, { productId: object.id })
+    console.log("favorites")
+    console.log(favorites)
+    console.log({ [favoritesField]: object.id })
+
+    const isFavorite = _.some(favorites, { [favoritesField]: object.id })
+    console.log("isFavorite")
+    console.log(isFavorite)
 
     if (cardType == "cart") return <div
         className={`Cards2_typeCart ${styles.cards2_typeCart}`}>

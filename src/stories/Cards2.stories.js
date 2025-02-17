@@ -17,25 +17,45 @@ export default {
 };
 
 let exampleTable = {
-    "sl": "availableDepositTypes",
+    "sl": "get_subjects_for_user",
     "pageSize": "10",
     "headerField": null,
     "params": {
-        "comp_ID": "Y8ef4f",
-        "cards_title": "Choose deposit type",
+        "comp_ID": "KEXUmq",
         "cards_layout": "grid",
         "card_layout_type": "regular",
-        "card_type_cart": {
-            "header": "{{title}}"
-        },
+        "html_type_content": "{{SubjectName}}",
+        "grid_layout__mobile": 1,
         "card_type_dir": {
-            "body": "<style>\n  .pph_deposit_type {\n  \tdisplay:flex;\n    justify-content: space-between;\n  }\n</style>\n<div class=\"pph_deposit_type\">\n  <b>{{title}}</b>\n\t<div class='icon icon-forward' />\n</div>",
             "image_position": "left",
-            "image_border_radius": 0,
-            "image_height": 60,
-            "image": "{{image}}",
-            "image_padding": 0
-        }
+            "body": "{{SubjectName}}\n{{id}}",
+            "favoritesOn": true,
+            "actionsOn": false,
+            "actionsLayout": "column",
+            "_actions": [
+                {
+                    "id": "action_1739609131264",
+                    "action_id": "action_1739609109713",
+                    "_action_icon": "checkbox",
+                    "_action_addTooltip": false,
+                    "_conditionalView": false,
+                    "_action_button_size": "small"
+                }
+            ],
+            "favoritesPosition": "left",
+            "favoritesIconOff": "academy",
+            "favoritesEndpoint": "add_selected_subject_user",
+            "favoritesField": "subject",
+            "favoritesHiddenField": "is_hidden",
+            "image": "",
+            "image_height": 55,
+            "image_padding": -2,
+            "favoritesIconOn": "babai"
+        },
+        "actions": [],
+        "routing": "disable",
+        "routing_where": "./{{id}}",
+        "card_min_height": 53
     },
     "tableTitle": null,
     "actions": null,
@@ -60,19 +80,19 @@ let exampleTable = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
             "json": false,
-            "indexExists": false
+            "array": false
         },
         {
-            "sysName": "title",
-            "name": "Gateway title",
+            "sysName": "SubjectName",
+            "name": "SubjectName",
             "dataType": "string",
-            "id": "15891733926879649",
+            "id": "85401738674743956",
             "link": "",
             "group": "0",
             "tags": "",
@@ -88,89 +108,27 @@ let exampleTable = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "array": false,
+            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
             "json": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "image",
-            "name": "Image (512 x 512)",
-            "dataType": "file",
-            "id": "38411733926893694",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 3,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": "image",
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "indexExists": false
-        },
-        {
-            "sysName": "description",
-            "name": "Description",
-            "dataType": "string",
-            "id": "99331733926883638",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 2,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "indexExists": false
+            "array": false
         }
     ],
     "data": [
         {
-            "description": "PayPal Holdings, Inc. is an American multinational financial technology company operating an online payments system in the majority of countries that support online money transfers",
-            "image": "https://api.directual.com/fileUploaded/pph/web/e207c1b0-82ad-4f92-84f9-a57fd2267577.png",
-            "title": "PayPal",
-            "id": "7cd7dba3-e415-45d1-9327-84d0094c7097"
+            "SubjectName": "Русский язык",
+            "id": "51d29b92-9395-4c3c-b8b4-85bf38a7f4a3"
         },
         {
-            "image": "https://api.directual.com/fileUploaded/pph/web/77da69a8-4c67-4ba3-8184-30bfbb11e7b5.png",
-            "description": "Talegram-backed blockchain",
-            "title": "TON",
-            "id": "1c2c571c-ab0a-409d-a2dc-eff01d4bdc16"
+            "SubjectName": "Математика",
+            "id": "e0454b76-6da1-4260-a0e6-cf7de6f2b686"
         },
         {
-            "description": "Cash App is a financial services platform, not a bank. Banking services are provided by Cash App’s bank partner(s). Prepaid debit cards issued by Sutton Bank, Member FDIC.",
-            "title": "Cash App",
-            "image": "https://api.directual.com/fileUploaded/pph/web/20620537-0b1d-4af9-8816-232666602cae.png",
-            "id": "8514e46b-3b0d-4afd-9271-2975c4fce234"
+            "SubjectName": "Тестовый",
+            "id": "a60d2fd3-93d7-4fc1-a843-922a28867e87"
         }
     ],
     "totalPages": 1,
@@ -179,42 +137,34 @@ let exampleTable = {
     "fieldScheme": [
         [
             "id",
-            99360258
+            99369220
         ],
         [
-            "title",
-            99360258
-        ],
-        [
-            "image",
-            99360258
-        ],
-        [
-            "description",
-            99360258
+            "SubjectName",
+            99369220
         ]
     ],
     "writeFields": [],
     "structures": {
-        "99360258": {
-            "id": 99360258,
-            "dateCreated": "2024-12-11T14:21:17Z",
+        "99369220": {
+            "networkID": 22922,
+            "sysName": "subjects",
+            "name": "Subjects",
+            "id": 99369220,
+            "dateCreated": "2025-02-04T13:11:43Z",
             "hidden": false,
             "dateHidden": null,
-            "networkID": 22605,
-            "name": "Deposit types",
-            "sysName": "deposit_types",
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"title\",\"dataType\":\"string\",\"name\":\"Gateway title\",\"id\":\"15891733926879649\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"isActive\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"19631733926960999\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"image\",\"dataType\":\"file\",\"name\":\"Image (512 x 512)\",\"id\":\"38411733926893694\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"color\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"56161733984887425\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"Description\",\"id\":\"99331733926883638\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false}]",
-            "jsonGroupSettings": null,
-            "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"SubjectName\",\"dataType\":\"string\",\"name\":\"SubjectName\",\"id\":\"85401738674743956\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"Sections\",\"dataType\":\"arrayLink\",\"name\":\"Sections\",\"id\":\"61801738676204371\",\"link\":\"sections\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"deleted\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"44871739266534224\",\"link\":\"\",\"group\":\"1738674919887\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false}]",
+            "jsonGroupSettings": "[{\"name\":\"New Group 1\",\"id\":1738674919887,\"order\":0}]",
+            "jsonViewIdSettings": "[{\"sysName\":\"SubjectName\"}]",
             "jsonSettings": null,
             "jsonNativeIndexSettings": null,
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2024-12-12T07:17:15Z",
-            "createBy": 1,
-            "changedBy": 1,
+            "dateChanged": "2025-02-13T17:00:01Z",
+            "createBy": 29295,
+            "changedBy": 29295,
             "_settings": null,
             "_nativeIndexSettings": null,
             "innerIDField": {
@@ -237,16 +187,16 @@ let exampleTable = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "array": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "typeVariable": {},
                 "json": false,
-                "indexExists": false
+                "array": false
             },
             "objectIDSysName": "id",
-            "folderId": 33830133
+            "folderId": 33834766
         }
     },
     "isSuccessWrite": false,
@@ -257,7 +207,7 @@ let exampleTable = {
     "httpParams": null,
     "cardCustomHtml": null,
     "cardCustomLayout": null,
-    "comment": "Choose deposit type",
+    "comment": null,
     "response": false
 }
 

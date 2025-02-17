@@ -13,6 +13,13 @@ export const dict = {
             step: 'Step',
             of: 'of'
         },
+        chat: {
+            search: "Search contacts",
+            loading: "Loading chats...",
+            noMessages: "No messages yet",
+            typeMessage: "Type your message",
+            send: "Send"
+        },
         comments: {
             comments: "Comments",
             reply: "Reply",
@@ -121,6 +128,13 @@ export const dict = {
             step: 'Schritt',
             of: 'von'
         },
+        chat: {
+            search: "Kontakte suchen",
+            loading: "Chats werden geladen...",
+            noMessages: "Noch keine Nachrichten",
+            typeMessage: "Geben Sie Ihre Nachricht ein",
+            send: "Senden"
+        },
         sortField: 'Sortierfeld',
         "comments": {
             "comments": "Kommentare",
@@ -227,6 +241,13 @@ export const dict = {
             emptyRequired: "Rellene los campos requeridos: ",
             step: 'Paso',
             of: 'de'
+        },
+        chat: {
+            search: "Buscar contactos",
+            loading: "Cargando chats...",
+            noMessages: "Aún no hay mensajes",
+            typeMessage: "Escribe tu mensaje",
+            send: "Enviar"
         },
         "comments": {
             "comments": "Comentarios",
@@ -335,6 +356,13 @@ export const dict = {
             step: 'Étape',
             of: 'de'
         },
+        chat: {
+            search: "Rechercher des contacts",
+            loading: "Chargement des chats...",
+            noMessages: "Pas encore de messages",
+            typeMessage: "Tapez votre message",
+            send: "Envoyer"
+        },
         sortField: 'Champ de tri',
         "comments": {
             "comments": "Commentaires",
@@ -442,6 +470,13 @@ export const dict = {
             step: 'Шаг',
             of: 'из'
         },
+        chat: {
+            search: "Поиск контактов",
+            loading: "Загрузка чатов...",
+            noMessages: "Пока нет сообщений",
+            typeMessage: "Введите ваше сообщение",
+            send: "Отправить"
+        },
         sortField: 'Поле для сортировки',
         error: 'Ошибка',
         "comments": {
@@ -547,6 +582,13 @@ export const dict = {
             emptyRequired: "必要な項目を入力してください：",
             step: 'ステップ',
             of: 'の'
+        },
+        chat: {
+            search: "連絡先を検索",
+            loading: "チャットを読み込んでいます...",
+            noMessages: "まだメッセージはありません",
+            typeMessage: "メッセージを入力してください",
+            send: "送信"
         },
         sortField: '並び替えフィールド',
         error: 'エラー',
@@ -654,6 +696,13 @@ export const dict = {
             step: 'Passo',
             of: 'de'
         },
+        chat: {
+            search: "Pesquisar contatos",
+            loading: "Carregando chats...",
+            noMessages: "Ainda não há mensagens",
+            typeMessage: "Digite sua mensagem",
+            send: "Enviar"
+        },
         "sortField": 'Campo de ordenação',
         "error": "Erro",
         "comments": {
@@ -759,6 +808,13 @@ export const dict = {
             step: 'कदम',
             of: 'का'
         },
+        chat: {
+            search: "संपर्क खोजें",
+            loading: "चैट लोड हो रहा है...",
+            noMessages: "अभी तक कोई संदेश नहीं",
+            typeMessage: "अपना संदेश टाइप करें",
+            send: "भेजें"
+        },
         sortField: 'क्रमबद्ध क्षेत्र',
         error: 'त्रुटि',
         "comments": {
@@ -863,6 +919,13 @@ export const dict = {
             emptyRequired: "필수 항목을 입력하세요: ",
             step: '단계',
             of: '의'
+        },
+        chat: {
+            search: "연락처 검색",
+            loading: "채팅 불러오는 중...",
+            noMessages: "아직 메시지가 없습니다",
+            typeMessage: "메시지를 입력하세요",
+            send: "보내기"
         },
         "sortField": "정렬 필드",
         "error": "오류",
