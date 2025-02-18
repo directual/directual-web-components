@@ -273,13 +273,7 @@ function Card(props) {
     const cx = null
     const onChangeQuantity = debounce(changeQuantity, 500);
 
-    console.log("favorites")
-    console.log(favorites)
-    console.log({ [favoritesField]: object.id })
-
     const isFavorite = _.some(favorites, { [favoritesField]: object.id })
-    console.log("isFavorite")
-    console.log(isFavorite)
 
     if (cardType == "cart") return <div
         className={`Cards2_typeCart ${styles.cards2_typeCart}`}>

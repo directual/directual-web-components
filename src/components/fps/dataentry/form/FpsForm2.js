@@ -11,6 +11,7 @@ import Hint from '../../hint/hint'
 //import debounce from 'lodash.debounce';
 import { debounce } from 'lodash'
 import moment from 'moment'
+import Loader from '../../loader/loader'
 
 export default function FpsForm2(props) {
 
@@ -72,6 +73,7 @@ export default function FpsForm2(props) {
 
   const [highlightState, setHighlightState] = useState(false)
   const [highlightModel, setHighlightModel] = useState(false)
+  const [initialized, setInitialized] = useState(!edditingOn);
 
   function usePrevious(value) {
     const ref = useRef();
@@ -247,6 +249,7 @@ export default function FpsForm2(props) {
         saveSate = { ...saveSate, ...parseJson(newModel[_.get(params, "general.saveStateTo")]) }
       }
       setState(saveSate)
+      setInitialized(true)
     }
 
   }, [_.get(data, "data[0]")])
@@ -911,6 +914,8 @@ export default function FpsForm2(props) {
     _.get(params, "general.debugForUsers") && _.get(auth, "isAuth") && _.get(auth, "user")
     && isDebugUser(_.get(auth, "user"), _.get(params, "general.debugUsers"))
   )
+
+  if (!initialized) return <Loader />
 
   return <div className={`${styles.formWrapper} D_FPS_FORM2_WRAPPER`}
     style={{ maxWidth }}
