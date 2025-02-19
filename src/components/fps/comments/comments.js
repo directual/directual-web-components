@@ -31,7 +31,7 @@ export default function Comments(props) {
     // process Socket.io update
     useEffect(() => {
         if (!_.isEqual(_.get(data, "data"), comments)) {
-            setComments(_.get(data, "data"))
+            setComments(_.get(data, "data") || [])
         }
     }, [_.get(data, "data")])
 
@@ -64,7 +64,7 @@ export default function Comments(props) {
     const allowSend = _.includes(data.writeFields, _.get(data, "params._textField"))
 
     return <div className={`${styles.comments} FPS_COMMENTS`}>
-        <CommentsHeader header={dict[lang].comments.comments} counter={comments.length} {...props} />
+        <CommentsHeader header={dict[lang].comments.comments} counter={(comments || []).length} {...props} />
         {allowSend && <AddComment
             {...props}
             lang={lang}
