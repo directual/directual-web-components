@@ -57,6 +57,7 @@ export default function FormElement(props) {
             {element._conditionalView && _.get(params, "general.debugConditions") && userDebug && <div className={styles.condDebugDetails}>
                 <code>
                     <p>Show element if:</p>
+                    {checkHidden(element, true, false).name && <p  style={{ lineHeight: 1, marginBottom: 10}}><b>{checkHidden(element, true, false).name}</b></p>}
                     <pre style={{ whiteSpace: 'wrap', fontSize: 14 }}>{checkHidden(element, true, false).conditions}</pre>
                     <p>Result: <b>{checkHidden(element, false, false) ? "🚫 hidden" : "✅ visible"}</b></p>
                     <pre style={{ whiteSpace: 'wrap', fontSize: 14 }}>{checkHidden(element, true, false).result}</pre>

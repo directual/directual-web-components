@@ -171,7 +171,7 @@ export default function FpsForm2(props) {
       }
       return result;
     }, {});
-    const dataObject = edditingOn ? {..._.get(data, "data[0]"), ...convertedDates, ...convertedBools} : {}
+    const dataObject = edditingOn ? { ..._.get(data, "data[0]"), ...convertedDates, ...convertedBools } : {}
     const newModel = ({
       //...model,  //чтобы старое затиралось
       ...flatternModel({
@@ -262,6 +262,19 @@ export default function FpsForm2(props) {
   }, [model])
 
   const checkHidden = (element, debug, reverse) => {
+
+    console.log("checkHidden")
+    console.log(element)
+    console.log(_.get(data, "params._condition_library"))
+
+    let _conditions = _.get(element, "_conditions") || []
+    let _name = ""
+    if (_.get(element, "_action_conditionals_manual") == "from_list" &&
+      _.get(element, "_action_conditionals_manual_list")) {
+      const _cond_lib = _.get(data, "params._condition_library")
+      _name= _.get(_.find(_cond_lib, { id: _.get(element, "_action_conditionals_manual_list") }), "title")
+      _conditions = _.get(_.find(_cond_lib, { id: _.get(element, "_action_conditionals_manual_list") }), "_conditions") || []
+    }
 
     const checkHiddenCondition = (element) => {
       let isHidden = false
@@ -447,17 +460,17 @@ export default function FpsForm2(props) {
     let details = []
     let conditions = []
     if (!_.get(element, "_conditionalView")) { } else {
-      if (!_.get(element, "_conditions") || _.get(element, "_conditions").length == 0) { } else {
+      if (!_conditions || _conditions.length == 0) { } else {
 
         if (_.get(element, "_action_conditionals_and_or") == "OR") {
           result = true
-          _.get(element, "_conditions").forEach(element => {
+          _conditions.forEach(element => {
             details && details.push(checkHiddenCondition(element).details)
             conditions && conditions.push(checkHiddenCondition(element).condition)
             if (!checkHiddenCondition(element).isHidden) { result = false; }
           })
         } else {
-          _.get(element, "_conditions").forEach(element => {
+          _conditions.forEach(element => {
             details && details.push(checkHiddenCondition(element).details)
             conditions && conditions.push(checkHiddenCondition(element).condition)
             if (checkHiddenCondition(element).isHidden) { result = true; }
@@ -466,7 +479,7 @@ export default function FpsForm2(props) {
       };
     };
     const jouinSymbol = _.get(element, "_action_conditionals_and_or") == "OR" ? " ==OR== " : " ==AND== "
-    if (debug) return { result: _.compact(details).join(", "), conditions: _.compact(conditions).join(jouinSymbol) }
+    if (debug) return { result: _.compact(details).join(", "), conditions: _.compact(conditions).join(jouinSymbol), name: _name }
 
     return result
   }
@@ -506,7 +519,7 @@ export default function FpsForm2(props) {
     newData = newData || {}
 
     let localModel = { ...model, ...newData.model }
-    let localState = { ...templateState(state,localModel), ...newData.state }
+    let localState = { ...templateState(state, localModel), ...newData.state }
 
     //setState({ ...templateState(state,localModel), _submitError: "" })
     let modelToSend = {}
@@ -589,7 +602,7 @@ export default function FpsForm2(props) {
         return fieldName ? '"' + fieldName + '"' : '"' + i + '"'
       })
       const errMessage = dict[lang].form.emptyRequired + emptyFields.join(", ")
-      setState({ ...templateState(state,localModel), _submitError: errMessage })
+      setState({ ...templateState(state, localModel), _submitError: errMessage })
       finish && finish(true)
       return;
     }
@@ -745,7 +758,7 @@ export default function FpsForm2(props) {
 
   function template(input, noDate) {
     if (!input || input == "{{undefined}}" || input == "{{null}}") return "";
-  
+
     function convertNumbersToStrings(obj) {
       for (let key in obj) {
         if (typeof obj[key] === 'number') {
@@ -756,13 +769,13 @@ export default function FpsForm2(props) {
       }
       return obj;
     }
-  
+
     let templateData = { ...defaultExtModel, ...(model || {}), ...(extendedModel || {}), ...(state || {}) };
-  
+
     const replaceNullWithEmptyString = obj => _.mapValues(obj, value => value === null ? "" : value);
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
     if (!templateData) return "";
-  
+
     templateData = _.mapValues(templateData, (value, key) => {
       if (getDateFields().hasOwnProperty(key)
       ) {
@@ -770,7 +783,7 @@ export default function FpsForm2(props) {
       }
       return value;
     });
-  
+
     const preprocessTemplate = (str, data) => {
       const regex = /{{\s*([\w.]+)\s*}}/g;
       return str.replace(regex, (match, p1) => {
@@ -787,10 +800,10 @@ export default function FpsForm2(props) {
         return match;
       });
     };
-  
+
     templateData = replaceNullWithEmptyString(templateData);
     templateData = convertNumbersToStrings(templateData);
-  
+
     function extractStringsWithinBraces(str) {
       const matches = str.match(/\{\{(.*?)\}\}/g);
       if (matches) {
@@ -798,15 +811,15 @@ export default function FpsForm2(props) {
       }
       return [];
     }
-  
+
     (extractStringsWithinBraces(input) || []).forEach(i => {
       if (!_.get(templateData, i)) {
         _.set(templateData, i, "")
       }
     })
-  
+
     const preprocessedInput = preprocessTemplate(input, templateData);
-  
+
     const renderTemplate = (template) => {
       return _.template(template, {
         interpolate: /{{([\s\S]+?)}}/g
@@ -816,7 +829,7 @@ export default function FpsForm2(props) {
         escape: /<%-([\s\S]+?)%>/g
       });
     };
-  
+
     try {
       const result = renderTemplate(preprocessedInput);
       return result;

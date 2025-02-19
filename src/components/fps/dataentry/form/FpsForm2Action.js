@@ -84,6 +84,7 @@ export default function FpsForm2Action(props) {
             {actionFormat._conditionalView && userDebug && _.get(params, "general.debugConditions") && <div className={styles.condDebugDetails}>
                 <code>
                     <p>{actionFormat._action_conditional_disable_or_hide == "disable" ? "disable button" : "hide button"} if:</p>
+                    {checkHidden(actionFormat, true, false).name && <p  style={{ lineHeight: 1, marginBottom: 10}}><b>{checkHidden(actionFormat, true, false).name}</b></p>}
                     <pre style={{ whiteSpace: 'wrap', fontSize: 14 }}>{checkHidden(actionFormat, true, true).conditions}</pre>
                     <p>Result: <b>{!checkHidden(actionFormat, false, true) ? "true" : "false"}</b></p>
                     <pre style={{ whiteSpace: 'wrap', fontSize: 14 }}>{checkHidden(actionFormat, true, true).result}</pre>
