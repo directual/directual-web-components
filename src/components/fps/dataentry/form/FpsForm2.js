@@ -263,16 +263,16 @@ export default function FpsForm2(props) {
 
   const checkHidden = (element, debug, reverse) => {
 
-    console.log("checkHidden")
-    console.log(element)
-    console.log(_.get(data, "params._condition_library"))
+    // console.log("checkHidden")
+    // console.log(element)
+    // console.log(_.get(data, "params._condition_library"))
 
     let _conditions = _.get(element, "_conditions") || []
     let _name = ""
     if (_.get(element, "_action_conditionals_manual") == "from_list" &&
       _.get(element, "_action_conditionals_manual_list")) {
       const _cond_lib = _.get(data, "params._condition_library")
-      _name= _.get(_.find(_cond_lib, { id: _.get(element, "_action_conditionals_manual_list") }), "title")
+      _name = _.get(_.find(_cond_lib, { id: _.get(element, "_action_conditionals_manual_list") }), "title")
       _conditions = _.get(_.find(_cond_lib, { id: _.get(element, "_action_conditionals_manual_list") }), "_conditions") || []
     }
 
@@ -290,10 +290,10 @@ export default function FpsForm2(props) {
         let indirect = "model is NOT changed"
         condition = indirect
         if (modelIsChanged) {
-          details = reverse ? "" : direct
+          details = direct // reverse ? "" : direct
           isHidden = true
         } else {
-          details = reverse ? indirect : ""
+          details = indirect // reverse ? indirect : ""
           //details = reverse ? null : direct
         }
       }
@@ -304,10 +304,10 @@ export default function FpsForm2(props) {
         let indirect = "model is changed"
         condition = indirect
         if (!modelIsChanged) {
-          details = reverse ? "" : direct
+          details = direct // reverse ? "" : direct
           isHidden = true
         } else {
-          details = reverse ? indirect : ""
+          details = indirect // reverse ? indirect : ""
           //details = reverse ? indirect : direct
         }
       }
@@ -319,10 +319,11 @@ export default function FpsForm2(props) {
         let indirect = "{{" + element._conditionalView_field + "}} → " + field + " == " + value
         condition = "{{" + element._conditionalView_field + "}} == " + element._conditionalView_value
         if (!_.isEqual(field, value)) {
-          details = reverse ? "" : direct
+          details = direct //reverse ? indirect : direct
           isHidden = true
         } else {
-          details = reverse ? indirect : ""
+          details = indirect //reverse ? direct : indirect
+          // details = reverse ? indirect : direct
         }
       }
 
@@ -333,10 +334,10 @@ export default function FpsForm2(props) {
         condition = "{{" + element._conditionalView_field + "}} !== " + element._conditionalView_value
         if (typeof field == 'boolean') { field = JSON.stringify(field) }
         if (_.isEqual(field, value)) {
-          details = reverse ? "" : direct
+          details = direct // reverse ? "" : direct
           isHidden = true
         } else {
-          details = reverse ? indirect : ""
+          details = indirect // reverse ? indirect : ""
           // details = reverse ? indirect : direct
         }
       }
@@ -351,10 +352,10 @@ export default function FpsForm2(props) {
         if ((field && field.length > 0 &&
           value && value.length > 0
           && _.intersection(value, field).length == 0) || !field || !value) {
-          details = reverse ? "" : direct
+          details = direct // reverse ? "" : direct
           isHidden = true
         } else {
-          details = reverse ? indirect : ""
+          details = indirect // reverse ? indirect : ""
           // details = reverse ? indirect : direct
         }
       }
@@ -368,10 +369,10 @@ export default function FpsForm2(props) {
         if ((field && field.length > 0 &&
           value && value.length > 0
           && _.intersection(value, field).length > 0) || !field || !value) {
-          details = reverse ? "" : direct
+          details = direct // reverse ? "" : direct
           isHidden = true
         } else {
-          details = reverse ? indirect : ""
+          details = indirect // reverse ? indirect : ""
           // details = reverse ? indirect : direct
         }
       }
@@ -386,10 +387,10 @@ export default function FpsForm2(props) {
         if ((field && field.length > 0 &&
           value && value.length > 0
           && _.intersection(value, field).length == 0) || !field || !value) {
-          details = reverse ? "" : direct
+          details = direct // reverse ? "" : direct
           isHidden = true
         } else {
-          details = reverse ? indirect : ""
+          details = indirect // reverse ? indirect : ""
           // details = reverse ? indirect : direct
         }
       }
@@ -404,21 +405,21 @@ export default function FpsForm2(props) {
           direct = (Array.isArray(value) ? value : []).join(",") + " contains " + "{{" + element._conditionalView_field + "}} → " + field
           indirect = (Array.isArray(value) ? value : []).join(",") + " does NOT contain " + "{{" + element._conditionalView_field + "}} → " + field
         } catch (err) {
-          console.error(err)
-          console.log("value")
-          console.log(value)
-          console.log("field")
-          console.log(field)
+          // console.error(err)
+          // console.log("value")
+          // console.log(value)
+          // console.log("field")
+          // console.log(field)
         }
 
         condition = element._conditionalView_value + " does NOT contain " + "{{" + element._conditionalView_field + "}}"
         if ((field && field.length > 0 &&
           value && value.length > 0
           && _.intersection(value, field).length > 0) || !field || !value) {
-          details = reverse ? "" : direct
+          details = direct // reverse ? "" : direct
           isHidden = true
         } else {
-          details = reverse ? indirect : ""
+          details = indirect // reverse ? indirect : ""
           // details = reverse ? indirect : direct
         }
       }
@@ -429,10 +430,10 @@ export default function FpsForm2(props) {
         let indirect = "{{" + element._conditionalView_field + "}} → " + (field || '""') + " is empty"
         condition = "{{" + element._conditionalView_field + "}} is empty"
         if (!_.isEmpty(field)) {
-          details = reverse ? "" : direct
+          details = direct // reverse ? "" : direct
           isHidden = true
         } else {
-          details = reverse ? indirect : ""
+          details = indirect //reverse ? indirect : ""
           // details = reverse ? indirect : direct
         }
       }
@@ -443,10 +444,10 @@ export default function FpsForm2(props) {
         let indirect = "{{" + element._conditionalView_field + "}} → " + (field || '""') + " is NOT empty"
         condition = "{{" + element._conditionalView_field + "}} is NOT empty"
         if (_.isEmpty(field)) {
-          details = reverse ? "" : direct
+          details = direct // reverse ? "" : direct
           isHidden = true
         } else {
-          details = reverse ? indirect : ""
+          details = indirect // reverse ? indirect : ""
           // details = reverse ? indirect : direct
         }
       }
@@ -459,7 +460,8 @@ export default function FpsForm2(props) {
     let result = false
     let details = []
     let conditions = []
-    if (!_.get(element, "_conditionalView")) { } else {
+    if (!_.get(element, "_conditionalView")) {
+    } else {
       if (!_conditions || _conditions.length == 0) { } else {
 
         if (_.get(element, "_action_conditionals_and_or") == "OR") {
@@ -889,7 +891,7 @@ export default function FpsForm2(props) {
   // =============
 
   const editModel = field => value => {
-    console.log("edit " + field + " => " + value)
+    // console.log("edit " + field + " => " + value)
     const copyModel = _.cloneDeep(model)
     _.set(copyModel, field, value)
     setModel(copyModel)

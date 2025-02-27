@@ -79,7 +79,7 @@ export function FpsForm2Input(props) {
         {field._conditionalView && _.get(params, "general.debugConditions") && userDebug && <div className={styles.condDebugDetails}>
             <code>
                 <p>{field._conditionalView_disable_or_hide == "disable" ? "disable input" : "hide input"} if:</p>
-                {checkHidden(field, true, false).name && <p style={{ lineHeight: 1, marginBottom: 10}}><b>{checkHidden(field, true, false).name}</b></p>}
+                {checkHidden(field, true, true).name && <p style={{ lineHeight: 1, marginBottom: 10}}><b>{checkHidden(field, true, true).name}</b></p>}
                 <pre style={{ whiteSpace: 'wrap', fontSize: 14 }}>{checkHidden(field, true, true).conditions}</pre>
                 <p>Result: <b>{!checkHidden(field, false, true) ? "true" : "false"}</b></p>
                 <pre style={{ whiteSpace: 'wrap', fontSize: 14 }}>{checkHidden(field, true, true).result}</pre>

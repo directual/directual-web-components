@@ -48,7 +48,7 @@ export default function FormElement(props) {
     }
 
     return <div style={hidden && !(_.get(params, "general.debugConditions") && userDebug) ? { display: 'none' } : {}} className={`${styles.elementWrapper} D_FPS_FORM2_ELEMENT_WRAPPER`}>
-        <div className={`${(element._conditionalView && _.get(params, "general.debugConditions"))
+        <div className={`${(element._conditionalView && _.get(params, "general.debugConditions") && userDebug)
             ? `${styles.debugConditions} ${styles.debugElement}` : ""}
             ${(element._conditionalView && _.get(params, "general.debugConditions") && checkHidden(element, false, false))
                 ? `${styles.hideElementDebug}` : ""}

@@ -1222,6 +1222,7 @@ const customThemeColorNames = {
 }
 
 export function SetTheme({ themeName, onLoadComplete }) {
+    
     useEffect(() => {
         setTheme(themeName)
     }, [themeName])

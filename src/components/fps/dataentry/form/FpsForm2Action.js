@@ -41,11 +41,6 @@ export default function FpsForm2Action(props) {
 
     if (!action) return <div>No action <code>{_.get(actionFormat, "id")}</code></div>
     if (action.autoAction) return <React.Fragment></React.Fragment>
-    if (actionFormat._conditionalView &&
-        !checkHidden(actionFormat) &&
-        !_.get(params, "general.debugConditions") &&
-        actionFormat._action_conditional_disable_or_hide !== "disable"
-    ) return <React.Fragment></React.Fragment>
 
     if (performed && actionFormat._action_oneTime) return <Hint margin={{ top: 0, bottom: 0 }}>
         {actionFormat._action_oneTime_message && <InnerHTML allowRerender={true} html={template(actionFormat._action_oneTime_message)} />}
@@ -58,7 +53,7 @@ export default function FpsForm2Action(props) {
             : actionFormat._action_picure : null
 
 
-    const button = <Button
+    let button = <Button
         danger={actionFormat._action_button_type == "danger"}
         accent={actionFormat._action_button_type == "accent"}
         picture={buttonPicture}
@@ -75,6 +70,18 @@ export default function FpsForm2Action(props) {
         icon={actionFormat._action_icon}
     >{template(actionFormat._action_label || action.name)}</Button>
 
+    // console.log("button")
+    // console.log(!checkHidden(actionFormat))
+    // console.log(!checkHidden(actionFormat, false, true))
+    // console.log(template(actionFormat._action_label || action.name))
+    // console.log("===")
+
+    if (actionFormat._conditionalView &&
+        !checkHidden(actionFormat) 
+        && (!_.get(params, "general.debugConditions") || !userDebug)
+        && actionFormat._action_conditional_disable_or_hide !== "disable"
+    ) { button = <React.Fragment></React.Fragment> }
+
     if (_.get(params, "general.debugConditions") && userDebug) {
         return <div className={`${actionFormat._conditionalView && userDebug && _.get(params, "general.debugConditions") ? styles.debugConditions : ""}
         ${actionFormat._conditionalView && !checkHidden(actionFormat, false, true) && userDebug && _.get(params, "general.debugConditions") ?
@@ -84,7 +91,7 @@ export default function FpsForm2Action(props) {
             {actionFormat._conditionalView && userDebug && _.get(params, "general.debugConditions") && <div className={styles.condDebugDetails}>
                 <code>
                     <p>{actionFormat._action_conditional_disable_or_hide == "disable" ? "disable button" : "hide button"} if:</p>
-                    {checkHidden(actionFormat, true, false).name && <p  style={{ lineHeight: 1, marginBottom: 10}}><b>{checkHidden(actionFormat, true, false).name}</b></p>}
+                    {checkHidden(actionFormat, true, true).name && <p  style={{ lineHeight: 1, marginBottom: 10}}><b>{checkHidden(actionFormat, true, true).name}</b></p>}
                     <pre style={{ whiteSpace: 'wrap', fontSize: 14 }}>{checkHidden(actionFormat, true, true).conditions}</pre>
                     <p>Result: <b>{!checkHidden(actionFormat, false, true) ? "true" : "false"}</b></p>
                     <pre style={{ whiteSpace: 'wrap', fontSize: 14 }}>{checkHidden(actionFormat, true, true).result}</pre>

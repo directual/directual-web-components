@@ -40,6 +40,9 @@ export function FpsWrapper(props) {
     }, [layoutWidth])
 
     useEffect(() => {
+        // подпорка от бесконечного лоадера
+        setTimeout(()=> setOnLoadComplete(true), 2000)
+
         const resizeListener = () => {
             if (layoutRef.current && layoutRef.current.offsetWidth !== layoutWidth) {
                 setLayoutWidth(layoutRef.current.offsetWidth);
