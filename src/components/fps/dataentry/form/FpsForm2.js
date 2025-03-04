@@ -57,8 +57,8 @@ export default function FpsForm2(props) {
     return tempModel
   }
   const [model, setModel] = useState({ ...composeInitialModel() })
-  const [extendedModel, setExtendedModel] = useState({ ...gatherDefaults() })
-  const [originalModel, setOriginalModel] = useState({ ...gatherDefaults() })
+  const [extendedModel, setExtendedModel] = useState({ ...composeInitialModel() }) // тут было gatherDefaults
+  const [originalModel, setOriginalModel] = useState({ ...composeInitialModel() }) // тут было gatherDefaults
   const previousModel = usePrevious(model);
   const [state, setState] = useState(_.get(data, "params.state") || defaultState)
   const previousState = usePrevious(state);
@@ -74,6 +74,9 @@ export default function FpsForm2(props) {
   const [highlightState, setHighlightState] = useState(false)
   const [highlightModel, setHighlightModel] = useState(false)
   const [initialized, setInitialized] = useState(!edditingOn);
+
+  console.log(model)
+  console.log(originalModel)
 
   function usePrevious(value) {
     const ref = useRef();
@@ -92,7 +95,7 @@ export default function FpsForm2(props) {
 
   // AUTOSUBMIT ON MODEL
   useEffect(() => {
-
+    console.log("AUTOSUBMIT ON MODEL")
     if (_.get(params, "general.autosubmit") == "model") {
       // any field:
       if (_.get(params, "general.autosubmit_model") && _.get(params, "general.autosubmit_model").length > 0) {
@@ -196,7 +199,7 @@ export default function FpsForm2(props) {
     }
 
     if (edditingOn) {
-      // console.log("Socket form update")
+      console.log("Socket form update")
 
       const convertedDates = _.reduce(_.get(data, "fileds"), (result, field) => {
         // Ensure the field exists in the objectModel
