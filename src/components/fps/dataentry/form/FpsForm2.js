@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import styles from './form2.module.css'
 import icon from './../../../../icons/fps-form2.svg'
 import { dict } from '../../locale'
@@ -57,6 +57,7 @@ export default function FpsForm2(props) {
     return tempModel
   }
   const [model, setModel] = useState({ ...composeInitialModel() })
+  const modelRef = useRef(model);
   const [extendedModel, setExtendedModel] = useState({ ...composeInitialModel() }) // тут было gatherDefaults
   const [originalModel, setOriginalModel] = useState({ ...composeInitialModel() }) // тут было gatherDefaults
   const previousModel = usePrevious(model);
@@ -75,8 +76,8 @@ export default function FpsForm2(props) {
   const [highlightModel, setHighlightModel] = useState(false)
   const [initialized, setInitialized] = useState(!edditingOn);
 
-  console.log(model)
-  console.log(originalModel)
+  // console.log(model)
+  // console.log(originalModel)
 
   function usePrevious(value) {
     const ref = useRef();
@@ -86,34 +87,46 @@ export default function FpsForm2(props) {
     return ref.current;
   }
 
+  useEffect(() => {
+    modelRef.current = model;
+  }, [model]);
+
   const [autoSubmitStep, setAutoSubminStep] = useState(state.step)
 
   const cx = null
-  const submitOnModel = debounce(submit, 400);
-  const submitOnState = debounce(submit, 400);
+  const submitOnModel = debounce(submit, 1400);
+  const submitOnState = debounce(submit, 1400);
+
+  // const submitDebounced = useCallback(debounce(submit, 1000), []);
+  const submitDebounced = useCallback(debounce((...args) => {
+    submit(...args, modelRef.current); // Use the latest model from ref
+  }, 1000), []);
   //const debouncedCallEndpint = debounce(callEndpoint, 700);
 
   // AUTOSUBMIT ON MODEL
   useEffect(() => {
-    console.log("AUTOSUBMIT ON MODEL")
-    if (_.get(params, "general.autosubmit") == "model") {
-      // any field:
+    console.log("AUTOSUBMIT ON MODEL");
+    if (_.get(params, "general.autosubmit") === "model") {
       if (_.get(params, "general.autosubmit_model") && _.get(params, "general.autosubmit_model").length > 0) {
-        let send = false
+        let send = false;
         _.get(params, "general.autosubmit_model").forEach(field => {
-          // console.log("AUTOSUBMIT ON MODEL")
-          // console.log(_.get(previousModel, field))
-          // console.log(_.get(model, field))
-          if (_.get(previousModel, field) !== _.get(model, field)) { send = true }
-        })
+          if (_.get(previousModel, field) !== _.get(model, field)) { send = true; }
+        });
         if (send) {
-          submitOnModel(undefined, true, undefined, true)
+          submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, model);
         }
       } else {
-        submitOnModel(undefined, true, undefined, true)
+        submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, model);  
       }
     }
-  }, [model])
+  }, [model, previousModel, params, submitDebounced]);
+
+  // Clean up on unmount
+  useEffect(() => {
+    return () => {
+      submitDebounced.cancel();
+    };
+  }, [submitDebounced]);
 
   // AUTOSUBMIT ON STATE
   useEffect(() => {
@@ -516,14 +529,15 @@ export default function FpsForm2(props) {
     return false;
   }
 
-  function submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData,
-    actionReq, setActionError, resetModel) {
+  function submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping = [], newData,
+    actionReq, setActionError, resetModel, currentModel) {
 
+    if (!currentModel) { currentModel = model }
     clearTimeout(cx);
 
     newData = newData || {}
 
-    let localModel = { ...model, ...newData.model }
+    let localModel = { ...currentModel, ...newData.model }
     let localState = { ...templateState(state, localModel), ...newData.state }
 
     //setState({ ...templateState(state,localModel), _submitError: "" })

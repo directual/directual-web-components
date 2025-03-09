@@ -191,6 +191,20 @@ export default function Input(props) {
 
     const tooltipId = "tooltip_" + Math.floor(Math.random() * 1000000000)
 
+    useEffect(() => {
+        const input = inputEl.current;
+
+        if (props.type === 'number' && input) {
+            const handleWheel = (e) => e.preventDefault();
+            input.addEventListener('wheel', handleWheel, { passive: false });
+
+            // Cleanup function
+            return () => {
+                input.removeEventListener('wheel', handleWheel, { passive: false });
+            };
+        }
+    }, [props.type]);
+
     const checkValue = () => {
         // console.log('checking...');
         // ((!value || (value && value.length == 0)) && (value != 0) && props.required) ?
@@ -758,6 +772,7 @@ export default function Input(props) {
                             onChange={e => props.imask ? undefined : handleChangeNumber(e.target.value)}
                             value={props.imask && (value || value === 0) ? value.toString() : value}
                             onBlur={checkValue}
+                            onWheel={(e) => e.preventDefault()} // Add this line to prevent scrolling
                             placeholder={`${props.placeholder ? props.placeholder : ''}`}
                         />
 
