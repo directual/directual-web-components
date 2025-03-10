@@ -719,8 +719,8 @@ export default function FpsForm2(props) {
 
           console.log("ПЫЩЬ 1")
           console.log(submitKeepModel)
-          console.log(!resetModel)
-          console.log(submitKeepModel)
+          console.log(resetModel)
+          console.log("да еб твою мать")
           console.log(submitKeepModel && !resetModel)
           if (submitKeepModel && !resetModel) {
             console.log("ПЫЩЬ 2")
