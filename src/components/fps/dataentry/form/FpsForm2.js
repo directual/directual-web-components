@@ -98,9 +98,7 @@ export default function FpsForm2(props) {
   const submitOnState = debounce(submit, 1400);
 
   // const submitDebounced = useCallback(debounce(submit, 1000), []);
-  const submitDebounced = useCallback(debounce((...args) => {
-    submit(...args, modelRef.current); // Use the latest model from ref
-  }, 1000), []);
+  const submitDebounced = useCallback(debounce(submit, 1000), []);
   //const debouncedCallEndpint = debounce(callEndpoint, 700);
 
   // AUTOSUBMIT ON MODEL
