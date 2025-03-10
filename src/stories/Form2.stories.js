@@ -215,12 +215,32 @@ let exampleForm =  {
                 "sysName": "default step",
                 "elements": [
                     {
+                        "id": "elmnt_1741602092359",
+                        "type": "input",
+                        "_input_fields": [
+                            {
+                                "id": "17416021125070.221442423110020304331102",
+                                "_field": "dd",
+                                "_field_link_type": "select",
+                                "_field_arrayLink_endpoint": "ddd"
+                            }
+                        ]
+                    },
+                    {
                         "id": "elmnt_1741258574336",
                         "type": "input",
                         "_input_fields": [
                             {
                                 "id": "17412585760250.03400123024341013021402",
                                 "_field": "value"
+                            }
+                        ],
+                        "_conditionalView": true,
+                        "_conditions": [
+                            {
+                                "id": "condition_1741602103583",
+                                "_conditionalView_field": "id",
+                                "_conditionalView_operator": "isNotNull"
                             }
                         ]
                     },
@@ -250,7 +270,8 @@ let exampleForm =  {
             "edittingOn": true,
             "autosubmit": "model",
             "autosubmit_model": [
-                "value"
+                "value",
+                "dd"
             ],
             "showModel": true
         },
@@ -282,11 +303,11 @@ let exampleForm =  {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "typeVariable": {},
+            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
             "indexExists": false,
             "array": false
         },
@@ -310,11 +331,11 @@ let exampleForm =  {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "typeVariable": {},
+            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
             "indexExists": false,
             "array": false
         },
@@ -338,18 +359,47 @@ let exampleForm =  {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "typeVariable": {},
+            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "dd",
+            "name": "",
+            "dataType": "link",
+            "id": "66041741602037547",
+            "link": "ddd",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
             "typeVariable": {},
             "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
             "indexExists": false,
             "array": false
         }
     ],
     "data": [
         {
-            "id": "309c5f02-0eaa-4e24-8582-154d1425e3be"
+            "dd": "2",
+            "id": "007a4dee-0cf0-44c8-ab2f-4018f22618a0"
         }
     ],
     "totalPages": 1,
@@ -367,11 +417,16 @@ let exampleForm =  {
         [
             "result",
             99373756
+        ],
+        [
+            "dd.id",
+            99374193
         ]
     ],
     "writeFields": [
         "id",
-        "value"
+        "value",
+        "dd"
     ],
     "structures": {
         "99373756": {
@@ -382,7 +437,7 @@ let exampleForm =  {
             "dateCreated": "2025-03-06T10:53:11Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"value\",\"name\":\"\",\"dataType\":\"number\",\"id\":\"61701741258396655\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"result\",\"name\":\"\",\"dataType\":\"decimal\",\"id\":\"39511741258402641\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false}]",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"value\",\"dataType\":\"number\",\"name\":\"\",\"id\":\"61701741258396655\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"result\",\"dataType\":\"decimal\",\"name\":\"\",\"id\":\"39511741258402641\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"dd\",\"dataType\":\"link\",\"name\":\"\",\"id\":\"66041741602037547\",\"link\":\"ddd\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false}]",
             "jsonGroupSettings": null,
             "jsonViewIdSettings": null,
             "jsonSettings": null,
@@ -390,7 +445,7 @@ let exampleForm =  {
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2025-03-06T10:53:32Z",
+            "dateChanged": "2025-03-10T10:20:42Z",
             "createBy": 1,
             "changedBy": 1,
             "_settings": null,
@@ -415,11 +470,63 @@ let exampleForm =  {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
+                "typeVariable": {},
+                "json": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
+                "indexExists": false,
+                "array": false
+            },
+            "objectIDSysName": "id",
+            "folderId": null
+        },
+        "99374193": {
+            "networkID": 23076,
+            "sysName": "ddd",
+            "name": "ddd",
+            "id": 99374193,
+            "dateCreated": "2025-03-10T10:20:11Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"title\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"84941741602016343\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2025-03-10T10:20:19Z",
+            "createBy": 1,
+            "changedBy": 1,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "innerIDField": {
+                "sysName": "id",
+                "name": "id",
+                "dataType": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
                 "typeVariable": {},
                 "json": false,
+                "linkOrArrayLinkType": false,
+                "linkType": false,
+                "arrayLink": false,
                 "indexExists": false,
                 "array": false
             },
@@ -451,11 +558,11 @@ let exampleForm =  {
             "format": null,
             "formatOptions": {},
             "groupName": null,
+            "typeVariable": {},
+            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
             "indexExists": false,
             "array": false
         },
@@ -479,11 +586,39 @@ let exampleForm =  {
             "format": null,
             "formatOptions": null,
             "groupName": null,
+            "typeVariable": {},
+            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "dd",
+            "name": "",
+            "dataType": "link",
+            "id": "66041741602037547",
+            "link": "ddd",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
             "typeVariable": {},
             "json": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
             "indexExists": false,
             "array": false
         }

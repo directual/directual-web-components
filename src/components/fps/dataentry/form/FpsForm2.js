@@ -106,17 +106,24 @@ export default function FpsForm2(props) {
   // AUTOSUBMIT ON MODEL
   useEffect(() => {
     console.log("AUTOSUBMIT ON MODEL");
-    if (_.get(params, "general.autosubmit") === "model") {
+    if (_.get(params, "general.autosubmit") === "model" && typeof previousModel !== 'undefined') {
       if (_.get(params, "general.autosubmit_model") && _.get(params, "general.autosubmit_model").length > 0) {
         let send = false;
+        // console.log(_.get(params, "general.autosubmit_model"))
+        // console.log(previousModel)
+        // console.log(model)
         _.get(params, "general.autosubmit_model").forEach(field => {
-          if (_.get(previousModel, field) !== _.get(model, field)) { send = true; }
+          // console.log(_.get(previousModel, field))
+          // console.log(_.get(model, field))
+          if (!_.isEqual(_.get(previousModel, field),_.get(model, field))) { send = true; }
         });
-        if (send) {
-          submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, model);
-        }
+        // console.log("send")
+        // console.log(send)
+        send && submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, model)
       } else {
-        submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, model);  
+        let send = false;
+        if (!_.isEqual(previousModel,model)) { send = true; }
+        send && submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, model);  
       }
     }
   }, [model, previousModel, params, submitDebounced]);
