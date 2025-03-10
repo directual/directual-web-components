@@ -719,17 +719,17 @@ export default function FpsForm2(props) {
             setState({ ...saveState, ...stateUpdate })
             : setState({ ...saveState, step: targetStep || "submitted", ...stateUpdate })
 
-          console, log("ПЫЩЬ 1")
+          console.log("ПЫЩЬ 1")
           console.log(submitKeepModel)
           console.log(!resetModel)
           console.log(submitKeepModel)
           console.log(submitKeepModel && !resetModel)
           if (submitKeepModel && !resetModel) {
-            console, log("ПЫЩЬ 2")
+            console.log("ПЫЩЬ 2")
             modelUpdate = { ...model, ...modelToSend, ...modelUpdate };
             extendedModelUpdate = { ...extendedModelUpdate, ...modelToSend, ...modelUpdate }
           } else {
-            console, log("ПЫЩЬ 3")
+            console.log("ПЫЩЬ 3")
             console.log("reset model")
           }
 
