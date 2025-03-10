@@ -106,7 +106,7 @@ export default function FpsForm2(props) {
   // AUTOSUBMIT ON MODEL
   useEffect(() => {
     console.log("AUTOSUBMIT ON MODEL");
-    if (_.get(params, "general.autosubmit") === "model" && typeof previousModel !== 'undefined') {
+    if (_.get(params, "general.autosubmit") === "model" && typeof previousModel !== 'undefined' && !_.isEmpty(model)) {
       if (_.get(params, "general.autosubmit_model") && _.get(params, "general.autosubmit_model").length > 0) {
         let send = false;
         // console.log(_.get(params, "general.autosubmit_model"))
@@ -115,15 +115,15 @@ export default function FpsForm2(props) {
         _.get(params, "general.autosubmit_model").forEach(field => {
           // console.log(_.get(previousModel, field))
           // console.log(_.get(model, field))
-          if (!_.isEqual(_.get(previousModel, field),_.get(model, field))) { send = true; }
+          if (!_.isEqual(_.get(previousModel, field), _.get(model, field))) { send = true; }
         });
         // console.log("send")
         // console.log(send)
         send && submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, false, model)
       } else {
         let send = false;
-        if (!_.isEqual(previousModel,model)) { send = true; }
-        send && submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, false, model);  
+        if (!_.isEqual(previousModel, model)) { send = true; }
+        send && submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, false, model);
       }
     }
   }, [model, previousModel, params, submitDebounced]);
@@ -718,13 +718,19 @@ export default function FpsForm2(props) {
           autoSubmit ?
             setState({ ...saveState, ...stateUpdate })
             : setState({ ...saveState, step: targetStep || "submitted", ...stateUpdate })
+
+          console, log("ПЫЩЬ 1")
+          console.log(submitKeepModel)
+          console.log(!resetModel)
+          console.log(submitKeepModel)
+          console.log(submitKeepModel && !resetModel)
           if (submitKeepModel && !resetModel) {
+            console, log("ПЫЩЬ 2")
             modelUpdate = { ...model, ...modelToSend, ...modelUpdate };
             extendedModelUpdate = { ...extendedModelUpdate, ...modelToSend, ...modelUpdate }
           } else {
+            console, log("ПЫЩЬ 3")
             console.log("reset model")
-            console.log(submitKeepModel)
-            console.log(!resetModel)
           }
 
           console.log("final modelUpdate")
