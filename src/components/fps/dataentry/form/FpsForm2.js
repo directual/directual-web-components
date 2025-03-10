@@ -119,11 +119,11 @@ export default function FpsForm2(props) {
         });
         // console.log("send")
         // console.log(send)
-        send && submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, model)
+        send && submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, false, model)
       } else {
         let send = false;
         if (!_.isEqual(previousModel,model)) { send = true; }
-        send && submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, model);  
+        send && submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, false, model);  
       }
     }
   }, [model, previousModel, params, submitDebounced]);
@@ -721,7 +721,12 @@ export default function FpsForm2(props) {
           if (submitKeepModel && !resetModel) {
             modelUpdate = { ...model, ...modelToSend, ...modelUpdate };
             extendedModelUpdate = { ...extendedModelUpdate, ...modelToSend, ...modelUpdate }
+          } else {
+            console.log("reset model")
+            console.log(submitKeepModel)
+            console.log(!resetModel)
           }
+
           console.log("final modelUpdate")
           console.log(modelUpdate)
           setModel(modelUpdate)
