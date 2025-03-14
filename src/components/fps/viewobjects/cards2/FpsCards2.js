@@ -29,7 +29,46 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
     const card_border = _.get(data, "params.card_border", 1)
     const card_border_radius = _.get(data, "params.card_border_radius")
 
+    const comp_ID = _.get(data, "params.comp_ID")
+
     const [error, setError] = useState("")
+
+    const getPageFromUrl = () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const savedPage = urlParams.get(`page_${comp_ID}`);
+        return savedPage ? Number(savedPage) : 0;
+    };
+    const [page, setPage] = useState(getPageFromUrl);
+
+    const updatePageInUrl = (newPage) => {
+        console.log("updatePageInUrl")
+        const urlParams = new URLSearchParams(window.location.search);
+        console.log(urlParams)
+        urlParams.set(`page_${comp_ID}`, newPage);
+        console.log(urlParams.toString())
+        window.history.replaceState({}, '', `${window.location.pathname}?${urlParams.toString()}`);
+    };
+
+    const nextPage = () => {
+        setPage(prevPage => {
+            const newPage = prevPage + 1;
+            updatePageInUrl(newPage);
+            return newPage;
+        });
+    };
+
+    const prevPage = () => {
+        setPage(prevPage => {
+            const newPage = Math.max(prevPage - 1, 0);
+            updatePageInUrl(newPage);
+            return newPage;
+        });
+    };
+
+    const firstPage = () => {
+        setPage(0);
+        updatePageInUrl(0);
+    };
 
     // grid settings
     const breakPoints = {
@@ -40,6 +79,10 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
     }
     const grid_layout__gap = _.get(data, "params.grid_layout__gap", 22)
     const field_quantity = _.get(data, "params.card_type_cart.quantity")
+
+    const flex_layout__gap = _.get(data, "params.flex_layout__gap", 22)
+    const flex_layout__width = _.get(data, "params.flex_layout__width", 250)
+
 
     // edit object from card
 
@@ -131,31 +174,37 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
     const [favorites, setFavorites] = useState([])
     const [favLoading, setFavLoading] = useState(false)
 
+
+
     useEffect(() => {
-        // setFavLoading(true)
-        // favoritesOn && favoritesEndpoint && callEndpointGET(favoritesEndpoint, { pageSize: 100 }, data => {
-        //     setFavorites(data);
-        //     setFavLoading(false)
-        // })
-        setFavorites([
-            {
-                "user_tg": "test",
-                "subject": "e0454b76-6da1-4260-a0e6-cf7de6f2b686",
-                "is_hidden": false,
-                "id": "9c23963f-b162-49b8-8856-734789c91867"
-            }
-        ])
+        setFavLoading(true)
+        favoritesOn && favoritesEndpoint && callEndpointGET(favoritesEndpoint, { pageSize: 100 }, data => {
+            setFavorites(data);
+            setFavLoading(false)
+        })
+        // setFavorites([
+        //     {
+        //         "user_tg": "test",
+        //         "subject": "e0454b76-6da1-4260-a0e6-cf7de6f2b686",
+        //         "is_hidden": false,
+        //         "id": "9c23963f-b162-49b8-8856-734789c91867"
+        //     }
+        // ])
     }, [])
 
     return <div className={`FPS_CARDS2 ${styles.cards2}`}>
-
+        PAGE: {page}<hr />
         {(title || showCounter) && <div className={`FPS_CARDS2__HEADER ${styles.cards2_header}`}>
             {title && <h2>{title && <InnerHTML allowRerender={true} html={title} />}</h2>}
             {showCounter && <div className={`FPS_CARDS2__HEADER-counter ${styles.cards2_header_counter}`}>5 items</div>}
         </div>}
 
+        {!cardsLayout && <Hint error title="No cards layout" margin={{ top: 0, bottom: 0 }}>
+            <p>Please, select cards layout in the settings</p>
+        </Hint>}
+
         {/* CSS GRID */}
-        {cardsLayout == "grid" && <div className={`FPS_CARDS2__WRAPPER 
+        {cardsLayout == "grid" && <div className={`FPS_CARDS2__WRAPPER LAYOUT_grid
             ${styles.cards2_wrapper} 
             ${styles.layout_grid}`}
             style={{
@@ -214,6 +263,74 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
                 </div>)}
 
         </div>}
+
+        {/* FLEX LAYOUT */}
+        {cardsLayout == "flex" && <div className={`FPS_CARDS2__WRAPPER LAYOUT_flex
+            ${styles.cards2_wrapper} 
+            ${styles.layout_flex}`}
+            style={{
+                gap: flex_layout__gap,
+            }}
+        >
+            {objects
+                .filter(object => !!_.get(object, field_quantity, 1)) // filter items with quantity == 0
+                .map(object => <div
+                    style={(!card_border_radius && card_border_radius !== 0) ? {
+                        borderWidth: card_border,
+                        width: flex_layout__width
+                    } : {
+                        borderWidth: card_border,
+                        borderRadius: card_border_radius,
+                        width: flex_layout__width
+                    }}
+                    className={`FPS_CARDS2__CARD ${styles.cards2_card}`}>
+                    <Card
+                        key={object.id}
+                        data={data}
+                        context={context}
+                        lang={lang}
+                        favLoading={favLoading}
+                        favorites={favorites}
+                        handleRoute={handleRoute}
+                        callEndpointGET={callEndpointGET}
+                        callEndpointPOST={callEndpointPOST}
+                        object={object}
+                        favoritesField={favoritesField}
+                        templateEngine={templateEngine}
+                        addToFavorites={(value) => {
+                            console.log("addToFavorites")
+                            if (favoritesEndpoint && favoritesField && favoritesHiddenField) {
+                                setFavLoading(true)
+                                let payload = {
+                                    [favoritesField]: object.id,
+                                    [favoritesHiddenField]: !value
+                                }
+                                if (!value) {
+                                    let copyFav = [...favorites]
+                                    _.remove(copyFav, (obj) => obj[favoritesField] === object.id)
+                                    setFavorites(copyFav)
+                                    const favID = _.get(favorites.filter(i => i[favoritesField] == object.id)[0], "id")
+                                    if (favID) _.set(payload, "id", favID)
+                                } else {
+                                    let copyFav = [...favorites]
+                                    copyFav.push({ [favoritesField]: object.id })
+                                    setFavorites(copyFav)
+                                }
+
+                                callEndpointPOST(favoritesEndpoint, payload, () => setFavLoading(false))
+
+                            }
+                        }}
+                    />
+                </div>)}
+
+        </div>}
+
+        <div className="pagination-controls">
+            <button onClick={firstPage}>First</button>
+            <button onClick={prevPage}>Prev</button>
+            <button onClick={nextPage}>Next</button>
+        </div>
     </div>
 }
 
