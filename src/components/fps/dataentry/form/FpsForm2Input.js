@@ -912,8 +912,8 @@ function FieldArrayLink(props) {
         reqParams = value ? { ...reqParams, _value: value.key || value } : reqParams
         setCurrentParams(params)
         callEndpoint(field._field_arrayLink_endpoint, reqParams, finish, data => {
-            // console.log("finish")
-            // console.log(data)
+            console.log("finish")
+            console.log(data)
 
             // механизм сброса если из-за новых параметров среди опций нет значения:
             const currentValue = model[fieldInfo.sysName]
@@ -931,6 +931,9 @@ function FieldArrayLink(props) {
             setError(err.msg)
         }, fieldInfo.link)
     }
+
+    console.log("== options ==")
+    console.log(options)
 
     useEffect(i => {
         if (!_.isEqual(currentParams, params)

@@ -28,6 +28,7 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
     const objects = _.get(data, "data", [])
     const card_border = _.get(data, "params.card_border", 1)
     const card_border_radius = _.get(data, "params.card_border_radius")
+    const sl = _.get(data, "sl")
 
     const comp_ID = _.get(data, "params.comp_ID")
 
@@ -41,11 +42,8 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
     const [page, setPage] = useState(getPageFromUrl);
 
     const updatePageInUrl = (newPage) => {
-        console.log("updatePageInUrl")
         const urlParams = new URLSearchParams(window.location.search);
-        console.log(urlParams)
         urlParams.set(`page_${comp_ID}`, newPage);
-        console.log(urlParams.toString())
         window.history.replaceState({}, '', `${window.location.pathname}?${urlParams.toString()}`);
     };
 
@@ -339,6 +337,7 @@ function Card(props) {
     const { object, data, lang, favoritesField, addToFavorites, favLoading, templateEngine, handleRoute, favorites, callEndpointPOST, callEndpointGET, context } = props
 
     const cardType = _.get(data, "params.card_layout_type")
+    const html_type_content = _.get(data, "params.html_type_content")
     const card_padding = _.get(data, "params.card_padding", 12)
     const card_min_height = _.get(data, "params.card_min_height") || "none"
     const image_shape = _.get(data, "params.card_type_cart.image_shape")
@@ -518,6 +517,25 @@ function Card(props) {
             </div>}
         </div>
 
+    </a>
+
+    if (cardType == "custom") return <a
+        className={`Cards2_typeRegular ${styles.cards2_typeRegular}`}
+        style={{
+            minHeight: card_min_height,
+            margin: card_padding
+        }}
+        onClick={e => {
+            e.preventDefault()
+            if (isRouting && routingPath) {
+                let path = template(routingPath, object)
+                if (path[0] !== '.' && path[0] !== '/') {
+                    path = './' + path
+                }
+                handleRoute(path)(e)
+            }
+        }}>
+        {html_type_content && <InnerHTML allowRerender={true} html={html_type_content} />}
     </a>
 
     return <div >

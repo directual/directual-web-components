@@ -1210,20 +1210,16 @@ function RenderStep(props) {
           };
         });
 
-        //fake request
+        // fake request
         // setTimeout(() => {
         //   const data = [
         //     {
-        //       "title": "Погрузка/разгрузка",
-        //       "id": "1"
+        //       "title": "IT",
+        //       "id": "it"
         //     },
         //     {
-        //       "title": "Сортировка",
-        //       "id": "2"
-        //     },
-        //     {
-        //       "title": "Программирование на Python",
-        //       "id": "3"
+        //       "title": "HR",
+        //       "id": "hr"
         //     }
         //   ]
         //   const visibleNames = '[{"sysName":"firstName"}]'
@@ -1232,23 +1228,23 @@ function RenderStep(props) {
         // }, 1000)
 
         // false &&
-        callEndpoint && callEndpoint(
-          endpoint,
-          "GET",
-          undefined,
-          params,
-          (result, data, visibleNames) => {
-            if (result == "ok") {
-              finish && finish(transformedArray(data, visibleNames))
-              setOptions && setOptions(transformedArray(data, visibleNames))
+          callEndpoint && callEndpoint(
+            endpoint,
+            "GET",
+            undefined,
+            params,
+            (result, data, visibleNames) => {
+              if (result == "ok") {
+                finish && finish(transformedArray(data, visibleNames))
+                setOptions && setOptions(transformedArray(data, visibleNames))
+              }
+              else {
+                setError && setError(data)
+                finish && finish([])
+                setOptions && setOptions([])
+              }
             }
-            else {
-              setError && setError(data)
-              finish && finish([])
-              setOptions && setOptions([])
-            }
-          }
-        )
+          )
       }}
       key={element.id} />)}
     {(currentStep.elements || [])
