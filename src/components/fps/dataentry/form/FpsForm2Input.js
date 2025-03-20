@@ -912,8 +912,8 @@ function FieldArrayLink(props) {
         reqParams = value ? { ...reqParams, _value: value.key || value } : reqParams
         setCurrentParams(params)
         callEndpoint(field._field_arrayLink_endpoint, reqParams, finish, data => {
-            console.log("finish")
-            console.log(data)
+            // console.log("finish")
+            // console.log(data)
 
             // механизм сброса если из-за новых параметров среди опций нет значения:
             const currentValue = model[fieldInfo.sysName]
@@ -926,14 +926,14 @@ function FieldArrayLink(props) {
                 const fieldName = field._field_link_saveQuantity_Field.substring(9)
                 if (state[fieldName] !== data.length) { setState({ ...state, [fieldName]: data.length }) }
             }
-            setOptions(data)
+            setOptions(_.uniqBy(data, 'key'))
         }, err => {
             setError(err.msg)
         }, fieldInfo.link)
     }
 
-    console.log("== options ==")
-    console.log(options)
+    // console.log("== options ==")
+    // console.log(options)
 
     useEffect(i => {
         if (!_.isEqual(currentParams, params)
