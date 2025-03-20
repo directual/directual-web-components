@@ -716,7 +716,7 @@ export default function FpsForm2(props) {
           console.log("final modelUpdate")
           console.log(modelUpdate)
           setModel(modelUpdate)
-          // setExtendedModel(extendedModelUpdate)
+          setExtendedModel(extendedModelUpdate)
           setOriginalModel(modelUpdate)
         } else {
           setState({ ...state, _apiError: data.msg })
