@@ -35,15 +35,87 @@ let exampleTable = {
         "html_type_content": "Привет нахуй",
         "card_border": 5,
         "card_min_height": 100,
-        "card_padding": 15
+        "card_padding": 15,
+        "filteringOn": true,
+        "filterParams": {
+            "isSorting": true,
+            "isFiltering": true,
+            "filterFields": {
+                "release_id": {
+                    "active": false,
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "name": "Release",
+                    "textsearch": "fulltext"
+                },
+                "dev_status": {
+                    "active": true,
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "name": "Development status",
+                    "textsearch": "endpoint",
+                    "endpoint": "dd"
+                },
+                "release_date": {
+                    "active": true,
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "dateLocale": "en-gb",
+                        "booleanOptions": [
+                            "True",
+                            "False"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "D MMMM, Y",
+                        "timeFormat": "",
+                        "isUTC": "false"
+                    },
+                    "name": "Release date"
+                },
+                "title": {
+                    "active": true,
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "name": "Feature title"
+                },
+                "feature_id": {
+                    "active": true,
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "name": "Inner ID"
+                }
+            }
+        }
     },
     "tableTitle": null,
     "actions": null,
     "headers": [
         {
             "sysName": "id",
-            "name": "id",
             "dataType": "id",
+            "name": "id",
             "id": "0",
             "link": "",
             "group": "0",
@@ -63,15 +135,15 @@ let exampleTable = {
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
-            "linkType": false,
             "arrayLink": false,
+            "linkType": false,
             "indexExists": false,
             "array": false
         },
         {
             "sysName": "feature_id",
-            "name": "Inner ID",
             "dataType": "string",
+            "name": "Inner ID",
             "id": "23601621342083348",
             "link": null,
             "group": "0",
@@ -91,15 +163,15 @@ let exampleTable = {
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
-            "linkType": false,
             "arrayLink": false,
+            "linkType": false,
             "indexExists": false,
             "array": false
         },
         {
             "sysName": "title",
-            "name": "Feature title",
             "dataType": "string",
+            "name": "Feature title",
             "id": "79031620832091734",
             "link": null,
             "group": "0",
@@ -119,15 +191,15 @@ let exampleTable = {
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
-            "linkType": false,
             "arrayLink": false,
+            "linkType": false,
             "indexExists": false,
             "array": false
         },
         {
             "sysName": "date_updated",
-            "name": "Date updated",
             "dataType": "date",
+            "name": "Date updated",
             "id": "74581670507990970",
             "link": "",
             "group": "0",
@@ -174,15 +246,15 @@ let exampleTable = {
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
-            "linkType": false,
             "arrayLink": false,
+            "linkType": false,
             "indexExists": false,
             "array": false
         },
         {
             "sysName": "screenshots",
-            "name": "Screenshots or Screencast",
             "dataType": "file",
+            "name": "Screenshots or Screencast",
             "id": "61091637158867177",
             "link": "",
             "group": "0",
@@ -202,15 +274,15 @@ let exampleTable = {
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
-            "linkType": false,
             "arrayLink": false,
+            "linkType": false,
             "indexExists": false,
             "array": false
         },
         {
             "sysName": "progress",
-            "name": "Progress",
             "dataType": "json",
+            "name": "Progress",
             "id": "68751622642385874",
             "link": "",
             "group": "0",
@@ -262,15 +334,15 @@ let exampleTable = {
             "typeVariable": {},
             "json": true,
             "linkOrArrayLinkType": false,
-            "linkType": false,
             "arrayLink": false,
+            "linkType": false,
             "indexExists": false,
             "array": false
         },
         {
             "sysName": "tags",
-            "name": "Tags",
             "dataType": "arrayLink",
+            "name": "Tags",
             "id": "67851621409605492",
             "link": "tags",
             "group": "0",
@@ -290,15 +362,15 @@ let exampleTable = {
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": true,
-            "linkType": false,
             "arrayLink": true,
+            "linkType": false,
             "indexExists": false,
             "array": false
         },
         {
             "sysName": "release_id",
-            "name": "Release",
             "dataType": "link",
+            "name": "Release",
             "id": "40791621408746909",
             "link": "Releases",
             "group": "0",
@@ -318,15 +390,15 @@ let exampleTable = {
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": true,
-            "linkType": true,
             "arrayLink": false,
+            "linkType": true,
             "indexExists": false,
             "array": false
         },
         {
             "sysName": "subscriber_ids",
-            "name": "Subscribers",
             "dataType": "arrayLink",
+            "name": "Subscribers",
             "id": "26751621348189191",
             "link": "WebUser",
             "group": "1621348185318",
@@ -346,15 +418,15 @@ let exampleTable = {
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": true,
-            "linkType": false,
             "arrayLink": true,
+            "linkType": false,
             "indexExists": false,
             "array": false
         },
         {
             "sysName": "release_date",
-            "name": "Release date",
             "dataType": "date",
+            "name": "Release date",
             "id": "71651621345011532",
             "link": "",
             "group": "0",
@@ -401,15 +473,15 @@ let exampleTable = {
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
-            "linkType": false,
             "arrayLink": false,
+            "linkType": false,
             "indexExists": false,
             "array": false
         },
         {
             "sysName": "decline_reason",
-            "name": "Reason of decline",
             "dataType": "string",
+            "name": "Reason of decline",
             "id": "73671621342083940",
             "link": null,
             "group": "0",
@@ -429,15 +501,15 @@ let exampleTable = {
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
-            "linkType": false,
             "arrayLink": false,
+            "linkType": false,
             "indexExists": false,
             "array": false
         },
         {
             "sysName": "dev_status",
-            "name": "Development status",
             "dataType": "link",
+            "name": "Development status",
             "id": "85621620832330584",
             "link": "development_status",
             "group": "0",
@@ -457,15 +529,15 @@ let exampleTable = {
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": true,
-            "linkType": true,
             "arrayLink": false,
+            "linkType": true,
             "indexExists": false,
             "array": false
         },
         {
             "sysName": "status",
-            "name": "Request status",
             "dataType": "link",
+            "name": "Request status",
             "id": "40251620832303364",
             "link": "request_status",
             "group": "0",
@@ -485,15 +557,15 @@ let exampleTable = {
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": true,
-            "linkType": true,
             "arrayLink": false,
+            "linkType": true,
             "indexExists": false,
             "array": false
         },
         {
             "sysName": "color",
-            "name": "Card color",
             "dataType": "string",
+            "name": "Card color",
             "id": "61881621017200362",
             "link": "",
             "group": "0",
@@ -513,15 +585,15 @@ let exampleTable = {
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
-            "linkType": false,
             "arrayLink": false,
+            "linkType": false,
             "indexExists": false,
             "array": false
         },
         {
             "sysName": "feature_type",
-            "name": "Feature type",
             "dataType": "link",
+            "name": "Feature type",
             "id": "55371621030232780",
             "link": "feature_type",
             "group": "0",
@@ -541,15 +613,15 @@ let exampleTable = {
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": true,
-            "linkType": true,
             "arrayLink": false,
+            "linkType": true,
             "indexExists": false,
             "array": false
         },
         {
             "sysName": "votes",
-            "name": "Number of upvotes",
             "dataType": "number",
+            "name": "Number of upvotes",
             "id": "68061620832170304",
             "link": "",
             "group": "0",
@@ -569,15 +641,15 @@ let exampleTable = {
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
-            "linkType": false,
             "arrayLink": false,
+            "linkType": false,
             "indexExists": false,
             "array": false
         },
         {
             "sysName": "date_added",
-            "name": "Date added",
             "dataType": "date",
+            "name": "Date added",
             "id": "68351620832123660",
             "link": "",
             "group": "0",
@@ -624,15 +696,15 @@ let exampleTable = {
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
-            "linkType": false,
             "arrayLink": false,
+            "linkType": false,
             "indexExists": false,
             "array": false
         },
         {
             "sysName": "description",
-            "name": "Feature description",
             "dataType": "string",
+            "name": "Feature description",
             "id": "77031620832091108",
             "link": "",
             "group": "0",
@@ -652,8 +724,8 @@ let exampleTable = {
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
-            "linkType": false,
             "arrayLink": false,
+            "linkType": false,
             "indexExists": false,
             "array": false
         }
@@ -729,7 +801,7 @@ let exampleTable = {
             "title": "Running a scenario on a specific date"
         }
     ],
-    "totalPages": 122,
+    "totalPages": 123,
     "pageNumber": 0,
     "error": null,
     "fieldScheme": [
@@ -824,7 +896,7 @@ let exampleTable = {
             "dateCreated": "2021-05-14T21:02:45Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"dateLastActivity\",\"name\":\"dateLastActivity\",\"dataType\":\"string\",\"id\":\"8\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"dateCreated\",\"name\":\"dateCreated\",\"dataType\":\"string\",\"id\":\"11\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isAuthorization\",\"name\":\"isAuthorization\",\"dataType\":\"boolean\",\"id\":\"7\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"phone\",\"name\":\"Phone\",\"dataType\":\"string\",\"id\":\"10\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"email\",\"name\":\"Email\",\"dataType\":\"string\",\"id\":\"9\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"userpic\",\"name\":\"User pic\",\"dataType\":\"file\",\"id\":\"1\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"id\",\"name\":\"Username (login)\",\"dataType\":\"id\",\"id\":\"13\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"role\",\"name\":\"Roles\",\"dataType\":\"string\",\"id\":\"6\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"password\",\"name\":\"Password (hash)\",\"dataType\":\"string\",\"id\":\"12\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"firstName\",\"name\":\"First name\",\"dataType\":\"string\",\"id\":\"5\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"lastName\",\"name\":\"Last name\",\"dataType\":\"string\",\"id\":\"4\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"gender\",\"name\":\"Gender\",\"dataType\":\"string\",\"id\":\"3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"date_registered\",\"name\":\"Date registered on Dev\",\"dataType\":\"date\",\"id\":\"14451621029358812\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isBlocked\",\"name\":\"Block user\",\"dataType\":\"boolean\",\"id\":\"2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"code\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"51351621027822811\",\"link\":null,\"group\":\"1621027815164\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isEmailConfirmed\",\"name\":\"Email confirmed\",\"dataType\":\"boolean\",\"id\":\"60111621027825496\",\"link\":\"\",\"group\":\"1621027815164\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
+            "jsonObject": "[{\"sysName\":\"dateLastActivity\",\"dataType\":\"string\",\"name\":\"dateLastActivity\",\"id\":\"8\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"dateCreated\",\"dataType\":\"string\",\"name\":\"dateCreated\",\"id\":\"11\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isAuthorization\",\"dataType\":\"boolean\",\"name\":\"isAuthorization\",\"id\":\"7\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"phone\",\"dataType\":\"string\",\"name\":\"Phone\",\"id\":\"10\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"email\",\"dataType\":\"string\",\"name\":\"Email\",\"id\":\"9\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"userpic\",\"dataType\":\"file\",\"name\":\"User pic\",\"id\":\"1\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"Username (login)\",\"id\":\"13\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"role\",\"dataType\":\"string\",\"name\":\"Roles\",\"id\":\"6\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"password\",\"dataType\":\"string\",\"name\":\"Password (hash)\",\"id\":\"12\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"firstName\",\"dataType\":\"string\",\"name\":\"First name\",\"id\":\"5\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"lastName\",\"dataType\":\"string\",\"name\":\"Last name\",\"id\":\"4\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"gender\",\"dataType\":\"string\",\"name\":\"Gender\",\"id\":\"3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"date_registered\",\"dataType\":\"date\",\"name\":\"Date registered on Dev\",\"id\":\"14451621029358812\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isBlocked\",\"dataType\":\"boolean\",\"name\":\"Block user\",\"id\":\"2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"code\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"51351621027822811\",\"link\":null,\"group\":\"1621027815164\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isEmailConfirmed\",\"dataType\":\"boolean\",\"name\":\"Email confirmed\",\"id\":\"60111621027825496\",\"link\":\"\",\"group\":\"1621027815164\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false}]",
             "jsonGroupSettings": "[{\"id\":-502807437,\"name\":\"Contacts\",\"order\":0},{\"id\":-1776115286,\"name\":\"System fields\",\"order\":1},{\"id\":1621027815164,\"name\":\"Email confirmation\",\"order\":2}]",
             "jsonViewIdSettings": "[{\"sysName\":\"firstName\"},{\"sysName\":\"lastName\"}]",
             "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
@@ -837,10 +909,11 @@ let exampleTable = {
             "changedBy": 0,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
-                "name": "Username (login)",
                 "dataType": "id",
+                "name": "Username (login)",
                 "id": "13",
                 "link": "",
                 "group": "",
@@ -860,12 +933,11 @@ let exampleTable = {
                 "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
+                "linkType": false,
                 "indexExists": false,
                 "array": false
             },
-            "objectIDSysName": "id",
             "folderId": null
         },
         "1385610": {
@@ -889,10 +961,11 @@ let exampleTable = {
             "changedBy": 1,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
-                "name": "id",
                 "dataType": "id",
+                "name": "id",
                 "id": "0",
                 "link": "",
                 "group": "0",
@@ -912,12 +985,11 @@ let exampleTable = {
                 "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
+                "linkType": false,
                 "indexExists": false,
                 "array": false
             },
-            "objectIDSysName": "id",
             "folderId": 33625685
         },
         "1385612": {
@@ -941,10 +1013,11 @@ let exampleTable = {
             "changedBy": 1,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
-                "name": "id",
                 "dataType": "id",
+                "name": "id",
                 "id": "0",
                 "link": "",
                 "group": "0",
@@ -964,12 +1037,11 @@ let exampleTable = {
                 "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
+                "linkType": false,
                 "indexExists": false,
                 "array": false
             },
-            "objectIDSysName": "id",
             "folderId": 33625685
         },
         "1385613": {
@@ -985,7 +1057,7 @@ let exampleTable = {
             "jsonViewIdSettings": "[{\"sysName\":\"status\"}]",
             "jsonSettings": null,
             "jsonNativeIndexSettings": null,
-            "indexEnabled": false,
+            "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
             "dateChanged": "2021-05-12T15:14:59Z",
@@ -993,10 +1065,11 @@ let exampleTable = {
             "changedBy": 1,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
-                "name": "id",
                 "dataType": "id",
+                "name": "id",
                 "id": "0",
                 "link": "",
                 "group": "0",
@@ -1016,12 +1089,11 @@ let exampleTable = {
                 "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
+                "linkType": false,
                 "indexExists": false,
                 "array": false
             },
-            "objectIDSysName": "id",
             "folderId": 33625685
         },
         "1385614": {
@@ -1045,10 +1117,11 @@ let exampleTable = {
             "changedBy": 21,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
-                "name": "id",
                 "dataType": "id",
+                "name": "id",
                 "id": "0",
                 "link": "",
                 "group": "",
@@ -1068,12 +1141,11 @@ let exampleTable = {
                 "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
+                "linkType": false,
                 "indexExists": false,
                 "array": false
             },
-            "objectIDSysName": "id",
             "folderId": 33625685
         },
         "1386900": {
@@ -1097,10 +1169,11 @@ let exampleTable = {
             "changedBy": 1,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
-                "name": "id",
                 "dataType": "id",
+                "name": "id",
                 "id": "0",
                 "link": "",
                 "group": "0",
@@ -1120,12 +1193,11 @@ let exampleTable = {
                 "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
+                "linkType": false,
                 "indexExists": false,
                 "array": false
             },
-            "objectIDSysName": "id",
             "folderId": 33626586
         },
         "1386924": {
@@ -1149,10 +1221,11 @@ let exampleTable = {
             "changedBy": 1,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
-                "name": "id",
                 "dataType": "id",
+                "name": "id",
                 "id": "0",
                 "link": "",
                 "group": "",
@@ -1172,12 +1245,11 @@ let exampleTable = {
                 "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
+                "linkType": false,
                 "indexExists": false,
                 "array": false
             },
-            "objectIDSysName": "id",
             "folderId": 33625685
         }
     },

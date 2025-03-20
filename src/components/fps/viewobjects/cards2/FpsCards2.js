@@ -12,6 +12,7 @@ import InnerHTML from 'dangerously-set-html-content'
 import Cards2Paging from './Cards2Paging'
 import { dict } from '../../locale'
 import ActionPanel from '../../actionspanel/actionspanel';
+import { TableTitle } from '../tableTitle/TableTitle'
 
 function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine, id, currentBP, locale, handleRoute }) {
 
@@ -180,22 +181,103 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
             setFavorites(data);
             setFavLoading(false)
         })
-        // setFavorites([
-        //     {
-        //         "user_tg": "test",
-        //         "subject": "e0454b76-6da1-4260-a0e6-cf7de6f2b686",
-        //         "is_hidden": false,
-        //         "id": "9c23963f-b162-49b8-8856-734789c91867"
-        //     }
-        // ])
     }, [])
 
     return <div className={`FPS_CARDS2 ${styles.cards2}`}>
-        PAGE: {page}<hr />
-        {(title || showCounter) && <div className={`FPS_CARDS2__HEADER ${styles.cards2_header}`}>
+        {/* PAGE: {page}<hr /> */}
+        {/* {(title || showCounter) && <div className={`FPS_CARDS2__HEADER ${styles.cards2_header}`}>
             {title && <h2>{title && <InnerHTML allowRerender={true} html={title} />}</h2>}
             {showCounter && <div className={`FPS_CARDS2__HEADER-counter ${styles.cards2_header_counter}`}>5 items</div>}
-        </div>}
+        </div>} */}
+
+        <TableTitle
+            tableFilters={_.get(data.params, 'filterParams') || {}}
+            displayFilters={_.get(data.params, 'filterParams.isFiltering') || _.get(data.params, 'filterParams.isSorting')}
+            // performFiltering={dqlService}
+            performFiltering={dql => console.log(dql)}
+            callEndpoint={(endpoint, params, finish, setOptions, setError) => {
+                const transformedArray = (inputArray, visibleNames) => _.map(inputArray, (item) => {
+                    const parseJson = json => {
+                        if (!json) return {}
+                        let parsedJson = {}
+                        if (typeof json == 'object') return json
+                        try {
+                            parsedJson = JSON.parse(json)
+                        }
+                        catch (e) {
+                            console.log(json);
+                            console.log(e);
+                        }
+                        return parsedJson
+                    }
+
+                    const { id, ...rest } = item; // Destructure `id` and the rest of the properties
+                    const value = _.trim(_.map(parseJson(visibleNames), field => _.get(item, field.sysName)).join(' ')) ||
+                        _.values(_.pickBy(rest, _.isString)).join(' '); // Concatenate string values
+                    const excludeFields = [..._.map(parseJson(visibleNames), i => i.sysName), ...["userpic", "image", "picture", "photo"]]
+                    const description = _.trim((_.keys(_.omit(rest, excludeFields)) || []).map(i => rest[i]).join(" "))
+                    return {
+                        key: id,
+                        value: _.trim(value) || id,
+                        image: _.get(rest, "userpic") || _.get(rest, "image") || _.get(rest, "picture") || _.get(rest, "photo"),
+                        description: description,
+                    };
+                });
+                //fake request
+                // setTimeout(() => {
+                //     const data = [
+                //         {
+                //             "title": "Погрузка/разгрузка",
+                //             "id": "1"
+                //         },
+                //         {
+                //             "title": "Сортировка",
+                //             "id": "2"
+                //         },
+                //         {
+                //             "title": "Программирование на Python",
+                //             "id": "3"
+                //         }
+                //     ]
+                //     const visibleNames = '[{"sysName":"firstName"}]'
+                //     finish && finish(transformedArray(data, visibleNames))
+                //     setOptions && setOptions(transformedArray(data, visibleNames))
+                // }, 1000)
+
+                // false &&
+                callEndpoint && callEndpoint(
+                    endpoint,
+                    "GET",
+                    undefined,
+                    params,
+                    (result, data, visibleNames) => {
+                        // console.log(result)
+                        // console.log(data)
+
+                        if (result == "ok") {
+                            finish && finish(transformedArray(data, visibleNames))
+                            setOptions && setOptions(transformedArray(data, visibleNames))
+                        }
+                        else {
+                            setError && setError(data)
+                            finish && finish([])
+                            setOptions && setOptions([])
+                        }
+                    }
+                )
+            }}
+            params={data.params}
+            currentBP={currentBP}
+            tableTitle={title}
+            //searchValue={searchValue}
+            //tableQuickSearch={data.quickSearch == 'true'}
+            // search={data.data && data.data.length > 0 ? true : false}
+            // onSearch={searchService}
+            // loading={loading}
+            dict={dict}
+            lang={lang}
+            onFilter={() => { }}
+        />
 
         {!cardsLayout && <Hint error title="No cards layout" margin={{ top: 0, bottom: 0 }}>
             <p>Please, select cards layout in the settings</p>
@@ -324,11 +406,11 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
 
         </div>}
 
-        <div className="pagination-controls">
+        {/* <div className="pagination-controls">
             <button onClick={firstPage}>First</button>
             <button onClick={prevPage}>Prev</button>
             <button onClick={nextPage}>Next</button>
-        </div>
+        </div> */}
     </div>
 }
 
