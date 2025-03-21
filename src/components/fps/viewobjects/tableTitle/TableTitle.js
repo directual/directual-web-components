@@ -485,19 +485,19 @@ function FilterField({ field, active, fieldOptions, openAI, filters, saveFilters
                                 saveFilters(newFilters);
                             }}
                         />
-                        <dic className={`icon icon-arrowDown ${styles.sortDirection} ${_.get(filters, 'sort.direction') == 'desc' ? styles.active : ''}`}
+                        <div className={`icon icon-arrowDown ${styles.sortDirection} ${_.get(filters, 'sort.direction') == 'desc' ? styles.active : ''}`}
                             onClick={() => {
                                 const newFilters = { ...filters };
                                 _.set(newFilters, 'sort.direction', 'desc');
                                 saveFilters(newFilters);
                             }} />
-                        <dic className={`icon icon-arrowUp ${styles.sortDirection} ${_.get(filters, 'sort.direction') == 'asc' ? styles.active : ''}`}
+                        <div className={`icon icon-arrowUp ${styles.sortDirection} ${_.get(filters, 'sort.direction') == 'asc' ? styles.active : ''}`}
                             onClick={() => {
                                 const newFilters = { ...filters };
                                 _.set(newFilters, 'sort.direction', 'asc');
                                 saveFilters(newFilters);
                             }} />
-                        <dic className={`icon icon-ban ${styles.sortDirection}`}
+                        <div className={`icon icon-ban ${styles.sortDirection}`}
                             onClick={() => {
                                 const newFilters = { ...filters };
                                 _.set(newFilters, 'sort.field', null);

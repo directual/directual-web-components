@@ -31,6 +31,9 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
     const card_border_radius = _.get(data, "params.card_border_radius")
     const sl = _.get(data, "sl")
 
+    const cx = null
+    const dqlService = debounce(performFiltering, 600);
+
     const comp_ID = _.get(data, "params.comp_ID")
 
     const [error, setError] = useState("")
@@ -41,12 +44,57 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
         return savedPage ? Number(savedPage) : 0;
     };
     const [page, setPage] = useState(getPageFromUrl);
+    const [loading, setLoading] = useState(false)
 
     const updatePageInUrl = (newPage) => {
         const urlParams = new URLSearchParams(window.location.search);
         urlParams.set(`page_${comp_ID}`, newPage);
         window.history.replaceState({}, '', `${window.location.pathname}?${urlParams.toString()}`);
     };
+
+    const sendMsg = (msg, sl, pageInfo, options) => {
+        console.log('submitting...')
+        pageInfo = pageInfo || { page: currentPage }
+        if (sl === "") { sl = undefined }
+        // костылек для даты
+        for (const prop in msg) {
+            if (typeof msg[prop] == 'number' && msg[prop] > 1000000000000) {
+                const dataType = data.headers.filter(i => i.sysName == prop) &&
+                    data.headers.filter(i => i.sysName == prop)[0] &&
+                    data.headers.filter(i => i.sysName == prop)[0].dataType
+                if (dataType == 'date') { msg[prop] = moment(msg[prop]) }
+            }
+        }
+        const message =
+        { //...{ dql: currentDQL, sort: currentSort }, 
+            ...msg, _id: 'form_' + id, _sl_name: sl, _options: options
+        }
+        console.log(message)
+        console.log(pageInfo)
+        setLoading(true)
+        if (onEvent) {
+            let prom = onEvent(message, pageInfo)
+            if (prom && prom.finally) {
+                prom.finally(() => {
+                    setLoading(false)
+                })
+            }
+            return prom
+        }
+
+    }
+
+    function performFiltering(dql, sort) {
+        clearTimeout(cx);
+        console.log('=== F I L T E R I N G ! ===')
+        console.log(dql)
+        // setCurrentDQL(dql)
+        // setCurrentSort(sort)
+        console.log('=== S O R T I N G ! ===')
+        console.log(sort)
+        const page = 0 // dql || _.get(sort,'field') ? currentPage : 0
+        sendMsg({ dql, sort }, null, { page })
+    }
 
     const nextPage = () => {
         setPage(prevPage => {
@@ -193,8 +241,8 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
         <TableTitle
             tableFilters={_.get(data.params, 'filterParams') || {}}
             displayFilters={_.get(data.params, 'filterParams.isFiltering') || _.get(data.params, 'filterParams.isSorting')}
-            // performFiltering={dqlService}
-            performFiltering={dql => console.log(dql)}
+            performFiltering={dqlService}
+            // performFiltering={dql => console.log(dql)}
             callEndpoint={(endpoint, params, finish, setOptions, setError) => {
                 const transformedArray = (inputArray, visibleNames) => _.map(inputArray, (item) => {
                     const parseJson = json => {
