@@ -108,7 +108,9 @@ export default function FpsForm2(props) {
       if (_.get(params, "general.autosubmit_model") && _.get(params, "general.autosubmit_model").length > 0) {
         let send = false;
         _.get(params, "general.autosubmit_model").forEach(field => {
-          if (!_.isEqual(_.get(previousModel, field), _.get(model, field))) { send = true; }
+          if (!_.isEqual(_.get(previousModel, field), _.get(model, field))) { 
+            console.log("AUTOSUBMIT ON MODEL", field, _.get(previousModel, field), _.get(model, field));
+            send = true; }
         });
         send && submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, false, model)
       } else {
