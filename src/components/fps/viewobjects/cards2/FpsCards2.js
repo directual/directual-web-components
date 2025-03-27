@@ -665,7 +665,7 @@ function Card(props) {
                 handleRoute(path)(e)
             }
         }}>
-        {html_type_content && <InnerHTML allowRerender={true} html={html_type_content} />}
+        {html_type_content && <InnerHTML allowRerender={true} html={template(html_type_content, object)} />}
     </a>
 
     return <div >

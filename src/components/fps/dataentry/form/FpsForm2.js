@@ -108,9 +108,10 @@ export default function FpsForm2(props) {
       if (_.get(params, "general.autosubmit_model") && _.get(params, "general.autosubmit_model").length > 0) {
         let send = false;
         _.get(params, "general.autosubmit_model").forEach(field => {
-          if (!_.isEqual(_.get(previousModel, field), _.get(model, field)) && (_.get(previousModel, field) || _.get(model, field))) { 
+          if (!_.isEqual(_.get(previousModel, field), _.get(model, field)) && (_.get(previousModel, field) || _.get(model, field))) {
             console.log("AUTOSUBMIT ON MODEL", field, _.get(previousModel, field), _.get(model, field));
-            send = true; }
+            send = true;
+          }
         });
         send && submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, false, model)
       } else {
@@ -285,11 +286,13 @@ export default function FpsForm2(props) {
 
     let _conditions = _.get(element, "_conditions") || []
     let _name = ""
+    let _action_conditionals_and_or = _.get(element, "_action_conditionals_and_or") || "AND"
     if (_.get(element, "_action_conditionals_manual") == "from_list" &&
       _.get(element, "_action_conditionals_manual_list")) {
       const _cond_lib = _.get(data, "params._condition_library")
       _name = _.get(_.find(_cond_lib, { id: _.get(element, "_action_conditionals_manual_list") }), "title")
       _conditions = _.get(_.find(_cond_lib, { id: _.get(element, "_action_conditionals_manual_list") }), "_conditions") || []
+      _action_conditionals_and_or = _.get(_.find(_cond_lib, { id: _.get(element, "_action_conditionals_manual_list") }), "_action_conditionals_and_or") || _action_conditionals_and_or
     }
 
     const checkHiddenCondition = (element) => {
@@ -480,7 +483,7 @@ export default function FpsForm2(props) {
     } else {
       if (!_conditions || _conditions.length == 0) { } else {
 
-        if (_.get(element, "_action_conditionals_and_or") == "OR") {
+        if (_action_conditionals_and_or == "OR") {
           result = true
           _conditions.forEach(element => {
             details && details.push(checkHiddenCondition(element).details)
@@ -496,7 +499,7 @@ export default function FpsForm2(props) {
         }
       };
     };
-    const jouinSymbol = _.get(element, "_action_conditionals_and_or") == "OR" ? " ==OR== " : " ==AND== "
+    const jouinSymbol = _action_conditionals_and_or == "OR" ? " ==OR== " : " ==AND== "
     if (debug) return { result: _.compact(details).join(", "), conditions: _.compact(conditions).join(jouinSymbol), name: _name }
 
     return result
@@ -1230,23 +1233,23 @@ function RenderStep(props) {
         // }, 1000)
 
         // false &&
-          callEndpoint && callEndpoint(
-            endpoint,
-            "GET",
-            undefined,
-            params,
-            (result, data, visibleNames) => {
-              if (result == "ok") {
-                finish && finish(transformedArray(data, visibleNames))
-                setOptions && setOptions(transformedArray(data, visibleNames))
-              }
-              else {
-                setError && setError(data)
-                finish && finish([])
-                setOptions && setOptions([])
-              }
+        callEndpoint && callEndpoint(
+          endpoint,
+          "GET",
+          undefined,
+          params,
+          (result, data, visibleNames) => {
+            if (result == "ok") {
+              finish && finish(transformedArray(data, visibleNames))
+              setOptions && setOptions(transformedArray(data, visibleNames))
             }
-          )
+            else {
+              setError && setError(data)
+              finish && finish([])
+              setOptions && setOptions([])
+            }
+          }
+        )
       }}
       key={element.id} />)}
     {(currentStep.elements || [])
