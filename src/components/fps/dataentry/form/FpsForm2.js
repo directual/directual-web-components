@@ -113,11 +113,11 @@ export default function FpsForm2(props) {
             send = true;
           }
         });
-        send && submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, false, model)
+        send && submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, false, model, extendedModel)
       } else {
         let send = false;
         if (!_.isEqual(previousModel, model)) { send = true; }
-        send && submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, false, model);
+        send && submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, false, model, extendedModel);
       }
     }
   }, [model, previousModel, params, submitDebounced]);
@@ -532,8 +532,15 @@ export default function FpsForm2(props) {
     return false;
   }
 
+  // console.log("extendedModel")
+  // console.log(extendedModel)
+
   function submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping = [], newData,
-    actionReq, setActionError, resetModel, currentModel) {
+    actionReq, setActionError, resetModel, currentModel, newExtendedModel) {
+
+    // console.log("extendedModel inside submit")
+    // console.log(newExtendedModel)
+    newExtendedModel = newExtendedModel || extendedModel
 
     if (!currentModel) { currentModel = model }
     clearTimeout(cx);
@@ -653,7 +660,7 @@ export default function FpsForm2(props) {
       return _.omitBy(obj2, (value, key) => _.isEqual(obj1[key], value));
     }
 
-    console.log(getObjectDiff(model,modelToSend))
+    console.log(getObjectDiff(model, modelToSend))
 
     const endpoint = _.get(data, "sl")
     callEndpoint && callEndpoint(
@@ -717,20 +724,18 @@ export default function FpsForm2(props) {
           // console.log("FINISH SUBMIT")
           // console.log(data)
           finish && finish(data)
-          let extendedModelUpdate = { ...extendedModel }
+          let extendedModelUpdate = { ...newExtendedModel }
           autoSubmit ?
             setState({ ...saveState, ...stateUpdate })
             : setState({ ...saveState, step: targetStep || "submitted", ...stateUpdate })
           if (submitKeepModel && !resetModel) {
             modelUpdate = { ...model, ...modelToSend, ...modelUpdate };
-            extendedModelUpdate = { ...extendedModelUpdate, ...getObjectDiff(model,modelUpdate) }
+            extendedModelUpdate = { ...extendedModelUpdate, ...getObjectDiff(model, modelUpdate) }
           } else { }
           console.log("final modelUpdate")
           console.log(modelUpdate)
           console.log("final extendedModelUpdate")
           console.log(extendedModelUpdate)
-          console.log(extendedModel)
-          console.log(getObjectDiff(model,modelUpdate))
           setModel(modelUpdate)
           setExtendedModel(extendedModelUpdate)
           setOriginalModel(modelUpdate)
