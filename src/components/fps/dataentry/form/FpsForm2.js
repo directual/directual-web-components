@@ -648,6 +648,11 @@ export default function FpsForm2(props) {
     console.log('submitting form...')
     console.log(modelToSend)
     setLoading(true)
+
+    function getObjectDiff(obj1, obj2) {
+      return _.omitBy(obj2, (value, key) => _.isEqual(obj1[key], value));
+    }
+
     const endpoint = _.get(data, "sl")
     callEndpoint && callEndpoint(
       endpoint,
@@ -716,7 +721,7 @@ export default function FpsForm2(props) {
             : setState({ ...saveState, step: targetStep || "submitted", ...stateUpdate })
           if (submitKeepModel && !resetModel) {
             modelUpdate = { ...model, ...modelToSend, ...modelUpdate };
-            extendedModelUpdate = { ...extendedModelUpdate, ...modelToSend, ...modelUpdate }
+            extendedModelUpdate = { ...extendedModelUpdate, ...getObjectDiff(model,modelUpdate) }
           } else { }
           console.log("final modelUpdate")
           console.log(modelUpdate)
