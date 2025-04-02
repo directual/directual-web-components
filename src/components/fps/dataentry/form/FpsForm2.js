@@ -653,6 +653,8 @@ export default function FpsForm2(props) {
       return _.omitBy(obj2, (value, key) => _.isEqual(obj1[key], value));
     }
 
+    console.log(getObjectDiff(model,modelToSend))
+
     const endpoint = _.get(data, "sl")
     callEndpoint && callEndpoint(
       endpoint,
@@ -727,6 +729,8 @@ export default function FpsForm2(props) {
           console.log(modelUpdate)
           console.log("final extendedModelUpdate")
           console.log(extendedModelUpdate)
+          console.log(extendedModel)
+          console.log(getObjectDiff(model,modelUpdate))
           setModel(modelUpdate)
           setExtendedModel(extendedModelUpdate)
           setOriginalModel(modelUpdate)
