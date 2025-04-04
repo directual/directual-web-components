@@ -11,7 +11,7 @@
     flex-direction: column;
     padding: 8px;
     gap:8px;
-    width: 200px;
+    width: 220px;
     flex-shrink: 0;
     .chat_contact {
         display: flex;
@@ -83,13 +83,16 @@
 .chat_input_wrapper {
     display: flex;
     gap:2px;
+    align-items: flex-end;
     .chat_input {
         flex-grow: 2;
+        overflow: hidden;
     }
     .chat_input_attach {
         opacity: .5;
         transition: .5s;
         cursor: pointer;
+        margin-bottom: 8px;
         &.active {
             color: #058efc;
             opacity: 1;

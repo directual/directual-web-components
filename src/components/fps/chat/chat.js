@@ -8,6 +8,7 @@ import moment from 'moment';
 import { dict } from '../locale'; // Import the dict object
 import Hint from '../hint/hint';
 import { template } from '../templating/template';
+import InnerHTML from 'dangerously-set-html-content'
 
 import styles from './chat.module.css';
 import PropTypes from 'prop-types';
@@ -142,6 +143,8 @@ export default function FpsChat(props) {
                 undefined,
                 state.full ? { _chat: state.chatID } : {},
                 (result, data) => {
+                    console.log("messages")
+                    console.log(data)
                     setMessageLoading(false);
                     if (result == 'error') {
                         setState((prevState) => ({ ...prevState, messages: [] }));
@@ -171,6 +174,16 @@ export default function FpsChat(props) {
         setState({ ...state, chatID: chatID });
     };
 
+    const fakeSend = (currentChat) => {
+        setActionLoading("");
+        console.log("fake send message")
+        const newMessage = _.cloneDeep(message);
+        _.set(newMessage, `${currentChat}.msg`, "");
+        _.set(newMessage, `${currentChat}.attachment`, "");
+        setMessage(newMessage);
+        console.log(newMessage)
+    }
+
     const performAction = (action) => {
         const endpoint = _.get(data, "params.sl_actions");
         const currentChat = state.chatID + "";
@@ -183,19 +196,22 @@ export default function FpsChat(props) {
                 [_.get(data, "params.actions.actionTypeField")]: action,
                 [_.get(data, "params.actions.attachmentsField")]: message[`${currentChat}`].attachment
             };
-            callEndpoint && callEndpoint(
-                endpoint,
-                "POST",
-                body,
-                undefined,
-                (result, data) => {
-                    setActionLoading("");
-                    const newMessage = _.cloneDeep(message);
-                    _.set(newMessage, `${currentChat}.msg`, "");
-                    _.set(newMessage, `${currentChat}.attachment`, "");
-                    setMessage(newMessage);
-                },
-            );
+            debug ?
+                fakeSend(currentChat)
+                :
+                callEndpoint && callEndpoint(
+                    endpoint,
+                    "POST",
+                    body,
+                    undefined,
+                    (result, data) => {
+                        setActionLoading("");
+                        const newMessage = _.cloneDeep(message);
+                        _.set(newMessage, `${currentChat}.msg`, "");
+                        _.set(newMessage, `${currentChat}.attachment`, "");
+                        setMessage(newMessage);
+                    },
+                );
         }
     };
 
@@ -245,6 +261,7 @@ function Contact(props) {
     const { selected, data, chat, state, chooseChat } = props;
 
     const appearence = _.get(data, "params.chats.appearence[0]");
+    const chatTitle = template(_.get(appearence, "title"), chat)
 
     return (
         <div className={`${styles.chat_contact} ${selected ? styles.selected : ''}`}
@@ -254,7 +271,7 @@ function Contact(props) {
                 <img src={template(`{{${_.get(appearence, "imageField")}}}`, chat)} />
             </div>
             <div className={`${styles.chat_contact_text}`}>
-                <p className={`${styles.chat_contact_name}`}>{template(_.get(appearence, "title"), chat)}</p>
+                <p className={`${styles.chat_contact_name}`}>{chatTitle && <InnerHTML allowRerender={true} html={chatTitle} />}</p>
             </div>
         </div>
     );
@@ -310,6 +327,10 @@ function ChatInput(props) {
                     className={styles.chat_input}
                     type='textarea'
                     rows='auto'
+                    shiftEnter
+                    onClick
+                    // debug
+                    pressEnter={() => performAction("send")}
                     disabled={actionLoading == "send"}
                     defaultValue={_.get(message, `${state.chatID}.msg`)}
                     onChange={value => editMessage(value, _.get(message, `${state.chatID}.attachment`))}
@@ -318,7 +339,7 @@ function ChatInput(props) {
                 <div className={`icon icon-clip ${styles.chat_input_attach}`} onClick={e => setAddFile(!addFile)} />
                 <Button accent icon='bubble' loading={actionLoading == "send"}
                     disabled={!_.get(message, `${state.chatID}.msg`) && !_.get(message, `${state.chatID}.attachment`)}
-                    onClick={() => performAction("send")} width={120}>{dict[locale].chat.send}</Button>
+                    onClick={() => performAction("send")}>{dict[locale].chat.send}</Button>
             </div>
             {addFile && <FileUpload
                 locale={locale}

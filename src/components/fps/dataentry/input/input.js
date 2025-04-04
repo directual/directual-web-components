@@ -265,6 +265,7 @@ export default function Input(props) {
     }, [warningMsg])
 
     useEffect(() => {
+        // console.log("props.defaultValue", props.defaultValue)
         if (JSON.stringify(props.defaultValue) != JSON.stringify(defVal) && props.type != 'json' && isTyping.current) { 
             //console.log("is typing")
         }
@@ -347,7 +348,7 @@ export default function Input(props) {
         const debouncedUpdate = debounce(() => {
             isTyping.current = false; // User has stopped typing
             setDefVal(val); // Update defVal
-        }, 1000); // Adjust the debounce interval as necessary
+        }, 300); // Adjust the debounce interval as necessary
     
         debouncedUpdate();
     
@@ -392,6 +393,7 @@ export default function Input(props) {
     function countLines(textarea, text) {
         // console.log('counting lines...')
         // console.log(textarea)
+        // console.log(text)
         if (!textarea || !textarea.constructor || textarea.constructor.name != 'HTMLTextAreaElement') {
             // console.log('not a textarea');
             return;
@@ -430,7 +432,7 @@ export default function Input(props) {
         _buffer.style.wordWrap = cs.wordWrap;
 
         // Copy value.
-        _buffer.value = text || textarea.value;
+        _buffer.value = typeof text == "undefined" ? textarea.value : text;
 
         var result = Math.round(_buffer.scrollHeight / lh);
         if (result == 0) result = 1;
@@ -516,6 +518,15 @@ export default function Input(props) {
             }).join('\n') +
             `\n${indent}}`; // Properly align the closing brace
     };
+
+    function handleTextareaKeyDown(e) {
+        if (props.shiftEnter && e.key === 'Enter') {
+            if (!e.shiftKey) {
+                e.preventDefault();
+                props.pressEnter && props.pressEnter(value);
+            }
+        }
+    }
 
     return (
         <div className={`${styles.input_wrapper} ${props.className}`}
@@ -882,6 +893,7 @@ export default function Input(props) {
                     <textarea
                         autoFocus={props.autoFocus}
                         ref={inputEl}
+                        onKeyDown={handleTextareaKeyDown}
                         disabled={props.disabled}
                         className={`${styles.field} ${props.disabled && styles.disabled} ${props.code && styles.code} ${warningMsg.type && styles[warningMsg.type]}`}
                         type="text"

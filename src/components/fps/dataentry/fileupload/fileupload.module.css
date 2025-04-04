@@ -12,6 +12,7 @@
 }
 .dropzone p {
   margin: 0;
+  line-height: normal;
 }
 .dropzone:hover {
   border: solid 2px var(--form-field-border);
