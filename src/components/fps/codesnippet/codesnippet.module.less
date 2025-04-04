@@ -1,0 +1,41 @@
+  // .code {
+  //     background-color: #333;
+  //     color: #fff;
+  //     font-family: 'Source Code Pro', monospace;
+  //     overflow: hidden;
+  //     margin: 6px 0 0 0;
+  //     height: 0;
+  //     padding:0 12px;
+  //     font-size: var(--text-small-size);
+  //     overflow: auto;
+  //         code {
+  //           padding:12px 0;
+  //           display: block;
+  //           background-color: #333;
+  //           color: #fff;
+  //     }
+  //     &.show {
+  //       height: auto;
+  //       margin: 6px 0 12px 0;
+  //   }
+  // }
+
+    .codepiece {
+      pre {
+        padding: 12px;
+        background-color: var(--form-field-bgr);
+        border-radius: 4px;
+      }
+      margin: 6px 0 24px 0;
+      font-size: var(--text-small-size);
+    }
+
+  .showhide {
+    cursor: pointer;
+    font-size: var(--text-very-small-size);
+    font-family: 'Source Code Pro', monospace;
+    width: 100px;
+    &:before {
+      font-size: calc(var(--text-very-small-size) * 1.5);
+    }
+  }

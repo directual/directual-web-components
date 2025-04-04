@@ -1,0 +1,55 @@
+.option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.option .optionListButton {
+  cursor: pointer;
+  opacity: 0.4;
+  transition: 0.5s;
+  margin-left: -4px;
+}
+.option .optionListButton:hover {
+  opacity: 0.8;
+}
+.option .optionListInput {
+  margin-right: 6px;
+  overflow: hidden;
+  flex-grow: 2;
+}
+@media all and (max-width: 415px) {
+  .optionListInput {
+    width: 100px;
+  }
+}
+.advOption {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.advOption .advancedOptionListInput {
+  margin-right: 6px;
+  max-width: 200px;
+  overflow: hidden;
+  flex-grow: 2;
+}
+.advOption .advancedOptionListInput.wide {
+  max-width: none;
+}
+.advOption .optionListButton {
+  cursor: pointer;
+  opacity: 0.4;
+  transition: 0.5s;
+  margin-left: -4px;
+}
+.advOption .optionListButton:hover {
+  opacity: 0.8;
+}
+@media all and (max-width: 415px) {
+  .advOption {
+    flex-wrap: wrap;
+  }
+  .advOption .advancedOptionListInput {
+    padding-bottom: 6px;
+  }
+}

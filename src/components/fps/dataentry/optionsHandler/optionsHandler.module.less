@@ -1,0 +1,59 @@
+ 
+ .option {
+     display: flex;
+     align-items: center;
+     margin-bottom: 8px;
+     .optionListButton {
+        cursor: pointer;
+        opacity: .4;
+        transition: .5s;
+        margin-left: -4px;
+        &:hover {
+             opacity: .8;
+         }
+     }
+     .optionListInput {
+        margin-right: 6px;
+        overflow: hidden;
+        flex-grow: 2;
+     }
+ }
+ @media all and (max-width: 415px) { 
+    .optionListInput {
+        width: 100px;
+    }
+}
+
+.advOption {
+    display: flex;
+     align-items: center;
+     margin-bottom: 8px;
+     .advancedOptionListInput {
+        margin-right: 6px;
+        max-width: 200px;
+        overflow: hidden;
+        flex-grow: 2;
+        &.wide {
+            max-width: none;
+        }
+    }
+     .optionListButton {
+        cursor: pointer;
+        opacity: .4;
+        transition: .5s;
+        margin-left: -4px;
+        &:hover {
+             opacity: .8;
+         }
+     }
+}
+
+@media all and (max-width: 415px) { 
+    .advOption {
+        flex-wrap: wrap;
+        .advancedOptionListInput {
+            padding-bottom: 6px;
+        }
+    }
+}
+

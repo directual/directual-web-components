@@ -1,0 +1,48 @@
+.error {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin:24px;
+    h1 {
+        margin-bottom: 24px;
+    }
+}
+.errorWrapper {
+    background: var(--layout-secondary-bgr);
+    display: flex;
+    flex-wrap: wrap;
+    .textBlock {
+        margin-right: 60px;
+    }
+    .logo {
+        text-decoration: none;
+        width: 250px;
+        display: block;
+        img {
+            width: 100%;
+        }
+        margin-bottom: 120px;
+    }
+    .imageBlock {
+        padding-top: 80px;
+        img {
+            width: 600px;
+            max-width: 100%;
+        }
+    }
+}
+
+@media all and (max-width: 415px) {  
+    .errorWrapper {
+            .textBlock {
+                margin-right: 0
+            }
+            .imageBlock {
+                padding-top: 30px;
+            }
+            .logo { 
+                margin-bottom: 40px;
+                width: 180px;
+        }
+    }
+}

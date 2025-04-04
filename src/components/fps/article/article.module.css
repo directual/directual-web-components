@@ -1,0 +1,24 @@
+.article h1 {
+    margin-bottom: 24px;
+}
+.article h2 {
+    margin: 24px 0 16px 0;
+}
+
+.article h3 {
+    margin: 18px 0 12px 0;
+}
+.article p {
+    margin: 8px 0 8px 0;
+    line-height: calc(1.5 * var(--text-font-size));
+}
+.article li {
+    margin: 8px 0 8px 0;
+    margin-left: calc(1.2 * var(--text-font-size));
+    line-height: calc(1.5 * var(--text-font-size));
+    list-style-type: disc;
+}
+.article img {
+    max-width: 100%;
+    margin-bottom: 16px;
+}

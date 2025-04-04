@@ -1,0 +1,110 @@
+.tabsPane {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--text-font-size);
+}
+.tabsPane.fixedScroll {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+.tabsPane.fixedScroll .tabWrapper {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.tabsPane.simple .tabsMenu {
+  margin: 9px 0;
+}
+.tabsPane.simple .tabsMenu.fpsTabs {
+  margin: 16px 0 0 20px;
+}
+.tabsPane.simple .tabMenuItem {
+  padding: 4px 10px;
+  border-radius: calc(var(--border-radius) / 2);
+  margin-right: 6px;
+  font-weight: normal;
+  border: solid 2px transparent;
+}
+.tabsPane.simple .tabMenuItem.current {
+  opacity: 1;
+  background-color: var(--layout-accent);
+  color: var(--layout-bgr);
+}
+.tabsPane.simple .tabMenuItem:hover {
+  opacity: 1;
+  border: solid 2px var(--layout-accent);
+}
+.tabsPane.solid .tabsMenu {
+  margin: 9px 0;
+  background-color: var(--table-raw-hover);
+  padding: 6px;
+  border-radius: var(--border-radius);
+  border: solid 1px var(--table-borders);
+}
+.tabsPane.solid .tabsMenu.fpsTabs {
+  margin: 16px 28px 0 28px;
+}
+.tabsPane.solid .tabMenuItem {
+  padding: 4px 10px;
+  border-radius: var(--border-radius);
+  margin-right: 12px;
+  font-weight: normal;
+  border: solid 2px transparent;
+}
+.tabsPane.solid .tabMenuItem.current {
+  opacity: 1;
+  background-color: var(--layout-accent);
+  color: var(--layout-bgr);
+}
+.tabsPane.solid .tabMenuItem:hover {
+  opacity: 1;
+  border: solid 2px var(--table-borders);
+}
+.tabsMenu {
+  display: flex;
+  flex-shrink: 0;
+  margin-bottom: 18px;
+  font-size: var(--text-font-size);
+  overflow: auto;
+  padding: 0 6px;
+  z-index: 1;
+}
+.tabsMenu.fpsTabs {
+  margin: 6px 24px 0 24px;
+}
+.tabWrapper {
+  font-size: var(--text-font-size);
+  display: none;
+  border-top: solid 1px transparent;
+  transition: 0.5s;
+  flex-grow: 2;
+  padding: 0 6px;
+}
+.tabWrapper.singleTab {
+  padding: 0;
+  margin-top: 0;
+}
+.tabWrapper.current {
+  display: block;
+}
+.tabWrapper.bordered {
+  border-top: solid 1px var(--form-field-border);
+}
+.tabMenuItem {
+  font-size: var(--text-font-size);
+  padding: 18px 0 16px 0;
+  margin-right: 24px;
+  border-bottom: solid 2px transparent;
+  cursor: pointer;
+  opacity: 0.6;
+  white-space: nowrap;
+  font-weight: var(--strong-font-weight);
+}
+.tabMenuItem.current {
+  opacity: 1;
+  border-bottom: solid 2px var(--layout-accent);
+}
+.tabMenuItem.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}

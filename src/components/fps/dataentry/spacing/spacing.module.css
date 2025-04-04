@@ -1,0 +1,127 @@
+.spacingWrapper {
+  width: 249px;
+}
+.spacingWrapper .margin {
+  border-top: solid 30px #c1d2df;
+  border-bottom: solid 30px #c1d2df;
+  border-left: solid 50px #d4e0ea;
+  border-right: solid 50px #d4e0ea;
+  position: relative;
+}
+.spacingWrapper .padding {
+  border-top: solid 30px #d4e0ea;
+  border-bottom: solid 30px #d4e0ea;
+  border-left: solid 50px #c1d2df;
+  border-right: solid 50px #c1d2df;
+  height: 10px;
+  width: 50px;
+  position: relative;
+  box-shadow: 0 0 8px rgba(29, 28, 35, 0.2);
+}
+.spacingWrapper .spacingTitle {
+  position: absolute;
+  font-size: 10px;
+  opacity: 0.4;
+  z-index: 1;
+  top: -28px;
+  left: -47px;
+  line-height: 1em;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.label {
+  font-size: var(--text-small-size);
+  opacity: 0.7;
+  padding-bottom: 6px;
+  font-weight: var(--strong-font-weight);
+}
+.input {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  width: 40px;
+  margin-left: -20px;
+  outline: none !important;
+  z-index: 1;
+}
+.input.marginTop {
+  top: -25px;
+  left: 50%;
+}
+.input.paddingTop {
+  top: -25px;
+  left: 50%;
+}
+.input.marginBottom {
+  bottom: -25px;
+  top: auto;
+  left: 50%;
+}
+.input.paddingBottom {
+  bottom: -25px;
+  top: auto;
+  left: 50%;
+}
+.input.marginRight {
+  top: auto;
+  bottom: 50%;
+  margin-bottom: -8px;
+  left: auto;
+  right: -50px;
+}
+.input.paddingRight {
+  top: auto;
+  bottom: 50%;
+  margin-bottom: -8px;
+  left: auto;
+  right: -50px;
+}
+.input.marginLeft {
+  bottom: 50%;
+  margin-bottom: -8px;
+  left: -20px;
+}
+.input.paddingLeft {
+  bottom: 50%;
+  margin-bottom: -8px;
+  left: -20px;
+}
+.input.disabled {
+  opacity: 0.5;
+}
+.inputMarginWrapper {
+  display: flex;
+  align-items: flex-end;
+}
+.spaceWrapper {
+  display: flex;
+  margin-left: 22px;
+}
+.spaceWrapper.hor {
+  align-items: center;
+}
+.spaceWrapper.hor .space {
+  height: 60px;
+  width: 10px;
+  background: linear-gradient(0deg, rgba(5, 142, 252, 0) 0%, rgba(5, 142, 252, 0.4) 25%, rgba(5, 142, 252, 0.4) 75%, rgba(5, 142, 252, 0) 100%);
+}
+.spaceWrapper.hor .block {
+  height: 40px;
+  width: 20px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.spaceWrapper.vert {
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.spaceWrapper.vert .space {
+  height: 10px;
+  width: 60px;
+  background: linear-gradient(90deg, rgba(5, 142, 252, 0) 0%, rgba(5, 142, 252, 0.4) 25%, rgba(5, 142, 252, 0.4) 75%, rgba(5, 142, 252, 0) 100%);
+}
+.spaceWrapper.vert .block {
+  height: 20px;
+  width: 40px;
+  background-color: rgba(0, 0, 0, 0.1);
+}

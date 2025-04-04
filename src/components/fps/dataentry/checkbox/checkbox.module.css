@@ -1,0 +1,70 @@
+.cb_wrap {
+  display: flex;
+  user-select: none;
+}
+.cb_wrap * {
+  user-select: none;
+}
+.cb_wrap .checkbox {
+  box-sizing: content-box;
+  display: flex;
+  align-items: center;
+  font-weight: var(--text-font-weight);
+  font-size: var(--text-font-size);
+  opacity: 1;
+}
+.cb_wrap .checkbox.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.cb_wrap .checkbox .cb_wrapper {
+  position: relative;
+  padding-right: 12px;
+}
+.cb_wrap .checkbox .cb_wrapper.nopadding {
+  padding: 0;
+}
+.cb_wrap .checkbox .cb_wrapper input[type=checkbox] {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  visibility: hidden;
+}
+.cb_wrap .checkbox .cb_wrapper .pretty_checkbox {
+  background-color: var(--layout-secondary-bgr);
+  height: 20px;
+  cursor: pointer;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--layout-bgr);
+  border: solid 1px var(--form-field-border);
+  border-radius: 4px;
+}
+.cb_wrap .checkbox .cb_wrapper .pretty_checkbox.checked {
+  background-color: var(--form-accent);
+  border-color: var(--form-accent);
+}
+.cb_wrap .checkbox .cb_wrapper .pretty_checkbox.checked:before {
+  font-size: 22px;
+}
+.cb_wrap .checkbox:not(.disabled) .cb_wrapper .pretty_checkbox:hover {
+  border: solid 2px var(--form-field-border);
+  height: 18px;
+  width: 18px;
+}
+.cb_wrap .checkbox:not(.disabled) .cb_wrapper .pretty_checkbox:hover.checked {
+  background-color: var(--form-accent);
+  border-color: var(--form-accent);
+}
+.cb_wrap .checkbox:not(.disabled) .cb_wrapper .pretty_checkbox:active {
+  background-color: var(--layout-text);
+}
+.cb_wrap .checkbox:not(.disabled) .cb_wrapper .pretty_checkbox:active.checked {
+  background-color: var(--layout-text);
+  border-color: var(--layout-text);
+}
+.customOptionWrapper {
+  margin-top: 8px;
+}

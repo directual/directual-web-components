@@ -1,0 +1,75 @@
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+.tag {
+  display: flex;
+  align-items: center;
+  font-size: var(--text-small-size);
+  background-color: var(--label);
+  color: var(--label-text);
+  border-radius: 12px;
+  padding: 4px 9px;
+  margin: 2px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  cursor: default;
+  overflow: hidden;
+}
+.tag:hover {
+  color: var(--label-text);
+}
+.tag.FpsForm2 {
+  background-color: transparent;
+  border: solid 2px var(--label);
+  color: var(--label);
+  min-height: 20px;
+}
+.tag.FpsForm2.selected {
+  background-color: var(--label);
+  color: var(--label-text);
+}
+.tag.disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+.tag.addButton {
+  background-color: var(--button-accent-bgr);
+  color: var(--button-accent-text);
+  padding-left: 4px;
+}
+.tag.addButton:hover:not(.disabled) {
+  background-color: var(--button-accent-hover-bgr);
+  color: var(--button-accent-hover-text);
+}
+.tag.clickable {
+  opacity: 0.9;
+  cursor: pointer;
+}
+.tag.clickable:hover {
+  opacity: 1;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+.tag .text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tag .seleced {
+  opacity: 0.5;
+  cursor: pointer;
+  margin-left: -3px;
+  flex-shrink: 0;
+}
+.tag .seleced:hover {
+  opacity: 1;
+}
+.tag .delete {
+  opacity: 0.5;
+  cursor: pointer;
+  margin-right: -3px;
+  flex-shrink: 0;
+}
+.tag .delete:hover {
+  opacity: 1;
+}

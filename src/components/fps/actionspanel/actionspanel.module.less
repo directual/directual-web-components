@@ -1,0 +1,52 @@
+.panel {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    gap: 6px 6px;
+    button, a {
+        //margin: 0 6px 6px 0;
+    }
+    &.alignCenter {
+        justify-content: center;
+    }
+    &.alignRight {
+        justify-content: flex-end;
+    }
+    &.border {
+        border:solid 1px var( --form-field-border);
+        padding:12px 6px 6px 12px;
+        border-radius: var( --border-radius);
+        .title {
+            left:calc(var( --border-radius) + 4px);
+        }
+    }
+    &.column {
+        flex-direction: column;
+        button, a {
+            margin-right: 0;
+            flex-grow: 2;
+        }
+    }
+    &.stretch {
+        justify-content: stretch;
+        &> div {
+            flex-grow: 2;
+        }
+        button, a {
+            margin-right: 0;
+            flex-grow: 2;
+        }
+    }
+    &.with_title {
+        padding-top: 16px;
+    }
+    .title {
+        position: absolute;
+        background-color: var(--layout-bgr);
+        font-size: var(--text-small-size);
+        top:-10px;
+        left:4px;
+        padding:0 3px;
+        color:var(--form-field-border);
+    }
+}

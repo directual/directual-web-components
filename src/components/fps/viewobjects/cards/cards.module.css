@@ -1,0 +1,393 @@
+.cardsWrapperWrapper {
+  position: relative;
+}
+.cardsWrapperWrapper .tableLoadingOverlay {
+  height: 100%;
+  border-radius: var(--border-radius);
+  width: 100%;
+  z-index: 2;
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.cardsWrapperWrapper .tableLoadingOverlay .tableLoader {
+  margin-top: 60px;
+}
+.cardsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-right: -18px;
+  align-items: flex-start;
+}
+.cardsWrapper.emptyTable {
+  justify-content: center;
+  align-items: center;
+  background-color: var(--layout-bgr);
+  margin-bottom: 12px;
+  border-radius: var(--border-radius);
+  margin-right: 0;
+}
+.cardsWrapper.loading {
+  filter: blur(3px);
+  position: relative;
+  opacity: 0.9;
+}
+.cardsWrapper.loading .card .cardInnerWrapper {
+  cursor: not-allowed;
+}
+.card {
+  margin-bottom: 18px;
+  margin-right: 18px;
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+  position: relative;
+}
+.card .details {
+  position: absolute;
+  z-index: 5;
+  top: 12px;
+  right: 6px;
+  transition: 0.5s;
+}
+.card .details .detailsButton {
+  opacity: 0.5;
+  cursor: pointer;
+}
+.card .details:hover .detailsButton {
+  opacity: 1;
+}
+.card .details .quickMenu {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+  top: 0;
+  right: 100%;
+  transition: 0.3s;
+  transform-origin: top right;
+  transition-timing-function: cubic-bezier(0.6, 0.44, 0.72, 1.45);
+  transform: scale(1);
+  opacity: 1;
+  border-radius: calc(var(--border-radius) / 1.2);
+  background-color: var(--layout-bgr);
+  border: solid 1px var(--form-field-border);
+}
+.card .details .quickMenu.hide {
+  transform: scale(0);
+  opacity: 0;
+}
+.card .details .quickMenu li {
+  flex-shrink: 0;
+  padding: 8px 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+  font-size: var(--text-small-size);
+  margin: 2px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+.card .details .quickMenu li span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card .details .quickMenu li:before {
+  margin-left: -5px;
+  margin-right: 4px;
+}
+.card .details .quickMenu li:hover {
+  background: var(--button-dropdown-hover-bgr);
+}
+.card .details .quickMenu li:active:not(.disabled) {
+  background: var(--layout-text);
+  color: var(--layout-bgr);
+}
+.card .details .quickMenu li:active:not(.disabled) .displayKey {
+  color: var(--button-accent-text);
+}
+.card .cardInnerWrapper {
+  background-color: var(--cards-bgr);
+  border-radius: var(--border-radius);
+  border: solid 1px var(--cards-border);
+  padding: 1px;
+  width: calc(100% - 2px);
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.card .cardInnerWrapper.borderColor {
+  padding: 0;
+  border: solid;
+  border-width: 2px;
+}
+.card .cardInnerWrapper .color {
+  display: block;
+  position: absolute;
+  content: '';
+  height: 100%;
+}
+.card .cardInnerWrapper .color.left {
+  width: 6px;
+}
+.card .cardInnerWrapper .color.fill {
+  width: 100%;
+}
+.card .cardInnerWrapper .cardImage {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  flex-shrink: 0;
+  z-index: 3;
+}
+.card .cardInnerWrapper .cardImage span {
+  display: none;
+  flex-direction: column;
+  margin-top: -6px;
+}
+.card .cardInnerWrapper.cover {
+  position: relative;
+  color: #fff;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+.card .cardInnerWrapper.cover .cardImage {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--field-border-color);
+}
+.card .cardInnerWrapper.cover h1,
+.card .cardInnerWrapper.cover h2,
+.card .cardInnerWrapper.cover h3,
+.card .cardInnerWrapper.cover h4 {
+  color: #fff !important;
+}
+.card .cardInnerWrapper.cover .cardText {
+  background: #000000;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.39959734) 37%);
+  height: 100%;
+}
+.card .cardInnerWrapper.cover .linkText {
+  border-color: #fff !important;
+  color: #fff !important;
+  opacity: 0.8;
+}
+.card .cardInnerWrapper .cardInnerWrapperImage.left {
+  display: flex;
+  align-items: stretch;
+}
+.card .cardInnerWrapper .cardInnerWrapperImage.leftCircle {
+  display: flex;
+}
+.card .cardInnerWrapper.left .cardImage {
+  background-color: var(--field-border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: var(--layout-secondary-bgr);
+}
+.card .cardInnerWrapper.left .cardImage span {
+  opacity: 0.5;
+  display: flex;
+}
+.card .cardInnerWrapper.leftCircle .cardImage {
+  background-color: var(--field-border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--layout-secondary-bgr);
+  border-radius: 100%;
+  margin: 12px 0 12px 12px;
+}
+.card .cardInnerWrapper.leftCircle .cardImage span {
+  opacity: 0.5;
+  display: flex;
+}
+.card .cardInnerWrapper.top .cardImage {
+  background-color: var(--field-border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--layout-secondary-bgr);
+}
+.card .cardInnerWrapper.top .cardImage span {
+  opacity: 0.5;
+  display: flex;
+}
+.card .cardInnerWrapper:hover {
+  width: 100%;
+  padding: 0;
+  background-color: var(--cards-hover-bgr);
+  border: solid 2px var(--cards-hover-border);
+}
+.card .cardInnerWrapper:active {
+  width: 100%;
+  padding: 0;
+  border: solid 2px var(--layout-text);
+}
+.card .cardInnerWrapper .cardText {
+  padding: 18px 26px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex-grow: 2;
+  overflow: hidden;
+  align-items: stretch;
+  z-index: 2;
+}
+.card .cardInnerWrapper .cardText .cardHeader {
+  max-width: 100%;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.card .cardInnerWrapper .cardText .cardHeader .txt {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 2;
+}
+.card .cardInnerWrapper .cardText .cardHeader .counter {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+  margin: 0 8px;
+  background: var(--cards-notification);
+  color: var(--cards-notification-text);
+  font-family: var(--main-font-family);
+  font-size: var(--text-font-size);
+  font-weight: var(--text-font-weight);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 28px;
+  border-radius: 32px;
+  padding: 0 6px;
+  margin-top: -8px;
+}
+.card .cardInnerWrapper .cardText .cardHeader .counter.moveCounter {
+  margin-right: -14px;
+}
+.card .cardInnerWrapper .cardText .cardHeaderComment {
+  font-size: var(--text-small-size);
+  margin-top: 6px;
+  opacity: 0.6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card .cardInnerWrapper .cardText .cardBodyText {
+  margin-top: 12px;
+  width: 100%;
+}
+.card .cardInnerWrapper .cardText .cardBodyText.linkText {
+  width: auto;
+}
+.card .cardInnerWrapper .cardText .headerArray {
+  display: flex;
+  flex-wrap: wrap;
+}
+.card .cardInnerWrapper .cardText .headerArray div {
+  flex-shrink: 0;
+}
+.card .cardInnerWrapper .cardText .linkText {
+  border: solid 1px var(--layout-accent);
+  color: var(--layout-accent);
+  padding: 3px 9px;
+}
+.card .cardInnerWrapper .cardText .labelText,
+.card .cardInnerWrapper .cardText .linkText {
+  margin-right: 4px;
+  margin-top: 4px;
+  border-radius: calc(var(--border-radius) / 2);
+}
+.card .cardInnerWrapper .cardText .labelText {
+  color: var(--label-text);
+  background-color: var(--label);
+  padding: 4px 9px;
+}
+.firstObjectCard {
+  position: absolute;
+  top: 18px;
+  left: 0;
+  bottom: 18px;
+  right: 18px;
+}
+.card.grid.wideDesktop {
+  width: calc(25% - 18px);
+}
+.card.grid.desktop {
+  width: calc(33.3% - 18px);
+}
+.card.grid.tablet {
+  width: calc(50% - 18px);
+}
+.card.grid.mobile {
+  width: calc(100% - 18px);
+  margin-bottom: 12px !important;
+}
+.card.looseGrid.wideDesktop {
+  width: calc(33.3% - 18px);
+}
+.card.looseGrid.desktop {
+  width: calc(50% - 18px);
+}
+.card.looseGrid.tablet {
+  width: calc(100% - 18px);
+}
+.card.looseGrid.mobile {
+  width: calc(100% - 18px);
+  margin-bottom: 12px !important;
+}
+.card.list {
+  width: calc(100% - 18px);
+}
+.card.list.mobile {
+  margin-bottom: 12px !important;
+}
+.mobile .leftCircle .cardImage {
+  margin: 8px 0 8px 8px !important;
+}
+.cardsSlider {
+  display: flex;
+  height: 4px;
+  padding: 8px 0;
+  width: 100%;
+  align-items: center;
+}
+.cardsSlider .sliderValue {
+  padding-left: 6px;
+}
+.cardsSlider .line {
+  background: var(--table-borders);
+  height: 4px;
+  width: 100%;
+  border-radius: 6px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+}
+.cardsSlider .line .fill {
+  border-radius: 6px;
+  height: 4px;
+  background: var(--layout-accent);
+  position: absolute;
+  z-index: 2;
+}
+.cardsFooter {
+  margin: 0 15px 15px 18px;
+  padding-top: 18px;
+  border-top: solid 1px var(--cards-border);
+  box-shadow: 0 -1px 0 var(--layout-bgr);
+  z-index: 3;
+}

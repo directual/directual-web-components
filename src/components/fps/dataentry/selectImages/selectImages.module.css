@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 12px;
+  padding: 1px;
+}
+.wrapper .option {
+  position: relative;
+  cursor: pointer;
+  box-sizing: border-box;
+  border: solid 1px var(--form-field-border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+.wrapper .option:hover {
+  box-shadow: 0 0 0 1px var(--form-field-border);
+}
+.wrapper .option:active {
+  border: solid 1px var(--form-placeholder);
+  box-shadow: 0 0 0 1px var(--form-placeholder);
+}
+.wrapper .option.selected {
+  border: solid 1px var(--form-accent);
+  box-shadow: 0 0 0 1px var(--form-accent);
+}
+.wrapper .option .checkbox {
+  margin: 0 0 7px 10px;
+}
+.wrapper .option .radio {
+  margin: 0 0 0px 10px;
+}

@@ -1,0 +1,267 @@
+.dropzone {
+  border: dashed 2px var(--form-field-border);
+  cursor: pointer;
+  padding: 6px;
+  outline: none;
+  font-size: var(--text-font-size);
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+}
+.dropzone p {
+  margin: 0;
+}
+.dropzone:hover {
+  border: solid 2px var(--form-field-border);
+  padding: 6px;
+}
+.dropzone:active {
+  border: solid 2px var(--layout-text);
+  padding: 6px;
+}
+.dropzone input {
+  outline: none;
+}
+.fileUpload {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.fileUpload label {
+  font-size: var(--text-small-size);
+  opacity: 0.7;
+  padding-bottom: 6px;
+  font-weight: var(--strong-font-weight);
+}
+.input_label_tooltip {
+  display: flex;
+  align-items: center;
+}
+.input_label_tooltip .tooltip {
+  opacity: 0.5;
+}
+.input_label_tooltip .tooltip:hover {
+  opacity: 1;
+}
+.uploadWrapper {
+  position: relative;
+}
+.switchView {
+  position: absolute;
+  display: none;
+  top: 0;
+  right: 0;
+  font-size: 12px;
+  z-index: 10;
+  opacity: 0.5;
+}
+.progress {
+  height: 50px;
+  border: solid 1px var(--form-field-border);
+  flex-shrink: 0;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  padding: 0 1px;
+  background-color: var(--form-field-bgr);
+}
+.progress .line {
+  background: var(--table-borders);
+  height: 4px;
+  border-radius: 6px;
+  flex-grow: 2;
+  margin: 0 6px 0 18px;
+  position: relative;
+}
+.progress .line .ready {
+  height: 4px;
+  border-radius: 6px;
+  background: var(--form-accent);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.progress .cancel {
+  opacity: 0.3;
+  margin-right: 6px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.progress .cancel:hover {
+  opacity: 0.9;
+}
+.uploaded {
+  height: 44px;
+  border: solid 1px var(--form-field-border);
+  flex-shrink: 0;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  padding: 0 6px 0 10px;
+  background-color: var(--form-field-bgr);
+}
+.uploaded .fileName {
+  flex-grow: 2;
+}
+.uploaded .delete {
+  opacity: 0.3;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.uploaded .delete:hover {
+  opacity: 0.9;
+}
+.multipleUpload {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  font-size: var(--text-small-size);
+  padding: 4px 12px;
+}
+.multipleUpload li {
+  display: flex;
+  transition: 0.5s;
+  align-items: center;
+  height: 28px;
+}
+.multipleUpload li:hover span {
+  opacity: 1;
+}
+.multipleUpload li span {
+  flex-grow: 2;
+  opacity: 0.5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.multipleUpload li .delete {
+  opacity: 0.3;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.multipleUpload li .delete:hover {
+  opacity: 0.9;
+}
+.imageList {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  margin-bottom: -6px;
+}
+.imageList .imagePreview {
+  height: 120px;
+  position: relative;
+  margin-right: 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+.imageList .imagePreview img {
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 50px;
+  min-height: 50px;
+}
+.imageList .imagePreview .deleteImage {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.8);
+  opacity: 0.4;
+  color: #000;
+  cursor: pointer;
+}
+.imageList .imagePreview .deleteImage:hover {
+  opacity: 0.9;
+}
+.showImage {
+  z-index: 201;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+}
+.showImage .imageWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.showImage .imageWrapper img {
+  max-width: 80vw;
+  max-height: 80vh;
+}
+.showImage .imageWrapper .imageName {
+  margin-top: 12px;
+  opacity: 0.4;
+}
+.showImage .imageWrapper .imageName:hover {
+  opacity: 1;
+}
+.showImage .toLeft {
+  margin-left: 12px;
+}
+.showImage .toRight {
+  margin-right: 12px;
+}
+.showImage .toLeft,
+.showImage .toRight {
+  opacity: 0.5;
+  cursor: pointer;
+}
+.showImage .toLeft:hover,
+.showImage .toRight:hover {
+  opacity: 1;
+}
+.fileList {
+  margin: 12px 0;
+}
+.fileWrapper {
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  border-radius: 8px;
+}
+.fileWrapper:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+.fileWrapper .resolutionWrapper {
+  width: 40px;
+  height: 45px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: #666;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 12px;
+}
+.fileWrapper .fileUrl {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 12px;
+  opacity: 0.6;
+  white-space: nowrap;
+  flex-grow: 2;
+}
+.fileWrapper .delete {
+  opacity: 0.3;
+  cursor: pointer;
+}
+.fileWrapper .delete:hover {
+  opacity: 0.9;
+}
+.description {
+  font-size: var(--text-small-size);
+  opacity: 0.6;
+  margin: 3px 0 9px;
+}

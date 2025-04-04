@@ -1,0 +1,61 @@
+.hint {
+  background-color: var(--hint-alert-light);
+  border-left: solid 5px var(--hint-alert);
+  color: var(--hint-text-color);
+  padding: 18px 18px 6px 18px;
+  font-size: var(--text-font-size);
+  position: relative;
+  border-radius: 4px;
+}
+.hint * {
+  color: var(--hint-text-color);
+}
+.hint a {
+  color: var(--layout-accent);
+  cursor: pointer;
+}
+.hint p {
+  margin-bottom: 12px;
+  padding: 0 !important;
+}
+.hint.ok {
+  background-color: var(--hint-ok-light);
+  border-left: solid 5px var(--hint-ok);
+  color: var(--hint-text-color);
+}
+.hint.ok .title:before {
+  color: var(--hint-ok);
+  content: "\e96c";
+}
+.hint.error {
+  background-color: var(--hint-error-light);
+  border-left: solid 5px var(--hint-error);
+  color: var(--hint-text-color);
+}
+.hint.error .title:before {
+  color: var(--hint-error);
+  content: "\e935";
+}
+.hint .title {
+  display: flex;
+  align-items: center;
+  font-weight: var(--strong-font-weight);
+}
+.hint .title:before {
+  font-family: 'directual-icons';
+  content: "\e96d";
+  font-size: 24px;
+  color: var(--hint-alert);
+  margin-right: 8px;
+}
+.closeHint {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  cursor: pointer;
+  transition: 0.5s;
+  opacity: 0.3;
+}
+.closeHint:hover {
+  opacity: 0.9;
+}

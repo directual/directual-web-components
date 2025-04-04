@@ -1,0 +1,107 @@
+.treeWrapper {
+  background-color: var(--layout-secondary-bgr);
+  max-width: 100%;
+  overflow: auto;
+  padding: 6px;
+  border-radius: var(--border-radius);
+}
+
+.folder {
+  font-size: var(--text-small-size);
+  &.isDraggingOver {
+    pointer-events: none;
+    background-color: rgb(212, 241, 220);
+    // .selected {
+    //     background-color: transparent;
+    //     color: var(--font-color);
+    //     opacity: 0.6;;
+    //     //border-color: var(--button-border-color);
+    //   }
+  }
+}
+
+.folderContent {
+  margin-left: 32px;
+  &.noMargin {
+    margin-left: 0;
+  }
+}
+
+.treeElement {
+  border: solid 2px rgba(0, 0, 0, 0);
+  border-radius: var(--border-radius);
+  color: var(--layout-text);
+  &:hover {
+    color: var(--layout-text);
+  }
+  opacity: 0.6;
+  cursor: pointer;
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  height: 32px;
+  align-items: center;
+  .noShrink {
+    flex-shrink: 0;
+  }
+  &:hover {
+    .drag, .up {
+      display: block;
+      opacity: 0.2;
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+  .up {
+    opacity: 0;
+    display: none;
+  }
+  .drag {
+    opacity: 0;
+    display: none;
+    cursor: grab;
+  }
+  .treeElementName {
+    overflow: hidden;
+    flex-grow: 2;
+    span {
+      white-space: nowrap;
+      overflow: hidden;
+      line-height: 30px;
+      text-overflow: ellipsis;
+    }
+  }
+  &:hover {
+    border: solid 2px var(--form-field-border);
+    opacity: 1;
+  }
+  &:active {
+    background-color: var(--layout-text);
+    color: var(--layout-bgr);
+    border-color: var(--layout-text);
+  }
+  &.selected {
+    background-color: var(--button-border);
+    color: var(--layout-bgr);
+    opacity: 1;
+    border-color: var(--button-border);
+  }
+}
+.empty {
+  font-style: italic;
+  margin: 3px 0 6px 32px;
+  opacity: 0.4;
+}
+.expandFolder {
+  transition: 0.5s;
+  &.expanded {
+    transform: rotate(90deg);
+  }
+}
+
+.hr {
+  margin: 6px 12px;
+  border: none;
+  border-top: solid 1px var(--table-borders);
+}

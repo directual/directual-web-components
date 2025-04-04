@@ -1,0 +1,43 @@
+.FormSection {
+  margin: 32px 0 18px 0;
+  display: flex;
+  justify-content: center;
+}
+.FormSection.hidable:hover span,
+.FormSection.hidable:hover .icon {
+  color: var(--layout-text);
+}
+.FormSection span {
+  margin-top: -9px;
+  padding: 0 9px;
+  color: var(--form-field-border);
+  font-size: var(--text-small-size);
+  transition: 0.5s;
+}
+.FormSection span.noPadding {
+  padding: 0;
+  cursor: pointer;
+}
+.FormSection .icon {
+  margin-top: -9px;
+  padding: 0 7px;
+  transition: 0.6s;
+  color: var(--form-field-border);
+  cursor: pointer;
+}
+.FormSection .rotate {
+  transform: rotate(180deg);
+}
+.FormSection .FormSectionLine {
+  border-top: solid 1px var(--form-field-border);
+  flex-grow: 2;
+}
+.form_header {
+  margin-bottom: 18px;
+}
+.marginBottom38 {
+  margin-bottom: 38px;
+}
+.hideSection {
+  display: none;
+}

@@ -1,0 +1,170 @@
+ .comments {
+
+    .commentsHeader {
+        margin-bottom: 12px;
+        h3 {
+            position: relative;
+            display: inline-block;
+            padding-top: 5px;
+            .commentsCounter {
+                position: absolute;
+                top:0px;
+                left: calc(100% + 5px);
+                font-size: var(--text-small-size);
+                background-color: var(--cards-notification);
+                border-radius:40%;
+                padding: 3px 4px;
+                color: var(--cards-notification-text);
+            }
+        }
+    }
+    .commentFileUpload {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px 10px;
+    }
+    .commentsAdditionslControls {
+        margin-right: 12px;
+    }
+    .commentsAddPanel {
+        display: flex;
+        align-items: center;
+        margin-top: 6px;
+        flex-wrap: wrap;
+        gap: 6px 6px;
+        justify-content: flex-end;
+        .commentActions {
+            opacity: .5;
+            transition: .5s;
+            cursor: pointer;
+            &.active {
+                color: #058efc;
+                opacity: 1;
+            }
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+    .commentsList {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px 12px;
+        margin-top: 12px;
+    }
+    .childComments {
+        margin-left: 22px;
+        margin-top: 12px;
+    }
+    .commentWrapper {
+        background-color: var(--cards-bgr);
+        border-radius: var(--border-radius);
+        border: solid 1px var(--cards-border);
+        overflow: hidden;
+        align-items: flex-start;
+        display: flex;
+        align-items: stretch;
+        flex-direction: column;
+        .commentVote {
+            flex-shrink: 0;
+            margin-right: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+            div {
+                width: 34px;
+                font-size: var(--text-small-size);
+                padding: 5px 0;
+                display: flex;
+                font-weight: bold;
+                align-items: center;
+                justify-content: center;
+                transition: .5s;
+                background-color: var(--table-borders);
+                &.commentVoteUp {
+                    border-radius: 12px 12px 0 0;
+                    cursor: pointer;
+                    &:hover { background-color: var(--table-raw-hover); }
+                }
+                &.commentVoteDown {
+                    border-radius: 0 0 12px 12px;
+                    cursor: pointer;
+                    &:hover { background-color: var(--table-raw-hover); }
+                }
+            }
+            
+        }
+        .commentWrapperAssignTo {
+            padding: 12px 22px;
+            background-color: var(--hint-alert-light);
+            color: var(--hint-text-color);
+            display: flex;
+            min-height: 32px;
+            justify-content: space-between;
+            align-items: center;
+            &.taskResolved {
+                background-color: var(--hint-ok-light);
+            }
+        }
+
+        .commentBody {
+            display: flex;
+            padding: 22px;
+            flex-direction: column;
+            gap: 12px 0;
+        }
+        .commentParent {
+            font-size: var(--text-small-size);
+            opacity: .5;
+        }
+        .commentBodyHeader {
+            display: flex;
+            align-items: center;
+            gap: 0 10px;
+            font-size: var(--text-small-size);
+            .commentBodyHeaderUserpic {
+                width: 30px;
+                flex-shrink: 0;
+                height: 30px;
+                overflow: hidden;
+                border-radius: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                border: solid 2px var(--table-borders);
+                img {
+                    max-width: 100%;
+                    max-height: 100%;
+                }
+            }
+            .commentBodyHeaderName {
+                font-weight: bold;
+            }
+            .commentBodyHeaderDate {
+                opacity: .5;
+            }
+        }
+        .commentFileLink {
+            font-size: var(--text-small-size);
+        }
+        .commentBodyFiles {
+            display: flex;
+        }
+        .commentBodyFooter {
+            display: flex;
+            .commentReplyButton {
+                font-size: var(--text-small-size);
+                opacity: .5;
+                transition: .5s;
+                cursor: pointer;
+                &:hover {
+                    opacity: 1;
+                }
+            }   
+        }
+    }
+}

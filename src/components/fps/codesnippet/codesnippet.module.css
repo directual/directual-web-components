@@ -1,0 +1,18 @@
+.codepiece {
+  margin: 6px 0 24px 0;
+  font-size: var(--text-small-size);
+}
+.codepiece pre {
+  padding: 12px;
+  background-color: var(--form-field-bgr);
+  border-radius: 4px;
+}
+.showhide {
+  cursor: pointer;
+  font-size: var(--text-very-small-size);
+  font-family: 'Source Code Pro', monospace;
+  width: 100px;
+}
+.showhide:before {
+  font-size: calc(var(--text-very-small-size) * 1.5);
+}

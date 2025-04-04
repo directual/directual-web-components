@@ -1,0 +1,34 @@
+.splitPane {
+  border: solid 1px lightcoral;
+  display: flex;
+  position: relative;
+}
+.splitPane .pane {
+  position: relative;
+}
+.splitPane .pane .paneContent {
+  background-color: lightgreen;
+  margin: 5px;
+}
+.splitPane .dragMe {
+  background-color: lightskyblue;
+  width: 10px;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  right: 0;
+  margin-right: -5px;
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  cursor: col-resize;
+  user-select: none;
+  opacity: 0.1;
+  transition: 0.3s;
+}
+.splitPane .dragMe:hover {
+  opacity: 1;
+}
+.splitPane .dragMe.hide {
+  opacity: 0;
+}

@@ -1,0 +1,45 @@
+.FormSection {
+    margin: 32px 0 18px 0;
+    display: flex;
+    justify-content: center;
+    &.hidable {
+        &:hover
+        {
+            span, .icon { color: var(--layout-text) }
+        }
+    }
+    span {
+        margin-top: -9px;
+        padding:0 9px;
+        color: var(--form-field-border);
+        font-size: var(--text-small-size);
+        transition: .5s;
+        &.noPadding {
+            padding: 0;
+            cursor: pointer;
+        }
+    }
+    .icon {
+        margin-top: -9px;
+        padding: 0 7px;
+        transition: .6s;
+        color: var(--form-field-border);
+        cursor: pointer;
+    }
+    .rotate {
+        transform: rotate(180deg);
+    }
+    .FormSectionLine {
+        border-top:solid 1px var(--form-field-border);
+        flex-grow: 2;
+    }
+}
+.form_header {margin-bottom: 18px;} 
+
+.marginBottom38 {
+    margin-bottom: 38px;
+}
+
+.hideSection {
+    display: none;
+}

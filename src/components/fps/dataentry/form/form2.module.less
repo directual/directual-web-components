@@ -1,0 +1,243 @@
+.formWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 18px 18px;
+}
+
+.formHeader {
+    //margin-bottom: 18px;
+}
+.formDescription {
+    //margin-bottom: 18px;
+}
+.formSection {
+    //border:solid 1px cyan;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.elementWrapper {
+    //margin-bottom: 18px;
+}
+
+.debug {
+    color: darkred;
+    font-size: 14px;
+    background-color: rgba(243, 66, 66, 0);
+    padding: 5px;
+    border-radius: 4px;
+    position: relative;
+    border: dashed 2px rgba(130, 56, 56, 0.276);
+    transition: background-color 0.3s ease-in-out;
+    &.highlight {
+        background-color: rgba(231, 28, 28, 0.668);
+    }
+    span {
+        position: absolute;
+        top:5px;
+        right: 5px;
+        opacity: .2;
+        font-size: 12px;
+        font-weight: bold;
+    }
+}
+
+.htmlPreview {
+    position: relative;
+    .htmlHidePreview, .htmlShowPreview {
+      position: absolute;
+      right: 0;
+      font-size: 10pt;
+      opacity: .5;
+      transition: .5s;
+      cursor: pointer;
+      z-index: 1;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .form2label {
+    font-size: var(--text-small-size);
+    opacity: 0.7;
+    padding-bottom: 6px;
+    font-weight: var(--strong-font-weight);
+  }
+
+  .formStepProgress {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    .stepsNofM {
+        font-size: var(--text-small-size);
+        opacity: .5;
+    }
+    .stepDescription {
+        margin-top: 16px;
+    }
+    .progressBar {
+        margin: 12px 0 6px 0;
+        height: 4px;
+        border-radius: 4px;
+        overflow: hidden;
+        position: relative;
+        .progressBarBackground {
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            // opacity: .3;
+            // background-color: var(--form-accent);
+            background-color: var(--form-field-border);
+        }
+        .progressBarFilled {
+            height: 100%;
+            position: absolute;
+            transition: .6s;
+            top:0;
+            z-index: 2;
+            background-color: var(--form-accent);
+        }
+    }
+    .stepsHeader {
+        display: flex;
+        align-items: center;
+        gap: 0 10px;
+        .setpNumber {
+            background-color: var(--menu-bgr);
+            border-radius: var(--border-radius);
+            border-color: var(--menu-border-color);
+            border-style: solid;
+            font-size: var(--h3-font-size);
+            font-weight: var(--headers-font-weight-h3);
+            padding: 4px 6px;
+            color: var(--menu-item);
+            min-width: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .setpName {
+            font-size: var(--h3-font-size);
+            font-weight: var(--headers-font-weight-h3);
+        }
+    }
+  }
+
+  .popup_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+  }
+  
+  .popup {
+    //max-height: 90vh;
+    //overflow-y: auto;
+    position: relative;
+    margin: 100px 0;
+    .close_popup {
+      position: absolute;
+      opacity: .5;
+      cursor: pointer;
+      right:6px;
+      top:6px;
+      transition: .5s;
+      margin:0;
+      z-index: 3;
+      &:hover {
+        opacity: 1;
+      }
+    }
+    > div {
+        max-width: calc(100% - 36px);
+        margin: 18px;
+        position: relative;
+    }
+    background-color: var(--layout-bgr);
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    animation: popupAnimation 0.3s ease;
+    max-width: 96vw;
+  }
+  
+  @keyframes popupAnimation {
+    from {
+      transform: scale(0.2);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .userList {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      .userListItem {
+        display: flex;
+        gap: 10px;
+        .userListItemPicture {
+          width: 50px;
+          height: 50px;
+          flex-shrink: 0;
+          border-radius: 100%;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          img {
+            max-width: 100%;
+            max-height: 100%;
+          }
+        }
+        .userListIteInfo {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+        }
+        .userListItemName {
+          font-weight: bold;
+        }
+        .userListItemPosition {
+          opacity: .5;
+          font-size: var(--text-small-size);
+        }
+      }
+  }
+
+  .debugConditions {
+    border: solid 2px darkcyan;
+    padding: 4px;
+    flex-grow: 2;
+    &.hideDebug {
+      background-color: #F6B856;
+    }
+    &.debugElement {
+      &.hideElementDebug {
+        background-color: #F99090;
+      }
+      border: solid 2px darkorchid;
+      .condDebugDetails { 
+        border-color: darkorchid;
+        color: darkorchid;
+      }
+    }
+    .condDebugDetails {
+      border: solid 1px darkcyan;
+      padding: 4px;
+      margin: 4px 0 0 0;
+      color: darkcyan;
+    }
+  }

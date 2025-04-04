@@ -1,0 +1,45 @@
+.error {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 24px;
+}
+.error h1 {
+  margin-bottom: 24px;
+}
+.errorWrapper {
+  background: var(--layout-secondary-bgr);
+  display: flex;
+  flex-wrap: wrap;
+}
+.errorWrapper .textBlock {
+  margin-right: 60px;
+}
+.errorWrapper .logo {
+  text-decoration: none;
+  width: 250px;
+  display: block;
+  margin-bottom: 120px;
+}
+.errorWrapper .logo img {
+  width: 100%;
+}
+.errorWrapper .imageBlock {
+  padding-top: 80px;
+}
+.errorWrapper .imageBlock img {
+  width: 600px;
+  max-width: 100%;
+}
+@media all and (max-width: 415px) {
+  .errorWrapper .textBlock {
+    margin-right: 0;
+  }
+  .errorWrapper .imageBlock {
+    padding-top: 30px;
+  }
+  .errorWrapper .logo {
+    margin-bottom: 40px;
+    width: 180px;
+  }
+}

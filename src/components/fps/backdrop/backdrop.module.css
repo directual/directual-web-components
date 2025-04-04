@@ -1,0 +1,47 @@
+.backdrop {
+    left: 0;
+    top:0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0,.4);
+    z-index: 100;
+    position: absolute;
+}
+
+.top {
+    background-color: rgba(0,0,0,.8);
+    z-index: 199;
+    position: fixed;
+}
+
+.hoverable {
+    transition: .5s;
+    cursor: pointer;
+}
+.rounded {
+    border-radius: var(--border-radius);
+    left: -1px;
+    top:-1px;
+    bottom: -1px;
+    right: -1px;
+}
+.hoverable:hover {
+    background-color: rgba(0,0,0,0.1);
+}
+
+.hoverable:hover .label {
+    opacity: 1;
+}
+
+.label {
+    font-size: var(--text-very-small-size);
+    position: absolute;
+    transform: rotate(90deg);
+    transform-origin: bottom left;
+    padding: 0 10px;
+    left: 3px; 
+    top:12px;
+    opacity: 0.2;
+    transition: .5s;
+    white-space: nowrap;
+}
