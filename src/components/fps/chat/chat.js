@@ -15,7 +15,13 @@ import PropTypes from 'prop-types';
 import icon from './../../../icons/fps-form2.svg';
 import SomethingWentWrong from '../SomethingWentWrong/SomethingWentWrong';
 import Loader from '../loader/loader';
+import DOMPurify from 'dompurify';
 
+function sanitizedHTML(inputHTML) {
+    return DOMPurify.sanitize(inputHTML, {
+        USE_PROFILES: { html: true }, // You can further configure this to be more restrictive if needed
+    });
+}
 export default function FpsChat(props) {
     const { auth, data, callEndpoint, onEvent, socket, id, locale, handleRoute } = props;
     const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'; // Determine the language
@@ -261,7 +267,7 @@ function Contact(props) {
     const { selected, data, chat, state, chooseChat } = props;
 
     const appearence = _.get(data, "params.chats.appearence[0]");
-    const chatTitle = template(_.get(appearence, "title"), chat)
+    const chatTitle = sanitizedHTML(template(_.get(appearence, "title"), chat))
 
     return (
         <div className={`${styles.chat_contact} ${selected ? styles.selected : ''}`}
@@ -287,7 +293,7 @@ function ChatMessages(props) {
     const fields = _.get(data, "params.messages");
 
     return (
-        <div className={`${styles.chat_messages_wrapper}`}>
+        <div className={`${styles.chat_messages_wrapper} D_FPS_CHAT_MESSAGES_WRAPPER`}>
             {chatID ? <React.Fragment>
                 <div
                     ref={scrollableDivRef}
@@ -357,13 +363,14 @@ function ChatInput(props) {
 
 function ChatMessage(props) {
     const { author, fields, message, editMessage, text } = props;
+    const messageText = sanitizedHTML(template(`{{${fields.textField}}}`, text))
 
     return (
         <div className={`${styles.chat_message_wrapper} ${author ? styles.chat_message_author : styles.chat_message_normal}`}>
             <div className={`${styles.chat_message}`}>
                 <div className={`${styles.chat_message_text}`}>
                     <pre>
-                        {`${template(`{{${fields.textField}}}`, text)}`}
+                        {messageText && <InnerHTML allowRerender={true} html={messageText} />}
                     </pre>
                 </div>
             </div>

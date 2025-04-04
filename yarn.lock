@@ -5670,7 +5670,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/trusted-types@npm:^2.0.2":
+"@types/trusted-types@npm:^2.0.2, @types/trusted-types@npm:^2.0.7":
   version: 2.0.7
   resolution: "@types/trusted-types@npm:2.0.7"
   checksum: 10c0/4c4855f10de7c6c135e0d32ce462419d8abbbc33713b31d294596c0cc34ae1fa6112a2f9da729c8f7a20707782b0d69da3b1f8df6645b0366d08825ca1522e0c
@@ -9346,6 +9346,7 @@ __metadata:
     color: "npm:^4.2.3"
     cross-env: "npm:^7.0.2"
     dangerously-set-html-content: "npm:^1.1.0"
+    dompurify: "npm:^3.2.5"
     editorjs-mermaid: "npm:^1.0.0"
     editorjs-parser: "npm:^1.5.3"
     embla-carousel-autoplay: "npm:^8.1.8"
@@ -9549,6 +9550,18 @@ __metadata:
   version: 2.4.3
   resolution: "dompurify@npm:2.4.3"
   checksum: 10c0/4c93f5bc8855bbe7dcb33487c0b252a00309fbd8a6d0ec280abbc3af695b43d1bf7f526c2f323fa697314b0b3de3511c756005dddc6ed90d1a1440a3d6ff89d9
+  languageName: node
+  linkType: hard
+
+"dompurify@npm:^3.2.5":
+  version: 3.2.5
+  resolution: "dompurify@npm:3.2.5"
+  dependencies:
+    "@types/trusted-types": "npm:^2.0.7"
+  dependenciesMeta:
+    "@types/trusted-types":
+      optional: true
+  checksum: 10c0/b564167cc588933ad2d25c185296716bdd7124e9d2a75dac76efea831bb22d1230ce5205a1ab6ce4c1010bb32ac35f7a5cb2dd16c78cbf382111f1228362aa59
   languageName: node
   linkType: hard
 
