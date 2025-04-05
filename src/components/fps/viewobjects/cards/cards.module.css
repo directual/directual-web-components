@@ -37,29 +37,20 @@
 .cardsWrapper.loading .card .cardInnerWrapper {
   cursor: not-allowed;
 }
-.card {
-  margin-bottom: 18px;
-  margin-right: 18px;
-  display: flex;
-  justify-content: stretch;
-  align-items: stretch;
-  position: relative;
-}
-.card .details {
+.details {
   position: absolute;
   z-index: 5;
-  top: 12px;
   right: 6px;
   transition: 0.5s;
 }
-.card .details .detailsButton {
+.details .detailsButton {
   opacity: 0.5;
   cursor: pointer;
 }
-.card .details:hover .detailsButton {
+.details:hover .detailsButton {
   opacity: 1;
 }
-.card .details .quickMenu {
+.details .quickMenu {
   position: absolute;
   z-index: 1;
   display: flex;
@@ -76,11 +67,11 @@
   background-color: var(--layout-bgr);
   border: solid 1px var(--form-field-border);
 }
-.card .details .quickMenu.hide {
+.details .quickMenu.hide {
   transform: scale(0);
   opacity: 0;
 }
-.card .details .quickMenu li {
+.details .quickMenu li {
   flex-shrink: 0;
   padding: 8px 12px;
   white-space: nowrap;
@@ -92,23 +83,34 @@
   border-radius: var(--border-radius);
   cursor: pointer;
 }
-.card .details .quickMenu li span {
+.details .quickMenu li span {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.card .details .quickMenu li:before {
+.details .quickMenu li:before {
   margin-left: -5px;
   margin-right: 4px;
 }
-.card .details .quickMenu li:hover {
+.details .quickMenu li:hover {
   background: var(--button-dropdown-hover-bgr);
 }
-.card .details .quickMenu li:active:not(.disabled) {
+.details .quickMenu li:active:not(.disabled) {
   background: var(--layout-text);
   color: var(--layout-bgr);
 }
-.card .details .quickMenu li:active:not(.disabled) .displayKey {
+.details .quickMenu li:active:not(.disabled) .displayKey {
   color: var(--button-accent-text);
+}
+.card {
+  margin-bottom: 18px;
+  margin-right: 18px;
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+  position: relative;
+}
+.card .details {
+  top: 12px;
 }
 .card .cardInnerWrapper {
   background-color: var(--cards-bgr);

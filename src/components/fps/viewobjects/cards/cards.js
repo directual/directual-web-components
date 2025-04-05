@@ -915,12 +915,13 @@ function FooterButtons({ footerButtons, performAction, loading, successWeb3, dat
   )
 }
 
-function QuickActionsControl({ quickActions, performAction }) {
+export function QuickActionsControl({ quickActions, performAction }) {
   const [showQA, setShowQA] = useState(false)
   const quickMenu = useRef(null)
 
   useOutsideAlerter(quickMenu)
-
+  // console.log("quickActions")
+  // console.log(quickActions)
   function useOutsideAlerter(ref) {
     useEffect(() => {
       function handleClickOutside(event) {

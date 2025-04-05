@@ -12,6 +12,7 @@
   gap: 8px;
   width: 220px;
   flex-shrink: 0;
+  border-right: solid 1px var(--cards-border);
 }
 .chat_contacts .chat_contact {
   display: flex;
@@ -60,24 +61,34 @@
   align-items: center;
   justify-content: center;
 }
+.chat_messages_header {
+  background-color: var(--layout-secondary-bgr);
+  padding: 12px;
+  box-shadow: 0 3px 3px 0px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .chat_messages_wrapper {
   background-color: var(--layout-bgr);
   overflow: inherit;
-  padding: 12px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0;
   flex-grow: 2;
 }
 .chat_input_outer_wrapper {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 6px;
+  padding: 0 6px 6px 6px;
 }
 .chat_input_wrapper {
   display: flex;
   gap: 2px;
   align-items: flex-end;
+  padding: 0 6px 6px 6px;
 }
 .chat_input_wrapper .chat_input {
   flex-grow: 2;

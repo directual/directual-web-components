@@ -17,76 +17,27 @@ export default {
 };
 
 let exampleTable = {
-    "sl": "reservationsReadOnly",
-    "pageSize": "22",
+    "sl": "manageFeatures",
+    "pageSize": "15",
     "headerField": null,
     "params": {
-        "cardListLayout": "grid",
-        "cardHeaderComment": "",
-        "deleteField": "",
-        "cardBodyText": "",
-        "cardImage": false,
-        "cardImageField": "",
-        "cardImageType": "none",
-        "cardImageSize": 100,
-        "objectView": {},
         "data": {
             "readFields": [
                 {
-                    "fieldSysName": "id",
+                    "fieldSysName": "color",
                     "fetch": [],
-                    "sysName": "id",
-                    "name": "reservation system ID",
-                    "dataType": "id",
-                    "format": "",
+                    "sysName": "color",
+                    "name": "Card color",
+                    "dataType": "string",
+                    "format": "color",
                     "formatOptions": {},
                     "link": ""
                 },
                 {
-                    "fieldSysName": "reservationCode",
+                    "fieldSysName": "date_added",
                     "fetch": [],
-                    "sysName": "reservationCode",
-                    "name": "Reservation Code",
-                    "dataType": "string",
-                    "format": "",
-                    "formatOptions": {},
-                    "link": null
-                },
-                {
-                    "fieldSysName": "name",
-                    "fetch": [],
-                    "sysName": "name",
-                    "name": "Guest Name",
-                    "dataType": "string",
-                    "format": "",
-                    "formatOptions": {},
-                    "link": null
-                },
-                {
-                    "fieldSysName": "date_end",
-                    "fetch": [],
-                    "sysName": "date_end",
-                    "name": "Check-out Date",
-                    "dataType": "string",
-                    "format": "",
-                    "formatOptions": {},
-                    "link": null
-                },
-                {
-                    "fieldSysName": "date_start",
-                    "fetch": [],
-                    "sysName": "date_start",
-                    "name": "Check-in Date",
-                    "dataType": "string",
-                    "format": "",
-                    "formatOptions": {},
-                    "link": null
-                },
-                {
-                    "fieldSysName": "checkout_date",
-                    "fetch": [],
-                    "sysName": "checkout_date",
-                    "name": "Guest Checked out at",
+                    "sysName": "date_added",
+                    "name": "Date added",
                     "dataType": "date",
                     "format": "",
                     "formatOptions": {
@@ -113,145 +64,24 @@ let exampleTable = {
                         "customOptionPlaceholder": "Describe your option",
                         "range": {},
                         "customOptionType": "textarea",
-                        "dateFormat": "MM/DD/Y",
-                        "timeFormat": " HH:mm",
+                        "dateFormat": "D MMMM, Y",
+                        "timeFormat": "",
                         "isUTC": "false"
                     },
                     "link": ""
                 },
                 {
-                    "fieldSysName": "checkin_date",
+                    "fieldSysName": "description",
                     "fetch": [],
-                    "sysName": "checkin_date",
-                    "name": "Guest Checked in at",
-                    "dataType": "date",
-                    "format": "",
-                    "formatOptions": {
-                        "customOptionLabel": "My option",
-                        "keyValue": {
-                            "key": "key",
-                            "value": "value",
-                            "button": "One more"
-                        },
-                        "dateLocale": "en-gb",
-                        "booleanOptions": [
-                            "True",
-                            "False"
-                        ],
-                        "validWeekDays": {
-                            "mon": true,
-                            "thu": true,
-                            "tue": true,
-                            "sun": true,
-                            "fri": true,
-                            "sat": true,
-                            "wed": true
-                        },
-                        "customOptionPlaceholder": "Describe your option",
-                        "range": {},
-                        "customOptionType": "textarea",
-                        "dateFormat": "MM/DD/Y",
-                        "timeFormat": " HH:mm",
-                        "isUTC": "false"
-                    },
-                    "link": ""
-                },
-                {
-                    "fieldSysName": "end",
-                    "fetch": [],
-                    "sysName": "end",
-                    "name": "",
-                    "dataType": "date",
-                    "format": "",
-                    "formatOptions": {
-                        "customOptionLabel": "My option",
-                        "keyValue": {
-                            "key": "key",
-                            "value": "value",
-                            "button": "One more"
-                        },
-                        "dateLocale": "en-us",
-                        "booleanOptions": [
-                            "True",
-                            "False"
-                        ],
-                        "validWeekDays": {
-                            "mon": true,
-                            "thu": true,
-                            "tue": true,
-                            "sun": true,
-                            "fri": true,
-                            "sat": true,
-                            "wed": true
-                        },
-                        "customOptionPlaceholder": "Describe your option",
-                        "range": {},
-                        "customOptionType": "textarea",
-                        "dateFormat": "MM/DD/Y",
-                        "timeFormat": "",
-                        "isUTC": "true"
-                    },
-                    "link": ""
-                },
-                {
-                    "fieldSysName": "start",
-                    "fetch": [],
-                    "sysName": "start",
-                    "name": "Check-in Date Sort",
-                    "dataType": "date",
-                    "format": "",
-                    "formatOptions": {
-                        "customOptionLabel": "My option",
-                        "keyValue": {
-                            "key": "key",
-                            "value": "value",
-                            "button": "One more"
-                        },
-                        "dateLocale": "en-us",
-                        "booleanOptions": [
-                            "True",
-                            "False"
-                        ],
-                        "validWeekDays": {
-                            "mon": true,
-                            "thu": true,
-                            "tue": true,
-                            "sun": true,
-                            "fri": true,
-                            "sat": true,
-                            "wed": true
-                        },
-                        "customOptionPlaceholder": "Describe your option",
-                        "range": {},
-                        "customOptionType": "textarea",
-                        "dateFormat": "MM/DD/Y",
-                        "timeFormat": "",
-                        "isUTC": "true"
-                    },
-                    "link": ""
-                },
-                {
-                    "fieldSysName": "checkin_review",
-                    "fetch": [],
-                    "sysName": "checkin_review",
-                    "name": "Guest Check-in Rating",
-                    "dataType": "number",
-                    "format": "positiveNum",
+                    "sysName": "description",
+                    "name": "Feature description",
+                    "dataType": "string",
+                    "format": "markdown",
                     "formatOptions": {},
                     "link": ""
                 },
                 {
-                    "fieldSysName": "checkout_review",
-                    "fetch": [],
-                    "sysName": "checkout_review",
-                    "name": "Guest Check-out Rating",
-                    "dataType": "number",
-                    "format": "positiveNum",
-                    "formatOptions": {},
-                    "link": ""
-                },
-                {
-                    "fieldSysName": "listing_id",
+                    "fieldSysName": "dev_status",
                     "fetch": [
                         {
                             "fieldSysName": "id",
@@ -259,82 +89,475 @@ let exampleTable = {
                             "fetch": []
                         },
                         {
-                            "fieldSysName": "listing_name",
+                            "fieldSysName": "status",
                             "condition": null,
                             "fetch": []
                         }
                     ],
-                    "sysName": "listing_id",
-                    "name": "Property Listing ID",
+                    "sysName": "dev_status",
+                    "name": "Development status",
                     "dataType": "link",
                     "format": "",
                     "formatOptions": {},
-                    "link": "listings"
+                    "link": "development_status"
+                },
+                {
+                    "fieldSysName": "feature_id",
+                    "fetch": [],
+                    "sysName": "feature_id",
+                    "name": "Inner ID",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": null
+                },
+                {
+                    "fieldSysName": "feature_type",
+                    "fetch": [],
+                    "sysName": "feature_type",
+                    "name": "Feature type",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "feature_type"
+                },
+                {
+                    "fieldSysName": "id",
+                    "fetch": [],
+                    "sysName": "id",
+                    "name": "id",
+                    "dataType": "id",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "progress",
+                    "fetch": [],
+                    "sysName": "progress",
+                    "name": "Progress",
+                    "dataType": "json",
+                    "format": "slider",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "unitName": "%",
+                        "dateLocale": "en-gb",
+                        "booleanOptions": [
+                            "True",
+                            "False"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {
+                            "min": 0,
+                            "max": 100,
+                            "step": 5
+                        },
+                        "customOptionType": "textarea",
+                        "dateFormat": "DD/MM/Y",
+                        "timeFormat": " HH:mm",
+                        "isUTC": "false"
+                    },
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "screenshots",
+                    "fetch": [],
+                    "sysName": "screenshots",
+                    "name": "Screenshots or Screencast",
+                    "dataType": "file",
+                    "format": "multipleFiles",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "status",
+                    "fetch": [
+                        {
+                            "fieldSysName": "id",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "status",
+                            "condition": null,
+                            "fetch": []
+                        }
+                    ],
+                    "sysName": "status",
+                    "name": "Request status",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "request_status"
+                },
+                {
+                    "fieldSysName": "subscriber_ids",
+                    "fetch": [
+                        {
+                            "fieldSysName": "firstName",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "id",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "lastName",
+                            "condition": null,
+                            "fetch": []
+                        }
+                    ],
+                    "sysName": "subscriber_ids",
+                    "name": "Subscribers",
+                    "dataType": "arrayLink",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "WebUser"
+                },
+                {
+                    "fieldSysName": "tags",
+                    "fetch": [],
+                    "sysName": "tags",
+                    "name": "Tags",
+                    "dataType": "arrayLink",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "tags"
+                },
+                {
+                    "fieldSysName": "title",
+                    "fetch": [],
+                    "sysName": "title",
+                    "name": "Feature title",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": null
+                },
+                {
+                    "fieldSysName": "user_id",
+                    "fetch": [
+                        {
+                            "fieldSysName": "firstName",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "id",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "lastName",
+                            "condition": null,
+                            "fetch": []
+                        }
+                    ],
+                    "sysName": "user_id",
+                    "name": "Who suggested",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "WebUser"
+                },
+                {
+                    "fieldSysName": "votes",
+                    "fetch": [],
+                    "sysName": "votes",
+                    "name": "Number of upvotes",
+                    "dataType": "number",
+                    "format": "positiveNum",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "votes_ids",
+                    "fetch": [
+                        {
+                            "fieldSysName": "firstName",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "id",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "lastName",
+                            "condition": null,
+                            "fetch": []
+                        },
+                        {
+                            "fieldSysName": "user_name",
+                            "condition": null,
+                            "fetch": []
+                        }
+                    ],
+                    "sysName": "votes_ids",
+                    "name": "Who upvoted",
+                    "dataType": "arrayLink",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "WebUser"
                 }
             ],
-            "writeFields": [],
+            "writeFields": [
+                {
+                    "fieldSysName": "color",
+                    "fetch": [],
+                    "sysName": "color",
+                    "name": "Card color",
+                    "dataType": "string",
+                    "format": "color",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "description",
+                    "fetch": [],
+                    "sysName": "description",
+                    "name": "Feature description",
+                    "dataType": "string",
+                    "format": "markdown",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "dev_status",
+                    "fetch": [],
+                    "sysName": "dev_status",
+                    "name": "Development status",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "development_status"
+                },
+                {
+                    "fieldSysName": "feature_type",
+                    "fetch": [],
+                    "sysName": "feature_type",
+                    "name": "Feature type",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "feature_type"
+                },
+                {
+                    "fieldSysName": "id",
+                    "fetch": [],
+                    "sysName": "id",
+                    "name": "id",
+                    "dataType": "id",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "progress",
+                    "fetch": [],
+                    "sysName": "progress",
+                    "name": "Progress",
+                    "dataType": "json",
+                    "format": "slider",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "unitName": "%",
+                        "dateLocale": "en-gb",
+                        "booleanOptions": [
+                            "True",
+                            "False"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {
+                            "min": 0,
+                            "max": 100,
+                            "step": 5
+                        },
+                        "customOptionType": "textarea",
+                        "dateFormat": "DD/MM/Y",
+                        "timeFormat": " HH:mm",
+                        "isUTC": "false"
+                    },
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "status",
+                    "fetch": [],
+                    "sysName": "status",
+                    "name": "Request status",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "request_status"
+                },
+                {
+                    "fieldSysName": "tags",
+                    "fetch": [],
+                    "sysName": "tags",
+                    "name": "Tags",
+                    "dataType": "arrayLink",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": "tags"
+                },
+                {
+                    "fieldSysName": "title",
+                    "fetch": [],
+                    "sysName": "title",
+                    "name": "Feature title",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": null
+                }
+            ],
             "fields": {
+                "color": {
+                    "id": "color",
+                    "content": "Card color",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "color",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "date_added": {
+                    "id": "date_added",
+                    "content": "Date added",
+                    "type": "field",
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "dateLocale": "en-gb",
+                        "booleanOptions": [
+                            "True",
+                            "False"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "D MMMM, Y",
+                        "timeFormat": "",
+                        "isUTC": "false"
+                    },
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "description": {
+                    "id": "description",
+                    "content": "Feature description",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "markdown",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "dev_status": {
+                    "id": "dev_status",
+                    "content": "Development status",
+                    "type": "field",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": "development_status",
+                    "actions": []
+                },
+                "feature_id": {
+                    "id": "feature_id",
+                    "content": "Inner ID",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": null,
+                    "actions": []
+                },
+                "feature_type": {
+                    "id": "feature_type",
+                    "content": "Feature type",
+                    "type": "field",
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": "feature_type",
+                    "actions": []
+                },
                 "id": {
                     "id": "id",
-                    "content": "reservation system ID",
+                    "content": "id",
                     "type": "field",
                     "dataType": "id",
                     "format": "",
                     "formatOptions": {},
+                    "write": true,
                     "read": true,
                     "link": "",
                     "actions": []
                 },
-                "reservationCode": {
-                    "id": "reservationCode",
-                    "content": "Reservation Code",
+                "progress": {
+                    "id": "progress",
+                    "content": "Progress",
                     "type": "field",
-                    "dataType": "string",
-                    "format": "",
-                    "formatOptions": {},
-                    "read": true,
-                    "link": null,
-                    "actions": []
-                },
-                "name": {
-                    "id": "name",
-                    "content": "Guest Name",
-                    "type": "field",
-                    "dataType": "string",
-                    "format": "",
-                    "formatOptions": {},
-                    "read": true,
-                    "link": null,
-                    "actions": []
-                },
-                "date_end": {
-                    "id": "date_end",
-                    "content": "Check-out Date",
-                    "type": "field",
-                    "dataType": "string",
-                    "format": "",
-                    "formatOptions": {},
-                    "read": true,
-                    "link": null,
-                    "actions": []
-                },
-                "date_start": {
-                    "id": "date_start",
-                    "content": "Check-in Date",
-                    "type": "field",
-                    "dataType": "string",
-                    "format": "",
-                    "formatOptions": {},
-                    "read": true,
-                    "link": null,
-                    "actions": []
-                },
-                "checkout_date": {
-                    "id": "checkout_date",
-                    "content": "Guest Checked out at",
-                    "type": "field",
-                    "dataType": "date",
-                    "format": "",
+                    "dataType": "json",
+                    "format": "slider",
                     "formatOptions": {
                         "customOptionLabel": "My option",
                         "keyValue": {
@@ -342,6 +565,7 @@ let exampleTable = {
                             "value": "value",
                             "button": "One more"
                         },
+                        "unitName": "%",
                         "dateLocale": "en-gb",
                         "booleanOptions": [
                             "True",
@@ -357,256 +581,277 @@ let exampleTable = {
                             "wed": true
                         },
                         "customOptionPlaceholder": "Describe your option",
-                        "range": {},
+                        "range": {
+                            "min": 0,
+                            "max": 100,
+                            "step": 5
+                        },
                         "customOptionType": "textarea",
-                        "dateFormat": "MM/DD/Y",
+                        "dateFormat": "DD/MM/Y",
                         "timeFormat": " HH:mm",
                         "isUTC": "false"
                     },
+                    "write": true,
                     "read": true,
                     "link": "",
                     "actions": []
                 },
-                "checkin_date": {
-                    "id": "checkin_date",
-                    "content": "Guest Checked in at",
+                "screenshots": {
+                    "id": "screenshots",
+                    "content": "Screenshots or Screencast",
                     "type": "field",
-                    "dataType": "date",
-                    "format": "",
-                    "formatOptions": {
-                        "customOptionLabel": "My option",
-                        "keyValue": {
-                            "key": "key",
-                            "value": "value",
-                            "button": "One more"
-                        },
-                        "dateLocale": "en-gb",
-                        "booleanOptions": [
-                            "True",
-                            "False"
-                        ],
-                        "validWeekDays": {
-                            "mon": true,
-                            "thu": true,
-                            "tue": true,
-                            "sun": true,
-                            "fri": true,
-                            "sat": true,
-                            "wed": true
-                        },
-                        "customOptionPlaceholder": "Describe your option",
-                        "range": {},
-                        "customOptionType": "textarea",
-                        "dateFormat": "MM/DD/Y",
-                        "timeFormat": " HH:mm",
-                        "isUTC": "false"
-                    },
-                    "read": true,
-                    "link": "",
-                    "actions": []
-                },
-                "end": {
-                    "id": "end",
-                    "content": "",
-                    "type": "field",
-                    "dataType": "date",
-                    "format": "",
-                    "formatOptions": {
-                        "customOptionLabel": "My option",
-                        "keyValue": {
-                            "key": "key",
-                            "value": "value",
-                            "button": "One more"
-                        },
-                        "dateLocale": "en-us",
-                        "booleanOptions": [
-                            "True",
-                            "False"
-                        ],
-                        "validWeekDays": {
-                            "mon": true,
-                            "thu": true,
-                            "tue": true,
-                            "sun": true,
-                            "fri": true,
-                            "sat": true,
-                            "wed": true
-                        },
-                        "customOptionPlaceholder": "Describe your option",
-                        "range": {},
-                        "customOptionType": "textarea",
-                        "dateFormat": "MM/DD/Y",
-                        "timeFormat": "",
-                        "isUTC": "true"
-                    },
-                    "read": true,
-                    "link": "",
-                    "actions": []
-                },
-                "start": {
-                    "id": "start",
-                    "content": "Check-in Date Sort",
-                    "type": "field",
-                    "dataType": "date",
-                    "format": "",
-                    "formatOptions": {
-                        "customOptionLabel": "My option",
-                        "keyValue": {
-                            "key": "key",
-                            "value": "value",
-                            "button": "One more"
-                        },
-                        "dateLocale": "en-us",
-                        "booleanOptions": [
-                            "True",
-                            "False"
-                        ],
-                        "validWeekDays": {
-                            "mon": true,
-                            "thu": true,
-                            "tue": true,
-                            "sun": true,
-                            "fri": true,
-                            "sat": true,
-                            "wed": true
-                        },
-                        "customOptionPlaceholder": "Describe your option",
-                        "range": {},
-                        "customOptionType": "textarea",
-                        "dateFormat": "MM/DD/Y",
-                        "timeFormat": "",
-                        "isUTC": "true"
-                    },
-                    "read": true,
-                    "link": "",
-                    "actions": []
-                },
-                "checkin_review": {
-                    "id": "checkin_review",
-                    "content": "Guest Check-in Rating",
-                    "type": "field",
-                    "dataType": "number",
-                    "format": "positiveNum",
+                    "dataType": "file",
+                    "format": "multipleFiles",
                     "formatOptions": {},
                     "read": true,
                     "link": "",
                     "actions": []
                 },
-                "checkout_review": {
-                    "id": "checkout_review",
-                    "content": "Guest Check-out Rating",
+                "status": {
+                    "id": "status",
+                    "content": "Request status",
                     "type": "field",
-                    "dataType": "number",
-                    "format": "positiveNum",
+                    "dataType": "link",
+                    "format": "",
                     "formatOptions": {},
+                    "write": true,
                     "read": true,
-                    "link": "",
+                    "link": "request_status",
                     "actions": []
                 },
-                "listing_id": {
-                    "id": "listing_id",
-                    "content": "Property Listing ID",
+                "subscriber_ids": {
+                    "id": "subscriber_ids",
+                    "content": "Subscribers",
+                    "type": "field",
+                    "dataType": "arrayLink",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "WebUser",
+                    "actions": []
+                },
+                "tags": {
+                    "id": "tags",
+                    "content": "Tags",
+                    "type": "field",
+                    "dataType": "arrayLink",
+                    "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": "tags",
+                    "actions": []
+                },
+                "title": {
+                    "id": "title",
+                    "content": "Feature title",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": null,
+                    "actions": []
+                },
+                "user_id": {
+                    "id": "user_id",
+                    "content": "Who suggested",
                     "type": "field",
                     "dataType": "link",
                     "format": "",
                     "formatOptions": {},
                     "read": true,
-                    "link": "listings",
+                    "link": "WebUser",
+                    "actions": []
+                },
+                "votes": {
+                    "id": "votes",
+                    "content": "Number of upvotes",
+                    "type": "field",
+                    "dataType": "number",
+                    "format": "positiveNum",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "votes_ids": {
+                    "id": "votes_ids",
+                    "content": "Who upvoted",
+                    "type": "field",
+                    "dataType": "arrayLink",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "WebUser",
+                    "actions": []
+                },
+                "action__10531621343955723": {
+                    "content": "Pick for development",
+                    "id": "action__10531621343955723",
+                    "type": "action",
+                    "actions": []
+                },
+                "action__37201621343964714": {
+                    "content": "Put back to backlog",
+                    "id": "action__37201621343964714",
+                    "type": "action",
+                    "actions": []
+                },
+                "action__14851621345231893": {
+                    "content": "Release!",
+                    "id": "action__14851621345231893",
+                    "type": "action",
                     "actions": []
                 }
             },
             "fieldParams": {
+                "color": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "date_added": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "description": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "dev_status": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": true,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
                 "id": {
                     "include": false,
-                    "disableEditing": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "reservationCode": {
+                "status": {
                     "include": true,
-                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": true,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "title": {
+                    "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "name": {
+                "user_id": {
                     "include": true,
-                    "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "date_end": {
+                "votes": {
                     "include": true,
-                    "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "date_start": {
+                "votes_ids": {
                     "include": true,
-                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false,
+                    "configureLinkedCard": {
+                        "fields": {
+                            "id": {
+                                "id": "id",
+                                "content": "id",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "id",
+                                "format": null,
+                                "formatOptions": {}
+                            },
+                            "user_name": {
+                                "id": "user_name",
+                                "content": "User name",
+                                "type": "field",
+                                "read": true,
+                                "dataType": "string",
+                                "format": null,
+                                "formatOptions": null
+                            }
+                        },
+                        "fieldParams": {
+                            "id": {
+                                "include": false,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            },
+                            "user_name": {
+                                "include": true,
+                                "fileImageFormat": "square",
+                                "fileImageSize": 200
+                            }
+                        },
+                        "fieldOrder": [
+                            "id",
+                            "user_name"
+                        ]
+                    }
+                },
+                "feature_type": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": true,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "feature_id": {
+                    "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "checkout_date": {
+                "subscriber_ids": {
                     "include": true,
-                    "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "checkin_date": {
+                "tags": {
                     "include": true,
-                    "disableEditing": false,
+                    "fileImageFormat": "square",
+                    "quickSearch": true,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "progress": {
+                    "include": true,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "end": {
+                "screenshots": {
                     "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "start": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "checkin_review": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "checkout_review": {
-                    "include": true,
-                    "disableEditing": false,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "listing_id": {
-                    "include": true,
-                    "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
@@ -616,387 +861,609 @@ let exampleTable = {
             "columns": {
                 "tab-1": {
                     "id": "tab-1",
-                    "title": "New section",
+                    "title": "Feature",
                     "fieldIds": [
+                        "feature_id",
+                        "progress",
+                        "user_id",
+                        "date_added",
+                        "feature_type",
+                        "title",
+                        "description",
+                        "status",
+                        "dev_status",
+                        "color",
                         "id",
-                        "reservationCode",
-                        "name",
-                        "date_end",
-                        "date_start",
-                        "checkout_date",
-                        "checkin_date",
-                        "end",
-                        "start",
-                        "checkin_review",
-                        "checkout_review",
-                        "listing_id"
+                        "tags",
+                        "screenshots"
+                    ]
+                },
+                "82431621030139706": {
+                    "id": "82431621030139706",
+                    "title": "Votes",
+                    "fieldIds": [
+                        "subscriber_ids",
+                        "votes_ids",
+                        "votes"
+                    ]
+                },
+                "29571621344123729": {
+                    "id": "29571621344123729",
+                    "title": "Manage",
+                    "fieldIds": [
+                        "action__10531621343955723",
+                        "action__14851621345231893",
+                        "action__37201621343964714"
                     ]
                 }
             },
             "columnOrder": [
-                "tab-1"
+                "tab-1",
+                "82431621030139706",
+                "29571621344123729"
             ],
-            "actions": []
+            "actions": [
+                {
+                    "sysName": "",
+                    "id": "10531621343955723",
+                    "name": "Pick for development",
+                    "displayAs": "button",
+                    "buttonIcon": "arrowRight",
+                    "buttonType": "accent",
+                    "formMapping": [
+                        {
+                            "id": "13041621344021008",
+                            "target": "id",
+                            "type": "objectField",
+                            "value": "id"
+                        },
+                        {
+                            "id": "30131621344029217",
+                            "target": "dev_status",
+                            "type": "const",
+                            "value": "under_development"
+                        }
+                    ],
+                    "conditionals": [
+                        {
+                            "id": "40471621344079447",
+                            "target": "field",
+                            "value": "planned",
+                            "field": "dev_status"
+                        }
+                    ],
+                    "dropdown": true,
+                    "closePopup": true
+                },
+                {
+                    "sysName": "",
+                    "id": "37201621343964714",
+                    "name": "Put back to backlog",
+                    "displayAs": "button",
+                    "buttonIcon": "arrowLeft",
+                    "buttonType": "accent",
+                    "dropdown": true,
+                    "closePopup": true,
+                    "formMapping": [
+                        {
+                            "id": "37871621344159914",
+                            "target": "id",
+                            "type": "objectField",
+                            "value": "id"
+                        },
+                        {
+                            "id": "69381621344160975",
+                            "target": "dev_status",
+                            "type": "const",
+                            "value": "planned"
+                        }
+                    ],
+                    "conditionals": [
+                        {
+                            "id": "75151621344162098",
+                            "target": "field",
+                            "value": "under_development",
+                            "field": "dev_status"
+                        }
+                    ]
+                },
+                {
+                    "sysName": "",
+                    "id": "14851621345231893",
+                    "name": "Release!",
+                    "displayAs": "button",
+                    "buttonIcon": "rocket",
+                    "buttonType": "accent",
+                    "dropdown": true,
+                    "closePopup": true,
+                    "formMapping": [
+                        {
+                            "id": "24921621345250090",
+                            "target": "id",
+                            "type": "objectField",
+                            "value": "id"
+                        },
+                        {
+                            "id": "38651621345261152",
+                            "target": "dev_status",
+                            "type": "const",
+                            "value": "released"
+                        }
+                    ],
+                    "conditionals": [
+                        {
+                            "id": "78811621345270074",
+                            "target": "field",
+                            "value": "under_development",
+                            "field": "dev_status"
+                        }
+                    ]
+                }
+            ]
         },
         "fields": {
+            "color": {
+                "include": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "date_added": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "description": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "dev_status": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": true,
+                "fileImageSize": 200,
+                "clickable": false,
+                "searchData": [
+                    {
+                        "key": "planned",
+                        "value": "Planned"
+                    },
+                    {
+                        "key": "released",
+                        "value": "Released"
+                    },
+                    {
+                        "key": "under_development",
+                        "value": "Under development"
+                    }
+                ]
+            },
             "id": {
                 "include": false,
-                "disableEditing": true,
                 "fileImageFormat": "square",
                 "quickSearch": false,
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "reservationCode": {
+            "status": {
                 "include": true,
-                "disableEditing": false,
+                "fileImageFormat": "square",
+                "quickSearch": true,
+                "fileImageSize": 200,
+                "clickable": false,
+                "searchData": [
+                    {
+                        "key": "approved",
+                        "value": "Approved"
+                    },
+                    {
+                        "key": "double",
+                        "value": "Double"
+                    },
+                    {
+                        "key": "declined",
+                        "value": "Declined"
+                    },
+                    {
+                        "key": "new",
+                        "value": "New"
+                    }
+                ]
+            },
+            "title": {
+                "include": true,
                 "fileImageFormat": "square",
                 "quickSearch": false,
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "name": {
+            "user_id": {
                 "include": true,
-                "disableEditing": false,
                 "fileImageFormat": "square",
                 "quickSearch": false,
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "date_end": {
+            "votes": {
                 "include": true,
-                "disableEditing": false,
                 "fileImageFormat": "square",
                 "quickSearch": false,
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "date_start": {
+            "votes_ids": {
                 "include": true,
-                "disableEditing": false,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false,
+                "configureLinkedCard": {
+                    "fields": {
+                        "id": {
+                            "id": "id",
+                            "content": "id",
+                            "type": "field",
+                            "read": true,
+                            "dataType": "id",
+                            "format": null,
+                            "formatOptions": {}
+                        },
+                        "user_name": {
+                            "id": "user_name",
+                            "content": "User name",
+                            "type": "field",
+                            "read": true,
+                            "dataType": "string",
+                            "format": null,
+                            "formatOptions": null
+                        }
+                    },
+                    "fieldParams": {
+                        "id": {
+                            "include": false,
+                            "fileImageFormat": "square",
+                            "fileImageSize": 200
+                        },
+                        "user_name": {
+                            "include": true,
+                            "fileImageFormat": "square",
+                            "fileImageSize": 200
+                        }
+                    },
+                    "fieldOrder": [
+                        "id",
+                        "user_name"
+                    ]
+                }
+            },
+            "feature_type": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": true,
+                "fileImageSize": 200,
+                "clickable": false,
+                "searchData": [
+                    {
+                        "key": "feature",
+                        "value": "feature"
+                    },
+                    {
+                        "key": "bug",
+                        "value": "bug"
+                    }
+                ]
+            },
+            "feature_id": {
+                "include": true,
                 "fileImageFormat": "square",
                 "quickSearch": false,
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "checkout_date": {
+            "subscriber_ids": {
                 "include": true,
-                "disableEditing": false,
                 "fileImageFormat": "square",
                 "quickSearch": false,
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "checkin_date": {
+            "tags": {
                 "include": true,
-                "disableEditing": false,
+                "fileImageFormat": "square",
+                "quickSearch": true,
+                "fileImageSize": 200,
+                "clickable": false,
+                "searchData": [
+                    {
+                        "key": "scenarios",
+                        "value": "scenarios"
+                    },
+                    {
+                        "key": "api-builder",
+                        "value": "api-builder"
+                    },
+                    {
+                        "key": "web-pages",
+                        "value": "web-pages"
+                    },
+                    {
+                        "key": "integrations",
+                        "value": "integrations"
+                    },
+                    {
+                        "key": "database",
+                        "value": "database"
+                    },
+                    {
+                        "key": "billing",
+                        "value": "billing"
+                    },
+                    {
+                        "key": "app life cycle management",
+                        "value": "app life cycle management"
+                    },
+                    {
+                        "key": "reports",
+                        "value": "reports"
+                    },
+                    {
+                        "key": "general issues",
+                        "value": "general issues"
+                    },
+                    {
+                        "key": "plugin",
+                        "value": "plugin"
+                    },
+                    {
+                        "key": "team plans",
+                        "value": "team plans"
+                    },
+                    {
+                        "key": "web3",
+                        "value": "web3"
+                    }
+                ]
+            },
+            "progress": {
+                "include": true,
                 "fileImageFormat": "square",
                 "quickSearch": false,
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "end": {
+            "screenshots": {
                 "include": true,
-                "disableEditing": false,
-                "fileImageFormat": "square",
-                "quickSearch": false,
-                "fileImageSize": 200,
-                "clickable": false
-            },
-            "start": {
-                "include": true,
-                "disableEditing": false,
-                "fileImageFormat": "square",
-                "quickSearch": false,
-                "fileImageSize": 200,
-                "clickable": false
-            },
-            "checkin_review": {
-                "include": true,
-                "disableEditing": false,
-                "fileImageFormat": "square",
-                "quickSearch": false,
-                "fileImageSize": 200,
-                "clickable": false
-            },
-            "checkout_review": {
-                "include": true,
-                "disableEditing": false,
-                "fileImageFormat": "square",
-                "quickSearch": false,
-                "fileImageSize": 200,
-                "clickable": false
-            },
-            "listing_id": {
-                "include": true,
-                "disableEditing": false,
                 "fileImageFormat": "square",
                 "quickSearch": false,
                 "fileImageSize": 200,
                 "clickable": false
             }
         },
-        "cardLayoutType": "html",
-        "cardCustomHtml": "{{id}}"
+        "cardColor": "color",
+        "cardColorOption": "border",
+        "cardHeaderComment": "dev_status",
+        "cardBodyText": "progress",
+        "showCounter": true,
+        "counterField": "votes",
+        "counterText": " upvotes",
+        "actions": [
+            {
+                "sysName": "",
+                "id": "10531621343955723",
+                "name": "Pick for development",
+                "displayAs": "button",
+                "buttonIcon": "arrowRight",
+                "buttonType": "accent",
+                "formMapping": [
+                    {
+                        "id": "13041621344021008",
+                        "target": "id",
+                        "type": "objectField",
+                        "value": "id"
+                    },
+                    {
+                        "id": "30131621344029217",
+                        "target": "dev_status",
+                        "type": "const",
+                        "value": "under_development"
+                    }
+                ],
+                "conditionals": [
+                    {
+                        "id": "40471621344079447",
+                        "target": "field",
+                        "value": "planned",
+                        "field": "dev_status",
+                        "fieldValue": "planned"
+                    }
+                ],
+                "dropdown": true,
+                "closePopup": true
+            },
+            {
+                "sysName": "",
+                "id": "37201621343964714",
+                "name": "Put back to backlog",
+                "displayAs": "button",
+                "buttonIcon": "arrowLeft",
+                "buttonType": "accent",
+                "dropdown": true,
+                "closePopup": true,
+                "formMapping": [
+                    {
+                        "id": "37871621344159914",
+                        "target": "id",
+                        "type": "objectField",
+                        "value": "id"
+                    },
+                    {
+                        "id": "69381621344160975",
+                        "target": "dev_status",
+                        "type": "const",
+                        "value": "planned"
+                    }
+                ],
+                "conditionals": [
+                    {
+                        "id": "75151621344162098",
+                        "target": "field",
+                        "value": "under_development",
+                        "field": "dev_status",
+                        "fieldValue": "planned"
+                    }
+                ]
+            },
+            {
+                "sysName": "",
+                "id": "14851621345231893",
+                "name": "Release!",
+                "displayAs": "button",
+                "buttonIcon": "rocket",
+                "buttonType": "accent",
+                "dropdown": true,
+                "closePopup": true,
+                "formMapping": [
+                    {
+                        "id": "24921621345250090",
+                        "target": "id",
+                        "type": "objectField",
+                        "value": "id"
+                    },
+                    {
+                        "id": "38651621345261152",
+                        "target": "dev_status",
+                        "type": "const",
+                        "value": "released"
+                    }
+                ],
+                "conditionals": [
+                    {
+                        "id": "78811621345270074",
+                        "target": "field",
+                        "value": "under_development",
+                        "field": "dev_status",
+                        "fieldValue": "planned"
+                    }
+                ]
+            }
+        ],
+        "filterParams": {
+            "filteringType": "regular",
+            "isFiltering": true,
+            "filterFields": {
+                "date_added": {
+                    "active": true,
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "dateLocale": "en-gb",
+                        "booleanOptions": [
+                            "True",
+                            "False"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "D MMMM, Y",
+                        "timeFormat": "",
+                        "isUTC": "false"
+                    },
+                    "name": "Date added"
+                },
+                "dev_status": {
+                    "active": true,
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "name": "Development status",
+                    "linkDirectory": [
+                        {
+                            "id": "planned",
+                            "text": "Planned"
+                        },
+                        {
+                            "id": "released",
+                            "text": "Released"
+                        },
+                        {
+                            "id": "under_development",
+                            "text": "Under development"
+                        }
+                    ]
+                },
+                "status": {
+                    "active": true,
+                    "dataType": "link",
+                    "format": "",
+                    "formatOptions": {},
+                    "name": "Request status",
+                    "linkDirectory": [
+                        {
+                            "id": "approved",
+                            "text": "Approved"
+                        },
+                        {
+                            "id": "double",
+                            "text": "Double"
+                        },
+                        {
+                            "id": "declined",
+                            "text": "Declined"
+                        },
+                        {
+                            "id": "new",
+                            "text": "New"
+                        }
+                    ]
+                },
+                "title": {
+                    "active": true,
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "name": "Feature title"
+                },
+                "feature_id": {
+                    "active": true,
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "name": "Inner ID"
+                }
+            },
+            "isSorting": false
+        },
+        "lazyLoading": true
     },
-    "tableTitle": "this is a test page",
+    "tableTitle": "",
     "actions": null,
     "headers": [
         {
-            "sysName": "id",
-            "name": "reservation system ID",
-            "dataType": "id",
-            "id": "0",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 0,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "indexExists": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false
-        },
-        {
-            "sysName": "reservationCode",
-            "name": "Reservation Code",
+            "sysName": "color",
             "dataType": "string",
-            "id": "35841726936401715",
-            "link": null,
-            "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 8,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "indexExists": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false
-        },
-        {
-            "sysName": "name",
-            "name": "Guest Name",
-            "dataType": "string",
-            "id": "80401726936397460",
-            "link": null,
-            "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 6,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "indexExists": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false
-        },
-        {
-            "sysName": "date_end",
-            "name": "Check-out Date",
-            "dataType": "string",
-            "id": "85581729693299509",
-            "link": null,
-            "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 5,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "indexExists": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false
-        },
-        {
-            "sysName": "date_start",
-            "name": "Check-in Date",
-            "dataType": "string",
-            "id": "60251729693293590",
-            "link": null,
-            "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 4,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "array": false,
-            "indexExists": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false
-        },
-        {
-            "sysName": "checkout_date",
-            "name": "Guest Checked out at",
-            "dataType": "date",
-            "id": "69361728215957520",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 17,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "MM/DD/Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "array": false,
-            "indexExists": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false
-        },
-        {
-            "sysName": "checkin_date",
-            "name": "Guest Checked in at",
-            "dataType": "date",
-            "id": "38091728215937769",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 16,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "MM/DD/Y",
-                "timeFormat": " HH:mm",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "array": false,
-            "indexExists": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false
-        },
-        {
-            "sysName": "end",
-            "name": "",
-            "dataType": "date",
-            "id": "77271726936435759",
+            "name": "Card color",
+            "id": "61881621017200362",
             "link": "",
             "group": "0",
             "tags": null,
@@ -1004,54 +1471,27 @@ let exampleTable = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 3,
+            "order": 9,
             "linkIndexFieldSysName": [],
             "defaultValue": null,
             "constraints": null,
             "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-us",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "MM/DD/Y",
-                "timeFormat": "",
-                "isUTC": "true"
-            },
+            "format": "color",
+            "formatOptions": null,
             "groupName": null,
-            "array": false,
             "indexExists": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
             "typeVariable": {},
-            "json": false
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "array": false
         },
         {
-            "sysName": "start",
-            "name": "Check-in Date Sort",
+            "sysName": "date_added",
             "dataType": "date",
-            "id": "10231726936433778",
+            "name": "Date added",
+            "id": "68351620832123660",
             "link": "",
             "group": "0",
             "tags": null,
@@ -1072,7 +1512,7 @@ let exampleTable = {
                     "value": "value",
                     "button": "One more"
                 },
-                "dateLocale": "en-us",
+                "dateLocale": "en-gb",
                 "booleanOptions": [
                     "True",
                     "False"
@@ -1089,320 +1529,2342 @@ let exampleTable = {
                 "customOptionPlaceholder": "Describe your option",
                 "range": {},
                 "customOptionType": "textarea",
-                "dateFormat": "MM/DD/Y",
+                "dateFormat": "D MMMM, Y",
                 "timeFormat": "",
-                "isUTC": "true"
+                "isUTC": "false"
             },
             "groupName": null,
-            "array": false,
             "indexExists": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
             "typeVariable": {},
-            "json": false
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "array": false
         },
         {
-            "sysName": "checkin_review",
-            "name": "Guest Check-in Rating",
-            "dataType": "number",
-            "id": "79751728221398350",
+            "sysName": "description",
+            "dataType": "string",
+            "name": "Feature description",
+            "id": "77031620832091108",
             "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 18,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": "positiveNum",
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "indexExists": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false
-        },
-        {
-            "sysName": "checkout_review",
-            "name": "Guest Check-out Rating",
-            "dataType": "number",
-            "id": "81671728221415499",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 19,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": "positiveNum",
-            "formatOptions": {},
-            "groupName": null,
-            "array": false,
-            "indexExists": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false
-        },
-        {
-            "sysName": "listing_id",
-            "name": "Property Listing ID",
-            "dataType": "link",
-            "id": "22191727631223828",
-            "link": "listings",
             "group": "0",
             "tags": null,
-            "indexing": true,
+            "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
             "order": 1,
-            "linkIndexFieldSysName": [
-                "listing_id.id",
-                "listing_id.listing_owner.id",
-                "listing_owner.id",
-                "id"
-            ],
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": "markdown",
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "array": false
+        },
+        {
+            "sysName": "dev_status",
+            "dataType": "link",
+            "name": "Development status",
+            "id": "85621620832330584",
+            "link": "development_status",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 8,
+            "linkIndexFieldSysName": [],
             "defaultValue": null,
             "constraints": null,
             "synthetic": false,
             "format": null,
             "formatOptions": null,
             "groupName": null,
-            "array": false,
-            "indexExists": true,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
+            "indexExists": false,
             "typeVariable": {},
-            "json": false
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "arrayLink": false,
+            "linkType": true,
+            "array": false
+        },
+        {
+            "sysName": "feature_id",
+            "dataType": "string",
+            "name": "Inner ID",
+            "id": "23601621342083348",
+            "link": null,
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 11,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "array": false
+        },
+        {
+            "sysName": "feature_type",
+            "dataType": "link",
+            "name": "Feature type",
+            "id": "55371621030232780",
+            "link": "feature_type",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 10,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "arrayLink": false,
+            "linkType": true,
+            "array": false
+        },
+        {
+            "sysName": "id",
+            "dataType": "id",
+            "name": "id",
+            "id": "0",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "array": false
+        },
+        {
+            "sysName": "progress",
+            "dataType": "json",
+            "name": "Progress",
+            "id": "68751622642385874",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 16,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "slider",
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "unitName": "%",
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {
+                    "min": 0,
+                    "max": 100,
+                    "step": 5
+                },
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": true,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "array": false
+        },
+        {
+            "sysName": "screenshots",
+            "dataType": "file",
+            "name": "Screenshots or Screencast",
+            "id": "61091637158867177",
+            "link": "",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 17,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": "multipleFiles",
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "array": false
+        },
+        {
+            "sysName": "status",
+            "dataType": "link",
+            "name": "Request status",
+            "id": "40251620832303364",
+            "link": "request_status",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 7,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "arrayLink": false,
+            "linkType": true,
+            "array": false
+        },
+        {
+            "sysName": "subscriber_ids",
+            "dataType": "arrayLink",
+            "name": "Subscribers",
+            "id": "26751621348189191",
+            "link": "WebUser",
+            "group": "1621348185318",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "arrayLink": true,
+            "linkType": false,
+            "array": false
+        },
+        {
+            "sysName": "tags",
+            "dataType": "arrayLink",
+            "name": "Tags",
+            "id": "67851621409605492",
+            "link": "tags",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 15,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "arrayLink": true,
+            "linkType": false,
+            "array": false
+        },
+        {
+            "sysName": "title",
+            "dataType": "string",
+            "name": "Feature title",
+            "id": "79031620832091734",
+            "link": null,
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "array": false
+        },
+        {
+            "sysName": "user_id",
+            "dataType": "link",
+            "name": "Who suggested",
+            "id": "59421620832153105",
+            "link": "WebUser",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "arrayLink": false,
+            "linkType": true,
+            "array": false
+        },
+        {
+            "sysName": "votes",
+            "dataType": "number",
+            "name": "Number of upvotes",
+            "id": "68061620832170304",
+            "link": "",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 5,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": "positiveNum",
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "array": false
+        },
+        {
+            "sysName": "votes_ids",
+            "dataType": "arrayLink",
+            "name": "Who upvoted",
+            "id": "14001620832180875",
+            "link": "WebUser",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 6,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "arrayLink": true,
+            "linkType": false,
+            "array": false
         }
     ],
     "data": [
         {
-            "listing_id": {
-                "id": "bcf2f658-4f00-4479-ab73-b0c51bf1b707",
-                "listing_name": "Wild Olive Lodge STAGE"
+            "subscriber_ids": [
+                {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                }
+            ],
+            "description": "A service \"Build an app for me\" where: \n- One can create a brief for an app.\n- Certified developers would offer their services.\n- Client deposits sum in D-coins.\n- When the work is done, D-coins are transferred to the developer.",
+            "tags": [
+                "general issues"
+            ],
+            "feature_id": "PLT-454",
+            "color": "57bf97",
+            "user_id": {
+                "lastName": "Ershov",
+                "firstName": "Pavel",
+                "id": "pavel@directual.com"
             },
-            "date_end": "2024-11-29",
-            "date_start": "2024-11-22",
-            "reservationCode": "HMCJ2EPRXD",
-            "id": "1418fb94e984-01b2deaa398dc4228d768c579777270c@airbnb.com",
-            "end": 1732838400000,
-            "start": 1732233600000
+            "feature_type": "feature",
+            "id": "4caf08d6-f7e6-40a3-bb9e-704e0ffeba0c",
+            "progress": "{\"firstValue\":100}",
+            "dev_status": {
+                "id": "under_development",
+                "status": "Under development"
+            },
+            "status": {
+                "id": "approved",
+                "status": "Approved"
+            },
+            "date_added": 1720187535000,
+            "title": "Hire a developer section"
         },
         {
-            "listing_id": {
-                "id": "bcf2f658-4f00-4479-ab73-b0c51bf1b707",
-                "listing_name": "Wild Olive Lodge STAGE"
+            "subscriber_ids": [
+                {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                }
+            ],
+            "description": "Add the \"Called from\" list for scenario:\n\n- Scenarios that are linked with the scenario\n- API endpoints that call scenario synchronically",
+            "tags": [
+                "scenarios"
+            ],
+            "feature_id": "PLT-457",
+            "color": "57bf97",
+            "user_id": {
+                "lastName": "Ershov",
+                "firstName": "Pavel",
+                "id": "pavel@directual.com"
             },
-            "date_end": "2024-12-02",
-            "date_start": "2024-11-29",
-            "reservationCode": "HM4XK3E88N",
-            "id": "1418fb94e984-91b796e46c4f3aa61c2eec8523180ef6@airbnb.com",
-            "end": 1733097600000,
-            "start": 1732838400000
+            "feature_type": "feature",
+            "id": "6e276c99-065c-4268-a49b-0a058a8c8bc5",
+            "progress": "{\"firstValue\":70}",
+            "dev_status": {
+                "id": "under_development",
+                "status": "Under development"
+            },
+            "status": {
+                "id": "approved",
+                "status": "Approved"
+            },
+            "date_added": 1726071007000,
+            "title": "\"Called from\" list for scenario"
         },
         {
-            "listing_id": {
-                "id": "bcf2f658-4f00-4479-ab73-b0c51bf1b707",
-                "listing_name": "Wild Olive Lodge STAGE"
+            "subscriber_ids": [
+                {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                }
+            ],
+            "description": "Upgrade cards component: add new layouts, improve iteractions with cards, etc.",
+            "tags": [
+                "web-pages"
+            ],
+            "feature_id": "PLT-460",
+            "color": "57bf97",
+            "user_id": {
+                "lastName": "Ershov",
+                "firstName": "Pavel",
+                "id": "pavel@directual.com"
             },
-            "date_end": "2024-12-04",
-            "date_start": "2024-12-02",
-            "reservationCode": "HM5Z3K22CD",
-            "id": "1418fb94e984-f04d37c693a0b19d861c36c2f1bba304@airbnb.com",
-            "end": 1733270400000,
-            "start": 1733097600000
+            "feature_type": "feature",
+            "id": "4af27e44-58f5-4d03-97ef-55302ea96aed",
+            "progress": "{\"firstValue\":75}",
+            "dev_status": {
+                "id": "under_development",
+                "status": "Under development"
+            },
+            "status": {
+                "id": "approved",
+                "status": "Approved"
+            },
+            "date_added": 1730226584000,
+            "title": "New Cards component (Cards '24)"
         },
         {
-            "listing_id": {
-                "id": "bcf2f658-4f00-4479-ab73-b0c51bf1b707",
-                "listing_name": "Wild Olive Lodge STAGE"
+            "subscriber_ids": [
+                {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                }
+            ],
+            "description": "- Add multiple addresses via SMTP plugin\n- Add a select of the email in email-step",
+            "tags": [
+                "scenarios",
+                "integrations"
+            ],
+            "feature_id": "PLT-461",
+            "color": "57bf97",
+            "user_id": {
+                "lastName": "Ershov",
+                "firstName": "Pavel",
+                "id": "pavel@directual.com"
             },
-            "date_end": "2024-12-08",
-            "date_start": "2024-12-05",
-            "reservationCode": "HMJAJ43JA3",
-            "id": "1418fb94e984-adaf4177b2100d74f36e72446fa22830@airbnb.com",
-            "end": 1733616000000,
-            "start": 1733356800000
+            "feature_type": "feature",
+            "id": "e3d66246-e04a-4225-b178-267474eac458",
+            "progress": "{\"firstValue\":80}",
+            "dev_status": {
+                "id": "under_development",
+                "status": "Under development"
+            },
+            "status": {
+                "id": "approved",
+                "status": "Approved"
+            },
+            "date_added": 1730226692000,
+            "title": "Add multiple addresses in SMTP plugin"
         },
         {
-            "name": "Nikole Chaves",
-            "checkout_date": 1732468463327,
-            "listing_id": {
-                "id": "cd8bf6b5-5c2c-4239-9ee4-571b4229429d",
-                "listing_name": "Wild Olive Den STAGE"
+            "subscriber_ids": [
+                {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                }
+            ],
+            "description": "Add templates for conditions and re-use them!",
+            "tags": [
+                "web-pages"
+            ],
+            "feature_id": "PLT-466",
+            "color": "57bf97",
+            "user_id": {
+                "lastName": "Ershov",
+                "firstName": "Pavel",
+                "id": "pavel@directual.com"
             },
-            "date_end": "2024-11-24",
-            "date_start": "2024-11-22",
-            "reservationCode": "HMDDYMYSJA",
-            "id": "0950173f-1cc7-4a54-9bd4-b7249d565de2@reservations.hospitable.com",
-            "checkout_review": 3,
-            "end": 1732406400000,
-            "start": 1732233600000
+            "feature_type": "feature",
+            "id": "c90782c9-9840-450d-8535-8b4605ecb86d",
+            "progress": "{\"firstValue\":90}",
+            "dev_status": {
+                "id": "under_development",
+                "status": "Under development"
+            },
+            "status": {
+                "id": "approved",
+                "status": "Approved"
+            },
+            "date_added": 1739915274000,
+            "title": "Condition templates for Multistep form"
         },
         {
-            "name": "David De La Cruz",
-            "listing_id": {
-                "id": "cd8bf6b5-5c2c-4239-9ee4-571b4229429d",
-                "listing_name": "Wild Olive Den STAGE"
+            "votes": 31,
+            "subscriber_ids": [
+                {
+                    "firstName": "Victor",
+                    "lastName": "Zaborskiy",
+                    "id": "victor@zaborskiy.com"
+                },
+                {
+                    "firstName": "Александр",
+                    "lastName": "Головков",
+                    "id": "a.golovkoff@gmail.com"
+                },
+                {
+                    "id": "mf.alexander@gmail.com"
+                },
+                {
+                    "firstName": "Nuno",
+                    "lastName": "Poço",
+                    "id": "nuno.poco@gmail.com"
+                },
+                {
+                    "firstName": "Dimitry",
+                    "lastName": "Novozhilov",
+                    "id": "novozhilov@code-word.ru"
+                },
+                {
+                    "lastName": "Reyes",
+                    "firstName": "Cathy",
+                    "id": "iamcathyreyes@yahoo.com"
+                },
+                {
+                    "firstName": "Vladimir",
+                    "lastName": "Stepanenko",
+                    "id": "vgstepanenko@gmail.com"
+                },
+                {
+                    "lastName": "Quinn",
+                    "firstName": "Niki",
+                    "id": "niki_q@icloud.com"
+                },
+                {
+                    "firstName": "Roman",
+                    "lastName": "Tkachev",
+                    "id": "tkachev.rb@gmail.com"
+                },
+                {
+                    "id": "hamelmesfin@gmail.com"
+                },
+                {
+                    "id": "subrtt@gmail.com"
+                },
+                {
+                    "firstName": "Joses",
+                    "lastName": "Saumaitoga",
+                    "id": "josesjjs@tpg.com.au"
+                },
+                {
+                    "lastName": "Nichols",
+                    "firstName": "Joanne",
+                    "id": "jonichols@me.com"
+                },
+                {
+                    "id": "newmb.eg@gmail.com"
+                },
+                {
+                    "lastName": "Goncharov",
+                    "firstName": "Pavel",
+                    "id": "pavel@goncharov.me"
+                },
+                {
+                    "lastName": "Khokhlov",
+                    "firstName": "Alexey",
+                    "id": "alexhohlov89@gmail.com"
+                },
+                {
+                    "lastName": "Chandler",
+                    "firstName": "Jacob",
+                    "id": "jrchandler@gmail.com"
+                },
+                {
+                    "firstName": "Max",
+                    "lastName": "Lykov",
+                    "id": "mxf@mail.ru"
+                },
+                {
+                    "firstName": "Efim",
+                    "lastName": "Maisak",
+                    "id": "coldnaked@gmail.com"
+                },
+                {
+                    "id": "lykovmaxim@gmail.com"
+                },
+                {
+                    "id": "drammichd@gmail.com"
+                },
+                {
+                    "id": "kolgtim@gmail.com"
+                },
+                {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                },
+                {
+                    "id": "xavvis308@gmail.com"
+                },
+                {
+                    "id": "sergey.azarov@gmail.com"
+                },
+                {
+                    "firstName": "Elise",
+                    "lastName": "Boonstra-Legerstee",
+                    "id": "elise.legerstee@gmail.com"
+                },
+                {
+                    "firstName": "Hao",
+                    "lastName": "Ngo",
+                    "id": "hao.ngolv@gmail.com"
+                },
+                {
+                    "id": "kovgan96@gmail.com"
+                },
+                {
+                    "id": "trustpropsonline@gmail.com"
+                },
+                {
+                    "lastName": "Титов",
+                    "firstName": "Олег",
+                    "id": "easylife9525@gmail.com"
+                },
+                {
+                    "firstName": "JOHNLY",
+                    "lastName": "NARAG",
+                    "id": "johnly_s_narag@yahoo.com"
+                }
+            ],
+            "description": "Calendar view for the structure",
+            "tags": [
+                "web-pages"
+            ],
+            "feature_id": "PLT-113",
+            "color": "57bf97",
+            "user_id": {
+                "lastName": "Ershov",
+                "firstName": "Pavel",
+                "id": "pavel@directual.com"
             },
-            "date_end": "2024-12-08",
-            "date_start": "2024-12-05",
-            "reservationCode": "HMJQ39H9ZP",
-            "id": "2cf31189-064c-449b-9456-97fd7731b086@reservations.hospitable.com",
-            "end": 1733616000000,
-            "start": 1733356800000
+            "feature_type": "feature",
+            "id": "2c7192b1-cae4-4234-a245-8e5d0160ee2f",
+            "dev_status": {
+                "id": "planned",
+                "status": "Planned"
+            },
+            "status": {
+                "id": "approved",
+                "status": "Approved"
+            },
+            "date_added": 1621374804000,
+            "votes_ids": [
+                {
+                    "firstName": "Victor",
+                    "lastName": "Zaborskiy",
+                    "id": "victor@zaborskiy.com"
+                },
+                {
+                    "firstName": "Александр",
+                    "lastName": "Головков",
+                    "id": "a.golovkoff@gmail.com"
+                },
+                {
+                    "id": "mf.alexander@gmail.com"
+                },
+                {
+                    "firstName": "Nuno",
+                    "lastName": "Poço",
+                    "id": "nuno.poco@gmail.com"
+                },
+                {
+                    "firstName": "Dimitry",
+                    "lastName": "Novozhilov",
+                    "id": "novozhilov@code-word.ru"
+                },
+                {
+                    "lastName": "Reyes",
+                    "firstName": "Cathy",
+                    "id": "iamcathyreyes@yahoo.com"
+                },
+                {
+                    "firstName": "Vladimir",
+                    "lastName": "Stepanenko",
+                    "id": "vgstepanenko@gmail.com"
+                },
+                {
+                    "lastName": "Quinn",
+                    "firstName": "Niki",
+                    "id": "niki_q@icloud.com"
+                },
+                {
+                    "firstName": "Roman",
+                    "lastName": "Tkachev",
+                    "id": "tkachev.rb@gmail.com"
+                },
+                {
+                    "id": "hamelmesfin@gmail.com"
+                },
+                {
+                    "id": "subrtt@gmail.com"
+                },
+                {
+                    "firstName": "Joses",
+                    "lastName": "Saumaitoga",
+                    "id": "josesjjs@tpg.com.au"
+                },
+                {
+                    "lastName": "Nichols",
+                    "firstName": "Joanne",
+                    "id": "jonichols@me.com"
+                },
+                {
+                    "id": "newmb.eg@gmail.com"
+                },
+                {
+                    "lastName": "Goncharov",
+                    "firstName": "Pavel",
+                    "id": "pavel@goncharov.me"
+                },
+                {
+                    "lastName": "Khokhlov",
+                    "firstName": "Alexey",
+                    "id": "alexhohlov89@gmail.com"
+                },
+                {
+                    "lastName": "Chandler",
+                    "firstName": "Jacob",
+                    "id": "jrchandler@gmail.com"
+                },
+                {
+                    "firstName": "Max",
+                    "lastName": "Lykov",
+                    "id": "mxf@mail.ru"
+                },
+                {
+                    "firstName": "Efim",
+                    "lastName": "Maisak",
+                    "id": "coldnaked@gmail.com"
+                },
+                {
+                    "id": "lykovmaxim@gmail.com"
+                },
+                {
+                    "id": "drammichd@gmail.com"
+                },
+                {
+                    "id": "kolgtim@gmail.com"
+                },
+                {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                },
+                {
+                    "id": "xavvis308@gmail.com"
+                },
+                {
+                    "id": "sergey.azarov@gmail.com"
+                },
+                {
+                    "firstName": "Elise",
+                    "lastName": "Boonstra-Legerstee",
+                    "id": "elise.legerstee@gmail.com"
+                },
+                {
+                    "firstName": "Hao",
+                    "lastName": "Ngo",
+                    "id": "hao.ngolv@gmail.com"
+                },
+                {
+                    "id": "kovgan96@gmail.com"
+                },
+                {
+                    "id": "trustpropsonline@gmail.com"
+                },
+                {
+                    "lastName": "Титов",
+                    "firstName": "Олег",
+                    "id": "easylife9525@gmail.com"
+                },
+                {
+                    "firstName": "JOHNLY",
+                    "lastName": "NARAG",
+                    "id": "johnly_s_narag@yahoo.com"
+                }
+            ],
+            "title": "Calendar component",
+            "progress": ""
         },
         {
-            "name": "Kayla Moffitt",
-            "checkin_review": 8,
-            "listing_id": {
-                "id": "cd8bf6b5-5c2c-4239-9ee4-571b4229429d",
-                "listing_name": "Wild Olive Den STAGE"
+            "votes": 17,
+            "subscriber_ids": [
+                {
+                    "firstName": "Egor",
+                    "lastName": "Baev",
+                    "id": "artosiris@gmail.com"
+                },
+                {
+                    "id": "dave@tomorrowready.com"
+                },
+                {
+                    "firstName": "Mathew",
+                    "lastName": "Tusa",
+                    "id": "mobileactionim@gmail.com"
+                },
+                {
+                    "lastName": "H",
+                    "firstName": "Alejandro",
+                    "id": "digitalgebo@gmail.com"
+                },
+                {
+                    "firstName": "Dimitry",
+                    "lastName": "Novozhilov",
+                    "id": "novozhilov@code-word.ru"
+                },
+                {
+                    "firstName": "Vladimir",
+                    "lastName": "Stepanenko",
+                    "id": "vgstepanenko@gmail.com"
+                },
+                {
+                    "firstName": "A",
+                    "lastName": "A",
+                    "id": "admin@agdigitals.com"
+                },
+                {
+                    "firstName": "Roman",
+                    "lastName": "Tkachev",
+                    "id": "tkachev.rb@gmail.com"
+                },
+                {
+                    "lastName": "Pearson",
+                    "firstName": "Lloyd",
+                    "id": "lloydpearson@packagecues.com"
+                },
+                {
+                    "lastName": "N",
+                    "firstName": "Kamil",
+                    "id": "kamil@leverall.com"
+                },
+                {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                },
+                {
+                    "firstName": "titouan",
+                    "lastName": "albouy",
+                    "id": "titouan@akatek.io"
+                },
+                {
+                    "firstName": "VISHAL",
+                    "lastName": "SETHI",
+                    "id": "vs301991@gmail.com"
+                },
+                {
+                    "firstName": "Elise",
+                    "lastName": "Boonstra-Legerstee",
+                    "id": "elise.legerstee@gmail.com"
+                },
+                {
+                    "firstName": "Thomas",
+                    "lastName": "Omaley",
+                    "id": "thomasomaley1964@gmail.com"
+                },
+                {
+                    "id": "trustpropsonline@gmail.com"
+                },
+                {
+                    "id": "lindamacdonalde@gmail.com"
+                },
+                {
+                    "firstName": "JOHNLY",
+                    "lastName": "NARAG",
+                    "id": "johnly_s_narag@yahoo.com"
+                }
+            ],
+            "description": "Option to restrict any access to files on Directual for non-authorised users",
+            "tags": [
+                "database"
+            ],
+            "feature_id": "PLT-177",
+            "color": "57bf97",
+            "user_id": {
+                "lastName": "Ershov",
+                "firstName": "Pavel",
+                "id": "pavel@directual.com"
             },
-            "date_end": "2024-11-17",
-            "date_start": "2024-11-13",
-            "reservationCode": "HMNJYYFNSK",
-            "id": "b194eee4-8e03-4216-b4f7-d3283c2d956d@reservations.hospitable.com",
-            "end": 1731801600000,
-            "start": 1731456000000
+            "feature_type": "feature",
+            "id": "3874bd01-38af-4d0c-a04f-5eb999733d4f",
+            "progress": "{\"firstValue\":0}",
+            "dev_status": {
+                "id": "planned",
+                "status": "Planned"
+            },
+            "status": {
+                "id": "approved",
+                "status": "Approved"
+            },
+            "date_added": 1625253351000,
+            "votes_ids": [
+                {
+                    "firstName": "Egor",
+                    "lastName": "Baev",
+                    "id": "artosiris@gmail.com"
+                },
+                {
+                    "id": "dave@tomorrowready.com"
+                },
+                {
+                    "firstName": "Mathew",
+                    "lastName": "Tusa",
+                    "id": "mobileactionim@gmail.com"
+                },
+                {
+                    "lastName": "H",
+                    "firstName": "Alejandro",
+                    "id": "digitalgebo@gmail.com"
+                },
+                {
+                    "firstName": "Dimitry",
+                    "lastName": "Novozhilov",
+                    "id": "novozhilov@code-word.ru"
+                },
+                {
+                    "firstName": "Vladimir",
+                    "lastName": "Stepanenko",
+                    "id": "vgstepanenko@gmail.com"
+                },
+                {
+                    "firstName": "A",
+                    "lastName": "A",
+                    "id": "admin@agdigitals.com"
+                },
+                {
+                    "firstName": "Roman",
+                    "lastName": "Tkachev",
+                    "id": "tkachev.rb@gmail.com"
+                },
+                {
+                    "lastName": "Pearson",
+                    "firstName": "Lloyd",
+                    "id": "lloydpearson@packagecues.com"
+                },
+                {
+                    "lastName": "N",
+                    "firstName": "Kamil",
+                    "id": "kamil@leverall.com"
+                },
+                {
+                    "firstName": "titouan",
+                    "lastName": "albouy",
+                    "id": "titouan@akatek.io"
+                },
+                {
+                    "firstName": "VISHAL",
+                    "lastName": "SETHI",
+                    "id": "vs301991@gmail.com"
+                },
+                {
+                    "firstName": "Elise",
+                    "lastName": "Boonstra-Legerstee",
+                    "id": "elise.legerstee@gmail.com"
+                },
+                {
+                    "firstName": "Thomas",
+                    "lastName": "Omaley",
+                    "id": "thomasomaley1964@gmail.com"
+                },
+                {
+                    "id": "trustpropsonline@gmail.com"
+                },
+                {
+                    "id": "lindamacdonalde@gmail.com"
+                },
+                {
+                    "firstName": "JOHNLY",
+                    "lastName": "NARAG",
+                    "id": "johnly_s_narag@yahoo.com"
+                }
+            ],
+            "title": "Restrict access to files "
         },
         {
-            "name": "Justin Gaines",
-            "listing_id": {
-                "id": "cd8bf6b5-5c2c-4239-9ee4-571b4229429d",
-                "listing_name": "Wild Olive Den STAGE"
+            "votes": 15,
+            "subscriber_ids": [
+                {
+                    "firstName": "Egor",
+                    "lastName": "Baev",
+                    "id": "artosiris@gmail.com"
+                },
+                {
+                    "lastName": "Nazarov",
+                    "firstName": "Oleg",
+                    "id": "olegnazarov@hotmail.com"
+                },
+                {
+                    "id": "mf.alexander@gmail.com"
+                },
+                {
+                    "firstName": "Dimitry",
+                    "lastName": "Novozhilov",
+                    "id": "novozhilov@code-word.ru"
+                },
+                {
+                    "firstName": "Vladimir",
+                    "lastName": "Stepanenko",
+                    "id": "vgstepanenko@gmail.com"
+                },
+                {
+                    "firstName": "Roman",
+                    "lastName": "Tkachev",
+                    "id": "tkachev.rb@gmail.com"
+                },
+                {
+                    "id": "hamelmesfin@gmail.com"
+                },
+                {
+                    "id": "av.volgin@gmail.com"
+                },
+                {
+                    "lastName": "Goncharov",
+                    "firstName": "Pavel",
+                    "id": "pavel@goncharov.me"
+                },
+                {
+                    "lastName": "Khokhlov",
+                    "firstName": "Alexey",
+                    "id": "alexhohlov89@gmail.com"
+                },
+                {
+                    "firstName": "Max",
+                    "lastName": "Lykov",
+                    "id": "mxf@mail.ru"
+                },
+                {
+                    "id": "lykovmaxim@gmail.com"
+                },
+                {
+                    "id": "trustpropsonline@gmail.com"
+                },
+                {
+                    "lastName": "Титов",
+                    "firstName": "Олег",
+                    "id": "easylife9525@gmail.com"
+                },
+                {
+                    "firstName": "JOHNLY",
+                    "lastName": "NARAG",
+                    "id": "johnly_s_narag@yahoo.com"
+                }
+            ],
+            "description": "from the table row",
+            "tags": [
+                "web-pages"
+            ],
+            "feature_id": "PLT-107",
+            "color": "57bf97",
+            "user_id": {
+                "lastName": "Ershov",
+                "firstName": "Pavel",
+                "id": "pavel@directual.com"
             },
-            "date_end": "2024-12-05",
-            "date_start": "2024-12-02",
-            "reservationCode": "HMRMH58E3J",
-            "id": "44238fa6-6cfe-4295-aa95-e42ab01fd65b@reservations.hospitable.com",
-            "end": 1733356800000,
-            "start": 1733097600000
+            "feature_type": "feature",
+            "id": "bcfb59c9-235d-4d4a-96d9-07c73ec20124",
+            "dev_status": {
+                "id": "planned",
+                "status": "Planned"
+            },
+            "status": {
+                "id": "approved",
+                "status": "Approved"
+            },
+            "date_added": 1621374197000,
+            "votes_ids": [
+                {
+                    "firstName": "Egor",
+                    "lastName": "Baev",
+                    "id": "artosiris@gmail.com"
+                },
+                {
+                    "lastName": "Nazarov",
+                    "firstName": "Oleg",
+                    "id": "olegnazarov@hotmail.com"
+                },
+                {
+                    "id": "mf.alexander@gmail.com"
+                },
+                {
+                    "firstName": "Dimitry",
+                    "lastName": "Novozhilov",
+                    "id": "novozhilov@code-word.ru"
+                },
+                {
+                    "firstName": "Vladimir",
+                    "lastName": "Stepanenko",
+                    "id": "vgstepanenko@gmail.com"
+                },
+                {
+                    "firstName": "Roman",
+                    "lastName": "Tkachev",
+                    "id": "tkachev.rb@gmail.com"
+                },
+                {
+                    "id": "hamelmesfin@gmail.com"
+                },
+                {
+                    "id": "av.volgin@gmail.com"
+                },
+                {
+                    "lastName": "Goncharov",
+                    "firstName": "Pavel",
+                    "id": "pavel@goncharov.me"
+                },
+                {
+                    "lastName": "Khokhlov",
+                    "firstName": "Alexey",
+                    "id": "alexhohlov89@gmail.com"
+                },
+                {
+                    "firstName": "Max",
+                    "lastName": "Lykov",
+                    "id": "mxf@mail.ru"
+                },
+                {
+                    "id": "lykovmaxim@gmail.com"
+                },
+                {
+                    "id": "trustpropsonline@gmail.com"
+                },
+                {
+                    "lastName": "Титов",
+                    "firstName": "Олег",
+                    "id": "easylife9525@gmail.com"
+                },
+                {
+                    "firstName": "JOHNLY",
+                    "lastName": "NARAG",
+                    "id": "johnly_s_narag@yahoo.com"
+                }
+            ],
+            "title": "Actions in Table",
+            "progress": ""
         },
         {
-            "name": "Victoria McDougald",
-            "listing_id": {
-                "id": "cd8bf6b5-5c2c-4239-9ee4-571b4229429d",
-                "listing_name": "Wild Olive Den STAGE"
+            "votes": 12,
+            "subscriber_ids": [
+                {
+                    "firstName": "Egor",
+                    "lastName": "Baev",
+                    "id": "artosiris@gmail.com"
+                },
+                {
+                    "firstName": "Dimitry",
+                    "lastName": "Novozhilov",
+                    "id": "novozhilov@code-word.ru"
+                },
+                {
+                    "lastName": "Reyes",
+                    "firstName": "Cathy",
+                    "id": "iamcathyreyes@yahoo.com"
+                },
+                {
+                    "firstName": "Vladimir",
+                    "lastName": "Stepanenko",
+                    "id": "vgstepanenko@gmail.com"
+                },
+                {
+                    "firstName": "Do",
+                    "lastName": "Do",
+                    "id": "dodo@inboxbear.com"
+                },
+                {
+                    "lastName": "Goncharov",
+                    "firstName": "Pavel",
+                    "id": "pavel@goncharov.me"
+                },
+                {
+                    "firstName": "Max",
+                    "lastName": "Lykov",
+                    "id": "mxf@mail.ru"
+                },
+                {
+                    "firstName": "Efim",
+                    "lastName": "Maisak",
+                    "id": "coldnaked@gmail.com"
+                },
+                {
+                    "id": "kolgtim@gmail.com"
+                },
+                {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                },
+                {
+                    "firstName": "Renato",
+                    "lastName": "Pinto",
+                    "id": "renato.casa.corre@gmail.com"
+                },
+                {
+                    "firstName": "JOHNLY",
+                    "lastName": "NARAG",
+                    "id": "johnly_s_narag@yahoo.com"
+                }
+            ],
+            "description": "As of today, arrayLink is displayed as a simple list. It would be great to have:\n\n- Comments\n- ✅ Sorted list (in prod)\n- Cards\n- ✅ Table (in prod)\n- ✅ Shopping cart (in prod)\n- Calendar",
+            "tags": [
+                "web-pages"
+            ],
+            "feature_id": "PLT-114",
+            "color": "57bf97",
+            "user_id": {
+                "lastName": "Ershov",
+                "firstName": "Pavel",
+                "id": "pavel@directual.com"
             },
-            "date_end": "2024-11-26",
-            "date_start": "2024-11-24",
-            "reservationCode": "HOST-T5VCLU",
-            "id": "bcb93e67-7d1a-4871-95c7-ec2f67be6e6d@reservations.hospitable.com",
-            "end": 1732579200000,
-            "start": 1732406400000
+            "feature_type": "feature",
+            "id": "db3ce173-737a-4b9b-9872-f9c5d090f015",
+            "progress": "{\"firstValue\":40}",
+            "dev_status": {
+                "id": "planned",
+                "status": "Planned"
+            },
+            "status": {
+                "id": "approved",
+                "status": "Approved"
+            },
+            "date_added": 1621374947000,
+            "votes_ids": [
+                {
+                    "firstName": "Egor",
+                    "lastName": "Baev",
+                    "id": "artosiris@gmail.com"
+                },
+                {
+                    "firstName": "Dimitry",
+                    "lastName": "Novozhilov",
+                    "id": "novozhilov@code-word.ru"
+                },
+                {
+                    "lastName": "Reyes",
+                    "firstName": "Cathy",
+                    "id": "iamcathyreyes@yahoo.com"
+                },
+                {
+                    "firstName": "Vladimir",
+                    "lastName": "Stepanenko",
+                    "id": "vgstepanenko@gmail.com"
+                },
+                {
+                    "firstName": "Do",
+                    "lastName": "Do",
+                    "id": "dodo@inboxbear.com"
+                },
+                {
+                    "lastName": "Goncharov",
+                    "firstName": "Pavel",
+                    "id": "pavel@goncharov.me"
+                },
+                {
+                    "firstName": "Max",
+                    "lastName": "Lykov",
+                    "id": "mxf@mail.ru"
+                },
+                {
+                    "firstName": "Efim",
+                    "lastName": "Maisak",
+                    "id": "coldnaked@gmail.com"
+                },
+                {
+                    "id": "kolgtim@gmail.com"
+                },
+                {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                },
+                {
+                    "firstName": "Renato",
+                    "lastName": "Pinto",
+                    "id": "renato.casa.corre@gmail.com"
+                },
+                {
+                    "firstName": "JOHNLY",
+                    "lastName": "NARAG",
+                    "id": "johnly_s_narag@yahoo.com"
+                }
+            ],
+            "title": "Sophisticated view for arrayLinks on object cards"
+        },
+        {
+            "votes": 11,
+            "subscriber_ids": [
+                {
+                    "firstName": "Egor",
+                    "lastName": "Baev",
+                    "id": "artosiris@gmail.com"
+                },
+                {
+                    "firstName": "Kashtanov",
+                    "lastName": "Dmitry",
+                    "id": "y3sw0r1d@gmail.com"
+                },
+                {
+                    "firstName": "Vladislav",
+                    "lastName": "Boyko",
+                    "id": "for.work.vboyko@yandex.ru"
+                },
+                {
+                    "firstName": "Dimitry",
+                    "lastName": "Novozhilov",
+                    "id": "novozhilov@code-word.ru"
+                },
+                {
+                    "firstName": "Roman",
+                    "lastName": "Tkachev",
+                    "id": "tkachev.rb@gmail.com"
+                },
+                {
+                    "id": "effgenij@gmail.com"
+                },
+                {
+                    "lastName": "Mozer",
+                    "firstName": "Anna",
+                    "id": "annmozer116@gmail.com"
+                },
+                {
+                    "firstName": "Max",
+                    "lastName": "Lykov",
+                    "id": "mxf@mail.ru"
+                },
+                {
+                    "id": "lykovmaxim@gmail.com"
+                },
+                {
+                    "firstName": "JOHNLY",
+                    "lastName": "NARAG",
+                    "id": "johnly_s_narag@yahoo.com"
+                },
+                {
+                    "lastName": "Dolgov",
+                    "firstName": "Nikita",
+                    "id": "n.dolgov@directual.com"
+                }
+            ],
+            "description": "Allow users to copy and paste cubes in scenarios",
+            "tags": [
+                "scenarios"
+            ],
+            "feature_id": "PLT-117",
+            "color": "57bf97",
+            "user_id": {
+                "lastName": "Dolgov",
+                "firstName": "Nikita",
+                "id": "n.dolgov@directual.com"
+            },
+            "feature_type": "feature",
+            "id": "48d88933-add5-49a8-aa6d-a3748cdca468",
+            "dev_status": {
+                "id": "planned",
+                "status": "Planned"
+            },
+            "status": {
+                "id": "approved",
+                "status": "Approved"
+            },
+            "date_added": 1621375728000,
+            "votes_ids": [
+                {
+                    "firstName": "Egor",
+                    "lastName": "Baev",
+                    "id": "artosiris@gmail.com"
+                },
+                {
+                    "firstName": "Kashtanov",
+                    "lastName": "Dmitry",
+                    "id": "y3sw0r1d@gmail.com"
+                },
+                {
+                    "firstName": "Vladislav",
+                    "lastName": "Boyko",
+                    "id": "for.work.vboyko@yandex.ru"
+                },
+                {
+                    "firstName": "Dimitry",
+                    "lastName": "Novozhilov",
+                    "id": "novozhilov@code-word.ru"
+                },
+                {
+                    "firstName": "Roman",
+                    "lastName": "Tkachev",
+                    "id": "tkachev.rb@gmail.com"
+                },
+                {
+                    "id": "effgenij@gmail.com"
+                },
+                {
+                    "lastName": "Mozer",
+                    "firstName": "Anna",
+                    "id": "annmozer116@gmail.com"
+                },
+                {
+                    "firstName": "Max",
+                    "lastName": "Lykov",
+                    "id": "mxf@mail.ru"
+                },
+                {
+                    "id": "lykovmaxim@gmail.com"
+                },
+                {
+                    "firstName": "JOHNLY",
+                    "lastName": "NARAG",
+                    "id": "johnly_s_narag@yahoo.com"
+                },
+                {
+                    "lastName": "Dolgov",
+                    "firstName": "Nikita",
+                    "id": "n.dolgov@directual.com"
+                }
+            ],
+            "title": "Copy cubes",
+            "progress": ""
+        },
+        {
+            "votes": 11,
+            "subscriber_ids": [
+                {
+                    "firstName": "Egor",
+                    "lastName": "Baev",
+                    "id": "artosiris@gmail.com"
+                },
+                {
+                    "firstName": "Artem",
+                    "lastName": "Laptev",
+                    "id": "artemlaptev7@gmail.com"
+                },
+                {
+                    "firstName": "Dimitry",
+                    "lastName": "Novozhilov",
+                    "id": "novozhilov@code-word.ru"
+                },
+                {
+                    "firstName": "Joses",
+                    "lastName": "Saumaitoga",
+                    "id": "josesjjs@tpg.com.au"
+                },
+                {
+                    "lastName": "Nichols",
+                    "firstName": "Joanne",
+                    "id": "jonichols@me.com"
+                },
+                {
+                    "lastName": "O'Hara",
+                    "firstName": "Andrew",
+                    "id": "andrewohara111@gmail.com"
+                },
+                {
+                    "firstName": "Anton",
+                    "lastName": "Sidorov",
+                    "id": "a@preencipium.com"
+                },
+                {
+                    "firstName": "Max",
+                    "lastName": "Lykov",
+                    "id": "mxf@mail.ru"
+                },
+                {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                },
+                {
+                    "id": "sergey.azarov@gmail.com"
+                },
+                {
+                    "id": "lindamacdonalde@gmail.com"
+                },
+                {
+                    "firstName": "JOHNLY",
+                    "lastName": "NARAG",
+                    "id": "johnly_s_narag@yahoo.com"
+                }
+            ],
+            "description": "When a structure becomes big with hundreds of parameters it usually makes it difficult to manage and to find in scenario parameter we need. Usually a lot of parameters with time become unused. The easiest way to fix this problem but not to broke old scenarios and other structures, connected with our unused parameters is to allow user to hide it both in structures and scenarios, something like adding them to archive from which we can drop them back any time we want.   ",
+            "tags": [
+                "database"
+            ],
+            "feature_id": "PLT-281",
+            "color": "57bf97",
+            "user_id": {
+                "firstName": "Artem",
+                "lastName": "Laptev",
+                "id": "artemlaptev7@gmail.com"
+            },
+            "feature_type": "feature",
+            "id": "4dee093a-d6b6-461c-997c-7bce76b93027",
+            "dev_status": {
+                "id": "planned",
+                "status": "Planned"
+            },
+            "status": {
+                "id": "approved",
+                "status": "Approved"
+            },
+            "date_added": 1637408122000,
+            "votes_ids": [
+                {
+                    "firstName": "Egor",
+                    "lastName": "Baev",
+                    "id": "artosiris@gmail.com"
+                },
+                {
+                    "firstName": "Dimitry",
+                    "lastName": "Novozhilov",
+                    "id": "novozhilov@code-word.ru"
+                },
+                {
+                    "firstName": "Joses",
+                    "lastName": "Saumaitoga",
+                    "id": "josesjjs@tpg.com.au"
+                },
+                {
+                    "lastName": "Nichols",
+                    "firstName": "Joanne",
+                    "id": "jonichols@me.com"
+                },
+                {
+                    "lastName": "O'Hara",
+                    "firstName": "Andrew",
+                    "id": "andrewohara111@gmail.com"
+                },
+                {
+                    "firstName": "Anton",
+                    "lastName": "Sidorov",
+                    "id": "a@preencipium.com"
+                },
+                {
+                    "firstName": "Max",
+                    "lastName": "Lykov",
+                    "id": "mxf@mail.ru"
+                },
+                {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                },
+                {
+                    "id": "sergey.azarov@gmail.com"
+                },
+                {
+                    "id": "lindamacdonalde@gmail.com"
+                },
+                {
+                    "firstName": "JOHNLY",
+                    "lastName": "NARAG",
+                    "id": "johnly_s_narag@yahoo.com"
+                }
+            ],
+            "title": "hide unused fields",
+            "progress": ""
+        },
+        {
+            "votes": 10,
+            "subscriber_ids": [
+                {
+                    "firstName": "Egor",
+                    "lastName": "Baev",
+                    "id": "artosiris@gmail.com"
+                },
+                {
+                    "firstName": "Roman",
+                    "lastName": "Tkachev",
+                    "id": "tkachev.rb@gmail.com"
+                },
+                {
+                    "lastName": "Nichols",
+                    "firstName": "Joanne",
+                    "id": "jonichols@me.com"
+                },
+                {
+                    "lastName": "Pearson",
+                    "firstName": "Lloyd",
+                    "id": "lloydpearson@packagecues.com"
+                },
+                {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                },
+                {
+                    "firstName": "Elise",
+                    "lastName": "Boonstra-Legerstee",
+                    "id": "elise.legerstee@gmail.com"
+                },
+                {
+                    "firstName": "Renato",
+                    "lastName": "Pinto",
+                    "id": "renato.casa.corre@gmail.com"
+                },
+                {
+                    "lastName": "Grimalsky",
+                    "firstName": "Slava",
+                    "id": "itareo@gmail.com"
+                },
+                {
+                    "id": "lindamacdonalde@gmail.com"
+                },
+                {
+                    "firstName": "JOHNLY",
+                    "lastName": "NARAG",
+                    "id": "johnly_s_narag@yahoo.com"
+                }
+            ],
+            "description": "Two-step import of CSV/XLS\n\n### Step 1\nFields aliases, with quick structure editing.\n\n### Step 2\nImport itself\n\nP.S. Webflow has similar mechanism of CSV import.\n\nPlus:\n- import from Airtable\n- import from Google Sheets\n- import from popular CRMs\n- Listeners on SQL databases",
+            "tags": [
+                "database"
+            ],
+            "feature_id": "PLT-102",
+            "color": "57bf97",
+            "user_id": {
+                "lastName": "Ershov",
+                "firstName": "Pavel",
+                "id": "pavel@directual.com"
+            },
+            "feature_type": "feature",
+            "id": "b5ca7520-f1d3-48da-af26-0cdacab94757",
+            "progress": "{\"firstValue\":40}",
+            "dev_status": {
+                "id": "planned",
+                "status": "Planned"
+            },
+            "status": {
+                "id": "approved",
+                "status": "Approved"
+            },
+            "date_added": 1621373725000,
+            "votes_ids": [
+                {
+                    "firstName": "Egor",
+                    "lastName": "Baev",
+                    "id": "artosiris@gmail.com"
+                },
+                {
+                    "firstName": "Roman",
+                    "lastName": "Tkachev",
+                    "id": "tkachev.rb@gmail.com"
+                },
+                {
+                    "lastName": "Nichols",
+                    "firstName": "Joanne",
+                    "id": "jonichols@me.com"
+                },
+                {
+                    "lastName": "Pearson",
+                    "firstName": "Lloyd",
+                    "id": "lloydpearson@packagecues.com"
+                },
+                {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                },
+                {
+                    "firstName": "Elise",
+                    "lastName": "Boonstra-Legerstee",
+                    "id": "elise.legerstee@gmail.com"
+                },
+                {
+                    "firstName": "Renato",
+                    "lastName": "Pinto",
+                    "id": "renato.casa.corre@gmail.com"
+                },
+                {
+                    "lastName": "Grimalsky",
+                    "firstName": "Slava",
+                    "id": "itareo@gmail.com"
+                },
+                {
+                    "id": "lindamacdonalde@gmail.com"
+                },
+                {
+                    "firstName": "JOHNLY",
+                    "lastName": "NARAG",
+                    "id": "johnly_s_narag@yahoo.com"
+                }
+            ],
+            "title": "Import updating"
+        },
+        {
+            "votes": 10,
+            "subscriber_ids": [
+                {
+                    "firstName": "Egor",
+                    "lastName": "Baev",
+                    "id": "artosiris@gmail.com"
+                },
+                {
+                    "firstName": "Dimitry",
+                    "lastName": "Novozhilov",
+                    "id": "novozhilov@code-word.ru"
+                },
+                {
+                    "lastName": "Ermolaev",
+                    "firstName": "Timur",
+                    "id": "ermolaev@code-word.ru"
+                },
+                {
+                    "firstName": "Anton",
+                    "lastName": "Sidorov",
+                    "id": "a@preencipium.com"
+                },
+                {
+                    "firstName": "Max",
+                    "lastName": "Lykov",
+                    "id": "mxf@mail.ru"
+                },
+                {
+                    "id": "drammichd@gmail.com"
+                },
+                {
+                    "id": "kolgtim@gmail.com"
+                },
+                {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                },
+                {
+                    "firstName": "JOHNLY",
+                    "lastName": "NARAG",
+                    "id": "johnly_s_narag@yahoo.com"
+                },
+                {
+                    "lastName": "Dolgov",
+                    "firstName": "Nikita",
+                    "id": "n.dolgov@directual.com"
+                }
+            ],
+            "description": "Add \"not in array\" filter in condition cube and in api filter section. Ideally add 2 new options: \n1. object is NOT in array\n2. array does NOT contain all\n2. array does NOT contain any",
+            "tags": [
+                "scenarios",
+                "api-builder"
+            ],
+            "feature_id": "PLT-120",
+            "color": "57bf97",
+            "user_id": {
+                "lastName": "Dolgov",
+                "firstName": "Nikita",
+                "id": "n.dolgov@directual.com"
+            },
+            "feature_type": "feature",
+            "id": "7d8635da-2738-44cf-b4b7-1d509611f8ed",
+            "progress": "{\"firstValue\":0}",
+            "dev_status": {
+                "id": "planned",
+                "status": "Planned"
+            },
+            "status": {
+                "id": "approved",
+                "status": "Approved"
+            },
+            "date_added": 1621377697000,
+            "votes_ids": [
+                {
+                    "firstName": "Egor",
+                    "lastName": "Baev",
+                    "id": "artosiris@gmail.com"
+                },
+                {
+                    "firstName": "Dimitry",
+                    "lastName": "Novozhilov",
+                    "id": "novozhilov@code-word.ru"
+                },
+                {
+                    "lastName": "Ermolaev",
+                    "firstName": "Timur",
+                    "id": "ermolaev@code-word.ru"
+                },
+                {
+                    "firstName": "Anton",
+                    "lastName": "Sidorov",
+                    "id": "a@preencipium.com"
+                },
+                {
+                    "firstName": "Max",
+                    "lastName": "Lykov",
+                    "id": "mxf@mail.ru"
+                },
+                {
+                    "id": "drammichd@gmail.com"
+                },
+                {
+                    "id": "kolgtim@gmail.com"
+                },
+                {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                },
+                {
+                    "firstName": "JOHNLY",
+                    "lastName": "NARAG",
+                    "id": "johnly_s_narag@yahoo.com"
+                },
+                {
+                    "lastName": "Dolgov",
+                    "firstName": "Nikita",
+                    "id": "n.dolgov@directual.com"
+                }
+            ],
+            "title": "Add NOT-filters for arrays"
+        },
+        {
+            "votes": 10,
+            "subscriber_ids": [
+                {
+                    "firstName": "Egor",
+                    "lastName": "Baev",
+                    "id": "artosiris@gmail.com"
+                },
+                {
+                    "firstName": "Vladimir",
+                    "lastName": "Stepanenko",
+                    "id": "vgstepanenko@gmail.com"
+                },
+                {
+                    "firstName": "Joses",
+                    "lastName": "Saumaitoga",
+                    "id": "josesjjs@tpg.com.au"
+                },
+                {
+                    "lastName": "Nichols",
+                    "firstName": "Joanne",
+                    "id": "jonichols@me.com"
+                },
+                {
+                    "firstName": "Max",
+                    "lastName": "Lykov",
+                    "id": "mxf@mail.ru"
+                },
+                {
+                    "lastName": "Goncharov",
+                    "firstName": "Pavel",
+                    "id": "office@ingros.ru"
+                },
+                {
+                    "id": "victorblan@gmail.com"
+                },
+                {
+                    "id": "lykovmaxim@gmail.com"
+                },
+                {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                },
+                {
+                    "id": "trustpropsonline@gmail.com"
+                },
+                {
+                    "firstName": "JOHNLY",
+                    "lastName": "NARAG",
+                    "id": "johnly_s_narag@yahoo.com"
+                }
+            ],
+            "description": "Copy pages in Web-pages",
+            "tags": [
+                "web-pages"
+            ],
+            "feature_id": "PLT-215",
+            "color": "57bf97",
+            "user_id": {
+                "firstName": "Vladimir",
+                "lastName": "Stepanenko",
+                "id": "vgstepanenko@gmail.com"
+            },
+            "feature_type": "feature",
+            "id": "67b93ec9-cff1-4870-8d92-42a4a53e60d9",
+            "progress": "{\"firstValue\":0}",
+            "dev_status": {
+                "id": "planned",
+                "status": "Planned"
+            },
+            "status": {
+                "id": "approved",
+                "status": "Approved"
+            },
+            "date_added": 1628176984000,
+            "votes_ids": [
+                {
+                    "firstName": "Egor",
+                    "lastName": "Baev",
+                    "id": "artosiris@gmail.com"
+                },
+                {
+                    "firstName": "Joses",
+                    "lastName": "Saumaitoga",
+                    "id": "josesjjs@tpg.com.au"
+                },
+                {
+                    "lastName": "Nichols",
+                    "firstName": "Joanne",
+                    "id": "jonichols@me.com"
+                },
+                {
+                    "firstName": "Max",
+                    "lastName": "Lykov",
+                    "id": "mxf@mail.ru"
+                },
+                {
+                    "lastName": "Goncharov",
+                    "firstName": "Pavel",
+                    "id": "office@ingros.ru"
+                },
+                {
+                    "id": "victorblan@gmail.com"
+                },
+                {
+                    "id": "lykovmaxim@gmail.com"
+                },
+                {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                },
+                {
+                    "id": "trustpropsonline@gmail.com"
+                },
+                {
+                    "firstName": "JOHNLY",
+                    "lastName": "NARAG",
+                    "id": "johnly_s_narag@yahoo.com"
+                }
+            ],
+            "title": "Copy page on portal"
+        },
+        {
+            "votes": 10,
+            "subscriber_ids": [
+                {
+                    "firstName": "Egor",
+                    "lastName": "Baev",
+                    "id": "artosiris@gmail.com"
+                },
+                {
+                    "lastName": "Online",
+                    "firstName": "Bisapco",
+                    "id": "atr.service.msk@gmail.com"
+                },
+                {
+                    "firstName": "Dimitry",
+                    "lastName": "Novozhilov",
+                    "id": "novozhilov@code-word.ru"
+                },
+                {
+                    "firstName": "Joses",
+                    "lastName": "Saumaitoga",
+                    "id": "josesjjs@tpg.com.au"
+                },
+                {
+                    "lastName": "Goncharov",
+                    "firstName": "Pavel",
+                    "id": "pavel@goncharov.me"
+                },
+                {
+                    "lastName": "N",
+                    "firstName": "Kamil",
+                    "id": "kamil@leverall.com"
+                },
+                {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                },
+                {
+                    "firstName": "Otto",
+                    "lastName": "Baumann",
+                    "id": "ob@it-setup.dk"
+                },
+                {
+                    "firstName": "Antwan",
+                    "lastName": "Carr",
+                    "id": "unlabeledlifestyle@gmail.com"
+                },
+                {
+                    "id": "sergey.azarov@gmail.com"
+                },
+                {
+                    "id": "trustpropsonline@gmail.com"
+                },
+                {
+                    "firstName": "JOHNLY",
+                    "lastName": "NARAG",
+                    "id": "johnly_s_narag@yahoo.com"
+                }
+            ],
+            "description": "- XML sitemap\n- robots.txt\n- canonical URLs\n- Schema.org Open Graph\n- 404\n- htaccess\n- Meta: Title, description, Keywords, Content-Type\n- Alt for pictures\n\n[SEO checklist](https://dminhvu.com/nextjs-seo)",
+            "tags": [
+                "web-pages"
+            ],
+            "feature_id": "PLT-304",
+            "color": "57bf97",
+            "user_id": {
+                "lastName": "Ershov",
+                "firstName": "Pavel",
+                "id": "pavel@directual.com"
+            },
+            "feature_type": "feature",
+            "id": "014091fa-909b-4657-b309-5be994ec1e4c",
+            "progress": "{\"firstValue\":0}",
+            "dev_status": {
+                "id": "planned",
+                "status": "Planned"
+            },
+            "status": {
+                "id": "approved",
+                "status": "Approved"
+            },
+            "date_added": 1643554566000,
+            "votes_ids": [
+                {
+                    "firstName": "Egor",
+                    "lastName": "Baev",
+                    "id": "artosiris@gmail.com"
+                },
+                {
+                    "lastName": "Online",
+                    "firstName": "Bisapco",
+                    "id": "atr.service.msk@gmail.com"
+                },
+                {
+                    "firstName": "Dimitry",
+                    "lastName": "Novozhilov",
+                    "id": "novozhilov@code-word.ru"
+                },
+                {
+                    "firstName": "Joses",
+                    "lastName": "Saumaitoga",
+                    "id": "josesjjs@tpg.com.au"
+                },
+                {
+                    "lastName": "Goncharov",
+                    "firstName": "Pavel",
+                    "id": "pavel@goncharov.me"
+                },
+                {
+                    "lastName": "N",
+                    "firstName": "Kamil",
+                    "id": "kamil@leverall.com"
+                },
+                {
+                    "firstName": "Otto",
+                    "lastName": "Baumann",
+                    "id": "ob@it-setup.dk"
+                },
+                {
+                    "id": "sergey.azarov@gmail.com"
+                },
+                {
+                    "id": "trustpropsonline@gmail.com"
+                },
+                {
+                    "firstName": "JOHNLY",
+                    "lastName": "NARAG",
+                    "id": "johnly_s_narag@yahoo.com"
+                }
+            ],
+            "title": "SEO-related features"
         }
     ],
-    "totalPages": 1,
+    "totalPages": 4,
     "pageNumber": 0,
     "error": null,
     "fieldScheme": [
         [
+            "color",
+            1385610
+        ],
+        [
+            "date_added",
+            1385610
+        ],
+        [
+            "description",
+            1385610
+        ],
+        [
+            "dev_status.id",
+            1385613
+        ],
+        [
+            "dev_status.status",
+            1385613
+        ],
+        [
+            "feature_id",
+            1385610
+        ],
+        [
+            "feature_type",
+            1385610
+        ],
+        [
             "id",
-            99344358
+            1385610
         ],
         [
-            "reservationCode",
-            99344358
+            "progress",
+            1385610
         ],
         [
-            "name",
-            99344358
+            "screenshots",
+            1385610
         ],
         [
-            "date_end",
-            99344358
+            "status.id",
+            1385612
         ],
         [
-            "date_start",
-            99344358
+            "status.status",
+            1385612
         ],
         [
-            "checkout_date",
-            99344358
+            "subscriber_ids.firstName",
+            1385542
         ],
         [
-            "checkin_date",
-            99344358
+            "subscriber_ids.id",
+            1385542
         ],
         [
-            "end",
-            99344358
+            "subscriber_ids.lastName",
+            1385542
         ],
         [
-            "start",
-            99344358
+            "tags",
+            1385610
         ],
         [
-            "checkin_review",
-            99344358
+            "title",
+            1385610
         ],
         [
-            "checkout_review",
-            99344358
+            "user_id.firstName",
+            1385542
         ],
         [
-            "listing_id.id",
-            99344863
+            "user_id.id",
+            1385542
         ],
         [
-            "listing_id.listing_name",
-            99344863
+            "user_id.lastName",
+            1385542
+        ],
+        [
+            "votes",
+            1385610
+        ],
+        [
+            "votes_ids.firstName",
+            1385542
+        ],
+        [
+            "votes_ids.id",
+            1385542
+        ],
+        [
+            "votes_ids.lastName",
+            1385542
+        ],
+        [
+            "votes_ids.user_name",
+            1385542
         ]
     ],
-    "writeFields": [],
+    "writeFields": [
+        "color",
+        "description",
+        "dev_status",
+        "feature_type",
+        "id",
+        "progress",
+        "status",
+        "tags",
+        "title"
+    ],
     "structures": {
-        "99344358": {
-            "networkID": 22033,
-            "sysName": "ical_events",
-            "name": "Reservations (iCal Events)",
-            "id": 99344358,
-            "dateCreated": "2024-09-19T18:52:24Z",
+        "1385542": {
+            "networkID": 6829,
+            "sysName": "WebUser",
+            "name": "App users",
+            "id": 1385542,
+            "dateCreated": "2021-05-14T21:02:45Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"reservation system ID\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"start\",\"name\":\"Check-in Date Sort\",\"dataType\":\"date\",\"id\":\"10231726936433778\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-us\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"MM/DD/Y\",\"timeFormat\":\"\",\"isUTC\":\"true\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"uid\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"10621729388815593\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":20,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"location\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"16671726936437795\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"listing_id\",\"name\":\"Property Listing ID\",\"dataType\":\"link\",\"id\":\"22191727631223828\",\"link\":\"listings\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[\"listing_id.id\",\"listing_id.listing_owner.id\",\"listing_owner.id\",\"id\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":true,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"phone\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"23881726936410887\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"uid32\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"30911732399694223\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":21,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"email\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"34941726936415390\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"reservationCode\",\"name\":\"Reservation Code\",\"dataType\":\"string\",\"id\":\"35841726936401715\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"checkin_date\",\"name\":\"Guest Checked in at\",\"dataType\":\"date\",\"id\":\"38091728215937769\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"MM/DD/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"property\",\"name\":\"iCal Property\",\"dataType\":\"string\",\"id\":\"44411726936406032\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"time\",\"name\":\"\",\"dataType\":\"date\",\"id\":\"47371726936390028\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"uid64\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"55501732401918658\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":22,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"date_start\",\"name\":\"Check-in Date\",\"dataType\":\"string\",\"id\":\"60251729693293590\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"profile\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"68981726936419029\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"checkout_date\",\"name\":\"Guest Checked out at\",\"dataType\":\"date\",\"id\":\"69361728215957520\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"MM/DD/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"end\",\"name\":\"\",\"dataType\":\"date\",\"id\":\"77271726936435759\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-us\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"MM/DD/Y\",\"timeFormat\":\"\",\"isUTC\":\"true\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"checkin_review\",\"name\":\"Guest Check-in Rating\",\"dataType\":\"number\",\"id\":\"79751728221398350\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"name\",\"name\":\"Guest Name\",\"dataType\":\"string\",\"id\":\"80401726936397460\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"checkout_review\",\"name\":\"Guest Check-out Rating\",\"dataType\":\"number\",\"id\":\"81671728221415499\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"isProcessed\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"85391726938014673\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"date_end\",\"name\":\"Check-out Date\",\"dataType\":\"string\",\"id\":\"85581729693299509\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"api_response_email_alert\",\"name\":\"\",\"dataType\":\"json\",\"id\":\"92071730928264584\",\"link\":\"\",\"group\":\"1730928260225\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":true,\"array\":false},{\"sysName\":\"api_response_sms_alert\",\"name\":\"\",\"dataType\":\"json\",\"id\":\"97701730928270913\",\"link\":\"\",\"group\":\"1730928260225\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":true,\"array\":false},{\"sysName\":\"adults\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"97881726936424850\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false}]",
-            "jsonGroupSettings": "[{\"id\":1730928260225,\"name\":\"Data\",\"order\":0}]",
-            "jsonViewIdSettings": "[{\"sysName\":\"name\"},{\"sysName\":\"reservationCode\"}]",
-            "jsonSettings": null,
+            "jsonObject": "[{\"sysName\":\"dateLastActivity\",\"dataType\":\"string\",\"name\":\"dateLastActivity\",\"id\":\"8\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"dateCreated\",\"dataType\":\"string\",\"name\":\"dateCreated\",\"id\":\"11\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"isAuthorization\",\"dataType\":\"boolean\",\"name\":\"isAuthorization\",\"id\":\"7\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"phone\",\"dataType\":\"string\",\"name\":\"Phone\",\"id\":\"10\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"email\",\"dataType\":\"string\",\"name\":\"Email\",\"id\":\"9\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"userpic\",\"dataType\":\"file\",\"name\":\"User pic\",\"id\":\"1\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"Username (login)\",\"id\":\"13\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"role\",\"dataType\":\"string\",\"name\":\"Roles\",\"id\":\"6\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"password\",\"dataType\":\"string\",\"name\":\"Password (hash)\",\"id\":\"12\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"firstName\",\"dataType\":\"string\",\"name\":\"First name\",\"id\":\"5\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"lastName\",\"dataType\":\"string\",\"name\":\"Last name\",\"id\":\"4\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"gender\",\"dataType\":\"string\",\"name\":\"Gender\",\"id\":\"3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"date_registered\",\"dataType\":\"date\",\"name\":\"Date registered on Dev\",\"id\":\"14451621029358812\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"isBlocked\",\"dataType\":\"boolean\",\"name\":\"Block user\",\"id\":\"2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"code\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"51351621027822811\",\"link\":null,\"group\":\"1621027815164\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"isEmailConfirmed\",\"dataType\":\"boolean\",\"name\":\"Email confirmed\",\"id\":\"60111621027825496\",\"link\":\"\",\"group\":\"1621027815164\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false}]",
+            "jsonGroupSettings": "[{\"id\":-502807437,\"name\":\"Contacts\",\"order\":0},{\"id\":-1776115286,\"name\":\"System fields\",\"order\":1},{\"id\":1621027815164,\"name\":\"Email confirmation\",\"order\":2}]",
+            "jsonViewIdSettings": "[{\"sysName\":\"firstName\"},{\"sysName\":\"lastName\"}]",
+            "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
             "jsonNativeIndexSettings": null,
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2024-11-23T22:45:23Z",
-            "createBy": 9315,
-            "changedBy": 27510,
+            "dateChanged": "2021-11-20T16:05:00Z",
+            "createBy": 0,
+            "changedBy": 0,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
-                "name": "reservation system ID",
                 "dataType": "id",
-                "id": "0",
+                "name": "Username (login)",
+                "id": "13",
                 "link": "",
-                "group": "0",
+                "group": "",
                 "tags": "",
                 "indexing": false,
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 0,
+                "order": 1,
                 "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
@@ -1410,88 +3872,466 @@ let exampleTable = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "array": false,
                 "indexExists": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
                 "typeVariable": {},
-                "json": false
-            },
-            "objectIDSysName": "id",
-            "folderId": 0
-        },
-        "99344863": {
-            "networkID": 22033,
-            "sysName": "listings",
-            "name": "Listings",
-            "id": 99344863,
-            "dateCreated": "2024-09-22T19:12:10Z",
-            "hidden": false,
-            "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"house_manual\",\"name\":\"House Manual PDF\",\"dataType\":\"file\",\"id\":\"11021727032618932\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"listing_name\",\"name\":\"Listing Display Name\",\"dataType\":\"string\",\"id\":\"13891727032336526\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"photos_screensaver\",\"name\":\"Photos for Screensaver\",\"dataType\":\"file\",\"id\":\"14801727032675801\",\"link\":\"\",\"group\":\"1727640836676\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"multipleImages\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"checkout_instructions\",\"name\":\"Checkout Instructions\",\"dataType\":\"string\",\"id\":\"17001727032691152\",\"link\":\"\",\"group\":\"1727640557266\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"checkout_message\",\"name\":\"Checkout Message\",\"dataType\":\"string\",\"id\":\"18931728943906035\",\"link\":\"\",\"group\":\"1727640557266\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"listing_country\",\"name\":\"Country\",\"dataType\":\"string\",\"id\":\"20441727817875896\",\"link\":\"\",\"group\":\"1727815226364\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"is_active\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"20871728879120924\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"listing_address_1\",\"name\":\"Address 1\",\"dataType\":\"string\",\"id\":\"22611727817804425\",\"link\":\"\",\"group\":\"1727815226364\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"checkin_instructions\",\"name\":\"Check-in Instructions\",\"dataType\":\"string\",\"id\":\"23561727032577641\",\"link\":\"\",\"group\":\"1727640629306\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"api_response_JSON\",\"name\":\"\",\"dataType\":\"json\",\"id\":\"23791727631065921\",\"link\":\"\",\"group\":\"1727640656570\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":true,\"array\":false},{\"sysName\":\"thank_you_message\",\"name\":\"Thank You Message\",\"dataType\":\"string\",\"id\":\"24621730070062648\",\"link\":null,\"group\":\"1727640557266\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"host_photo\",\"name\":\"Host Photo\",\"dataType\":\"file\",\"id\":\"25341728943835517\",\"link\":\"\",\"group\":\"1727640836676\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"alert_email\",\"name\":\"Email address for Alerts\",\"dataType\":\"string\",\"id\":\"26931727032530862\",\"link\":\"\",\"group\":\"1727640629306\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"email\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"api_response\",\"name\":\"\",\"dataType\":\"json\",\"id\":\"27641728578151702\",\"link\":\"\",\"group\":\"1727640656570\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":true,\"array\":false},{\"sysName\":\"timezone\",\"name\":\"Time Zone\",\"dataType\":\"link\",\"id\":\"29311729008609875\",\"link\":\"time_zone_options\",\"group\":\"1727640836676\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"company_logo\",\"name\":\"Company Logo\",\"dataType\":\"file\",\"id\":\"29531730071169733\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"checkin_instructions_title\",\"name\":\"Check-in Instructions Title\",\"dataType\":\"string\",\"id\":\"32491727032920509\",\"link\":null,\"group\":\"1727640629306\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"ical_source\",\"name\":\"iCal Source\",\"dataType\":\"link\",\"id\":\"35601729389156905\",\"link\":\"ical_source_options\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"checkout_survey\",\"name\":\"Checkout Survey\",\"dataType\":\"json\",\"id\":\"36911727819473053\",\"link\":\"\",\"group\":\"1727819316249\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"checkboxes\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"checkin_survey_toggle\",\"label\":\"Enable Checkout Survey\"}]},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":true,\"array\":false},{\"sysName\":\"wifi_qr_code_svg\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"41411732218750349\",\"link\":\"\",\"group\":\"1727640534178\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"html\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"listing_state\",\"name\":\"State\",\"dataType\":\"string\",\"id\":\"42421727817858996\",\"link\":\"\",\"group\":\"1727815226364\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"api_response_ICP\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"43181727631057466\",\"link\":null,\"group\":\"1727640656570\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"checkin_survey\",\"name\":\"Check-in Survey\",\"dataType\":\"json\",\"id\":\"43311727819350990\",\"link\":\"\",\"group\":\"1727819316249\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"checkboxes\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOption\":false,\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"checkin_survey_toggle\",\"label\":\"Enable Check-in Survey\"}]},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":true,\"array\":false},{\"sysName\":\"section_A_name\",\"name\":\"Title for Section A\",\"dataType\":\"string\",\"id\":\"44541727989890726\",\"link\":\"\",\"group\":\"1727818610176\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"important_info\",\"name\":\"Safety and other important information\",\"dataType\":\"string\",\"id\":\"48201727819021763\",\"link\":\"\",\"group\":\"1727640836676\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"is_deleted\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"48821728576791607\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"section_A_description\",\"name\":\"Section A description\",\"dataType\":\"string\",\"id\":\"51561729014914745\",\"link\":\"\",\"group\":\"1727818610176\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"api_response_shortpixel\",\"name\":\"\",\"dataType\":\"json\",\"id\":\"54621729037287636\",\"link\":\"\",\"group\":\"1727640656570\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":true,\"array\":false},{\"sysName\":\"item\",\"name\":\"item\",\"dataType\":\"link\",\"id\":\"56981728040937996\",\"link\":\"display_items\",\"group\":\"1728040912644\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"company_name\",\"name\":\"Company Name\",\"dataType\":\"string\",\"id\":\"57271730071159147\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"checkout_time\",\"name\":\"Property Checkout Time\",\"dataType\":\"link\",\"id\":\"58891728943726728\",\"link\":\"checkout_time_options\",\"group\":\"1727640836676\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"\",\"timeFormat\":\" hh:mm a\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"photos_welcome\",\"name\":\"Photo for Welcome Page\",\"dataType\":\"file\",\"id\":\"59081727032656698\",\"link\":\"\",\"group\":\"1727640629306\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"layout_selection\",\"name\":\"Layout Selection\",\"dataType\":\"link\",\"id\":\"59601728175385086\",\"link\":\"layout_options\",\"group\":\"1727819316249\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"checkin_time\",\"name\":\"Property Check-in Time\",\"dataType\":\"link\",\"id\":\"60211728943714678\",\"link\":\"check_in_time_options\",\"group\":\"1727640836676\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"\",\"timeFormat\":\" hh:mm a\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"ical\",\"name\":\"iCal URL link\",\"dataType\":\"string\",\"id\":\"62311727032425488\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"webLink\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"stay_in_progress\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"64421729133332035\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"listing_owner\",\"name\":\"Listing User Owner\",\"dataType\":\"link\",\"id\":\"64611727032800436\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":true,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"alert_sms\",\"name\":\"Mobile # for SMS Alerts\",\"dataType\":\"string\",\"id\":\"65591727032561466\",\"link\":\"\",\"group\":\"1727640629306\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"phone\",\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"host_name\",\"name\":\"Host Name\",\"dataType\":\"string\",\"id\":\"65731727032844067\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"checkout_instructions_title\",\"name\":\"Checkout Instructions Title\",\"dataType\":\"string\",\"id\":\"66961727032952672\",\"link\":null,\"group\":\"1727640557266\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"wifi_qr_code\",\"name\":\"Wifi QR Code Image\",\"dataType\":\"file\",\"id\":\"68511729039580437\",\"link\":\"\",\"group\":\"1727640534178\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"listing_id\",\"name\":\"Listing\",\"dataType\":\"link\",\"id\":\"70311727804412494\",\"link\":\"listings\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[\"listing_owner.id\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":true,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"listing_address_2\",\"name\":\"Address 2\",\"dataType\":\"string\",\"id\":\"71531727817825019\",\"link\":\"\",\"group\":\"1727815226364\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"welcome_message\",\"name\":\"Welcome Message\",\"dataType\":\"string\",\"id\":\"81381727032523231\",\"link\":null,\"group\":\"1727640629306\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"display_item_ids\",\"name\":\"\",\"dataType\":\"arrayLink\",\"id\":\"81441727829976034\",\"link\":\"display_items\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"location_latitude\",\"name\":\"latitude\",\"dataType\":\"string\",\"id\":\"84251728863538521\",\"link\":\"\",\"group\":\"1727815226364\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"event_ids\",\"name\":\"\",\"dataType\":\"arrayLink\",\"id\":\"88151727804237093\",\"link\":\"ical_events\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"wifi_password\",\"name\":\"Wifi Password\",\"dataType\":\"string\",\"id\":\"90131727032507714\",\"link\":null,\"group\":\"1727640534178\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"listing_city\",\"name\":\"City\",\"dataType\":\"string\",\"id\":\"90791727817828987\",\"link\":\"\",\"group\":\"1727815226364\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"maps_api_json\",\"name\":\"\",\"dataType\":\"json\",\"id\":\"91441728859729334\",\"link\":\"\",\"group\":\"1727815226364\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":true,\"array\":false},{\"sysName\":\"section_C_description\",\"name\":\"Section C description\",\"dataType\":\"string\",\"id\":\"91761729014926884\",\"link\":\"\",\"group\":\"1727818610176\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"section_C_name\",\"name\":\"Title for Section C\",\"dataType\":\"string\",\"id\":\"92651727989917484\",\"link\":\"\",\"group\":\"1727818610176\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"location_longitude\",\"name\":\"longitude\",\"dataType\":\"string\",\"id\":\"94591728863553295\",\"link\":\"\",\"group\":\"1727815226364\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"section_B_name\",\"name\":\"Title for Section B\",\"dataType\":\"string\",\"id\":\"97691727989916690\",\"link\":\"\",\"group\":\"1727818610176\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"listing_zip\",\"name\":\"Zip code\",\"dataType\":\"string\",\"id\":\"98301727817840657\",\"link\":\"\",\"group\":\"1727815226364\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"wifi_network\",\"name\":\"Wifi Network\",\"dataType\":\"string\",\"id\":\"99151727032497362\",\"link\":null,\"group\":\"1727640534178\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"section_B_description\",\"name\":\"Section B description\",\"dataType\":\"string\",\"id\":\"99401729014923353\",\"link\":\"\",\"group\":\"1727818610176\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"array\":false}]",
-            "jsonGroupSettings": "[{\"id\":1727818617608,\"name\":\"Layout\",\"order\":8},{\"id\":1728578147827,\"name\":\"Other\",\"order\":11},{\"id\":1727819316249,\"name\":\"Settings\",\"order\":9},{\"id\":1727818610176,\"name\":\"Sections\",\"order\":7},{\"id\":1727640656570,\"name\":\"Technical Data (internal)\",\"order\":5},{\"id\":1727640557266,\"name\":\"Checkout Information\",\"order\":3},{\"id\":1727815226364,\"name\":\"Property Address\",\"order\":0},{\"id\":1727640629306,\"name\":\"Welcome Process\",\"order\":1},{\"id\":1727817906961,\"name\":\"Announcements\",\"order\":6},{\"id\":1727640534178,\"name\":\"Basic Information\",\"order\":2},{\"id\":1727640836676,\"name\":\"Miscellaneous\",\"order\":4},{\"id\":1728040912644,\"name\":\"Items\",\"order\":10}]",
-            "jsonViewIdSettings": "[{\"sysName\":\"listing_name\"}]",
-            "jsonSettings": null,
-            "jsonNativeIndexSettings": null,
-            "indexEnabled": true,
-            "lastIndexUpdate": 0,
-            "indexName": "",
-            "dateChanged": "2024-11-21T19:52:53Z",
-            "createBy": 9315,
-            "changedBy": 27510,
-            "_settings": null,
-            "_nativeIndexSettings": null,
-            "innerIDField": {
-                "sysName": "id",
-                "name": "id",
-                "dataType": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "array": false,
-                "indexExists": false,
+                "json": false,
                 "linkOrArrayLinkType": false,
-                "linkType": false,
                 "arrayLink": false,
-                "typeVariable": {},
-                "json": false
+                "linkType": false,
+                "array": false
             },
-            "objectIDSysName": "id",
             "folderId": null
+        },
+        "1385610": {
+            "networkID": 6829,
+            "sysName": "Features",
+            "name": "Feature requests and Bug reports",
+            "id": 1385610,
+            "dateCreated": "2021-05-12T15:06:56Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"votes_ids\",\"dataType\":\"arrayLink\",\"name\":\"Who upvoted\",\"id\":\"14001620832180875\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"feature_id\",\"dataType\":\"string\",\"name\":\"Inner ID\",\"id\":\"23601621342083348\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"subscriber_ids\",\"dataType\":\"arrayLink\",\"name\":\"Subscribers\",\"id\":\"26751621348189191\",\"link\":\"WebUser\",\"group\":\"1621348185318\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"status\",\"dataType\":\"link\",\"name\":\"Request status\",\"id\":\"40251620832303364\",\"link\":\"request_status\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"release_id\",\"dataType\":\"link\",\"name\":\"Release\",\"id\":\"40791621408746909\",\"link\":\"Releases\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"feature_type\",\"dataType\":\"link\",\"name\":\"Feature type\",\"id\":\"55371621030232780\",\"link\":\"feature_type\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"user_id\",\"dataType\":\"link\",\"name\":\"Who suggested\",\"id\":\"59421620832153105\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"screenshots\",\"dataType\":\"file\",\"name\":\"Screenshots or Screencast\",\"id\":\"61091637158867177\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"multipleFiles\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"color\",\"dataType\":\"string\",\"name\":\"Card color\",\"id\":\"61881621017200362\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"tags\",\"dataType\":\"arrayLink\",\"name\":\"Tags\",\"id\":\"67851621409605492\",\"link\":\"tags\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"votes\",\"dataType\":\"number\",\"name\":\"Number of upvotes\",\"id\":\"68061620832170304\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"date_added\",\"dataType\":\"date\",\"name\":\"Date added\",\"id\":\"68351620832123660\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"D MMMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"progress\",\"dataType\":\"json\",\"name\":\"Progress\",\"id\":\"68751622642385874\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"slider\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"unitName\":\"%\",\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{\"min\":0,\"max\":100,\"step\":5},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"release_date\",\"dataType\":\"date\",\"name\":\"Release date\",\"id\":\"71651621345011532\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"D MMMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"decline_reason\",\"dataType\":\"string\",\"name\":\"Reason of decline\",\"id\":\"73671621342083940\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"date_updated\",\"dataType\":\"date\",\"name\":\"Date updated\",\"id\":\"74581670507990970\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"D MMMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"description\",\"dataType\":\"string\",\"name\":\"Feature description\",\"id\":\"77031620832091108\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"title\",\"dataType\":\"string\",\"name\":\"Feature title\",\"id\":\"79031620832091734\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"dev_status\",\"dataType\":\"link\",\"name\":\"Development status\",\"id\":\"85621620832330584\",\"link\":\"development_status\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"json\":false,\"indexExists\":false,\"array\":false}]",
+            "jsonGroupSettings": "[{\"name\":\"Subscriptions\",\"id\":1621348185318,\"order\":0}]",
+            "jsonViewIdSettings": "[{\"sysName\":\"feature_id\"},{\"sysName\":\"title\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2022-12-08T14:02:39Z",
+            "createBy": 1,
+            "changedBy": 1,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "array": false
+            },
+            "folderId": 33625685
+        },
+        "1385612": {
+            "networkID": 6829,
+            "sysName": "request_status",
+            "name": "request_status",
+            "id": 1385612,
+            "dateCreated": "2021-05-12T15:13:21Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"status\",\"dataType\":\"string\",\"name\":\"Status\",\"id\":\"76241620832406222\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@who\",\"dataType\":\"string\",\"name\":\"who changed\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@dateCreated\",\"dataType\":\"date\",\"name\":\"date created\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@dateChanged\",\"dataType\":\"date\",\"name\":\"date changed\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": "[{\"sysName\":\"status\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": false,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2021-05-12T15:13:35Z",
+            "createBy": 1,
+            "changedBy": 1,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "array": false
+            },
+            "folderId": 33625685
+        },
+        "1385613": {
+            "networkID": 6829,
+            "sysName": "development_status",
+            "name": "development_status",
+            "id": 1385613,
+            "dateCreated": "2021-05-12T15:14:45Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false},{\"sysName\":\"status\",\"dataType\":\"string\",\"name\":\"Status\",\"id\":\"23221620832490508\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"array\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": "[{\"sysName\":\"status\"}]",
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2021-05-12T15:14:59Z",
+            "createBy": 1,
+            "changedBy": 1,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
+            "innerIDField": {
+                "sysName": "id",
+                "dataType": "id",
+                "name": "id",
+                "id": "0",
+                "link": "",
+                "group": "0",
+                "tags": "",
+                "indexing": false,
+                "ordering": false,
+                "description": null,
+                "weight": null,
+                "order": 0,
+                "linkIndexFieldSysName": [],
+                "defaultValue": "",
+                "constraints": null,
+                "synthetic": false,
+                "format": null,
+                "formatOptions": {},
+                "groupName": null,
+                "indexExists": false,
+                "typeVariable": {},
+                "json": false,
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "array": false
+            },
+            "folderId": 33625685
         }
     },
     "isSuccessWrite": false,
     "writeError": null,
     "writeResponse": null,
-    "fileds": [],
-    "quickSearch": "false",
+    "fileds": [
+        {
+            "sysName": "color",
+            "dataType": "string",
+            "name": "Card color",
+            "id": "61881621017200362",
+            "link": "",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 9,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": "color",
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "array": false
+        },
+        {
+            "sysName": "description",
+            "dataType": "string",
+            "name": "Feature description",
+            "id": "77031620832091108",
+            "link": "",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": "markdown",
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "array": false
+        },
+        {
+            "sysName": "dev_status",
+            "dataType": "link",
+            "name": "Development status",
+            "id": "85621620832330584",
+            "link": "development_status",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 8,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "arrayLink": false,
+            "linkType": true,
+            "array": false
+        },
+        {
+            "sysName": "feature_type",
+            "dataType": "link",
+            "name": "Feature type",
+            "id": "55371621030232780",
+            "link": "feature_type",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 10,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "arrayLink": false,
+            "linkType": true,
+            "array": false
+        },
+        {
+            "sysName": "id",
+            "dataType": "id",
+            "name": "id",
+            "id": "0",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "array": false
+        },
+        {
+            "sysName": "progress",
+            "dataType": "json",
+            "name": "Progress",
+            "id": "68751622642385874",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 16,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "slider",
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "unitName": "%",
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {
+                    "min": 0,
+                    "max": 100,
+                    "step": 5
+                },
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": true,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "array": false
+        },
+        {
+            "sysName": "status",
+            "dataType": "link",
+            "name": "Request status",
+            "id": "40251620832303364",
+            "link": "request_status",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 7,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "arrayLink": false,
+            "linkType": true,
+            "array": false
+        },
+        {
+            "sysName": "tags",
+            "dataType": "arrayLink",
+            "name": "Tags",
+            "id": "67851621409605492",
+            "link": "tags",
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 15,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": true,
+            "arrayLink": true,
+            "linkType": false,
+            "array": false
+        },
+        {
+            "sysName": "title",
+            "dataType": "string",
+            "name": "Feature title",
+            "id": "79031620832091734",
+            "link": null,
+            "group": "0",
+            "tags": null,
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": null,
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": null,
+            "groupName": null,
+            "indexExists": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "array": false
+        }
+    ],
+    "quickSearch": "true",
     "httpParams": {},
     "cardCustomHtml": null,
-    "cardCustomLayout": {
-        "bcb93e67-7d1a-4871-95c7-ec2f67be6e6d@reservations.hospitable.com": "bcb93e67-7d1a-4871-95c7-ec2f67be6e6d@reservations.hospitable.com",
-        "b194eee4-8e03-4216-b4f7-d3283c2d956d@reservations.hospitable.com": "b194eee4-8e03-4216-b4f7-d3283c2d956d@reservations.hospitable.com",
-        "1418fb94e984-f04d37c693a0b19d861c36c2f1bba304@airbnb.com": "1418fb94e984-f04d37c693a0b19d861c36c2f1bba304@airbnb.com",
-        "1418fb94e984-01b2deaa398dc4228d768c579777270c@airbnb.com": "1418fb94e984-01b2deaa398dc4228d768c579777270c@airbnb.com",
-        "0950173f-1cc7-4a54-9bd4-b7249d565de2@reservations.hospitable.com": "0950173f-1cc7-4a54-9bd4-b7249d565de2@reservations.hospitable.com",
-        "44238fa6-6cfe-4295-aa95-e42ab01fd65b@reservations.hospitable.com": "44238fa6-6cfe-4295-aa95-e42ab01fd65b@reservations.hospitable.com",
-        "1418fb94e984-91b796e46c4f3aa61c2eec8523180ef6@airbnb.com": "1418fb94e984-91b796e46c4f3aa61c2eec8523180ef6@airbnb.com",
-        "2cf31189-064c-449b-9456-97fd7731b086@reservations.hospitable.com": "2cf31189-064c-449b-9456-97fd7731b086@reservations.hospitable.com",
-        "1418fb94e984-adaf4177b2100d74f36e72446fa22830@airbnb.com": "1418fb94e984-adaf4177b2100d74f36e72446fa22830@airbnb.com"
-    },
+    "cardCustomLayout": null,
     "comment": null,
     "response": false
 }

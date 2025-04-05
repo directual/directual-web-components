@@ -9,7 +9,7 @@ import { dict } from '../locale'; // Import the dict object
 import Hint from '../hint/hint';
 import { template } from '../templating/template';
 import InnerHTML from 'dangerously-set-html-content'
-
+import { QuickActionsControl } from '../viewobjects/cards/cards';
 import styles from './chat.module.css';
 import PropTypes from 'prop-types';
 import icon from './../../../icons/fps-form2.svg';
@@ -30,7 +30,7 @@ export default function FpsChat(props) {
 
     const user = auth.user;
 
-    const debug = false;
+    const debug = true;
 
     const [firstLoading, setFirstLoading] = useState(false);
     const [chatsLoading, setChatsLoading] = useState(false);
@@ -69,7 +69,7 @@ export default function FpsChat(props) {
     }, [state.chatID]);
 
     function refreshChats(skipLoading, finish) {
-        console.log("CHATS REFRESH");
+        // console.log("CHATS REFRESH");
         setChatsLoading(skipLoading);
         const endpoint = _.get(data, "params.sl_chats");
         abortExistingRequest();
@@ -114,7 +114,7 @@ export default function FpsChat(props) {
     }
 
     function refreshMessages() {
-        console.log("MESSAGES REFRESH");
+        // console.log("MESSAGES REFRESH");
         const endpoint = _.get(data, "params.sl_messages");
         abortExistingRequest();
         abortControllerRef.current = new AbortController();
@@ -136,6 +136,44 @@ export default function FpsChat(props) {
                             "author_id": "2",
                             "chat_id": "2",
                             "id": "701a5bc2-5de8-49ce-b6be-9bd6679d5dd1"
+                        },
+                        {
+                            "text": "как дела",
+                            "author_id": "2",
+                            "chat_id": "2",
+                            "id": "701a5bc2-5de8-49ce-b6be-9bd6679d51"
+                        }
+                        ,
+                        {
+                            "text": "как дела",
+                            "author_id": "2",
+                            "chat_id": "2",
+                            "id": "701a5bc2-5de8-49ce-b6be-9bdd1"
+                        }
+                        ,
+                        {
+                            "text": "как дела",
+                            "author_id": "2",
+                            "chat_id": "2",
+                            "id": "701a5bc2-5de8-79d5dd1"
+                        },
+                        {
+                            "text": "как дела",
+                            "author_id": "2",
+                            "chat_id": "2",
+                            "id": "701a5-9bd6679d5dd1"
+                        },
+                        {
+                            "text": "Здарова заебал",
+                            "chat_id": "1",
+                            "author_id": "1",
+                            "id": "4641f492-3219659c4d1c"
+                        },
+                        {
+                            "text": "Здарова заебал",
+                            "chat_id": "1",
+                            "author_id": "1",
+                            "id": "4641f494-d026-4053-bbc2c4d1c"
                         }
                     ]
                 }));
@@ -191,6 +229,8 @@ export default function FpsChat(props) {
     }
 
     const performAction = (action) => {
+        console.log("performAction")
+        console.log(action)
         const endpoint = _.get(data, "params.sl_actions");
         const currentChat = state.chatID + "";
         if (!endpoint) return;
@@ -220,6 +260,9 @@ export default function FpsChat(props) {
                 );
         }
     };
+    
+    // console.log('chat data')
+    // console.log(data)
 
     return (
         <div className={`${styles.chat} FPS_CHAT`}>
@@ -232,7 +275,7 @@ export default function FpsChat(props) {
                 state={state}
                 user={user}
                 {...props}
-                height={300}
+                height={_.get(data, "params.chat_height") || 300}
                 message={message}
                 editMessage={editMessage}
                 actionLoading={actionLoading}
@@ -290,14 +333,31 @@ function ChatMessages(props) {
         scrollToBottom();
     }, [state.messages]);
 
-    const fields = _.get(data, "params.messages");
+    const fields = _.get(data, "params.messages")
+    const actions = _.get(data, "params.actions.otherActions", []).map(i => {
+        return {
+            ...i,
+            ...{
+                "buttonIcon": i.actionIcon
+            }
+        }
+    })
 
     return (
-        <div className={`${styles.chat_messages_wrapper} D_FPS_CHAT_MESSAGES_WRAPPER`}>
+        <div className={`${styles.chat_messages_wrapper} D_FPS_CHAT_MESSAGES_WRAPPER`}
+            style={{ height: props.height }}>
+
             {chatID ? <React.Fragment>
+                <div className={`${styles.chat_messages_header} D_FPS_CHAT_MESSAGES_HEADER`}>
+                    <b>{chatID}</b>
+                    <QuickActionsControl
+                        quickActions={actions}
+                        performAction={a => performAction(a.actionType)}
+                    />
+                </div>
                 <div
                     ref={scrollableDivRef}
-                    className={`${styles.chat_messages}`} style={{ height: props.height }}>
+                    className={`${styles.chat_messages}`}>
                     {state.messages.length == 0 && <div className={styles.chat_messages_blank}>
                         <SomethingWentWrong icon="ban" message={dict[props.locale].chat.noMessages} />
                     </div>}
@@ -314,7 +374,7 @@ function ChatMessages(props) {
                 <ChatInput {...props} performAction={performAction}
                     message={message} editMessage={editMessage}
                     actionLoading={actionLoading} />
-            </React.Fragment> : <div className={styles.chat_messages_blank}>
+            </React.Fragment> : <div className={styles.chat_messages_blank} >
                 <SomethingWentWrong icon="bubble" />
             </div>}
         </div>

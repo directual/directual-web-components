@@ -25,35 +25,38 @@ const chatData = {
       "chats": {
           "appearence": [
               {
-                  "id": "chat_1739092856920",
+                  "id": "chat_1743320625730",
                   "type": "personal",
-                  "layout": "default",
                   "imageField": "image",
-                  "title": "{{title}}"
-              },
-              {
-                  "id": "chat_1739092917913",
-                  "layout": "html"
+                  "title": "<b>{{title}}</b><br />\n{{description}}"
               }
           ],
-          "useDifferentTypes": false,
-          "chatTypeField": "type"
+          "useDifferentTypes": true
       },
-      "chat_format": "full",
-      "sl_chats": "chat_contacts",
-      "sl_messages": "chat_messages",
-      "sl_actions": "chatAction",
+      "sl_chats": "chatContacts",
+      "sl_messages": "chatMessages",
       "messages": {
-          "userIDField": "author_id",
+          "userIDField": "user_id",
           "textField": "text",
-          "attachmentsField": "files",
+          "attachmentsField": "attachments",
           "typeField": "type",
           "dateTimeField": "date"
       },
+      "sl_actions": "cahtActions",
       "actions": {
           "textField": "payload",
-          "attachmentsField": "files",
-          "chatLinkField": "chat_id"
+          "attachmentsField": "attachments",
+          "actionTypeField": "actions",
+          "chatLinkField": "chat_id",
+          "otherActions": [
+              {
+                  "id": "action_1743873880726",
+                  "name": "Clear chat",
+                  "actionIcon": "ban",
+                  "actionPayload": "clear",
+                  "actionType": "clear"
+              }
+          ]
       }
   },
   "tableTitle": null,
