@@ -258,11 +258,31 @@ export default function FpsChat(props) {
                         setMessage(newMessage);
                     },
                 );
+        } else {
+            setActionLoading("topBar");
+            const body = {
+                [_.get(data, "params.actions.textField")]: action.actionPayload,
+                [_.get(data, "params.actions.chatLinkField")]: currentChat,
+                [_.get(data, "params.actions.actionTypeField")]: action.actionType,
+            };
+            debug ?
+                console.log("send action", action.actionType)
+                :
+                callEndpoint && callEndpoint(
+                    endpoint,
+                    "POST",
+                    body,
+                    undefined,
+                    (result, data) => {
+                        setActionLoading("");
+                    },
+                );
         }
     };
 
-    // console.log('chat data')
-    // console.log(data)
+    // формируем заголовок чата:
+    const selectedChat = _.find(state.chats, { id: _.get(state, "chatID") }) || {}
+    const chatTitle = sanitizedHTML(template(_.get(data, "params.chats.chatTitle"), selectedChat))
 
     return (
         <div className={`${styles.chat} FPS_CHAT`}>
@@ -272,6 +292,7 @@ export default function FpsChat(props) {
                 {...props} loading={chatsLoading} chatsError={chatsError} state={state} />
             <ChatMessages
                 chatID={_.get(state, "chatID")}
+                chatTitle={chatTitle}
                 state={state}
                 user={user}
                 {...props}
@@ -327,7 +348,7 @@ function Contact(props) {
 }
 
 function ChatMessages(props) {
-    const { scrollableDivRef, data, actionLoading, performAction, scrollToBottom, chatID, state, user, message, editMessage } = props;
+    const { scrollableDivRef, data, actionLoading, chatTitle, performAction, scrollToBottom, chatID, state, user, message, editMessage } = props;
 
     useEffect(() => {
         scrollToBottom();
@@ -346,14 +367,15 @@ function ChatMessages(props) {
     return (
         <div className={`${styles.chat_messages_wrapper} D_FPS_CHAT_MESSAGES_WRAPPER`}
             style={{ height: props.height }}>
-
             {chatID ? <React.Fragment>
                 <div className={`${styles.chat_messages_header} D_FPS_CHAT_MESSAGES_HEADER`}>
-                    <b>{chatID}</b>
-                    <QuickActionsControl
-                        quickActions={actions}
-                        performAction={a => performAction(a.actionType)}
-                    />
+                    {actionLoading == "topBar" ? <Loader /> : <React.Fragment>
+                        <div>{chatTitle ? <InnerHTML allowRerender={true} html={chatTitle} /> : chatID}</div>
+                        <QuickActionsControl
+                            quickActions={actions}
+                            performAction={a => performAction(a)}
+                        />
+                    </React.Fragment>}
                 </div>
                 <div
                     ref={scrollableDivRef}

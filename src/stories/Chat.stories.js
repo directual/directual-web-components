@@ -31,7 +31,8 @@ const chatData = {
                   "title": "<b>{{title}}</b><br />\n{{description}}"
               }
           ],
-          "useDifferentTypes": true
+          "useDifferentTypes": true,
+          "chatTitle": "Чят: <b>{{title}}</b>"
       },
       "sl_chats": "chatContacts",
       "sl_messages": "chatMessages",
@@ -57,7 +58,8 @@ const chatData = {
                   "actionType": "clear"
               }
           ]
-      }
+      },
+      "chat_height": "calc(100vh - 80px)"
   },
   "tableTitle": null,
   "actions": null,

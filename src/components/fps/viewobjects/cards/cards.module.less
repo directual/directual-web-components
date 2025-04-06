@@ -53,19 +53,14 @@
     opacity: 0.5;
     cursor: pointer;
   }
-
-  position: absolute;
   z-index: 5;
-
-  right: 6px;
+  position: relative;
   transition: 0.5s;
-
   &:hover {
     .detailsButton {
       opacity: 1;
     }
   }
-
   .quickMenu {
     position: absolute;
     // height: 100px;
@@ -132,7 +127,10 @@
 .card {
   .details {
     top: 12px;
+    position: absolute;
+    right: 6px;
   }
+
   margin-bottom: 18px;
   margin-right: 18px;
   display: flex;

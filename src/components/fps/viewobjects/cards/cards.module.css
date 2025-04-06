@@ -38,9 +38,8 @@
   cursor: not-allowed;
 }
 .details {
-  position: absolute;
   z-index: 5;
-  right: 6px;
+  position: relative;
   transition: 0.5s;
 }
 .details .detailsButton {
@@ -111,6 +110,8 @@
 }
 .card .details {
   top: 12px;
+  position: absolute;
+  right: 6px;
 }
 .card .cardInnerWrapper {
   background-color: var(--cards-bgr);
