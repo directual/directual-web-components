@@ -14,6 +14,20 @@
     width: 220px;
     flex-shrink: 0;
     border-right: solid 1px var(--cards-border);
+    position: relative;
+    .drag_handle {
+        position: absolute;
+        right: -2px;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background-color: var(--cards-border);
+        cursor: col-resize;
+        transition: background-color 0.2s;
+        &:hover {
+            background-color: var(--layout-accent);
+        }
+    }
     .chat_contact {
         display: flex;
         gap:12px;
@@ -74,6 +88,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    .header_left {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .expand_button {
+        padding: 4px !important;
+        min-width: 32px !important;
+        height: 32px !important;
+        background-color: var(--button-accent-bgr) !important;
+        color: var(--button-accent-text) !important;
+        border-radius: var(--border-radius) !important;
+        &:hover {
+            background-color: var(--button-accent-hover) !important;
+        }
+    }
 }
 
 .chat_messages_wrapper {

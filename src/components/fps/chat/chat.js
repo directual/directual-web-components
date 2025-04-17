@@ -30,7 +30,7 @@ export default function FpsChat(props) {
 
     const user = auth.user;
 
-    const debug = false;
+    const debug = true;
 
     const [firstLoading, setFirstLoading] = useState(false);
     const [chatsLoading, setChatsLoading] = useState(false);
@@ -43,6 +43,7 @@ export default function FpsChat(props) {
     const [state, setState] = useState({
         full: _.get(data, "params.chat_format") !== 'compact' && _.get(data, "params.sl_chats"),
         chats: [],
+        hidePanel: false,
         messages: [],
         chatID: null // current active chat id
     });
@@ -284,12 +285,23 @@ export default function FpsChat(props) {
     const selectedChat = _.find(state.chats, { id: _.get(state, "chatID") }) || {}
     const chatTitle = sanitizedHTML(template(_.get(data, "params.chats.chatTitle"), selectedChat))
 
+    const handleHidePanel = (hide) => {
+        setState(prevState => ({
+            ...prevState,
+            hidePanel: hide
+        }));
+    };
+
     return (
         <div className={`${styles.chat} FPS_CHAT`}>
             <Contacts
                 chooseChat={chooseChat}
                 globalLoading={globalLoading}
-                {...props} loading={chatsLoading} chatsError={chatsError} state={state} />
+                {...props} 
+                loading={chatsLoading} 
+                chatsError={chatsError} 
+                state={state}
+                onHidePanel={handleHidePanel} />
             <ChatMessages
                 chatID={_.get(state, "chatID")}
                 chatTitle={chatTitle}
@@ -302,16 +314,59 @@ export default function FpsChat(props) {
                 actionLoading={actionLoading}
                 performAction={performAction}
                 scrollToBottom={scrollToBottom}
-                scrollableDivRef={scrollableDivRef} />
+                scrollableDivRef={scrollableDivRef}
+                onHidePanel={handleHidePanel} />
         </div>
     );
 }
 
 function Contacts(props) {
     const { loading, chatsError, state, chooseChat, globalLoading } = props;
+    const [isDragging, setIsDragging] = useState(false);
+    const [width, setWidth] = useState(220);
+    const [startX, setStartX] = useState(0);
+    const [startWidth, setStartWidth] = useState(0);
+
+    const handleMouseDown = (e) => {
+        setIsDragging(true);
+        setStartX(e.clientX);
+        setStartWidth(width);
+        e.preventDefault();
+    };
+
+    const handleMouseMove = (e) => {
+        if (!isDragging) return;
+        const delta = e.clientX - startX;
+        const newWidth = startWidth + delta;
+        
+        if (newWidth <= 50) { // Threshold to hide panel
+            props.onHidePanel(true);
+        } else if (newWidth >= 200 && newWidth <= 400) {
+            props.onHidePanel(false);
+            setWidth(newWidth);
+        }
+    };
+
+    const handleMouseUp = () => {
+        setIsDragging(false);
+    };
+
+    useEffect(() => {
+        if (isDragging) {
+            document.addEventListener('mousemove', handleMouseMove);
+            document.addEventListener('mouseup', handleMouseUp);
+            return () => {
+                document.removeEventListener('mousemove', handleMouseMove);
+                document.removeEventListener('mouseup', handleMouseUp);
+            };
+        }
+    }, [isDragging, startX, startWidth]);
+
+    if (state.hidePanel) return null;
 
     return (
-        <div className={`${styles.chat_contacts}`}>
+        <div className={`${styles.chat_contacts}`} style={{ width }}>
+            <div className={styles.drag_handle} onMouseDown={handleMouseDown} />
             <Input icon='search' placeholder={dict[props.locale].search} nomargin disabled />
             {loading ? <Loader>{dict[props.locale].loading}</Loader> : <React.Fragment>
                 {chatsError ? <Hint error title={"Error " + chatsError.code} margin={{ top: 0, bottom: 0 }}>
@@ -348,7 +403,7 @@ function Contact(props) {
 }
 
 function ChatMessages(props) {
-    const { scrollableDivRef, data, actionLoading, chatTitle, performAction, scrollToBottom, chatID, state, user, message, editMessage } = props;
+    const { scrollableDivRef, data, actionLoading, chatTitle, performAction, scrollToBottom, chatID, state, user, message, editMessage, onHidePanel } = props;
 
     useEffect(() => {
         scrollToBottom();
@@ -370,7 +425,16 @@ function ChatMessages(props) {
             {chatID ? <React.Fragment>
                 <div className={`${styles.chat_messages_header} D_FPS_CHAT_MESSAGES_HEADER`}>
                     {actionLoading == "topBar" ? <Loader /> : <React.Fragment>
-                        <div>{chatTitle ? <InnerHTML allowRerender={true} html={chatTitle} /> : chatID}</div>
+                        <div className={styles.header_left}>
+                            {state.hidePanel && (
+                                <Button 
+                                    icon="menu" 
+                                    onClick={() => onHidePanel(false)}
+                                    className={styles.expand_button}
+                                />
+                            )}
+                            <div>{chatTitle ? <InnerHTML allowRerender={true} html={chatTitle} /> : chatID}</div>
+                        </div>
                         <QuickActionsControl
                             quickActions={actions}
                             performAction={a => performAction(a)}
