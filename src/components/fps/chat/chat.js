@@ -282,16 +282,16 @@ export default function FpsChat(props) {
                             try {
                               const response = JSON.parse(data)
                               // update chatID
-                              if (!isEmpty(_.get(response, "chatID"))) {
+                              if (!_.isEmpty(_.get(response, "chatID"))) {
                                 newChatID = _.get(response, "chatID") || ""
                                 console.log("chatID update", newChatID)
                                 !globalLoading && chooseChat(newChatID)
                               }
                               // redirect
-                              if (!isEmpty(_.get(response, "redirect")) &&
-                                !isEmpty(_.get(response, "redirect.target"))) {
+                              if (!_.isEmpty(_.get(response, "redirect")) &&
+                                !_.isEmpty(_.get(response, "redirect.target"))) {
                                 let delay = 0
-                                if (!isEmpty(_.get(response, "redirect.delay"))) {
+                                if (!_.isEmpty(_.get(response, "redirect.delay"))) {
                                   delay = typeof _.get(response, "redirect.delay") == 'number' ? _.get(response, "redirect.delay") : parseInt(_.get(response, "redirect.delay"))
                                 }
                                 let target = _.get(response, "redirect.target")
