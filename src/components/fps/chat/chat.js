@@ -30,7 +30,7 @@ export default function FpsChat(props) {
 
     const user = auth.user;
 
-    const debug = false;
+    const debug = true;
 
     const [firstLoading, setFirstLoading] = useState(false);
     const [chatsLoading, setChatsLoading] = useState(false);
@@ -276,6 +276,37 @@ export default function FpsChat(props) {
                     undefined,
                     (result, data) => {
                         setActionLoading("");
+                        if (data && data.length > 0) {
+                            console.log("response data")
+                            console.log(data)
+                            try {
+                              const response = JSON.parse(data)
+                              // update chatID
+                              if (!isEmpty(_.get(response, "chatID"))) {
+                                newChatID = _.get(response, "chatID") || ""
+                                console.log("chatID update", newChatID)
+                                !globalLoading && chooseChat(newChatID)
+                              }
+                              // redirect
+                              if (!isEmpty(_.get(response, "redirect")) &&
+                                !isEmpty(_.get(response, "redirect.target"))) {
+                                let delay = 0
+                                if (!isEmpty(_.get(response, "redirect.delay"))) {
+                                  delay = typeof _.get(response, "redirect.delay") == 'number' ? _.get(response, "redirect.delay") : parseInt(_.get(response, "redirect.delay"))
+                                }
+                                let target = _.get(response, "redirect.target")
+                                setTimeout(() => {
+                                  if (target.startsWith("http")) {
+                                    window.location.href = target;
+                                  } else {
+                                    handleRoute(target)()
+                                  }
+                                }, delay)
+                              }
+                            } catch (err) {
+                              console.log(err)
+                            }
+                          }
                     },
                 );
         }
@@ -510,7 +541,7 @@ function ChatInput(props) {
                     type='textarea'
                     rows='auto'
                     shiftEnter
-                    onClick
+                    autoFocus
                     // debug
                     pressEnter={() => performAction("send")}
                     disabled={actionLoading == "send"}
