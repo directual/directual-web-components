@@ -30,7 +30,7 @@ export default function FpsChat(props) {
 
     const user = auth.user;
 
-    const debug = true;
+    const debug = false;
 
     const [firstLoading, setFirstLoading] = useState(false);
     const [chatsLoading, setChatsLoading] = useState(false);
