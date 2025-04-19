@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import _ from 'lodash';
 import '../theme/theme.module.css';
 import Button from '../button/button';
-import Input from '../dataentry/input/input';
+import Input, { InputRow } from '../dataentry/input/input';
 import FileUpload from '../dataentry/fileupload/fileupload';
 import moment from 'moment';
 import { dict } from '../locale'; // Import the dict object
@@ -30,7 +30,7 @@ export default function FpsChat(props) {
 
     const user = auth.user;
 
-    const debug = true;
+    const debug = false;
 
     const [firstLoading, setFirstLoading] = useState(false);
     const [chatsLoading, setChatsLoading] = useState(false);
@@ -297,10 +297,11 @@ export default function FpsChat(props) {
             <Contacts
                 chooseChat={chooseChat}
                 globalLoading={globalLoading}
-                {...props} 
-                loading={chatsLoading} 
-                chatsError={chatsError} 
+                {...props}
+                loading={chatsLoading}
+                chatsError={chatsError}
                 state={state}
+                performAction={performAction}
                 onHidePanel={handleHidePanel} />
             <ChatMessages
                 chatID={_.get(state, "chatID")}
@@ -321,7 +322,7 @@ export default function FpsChat(props) {
 }
 
 function Contacts(props) {
-    const { loading, chatsError, state, chooseChat, globalLoading } = props;
+    const { loading, chatsError, state, data, performAction, chooseChat, globalLoading } = props;
     const [isDragging, setIsDragging] = useState(false);
     const [width, setWidth] = useState(220);
     const [startX, setStartX] = useState(0);
@@ -334,11 +335,22 @@ function Contacts(props) {
         e.preventDefault();
     };
 
+    const actions = _.get(data, "params.actions.otherActions", [])
+        .filter(i => i.actionPlace == "contacts")
+        .map(i => {
+            return {
+                ...i,
+                ...{
+                    "buttonIcon": i.actionIcon
+                }
+            }
+        })
+
     const handleMouseMove = (e) => {
         if (!isDragging) return;
         const delta = e.clientX - startX;
         const newWidth = startWidth + delta;
-        
+
         if (newWidth <= 50) { // Threshold to hide panel
             props.onHidePanel(true);
         } else if (newWidth >= 200 && newWidth <= 400) {
@@ -367,7 +379,13 @@ function Contacts(props) {
     return (
         <div className={`${styles.chat_contacts}`} style={{ width }}>
             <div className={styles.drag_handle} onMouseDown={handleMouseDown} />
-            <Input icon='search' placeholder={dict[props.locale].search} nomargin disabled />
+            <div className={styles.chat_contacts_header}>
+                <Input icon='search' placeholder={dict[props.locale].search} nomargin disabled />
+                {actions && actions.length > 0 && <QuickActionsControl
+                    quickActions={actions}
+                    performAction={a => performAction(a)}
+                />}
+            </div>
             {loading ? <Loader>{dict[props.locale].loading}</Loader> : <React.Fragment>
                 {chatsError ? <Hint error title={"Error " + chatsError.code} margin={{ top: 0, bottom: 0 }}>
                     <p>{chatsError.msg}</p>
@@ -392,7 +410,12 @@ function Contact(props) {
         <div className={`${styles.chat_contact} ${selected ? styles.selected : ''}`}
             onClick={chooseChat}
         >
-            <div className={`${styles.chat_contact_avatar}`}>
+            <div className={`${styles.chat_contact_avatar}`}
+                style={{
+                    width: _.get(appearence, "imageSize", 30),
+                    height: _.get(appearence, "imageSize", 30)
+                }}
+            >
                 <img src={template(`{{${_.get(appearence, "imageField")}}}`, chat)} />
             </div>
             <div className={`${styles.chat_contact_text}`}>
@@ -410,59 +433,66 @@ function ChatMessages(props) {
     }, [state.messages]);
 
     const fields = _.get(data, "params.messages")
-    const actions = _.get(data, "params.actions.otherActions", []).map(i => {
-        return {
-            ...i,
-            ...{
-                "buttonIcon": i.actionIcon
+    const actions = _.get(data, "params.actions.otherActions", [])
+        .filter(i => i.actionPlace !== "contacts")
+        .map(i => {
+            return {
+                ...i,
+                ...{
+                    "buttonIcon": i.actionIcon
+                }
             }
-        }
-    })
+        })
 
     return (
         <div className={`${styles.chat_messages_wrapper} D_FPS_CHAT_MESSAGES_WRAPPER`}
             style={{ height: props.height }}>
-            {chatID ? <React.Fragment>
-                <div className={`${styles.chat_messages_header} D_FPS_CHAT_MESSAGES_HEADER`}>
-                    {actionLoading == "topBar" ? <Loader /> : <React.Fragment>
-                        <div className={styles.header_left}>
-                            {state.hidePanel && (
-                                <Button 
-                                    icon="menu" 
-                                    onClick={() => onHidePanel(false)}
-                                    className={styles.expand_button}
-                                />
-                            )}
-                            <div>{chatTitle ? <InnerHTML allowRerender={true} html={chatTitle} /> : chatID}</div>
-                        </div>
-                        <QuickActionsControl
-                            quickActions={actions}
-                            performAction={a => performAction(a)}
-                        />
-                    </React.Fragment>}
-                </div>
-                <div
-                    ref={scrollableDivRef}
-                    className={`${styles.chat_messages}`}>
-                    {state.messages.length == 0 && <div className={styles.chat_messages_blank}>
-                        <SomethingWentWrong icon="ban" message={dict[props.locale].chat.noMessages} />
-                    </div>}
-                    {state.messages.map(text => <ChatMessage
-                        {...props}
-                        message={message}
-                        text={text}
-                        key={text.id}
-                        editMessage={editMessage}
-                        fields={fields}
-                        author={template(`{{${fields.userIDField}}}`, text) == user}
-                    />)}
-                </div>
-                <ChatInput {...props} performAction={performAction}
-                    message={message} editMessage={editMessage}
-                    actionLoading={actionLoading} />
-            </React.Fragment> : <div className={styles.chat_messages_blank} >
-                <SomethingWentWrong icon="bubble" />
-            </div>}
+            <div className={`${styles.chat_messages_header} D_FPS_CHAT_MESSAGES_HEADER`}>
+                {actionLoading == "topBar" ? <Loader /> : <React.Fragment>
+                    <div className={styles.header_left}>
+                        {state.hidePanel ? (
+                            <div
+                                className={`icon icon-forward ${styles.expand_button}`}
+                                onClick={() => onHidePanel(false)}
+                            />
+                        ) : (
+                            <div
+                                className={`icon icon-back ${styles.expand_button}`}
+                                onClick={() => onHidePanel(true)}
+                            />
+                        )}
+                        <div>{chatTitle ? <InnerHTML allowRerender={true} html={chatTitle} /> : chatID}</div>
+                    </div>
+                    {chatID && <QuickActionsControl
+                        quickActions={actions}
+                        performAction={a => performAction(a)}
+                    />}
+                </React.Fragment>}
+            </div>
+            {chatID ?
+                <React.Fragment>
+                    <div
+                        ref={scrollableDivRef}
+                        className={`${styles.chat_messages}`}>
+                        {state.messages.length == 0 && <div className={styles.chat_messages_blank}>
+                            <SomethingWentWrong icon="ban" message={dict[props.locale].chat.noMessages} />
+                        </div>}
+                        {state.messages.map(text => <ChatMessage
+                            {...props}
+                            message={message}
+                            text={text}
+                            key={text.id}
+                            editMessage={editMessage}
+                            fields={fields}
+                            author={template(`{{${fields.userIDField}}}`, text) == user}
+                        />)}
+                    </div>
+                    <ChatInput {...props} performAction={performAction}
+                        message={message} editMessage={editMessage}
+                        actionLoading={actionLoading} />
+                </React.Fragment> : <div className={styles.chat_messages_blank} >
+                    <SomethingWentWrong icon="bubble" />
+                </div>}
         </div>
     );
 }

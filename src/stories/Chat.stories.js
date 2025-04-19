@@ -28,11 +28,12 @@ const chatData = {
                   "id": "chat_1743320625730",
                   "type": "personal",
                   "imageField": "image",
-                  "title": "<b>{{title}}</b><br />\n{{description}}"
+                  "title": "<b>{{title}}</b><br />\n{{description}}",
+                  "imageSize": 60
               }
           ],
-          "useDifferentTypes": true,
-          "chatTitle": "Чят: <b>{{title}}</b>"
+          "useDifferentTypes": false,
+          "chatTitle": "<b>{{title}}</b>"
       },
       "sl_chats": "chatContacts",
       "sl_messages": "chatMessages",
@@ -56,10 +57,19 @@ const chatData = {
                   "actionIcon": "ban",
                   "actionPayload": "clear",
                   "actionType": "clear"
+              },
+              {
+                  "id": "action_1745061280626",
+                  "name": "New chat with AI",
+                  "actionIcon": "ai",
+                  "actionPlace": "contacts",
+                  "actionPayload": "new_chat",
+                  "actionType": "new_chat"
               }
           ]
       },
-      "chat_height": "calc(100vh - 80px)"
+      "chat_height": "calc(100vh - 80px)",
+      "chatTitle": "{{title}}"
   },
   "tableTitle": null,
   "actions": null,

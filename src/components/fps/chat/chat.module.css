@@ -20,13 +20,26 @@
   right: -2px;
   top: 0;
   bottom: 0;
+  z-index: 5;
   width: 4px;
-  background-color: var(--cards-border);
+  opacity: 0;
   cursor: col-resize;
-  transition: background-color 0.2s;
+  transition: 0.5s;
 }
 .chat_contacts .drag_handle:hover {
-  background-color: var(--layout-accent);
+  background-color: var(--layout-secondary-bgr);
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chat_contacts .drag_handle:hover:after {
+  font-family: 'directual-icons';
+  position: absolute;
+  transform: translateY(-50%);
+  content: '\e923';
+  font-size: 32px;
+  opacity: 0.5;
 }
 .chat_contacts .chat_contact {
   display: flex;
@@ -40,9 +53,7 @@
   background-color: var(--table-raw-hover);
 }
 .chat_contacts .chat_contact .chat_contact_avatar {
-  width: 30px;
   flex-shrink: 0;
-  height: 30px;
   overflow: hidden;
   border-radius: 100%;
   display: flex;
@@ -75,9 +86,14 @@
   align-items: center;
   justify-content: center;
 }
+.chat_contacts_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .chat_messages_header {
   background-color: var(--layout-secondary-bgr);
-  padding: 2px 12px;
+  padding: 2px 12px 2px 2px;
   box-shadow: 0 3px 3px 0px rgba(0, 0, 0, 0.1);
   z-index: 2;
   min-height: 40px;
@@ -85,21 +101,18 @@
   justify-content: space-between;
   align-items: center;
 }
+.chat_messages_header .expand_button {
+  opacity: 0.3;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.chat_messages_header .expand_button:hover {
+  opacity: 0.6;
+}
 .chat_messages_header .header_left {
   display: flex;
   align-items: center;
   gap: 8px;
-}
-.chat_messages_header .expand_button {
-  padding: 4px !important;
-  min-width: 32px !important;
-  height: 32px !important;
-  background-color: var(--button-accent-bgr) !important;
-  color: var(--button-accent-text) !important;
-  border-radius: var(--border-radius) !important;
-}
-.chat_messages_header .expand_button:hover {
-  background-color: var(--button-accent-hover) !important;
 }
 .chat_messages_wrapper {
   background-color: var(--layout-bgr);
