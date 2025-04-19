@@ -283,7 +283,7 @@ export default function FpsChat(props) {
                               const response = JSON.parse(data)
                               // update chatID
                               if (!_.isEmpty(_.get(response, "chatID"))) {
-                                newChatID = _.get(response, "chatID") || ""
+                                const newChatID = _.get(response, "chatID") || ""
                                 console.log("chatID update", newChatID)
                                 !globalLoading && chooseChat(newChatID)
                               }
