@@ -282,9 +282,9 @@ export default function FpsChat(props) {
                             try {
                               const response = JSON.parse(data)
                               // update chatID
-                              if (!_.isEmpty(_.get(response, "chatID"))) {
+                              if (_.has(response, "chatID")) {
                                 const newChatID = _.get(response, "chatID") || ""
-                                console.log("chatID update", newChatID)
+                                console.log("chatID update", newChatID) 
                                 !globalLoading && chooseChat(newChatID)
                               }
                               // redirect
