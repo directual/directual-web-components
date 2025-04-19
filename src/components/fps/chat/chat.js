@@ -30,7 +30,7 @@ export default function FpsChat(props) {
 
     const user = auth.user;
 
-    const debug = false;
+    const debug = true;
 
     const [firstLoading, setFirstLoading] = useState(false);
     const [chatsLoading, setChatsLoading] = useState(false);
@@ -339,6 +339,7 @@ export default function FpsChat(props) {
                 chatTitle={chatTitle}
                 state={state}
                 user={user}
+                socket={socket}
                 {...props}
                 height={_.get(data, "params.chat_height") || 300}
                 message={message}
@@ -457,7 +458,8 @@ function Contact(props) {
 }
 
 function ChatMessages(props) {
-    const { scrollableDivRef, data, actionLoading, chatTitle, performAction, scrollToBottom, chatID, state, user, message, editMessage, onHidePanel } = props;
+    const { scrollableDivRef, data, actionLoading, chatTitle, 
+        performAction, scrollToBottom, chatID, state, user, message, editMessage, onHidePanel, socket } = props;
 
     useEffect(() => {
         scrollToBottom();
@@ -529,8 +531,13 @@ function ChatMessages(props) {
 }
 
 function ChatInput(props) {
-    const { locale, data, state, actionLoading, performAction, message, editMessage } = props;
+    const { locale, data, state, actionLoading, performAction, message, editMessage, socket, chatID } = props;
     const [addFile, setAddFile] = useState(false);
+    const [resetFocus, setResetFocus] = useState(0);
+
+    useEffect(() => {
+        setResetFocus(resetFocus + 1);
+    }, [socket, chatID]);
 
     return (
         <div className={`${styles.chat_input_outer_wrapper}`}>
@@ -541,7 +548,8 @@ function ChatInput(props) {
                     type='textarea'
                     rows='auto'
                     shiftEnter
-                    autoFocus
+                    // autoFocus
+                    reFocus={resetFocus}
                     // debug
                     pressEnter={() => performAction("send")}
                     disabled={actionLoading == "send"}

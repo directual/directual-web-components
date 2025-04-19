@@ -390,6 +390,10 @@ export default function Input(props) {
         props.autoFocus && inputEl.current.focus();
     }, [props.autoFocus])
 
+    useEffect(() => {
+        inputEl.current.focus();
+    }, [props.reFocus])
+
     function countLines(textarea, text) {
         // console.log('counting lines...')
         // console.log(textarea)
