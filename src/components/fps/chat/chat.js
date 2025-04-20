@@ -327,21 +327,34 @@ export default function FpsChat(props) {
         }));
     };
 
+    const isMobile = currentBP === 'mobile';
+    const [showContacts, setShowContacts] = useState(true);
+
+    useEffect(() => {
+        if (isMobile && !_.isEmpty(state.chatID)) {
+            setShowContacts(false);
+        }
+    }, [state.chatID]);
+
     return (
         <div className={`${styles.chat} FPS_CHAT`}>
-            <Contacts
+            {(!isMobile || showContacts) && <Contacts
                 chooseChat={chooseChat}
                 globalLoading={globalLoading}
                 {...props}
+                isMobile={isMobile}
                 loading={chatsLoading}
                 chatsError={chatsError}
                 state={state}
                 performAction={performAction}
-                onHidePanel={handleHidePanel} />
-            <ChatMessages
+                onHidePanel={handleHidePanel} />}
+            {(!isMobile || !showContacts) && <ChatMessages
                 chatID={_.get(state, "chatID")}
                 chatTitle={chatTitle}
                 state={state}
+                setShowContacts={setShowContacts}
+                showContacts={showContacts}
+                isMobile={isMobile}
                 user={user}
                 socket={socket}
                 {...props}
@@ -352,13 +365,13 @@ export default function FpsChat(props) {
                 performAction={performAction}
                 scrollToBottom={scrollToBottom}
                 scrollableDivRef={scrollableDivRef}
-                onHidePanel={handleHidePanel} />
+                onHidePanel={handleHidePanel} />}
         </div>
     );
 }
 
 function Contacts(props) {
-    const { loading, chatsError, state, data, performAction, chooseChat, globalLoading } = props;
+    const { loading, chatsError, state, data, performAction, chooseChat, globalLoading, isMobile } = props;
     const [isDragging, setIsDragging] = useState(false);
     const [width, setWidth] = useState(220);
     const [startX, setStartX] = useState(0);
@@ -413,8 +426,8 @@ function Contacts(props) {
     if (state.hidePanel) return null;
 
     return (
-        <div className={`${styles.chat_contacts}`} style={{ width }}>
-            <div className={styles.drag_handle} onMouseDown={handleMouseDown} />
+        <div className={`${styles.chat_contacts}`} style={{ width: isMobile ? 'auto' : width, flexGrow: isMobile ? 2 : 0 }}>
+            {!isMobile && <div className={styles.drag_handle} onMouseDown={handleMouseDown} />}
             <div className={styles.chat_contacts_header}>
                 <div style={{ flexGrow: 2 }}>
                     <Input icon='search' placeholder={dict[props.locale].search} nomargin />
@@ -465,7 +478,7 @@ function Contact(props) {
 
 function ChatMessages(props) {
     const { scrollableDivRef, data, actionLoading, chatTitle,
-        performAction, scrollToBottom, chatID, state, user, message, editMessage, onHidePanel, socket } = props;
+        performAction, scrollToBottom, chatID, state, user, message, editMessage, onHidePanel, socket, isMobile, setShowContacts, showContacts } = props;
 
     useEffect(() => {
         scrollToBottom();
@@ -489,17 +502,22 @@ function ChatMessages(props) {
             <div className={`${styles.chat_messages_header} D_FPS_CHAT_MESSAGES_HEADER`}>
                 {actionLoading == "topBar" ? <Loader /> : <React.Fragment>
                     <div className={styles.header_left}>
+                        {isMobile && <div
+                            className={`icon icon-back ${styles.expand_button}`}
+                            onClick={() => setShowContacts(true)}
+                        />}
+
                         {state.hidePanel && (
                             <div
                                 className={`icon icon-menu ${styles.expand_button}`}
                                 onClick={() => onHidePanel(false)}
                             />
-                        // ) : (
-                        //     <div
-                        //         className={`icon icon-back ${styles.expand_button}`}
-                        //         onClick={() => onHidePanel(true)}
-                        //     />
-                        // )
+                            // ) : (
+                            //     <div
+                            //         className={`icon icon-back ${styles.expand_button}`}
+                            //         onClick={() => onHidePanel(true)}
+                            //     />
+                            // )
                         )}
                         <div>{chatTitle ? <InnerHTML allowRerender={true} html={chatTitle} /> : chatID}</div>
                     </div>
