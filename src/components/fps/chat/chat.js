@@ -608,11 +608,8 @@ function ChatInput(props) {
 function ChatMessage(props) {
     const { author, fields, message, editMessage, text, data } = props;
     const messageText = template(`{{${fields.textField}}}`, text);
-    const customFooter = template(`{{${fields.customFooterField}}}`);
+    const customFooter = template(`{{${fields.customFooterField}}}`, text);
     const formatting = _.get(data, "params.messages.formatting", "html");
-
-    console.log("fields.customFooterField = " + fields.customFooterField)
-    console.log("customFooter = " + customFooter)
 
     const renderMessage = () => {
         if (formatting === "markdown") {
