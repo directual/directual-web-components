@@ -42,7 +42,8 @@ const chatData = {
           "textField": "text",
           "attachmentsField": "attachments",
           "typeField": "type",
-          "dateTimeField": "date"
+          "dateTimeField": "date",
+          "formatting": "markdown"
       },
       "sl_actions": "cahtActions",
       "actions": {
@@ -65,6 +66,14 @@ const chatData = {
                   "actionPlace": "contacts",
                   "actionPayload": "new_chat",
                   "actionType": "new_chat"
+              },
+              {
+                  "id": "action_1745088378707",
+                  "name": "Delete chat",
+                  "actionIcon": "delete",
+                  "actionPayload": "delete",
+                  "actionType": "delete",
+                  "actionPlace": "top"
               }
           ]
       },

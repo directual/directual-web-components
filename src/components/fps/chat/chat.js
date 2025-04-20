@@ -16,6 +16,8 @@ import icon from './../../../icons/fps-form2.svg';
 import SomethingWentWrong from '../SomethingWentWrong/SomethingWentWrong';
 import Loader from '../loader/loader';
 import DOMPurify from 'dompurify';
+import ReactMarkdown from 'react-markdown';
+import gfm from 'remark-gfm';
 
 function sanitizedHTML(inputHTML) {
     return DOMPurify.sanitize(inputHTML, {
@@ -23,14 +25,16 @@ function sanitizedHTML(inputHTML) {
     });
 }
 export default function FpsChat(props) {
-    const { auth, data, callEndpoint, onEvent, socket, id, locale, handleRoute } = props;
+    const { auth, data, callEndpoint, onEvent, socket, id, locale, handleRoute, currentBP = 'tablet' } = props;
     const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'; // Determine the language
     const scrollableDivRef = useRef(null);
     const abortControllerRef = useRef(null);
 
     const user = auth.user;
 
-    const debug = false;
+    console.log("currentBP = " + currentBP)
+
+    const debug = true;
 
     const [firstLoading, setFirstLoading] = useState(false);
     const [chatsLoading, setChatsLoading] = useState(false);
@@ -83,8 +87,8 @@ export default function FpsChat(props) {
                 setState((prevState) => ({
                     ...prevState,
                     chats: [
-                        { id: "1", title: "First chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
-                        { id: "2", title: "Second chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
+                        { id: "1", title: "<p>First chat</p><div>test test test test test test teeeeeeetttttttttteeeeeeeees</div>", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
+                        { id: "2", title: "<p>Second chat</p>", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
                         { id: "3", title: "Third chat", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
                     ]
                 }));
@@ -127,13 +131,13 @@ export default function FpsChat(props) {
                     ...prevState,
                     messages: [
                         {
-                            "text": "Здарова заебал",
+                            "text": `# Здарова заебал`,
                             "chat_id": "1",
                             "author_id": "1",
                             "id": "4641f494-d026-4053-bbc2-3219659c4d1c"
                         },
                         {
-                            "text": "как дела ебать",
+                            "text": "<h1>как дела ебать</h1>",
                             "author_id": "2",
                             "chat_id": "2",
                             "id": "701a5bc2-5de8-49ce-b6be-9bd6679d5dd1"
@@ -280,33 +284,33 @@ export default function FpsChat(props) {
                             console.log("response data")
                             console.log(data)
                             try {
-                              const response = JSON.parse(data)
-                              // update chatID
-                              if (_.has(response, "chatID")) {
-                                const newChatID = _.get(response, "chatID") || ""
-                                console.log("chatID update", newChatID) 
-                                !globalLoading && chooseChat(newChatID)
-                              }
-                              // redirect
-                              if (!_.isEmpty(_.get(response, "redirect")) &&
-                                !_.isEmpty(_.get(response, "redirect.target"))) {
-                                let delay = 0
-                                if (!_.isEmpty(_.get(response, "redirect.delay"))) {
-                                  delay = typeof _.get(response, "redirect.delay") == 'number' ? _.get(response, "redirect.delay") : parseInt(_.get(response, "redirect.delay"))
+                                const response = JSON.parse(data)
+                                // update chatID
+                                if (_.has(response, "chatID")) {
+                                    const newChatID = _.get(response, "chatID") || ""
+                                    console.log("chatID update", newChatID)
+                                    !globalLoading && chooseChat(newChatID)
                                 }
-                                let target = _.get(response, "redirect.target")
-                                setTimeout(() => {
-                                  if (target.startsWith("http")) {
-                                    window.location.href = target;
-                                  } else {
-                                    handleRoute(target)()
-                                  }
-                                }, delay)
-                              }
+                                // redirect
+                                if (!_.isEmpty(_.get(response, "redirect")) &&
+                                    !_.isEmpty(_.get(response, "redirect.target"))) {
+                                    let delay = 0
+                                    if (!_.isEmpty(_.get(response, "redirect.delay"))) {
+                                        delay = typeof _.get(response, "redirect.delay") == 'number' ? _.get(response, "redirect.delay") : parseInt(_.get(response, "redirect.delay"))
+                                    }
+                                    let target = _.get(response, "redirect.target")
+                                    setTimeout(() => {
+                                        if (target.startsWith("http")) {
+                                            window.location.href = target;
+                                        } else {
+                                            handleRoute(target)()
+                                        }
+                                    }, delay)
+                                }
                             } catch (err) {
-                              console.log(err)
+                                console.log(err)
                             }
-                          }
+                        }
                     },
                 );
         }
@@ -412,7 +416,9 @@ function Contacts(props) {
         <div className={`${styles.chat_contacts}`} style={{ width }}>
             <div className={styles.drag_handle} onMouseDown={handleMouseDown} />
             <div className={styles.chat_contacts_header}>
-                <Input icon='search' placeholder={dict[props.locale].search} nomargin disabled />
+                <div style={{ flexGrow: 2 }}>
+                    <Input icon='search' placeholder={dict[props.locale].search} nomargin />
+                </div>
                 {actions && actions.length > 0 && <QuickActionsControl
                     quickActions={actions}
                     performAction={a => performAction(a)}
@@ -458,7 +464,7 @@ function Contact(props) {
 }
 
 function ChatMessages(props) {
-    const { scrollableDivRef, data, actionLoading, chatTitle, 
+    const { scrollableDivRef, data, actionLoading, chatTitle,
         performAction, scrollToBottom, chatID, state, user, message, editMessage, onHidePanel, socket } = props;
 
     useEffect(() => {
@@ -483,16 +489,17 @@ function ChatMessages(props) {
             <div className={`${styles.chat_messages_header} D_FPS_CHAT_MESSAGES_HEADER`}>
                 {actionLoading == "topBar" ? <Loader /> : <React.Fragment>
                     <div className={styles.header_left}>
-                        {state.hidePanel ? (
+                        {state.hidePanel && (
                             <div
-                                className={`icon icon-forward ${styles.expand_button}`}
+                                className={`icon icon-menu ${styles.expand_button}`}
                                 onClick={() => onHidePanel(false)}
                             />
-                        ) : (
-                            <div
-                                className={`icon icon-back ${styles.expand_button}`}
-                                onClick={() => onHidePanel(true)}
-                            />
+                        // ) : (
+                        //     <div
+                        //         className={`icon icon-back ${styles.expand_button}`}
+                        //         onClick={() => onHidePanel(true)}
+                        //     />
+                        // )
                         )}
                         <div>{chatTitle ? <InnerHTML allowRerender={true} html={chatTitle} /> : chatID}</div>
                     </div>
@@ -577,15 +584,31 @@ function ChatInput(props) {
 }
 
 function ChatMessage(props) {
-    const { author, fields, message, editMessage, text } = props;
-    const messageText = sanitizedHTML(template(`{{${fields.textField}}}`, text))
+    const { author, fields, message, editMessage, text, data } = props;
+    const messageText = template(`{{${fields.textField}}}`, text);
+    const formatting = _.get(data, "params.messages.formatting", "html");
+
+    const renderMessage = () => {
+        if (formatting === "markdown") {
+            return (
+                <ReactMarkdown
+                    plugins={[gfm]}
+                    children={messageText}
+                />
+            );
+        } else {
+            return (
+                <InnerHTML allowRerender={true} html={sanitizedHTML(messageText)} />
+            );
+        }
+    };
 
     return (
         <div className={`${styles.chat_message_wrapper} ${author ? styles.chat_message_author : styles.chat_message_normal}`}>
             <div className={`${styles.chat_message}`}>
                 <div className={`${styles.chat_message_text}`}>
                     <pre>
-                        {messageText && <InnerHTML allowRerender={true} html={messageText} />}
+                        {messageText && renderMessage()}
                     </pre>
                 </div>
             </div>
