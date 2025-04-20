@@ -608,6 +608,7 @@ function ChatInput(props) {
 function ChatMessage(props) {
     const { author, fields, message, editMessage, text, data } = props;
     const messageText = template(`{{${fields.textField}}}`, text);
+    const customFooter = template(`{{${fields.customFooterField}}}`);
     const formatting = _.get(data, "params.messages.formatting", "html");
 
     const renderMessage = () => {
@@ -625,7 +626,11 @@ function ChatMessage(props) {
         }
     };
 
-    return (
+    const renderFooter = () => {
+        return <InnerHTML allowRerender={true} html={sanitizedHTML(customFooter)} />
+    }
+
+    return <div className={`${styles.chat_message_outer_wrapper}`}>
         <div className={`${styles.chat_message_wrapper} ${author ? styles.chat_message_author : styles.chat_message_normal}`}>
             <div className={`${styles.chat_message}`}>
                 <div className={`${styles.chat_message_text}`}>
@@ -635,7 +640,8 @@ function ChatMessage(props) {
                 </div>
             </div>
         </div>
-    );
+        {customFooter && renderFooter()}
+    </div>
 }
 
 FpsChat.propTypes = {
