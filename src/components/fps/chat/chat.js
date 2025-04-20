@@ -556,7 +556,7 @@ function ChatMessages(props) {
 }
 
 function ChatInput(props) {
-    const { locale, data, state, actionLoading, performAction, message, editMessage, socket, chatID } = props;
+    const { locale, data, state, actionLoading, performAction, message, editMessage, socket, chatID, isMobile } = props;
     const [addFile, setAddFile] = useState(false);
     const [resetFocus, setResetFocus] = useState(0);
 
@@ -583,9 +583,13 @@ function ChatInput(props) {
                     placeholder={dict[locale].chat.typeMessage}
                 />
                 <div className={`icon icon-clip ${styles.chat_input_attach}`} onClick={e => setAddFile(!addFile)} />
-                <Button accent icon='bubble' loading={actionLoading == "send"}
+                {isMobile ? <Button accent icon='bubble' loading={actionLoading == "send"}
                     disabled={!_.get(message, `${state.chatID}.msg`) && !_.get(message, `${state.chatID}.attachment`)}
-                    onClick={() => performAction("send")}>{dict[locale].chat.send}</Button>
+                    onClick={() => performAction("send")} />
+                    :
+                    <Button accent icon='bubble' loading={actionLoading == "send"}
+                        disabled={!_.get(message, `${state.chatID}.msg`) && !_.get(message, `${state.chatID}.attachment`)}
+                        onClick={() => performAction("send")}>{dict[locale].chat.send}</Button>}
             </div>
             {addFile && <FileUpload
                 locale={locale}
