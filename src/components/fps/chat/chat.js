@@ -611,6 +611,9 @@ function ChatMessage(props) {
     const customFooter = template(`{{${fields.customFooterField}}}`);
     const formatting = _.get(data, "params.messages.formatting", "html");
 
+    console.log("fields.customFooterField = " + fields.customFooterField)
+    console.log("customFooter = " + customFooter)
+
     const renderMessage = () => {
         if (formatting === "markdown") {
             return (
