@@ -426,7 +426,7 @@ function Contacts(props) {
     if (state.hidePanel) return null;
 
     return (
-        <div className={`${styles.chat_contacts}`} style={{ width: isMobile ? 'auto' : width, flexGrow: isMobile ? 2 : 0 }}>
+        <div className={`${styles.chat_contacts}`} style={{ width: isMobile ? 'fit-content' : width, flexGrow: isMobile ? 2 : 0 }}>
             {!isMobile && <div className={styles.drag_handle} onMouseDown={handleMouseDown} />}
             <div className={styles.chat_contacts_header}>
                 <div style={{ flexGrow: 2 }}>
