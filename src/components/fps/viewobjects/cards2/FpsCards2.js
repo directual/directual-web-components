@@ -706,7 +706,7 @@ function CardAction(props) {
             return result;
         }, {});
 
-        if ((settings.actionType == "endpoint" || !action.actionType) && settings.endpoint) {
+        if ((_.get(settings,"actionType") == "endpoint" || !_.get(action,"actionType")) && settings.endpoint) {
             let payload = transformObject(settings.mapping)
 
             console.log("payload")

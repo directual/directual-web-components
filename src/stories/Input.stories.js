@@ -455,3 +455,31 @@ export const MaskedInput = {
   },
 };
 
+export const Slider = {
+  args: {
+    type: 'slider',
+    label: 'Slider Input',
+    min: 0,
+    max: 100,
+    step: 1,
+    defaultValue: 50,
+    width: 400,
+    debug: true,
+    tooltip: "This is a slider input component"
+  },
+};
+
+export const Range = {
+  args: {
+    type: 'range',
+    label: 'Range Input',
+    min: 0,
+    max: 100,
+    step: 1,
+    defaultValue: [25, 75], // Range with two values
+    width: 400,
+    debug: true,
+    tooltip: "This is a range input component with two handles"
+  },
+};
+

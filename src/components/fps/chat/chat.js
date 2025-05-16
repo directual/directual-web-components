@@ -268,10 +268,10 @@ export default function FpsChat(props) {
             const body = {
                 [_.get(data, "params.actions.textField")]: action.actionPayload,
                 [_.get(data, "params.actions.chatLinkField")]: currentChat,
-                [_.get(data, "params.actions.actionTypeField")]: action.actionType,
+                [_.get(data, "params.actions.actionTypeField")]: _.get(action,"actionType"),
             };
             debug ?
-                console.log("send action", action.actionType)
+                console.log("send action", _.get(action,"actionType"))
                 :
                 callEndpoint && callEndpoint(
                     endpoint,

@@ -183,7 +183,7 @@ function ElementAction(props) {
             copyExtendedModel = originalModel
             setExtendedModel(originalModel)
         }
-        if ((action.actionType == "endpoint" || !action.actionType) && action.endpoint) {
+        if ((_.get(action,"actionType") == "endpoint" || !_.get(action,"actionType")) && action.endpoint) {
             let payload = transformObject(action.mapping)
             if (action.sendModel) {
                 payload = { ...model, ...payload }
@@ -220,7 +220,7 @@ function ElementAction(props) {
                 })
             }
         }
-        if (action.actionType == "state" || !action.actionType) {
+        if (_.get(action,"actionType") == "state" || !_.get(action,"actionType")) {
             const payloadState = transformState(action.stateMapping, "state")
             const payloadModel = transformState(action.stateMapping, "model")
 

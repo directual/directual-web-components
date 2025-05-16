@@ -19,7 +19,7 @@ export default function FpsForm2Action(props) {
         }
     }, [])
 
-    const link = action.actionType == 'link' ?
+    const link = _.get(action,"actionType") == 'link' ?
         template(action._href)
         : null
 
