@@ -1,7 +1,7 @@
 .slider_wrapper {
   display: flex;
   height: 4px;
-  padding: 18px 0;
+  padding: 24px 0;
   min-width: 100px;
 }
 .slider_wrapper.disabled {

@@ -462,10 +462,25 @@ export const Slider = {
     min: 0,
     max: 100,
     step: 1,
-    defaultValue: 50,
+    defaultValue: { firstValue: 50 },
     width: 400,
     debug: true,
     tooltip: "This is a slider input component"
+  },
+};
+
+export const SliderDisabled = {
+  args: {
+    type: 'slider',
+    label: 'Slider Input',
+    min: 0,
+    max: 100,
+    step: 1,
+    defaultValue: { firstValue: 50 },
+    width: 400,
+    debug: true,
+    tooltip: "This is a disabled slider input component",
+    disabled: true
   },
 };
 
@@ -476,10 +491,24 @@ export const Range = {
     min: 0,
     max: 100,
     step: 1,
-    defaultValue: [25, 75], // Range with two values
+    defaultValue: { firstValue: 25, secondValue: 75 }, // Range with two values
     width: 400,
     debug: true,
     tooltip: "This is a range input component with two handles"
   },
 };
 
+export const RangeDisabled = {
+  args: {
+    type: 'range',
+    label: 'Range Input',
+    min: 0,
+    max: 100,
+    step: 1,
+    defaultValue: { firstValue: 25, secondValue: 75 }, // Range with two values
+    width: 400,
+    debug: true,
+    tooltip: "This is a disabled range input component with two handles",
+    disabled: true
+  },
+};

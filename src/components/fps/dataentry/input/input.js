@@ -19,6 +19,7 @@ import { Tags } from '../../tags/Tags'
 import { Tooltip } from 'react-tooltip'
 import { IMaskInput } from 'react-imask';
 import { debounce } from 'lodash'
+import Slider2 from '../slider/slider2';
 
 export function InputGroup(props) {
     return (
@@ -1189,14 +1190,22 @@ export default function Input(props) {
                 />
             }
             {props.type == 'slider' &&
-                <Slider
+                // <Slider
+                //     defaultValue={defVal}
+                //     min={props.min}
+                //     max={props.max}
+                //     disabled={props.disabled}
+                //     step={props.step}
+                //     onChange={e => { submit(e) }}
+                //     unitName={props.unitName} />
+                <Slider2 
                     defaultValue={defVal}
                     min={props.min}
                     max={props.max}
                     disabled={props.disabled}
                     step={props.step}
                     onChange={e => { submit(e) }}
-                    unitName={props.unitName} />
+                />
             }
             {props.type == 'optionsHandler' &&
                 <OptionsHandler
@@ -1209,15 +1218,22 @@ export default function Input(props) {
                 />
             }
             {props.type == 'range' &&
-                <Slider
+                // <Slider
+                //     defaultValue={defVal}
+                //     min={props.min}
+                //     disabled={props.disabled}
+                //     max={props.max}
+                //     step={props.step}
+                //     onChange={e => { submit(e) }}
+                //     unitName={props.unitName} />
+                <Slider2 
                     defaultValue={defVal}
                     min={props.min}
-                    disabled={props.disabled}
                     max={props.max}
+                    disabled={props.disabled}
                     step={props.step}
                     onChange={e => { submit(e) }}
-                    unitName={props.unitName} />
-
+                />
             }
             {props.type == 'checkboxGroup' &&
                 <div style={props.horizontal ? { display: 'flex', flexWrap: 'wrap', gap: "6px 18px" } : {}}>
