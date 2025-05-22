@@ -1205,6 +1205,7 @@ export default function Input(props) {
                     disabled={props.disabled}
                     step={props.step}
                     onChange={e => { submit(e) }}
+                    unitName={props.unitName}
                 />
             }
             {props.type == 'optionsHandler' &&
@@ -1233,6 +1234,7 @@ export default function Input(props) {
                     disabled={props.disabled}
                     step={props.step}
                     onChange={e => { submit(e) }}
+                    unitName={props.unitName}
                 />
             }
             {props.type == 'checkboxGroup' &&

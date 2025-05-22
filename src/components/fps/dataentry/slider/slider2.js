@@ -8,7 +8,8 @@ export default function Slider2({
     onChange, 
     min = 0, 
     max = 100, 
-    step = 1 
+    step = 1,
+    unitName="" 
 }) {
     const sliderBar = useRef(null);
 
@@ -102,7 +103,7 @@ export default function Slider2({
                                 whiteSpace: "nowrap"
                             }}
                         >
-                            {values[index]}
+                            {values[index]}{unitName}
                         </div>
                     </div>
                 )}
