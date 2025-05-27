@@ -114,7 +114,7 @@
     "embla-carousel-autoplay": "^8.1.8",
     "embla-carousel-react": "^8.1.8",
     "lodash": "^4.17.21",
-    "mapbox-gl": "^3.0.1",
+    "mapbox-gl": "^3.12.0",
     "moment": "^2.26.0",
     "pigeon-maps": "^0.21.3",
     "react-beautiful-dnd": "^13.0.0",
