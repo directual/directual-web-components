@@ -1,6 +1,6 @@
 {
   "name": "directual-web-components",
-  "version": "3.11.84",
+  "version": "3.11.85",
   "description": "fps components",
   "author": "Directual",
   "license": "MIT",
@@ -122,6 +122,7 @@
     "react-editor-js": "^2.1.0",
     "react-imask": "^7.6.1",
     "react-markdown": "^5.0.2",
+    "react-range": "^1.10.0",
     "react-table": "^7.7.0",
     "react-tooltip": "^5.28.0",
     "recharts": "^2.6.2",
