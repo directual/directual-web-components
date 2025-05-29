@@ -268,10 +268,10 @@ export default function FpsChat(props) {
             const body = {
                 [_.get(data, "params.actions.textField")]: action.actionPayload,
                 [_.get(data, "params.actions.chatLinkField")]: currentChat,
-                [_.get(data, "params.actions.actionTypeField")]: _.get(action,"actionType"),
+                [_.get(data, "params.actions.actionTypeField")]: _.get(action, "actionType"),
             };
             debug ?
-                console.log("send action", _.get(action,"actionType"))
+                console.log("send action", _.get(action, "actionType"))
                 :
                 callEndpoint && callEndpoint(
                     endpoint,
@@ -662,5 +662,8 @@ FpsChat.settings = {
     sysName: 'FpsChat',
     isLegacy: false,
     isMarketplace: true,
-    form: []
+    form: [
+        { name: 'API-endpoint', sysName: 'sl', type: 'api-endpoint' },
+        { name: 'Page size', sysName: 'pageSize', type: 'number' },
+    ]
 };

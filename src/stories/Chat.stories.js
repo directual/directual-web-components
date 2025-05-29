@@ -18,88 +18,49 @@ export default {
 };
 
 const chatData = {
-  "sl": "-",
-  "pageSize": null,
-  "headerField": null,
   "params": {
+      "chat_height": "calc(100vh - 60px)",
+      "sl_messages": "ChatMessages",
+      "sl_actions": "ChatActions",
+      "sl_chats": "ChatChats",
+      "actions": {
+          "textField": "payload",
+          "attachmentsField": "attachments",
+          "actionTypeField": "action",
+          "chatLinkField": "chat_id"
+      },
       "chats": {
           "appearence": [
               {
-                  "id": "chat_1743320625730",
+                  "id": "chat_1747586883133",
                   "type": "personal",
+                  "layout": "default",
                   "imageField": "image",
-                  "title": "<b>{{title}}</b><br />\n{{description}}",
-                  "imageSize": 60
+                  "title": "{{title}}"
               }
           ],
-          "useDifferentTypes": false,
-          "chatTitle": "<b>{{title}}</b>"
+          "chatTitle": "Hello!",
+          "useDifferentTypes": false
       },
-      "sl_chats": "chatContacts",
-      "sl_messages": "chatMessages",
       "messages": {
           "userIDField": "user_id",
           "textField": "text",
           "attachmentsField": "attachments",
-          "typeField": "type",
           "dateTimeField": "date",
-          "formatting": "markdown"
+          "customFooterField": "custom_footer",
+          "typeField": "text"
       },
-      "sl_actions": "cahtActions",
-      "actions": {
-          "textField": "payload",
-          "attachmentsField": "attachments",
-          "actionTypeField": "actions",
-          "chatLinkField": "chat_id",
-          "otherActions": [
-              {
-                  "id": "action_1743873880726",
-                  "name": "Clear chat",
-                  "actionIcon": "ban",
-                  "actionPayload": "clear",
-                  "actionType": "clear"
-              },
-              {
-                  "id": "action_1745061280626",
-                  "name": "New chat with AI",
-                  "actionIcon": "ai",
-                  "actionPlace": "contacts",
-                  "actionPayload": "new_chat",
-                  "actionType": "new_chat"
-              },
-              {
-                  "id": "action_1745088378707",
-                  "name": "Delete chat",
-                  "actionIcon": "delete",
-                  "actionPayload": "delete",
-                  "actionType": "delete",
-                  "actionPlace": "top"
-              }
-          ]
-      },
-      "chat_height": "calc(100vh - 80px)",
-      "chatTitle": "{{title}}"
+      "chat_format": "full"
   },
-  "tableTitle": null,
-  "actions": null,
-  "headers": null,
-  "data": null,
-  "totalPages": 0,
-  "pageNumber": 0,
-  "error": "511",
-  "fieldScheme": null,
-  "writeFields": null,
-  "structures": null,
-  "isSuccessWrite": false,
-  "writeError": null,
-  "writeResponse": null,
-  "fileds": null,
-  "quickSearch": null,
-  "httpParams": null,
-  "cardCustomHtml": null,
-  "cardCustomLayout": null,
-  "comment": null,
-  "response": null
+  "sl": "",
+  "__libs__": [],
+  "__header__": "",
+  "__initialize__": null,
+  "__update__": null,
+  "__destroy__": null,
+  "__data__": {
+      "_api_": {}
+  }
 }
 
 let authExample = {
