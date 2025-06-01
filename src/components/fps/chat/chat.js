@@ -625,9 +625,10 @@ function ChatMessage(props) {
     }
 
     return <div className={`${styles.chat_message_outer_wrapper}`}>
-        <div className={`${styles.chat_message_wrapper} ${author ? styles.chat_message_author : styles.chat_message_normal}`}>
-            <div className={`${styles.chat_message}`}>
-                <div className={`${styles.chat_message_text}`}>
+        <div className={`${styles.chat_message_wrapper} 
+            ${author ? styles.chat_message_author : styles.chat_message_normal} D_FPS_CHAT_MESSAGE_WRAPPER`}>
+            <div className={`${styles.chat_message} D_FPS_CHAT_MESSAGE`}>
+                <div className={`${styles.chat_message_text} D_FPS_CHAT_MESSAGE_TEXT`}>
                     <pre>
                         {messageText && renderMessage()}
                     </pre>
