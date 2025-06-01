@@ -1,6 +1,5 @@
 import React from 'react'
 import { FpsLayout } from '../components/fps/layout/fpsLayout/fpsLayout';
-import 'mapbox-gl/dist/mapbox-gl.css'
 import { FpsWrapper } from '../components/fps/wrapper/wrapper'
 import { NewMainMenu, NewMobileTabs } from '../components/fps/mainmenu/mainmenu'
 

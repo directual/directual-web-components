@@ -1,4 +1,3 @@
-import 'mapbox-gl/dist/mapbox-gl.css'
 import FpsForm2 from '../components/fps/dataentry/form/FpsForm2'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export

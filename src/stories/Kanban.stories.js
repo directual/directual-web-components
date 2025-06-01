@@ -1,4 +1,3 @@
-import 'mapbox-gl/dist/mapbox-gl.css'
 import FpsKanban from '../components/fps/viewobjects/kanban/FpsKanban'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export

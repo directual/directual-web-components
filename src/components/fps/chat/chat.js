@@ -34,7 +34,7 @@ export default function FpsChat(props) {
 
     console.log("currentBP = " + currentBP)
 
-    const debug = false;
+    const debug = true;
 
     const [firstLoading, setFirstLoading] = useState(false);
     const [chatsLoading, setChatsLoading] = useState(false);
@@ -512,12 +512,6 @@ function ChatMessages(props) {
                                 className={`icon icon-menu ${styles.expand_button}`}
                                 onClick={() => onHidePanel(false)}
                             />
-                            // ) : (
-                            //     <div
-                            //         className={`icon icon-back ${styles.expand_button}`}
-                            //         onClick={() => onHidePanel(true)}
-                            //     />
-                            // )
                         )}
                         <div>{chatTitle ? <InnerHTML allowRerender={true} html={chatTitle} /> : chatID}</div>
                     </div>
@@ -535,7 +529,7 @@ function ChatMessages(props) {
                         {state.messages.length == 0 && <div className={styles.chat_messages_blank}>
                             <SomethingWentWrong icon="ban" message={dict[props.locale].chat.noMessages} />
                         </div>}
-                        {state.messages.map(text => <ChatMessage
+                        { _.reverse(state.messages).map(text => <ChatMessage
                             {...props}
                             message={message}
                             text={text}
