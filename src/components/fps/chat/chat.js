@@ -192,13 +192,13 @@ export default function FpsChat(props) {
                 undefined,
                 state.full ? { _chat: state.chatID } : {},
                 (result, data) => {
-                    console.log("messages")
-                    console.log(data)
+                    // console.log("messages")
+                    // console.log(data)
                     setMessageLoading(false);
                     if (result == 'error') {
                         setState((prevState) => ({ ...prevState, messages: [] }));
                     } else {
-                        setState((prevState) => ({ ...prevState, messages: data }));
+                        setState((prevState) => ({ ...prevState, messages: _.reverse(data) }));
                     }
                 },
                 { signal: abortControllerRef.current.signal }
@@ -529,7 +529,7 @@ function ChatMessages(props) {
                         {state.messages.length == 0 && <div className={styles.chat_messages_blank}>
                             <SomethingWentWrong icon="ban" message={dict[props.locale].chat.noMessages} />
                         </div>}
-                        { _.reverse(state.messages).map(text => <ChatMessage
+                        { state.messages.map(text => <ChatMessage
                             {...props}
                             message={message}
                             text={text}
