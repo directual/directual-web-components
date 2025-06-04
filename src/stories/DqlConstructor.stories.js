@@ -2,7 +2,7 @@ import DqlConstructor from "../components/fps/dataentry/dqlconstructor/dqlConstr
 import dqlConstructor from "../components/fps/dataentry/dqlconstructor/dqlConstructor";
 
 export default {
-    title: 'FPS/Components/DqlConstructor',
+    title: 'FPS/Components/DQLConstructor',
     component: DqlConstructor,
     parameters: {
         layout: 'left',

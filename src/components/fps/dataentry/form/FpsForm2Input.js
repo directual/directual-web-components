@@ -22,6 +22,10 @@ export function FpsForm2Input(props) {
 
     const debouncedCallEndpint = debounce(callEndpoint, 200);
 
+    console.log('field', field)
+    console.log('fieldInfo', fieldInfo)
+    console.log('data', data)
+
     if (field._conditionalView &&
         !checkHidden(field) &&
         !(_.get(params, "general.debugConditions") && userDebug) &&
@@ -65,6 +69,9 @@ export function FpsForm2Input(props) {
         case 'string_markdown':
             toRender = <FieldMkd {...props} fieldInfo={fieldInfo} disabled={disabled} />
             break;
+        case 'string_dql':
+            toRender = <FieldDQL {...props} fields={_.get(data, "fileds")} fieldInfo={fieldInfo} disabled={disabled} />
+            break;
         case 'string_html':
             toRender = <FieldHTML {...props} fieldInfo={fieldInfo} disabled={disabled} />
             break;
@@ -86,6 +93,20 @@ export function FpsForm2Input(props) {
             </code>
         </div>}
     </div>
+}
+
+function FieldDQL(props) {
+    const { field, locale, fields, lang, template, model, state, onChange, fieldInfo, code, disabled } = props
+    const basicProps = { onChange, locale, lang, disabled }
+    
+    return <Input
+        type="dqlconstructor"
+        {...basicProps}
+        fields={fields}
+        nomargin
+        label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
+        defaultValue={model[fieldInfo.sysName]}
+    />
 }
 
 export function FpsForm2HiddenInput(props) {

@@ -17,12 +17,13 @@ const expressions = [
 
 export default function DqlConstructor(props) {
     const [structure, setStructure] = useState(
-        props?.data?.jsonObject 
-            ? JSON.parse(props.data.jsonObject).map(({sysName, name}) => ({ 
-                key: sysName, 
-                value: name 
-              }))
-            : []
+        // props?.data?.jsonObject 
+        //     ? JSON.parse(props.data.jsonObject).map(({sysName, name}) => ({ 
+        //         key: sysName, 
+        //         value: name 
+        //       }))
+        //     : []
+        props.fields?.map(({sysName, name}) => ({ key: sysName, value: name }))
     );
 
     const [groups, setGroups] = useState([

@@ -1241,7 +1241,7 @@ export default function Input(props) {
             }
             {props.type == 'dqlconstructor' &&
                 <DqlConstructor 
-                    data={props.data}
+                    fields={props.fields}
                     onChange={e => { submit(e) }}
                 />
             }

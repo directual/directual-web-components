@@ -518,6 +518,9 @@ export const RangeDisabled = {
 export const DqlConstructor = {
   args: {
     type: 'dqlconstructor',
+    onChange: (dql) => {
+      console.log('dql', dql);
+    },
     label: 'DqlConstructor',
     tooltip: "This is a DQL constructor component for custom filters create",
     data: dqlData
