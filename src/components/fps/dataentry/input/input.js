@@ -20,6 +20,7 @@ import { Tooltip } from 'react-tooltip'
 import { IMaskInput } from 'react-imask';
 import { debounce } from 'lodash'
 import Slider2 from '../slider/slider2';
+import DqlConstructor from '../dqlconstructor/dqlConstructor'
 
 export function InputGroup(props) {
     return (
@@ -589,6 +590,7 @@ export default function Input(props) {
                 props.type != 'selectImages' &&
                 props.type != 'optionsHandler' &&
                 props.type != 'masked' &&
+                props.type != 'dqlconstructor' &&
                 <div className={`${styles.field_wrapper} ${(props.addonAfter || props.addonBefore || props.preSelect || (props.type == 'color' || props.type == 'colour' || props.type == 'colorpicker')) && styles.hor}`}>
                     {props.addonBefore &&
                         <div className={styles.addonBefore}>{props.addonBefore}</div>}
@@ -1235,6 +1237,12 @@ export default function Input(props) {
                     step={props.step}
                     onChange={e => { submit(e) }}
                     unitName={props.unitName}
+                />
+            }
+            {props.type == 'dqlconstructor' &&
+                <DqlConstructor 
+                    data={props.data}
+                    onChange={e => { submit(e) }}
                 />
             }
             {props.type == 'checkboxGroup' &&

@@ -1,0 +1,154 @@
+.dqlConstructor_wrapper {
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.dqlConstructor_group {
+    position: relative;
+    padding: 12px;
+    margin: 16px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+}
+
+.group_header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.dqlConstructor_group::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    border-radius: 4px 0 0 4px;
+}
+
+.dqlConstructor_group.all {
+    border-left: 4px solid #57bf97;
+}
+
+.dqlConstructor_group.or {
+    border-left: 4px solid #eca83b;
+}
+
+.dqlConstructor_group.all::before {
+    background-color: #57bf97;
+}
+
+.dqlConstructor_group.or::before {
+    background-color: #eca83b;
+}
+
+.group_type {
+    font-weight: 500;
+    color: #333;
+}
+
+.group_type_selector {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.group_controls {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+
+.dqlConstructor_line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    padding: 8px;
+    background-color: white;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.dqlConstructor_line > div {
+    flex: 1;
+    min-width: 0;
+}
+
+@media (max-width: 768px) {
+    .dqlConstructor_line > div {
+        flex: 0 0 100%;
+        min-width: 100%;
+    }
+    
+    .dqlConstructor_line > button {
+        margin-top: 8px;
+    }
+}
+
+.collapse_button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 8px;
+    color: #666;
+}
+
+.global_controls {
+    margin-top: 16px;
+    display: flex;
+    gap: 8px;
+}
+
+.radio_option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.radio_circle {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    margin-right: 6px;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.radio_circle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: transparent;
+    transition: all 0.2s;
+}
+
+.radio_option input {
+    display: none;
+}
+
+.radio_option input:checked + .radio_circle {
+    border-color: currentColor;
+}
+
+.radio_option input:checked + .radio_circle::after {
+    background: currentColor;
+}
+
+.radio_option.all {
+    color: #57bf97;
+}
+
+.radio_option.or {
+    color: #eca83b;
+}
