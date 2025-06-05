@@ -1243,6 +1243,8 @@ export default function Input(props) {
                 <DqlConstructor 
                     fields={props.fields}
                     onChange={e => { submit(e) }}
+                    value={props.value}
+                    disabled={props.disabled}
                 />
             }
             {props.type == 'checkboxGroup' &&

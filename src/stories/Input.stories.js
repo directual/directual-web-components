@@ -523,6 +523,8 @@ export const DqlConstructor = {
     },
     label: 'DqlConstructor',
     tooltip: "This is a DQL constructor component for custom filters create",
-    data: dqlData
+    fields: testFields[0].fields,
+    value: `(id != "" AND (body < "10000" OR FormState > "500"))`,
+    disabled: false
   }
 }
