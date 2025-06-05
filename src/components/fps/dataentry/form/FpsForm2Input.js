@@ -106,6 +106,7 @@ function FieldDQL(props) {
         nomargin
         label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
         defaultValue={model[fieldInfo.sysName]}
+        value={model[fieldInfo.sysName]}
     />
 }
 

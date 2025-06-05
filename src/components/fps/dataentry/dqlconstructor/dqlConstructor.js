@@ -31,10 +31,9 @@ const defaultGroups = [{
 
 function generateId() {
     return Date.now() + Math.floor(Math.random() * 1000);
-}
+};
 
 export default function DqlConstructor(props) {
-
     const [groups, setGroups] = useState(defaultGroups);
     const [structure, setStructure] = useState(
         props.fields?.map(({sysName, name}) => ({ key: sysName, value: name }))
@@ -51,31 +50,37 @@ export default function DqlConstructor(props) {
     );
 
     useEffect(() => {
+        const value = props.value || props.defaultValue;
+
         if (isInitialMount.current) {
             isInitialMount.current = false;
-            if (props.value) {
+            if (value) {
                 try {
-                    const parsedGroups = parseDqlString(props.value);
+                    const parsedGroups = parseDqlString(value);
                     setGroups(parsedGroups);
                 } catch (e) {
                     console.error("Failed to parse initial DQL string:", e);
                 }
             }
-        } else if (props.value !== prevValueRef.current) {
+        } else if (value !== prevValueRef.current) {
             try {
-                const parsedGroups = props.value ? parseDqlString(props.value) : defaultGroups;
+                const parsedGroups = value ? parseDqlString(value) : defaultGroups;
                 setGroups(parsedGroups);
             } catch (e) {
                 console.error("Failed to parse DQL string:", e);
             }
-            prevValueRef.current = props.value;
+            prevValueRef.current = value;
         }
-    }, [props.value]);
+    }, []);
 
     useEffect(() => {
-        if (debouncedOnChange) {
+        if (!isInitialMount.current && debouncedOnChange) {
             const dql = generateDqlString();
-            debouncedOnChange(dql);
+            if (dql !== prevValueRef.current) {
+                debouncedOnChange(dql);
+                prevValueRef.current = dql;
+                console.log(dql);
+            }
         }
     }, [groups]);
 
@@ -83,8 +88,10 @@ export default function DqlConstructor(props) {
         if (!dql || typeof dql !== 'string') return defaultGroups;
 
         const tokens = tokenize(dql);
-        const { groups: parsedGroups } = parseTokens(tokens);
-        return parsedGroups.length ? parsedGroups : defaultGroups;
+        console.log("Tokens, ", tokens)
+        const groups= parseTokens(tokens);
+        console.log("Groups, ", groups)
+        return groups.length ? groups : defaultGroups;
     };
 
     const tokenize = (str) => {
@@ -92,7 +99,7 @@ export default function DqlConstructor(props) {
         let current = 0;
         const patterns = [
             { type: 'whitespace', regex: /^\s+/ },
-            { type: 'paren', regex: /^[()]/ },
+            { type: 'parent', regex: /^[()]/ },
             { type: 'operator', regex: /^(AND|OR)\b/i },
             { type: 'comparison', regex: new RegExp(`^(${expressions.map(e => e.value).join('|')})`) },
             { type: 'identifier', regex: /^[a-zA-Z_]\w*/ },
@@ -119,70 +126,93 @@ export default function DqlConstructor(props) {
         return tokens;
     };
 
-    const parseTokens = (tokens, index = 0) => {
-        const groups = [];
-        let currentGroup = {
-            id: generateId(),
-            isAll: true,
-            conditions: [],
-            children: []
-        };
+    const parseTokens = (tokens) => {
+        let index = 0;
 
-        while (index < tokens.length) {
-            const token = tokens[index];
+        const parseGroup = () => {
+            const group = {
+                id: generateId(),
+                isAll: true,
+                conditions: [],
+                children: []
+            };
 
-            if (token.type === 'paren' && token.value === '(') {
-                const { groups: childGroups, index: newIndex } = parseTokens(tokens, index + 1);
-                currentGroup.children.push(...childGroups);
-                index = newIndex;
-            } else if (token.type === 'paren' && token.value === ')') {
-                groups.push(currentGroup);
-                return { groups, index: index + 1 };
-            } else if (token.type === 'operator') {
-                if (token.value.toUpperCase() === 'OR') {
-                    groups.push(currentGroup);
-                    currentGroup = {
-                        id: generateId(),
-                        isAll: false,
-                        conditions: [],
-                        children: []
-                    };
+            let pendingOperator = null;
+
+            while (index < tokens.length) {
+                const token = tokens[index];
+
+                if (token.type === 'operator') {
+                    pendingOperator = token.value.toUpperCase();
+                    index++;
+                    continue;
                 }
-                index++;
-            } else if (token.type === 'identifier') {
-                if (index + 2 < tokens.length && 
-                    tokens[index + 1].type === 'comparison') {
-                    const field = token.value;
-                    const operator = tokens[index + 1].value;
-                    const valueToken = tokens[index + 2];
-                    let value = valueToken.value;
 
-                    if (valueToken.type === 'string') {
-                        value = value.slice(1, -1); // Remove quotes
+                if (token.type === 'parent' && token.value === '(') {
+                    index++;
+                    const childGroup = parseGroup();
+
+                    if (pendingOperator !== null) {
+                        group.isAll = pendingOperator === 'AND';
                     }
 
-                    currentGroup.conditions.push({
-                        id: generateId(),
-                        field: structure.find(f => f.key === field) || field,
-                        operator: expressions.find(e => e.value === operator)?.key || operator,
-                        value
-                    });
-                    index += 3;
-                } else {
-                    index++;
+                    group.children.push(childGroup);
+                    continue;
                 }
-            } else {
+
+                if (token.type === 'parent' && token.value === ')') {
+                    index++;
+                    return group;
+                }
+
+                // Условие: идентификатор, оператор, значение
+                if (
+                    token.type === 'identifier' &&
+                    index + 2 < tokens.length &&
+                    tokens[index + 1].type === 'comparison'
+                ) {
+                    const fieldToken = token;
+                    const operatorToken = tokens[index + 1];
+                    const valueToken = tokens[index + 2];
+
+                    // field: ищем соответствие в structure
+                    const field = _.find(structure, ({ key }) => key === fieldToken.value) || { key: fieldToken.value, value: fieldToken.value };
+
+                    // operator: ищем по value
+                    const operator = _.find(expressions, ({ value }) => value === operatorToken.value) || { key: operatorToken.value, value: operatorToken.value };
+
+                    // value: чистим кавычки, если есть
+                    let rawValue = valueToken.value;
+                    if (/^".*"$/.test(rawValue)) {
+                        rawValue = rawValue.slice(1, -1); // remove quotes
+                    }
+
+                    const condition = {
+                        id: generateId(),
+                        field,
+                        operator,
+                        value: rawValue
+                    };
+
+                    if (pendingOperator !== null) {
+                        group.isAll = pendingOperator === 'AND';
+                    }
+
+                    group.conditions.push(condition);
+                    index += 3;
+                    continue;
+                }
+
                 index++;
             }
-        }
 
-        if (currentGroup.conditions.length > 0 || currentGroup.children.length > 0) {
-            groups.push(currentGroup);
-        }
+            return group;
+        };
 
-        return { groups, index };
+        return [parseGroup()];
     };
 
+    
     // Добавление нового условия
     const handleAddCondition = (groupId) => {
         setGroups(updateGroups(groups, groupId, group => ({
@@ -256,11 +286,20 @@ export default function DqlConstructor(props) {
     };
 
     const handleValueChange = (groupId, conditionId, value) => {
-        if (typeof(value) === 'string') value = `"${value}"`;
+        const processedValue = (() => {
+            // Если уже в кавычках или это число/boolean/null/undefined
+            if (/^".*"$/.test(value) || 
+                /^(true|false|null|undefined)$/i.test(value) || 
+                /^-?\d+\.?\d*$/.test(value)) {
+                return value;
+            }
+            return `"${value}"`;
+        })();
+
         setGroups(updateGroups(groups, groupId, group => ({
             ...group,
             conditions: group.conditions.map(cond => 
-                cond.id === conditionId ? { ...cond, value } : cond
+                cond.id === conditionId ? { ...cond, value: processedValue } : cond
             )
         })));
     };
@@ -318,7 +357,7 @@ export default function DqlConstructor(props) {
                                 options={expressions}
                                 disabled={isDisabled}
                                 onChange={(value) => handleOperatorChange(group.id, condition.id, value)}
-                                defaultValue={_.get(_.find(expressions, ( { key } ) => key === condition.operator), 'key', '')}
+                                defaultValue={_.get(_.find(expressions, ( { value } ) => value === condition.operator.value), 'key', '')}
                             />
                             <Input 
                                 type="string" 
@@ -364,20 +403,23 @@ export default function DqlConstructor(props) {
 
     const generateDqlString = () => {
         const processGroup = (group) => {
-            // Обрабатываем условия текущей группы
             const conditionsStr = group.conditions
                 .filter(cond => cond.field && cond.operator && cond.value !== undefined)
                 .map(cond => {
-                    const field = cond.field.value || cond.field;
+                    const field = cond.field.key || cond.field;
                     const operator = cond.operator.value || cond.operator;
-                    const value = cond.value === '' ? '""' : cond.value;
+
+                    let value = cond.value;
+                    if (typeof value === 'string') {
+                        if (!/^".*"$/.test(value) && !/^(true|false|null|undefined|\d+)$/.test(value)) {
+                            value = `"${value}"`; // добавляем кавычки только если это не число/boolean/null
+                        }
+                    }
+
                     return `${field} ${operator} ${value}`;
-            });
+                });
 
-            // Обрабатываем дочерние группы
             const childrenStr = group.children.map(processGroup);
-
-            // Объединяем все части
             const allParts = [...conditionsStr, ...childrenStr].filter(Boolean);
 
             if (allParts.length === 0) return '';
@@ -385,7 +427,7 @@ export default function DqlConstructor(props) {
             const joiner = group.isAll ? ' AND ' : ' OR ';
             let result = allParts.join(joiner);
 
-            if (allParts.length > 1 || childrenStr.length > 0) {
+            if (allParts.length > 1 || group.children.length > 0) {
                 result = `(${result})`;
             }
 
