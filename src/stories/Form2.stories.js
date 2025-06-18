@@ -294,20 +294,6 @@ let exampleForm =  {
 }
 
 let authExample = {
-    "isAuth": true,
-    "custom_labels": "",
-    "role": "recruiter,bl_reader,bl_reader",
-    "employee_ids": "0ЛЗК-01040",
-    "who_delegated_ids": "",
-    "lastName": "Russkih",
-    "firstName": "Dayana",
-    "token": "98ff0267-62c3-4fd6-a855-011981b407b8",
-    "whom_delegate_ids": "",
-    "notifications_counter": "",
-    "nid": 21335,
-    "user": "dayana.russkih@lamoda.ru",
-    "userpic": "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg",
-    "id": "dayana.russkih@lamoda.ru"
  }
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
