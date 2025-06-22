@@ -304,10 +304,12 @@ function MobileTab(props) {
         href={tabConfig.linkToType !== 'external' ? null : tabConfig.linkToURL}
         target={tabConfig.linkToURLNewWindow && tabConfig.linkToType == 'external' ? '_blank' : ''}
     >
+        {/* Directual icon: */}
         {iconType == 'directual_icon' && tabConfig.menuDirectualIconSet && <React.Fragment>
             <div className={`icon veryLarge icon-${tabConfig.menuDirectualIconSet}`} />
         </React.Fragment>}
         
+        {/* Remix icon: */}
         {iconType == "remix_icon" && tabConfig.menuRemixIcon &&
             <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`}>
                 <svg
@@ -335,10 +337,9 @@ function MobileTab(props) {
                     height={tabConfig.menuRemixIconSize || 24}
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke={currentRoute ==
-                        tabConfig.linkToPage ? (tabConfig.menuRemixIconColorSelected || '#000000') :
-                        isHovered ? (tabConfig.menuRemixIconColorHover || '#000000') :
-                            (tabConfig.menuRemixIconColor || '#000000')}
+                    stroke={currentRoute == tabConfig.linkToPage ?
+                        (tabConfig.menuRemixIconColorSelected || '#000000') :
+                        (tabConfig.menuRemixIconColor || '#000000')}
                     stroke-width={tabConfig.menuRemixIconStroke}
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -355,10 +356,9 @@ function MobileTab(props) {
                     height={tabConfig.menuRemixIconSize || 24}
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke={currentRoute ==
-                        tabConfig.linkToPage ? (tabConfig.menuRemixIconColorSelected || '#000000') :
-                        isHovered ? (tabConfig.menuRemixIconColorHover || '#000000') :
-                            (tabConfig.menuRemixIconColor || '#000000')}
+                    stroke={currentRoute == tabConfig.linkToPage ?
+                        (tabConfig.menuRemixIconColorSelected || '#000000') :
+                        (tabConfig.menuRemixIconColor || '#000000')}
                     stroke-width={tabConfig.menuRemixIconStroke}
                     stroke-linecap="round"
                     stroke-linejoin="round"
@@ -366,8 +366,7 @@ function MobileTab(props) {
                 />
             </div>}
 
-        ====
-
+        {/* Custom icon: */}
         {iconType == "custom_icon" && tabConfig.menuIconCustom &&
             <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`}>
                 <img
