@@ -307,6 +307,7 @@ function MobileTab(props) {
         {iconType == 'directual_icon' && tabConfig.menuDirectualIconSet && <React.Fragment>
             <div className={`icon veryLarge icon-${tabConfig.menuDirectualIconSet}`} />
         </React.Fragment>}
+        
         {iconType == "remix_icon" && tabConfig.menuRemixIcon &&
             <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`}>
                 <svg
@@ -323,6 +324,49 @@ function MobileTab(props) {
                 </svg>
             </div>
         }
+
+
+        {/* Lucide icon: */}
+        {iconType == "lucide_icon" &&
+            <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`}>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={tabConfig.menuRemixIconSize || 24}
+                    height={tabConfig.menuRemixIconSize || 24}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke={currentRoute ==
+                        tabConfig.linkToPage ? (tabConfig.menuRemixIconColorSelected || '#000000') :
+                        isHovered ? (tabConfig.menuRemixIconColorHover || '#000000') :
+                            (tabConfig.menuRemixIconColor || '#000000')}
+                    stroke-width={tabConfig.menuRemixIconStroke}
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    dangerouslySetInnerHTML={{ __html: _.get(tabConfig, "menuLucideIcon.svg") }}
+                />
+            </div>}
+
+        {/* Feather icon: */}
+        {iconType == "feather_icon" &&
+            <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`}>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={tabConfig.menuRemixIconSize || 24}
+                    height={tabConfig.menuRemixIconSize || 24}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke={currentRoute ==
+                        tabConfig.linkToPage ? (tabConfig.menuRemixIconColorSelected || '#000000') :
+                        isHovered ? (tabConfig.menuRemixIconColorHover || '#000000') :
+                            (tabConfig.menuRemixIconColor || '#000000')}
+                    stroke-width={tabConfig.menuRemixIconStroke}
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    dangerouslySetInnerHTML={{ __html: _.get(tabConfig, "menuFeatherIcon.svg") }}
+                />
+            </div>}
+
+        ====
 
         {iconType == "custom_icon" && tabConfig.menuIconCustom &&
             <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`}>
@@ -929,6 +973,7 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
 
     const menuItem = _.get(menuConfig, [item.id]) || {}
     const [isHovered, setIsHovered] = useState(false)
+    const [isGroupHovered, setIsGroupHovered] = useState(false)
 
     const name = menuItem.name || item.name
 
@@ -967,8 +1012,14 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
             _.intersection(auth.role.split(","), menuItem.specifyRoles.split(",")).length == 0)
     ) { return null }
     //===========
+    const horMenuMargin = _.get(menuConfig, "rootMenu.horMenuMargin") || 12
+    const horMenuGroupArrow = _.get(menuConfig, "rootMenu.horMenuGroupArrow") || 'left'
+    const horMenuGroupArrowSize = _.get(menuConfig, "rootMenu.horMenuGroupArrowSize") || 'medium'
+    const iconType = menuItem.iconType || 'no_icon'
 
     if (item.isFolder && !isHorizontal) {
+        // console.log("menuItem", menuItem)
+
         return <div className={`${styles.newListGroup} D_MainMenu_List_Group`}>
             {item.name && <div className={`
                 ${styles.newListGroupTitle} 
@@ -980,8 +1031,80 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
                     maxWidth: menuCompactWidth// - menuPadding
                 } : {}}
             >
-                {hideGroups && !compactMode && <div className={`icon icon-up small D_MainMenu_List_expand ${isOpened ? '' : 'group_hidden'}`} />}
-                {name}</div>}
+                {iconType == "feather_icon" &&
+                    <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`} style={{ paddingRight: 10 }}>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width={menuItem.menuRemixIconSize || 24}
+                            height={menuItem.menuRemixIconSize || 24}
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke={currentRoute ==
+                                menuItem.linkToPage ? (menuItem.menuRemixIconColorSelected || '#000000') :
+                                isHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
+                                    (menuItem.menuRemixIconColor || '#000000')}
+                            stroke-width={menuItem.menuRemixIconStroke}
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            dangerouslySetInnerHTML={{ __html: _.get(menuItem, "menuFeatherIcon.svg") }}
+                        />
+                    </div>}
+                {iconType == "lucide_icon" &&
+                    <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`} style={{ paddingRight: 10 }}>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width={menuItem.menuRemixIconSize || 24}
+                            height={menuItem.menuRemixIconSize || 24}
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke={currentRoute ==
+                                menuItem.linkToPage ? (menuItem.menuRemixIconColorSelected || '#000000') :
+                                isHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
+                                    (menuItem.menuRemixIconColor || '#000000')}
+                            stroke-width={menuItem.menuRemixIconStroke}
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            dangerouslySetInnerHTML={{ __html: _.get(menuItem, "menuLucideIcon.svg") }}
+                        />
+                    </div>}
+
+                {iconType == "remix_icon" && menuItem.menuRemixIcon &&
+                    <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`} style={{ paddingRight: 10 }}>
+                        <svg
+                            width={menuItem.menuRemixIconSize || 24}
+                            height={menuItem.menuRemixIconSize || 24}
+                            viewBox={`0 0 24 24`}
+                        >
+                            <path
+                                fill={currentRoute ==
+                                    menuItem.linkToPage ? (menuItem.menuRemixIconColorSelected || '#000000') :
+                                    isHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
+                                        (menuItem.menuRemixIconColor || '#000000')}
+                                d={menuItem.menuRemixIcon.Content}
+                            ></path>
+                        </svg>
+                    </div>}
+
+                {iconType == "directual_icon" &&
+                    <div className={`${styles.customIcon} D_MainMenu_Item_customIcon icon icon-${menuItem.menuDirectualIconSet}`} style={{ paddingRight: 10 }} />
+                }
+
+                {iconType == "custom_icon" && menuItem.menuIconCustom &&
+                    <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`} style={{ paddingRight: 10 }}>
+                        <img
+                            style={{
+                                width: menuItem.menuCustomIconSize || 24,
+                                height: menuItem.menuCustomIconSize || 24
+                            }}
+                            src={currentRoute == menuItem.linkToPage && menuItem.menuIconCustomSelected ?
+                                menuItem.menuIconCustomSelected
+                                : menuItem.menuIconCustom} /></div>}
+
+                {(iconType == 'no_icon' || !compactMode) && <React.Fragment>
+                    {hideGroups && !compactMode && <div className={`icon icon-up small D_MainMenu_List_expand ${isOpened ? '' : 'group_hidden'}`} />}
+                    {name}
+                </React.Fragment>}
+            </div>}
             {(isOpened) && item.children.length ? item.children.map(child =>
                 <NewMainMenuItem
                     custom_labels={custom_labels}
@@ -997,19 +1120,102 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
         </div>
     }
 
-    const horMenuMargin = _.get(menuConfig, "rootMenu.horMenuMargin") || 12
-    const horMenuGroupArrow = _.get(menuConfig, "rootMenu.horMenuGroupArrow") || 'left'
-    const horMenuGroupArrowSize = _.get(menuConfig, "rootMenu.horMenuGroupArrowSize") || 'medium'
-    const iconType = menuItem.iconType || 'no_icon'
+    // console.log("isGroupHovered", isGroupHovered)
+
+    const hoverTimeout = useRef();
+
+    function handleMouseOver(e) {
+        clearTimeout(hoverTimeout.current);
+        setIsGroupHovered(true);
+    }
+
+    function handleMouseOut(e) {
+        // Сбрасываем ховер не сразу, а чуть позже
+        hoverTimeout.current = setTimeout(() => {
+            setIsGroupHovered(false);
+        }, 80); // 80ms достаточно, чтобы мышь не мигала при переходе между детьми
+    }
+
 
     if (item.isFolder && isHorizontal) {
         return <div className={`D_MainMenu_Item D_MainMenu_GroupTitle ${styles.menuIcon}`}
             style={sideMenuAlign == 'right' ? { marginLeft: horMenuMargin, marginTop: 0 } :
                 sideMenuAlign == 'left' ? { marginRight: horMenuMargin, marginTop: 0 } : {}
             }
+            onMouseOver={handleMouseOver}
+            onMouseOut={handleMouseOut}
         >
             <DropDown
-                dropButton={<div className={`${styles.newMenuLink} icon`}>
+                dropButton={<div className={`${styles.newMenuLink} icon`}
+
+                >
+
+                    {iconType == "feather_icon" &&
+                        <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`} style={{ paddingRight: 5 }}>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width={menuItem.menuRemixIconSize || 24}
+                                height={menuItem.menuRemixIconSize || 24}
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke={currentRoute ==
+                                    isGroupHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
+                                    (menuItem.menuRemixIconColor || '#000000')}
+                                stroke-width={menuItem.menuRemixIconStroke}
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                dangerouslySetInnerHTML={{ __html: _.get(menuItem, "menuFeatherIcon.svg") }}
+                            />
+                        </div>}
+                    {iconType == "lucide_icon" &&
+                        <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`} style={{ paddingRight: 5 }}>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width={menuItem.menuRemixIconSize || 24}
+                                height={menuItem.menuRemixIconSize || 24}
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke={currentRoute ==
+                                    isGroupHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
+                                    (menuItem.menuRemixIconColor || '#000000')}
+                                stroke-width={menuItem.menuRemixIconStroke}
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                dangerouslySetInnerHTML={{ __html: _.get(menuItem, "menuLucideIcon.svg") }}
+                            />
+                        </div>}
+
+                    {iconType == "remix_icon" && menuItem.menuRemixIcon &&
+                        <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`} style={{ paddingRight: 5 }}>
+                            <svg
+                                width={menuItem.menuRemixIconSize || 24}
+                                height={menuItem.menuRemixIconSize || 24}
+                                viewBox={`0 0 24 24`}
+                            >
+                                <path
+                                    fill={currentRoute ==
+                                        isGroupHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
+                                        (menuItem.menuRemixIconColor || '#000000')}
+                                    d={menuItem.menuRemixIcon.Content}
+                                ></path>
+                            </svg>
+                        </div>}
+
+                    {iconType == "directual_icon" &&
+                        <div className={`${styles.customIcon} D_MainMenu_Item_customIcon icon icon-${menuItem.menuDirectualIconSet}`} style={{ paddingRight: 5 }} />
+                    }
+
+                    {iconType == "custom_icon" && menuItem.menuIconCustom &&
+                        <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`} style={{ paddingRight: 5 }}>
+                            <img
+                                style={{
+                                    width: menuItem.menuCustomIconSize || 24,
+                                    height: menuItem.menuCustomIconSize || 24
+                                }}
+                                src={currentRoute == menuItem.linkToPage && menuItem.menuIconCustomSelected ?
+                                    menuItem.menuIconCustomSelected
+                                    : menuItem.menuIconCustom} /></div>}
+
                     {horMenuGroupArrow == 'right' && name}
                     <span className={`icon icon-down 
                         ${horMenuGroupArrowSize == 'small' && 'verySmall'} 
@@ -1088,6 +1294,45 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
                         d={menuItem.menuRemixIcon.Content}
                     ></path>
                 </svg>
+            </div>}
+
+        {/* Lucide icon: */}
+        {iconType == "lucide_icon" &&
+            <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`}>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={menuItem.menuRemixIconSize || 24}
+                    height={menuItem.menuRemixIconSize || 24}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke={currentRoute ==
+                        menuItem.linkToPage ? (menuItem.menuRemixIconColorSelected || '#000000') :
+                        isHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
+                            (menuItem.menuRemixIconColor || '#000000')}
+                    stroke-width={menuItem.menuRemixIconStroke}
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    dangerouslySetInnerHTML={{ __html: _.get(menuItem, "menuLucideIcon.svg") }}
+                />
+            </div>}
+        {/* Feather icon: */}
+        {iconType == "feather_icon" &&
+            <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`}>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={menuItem.menuRemixIconSize || 24}
+                    height={menuItem.menuRemixIconSize || 24}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke={currentRoute ==
+                        menuItem.linkToPage ? (menuItem.menuRemixIconColorSelected || '#000000') :
+                        isHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
+                            (menuItem.menuRemixIconColor || '#000000')}
+                    stroke-width={menuItem.menuRemixIconStroke}
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    dangerouslySetInnerHTML={{ __html: _.get(menuItem, "menuFeatherIcon.svg") }}
+                />
             </div>}
 
         {compactMode && <div className={`${styles.compactTooltip} D_MainMenu_Item_Toolip`}>{name}</div>}
