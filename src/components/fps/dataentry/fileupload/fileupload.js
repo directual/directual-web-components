@@ -9,6 +9,7 @@ import Hint from '../../hint/hint'
 import { dict } from '../../locale'
 import _ from "lodash"
 import { Tooltip } from 'react-tooltip'
+import InnerHTML from 'dangerously-set-html-content'
 
 export default function FileUpload(props) {
 
@@ -112,88 +113,92 @@ export default function FileUpload(props) {
                             data-tooltip-html={props.tooltip}
                             data-tooltip-id={tooltipId} className={`icon icon-help small ${styles.tooltip}`} />}
                     </label>}
-                    {props.description && <div className={styles.description}>{props.description}</div>}
-                    {(props.multiple || props.maxFiles > 1 || files.length == 0) && props.edit && !props.disabled &&
-                        <Dropzone
-                            multiple={props.multiple ? true : false}
-                            {...props}
-                            disabled={props.disabled}
-                            maxFiles={props.maxFiles || undefined}
-                            accept={props.images ? 'image/*' : parseJson(props.accept)}
-                            onDrop={(acceptedFiles, rej, event) => {
-                                setUploading(true)
-                                let counter = 0
-                                let uploadedFiles = []
-                                acceptedFiles.forEach(file => {
-                                    const body = new FormData
-                                    body.append("file", file)
-                                    fetch(props.host, {
-                                        method: 'POST',
-                                        body,
-                                    }).then(res => {
-                                        if (res.status != 200) {
-                                            setUploading(false)
-                                            setError('Upload error: ' + res.status + ' ' + res.statusText)
-                                        }
-                                        console.log(res)
-                                        res.json().then(result => {
-                                            counter = counter + 1
-                                            // console.log('uploadedFiles')
-                                            // console.log(uploadedFiles)
-                                            uploadedFiles.push(result.result)
-                                            if (counter == acceptedFiles.length) {
-                                                setUploading(false)
-                                                saveFiles(uploadedFiles)
-                                            }
+                    {/* {props.description && <div className={styles.description}>{props.description}</div>} */}
+                    {props.description &&
+                        <div className={styles.description}>
+                            {props.description && (typeof props.description == "string" ? <InnerHTML allowRerender={true} html={props.description} />
+                                : props.description)}
+                            {(props.multiple || props.maxFiles > 1 || files.length == 0) && props.edit && !props.disabled &&
+                                <Dropzone
+                                    multiple={props.multiple ? true : false}
+                                    {...props}
+                                    disabled={props.disabled}
+                                    maxFiles={props.maxFiles || undefined}
+                                    accept={props.images ? 'image/*' : parseJson(props.accept)}
+                                    onDrop={(acceptedFiles, rej, event) => {
+                                        setUploading(true)
+                                        let counter = 0
+                                        let uploadedFiles = []
+                                        acceptedFiles.forEach(file => {
+                                            const body = new FormData
+                                            body.append("file", file)
+                                            fetch(props.host, {
+                                                method: 'POST',
+                                                body,
+                                            }).then(res => {
+                                                if (res.status != 200) {
+                                                    setUploading(false)
+                                                    setError('Upload error: ' + res.status + ' ' + res.statusText)
+                                                }
+                                                console.log(res)
+                                                res.json().then(result => {
+                                                    counter = counter + 1
+                                                    // console.log('uploadedFiles')
+                                                    // console.log(uploadedFiles)
+                                                    uploadedFiles.push(result.result)
+                                                    if (counter == acceptedFiles.length) {
+                                                        setUploading(false)
+                                                        saveFiles(uploadedFiles)
+                                                    }
+                                                })
+                                            })
+                                                .catch(err => setError(err))
                                         })
-                                    })
-                                        .catch(err => setError(err))
-                                })
-                            }}
-                        >
-                            {({ getRootProps, getInputProps }) => (
-                                <section>
-                                    {!uploading && <div {...getRootProps({ className: styles.dropzone })}>
-                                        <input {...getInputProps()} />
-                                        <p className={`icon icon-upload`}>
-                                            {props.uploadText ||
-                                                props.multiple ? _.get(dict[lang], 'dropMany') || "Drop files here, or click to select files" :
-                                                _.get(dict[lang], 'dropOne') || "Drop a file here, or click to select one"
-                                            }
-                                        </p>
-                                    </div>}
-                                    {uploading &&
-                                        <div className={styles.progress}>
-                                            <Loader>{_.get(dict[lang], 'uploading') || "Uploading files..."}</Loader>
-                                        </div>}
+                                    }}
+                                >
+                                    {({ getRootProps, getInputProps }) => (
+                                        <section>
+                                            {!uploading && <div {...getRootProps({ className: styles.dropzone })}>
+                                                <input {...getInputProps()} />
+                                                <p className={`icon icon-upload`}>
+                                                    {props.uploadText ||
+                                                        props.multiple ? _.get(dict[lang], 'dropMany') || "Drop files here, or click to select files" :
+                                                        _.get(dict[lang], 'dropOne') || "Drop a file here, or click to select one"
+                                                    }
+                                                </p>
+                                            </div>}
+                                            {uploading &&
+                                                <div className={styles.progress}>
+                                                    <Loader>{_.get(dict[lang], 'uploading') || "Uploading files..."}</Loader>
+                                                </div>}
 
-                                </section>
-                            )
+                                        </section>
+                                    )
+                                    }
+
+                                </Dropzone >
                             }
-
-                        </Dropzone >
-                    }
-                </React.Fragment>}
-                <FileList
-                    fileList={files}
-                    images={props.images}
-                    edit={props.edit}
-                    disabled={props.disabled}
-                    lang={lang}
-                    onDelete={index => {
-                        console.log('deleting file: ' + index)
-                        console.log(files)
-                        if (typeof files == 'string' && (!files || files.split(",").length <= 1)) {
-                            updateFiles([])
-                            return
-                        }
-                        const saveNewFiles = typeof files == 'string' ? [...files.split(",")] : [...files]
-                        saveNewFiles.splice(index, 1)
-                        updateFiles(saveNewFiles)
-                    }}
-                />
-                {error && <Hint error margin={{ top: 12, bottom: 1 }}>{JSON.stringify(error)}</Hint>}
-            </div >
+                        </React.Fragment>}
+                    <FileList
+                        fileList={files}
+                        images={props.images}
+                        edit={props.edit}
+                        disabled={props.disabled}
+                        lang={lang}
+                        onDelete={index => {
+                            console.log('deleting file: ' + index)
+                            console.log(files)
+                            if (typeof files == 'string' && (!files || files.split(",").length <= 1)) {
+                                updateFiles([])
+                                return
+                            }
+                            const saveNewFiles = typeof files == 'string' ? [...files.split(",")] : [...files]
+                            saveNewFiles.splice(index, 1)
+                            updateFiles(saveNewFiles)
+                        }}
+                    />
+                    {error && <Hint error margin={{ top: 12, bottom: 1 }}>{JSON.stringify(error)}</Hint>}
+                </div >
 
         </React.Fragment >
     )
