@@ -454,11 +454,11 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
 
         </div>}
 
-        {/* <div className="pagination-controls">
+        <div className="pagination-controls">
             <button onClick={firstPage}>First</button>
             <button onClick={prevPage}>Prev</button>
             <button onClick={nextPage}>Next</button>
-        </div> */}
+        </div>
     </div>
 }
 
