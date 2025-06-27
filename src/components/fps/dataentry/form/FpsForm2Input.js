@@ -22,9 +22,9 @@ export function FpsForm2Input(props) {
 
     const debouncedCallEndpint = debounce(callEndpoint, 200);
 
-    console.log('field', field)
-    console.log('fieldInfo', fieldInfo)
-    console.log('data', data)
+    // console.log('field', field)
+    // console.log('fieldInfo', fieldInfo)
+    // console.log('data', data)
 
     if (field._conditionalView &&
         !checkHidden(field) &&

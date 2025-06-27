@@ -180,6 +180,8 @@ export const icon_options =
     ]
 
 export default function Input(props) {
+    // Determine if this should be a controlled or uncontrolled component
+    const isControlled = props.value !== undefined;
     const [value, setValue] = useState(props.defaultValue || props.value)
     const isTyping = useRef(false); // A flag to track if the user is typing
     const [pwdVisible, setPwdVisible] = useState('password')
@@ -192,6 +194,17 @@ export default function Input(props) {
     const pickerRef = useRef(null);
 
     const tooltipId = "tooltip_" + Math.floor(Math.random() * 1000000000)
+
+    // Force reset when forceReset prop changes
+    useEffect(() => {
+        if (props.forceReset) {
+            console.log("Force reset triggered");
+            setValue(props.defaultValue || props.value);
+            setDefVal(props.defaultValue || props.value);
+            isTyping.current = false;
+            setLines(countLines(inputEl.current, props.defaultValue || props.value));
+        }
+    }, [props.forceReset, props.defaultValue, props.value]);
 
     useEffect(() => {
         const input = inputEl.current;
@@ -268,17 +281,32 @@ export default function Input(props) {
 
     useEffect(() => {
         // console.log("props.defaultValue", props.defaultValue)
-        if (JSON.stringify(props.defaultValue) != JSON.stringify(defVal) && props.type != 'json' && isTyping.current) { 
-            //console.log("is typing")
-        }
-        if (JSON.stringify(props.defaultValue) != JSON.stringify(defVal) && props.type != 'json' && !isTyping.current) {
-            setValue(props.defaultValue); setDefVal(props.defaultValue); // я комментил эту хероту. Надо перепроверить у ламоды!
+        if (JSON.stringify(props.defaultValue) != JSON.stringify(defVal) && props.type != 'json') {
+            // Если это controlled компонент, всегда обновляем значение
+            if (isControlled) {
+                console.log("Controlled component - updating from props")
+                setValue(props.defaultValue); 
+                setDefVal(props.defaultValue);
+                setLines(countLines(inputEl.current, props.defaultValue))
+                return;
+            }
+            
+            // Если пользователь печатает или поле в фокусе, не обновляем значение извне
+            if (isTyping.current || (inputEl.current && inputEl.current === document.activeElement)) { 
+                console.log("User is typing or field is focused, ignoring external defaultValue change")
+                return;
+            }
+            
+            // Если значение извне отличается от текущего, обновляем
+            console.log("Updating from external defaultValue change")
+            setValue(props.defaultValue); 
+            setDefVal(props.defaultValue);
             setLines(countLines(inputEl.current, props.defaultValue))
         }
         if (props.type == 'json' && inputEl.current) {
             checkJsonValue(inputEl.current, props.defaultValue)
         }
-    }, [props.defaultValue])
+    }, [props.defaultValue, isControlled])
 
     useEffect(() => {
         props.type == 'textarea' && setLines(countLines(inputEl.current, value))
@@ -303,6 +331,26 @@ export default function Input(props) {
         props.required ?
             setWarningMesg({ type: 'error', msg: 'This field is required' }) :
             setWarningMesg({});
+    }
+
+    // Handle blur to reset typing flag
+    const handleBlur = (e) => {
+        // Reset typing flag when user leaves the field
+        setTimeout(() => {
+            isTyping.current = false;
+        }, 100);
+        
+        // Call original onBlur if provided
+        if (props.onBlur) {
+            // Handle both event objects and direct values
+            if (e && e.target) {
+                props.onBlur(e.target.value);
+            } else {
+                props.onBlur(e);
+            }
+        } else {
+            checkValue(e);
+        }
     }
 
     function handleChange(e) {
@@ -350,7 +398,7 @@ export default function Input(props) {
         const debouncedUpdate = debounce(() => {
             isTyping.current = false; // User has stopped typing
             setDefVal(val); // Update defVal
-        }, 300); // Adjust the debounce interval as necessary
+        }, 800); // Increased debounce interval for better reliability
     
         debouncedUpdate();
     
@@ -647,9 +695,7 @@ export default function Input(props) {
                             onKeyPress={e => { e.key == 'Enter' ? props.onPressEnter(value) : undefined }}
                             onChange={e => { props.imask ? undefined : !props.copy ? handleChange(e.target.value) : undefined; }}
                             value={value || ''}
-                            onBlur={e => {
-                                props.onBlur ? props.onBlur(e.target.value) : checkValue(e)
-                            }}
+                            onBlur={handleBlur}
                             placeholder={`${props.placeholder ? props.placeholder : ''}`}
                         />
                         {value && !props.disabled && !props.copy &&
@@ -1337,7 +1383,12 @@ Input.propTypes = {
     onClick: PropTypes.func,
     displayKey: PropTypes.bool,
     icon: PropTypes.string,
-    width: PropTypes.number
+    width: PropTypes.number,
+    forceReset: PropTypes.any, // Any value that changes will trigger a force reset
+    value: PropTypes.any, // For controlled components
+    defaultValue: PropTypes.any, // For uncontrolled components
+    onChange: PropTypes.func,
+    onBlur: PropTypes.func
 };
 
 Input.defaultProps = {

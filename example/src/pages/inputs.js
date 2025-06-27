@@ -739,17 +739,17 @@ options={
             { key: 2, value: 'The more that you practise' },
             { key: 3, value: 'The harder you sweat' },
             { key: 4, value: 'The luckier you get' },
-            { key: 5, value: 'Ideas? We’ve had ’em' },
+            { key: 5, value: 'Ideas? We've had 'em' },
             { key: 6, value: 'Since Eve mated Adam' },
             { key: 7, value: 'But take it from me' },
-            { key: 8, value: 'Execution’s the key' },
+            { key: 8, value: 'Execution's the key' },
             { key: 9, value: 'The money? Just pester' },
             { key: 10, value: 'A likely investor' },
             { key: 11, value: 'To get what you need' },
             { key: 12, value: 'You toady to greed' },
             { key: 13, value: 'The talent? Go sign it' },
             { key: 14, value: 'But first, wine and dine it' },
-            { key: 15, value: 'It’s tedious work' },
+            { key: 15, value: 'It's tedious work' },
             { key: 16, value: 'With a talented jerk' },
             { key: 17, value: 'Good timing? To win it You gotta be in it. Just never be late To quit or cut bait.' }
         ]
@@ -771,17 +771,17 @@ options={
                         { key: 2, value: 'The more that you practise' },
                         { key: 3, value: 'The harder you sweat' },
                         { key: 4, value: 'The luckier you get' },
-                        { key: 5, value: 'Ideas? We’ve had ’em' },
+                        { key: 5, value: 'Ideas? We've had 'em' },
                         { key: 6, value: 'Since Eve mated Adam' },
                         { key: 7, value: 'But take it from me' },
-                        { key: 8, value: 'Execution’s the key' },
+                        { key: 8, value: 'Execution's the key' },
                         { key: 9, value: 'The money? Just pester' },
                         { key: 10, value: 'A likely investor' },
                         { key: 11, value: 'To get what you need' },
                         { key: 12, value: 'You toady to greed' },
                         { key: 13, value: 'The talent? Go sign it' },
                         { key: 14, value: 'But first, wine and dine it' },
-                        { key: 15, value: 'It’s tedious work' },
+                        { key: 15, value: 'It's tedious work' },
                         { key: 16, value: 'With a talented jerk' },
                         { key: 17, value: 'Good timing? To win it You gotta be in it. Just never be late To quit or cut bait.' }
                     ]
@@ -825,17 +825,17 @@ options={
                         { key: 2, value: 'The more that you practise' },
                         { key: 3, value: 'The harder you sweat' },
                         { key: 4, value: 'The luckier you get' },
-                        { key: 5, value: 'Ideas? We’ve had ’em' },
+                        { key: 5, value: 'Ideas? We've had 'em' },
                         { key: 6, value: 'Since Eve mated Adam' },
                         { key: 7, value: 'But take it from me' },
-                        { key: 8, value: 'Execution’s the key' },
+                        { key: 8, value: 'Execution's the key' },
                         { key: 9, value: 'The money? Just pester' },
                         { key: 10, value: 'A likely investor' },
                         { key: 11, value: 'To get what you need' },
                         { key: 12, value: 'You toady to greed' },
                         { key: 13, value: 'The talent? Go sign it' },
                         { key: 14, value: 'But first, wine and dine it' },
-                        { key: 15, value: 'It’s tedious work' },
+                        { key: 15, value: 'It's tedious work' },
                         { key: 16, value: 'With a talented jerk' },
                         { key: 17, value: 'Good timing? To win it You gotta be in it. Just never be late To quit or cut bait.' }
                     ]
@@ -1309,8 +1309,35 @@ options={
                 }
             />
 
+            <ComponentDetails data={
+                {
+                    headerField: 'Input with forceReset example',
+                    headers: [
+                        { sysName: 'prop', name: 'Property' },
+                        { sysName: 'type', name: 'Type' },
+                        { sysName: 'desc', name: 'Description' },
+                        { sysName: 'eg', name: 'Example' }
+                    ],
+                    data: [
+                        { prop: 'forceReset', type: 'any', desc: 'Force reset component state when value changes', eg: 'forceReset={resetCounter}' },
+                        { prop: 'value', type: 'any', desc: 'For controlled components', eg: 'value={controlledValue}' },
+                        { prop: 'defaultValue', type: 'any', desc: 'For uncontrolled components', eg: 'defaultValue="initial value"' },
+                    ]
+                }
+            } />
 
-
+            <div style={{marginBottom: 20}}>
+                <h3>Input with forceReset (solution for defaultValue conflicts)</h3>
+                <p>This example shows how to use forceReset to prevent defaultValue from overriding user input:</p>
+                <Input 
+                    label="Input with forceReset"
+                    placeholder="Type here..."
+                    defaultValue="Initial value"
+                    forceReset={Date.now()} // This will force reset when changed
+                    onChange={(val) => console.log('Value changed:', val)}
+                />
+                <p><small>Use forceReset when you need to ensure defaultValue updates don't interfere with user typing</small></p>
+            </div>
 
         </React.Fragment>
     )
