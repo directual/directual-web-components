@@ -26,7 +26,7 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
     const title = _.get(data, "params.cards_title")
     const showCounter = _.get(data, "params.general.showObjCount")
     const cardsLayout = _.get(data, "params.cards_layout")
-    const objects = _.get(data, "data", [])
+    const [objects, setObjects] = useState(_.get(data, "data", []))
     const card_border = _.get(data, "params.card_border", 1)
     const card_border_radius = _.get(data, "params.card_border_radius")
     const sl = _.get(data, "sl")
@@ -45,6 +45,7 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
     };
     const [page, setPage] = useState(getPageFromUrl);
     const [loading, setLoading] = useState(false)
+    const isFirstRender = useRef(true)
 
     const updatePageInUrl = (newPage) => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -220,9 +221,10 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
     const favoritesIconOff = _.get(data, "params.card_type_dir.favoritesIconOff", "star")
     const [favorites, setFavorites] = useState([])
     const [favLoading, setFavLoading] = useState(false)
+    const [pageLoading, setPageLoading] = useState(false)
 
 
-
+    // FAVORITES
     useEffect(() => {
         setFavLoading(true)
         favoritesOn && favoritesEndpoint && callEndpointGET(favoritesEndpoint, { pageSize: 100 }, data => {
@@ -231,8 +233,33 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
         })
     }, [])
 
+    // PAGINATION
+    useEffect(() => {
+        if (isFirstRender.current) {
+            isFirstRender.current = false;
+            return;
+        }
+        
+        console.log("page => " + page)
+        if (data && data.sl) {
+            setPageLoading(true)
+            callEndpointGET(data.sl, { 
+                pageSize: data.pageSize || 10,
+                pageNumber: page 
+            }, (result) => {
+                console.log("PAGINATION RESULT")
+                console.log(result)
+                if (result && result.data) {
+                    setObjects(result)
+                }
+                setPageLoading(false)
+            })
+        }
+    }, [page])
+
     return <div className={`FPS_CARDS2 ${styles.cards2}`}>
-        {/* PAGE: {page}<hr /> */}
+        PAGE: {page}<hr />
+        {pageLoading && <div>Loading...</div>}
         {/* {(title || showCounter) && <div className={`FPS_CARDS2__HEADER ${styles.cards2_header}`}>
             {title && <h2>{title && <InnerHTML allowRerender={true} html={title} />}</h2>}
             {showCounter && <div className={`FPS_CARDS2__HEADER-counter ${styles.cards2_header_counter}`}>5 items</div>}
@@ -795,7 +822,7 @@ FpsCards2.defaultProps = {
 
 FpsCards2.settings = {
     icon: icon,
-    name: 'Cards view (2024)',
+    name: 'Cards view (2025)',
     sysName: 'FpsCards2',
     isLegacy: false,
     isMarketplace: false,

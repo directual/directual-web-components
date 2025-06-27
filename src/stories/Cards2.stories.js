@@ -17,22 +17,23 @@ export default {
 };
 
 let exampleTable = {
-    "sl": "getDataTypes",
+    "sl": "bug",
     "pageSize": "10",
     "headerField": null,
     "params": {
-        "comp_ID": "v6eOsn",
-        "cards_layout": "grid",
+        "comp_ID": "7mGWJS",
+        "cards_layout": "flex",
         "card_layout_type": "custom",
-        "html_type_content": "{{title}}"
+        "html_type_content": "{{id}}",
+        "cards_title": "cards"
     },
     "tableTitle": null,
-    "actions": [],
+    "actions": null,
     "headers": [
         {
             "sysName": "id",
-            "dataType": "id",
             "name": "id",
+            "dataType": "id",
             "id": "0",
             "link": "",
             "group": "0",
@@ -49,19 +50,19 @@ let exampleTable = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "linkType": false,
+            "array": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
             "arrayLink": false,
-            "indexExists": false,
-            "array": false
+            "linkType": false,
+            "indexExists": false
         },
         {
-            "sysName": "title",
-            "dataType": "string",
+            "sysName": "field1",
             "name": "",
-            "id": "86491742977687026",
+            "dataType": "string",
+            "id": "61221751013082818",
             "link": "",
             "group": "0",
             "tags": "",
@@ -77,27 +78,39 @@ let exampleTable = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "linkType": false,
+            "array": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
             "arrayLink": false,
-            "indexExists": false,
-            "array": false
+            "linkType": false,
+            "indexExists": false
         }
     ],
     "data": [
         {
-            "title": "mp3",
-            "id": "mp3"
+            "id": "1"
         },
         {
-            "title": "text",
-            "id": "text"
+            "id": "2"
         },
         {
-            "title": "pdf",
-            "id": "pdf"
+            "id": "3"
+        },
+        {
+            "id": "4"
+        },
+        {
+            "id": "5"
+        },
+        {
+            "id": "6"
+        },
+        {
+            "id": "7"
+        },
+        {
+            "id": "8"
         }
     ],
     "totalPages": 1,
@@ -106,32 +119,35 @@ let exampleTable = {
     "fieldScheme": [
         [
             "id",
-            99386128
+            99400935
         ],
         [
-            "title",
-            99386128
+            "field1",
+            99400935
         ]
     ],
-    "writeFields": [],
+    "writeFields": [
+        "id",
+        "field1"
+    ],
     "structures": {
-        "99386128": {
-            "networkID": 33165,
-            "sysName": "data_types",
-            "name": "data types",
-            "id": 99386128,
-            "dateCreated": "2025-03-26T08:28:04Z",
+        "99400935": {
+            "networkID": 33620,
+            "sysName": "bug",
+            "name": "bug",
+            "id": 99400935,
+            "dateCreated": "2025-06-27T08:30:31Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"title\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"86491742977687026\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"indexExists\":false,\"array\":false}]",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"bool\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"57121751013087186\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"field1\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"61221751013082818\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false}]",
             "jsonGroupSettings": null,
-            "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
+            "jsonViewIdSettings": null,
             "jsonSettings": null,
             "jsonNativeIndexSettings": null,
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2025-03-26T08:28:11Z",
+            "dateChanged": "2025-06-27T08:31:32Z",
             "createBy": 1,
             "changedBy": 1,
             "_settings": null,
@@ -139,8 +155,8 @@ let exampleTable = {
             "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
-                "dataType": "id",
                 "name": "id",
+                "dataType": "id",
                 "id": "0",
                 "link": "",
                 "group": "0",
@@ -157,13 +173,13 @@ let exampleTable = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "linkType": false,
+                "array": false,
                 "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
                 "arrayLink": false,
-                "indexExists": false,
-                "array": false
+                "linkType": false,
+                "indexExists": false
             },
             "folderId": null
         }
@@ -171,12 +187,69 @@ let exampleTable = {
     "isSuccessWrite": false,
     "writeError": null,
     "writeResponse": null,
-    "fileds": [],
-    "quickSearch": "",
-    "httpParams": {},
+    "fileds": [
+        {
+            "sysName": "id",
+            "name": "id",
+            "dataType": "id",
+            "id": "0",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "field1",
+            "name": "",
+            "dataType": "string",
+            "id": "61221751013082818",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "indexExists": false
+        }
+    ],
+    "quickSearch": null,
+    "httpParams": null,
     "cardCustomHtml": null,
-    "cardCustomLayout": {},
-    "comment": "",
+    "cardCustomLayout": null,
+    "comment": null,
     "response": false
 }
 
