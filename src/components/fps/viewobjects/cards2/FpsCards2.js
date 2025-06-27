@@ -231,28 +231,28 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
     const [favorites, setFavorites] = useState([])
     const [favLoading, setFavLoading] = useState(false)
     const [pageLoading, setPageLoading] = useState(false)
-    const [dataInfo, setDataInfo] = useState( // {}
+    const [dataInfo, setDataInfo] = useState( {}
         // fake dataInfo
-        {
-            "pageable": {
-                "page": 1,
-                "size": 3,
-                "fields": [
-                    "id",
-                    "field1"
-                ],
-                "orders": [],
-                "offset": 3,
-                "orderLimit": 1000,
-                "countAsEstimated": false,
-                "pageNumber": 1,
-                "pageSize": 3
-            },
-            "total": 8,
-            "warnings": [],
-            "empty": false,
-            "numberOfElements": 3
-        }
+        // {
+        //     "pageable": {
+        //         "page": 1,
+        //         "size": 3,
+        //         "fields": [
+        //             "id",
+        //             "field1"
+        //         ],
+        //         "orders": [],
+        //         "offset": 3,
+        //         "orderLimit": 1000,
+        //         "countAsEstimated": false,
+        //         "pageNumber": 1,
+        //         "pageSize": 3
+        //     },
+        //     "total": 8,
+        //     "warnings": [],
+        //     "empty": false,
+        //     "numberOfElements": 3
+        // }
     )
 
 
@@ -298,9 +298,9 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
                 pageSize: data.pageSize || 10,
                 page: urlPage
             }, (result, data) => {
-                // console.log("INITIAL PAGE LOAD RESULT")
-                // console.log(result)
-                // console.log(data)
+                console.log("INITIAL PAGE LOAD RESULT")
+                console.log(result)
+                console.log(data)
                 const dataInfo = _.get(data, "result.data", {})
                 if (dataInfo && dataInfo.content) {
                     delete dataInfo.content
