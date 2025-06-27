@@ -222,6 +222,7 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
     const [favorites, setFavorites] = useState([])
     const [favLoading, setFavLoading] = useState(false)
     const [pageLoading, setPageLoading] = useState(false)
+    const [dataInfo, setDataInfo] = useState({})
 
 
     // FAVORITES
@@ -258,7 +259,7 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
 
     // INITIAL PAGE LOAD - check URL for page parameter on mount
     useEffect(() => {
-        const urlPage = getPageFromUrl();
+        const urlPage = getPageFromUrl() || 0;
         if (urlPage > 0 && data && data.sl) {
             console.log("Loading initial page from URL: " + urlPage)
             setPageLoading(true)
@@ -266,9 +267,9 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
                 pageSize: data.pageSize || 10,
                 page: urlPage 
             }, (result, data) => {
-                // console.log("INITIAL PAGE LOAD RESULT")
-                // console.log(result)
-                // console.log(data)
+                console.log("INITIAL PAGE LOAD RESULT")
+                console.log(result)
+                console.log(data)
                 setObjects(result)
                 setPageLoading(false)
             })
