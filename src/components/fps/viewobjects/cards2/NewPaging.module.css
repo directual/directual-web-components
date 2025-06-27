@@ -1,0 +1,19 @@
+/* NewPaging component styles */
+.newPaging {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+}
+.newPaging__info {
+  flex: 1;
+}
+.newPaging__info__text {
+  font-size: var(--font-size-small);
+}
+.newPaging__controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+/* Responsive design */

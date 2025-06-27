@@ -10,9 +10,11 @@ import { debounce } from 'lodash'
 import { template } from '../../templating/template'
 import InnerHTML from 'dangerously-set-html-content'
 import Cards2Paging from './Cards2Paging'
+import NewPaging from './NewPaging'
 import { dict } from '../../locale'
 import ActionPanel from '../../actionspanel/actionspanel';
 import { TableTitle } from '../tableTitle/TableTitle'
+import Loader from '../../loader/loader';
 
 function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine, id, currentBP, locale, handleRoute }) {
 
@@ -116,6 +118,14 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
     const firstPage = () => {
         setPage(0);
         updatePageInUrl(0);
+    };
+
+    const lastPage = () => {
+        const pageSize = _.get(dataInfo, 'pageable.pageSize', data.pageSize || 10);
+        const totalPages = Math.max(1, Math.ceil(_.get(dataInfo, 'total', 0) / pageSize));
+        const lastPageNumber = Math.max(0, totalPages - 1);
+        setPage(lastPageNumber);
+        updatePageInUrl(lastPageNumber);
     };
 
     // grid settings
@@ -222,7 +232,29 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
     const [favorites, setFavorites] = useState([])
     const [favLoading, setFavLoading] = useState(false)
     const [pageLoading, setPageLoading] = useState(false)
-    const [dataInfo, setDataInfo] = useState({})
+    const [dataInfo, setDataInfo] = useState( // {}
+        // fake dataInfo
+        {
+            "pageable": {
+                "page": 1,
+                "size": 3,
+                "fields": [
+                    "id",
+                    "field1"
+                ],
+                "orders": [],
+                "offset": 3,
+                "orderLimit": 1000,
+                "countAsEstimated": false,
+                "pageNumber": 1,
+                "pageSize": 3
+            },
+            "total": 8,
+            "warnings": [],
+            "empty": false,
+            "numberOfElements": 3
+        }
+    )
 
 
     // FAVORITES
@@ -240,13 +272,13 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
             isFirstRender.current = false;
             return;
         }
-        
+
         console.log("page => " + page)
         if (data && data.sl) {
             setPageLoading(true)
-            callEndpointGET(data.sl, { 
+            callEndpointGET(data.sl, {
                 pageSize: data.pageSize || 10,
-                page: page 
+                page: page
             }, (result, data) => {
                 // console.log("PAGINATION RESULT")
                 // console.log(result)
@@ -263,9 +295,9 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
         if (data && data.sl) { // в любом случае загружаем данные, чтобы достать dataInfo
             console.log("Loading initial page from URL: " + urlPage)
             setPageLoading(true)
-            callEndpointGET(data.sl, { 
+            callEndpointGET(data.sl, {
                 pageSize: data.pageSize || 10,
-                page: urlPage 
+                page: urlPage
             }, (result, data) => {
                 // console.log("INITIAL PAGE LOAD RESULT")
                 // console.log(result)
@@ -283,10 +315,16 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
 
     console.log("dataInfo")
     console.log(dataInfo)
+    // console.log("dataInfo.total:", _.get(dataInfo, 'total', 0))
+    // console.log("dataInfo.pageable.pageSize:", _.get(dataInfo, 'pageable.pageSize', 'not found'))
+    // console.log("dataInfo.pageable.page:", _.get(dataInfo, 'pageable.page', 'not found'))
+    // console.log("data.pageSize:", data.pageSize)
+    // console.log("calculated totalPages:", Math.max(1, Math.ceil(_.get(dataInfo, 'total', 0) / _.get(dataInfo, 'pageable.pageSize', data.pageSize || 10))))
+    // console.log("current page value:", page)
+    // console.log("adjusted currentPage for NewPaging:", _.get(dataInfo, 'pageable.page', 1) - 1)
 
     return <div className={`FPS_CARDS2 ${styles.cards2}`}>
-        PAGE: {page}<hr />
-        {pageLoading && <div>Loading...</div>}
+        {/* {pageLoading && <Loader />} */}
         {/* {(title || showCounter) && <div className={`FPS_CARDS2__HEADER ${styles.cards2_header}`}>
             {title && <h2>{title && <InnerHTML allowRerender={true} html={title} />}</h2>}
             {showCounter && <div className={`FPS_CARDS2__HEADER-counter ${styles.cards2_header_counter}`}>5 items</div>}
@@ -508,11 +546,24 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
 
         </div>}
 
-        <div className="pagination-controls">
-            <button onClick={firstPage}>First</button>
-            <button onClick={prevPage}>Prev</button>
-            <button onClick={nextPage}>Next</button>
-        </div>
+        <NewPaging
+            totalObjects={_.get(dataInfo, 'total', 0)}
+            objectsPerPage={_.get(dataInfo, 'pageable.pageSize', data.pageSize || 10)}
+            showPageSizeDropdown={true}
+            onPageSizeChange={(newPageSize) => {
+                // Сбрасываем на первую страницу при изменении размера страницы
+                console.log("onPageSizeChange")
+                console.log("newPageSize:", newPageSize)
+                // Здесь можно добавить логику для обновления pageSize в data
+            }}
+            currentPage={_.get(dataInfo, 'pageable.page', 0)}
+            totalPages={Math.max(1, Math.ceil(_.get(dataInfo, 'total', 0) / _.get(dataInfo, 'pageable.pageSize', data.pageSize || 10)))}
+            nextPage={nextPage}
+            prevPage={prevPage}
+            firstPage={firstPage}
+            lastPage={lastPage}
+            loading={pageLoading}
+        />
     </div>
 }
 
@@ -760,7 +811,7 @@ function CardAction(props) {
             return result;
         }, {});
 
-        if ((_.get(settings,"actionType") == "endpoint" || !_.get(action,"actionType")) && settings.endpoint) {
+        if ((_.get(settings, "actionType") == "endpoint" || !_.get(action, "actionType")) && settings.endpoint) {
             let payload = transformObject(settings.mapping)
 
             console.log("payload")
