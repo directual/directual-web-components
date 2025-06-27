@@ -260,21 +260,29 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
     // INITIAL PAGE LOAD - check URL for page parameter on mount
     useEffect(() => {
         const urlPage = getPageFromUrl() || 0;
-        if (urlPage > 0 && data && data.sl) {
+        if (data && data.sl) { // в любом случае загружаем данные, чтобы достать dataInfo
             console.log("Loading initial page from URL: " + urlPage)
             setPageLoading(true)
             callEndpointGET(data.sl, { 
                 pageSize: data.pageSize || 10,
                 page: urlPage 
             }, (result, data) => {
-                console.log("INITIAL PAGE LOAD RESULT")
-                console.log(result)
-                console.log(data)
+                // console.log("INITIAL PAGE LOAD RESULT")
+                // console.log(result)
+                // console.log(data)
+                const dataInfo = _.get(data, "result.data", {})
+                if (dataInfo && dataInfo.content) {
+                    delete dataInfo.content
+                }
+                setDataInfo(dataInfo)
                 setObjects(result)
                 setPageLoading(false)
             })
         }
     }, []) // Empty dependency array - runs only on mount
+
+    console.log("dataInfo")
+    console.log(dataInfo)
 
     return <div className={`FPS_CARDS2 ${styles.cards2}`}>
         PAGE: {page}<hr />
