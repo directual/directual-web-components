@@ -39,14 +39,15 @@ function NewPaging({
             </div>
 
             <div className={`FPS_NEWPAGING__CONTROLS ${styles.newPaging__controls}`}>
-                <div className={`FPS_NEWPAGING__PAGESIZE ${styles.newPaging__pageSize}`}>
+                {/* <div className={`FPS_NEWPAGING__PAGESIZE ${styles.newPaging__pageSize}`}>
                     page size: <strong>{localPageSize}</strong>
-                </div>
+                </div> */}
 
                 <div className={`FPS_NEWPAGING__NAVIGATION ${styles.newPaging__navigation}`}>
                     <ActionPanel>
                         <Button height={32} onClick={firstPage} >First</Button>
                         <Button height={32} onClick={prevPage} icon='back' verySmall/>
+                        <div className={styles.newPaging__pageNumber}>{currentPage}</div>
                         <Button height={32} onClick={nextPage} icon='forward' verySmall/>
                         <Button height={32} onClick={lastPage} >Last</Button>
                     </ActionPanel>

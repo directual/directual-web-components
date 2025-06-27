@@ -16,4 +16,13 @@
   align-items: center;
   gap: 16px;
 }
+.newPaging__pageNumber {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  padding: 0 4px;
+}
 /* Responsive design */
