@@ -518,7 +518,7 @@ export function NewMainMenu(props) {
     const handleLogOut = () => {
         props.logOut && props.logOut()
     }
-
+    const horMenuMargin = _.get(menuConfig, "rootMenu.horMenuMargin") || 12
     // console.log("mainMenu")
     // console.log(mainMenu)
 
@@ -657,13 +657,13 @@ export function NewMainMenu(props) {
                 style={menuMargin !== 0 ? {
                     margin: menuMargin,
                     borderWidth: menuBorderWidth,
-                    padding: menuPadding
+                    padding: menuPadding,
                 } :
                     {
                         margin: menuMargin,
                         borderWidth: menuBorderWidth,
                         borderRadius: 0,
-                        padding: menuPadding
+                        padding: menuPadding,
                     }}>
                 <div className={`${styles.hide_mobile_menu} D_MainMenu_hide_mobile`}
                     onClick={hideMMhandler}></div>
@@ -714,7 +714,11 @@ export function NewMainMenu(props) {
 
                 <div className={`${styles.newList} D_MainMenu_List 
                 ${sideMenuAlign == 'right' ? styles.alignRight :
-                        sideMenuAlign == 'center' ? styles.alignCenter : ''}`}>
+                        sideMenuAlign == 'center' ? styles.alignCenter : ''}`}
+                        style={{
+                            gap: horMenuMargin
+                        }}
+                        >
                     {(mainMenu.children || []).map(item =>
                         <NewMainMenuItem
                             item={item}
@@ -1138,8 +1142,8 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
 
     if (item.isFolder && isHorizontal) {
         return <div className={`D_MainMenu_Item D_MainMenu_GroupTitle ${styles.menuIcon}`}
-            style={sideMenuAlign == 'right' ? { marginLeft: horMenuMargin, marginTop: 0 } :
-                sideMenuAlign == 'left' ? { marginRight: horMenuMargin, marginTop: 0 } : {}
+            style={sideMenuAlign == 'right' ? { marginTop: 0 } :
+                sideMenuAlign == 'left' ? { marginTop: 0 } : {}
             }
             onMouseOver={handleMouseOver}
             onMouseOut={handleMouseOut}
@@ -1263,7 +1267,7 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
             ${iconType == 'directual_icon' ? `icon icon-${menuItem.menuDirectualIconSet}` : ''}
             ${compactMode && iconType == 'no_icon' && 'icon icon-application'}
             ${!menuItem.menuDirectualIconSet && !menuItem.menuRemixIcon
-                && !menuItem.menuIconCustom && iconType !== 'no_icon' ? 'icon icon-application' : ''}
+                && !menuItem.menuIconCustom && iconType == 'directual_icon' ? 'icon icon-application' : ''}
         `}>
         {/* Custom icon: */}
         {iconType == "custom_icon" && menuItem.menuIconCustom &&
