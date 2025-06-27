@@ -282,6 +282,11 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
                 // console.log("PAGINATION RESULT")
                 // console.log(result)
                 // console.log(data)
+                const dataInfo = _.get(data, "result.data", {})
+                if (dataInfo && dataInfo.content) {
+                    delete dataInfo.content
+                }
+                setDataInfo(dataInfo)
                 setObjects(result)
                 setPageLoading(false)
             })
@@ -298,9 +303,9 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
                 pageSize: data.pageSize || 10,
                 page: urlPage
             }, (result, data) => {
-                console.log("INITIAL PAGE LOAD RESULT")
-                console.log(result)
-                console.log(data)
+                // console.log("INITIAL PAGE LOAD RESULT")
+                // console.log(result)
+                // console.log(data)
                 const dataInfo = _.get(data, "result.data", {})
                 if (dataInfo && dataInfo.content) {
                     delete dataInfo.content
@@ -558,6 +563,7 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
             currentPage={_.get(dataInfo, 'pageable.page', 0)}
             totalPages={Math.max(1, Math.ceil(_.get(dataInfo, 'total', 0) / _.get(dataInfo, 'pageable.pageSize', data.pageSize || 10)))}
             nextPage={nextPage}
+            dataInfo={dataInfo}
             prevPage={prevPage}
             firstPage={firstPage}
             lastPage={lastPage}

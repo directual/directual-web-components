@@ -16,7 +16,8 @@ function NewPaging({
     prevPage,
     firstPage,
     lastPage,
-    loading = false
+    loading = false,
+    dataInfo
 }) {
     const [localPageSize, setLocalPageSize] = useState(objectsPerPage)
 
@@ -30,6 +31,9 @@ function NewPaging({
         onPageSizeChange && onPageSizeChange(newPageSize)
     }
 
+    const showFirst = currentPage !== 0
+    const isLastPage = currentPage === totalPages - 1
+
     return (
         <div className={`FPS_NEWPAGING ${styles.newPaging}`}>
             <div className={`FPS_NEWPAGING__INFO ${styles.newPaging__info}`}>
@@ -41,15 +45,15 @@ function NewPaging({
             <div className={`FPS_NEWPAGING__CONTROLS ${styles.newPaging__controls}`}>
                 {/* <div className={`FPS_NEWPAGING__PAGESIZE ${styles.newPaging__pageSize}`}>
                     page size: <strong>{localPageSize}</strong>
-                </div> */}
+                </div> */}‹
 
                 <div className={`FPS_NEWPAGING__NAVIGATION ${styles.newPaging__navigation}`}>
                     <ActionPanel>
-                        <Button height={32} onClick={firstPage} >First</Button>
-                        <Button height={32} onClick={prevPage} icon='back' verySmall/>
+                        {showFirst && <Button height={32} onClick={firstPage} >‹‹</Button>}
+                        <Button height={32} onClick={prevPage}>‹</Button>
                         <div className={styles.newPaging__pageNumber}>{currentPage}</div>
-                        <Button height={32} onClick={nextPage} icon='forward' verySmall/>
-                        <Button height={32} onClick={lastPage} >Last</Button>
+                        {!isLastPage && <Button height={32} onClick={nextPage} >›</Button>}
+                        {!isLastPage && <Button height={32} onClick={lastPage} >››</Button>}
                     </ActionPanel>
                 </div>
             </div>
