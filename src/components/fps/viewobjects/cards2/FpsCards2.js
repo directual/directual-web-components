@@ -245,7 +245,7 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
             setPageLoading(true)
             callEndpointGET(data.sl, { 
                 pageSize: data.pageSize || 10,
-                pageNumber: page 
+                page: page 
             }, (result) => {
                 console.log("PAGINATION RESULT")
                 console.log(result)

@@ -18,7 +18,7 @@ export default {
 
 let exampleTable = {
     "sl": "bug",
-    "pageSize": "10",
+    "pageSize": "3",
     "headerField": null,
     "params": {
         "comp_ID": "7mGWJS",
@@ -51,12 +51,12 @@ let exampleTable = {
             "formatOptions": {},
             "groupName": null,
             "array": false,
+            "linkType": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "linkType": false,
-            "indexExists": false
+            "arrayLink": false
         },
         {
             "sysName": "field1",
@@ -79,12 +79,12 @@ let exampleTable = {
             "formatOptions": {},
             "groupName": null,
             "array": false,
+            "linkType": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "linkType": false,
-            "indexExists": false
+            "arrayLink": false
         }
     ],
     "data": [
@@ -96,24 +96,9 @@ let exampleTable = {
         },
         {
             "id": "3"
-        },
-        {
-            "id": "4"
-        },
-        {
-            "id": "5"
-        },
-        {
-            "id": "6"
-        },
-        {
-            "id": "7"
-        },
-        {
-            "id": "8"
         }
     ],
-    "totalPages": 1,
+    "totalPages": 3,
     "pageNumber": 0,
     "error": null,
     "fieldScheme": [
@@ -132,13 +117,13 @@ let exampleTable = {
     ],
     "structures": {
         "99400935": {
-            "networkID": 33620,
-            "sysName": "bug",
-            "name": "bug",
             "id": 99400935,
             "dateCreated": "2025-06-27T08:30:31Z",
             "hidden": false,
             "dateHidden": null,
+            "networkID": 33620,
+            "name": "bug",
+            "sysName": "bug",
             "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"bool\",\"dataType\":\"boolean\",\"name\":\"\",\"id\":\"57121751013087186\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false},{\"sysName\":\"field1\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"61221751013082818\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkType\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"array\":false}]",
             "jsonGroupSettings": null,
             "jsonViewIdSettings": null,
@@ -174,12 +159,12 @@ let exampleTable = {
                 "formatOptions": {},
                 "groupName": null,
                 "array": false,
+                "linkType": false,
+                "indexExists": false,
                 "typeVariable": {},
                 "json": false,
                 "linkOrArrayLinkType": false,
-                "arrayLink": false,
-                "linkType": false,
-                "indexExists": false
+                "arrayLink": false
             },
             "folderId": null
         }
@@ -209,12 +194,12 @@ let exampleTable = {
             "formatOptions": {},
             "groupName": null,
             "array": false,
+            "linkType": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "linkType": false,
-            "indexExists": false
+            "arrayLink": false
         },
         {
             "sysName": "field1",
@@ -237,12 +222,12 @@ let exampleTable = {
             "formatOptions": {},
             "groupName": null,
             "array": false,
+            "linkType": false,
+            "indexExists": false,
             "typeVariable": {},
             "json": false,
             "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "linkType": false,
-            "indexExists": false
+            "arrayLink": false
         }
     ],
     "quickSearch": null,
