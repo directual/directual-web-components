@@ -201,12 +201,12 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
             "GET",
             undefined,
             params,
-            (result, data) => {
+            (result, content, data) => {
                 if (result == "ok") {
-                    finish && finish(data)
+                    finish && finish(content, data)
                 }
                 else {
-                    setError && setError(data)
+                    setError && setError(content)
                     finish && finish([])
                 }
             }
@@ -246,12 +246,11 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
             callEndpointGET(data.sl, { 
                 pageSize: data.pageSize || 10,
                 page: page 
-            }, (result) => {
+            }, (result, data) => {
                 console.log("PAGINATION RESULT")
                 console.log(result)
-                if (result && result.data) {
-                    setObjects(result)
-                }
+                console.log(data)
+                setObjects(result)
                 setPageLoading(false)
             })
         }
