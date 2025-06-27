@@ -9,7 +9,6 @@ import Input, { InputRow } from '../../dataentry/input/input';
 import { debounce } from 'lodash'
 import { template } from '../../templating/template'
 import InnerHTML from 'dangerously-set-html-content'
-import Cards2Paging from './Cards2Paging'
 import NewPaging from './NewPaging'
 import { dict } from '../../locale'
 import ActionPanel from '../../actionspanel/actionspanel';
