@@ -201,7 +201,7 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
             "GET",
             undefined,
             params,
-            (result, content, data) => {
+            (result, content, json, data) => {
                 if (result == "ok") {
                     finish && finish(content, data)
                 }
@@ -247,14 +247,33 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
                 pageSize: data.pageSize || 10,
                 page: page 
             }, (result, data) => {
-                console.log("PAGINATION RESULT")
-                console.log(result)
-                console.log(data)
+                // console.log("PAGINATION RESULT")
+                // console.log(result)
+                // console.log(data)
                 setObjects(result)
                 setPageLoading(false)
             })
         }
     }, [page])
+
+    // INITIAL PAGE LOAD - check URL for page parameter on mount
+    useEffect(() => {
+        const urlPage = getPageFromUrl();
+        if (urlPage > 0 && data && data.sl) {
+            console.log("Loading initial page from URL: " + urlPage)
+            setPageLoading(true)
+            callEndpointGET(data.sl, { 
+                pageSize: data.pageSize || 10,
+                page: urlPage 
+            }, (result, data) => {
+                // console.log("INITIAL PAGE LOAD RESULT")
+                // console.log(result)
+                // console.log(data)
+                setObjects(result)
+                setPageLoading(false)
+            })
+        }
+    }, []) // Empty dependency array - runs only on mount
 
     return <div className={`FPS_CARDS2 ${styles.cards2}`}>
         PAGE: {page}<hr />
