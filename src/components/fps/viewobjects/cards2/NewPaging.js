@@ -45,7 +45,7 @@ function NewPaging({
             <div className={`FPS_NEWPAGING__CONTROLS ${styles.newPaging__controls}`}>
                 {/* <div className={`FPS_NEWPAGING__PAGESIZE ${styles.newPaging__pageSize}`}>
                     page size: <strong>{localPageSize}</strong>
-                </div> */}‹
+                </div> */}
 
                 <div className={`FPS_NEWPAGING__NAVIGATION ${styles.newPaging__navigation}`}>
                     <ActionPanel>
