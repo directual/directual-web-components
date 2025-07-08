@@ -977,6 +977,7 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
     const menuItem = _.get(menuConfig, [item.id]) || {}
     const [isHovered, setIsHovered] = useState(false)
     const [isGroupHovered, setIsGroupHovered] = useState(false)
+    const hoverTimeout = useRef();
 
     const name = menuItem.name || item.name
 
@@ -1124,8 +1125,6 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
     }
 
     // console.log("isGroupHovered", isGroupHovered)
-
-    const hoverTimeout = useRef();
 
     function handleMouseOver(e) {
         clearTimeout(hoverTimeout.current);

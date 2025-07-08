@@ -37,6 +37,7 @@ import FileUpload, { DropFiles } from './components/fps/dataentry/fileupload/fil
 import { SignIn, SignUp, Profile, RestorePass } from './components/fps/profile/profile'
 import Hint from './components/fps/hint/hint'
 import Loader from './components/fps/loader/loader'
+import Skeleton from './components/fps/skeleton/skeleton'
 import Media from './components/fps/media/media'
 import Article from './components/fps/article/article'
 import TabsPane from './components/fps/layout/tabpane/tabpane'
@@ -126,6 +127,7 @@ export {
   SignUp,
   Hint,
   Loader,
+  Skeleton,
   Media,
   Article,
   Dnd,

@@ -267,7 +267,7 @@ function FieldText(props) {
                 onChange={debouncedOnChange}
             />
         }
-        return <Input nomargin
+        return <Input 
             type={imask ? 'string' : "textarea"}
             rows='auto'
             imask={imask}
@@ -276,6 +276,7 @@ function FieldText(props) {
             defaultValue={_.get(state, field._state_field)}
             description={field._field_add_description && template(field._field_description_text)}
             {...basicProps}
+            nomargin
             onChange={debouncedOnChange}
         />
     }
