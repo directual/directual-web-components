@@ -609,6 +609,8 @@ function Card(props) {
     const html_type_content = _.get(data, "params.html_type_content")
     const card_padding = _.get(data, "params.card_padding", 12)
     const card_min_height = _.get(data, "params.card_min_height") || "none"
+    const card_border = _.get(data, "params.card_border", 1)
+    const card_border_radius = _.get(data, "params.card_border_radius")
     const image_shape = _.get(data, "params.card_type_cart.image_shape")
     const image_padding = _.get(data, "params.card_type_cart.image_padding", 0)
     const image_border_radius = _.get(data, "params.card_type_cart.image_border_radius", 0)
