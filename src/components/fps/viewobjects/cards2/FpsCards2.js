@@ -14,6 +14,7 @@ import { dict } from '../../locale'
 import ActionPanel from '../../actionspanel/actionspanel';
 import { TableTitle } from '../tableTitle/TableTitle'
 import Loader from '../../loader/loader';
+import Skeleton from '../../skeleton/skeleton';
 
 function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine, id, currentBP, locale, handleRoute }) {
 
@@ -46,6 +47,7 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
     };
     const [page, setPage] = useState(getPageFromUrl);
     const [loading, setLoading] = useState(false)
+    const [initialLoading, setInitialLoading] = useState(true)
     const isFirstRender = useRef(true)
 
     const updatePageInUrl = (newPage) => {
@@ -140,6 +142,33 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
     const flex_layout__gap = _.get(data, "params.flex_layout__gap", 22)
     const flex_layout__width = _.get(data, "params.flex_layout__width", 250)
 
+    // функция для рендера скелетонов
+    const renderSkeletons = (isFlexLayout = false) => {
+        // для pageLoading берем размер из dataInfo, для initialLoading из data
+        const pageSize = pageLoading 
+            ? _.get(dataInfo, 'pageable.pageSize', data.pageSize || 10)
+            : data.pageSize || 10
+        const card_min_height = _.get(data, "params.card_min_height") || "120px"
+        
+        return Array(pageSize).fill(null).map((_, index) => (
+            <div
+                key={`skeleton-${index}`}
+                style={(!card_border_radius && card_border_radius !== 0) ? {
+                    borderWidth: card_border,
+                    ...(isFlexLayout && { width: flex_layout__width })
+                } : {
+                    borderWidth: card_border,
+                    borderRadius: card_border_radius,
+                    ...(isFlexLayout && { width: flex_layout__width })
+                }}
+                className={`FPS_CARDS2__CARD ${styles.cards2_card}`}>
+                <Skeleton 
+                    height={card_min_height}
+                    style={{ borderRadius: card_border_radius }}
+                />
+            </div>
+        ))
+    }
 
     // edit object from card
 
@@ -313,19 +342,12 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
                 setDataInfo(dataInfo)
                 setObjects(result)
                 setPageLoading(false)
+                setInitialLoading(false) // отключаем показ скелетонов после первой загрузки
             })
+        } else {
+            setInitialLoading(false) // если нет sl, то скелетоны не нужны
         }
     }, []) // Empty dependency array - runs only on mount
-
-    console.log("dataInfo")
-    console.log(dataInfo)
-    // console.log("dataInfo.total:", _.get(dataInfo, 'total', 0))
-    // console.log("dataInfo.pageable.pageSize:", _.get(dataInfo, 'pageable.pageSize', 'not found'))
-    // console.log("dataInfo.pageable.page:", _.get(dataInfo, 'pageable.page', 'not found'))
-    // console.log("data.pageSize:", data.pageSize)
-    // console.log("calculated totalPages:", Math.max(1, Math.ceil(_.get(dataInfo, 'total', 0) / _.get(dataInfo, 'pageable.pageSize', data.pageSize || 10))))
-    // console.log("current page value:", page)
-    // console.log("adjusted currentPage for NewPaging:", _.get(dataInfo, 'pageable.page', 1) - 1)
 
     return <div className={`FPS_CARDS2 ${styles.cards2}`}>
         {/* {pageLoading && <Loader />} */}
@@ -436,7 +458,7 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
                 gridTemplateColumns: _.join(_.times(breakPoints[currentBP], _.constant('1fr')), ' ')
             }}
         >
-            {objects
+            {(initialLoading || pageLoading) ? renderSkeletons() : objects
                 .filter(object => !!_.get(object, field_quantity, 1)) // filter items with quantity == 0
                 .map(object => <div
                     style={(!card_border_radius && card_border_radius !== 0) ? {
@@ -496,7 +518,7 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
                 gap: flex_layout__gap,
             }}
         >
-            {objects
+            {(initialLoading || pageLoading) ? renderSkeletons(true) : objects
                 .filter(object => !!_.get(object, field_quantity, 1)) // filter items with quantity == 0
                 .map(object => <div
                     style={(!card_border_radius && card_border_radius !== 0) ? {
