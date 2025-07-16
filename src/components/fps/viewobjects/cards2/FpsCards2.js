@@ -175,11 +175,14 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
     const callEndpointPOST = (endpoint, body, finish) => {
         console.log('===> calling endpoint POST /' + endpoint)
         console.log(body)
+        // добавляем httpParams к параметрам запроса
+        const httpParams = _.get(data, "params.httpParams") || _.get(data, "httpParams") || {}
+        
         callEndpoint && callEndpoint(
             endpoint,
             "POST",
             body,
-            undefined,
+            httpParams,
             (result, data) => {
                 if (result == "ok") {
                     console.log('finish')
@@ -234,11 +237,15 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
 
     const callEndpointGET = (endpoint, params, finish) => {
         console.log('===> calling endpoint GET /' + endpoint)
+        // добавляем httpParams к параметрам запроса
+        const httpParams = _.get(data, "params.httpParams") || _.get(data, "httpParams") || {}
+        const requestParams = { ...httpParams, ...params }
+        
         callEndpoint && callEndpoint(
             endpoint,
             "GET",
             undefined,
-            params,
+            requestParams,
             (result, content, json, data) => {
                 if (result == "ok") {
                     finish && finish(content, data)
