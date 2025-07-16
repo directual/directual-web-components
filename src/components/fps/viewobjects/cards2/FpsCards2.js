@@ -267,28 +267,28 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
     const [favorites, setFavorites] = useState([])
     const [favLoading, setFavLoading] = useState(false)
     const [pageLoading, setPageLoading] = useState(false)
-    const [dataInfo, setDataInfo] = useState( {}
+    const [dataInfo, setDataInfo] = useState( // {}
         // fake dataInfo
-        // {
-        //     "pageable": {
-        //         "page": 1,
-        //         "size": 3,
-        //         "fields": [
-        //             "id",
-        //             "field1"
-        //         ],
-        //         "orders": [],
-        //         "offset": 3,
-        //         "orderLimit": 1000,
-        //         "countAsEstimated": false,
-        //         "pageNumber": 1,
-        //         "pageSize": 3
-        //     },
-        //     "total": 8,
-        //     "warnings": [],
-        //     "empty": false,
-        //     "numberOfElements": 3
-        // }
+        {
+            "pageable": {
+                "page": 1,
+                "size": 3,
+                "fields": [
+                    "id",
+                    "field1"
+                ],
+                "orders": [],
+                "offset": 3,
+                "orderLimit": 1000,
+                "countAsEstimated": false,
+                "pageNumber": 1,
+                "pageSize": 3
+            },
+            "total": 8,
+            "warnings": [],
+            "empty": false,
+            "numberOfElements": 3
+        }
     )
 
 
@@ -625,8 +625,9 @@ function Card(props) {
     const dir_image_padding = _.get(data, "params.card_type_dir.image_padding", 0)
     const dir_cardBody = _.get(data, "params.card_type_dir.body", "")
     const dir_image_position = _.get(data, "params.card_type_dir.image_position", "top")
-    const [description, setDescription] = useState(dict[lang].loading || "loading...")
-    const [cardBody, setCardBody] = useState(dict[lang].loading || "loading...")
+    const [description, setDescription] = useState("")
+    const [cardBody, setCardBody] = useState("")
+    const [cardLoading, setCardLoading] = useState(true)
 
     const favoritesOn = _.get(data, "params.card_type_dir.favoritesOn", false)
     const favoritesIconOn = _.get(data, "params.card_type_dir.favoritesIconOn") || "starFill"
@@ -647,8 +648,22 @@ function Card(props) {
             const templValue = templateEngine ? await templateEngine(payload, object) : "Templating error";
             setValue(templValue);
         };
-        fetchData(field_description, setDescription);
-        fetchData(dir_cardBody, setCardBody);
+        
+        const loadCardData = async () => {
+            setCardLoading(true);
+            try {
+                await Promise.all([
+                    fetchData(field_description, setDescription),
+                    fetchData(dir_cardBody, setCardBody)
+                ]);
+            } catch (error) {
+                console.error('Error loading card data:', error);
+            } finally {
+                setCardLoading(false);
+            }
+        };
+        
+        loadCardData();
     }, [])
 
     const changeQuantity = (count) => {
@@ -659,6 +674,19 @@ function Card(props) {
     const onChangeQuantity = debounce(changeQuantity, 500);
 
     const isFavorite = _.some(favorites, { [favoritesField]: object.id })
+
+    // показываем скелетон во время загрузки карточки
+    if (cardLoading) {
+        return <Skeleton 
+            height={card_min_height}
+            style={{ 
+                borderRadius: card_border_radius,
+                borderWidth: card_border,
+                borderStyle: 'solid',
+                borderColor: 'transparent'
+            }}
+        />
+    }
 
     if (cardType == "cart") return <div
         className={`Cards2_typeCart ${styles.cards2_typeCart}`}>
