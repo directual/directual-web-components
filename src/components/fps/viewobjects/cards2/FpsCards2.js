@@ -16,7 +16,7 @@ import { TableTitle } from '../tableTitle/TableTitle'
 import Loader from '../../loader/loader';
 import Skeleton from '../../skeleton/skeleton';
 
-function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine, id, currentBP, locale, handleRoute }) {
+function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templateEngine, id, currentBP, locale, handleRoute }) {
 
     console.log("== FpsCards2 data ===")
     console.log(data)
@@ -355,6 +355,29 @@ function FpsCards2({ auth, data, onEvent, callEndpoint, context, templateEngine,
             setInitialLoading(false) // если нет sl, то скелетоны не нужны
         }
     }, []) // Empty dependency array - runs only on mount
+
+    // SOCKET UPDATES - фоновое обновление при изменении socket
+    useEffect(() => {
+        if (!socket) return; // если socket не передан, ничего не делаем
+        
+        if (data && data.sl) {
+            console.log("Socket changed, updating data in background...")
+            // обновляем данные БЕЗ лоадеров
+            callEndpointGET(data.sl, {
+                pageSize: data.pageSize || 10,
+                page: page
+            }, (result, responseData) => {
+                console.log("Background update completed")
+                const dataInfo = _.get(responseData, "result.data", {})
+                if (dataInfo && dataInfo.content) {
+                    delete dataInfo.content
+                }
+                setDataInfo(dataInfo)
+                setObjects(result)
+                // НЕ обновляем initialLoading и pageLoading - это фоновое обновление
+            })
+        }
+    }, [socket]) // реагируем на изменения socket
 
     return <div className={`FPS_CARDS2 ${styles.cards2}`}>
         {/* {pageLoading && <Loader />} */}
