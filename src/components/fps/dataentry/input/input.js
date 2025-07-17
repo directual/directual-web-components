@@ -974,7 +974,10 @@ export default function Input(props) {
                         //height={350}
                         value={value}
                         //example={props.example}
-                        margin={{ top: 0, bottom: 0 }}
+                        margin={{ 
+                            top: inputMargins.marginTop, 
+                            bottom: inputMargins.marginBottom 
+                        }}
                     />
                 </div>}
 
@@ -1382,6 +1385,8 @@ Input.propTypes = {
     options: PropTypes.array,
     onClick: PropTypes.func,
     displayKey: PropTypes.bool,
+    edit: PropTypes.bool,
+    nomargin: PropTypes.bool,
     icon: PropTypes.string,
     width: PropTypes.number,
     forceReset: PropTypes.any, // Any value that changes will trigger a force reset

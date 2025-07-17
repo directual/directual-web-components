@@ -4,12 +4,14 @@ import gfm from 'remark-gfm'
 
 import styles from './mkd.module.css'
 
+// Выносим _buffer наружу чтобы переиспользовать
+let _buffer = null;
+
 export function Markdown(props) {
 
     const inputEl = useRef(null);
     const [lines, setLines] = useState(1)
 
-    let _buffer;
     function countLines(textarea, text) {
         if (_buffer == null) {
             _buffer = document.createElement('textarea');
@@ -98,10 +100,17 @@ Some *emphasis* and <strong>strong</strong>!
         if (props.value != value) {
             setValue(props.value)
         }
-        if (countLines(inputEl.current, value) != lines) {
-            setLines(countLines(inputEl.current, value))
-        }
     }, [props.value])
+
+    // Отдельный useEffect для пересчета lines при изменении value
+    useEffect(() => {
+        if (inputEl.current) {
+            const newLines = countLines(inputEl.current, value);
+            if (newLines && newLines !== lines) {
+                setLines(newLines);
+            }
+        }
+    }, [value, lines])
 
     const changeMkd = val => {
         //console.log(val)

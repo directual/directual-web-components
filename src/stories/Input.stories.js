@@ -528,3 +528,46 @@ export const DqlConstructor = {
     disabled: false
   }
 }
+
+export const Markdown = {
+  args: {
+    type: 'markdown',
+    edit: true,
+    nomargin: true,
+    label: 'Markdown редактор',
+    tooltip: "Редактор с поддержкой markdown разметки",
+    defaultValue: `# Заголовок первого уровня
+
+## Заголовок второго уровня
+
+Обычный текст с **жирным** и *курсивным* шрифтом.
+
+### Список:
+- Первый элемент
+- Второй элемент  
+- Третий элемент
+
+### Нумерованный список:
+1. Раз
+2. Два  
+3. Три
+
+### Код:
+\`\`\`javascript
+console.log('Hello, world!');
+\`\`\`
+
+### Ссылка:
+[Directual](https://directual.com)
+
+### Цитата:
+> Это пример цитаты
+
+---
+
+*Горизонтальная линия выше*`,
+    debug: true,
+    width: 600,
+    height: 400
+  }
+}
