@@ -340,9 +340,9 @@ function MobileTab(props) {
                     stroke={currentRoute == tabConfig.linkToPage ?
                         (tabConfig.menuRemixIconColorSelected || '#000000') :
                         (tabConfig.menuRemixIconColor || '#000000')}
-                    stroke-width={tabConfig.menuRemixIconStroke}
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth={tabConfig.menuRemixIconStroke}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     dangerouslySetInnerHTML={{ __html: _.get(tabConfig, "menuLucideIcon.svg") }}
                 />
             </div>}
@@ -359,9 +359,9 @@ function MobileTab(props) {
                     stroke={currentRoute == tabConfig.linkToPage ?
                         (tabConfig.menuRemixIconColorSelected || '#000000') :
                         (tabConfig.menuRemixIconColor || '#000000')}
-                    stroke-width={tabConfig.menuRemixIconStroke}
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth={tabConfig.menuRemixIconStroke}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     dangerouslySetInnerHTML={{ __html: _.get(tabConfig, "menuFeatherIcon.svg") }}
                 />
             </div>}
@@ -1047,9 +1047,9 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
                                 menuItem.linkToPage ? (menuItem.menuRemixIconColorSelected || '#000000') :
                                 isHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
                                     (menuItem.menuRemixIconColor || '#000000')}
-                            stroke-width={menuItem.menuRemixIconStroke}
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeWidth={menuItem.menuRemixIconStroke}
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                             dangerouslySetInnerHTML={{ __html: _.get(menuItem, "menuFeatherIcon.svg") }}
                         />
                     </div>}
@@ -1065,9 +1065,9 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
                                 menuItem.linkToPage ? (menuItem.menuRemixIconColorSelected || '#000000') :
                                 isHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
                                     (menuItem.menuRemixIconColor || '#000000')}
-                            stroke-width={menuItem.menuRemixIconStroke}
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeWidth={menuItem.menuRemixIconStroke}
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                             dangerouslySetInnerHTML={{ __html: _.get(menuItem, "menuLucideIcon.svg") }}
                         />
                     </div>}
@@ -1163,9 +1163,9 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
                                 stroke={currentRoute ==
                                     isGroupHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
                                     (menuItem.menuRemixIconColor || '#000000')}
-                                stroke-width={menuItem.menuRemixIconStroke}
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeWidth={menuItem.menuRemixIconStroke}
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                                 dangerouslySetInnerHTML={{ __html: _.get(menuItem, "menuFeatherIcon.svg") }}
                             />
                         </div>}
@@ -1180,9 +1180,9 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
                                 stroke={currentRoute ==
                                     isGroupHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
                                     (menuItem.menuRemixIconColor || '#000000')}
-                                stroke-width={menuItem.menuRemixIconStroke}
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeWidth={menuItem.menuRemixIconStroke}
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                                 dangerouslySetInnerHTML={{ __html: _.get(menuItem, "menuLucideIcon.svg") }}
                             />
                         </div>}
@@ -1311,9 +1311,9 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
                         menuItem.linkToPage ? (menuItem.menuRemixIconColorSelected || '#000000') :
                         isHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
                             (menuItem.menuRemixIconColor || '#000000')}
-                    stroke-width={menuItem.menuRemixIconStroke}
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth={menuItem.menuRemixIconStroke}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     dangerouslySetInnerHTML={{ __html: _.get(menuItem, "menuLucideIcon.svg") }}
                 />
             </div>}
@@ -1330,9 +1330,9 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
                         menuItem.linkToPage ? (menuItem.menuRemixIconColorSelected || '#000000') :
                         isHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
                             (menuItem.menuRemixIconColor || '#000000')}
-                    stroke-width={menuItem.menuRemixIconStroke}
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth={menuItem.menuRemixIconStroke}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     dangerouslySetInnerHTML={{ __html: _.get(menuItem, "menuFeatherIcon.svg") }}
                 />
             </div>}

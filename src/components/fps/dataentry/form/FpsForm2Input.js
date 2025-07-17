@@ -337,6 +337,7 @@ function FieldMkd(props) {
             onChange={onChange}
             required={field._field_required}
             edit
+            nomargin
             locale={locale}
             label={!field._field_hide_label ? (fieldInfo.name || fieldInfo.sysName) : null}
             description={field._field_add_description && template(field._field_description_text)}
