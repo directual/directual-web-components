@@ -1017,10 +1017,10 @@ export default function Input(props) {
                         value={value}
                         onBlur={checkValue}
                         placeholder={`${props.placeholder ? props.placeholder : ''}`} />
-                    {pwdVisible == 'password' &&
+                    {!props.hidePassword && pwdVisible == 'password' &&
                         <div className={`${styles.clear} icon icon-view`}
                             onClick={() => setPwdVisible('text')}></div>}
-                    {pwdVisible == 'text' &&
+                    {!props.hidePassword && pwdVisible == 'text' &&
                         <div className={`${styles.clear} icon icon-hide`}
                             onClick={() => setPwdVisible('password')}></div>}
                 </div>}
@@ -1393,7 +1393,8 @@ Input.propTypes = {
     value: PropTypes.any, // For controlled components
     defaultValue: PropTypes.any, // For uncontrolled components
     onChange: PropTypes.func,
-    onBlur: PropTypes.func
+    onBlur: PropTypes.func,
+    hidePassword: PropTypes.bool
 };
 
 Input.defaultProps = {

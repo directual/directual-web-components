@@ -4,6 +4,7 @@ import styles from './NewPaging.module.css'
 import Button from '../../button/button'
 import Select from '../../dataentry/select/select'
 import ActionPanel from '../../actionspanel/actionspanel'
+import { dict } from '../../locale'
 
 function NewPaging({
     totalObjects,
@@ -17,8 +18,10 @@ function NewPaging({
     firstPage,
     lastPage,
     loading = false,
-    dataInfo
+    dataInfo,
+    locale
 }) {
+    const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
     const [localPageSize, setLocalPageSize] = useState(objectsPerPage)
 
     // Синхронизируем localPageSize с objectsPerPage
@@ -38,7 +41,7 @@ function NewPaging({
         <div className={`FPS_NEWPAGING ${styles.newPaging}`}>
             <div className={`FPS_NEWPAGING__INFO ${styles.newPaging__info}`}>
                 <span className={styles.newPaging__info__text}>
-                    Total: <strong>{totalObjects}</strong>
+                 {dict[lang].paging.total}: <strong>{totalObjects}</strong>
                 </span>
             </div>
 
@@ -69,7 +72,8 @@ NewPaging.propTypes = {
     currentPage: PropTypes.number.isRequired,
     totalPages: PropTypes.number.isRequired,
     onPageChange: PropTypes.func,
-    loading: PropTypes.bool
+    loading: PropTypes.bool,
+    locale: PropTypes.string
 }
 
 NewPaging.defaultProps = {

@@ -618,6 +618,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
             dataInfo={dataInfo}
             prevPage={prevPage}
             firstPage={firstPage}
+            locale={locale}
             lastPage={lastPage}
             loading={pageLoading}
         />

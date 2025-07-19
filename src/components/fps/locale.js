@@ -110,6 +110,9 @@ export const dict = {
             noDataFound: "No results for",
             noData: "No data"
         },
+        paging: {
+            total: "Total"
+        },
         noOptions: "No options"
     },
 
@@ -223,6 +226,9 @@ export const dict = {
         table: {
             noDataFound: "Keine Ergebnisse für",
             noData: "Keine Daten"
+        },
+        paging: {
+            total: "Gesamt"
         },
         noOptions: "keine Optionen"
     },
@@ -338,6 +344,9 @@ export const dict = {
             noDataFound: "No se encontraron resultados para",
             noData: "Sin datos"
         },
+        paging: {
+            total: "Total"
+        },
         noOptions: "sin opciones"
     },
 
@@ -451,6 +460,9 @@ export const dict = {
         table: {
             noDataFound: "Aucun résultat pour",
             noData: "Pas de données"
+        },
+        paging: {
+            total: "Total"
         },
         noOptions: "pas d'options"
     },
@@ -566,6 +578,9 @@ export const dict = {
             noDataFound: "Нет результатов для",
             noData: "Нет данных"
         },
+        paging: {
+            total: "Всего"
+        },
         noOptions: "Нет доступных опций"
     },
 
@@ -679,6 +694,9 @@ export const dict = {
             noDataFound: "結果が見つかりません",
             noData: "データなし"
         },
+        paging: {
+            total: "合計"
+        },
         noOptions: "オプションなし"
     },
 
@@ -790,6 +808,9 @@ export const dict = {
         "table": {
             "noDataFound": "Nenhum resultado para",
             "noData": "Sem dados"
+        },
+        "paging": {
+            "total": "Total"
         },
         noOptions: "Sem opções"
     },
@@ -903,6 +924,9 @@ export const dict = {
             noDataFound: "कोई परिणाम नहीं मिला",
             noData: "कोई डेटा नहीं"
         },
+        paging: {
+            total: "कुल"
+        },
         noOptions: "कोई विकल्प नहीं"
     },
 
@@ -1014,6 +1038,9 @@ export const dict = {
         "table": {
             "noDataFound": "결과 없음",
             "noData": "데이터 없음"
+        },
+        "paging": {
+            "total": "총계"
         },
         "noOptions": "옵션이 없습니다"
     }
