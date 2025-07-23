@@ -470,7 +470,7 @@ function Contact(props) {
                 <img src={template(`{{${_.get(appearence, "imageField")}}}`, chat)} />
             </div>
             <div className={`${styles.chat_contact_text}`}>
-                <p className={`${styles.chat_contact_name}`}>{chatTitle && <InnerHTML allowRerender={true} html={chatTitle || ''} />}</p>
+                <p className={`${styles.chat_contact_name}`}>{chatTitle && <InnerHTML allowRerender={true} html={chatTitle} />}</p>
             </div>
         </div>
     );
@@ -513,7 +513,7 @@ function ChatMessages(props) {
                                 onClick={() => onHidePanel(false)}
                             />
                         )}
-                        <div>{chatTitle ? <InnerHTML allowRerender={true} html={chatTitle || ''} /> : chatID}</div>
+                        <div>{chatTitle ? <InnerHTML allowRerender={true} html={chatTitle} /> : chatID}</div>
                     </div>
                     {chatID && <QuickActionsControl
                         quickActions={actions}
@@ -576,4 +576,89 @@ function ChatInput(props) {
                     onChange={value => editMessage(value, _.get(message, `${state.chatID}.attachment`))}
                     placeholder={dict[locale].chat.typeMessage}
                 />
-                <div className={`
+                <div className={`icon icon-clip ${styles.chat_input_attach}`} onClick={e => setAddFile(!addFile)} />
+                {isMobile ? <Button accent icon='bubble' loading={actionLoading == "send"}
+                    disabled={!_.get(message, `${state.chatID}.msg`) && !_.get(message, `${state.chatID}.attachment`)}
+                    onClick={() => performAction("send")} />
+                    :
+                    <Button accent icon='bubble' loading={actionLoading == "send"}
+                        disabled={!_.get(message, `${state.chatID}.msg`) && !_.get(message, `${state.chatID}.attachment`)}
+                        onClick={() => performAction("send")}>{dict[locale].chat.send}</Button>}
+            </div>
+            {addFile && <FileUpload
+                locale={locale}
+                edit
+                allowUpload
+                host='/api/upload'
+                multiple={false}
+                nomargin
+                defaultValue={_.get(message, `${state.chatID}.attachment`)}
+                onChange={value => editMessage(_.get(message, `${state.chatID}.msg`), value)}
+            />}
+        </div>
+    );
+}
+
+function ChatMessage(props) {
+    const { author, fields, message, editMessage, text, data } = props;
+    const messageText = template(`{{${fields.textField}}}`, text);
+    const customFooter = template(`{{${fields.customFooterField}}}`, text);
+    const formatting = _.get(data, "params.messages.formatting", "html");
+
+    const renderMessage = () => {
+        if (formatting === "markdown") {
+            return (
+                <ReactMarkdown
+                    plugins={[gfm]}
+                    children={messageText}
+                />
+            );
+        } else {
+            return (
+                <InnerHTML allowRerender={true} html={sanitizedHTML(messageText)} />
+            );
+        }
+    };
+
+    const renderFooter = () => {
+        return <InnerHTML allowRerender={true} html={sanitizedHTML(customFooter)} />
+    }
+
+    return <div className={`${styles.chat_message_outer_wrapper}`}>
+        <div className={`${styles.chat_message_wrapper} 
+            ${author ? styles.chat_message_author : styles.chat_message_normal} D_FPS_CHAT_MESSAGE_WRAPPER`}>
+            <div className={`${styles.chat_message} D_FPS_CHAT_MESSAGE`}>
+                <div className={`${styles.chat_message_text} D_FPS_CHAT_MESSAGE_TEXT`}>
+                    <pre>
+                        {messageText && renderMessage()}
+                    </pre>
+                </div>
+            </div>
+        </div>
+        {customFooter && renderFooter()}
+    </div>
+}
+
+FpsChat.propTypes = {
+    data: PropTypes.object,
+    auth: PropTypes.object,
+    locale: PropTypes.string,
+};
+
+FpsChat.defaultProps = {
+    data: {},
+    auth: {},
+    locale: "ENG"
+};
+
+FpsChat.settings = {
+    icon: icon,
+    name: 'Chat',
+    sysName: 'FpsChat',
+    isLegacy: false,
+    isMarketplace: true,
+    form: [
+        { name: 'API-endpoint', sysName: 'sl', type: 'api-endpoint' },
+        { name: 'Page size', sysName: 'pageSize', type: 'number' },
+    ]
+};
