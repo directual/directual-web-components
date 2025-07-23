@@ -320,7 +320,7 @@ function ElementText(props) {
         }
     }, [extendedModel, state, templateEngine, element.paraText, apiTemplate]);
 
-    return templatedText ? <InnerHTML allowRerender={true} html={templatedText} /> : "";
+    return templatedText ? <InnerHTML allowRerender={true} html={templatedText || ''} /> : "";
 }
 
 function ElementSubmit(props) {
@@ -365,7 +365,7 @@ function ElementHint(props) {
         ok={isOk}
         error={isError}
     >
-        {hintText && <InnerHTML allowRerender={true} html={hintText} />}
+        {hintText && <InnerHTML allowRerender={true} html={hintText || ''} />}
     </Hint>
 }
 

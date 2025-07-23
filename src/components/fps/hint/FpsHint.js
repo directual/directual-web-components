@@ -25,7 +25,7 @@ export default function FpsHint(props) {
         margin={{ top: margins.marginTop, bottom: margins.marginBottom }}
     >
         <div
-            dangerouslySetInnerHTML={{ __html: _.get(data,'text') }}
+            dangerouslySetInnerHTML={{ __html: _.get(data,'text') || '' }}
         />
     </Hint>
 

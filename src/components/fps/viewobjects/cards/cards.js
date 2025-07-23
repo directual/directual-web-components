@@ -599,7 +599,7 @@ export function Card({ row, params, getInitialStructureParams, data,
       >
         {params.cardLayoutType == 'html' ?
           <div
-            dangerouslySetInnerHTML={{ __html: customCardHtml }}
+            dangerouslySetInnerHTML={{ __html: customCardHtml || '' }}
           />
           :
           <div
@@ -869,9 +869,9 @@ function FooterButtons({ footerButtons, performAction, loading, successWeb3, dat
               if (!loading && message && submitted && (successWeb3 || !button.web3))
                 return (<div style={{ width: "100%" }}>
                   <Hint key={button.id} ok margin={{ top: 0, bottom: 3 }}>
-                    <div
-                      dangerouslySetInnerHTML={{ __html: button.resultMessage }}
-                    />
+                                      <div
+                    dangerouslySetInnerHTML={{ __html: button.resultMessage || '' }}
+                  />
                   </Hint>
                 </div>
                 )

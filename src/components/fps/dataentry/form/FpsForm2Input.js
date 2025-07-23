@@ -365,7 +365,7 @@ function FieldHTML(props) {
         {
             preview ?
                 <div style={{ paddingTop: 20 }}>
-                    <InnerHTML allowRerender={true} html={defaultValue} />
+                    <InnerHTML allowRerender={true} html={defaultValue || ''} />
                 </div>
                 : <Input
                     type='textarea'
