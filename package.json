@@ -106,6 +106,7 @@
     "@editorjs/table": "^2.4.1",
     "@editorjs/underline": "^1.1.0",
     "@editorjs/warning": "^1.4.0",
+    "@tanstack/react-table": "^8.21.3",
     "@xyflow/react": "^12.6.4",
     "color": "^4.2.3",
     "dangerously-set-html-content": "^1.1.0",

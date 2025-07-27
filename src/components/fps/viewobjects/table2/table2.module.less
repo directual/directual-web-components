@@ -1,0 +1,234 @@
+/* FpsTable2 - современная таблица на TanStack Table v8 */
+
+.tableWrapper {
+  background-color: var(--layout-secondary-bgr);
+  padding: 6px;
+  border-radius: var(--border-radius);
+  overflow: auto;
+  border: solid 1px var(--cards-border);
+  margin-bottom: 12px;
+  position: relative;
+}
+
+/* Поиск */
+.searchWrapper {
+  margin-bottom: 12px;
+  padding: 0 6px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 8px 12px;
+  border: solid 1px var(--cards-border);
+  border-radius: var(--border-radius);
+  background-color: var(--layout-main-bgr);
+  color: var(--text-color);
+  font-size: var(--text-small-size);
+  
+  &:focus {
+    outline: none;
+    border-color: var(--accent-color);
+  }
+}
+
+/* Таблица */
+.table {
+  min-width: 100%;
+  margin-right: 6px;
+  border-collapse: collapse;
+}
+
+/* Строки таблицы */
+.tableRow {
+  &:hover {
+    td {
+      background-color: var(--table-raw-hover);
+    }
+  }
+  
+  .expand {
+    opacity: 0.15;
+    cursor: pointer;
+    text-decoration: none;
+    
+    &:hover {
+      opacity: 1;
+    }
+  }
+  
+  &:hover .expand {
+    opacity: 0.6;
+    
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+/* Ячейки */
+.table {
+  td {
+    padding: 12px;
+    height: 32px;
+    border-top: solid 1px var(--table-borders);
+    
+    &.nowrap {
+      white-space: nowrap;
+    }
+    
+    &.ellipsis {
+      max-width: 300px;
+      text-overflow: ellipsis;
+    }
+  }
+  
+  thead th {
+    padding: 12px;
+    border-bottom: solid 2px var(--table-borders);
+    background-color: var(--layout-secondary-bgr);
+    font-weight: var(--strong-font-weight);
+    text-align: left;
+    white-space: nowrap;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.columnHeader {
+  color: var(--text-color);
+  font-size: var(--text-small-size);
+  opacity: 0.8;
+  
+  code {
+    font-size: var(--text-very-small-size);
+  }
+}
+
+.sortableHeader {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  
+  &:hover {
+    color: var(--accent-color);
+    opacity: 1;
+  }
+}
+
+/* Содержимое ячеек */
+.cellValue {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: default;
+  
+  &.number {
+    text-align: right;
+  }
+  
+  &.boolean {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+}
+
+/* Ссылки */
+.linkWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.linkText {
+  color: var(--accent-color);
+  text-decoration: none;
+  cursor: pointer;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+  
+  &.notClickable {
+    cursor: default;
+    
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+/* Изображения */
+.cardImage {
+  margin: 0;
+  background-size: cover;
+  background-position: center;
+  display: inline-block;
+}
+
+/* Лоадер */
+.tableLoadingOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 10;
+}
+
+.tableLoader {
+  background-color: var(--layout-main-bgr);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.backgroundBlur {
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+/* Цветовая схема */
+.colorCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.colorLabel {
+  display: inline-block;
+  border: solid 1px var(--table-borders);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .tableWrapper {
+    padding: 4px;
+  }
+  
+  .table {
+    td, th {
+      padding: 8px;
+      font-size: var(--text-very-small-size);
+    }
+  }
+  
+  .cellValue {
+    &.ellipsis {
+      max-width: 150px;
+    }
+  }
+}
+
+/* Темная тема */
+@media (prefers-color-scheme: dark) {
+  .tableLoadingOverlay {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+} 

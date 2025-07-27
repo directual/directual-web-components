@@ -31,7 +31,7 @@ export default function Checkbox(props) {
     }, [props.checked, props.defaultValue])
 
     return (
-        <div className={`${props.className || ''}`}>
+        <div className={`${props.className || ''}`} style={props.style}>
             <div className={`${styles.cb_wrap}`}>
                 <div
                     className={`${styles.checkbox} ${disabled && styles.disabled}`}

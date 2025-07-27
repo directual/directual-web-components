@@ -21,6 +21,7 @@ import FormSteps from './components/fps/dataentry/form/FormSteps'
 import MainMenu, { NewMainMenu, NewMobileTabs } from './components/fps/mainmenu/mainmenu'
 import ComponentDetails from './components/fps/componentdetails/componentdetails'
 import FpsTable from './components/fps/viewobjects/table/FpsTable'
+import FpsTable2 from './components/fps/viewobjects/table2/FpsTable2'
 import FpsKanban from './components/fps/viewobjects/kanban/FpsKanban'
 import { Table } from './components/fps/viewobjects/table/table'
 import { FpsWrapper, ContentWrapper, ComponentWrapper } from './components/fps/wrapper/wrapper'
@@ -103,6 +104,7 @@ export {
   FpsWrapper,
   ContentWrapper,
   FpsTable,
+  FpsTable2,
   Input,
   Button,
   FpsHint,

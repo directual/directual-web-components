@@ -70,15 +70,6 @@ let exampleTable = {
             "_actions": [
                 {
                     "id": "action_1753284728122",
-                    "_conditionalView": true,
-                    "_conditions": [
-                        {
-                            "id": "condition_1753284733984",
-                            "_conditionalView_field": "WebUser.role",
-                            "_conditionalView_operator": "notContains",
-                            "_conditionalView_value": "god"
-                        }
-                    ],
                     "action_id": "action_1753284701822",
                     "_action_label": "Release!",
                     "_action_button_size": "small",
@@ -1220,7 +1211,7 @@ let exampleTable = {
 let authExample = {
   "isAuth": false,
   "custom_labels": "{\n   \"foo\": \"hello brave new world!\",\n   \"bar\": \"foobar\"\n}",
-  "role": "admin",
+  "role": "admin,god",
   "lastName": "Watson",
   "firstName": "David",
   "token": "1a9f10d0-d45f-4bf2-9e7e-d6ce2e752d03",
