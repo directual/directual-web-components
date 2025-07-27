@@ -244,7 +244,7 @@ function FpsTable2({
             {enableSearch && (
                 <div className={styles.searchWrapper}>
                     <input
-                        value={globalFilter ?? ''}
+                        value={globalFilter || ''}
                         onChange={e => setGlobalFilter(e.target.value)}
                         className={styles.searchInput}
                         placeholder="Поиск..."
@@ -291,7 +291,7 @@ function FpsTable2({
                                                             asc: ' 🔼',
                                                             desc: ' 🔽',
                                                         }[header.column.getIsSorted()];
-                                                        return sortIcon ?? null;
+                                                        return sortIcon != null ? sortIcon : null;
                                                     })()}
                                                 </div>
                                             )}
