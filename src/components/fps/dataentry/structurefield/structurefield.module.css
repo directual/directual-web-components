@@ -149,9 +149,9 @@
   cursor: text;
 }
 .select_wrapper .select_field.disabled {
-  background-color: var(--table-borders);
+  background-color: var(--form-field-bgr-disabled);
   cursor: not-allowed;
-  color: var(--form-field-border);
+  color: var(--form-placeholder);
 }
 .select_wrapper .select_field.error {
   border-width: 2px;
