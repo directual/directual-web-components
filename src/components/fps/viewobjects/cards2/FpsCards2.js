@@ -16,6 +16,15 @@ import { TableTitle } from '../tableTitle/TableTitle'
 import Loader from '../../loader/loader';
 import Skeleton from '../../skeleton/skeleton';
 
+// ДЕБАГ: Безопасная обёртка для InnerHTML
+const SafeInnerHTML = ({ html, label = 'unknown', ...props }) => {
+    if (html === null || html === undefined) {
+        console.error(`[CARDS2 DEBUG] html prop is ${html} for ${label}`, { html, label });
+        return null; // Рендерим ничего вместо краша
+    }
+    return <InnerHTML {...props} html={html} />;
+};
+
 function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templateEngine, id, currentBP, locale, handleRoute, debug }) {
 
     console.log("== FpsCards2 data ===")
@@ -756,13 +765,13 @@ function Card(props) {
             }}
             className={`Cards2_typeCart__bodyWrapper ${styles.cards2_typeCart__bodyWrapper}`}>
             <div className={`Cards2_typeCart__header ${styles.cards2_typeCart__header}`}>
-                {template(field_header, object) && <InnerHTML allowRerender={true} html={template(field_header, object)} />}
+                {template(field_header, object) && <SafeInnerHTML allowRerender={true} html={template(field_header, object)} label="field_header" />}
             </div>
             {field_description && description && <div className={`Cards2_typeCart__description ${styles.cards2_typeCart__description}`}>
-                <InnerHTML allowRerender={true} html={description} />
+                <SafeInnerHTML allowRerender={true} html={description} label="description" />
             </div>}
             <div className={`Cards2_typeCart__price ${styles.cards2_typeCart__price}`}>
-                {template(field_price, object) && <InnerHTML allowRerender={true} html={template(field_price, object)} />}
+                {template(field_price, object) && <SafeInnerHTML allowRerender={true} html={template(field_price, object)} label="field_price" />}
             </div>
             <CartControls
                 object={object}
@@ -845,7 +854,7 @@ function Card(props) {
                 <div className={`${styles.cards2_typeRegular__favButton__icon} icon icon-${isFavorite ? favoritesIconOn : favoritesIconOff}`} />
             </div>}
 
-            {cardBody && <InnerHTML allowRerender={true} html={cardBody} />}
+            {cardBody && <SafeInnerHTML allowRerender={true} html={cardBody} label="cardBody" />}
 
             {actionsOn && actionsArray.length > 0 && <div className={`${styles.FPS_Cards_ActionPanel} FPS_Cards_ActionPanel`}>
                 <CardActions
@@ -877,7 +886,7 @@ function Card(props) {
                 handleRoute(path)(e)
             }
         }}>
-        {html_type_content && <InnerHTML allowRerender={true} html={template(html_type_content, object)} />}
+        {html_type_content && <SafeInnerHTML allowRerender={true} html={template(html_type_content, object)} label="html_type_content" />}
     </a>
 
     return <div >
@@ -934,7 +943,7 @@ function CardAction(props) {
     }
 
     if (isClicked && action._action_oneTime) return <Hint margin={{ top: 0, bottom: 0 }}>
-        {action._action_oneTime_message && <InnerHTML allowRerender={true} html={action._action_oneTime_message} />}
+        {action._action_oneTime_message && <SafeInnerHTML allowRerender={true} html={action._action_oneTime_message} label="action_message" />}
     </Hint>
 
     return <Button
