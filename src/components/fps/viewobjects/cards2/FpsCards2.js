@@ -691,7 +691,7 @@ function Card(props) {
     useEffect(() => {
         const fetchData = async (payload, setValue) => {
             const templValue = templateEngine ? await templateEngine(payload, object) : "Templating error";
-            setValue(templValue);
+            setValue(templValue || ""); // Добавляем проверку на null/undefined
         };
         
         const loadCardData = async () => {
