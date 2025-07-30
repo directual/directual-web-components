@@ -659,6 +659,7 @@ function Card(props) {
 
     const cardType = _.get(data, "params.card_layout_type")
     const html_type_content = _.get(data, "params.html_type_content")
+    const templatingEngine = _.get(data, "params.paraTemplateEngine")
     const card_padding = _.get(data, "params.card_padding", 12)
     const card_min_height = _.get(data, "params.card_min_height") || "none"
     const card_border = _.get(data, "params.card_border", 1)
@@ -679,6 +680,7 @@ function Card(props) {
     const dir_image_padding = _.get(data, "params.card_type_dir.image_padding", 0)
     const dir_cardBody = _.get(data, "params.card_type_dir.body", "")
     const dir_image_position = _.get(data, "params.card_type_dir.image_position", "top")
+    const dir_templatingEngine = _.get(data, "params.card_type_dir.paraTemplateEngine", "api")
     const [description, setDescription] = useState("")
     const [cardBody, setCardBody] = useState("")
     const [cardLoading, setCardLoading] = useState(true)
@@ -698,6 +700,11 @@ function Card(props) {
 
 
     useEffect(() => {
+
+        //if (templatingEngine == 'front') return;
+
+        const bodyToRender = cardType == "custom" ? html_type_content : dir_cardBody
+
         const fetchData = async (payload, setValue) => {
             const templValue = templateEngine ? await templateEngine(payload, object) : "Templating error";
             setValue(templValue || ""); // Добавляем проверку на null/undefined
@@ -708,7 +715,7 @@ function Card(props) {
             try {
                 await Promise.all([
                     fetchData(field_description, setDescription),
-                    fetchData(dir_cardBody, setCardBody)
+                    fetchData(bodyToRender, setCardBody)
                 ]);
             } catch (error) {
                 console.error('Error loading card data:', error);
@@ -854,7 +861,8 @@ function Card(props) {
                 <div className={`${styles.cards2_typeRegular__favButton__icon} icon icon-${isFavorite ? favoritesIconOn : favoritesIconOff}`} />
             </div>}
 
-            {cardBody && <SafeInnerHTML allowRerender={true} html={cardBody} label="cardBody" />}
+            {cardBody && dir_templatingEngine != 'front' && <SafeInnerHTML allowRerender={true} html={cardBody} label="cardBody" />}
+            {dir_cardBody && dir_templatingEngine == 'front' && <SafeInnerHTML allowRerender={true} html={template(dir_cardBody, object)} label="cardBody" />}
 
             {actionsOn && actionsArray.length > 0 && <div className={`${styles.FPS_Cards_ActionPanel} FPS_Cards_ActionPanel`}>
                 <CardActions
@@ -886,7 +894,8 @@ function Card(props) {
                 handleRoute(path)(e)
             }
         }}>
-        {html_type_content && <SafeInnerHTML allowRerender={true} html={template(html_type_content, object)} label="html_type_content" />}
+        {html_type_content && templatingEngine != 'api' && <SafeInnerHTML allowRerender={true} html={template(html_type_content, object)} label="html_type_content" />}
+        {cardBody && templatingEngine == 'api' && <SafeInnerHTML allowRerender={true} html={cardBody} label="html_type_content" />}
     </a>
 
     return <div >
