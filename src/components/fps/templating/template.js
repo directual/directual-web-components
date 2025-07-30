@@ -58,10 +58,9 @@ export function template(input, model) {
         const result = renderTemplate(preprocessedInput);
         return result;
     } catch (error) {
-        console.error("template error");
         console.error(input);
         console.error(templateData);
         console.error('Error rendering template:', error);
-        return '';
+        return 'templating error (front-end engine)';
     }
 }
