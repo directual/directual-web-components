@@ -363,6 +363,7 @@ FpsTable2.settings = {
     icon: icon,
     name: 'Table view v2 (TanStack)',
     sysName: 'FpsTable2',
+    isLegacy: true,
     form: [
         { name: 'API-endpoint', sysName: 'sl', type: 'api-endpoint' },
         { name: 'Table title', sysName: 'tableTitle', type: 'input' },
