@@ -138,7 +138,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         updatePageInUrl(lastPageNumber);
     };
 
-    const checkHidden = (element, debug, reverse) => {
+    const checkHidden = (element, debug, reverse, model) => {
 
         // console.log("checkHidden")
         // console.log(element)
@@ -160,8 +160,8 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
             let details = ""
             let condition = ""
 
-            let field = template("{{" + element._conditionalView_field + "}}")
-            let value = template(element._conditionalView_value)
+            let field = template("{{" + element._conditionalView_field + "}}", model)
+            let value = template(element._conditionalView_value, model)
 
             // { key: "modelNotChanged" },
             if (element._conditionalView_operator == "modelNotChanged") {
@@ -755,6 +755,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
                     <Card
                         key={object.id}
                         data={data}
+                        auth={auth}
                         checkHidden={checkHidden}
                         context={context}
                         lang={lang}
@@ -818,6 +819,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
                     <Card
                         key={object.id}
                         data={data}
+                        auth={auth}
                         context={context}
                         checkHidden={checkHidden}
                         lang={lang}
@@ -884,7 +886,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
 
 function Card(props) {
 
-    const { object, checkHidden, data, lang, favoritesField, addToFavorites, favLoading, templateEngine, handleRoute, favorites, callEndpointPOST, callEndpointGET, context } = props
+    const { object, auth, checkHidden, data, lang, favoritesField, addToFavorites, favLoading, templateEngine, handleRoute, favorites, callEndpointPOST, callEndpointGET, context } = props
 
     const cardType = _.get(data, "params.card_layout_type")
     const html_type_content = _.get(data, "params.html_type_content")
@@ -927,6 +929,7 @@ function Card(props) {
     const isRouting = _.get(data, "params.routing") == "redirect"
     const routingPath = _.get(data, "params.routing_where", '')
 
+    const model = { ...object, WebUser: {...auth, ...{ id: auth.user }} }
 
     useEffect(() => {
 
@@ -1098,6 +1101,7 @@ function Card(props) {
                     actionsArray={actionsArray}
                     checkHidden={checkHidden}
                     object={object}
+                    model={model}
                     actionsLayout={actionsLayout}
                     context={context}
                     callEndpointPOST={callEndpointPOST}
@@ -1145,7 +1149,7 @@ function CardActions(props) {
 }
 
 function CardAction(props) {
-    const { action, actionsSettings, object, callEndpointPOST, checkHidden, userDebug } = props
+    const { action, actionsSettings, object, callEndpointPOST, model, checkHidden, userDebug } = props
 
     const settings = _.find(actionsSettings, { id: action.action_id });
     const label = action._action_label // || settings.name
@@ -1191,7 +1195,7 @@ function CardAction(props) {
         height={action._action_button_size == "small" ? 32 : 48}
         small={action._action_button_size == "small"}
         disabled={action._conditionalView &&
-            !checkHidden(action) &&
+            !checkHidden(action, false, false, model) &&
             action._action_conditional_disable_or_hide == "disable"}
         loading={localLoading}
         tooltip={action._action_addTooltip && action._action_addTooltip_text}
@@ -1201,7 +1205,7 @@ function CardAction(props) {
     //TODO: userDebug
 
     if (action._conditionalView &&
-        !checkHidden(action)
+        !checkHidden(action, false, false, model)
         //&& (!_.get(params, "general.debugConditions") || !userDebug)
         && action._action_conditional_disable_or_hide !== "disable"
     ) { button = <React.Fragment></React.Fragment> }
