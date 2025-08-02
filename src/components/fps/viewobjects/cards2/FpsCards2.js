@@ -1101,6 +1101,7 @@ function Card(props) {
                     actionsArray={actionsArray}
                     checkHidden={checkHidden}
                     object={object}
+                    data={data}
                     model={model}
                     actionsLayout={actionsLayout}
                     context={context}
@@ -1138,7 +1139,7 @@ function Card(props) {
 }
 
 function CardActions(props) {
-    const { actionsSettings, actionsLayout, checkHidden, callEndpointPOST, object, context, actionsArray } = props
+    const { actionsSettings, actionsLayout, checkHidden, callEndpointPOST, object, context, actionsArray, data } = props
     return <ActionPanel column={actionsLayout == 'column'}>
         {actionsArray.map(action => <CardAction
             {...props}
@@ -1149,7 +1150,7 @@ function CardActions(props) {
 }
 
 function CardAction(props) {
-    const { action, actionsSettings, object, callEndpointPOST, model, checkHidden, userDebug } = props
+    const { action, actionsSettings, object, callEndpointPOST, model, checkHidden, data } = props
 
     const settings = _.find(actionsSettings, { id: action.action_id });
     const label = action._action_label // || settings.name
@@ -1185,10 +1186,8 @@ function CardAction(props) {
         }
     }
 
-    // console.log("settings")
-    // console.log(settings)
-    // console.log("action")
-    // console.log(action)
+    const params = _.get(data, "params")
+    const debugConditions = _.get(params, "card_type_dir._actionsDebug.debugConditions")
 
     let button = <Button
         onClick={handleClick}
@@ -1205,10 +1204,29 @@ function CardAction(props) {
     //TODO: userDebug
 
     if (action._conditionalView &&
-        !checkHidden(action, false, false, model)
-        //&& (!_.get(params, "general.debugConditions") || !userDebug)
+        !checkHidden(action, false, false, model) 
+        && (!debugConditions)
         && action._action_conditional_disable_or_hide !== "disable"
     ) { button = <React.Fragment></React.Fragment> }
+
+    if (debugConditions) {
+        return <div className={`${action._conditionalView && debugConditions ? styles.debugConditions : ""}
+        ${action._conditionalView && !checkHidden(action, false, true, model) && debugConditions ?
+                styles.hideDebug : ""}
+        `}>
+            {button}
+            {action._conditionalView && debugConditions && <div className={styles.condDebugDetails}>
+                <code>
+                    <p>{action._action_conditional_disable_or_hide == "disable" ? "disable button" : "hide button"} if:</p>
+                    {checkHidden(action, true, true, model).name && <p  style={{ lineHeight: 1, marginBottom: 10}}><b>{checkHidden(action, true, true, model).name}</b></p>}
+                    <pre style={{ whiteSpace: 'wrap', fontSize: 14 }}>{checkHidden(action, true, true, model).conditions}</pre>
+                    <p>Result: <b>{!checkHidden(action, false, true, model) ? "true" : "false"}</b></p>
+                    <pre style={{ whiteSpace: 'wrap', fontSize: 14 }}>{checkHidden(action, true, true, model).result}</pre>
+                </code>
+            </div>}
+        </div>
+    }
+    else { return button }
 
     if (isClicked && action._action_oneTime) return <Hint margin={{ top: 0, bottom: 0 }}>
         {action._action_oneTime_message && <SafeInnerHTML allowRerender={true} html={action._action_oneTime_message} label="action_message" />}
