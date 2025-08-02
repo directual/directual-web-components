@@ -138,6 +138,233 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         updatePageInUrl(lastPageNumber);
     };
 
+    const checkHidden = (element, debug, reverse) => {
+
+        // console.log("checkHidden")
+        // console.log(element)
+        // console.log(_.get(data, "params._condition_library"))
+
+        let _conditions = _.get(element, "_conditions") || []
+        let _name = ""
+        let _action_conditionals_and_or = _.get(element, "_action_conditionals_and_or") || "AND"
+        if (_.get(element, "_action_conditionals_manual") == "from_list" &&
+            _.get(element, "_action_conditionals_manual_list")) {
+            const _cond_lib = _.get(data, "params._condition_library")
+            _name = _.get(_.find(_cond_lib, { id: _.get(element, "_action_conditionals_manual_list") }), "title")
+            _conditions = _.get(_.find(_cond_lib, { id: _.get(element, "_action_conditionals_manual_list") }), "_conditions") || []
+            _action_conditionals_and_or = _.get(_.find(_cond_lib, { id: _.get(element, "_action_conditionals_manual_list") }), "_action_conditionals_and_or") || _action_conditionals_and_or
+        }
+
+        const checkHiddenCondition = (element) => {
+            let isHidden = false
+            let details = ""
+            let condition = ""
+
+            let field = template("{{" + element._conditionalView_field + "}}")
+            let value = template(element._conditionalView_value)
+
+            // { key: "modelNotChanged" },
+            if (element._conditionalView_operator == "modelNotChanged") {
+                let direct = "model is changed"
+                let indirect = "model is NOT changed"
+                condition = indirect
+                if (modelIsChanged) {
+                    details = direct // reverse ? "" : direct
+                    isHidden = true
+                } else {
+                    details = indirect // reverse ? indirect : ""
+                    //details = reverse ? null : direct
+                }
+            }
+
+            // { key: "modelChanged" },
+            if (element._conditionalView_operator == "modelChanged") {
+                let direct = "model is NOT changed"
+                let indirect = "model is changed"
+                condition = indirect
+                if (!modelIsChanged) {
+                    details = direct // reverse ? "" : direct
+                    isHidden = true
+                } else {
+                    details = indirect // reverse ? indirect : ""
+                    //details = reverse ? indirect : direct
+                }
+            }
+
+            // { key: "==", value: "is equal" },
+            if (element._conditionalView_operator == "==") {
+                if (typeof field == 'boolean') { field = JSON.stringify(field) }
+                let direct = "{{" + element._conditionalView_field + "}} → " + field + " !== " + value
+                let indirect = "{{" + element._conditionalView_field + "}} → " + field + " == " + value
+                condition = "{{" + element._conditionalView_field + "}} == " + element._conditionalView_value
+                if (!_.isEqual(field, value)) {
+                    details = direct //reverse ? indirect : direct
+                    isHidden = true
+                } else {
+                    details = indirect //reverse ? direct : indirect
+                    // details = reverse ? indirect : direct
+                }
+            }
+
+            // { key: "!==", value: "is NOT equal" },
+            if (element._conditionalView_operator == "!==") {
+                let direct = "{{" + element._conditionalView_field + "}} → " + field + " == " + value
+                let indirect = "{{" + element._conditionalView_field + "}} → " + field + " !== " + value
+                condition = "{{" + element._conditionalView_field + "}} !== " + element._conditionalView_value
+                if (typeof field == 'boolean') { field = JSON.stringify(field) }
+                if (_.isEqual(field, value)) {
+                    details = direct // reverse ? "" : direct
+                    isHidden = true
+                } else {
+                    details = indirect // reverse ? indirect : ""
+                    // details = reverse ? indirect : direct
+                }
+            }
+
+            // { key: "contains", value: "contains" },
+            if (element._conditionalView_operator == "contains") {
+                value = value ? value.split(",") : '""'
+                field = field ? field.split(",") : '""'
+                let direct = "{{" + element._conditionalView_field + "}} → " + field + " does NOT contain " + value
+                let indirect = "{{" + element._conditionalView_field + "}} → " + field + " contains " + value
+                condition = "{{" + element._conditionalView_field + "}} contains " + element._conditionalView_value
+                if ((field && field.length > 0 &&
+                    value && value.length > 0
+                    && _.intersection(value, field).length == 0) || !field || !value) {
+                    details = direct // reverse ? "" : direct
+                    isHidden = true
+                } else {
+                    details = indirect // reverse ? indirect : ""
+                    // details = reverse ? indirect : direct
+                }
+            }
+            // { key: "notContains", value: "does NOT contain" },
+            if (element._conditionalView_operator == "notContains") {
+                value = value ? value.split(",") : '""'
+                field = field ? field.split(",") : '""'
+                let direct = "{{" + element._conditionalView_field + "}} → " + field + " contains " + value
+                let indirect = "{{" + element._conditionalView_field + "}} → " + field + " does NOT contain " + value
+                condition = "{{" + element._conditionalView_field + "}} does NOT contain " + element._conditionalView_value
+                if ((field && field.length > 0 &&
+                    value && value.length > 0
+                    && _.intersection(value, field).length > 0) || !field || !value) {
+                    details = direct // reverse ? "" : direct
+                    isHidden = true
+                } else {
+                    details = indirect // reverse ? indirect : ""
+                    // details = reverse ? indirect : direct
+                }
+            }
+
+            // { key: "in", value: "in" },
+            if (element._conditionalView_operator == "in") {
+                value = value ? value.split(",") : '""'
+                field = field ? field.split(",") : '""'
+                let direct = value + " does NOT contain " + "{{" + element._conditionalView_field + "}} → " + field
+                let indirect = value + " contains " + "{{" + element._conditionalView_field + "}} → " + field
+                condition = element._conditionalView_value + " contains " + "{{" + element._conditionalView_field + "}}"
+                if ((field && field.length > 0 &&
+                    value && value.length > 0
+                    && _.intersection(value, field).length == 0) || !field || !value) {
+                    details = direct // reverse ? "" : direct
+                    isHidden = true
+                } else {
+                    details = indirect // reverse ? indirect : ""
+                    // details = reverse ? indirect : direct
+                }
+            }
+
+            // { key: "notIn", value: "NOT in" }
+            if (element._conditionalView_operator == "notIn") {
+                value = value ? value.split(",") : '""'
+                field = field ? field.split(",") : '""'
+                let direct = ""
+                let indirect = ""
+                try {
+                    direct = (Array.isArray(value) ? value : []).join(",") + " contains " + "{{" + element._conditionalView_field + "}} → " + field
+                    indirect = (Array.isArray(value) ? value : []).join(",") + " does NOT contain " + "{{" + element._conditionalView_field + "}} → " + field
+                } catch (err) {
+                    // console.error(err)
+                    // console.log("value")
+                    // console.log(value)
+                    // console.log("field")
+                    // console.log(field)
+                }
+
+                condition = element._conditionalView_value + " does NOT contain " + "{{" + element._conditionalView_field + "}}"
+                if ((field && field.length > 0 &&
+                    value && value.length > 0
+                    && _.intersection(value, field).length > 0) || !field || !value) {
+                    details = direct // reverse ? "" : direct
+                    isHidden = true
+                } else {
+                    details = indirect // reverse ? indirect : ""
+                    // details = reverse ? indirect : direct
+                }
+            }
+
+            // { key: "isNull", value: "is empty" },
+            if (element._conditionalView_operator == "isNull") {
+                let direct = "{{" + element._conditionalView_field + "}} → " + (field || '""') + " is NOT empty"
+                let indirect = "{{" + element._conditionalView_field + "}} → " + (field || '""') + " is empty"
+                condition = "{{" + element._conditionalView_field + "}} is empty"
+                if (!_.isEmpty(field)) {
+                    details = direct // reverse ? "" : direct
+                    isHidden = true
+                } else {
+                    details = indirect //reverse ? indirect : ""
+                    // details = reverse ? indirect : direct
+                }
+            }
+
+            // { key: "isNotNull", value: "is NOT empty" },
+            if (element._conditionalView_operator == "isNotNull") {
+                let direct = "{{" + element._conditionalView_field + "}} → " + (field || '""') + " is empty"
+                let indirect = "{{" + element._conditionalView_field + "}} → " + (field || '""') + " is NOT empty"
+                condition = "{{" + element._conditionalView_field + "}} is NOT empty"
+                if (_.isEmpty(field)) {
+                    details = direct // reverse ? "" : direct
+                    isHidden = true
+                } else {
+                    details = indirect // reverse ? indirect : ""
+                    // details = reverse ? indirect : direct
+                }
+            }
+
+            return { isHidden, details, condition }
+        }
+
+        if (!element) return false
+
+        let result = false
+        let details = []
+        let conditions = []
+        if (!_.get(element, "_conditionalView")) {
+        } else {
+            if (!_conditions || _conditions.length == 0) { } else {
+
+                if (_action_conditionals_and_or == "OR") {
+                    result = true
+                    _conditions.forEach(element => {
+                        details && details.push(checkHiddenCondition(element).details)
+                        conditions && conditions.push(checkHiddenCondition(element).condition)
+                        if (!checkHiddenCondition(element).isHidden) { result = false; }
+                    })
+                } else {
+                    _conditions.forEach(element => {
+                        details && details.push(checkHiddenCondition(element).details)
+                        conditions && conditions.push(checkHiddenCondition(element).condition)
+                        if (checkHiddenCondition(element).isHidden) { result = true; }
+                    })
+                }
+            };
+        };
+        const jouinSymbol = _action_conditionals_and_or == "OR" ? " ==OR== " : " ==AND== "
+        if (debug) return { result: _.compact(details).join(", "), conditions: _.compact(conditions).join(jouinSymbol), name: _name }
+
+        return result
+    }
+
     // grid settings
     const breakPoints = {
         wideDesktop: _.get(data, "params.grid_layout__wideDesktop", 4),
@@ -154,11 +381,11 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
     // функция для рендера скелетонов
     const renderSkeletons = (isFlexLayout = false) => {
         // для pageLoading берем размер из dataInfo, для initialLoading из data
-        const pageSize = pageLoading 
+        const pageSize = pageLoading
             ? _.get(dataInfo, 'pageable.pageSize', data.pageSize || 10)
             : data.pageSize || 10
         const card_min_height = _.get(data, "params.card_min_height") || "120px"
-        
+
         return Array(pageSize).fill(null).map((_, index) => (
             <div
                 key={`skeleton-${index}`}
@@ -171,7 +398,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
                     ...(isFlexLayout && { width: flex_layout__width })
                 }}
                 className={`FPS_CARDS2__CARD ${styles.cards2_card}`}>
-                <Skeleton 
+                <Skeleton
                     height={card_min_height}
                     style={{ borderRadius: card_border_radius }}
                 />
@@ -186,7 +413,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         console.log(body)
         // добавляем httpParams к параметрам запроса
         const httpParams = _.get(data, "params.httpParams") || _.get(data, "httpParams") || {}
-        
+
         callEndpoint && callEndpoint(
             endpoint,
             "POST",
@@ -249,7 +476,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         // добавляем httpParams к параметрам запроса
         const httpParams = _.get(data, "params.httpParams") || _.get(data, "httpParams") || {}
         const requestParams = { ...httpParams, ...params }
-        
+
         callEndpoint && callEndpoint(
             endpoint,
             "GET",
@@ -317,7 +544,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
             console.log("Cards2 Debug mode: pagination disabled")
             return;
         }
-        
+
         if (isFirstRender.current) {
             isFirstRender.current = false;
             return;
@@ -351,7 +578,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
             console.log("Cards2 Debug mode: using data from props, skipping API calls")
             return;
         }
-        
+
         const urlPage = getPageFromUrl() || 0;
         if (data && data.sl) { // в любом случае загружаем данные, чтобы достать dataInfo
             console.log("Loading initial page from URL: " + urlPage)
@@ -384,9 +611,9 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
             console.log("Cards2 Debug mode: socket updates disabled")
             return;
         }
-        
+
         if (!socket) return; // если socket не передан, ничего не делаем
-        
+
         if (data && data.sl) {
             console.log("Socket changed, updating data in background...")
             // обновляем данные БЕЗ лоадеров
@@ -528,6 +755,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
                     <Card
                         key={object.id}
                         data={data}
+                        checkHidden={checkHidden}
                         context={context}
                         lang={lang}
                         favLoading={favLoading}
@@ -591,6 +819,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
                         key={object.id}
                         data={data}
                         context={context}
+                        checkHidden={checkHidden}
                         lang={lang}
                         favLoading={favLoading}
                         favorites={favorites}
@@ -655,7 +884,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
 
 function Card(props) {
 
-    const { object, data, lang, favoritesField, addToFavorites, favLoading, templateEngine, handleRoute, favorites, callEndpointPOST, callEndpointGET, context } = props
+    const { object, checkHidden, data, lang, favoritesField, addToFavorites, favLoading, templateEngine, handleRoute, favorites, callEndpointPOST, callEndpointGET, context } = props
 
     const cardType = _.get(data, "params.card_layout_type")
     const html_type_content = _.get(data, "params.html_type_content")
@@ -709,7 +938,7 @@ function Card(props) {
             const templValue = templateEngine ? await templateEngine(payload, object) : "Templating error";
             setValue(templValue || ""); // Добавляем проверку на null/undefined
         };
-        
+
         const loadCardData = async () => {
             setCardLoading(true);
             try {
@@ -723,7 +952,7 @@ function Card(props) {
                 setCardLoading(false);
             }
         };
-        
+
         loadCardData();
     }, [])
 
@@ -738,9 +967,9 @@ function Card(props) {
 
     // показываем скелетон во время загрузки карточки
     if (cardLoading) {
-        return <Skeleton 
-            height={card_min_height}
-            style={{ 
+        return <Skeleton
+            height={card_min_height + ""}
+            style={{
                 borderRadius: card_border_radius,
                 borderWidth: card_border,
                 borderStyle: 'solid',
@@ -867,6 +1096,7 @@ function Card(props) {
             {actionsOn && actionsArray.length > 0 && <div className={`${styles.FPS_Cards_ActionPanel} FPS_Cards_ActionPanel`}>
                 <CardActions
                     actionsArray={actionsArray}
+                    checkHidden={checkHidden}
                     object={object}
                     actionsLayout={actionsLayout}
                     context={context}
@@ -904,7 +1134,7 @@ function Card(props) {
 }
 
 function CardActions(props) {
-    const { actionsSettings, actionsLayout, callEndpointPOST, object, context, actionsArray } = props
+    const { actionsSettings, actionsLayout, checkHidden, callEndpointPOST, object, context, actionsArray } = props
     return <ActionPanel column={actionsLayout == 'column'}>
         {actionsArray.map(action => <CardAction
             {...props}
@@ -915,7 +1145,7 @@ function CardActions(props) {
 }
 
 function CardAction(props) {
-    const { action, actionsSettings, object, callEndpointPOST } = props
+    const { action, actionsSettings, object, callEndpointPOST, checkHidden, userDebug } = props
 
     const settings = _.find(actionsSettings, { id: action.action_id });
     const label = action._action_label // || settings.name
@@ -951,18 +1181,36 @@ function CardAction(props) {
         }
     }
 
-    if (isClicked && action._action_oneTime) return <Hint margin={{ top: 0, bottom: 0 }}>
-        {action._action_oneTime_message && <SafeInnerHTML allowRerender={true} html={action._action_oneTime_message} label="action_message" />}
-    </Hint>
+    // console.log("settings")
+    // console.log(settings)
+    // console.log("action")
+    // console.log(action)
 
-    return <Button
+    let button = <Button
         onClick={handleClick}
         height={action._action_button_size == "small" ? 32 : 48}
         small={action._action_button_size == "small"}
+        disabled={action._conditionalView &&
+            !checkHidden(action) &&
+            action._action_conditional_disable_or_hide == "disable"}
         loading={localLoading}
         tooltip={action._action_addTooltip && action._action_addTooltip_text}
         icon={action._action_icon}
     >{label}</Button>
+
+    //TODO: userDebug
+
+    if (action._conditionalView &&
+        !checkHidden(action)
+        //&& (!_.get(params, "general.debugConditions") || !userDebug)
+        && action._action_conditional_disable_or_hide !== "disable"
+    ) { button = <React.Fragment></React.Fragment> }
+
+    if (isClicked && action._action_oneTime) return <Hint margin={{ top: 0, bottom: 0 }}>
+        {action._action_oneTime_message && <SafeInnerHTML allowRerender={true} html={action._action_oneTime_message} label="action_message" />}
+    </Hint>
+
+    return button
 }
 
 function CartControls(props) {
