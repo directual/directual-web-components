@@ -173,6 +173,7 @@ function ElementAction(props) {
             }
         }
         var copyModel = { ...model }
+        var copyState = { ...state }
         var copyExtendedModel = { ...extendedModel }
 
         if (action.discardModel) {
@@ -187,6 +188,8 @@ function ElementAction(props) {
         if (_.get(action,"actionType") == "state" || _.get(action,"actionType") == "endpoint_state" || !_.get(action,"actionType")) {
             const payloadState = transformState(action.stateMapping, "state")
             const payloadModel = transformState(action.stateMapping, "model")
+            copyState = { ...copyState, ...payloadState }
+            copyModel = { ...copyModel, ...payloadModel }
 
             if (action.actionSubmit) {
                 setLoading(true)
@@ -208,7 +211,7 @@ function ElementAction(props) {
                     undefined,
                     true,
                     undefined,
-                    { state: { ...state, ...payloadState }, model: { ...model, ...payloadModel } },
+                    { state: copyState, model: { ...model, ...payloadModel } },
                     actionFormat._action_standardRequired,
                     err => {
                         setError(err);
@@ -218,7 +221,7 @@ function ElementAction(props) {
                     action.resetModel
                 )
             } else {
-                setState({ ...state, ...payloadState })
+                setState(copyState)
                 if (action.resetModel) {
                     copyModel = {}
                     copyExtendedModel = {}
@@ -253,7 +256,7 @@ function ElementAction(props) {
                     undefined,
                     true,
                     undefined,
-                    {},
+                    { state: copyState, model: copyModel },
                     actionFormat._action_standardRequired,
                     err => {
                         setError(err);
