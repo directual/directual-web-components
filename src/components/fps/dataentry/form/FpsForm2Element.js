@@ -235,7 +235,7 @@ function ElementAction(props) {
         if ((_.get(action,"actionType") == "endpoint" || _.get(action,"actionType") == "endpoint_state" || !_.get(action,"actionType")) && action.endpoint) {
             let payload = transformObject(action.mapping)
             if (action.sendModel) {
-                payload = { ...model, ...payload }
+                payload = { ...copyModel, ...payload }
             }
             setLoading(true)
             console.log("payload")

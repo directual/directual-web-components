@@ -304,16 +304,39 @@ let exampleForm =  {
                     }
                 ],
                 "endpoint": "form",
-                "mapping": [],
+                "mapping": [
+                    {
+                        "id": "mapping_1754258211889",
+                        "field": "autoText",
+                        "value": "{{autoText}}"
+                    }
+                ],
                 "actionSubmit": true
             }
-        ]
+        ],
+        "state": {
+            "step": "default step",
+            "popup": ""
+        },
+        "general": {
+            "showState": true,
+            "showModel": true
+        }
     },
     "tableTitle": null,
     "actions": [],
     "headers": [],
-    "data": [],
-    "totalPages": 0,
+    "data": [
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
+    ],
+    "totalPages": 1,
     "pageNumber": 0,
     "error": null,
     "fieldScheme": [],
