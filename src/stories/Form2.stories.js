@@ -204,7 +204,7 @@ let exampleForm1 = {
 }
 
 let exampleForm =  {
-    "sl": "newRoadmapAddfeature",
+    "sl": "form",
     "pageSize": "10",
     "headerField": null,
     "params": {
@@ -214,114 +214,49 @@ let exampleForm =  {
                 "sysName": "default step",
                 "elements": [
                     {
-                        "id": "elmnt_1751618367433",
-                        "type": "input",
-                        "_input_fields": [
-                            {
-                                "id": "17516196245710.32113303414322100420401",
-                                "_conditionalView": false,
-                                "_field": "feature_type",
-                                "_field_link_type": "tags",
-                                "_field_arrayLink_endpoint": "ddTypes",
-                                "_field_required": true
-                            },
-                            {
-                                "id": "17516222967380.00344313244330401121323",
-                                "_field": "title",
-                                "_field_required": true,
-                                "_conditionalView": true,
-                                "_action_conditionals_manual": "from_list",
-                                "_action_conditionals_manual_list": "condition_1751624300536"
-                            },
-                            {
-                                "id": "17516223088130.40342221322012101134301",
-                                "_field": "description",
-                                "_field_required": true,
-                                "_conditionalView": false,
-                                "_action_conditionals_manual": "from_list",
-                                "_action_conditionals_manual_list": "condition_1751624300536"
-                            }
-                        ],
-                        "_input_fields_in_a_row": 3,
-                        "_conditionalView": false,
-                        "_input_fields_in_a_row_column": "column"
+                        "id": "elmnt_1754255249077",
+                        "type": "text",
+                        "paraText": "БЕЙ ХОХЛА СПАСАЙ РОССИЮ"
                     },
                     {
-                        "id": "elmnt_1752760802095",
+                        "id": "elmnt_1754255351147",
                         "type": "action",
                         "_actions": [
                             {
-                                "id": "17527608087470.11242020404242241302143",
-                                "_action": "action_1752760747016",
-                                "_action_label": "Beautify title and description with AI!",
-                                "_action_icon": "ai",
-                                "_action_button_type": "normal"
+                                "id": "17542553528030.23400101131013214444242",
+                                "_action": "action_1754255266690",
+                                "_action_label_picture": "label",
+                                "_action_label_picture_source": "upload",
+                                "_action_icon": "application",
+                                "_action_button_type": "accent"
                             }
-                        ],
-                        "_conditionalView": false
-                    },
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "step_1754255299633",
+                "sysName": "modal",
+                "elements": [
                     {
-                        "id": "elmnt_1752760870150",
-                        "type": "text",
-                        "paraText": "error: {{FormState.error}}"
-                    },
-                    {
-                        "id": "elmnt_1751622603723",
-                        "type": "text",
-                        "_conditionalView": true,
-                        "_conditions": [
-                            {
-                                "id": "condition_1751622610958",
-                                "_conditionalView_field": "WebUser.role",
-                                "_conditionalView_operator": "contains",
-                                "_conditionalView_value": "god"
-                            }
-                        ],
-                        "paraText": "<h3 style=\"margin-top:20px\">\n  Admin area\n</h3>",
-                        "_action_conditionals_manual": "from_list",
-                        "_action_conditionals_manual_list": "condition_1751622981882"
-                    },
-                    {
-                        "id": "elmnt_1751622974995",
+                        "id": "elmnt_1754255302822",
                         "type": "input",
                         "_input_fields": [
                             {
-                                "id": "17516230079790.10014024220121411103313",
-                                "_field": "dev_status",
-                                "_field_link_type": "tags",
-                                "_field_arrayLink_endpoint": "ddDevStats"
-                            },
-                            {
-                                "id": "17516230095550.40400140233031402341023",
-                                "_field": "status",
-                                "_field_link_type": "tags",
-                                "_field_arrayLink_endpoint": "ddReqStatus"
-                            },
-                            {
-                                "id": "17516237696120.103311303012430443123442",
-                                "_field": "tags",
-                                "_field_arrayLink_type": "tags",
-                                "_field_arrayLink_endpoint": "ddTags"
+                                "id": "17542553046830.20042101311221240401041",
+                                "_field": "text"
                             }
-                        ],
-                        "_input_fields_in_a_row": 3,
-                        "_input_fields_in_a_row_column": "column",
-                        "_conditionalView": true,
-                        "_action_conditionals_manual": "from_list",
-                        "_action_conditionals_manual_list": "condition_1751622981882"
+                        ]
                     },
                     {
-                        "id": "elmnt_1751623066677",
-                        "type": "submit",
-                        "submitLabel": "Submit",
-                        "submitIcon": "idea",
-                        "_conditionalView": false,
-                        "_conditions": [
+                        "id": "elmnt_1754255308934",
+                        "type": "action",
+                        "_actions": [
                             {
-                                "id": "condition_1751624424037"
+                                "id": "17542553169510.30401303410012020012344",
+                                "_action": "action_1754255284391"
                             }
-                        ],
-                        "_action_conditionals_manual": "manual"
+                        ]
                     }
                 ]
             },
@@ -333,122 +268,58 @@ let exampleForm =  {
                         "id": "elmnt_1712052683797",
                         "type": "hint",
                         "hintColor": "ok",
-                        "hintTitle": "Thank you!",
-                        "hintText": "The {{feature_type}} is submitted"
-                    },
-                    {
-                        "id": "elmnt_1751623718722",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17516237228120.34022231203121210032243",
-                                "_action": "action_1751623690679"
-                            }
-                        ]
+                        "hintTitle": "Спасибо!",
+                        "hintText": "Отправлено"
                     }
                 ]
             }
         ],
-        "form_maxWidth": 600,
-        "_condition_library": [
-            {
-                "id": "condition_1751622981882",
-                "_conditionalView": true,
-                "title": "god",
-                "_conditions": [
-                    {
-                        "id": "condition_1751622984759",
-                        "_conditionalView_field": "WebUser.role",
-                        "_conditionalView_operator": "contains",
-                        "_conditionalView_value": "god"
-                    },
-                    {
-                        "id": "condition_1751624398962",
-                        "_conditionalView_field": "feature_type",
-                        "_conditionalView_operator": "isNotNull"
-                    }
-                ]
-            },
-            {
-                "id": "condition_1751624300536",
-                "_conditionalView": true,
-                "title": "type is empty",
-                "_conditions": [
-                    {
-                        "id": "condition_1751624307345",
-                        "_conditionalView_field": "feature_type",
-                        "_conditionalView_operator": "isNull"
-                    }
-                ]
-            }
-        ],
-        "state": {
-            "step": "default step",
-            "popup": "",
-            "error": ""
-        },
+        "hideActionsHint": true,
         "actions": [
             {
-                "id": "action_1751623690679",
-                "name": "redirect",
+                "id": "action_1754255266690",
+                "name": "Модалка",
                 "actionType": "state",
                 "stateMapping": [
                     {
-                        "id": "stateMapping1751623698570",
-                        "field": "FormState.step",
-                        "value": "default step"
-                    }
-                ],
-                "autoAction": true,
-                "autoAction_delay": 5
-            },
-            {
-                "id": "action_1752760747016",
-                "name": "ai request",
-                "actionType": "endpoint",
-                "endpoint": "generateAIdesc",
-                "mapping": [
-                    {
-                        "id": "mapping_1752760759407",
-                        "field": "title",
-                        "value": "{{title}}"
-                    },
-                    {
-                        "id": "mapping_1752760764665",
-                        "field": "description",
-                        "value": "{{description}}"
+                        "id": "stateMapping1754255276116",
+                        "field": "FormState.popup",
+                        "value": "modal"
                     }
                 ]
+            },
+            {
+                "id": "action_1754255284391",
+                "name": "ЗАКРЫТЬ МОДАЛКУ + ПОСТ",
+                "actionType": "endpoint_state",
+                "stateMapping": [
+                    {
+                        "id": "stateMapping1754255859817",
+                        "field": "FormState.popup"
+                    },
+                    {
+                        "id": "stateMapping1754256264592",
+                        "field": "autoText",
+                        "value": "огонь по блядскому хутору близ диканьки!"
+                    }
+                ],
+                "endpoint": "form",
+                "mapping": [],
+                "actionSubmit": true
             }
         ]
     },
     "tableTitle": null,
     "actions": [],
     "headers": [],
-    "data": [
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {}
-    ],
-    "totalPages": 38,
+    "data": [],
+    "totalPages": 0,
     "pageNumber": 0,
     "error": null,
     "fieldScheme": [],
     "writeFields": [
-        "screenshots",
-        "tags",
-        "feature_type",
-        "dev_status",
-        "status",
-        "title",
-        "description"
+        "text",
+        "autoText"
     ],
     "structures": {},
     "isSuccessWrite": false,
@@ -456,192 +327,52 @@ let exampleForm =  {
     "writeResponse": null,
     "fileds": [
         {
-            "sysName": "screenshots",
-            "name": "Screenshots or Screencast",
-            "dataType": "file",
-            "id": "61091637158867177",
+            "sysName": "text",
+            "dataType": "string",
+            "name": "",
+            "id": "77071754254746690",
             "link": "",
             "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 18,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": "multipleFiles",
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "linkType": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "tags",
-            "name": "Tags",
-            "dataType": "arrayLink",
-            "id": "67851621409605492",
-            "link": "tags",
-            "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 15,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "arrayLink": true,
-            "linkType": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "feature_type",
-            "name": "Feature type",
-            "dataType": "link",
-            "id": "55371621030232780",
-            "link": "feature_type",
-            "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 10,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "arrayLink": false,
-            "linkType": true,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "dev_status",
-            "name": "Development status",
-            "dataType": "link",
-            "id": "85621620832330584",
-            "link": "development_status",
-            "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 8,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "arrayLink": false,
-            "linkType": true,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "status",
-            "name": "Request status",
-            "dataType": "link",
-            "id": "40251620832303364",
-            "link": "request_status",
-            "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 7,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": true,
-            "arrayLink": false,
-            "linkType": true,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "title",
-            "name": "Feature title",
-            "dataType": "string",
-            "id": "79031620832091734",
-            "link": null,
-            "group": "0",
-            "tags": null,
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 0,
-            "linkIndexFieldSysName": [],
-            "defaultValue": null,
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": null,
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "arrayLink": false,
-            "linkType": false,
-            "indexExists": false,
-            "array": false
-        },
-        {
-            "sysName": "description",
-            "name": "Feature description",
-            "dataType": "string",
-            "id": "77031620832091108",
-            "link": "",
-            "group": "0",
-            "tags": null,
+            "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
             "order": 1,
             "linkIndexFieldSysName": [],
-            "defaultValue": null,
+            "defaultValue": "",
             "constraints": null,
             "synthetic": false,
-            "format": "markdown",
-            "formatOptions": null,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "autoText",
+            "dataType": "string",
+            "name": "",
+            "id": "58451754255884690",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
             "groupName": null,
             "typeVariable": {},
             "json": false,

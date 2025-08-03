@@ -974,7 +974,7 @@ export default function FpsForm2(props) {
 
     {/* POPUP */}
     {state.popup && <FpsFormPopup
-      onClose={() => closePopupOnClick ? setState({ ...state, popup: "" }) : undefined}
+      onClose={(forceClose) => (closePopupOnClick || forceClose) ? setState({ ...state, popup: "" }) : undefined}
       width={popupWidth}>
       {formSteps
         .filter(section => section.sysName == state.popup)

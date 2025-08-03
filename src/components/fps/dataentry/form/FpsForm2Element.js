@@ -146,11 +146,11 @@ function ElementAction(props) {
     const [error, setError] = useState("")
 
     const performAction = (action, actionFormat, finish) => {
-        // console.log("performAction")
-        // console.log(action)
-        // console.log(actionFormat)
-        finish(true)
+        console.log("performAction")
+        console.log(action)
+        console.log(actionFormat)
 
+        finish(true)
         if (actionFormat._action_customRequired &&
             actionFormat._action_customRequired_fields &&
             actionFormat._action_customRequired_fields.length > 0) {
@@ -183,44 +183,8 @@ function ElementAction(props) {
             copyExtendedModel = originalModel
             setExtendedModel(originalModel)
         }
-        if ((_.get(action,"actionType") == "endpoint" || !_.get(action,"actionType")) && action.endpoint) {
-            let payload = transformObject(action.mapping)
-            if (action.sendModel) {
-                payload = { ...model, ...payload }
-            }
-            setLoading(true)
-            console.log("payload")
-            console.log(payload)
-            if (action.actionSubmit) {
-                onSubmit(
-                    (res) => {
-                        callEndpointPOST(action.endpoint, payload, (result) => {
-                            setLoading(false)
-                            finish && finish(true)
-                            // console.log(result)
-                        })
-                    },
-                    true,
-                    undefined,
-                    true,
-                    undefined,
-                    {},
-                    actionFormat._action_standardRequired,
-                    err => {
-                        setError(err);
-                        err && finish && finish(false);
-                        setLoading(false)
-                    },
-                    action.resetModel)
-            } else {
-                callEndpointPOST(action.endpoint, payload, (result) => {
-                    setLoading(false)
-                    finish && finish(true);
-                    // console.log(result)
-                })
-            }
-        }
-        if (_.get(action,"actionType") == "state" || !_.get(action,"actionType")) {
+
+        if (_.get(action,"actionType") == "state" || _.get(action,"actionType") == "endpoint_state" || !_.get(action,"actionType")) {
             const payloadState = transformState(action.stateMapping, "state")
             const payloadModel = transformState(action.stateMapping, "model")
 
@@ -267,6 +231,45 @@ function ElementAction(props) {
                 setLoading(false)
             }
         }
+
+        if ((_.get(action,"actionType") == "endpoint" || _.get(action,"actionType") == "endpoint_state" || !_.get(action,"actionType")) && action.endpoint) {
+            let payload = transformObject(action.mapping)
+            if (action.sendModel) {
+                payload = { ...model, ...payload }
+            }
+            setLoading(true)
+            console.log("payload")
+            console.log(payload)
+            if (action.actionSubmit) {
+                onSubmit(
+                    (res) => {
+                        callEndpointPOST(action.endpoint, payload, (result) => {
+                            setLoading(false)
+                            finish && finish(true)
+                            // console.log(result)
+                        })
+                    },
+                    true,
+                    undefined,
+                    true,
+                    undefined,
+                    {},
+                    actionFormat._action_standardRequired,
+                    err => {
+                        setError(err);
+                        err && finish && finish(false);
+                        setLoading(false)
+                    },
+                    action.resetModel)
+            } else {
+                callEndpointPOST(action.endpoint, payload, (result) => {
+                    setLoading(false)
+                    finish && finish(true);
+                    // console.log(result)
+                })
+            }
+        }
+        
 
         
 
