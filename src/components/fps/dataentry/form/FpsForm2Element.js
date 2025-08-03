@@ -243,7 +243,7 @@ function ElementAction(props) {
             setLoading(true)
             console.log("payload")
             console.log(payload)
-            if (action.actionSubmit) {
+            if (action.actionSubmit && !_.get(action,"actionType") == "endpoint_state") { // второе условие для исключения дублирования сабмита
                 onSubmit(
                     (res) => {
                         callEndpointPOST(action.endpoint, payload, (result) => {
