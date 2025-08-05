@@ -57,7 +57,7 @@ export default function FormElement(props) {
             {element._conditionalView && _.get(params, "general.debugConditions") && userDebug && <div className={styles.condDebugDetails}>
                 <code>
                     <p>Show element if:</p>
-                    {checkHidden(element, true, false).name && <p  style={{ lineHeight: 1, marginBottom: 10}}><b>{checkHidden(element, true, false).name}</b></p>}
+                    {checkHidden(element, true, false).name && <p style={{ lineHeight: 1, marginBottom: 10 }}><b>{checkHidden(element, true, false).name}</b></p>}
                     <pre style={{ whiteSpace: 'wrap', fontSize: 14 }}>{checkHidden(element, true, false).conditions}</pre>
                     <p>Result: <b>{checkHidden(element, false, false) ? "🚫 hidden" : "✅ visible"}</b></p>
                     <pre style={{ whiteSpace: 'wrap', fontSize: 14 }}>{checkHidden(element, true, false).result}</pre>
@@ -150,7 +150,8 @@ function ElementAction(props) {
         console.log(action)
         console.log(actionFormat)
 
-        finish(true)
+        //finish(true) // я не понял почему мы вызываем finish(true) здесь, ведь это вызывается в onSubmit
+
         if (actionFormat._action_customRequired &&
             actionFormat._action_customRequired_fields &&
             actionFormat._action_customRequired_fields.length > 0) {
@@ -172,6 +173,7 @@ function ElementAction(props) {
                 return;
             }
         }
+
         var copyModel = { ...model }
         var copyState = { ...state }
         var copyExtendedModel = { ...extendedModel }
@@ -185,13 +187,14 @@ function ElementAction(props) {
             setExtendedModel(originalModel)
         }
 
-        if (_.get(action,"actionType") == "state" || _.get(action,"actionType") == "endpoint_state" || !_.get(action,"actionType")) {
+        if (_.get(action, "actionType") == "state" || _.get(action, "actionType") == "endpoint_state" || !_.get(action, "actionType")) {
             const payloadState = transformState(action.stateMapping, "state")
             const payloadModel = transformState(action.stateMapping, "model")
             copyState = { ...copyState, ...payloadState }
             copyModel = { ...copyModel, ...payloadModel }
+            copyExtendedModel = { ...copyExtendedModel, ...payloadModel }
 
-            if (action.actionSubmit) {
+            if (action.actionSubmit && _.get(action, "actionType") !== "endpoint_state") { // второе условие для исключения дублирования сабмита
                 setLoading(true)
                 onSubmit(
                     (res) => {
@@ -228,28 +231,31 @@ function ElementAction(props) {
                     setModel({})
                     setExtendedModel({})
                 } else {
-                    setModel({ ...copyModel, ...payloadModel })
-                    setExtendedModel({ ...copyExtendedModel, ...payloadModel })
+                    setModel(copyModel)
+                    setExtendedModel(copyExtendedModel)
                 }
                 setLoading(false)
             }
         }
 
-        if ((_.get(action,"actionType") == "endpoint" || _.get(action,"actionType") == "endpoint_state" || !_.get(action,"actionType")) && action.endpoint) {
+        if ((_.get(action, "actionType") == "endpoint" || _.get(action, "actionType") == "endpoint_state" || !_.get(action, "actionType")) && action.endpoint) {
             let payload = transformObject(action.mapping)
             if (action.sendModel) {
                 payload = { ...copyModel, ...payload }
             }
             setLoading(true)
-            console.log("payload")
-            console.log(payload)
-            if (action.actionSubmit && !_.get(action,"actionType") == "endpoint_state") { // второе условие для исключения дублирования сабмита
+            if (action.actionSubmit) { 
+                console.log("onSubmit")
                 onSubmit(
                     (res) => {
+                        console.log("finish onSubmit", res)
+                        console.log("payload => " + action.endpoint)
+                        console.log(payload)
                         callEndpointPOST(action.endpoint, payload, (result) => {
                             setLoading(false)
                             finish && finish(true)
-                            // console.log(result)
+                            console.log("result => " + action.endpoint)
+                            console.log(result)
                         })
                     },
                     true,
@@ -265,16 +271,19 @@ function ElementAction(props) {
                     },
                     action.resetModel)
             } else {
+                console.log("payload => " + action.endpoint)
+                console.log(payload)
                 callEndpointPOST(action.endpoint, payload, (result) => {
                     setLoading(false)
                     finish && finish(true);
-                    // console.log(result)
+                    console.log("result => " + action.endpoint)
+                    console.log(result)
                 })
             }
         }
-        
 
-        
+
+
 
     }
 
