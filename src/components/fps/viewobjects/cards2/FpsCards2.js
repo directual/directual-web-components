@@ -55,6 +55,8 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         return savedPage ? Number(savedPage) : 0;
     };
     const [page, setPage] = useState(getPageFromUrl);
+    const [dql, setDQL] = useState("")
+    const [sort, setSort] = useState("")
     const [loading, setLoading] = useState(false)
     const [initialLoading, setInitialLoading] = useState(debug ? false : true) // в дебаг режиме сразу не показываем скелетон
     const isFirstRender = useRef(true)
@@ -101,12 +103,11 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         clearTimeout(cx);
         console.log('=== F I L T E R I N G ! ===')
         console.log(dql)
-        // setCurrentDQL(dql)
-        // setCurrentSort(sort)
-        console.log('=== S O R T I N G ! ===')
-        console.log(sort)
-        const page = 0 // dql || _.get(sort,'field') ? currentPage : 0
-        sendMsg({ dql, sort }, null, { page })
+        // console.log('=== S O R T I N G ! ===')
+        // console.log(sort)
+        setDQL(dql)
+        //setSort(sort)
+        setPage(0) // dql || _.get(sort,'field') ? currentPage : 0
     }
 
     const nextPage = () => {
@@ -555,7 +556,9 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
             setPageLoading(true)
             callEndpointGET(data.sl, {
                 pageSize: data.pageSize || 10,
-                page: page
+                page: page,
+                dql: dql,
+                sort: sort
             }, (result, data) => {
                 // console.log("PAGINATION RESULT")
                 // console.log(result)
