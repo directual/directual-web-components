@@ -107,7 +107,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         // console.log(sort)
         setDQL(dql)
         //setSort(sort)
-        setPage(0) // dql || _.get(sort,'field') ? currentPage : 0
+        if (page == 0) { refresh() } else { setPage(0) }
     }
 
     const nextPage = () => {
@@ -538,20 +538,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         })
     }, [])
 
-    // PAGINATION
-    useEffect(() => {
-        if (debug) {
-            // в дебаг режиме не делаем пагинацию
-            console.log("Cards2 Debug mode: pagination disabled")
-            return;
-        }
-
-        if (isFirstRender.current) {
-            isFirstRender.current = false;
-            return;
-        }
-
-        console.log("page => " + page)
+    function refresh() {
         if (data && data.sl) {
             setPageLoading(true)
             callEndpointGET(data.sl, {
@@ -572,6 +559,23 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
                 setPageLoading(false)
             })
         }
+    }
+
+    // PAGINATION
+    useEffect(() => {
+        if (debug) {
+            // в дебаг режиме не делаем пагинацию
+            console.log("Cards2 Debug mode: pagination disabled")
+            return;
+        }
+
+        if (isFirstRender.current) {
+            isFirstRender.current = false;
+            return;
+        }
+
+        console.log("page => " + page)
+        refresh()
     }, [page, debug]) // добавляем debug в dependencies
 
     // INITIAL PAGE LOAD - check URL for page parameter on mount
