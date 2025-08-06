@@ -107,7 +107,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         // console.log(sort)
         setDQL(dql)
         //setSort(sort)
-        if (page == 0) { refresh() } else { setPage(0) }
+        if (page == 0) { refresh(dql,sort) } else { setPage(0) }
     }
 
     const nextPage = () => {
@@ -538,7 +538,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         })
     }, [])
 
-    function refresh() {
+    function refresh(dql,sort) {
         if (data && data.sl) {
             setPageLoading(true)
             callEndpointGET(data.sl, {
