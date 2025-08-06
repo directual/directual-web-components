@@ -938,6 +938,26 @@ export default function FpsForm2(props) {
     setExtendedModel(copyExtendedModel)
   }
 
+  const editModelAL = field => (action = 'edit', id, object = {}) => {
+    // отдельная поебота для редактирования array links
+    const copyModel = _.cloneDeep(model)
+    const copyExtendedModel = _.cloneDeep(extendedModel)
+
+    if (action == 'delete') {
+      // удаляем из модели
+      const arrayLink = _.get(copyModel, field)
+      const newValue = arrayLink.split(",").filter(i => i != id)
+      _.set(copyModel, field, newValue.join(","))
+      setModel(copyModel)
+
+      // удаляем из extendedModel
+      let extendedArrayLink = _.get(copyExtendedModel, field)
+      _.remove(extendedArrayLink, (item) => item.id === id);
+      _.set(copyExtendedModel, field, extendedArrayLink)
+      setExtendedModel(copyExtendedModel)
+    }
+  }
+
   if (_.get(data, 'error') == '403') {
     return <Hint error title="403" margin={{ top: 0, bottom: 0 }}>
       <p>{dict[lang].form.noPermissions}</p>
@@ -1012,6 +1032,7 @@ export default function FpsForm2(props) {
               lang={lang}
               submit={submit}
               editModel={editModel}
+              editModelAL={editModelAL}
               setModel={setModel}
               params={params}
               checkIfAllInputsHidden={checkIfAllInputsHidden}
@@ -1094,6 +1115,7 @@ export default function FpsForm2(props) {
             lang={lang}
             submit={submit}
             editModel={editModel}
+            editModelAL={editModelAL}
             setModel={m => {
               // console.log("m")
               // console.log(m)
@@ -1108,7 +1130,7 @@ export default function FpsForm2(props) {
 }
 
 function RenderStep(props) {
-  const { auth, data, callEndpoint, onEvent, id, handleRoute, currentStep, templateState, checkIfAllInputsHidden, editModel, originalModel,
+  const { auth, data, callEndpoint, onEvent, id, handleRoute, currentStep, templateState, checkIfAllInputsHidden, editModel, editModelAL, originalModel,
     model, checkHidden, userDebug, dict, locale, state, refreshOptions, refresh, extendedModel, setOriginalModel, setExtendedModel, loading, template, setState, lang, submit, params, setModel } = props
 
 
@@ -1196,6 +1218,7 @@ function RenderStep(props) {
       extendedModel={extendedModel}
       setExtendedModel={setExtendedModel}
       editModel={editModel}
+      editModelAL={editModelAL}
       setModel={setModel}
       element={element}
       callEndpointPOST={callEndpointPOST}
@@ -1290,6 +1313,7 @@ function RenderStep(props) {
         onSubmit={submit}
         template={template}
         editModel={editModel}
+        editModelAL={editModelAL}
         setModel={setModel}
         element={element}
         callEndpointPOST={callEndpointPOST}

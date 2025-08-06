@@ -12,6 +12,7 @@ import { FpsForm2Input, FpsForm2HiddenInput } from './FpsForm2Input'
 import FpsForm2Action from './FpsForm2Action'
 import FormSteps from './FormSteps'
 import _ from 'lodash'
+import ElementArray from './FpsForm2arrayLink'
 
 export default function FormElement(props) {
     const { element, template, params, checkHidden, userDebug, hidden, setModel } = props
@@ -42,8 +43,11 @@ export default function FormElement(props) {
         case "steps":
             render = <ElementSteps {...props} />
             break;
+        case "array":
+            render = <ElementArray {...props} checkHidden={checkHidden}/>
+            break;
         default:
-            render = <div>??</div>
+            render = <div>Element type not found: {element.type}</div>
             break;
     }
 
@@ -244,7 +248,7 @@ function ElementAction(props) {
                 payload = { ...copyModel, ...payload }
             }
             setLoading(true)
-            if (action.actionSubmit) { 
+            if (action.actionSubmit) {
                 console.log("onSubmit")
                 onSubmit(
                     (res) => {
