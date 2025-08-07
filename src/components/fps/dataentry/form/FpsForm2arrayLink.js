@@ -65,6 +65,7 @@ export default function ElementArray(props) {
                         editModelAL(_.get(element, "array.table.field"))('delete', item.id)
                     }}
                     onFinishEditing={(item) => {
+                        console.log("onFinishEditing! TODO")
                         console.log(item)
                         // TODO
                         //editModelAL(_.get(element, "array.table.field"))('replace', item.id, item)
@@ -79,6 +80,8 @@ export default function ElementArray(props) {
                         setTempItem({})
                     }}
                     onFinishAdding={(item) => {
+                        console.log("onFinishAdding! TODO")
+                        console.log(item)
                         setIsAdding(false)
                         setTempItem({})
                         // TODO
@@ -107,27 +110,29 @@ function TableRow(props) {
         return value
     }
 
+    function flattenObject(obj) {
+        return _.mapValues(obj, value => {
+          if (_.isPlainObject(value) && 'id' in value) {
+            return value.id
+          }
+          return value
+        })
+      }
+
     const sendObject = (finish) => {
         // пуляем объект в дополнительный эндпоинт
         let body = {}
         if (isEditing) {
-            body = editingItem
+            body = flattenObject(editingItem)
         } else {
-            body = tempItem
+            body = flattenObject(tempItem)
         }
-
-        console.log("sendObject")
-        console.log("endpoint", endpoint)
-        console.log(body)
 
         callEndpointPOST && callEndpointPOST(
             endpoint,
             body,
             (result, data) => {
-                console.log("sendObject result")
-                console.log(result)
-                console.log(data)
-                //finish && finish(data)
+                result == "ok" && finish && finish(data)
             }
         )
     }
