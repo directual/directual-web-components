@@ -135,7 +135,8 @@ function TableRow(props) {
                 console.log("sendObject result")
                 console.log(data)
                 finish && finish(data)
-            }
+            },
+            true
         )
     }
 

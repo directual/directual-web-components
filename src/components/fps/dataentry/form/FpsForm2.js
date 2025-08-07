@@ -1134,7 +1134,7 @@ function RenderStep(props) {
     model, checkHidden, userDebug, dict, locale, state, refreshOptions, refresh, extendedModel, setOriginalModel, setExtendedModel, loading, template, setState, lang, submit, params, setModel } = props
 
 
-  const callEndpointPOST = (endpoint, body, finish) => {
+  const callEndpointPOST = (endpoint, body, finish, ignoreResponse = false) => {
     // console.log('===> calling endpoint /' + endpoint)
     // console.log(body)
     callEndpoint && callEndpoint(
@@ -1145,6 +1145,7 @@ function RenderStep(props) {
       (result, data) => {
         if (result == "ok") {
           finish && finish(data)
+          if (ignoreResponse) return
           try {
             console.log("response data")
             console.log(data)
