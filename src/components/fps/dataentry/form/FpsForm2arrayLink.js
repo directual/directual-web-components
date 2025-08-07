@@ -132,6 +132,9 @@ function TableRow(props) {
             endpoint,
             body,
             (result, data) => {
+                console.log("sendObject result")
+                console.log(result)
+                console.log(data)
                 result == "ok" && finish && finish(data)
             }
         )
