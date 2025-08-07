@@ -116,6 +116,10 @@ function TableRow(props) {
             body = tempItem
         }
 
+        console.log("sendObject")
+        console.log("endpoint", endpoint)
+        console.log(body)
+
         callEndpoint && callEndpoint(
             endpoint,
             "POST",
