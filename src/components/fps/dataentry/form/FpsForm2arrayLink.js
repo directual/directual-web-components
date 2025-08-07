@@ -24,7 +24,7 @@ const SafeInnerHTML = ({ html, label = 'unknown', ...props }) => {
 };
 
 export default function ElementArray(props) {
-    const { element, state, setState, extendedModel, editModelAL, model, currentBP, checkHidden, callEndpoint } = props
+    const { element, state, setState, extendedModel, editModelAL, model, currentBP, checkHidden, callEndpointPOST } = props
 
     // DEBUG ==========================================
     // console.log("ElementArray")
@@ -59,7 +59,7 @@ export default function ElementArray(props) {
                     item={item}
                     delete_on={delete_on}
                     edit_on={edit_on}
-                    callEndpoint={callEndpoint}
+                    callEndpointPOST={callEndpointPOST}
                     endpoint={endpoint}
                     deleteRow={() => {
                         editModelAL(_.get(element, "array.table.field"))('delete', item.id)
@@ -95,7 +95,7 @@ export default function ElementArray(props) {
 
 function TableRow(props) {
     const { item, tableColumns, delete_on, deleteRow, edit_on, onFinishEditing,
-        adding, setTempItem, tempItem, cancelAdding, onFinishAdding, callEndpoint, endpoint } = props
+        adding, setTempItem, tempItem, cancelAdding, onFinishAdding, callEndpointPOST, endpoint } = props
 
     const [isEditing, setIsEditing] = useState(false)
     const [editingItem, setEditingItem] = useState(item)
@@ -116,21 +116,13 @@ function TableRow(props) {
             body = tempItem
         }
 
-        body = {
-            "quantity": "1",
-            "id": "2",
-            "final_price": "2"
-        }
-
         console.log("sendObject")
         console.log("endpoint", endpoint)
         console.log(body)
 
-        callEndpoint && callEndpoint(
+        callEndpointPOST && callEndpointPOST(
             endpoint,
-            "POST",
             body,
-            undefined,
             (result, data) => {
                 console.log("sendObject result")
                 console.log(result)
