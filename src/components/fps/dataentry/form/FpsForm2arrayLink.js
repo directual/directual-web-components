@@ -116,6 +116,12 @@ function TableRow(props) {
             body = tempItem
         }
 
+        body = {
+            "quantity": "1",
+            "id": "2",
+            "final_price": "2"
+        }
+
         console.log("sendObject")
         console.log("endpoint", endpoint)
         console.log(body)
