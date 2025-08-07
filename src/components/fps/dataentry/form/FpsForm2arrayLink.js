@@ -131,11 +131,10 @@ function TableRow(props) {
         callEndpointPOST && callEndpointPOST(
             endpoint,
             body,
-            (result, data) => {
+            (data) => {
                 console.log("sendObject result")
-                console.log(result)
                 console.log(data)
-                result == "ok" && finish && finish(data)
+                finish && finish(data)
             }
         )
     }
