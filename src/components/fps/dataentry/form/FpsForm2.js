@@ -975,8 +975,8 @@ export default function FpsForm2(props) {
       // модель не меняется
 
       // заменяем в extendedModel
-      let extendedArrayLink = _.get(copyExtendedModel, field).split(",")
-      _.set(copyExtendedModel, field, extendedArrayLink.map(i => i.id == id ? object : i).join(","))
+      let extendedArrayLink = _.get(copyExtendedModel, field)
+      _.set(copyExtendedModel, field, extendedArrayLink.map(i => i.id == id ? object : i))
       setExtendedModel(copyExtendedModel)
     }
   }
