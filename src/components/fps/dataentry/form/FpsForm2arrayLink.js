@@ -79,8 +79,8 @@ export default function ElementArray(props) {
                         setTempItem({})
                     }}
                     onFinishAdding={(item) => {
-                        // console.log("onFinishAdding! TODO")
-                        // console.log(item)
+                        console.log("onFinishAdding! TODO")
+                        console.log(item)
                         setIsAdding(false)
                         setTempItem({})
                         editModelAL(_.get(element, "array.table.field"))('add', item.id, item)

@@ -958,6 +958,8 @@ export default function FpsForm2(props) {
     }
 
     if (action == 'add') {
+      console.log("add")
+      console.log(object)
       // добавляем в модель
       const arrayLink = _.get(copyModel, field)
       _.set(copyModel, field, [...arrayLink, object.id])
