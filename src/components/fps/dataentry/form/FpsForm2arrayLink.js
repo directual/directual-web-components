@@ -40,6 +40,7 @@ export default function ElementArray(props) {
     const delete_on = _.get(element, "array.table.delete")
     const edit_on = _.get(element, "array.table.edit")
     const endpoint = _.get(element, "array.table.endpoint")
+    const buttonLabel = _.get(element, "array.table.buttonLabel", "Add element")
 
     const [isAdding, setIsAdding] = useState(false)
     const [tempItem, setTempItem] = useState({})
@@ -91,7 +92,7 @@ export default function ElementArray(props) {
             </tbody>
         </table>
         {add_on && !isAdding && <ActionPanel margin={{ top: 12, bottom: 12 }}>
-            <Button verySmall height={32} icon="plus" onClick={() => { setIsAdding(true) }}>Add element</Button>
+            <Button verySmall height={32} icon="plus" onClick={() => { setIsAdding(true) }}>{buttonLabel}</Button>
         </ActionPanel>}
     </div>
 }
