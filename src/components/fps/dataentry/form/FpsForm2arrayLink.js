@@ -65,8 +65,8 @@ export default function ElementArray(props) {
                         editModelAL(_.get(element, "array.table.field"))('delete', item.id)
                     }}
                     onFinishEditing={(item) => {
-                        console.log("onFinishEditing! TODO")
-                        console.log(item)
+                        // console.log("onFinishEditing! TODO")
+                        // console.log(item)
                         editModelAL(_.get(element, "array.table.field"))('replace', item.id, item)
                     }}
                     tableColumns={tableColumns} />)}
@@ -79,8 +79,8 @@ export default function ElementArray(props) {
                         setTempItem({})
                     }}
                     onFinishAdding={(item) => {
-                        console.log("onFinishAdding! TODO")
-                        console.log(item)
+                        // console.log("onFinishAdding! TODO")
+                        // console.log(item)
                         setIsAdding(false)
                         setTempItem({})
                         editModelAL(_.get(element, "array.table.field"))('add', item.id, item)
@@ -145,7 +145,7 @@ function TableRow(props) {
                     onChange={value => { setEditingItem({ ...editingItem, [column.id]: value }) }} />
             </td>)}
             <td><ActionPanel>
-                <Button icon="done" verySmall transparent height={32} onClick={() => sendObject(onFinishEditing)} />
+                <Button icon="done" verySmall transparent height={32} onClick={() => { sendObject(onFinishEditing); setIsEditing(false) }} />
                 <Button icon="ban" verySmall transparent height={32} onClick={() => { setIsEditing(false) }} />
             </ActionPanel></td>
         </tr>
