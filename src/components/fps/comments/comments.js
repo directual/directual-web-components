@@ -45,7 +45,11 @@ export default function Comments(props) {
             "POST",
             comment,
             undefined,
-            (result, data) => {
+            (result, content, data) => {
+                console.log("sendComment result")
+                console.log(result)
+                console.log(content)
+                console.log(data)
                 if (result == "ok") {
                     console.log("FINISH SUBMIT")
                     console.log(data)

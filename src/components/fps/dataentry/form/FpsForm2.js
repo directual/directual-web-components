@@ -1142,9 +1142,9 @@ function RenderStep(props) {
       "POST",
       body,
       undefined,
-      (result, data) => {
+      (result, content, data) => {
         if (result == "ok") {
-          finish && finish(data)
+          finish && finish(content, data)
           if (ignoreResponse) return
           try {
             console.log("response data")
