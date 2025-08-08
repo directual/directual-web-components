@@ -956,6 +956,27 @@ export default function FpsForm2(props) {
       _.set(copyExtendedModel, field, extendedArrayLink)
       setExtendedModel(copyExtendedModel)
     }
+
+    if (action == 'add') {
+      // добавляем в модель
+      const arrayLink = _.get(copyModel, field)
+      _.set(copyModel, field, [...arrayLink, object.id])
+      setModel(copyModel)
+
+      // добавляем в extendedModel
+      let extendedArrayLink = _.get(copyExtendedModel, field)
+      _.set(copyExtendedModel, field, [...extendedArrayLink, object])
+      setExtendedModel(copyExtendedModel)
+    }
+
+    if (action == 'replace') {
+      // модель не меняется
+
+      // заменяем в extendedModel
+      let extendedArrayLink = _.get(copyExtendedModel, field)
+      _.set(copyExtendedModel, field, extendedArrayLink.map(i => i.id == id ? object : i))
+      setExtendedModel(copyExtendedModel)
+    }
   }
 
   if (_.get(data, 'error') == '403') {

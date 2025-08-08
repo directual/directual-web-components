@@ -67,8 +67,7 @@ export default function ElementArray(props) {
                     onFinishEditing={(item) => {
                         console.log("onFinishEditing! TODO")
                         console.log(item)
-                        // TODO
-                        //editModelAL(_.get(element, "array.table.field"))('replace', item.id, item)
+                        editModelAL(_.get(element, "array.table.field"))('replace', item.id, item)
                     }}
                     tableColumns={tableColumns} />)}
                 {isAdding && <TableRow key="adding"
@@ -84,8 +83,7 @@ export default function ElementArray(props) {
                         console.log(item)
                         setIsAdding(false)
                         setTempItem({})
-                        // TODO
-                        //editModelAL(_.get(element, "array.table.field"))('add', item.id, item)
+                        editModelAL(_.get(element, "array.table.field"))('add', item.id, item)
                     }}
                     tableColumns={tableColumns} />}
             </tbody>
@@ -131,12 +129,8 @@ function TableRow(props) {
         callEndpointPOST && callEndpointPOST(
             endpoint,
             body,
-            (result, content, data) => {
-                console.log("sendObject result")
-                console.log(result)
-                console.log(content)
-                console.log(data)
-                finish && finish(content, data)
+            (result, content) => {
+                finish && finish(_.get(content, "result.data[0]"))
             },
             true
         )
