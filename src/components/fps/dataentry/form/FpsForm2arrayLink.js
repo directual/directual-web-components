@@ -72,6 +72,7 @@ export default function ElementArray(props) {
                     tableColumns={tableColumns} />)}
                 {isAdding && <TableRow key="adding"
                     adding={true}
+                    callEndpointPOST={callEndpointPOST}
                     tempItem={tempItem}
                     setTempItem={setTempItem}
                     endpoint={endpoint}
@@ -101,6 +102,7 @@ function TableRow(props) {
 
     const [isEditing, setIsEditing] = useState(false)
     const [editingItem, setEditingItem] = useState(item)
+    const [isSending, setIsSending] = useState(false)
 
     const getValue = value => {
         if (_.isObject(value)) {
@@ -126,15 +128,14 @@ function TableRow(props) {
         } else {
             body = flattenObject(tempItem)
         }
-        // console.log("sendObject")
-        // console.log(endpoint)
-        // console.log(body)
 
+        setIsSending(true)
         callEndpointPOST && callEndpointPOST(
             endpoint,
             body,
             (result, content) => {
                 finish && finish(_.get(content, "result.data[0]"))
+                setIsSending(false)
             },
             true
         )
@@ -144,6 +145,7 @@ function TableRow(props) {
         return <tr>
             {tableColumns.map(column => <td key={column.id}>
                 <Input nomargin type="string"
+                    disabled={isSending}
                     placeholder={column.title || column.id}
                     defaultValue={getValue(_.get(editingItem, column.id))}
                     onChange={value => { setEditingItem({ ...editingItem, [column.id]: value }) }} />
@@ -159,6 +161,7 @@ function TableRow(props) {
         return <tr>
             {tableColumns.map(column => <td key={column.id}>
                 <Input nomargin type="string"
+                    disabled={isSending}
                     placeholder={column.title || column.id}
                     defaultValue={_.get(tempItem, column.id)}
                     onChange={value => { setTempItem({ ...tempItem, [column.id]: value }) }} />

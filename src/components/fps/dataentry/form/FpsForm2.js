@@ -1158,8 +1158,8 @@ function RenderStep(props) {
 
 
   const callEndpointPOST = (endpoint, body, finish, ignoreResponse = false) => {
-    // console.log('===> calling endpoint /' + endpoint)
-    // console.log(body)
+    console.log('===> calling endpoint /' + endpoint)
+    console.log(body)
     callEndpoint && callEndpoint(
       endpoint,
       "POST",
