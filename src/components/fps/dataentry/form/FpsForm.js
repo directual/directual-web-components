@@ -908,8 +908,8 @@ function FpsFormOld({ auth, data, onEvent, id, locale }) {
 }
 FpsForm.settings = {
   icon: icon,
-  name: 'Form',
-  isLegacy: true,
+  name: 'Form (Legacy)',
+  isLegacy: false,
   sysName: 'FpsForm',
   form: [
     { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },

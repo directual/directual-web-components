@@ -74,6 +74,7 @@ export default function ElementArray(props) {
                     adding={true}
                     tempItem={tempItem}
                     setTempItem={setTempItem}
+                    endpoint={endpoint}
                     cancelAdding={() => {
                         setIsAdding(false)
                         setTempItem({})
@@ -125,6 +126,9 @@ function TableRow(props) {
         } else {
             body = flattenObject(tempItem)
         }
+        // console.log("sendObject")
+        // console.log(endpoint)
+        // console.log(body)
 
         callEndpointPOST && callEndpointPOST(
             endpoint,
