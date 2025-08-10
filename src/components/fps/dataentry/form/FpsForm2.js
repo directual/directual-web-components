@@ -703,6 +703,11 @@ export default function FpsForm2(props) {
               // redirect
               if (!isEmpty(_.get(response, "redirect")) &&
                 !isEmpty(_.get(response, "redirect.target"))) {
+                console.log("redirect")
+                console.log(_.get(response, "redirect"))
+                console.log(_.get(response, "redirect.delay"))
+                console.log(typeof _.get(response, "redirect.delay"))
+                console.log(_.get(response, "redirect.target"))
                 let delay = 0
                 if (!isEmpty(_.get(response, "redirect.delay"))) {
                   delay = typeof _.get(response, "redirect.delay") == 'number' ? _.get(response, "redirect.delay") : parseInt(_.get(response, "redirect.delay"))

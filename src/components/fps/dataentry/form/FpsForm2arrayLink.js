@@ -55,6 +55,8 @@ export default function ElementArray(props) {
     const [isAdding, setIsAdding] = useState(false)
     const [tempItem, setTempItem] = useState({})
 
+    if (!_.get(element, "array.table.field")) return <div />
+
     return <div className={`${styles.form2ArrayLink} FPS_FORM2_ARRAY_LINK`}>
         <table className={styles.form2Table}>
             <thead>
