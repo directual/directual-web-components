@@ -952,7 +952,7 @@ export default function FpsForm2(props) {
       // удаляем из модели
       const arrayLink = _.get(copyModel, field)
       const newValue = arrayLink.split(",").filter(i => i != id)
-      _.set(copyModel, field, newValue.join(","))
+      _.set(copyModel, field, newValue.length > 0 ? newValue.join(",") : "")
       setModel(copyModel)
 
       // удаляем из extendedModel
@@ -966,7 +966,7 @@ export default function FpsForm2(props) {
       console.log("add")
       console.log(object)
       // добавляем в модель
-      const arrayLink = _.get(copyModel, field).split(",")
+      const arrayLink = _.get(copyModel, field) ? _.get(copyModel, field).split(",") : []
       _.set(copyModel, field, [...arrayLink, object.id].join(","))
       setModel(copyModel)
 
