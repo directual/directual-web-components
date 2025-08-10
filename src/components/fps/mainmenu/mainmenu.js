@@ -1262,7 +1262,7 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
         className={`D_MainMenu_Item 
             ${styles.menuIcon}
             ${styles.cursorPointer}
-            ${currentRoute == menuItem.linkToPage ? "selected" : ""}
+            ${currentRoute == menuItem.linkToPage && menuItem.linkToType !== 'external' ? "selected" : ""}
             ${iconType == 'directual_icon' ? `icon icon-${menuItem.menuDirectualIconSet}` : ''}
             ${compactMode && iconType == 'no_icon' && 'icon icon-application'}
             ${!menuItem.menuDirectualIconSet && !menuItem.menuRemixIcon
