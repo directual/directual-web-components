@@ -956,7 +956,7 @@ export default function FpsForm2(props) {
       setModel(copyModel)
 
       // удаляем из extendedModel
-      let extendedArrayLink = _.get(copyExtendedModel, field)
+      let extendedArrayLink = _.get(copyExtendedModel, field) || []
       _.remove(extendedArrayLink, (item) => item.id === id);
       _.set(copyExtendedModel, field, extendedArrayLink)
       setExtendedModel(copyExtendedModel)
@@ -971,7 +971,7 @@ export default function FpsForm2(props) {
       setModel(copyModel)
 
       // добавляем в extendedModel
-      let extendedArrayLink = _.get(copyExtendedModel, field)
+      let extendedArrayLink = _.get(copyExtendedModel, field) || []
       _.set(copyExtendedModel, field, [...extendedArrayLink, object])
       setExtendedModel(copyExtendedModel)
     }
@@ -980,7 +980,7 @@ export default function FpsForm2(props) {
       // модель не меняется
 
       // заменяем в extendedModel
-      let extendedArrayLink = _.get(copyExtendedModel, field)
+      let extendedArrayLink = _.get(copyExtendedModel, field) || []
       _.set(copyExtendedModel, field, extendedArrayLink.map(i => i.id == id ? object : i))
       setExtendedModel(copyExtendedModel)
     }
