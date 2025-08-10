@@ -63,7 +63,7 @@ export default function ElementArray(props) {
     } else {
         console.log("tableData is not array")
         console.log(tableData)
-        return <div>!</div>
+        return <div>loading...</div>
     }
 
     return <div className={`${styles.form2ArrayLink} FPS_FORM2_ARRAY_LINK`}>
