@@ -147,6 +147,9 @@ function TableRow(props) {
             endpoint,
             body,
             (result, content) => {
+                console.log("sendObject result")
+                console.log(result)
+                console.log(content)
                 finish && finish(_.get(content, "result.data[0]"))
                 setIsSending(false)
             },
