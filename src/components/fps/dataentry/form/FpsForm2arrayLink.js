@@ -14,6 +14,16 @@ import FormSteps from './FormSteps'
 import { template } from '../../templating/template'
 import _ from 'lodash'
 
+// Безопасный парсинг JSON, не крашится если говно
+const safeJsonParse = (jsonString, fallback = []) => {
+    try {
+        if (!jsonString) return fallback
+        return JSON.parse(jsonString) || fallback
+    } catch (error) {
+        console.warn('Не смог распарсить JSON, хуйня какая-то:', jsonString, error)
+        return fallback
+    }
+}
 
 const SafeInnerHTML = ({ html, label = 'unknown', ...props }) => {
     if (html === null || html === undefined) {
@@ -34,7 +44,7 @@ export default function ElementArray(props) {
     // console.log(tableData)
     // ================================================
 
-    const tableColumns = JSON.parse(_.get(element, "array.table.rawData")) || []
+    const tableColumns = safeJsonParse(_.get(element, "array.table.rawData"), [])
     const tableData = _.get(extendedModel, _.get(element, "array.table.field")) || []
     const add_on = _.get(element, "array.table.add")
     const delete_on = _.get(element, "array.table.delete")

@@ -9,6 +9,15 @@ import { FormSection } from '../../dataentry/form/FpsForm'
 import Hint from '../../hint/hint'
 import _ from 'lodash'
 import moment from 'moment'
+import InnerHTML from 'dangerously-set-html-content'
+
+const SafeInnerHTML = ({ html, label = 'unknown', ...props }) => {
+    if (html === null || html === undefined) {
+        console.error('[CARDS2 DEBUG] html prop is ' + html + ' for ' + label, { html: html, label: label })
+        return null
+    }
+    return <InnerHTML {...props} allowRerender={true} html={html} />
+};
 
 export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters, onFilter, currentDQL,
     chartFilters, displayChartFilters, updateChartFilters, chartLines, clearChartFilters, callEndpoint,
@@ -32,7 +41,7 @@ export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters,
             {(displayFilters || tableQuickSearch || tableTitle || displayChartFilters) &&
                 <div className={`${styles.tableTitle} ${styles[currentBP]}`}>
                     {tableTitle && <div className={styles.tableTitleWrapper}>
-                        <h2><span>{tableTitle}</span></h2>
+                        <h2><span><SafeInnerHTML html={tableTitle} allowRerender={true} /></span></h2>
                     </div>}
 
                     {(displayFilters || displayChartFilters) && //!tableQuickSearch &&
