@@ -58,11 +58,11 @@ export default function ElementArray(props) {
     if (!_.get(element, "array.table.field")) return <div />
 
     if (_.isArray(tableData)) {
-        console.log("tableData is array")
-        console.log(tableData)
+        // console.log("tableData is array")
+        // console.log(tableData)
     } else {
-        console.log("tableData is not array")
-        console.log(tableData)
+        // console.log("tableData is not array")
+        // console.log(tableData)
         return <div>loading...</div>
     }
 
