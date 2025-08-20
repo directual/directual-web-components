@@ -52,7 +52,7 @@ export default function TabsPane({ tabs, type, onDivRef, loading, currentTabKey,
         }
     }, []);
 
-    return (<div style={{ height: "100%" }}
+    return (<div style={{ height: fixedScroll ? "100%" : "auto" }}
     >
         {/* current = {currentTab} <br /> */}
         <div className={`${styles.tabsPane} ${fixedScroll && styles.fixedScroll} D_FPS_TABPANE ${type ? styles[type] : ""}`} style={style}>
