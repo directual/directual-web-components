@@ -14,6 +14,7 @@ export default function ActionPanel(props) {
                 `}
             style={
                 {
+                    flexWrap: props.nowrap ? "nowrap" : "wrap",
                     marginTop: props.margin && props.margin.top,
                     marginBottom: props.margin && props.margin.bottom,
                     marginLeft: props.margin && props.margin.left,
