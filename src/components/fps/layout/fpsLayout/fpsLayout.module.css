@@ -1,8 +1,12 @@
 .fpsLayout {
   position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 .fpsLayout .layoutHeader {
-  margin: 24px 0 0 24px;
+  padding: 24px 0 0 24px;
   line-height: 1em;
 }
 .section {

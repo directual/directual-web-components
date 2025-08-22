@@ -89,9 +89,11 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
   return (
     (tabs && tabs[0]) ? <div className={`${styles.fpsLayout} D_FPS_LAYOUT`} ref={layoutRef}>
       {layout.showHeader && layout.header && <h1 className={`${styles.layoutHeader} D_FPS_LAYOUT_HEADER`}>{layout.header}</h1>}
-      {tabs && <TabsPane type={_.get(data,"themeSettings.tabsStyle")} fpsTabs hideSingleTab tabs={tabs} saveTabToURL onChangeTab={onChangeTab} //currentTabKey={tabs[0].key}
-        fixedScroll
-      />}
+      {tabs &&
+        <div style={{ position: 'relative', overflow: 'hidden' }}>
+          <TabsPane type={_.get(data, "themeSettings.tabsStyle")} fpsTabs hideSingleTab tabs={tabs} saveTabToURL onChangeTab={onChangeTab} //currentTabKey={tabs[0].key}
+            fixedScroll
+          /></div>}
     </div> : <div />)
 }
 
@@ -121,7 +123,7 @@ const Section = ({ section, currentBP, callEndpoint, data, auth, fullHeight }) =
   function template(input) {
 
     if (!input || input == "{{undefined}}" || input == "{{null}}") return ""
-    let templateData = { WebUser: {...auth, id: auth.user } };
+    let templateData = { WebUser: { ...auth, id: auth.user } };
 
     // Function to convert object references to their desired string representation paths
     const preprocessTemplate = (str, data) => {
@@ -346,7 +348,7 @@ const Section = ({ section, currentBP, callEndpoint, data, auth, fullHeight }) =
   const maxWidth = _.get(section, 'maxWidth') || _.get(section, 'maxWidth') === 0 ? _.get(section, 'maxWidth') : 'none'
   const align = _.get(section, 'align')
 
-  const isFullHeight =  _.get(section, 'fullHeight', false)
+  const isFullHeight = _.get(section, 'fullHeight', false)
 
   const maxFullHeight = isFullHeight ? (fullHeight - marginTop - marginBottom - paddingTop - paddingBottom) : 'auto'
 
@@ -381,7 +383,7 @@ const Column = ({ column, row, last, section, maxFullHeight, isFullHeight, curre
   // Передаем maxFullHeight в функцию рендера или клонируем элемент
   const renderWithProps = column.render && typeof column.render === 'function'
     ? column.render(currentBP, { maxFullHeight: isFullHeight ? maxFullHeight : 'auto', isFullHeight })
-    : column.render && React.isValidElement(column.render) 
+    : column.render && React.isValidElement(column.render)
       ? React.cloneElement(column.render, { maxFullHeight: isFullHeight ? maxFullHeight : 'auto', isFullHeight })
       : column.render;
 
