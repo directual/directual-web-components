@@ -20,11 +20,11 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
   const layoutRef = useRef(null);
   const [currentBP, setCurrentBP] = useState('desktop')
   const [layoutWidth, setLayoutWidth] = useState(brakePoints[currentBP].display)
+  const [fullHeight, setFullHeight] = useState(null)
   const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
 
-  // Вычисляем высоту D_FPS_TAB_WRAPPER, который находится ниже по дереву. Если не нашли — "auto".
-  const fullHeight = (() => {
-    // Берём текущий ref и ищем внутри него
+  // Функция для вычисления высоты D_FPS_TAB_WRAPPER
+  const calculateFullHeight = () => {
     if (!layoutRef.current) return null;
     
     const tabWrapper = layoutRef.current.querySelector('.D_FPS_TAB_WRAPPER');
@@ -33,7 +33,43 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
     }
     
     return null;
-  })();
+  };
+
+  // Пересчитываем fullHeight когда меняется DOM или размеры
+  useEffect(() => {
+    const updateHeight = () => {
+      const newHeight = calculateFullHeight();
+      if (newHeight !== fullHeight) {
+        setFullHeight(newHeight);
+      }
+    };
+
+    // Обновляем сразу
+    updateHeight();
+
+    // Наблюдаем за изменениями в DOM
+    const observer = new MutationObserver(updateHeight);
+    const resizeObserver = new ResizeObserver(updateHeight);
+
+    if (layoutRef.current) {
+      observer.observe(layoutRef.current, { 
+        childList: true, 
+        subtree: true, 
+        attributes: true,
+        attributeFilter: ['class', 'style']
+      });
+      
+      const tabWrapper = layoutRef.current.querySelector('.D_FPS_TAB_WRAPPER');
+      if (tabWrapper) {
+        resizeObserver.observe(tabWrapper);
+      }
+    }
+
+    return () => {
+      observer.disconnect();
+      resizeObserver.disconnect();
+    };
+  }, [fullHeight]);
 
   console.log("fullHeight", fullHeight)
 
