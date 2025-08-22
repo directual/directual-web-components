@@ -90,7 +90,7 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
     (tabs && tabs[0]) ? <div className={`${styles.fpsLayout} D_FPS_LAYOUT`} ref={layoutRef}>
       {layout.showHeader && layout.header && <h1 className={`${styles.layoutHeader} D_FPS_LAYOUT_HEADER`}>{layout.header}</h1>}
       {tabs && <TabsPane type={_.get(data,"themeSettings.tabsStyle")} fpsTabs hideSingleTab tabs={tabs} saveTabToURL onChangeTab={onChangeTab} //currentTabKey={tabs[0].key}
-      //fixedScroll
+        fixedScroll
       />}
     </div> : <div />)
 }
@@ -346,9 +346,9 @@ const Section = ({ section, currentBP, callEndpoint, data, auth, fullHeight }) =
   const maxWidth = _.get(section, 'maxWidth') || _.get(section, 'maxWidth') === 0 ? _.get(section, 'maxWidth') : 'none'
   const align = _.get(section, 'align')
 
-  const isFullHeight =  _.get(section, 'fullHeight')
+  const isFullHeight =  _.get(section, 'fullHeight', false)
 
-  const maxFullHeight = fullHeight ? (fullHeight - marginTop - marginBottom - paddingTop - paddingBottom) : 'auto'
+  const maxFullHeight = isFullHeight ? (fullHeight - marginTop - marginBottom - paddingTop - paddingBottom) : 'auto'
 
   return <div className={`${styles.section} ${_.get(section, "cssClass")} ${align == 'center' ? styles.alignCenter : ''}`}
     style={{
@@ -385,7 +385,8 @@ const Column = ({ column, row, last, section, maxFullHeight, isFullHeight, curre
       ? React.cloneElement(column.render, { maxFullHeight: isFullHeight ? maxFullHeight : 'auto', isFullHeight })
       : column.render;
 
-  return <div className={`${styles.column} D_FPS_LAYOUT_COLUMN`} style={{ width: row ? column.size + '%' : 'auto', height: maxFullHeight ? maxFullHeight : 'auto' }}>
+  return <div className={`${styles.column} D_FPS_LAYOUT_COLUMN`}
+    style={{ width: row ? column.size + '%' : 'auto', height: isFullHeight ? maxFullHeight : 'auto' }}>
     <ComponentWrapper last={last} section={section} row={row}>
       {renderWithProps}
     </ComponentWrapper>

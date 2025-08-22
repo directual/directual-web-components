@@ -32,13 +32,13 @@ export default function FpsChat(props) {
     const scrollableDivRef = useRef(null);
     const abortControllerRef = useRef(null);
 
-    console.log("DEBUG chat.js:35")
-    console.log("maxFullHeight", maxFullHeight)
-    console.log("isFullHeight", isFullHeight)
+    // console.log("DEBUG chat.js:35")
+    // console.log("maxFullHeight", maxFullHeight)
+    // console.log("isFullHeight", isFullHeight)
 
     const user = auth.user;
 
-    console.log("currentBP = " + currentBP)
+    // console.log("currentBP = " + currentBP)
 
     const debug = false;
 
@@ -366,7 +366,7 @@ export default function FpsChat(props) {
                 user={user}
                 socket={socket}
                 {...props}
-                height={_.get(data, "params.chat_height") || 300}
+                height={_.get(data, "params.chat_height") || 'auto'}
                 message={message}
                 editMessage={editMessage}
                 actionLoading={actionLoading}

@@ -11,6 +11,12 @@ const layoutExample = {
             "title": "Tab 1",
             "onlyAuth": false,
             "roles": null
+        },
+        {
+            "id": "tab_1755875373092",
+            "title": "Tab 2",
+            "onlyAuth": false,
+            "roles": null
         }
     ],
     "sections": {
@@ -75,6 +81,28 @@ const layoutExample = {
                     "marginBottom": "0",
                     "marginLeft": "0"
                 }
+            }
+        ],
+        "tab_1755875373092": [
+            {
+                "id": "section_1755875375350",
+                "tab": "tab_1755875373092",
+                "columns": [
+                    {
+                        "id": "column_1755875375350",
+                        "content": {
+                            "clazz": "FpsMarkdown",
+                            "id": "comp_1755875380867"
+                        },
+                        "size": 100
+                    }
+                ],
+                "flexDirection": {
+                    "mobile": "column",
+                    "tablet": "row",
+                    "desktop": "row"
+                },
+                "cssClass": "check"
             }
         ]
     }

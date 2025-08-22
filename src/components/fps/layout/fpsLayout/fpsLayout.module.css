@@ -1,3 +1,6 @@
+.fpsLayout {
+  position: relative;
+}
 .fpsLayout .layoutHeader {
   margin: 24px 0 0 24px;
   line-height: 1em;
