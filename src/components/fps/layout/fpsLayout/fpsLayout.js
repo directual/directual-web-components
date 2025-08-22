@@ -35,10 +35,10 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
       }
       node = node.parentNode;
     }
-    return "auto";
+    return null;
   })();
 
-  console.log("fullHeight", fullHeight)
+  // console.log("fullHeight", fullHeight)
 
   // Calculating layout width:
   useEffect(() => {
@@ -81,7 +81,7 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
     if (localLoading) return <div style={{ margin: 24 }}><Loader>{dict[lang].loading}</Loader></div>
     if (!layout.sections[tabId] || layout.sections[tabId].length == 0) return <div />
     return <div>
-      {layout.sections[tabId].map(section => <Section auth={auth} callEndpoint={callEndpoint} data={data} key={section.id} section={section} currentBP={currentBP} />)}
+      {layout.sections[tabId].map(section => <Section fullHeight={fullHeight} auth={auth} callEndpoint={callEndpoint} data={data} key={section.id} section={section} currentBP={currentBP} />)}
     </div>
   }
   const tabs = layout.tabs.map(tab => { return { ...tab, key: tab.id, content: composeTabsContent(tab.id) } })
@@ -95,7 +95,7 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
     </div> : <div />)
 }
 
-const Section = ({ section, currentBP, callEndpoint, data, auth }) => {
+const Section = ({ section, currentBP, callEndpoint, data, auth, fullHeight }) => {
 
   // console.log('section')
   // console.log(section)
@@ -307,26 +307,9 @@ const Section = ({ section, currentBP, callEndpoint, data, auth }) => {
   }
 
   const callEndpointHandle = () => {
-
     const finish = (status, data) => {
       setHideSection(checkHidden(_.get(section, "_visibilityConditions"), flatternModel(_.get(data, "[0]"))))
     }
-    // fake request
-
-    // setTimeout(()=>{
-    //     const fakeData = [
-    //       {
-    //           "status": {
-    //               "id": "new",
-    //               "status": "New"
-    //           },
-    //           "amount_tons": 0.1,
-    //           "id": "d074abd8-293c-40ae-ae8f-32f1564ce031"
-    //       }
-    //   ]
-    //     finish('ok', fakeData)
-    // }, 1000)
-
     callEndpoint && callEndpoint(section._visibilityEndpoint, "GET", {}, {}, finish)
   }
 
@@ -363,6 +346,10 @@ const Section = ({ section, currentBP, callEndpoint, data, auth }) => {
   const maxWidth = _.get(section, 'maxWidth') || _.get(section, 'maxWidth') === 0 ? _.get(section, 'maxWidth') : 'none'
   const align = _.get(section, 'align')
 
+  const isFullHeight =  _.get(section, 'fullHeight')
+
+  const maxFullHeight = fullHeight ? (fullHeight - marginTop - marginBottom - paddingTop - paddingBottom) : 'auto'
+
   return <div className={`${styles.section} ${_.get(section, "cssClass")} ${align == 'center' ? styles.alignCenter : ''}`}
     style={{
       flexDirection: section.flexDirection[correctedBP],
@@ -375,21 +362,29 @@ const Section = ({ section, currentBP, callEndpoint, data, auth }) => {
       paddingLeft: parseInt(paddingLeft),
       paddingRight: parseInt(paddingRight),
       maxWidth: parseInt(maxWidth),
+      height: isFullHeight ? maxFullHeight : 'auto'
     }}>
     {section.columns.map((column, i) => <Column
       section={section}
       last={section.columns.length == i + 1}
       key={column.id}
+      maxFullHeight={maxFullHeight}
+      isFullHeight={isFullHeight}
       row={section.flexDirection[correctedBP] == 'row'}
       column={column} />)}
   </div>
 }
 
-const Column = ({ column, row, last, section }) => {
+const Column = ({ column, row, last, section, maxFullHeight }) => {
 
-  return <div className={`${styles.column} D_FPS_LAYOUT_COLUMN`} style={{ width: row ? column.size + '%' : 'auto' }}>
+  // Клонируем компонент и передаем maxFullHeight как проп
+  const renderWithProps = column.render && React.isValidElement(column.render) 
+    ? React.cloneElement(column.render, { maxFullHeight, isFullHeight })
+    : column.render;
+
+  return <div className={`${styles.column} D_FPS_LAYOUT_COLUMN`} style={{ width: row ? column.size + '%' : 'auto', height: maxFullHeight ? maxFullHeight : 'auto' }}>
     <ComponentWrapper last={last} section={section} row={row}>
-      {column.render}
+      {renderWithProps}
     </ComponentWrapper>
   </div>
 }

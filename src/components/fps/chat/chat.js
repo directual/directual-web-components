@@ -25,7 +25,9 @@ function sanitizedHTML(inputHTML) {
     });
 }
 export default function FpsChat(props) {
-    const { auth, data, callEndpoint, onEvent, socket, id, locale, handleRoute, currentBP = 'tablet' } = props;
+    const { auth, data, callEndpoint, onEvent, socket, id, locale, handleRoute, currentBP = 'tablet',
+        maxFullHeight = 'auto', isFullHeight = false
+    } = props;
     const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'; // Determine the language
     const scrollableDivRef = useRef(null);
     const abortControllerRef = useRef(null);
@@ -337,7 +339,9 @@ export default function FpsChat(props) {
     }, [state.chatID]);
 
     return (
-        <div className={`${styles.chat} FPS_CHAT`}>
+        <div className={`${styles.chat} FPS_CHAT`}
+            style={{ height: isFullHeight ? maxFullHeight - 3 : 'auto' }}
+        >
             {(!isMobile || showContacts) && <Contacts
                 chooseChat={chooseChat}
                 globalLoading={globalLoading}
@@ -529,7 +533,7 @@ function ChatMessages(props) {
                         {state.messages.length == 0 && <div className={styles.chat_messages_blank}>
                             <SomethingWentWrong icon="ban" message={dict[props.locale].chat.noMessages} />
                         </div>}
-                        { state.messages.map(text => <ChatMessage
+                        {state.messages.map(text => <ChatMessage
                             {...props}
                             message={message}
                             text={text}
