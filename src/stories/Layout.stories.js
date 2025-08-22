@@ -3,56 +3,59 @@ import { FpsLayout } from '../components/fps/layout/fpsLayout/fpsLayout';
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 
 const layoutExample = {
-    "isCustom": "custom",
+    "showHeader": false,
+    "header": "",
     "tabs": [
         {
-            "id": "tab_1716886796808",
+            "id": "tab_01",
             "title": "Tab 1",
             "onlyAuth": false,
             "roles": null
         }
     ],
     "sections": {
-        "tab_1716886796808": [
+        "tab_01": [
             {
-                "id": "section_1716887302488",
-                "tab": "tab_1716886796808",
-                "columns": [
-                    {
-                        "id": "column_1716887302488",
-                        "content": {
-                            "clazz": "FpsHint",
-                            "id": "comp_1716887452263"
-                        },
-                        "size": 100
-                    }
-                ],
+                "id": "section_01",
+                "onlyAuth": false,
+                "roles": null,
                 "flexDirection": {
                     "mobile": "column",
                     "tablet": "row",
                     "desktop": "row"
                 },
-                "_visibilityEndpoint": "getBillByID",
-                "_visibilityConditions": {
-                    "_conditions": [
-                        {
-                            "id": "condition_1716887423885",
-                            "_conditionalView_field": "status",
-                            "_conditionalView_operator": "!==",
-                            "_conditionalView_value": "new"
-                        }
-                    ]
+                "columns": [
+                    {
+                        "id": "column_01",
+                        "content": {
+                            "clazz": "FpsPlugin",
+                            "id": "comp_1750238775553",
+                            "extend": "FpsChat",
+                            "plugin": "FpsPlugin_com.directual.core.domain.plugin.ExternalPlugin:FpsChat:1736941852478",
+                            "component": "FpsPlugin_com.directual.core.domain.plugin.ExternalPlugin:FpsChat:1736941852478"
+                        },
+                        "size": 100
+                    }
+                ],
+                "spacing": {
+                    "marginTop": "0",
+                    "marginRight": "0",
+                    "marginBottom": "0",
+                    "marginLeft": "0"
                 }
             },
             {
-                "id": "section_1716887302488_copy_1716887468798",
-                "tab": "tab_1716886796808",
+                "id": "section_1750354386426",
+                "tab": "tab_01",
                 "columns": [
                     {
-                        "id": "column_1716887302488_copy_1716887468798",
+                        "id": "column_1750354386426",
                         "content": {
-                            "clazz": "FpsHint",
-                            "id": "copy_comp_.hukj8fslr67"
+                            "clazz": "FpsPlugin",
+                            "id": "comp_1750354390376",
+                            "extend": null,
+                            "plugin": "FpsPlugin_com.directual.core.domain.plugin.ExternalPlugin:socketio:1660916044782",
+                            "component": "FpsPlugin_com.directual.core.domain.plugin.ExternalPlugin:socketio:1660916044782"
                         },
                         "size": 100
                     }
@@ -62,16 +65,11 @@ const layoutExample = {
                     "tablet": "row",
                     "desktop": "row"
                 },
-                "_visibilityEndpoint": "getBillByID",
-                "_visibilityConditions": {
-                    "_conditions": [
-                        {
-                            "id": "condition_1716887423885",
-                            "_conditionalView_field": "status",
-                            "_conditionalView_operator": "!==",
-                            "_conditionalView_value": "new"
-                        }
-                    ]
+                "spacing": {
+                    "marginTop": "0",
+                    "marginRight": 24,
+                    "marginBottom": "0",
+                    "marginLeft": 24
                 }
             }
         ]
