@@ -29,7 +29,7 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
     while (node) {
       if (
         node.classList &&
-        node.classList.contains('D_FPS_TAB_OUTER_WRAPPER')
+        node.classList.contains('D_FPS_TAB_WRAPPER')
       ) {
         return node.offsetHeight - 1;
       }
@@ -38,7 +38,7 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
     return null;
   })();
 
-  // console.log("fullHeight", fullHeight)
+  console.log("fullHeight", fullHeight)
 
   // Calculating layout width:
   useEffect(() => {
