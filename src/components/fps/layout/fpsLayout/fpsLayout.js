@@ -442,7 +442,7 @@ function ComponentWrapper(props) {
       }}>
 
       {/* For Production / For Storybook testing:  */}
-      {props.children ? props.children(currentBP) :
+      {props.children ? (typeof props.children === 'function' ? props.children(currentBP) : props.children) :
         <div style={{ height: 100, backgroundColor: 'lightcoral', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0.5 }}>
           <code>development mode</code></div>}
 
