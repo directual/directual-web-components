@@ -29,7 +29,7 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
     while (node) {
       if (
         node.classList &&
-        node.classList.contains('D_FPS_TAB_WRAPPER')
+        node.classList.contains('D_FPS_TAB_OUTER_WRAPPER')
       ) {
         return node.offsetHeight - 1;
       }
@@ -90,7 +90,7 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
     (tabs && tabs[0]) ? <div className={`${styles.fpsLayout} D_FPS_LAYOUT`} ref={layoutRef}>
       {layout.showHeader && layout.header && <h1 className={`${styles.layoutHeader} D_FPS_LAYOUT_HEADER`}>{layout.header}</h1>}
       {tabs &&
-        <div style={{ position: 'relative', overflow: 'hidden' }}>
+        <div className={`${styles.tabsOuterWrapper} D_FPS_TAB_OUTER_WRAPPER`}>
           <TabsPane type={_.get(data, "themeSettings.tabsStyle")} fpsTabs hideSingleTab tabs={tabs} saveTabToURL onChangeTab={onChangeTab} //currentTabKey={tabs[0].key}
             fixedScroll
           /></div>}
