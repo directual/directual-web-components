@@ -375,12 +375,16 @@ const Section = ({ section, currentBP, callEndpoint, data, auth, fullHeight }) =
   </div>
 }
 
-const Column = ({ column, row, last, section, maxFullHeight }) => {
+const Column = ({ column, row, last, section, maxFullHeight, isFullHeight }) => {
 
   // Клонируем компонент и передаем maxFullHeight как проп
   const renderWithProps = column.render && React.isValidElement(column.render) 
-    ? React.cloneElement(column.render, { maxFullHeight, isFullHeight })
+    ? React.cloneElement(column.render, { maxFullHeight: isFullHeight ? maxFullHeight : 'auto', isFullHeight })
     : column.render;
+
+  console.log("DEBUG fpsLayout.js:385")
+  console.log("maxFullHeight", column.render)
+  console.log(React.isValidElement(column.render))
 
   return <div className={`${styles.column} D_FPS_LAYOUT_COLUMN`} style={{ width: row ? column.size + '%' : 'auto', height: maxFullHeight ? maxFullHeight : 'auto' }}>
     <ComponentWrapper last={last} section={section} row={row}>

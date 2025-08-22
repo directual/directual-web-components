@@ -26,11 +26,15 @@ function sanitizedHTML(inputHTML) {
 }
 export default function FpsChat(props) {
     const { auth, data, callEndpoint, onEvent, socket, id, locale, handleRoute, currentBP = 'tablet',
-        maxFullHeight = 'auto', isFullHeight = false
+        maxFullHeight, isFullHeight = false
     } = props;
     const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'; // Determine the language
     const scrollableDivRef = useRef(null);
     const abortControllerRef = useRef(null);
+
+    console.log("DEBUG chat.js:35")
+    console.log("maxFullHeight", maxFullHeight)
+    console.log("isFullHeight", isFullHeight)
 
     const user = auth.user;
 

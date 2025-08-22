@@ -38,11 +38,15 @@ const layoutExample = {
                     }
                 ],
                 "spacing": {
-                    "marginTop": "0",
-                    "marginRight": "0",
-                    "marginBottom": "0",
-                    "marginLeft": "0"
-                }
+                    "marginTop": "24",
+                    "marginRight": "24",
+                    "marginBottom": "24",
+                    "marginLeft": "24"
+                },
+                "maxWidth": null,
+                "align": "left",
+                "fullHeight": true,
+                "cssClass": "test"
             },
             {
                 "id": "section_1750354386426",
@@ -67,9 +71,9 @@ const layoutExample = {
                 },
                 "spacing": {
                     "marginTop": "0",
-                    "marginRight": 24,
+                    "marginRight": "0",
                     "marginBottom": "0",
-                    "marginLeft": 24
+                    "marginLeft": "0"
                 }
             }
         ]
