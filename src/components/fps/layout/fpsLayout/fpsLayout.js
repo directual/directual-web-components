@@ -35,7 +35,7 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
     return null;
   })();
 
-  // console.log("fullHeight", fullHeight)
+  console.log("fullHeight", fullHeight)
 
   // Calculating layout width:
   useEffect(() => {
@@ -89,7 +89,7 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
       {tabs &&
         <div className={`${styles.tabsOuterWrapper} D_FPS_TAB_OUTER_WRAPPER`}>
           <TabsPane type={_.get(data, "themeSettings.tabsStyle")} fpsTabs hideSingleTab tabs={tabs} saveTabToURL onChangeTab={onChangeTab} //currentTabKey={tabs[0].key}
-            fixedScroll
+            fixedScroll={_.get(data, "themeSettings.tabsStyle") == "fix_tabs"}
           /></div>}
     </div> : <div />)
 }
