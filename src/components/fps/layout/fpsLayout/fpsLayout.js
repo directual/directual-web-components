@@ -22,23 +22,20 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
   const [layoutWidth, setLayoutWidth] = useState(brakePoints[currentBP].display)
   const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
 
-  // Вычисляем высоту ближайшего родителя с классом D_FPS_outer_content_wrapper. Если не нашли — "auto".
+  // Вычисляем высоту D_FPS_TAB_WRAPPER, который находится ниже по дереву. Если не нашли — "auto".
   const fullHeight = (() => {
-    // Берём текущий ref
-    let node = layoutRef.current;
-    while (node) {
-      if (
-        node.classList &&
-        node.classList.contains('D_FPS_TAB_WRAPPER')
-      ) {
-        return node.offsetHeight - 1;
-      }
-      node = node.parentNode;
+    // Берём текущий ref и ищем внутри него
+    if (!layoutRef.current) return null;
+    
+    const tabWrapper = layoutRef.current.querySelector('.D_FPS_TAB_WRAPPER');
+    if (tabWrapper) {
+      return tabWrapper.offsetHeight - 1;
     }
+    
     return null;
   })();
 
-  console.log("fullHeight", fullHeight)
+  // console.log("fullHeight", fullHeight)
 
   // Calculating layout width:
   useEffect(() => {
