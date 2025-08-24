@@ -319,8 +319,8 @@ function MobileTab(props) {
                 >
                     <path
                         fill={currentRoute == tabConfig.linkToPage ?
-                            (tabConfig.menuRemixIconColorSelected || '#000000') :
-                            (tabConfig.menuRemixIconColor || '#000000')}
+                            (tabConfig.menuRemixIconColorSelected || 'var(--menu-item-selected)') :
+                            (tabConfig.menuRemixIconColor || 'var(--menu-item)')}
                         d={tabConfig.menuRemixIcon.Content}
                     ></path>
                 </svg>
@@ -338,8 +338,8 @@ function MobileTab(props) {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke={currentRoute == tabConfig.linkToPage ?
-                        (tabConfig.menuRemixIconColorSelected || '#000000') :
-                        (tabConfig.menuRemixIconColor || '#000000')}
+                        (tabConfig.menuRemixIconColorSelected || 'var(--menu-item-selected)') :
+                        (tabConfig.menuRemixIconColor || 'var(--menu-item)')}
                     strokeWidth={tabConfig.menuRemixIconStroke}
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -357,8 +357,8 @@ function MobileTab(props) {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke={currentRoute == tabConfig.linkToPage ?
-                        (tabConfig.menuRemixIconColorSelected || '#000000') :
-                        (tabConfig.menuRemixIconColor || '#000000')}
+                        (tabConfig.menuRemixIconColorSelected || 'var(--menu-item)') :
+                        (tabConfig.menuRemixIconColor || 'var(--menu-item-selected)')}
                     strokeWidth={tabConfig.menuRemixIconStroke}
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -1044,9 +1044,9 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke={currentRoute ==
-                                menuItem.linkToPage ? (menuItem.menuRemixIconColorSelected || '#000000') :
-                                isHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
-                                    (menuItem.menuRemixIconColor || '#000000')}
+                                menuItem.linkToPage ? (menuItem.menuRemixIconColorSelected || 'var(--menu-item-selected)') :
+                                isHovered ? (menuItem.menuRemixIconColorHover || 'var(--menu-item-hover)') :
+                                    (menuItem.menuRemixIconColor || 'var(--menu-item)')}
                             strokeWidth={menuItem.menuRemixIconStroke}
                             strokeLinecap="round"
                             strokeLinejoin="round"
@@ -1062,9 +1062,9 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke={currentRoute ==
-                                menuItem.linkToPage ? (menuItem.menuRemixIconColorSelected || '#000000') :
-                                isHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
-                                    (menuItem.menuRemixIconColor || '#000000')}
+                                menuItem.linkToPage ? (menuItem.menuRemixIconColorSelected || 'var(--menu-item-selected)') :
+                                isHovered ? (menuItem.menuRemixIconColorHover || 'var(--menu-item-hover)') :
+                                    (menuItem.menuRemixIconColor || 'var(--menu-item)')}
                             strokeWidth={menuItem.menuRemixIconStroke}
                             strokeLinecap="round"
                             strokeLinejoin="round"
@@ -1081,9 +1081,9 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
                         >
                             <path
                                 fill={currentRoute ==
-                                    menuItem.linkToPage ? (menuItem.menuRemixIconColorSelected || '#000000') :
-                                    isHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
-                                        (menuItem.menuRemixIconColor || '#000000')}
+                                    menuItem.linkToPage ? (menuItem.menuRemixIconColorSelected || 'var(--menu-item-selected)') :
+                                    isHovered ? (menuItem.menuRemixIconColorHover || 'var(--menu-item-hover)') :
+                                        (menuItem.menuRemixIconColor || 'var(--menu-item)')}
                                 d={menuItem.menuRemixIcon.Content}
                             ></path>
                         </svg>
@@ -1161,8 +1161,8 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke={currentRoute ==
-                                    isGroupHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
-                                    (menuItem.menuRemixIconColor || '#000000')}
+                                    isGroupHovered ? (menuItem.menuRemixIconColorHover || 'var(--menu-item-hover)') :
+                                    (menuItem.menuRemixIconColor || 'var(--menu-item)')}
                                 strokeWidth={menuItem.menuRemixIconStroke}
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
@@ -1178,8 +1178,8 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke={currentRoute ==
-                                    isGroupHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
-                                    (menuItem.menuRemixIconColor || '#000000')}
+                                    isGroupHovered ? (menuItem.menuRemixIconColorHover || 'var(--menu-item-hover)') :
+                                    (menuItem.menuRemixIconColor || '#var(--menu-item)')}
                                 strokeWidth={menuItem.menuRemixIconStroke}
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
@@ -1196,8 +1196,8 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
                             >
                                 <path
                                     fill={currentRoute ==
-                                        isGroupHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
-                                        (menuItem.menuRemixIconColor || '#000000')}
+                                        isGroupHovered ? (menuItem.menuRemixIconColorHover || 'var(--menu-item-hover)') :
+                                        (menuItem.menuRemixIconColor || 'var(--menu-item)')}
                                     d={menuItem.menuRemixIcon.Content}
                                 ></path>
                             </svg>
@@ -1290,9 +1290,9 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
                 >
                     <path
                         fill={currentRoute ==
-                            menuItem.linkToPage ? (menuItem.menuRemixIconColorSelected || '#000000') :
-                            isHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
-                                (menuItem.menuRemixIconColor || '#000000')}
+                            menuItem.linkToPage ? (menuItem.menuRemixIconColorSelected || 'var(--menu-item-selected)') :
+                            isHovered ? (menuItem.menuRemixIconColorHover || 'var(--menu-item-hover)') :
+                                (menuItem.menuRemixIconColor || 'var(--menu-item)')}
                         d={menuItem.menuRemixIcon.Content}
                     ></path>
                 </svg>
@@ -1308,9 +1308,9 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke={currentRoute ==
-                        menuItem.linkToPage ? (menuItem.menuRemixIconColorSelected || '#000000') :
-                        isHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
-                            (menuItem.menuRemixIconColor || '#000000')}
+                        menuItem.linkToPage ? (menuItem.menuRemixIconColorSelected || 'var(--menu-item-selected)') :
+                        isHovered ? (menuItem.menuRemixIconColorHover || 'var(--menu-item-hover)') :
+                            (menuItem.menuRemixIconColor || 'var(--menu-item)')}
                     strokeWidth={menuItem.menuRemixIconStroke}
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -1327,9 +1327,9 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke={currentRoute ==
-                        menuItem.linkToPage ? (menuItem.menuRemixIconColorSelected || '#000000') :
-                        isHovered ? (menuItem.menuRemixIconColorHover || '#000000') :
-                            (menuItem.menuRemixIconColor || '#000000')}
+                        menuItem.linkToPage ? (menuItem.menuRemixIconColorSelected || 'var(--menu-item-selected)') :
+                        isHovered ? (menuItem.menuRemixIconColorHover || 'var(--menu-item-hover)') :
+                            (menuItem.menuRemixIconColor || 'var(--menu-item)')}
                     strokeWidth={menuItem.menuRemixIconStroke}
                     strokeLinecap="round"
                     strokeLinejoin="round"
