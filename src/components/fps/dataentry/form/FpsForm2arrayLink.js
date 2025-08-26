@@ -127,30 +127,45 @@ export default function ElementArray(props) {
 
     // Handler для drag'n'drop сортировки
     const onDragStart = (start) => {
-        // Копируем ширины ячеек перед началом драга
-        const draggedRow = document.querySelector(`[data-rbd-draggable-id="${start.draggableId}"]`)
-        if (draggedRow) {
-            const cells = draggedRow.querySelectorAll('td')
-            cells.forEach((cell, index) => {
-                const width = cell.offsetWidth
-                cell.style.width = `${width}px`
-                cell.style.minWidth = `${width}px`
-                cell.style.maxWidth = `${width}px`
-            })
+        // Находим таблицу и фиксируем ширины всех ячеек во всех строках
+        const table = document.querySelector('[data-sortable="true"] .form2Table')
+        if (table) {
+            // Сначала получаем ширины из первой строки (header или первая data row)
+            const firstRow = table.querySelector('thead tr') || table.querySelector('tbody tr')
+            if (firstRow) {
+                const headerCells = firstRow.querySelectorAll('th, td')
+                const columnWidths = Array.from(headerCells).map(cell => cell.offsetWidth)
+                
+                // Применяем эти ширины ко всем строкам
+                const allRows = table.querySelectorAll('tbody tr')
+                allRows.forEach(row => {
+                    const cells = row.querySelectorAll('td')
+                    cells.forEach((cell, index) => {
+                        if (columnWidths[index]) {
+                            cell.style.width = `${columnWidths[index]}px`
+                            cell.style.minWidth = `${columnWidths[index]}px`
+                            cell.style.maxWidth = `${columnWidths[index]}px`
+                        }
+                    })
+                })
+            }
         }
     }
 
     const onDragEnd = (result) => {
         // Убираем фиксированные ширины после драга
-        const allRows = document.querySelectorAll('[data-rbd-draggable-id]')
-        allRows.forEach(row => {
-            const cells = row.querySelectorAll('td')
-            cells.forEach(cell => {
-                cell.style.width = ''
-                cell.style.minWidth = ''
-                cell.style.maxWidth = ''
+        const table = document.querySelector('[data-sortable="true"] .form2Table')
+        if (table) {
+            const allRows = table.querySelectorAll('tbody tr')
+            allRows.forEach(row => {
+                const cells = row.querySelectorAll('td')
+                cells.forEach(cell => {
+                    cell.style.width = ''
+                    cell.style.minWidth = ''
+                    cell.style.maxWidth = ''
+                })
             })
-        })
+        }
 
         if (!result.destination) {
             return; // Dropped outside the list
