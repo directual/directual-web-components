@@ -25,6 +25,64 @@ const safeJsonParse = (jsonString, fallback = []) => {
     }
 }
 
+// Парсинг imask из строки (скопировано из FpsForm2Input)
+const parseWithCustomTypes = (str) => {
+    if (!str) return;
+    // Replace recognized type strings with actual constructors or RegExp/Date objects
+    var typeReplacedStr = str
+    try {
+        typeReplacedStr = str
+            .replace(/:\s*Number/g, ': Number')
+            .replace(/:\s*Boolean/g, ': Boolean')
+            .replace(/:\s*String/g, ': String')
+            .replace(/:\s*\/(.*?)\//g, (_, regex) => `: new RegExp(${JSON.stringify(regex)})`)
+            .replace(/:\s*new Date\('(.+?)'\)/g, (_, dateStr) => `: new Date('${dateStr}')`);
+    } catch (error) {
+        console.error("Parsing error:", error);
+    }
+    try {
+        // Evaluate the string safely (ensure the string is from a trusted source)
+        return new Function('return (' + typeReplacedStr + ')')();
+    } catch (error) {
+        console.error("Parsing error:", error);
+        return null;
+    }
+};
+
+// Получение информации о поле из linked структуры
+const getLinkedFieldInfo = (fieldSysName, arrayLinkField, data) => {
+    // Находим информацию об arrayLink поле в филдах
+    const arrayLinkFieldInfo = _.find(_.get(data, "fileds"), { sysName: arrayLinkField }) || 
+                               _.find(_.get(data, "headers"), { sysName: arrayLinkField })
+    
+    if (!arrayLinkFieldInfo || !arrayLinkFieldInfo.link) {
+        return null
+    }
+    
+    // Находим структуру по link name
+    const linkedStructure = _.find(_.get(data, "structures"), (struct) => struct.sysName === arrayLinkFieldInfo.link)
+    
+    if (!linkedStructure) {
+        return null
+    }
+    
+    // Парсим jsonObject чтобы найти поле
+    const fields = safeJsonParse(linkedStructure.jsonObject, [])
+    const fieldInfo = _.find(fields, { sysName: fieldSysName })
+    
+    return fieldInfo
+}
+
+// Получение imask для поля
+const getFieldImask = (fieldSysName, arrayLinkField, data) => {
+    const fieldInfo = getLinkedFieldInfo(fieldSysName, arrayLinkField, data)
+    if (!fieldInfo || !fieldInfo.formatOptions || !fieldInfo.formatOptions.imask) {
+        return null
+    }
+    
+    return parseWithCustomTypes(fieldInfo.formatOptions.imask)
+}
+
 const SafeInnerHTML = ({ html, label = 'unknown', ...props }) => {
     if (html === null || html === undefined) {
         console.error(`[CARDS2 DEBUG] html prop is ${html} for ${label}`, { html, label });
@@ -34,17 +92,19 @@ const SafeInnerHTML = ({ html, label = 'unknown', ...props }) => {
 };
 
 export default function ElementArray(props) {
-    const { element, state, setState, extendedModel, editModelAL, model, currentBP, checkHidden, callEndpointPOST } = props
+    const { element, state, setState, extendedModel, data, editModelAL, model, currentBP, checkHidden, callEndpointPOST } = props
 
     // DEBUG ==========================================
-    // console.log("ElementArray")
-    // console.log(element)
+    console.log("data")
+    console.log(data)
+    console.log(element)
     // console.log(extendedModel)
     // console.log(tableColumns)
     // console.log(tableData)
     // ================================================
 
-    const tableColumns = safeJsonParse(_.get(element, "array.table.rawData"), [])
+    const tableColumns = _.get(element, "array.table.rawData") ? safeJsonParse(_.get(element, "array.table.rawData"), []) :
+        _.get(element, "array.table.data") || []
     const tableData = _.get(extendedModel, _.get(element, "array.table.field")) || []
     const add_on = _.get(element, "array.table.add")
     const delete_on = _.get(element, "array.table.delete")
@@ -83,6 +143,8 @@ export default function ElementArray(props) {
                     edit_on={edit_on}
                     callEndpointPOST={callEndpointPOST}
                     endpoint={endpoint}
+                    data={data}
+                    arrayLinkField={_.get(element, "array.table.field")}
                     deleteRow={() => {
                         editModelAL(_.get(element, "array.table.field"))('delete', item.id)
                     }}
@@ -98,6 +160,8 @@ export default function ElementArray(props) {
                     tempItem={tempItem}
                     setTempItem={setTempItem}
                     endpoint={endpoint}
+                    data={data}
+                    arrayLinkField={_.get(element, "array.table.field")}
                     cancelAdding={() => {
                         setIsAdding(false)
                         setTempItem({})
@@ -120,7 +184,8 @@ export default function ElementArray(props) {
 
 function TableRow(props) {
     const { item, tableColumns, delete_on, deleteRow, edit_on, onFinishEditing,
-        adding, setTempItem, tempItem, cancelAdding, onFinishAdding, callEndpointPOST, endpoint } = props
+        adding, setTempItem, tempItem, cancelAdding, onFinishAdding, callEndpointPOST, endpoint,
+        data, arrayLinkField } = props
 
     const [isEditing, setIsEditing] = useState(false)
     const [editingItem, setEditingItem] = useState(item)
@@ -135,12 +200,12 @@ function TableRow(props) {
 
     function flattenObject(obj) {
         return _.mapValues(obj, value => {
-          if (_.isPlainObject(value) && 'id' in value) {
-            return value.id
-          }
-          return value
+            if (_.isPlainObject(value) && 'id' in value) {
+                return value.id
+            }
+            return value
         })
-      }
+    }
 
     const sendObject = (finish) => {
         // пуляем объект в дополнительный эндпоинт
@@ -168,13 +233,24 @@ function TableRow(props) {
 
     if (isEditing) {
         return <tr>
-            {tableColumns.map(column => <td key={column.id}>
-                <Input nomargin type="string"
-                    disabled={isSending}
-                    placeholder={column.title || column.id}
-                    defaultValue={getValue(_.get(editingItem, column.id))}
-                    onChange={value => { setEditingItem({ ...editingItem, [column.id]: value }) }} />
-            </td>)}
+            {tableColumns.map(column => {
+                const fieldImask = getFieldImask(column.id, arrayLinkField, data)
+                console.log(`[EDITING] Field ${column.id} imask:`, fieldImask)
+                const inputProps = {
+                    nomargin: true,
+                    type: "string",
+                    disabled: isSending,
+                    placeholder: column.title || column.id,
+                    defaultValue: getValue(_.get(editingItem, column.id)),
+                    onChange: value => { setEditingItem({ ...editingItem, [column.id]: value }) }
+                }
+                if (fieldImask) {
+                    inputProps.imask = fieldImask
+                }
+                return <td key={column.id}>
+                    <Input {...inputProps} />
+                </td>
+            })}
             <td><ActionPanel>
                 <Button icon="done" verySmall transparent height={32} onClick={() => { sendObject(onFinishEditing); setIsEditing(false) }} />
                 <Button icon="ban" verySmall transparent height={32} onClick={() => { setIsEditing(false) }} />
@@ -184,13 +260,24 @@ function TableRow(props) {
 
     if (adding) {
         return <tr>
-            {tableColumns.map(column => <td key={column.id}>
-                <Input nomargin type="string"
-                    disabled={isSending}
-                    placeholder={column.title || column.id}
-                    defaultValue={_.get(tempItem, column.id)}
-                    onChange={value => { setTempItem({ ...tempItem, [column.id]: value }) }} />
-            </td>)}
+            {tableColumns.map(column => {
+                const fieldImask = getFieldImask(column.id, arrayLinkField, data)
+                console.log(`[ADDING] Field ${column.id} imask:`, fieldImask)
+                const inputProps = {
+                    nomargin: true,
+                    type: "string",
+                    disabled: isSending,
+                    placeholder: column.title || column.id,
+                    defaultValue: _.get(tempItem, column.id),
+                    onChange: value => { setTempItem({ ...tempItem, [column.id]: value }) }
+                }
+                if (fieldImask) {
+                    inputProps.imask = fieldImask
+                }
+                return <td key={column.id}>
+                    <Input {...inputProps} />
+                </td>
+            })}
             <td><ActionPanel>
                 <Button icon="done" verySmall transparent height={32} onClick={() => sendObject(onFinishAdding)} />
                 <Button icon="ban" verySmall transparent height={32} onClick={cancelAdding} />
