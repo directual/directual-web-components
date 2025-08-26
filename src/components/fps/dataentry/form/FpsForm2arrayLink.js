@@ -12,6 +12,7 @@ import { FpsForm2Input, FpsForm2HiddenInput } from './FpsForm2Input'
 import FpsForm2Action from './FpsForm2Action'
 import FormSteps from './FormSteps'
 import { template } from '../../templating/template'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import _ from 'lodash'
 
 // Безопасный парсинг JSON, не крашится если говно
@@ -95,9 +96,9 @@ export default function ElementArray(props) {
     const { element, state, setState, extendedModel, data, editModelAL, model, currentBP, checkHidden, callEndpointPOST } = props
 
     // DEBUG ==========================================
-    console.log("data")
-    console.log(data)
-    console.log(element)
+    // console.log("data")
+    // console.log(data)
+    // console.log(element)
     // console.log(extendedModel)
     // console.log(tableColumns)
     // console.log(tableData)
@@ -109,6 +110,7 @@ export default function ElementArray(props) {
     const add_on = _.get(element, "array.table.add")
     const delete_on = _.get(element, "array.table.delete")
     const edit_on = _.get(element, "array.table.edit")
+    const sort_on = _.get(element, "array.table.sort")
     const endpoint = _.get(element, "array.table.endpoint")
     const buttonLabel = _.get(element, "array.table.buttonLabel", "Add element")
 
@@ -116,6 +118,57 @@ export default function ElementArray(props) {
     const [tempItem, setTempItem] = useState({})
 
     if (!_.get(element, "array.table.field")) return <div />
+
+    // Handler для drag'n'drop сортировки
+    const onDragEnd = (result) => {
+        if (!result.destination) {
+            return; // Dropped outside the list
+        }
+        
+        if (result.destination.index === result.source.index) {
+            return; // No change in position
+        }
+
+        const sourceIndex = result.source.index
+        const destinationIndex = result.destination.index
+        
+        // Создаем новый массив с измененным порядком
+        const newTableData = Array.from(tableData)
+        const [removed] = newTableData.splice(sourceIndex, 1)
+        newTableData.splice(destinationIndex, 0, removed)
+        
+        // Обновляем extendedModel - используем setExtendedModel напрямую
+        const fieldPath = _.get(element, "array.table.field")
+        // Обновляем extendedModel напрямую, так как editModelAL не поддерживает reorder
+        const currentExtModel = { ...extendedModel }
+        _.set(currentExtModel, fieldPath, newTableData)
+        setExtendedModel(currentExtModel)
+        
+        // Также обновляем модель (массив ID через запятую)
+        const newModelValue = newTableData.map(item => item.id).join(",")
+        const currentModel = { ...model }
+        _.set(currentModel, fieldPath, newModelValue)
+        setModel(currentModel)
+        
+        // Отправляем изменения на эндпоинт если он настроен
+        if (endpoint && callEndpointPOST) {
+            // Создаем payload для обновления порядка всех элементов
+            const orderPayload = newTableData.map((item, index) => ({
+                id: item.id,
+                order: index
+            }))
+            
+            console.log("Sending reorder to endpoint:", endpoint, orderPayload)
+            callEndpointPOST(
+                endpoint + '/reorder', // Предполагаем что есть специальный эндпоинт для изменения порядка
+                { items: orderPayload },
+                (result) => {
+                    console.log("Reorder result:", result)
+                },
+                true
+            )
+        }
+    }
 
     if (_.isArray(tableData)) {
         // console.log("tableData is array")
@@ -126,7 +179,7 @@ export default function ElementArray(props) {
         return <div>loading...</div>
     }
 
-    return <div className={`${styles.form2ArrayLink} FPS_FORM2_ARRAY_LINK`}>
+    const tableContent = (
         <table className={styles.form2Table}>
             <thead>
                 <tr>
@@ -136,46 +189,112 @@ export default function ElementArray(props) {
                     {(edit_on || delete_on) && <th className={`${styles.TH_column_ACTIONS} TH_column_ACTIONS`}></th>}
                 </tr>
             </thead>
-            <tbody>
-                {(tableData || []).map(item => <TableRow key={item.id}
-                    item={item}
-                    delete_on={delete_on}
-                    edit_on={edit_on}
-                    callEndpointPOST={callEndpointPOST}
-                    endpoint={endpoint}
-                    data={data}
-                    arrayLinkField={_.get(element, "array.table.field")}
-                    deleteRow={() => {
-                        editModelAL(_.get(element, "array.table.field"))('delete', item.id)
-                    }}
-                    onFinishEditing={(item) => {
-                        // console.log("onFinishEditing! TODO")
-                        // console.log(item)
-                        editModelAL(_.get(element, "array.table.field"))('replace', item.id, item)
-                    }}
-                    tableColumns={tableColumns} />)}
-                {isAdding && <TableRow key="adding"
-                    adding={true}
-                    callEndpointPOST={callEndpointPOST}
-                    tempItem={tempItem}
-                    setTempItem={setTempItem}
-                    endpoint={endpoint}
-                    data={data}
-                    arrayLinkField={_.get(element, "array.table.field")}
-                    cancelAdding={() => {
-                        setIsAdding(false)
-                        setTempItem({})
-                    }}
-                    onFinishAdding={(item) => {
-                        console.log("onFinishAdding! TODO")
-                        console.log(item)
-                        setIsAdding(false)
-                        setTempItem({})
-                        editModelAL(_.get(element, "array.table.field"))('add', item.id, item)
-                    }}
-                    tableColumns={tableColumns} />}
-            </tbody>
+{sort_on ? (
+                <Droppable droppableId="array-table">
+                    {(provided) => (
+                        <tbody ref={provided.innerRef} {...provided.droppableProps}>
+                            {(tableData || []).map((item, index) => (
+                                <Draggable key={item.id} draggableId={`item-${item.id}`} index={index}>
+                                    {(provided) => (
+                                        <TableRow 
+                                            item={item}
+                                            delete_on={delete_on}
+                                            edit_on={edit_on}
+                                            callEndpointPOST={callEndpointPOST}
+                                            endpoint={endpoint}
+                                            data={data}
+                                            arrayLinkField={_.get(element, "array.table.field")}
+                                            deleteRow={() => {
+                                                editModelAL(_.get(element, "array.table.field"))('delete', item.id)
+                                            }}
+                                            onFinishEditing={(item) => {
+                                                editModelAL(_.get(element, "array.table.field"))('replace', item.id, item)
+                                            }}
+                                            tableColumns={tableColumns}
+                                            isDraggable={true}
+                                            dragProps={{
+                                                ref: provided.innerRef,
+                                                ...provided.draggableProps,
+                                                ...provided.dragHandleProps
+                                            }}
+                                        />
+                                    )}
+                                </Draggable>
+                            ))}
+                            {provided.placeholder}
+                            {isAdding && <TableRow key="adding"
+                                adding={true}
+                                callEndpointPOST={callEndpointPOST}
+                                tempItem={tempItem}
+                                setTempItem={setTempItem}
+                                endpoint={endpoint}
+                                data={data}
+                                arrayLinkField={_.get(element, "array.table.field")}
+                                cancelAdding={() => {
+                                    setIsAdding(false)
+                                    setTempItem({})
+                                }}
+                                onFinishAdding={(item) => {
+                                    console.log("onFinishAdding! TODO")
+                                    console.log(item)
+                                    setIsAdding(false)
+                                    setTempItem({})
+                                    editModelAL(_.get(element, "array.table.field"))('add', item.id, item)
+                                }}
+                                tableColumns={tableColumns} />}
+                        </tbody>
+                    )}
+                </Droppable>
+            ) : (
+                <tbody>
+                    {(tableData || []).map(item => <TableRow key={item.id}
+                        item={item}
+                        delete_on={delete_on}
+                        edit_on={edit_on}
+                        callEndpointPOST={callEndpointPOST}
+                        endpoint={endpoint}
+                        data={data}
+                        arrayLinkField={_.get(element, "array.table.field")}
+                        deleteRow={() => {
+                            editModelAL(_.get(element, "array.table.field"))('delete', item.id)
+                        }}
+                        onFinishEditing={(item) => {
+                            editModelAL(_.get(element, "array.table.field"))('replace', item.id, item)
+                        }}
+                        tableColumns={tableColumns} />)}
+                    {isAdding && <TableRow key="adding"
+                        adding={true}
+                        callEndpointPOST={callEndpointPOST}
+                        tempItem={tempItem}
+                        setTempItem={setTempItem}
+                        endpoint={endpoint}
+                        data={data}
+                        arrayLinkField={_.get(element, "array.table.field")}
+                        cancelAdding={() => {
+                            setIsAdding(false)
+                            setTempItem({})
+                        }}
+                        onFinishAdding={(item) => {
+                            console.log("onFinishAdding! TODO")
+                            console.log(item)
+                            setIsAdding(false)
+                            setTempItem({})
+                            editModelAL(_.get(element, "array.table.field"))('add', item.id, item)
+                        }}
+                        tableColumns={tableColumns} />}
+                </tbody>
+            )}
         </table>
+    )
+
+    return <div className={`${styles.form2ArrayLink} FPS_FORM2_ARRAY_LINK`}>
+        {sort_on ? (
+            <DragDropContext onDragEnd={onDragEnd}>
+                {tableContent}
+            </DragDropContext>
+        ) : (
+            tableContent
+        )}
         {add_on && !isAdding && <ActionPanel margin={{ top: 12, bottom: 12 }}>
             <Button verySmall height={32} icon="plus" onClick={() => { setIsAdding(true) }}>{buttonLabel}</Button>
         </ActionPanel>}
@@ -185,7 +304,7 @@ export default function ElementArray(props) {
 function TableRow(props) {
     const { item, tableColumns, delete_on, deleteRow, edit_on, onFinishEditing,
         adding, setTempItem, tempItem, cancelAdding, onFinishAdding, callEndpointPOST, endpoint,
-        data, arrayLinkField } = props
+        data, arrayLinkField, isDraggable, dragProps } = props
 
     const [isEditing, setIsEditing] = useState(false)
     const [editingItem, setEditingItem] = useState(item)
@@ -232,7 +351,7 @@ function TableRow(props) {
     }
 
     if (isEditing) {
-        return <tr>
+        return <tr {...(isDraggable ? dragProps : {})}>
             {tableColumns.map(column => {
                 const fieldImask = getFieldImask(column.id, arrayLinkField, data)
                 console.log(`[EDITING] Field ${column.id} imask:`, fieldImask)
@@ -285,7 +404,7 @@ function TableRow(props) {
         </tr>
     }
 
-    return <tr>
+    return <tr {...(isDraggable ? dragProps : {})}>
         {tableColumns.map(column => <td key={column.id}>
             {template(column.content, item) &&
                 <SafeInnerHTML allowRerender={true} html={template(column.content, item)} />
