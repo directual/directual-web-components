@@ -127,44 +127,33 @@ export default function ElementArray(props) {
 
     // Handler для drag'n'drop сортировки
     const onDragStart = (start) => {
-        // Находим таблицу и фиксируем ширины всех ячеек во всех строках
+        // Находим таблицу и устанавливаем глобальные CSS переменные с ширинами
         const table = document.querySelector('[data-sortable="true"] .form2Table')
         if (table) {
-            // Сначала получаем ширины из первой строки (header или первая data row)
-            const firstRow = table.querySelector('thead tr') || table.querySelector('tbody tr')
-            if (firstRow) {
-                const headerCells = firstRow.querySelectorAll('th, td')
+            // Получаем ширины из header'а
+            const headerRow = table.querySelector('thead tr')
+            if (headerRow) {
+                const headerCells = headerRow.querySelectorAll('th')
                 const columnWidths = Array.from(headerCells).map(cell => cell.offsetWidth)
                 
-                // Применяем эти ширины ко всем строкам
-                const allRows = table.querySelectorAll('tbody tr')
-                allRows.forEach(row => {
-                    const cells = row.querySelectorAll('td')
-                    cells.forEach((cell, index) => {
-                        if (columnWidths[index]) {
-                            cell.style.width = `${columnWidths[index]}px`
-                            cell.style.minWidth = `${columnWidths[index]}px`
-                            cell.style.maxWidth = `${columnWidths[index]}px`
-                        }
-                    })
+                // Устанавливаем CSS переменные на body для глобального доступа
+                columnWidths.forEach((width, index) => {
+                    document.body.style.setProperty(`--drag-col-${index}`, `${width}px`)
                 })
+                
+                // Добавляем класс для активации drag стилей
+                document.body.classList.add('table-dragging')
             }
         }
     }
 
     const onDragEnd = (result) => {
-        // Убираем фиксированные ширины после драга
-        const table = document.querySelector('[data-sortable="true"] .form2Table')
-        if (table) {
-            const allRows = table.querySelectorAll('tbody tr')
-            allRows.forEach(row => {
-                const cells = row.querySelectorAll('td')
-                cells.forEach(cell => {
-                    cell.style.width = ''
-                    cell.style.minWidth = ''
-                    cell.style.maxWidth = ''
-                })
-            })
+        // Убираем drag класс и CSS переменные
+        document.body.classList.remove('table-dragging')
+        
+        // Удаляем все CSS переменные для ширин
+        for (let i = 0; i < 20; i++) { // проходим до 20 колонок максимум
+            document.body.style.removeProperty(`--drag-col-${i}`)
         }
 
         if (!result.destination) {
