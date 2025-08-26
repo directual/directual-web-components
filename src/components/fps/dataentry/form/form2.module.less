@@ -296,3 +296,41 @@
 .TH_column_ACTIONS {
   width: 100px;
 }
+
+// Стили для drag'n'drop в таблице
+.form2Table tbody tr {
+  &.dragging {
+    // Стили для перетаскиваемой строки
+    background-color: var(--bg-secondary);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    
+    // Важно: сохраняем ширину ячеек при перетаскивании
+    td {
+      width: auto !important;
+      min-width: 100px;
+      white-space: nowrap;
+    }
+  }
+  
+  // Курсор для drag handle
+  &[draggable="true"] {
+    cursor: grab;
+    
+    &:active {
+      cursor: grabbing;
+    }
+  }
+}
+
+// Фиксируем ширину таблицы и ячеек для drag'n'drop
+.form2ArrayLink[data-sortable="true"] {
+  .form2Table {
+    table-layout: fixed;
+    
+    th, td {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

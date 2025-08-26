@@ -237,3 +237,27 @@
 .TH_column_ACTIONS {
   width: 100px;
 }
+.form2Table tbody tr.dragging {
+  background-color: var(--bg-secondary);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+.form2Table tbody tr.dragging td {
+  width: auto !important;
+  min-width: 100px;
+  white-space: nowrap;
+}
+.form2Table tbody tr[draggable="true"] {
+  cursor: grab;
+}
+.form2Table tbody tr[draggable="true"]:active {
+  cursor: grabbing;
+}
+.form2ArrayLink[data-sortable="true"] .form2Table {
+  table-layout: fixed;
+}
+.form2ArrayLink[data-sortable="true"] .form2Table th,
+.form2ArrayLink[data-sortable="true"] .form2Table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

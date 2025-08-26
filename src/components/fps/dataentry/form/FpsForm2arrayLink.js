@@ -93,7 +93,7 @@ const SafeInnerHTML = ({ html, label = 'unknown', ...props }) => {
 };
 
 export default function ElementArray(props) {
-    const { element, state, setState, extendedModel, data, editModelAL, model, currentBP, checkHidden, callEndpointPOST } = props
+    const { element, state, setState, extendedModel, setExtendedModel, data, editModelAL, model, setModel, currentBP, checkHidden, callEndpointPOST } = props
 
     // DEBUG ==========================================
     // console.log("data")
@@ -195,7 +195,7 @@ export default function ElementArray(props) {
                         <tbody ref={provided.innerRef} {...provided.droppableProps}>
                             {(tableData || []).map((item, index) => (
                                 <Draggable key={item.id} draggableId={`item-${item.id}`} index={index}>
-                                    {(provided) => (
+                                    {(provided, snapshot) => (
                                         <TableRow 
                                             item={item}
                                             delete_on={delete_on}
@@ -212,6 +212,7 @@ export default function ElementArray(props) {
                                             }}
                                             tableColumns={tableColumns}
                                             isDraggable={true}
+                                            isDragging={snapshot.isDragging}
                                             dragProps={{
                                                 ref: provided.innerRef,
                                                 ...provided.draggableProps,
@@ -287,7 +288,7 @@ export default function ElementArray(props) {
         </table>
     )
 
-    return <div className={`${styles.form2ArrayLink} FPS_FORM2_ARRAY_LINK`}>
+    return <div className={`${styles.form2ArrayLink} FPS_FORM2_ARRAY_LINK`} data-sortable={sort_on ? "true" : "false"}>
         {sort_on ? (
             <DragDropContext onDragEnd={onDragEnd}>
                 {tableContent}
@@ -304,7 +305,7 @@ export default function ElementArray(props) {
 function TableRow(props) {
     const { item, tableColumns, delete_on, deleteRow, edit_on, onFinishEditing,
         adding, setTempItem, tempItem, cancelAdding, onFinishAdding, callEndpointPOST, endpoint,
-        data, arrayLinkField, isDraggable, dragProps } = props
+        data, arrayLinkField, isDraggable, isDragging, dragProps } = props
 
     const [isEditing, setIsEditing] = useState(false)
     const [editingItem, setEditingItem] = useState(item)
@@ -351,7 +352,7 @@ function TableRow(props) {
     }
 
     if (isEditing) {
-        return <tr {...(isDraggable ? dragProps : {})}>
+        return <tr {...(isDraggable ? dragProps : {})} className={isDragging ? styles.dragging : ""}>
             {tableColumns.map(column => {
                 const fieldImask = getFieldImask(column.id, arrayLinkField, data)
                 console.log(`[EDITING] Field ${column.id} imask:`, fieldImask)
@@ -404,7 +405,7 @@ function TableRow(props) {
         </tr>
     }
 
-    return <tr {...(isDraggable ? dragProps : {})}>
+    return <tr {...(isDraggable ? dragProps : {})} className={isDragging ? styles.dragging : ""}>
         {tableColumns.map(column => <td key={column.id}>
             {template(column.content, item) &&
                 <SafeInnerHTML allowRerender={true} html={template(column.content, item)} />
