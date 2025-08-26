@@ -373,7 +373,7 @@ function TableRow(props) {
                     <Input {...inputProps} />
                 </td>
             })}
-            <td><ActionPanel>
+            <td><ActionPanel nowrap>
                 <Button icon="done" verySmall transparent height={32} onClick={() => { sendObject(onFinishEditing); setIsEditing(false) }} />
                 <Button icon="ban" verySmall transparent height={32} onClick={() => { setIsEditing(false) }} />
             </ActionPanel></td>

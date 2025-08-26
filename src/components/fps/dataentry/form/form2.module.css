@@ -244,18 +244,12 @@
   transform: rotate(1deg);
   z-index: 1000;
   position: relative;
-  display: table !important;
-  table-layout: fixed !important;
-  width: 100% !important;
 }
 .form2Table tbody tr.dragging td {
-  display: table-cell !important;
-  vertical-align: middle !important;
-  box-sizing: border-box !important;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 8px !important;
+  box-sizing: border-box;
 }
 .form2Table tbody tr[draggable="true"] {
   cursor: grab;
@@ -263,16 +257,9 @@
 .form2Table tbody tr[draggable="true"]:active {
   cursor: grabbing;
 }
-.form2ArrayLink[data-sortable="true"] .form2Table {
-  table-layout: fixed;
-  width: 100%;
-}
 .form2ArrayLink[data-sortable="true"] .form2Table th,
 .form2ArrayLink[data-sortable="true"] .form2Table td {
   overflow: hidden;
   text-overflow: ellipsis;
   box-sizing: border-box;
-}
-.form2ArrayLink[data-sortable="true"] .form2Table thead th {
-  position: relative;
 }
