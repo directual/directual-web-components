@@ -53,24 +53,24 @@ const parseWithCustomTypes = (str) => {
 // Получение информации о поле из linked структуры
 const getLinkedFieldInfo = (fieldSysName, arrayLinkField, data) => {
     // Находим информацию об arrayLink поле в филдах
-    const arrayLinkFieldInfo = _.find(_.get(data, "fileds"), { sysName: arrayLinkField }) || 
-                               _.find(_.get(data, "headers"), { sysName: arrayLinkField })
-    
+    const arrayLinkFieldInfo = _.find(_.get(data, "fileds"), { sysName: arrayLinkField }) ||
+        _.find(_.get(data, "headers"), { sysName: arrayLinkField })
+
     if (!arrayLinkFieldInfo || !arrayLinkFieldInfo.link) {
         return null
     }
-    
+
     // Находим структуру по link name
     const linkedStructure = _.find(_.get(data, "structures"), (struct) => struct.sysName === arrayLinkFieldInfo.link)
-    
+
     if (!linkedStructure) {
         return null
     }
-    
+
     // Парсим jsonObject чтобы найти поле
     const fields = safeJsonParse(linkedStructure.jsonObject, [])
     const fieldInfo = _.find(fields, { sysName: fieldSysName })
-    
+
     return fieldInfo
 }
 
@@ -80,8 +80,14 @@ const getFieldImask = (fieldSysName, arrayLinkField, data) => {
     if (!fieldInfo || !fieldInfo.formatOptions || !fieldInfo.formatOptions.imask) {
         return null
     }
-    
+
     return parseWithCustomTypes(fieldInfo.formatOptions.imask)
+}
+
+// Получение формата поля (например, markdown)
+const getFieldFormat = (fieldSysName, arrayLinkField, data) => {
+    const fieldInfo = getLinkedFieldInfo(fieldSysName, arrayLinkField, data)
+    return fieldInfo ? fieldInfo.format : null
 }
 
 const SafeInnerHTML = ({ html, label = 'unknown', ...props }) => {
@@ -124,50 +130,31 @@ export default function ElementArray(props) {
         if (!result.destination) {
             return; // Dropped outside the list
         }
-        
+
         if (result.destination.index === result.source.index) {
             return; // No change in position
         }
 
         const sourceIndex = result.source.index
         const destinationIndex = result.destination.index
-        
+
         // Создаем новый массив с измененным порядком
         const newTableData = Array.from(tableData)
         const [removed] = newTableData.splice(sourceIndex, 1)
         newTableData.splice(destinationIndex, 0, removed)
-        
+
         // Обновляем extendedModel - используем setExtendedModel напрямую
         const fieldPath = _.get(element, "array.table.field")
         // Обновляем extendedModel напрямую, так как editModelAL не поддерживает reorder
         const currentExtModel = { ...extendedModel }
         _.set(currentExtModel, fieldPath, newTableData)
         setExtendedModel(currentExtModel)
-        
+
         // Также обновляем модель (массив ID через запятую)
         const newModelValue = newTableData.map(item => item.id).join(",")
         const currentModel = { ...model }
         _.set(currentModel, fieldPath, newModelValue)
         setModel(currentModel)
-        
-        // Отправляем изменения на эндпоинт если он настроен
-        if (endpoint && callEndpointPOST) {
-            // Создаем payload для обновления порядка всех элементов
-            const orderPayload = newTableData.map((item, index) => ({
-                id: item.id,
-                order: index
-            }))
-            
-            console.log("Sending reorder to endpoint:", endpoint, orderPayload)
-            callEndpointPOST(
-                endpoint + '/reorder', // Предполагаем что есть специальный эндпоинт для изменения порядка
-                { items: orderPayload },
-                (result) => {
-                    console.log("Reorder result:", result)
-                },
-                true
-            )
-        }
     }
 
     if (_.isArray(tableData)) {
@@ -189,14 +176,14 @@ export default function ElementArray(props) {
                     {(edit_on || delete_on) && <th className={`${styles.TH_column_ACTIONS} TH_column_ACTIONS`}></th>}
                 </tr>
             </thead>
-{sort_on ? (
+            {sort_on ? (
                 <Droppable droppableId="array-table">
                     {(provided) => (
                         <tbody ref={provided.innerRef} {...provided.droppableProps}>
                             {(tableData || []).map((item, index) => (
                                 <Draggable key={item.id} draggableId={`item-${item.id}`} index={index}>
                                     {(provided, snapshot) => (
-                                        <TableRow 
+                                        <TableRow
                                             item={item}
                                             delete_on={delete_on}
                                             edit_on={edit_on}
@@ -355,7 +342,22 @@ function TableRow(props) {
         return <tr {...(isDraggable ? dragProps : {})} className={isDragging ? styles.dragging : ""}>
             {tableColumns.map(column => {
                 const fieldImask = getFieldImask(column.id, arrayLinkField, data)
-                console.log(`[EDITING] Field ${column.id} imask:`, fieldImask)
+                const fieldFormat = getFieldFormat(column.id, arrayLinkField, data)
+                console.log(`[EDITING] Field ${column.id} imask:`, fieldImask, 'format:', fieldFormat)
+
+                if (fieldFormat === 'markdown') {
+                    return <td key={column.id}>
+                        <Input
+                            type="markdown"
+                            edit={true}
+                            nomargin={true}
+                            disabled={isSending}
+                            defaultValue={getValue(_.get(editingItem, column.id))}
+                            onChange={value => { setEditingItem({ ...editingItem, [column.id]: value }) }}
+                        />
+                    </td>
+                }
+
                 const inputProps = {
                     nomargin: true,
                     type: "string",
@@ -382,7 +384,23 @@ function TableRow(props) {
         return <tr>
             {tableColumns.map(column => {
                 const fieldImask = getFieldImask(column.id, arrayLinkField, data)
-                console.log(`[ADDING] Field ${column.id} imask:`, fieldImask)
+                const fieldFormat = getFieldFormat(column.id, arrayLinkField, data)
+                console.log(`[ADDING] Field ${column.id} imask:`, fieldImask, 'format:', fieldFormat)
+
+                if (fieldFormat === 'markdown') {
+                    return <td key={column.id}>
+                        <Input
+                            type="markdown"
+                            edit={true}
+                            nomargin={true}
+                            disabled={isSending}
+                            placeholder={column.title || column.id}
+                            defaultValue={_.get(tempItem, column.id)}
+                            onChange={value => { setTempItem({ ...tempItem, [column.id]: value }) }}
+                        />
+                    </td>
+                }
+
                 const inputProps = {
                     nomargin: true,
                     type: "string",
@@ -406,11 +424,25 @@ function TableRow(props) {
     }
 
     return <tr {...(isDraggable ? dragProps : {})} className={isDragging ? styles.dragging : ""}>
-        {tableColumns.map(column => <td key={column.id}>
-            {template(column.content, item) &&
-                <SafeInnerHTML allowRerender={true} html={template(column.content, item)} />
-            }
-        </td>)}
+        {tableColumns.map(column => {
+            const fieldFormat = getFieldFormat(column.id, arrayLinkField, data)
+            const cellValue = getValue(_.get(item, column.id))
+
+            return <td key={column.id}>
+                {fieldFormat === 'markdown' && column.content == "{{" + column.id + "}}" ? (
+                    <Input
+                        type="markdown"
+                        edit={false}
+                        nomargin={true}
+                        defaultValue={cellValue}
+                        readOnly={true}
+                    />
+                ) : (
+                    template(column.content, item) &&
+                    <SafeInnerHTML allowRerender={true} html={template(column.content, item)} />
+                )}
+            </td>
+        })}
         {(edit_on || delete_on) && <td><ActionPanel>
             {edit_on && <Button icon="edit" verySmall transparent height={32} onClick={() => { setIsEditing(true) }} />}
             {delete_on && <Button icon="delete" verySmall transparent height={32} onClick={deleteRow} />}
