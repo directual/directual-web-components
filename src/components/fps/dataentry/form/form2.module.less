@@ -304,12 +304,25 @@
     background-color: var(--bg-secondary);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
+    transform: rotate(1deg);
+    z-index: 1000;
+    position: relative;
     
-    // Важно: сохраняем ширину ячеек при перетаскивании
+    // Важно: принудительно сохраняем layout таблицы
+    display: table !important;
+    table-layout: fixed !important;
+    width: 100% !important;
+    
     td {
-      width: auto !important;
-      min-width: 100px;
+      // Сохраняем точную ширину и отображение ячеек
+      display: table-cell !important;
+      vertical-align: middle !important;
+      box-sizing: border-box !important;
       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      // Убираем флексбокс и прочие стили которые могут ломать layout
+      padding: 8px !important;
     }
   }
   
@@ -327,10 +340,17 @@
 .form2ArrayLink[data-sortable="true"] {
   .form2Table {
     table-layout: fixed;
+    width: 100%;
     
     th, td {
       overflow: hidden;
       text-overflow: ellipsis;
+      box-sizing: border-box;
+    }
+    
+    // Предварительно вычисляем и фиксируем ширины колонок
+    thead th {
+      position: relative;
     }
   }
 }
