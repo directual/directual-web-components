@@ -107,7 +107,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         // console.log(sort)
         setDQL(dql)
         //setSort(sort)
-        if (page == 0) { refresh(dql,sort) } else { setPage(0) }
+        if (page == 0) { refresh(dql, sort) } else { setPage(0) }
     }
 
     const nextPage = () => {
@@ -538,7 +538,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         })
     }, [])
 
-    function refresh(dql,sort) {
+    function refresh(dql, sort) {
         if (data && data.sl) {
             setPageLoading(true)
             callEndpointGET(data.sl, {
@@ -640,6 +640,24 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         }
     }, [socket, debug]) // добавляем debug в dependencies
 
+    const renderNoData = () => {
+        if (_.get(data, "params.general.showEmptyState", false)) {
+            if (_.get(data, "params.general.emptyStateContentType") == "hint") {
+                return <Hint
+                    error={_.get(data, "params.general.emptyStateHint") == 'error'}
+                    ok={_.get(data, "params.general.emptyStateHint") == 'ok'}
+                    margin={{ top: 0, bottom: 0 }} >
+                    <SafeInnerHTML allowRerender={true} html={_.get(data, "params.general.emptyStateContent")} />
+                </Hint>
+            } else if (_.get(data, "params.general.emptyStateContentType") == "html") {
+                return <SafeInnerHTML allowRerender={true} html={_.get(data, "params.general.emptyStateContent")} />
+            } else {
+                return <div />
+            }
+        }
+        else return <div />
+    }
+
     return <div className={`FPS_CARDS2 ${styles.cards2}`}>
         {/* {pageLoading && <Loader />} */}
         {/* {(title || showCounter) && <div className={`FPS_CARDS2__HEADER ${styles.cards2_header}`}>
@@ -647,7 +665,11 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
             {showCounter && <div className={`FPS_CARDS2__HEADER-counter ${styles.cards2_header_counter}`}>5 items</div>}
         </div>} */}
 
-        <TableTitle
+        {!objects.length && !initialLoading && !pageLoading &&
+            renderNoData()
+        }
+
+        {(objects.length > 0 || initialLoading || pageLoading) && <TableTitle
             tableFilters={_.get(data.params, 'filterParams') || {}}
             displayFilters={_.get(data.params, 'filterParams.isFiltering') || _.get(data.params, 'filterParams.isSorting')}
             performFiltering={dqlService}
@@ -734,9 +756,9 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
             dict={dict}
             lang={lang}
             onFilter={() => { }}
-        />
+        />}
 
-        {!cardsLayout && <Hint error title="No cards layout" margin={{ top: 0, bottom: 0 }}>
+        {!cardsLayout && !initialLoading && objects.length > 0 && <Hint error title="No cards layout" margin={{ top: 0, bottom: 0 }}>
             <p>Please, select cards layout in the settings</p>
         </Hint>}
 
@@ -936,7 +958,7 @@ function Card(props) {
     const isRouting = _.get(data, "params.routing") == "redirect"
     const routingPath = _.get(data, "params.routing_where", '')
 
-    const model = { ...object, WebUser: {...auth, ...{ id: auth.user }} }
+    const model = { ...object, WebUser: { ...auth, ...{ id: auth.user } } }
 
     useEffect(() => {
 
@@ -1211,7 +1233,7 @@ function CardAction(props) {
     //TODO: userDebug
 
     if (action._conditionalView &&
-        !checkHidden(action, false, false, model) 
+        !checkHidden(action, false, false, model)
         && (!debugConditions)
         && action._action_conditional_disable_or_hide !== "disable"
     ) { button = <React.Fragment></React.Fragment> }
@@ -1225,7 +1247,7 @@ function CardAction(props) {
             {action._conditionalView && debugConditions && <div className={styles.condDebugDetails}>
                 <code>
                     <p>{action._action_conditional_disable_or_hide == "disable" ? "disable button" : "hide button"} if:</p>
-                    {checkHidden(action, true, true, model).name && <p  style={{ lineHeight: 1, marginBottom: 10}}><b>{checkHidden(action, true, true, model).name}</b></p>}
+                    {checkHidden(action, true, true, model).name && <p style={{ lineHeight: 1, marginBottom: 10 }}><b>{checkHidden(action, true, true, model).name}</b></p>}
                     <pre style={{ whiteSpace: 'wrap', fontSize: 14 }}>{checkHidden(action, true, true, model).conditions}</pre>
                     <p>Result: <b>{!checkHidden(action, false, true, model) ? "true" : "false"}</b></p>
                     <pre style={{ whiteSpace: 'wrap', fontSize: 14 }}>{checkHidden(action, true, true, model).result}</pre>
