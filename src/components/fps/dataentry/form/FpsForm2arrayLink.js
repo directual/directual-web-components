@@ -126,7 +126,32 @@ export default function ElementArray(props) {
     if (!_.get(element, "array.table.field")) return <div />
 
     // Handler для drag'n'drop сортировки
+    const onDragStart = (start) => {
+        // Копируем ширины ячеек перед началом драга
+        const draggedRow = document.querySelector(`[data-rbd-draggable-id="${start.draggableId}"]`)
+        if (draggedRow) {
+            const cells = draggedRow.querySelectorAll('td')
+            cells.forEach((cell, index) => {
+                const width = cell.offsetWidth
+                cell.style.width = `${width}px`
+                cell.style.minWidth = `${width}px`
+                cell.style.maxWidth = `${width}px`
+            })
+        }
+    }
+
     const onDragEnd = (result) => {
+        // Убираем фиксированные ширины после драга
+        const allRows = document.querySelectorAll('[data-rbd-draggable-id]')
+        allRows.forEach(row => {
+            const cells = row.querySelectorAll('td')
+            cells.forEach(cell => {
+                cell.style.width = ''
+                cell.style.minWidth = ''
+                cell.style.maxWidth = ''
+            })
+        })
+
         if (!result.destination) {
             return; // Dropped outside the list
         }
@@ -277,7 +302,7 @@ export default function ElementArray(props) {
 
     return <div className={`${styles.form2ArrayLink} FPS_FORM2_ARRAY_LINK`} data-sortable={sort_on ? "true" : "false"}>
         {sort_on ? (
-            <DragDropContext onDragEnd={onDragEnd}>
+            <DragDropContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
                 {tableContent}
             </DragDropContext>
         ) : (
@@ -416,7 +441,7 @@ function TableRow(props) {
                     <Input {...inputProps} />
                 </td>
             })}
-            <td><ActionPanel>
+            <td><ActionPanel nowrap>
                 <Button icon="done" verySmall transparent height={32} onClick={() => sendObject(onFinishAdding)} />
                 <Button icon="ban" verySmall transparent height={32} onClick={cancelAdding} />
             </ActionPanel></td>
@@ -443,7 +468,7 @@ function TableRow(props) {
                 )}
             </td>
         })}
-        {(edit_on || delete_on) && <td><ActionPanel>
+        {(edit_on || delete_on) && <td><ActionPanel nowrap>
             {edit_on && <Button icon="edit" verySmall transparent height={32} onClick={() => { setIsEditing(true) }} />}
             {delete_on && <Button icon="delete" verySmall transparent height={32} onClick={deleteRow} />}
         </ActionPanel>
