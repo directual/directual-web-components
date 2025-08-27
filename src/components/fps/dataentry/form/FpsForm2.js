@@ -60,6 +60,7 @@ export default function FpsForm2(props) {
   const modelRef = useRef(model);
   const [extendedModel, setExtendedModel] = useState({ ...composeInitialModel() }) // тут было gatherDefaults
   const [originalModel, setOriginalModel] = useState({ ...composeInitialModel() }) // тут было gatherDefaults
+  const [originalExtendedModel, setOriginalExtendedModel] = useState({ ...composeInitialModel() }) // тут было gatherDefaults
   const previousModel = usePrevious(model);
   const [state, setState] = useState(_.get(data, "params.state") || defaultState)
   const previousState = usePrevious(state);
@@ -259,6 +260,12 @@ export default function FpsForm2(props) {
         // console.log(model)
         setModel(newModel)
         setOriginalModel(newModel)
+        setOriginalExtendedModel({
+          ...gatherDefaults(),
+          ..._.get(data, "data[0]"),
+          ...convertedDates,
+          ...convertedBools
+        })
       }
       saveSate = { ...saveSate, ...templateState(_.get(data, "params.state"), newModel) }
       // RESTORE STATE:
@@ -748,6 +755,7 @@ export default function FpsForm2(props) {
           setModel(modelUpdate)
           setExtendedModel(extendedModelUpdate)
           setOriginalModel(modelUpdate)
+          setOriginalExtendedModel(extendedModelUpdate)
         } else {
           setState({ ...state, _apiError: data.msg })
           setLoading(false)
@@ -1047,6 +1055,8 @@ export default function FpsForm2(props) {
               {...props}
               refresh={refresh}
               setOriginalModel={setOriginalModel}
+              originalExtendedModel={originalExtendedModel}
+              setOriginalExtendedModel={setOriginalExtendedModel}
               userDebug={userDebug}
               currentStep={currentStep}
               refreshOptions={refreshOptions}
@@ -1134,6 +1144,8 @@ export default function FpsForm2(props) {
             model={model}
             userDebug={userDebug}
             setOriginalModel={setOriginalModel}
+            originalExtendedModel={originalExtendedModel}
+            setOriginalExtendedModel={setOriginalExtendedModel}
             extendedModel={extendedModel}
             setExtendedModel={setExtendedModel}
             checkHidden={checkHidden}
@@ -1163,7 +1175,7 @@ export default function FpsForm2(props) {
 
 function RenderStep(props) {
   const { auth, data, callEndpoint, onEvent, id, handleRoute, currentStep, templateState, checkIfAllInputsHidden, editModel, editModelAL, originalModel,
-    model, checkHidden, userDebug, dict, locale, state, refreshOptions, refresh, extendedModel, setOriginalModel, setExtendedModel, loading, template, setState, lang, submit, params, setModel } = props
+    model, checkHidden, userDebug, dict, locale, state, refreshOptions, refresh, extendedModel, setOriginalModel, originalExtendedModel, setOriginalExtendedModel, setExtendedModel, loading, template, setState, lang, submit, params, setModel } = props
 
 
   const callEndpointPOST = (endpoint, body, finish, ignoreResponse = false) => {
@@ -1192,12 +1204,14 @@ function RenderStep(props) {
               const modelUpdate = _.get(response, "object")
               setModel({ ...model, ...modelUpdate })
               setOriginalModel({ ...model, ...modelUpdate })
+              setOriginalExtendedModel({ ...extendedModel, ...modelUpdate })
               // setExtendedModel({ ...extendedModel, ...modelUpdate })
             }
             if (!isEmpty(_.get(response, "model"))) {
               const modelUpdate = _.get(response, "model")
               setModel({ ...model, ...modelUpdate })
               setOriginalModel({ ...model, ...modelUpdate })
+              setOriginalExtendedModel({ ...extendedModel, ...modelUpdate })
               // setExtendedModel({ ...extendedModel, ...modelUpdate })
             }
             if (!isEmpty(_.get(response, "redirect")) &&

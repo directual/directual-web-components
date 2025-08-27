@@ -121,7 +121,7 @@ function ElementInput(props) {
 
 function ElementAction(props) {
     const { element, templateState, template, onSubmit, callEndpointPOST, setState, extendedModel,
-        setExtendedModel, setModel, model, data, state, originalModel, dict, lang } = props
+        setExtendedModel, setModel, model, data, state, originalModel, originalExtendedModel, setOriginalExtendedModel, dict, lang } = props
     const [loading, setLoading] = useState(false)
 
     const action_list = _.get(element, "_actions") || []
@@ -187,8 +187,8 @@ function ElementAction(props) {
             // console.log(originalModel)
             copyModel = originalModel
             setModel(originalModel)
-            copyExtendedModel = originalModel
-            setExtendedModel(originalModel)
+            copyExtendedModel = originalExtendedModel
+            setExtendedModel(originalExtendedModel)
         }
 
         if (_.get(action, "actionType") == "state" || _.get(action, "actionType") == "endpoint_state" || !_.get(action, "actionType")) {
