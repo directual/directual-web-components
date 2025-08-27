@@ -207,12 +207,7 @@ function ElementAction(props) {
                         // setExtendedModel({ ...copyExtendedModel, ...payloadModel })
                         setLoading(false);
                         finish && finish(true);
-                        if (action.resetModel) {
-                            copyModel = {}
-                            copyExtendedModel = {}
-                            setModel({})
-                            setExtendedModel({})
-                        }
+                        // Сброс модели теперь обрабатывается в самой функции submit через resetModel параметр
                     },
                     true,
                     undefined,

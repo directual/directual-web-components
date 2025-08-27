@@ -736,7 +736,11 @@ export default function FpsForm2(props) {
           if (submitKeepModel && !resetModel) {
             modelUpdate = { ...model, ...modelToSend, ...modelUpdate };
             extendedModelUpdate = { ...extendedModelUpdate, ...modelUpdate } // ...getObjectDiff(model, modelUpdate) }
-          } else { }
+          } else if (resetModel) {
+            // При resetModel сбрасываем модель в пустой объект
+            modelUpdate = {}
+            extendedModelUpdate = {}
+          }
           // console.log("final modelUpdate")
           // console.log(modelUpdate)
           // console.log("final extendedModelUpdate")
