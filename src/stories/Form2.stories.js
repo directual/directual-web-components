@@ -24,25 +24,8 @@ let exampleForm =  {
     "params": {
         "steps": [
             {
-                "id": "default_step",
-                "sysName": "default step",
-                "elements": [
-                    {
-                        "id": "elmnt_1756224515544",
-                        "type": "action",
-                        "_actions": [
-                            {
-                                "id": "17562245199380.13223403201111102333033",
-                                "_action": "action_1756224462638",
-                                "_action_icon": "plus"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
                 "id": "step_1756224529075",
-                "sysName": "add",
+                "sysName": "default step",
                 "elements": [
                     {
                         "id": "elmnt_1756224538719",
@@ -57,9 +40,15 @@ let exampleForm =  {
                                 "id": "17562245447860.12213440123121303104034",
                                 "_field": "description",
                                 "_field_required": true
+                            },
+                            {
+                                "id": "17562846675190.34011314421420230422442",
+                                "_field": "step_ids",
+                                "_field_required": true,
+                                "_field_hidden": true
                             }
                         ],
-                        "_input_fields_in_a_row": 2,
+                        "_input_fields_in_a_row": 3,
                         "_input_fields_in_a_row_column": "column"
                     },
                     {
@@ -91,6 +80,42 @@ let exampleForm =  {
                             },
                             "viewType": "table"
                         }
+                    },
+                    {
+                        "id": "elmnt_1756283372305",
+                        "type": "action",
+                        "_actions": [
+                            {
+                                "id": "17562833737970.21430304412014142102334",
+                                "_action": "action_1756224469746",
+                                "_action_label": "Save template",
+                                "_action_icon": "done",
+                                "_action_button_type": "accent",
+                                "_action_standardRequired": true,
+                                "_conditionalView": true,
+                                "_action_conditional_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1756288868217",
+                                        "_conditionalView_operator": "modelNotChanged"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "17562833877800.31022422311021211341024",
+                                "_action": "action_1756224474835",
+                                "_action_button_type": "danger",
+                                "_conditionalView": true,
+                                "_action_conditional_disable_or_hide": "disable",
+                                "_conditions": [
+                                    {
+                                        "id": "condition_1756288884266",
+                                        "_conditionalView_operator": "modelNotChanged"
+                                    }
+                                ]
+                            }
+                        ],
+                        "_actions_in_a_row": 2
                     }
                 ]
             },
@@ -110,36 +135,28 @@ let exampleForm =  {
         ],
         "actions": [
             {
-                "id": "action_1756224462638",
-                "name": "Add template",
-                "actionType": "state",
-                "stateMapping": [
-                    {
-                        "id": "stateMapping1756224487285",
-                        "field": "FormState.popup",
-                        "value": "add"
-                    }
-                ]
-            },
-            {
                 "id": "action_1756224469746",
-                "name": "Add template (2)",
+                "name": "Save template",
                 "actionType": "state",
-                "actionSubmit": true
+                "actionSubmit": true,
+                "resetModel": false
             },
             {
                 "id": "action_1756224474835",
-                "name": "Cancel",
+                "name": "Discard changes",
                 "actionType": "state",
-                "stateMapping": [
-                    {
-                        "id": "stateMapping1756224501491",
-                        "field": "FormState.popup"
-                    }
-                ]
+                "stateMapping": [],
+                "discardModel": true
             }
         ],
-        "hideHint": true
+        "hideHint": true,
+        "popup_width": 800,
+        "general": {
+            "showFullModel": true,
+            "showModel": true,
+            "edittingOn": true
+        },
+        "hideActionsHint": true
     },
     "tableTitle": null,
     "actions": [],
@@ -285,8 +302,31 @@ let exampleForm =  {
             "indexExists": false
         }
     ],
-    "data": [],
-    "totalPages": 0,
+    "data": [
+        {
+            "description": "ф",
+            "id": "faca6cf3-f547-4a09-938e-ca85185ec9e6",
+            "step_ids": [
+                {
+                    "description": "ва",
+                    "title": "ва",
+                    "id": "6281e2a1-4494-40b4-9739-37104b29c0be"
+                },
+                {
+                    "title": "1",
+                    "description": "2",
+                    "id": "4e7d5928-406d-4a91-9e7e-2857ccf0bc99"
+                }
+            ],
+            "author_id": {
+                "lastName": "Ershov",
+                "firstName": "Pavel",
+                "id": "pavel@directual.com"
+            },
+            "title": "ф"
+        }
+    ],
+    "totalPages": 1,
     "pageNumber": 0,
     "error": null,
     "fieldScheme": [
@@ -446,7 +486,7 @@ let exampleForm =  {
             "dateCreated": "2025-08-26T13:30:19Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"description\",\"name\":\"Step description\",\"dataType\":\"string\",\"id\":\"11211756234571383\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n    mask: '+{7}(000)000-00-00',\\n    lazy: false\\n  }\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"title\",\"name\":\"Step title\",\"dataType\":\"string\",\"id\":\"27951756234564669\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false}]",
+            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"description\",\"name\":\"Step description\",\"dataType\":\"string\",\"id\":\"11211756234571383\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"BP_template_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"15601756284317325\",\"link\":\"bp_template\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"indexExists\":false},{\"sysName\":\"title\",\"name\":\"Step title\",\"dataType\":\"string\",\"id\":\"27951756234564669\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"indexExists\":false}]",
             "jsonGroupSettings": null,
             "jsonViewIdSettings": "[{\"sysName\":\"title\"}]",
             "jsonSettings": null,
@@ -454,7 +494,7 @@ let exampleForm =  {
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2025-08-26T20:25:09Z",
+            "dateChanged": "2025-08-27T08:45:27Z",
             "createBy": 1,
             "changedBy": 1,
             "_settings": null,

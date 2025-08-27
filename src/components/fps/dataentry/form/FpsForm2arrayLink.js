@@ -12,7 +12,7 @@ import { FpsForm2Input, FpsForm2HiddenInput } from './FpsForm2Input'
 import FpsForm2Action from './FpsForm2Action'
 import FormSteps from './FormSteps'
 import { template } from '../../templating/template'
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+// Убираем react-beautiful-dnd - будем использовать нативный HTML5 drag'n'drop
 import _ from 'lodash'
 
 // Безопасный парсинг JSON, не крашится если говно
@@ -125,65 +125,68 @@ export default function ElementArray(props) {
 
     if (!_.get(element, "array.table.field")) return <div />
 
-    // Handler для drag'n'drop сортировки
-    const onDragStart = (start) => {
-        // Находим таблицу и устанавливаем глобальные CSS переменные с ширинами
-        const table = document.querySelector('[data-sortable="true"] .form2Table')
-        if (table) {
-            // Получаем ширины из header'а
-            const headerRow = table.querySelector('thead tr')
-            if (headerRow) {
-                const headerCells = headerRow.querySelectorAll('th')
-                const columnWidths = Array.from(headerCells).map(cell => cell.offsetWidth)
-                
-                // Устанавливаем CSS переменные на body для глобального доступа
-                columnWidths.forEach((width, index) => {
-                    document.body.style.setProperty(`--drag-col-${index}`, `${width}px`)
-                })
-                
-                // Добавляем класс для активации drag стилей
-                document.body.classList.add('table-dragging')
-            }
+    // Нативный HTML5 drag'n'drop
+    const [draggedIndex, setDraggedIndex] = useState(null)
+    const [dropZoneIndex, setDropZoneIndex] = useState(null)
+
+    const handleDragStart = (e, index) => {
+        setDraggedIndex(index)
+        e.dataTransfer.effectAllowed = 'move'
+        e.dataTransfer.setData('text/html', e.target.outerHTML)
+        e.target.style.opacity = '0.5'
+    }
+
+    const handleDragEnd = (e) => {
+        e.target.style.opacity = '1'
+        setDraggedIndex(null)
+        setDropZoneIndex(null)
+    }
+
+    const handleDragOver = (e) => {
+        e.preventDefault()
+        e.dataTransfer.dropEffect = 'move'
+    }
+
+    const handleDragEnter = (e, index) => {
+        e.preventDefault()
+        if (draggedIndex !== null && draggedIndex !== index) {
+            setDropZoneIndex(index)
         }
     }
 
-    const onDragEnd = (result) => {
-        // Убираем drag класс и CSS переменные
-        document.body.classList.remove('table-dragging')
+    const handleDragLeave = (e) => {
+        // Проверяем что мы действительно покинули элемент
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+            setDropZoneIndex(null)
+        }
+    }
+
+    const handleDrop = (e, dropIndex) => {
+        e.preventDefault()
+        setDropZoneIndex(null)
         
-        // Удаляем все CSS переменные для ширин
-        for (let i = 0; i < 20; i++) { // проходим до 20 колонок максимум
-            document.body.style.removeProperty(`--drag-col-${i}`)
+        if (draggedIndex === null || draggedIndex === dropIndex) {
+            return
         }
-
-        if (!result.destination) {
-            return; // Dropped outside the list
-        }
-
-        if (result.destination.index === result.source.index) {
-            return; // No change in position
-        }
-
-        const sourceIndex = result.source.index
-        const destinationIndex = result.destination.index
 
         // Создаем новый массив с измененным порядком
         const newTableData = Array.from(tableData)
-        const [removed] = newTableData.splice(sourceIndex, 1)
-        newTableData.splice(destinationIndex, 0, removed)
+        const [removed] = newTableData.splice(draggedIndex, 1)
+        newTableData.splice(dropIndex, 0, removed)
 
-        // Обновляем extendedModel - используем setExtendedModel напрямую
+        // Обновляем extendedModel
         const fieldPath = _.get(element, "array.table.field")
-        // Обновляем extendedModel напрямую, так как editModelAL не поддерживает reorder
         const currentExtModel = { ...extendedModel }
         _.set(currentExtModel, fieldPath, newTableData)
         setExtendedModel(currentExtModel)
 
-        // Также обновляем модель (массив ID через запятую)
+        // Обновляем модель (массив ID через запятую)
         const newModelValue = newTableData.map(item => item.id).join(",")
         const currentModel = { ...model }
         _.set(currentModel, fieldPath, newModelValue)
         setModel(currentModel)
+
+        setDraggedIndex(null)
     }
 
     if (_.isArray(tableData)) {
@@ -205,66 +208,9 @@ export default function ElementArray(props) {
                     {(edit_on || delete_on) && <th className={`${styles.TH_column_ACTIONS} TH_column_ACTIONS`}></th>}
                 </tr>
             </thead>
-            {sort_on ? (
-                <Droppable droppableId="array-table">
-                    {(provided) => (
-                        <tbody ref={provided.innerRef} {...provided.droppableProps}>
-                            {(tableData || []).map((item, index) => (
-                                <Draggable key={item.id} draggableId={`item-${item.id}`} index={index}>
-                                    {(provided, snapshot) => (
-                                        <TableRow
-                                            item={item}
-                                            delete_on={delete_on}
-                                            edit_on={edit_on}
-                                            callEndpointPOST={callEndpointPOST}
-                                            endpoint={endpoint}
-                                            data={data}
-                                            arrayLinkField={_.get(element, "array.table.field")}
-                                            deleteRow={() => {
-                                                editModelAL(_.get(element, "array.table.field"))('delete', item.id)
-                                            }}
-                                            onFinishEditing={(item) => {
-                                                editModelAL(_.get(element, "array.table.field"))('replace', item.id, item)
-                                            }}
-                                            tableColumns={tableColumns}
-                                            isDraggable={true}
-                                            isDragging={snapshot.isDragging}
-                                            dragProps={{
-                                                ref: provided.innerRef,
-                                                ...provided.draggableProps,
-                                                ...provided.dragHandleProps
-                                            }}
-                                        />
-                                    )}
-                                </Draggable>
-                            ))}
-                            {provided.placeholder}
-                            {isAdding && <TableRow key="adding"
-                                adding={true}
-                                callEndpointPOST={callEndpointPOST}
-                                tempItem={tempItem}
-                                setTempItem={setTempItem}
-                                endpoint={endpoint}
-                                data={data}
-                                arrayLinkField={_.get(element, "array.table.field")}
-                                cancelAdding={() => {
-                                    setIsAdding(false)
-                                    setTempItem({})
-                                }}
-                                onFinishAdding={(item) => {
-                                    console.log("onFinishAdding! TODO")
-                                    console.log(item)
-                                    setIsAdding(false)
-                                    setTempItem({})
-                                    editModelAL(_.get(element, "array.table.field"))('add', item.id, item)
-                                }}
-                                tableColumns={tableColumns} />}
-                        </tbody>
-                    )}
-                </Droppable>
-            ) : (
                 <tbody>
-                    {(tableData || []).map(item => <TableRow key={item.id}
+                    {(tableData || []).map((item, index) => <TableRow 
+                        key={item.id}
                         item={item}
                         delete_on={delete_on}
                         edit_on={edit_on}
@@ -278,7 +224,19 @@ export default function ElementArray(props) {
                         onFinishEditing={(item) => {
                             editModelAL(_.get(element, "array.table.field"))('replace', item.id, item)
                         }}
-                        tableColumns={tableColumns} />)}
+                        tableColumns={tableColumns}
+                        // Нативный HTML5 drag'n'drop
+                        isDraggable={sort_on}
+                        dragIndex={index}
+                        onDragStart={handleDragStart}
+                        onDragEnd={handleDragEnd}
+                        onDragOver={handleDragOver}
+                        onDragEnter={handleDragEnter}
+                        onDragLeave={handleDragLeave}
+                        onDrop={handleDrop}
+                        isDragging={draggedIndex === index}
+                        isDropZone={dropZoneIndex === index}
+                    />)}
                     {isAdding && <TableRow key="adding"
                         adding={true}
                         callEndpointPOST={callEndpointPOST}
@@ -300,18 +258,11 @@ export default function ElementArray(props) {
                         }}
                         tableColumns={tableColumns} />}
                 </tbody>
-            )}
         </table>
     )
 
     return <div className={`${styles.form2ArrayLink} FPS_FORM2_ARRAY_LINK`} data-sortable={sort_on ? "true" : "false"}>
-        {sort_on ? (
-            <DragDropContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
-                {tableContent}
-            </DragDropContext>
-        ) : (
-            tableContent
-        )}
+        {tableContent}
         {add_on && !isAdding && <ActionPanel margin={{ top: 12, bottom: 12 }}>
             <Button verySmall height={32} icon="plus" onClick={() => { setIsAdding(true) }}>{buttonLabel}</Button>
         </ActionPanel>}
@@ -321,7 +272,8 @@ export default function ElementArray(props) {
 function TableRow(props) {
     const { item, tableColumns, delete_on, deleteRow, edit_on, onFinishEditing,
         adding, setTempItem, tempItem, cancelAdding, onFinishAdding, callEndpointPOST, endpoint,
-        data, arrayLinkField, isDraggable, isDragging, dragProps } = props
+        data, arrayLinkField, isDraggable, dragIndex, onDragStart, onDragEnd, onDragOver, 
+        onDragEnter, onDragLeave, onDrop, isDragging, isDropZone } = props
 
     const [isEditing, setIsEditing] = useState(false)
     const [editingItem, setEditingItem] = useState(item)
@@ -368,7 +320,17 @@ function TableRow(props) {
     }
 
     if (isEditing) {
-        return <tr {...(isDraggable ? dragProps : {})} className={isDragging ? styles.dragging : ""}>
+        return <tr 
+            draggable={isDraggable}
+            onDragStart={(e) => isDraggable && onDragStart(e, dragIndex)}
+            onDragEnd={(e) => isDraggable && onDragEnd(e)}
+            onDragOver={(e) => isDraggable && onDragOver(e)}
+            onDragEnter={(e) => isDraggable && onDragEnter(e, dragIndex)}
+            onDragLeave={(e) => isDraggable && onDragLeave(e)}
+            onDrop={(e) => isDraggable && onDrop(e, dragIndex)}
+            className={`${isDragging ? styles.dragging : ""} ${isDropZone ? styles.dropZone : ""}`}
+            style={{ cursor: isDraggable ? 'grab' : 'default' }}
+        >
             {tableColumns.map(column => {
                 const fieldImask = getFieldImask(column.id, arrayLinkField, data)
                 const fieldFormat = getFieldFormat(column.id, arrayLinkField, data)
@@ -452,7 +414,17 @@ function TableRow(props) {
         </tr>
     }
 
-    return <tr {...(isDraggable ? dragProps : {})} className={isDragging ? styles.dragging : ""}>
+    return <tr 
+        draggable={isDraggable}
+        onDragStart={(e) => isDraggable && onDragStart(e, dragIndex)}
+        onDragEnd={(e) => isDraggable && onDragEnd(e)}
+        onDragOver={(e) => isDraggable && onDragOver(e)}
+        onDragEnter={(e) => isDraggable && onDragEnter(e, dragIndex)}
+        onDragLeave={(e) => isDraggable && onDragLeave(e)}
+        onDrop={(e) => isDraggable && onDrop(e, dragIndex)}
+        className={`${isDragging ? styles.dragging : ""} ${isDropZone ? styles.dropZone : ""}`}
+        style={{ cursor: isDraggable ? 'grab' : 'default' }}
+    >
         {tableColumns.map(column => {
             const fieldFormat = getFieldFormat(column.id, arrayLinkField, data)
             const cellValue = getValue(_.get(item, column.id))

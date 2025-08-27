@@ -237,19 +237,23 @@
 .TH_column_ACTIONS {
   width: 100px;
 }
-.form2Table tbody tr.dragging {
-  background-color: var(--bg-secondary);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  transform: rotate(1deg);
-  z-index: 1000;
-  position: relative;
+.form2Table tbody tr {
+  transition: all 0.2s ease;
 }
-.form2Table tbody tr.dragging td {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  box-sizing: border-box;
+.form2Table tbody tr.dragging {
+  opacity: 0.5;
+  background-color: var(--bg-secondary);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
+}
+.form2Table tbody tr.dropZone {
+  background-color: var(--button-accent-bgr, #007bff) !important;
+  background: linear-gradient(90deg, var(--button-accent-bgr, #007bff) 0%, rgba(0, 123, 255, 0.1) 100%) !important;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+.form2Table tbody tr.dropZone td {
+  color: var(--button-accent-text);
+  font-weight: bold;
 }
 .form2Table tbody tr[draggable="true"] {
   cursor: grab;
@@ -257,49 +261,6 @@
 .form2Table tbody tr[draggable="true"]:active {
   cursor: grabbing;
 }
-.form2ArrayLink[data-sortable="true"] .form2Table th,
-.form2ArrayLink[data-sortable="true"] .form2Table td {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  box-sizing: border-box;
-}
-body.table-dragging [data-rbd-draggable-id] td:nth-child(1) {
-  width: var(--drag-col-0) !important;
-  min-width: var(--drag-col-0) !important;
-  max-width: var(--drag-col-0) !important;
-}
-body.table-dragging [data-rbd-draggable-id] td:nth-child(2) {
-  width: var(--drag-col-1) !important;
-  min-width: var(--drag-col-1) !important;
-  max-width: var(--drag-col-1) !important;
-}
-body.table-dragging [data-rbd-draggable-id] td:nth-child(3) {
-  width: var(--drag-col-2) !important;
-  min-width: var(--drag-col-2) !important;
-  max-width: var(--drag-col-2) !important;
-}
-body.table-dragging [data-rbd-draggable-id] td:nth-child(4) {
-  width: var(--drag-col-3) !important;
-  min-width: var(--drag-col-3) !important;
-  max-width: var(--drag-col-3) !important;
-}
-body.table-dragging [data-rbd-draggable-id] td:nth-child(5) {
-  width: var(--drag-col-4) !important;
-  min-width: var(--drag-col-4) !important;
-  max-width: var(--drag-col-4) !important;
-}
-body.table-dragging [data-rbd-draggable-id] td:nth-child(6) {
-  width: var(--drag-col-5) !important;
-  min-width: var(--drag-col-5) !important;
-  max-width: var(--drag-col-5) !important;
-}
-body.table-dragging [data-rbd-draggable-id] td:nth-child(7) {
-  width: var(--drag-col-6) !important;
-  min-width: var(--drag-col-6) !important;
-  max-width: var(--drag-col-6) !important;
-}
-body.table-dragging [data-rbd-draggable-id] td:nth-child(8) {
-  width: var(--drag-col-7) !important;
-  min-width: var(--drag-col-7) !important;
-  max-width: var(--drag-col-7) !important;
+.form2Table tbody tr[draggable="true"]:hover:not(.dragging):not(.dropZone) {
+  background-color: var(--bg-hover, #f5f5f5);
 }
