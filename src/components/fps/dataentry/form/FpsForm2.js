@@ -238,12 +238,13 @@ export default function FpsForm2(props) {
         return result;
       }, {});
 
-      setExtendedModel({
+      const newExtendedModel = {
         ...gatherDefaults(),
         ..._.get(data, "data[0]"),
         ...convertedDates,
         ...convertedBools
-      })
+      }
+      setExtendedModel(newExtendedModel)
       let saveSate = { ...state }
       const newModel = ({
         //...model,  //чтобы старое затиралось
@@ -260,13 +261,8 @@ export default function FpsForm2(props) {
         // console.log(model)
         setModel(newModel)
         setOriginalModel(newModel)
-        setOriginalExtendedModel({
-          ...gatherDefaults(),
-          ..._.get(data, "data[0]"),
-          ...convertedDates,
-          ...convertedBools
-        })
       }
+      setOriginalExtendedModel(newExtendedModel)
       saveSate = { ...saveSate, ...templateState(_.get(data, "params.state"), newModel) }
       // RESTORE STATE:
       if (_.get(params, "general.restoreState") && _.get(params, "general.saveStateTo")) {
