@@ -9,7 +9,7 @@ import _ from 'lodash'
 
 export default function FpsCarousel(props) {
 
-    const { data, auth, locale, handleRoute } = props
+    const { data, auth, locale, handleRoute, callEndpoint, socket } = props
 
     // console.log("=== CAROUSEL DATA ===")
     // console.log(data)
