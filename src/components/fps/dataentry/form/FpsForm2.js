@@ -100,22 +100,33 @@ export default function FpsForm2(props) {
   const submitOnState = debounce(submit, 1400);
 
   // const submitDebounced = useCallback(debounce(submit, 1000), []);
-  const submitDebounced = useCallback(debounce(submit, 1000), []);
+  const submitDebounced = useCallback(debounce((...args) => {
+    console.log("⏰ DEBOUNCED SUBMIT EXECUTING");
+    console.log("⏰ Model at execution time:", modelRef.current);
+    console.log("⏰ Args:", args);
+    submit(...args);
+  }, 1000), []);
   //const debouncedCallEndpint = debounce(callEndpoint, 700);
 
   // AUTOSUBMIT ON MODEL
   useEffect(() => {
-    // console.log("AUTOSUBMIT ON MODEL");
+    console.log("=== AUTOSUBMIT ON MODEL TRIGGERED ===");
+    console.log("isSocketUpdateRef.current:", isSocketUpdateRef.current);
+    console.log("general.disableSubmitOnSocket:", _.get(params, "general.disableSubmitOnSocket"));
+    console.log("general.autosubmit:", _.get(params, "general.autosubmit"));
+    console.log("previousModel !== undefined:", typeof previousModel !== 'undefined');
+    console.log("!_.isEmpty(model):", !_.isEmpty(model));
     
     // Проверяем настройку disableSubmitOnSocket - если включена и это обновление от сокета, то не делаем автосабмит
     if (_.get(params, "general.disableSubmitOnSocket") && isSocketUpdateRef.current) {
-      console.log("AUTOSUBMIT DISABLED: Socket update detected and disableSubmitOnSocket is enabled");
+      console.log("🚫 AUTOSUBMIT DISABLED: Socket update detected and disableSubmitOnSocket is enabled");
       isSocketUpdateRef.current = false; // сбрасываем флаг после обработки
       return;
     }
     
     // Сбрасываем флаг сокетного обновления в любом случае
     if (isSocketUpdateRef.current) {
+      console.log("🔄 Resetting socket update flag (disableSubmitOnSocket is OFF)");
       isSocketUpdateRef.current = false;
     }
     
@@ -124,15 +135,26 @@ export default function FpsForm2(props) {
         let send = false;
         _.get(params, "general.autosubmit_model").forEach(field => {
           if (!_.isEqual(_.get(previousModel, field), _.get(model, field)) && (_.get(previousModel, field) || _.get(model, field))) {
-            console.log("AUTOSUBMIT ON MODEL", field, _.get(previousModel, field), _.get(model, field));
+            console.log("🚀 AUTOSUBMIT ON MODEL FIELD", field, "FROM:", _.get(previousModel, field), "TO:", _.get(model, field));
             send = true;
           }
         });
-        send && submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, false, model, extendedModel)
+        if (send) {
+          console.log("📤 Calling submitDebounced (specific fields)");
+          submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, false, modelRef.current, extendedModel);
+        }
       } else {
         let send = false;
-        if (!_.isEqual(previousModel, model)) { send = true; }
-        send && submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, false, model, extendedModel);
+        if (!_.isEqual(previousModel, model)) { 
+          console.log("🚀 AUTOSUBMIT ON MODEL CHANGE (all fields)");
+          console.log("previousModel:", previousModel);
+          console.log("model:", model);
+          send = true; 
+        }
+        if (send) {
+          console.log("📤 Calling submitDebounced (all fields)");
+          submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, false, modelRef.current, extendedModel);
+        }
       }
     }
   }, [model, previousModel, params, submitDebounced]);
@@ -271,8 +293,15 @@ export default function FpsForm2(props) {
       })
 
       if (!_.isEqual(newModel, model)) {
-        console.log("newModel")
-        // console.log(model)
+        console.log("🔌 SOCKET UPDATE DETECTED - setting new model");
+        console.log("🔌 Current model:", model);
+        console.log("🔌 New model from socket:", newModel);
+        console.log("🔌 Setting isSocketUpdateRef.current = true");
+        console.log("🔌 Cancelling pending debounced submits");
+        
+        // Отменяем все pending debounced submits чтобы они не перезаписали сокетное обновление
+        submitDebounced.cancel();
+        
         isSocketUpdateRef.current = true; // устанавливаем флаг что это обновление от сокета
         setModel(newModel)
         setOriginalModel(newModel)
@@ -556,6 +585,9 @@ export default function FpsForm2(props) {
   function submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping = [], newData,
     actionReq, setActionError, resetModel, currentModel, newExtendedModel) {
 
+    console.log("💾 SUBMIT FUNCTION CALLED");
+    console.log("💾 autoSubmit:", autoSubmit);
+    console.log("💾 currentModel:", currentModel);
     // console.log("extendedModel inside submit")
     // console.log(newExtendedModel)
     newExtendedModel = newExtendedModel || extendedModel
