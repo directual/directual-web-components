@@ -76,7 +76,7 @@ export default function FpsForm2(props) {
   const [highlightState, setHighlightState] = useState(false)
   const [highlightModel, setHighlightModel] = useState(false)
   const [initialized, setInitialized] = useState(!edditingOn);
-  const [isSocketUpdate, setIsSocketUpdate] = useState(false); // флаг для отслеживания обновлений от сокета
+  const isSocketUpdateRef = useRef(false); // ref для отслеживания обновлений от сокета
 
   // console.log(model)
   // console.log(originalModel)
@@ -108,9 +108,15 @@ export default function FpsForm2(props) {
     // console.log("AUTOSUBMIT ON MODEL");
     
     // Проверяем настройку disableSubmitOnSocket - если включена и это обновление от сокета, то не делаем автосабмит
-    if (_.get(params, "general.disableSubmitOnSocket") && isSocketUpdate) {
+    if (_.get(params, "general.disableSubmitOnSocket") && isSocketUpdateRef.current) {
       console.log("AUTOSUBMIT DISABLED: Socket update detected and disableSubmitOnSocket is enabled");
+      isSocketUpdateRef.current = false; // сбрасываем флаг после обработки
       return;
+    }
+    
+    // Сбрасываем флаг сокетного обновления в любом случае
+    if (isSocketUpdateRef.current) {
+      isSocketUpdateRef.current = false;
     }
     
     if (_.get(params, "general.autosubmit") === "model" && typeof previousModel !== 'undefined' && !_.isEmpty(model)) {
@@ -129,7 +135,7 @@ export default function FpsForm2(props) {
         send && submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, false, model, extendedModel);
       }
     }
-  }, [model, previousModel, params, submitDebounced, isSocketUpdate]);
+  }, [model, previousModel, params, submitDebounced]);
 
   // Clean up on unmount
   useEffect(() => {
@@ -137,17 +143,6 @@ export default function FpsForm2(props) {
       submitDebounced.cancel();
     };
   }, [submitDebounced]);
-
-  // Сбрасываем флаг сокетного обновления после обработки изменения модели
-  useEffect(() => {
-    if (isSocketUpdate) {
-      // Используем небольшую задержку чтобы убедиться что автосабмит useEffect уже выполнился
-      const timer = setTimeout(() => {
-        setIsSocketUpdate(false);
-      }, 0);
-      return () => clearTimeout(timer);
-    }
-  }, [isSocketUpdate]);
 
   // AUTOSUBMIT ON STATE
   useEffect(() => {
@@ -278,7 +273,7 @@ export default function FpsForm2(props) {
       if (!_.isEqual(newModel, model)) {
         console.log("newModel")
         // console.log(model)
-        setIsSocketUpdate(true); // устанавливаем флаг что это обновление от сокета
+        isSocketUpdateRef.current = true; // устанавливаем флаг что это обновление от сокета
         setModel(newModel)
         setOriginalModel(newModel)
       }
