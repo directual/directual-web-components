@@ -773,55 +773,48 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         >
             {(initialLoading || pageLoading) ? renderSkeletons() : objects
                 .filter(object => !!_.get(object, field_quantity, 1)) // filter items with quantity == 0
-                .map(object => <div
-                    style={(!card_border_radius && card_border_radius !== 0) ? {
-                        borderWidth: card_border,
-                    } : {
-                        borderWidth: card_border,
-                        borderRadius: card_border_radius
-                    }}
-                    className={`FPS_CARDS2__CARD ${styles.cards2_card}`}>
-                    <Card
-                        key={object.id}
-                        data={data}
-                        auth={auth}
-                        checkHidden={checkHidden}
-                        context={context}
-                        lang={lang}
-                        favLoading={favLoading}
-                        favorites={favorites}
-                        handleRoute={handleRoute}
-                        callEndpointGET={callEndpointGET}
-                        callEndpointPOST={callEndpointPOST}
-                        object={object}
-                        favoritesField={favoritesField}
-                        templateEngine={templateEngine}
-                        addToFavorites={(value) => {
-                            console.log("addToFavorites")
-                            if (favoritesEndpoint && favoritesField && favoritesHiddenField) {
-                                setFavLoading(true)
-                                let payload = {
-                                    [favoritesField]: object.id,
-                                    [favoritesHiddenField]: !value
-                                }
-                                if (!value) {
-                                    let copyFav = [...favorites]
-                                    _.remove(copyFav, (obj) => obj[favoritesField] === object.id)
-                                    setFavorites(copyFav)
-                                    const favID = _.get(favorites.filter(i => i[favoritesField] == object.id)[0], "id")
-                                    if (favID) _.set(payload, "id", favID)
-                                } else {
-                                    let copyFav = [...favorites]
-                                    copyFav.push({ [favoritesField]: object.id })
-                                    setFavorites(copyFav)
-                                }
-
-                                callEndpointPOST(favoritesEndpoint, payload, () => setFavLoading(false))
-
+                .map(object => <CardWrapper
+                    key={object.id}
+                    data={data}
+                    auth={auth}
+                    checkHidden={checkHidden}
+                    context={context}
+                    lang={lang}
+                    favLoading={favLoading}
+                    favorites={favorites}
+                    handleRoute={handleRoute}
+                    callEndpointGET={callEndpointGET}
+                    callEndpointPOST={callEndpointPOST}
+                    object={object}
+                    favoritesField={favoritesField}
+                    templateEngine={templateEngine}
+                    card_border={card_border}
+                    card_border_radius={card_border_radius}
+                    addToFavorites={(value) => {
+                        console.log("addToFavorites")
+                        if (favoritesEndpoint && favoritesField && favoritesHiddenField) {
+                            setFavLoading(true)
+                            let payload = {
+                                [favoritesField]: object.id,
+                                [favoritesHiddenField]: !value
                             }
-                        }}
-                    />
-                </div>)}
+                            if (!value) {
+                                let copyFav = [...favorites]
+                                _.remove(copyFav, (obj) => obj[favoritesField] === object.id)
+                                setFavorites(copyFav)
+                                const favID = _.get(favorites.filter(i => i[favoritesField] == object.id)[0], "id")
+                                if (favID) _.set(payload, "id", favID)
+                            } else {
+                                let copyFav = [...favorites]
+                                copyFav.push({ [favoritesField]: object.id })
+                                setFavorites(copyFav)
+                            }
+
+                            callEndpointPOST(favoritesEndpoint, payload, () => setFavLoading(false))
+
+                        }
+                    }}
+                />)}
 
         </div>}
 
@@ -835,57 +828,49 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         >
             {(initialLoading || pageLoading) ? renderSkeletons(true) : objects
                 .filter(object => !!_.get(object, field_quantity, 1)) // filter items with quantity == 0
-                .map(object => <div
-                    style={(!card_border_radius && card_border_radius !== 0) ? {
-                        borderWidth: card_border,
-                        width: flex_layout__width
-                    } : {
-                        borderWidth: card_border,
-                        borderRadius: card_border_radius,
-                        width: flex_layout__width
-                    }}
-                    className={`FPS_CARDS2__CARD ${styles.cards2_card}`}>
-                    <Card
-                        key={object.id}
-                        data={data}
-                        auth={auth}
-                        context={context}
-                        checkHidden={checkHidden}
-                        lang={lang}
-                        favLoading={favLoading}
-                        favorites={favorites}
-                        handleRoute={handleRoute}
-                        callEndpointGET={callEndpointGET}
-                        callEndpointPOST={callEndpointPOST}
-                        object={object}
-                        favoritesField={favoritesField}
-                        templateEngine={templateEngine}
-                        addToFavorites={(value) => {
-                            console.log("addToFavorites")
-                            if (favoritesEndpoint && favoritesField && favoritesHiddenField) {
-                                setFavLoading(true)
-                                let payload = {
-                                    [favoritesField]: object.id,
-                                    [favoritesHiddenField]: !value
-                                }
-                                if (!value) {
-                                    let copyFav = [...favorites]
-                                    _.remove(copyFav, (obj) => obj[favoritesField] === object.id)
-                                    setFavorites(copyFav)
-                                    const favID = _.get(favorites.filter(i => i[favoritesField] == object.id)[0], "id")
-                                    if (favID) _.set(payload, "id", favID)
-                                } else {
-                                    let copyFav = [...favorites]
-                                    copyFav.push({ [favoritesField]: object.id })
-                                    setFavorites(copyFav)
-                                }
-
-                                callEndpointPOST(favoritesEndpoint, payload, () => setFavLoading(false))
-
+                .map(object => <CardWrapper
+                    key={object.id}
+                    data={data}
+                    auth={auth}
+                    context={context}
+                    checkHidden={checkHidden}
+                    lang={lang}
+                    favLoading={favLoading}
+                    favorites={favorites}
+                    handleRoute={handleRoute}
+                    callEndpointGET={callEndpointGET}
+                    callEndpointPOST={callEndpointPOST}
+                    object={object}
+                    favoritesField={favoritesField}
+                    templateEngine={templateEngine}
+                    card_border={card_border}
+                    card_border_radius={card_border_radius}
+                    flex_layout__width={flex_layout__width}
+                    addToFavorites={(value) => {
+                        console.log("addToFavorites")
+                        if (favoritesEndpoint && favoritesField && favoritesHiddenField) {
+                            setFavLoading(true)
+                            let payload = {
+                                [favoritesField]: object.id,
+                                [favoritesHiddenField]: !value
                             }
-                        }}
-                    />
-                </div>)}
+                            if (!value) {
+                                let copyFav = [...favorites]
+                                _.remove(copyFav, (obj) => obj[favoritesField] === object.id)
+                                setFavorites(copyFav)
+                                const favID = _.get(favorites.filter(i => i[favoritesField] == object.id)[0], "id")
+                                if (favID) _.set(payload, "id", favID)
+                            } else {
+                                let copyFav = [...favorites]
+                                copyFav.push({ [favoritesField]: object.id })
+                                setFavorites(copyFav)
+                            }
+
+                            callEndpointPOST(favoritesEndpoint, payload, () => setFavLoading(false))
+
+                        }
+                    }}
+                />)}
 
         </div>}
 
@@ -913,6 +898,28 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
     </div>
 }
 
+// Обертка для карточки, которая показывает скелетон пока карточка загружается
+function CardWrapper(props) {
+    const { card_border, card_border_radius, flex_layout__width, ...cardProps } = props
+    const data = props.data
+    const card_min_height = _.get(data, "params.card_min_height") || "120px"
+
+    return (
+        <div
+            style={(!card_border_radius && card_border_radius !== 0) ? {
+                borderWidth: card_border,
+                ...(flex_layout__width && { width: flex_layout__width })
+            } : {
+                borderWidth: card_border,
+                borderRadius: card_border_radius,
+                ...(flex_layout__width && { width: flex_layout__width })
+            }}
+            className={`FPS_CARDS2__CARD ${styles.cards2_card}`}>
+            <Card {...cardProps} />
+        </div>
+    )
+}
+
 function Card(props) {
 
     const { object, auth, checkHidden, data, lang, favoritesField, addToFavorites, favLoading, templateEngine, handleRoute, favorites, callEndpointPOST, callEndpointGET, context } = props
@@ -921,7 +928,7 @@ function Card(props) {
     const html_type_content = _.get(data, "params.html_type_content")
     const templatingEngine = _.get(data, "params.paraTemplateEngine")
     const card_padding = _.get(data, "params.card_padding", 12)
-    const card_min_height = _.get(data, "params.card_min_height") || "none"
+    const card_min_height = _.get(data, "params.card_min_height") || "120px" // изменил с "none" на конкретную высоту
     const card_border = _.get(data, "params.card_border", 1)
     const card_border_radius = _.get(data, "params.card_border_radius")
     const image_shape = _.get(data, "params.card_type_cart.image_shape")
@@ -962,7 +969,11 @@ function Card(props) {
 
     useEffect(() => {
 
-        //if (templatingEngine == 'front') return;
+        // если используется front-end templating, не ждем загрузку данных
+        if (templatingEngine == 'front' || dir_templatingEngine == 'front') {
+            setCardLoading(false);
+            return;
+        }
 
         const bodyToRender = cardType == "custom" ? html_type_content : dir_cardBody
 
@@ -1000,12 +1011,9 @@ function Card(props) {
     // показываем скелетон во время загрузки карточки
     if (cardLoading) {
         return <Skeleton
-            height={card_min_height + ""}
+            height={card_min_height}
             style={{
-                borderRadius: card_border_radius,
-                borderWidth: card_border,
-                borderStyle: 'solid',
-                borderColor: 'transparent'
+                borderRadius: card_border_radius
             }}
         />
     }
