@@ -444,6 +444,9 @@ export default function Input(props) {
         inputEl.current && (props.reFocus || props.reFocus === 0) && inputEl.current.focus();
     }, [props.reFocus])
 
+    // Кэш для стабильной ширины каждой textarea (устойчив к изменениям viewport)
+    const textareaWidthCache = new WeakMap();
+    
     function countLines(textarea, text) {
         // console.log('counting lines...')
         // console.log(textarea)
@@ -474,8 +477,30 @@ export default function Input(props) {
         // [cs.lineHeight] may return 'normal', which means line height = font size.
         if (isNaN(lh)) lh = parseInt(cs.fontSize) + 3;
 
-        // Copy content width.
-        _buffer.style.width = (textarea.clientWidth - pl - pr) + 'px';
+        // Получаем текущую ширину контента
+        const currentContentWidth = textarea.clientWidth - pl - pr;
+        
+        // Получаем кэшированную стабильную ширину или инициализируем новую
+        let cachedWidth = textareaWidthCache.get(textarea);
+        
+        if (cachedWidth === undefined) {
+            // Первый вызов - кэшируем текущую ширину как стабильную
+            cachedWidth = currentContentWidth;
+            textareaWidthCache.set(textarea, cachedWidth);
+        } else {
+            // Проверяем разницу с кэшированной шириной
+            const widthDiff = Math.abs(currentContentWidth - cachedWidth);
+            
+            if (widthDiff >= 20) {
+                // Значительное изменение ширины - обновляем кэш
+                cachedWidth = currentContentWidth;
+                textareaWidthCache.set(textarea, cachedWidth);
+            }
+            // Мелкие изменения (< 20px) игнорируем, используем кэшированную ширину
+        }
+
+        // Используем стабильную кэшированную ширину вместо динамической
+        _buffer.style.width = cachedWidth + 'px';
 
         // Copy text properties.
         _buffer.style.font = cs.font;
