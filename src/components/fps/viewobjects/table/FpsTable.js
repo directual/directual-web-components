@@ -520,6 +520,20 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute, cal
                             _.get(currentData, 'params.data.cardsOrPage') == 'disable' ? undefined :
                                 setShowObject(val)
                 }}
+                getExpandHref={val => {
+                    const cardsOrPage = _.get(currentData, 'params.data.cardsOrPage');
+                    if (cardsOrPage === 'page') {
+                        const additionalPath = _.get(currentData, 'params.data.additionalPath');
+                        const pathField = _.get(currentData, 'params.data.pathField') || 'id';
+                        return `./${additionalPath ? additionalPath + '/' : ''}${encodeURI(val[pathField])}`;
+                    }
+                    if (cardsOrPage === 'anotherPage') {
+                        const anotherPage = _.get(currentData, 'params.data.anotherPage');
+                        const pathField = _.get(currentData, 'params.data.pathField') || 'id';
+                        return `/${anotherPage}/${encodeURI(val[pathField])}`;
+                    }
+                    return undefined; // для попапов href не нужен
+                }}
                 // onExpand={val => { setShowObject(val) }}
                 //setPage={page => { sendMsg(null, null, { page: page }) }}
                 auth={auth}

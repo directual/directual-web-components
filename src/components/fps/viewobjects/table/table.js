@@ -260,7 +260,7 @@ const defaultColumn = {
     Cell: EditableCell
 }
 
-function ReactTable({ columns, params, hideExpandTD, data, largeFont, updateMyData, fieldDetails, tableParams, skipPageReset, getLinkName, onExpand }) {
+function ReactTable({ columns, params, hideExpandTD, data, largeFont, updateMyData, fieldDetails, tableParams, skipPageReset, getLinkName, onExpand, getExpandHref }) {
 
     const {
         getTableProps,
@@ -344,7 +344,14 @@ function ReactTable({ columns, params, hideExpandTD, data, largeFont, updateMyDa
                                 {...row.getRowProps()}>
                                 {!hideExpandTD && <td 
                                     style={{padding: tableCellPadding}}
-                                ><a onClick={() => onExpand(row.original)} className={`icon icon-expand ${styles.expand}`} /></td>}
+                                ><a 
+                                    href={getExpandHref ? getExpandHref(row.original) : undefined}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        onExpand(row.original);
+                                    }} 
+                                    className={`icon icon-expand ${styles.expand}`} 
+                                /></td>}
                                 {row.cells.map(cell => {
 
                                     const isColorCell = _.get(tableParams, `[${cell.column.id}].colorCell`) ? tableParams[cell.column.id] : null
@@ -385,6 +392,7 @@ function ReactTable({ columns, params, hideExpandTD, data, largeFont, updateMyDa
 export function Table({
     data,
     onExpand,
+    getExpandHref,
     loading,
     cardsData,
     searchValue,
@@ -586,6 +594,7 @@ export function Table({
                 fieldDetails={fieldDetails}
                 skipPageReset={skipPageReset}
                 onExpand={onExpand}
+                getExpandHref={getExpandHref}
                 tableParams={tableParams.fieldParams}
             />
         </div>

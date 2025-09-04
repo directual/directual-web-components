@@ -71,7 +71,7 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
     };
   }, [fullHeight]);
 
-  console.log("fullHeight", fullHeight)
+  // console.log("fullHeight", fullHeight)
 
   // Calculating layout width:
   useEffect(() => {
