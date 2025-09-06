@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 //import Datetime from 'react-datetime'
 //require('react-datetime');
 import * as Datetime from 'react-datetime'
-import 'react-datetime/css/react-datetime.css'
 import styles from './datepicker.module.css'
 import moment from 'moment';
 import 'moment/locale/ru'
@@ -21,6 +20,7 @@ export default function Datepicker(props) {
     const lang = props.locale ? props.locale.length == 3 ? props.locale : 'ENG' : 'ENG'
 
     const [value, setValue] = useState(props.defaultValue && props.utc ? moment.utc(props.defaultValue) : moment(props.defaultValue))
+    const [isCalendarOpen, setIsCalendarOpen] = useState(false)
 
     const parseJson = json => {
         if (!json) return {}
@@ -69,11 +69,22 @@ export default function Datepicker(props) {
             <div 
                 onClick={e => {
                     e.stopPropagation()
-                    !props.disabled && openCalendar(e)
+                    if (!props.disabled) {
+                        setIsCalendarOpen(true)
+                        openCalendar(e)
+                    }
                 }}
                 onFocus={e => {
                     e.stopPropagation()
-                    !props.disabled && openCalendar(e)
+                    if (!props.disabled) {
+                        setIsCalendarOpen(true)
+                        openCalendar(e)
+                    }
+                }}
+                onMouseEnter={() => {
+                    if (isCalendarOpen && !props.disabled) {
+                        // Когда календарь открыт и мышь на инпуте - оставляем открытым
+                    }
                 }}
                 className={`${styles.datePicker} ${props.disabled && styles.disabled}`}
                 tabIndex={props.disabled ? -1 : 0}
@@ -93,7 +104,27 @@ export default function Datepicker(props) {
     // console.log(dateFormat)
 
     return (
-        <div className={styles.calendar}>
+        <div 
+            className={styles.calendar}
+            onMouseEnter={() => {
+                // Когда мышь над всем компонентом - сохраняем календарь открытым
+                if (isCalendarOpen) {
+                    const calendarElement = document.querySelector('.rdtPicker');
+                    if (calendarElement) {
+                        calendarElement.style.display = 'block';
+                    }
+                }
+            }}
+            onMouseLeave={() => {
+                // Когда мышь покидает весь компонент - закрываем через задержку
+                setTimeout(() => {
+                    const isHoveringCalendar = document.querySelector('.rdtPicker:hover');
+                    if (!isHoveringCalendar) {
+                        setIsCalendarOpen(false);
+                    }
+                }, 50);
+            }}
+        >
             {/* <div className='dd-debug'>{JSON.stringify(value)}</div> */}
             <Datetime
                 value={value}
@@ -106,15 +137,28 @@ export default function Datepicker(props) {
                 className={props.correctedHeight ? 'correctedHeight' : ''}
                 utc={props.utc}
                 closeOnSelect={true}
-                closeOnClickOutside={false}
+                closeOnClickOutside={true}
                 inputProps={{
                     placeholder: props.placeholder,
                     disabled: props.disabled,
+                }}
+                onBlur={(e) => {
+                    // Проверяем, не перешел ли фокус на календарь
+                    setTimeout(() => {
+                        const activeElement = document.activeElement;
+                        const calendarElement = document.querySelector('.rdtPicker');
+                        const isInCalendar = calendarElement && calendarElement.contains(activeElement);
+                        
+                        if (!isInCalendar) {
+                            setIsCalendarOpen(false);
+                        }
+                    }, 100);
                 }}
 
                 onChange={value => {
                     props.onChange(value)
                     setValue(value)
+                    setIsCalendarOpen(false) // Закрываем после выбора даты
                 }}
             />
         </div>

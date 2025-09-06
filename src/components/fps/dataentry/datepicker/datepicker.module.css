@@ -65,6 +65,7 @@
 }
 :global .rdt {
   position: relative;
+  display: inline-block;
   align-items: center;
 }
 :global .rdt.rdtOpen:after {
@@ -76,6 +77,21 @@
 }
 :global .rdt:hover .rdtPicker {
   display: block !important;
+}
+:global .rdt:focus-within .rdtPicker,
+:global .rdt:hover .rdtPicker {
+  display: block !important;
+}
+:global .rdt .rdtPicker {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+}
+:global .rdt.rdtOpen .rdtPicker {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
 }
 :global .form-control {
   outline: none;
@@ -131,8 +147,14 @@
   border-radius: var(--border-radius);
   background-color: var(--form-field-bgr);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  pointer-events: auto;
 }
 :global .rdtPicker:hover {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+:global .rdtPicker.rdtForceOpen {
   display: block !important;
 }
 :global .rdtOpen .rdtPicker {
