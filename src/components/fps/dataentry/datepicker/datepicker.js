@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 //import Datetime from 'react-datetime'
 //require('react-datetime');
 import * as Datetime from 'react-datetime'
+import 'react-datetime/css/react-datetime.css'
 import styles from './datepicker.module.css'
 import moment from 'moment';
 import 'moment/locale/ru'
@@ -65,10 +66,18 @@ export default function Datepicker(props) {
             props.onChange({ target: { value: '' } });
         }
         return (
-            <div onClick={e => {
-                e.stopPropagation()
-                !props.disabled && openCalendar(e)
-            }} className={`${styles.datePicker} ${props.disabled && styles.disabled}`}>
+            <div 
+                onClick={e => {
+                    e.stopPropagation()
+                    !props.disabled && openCalendar(e)
+                }}
+                onFocus={e => {
+                    e.stopPropagation()
+                    !props.disabled && openCalendar(e)
+                }}
+                className={`${styles.datePicker} ${props.disabled && styles.disabled}`}
+                tabIndex={props.disabled ? -1 : 0}
+            >
                 <div className={`${styles.icon} icon icon-calendar`} />
                 <div className={styles.value}>{props.value}</div>
                 {props.value && <div onClick={clear} className={`${styles.clear} icon icon-close`} />}
@@ -97,6 +106,7 @@ export default function Datepicker(props) {
                 className={props.correctedHeight ? 'correctedHeight' : ''}
                 utc={props.utc}
                 closeOnSelect={true}
+                closeOnClickOutside={false}
                 inputProps={{
                     placeholder: props.placeholder,
                     disabled: props.disabled,

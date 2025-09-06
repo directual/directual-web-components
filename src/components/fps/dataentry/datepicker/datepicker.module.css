@@ -74,6 +74,9 @@
 :global .rdt * {
   border-radius: var(--border-radius);
 }
+:global .rdt:hover .rdtPicker {
+  display: block !important;
+}
 :global .form-control {
   outline: none;
   border: solid 1px var(--form-field-border);
@@ -128,6 +131,9 @@
   border-radius: var(--border-radius);
   background-color: var(--form-field-bgr);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+:global .rdtPicker:hover {
+  display: block !important;
 }
 :global .rdtOpen .rdtPicker {
   display: block;

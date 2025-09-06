@@ -84,6 +84,10 @@
         * {
             border-radius: var( --border-radius);
         }
+        // Предотвращаем закрытие календаря при hover на контейнере
+        &:hover .rdtPicker {
+          display: block !important;
+        }
         // &:after {
         //     content: "\e914";
         //     font-family: 'directual-icons';
@@ -152,6 +156,11 @@
         border-radius: var( --border-radius);
         background-color: var(--form-field-bgr);
         box-shadow: 0 1px 3px rgba(0,0,0,.1);
+        
+        // Предотвращаем закрытие календаря при hover
+        &:hover {
+          display: block !important;
+        }
       }
       .rdtOpen .rdtPicker {
         display: block;
