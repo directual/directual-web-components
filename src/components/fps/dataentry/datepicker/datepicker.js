@@ -81,11 +81,6 @@ export default function Datepicker(props) {
                         openCalendar(e)
                     }
                 }}
-                onMouseEnter={() => {
-                    if (isCalendarOpen && !props.disabled) {
-                        // Когда календарь открыт и мышь на инпуте - оставляем открытым
-                    }
-                }}
                 className={`${styles.datePicker} ${props.disabled && styles.disabled}`}
                 tabIndex={props.disabled ? -1 : 0}
             >
@@ -106,23 +101,15 @@ export default function Datepicker(props) {
     return (
         <div 
             className={styles.calendar}
-            onMouseEnter={() => {
-                // Когда мышь над всем компонентом - сохраняем календарь открытым
-                if (isCalendarOpen) {
-                    const calendarElement = document.querySelector('.rdtPicker');
-                    if (calendarElement) {
-                        calendarElement.style.display = 'block';
-                    }
-                }
-            }}
             onMouseLeave={() => {
-                // Когда мышь покидает весь компонент - закрываем через задержку
+                // Небольшая задержка для проверки - не перешла ли мышь на календарь
                 setTimeout(() => {
-                    const isHoveringCalendar = document.querySelector('.rdtPicker:hover');
-                    if (!isHoveringCalendar) {
+                    const calendarElement = document.querySelector('.rdtPicker');
+                    const isHoveringCalendar = calendarElement && calendarElement.matches(':hover');
+                    if (!isHoveringCalendar && isCalendarOpen) {
                         setIsCalendarOpen(false);
                     }
-                }, 50);
+                }, 100);
             }}
         >
             {/* <div className='dd-debug'>{JSON.stringify(value)}</div> */}
@@ -141,18 +128,6 @@ export default function Datepicker(props) {
                 inputProps={{
                     placeholder: props.placeholder,
                     disabled: props.disabled,
-                }}
-                onBlur={(e) => {
-                    // Проверяем, не перешел ли фокус на календарь
-                    setTimeout(() => {
-                        const activeElement = document.activeElement;
-                        const calendarElement = document.querySelector('.rdtPicker');
-                        const isInCalendar = calendarElement && calendarElement.contains(activeElement);
-                        
-                        if (!isInCalendar) {
-                            setIsCalendarOpen(false);
-                        }
-                    }, 100);
                 }}
 
                 onChange={value => {

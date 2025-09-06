@@ -75,7 +75,6 @@
 :global {
     .rdt {
         position: relative;
-        display: inline-block;
         align-items: center;
         &.rdtOpen:after {
             color: var(--form-accent);
@@ -84,16 +83,6 @@
         * {
             border-radius: var( --border-radius);
         }
-        // Предотвращаем закрытие календаря при hover на контейнере
-        &:hover .rdtPicker {
-          display: block !important;
-        }
-    }
-    
-    // Базовые стили для предотвращения исчезновения календаря
-    .rdt:focus-within .rdtPicker,
-    .rdt:hover .rdtPicker {
-      display: block !important;
     }
     
     // Дополнительная защита для разных браузеров
@@ -103,14 +92,6 @@
       backface-visibility: hidden;
       // Firefox fix  
       -moz-backface-visibility: hidden;
-    }
-    
-    // Обеспечиваем стабильность при быстром движении мыши
-    .rdt.rdtOpen .rdtPicker {
-      display: block !important;
-      opacity: 1 !important;
-      visibility: visible !important;
-      pointer-events: auto !important;
     }
         // &:after {
         //     content: "\e914";
@@ -179,18 +160,18 @@
         border-radius: var( --border-radius);
         background-color: var(--form-field-bgr);
         box-shadow: 0 1px 3px rgba(0,0,0,.1);
-        pointer-events: auto; // Всегда доступен для кликов
         
-        // Предотвращаем закрытие календаря при hover
+        // Только предотвращаем закрытие при hover на календаре
         &:hover {
+          display: block !important;
+        }
+        
+        // Предотвращаем исчезновение календаря при переводе мыши на него
+        &:hover,
+        &:focus-within {
           display: block !important;
           opacity: 1 !important;
           visibility: visible !important;
-        }
-        
-        // Принудительно показываем при взаимодействии с родителем
-        &.rdtForceOpen {
-          display: block !important;
         }
       }
       .rdtOpen .rdtPicker {
