@@ -96,7 +96,6 @@ export default function Datepicker(props) {
                 timeConstraints={parseJson(props.timeConstraints)}
                 className={props.correctedHeight ? 'correctedHeight' : ''}
                 utc={props.utc}
-                onBlur={props.onBlur}
                 closeOnSelect={true}
                 inputProps={{
                     placeholder: props.placeholder,
