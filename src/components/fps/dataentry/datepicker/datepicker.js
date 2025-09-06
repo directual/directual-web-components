@@ -20,7 +20,6 @@ export default function Datepicker(props) {
     const lang = props.locale ? props.locale.length == 3 ? props.locale : 'ENG' : 'ENG'
 
     const [value, setValue] = useState(props.defaultValue && props.utc ? moment.utc(props.defaultValue) : moment(props.defaultValue))
-    const [isCalendarOpen, setIsCalendarOpen] = useState(false)
 
     const parseJson = json => {
         if (!json) return {}
@@ -69,17 +68,11 @@ export default function Datepicker(props) {
             <div 
                 onClick={e => {
                     e.stopPropagation()
-                    if (!props.disabled) {
-                        setIsCalendarOpen(true)
-                        openCalendar(e)
-                    }
+                    !props.disabled && openCalendar(e)
                 }}
                 onFocus={e => {
                     e.stopPropagation()
-                    if (!props.disabled) {
-                        setIsCalendarOpen(true)
-                        openCalendar(e)
-                    }
+                    !props.disabled && openCalendar(e)
                 }}
                 className={`${styles.datePicker} ${props.disabled && styles.disabled}`}
                 tabIndex={props.disabled ? -1 : 0}
@@ -99,19 +92,7 @@ export default function Datepicker(props) {
     // console.log(dateFormat)
 
     return (
-        <div 
-            className={styles.calendar}
-            onMouseLeave={() => {
-                // Небольшая задержка для проверки - не перешла ли мышь на календарь
-                setTimeout(() => {
-                    const calendarElement = document.querySelector('.rdtPicker');
-                    const isHoveringCalendar = calendarElement && calendarElement.matches(':hover');
-                    if (!isHoveringCalendar && isCalendarOpen) {
-                        setIsCalendarOpen(false);
-                    }
-                }, 100);
-            }}
-        >
+        <div className={styles.calendar}>
             {/* <div className='dd-debug'>{JSON.stringify(value)}</div> */}
             <Datetime
                 value={value}
@@ -124,7 +105,6 @@ export default function Datepicker(props) {
                 className={props.correctedHeight ? 'correctedHeight' : ''}
                 utc={props.utc}
                 closeOnSelect={true}
-                closeOnClickOutside={true}
                 inputProps={{
                     placeholder: props.placeholder,
                     disabled: props.disabled,
@@ -133,7 +113,7 @@ export default function Datepicker(props) {
                 onChange={value => {
                     props.onChange(value)
                     setValue(value)
-                    setIsCalendarOpen(false) // Закрываем после выбора даты
+                    // Не принудительно закрываем - пусть react-datetime сам решает
                 }}
             />
         </div>

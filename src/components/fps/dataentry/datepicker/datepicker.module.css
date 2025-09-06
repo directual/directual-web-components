@@ -137,12 +137,6 @@
 :global .rdtPicker:hover {
   display: block !important;
 }
-:global .rdtPicker:hover,
-:global .rdtPicker:focus-within {
-  display: block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
 :global .rdtOpen .rdtPicker {
   display: block;
 }

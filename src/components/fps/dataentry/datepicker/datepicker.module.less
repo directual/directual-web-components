@@ -161,17 +161,9 @@
         background-color: var(--form-field-bgr);
         box-shadow: 0 1px 3px rgba(0,0,0,.1);
         
-        // Только предотвращаем закрытие при hover на календаре
+        // Предотвращаем исчезновение календаря при переводе мыши на него из инпута
         &:hover {
           display: block !important;
-        }
-        
-        // Предотвращаем исчезновение календаря при переводе мыши на него
-        &:hover,
-        &:focus-within {
-          display: block !important;
-          opacity: 1 !important;
-          visibility: visible !important;
         }
       }
       .rdtOpen .rdtPicker {
