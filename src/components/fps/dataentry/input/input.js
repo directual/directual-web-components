@@ -272,8 +272,10 @@ export default function Input(props) {
         }
         if (props.error) {
             setWarningMesg({ type: 'error', msg: props.error })
-        } else { checkValue() }
-    }, [props])
+        } else { 
+            setWarningMesg({}) // Очищаем warning когда props.error исчезает
+        }
+    }, [props.error, props.data])
 
     useEffect(() => {
         warningMsg.type == 'error' ? props.validationHandler && props.validationHandler(props.sysName, false) : props.validationHandler && props.validationHandler(props.sysName, true)
@@ -312,18 +314,6 @@ export default function Input(props) {
         props.type == 'textarea' && setLines(countLines(inputEl.current, value))
     }, [inputEl])
 
-    const checkEmailValue = (v) => {
-        // (!v && props.required) ?
-        //     setWarningMesg({ type: 'error', msg: 'This field is required' }) :
-        //     setWarningMesg({});
-        (v && !validateEmail(v)) &&
-            setWarningMesg({ type: 'error', msg: 'Email format is wrong' })
-    }
-
-    const validateEmail = (email) => {
-        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(String(email).toLowerCase());
-    }
 
     const clearValue = () => {
         submit('')
@@ -769,9 +759,9 @@ export default function Input(props) {
                         style={{
                             height: props.height || 48
                         }}
-                        onChange={e => { props.imask ? undefined : handleChange(String(e.target.value).toLowerCase()); e && checkEmailValue(e.target.value) }}
+                        onChange={e => { props.imask ? undefined : handleChange(String(e.target.value).toLowerCase()) }}
                         value={value}
-                        onBlur={e => checkEmailValue(e.target.value)}
+                        onBlur={handleBlur}
                         placeholder={`${props.placeholder ? props.placeholder : 'your@email.com'}`}
                     />
                     {value && !props.disabled && !props.copy &&
