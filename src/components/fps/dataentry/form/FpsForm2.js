@@ -585,9 +585,9 @@ export default function FpsForm2(props) {
   function submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping = [], newData,
     actionReq, setActionError, resetModel, currentModel, newExtendedModel) {
 
-    console.log("💾 SUBMIT FUNCTION CALLED");
-    console.log("💾 autoSubmit:", autoSubmit);
-    console.log("💾 currentModel:", currentModel);
+    // console.log("💾 SUBMIT FUNCTION CALLED");
+    // console.log("💾 autoSubmit:", autoSubmit);
+    // console.log("💾 currentModel:", currentModel);
     // console.log("extendedModel inside submit")
     // console.log(newExtendedModel)
     newExtendedModel = newExtendedModel || extendedModel
@@ -779,9 +779,10 @@ export default function FpsForm2(props) {
           console.log("FINISH SUBMIT")
           console.log(result)
           console.log(data)
-          
+          const apiResponseData = _.get(data,"result.data[0]")
+
           finish && finish(data)
-          let extendedModelUpdate = { ...newExtendedModel }
+          let extendedModelUpdate = { ...newExtendedModel, ...apiResponseData }
           autoSubmit ?
             setState({ ...saveState, ...stateUpdate })
             : setState({ ...saveState, step: targetStep || "submitted", ...stateUpdate })
