@@ -776,8 +776,10 @@ export default function FpsForm2(props) {
             }
           }
           setLoading(false)
-          // console.log("FINISH SUBMIT")
-          // console.log(data)
+          console.log("FINISH SUBMIT")
+          console.log(result)
+          console.log(data)
+          
           finish && finish(data)
           let extendedModelUpdate = { ...newExtendedModel }
           autoSubmit ?
