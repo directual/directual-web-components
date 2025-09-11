@@ -18,49 +18,87 @@ export default {
 };
 
 const chatData = {
+  "sl": "",
+  "pageSize": null,
+  "headerField": null,
   "params": {
-      "chat_height": "calc(100vh - 60px)",
-      "sl_messages": "ChatMessages",
-      "sl_actions": "ChatActions",
-      "sl_chats": "ChatChats",
+      "sl_messages": "messengerGetMessages",
+      "sl_actions": "messengerPostActions",
       "actions": {
           "textField": "payload",
           "attachmentsField": "attachments",
-          "actionTypeField": "action",
-          "chatLinkField": "chat_id"
-      },
-      "chats": {
-          "appearence": [
+          "actionTypeField": "action_type",
+          "chatLinkField": "chat_id",
+          "otherActions": [
               {
-                  "id": "chat_1747586883133",
-                  "type": "personal",
-                  "layout": "default",
-                  "imageField": "image",
-                  "title": "{{title}}"
+                  "id": "action_1750350660389",
+                  "name": "New chat with AI",
+                  "actionIcon": "plus",
+                  "actionPlace": "contacts",
+                  "actionType": "new_chat"
+              },
+              {
+                  "id": "action_1750350684739",
+                  "name": "Delete chat",
+                  "actionIcon": "delete",
+                  "actionType": "delete_chat"
+              },
+              {
+                  "id": "action_1750350702638",
+                  "name": "Clear chat",
+                  "actionIcon": "ban",
+                  "actionType": "clear_chat"
               }
-          ],
-          "chatTitle": "Hello!",
-          "useDifferentTypes": false
+          ]
       },
       "messages": {
           "userIDField": "user_id",
           "textField": "text",
           "attachmentsField": "attachments",
+          "typeField": "type",
           "dateTimeField": "date",
           "customFooterField": "custom_footer",
-          "typeField": "text"
+          "formatting": "markdown",
+          "useReplyButtons": true,
+          "replyButtonsField": "reply_buttons"
       },
-      "chat_format": "full"
+      "chat_height": "",
+      "sl_chats": "messengerGetChats",
+      "chats": {
+          "appearence": [
+              {
+                  "id": "chat_1750350599461",
+                  "type": "personal",
+                  "imageSize": 50,
+                  "imageField": "image",
+                  "title": "<b>{{title}}</b><br />\n{{description}}"
+              }
+          ],
+          "chatTitle": "{{title}}",
+          "useReplyButtons": true,
+          "replyButtonsField": "reply_buttons"
+      }
   },
-  "sl": "",
-  "__libs__": [],
-  "__header__": "",
-  "__initialize__": null,
-  "__update__": null,
-  "__destroy__": null,
-  "__data__": {
-      "_api_": {}
-  }
+  "tableTitle": null,
+  "actions": [],
+  "headers": [],
+  "data": [],
+  "totalPages": 0,
+  "pageNumber": 0,
+  "error": "511",
+  "fieldScheme": [],
+  "writeFields": [],
+  "structures": {},
+  "isSuccessWrite": false,
+  "writeError": null,
+  "writeResponse": null,
+  "fileds": [],
+  "quickSearch": "",
+  "httpParams": {},
+  "cardCustomHtml": null,
+  "cardCustomLayout": {},
+  "comment": "",
+  "response": null
 }
 
 let authExample = {
