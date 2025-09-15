@@ -391,7 +391,7 @@ export default function FpsChat(props) {
                 user={user}
                 socket={socket}
                 {...props}
-                height={_.get(data, "params.chat_height") || 'auto'}
+                height={800} //{_.get(data, "params.chat_height") || 'auto'}
                 message={message}
                 editMessage={editMessage}
                 actionLoading={actionLoading}
@@ -558,7 +558,7 @@ function ChatMessages(props) {
                 <React.Fragment>
                     <div
                         ref={scrollableDivRef}
-                        className={`${styles.chat_messages}`}>
+                        className={`${styles.chat_messages} D_FPS_CHAT_MESSAGES`}>
                         {state.messages.length == 0 && <div className={styles.chat_messages_blank}>
                             <SomethingWentWrong icon="ban" message={dict[props.locale].chat.noMessages} />
                         </div>}
@@ -662,7 +662,7 @@ function ChatMessage(props) {
 
     return <div className={`${styles.chat_message_outer_wrapper}`}>
         <div className={`${styles.chat_message_wrapper} 
-            ${author ? styles.chat_message_author : styles.chat_message_normal} D_FPS_CHAT_MESSAGE_WRAPPER`}>
+            ${author ? `${styles.chat_message_author} D_FPS_CHAT_MESSAGE_AUTHOR` : `${styles.chat_message_normal} D_FPS_CHAT_MESSAGE_NORMAL`} D_FPS_CHAT_MESSAGE_WRAPPER`}>
             <div className={`${styles.chat_message} D_FPS_CHAT_MESSAGE`}>
                 <div className={`${styles.chat_message_text} D_FPS_CHAT_MESSAGE_TEXT`}>
                     <pre>
