@@ -103,10 +103,10 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         clearTimeout(cx);
         console.log('=== F I L T E R I N G ! ===')
         console.log(dql)
-        // console.log('=== S O R T I N G ! ===')
-        // console.log(sort)
+        console.log('=== S O R T I N G ! ===')
+        console.log(sort)
         setDQL(dql)
-        //setSort(sort)
+        setSort(sort) // раскомментировали, чтобы сортировка сохранялась в стейте
         if (page == 0) { refresh(dql, sort) } else { setPage(0) }
     }
 
@@ -575,7 +575,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         }
 
         console.log("page => " + page)
-        refresh()
+        refresh(dql, sort) // передаем текущие dql и sort при пагинации
     }, [page, debug]) // добавляем debug в dependencies
 
     // INITIAL PAGE LOAD - check URL for page parameter on mount
@@ -626,7 +626,9 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
             // обновляем данные БЕЗ лоадеров
             callEndpointGET(data.sl, {
                 pageSize: data.pageSize || 10,
-                page: page
+                page: page,
+                dql: dql,
+                sort: sort
             }, (result, responseData) => {
                 console.log("Background update completed")
                 const dataInfo = _.get(responseData, "result.data", {})
