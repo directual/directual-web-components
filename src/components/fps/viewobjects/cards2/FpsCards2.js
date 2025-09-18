@@ -82,8 +82,9 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
 
     const updateDqlInUrl = (newDql) => {
         const urlParams = new URLSearchParams(window.location.search);
-        if (newDql && newDql.trim()) {
-            urlParams.set(`dql_${comp_ID}`, newDql);
+        const dqlString = typeof newDql === 'string' ? newDql : (newDql ? String(newDql) : '');
+        if (dqlString && dqlString.trim()) {
+            urlParams.set(`dql_${comp_ID}`, dqlString);
         } else {
             urlParams.delete(`dql_${comp_ID}`);
         }
@@ -92,8 +93,9 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
 
     const updateSortInUrl = (newSort) => {
         const urlParams = new URLSearchParams(window.location.search);
-        if (newSort && newSort.trim()) {
-            urlParams.set(`sort_${comp_ID}`, newSort);
+        const sortString = typeof newSort === 'string' ? newSort : (newSort ? String(newSort) : '');
+        if (sortString && sortString.trim()) {
+            urlParams.set(`sort_${comp_ID}`, sortString);
         } else {
             urlParams.delete(`sort_${comp_ID}`);
         }
