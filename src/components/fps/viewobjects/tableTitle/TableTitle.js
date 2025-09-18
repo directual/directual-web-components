@@ -19,7 +19,7 @@ const SafeInnerHTML = ({ html, label = 'unknown', ...props }) => {
     return <InnerHTML {...props} allowRerender={true} html={html} />
 };
 
-export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters, onFilter, currentDQL,
+export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters, onFilter, currentDQL, currentSort,
     chartFilters, displayChartFilters, updateChartFilters, chartLines, clearChartFilters, callEndpoint,
     onSearch, loading, searchValue, currentBP, displayFilters, lang, dict, performFiltering, params }) {
     const [showSearch, setShowSearch] = useState(search)
@@ -62,6 +62,8 @@ export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters,
                             performFiltering={performFiltering}
                             loading={loading}
                             fieldOptions={fieldOptions}
+                            currentDQL={currentDQL}
+                            currentSort={currentSort}
                         />}
 
                     {/* ==== old filters ==== */}
@@ -95,7 +97,7 @@ export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters,
 }
 
 function NewFilters({ tableFilters, performFiltering, lang, dict, loading, fieldOptions, alignRight, currentBP, tableTitle,
-    chartFilters, displayChartFilters, updateChartFilters, displayFilters, chartLines, clearChartFilters, callEndpoint }) {
+    chartFilters, displayChartFilters, updateChartFilters, displayFilters, chartLines, clearChartFilters, callEndpoint, currentDQL, currentSort }) {
 
 
     const defaultFilters = {
@@ -106,9 +108,34 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
         filters: {}
     }
 
+    // Функция для инициализации фильтров из текущих значений
+    const initializeFiltersFromCurrent = () => {
+        let initialFilters = { ...defaultFilters }
+        
+        // Парсим currentSort если он есть
+        if (currentSort && typeof currentSort === 'string' && currentSort.trim()) {
+            // Предполагаем формат типа "fieldName:asc" или "fieldName:desc"
+            const sortParts = currentSort.split(':')
+            if (sortParts.length === 2) {
+                initialFilters.sort = {
+                    field: sortParts[0],
+                    direction: sortParts[1]
+                }
+            }
+        }
+        
+        return initialFilters
+    }
 
-    const [filters, setFilters] = useState(defaultFilters)
-    const [openAI, setOpenAI] = useState('')
+    const [filters, setFilters] = useState(initializeFiltersFromCurrent)
+    const [openAI, setOpenAI] = useState(currentDQL || '')
+
+    // Обновляем стейт при изменении currentDQL или currentSort
+    useEffect(() => {
+        const newFilters = initializeFiltersFromCurrent()
+        setFilters(newFilters)
+        setOpenAI(currentDQL || '')
+    }, [currentDQL, currentSort])
 
     const saveFilters = (saveFilters) => {
         performFiltering(openAI ? openAI : composeDQL(saveFilters.filters), saveFilters.sort)

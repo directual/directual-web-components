@@ -722,6 +722,8 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         {(objects.length > 0 || initialLoading || pageLoading) && <TableTitle
             tableFilters={_.get(data.params, 'filterParams') || {}}
             displayFilters={_.get(data.params, 'filterParams.isFiltering') || _.get(data.params, 'filterParams.isSorting')}
+            currentDQL={dql}
+            currentSort={sort}
             performFiltering={dqlService}
             // performFiltering={dql => console.log(dql)}
             callEndpoint={(endpoint, params, finish, setOptions, setError) => {
