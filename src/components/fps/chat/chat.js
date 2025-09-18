@@ -41,7 +41,7 @@ export default function FpsChat(props) {
 
     // console.log("currentBP = " + currentBP)
 
-    const debug = false
+    const debug = true
 
     const [firstLoading, setFirstLoading] = useState(false);
     const [chatsLoading, setChatsLoading] = useState(false);
@@ -341,10 +341,10 @@ export default function FpsChat(props) {
     const renderReplyButtons = () => {
         return <ActionPanel margin={{ top: 6, bottom: 6, left: 6, right: 6 }}>
             {replyButtons.map(button => {
-            return <Button disabled={globalLoading || chatsLoading || actionLoading} key={button.callback_data} onClick={() => performAction({ actionType: "reply button", actionPayload: button.callback_data })}>
-                {button.text}
-            </Button>
-        })}</ActionPanel>
+                return <Button disabled={globalLoading || chatsLoading || actionLoading} key={button.callback_data} onClick={() => performAction({ actionType: "reply button", actionPayload: button.callback_data })}>
+                    {button.text}
+                </Button>
+            })}</ActionPanel>
     }
 
     const handleHidePanel = (hide) => {
@@ -391,7 +391,7 @@ export default function FpsChat(props) {
                 user={user}
                 socket={socket}
                 {...props}
-                height={800} //{_.get(data, "params.chat_height") || 'auto'}
+                height={_.get(data, "params.chat_height") || 'auto'}
                 message={message}
                 editMessage={editMessage}
                 actionLoading={actionLoading}
@@ -459,9 +459,9 @@ function Contacts(props) {
     if (state.hidePanel) return null;
 
     return (
-        <div className={`${styles.chat_contacts}`} style={{ width: isMobile ? 'fit-content' : width, flexGrow: isMobile ? 2 : 0 }}>
+        <div className={`${styles.chat_contacts} D_FPS_CHAT_CONTACTS`} style={{ width: isMobile ? 'fit-content' : width, flexGrow: isMobile ? 2 : 0 }}>
             {!isMobile && <div className={styles.drag_handle} onMouseDown={handleMouseDown} />}
-            <div className={styles.chat_contacts_header}>
+            <div className={`${styles.chat_contacts_header} D_FPS_CHAT_CONTACTS_HEADER`}>
                 <div style={{ flexGrow: 2 }}>
                     <Input icon='search' placeholder={dict[props.locale].search} nomargin />
                 </div>
@@ -470,16 +470,18 @@ function Contacts(props) {
                     performAction={a => performAction(a)}
                 />}
             </div>
-            {loading ? <Loader>{dict[props.locale].loading}</Loader> : <React.Fragment>
-                {chatsError ? <Hint error title={"Error " + chatsError.code} margin={{ top: 0, bottom: 0 }}>
-                    <p>{chatsError.msg}</p>
-                </Hint> : state.chats.map(chat => <Contact
-                    {...props}
-                    chooseChat={() => !globalLoading ? chooseChat(chat.id) : undefined}
-                    selected={chat.id == state.chatID}
-                    key={chat.id}
-                    chat={chat} />)}
-            </React.Fragment>}
+            <div className={`${styles.chat_contacts_list} D_FPS_CHAT_CONTACTS_LIST`}>
+                {loading ? <Loader>{dict[props.locale].loading}</Loader> : <React.Fragment>
+                    {chatsError ? <Hint error title={"Error " + chatsError.code} margin={{ top: 0, bottom: 0 }}>
+                        <p>{chatsError.msg}</p>
+                    </Hint> : state.chats.map(chat => <Contact
+                        {...props}
+                        chooseChat={() => !globalLoading ? chooseChat(chat.id) : undefined}
+                        selected={chat.id == state.chatID}
+                        key={chat.id}
+                        chat={chat} />)}
+                </React.Fragment>}
+            </div>
         </div>
     );
 }
