@@ -54,9 +54,22 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         const savedPage = urlParams.get(`page_${comp_ID}`);
         return savedPage ? Number(savedPage) : 0;
     };
+
+    const getDqlFromUrl = () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const savedDql = urlParams.get(`dql_${comp_ID}`);
+        return savedDql || "";
+    };
+
+    const getSortFromUrl = () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const savedSort = urlParams.get(`sort_${comp_ID}`);
+        return savedSort || "";
+    };
+
     const [page, setPage] = useState(getPageFromUrl);
-    const [dql, setDQL] = useState("")
-    const [sort, setSort] = useState("")
+    const [dql, setDQL] = useState(getDqlFromUrl);
+    const [sort, setSort] = useState(getSortFromUrl);
     const [loading, setLoading] = useState(false)
     const [initialLoading, setInitialLoading] = useState(debug ? false : true) // в дебаг режиме сразу не показываем скелетон
     const isFirstRender = useRef(true)
@@ -64,6 +77,26 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
     const updatePageInUrl = (newPage) => {
         const urlParams = new URLSearchParams(window.location.search);
         urlParams.set(`page_${comp_ID}`, newPage);
+        window.history.replaceState({}, '', `${window.location.pathname}?${urlParams.toString()}`);
+    };
+
+    const updateDqlInUrl = (newDql) => {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (newDql && newDql.trim()) {
+            urlParams.set(`dql_${comp_ID}`, newDql);
+        } else {
+            urlParams.delete(`dql_${comp_ID}`);
+        }
+        window.history.replaceState({}, '', `${window.location.pathname}?${urlParams.toString()}`);
+    };
+
+    const updateSortInUrl = (newSort) => {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (newSort && newSort.trim()) {
+            urlParams.set(`sort_${comp_ID}`, newSort);
+        } else {
+            urlParams.delete(`sort_${comp_ID}`);
+        }
         window.history.replaceState({}, '', `${window.location.pathname}?${urlParams.toString()}`);
     };
 
@@ -105,8 +138,15 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         console.log(dql)
         console.log('=== S O R T I N G ! ===')
         console.log(sort)
+        
+        // Сохраняем в стейт
         setDQL(dql)
-        setSort(sort) // раскомментировали, чтобы сортировка сохранялась в стейте
+        setSort(sort)
+        
+        // Сохраняем в URL
+        updateDqlInUrl(dql)
+        updateSortInUrl(sort)
+        
         if (page == 0) { refresh(dql, sort) } else { setPage(0) }
     }
 
@@ -587,12 +627,18 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         }
 
         const urlPage = getPageFromUrl() || 0;
+        const urlDql = getDqlFromUrl();
+        const urlSort = getSortFromUrl();
         if (data && data.sl) { // в любом случае загружаем данные, чтобы достать dataInfo
             console.log("Loading initial page from URL: " + urlPage)
+            console.log("Loading initial dql from URL: " + urlDql)
+            console.log("Loading initial sort from URL: " + urlSort)
             setPageLoading(true)
             callEndpointGET(data.sl, {
                 pageSize: data.pageSize || 10,
-                page: urlPage
+                page: urlPage,
+                dql: urlDql,
+                sort: urlSort
             }, (result, data) => {
                 // console.log("INITIAL PAGE LOAD RESULT")
                 // console.log(result)
