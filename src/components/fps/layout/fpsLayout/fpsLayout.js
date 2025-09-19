@@ -15,7 +15,7 @@ const brakePoints = {
   wideDesktop: { from: 1202, to: '∞', display: 1400 },
 }
 
-export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpoint, data, auth }) {
+export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpoint, data, auth, saveTabToURL = true }) {
 
   const layoutRef = useRef(null);
   const [currentBP, setCurrentBP] = useState('desktop')
@@ -124,7 +124,7 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
       {layout.showHeader && layout.header && <h1 className={`${styles.layoutHeader} D_FPS_LAYOUT_HEADER`}>{layout.header}</h1>}
       {tabs &&
         <div className={`${styles.tabsOuterWrapper} D_FPS_TAB_OUTER_WRAPPER`} style={{ overflow: _.get(data, "themeSettings.tabsScroll") == "fix_tabs" ? 'hidden' : 'auto' }}>
-          <TabsPane type={_.get(data, "themeSettings.tabsStyle")} fpsTabs hideSingleTab tabs={tabs} saveTabToURL onChangeTab={onChangeTab} //currentTabKey={tabs[0].key}
+          <TabsPane type={_.get(data, "themeSettings.tabsStyle")} fpsTabs hideSingleTab tabs={tabs} saveTabToURL={saveTabToURL} onChangeTab={onChangeTab} //currentTabKey={tabs[0].key}
             fixedScroll={_.get(data, "themeSettings.tabsScroll") == "fix_tabs"}
           /></div>}
     </div> : <div />)
