@@ -25,7 +25,7 @@ const SafeInnerHTML = ({ html, label = 'unknown', ...props }) => {
     return <InnerHTML {...props} html={html} />;
 };
 
-function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templateEngine, id, currentBP, locale, handleRoute, debug }) {
+function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templateEngine, id, currentBP, locale, handleRoute, debug, handleModalRoute }) {
 
     console.log("== FpsCards2 data ===")
     console.log(data)
@@ -835,6 +835,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
                     favLoading={favLoading}
                     favorites={favorites}
                     handleRoute={handleRoute}
+                    handleModalRoute={handleModalRoute}
                     callEndpointGET={callEndpointGET}
                     callEndpointPOST={callEndpointPOST}
                     object={object}
@@ -890,6 +891,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
                     favLoading={favLoading}
                     favorites={favorites}
                     handleRoute={handleRoute}
+                    handleModalRoute={handleModalRoute}
                     callEndpointGET={callEndpointGET}
                     callEndpointPOST={callEndpointPOST}
                     object={object}
@@ -974,7 +976,7 @@ function CardWrapper(props) {
 
 function Card(props) {
 
-    const { object, auth, checkHidden, data, lang, favoritesField, addToFavorites, favLoading, templateEngine, handleRoute, favorites, callEndpointPOST, callEndpointGET, context } = props
+    const { object, auth, checkHidden, data, lang, favoritesField, addToFavorites, favLoading, templateEngine, handleRoute, handleModalRoute, favorites, callEndpointPOST, callEndpointGET, context } = props
 
     const cardType = _.get(data, "params.card_layout_type")
     const html_type_content = _.get(data, "params.html_type_content")
@@ -1015,6 +1017,7 @@ function Card(props) {
     const actionsLayout = _.get(data, "params.card_type_dir.actionsLayout", "line")
 
     const isRouting = _.get(data, "params.routing") == "redirect"
+    const isModalRouting = _.get(data, "params.routing") == "modal"
     const routingPath = _.get(data, "params.routing_where", '')
 
     const model = { ...object, WebUser: { ...auth, ...{ id: auth.user } } }
@@ -1142,6 +1145,13 @@ function Card(props) {
                 }
                 handleRoute(path)(e)
             }
+            if (isModalRouting && routingPath) {
+                let path = template(routingPath, object)
+                if (path[0] !== '.' && path[0] !== '/') {
+                    path = './' + path
+                }
+                handleModalRoute(path)(e)
+            }
         }}>
 
         {/* IMAGE */}
@@ -1216,6 +1226,13 @@ function Card(props) {
                     path = './' + path
                 }
                 handleRoute(path)(e)
+            }
+            if (isModalRouting && routingPath) {
+                let path = template(routingPath, object)
+                if (path[0] !== '.' && path[0] !== '/') {
+                    path = './' + path
+                }
+                handleModalRoute(path)(e)
             }
         }}>
         {html_type_content && templatingEngine != 'api' && <SafeInnerHTML allowRerender={true} html={template(html_type_content, object)} label="html_type_content" />}
@@ -1372,6 +1389,7 @@ FpsCards2.propTypes = {
     locale: PropTypes.string,
     onChange: PropTypes.func,
     handleRoute: PropTypes.func,
+    handleModalRoute: PropTypes.func,
     debug: PropTypes.bool
 };
 
@@ -1381,6 +1399,7 @@ FpsCards2.defaultProps = {
     locale: "ENG",
     onChange: undefined,
     handleRoute: undefined,
+    handleModalRoute: undefined,
     debug: false
 };
 

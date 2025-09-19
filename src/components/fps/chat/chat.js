@@ -96,7 +96,7 @@ export default function FpsChat(props) {
                     chats: [
                         { id: "1", title: "<p>First chat</p><div>test test test test test test teeeeeeetttttttttteeeeeeeees</div>", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
                         { id: "2", title: "<p>Second chat</p>", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
-                        { id: "3", title: "Third chat", reply_buttons: '{ "buttons": [{"text": "button1", "type": "text", "callback_data": "callback1"}, {"image": "https://... image URL goes here", "type": "image", "callback_data": "callback2"}] }', image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
+                        { id: "3", title: "Third chat", reply_buttons: '{ "buttons": [{"text": "button1", "type": "text", "callback_data": "callback1"}, {"text": "button1", "type": "text", "callback_data": "callback1"}, {"text": "button1", "type": "text", "callback_data": "callback1"}, {"text": "button1", "type": "text", "callback_data": "callback1"}] }', image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
                     ]
                 }));
             }, 1500);
@@ -591,10 +591,19 @@ function ChatInput(props) {
     const { locale, data, state, actionLoading, performAction, message, editMessage, socket, chatID, isMobile } = props;
     const [addFile, setAddFile] = useState(false);
     const [resetFocus, setResetFocus] = useState(0);
+    const [forceReset, setForceReset] = useState(0);
 
     useEffect(() => {
         setResetFocus(resetFocus + 1);
     }, [socket, chatID]);
+
+    // Принудительно очищаем инпут когда стейт сообщения очищается
+    useEffect(() => {
+        const currentMessage = _.get(message, `${state.chatID}.msg`);
+        if (currentMessage === "" || currentMessage === undefined) {
+            setForceReset(prev => prev + 1);
+        }
+    }, [message, state.chatID]);
 
     return (
         <div className={`${styles.chat_input_outer_wrapper}`}>
@@ -607,6 +616,7 @@ function ChatInput(props) {
                     shiftEnter
                     // autoFocus
                     reFocus={resetFocus}
+                    forceReset={forceReset}
                     // debug
                     pressEnter={() => performAction("send")}
                     disabled={actionLoading == "send"}
