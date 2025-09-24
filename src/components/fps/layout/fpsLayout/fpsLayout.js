@@ -21,6 +21,7 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
   const [currentBP, setCurrentBP] = useState('desktop')
   const [layoutWidth, setLayoutWidth] = useState(brakePoints[currentBP].display)
   const [fullHeight, setFullHeight] = useState(null)
+  const lastCalculatedHeight = useRef(null);
   const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
 
   // Функция для вычисления высоты D_FPS_TAB_WRAPPER
@@ -29,49 +30,40 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
     
     const tabWrapper = layoutRef.current.querySelector('.D_FPS_TAB_WRAPPER');
     if (tabWrapper) {
-      return tabWrapper.offsetHeight - 1;
+      const height = Math.floor(tabWrapper.offsetHeight - 1);
+      return height;
     }
     
     return null;
   };
 
-  // Пересчитываем fullHeight когда меняется DOM или размеры
+  // Пересчитываем fullHeight только при изменении layout
   useEffect(() => {
     const updateHeight = () => {
       const newHeight = calculateFullHeight();
-      if (newHeight !== fullHeight) {
+      if (newHeight !== null && newHeight !== lastCalculatedHeight.current) {
+        console.log("Updating fullHeight from", lastCalculatedHeight.current, "to", newHeight);
+        lastCalculatedHeight.current = newHeight;
         setFullHeight(newHeight);
       }
     };
 
-    // Обновляем сразу
-    updateHeight();
+    // Небольшая задержка чтобы DOM успел обновиться после рендера
+    const timeoutId = setTimeout(updateHeight, 150);
+    
+    return () => clearTimeout(timeoutId);
+  }, [layout]); // Обновляем только когда меняется layout
 
-    // Наблюдаем за изменениями в DOM
-    const observer = new MutationObserver(updateHeight);
-    const resizeObserver = new ResizeObserver(updateHeight);
+  //console.log("fullHeight", fullHeight)
 
-    if (layoutRef.current) {
-      observer.observe(layoutRef.current, { 
-        childList: true, 
-        subtree: true, 
-        attributes: true,
-        attributeFilter: ['class', 'style']
-      });
-      
-      const tabWrapper = layoutRef.current.querySelector('.D_FPS_TAB_WRAPPER');
-      if (tabWrapper) {
-        resizeObserver.observe(tabWrapper);
-      }
-    }
-
-    return () => {
-      observer.disconnect();
-      resizeObserver.disconnect();
-    };
-  }, [fullHeight]);
-
-  // console.log("fullHeight", fullHeight)
+  const composeTabsContent = (tabId) => {
+    if (localLoading) return <div style={{ margin: 24 }}><Loader>{dict[lang].loading}</Loader></div>
+    if (!layout.sections[tabId] || layout.sections[tabId].length == 0) return <div />
+    return <div>
+      {layout.sections[tabId].map(section => <Section fullHeight={fullHeight} auth={auth} callEndpoint={callEndpoint} data={data} key={section.id} section={section} currentBP={currentBP} />)}
+    </div>
+  }
+  const tabs = layout.tabs ? layout.tabs.map(tab => { return { ...tab, key: tab.id, content: composeTabsContent(tab.id) } }) : []
 
   // Calculating layout width:
   useEffect(() => {
@@ -103,6 +95,20 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
     window.addEventListener("resize", resizeListener);
     return () => { window.removeEventListener('resize', resizeListener); };
   }, []);
+
+  // Обновляем высоту при изменении breakpoint (может поменяться layout)
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      const newHeight = calculateFullHeight();
+      if (newHeight !== null && newHeight !== lastCalculatedHeight.current) {
+        console.log("Updating fullHeight due to BP change from", lastCalculatedHeight.current, "to", newHeight);
+        lastCalculatedHeight.current = newHeight;
+        setFullHeight(newHeight);
+      }
+    }, 200); // Чуть больше задержка для перестройки layout
+    
+    return () => clearTimeout(timeoutId);
+  }, [currentBP]);
   // =========================
 
   // console.log("LAYOUT")
@@ -110,14 +116,6 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
 
   if (!layout) { return <div className={styles.error}>no layout</div> }
 
-  const composeTabsContent = (tabId) => {
-    if (localLoading) return <div style={{ margin: 24 }}><Loader>{dict[lang].loading}</Loader></div>
-    if (!layout.sections[tabId] || layout.sections[tabId].length == 0) return <div />
-    return <div>
-      {layout.sections[tabId].map(section => <Section fullHeight={fullHeight} auth={auth} callEndpoint={callEndpoint} data={data} key={section.id} section={section} currentBP={currentBP} />)}
-    </div>
-  }
-  const tabs = layout.tabs.map(tab => { return { ...tab, key: tab.id, content: composeTabsContent(tab.id) } })
 
   return (
     (tabs && tabs[0]) ? <div className={`${styles.fpsLayout} D_FPS_LAYOUT`} ref={layoutRef}>
