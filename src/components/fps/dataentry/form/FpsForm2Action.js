@@ -34,6 +34,7 @@ export default function FpsForm2Action(props) {
 
     const sendAction = e => {
         if (modalLink) {
+            console.log("modalLink", modalLink)
             handleModalRoute(modalLink)(e)
         }
         if (link) {

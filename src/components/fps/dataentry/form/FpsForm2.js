@@ -16,7 +16,7 @@ import Loader from '../../loader/loader'
 export default function FpsForm2(props) {
 
 
-  const { auth, data, callEndpoint, onEvent, id, locale, handleRoute, currentBP, templateEngine, handleModalRoute } = props
+  const { auth, data, callEndpoint, onEvent, id, locale, handleRoute, currentBP, templateEngine } = props
 
   // console.log("=== FpsForm2 data ===")
   // console.log(data)
@@ -110,12 +110,12 @@ export default function FpsForm2(props) {
 
   // AUTOSUBMIT ON MODEL
   useEffect(() => {
-    console.log("=== AUTOSUBMIT ON MODEL TRIGGERED ===");
-    console.log("isSocketUpdateRef.current:", isSocketUpdateRef.current);
-    console.log("general.disableSubmitOnSocket:", _.get(params, "general.disableSubmitOnSocket"));
-    console.log("general.autosubmit:", _.get(params, "general.autosubmit"));
-    console.log("previousModel !== undefined:", typeof previousModel !== 'undefined');
-    console.log("!_.isEmpty(model):", !_.isEmpty(model));
+    // console.log("=== AUTOSUBMIT ON MODEL TRIGGERED ===");
+    // console.log("isSocketUpdateRef.current:", isSocketUpdateRef.current);
+    // console.log("general.disableSubmitOnSocket:", _.get(params, "general.disableSubmitOnSocket"));
+    // console.log("general.autosubmit:", _.get(params, "general.autosubmit"));
+    // console.log("previousModel !== undefined:", typeof previousModel !== 'undefined');
+    // console.log("!_.isEmpty(model):", !_.isEmpty(model));
     
     // Проверяем настройку disableSubmitOnSocket - если включена и это обновление от сокета, то не делаем автосабмит
     if (_.get(params, "general.disableSubmitOnSocket") && isSocketUpdateRef.current) {
@@ -1100,7 +1100,6 @@ export default function FpsForm2(props) {
             <RenderStep
               {...props}
               refresh={refresh}
-              handleModalRoute={handleModalRoute}
               setOriginalModel={setOriginalModel}
               originalExtendedModel={originalExtendedModel}
               setOriginalExtendedModel={setOriginalExtendedModel}
@@ -1187,7 +1186,6 @@ export default function FpsForm2(props) {
           <RenderStep
             {...props}
             refresh={refresh}
-            handleModalRoute={handleModalRoute}
             refreshOptions={refreshOptions}
             currentStep={currentStep}
             model={model}
