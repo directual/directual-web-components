@@ -22,41 +22,24 @@ const chatData = {
   "pageSize": null,
   "headerField": null,
   "params": {
-      "sl_messages": "messengerGetMessages",
-      "sl_actions": "messengerPostActions",
-      "actions": {
-          "textField": "payload",
-          "attachmentsField": "attachments",
-          "actionTypeField": "action_type",
-          "chatLinkField": "chat_id",
-          "otherActions": [
+      "sl_messages": "lia_messages_get",
+      "sl_actions": "lia_actions",
+      "chat_height": "",
+      "sl_chats": "lia_chats",
+      "chats": {
+          "appearence": [
               {
-                  "id": "action_1750350660389",
-                  "name": "New chat",
-                  "actionIcon": "plus",
-                  "actionPlace": "contacts_button",
-                  "actionType": "new_chat"
-              },
-              {
-                  "id": "action_1750350684739",
-                  "name": "Delete chat",
-                  "actionIcon": "delete",
-                  "actionType": "delete_chat"
-              },
-              {
-                  "id": "action_1750350702638",
-                  "name": "Clear chat",
-                  "actionIcon": "ban",
-                  "actionType": "clear_chat"
-              },
-              {
-                  "id": "action_copy_1758835918200",
-                  "name": "New chat",
-                  "actionIcon": "plus",
-                  "actionPlace": "empty_chat",
-                  "actionType": "new_chat"
+                  "id": "chat_1757512658928",
+                  "type": "personal",
+                  "imageSize": 50,
+                  "imageField": "image",
+                  "title": "<b>{{title}}</b><br />\n<span class=\"noWrap\">{{context.title}}</span>"
               }
-          ]
+          ],
+          "chatTitle": "LIA: ИИ-ассистент",
+          "useReplyButtons": true,
+          "replyButtonsField": "buttons",
+          "hideSearchBar": true
       },
       "messages": {
           "userIDField": "user_id",
@@ -64,24 +47,28 @@ const chatData = {
           "attachmentsField": "attachments",
           "typeField": "type",
           "dateTimeField": "date",
-          "customFooterField": "custom_footer",
-          "formatting": "markdown"
+          "customFooterField": "custom_footer"
       },
-      "chat_height": "",
-      "sl_chats": "messengerGetChats",
-      "chats": {
-          "appearence": [
+      "actions": {
+          "textField": "payload",
+          "attachmentsField": "attachments",
+          "actionTypeField": "action_type",
+          "chatLinkField": "chat_id",
+          "otherActions": [
               {
-                  "id": "chat_1750350599461",
-                  "type": "personal",
-                  "imageSize": 50,
-                  "imageField": "image",
-                  "title": "<b>{{title}}</b><br />\n{{description}}"
+                  "id": "action_1757512724663",
+                  "name": "Новое обращение",
+                  "actionIcon": "plus",
+                  "actionPlace": "contacts_button",
+                  "actionType": "new_chat"
+              },
+              {
+                  "id": "action_1757512757030",
+                  "name": "Удалить диалог",
+                  "actionIcon": "delete",
+                  "actionType": "delete"
               }
-          ],
-          "chatTitle": "{{title}}",
-          "useDifferentTypes": false,
-          "hideSearchBar": true
+          ]
       },
       "defaultChatPanelWith": 400,
       "maxChatPanelWith": 800

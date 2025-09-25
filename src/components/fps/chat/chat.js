@@ -41,7 +41,7 @@ export default function FpsChat(props) {
 
     // console.log("currentBP = " + currentBP)
 
-    const debug = true
+    const debug = false
 
     const [firstLoading, setFirstLoading] = useState(false);
     const [chatsLoading, setChatsLoading] = useState(false);
@@ -475,7 +475,6 @@ function Contacts(props) {
 
     if (state.hidePanel) return null;
 
-    console.log("actionsButtons", actionsButtons)
 
     return (
         <div className={`${styles.chat_contacts} D_FPS_CHAT_CONTACTS`} style={{ width: isMobile ? 'fit-content' : width, flexGrow: isMobile ? 2 : 0 }}>
