@@ -406,10 +406,15 @@ export default function FpsChat(props) {
 
 function Contacts(props) {
     const { loading, chatsError, state, data, performAction, chooseChat, globalLoading, isMobile } = props;
+    const defaultWidth = _.get(data, "params.defaultChatPanelWith", 200);
+    const maxWidth = _.get(data, "params.maxChatPanelWith", 700);
+
     const [isDragging, setIsDragging] = useState(false);
-    const [width, setWidth] = useState(220);
+    const [width, setWidth] = useState(defaultWidth);
     const [startX, setStartX] = useState(0);
     const [startWidth, setStartWidth] = useState(0);
+
+    const hideSearchBar = _.get(data, "params.chats.hideSearchBar", false);
 
     const handleMouseDown = (e) => {
         setIsDragging(true);
@@ -429,6 +434,17 @@ function Contacts(props) {
             }
         })
 
+    const actionsButtons = _.get(data, "params.actions.otherActions", [])
+        .filter(i => i.actionPlace == "contacts_button")
+        .map(i => {
+            return {
+                ...i,
+                ...{
+                    "buttonIcon": i.actionIcon
+                }
+            }
+        })
+
     const handleMouseMove = (e) => {
         if (!isDragging) return;
         const delta = e.clientX - startX;
@@ -436,7 +452,7 @@ function Contacts(props) {
 
         if (newWidth <= 50) { // Threshold to hide panel
             props.onHidePanel(true);
-        } else if (newWidth >= 200 && newWidth <= 700) {
+        } else if (newWidth >= 50 && newWidth <= maxWidth) {
             props.onHidePanel(false);
             setWidth(newWidth);
         }
@@ -459,13 +475,21 @@ function Contacts(props) {
 
     if (state.hidePanel) return null;
 
+    console.log("actionsButtons", actionsButtons)
+
     return (
         <div className={`${styles.chat_contacts} D_FPS_CHAT_CONTACTS`} style={{ width: isMobile ? 'fit-content' : width, flexGrow: isMobile ? 2 : 0 }}>
             {!isMobile && <div className={styles.drag_handle} onMouseDown={handleMouseDown} />}
+            {actionsButtons.length > 0 && <div className={`${styles.chat_contacts_header_buttons} D_FPS_CHAT_CONTACTS_HEADER_BUTTONS`}>
+                <ActionPanel stretch>
+                {actionsButtons.map(button => <Button className="FPS_CHAT_TOP_BUTTON" icon={button.buttonIcon} accent key={button.id} onClick={() => performAction(button)}>{button.name}</Button>)}
+                </ActionPanel>
+
+            </div>}
             <div className={`${styles.chat_contacts_header} D_FPS_CHAT_CONTACTS_HEADER`}>
-                <div style={{ flexGrow: 2 }}>
+                {!hideSearchBar && <div style={{ flexGrow: 2 }}>
                     <Input icon='search' placeholder={dict[props.locale].search} nomargin />
-                </div>
+                </div>}
                 {actions && actions.length > 0 && <QuickActionsControl
                     quickActions={actions}
                     performAction={a => performAction(a)}
@@ -522,7 +546,7 @@ function ChatMessages(props) {
 
     const fields = _.get(data, "params.messages")
     const actions = _.get(data, "params.actions.otherActions", [])
-        .filter(i => i.actionPlace !== "contacts")
+        .filter(i => i.actionPlace !== "contacts" && i.actionPlace !== "contacts_button" && i.actionPlace !== "empty_chat")
         .map(i => {
             return {
                 ...i,

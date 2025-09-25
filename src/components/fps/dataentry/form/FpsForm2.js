@@ -293,11 +293,11 @@ export default function FpsForm2(props) {
       })
 
       if (!_.isEqual(newModel, model)) {
-        console.log("🔌 SOCKET UPDATE DETECTED - setting new model");
-        console.log("🔌 Current model:", model);
-        console.log("🔌 New model from socket:", newModel);
-        console.log("🔌 Setting isSocketUpdateRef.current = true");
-        console.log("🔌 Cancelling pending debounced submits");
+        // console.log("🔌 SOCKET UPDATE DETECTED - setting new model");
+        // console.log("🔌 Current model:", model);
+        // console.log("🔌 New model from socket:", newModel);
+        // console.log("🔌 Setting isSocketUpdateRef.current = true");
+        // console.log("🔌 Cancelling pending debounced submits");
         
         // Отменяем все pending debounced submits чтобы они не перезаписали сокетное обновление
         submitDebounced.cancel();

@@ -32,9 +32,9 @@ const chatData = {
           "otherActions": [
               {
                   "id": "action_1750350660389",
-                  "name": "New chat with AI",
+                  "name": "New chat",
                   "actionIcon": "plus",
-                  "actionPlace": "contacts",
+                  "actionPlace": "contacts_button",
                   "actionType": "new_chat"
               },
               {
@@ -48,6 +48,13 @@ const chatData = {
                   "name": "Clear chat",
                   "actionIcon": "ban",
                   "actionType": "clear_chat"
+              },
+              {
+                  "id": "action_copy_1758835918200",
+                  "name": "New chat",
+                  "actionIcon": "plus",
+                  "actionPlace": "empty_chat",
+                  "actionType": "new_chat"
               }
           ]
       },
@@ -58,9 +65,7 @@ const chatData = {
           "typeField": "type",
           "dateTimeField": "date",
           "customFooterField": "custom_footer",
-          "formatting": "markdown",
-          "useReplyButtons": true,
-          "replyButtonsField": "reply_buttons"
+          "formatting": "markdown"
       },
       "chat_height": "",
       "sl_chats": "messengerGetChats",
@@ -75,9 +80,11 @@ const chatData = {
               }
           ],
           "chatTitle": "{{title}}",
-          "useReplyButtons": true,
-          "replyButtonsField": "reply_buttons"
-      }
+          "useDifferentTypes": false,
+          "hideSearchBar": true
+      },
+      "defaultChatPanelWith": 400,
+      "maxChatPanelWith": 800
   },
   "tableTitle": null,
   "actions": [],
