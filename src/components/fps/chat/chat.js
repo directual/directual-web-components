@@ -41,7 +41,7 @@ export default function FpsChat(props) {
 
     // console.log("currentBP = " + currentBP)
 
-    const debug = false
+    const debug = true
 
     const [firstLoading, setFirstLoading] = useState(false);
     const [chatsLoading, setChatsLoading] = useState(false);
@@ -381,6 +381,7 @@ export default function FpsChat(props) {
                 onHidePanel={handleHidePanel} />}
             {(!isMobile || !showContacts) && <ChatMessages
                 chatID={_.get(state, "chatID")}
+                chooseChat={chooseChat}
                 chatTitle={chatTitle}
                 state={state}
                 replyButtons={replyButtons}
@@ -435,7 +436,7 @@ function Contacts(props) {
 
         if (newWidth <= 50) { // Threshold to hide panel
             props.onHidePanel(true);
-        } else if (newWidth >= 200 && newWidth <= 400) {
+        } else if (newWidth >= 200 && newWidth <= 700) {
             props.onHidePanel(false);
             setWidth(newWidth);
         }
@@ -512,7 +513,7 @@ function Contact(props) {
 }
 
 function ChatMessages(props) {
-    const { scrollableDivRef, data, actionLoading, chatTitle,
+    const { scrollableDivRef, data, actionLoading, chatTitle, chooseChat,
         performAction, scrollToBottom, chatID, state, user, message, editMessage, onHidePanel, socket, isMobile, setShowContacts, showContacts, replyButtons, renderReplyButtons } = props;
 
     useEffect(() => {
@@ -539,7 +540,10 @@ function ChatMessages(props) {
                     <div className={styles.header_left}>
                         {isMobile && <div
                             className={`icon icon-back ${styles.expand_button}`}
-                            onClick={() => setShowContacts(true)}
+                            onClick={() => {
+                                setShowContacts(true);
+                                chooseChat(null);
+                            }}
                         />}
 
                         {state.hidePanel && (

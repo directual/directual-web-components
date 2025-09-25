@@ -16,7 +16,7 @@ import Loader from '../../loader/loader'
 export default function FpsForm2(props) {
 
 
-  const { auth, data, callEndpoint, onEvent, id, locale, handleRoute, currentBP, templateEngine } = props
+  const { auth, data, callEndpoint, onEvent, id, locale, handleRoute, currentBP, templateEngine, handleModalRoute } = props
 
   // console.log("=== FpsForm2 data ===")
   // console.log(data)
@@ -1100,6 +1100,7 @@ export default function FpsForm2(props) {
             <RenderStep
               {...props}
               refresh={refresh}
+              handleModalRoute={handleModalRoute}
               setOriginalModel={setOriginalModel}
               originalExtendedModel={originalExtendedModel}
               setOriginalExtendedModel={setOriginalExtendedModel}
@@ -1186,6 +1187,7 @@ export default function FpsForm2(props) {
           <RenderStep
             {...props}
             refresh={refresh}
+            handleModalRoute={handleModalRoute}
             refreshOptions={refreshOptions}
             currentStep={currentStep}
             model={model}

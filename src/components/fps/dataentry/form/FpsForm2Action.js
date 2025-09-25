@@ -6,7 +6,7 @@ import Hint from "../../hint/hint"
 import InnerHTML from 'dangerously-set-html-content'
 
 export default function FpsForm2Action(props) {
-    const { actionFormat, action, loading, handleRoute, onPerform, userDebug, params, checkHidden, template } = props
+    const { actionFormat, action, loading, handleRoute, onPerform, userDebug, params, checkHidden, template, handleModalRoute } = props
 
     const [performed, setPerformed] = useState(false)
 
@@ -23,12 +23,19 @@ export default function FpsForm2Action(props) {
         template(action._href)
         : null
 
+    const modalLink = _.get(action,"actionType") == 'modal' ?
+        template(action._href)
+        : null
+
     let externalLink
     if (_.startsWith(link, 'https')) {
         externalLink = link
     }
 
     const sendAction = e => {
+        if (modalLink) {
+            handleModalRoute(modalLink)(e)
+        }
         if (link) {
             handleRoute(link)(e)
         } else {

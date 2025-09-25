@@ -15,7 +15,7 @@ import _ from 'lodash'
 import ElementArray from './FpsForm2arrayLink'
 
 export default function FormElement(props) {
-    const { element, template, params, checkHidden, userDebug, hidden, setModel } = props
+    const { element, template, params, checkHidden, userDebug, hidden, setModel, handleModalRoute } = props
 
     let render
     switch (element.type) {

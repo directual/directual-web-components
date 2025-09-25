@@ -173,6 +173,10 @@
   gap: 6px;
   padding: 6px;
 }
+.chat_messages::before {
+  content: "";
+  flex-grow: 1;
+}
 .chat_messages .chat_message_wrapper {
   display: flex;
   margin-right: 40px;

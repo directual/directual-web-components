@@ -4,7 +4,7 @@
     background-color: var(--layout-secondary-bgr);
     border-radius: var(--border-radius);
     overflow: hidden;
-} 
+}
 
 .chat_contacts {
     display: flex;
@@ -131,6 +131,7 @@
         cursor: pointer;
         transition: .5s;
         margin-left: -5px;
+
         &:hover {
             opacity: .6;
         }
@@ -202,7 +203,11 @@
     flex-direction: column;
     gap: 6px;
     padding: 6px;
-    //justify-content: flex-end;
+
+    &::before {
+        content: "";
+        flex-grow: 1;
+    }
 
     .chat_message_wrapper {
         display: flex;
