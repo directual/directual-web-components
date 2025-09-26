@@ -27,8 +27,8 @@ const SafeInnerHTML = ({ html, label = 'unknown', ...props }) => {
 
 function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templateEngine, id, currentBP, locale, handleRoute, debug, handleModalRoute }) {
 
-    console.log("== FpsCards2 data ===")
-    console.log(data)
+    // console.log("== FpsCards2 data ===")
+    // console.log(data)
     const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
 
     currentBP = currentBP || 'tablet' // костылек, чтобы хоть какой-то BP передавался
