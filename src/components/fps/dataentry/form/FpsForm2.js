@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react'
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import styles from './form2.module.css'
 import icon from './../../../../icons/fps-form2.svg'
 import { dict } from '../../locale'
@@ -105,7 +105,7 @@ export default function FpsForm2(props) {
     console.log("⏰ Model at execution time:", modelRef.current);
     console.log("⏰ Args:", args);
     submit(...args);
-  }, 1000), []);
+  }, 1000), [submit]); // Добавил submit в зависимости
   //const debouncedCallEndpint = debounce(callEndpoint, 700);
 
   // AUTOSUBMIT ON MODEL
@@ -157,12 +157,14 @@ export default function FpsForm2(props) {
         }
       }
     }
-  }, [model, previousModel, params, submitDebounced]);
+  }, [model, previousModel, params]); // УБРАЛ submitDebounced из зависимостей!
 
-  // Clean up on unmount
+  // Clean up on unmount - отменяем все debounced функции
   useEffect(() => {
     return () => {
       submitDebounced.cancel();
+      submitOnModel.cancel();
+      submitOnState.cancel();
     };
   }, [submitDebounced]);
 
@@ -582,8 +584,8 @@ export default function FpsForm2(props) {
   // console.log("extendedModel")
   // console.log(extendedModel)
 
-  function submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping = [], newData,
-    actionReq, setActionError, resetModel, currentModel, newExtendedModel) {
+  const submit = useCallback((finish, submitKeepModel, targetStep, autoSubmit, submitMapping = [], newData,
+    actionReq, setActionError, resetModel, currentModel, newExtendedModel) => {
 
     // console.log("💾 SUBMIT FUNCTION CALLED");
     // console.log("💾 autoSubmit:", autoSubmit);
@@ -809,7 +811,7 @@ export default function FpsForm2(props) {
         }
       }
     )
-  }
+  }, [data, fields, params, model, extendedModel, state, modelIsChanged, templateState, callEndpoint, gatherDefaults, template, setModel, setExtendedModel, setOriginalModel, setOriginalExtendedModel, setState, setLoading, refreshOptions, handleRoute, dict, lang]) // Добавил все необходимые зависимости
 
   useEffect(() => {
     if (data.error || data.response) {
@@ -857,7 +859,7 @@ export default function FpsForm2(props) {
     return dates
   }
 
-  function template(input, noDate) {
+  const template = useCallback((input, noDate) => {
     if (!input || input == "{{undefined}}" || input == "{{null}}") return "";
 
     function convertNumbersToStrings(obj) {
@@ -941,9 +943,9 @@ export default function FpsForm2(props) {
       console.warn('Error rendering template:', error);
       return '';
     }
-  }
+  }, [defaultExtModel, model, extendedModel, state, data]) // Мемоизирую template
 
-  function templateState(input, model) {
+  const templateState = useCallback((input, model) => {
     const templateData = { ...defaultModel, ...(model || {}) }
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
     // Custom function to handle undefined variables by replacing them with ""
@@ -974,17 +976,17 @@ export default function FpsForm2(props) {
       console.error('Error rendering template:', error);
       return '';
     }
-  }
+  }, [defaultModel]) // Мемоизирую templateState
   // ========================
 
-  // =============
-  const formTitle = template(_.get(params, "form_title"))
-  const formDescription = template(_.get(params, "form_description"))
-  const maxWidth = _.get(params, "form_maxWidth") || "auto"
-  const popupWidth = _.get(params, "popup_width") || 400
-  const closePopupOnClick = _.get(params, "general.closePopupOnClick") || false
-  const object = _.get(data, "data[0]")
-  const formSteps = _.get(params, "steps") || []
+  // ============= МЕМОИЗИРОВАННЫЕ ВЫЧИСЛЕНИЯ =============
+  const formTitle = useMemo(() => template(_.get(params, "form_title")), [template, params])
+  const formDescription = useMemo(() => template(_.get(params, "form_description")), [template, params])
+  const maxWidth = useMemo(() => _.get(params, "form_maxWidth") || "auto", [params])
+  const popupWidth = useMemo(() => _.get(params, "popup_width") || 400, [params])
+  const closePopupOnClick = useMemo(() => _.get(params, "general.closePopupOnClick") || false, [params])
+  const object = useMemo(() => _.get(data, "data[0]"), [data])
+  const formSteps = useMemo(() => _.get(params, "steps") || [], [params])
 
   //const currentStep = (state.step ? _.find(formSteps, { sysName: state.step }) : _.get(formSteps, "[0]")) || {}
   // =============
