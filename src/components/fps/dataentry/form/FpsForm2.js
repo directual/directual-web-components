@@ -96,97 +96,9 @@ export default function FpsForm2(props) {
   const [autoSubmitStep, setAutoSubminStep] = useState(state.step)
 
   const cx = null
-  const submitOnModel = debounce(submit, 1400);
-  const submitOnState = debounce(submit, 1400);
-
-  // const submitDebounced = useCallback(debounce(submit, 1000), []);
-  const submitDebounced = useCallback(debounce((...args) => {
-    console.log("⏰ DEBOUNCED SUBMIT EXECUTING");
-    console.log("⏰ Model at execution time:", modelRef.current);
-    console.log("⏰ Args:", args);
-    submit(...args);
-  }, 1000), [submit]); // Добавил submit в зависимости
   //const debouncedCallEndpint = debounce(callEndpoint, 700);
 
-  // AUTOSUBMIT ON MODEL
-  useEffect(() => {
-    // console.log("=== AUTOSUBMIT ON MODEL TRIGGERED ===");
-    // console.log("isSocketUpdateRef.current:", isSocketUpdateRef.current);
-    // console.log("general.disableSubmitOnSocket:", _.get(params, "general.disableSubmitOnSocket"));
-    // console.log("general.autosubmit:", _.get(params, "general.autosubmit"));
-    // console.log("previousModel !== undefined:", typeof previousModel !== 'undefined');
-    // console.log("!_.isEmpty(model):", !_.isEmpty(model));
-    
-    // Проверяем настройку disableSubmitOnSocket - если включена и это обновление от сокета, то не делаем автосабмит
-    if (_.get(params, "general.disableSubmitOnSocket") && isSocketUpdateRef.current) {
-      console.log("🚫 AUTOSUBMIT DISABLED: Socket update detected and disableSubmitOnSocket is enabled");
-      isSocketUpdateRef.current = false; // сбрасываем флаг после обработки
-      return;
-    }
-    
-    // Сбрасываем флаг сокетного обновления в любом случае
-    if (isSocketUpdateRef.current) {
-      console.log("🔄 Resetting socket update flag (disableSubmitOnSocket is OFF)");
-      isSocketUpdateRef.current = false;
-    }
-    
-    if (_.get(params, "general.autosubmit") === "model" && typeof previousModel !== 'undefined' && !_.isEmpty(model)) {
-      if (_.get(params, "general.autosubmit_model") && _.get(params, "general.autosubmit_model").length > 0) {
-        let send = false;
-        _.get(params, "general.autosubmit_model").forEach(field => {
-          if (!_.isEqual(_.get(previousModel, field), _.get(model, field)) && (_.get(previousModel, field) || _.get(model, field))) {
-            console.log("🚀 AUTOSUBMIT ON MODEL FIELD", field, "FROM:", _.get(previousModel, field), "TO:", _.get(model, field));
-            send = true;
-          }
-        });
-        if (send) {
-          console.log("📤 Calling submitDebounced (specific fields)");
-          submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, false, modelRef.current, extendedModel);
-        }
-      } else {
-        let send = false;
-        if (!_.isEqual(previousModel, model)) { 
-          console.log("🚀 AUTOSUBMIT ON MODEL CHANGE (all fields)");
-          console.log("previousModel:", previousModel);
-          console.log("model:", model);
-          send = true; 
-        }
-        if (send) {
-          console.log("📤 Calling submitDebounced (all fields)");
-          submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, false, modelRef.current, extendedModel);
-        }
-      }
-    }
-  }, [model, previousModel, params]); // УБРАЛ submitDebounced из зависимостей!
-
-  // Clean up on unmount - отменяем все debounced функции
-  useEffect(() => {
-    return () => {
-      submitDebounced.cancel();
-      submitOnModel.cancel();
-      submitOnState.cancel();
-    };
-  }, [submitDebounced]);
-
-  // AUTOSUBMIT ON STATE
-  useEffect(() => {
-    if (!_.isEqual(previousState, state)) {
-      setHighlightState(true)
-      setTimeout(() => setHighlightState(false), 300)
-    }
-    if (_.get(params, "general.autosubmit") == "always" && autoSubmitStep !== state.step) {
-      console.log("AUTOSUBMIT!")
-      setAutoSubminStep(state.step)
-      submitOnState(undefined, true, undefined, true)
-    }
-    if (_.get(params, "general.autosubmit") == "steps"
-      && _.includes(_.get(params, "general.autosubmit_steps").split(","), state.step
-        && autoSubmitStep !== state.step)) {
-      console.log("AUTOSUBMIT!")
-      setAutoSubminStep(state.step)
-      submitOnState(undefined, true, undefined, true, undefined, { state: state })
-    }
-  }, [state])
+  // Пока временно убираю использование debounced функций из useEffect'ов
 
   const parseJson = json => {
     if (!json) return {}
@@ -812,6 +724,89 @@ export default function FpsForm2(props) {
       }
     )
   }, [data, fields, params, model, extendedModel, state, modelIsChanged, templateState, callEndpoint, gatherDefaults, template, setModel, setExtendedModel, setOriginalModel, setOriginalExtendedModel, setState, setLoading, refreshOptions, handleRoute, dict, lang]) // Добавил все необходимые зависимости
+
+  // DEBOUNCED ФУНКЦИИ - определяются ПОСЛЕ submit
+  const submitOnModel = debounce(submit, 1400);
+  const submitOnState = debounce(submit, 1400);
+  const submitDebounced = useCallback(debounce((...args) => {
+    console.log("⏰ DEBOUNCED SUBMIT EXECUTING");
+    console.log("⏰ Model at execution time:", modelRef.current);
+    console.log("⏰ Args:", args);
+    submit(...args);
+  }, 1000), [submit]); // Теперь submit доступен
+
+  // AUTOSUBMIT ON MODEL - ПОСЛЕ определения submitDebounced
+  useEffect(() => {
+    // Проверяем настройку disableSubmitOnSocket - если включена и это обновление от сокета, то не делаем автосабмит
+    if (_.get(params, "general.disableSubmitOnSocket") && isSocketUpdateRef.current) {
+      console.log("🚫 AUTOSUBMIT DISABLED: Socket update detected and disableSubmitOnSocket is enabled");
+      isSocketUpdateRef.current = false; // сбрасываем флаг после обработки
+      return;
+    }
+    
+    // Сбрасываем флаг сокетного обновления в любом случае
+    if (isSocketUpdateRef.current) {
+      console.log("🔄 Resetting socket update flag (disableSubmitOnSocket is OFF)");
+      isSocketUpdateRef.current = false;
+    }
+    
+    if (_.get(params, "general.autosubmit") === "model" && typeof previousModel !== 'undefined' && !_.isEmpty(model)) {
+      if (_.get(params, "general.autosubmit_model") && _.get(params, "general.autosubmit_model").length > 0) {
+        let send = false;
+        _.get(params, "general.autosubmit_model").forEach(field => {
+          if (!_.isEqual(_.get(previousModel, field), _.get(model, field)) && (_.get(previousModel, field) || _.get(model, field))) {
+            console.log("🚀 AUTOSUBMIT ON MODEL FIELD", field, "FROM:", _.get(previousModel, field), "TO:", _.get(model, field));
+            send = true;
+          }
+        });
+        if (send) {
+          console.log("📤 Calling submitDebounced (specific fields)");
+          submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, false, modelRef.current, extendedModel);
+        }
+      } else {
+        let send = false;
+        if (!_.isEqual(previousModel, model)) { 
+          console.log("🚀 AUTOSUBMIT ON MODEL CHANGE (all fields)");
+          console.log("previousModel:", previousModel);
+          console.log("model:", model);
+          send = true; 
+        }
+        if (send) {
+          console.log("📤 Calling submitDebounced (all fields)");
+          submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, false, modelRef.current, extendedModel);
+        }
+      }
+    }
+  }, [model, previousModel, params, submitDebounced]);
+
+  // Clean up on unmount - отменяем все debounced функции
+  useEffect(() => {
+    return () => {
+      submitDebounced.cancel();
+      submitOnModel.cancel();
+      submitOnState.cancel();
+    };
+  }, [submitDebounced]);
+
+  // AUTOSUBMIT ON STATE
+  useEffect(() => {
+    if (!_.isEqual(previousState, state)) {
+      setHighlightState(true)
+      setTimeout(() => setHighlightState(false), 300)
+    }
+    if (_.get(params, "general.autosubmit") == "always" && autoSubmitStep !== state.step) {
+      console.log("AUTOSUBMIT!")
+      setAutoSubminStep(state.step)
+      submitOnState(undefined, true, undefined, true)
+    }
+    if (_.get(params, "general.autosubmit") == "steps"
+      && _.includes(_.get(params, "general.autosubmit_steps").split(","), state.step
+        && autoSubmitStep !== state.step)) {
+      console.log("AUTOSUBMIT!")
+      setAutoSubminStep(state.step)
+      submitOnState(undefined, true, undefined, true, undefined, { state: state })
+    }
+  }, [state, submitOnState])
 
   useEffect(() => {
     if (data.error || data.response) {
