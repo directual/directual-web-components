@@ -854,7 +854,8 @@ export default function FpsForm2(props) {
     return dates
   }
 
-  const template = useCallback((input, noDate) => {
+  // HOISTED FUNCTION - template тоже с hoisting'ом!
+  function template(input, noDate) {
     if (!input || input == "{{undefined}}" || input == "{{null}}") return "";
 
     function convertNumbersToStrings(obj) {
@@ -938,7 +939,7 @@ export default function FpsForm2(props) {
       console.warn('Error rendering template:', error);
       return '';
     }
-  }, [defaultExtModel, model, extendedModel, state, data]) // Мемоизирую template
+  }
 
   // HOISTED FUNCTION - теперь доступна везде!
   function templateState(input, model) {
