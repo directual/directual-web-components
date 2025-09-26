@@ -940,8 +940,8 @@ export default function FpsForm2(props) {
     }
   }, [defaultExtModel, model, extendedModel, state, data]) // Мемоизирую template
 
-  // Определяю templateState ПЕРЕД submit, чтобы было доступно
-  const templateState = useCallback((input, model) => {
+  // HOISTED FUNCTION - теперь доступна везде!
+  function templateState(input, model) {
     const templateData = { ...defaultModel, ...(model || {}) }
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
     // Custom function to handle undefined variables by replacing them with ""
@@ -969,7 +969,7 @@ export default function FpsForm2(props) {
       console.error('Error rendering template:', error);
       return '';
     }
-  }, [defaultModel]) // Мемоизирую templateState
+  }
   // ========================
 
   // ============= МЕМОИЗИРОВАННЫЕ ВЫЧИСЛЕНИЯ =============
