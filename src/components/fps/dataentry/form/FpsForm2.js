@@ -940,6 +940,7 @@ export default function FpsForm2(props) {
     }
   }, [defaultExtModel, model, extendedModel, state, data]) // Мемоизирую template
 
+  // Определяю templateState ПЕРЕД submit, чтобы было доступно
   const templateState = useCallback((input, model) => {
     const templateData = { ...defaultModel, ...(model || {}) }
     _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
@@ -955,9 +956,6 @@ export default function FpsForm2(props) {
         escape: /<%-([\s\S]+?)%>/g
       });
     };
-    // console.log("template")
-    // console.log(input)
-    // console.log(templateData)
 
     // Use a try-catch block to handle errors gracefully
     try {
