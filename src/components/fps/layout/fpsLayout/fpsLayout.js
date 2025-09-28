@@ -15,7 +15,8 @@ const brakePoints = {
   wideDesktop: { from: 1202, to: '∞', display: 1400 },
 }
 
-export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpoint, data, auth, saveTabToURL = true }) {
+export function FpsLayout({ layout, onChangeTab, localLoading, locale, isModal = false,
+  callEndpoint, data, auth, saveTabToURL = true }) {
 
   const layoutRef = useRef(null);
   const [currentBP, setCurrentBP] = useState('desktop')
@@ -42,7 +43,7 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
     const updateHeight = () => {
       const newHeight = calculateFullHeight();
       if (newHeight !== null && newHeight !== lastCalculatedHeight.current) {
-        console.log("Updating fullHeight from", lastCalculatedHeight.current, "to", newHeight);
+        // console.log("Updating fullHeight from", lastCalculatedHeight.current, "to", newHeight);
         lastCalculatedHeight.current = newHeight;
         setFullHeight(newHeight);
       }
@@ -60,7 +61,7 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
     if (localLoading) return <div style={{ margin: 24 }}><Loader>{dict[lang].loading}</Loader></div>
     if (!layout.sections[tabId] || layout.sections[tabId].length == 0) return <div />
     return <div>
-      {layout.sections[tabId].map(section => <Section fullHeight={fullHeight} auth={auth} callEndpoint={callEndpoint} data={data} key={section.id} section={section} currentBP={currentBP} />)}
+      {layout.sections[tabId].map(section => <Section fullHeight={fullHeight} auth={auth} callEndpoint={callEndpoint} data={data} key={section.id} section={section} currentBP={currentBP} isModal={isModal} />)}
     </div>
   }
   const tabs = layout.tabs ? layout.tabs.map(tab => { return { ...tab, key: tab.id, content: composeTabsContent(tab.id) } }) : []
@@ -128,15 +129,33 @@ export function FpsLayout({ layout, onChangeTab, localLoading, locale, callEndpo
     </div> : <div />)
 }
 
-const Section = ({ section, currentBP, callEndpoint, data, auth, fullHeight }) => {
-
-  // console.log('section')
-  // console.log(section)
-
+const Section = ({ section, currentBP, callEndpoint, data, auth, fullHeight, isModal }) => {
   const [hideSection, setHideSection] = useState(
     !!section._visibilityEndpoint &&
     _.get(section, "_visibilityConditions._conditions").length > 0
   )
+
+  // Проверяем modalVisibility
+  const shouldHideByModalVisibility = () => {
+    const modalVisibility = _.get(section, 'modalVisibility')
+    
+    // Если modalVisibility не задано или 'both' - показываем в любом случае
+    if (!modalVisibility || modalVisibility === 'both') {
+      return false
+    }
+    
+    // Если modalVisibility === 'modal' - показываем только в модальном режиме
+    if (modalVisibility === 'modal') {
+      return !isModal
+    }
+    
+    // Если modalVisibility === 'section' - показываем только в обычном режиме
+    if (modalVisibility === 'section') {
+      return isModal
+    }
+    
+    return false
+  }
 
   function flatternModel(m) {
     const flatternObject = a => {
@@ -354,7 +373,7 @@ const Section = ({ section, currentBP, callEndpoint, data, auth, fullHeight }) =
     }
   }, [data])
 
-  if (hideSection) return <div /> //<button onClick={e => callEndpointHandle()}>check api</button></div>
+  if (hideSection || shouldHideByModalVisibility()) return <div /> //<button onClick={e => callEndpointHandle()}>check api</button></div>
 
   if (!section.columns || section.columns.length == 0) return <div>no columns</div>
   const correctedBP = currentBP == 'wideDesktop' ? 'desktop' : currentBP;

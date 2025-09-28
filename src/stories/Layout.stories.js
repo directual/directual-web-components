@@ -11,12 +11,6 @@ const layoutExample = {
             "title": "Tab 1",
             "onlyAuth": false,
             "roles": null
-        },
-        {
-            "id": "tab_1755875373092",
-            "title": "Tab 2",
-            "onlyAuth": false,
-            "roles": null
         }
     ],
     "sections": {
@@ -34,75 +28,13 @@ const layoutExample = {
                     {
                         "id": "column_01",
                         "content": {
-                            "clazz": "FpsPlugin",
-                            "id": "comp_1750238775553",
-                            "extend": "FpsChat",
-                            "plugin": "FpsPlugin_com.directual.core.domain.plugin.ExternalPlugin:FpsChat:1736941852478",
-                            "component": "FpsPlugin_com.directual.core.domain.plugin.ExternalPlugin:FpsChat:1736941852478"
-                        },
-                        "size": 100
-                    }
-                ],
-                "spacing": {
-                    "marginTop": "24",
-                    "marginRight": "24",
-                    "marginBottom": "24",
-                    "marginLeft": "24"
-                },
-                "maxWidth": null,
-                "align": "left",
-                "fullHeight": true,
-                "cssClass": "test"
-            },
-            {
-                "id": "section_1750354386426",
-                "tab": "tab_01",
-                "columns": [
-                    {
-                        "id": "column_1750354386426",
-                        "content": {
-                            "clazz": "FpsPlugin",
-                            "id": "comp_1750354390376",
-                            "extend": null,
-                            "plugin": "FpsPlugin_com.directual.core.domain.plugin.ExternalPlugin:socketio:1660916044782",
-                            "component": "FpsPlugin_com.directual.core.domain.plugin.ExternalPlugin:socketio:1660916044782"
-                        },
-                        "size": 100
-                    }
-                ],
-                "flexDirection": {
-                    "mobile": "column",
-                    "tablet": "row",
-                    "desktop": "row"
-                },
-                "spacing": {
-                    "marginTop": "0",
-                    "marginRight": "0",
-                    "marginBottom": "0",
-                    "marginLeft": "0"
-                }
-            }
-        ],
-        "tab_1755875373092": [
-            {
-                "id": "section_1755875375350",
-                "tab": "tab_1755875373092",
-                "columns": [
-                    {
-                        "id": "column_1755875375350",
-                        "content": {
                             "clazz": "FpsMarkdown",
-                            "id": "comp_1755875380867"
+                            "id": "comp_1759079677784"
                         },
                         "size": 100
                     }
                 ],
-                "flexDirection": {
-                    "mobile": "column",
-                    "tablet": "row",
-                    "desktop": "row"
-                },
-                "cssClass": "check"
+                "modalVisibility": "modal"
             }
         ]
     }
