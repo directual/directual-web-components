@@ -17,7 +17,7 @@ import _ from 'lodash'
 import debounce from 'lodash.debounce';
 import PropTypes from 'prop-types';
 
-function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute, callEndpoint }) {
+function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute, callEndpoint, handleModalRoute }) {
     if (!data) { data = {} }
 
     const [currentData, setCurrentData] = useState(data)
@@ -516,6 +516,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute, cal
                 // onExpand={val => { _.get(data,'params.data.cardsOrPage') == 'page' ? handleRoute('./' + val.id)() : setShowObject(val) }}
                 onExpand={val => {
                     _.get(currentData, 'params.data.cardsOrPage') == 'page' ? handleRoute(`./${_.get(currentData, 'params.data.additionalPath') ? _.get(currentData, 'params.data.additionalPath') + '/' : ''}` + encodeURI(val[(_.get(currentData, 'params.data.pathField') || "id")]))() :
+                        _.get(currentData, 'params.data.cardsOrPage') == 'modal' ? handleModalRoute(`/${_.get(currentData, 'params.data.anotherPage')}/` + encodeURI(val[(_.get(currentData, 'params.data.pathField') || "id")]))() :
                         _.get(currentData, 'params.data.cardsOrPage') == 'anotherPage' ? handleRoute(`/${_.get(currentData, 'params.data.anotherPage')}/` + encodeURI(val[(_.get(currentData, 'params.data.pathField') || "id")]))() :
                             _.get(currentData, 'params.data.cardsOrPage') == 'disable' ? undefined :
                                 setShowObject(val)
@@ -526,6 +527,11 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute, cal
                         const additionalPath = _.get(currentData, 'params.data.additionalPath');
                         const pathField = _.get(currentData, 'params.data.pathField') || 'id';
                         return `./${additionalPath ? additionalPath + '/' : ''}${encodeURI(val[pathField])}`;
+                    }
+                    if (cardsOrPage === 'modal') {
+                        const anotherPage = _.get(currentData, 'params.data.anotherPage');
+                        const pathField = _.get(currentData, 'params.data.pathField') || 'id';
+                        return `/${anotherPage}/${encodeURI(val[pathField])}`;
                     }
                     if (cardsOrPage === 'anotherPage') {
                         const anotherPage = _.get(currentData, 'params.data.anotherPage');

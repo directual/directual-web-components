@@ -18,7 +18,7 @@ import debounce from 'lodash.debounce';
 import PropTypes from 'prop-types';
 
 
-function FpsCards({ auth, data, onEvent, callEndpoint, id, currentBP, locale, handleRoute }) {
+function FpsCards({ auth, data, onEvent, callEndpoint, id, currentBP, locale, handleRoute, handleModalRoute }) {
     if (!data) { data = {} }
 
     // console.log('---data FpsCards---')
@@ -487,6 +487,7 @@ function FpsCards({ auth, data, onEvent, callEndpoint, id, currentBP, locale, ha
                     console.log(val)
                     console.log(_.get(data, 'params.data'))
                     _.get(data, 'params.data.cardsOrPage') == 'page' ? handleRoute(`./${_.get(data, 'params.data.additionalPath') ? _.get(data, 'params.data.additionalPath') + '/' : ''}` + encodeURI(val[(_.get(data, 'params.data.pathField') || "id")]))() :
+                        _.get(data, 'params.data.cardsOrPage') == 'modal' ? handleModalRoute(`/${_.get(data, 'params.data.anotherPage')}/` + encodeURI(val[(_.get(data, 'params.data.pathField') || "id")]))() :
                         _.get(data, 'params.data.cardsOrPage') == 'anotherPage' ? handleRoute(`/${_.get(data, 'params.data.anotherPage')}/` + encodeURI(val[(_.get(data, 'params.data.pathField') || "id")]))() :
                             _.get(data, 'params.data.cardsOrPage') == 'disable' ? undefined :
                                 setShowObject(val)
@@ -530,7 +531,8 @@ FpsCards.propTypes = {
     auth: PropTypes.object,
     locale: PropTypes.string,
     onChange: PropTypes.func,
-    handleRoute: PropTypes.func
+    handleRoute: PropTypes.func,
+    handleModalRoute: PropTypes.func
 };
 
 FpsCards.defaultProps = {
@@ -538,7 +540,8 @@ FpsCards.defaultProps = {
     auth: {},
     locale: "ENG",
     onChange: undefined,
-    handleRoute: undefined
+    handleRoute: undefined,
+    handleModalRoute: undefined
 };
 
 FpsCards.settings = {
