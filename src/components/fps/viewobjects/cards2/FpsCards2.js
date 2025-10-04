@@ -19,7 +19,7 @@ import Skeleton from '../../skeleton/skeleton';
 /**
  * FpsCards2 - компонент для отображения карточек с поддержкой data-action-type элементов
  * 
- * Поддерживаемые data-action-type атрибуты в HTML контенте карточек:
+ * Поддерживаемые data-action-type атрибуты в HTML контенте карточек и элементов:
  * 
  * 1. Вызов экшона:
  *    <button data-action-type="action" 
@@ -1045,6 +1045,7 @@ function Card(props) {
     const actionsArray = _.get(data, "params.card_type_dir._actions", [])
     const actionsSettings = _.get(data, "params.actions", [])
     const actionsLayout = _.get(data, "params.card_type_dir.actionsLayout", "line")
+    
 
     const isRouting = _.get(data, "params.routing") == "redirect"
     const isModalRouting = _.get(data, "params.routing") == "modal"
@@ -1314,6 +1315,7 @@ function Card(props) {
             {cardBody && dir_templatingEngine != 'front' && <SafeInnerHTML allowRerender={true} html={cardBody} label="cardBody" />}
             {dir_cardBody && dir_templatingEngine == 'front' && <SafeInnerHTML allowRerender={true} html={template(dir_cardBody, object)} label="cardBody" />}
 
+
             {actionsOn && actionsArray.length > 0 && <div className={`${styles.FPS_Cards_ActionPanel} FPS_Cards_ActionPanel`}>
                 <CardActions
                     actionsArray={actionsArray}
@@ -1465,6 +1467,7 @@ function CardAction(props) {
 
     return button
 }
+
 
 function CartControls(props) {
 

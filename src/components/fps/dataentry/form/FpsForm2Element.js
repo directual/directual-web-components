@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import styles from './form2.module.css'
 import { FormSection } from "./FpsForm"
 import InnerHTML from 'dangerously-set-html-content'
@@ -315,12 +315,97 @@ function ElementSubheader(props) {
 }
 
 function ElementText(props) {
-    const { element, template, templateEngine, dict, lang, extendedModel, state } = props;
+    const { element, template, templateEngine, dict, lang, extendedModel, state, data, callEndpointPOST, handleRoute, handleModalRoute, auth } = props;
 
+    const textRef = useRef(null)
+    const actionsSettings = _.get(data, "params.actions", [])
     const apiTemplate = element.paraTemplateEngine === 'api';
 
     // Use state for templatedText and include state and extendedModel in the dependencies
     const [templatedText, setTemplatedText] = useState(apiTemplate ? (dict[lang].loading || "loading...") : template(element.paraText, state));
+
+    // Обработчик кликов по элементам с data-action-type в тексте
+    useEffect(() => {
+        const handleDataActionClick = (e) => {
+            const target = e.target.closest('[data-action-type]')
+            if (!target) return
+            
+            e.preventDefault()
+            e.stopPropagation()
+            
+            const actionType = target.getAttribute('data-action-type')
+            const actionData = target.getAttribute('data-action-data')
+            
+            console.log('Form text element data action clicked:', actionType, actionData)
+            
+            // Обрабатываем разные типы действий
+            switch (actionType) {
+                case 'action':
+                    if (!actionData) {
+                        console.warn('data-action-data not specified for action')
+                        return
+                    }
+                    
+                    // Ищем экшон в настройках
+                    const actionSettings = _.find(actionsSettings, { name: actionData }) || _.find(actionsSettings, { id: actionData })
+                    if (!actionSettings) {
+                        console.warn('Action not found in actionsSettings:', actionData)
+                        return
+                    }
+                    
+                    console.log('Executing form text element action:', actionData, actionSettings)
+                    
+                    // Выполняем экшон
+                    const transformObject = array => _.reduce(array, (result, item) => {
+                        if (!array || array.length == 0) return {};
+                        const { field, value } = item;
+                        result[field] = template(value, true);
+                        return result;
+                    }, {});
+
+                    if ((_.get(actionSettings, "actionType") == "endpoint" || !_.get(actionSettings, "actionType")) && actionSettings.endpoint) {
+                        let payload = transformObject(actionSettings.mapping)
+                        
+                        console.log('Calling form text element action endpoint:', actionSettings.endpoint, 'with payload:', payload)
+                        callEndpointPOST && callEndpointPOST(actionSettings.endpoint, payload, (result) => {
+                            console.log('Form text element action result:', result)
+                        })
+                    }
+                    break
+                    
+                case 'route':
+                    if (!actionData) {
+                        console.warn('data-action-data not specified for route action')
+                        return
+                    }
+                    const routePath = template(actionData, true)
+                    console.log('Form text element navigating to route:', routePath)
+                    handleRoute && handleRoute(routePath)(e)
+                    break
+                    
+                case 'modal':
+                    if (!actionData) {
+                        console.warn('data-action-data not specified for modal action')
+                        return
+                    }
+                    const modalPath = template(actionData, true)
+                    console.log('Form text element opening modal:', modalPath)
+                    handleModalRoute && handleModalRoute(modalPath)(e)
+                    break
+                    
+                default:
+                    console.warn('Unknown data-action-type in form text element:', actionType)
+            }
+        }
+        
+        const textElement = textRef.current
+        if (textElement) {
+            textElement.addEventListener('click', handleDataActionClick)
+            return () => {
+                textElement.removeEventListener('click', handleDataActionClick)
+            }
+        }
+    }, [extendedModel, state, callEndpointPOST, handleRoute, handleModalRoute, actionsSettings, template])
 
     useEffect(() => {
         const fetchData = async (payload, setValue) => {
@@ -334,7 +419,11 @@ function ElementText(props) {
         }
     }, [extendedModel, state, templateEngine, element.paraText, apiTemplate]);
 
-    return templatedText ? <InnerHTML allowRerender={true} html={templatedText || ''} /> : "";
+    return templatedText ? (
+        <div ref={textRef} className="FPS_FORM_TEXT_ELEMENT">
+            <InnerHTML allowRerender={true} html={templatedText || ''} />
+        </div>
+    ) : "";
 }
 
 function ElementSubmit(props) {

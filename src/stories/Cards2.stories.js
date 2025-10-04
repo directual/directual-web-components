@@ -1468,6 +1468,16 @@ export const WithDataActions = {
               {"field": "objectId", "value": "{{id}}"},
               {"field": "action", "value": "like"}
             ]
+          },
+          {
+            "id": "share_action",
+            "name": "share_action",
+            "actionType": "endpoint", 
+            "endpoint": "/api/share",
+            "mapping": [
+              {"field": "objectId", "value": "{{id}}"},
+              {"field": "action", "value": "share"}
+            ]
           }
         ]
       },
