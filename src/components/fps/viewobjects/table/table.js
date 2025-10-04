@@ -7,6 +7,7 @@ import Button from '../../button/button'
 import moment from 'moment'
 import Loader from '../../loader/loader'
 import _ from 'lodash'
+import { Tooltip } from 'react-tooltip'
 
 // Create an editable cell renderer
 const EditableCell = ({
@@ -37,6 +38,16 @@ const EditableCell = ({
     }, [initialValue])
 
     const [showAll,setShowAll] = useState(false)
+    const cellRef = useRef(null)
+    const [isOverflowing, setIsOverflowing] = useState(false)
+
+    // Проверяем, обрезан ли текст
+    useEffect(() => {
+        if (cellRef.current) {
+            const element = cellRef.current
+            setIsOverflowing(element.scrollWidth > element.clientWidth || element.scrollHeight > element.clientHeight)
+        }
+    }, [initialValue])
 
     // todo: editting objects from the table
     // const [isEditing,setIsEditing] = useState(false)
@@ -54,6 +65,7 @@ const EditableCell = ({
 
     //date
     const formatOptions = (fieldDetails[id] && fieldDetails[id].formatOptions) || {}
+    const tooltipId = `tooltip-${index}-${id}`
 
     function numberWithSpaces(x) {
         if (!x && x !== 0) {
@@ -63,26 +75,53 @@ const EditableCell = ({
     }
 
     if (!fieldDetails[id] || !fieldDetails[id].dataType) {
-        return <div className={styles.notEditableValue}>
-            {typeof value == 'object' ? JSON.stringify(value) : value}
-        </div>
+        const displayValue = typeof value == 'object' ? JSON.stringify(value) : value
+        return <>
+            <div 
+                ref={cellRef}
+                className={styles.notEditableValue}
+                data-tooltip-id={isOverflowing ? tooltipId : undefined}
+                data-tooltip-content={isOverflowing ? displayValue : undefined}
+            >
+                {displayValue}
+            </div>
+            {isOverflowing && <Tooltip id={tooltipId} className={styles.cellTooltip} />}
+        </>
     }
 
 
     if (fieldDetails[id].dataType == 'date') {
-        return <div className={`${styles.notEditableValue}`}>
-            {!value ? null : formatOptions.isUTC == 'true' ?
-                moment.utc(value).locale(formatOptions.dateLocale || 'ed-gb').format(formatOptions.dateFormat + formatOptions.timeFormat || 'DD/MM/Y, HH:mm, Z')
-                :
-                moment(value).locale(formatOptions.dateLocale || 'ed-gb').format(formatOptions.dateFormat + formatOptions.timeFormat || 'DD/MM/Y, HH:mm, Z')}
-        </div>
+        const displayValue = !value ? null : formatOptions.isUTC == 'true' ?
+            moment.utc(value).locale(formatOptions.dateLocale || 'ed-gb').format(formatOptions.dateFormat + formatOptions.timeFormat || 'DD/MM/Y, HH:mm, Z')
+            :
+            moment(value).locale(formatOptions.dateLocale || 'ed-gb').format(formatOptions.dateFormat + formatOptions.timeFormat || 'DD/MM/Y, HH:mm, Z')
+        return <>
+            <div 
+                ref={cellRef}
+                className={`${styles.notEditableValue}`}
+                data-tooltip-id={isOverflowing ? tooltipId : undefined}
+                data-tooltip-content={isOverflowing ? displayValue : undefined}
+            >
+                {displayValue}
+            </div>
+            {isOverflowing && <Tooltip id={tooltipId} className={styles.cellTooltip} />}
+        </>
     }
 
     //numbers
     if (fieldDetails[id].dataType == 'number' || fieldDetails[id].dataType == 'decimal') {
-        return <div className={`${styles.notEditableValue} ${styles.number}`}>
-            {numberWithSpaces(value)}
-        </div>
+        const displayValue = numberWithSpaces(value)
+        return <>
+            <div 
+                ref={cellRef}
+                className={`${styles.notEditableValue} ${styles.number}`}
+                data-tooltip-id={isOverflowing ? tooltipId : undefined}
+                data-tooltip-content={isOverflowing ? displayValue : undefined}
+            >
+                {displayValue}
+            </div>
+            {isOverflowing && <Tooltip id={tooltipId} className={styles.cellTooltip} />}
+        </>
     }
 
     //images
@@ -96,9 +135,18 @@ const EditableCell = ({
                     borderRadius: tableParams[id].fileImageFormat == 'circle' ? (tableParams[id].fileImageSize || 80) : 0
                 }} />
         }
-        return <div className={`${styles.notEditableValue} ${styles.number}`}>
-            {typeof value == 'object' ? JSON.stringify(value) : value}
-        </div>
+        const displayValue = typeof value == 'object' ? JSON.stringify(value) : value
+        return <>
+            <div 
+                ref={cellRef}
+                className={`${styles.notEditableValue} ${styles.number}`}
+                data-tooltip-id={isOverflowing ? tooltipId : undefined}
+                data-tooltip-content={isOverflowing ? displayValue : undefined}
+            >
+                {displayValue}
+            </div>
+            {isOverflowing && <Tooltip id={tooltipId} className={styles.cellTooltip} />}
+        </>
     }
 
     //colour
@@ -160,10 +208,17 @@ const EditableCell = ({
 
     // link:
     if (fieldDetails[id].dataType == 'link') {
+        const displayValue = typeof value == 'object' ? getLinkName(id, value) : value
         return <div className={`${styles.notEditableValue} ${styles.linkWrapper}`}>
-            <div className={`${styles.linkText} ${styles.notClickable}`}>
-                {typeof value == 'object' ? getLinkName(id, value) : value}
+            <div 
+                ref={cellRef}
+                className={`${styles.linkText} ${styles.notClickable}`}
+                data-tooltip-id={isOverflowing ? tooltipId : undefined}
+                data-tooltip-content={isOverflowing ? displayValue : undefined}
+            >
+                {displayValue}
             </div>
+            {isOverflowing && <Tooltip id={tooltipId} className={styles.cellTooltip} />}
         </div>
     }
 
@@ -185,14 +240,35 @@ const EditableCell = ({
     if (fieldDetails[id].dataType == 'json' && fieldDetails[id].format == 'radioOptions') {
         if (!value || value == "{}") return <div />
         const json = parseJson(value)
-        if (json.value) return <div className={`${styles.notEditableValue}`}>
-            {fieldDetails[id].formatOptions.multipleChoice.filter(i => i.value == json.value)[0] ?
+        if (json.value) {
+            const displayValue = fieldDetails[id].formatOptions.multipleChoice.filter(i => i.value == json.value)[0] ?
                 fieldDetails[id].formatOptions.multipleChoice.filter(i => i.value == json.value)[0].label :
-                json.value}
-        </div>
-        if (json.customOption) return <div className={`${styles.notEditableValue}`}>
-            {json.customOption}
-        </div>
+                json.value
+            return <>
+                <div 
+                    ref={cellRef}
+                    className={`${styles.notEditableValue}`}
+                    data-tooltip-id={isOverflowing ? tooltipId : undefined}
+                    data-tooltip-content={isOverflowing ? displayValue : undefined}
+                >
+                    {displayValue}
+                </div>
+                {isOverflowing && <Tooltip id={tooltipId} className={styles.cellTooltip} />}
+            </>
+        }
+        if (json.customOption) {
+            return <>
+                <div 
+                    ref={cellRef}
+                    className={`${styles.notEditableValue}`}
+                    data-tooltip-id={isOverflowing ? tooltipId : undefined}
+                    data-tooltip-content={isOverflowing ? json.customOption : undefined}
+                >
+                    {json.customOption}
+                </div>
+                {isOverflowing && <Tooltip id={tooltipId} className={styles.cellTooltip} />}
+            </>
+        }
         return <div className={`${styles.notEditableValue}`}>
         </div>
     }
@@ -249,9 +325,18 @@ const EditableCell = ({
     }
 
     // other types:
-    return <div className={styles.notEditableValue}>
-        {typeof value == 'object' ? JSON.stringify(value) : value}
-    </div>
+    const displayValue = typeof value == 'object' ? JSON.stringify(value) : value
+    return <>
+        <div 
+            ref={cellRef}
+            className={styles.notEditableValue}
+            data-tooltip-id={isOverflowing ? tooltipId : undefined}
+            data-tooltip-content={isOverflowing ? displayValue : undefined}
+        >
+            {displayValue}
+        </div>
+        {isOverflowing && <Tooltip id={tooltipId} className={styles.cellTooltip} />}
+    </>
 }
 
 

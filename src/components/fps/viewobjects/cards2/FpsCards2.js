@@ -16,6 +16,33 @@ import { TableTitle } from '../tableTitle/TableTitle'
 import Loader from '../../loader/loader';
 import Skeleton from '../../skeleton/skeleton';
 
+/**
+ * FpsCards2 - компонент для отображения карточек с поддержкой data-action-type элементов
+ * 
+ * Поддерживаемые data-action-type атрибуты в HTML контенте карточек:
+ * 
+ * 1. Вызов экшона:
+ *    <button data-action-type="action" 
+ *            data-action-data="action_name">
+ *        Лайк
+ *    </button>
+ * 
+ * 2. Переход на страницу:
+ *    <a data-action-type="route" 
+ *       data-action-data="/profile/{{id}}">
+ *        Открыть профиль
+ *    </a>
+ * 
+ * 3. Открыть модальное окно:
+ *    <span data-action-type="modal" 
+ *          data-action-data="/edit/{{id}}">
+ *        Редактировать
+ *    </span>
+ * 
+ * В data-action-data можно использовать шаблонизацию {{field}} для подстановки данных объекта
+ * Для типа "action" в data-action-data указывается имя или ID экшона из actionsSettings
+ */
+
 // ДЕБАГ: Безопасная обёртка для InnerHTML
 const SafeInnerHTML = ({ html, label = 'unknown', ...props }) => {
     if (html === null || html === undefined) {
@@ -977,6 +1004,9 @@ function CardWrapper(props) {
 function Card(props) {
 
     const { object, auth, checkHidden, data, lang, favoritesField, addToFavorites, favLoading, templateEngine, handleRoute, handleModalRoute, favorites, callEndpointPOST, callEndpointGET, context } = props
+    
+    // Ref для обработки кликов по data-action элементам
+    const cardRef = useRef(null)
 
     const cardType = _.get(data, "params.card_layout_type")
     const html_type_content = _.get(data, "params.html_type_content")
@@ -1021,6 +1051,89 @@ function Card(props) {
     const routingPath = _.get(data, "params.routing_where", '')
 
     const model = { ...object, WebUser: { ...auth, ...{ id: auth.user } } }
+
+    // Обработчик кликов по элементам с data-action-type
+    useEffect(() => {
+        const handleDataActionClick = (e) => {
+            const target = e.target.closest('[data-action-type]')
+            if (!target) return
+            
+            e.preventDefault()
+            e.stopPropagation()
+            
+            const actionType = target.getAttribute('data-action-type')
+            const actionData = target.getAttribute('data-action-data')
+            
+            console.log('Data action clicked:', actionType, actionData)
+            
+            // Обрабатываем разные типы действий
+            switch (actionType) {
+                case 'action':
+                    if (!actionData) {
+                        console.warn('data-action-data not specified for action')
+                        return
+                    }
+                    
+                    // Ищем экшон в настройках
+                    const actionSettings = _.find(actionsSettings, { name: actionData }) || _.find(actionsSettings, { id: actionData })
+                    if (!actionSettings) {
+                        console.warn('Action not found in actionsSettings:', actionData)
+                        return
+                    }
+                    
+                    console.log('Executing action:', actionData, actionSettings)
+                    
+                    // Выполняем экшон как в CardAction
+                    const transformObject = array => _.reduce(array, (result, item) => {
+                        if (!array || array.length == 0) return {};
+                        const { field, value } = item;
+                        result[field] = template(value, object);
+                        return result;
+                    }, {});
+
+                    if ((_.get(actionSettings, "actionType") == "endpoint" || !_.get(actionSettings, "actionType")) && actionSettings.endpoint) {
+                        let payload = transformObject(actionSettings.mapping)
+                        
+                        console.log('Calling action endpoint:', actionSettings.endpoint, 'with payload:', payload)
+                        callEndpointPOST(actionSettings.endpoint, payload, (result) => {
+                            console.log('Action result:', result)
+                        })
+                    }
+                    break
+                    
+                case 'route':
+                    if (!actionData) {
+                        console.warn('data-action-data not specified for route action')
+                        return
+                    }
+                    const routePath = template(actionData, object)
+                    console.log('Navigating to route:', routePath)
+                    handleRoute && handleRoute(routePath)(e)
+                    break
+                    
+                case 'modal':
+                    if (!actionData) {
+                        console.warn('data-action-data not specified for modal action')
+                        return
+                    }
+                    const modalPath = template(actionData, object)
+                    console.log('Opening modal:', modalPath)
+                    handleModalRoute && handleModalRoute(modalPath)(e)
+                    break
+                    
+                default:
+                    console.warn('Unknown data-action-type:', actionType)
+            }
+        }
+        
+        const cardElement = cardRef.current
+        if (cardElement) {
+            cardElement.addEventListener('click', handleDataActionClick)
+            return () => {
+                cardElement.removeEventListener('click', handleDataActionClick)
+            }
+        }
+    }, [object, callEndpointPOST, handleRoute, handleModalRoute, actionsSettings])
 
     useEffect(() => {
 
@@ -1132,11 +1245,17 @@ function Card(props) {
     }
 
     if (cardType == "regular") return <a
+        ref={cardRef}
         className={`Cards2_typeRegular ${styles.cards2_typeRegular}`}
         style={{
             flexDirection: flexDirection
         }}
         onClick={e => {
+            // Проверяем, не был ли клик по элементу с data-action-type
+            if (e.target.closest('[data-action-type]')) {
+                return // Не обрабатываем обычный клик по карточке
+            }
+            
             e.preventDefault()
             if (isRouting && routingPath) {
                 let path = template(routingPath, object)
@@ -1213,12 +1332,18 @@ function Card(props) {
     </a>
 
     if (cardType == "custom") return <a
+        ref={cardRef}
         className={`Cards2_typeRegular ${styles.cards2_typeRegular}`}
         style={{
             minHeight: card_min_height,
             margin: card_padding
         }}
         onClick={e => {
+            // Проверяем, не был ли клик по элементу с data-action-type
+            if (e.target.closest('[data-action-type]')) {
+                return // Не обрабатываем обычный клик по карточке
+            }
+            
             e.preventDefault()
             if (isRouting && routingPath) {
                 let path = template(routingPath, object)

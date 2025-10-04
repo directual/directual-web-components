@@ -1405,3 +1405,106 @@ export const Regular = {
     debug: true // в сторибуке всегда включаем дебаг режим
   },
 };
+
+export const WithDataActions = {
+  args: {
+    data: {
+      "sl": "All_products",
+      "pageSize": "30", 
+      "headerField": null,
+      "params": {
+        "comp_ID": "DataActions",
+        "cards_layout": "grid",
+        "card_layout_type": "regular",
+        "card_type_dir": {
+          "image_height": 200,
+          "body": `
+            <div style="padding: 12px;">
+              <h3>{{name}}</h3>
+              <p>{{description}}</p>
+              
+              <!-- Кнопка для вызова экшона -->
+              <button data-action-type="action" 
+                      data-action-data="like_action"
+                      style="background: #007bff; color: white; border: none; padding: 8px 16px; border-radius: 4px; margin: 4px;">
+                👍 Лайк
+              </button>
+              
+              <!-- Ссылка для перехода на страницу -->
+              <a data-action-type="route" 
+                 data-action-data="/profile/{{id}}"
+                 style="display: inline-block; background: #28a745; color: white; text-decoration: none; padding: 8px 16px; border-radius: 4px; margin: 4px;">
+                👤 Профиль
+              </a>
+              
+              <!-- Кнопка для открытия модального окна -->
+              <span data-action-type="modal" 
+                    data-action-data="/edit/{{id}}"
+                    style="display: inline-block; background: #ffc107; color: black; padding: 8px 16px; border-radius: 4px; margin: 4px; cursor: pointer;">
+                ✏️ Редактировать
+              </span>
+            </div>
+          `,
+          "image": "{{photo}}",
+          "image_border_radius": 8,
+          "image_padding": 0,
+          "paraTemplateEngine": "front"
+        },
+        "card_min_height": 50,
+        "grid_layout__wideDesktop": 3,
+        "grid_layout__desktop": 2,
+        "card_padding": 12,
+        "card_border": 1,
+        "general": {
+          "allowPagination": false
+        },
+        "actions": [
+          {
+            "id": "like_action",
+            "name": "like_action", 
+            "actionType": "endpoint",
+            "endpoint": "/api/like",
+            "mapping": [
+              {"field": "objectId", "value": "{{id}}"},
+              {"field": "action", "value": "like"}
+            ]
+          }
+        ]
+      },
+      "data": [
+        {
+          "id": "1",
+          "name": "Карточка с data-action",
+          "description": "Эта карточка демонстрирует работу с data-action элементами",
+          "photo": "https://via.placeholder.com/300x200/4CAF50/white?text=Card+1"
+        },
+        {
+          "id": "2", 
+          "name": "Вторая карточка",
+          "description": "Еще один пример интерактивной карточки",
+          "photo": "https://via.placeholder.com/300x200/2196F3/white?text=Card+2"
+        },
+        {
+          "id": "3",
+          "name": "Третья карточка", 
+          "description": "И еще одна карточка для демонстрации",
+          "photo": "https://via.placeholder.com/300x200/FF9800/white?text=Card+3"
+        }
+      ]
+    },
+    callEndpoint: (endpoint, method, body, params, callback) => {
+      console.log('Mock callEndpoint:', { endpoint, method, body, params });
+      setTimeout(() => callback('ok', 'Success'), 500);
+    },
+    handleRoute: (path) => (e) => {
+      console.log('Mock handleRoute:', path);
+      alert(`Переход на: ${path}`);
+    },
+    handleModalRoute: (path) => (e) => {
+      console.log('Mock handleModalRoute:', path);
+      alert(`Открыть модальное окно: ${path}`);
+    },
+    auth: { user: "123", name: "Test User" },
+    debug: true
+  },
+};

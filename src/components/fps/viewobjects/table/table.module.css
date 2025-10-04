@@ -565,3 +565,10 @@ div.tableTitle.mobile h2 {
   padding: 4px;
   font-size: var(--text-small-size);
 }
+:global(.cellTooltip) {
+  max-width: 400px !important;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  z-index: 9999 !important;
+}

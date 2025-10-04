@@ -17,7 +17,7 @@ export default {
 };
 
 let exampleTable = {
-    "sl": "admin_get_figma_projects",
+    "sl": "darta",
     "pageSize": "10",
     "headerField": null,
     "params": {
@@ -43,28 +43,27 @@ let exampleTable = {
                     "link": ""
                 },
                 {
-                    "fieldSysName": "name",
+                    "fieldSysName": "number",
                     "fetch": [],
-                    "sysName": "name",
-                    "name": "name",
+                    "sysName": "number",
+                    "name": "",
+                    "dataType": "number",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "text",
+                    "fetch": [],
+                    "sysName": "text",
+                    "name": "TEXT",
                     "dataType": "string",
                     "format": "",
                     "formatOptions": {},
                     "link": ""
                 }
             ],
-            "writeFields": [
-                {
-                    "fieldSysName": "id",
-                    "fetch": [],
-                    "sysName": "id",
-                    "name": "id",
-                    "dataType": "id",
-                    "format": "",
-                    "formatOptions": {},
-                    "link": ""
-                }
-            ],
+            "writeFields": [],
             "fields": {
                 "id": {
                     "id": "id",
@@ -73,14 +72,24 @@ let exampleTable = {
                     "dataType": "id",
                     "format": "",
                     "formatOptions": {},
-                    "write": true,
                     "read": true,
                     "link": "",
                     "actions": []
                 },
-                "name": {
-                    "id": "name",
-                    "content": "name",
+                "number": {
+                    "id": "number",
+                    "content": "",
+                    "type": "field",
+                    "dataType": "number",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "text": {
+                    "id": "text",
+                    "content": "TEXT",
                     "type": "field",
                     "dataType": "string",
                     "format": "",
@@ -99,7 +108,7 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "title": {
+                "number": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -107,7 +116,7 @@ let exampleTable = {
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "name": {
+                "text": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -122,16 +131,15 @@ let exampleTable = {
                     "title": "New section",
                     "fieldIds": [
                         "id",
-                        "name"
+                        "number",
+                        "text"
                     ]
                 }
             },
             "columnOrder": [
                 "tab-1"
             ],
-            "actions": [],
-            "cardsOrPage": "modal",
-            "anotherPage": "figma"
+            "actions": []
         },
         "fields": {
             "id": {
@@ -142,7 +150,7 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "title": {
+            "number": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -150,7 +158,7 @@ let exampleTable = {
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "name": {
+            "text": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -172,28 +180,27 @@ let exampleTable = {
                     "link": ""
                 },
                 {
-                    "fieldSysName": "name",
+                    "fieldSysName": "number",
                     "fetch": [],
-                    "sysName": "name",
-                    "name": "name",
+                    "sysName": "number",
+                    "name": "",
+                    "dataType": "number",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "text",
+                    "fetch": [],
+                    "sysName": "text",
+                    "name": "TEXT",
                     "dataType": "string",
                     "format": "",
                     "formatOptions": {},
                     "link": ""
                 }
             ],
-            "writeFields": [
-                {
-                    "fieldSysName": "id",
-                    "fetch": [],
-                    "sysName": "id",
-                    "name": "id",
-                    "dataType": "id",
-                    "format": "",
-                    "formatOptions": {},
-                    "link": ""
-                }
-            ],
+            "writeFields": [],
             "fields": {
                 "id": {
                     "id": "id",
@@ -201,13 +208,21 @@ let exampleTable = {
                     "dataType": "id",
                     "format": "",
                     "formatOptions": {},
-                    "write": true,
                     "read": true,
                     "link": ""
                 },
-                "name": {
-                    "id": "name",
-                    "content": "name",
+                "number": {
+                    "id": "number",
+                    "content": "",
+                    "dataType": "number",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": ""
+                },
+                "text": {
+                    "id": "text",
+                    "content": "TEXT",
                     "dataType": "string",
                     "format": "",
                     "formatOptions": {},
@@ -224,7 +239,7 @@ let exampleTable = {
                     "colorFormat": "square",
                     "colorSize": 40
                 },
-                "title": {
+                "number": {
                     "include": true,
                     "fileImageFormat": "square",
                     "fileImageSize": 80,
@@ -232,7 +247,7 @@ let exampleTable = {
                     "colorFormat": "square",
                     "colorSize": 40
                 },
-                "name": {
+                "text": {
                     "include": true,
                     "fileImageFormat": "square",
                     "fileImageSize": 80,
@@ -243,11 +258,12 @@ let exampleTable = {
             },
             "fieldOrder": [
                 "id",
-                "name"
+                "text",
+                "number"
             ]
         }
     },
-    "tableTitle": "Проекты figma",
+    "tableTitle": "",
     "actions": [],
     "headers": [
         {
@@ -270,19 +286,47 @@ let exampleTable = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "typeVariable": {},
-            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
             "indexExists": false,
             "array": false
         },
         {
-            "sysName": "name",
-            "name": "name",
+            "sysName": "number",
+            "name": "",
+            "dataType": "number",
+            "id": "53021759423491996",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "text",
+            "name": "TEXT",
             "dataType": "string",
-            "id": "82981758020892554",
+            "id": "92661759423487062",
             "link": "",
             "group": "0",
             "tags": "",
@@ -298,19 +342,20 @@ let exampleTable = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "typeVariable": {},
-            "json": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
             "indexExists": false,
             "array": false
         }
     ],
     "data": [
         {
-            "name": "api",
-            "id": "227682802"
+            "number": 5,
+            "text": "Возможность при мерже создавать какие-то пакеты по-умолчанию для переноса, чтобы кажый раз не набивать по 100 сценариев, эндпоинтов, таблиц вручную (большой риск что-то потерять)",
+            "id": "ab68fc23-7b2d-401c-8485-8944f844601a"
         }
     ],
     "totalPages": 1,
@@ -319,39 +364,40 @@ let exampleTable = {
     "fieldScheme": [
         [
             "id",
-            99417420
+            99422458
         ],
         [
-            "name",
-            99417420
+            "number",
+            99422458
+        ],
+        [
+            "text",
+            99422458
         ]
     ],
-    "writeFields": [
-        "id"
-    ],
+    "writeFields": [],
     "structures": {
-        "99417420": {
-            "networkID": 34001,
-            "sysName": "figma_project",
-            "name": "figma_project",
-            "id": 99417420,
-            "dateCreated": "2025-09-16T11:08:01Z",
+        "99422458": {
+            "networkID": 34396,
+            "sysName": "data",
+            "name": "data",
+            "id": 99422458,
+            "dateCreated": "2025-10-02T16:44:43Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"figma_files_ids\",\"name\":\"\",\"dataType\":\"arrayLink\",\"id\":\"18301758022312549\",\"link\":\"figma_files\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"figma_project_JSON\",\"name\":\"\",\"dataType\":\"json\",\"id\":\"56841758021169140\",\"link\":\"\",\"group\":\"1758021168340\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"figma_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"60261758021765695\",\"link\":\"figma\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"name\",\"name\":\"name\",\"dataType\":\"string\",\"id\":\"82981758020892554\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false}]",
-            "jsonGroupSettings": "[{\"id\":1758021168340,\"name\":\"New Group 1\",\"order\":0}]",
-            "jsonViewIdSettings": "[{\"sysName\":\"name\"}]",
+            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"number\",\"name\":\"\",\"dataType\":\"number\",\"id\":\"53021759423491996\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"text\",\"name\":\"TEXT\",\"dataType\":\"string\",\"id\":\"92661759423487062\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": null,
             "jsonSettings": null,
             "jsonNativeIndexSettings": null,
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2025-09-16T11:48:01Z",
-            "createBy": 6452,
-            "changedBy": 6452,
+            "dateChanged": "2025-10-02T16:44:59Z",
+            "createBy": 3527,
+            "changedBy": 3527,
             "_settings": null,
             "_nativeIndexSettings": null,
-            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "name": "id",
@@ -372,50 +418,22 @@ let exampleTable = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "typeVariable": {},
-                "json": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
+                "typeVariable": {},
+                "json": false,
                 "indexExists": false,
                 "array": false
             },
-            "folderId": 33864907
+            "objectIDSysName": "id",
+            "folderId": null
         }
     },
     "isSuccessWrite": false,
     "writeError": null,
     "writeResponse": null,
-    "fileds": [
-        {
-            "sysName": "id",
-            "name": "id",
-            "dataType": "id",
-            "id": "0",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 0,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "typeVariable": {},
-            "json": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "indexExists": false,
-            "array": false
-        }
-    ],
+    "fileds": [],
     "quickSearch": "false",
     "httpParams": {},
     "cardCustomHtml": null,

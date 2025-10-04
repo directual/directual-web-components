@@ -54,7 +54,7 @@ function NewPaging({
                     <ActionPanel>
                         {showFirst && <Button height={32} onClick={firstPage} >‹‹</Button>}
                         <Button height={32} onClick={prevPage}>‹</Button>
-                        <div className={styles.newPaging__pageNumber}>{currentPage}</div>
+                        <div className={styles.newPaging__pageNumber}>{currentPage + 1}</div>
                         {!isLastPage && <Button height={32} onClick={nextPage} >›</Button>}
                         {!isLastPage && <Button height={32} onClick={lastPage} >››</Button>}
                     </ActionPanel>
