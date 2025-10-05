@@ -76,7 +76,7 @@ const EditableCell = ({
 
     if (!fieldDetails[id] || !fieldDetails[id].dataType) {
         const displayValue = typeof value == 'object' ? JSON.stringify(value) : value
-        return <>
+        return <Fragment>
             <div 
                 ref={cellRef}
                 className={styles.notEditableValue}
@@ -86,7 +86,7 @@ const EditableCell = ({
                 {displayValue}
             </div>
             {isOverflowing && <Tooltip id={tooltipId} className={styles.cellTooltip} />}
-        </>
+        </Fragment>
     }
 
 
@@ -95,7 +95,7 @@ const EditableCell = ({
             moment.utc(value).locale(formatOptions.dateLocale || 'ed-gb').format(formatOptions.dateFormat + formatOptions.timeFormat || 'DD/MM/Y, HH:mm, Z')
             :
             moment(value).locale(formatOptions.dateLocale || 'ed-gb').format(formatOptions.dateFormat + formatOptions.timeFormat || 'DD/MM/Y, HH:mm, Z')
-        return <>
+        return <Fragment>
             <div 
                 ref={cellRef}
                 className={`${styles.notEditableValue}`}
@@ -105,13 +105,13 @@ const EditableCell = ({
                 {displayValue}
             </div>
             {isOverflowing && <Tooltip id={tooltipId} className={styles.cellTooltip} />}
-        </>
+        </Fragment>
     }
 
     //numbers
     if (fieldDetails[id].dataType == 'number' || fieldDetails[id].dataType == 'decimal') {
         const displayValue = numberWithSpaces(value)
-        return <>
+        return <Fragment>
             <div 
                 ref={cellRef}
                 className={`${styles.notEditableValue} ${styles.number}`}
@@ -121,7 +121,7 @@ const EditableCell = ({
                 {displayValue}
             </div>
             {isOverflowing && <Tooltip id={tooltipId} className={styles.cellTooltip} />}
-        </>
+        </Fragment>
     }
 
     //images
@@ -136,7 +136,7 @@ const EditableCell = ({
                 }} />
         }
         const displayValue = typeof value == 'object' ? JSON.stringify(value) : value
-        return <>
+        return <Fragment>
             <div 
                 ref={cellRef}
                 className={`${styles.notEditableValue} ${styles.number}`}
@@ -146,7 +146,7 @@ const EditableCell = ({
                 {displayValue}
             </div>
             {isOverflowing && <Tooltip id={tooltipId} className={styles.cellTooltip} />}
-        </>
+        </Fragment>
     }
 
     //colour
@@ -244,7 +244,7 @@ const EditableCell = ({
             const displayValue = fieldDetails[id].formatOptions.multipleChoice.filter(i => i.value == json.value)[0] ?
                 fieldDetails[id].formatOptions.multipleChoice.filter(i => i.value == json.value)[0].label :
                 json.value
-            return <>
+            return <Fragment>
                 <div 
                     ref={cellRef}
                     className={`${styles.notEditableValue}`}
@@ -254,10 +254,10 @@ const EditableCell = ({
                     {displayValue}
                 </div>
                 {isOverflowing && <Tooltip id={tooltipId} className={styles.cellTooltip} />}
-            </>
+            </Fragment>
         }
         if (json.customOption) {
-            return <>
+            return <Fragment>
                 <div 
                     ref={cellRef}
                     className={`${styles.notEditableValue}`}
@@ -267,7 +267,7 @@ const EditableCell = ({
                     {json.customOption}
                 </div>
                 {isOverflowing && <Tooltip id={tooltipId} className={styles.cellTooltip} />}
-            </>
+            </Fragment>
         }
         return <div className={`${styles.notEditableValue}`}>
         </div>
@@ -326,7 +326,7 @@ const EditableCell = ({
 
     // other types:
     const displayValue = typeof value == 'object' ? JSON.stringify(value) : value
-    return <>
+    return <Fragment>
         <div 
             ref={cellRef}
             className={styles.notEditableValue}
@@ -336,7 +336,7 @@ const EditableCell = ({
             {displayValue}
         </div>
         {isOverflowing && <Tooltip id={tooltipId} className={styles.cellTooltip} />}
-    </>
+    </Fragment>
 }
 
 
