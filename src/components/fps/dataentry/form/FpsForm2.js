@@ -1284,7 +1284,7 @@ function RenderStep(props) {
     )
   }
 
-  return <React.Fragment>{(currentStep.elements || [])
+  return <>{(currentStep.elements || [])
     //.filter(element => !checkHidden(element) && !checkIfAllInputsHidden(element))
     .map(element => <FormElement
       {...props}
@@ -1474,7 +1474,7 @@ function RenderStep(props) {
           )
         }}
         key={element.id} />)}
-  </React.Fragment>
+  </>
 }
 
 FpsForm2.propTypes = {

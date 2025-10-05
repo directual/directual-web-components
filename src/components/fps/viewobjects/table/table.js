@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useRef } from 'react'
+import React, { useState, useMemo, useEffect, useRef, Fragment } from 'react'
 import styles from './table.module.css'
 import SomethingWentWrong from '../../SomethingWentWrong/SomethingWentWrong'
 import { useTable } from 'react-table'
