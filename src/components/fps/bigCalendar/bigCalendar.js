@@ -189,21 +189,21 @@ export default function BigCalendar({ data }) {
   );
 }
 
-Calendar.propTypes = {
+BigCalendar.propTypes = {
   data: PropTypes.object,
   auth: {},
   locale: {}
 }
   
-Calendar.defaultProps = {
+BigCalendar.defaultProps = {
   data: {},
   auth: {},
   locale: 'ENG'
 }
   
-Calendar.settings = {
+BigCalendar.settings = {
   //icon: icon,
-  name: 'BigCalendar',
+  name: 'Calendar',
   sysName: 'BigCalendar',
   isLegacy: false,
   isMarketplace: true
