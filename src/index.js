@@ -60,6 +60,7 @@ import Chart from './components/fps/chart/chart'
 import Comments from './components/fps/comments/comments'
 import FpsCarousel from './components/fps/carousel/FpsCarousel'
 import FpsChat from './components/fps/chat/chat'
+import BigCalendar from './components/fps/bigCalendar/bigCalendar'
 // import Editor from './components/fps/editor/editor'
 
 
@@ -75,6 +76,7 @@ export {
   FpsChat,
   Comments,
   FormSteps,
+  BigCalendar,
   FpsForm2,
   FpsBlocked,
   Colorpicker,
