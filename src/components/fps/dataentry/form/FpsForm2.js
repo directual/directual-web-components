@@ -216,10 +216,7 @@ export default function FpsForm2(props) {
         // console.log("🔌 Cancelling pending debounced submits");
         
         // Отменяем все pending debounced submits чтобы они не перезаписали сокетное обновление
-        // Но только если это не автосабмит - автосабмит должен выполниться после сокетного обновления
-        if (!autoSubmit) {
-          submitDebouncedRef.current.cancel();
-        }
+        submitDebouncedRef.current.cancel();
         
         isSocketUpdateRef.current = true; // устанавливаем флаг что это обновление от сокета
         setModel(newModel)
