@@ -106,7 +106,7 @@ export default function BigCalendar(props) {
 
     const handleSave = () => {
         callEndpoint && callEndpoint(
-            _.get(data, "params.sl_actions"),
+            _.get(data, "__data__._api_.sl_actions"),
             "POST",
             { 
                 events: state.events.map(serializeEvent), 
