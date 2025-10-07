@@ -9,12 +9,22 @@ import InnerHTML from 'dangerously-set-html-content'
 
 export default function FpsHtml(props) {
 
+  const { socket } = props
+
   const [data, setData] = useState(props.data)
+  const [renderKey, setRenderKey] = useState(0)
+  
   useEffect(() => {
     if (JSON.stringify(props.data) !== JSON.stringify(data)) {
       setData(props.data)
     }
   }, [props])
+
+  // При изменении socket (т.е. при обновлениях через веб-сокет)
+  // форсим ремаунт чтобы скрипты отработали заново
+  useEffect(() => {
+    setRenderKey(prev => prev + 1)
+  }, [socket])
 
   const html = (data || {}).html || ''
   if (data && data.isHidden == 'true') { return <div /> }
@@ -25,7 +35,7 @@ export default function FpsHtml(props) {
   return (
     <ComponentWrapper>
       <Article>
-        {html && <InnerHTML allowRerender={true} html={html} />}
+        {html && <InnerHTML key={renderKey} allowRerender={true} html={html} />}
       </Article>
     </ComponentWrapper>
   )
