@@ -77,6 +77,8 @@ export default function FpsForm2(props) {
   const [highlightModel, setHighlightModel] = useState(false)
   const [initialized, setInitialized] = useState(!edditingOn);
   const isSocketUpdateRef = useRef(false); // ref для отслеживания обновлений от сокета
+  const restoredStepRef = useRef(null); // храним step при восстановлении state из поля
+  const isAutoSubmittingRef = useRef(false); // флаг что прямо сейчас идёт автосабмит
 
   // console.log(model)
   // console.log(originalModel)
@@ -227,7 +229,17 @@ export default function FpsForm2(props) {
       saveSate = { ...saveSate, ...templateState(_.get(data, "params.state"), newModel) }
       // RESTORE STATE:
       if (_.get(params, "general.restoreState") && _.get(params, "general.saveStateTo")) {
-        saveSate = { ...saveSate, ...parseJson(newModel[_.get(params, "general.saveStateTo")]) }
+        const restoredState = parseJson(newModel[_.get(params, "general.saveStateTo")])
+        saveSate = { ...saveSate, ...restoredState }
+        // Блокируем автосабмит на восстановленный step
+        restoredStepRef.current = restoredState.step
+        isAutoSubmittingRef.current = true; // блокируем автосабмит
+        console.log("📥 STATE RESTORED from field, step:", restoredState.step, "- blocking autosubmit")
+        // Через небольшую задержку разблокируем, чтобы пропустить все реактивные обновления
+        setTimeout(() => {
+          console.log("🔓 UNBLOCKING autosubmit after state restore");
+          isAutoSubmittingRef.current = false;
+        }, 100);
       }
       setState(saveSate)
       setInitialized(true)
@@ -733,8 +745,6 @@ export default function FpsForm2(props) {
   const submitOnStateRef = useRef(debounce(submit, 1400));
   const submitDebouncedRef = useRef(debounce((finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData, actionReq, setActionError, resetModel, currentModel, newExtendedModel) => {
     console.log("⏰ DEBOUNCED SUBMIT EXECUTING");
-    console.log("⏰ Model at execution time:", modelRef.current);
-    console.log("⏰ Args:", { finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData, actionReq, setActionError, resetModel, currentModel, newExtendedModel });
     console.log("⏰ Current submit function:", submit);
     submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData, actionReq, setActionError, resetModel, currentModel, newExtendedModel);
   }, 1000));
@@ -745,8 +755,6 @@ export default function FpsForm2(props) {
     submitOnStateRef.current = debounce(submit, 1400);
     submitDebouncedRef.current = debounce((finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData, actionReq, setActionError, resetModel, currentModel, newExtendedModel) => {
       console.log("⏰ DEBOUNCED SUBMIT EXECUTING");
-      console.log("⏰ Model at execution time:", modelRef.current);
-      console.log("⏰ Args:", { finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData, actionReq, setActionError, resetModel, currentModel, newExtendedModel });
       console.log("⏰ Current submit function:", submit);
       submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData, actionReq, setActionError, resetModel, currentModel, newExtendedModel);
     }, 1000);
@@ -783,9 +791,6 @@ export default function FpsForm2(props) {
         });
         if (send) {
           console.log("📤 Calling submitDebounced (specific fields)");
-          console.log("📤 submitDebounced function:", submitDebounced);
-          console.log("📤 Current model:", modelRef.current);
-          console.log("📤 Extended model:", extendedModel);
           submitDebounced(
             undefined, // finish
             true,      // submitKeepModel
@@ -810,9 +815,6 @@ export default function FpsForm2(props) {
         }
         if (send) {
           console.log("📤 Calling submitDebounced (all fields)");
-          console.log("📤 submitDebounced function:", submitDebounced);
-          console.log("📤 Current model:", modelRef.current);
-          console.log("📤 Extended model:", extendedModel);
           submitDebounced(
             undefined, // finish
             true,      // submitKeepModel
@@ -834,7 +836,6 @@ export default function FpsForm2(props) {
   // Clean up on unmount - отменяем все debounced функции
   useEffect(() => {
     return () => {
-      console.log("🧹 CLEANING UP DEBOUNCED FUNCTIONS ON UNMOUNT");
       submitDebouncedRef.current.cancel();
       submitOnModelRef.current.cancel();
       submitOnStateRef.current.cancel();
@@ -847,17 +848,44 @@ export default function FpsForm2(props) {
       setHighlightState(true)
       setTimeout(() => setHighlightState(false), 300)
     }
+    
+    // Блокируем автосабмит если уже идёт автосабмит
+    if (isAutoSubmittingRef.current) {
+      console.log("🚫 AUTOSUBMIT DISABLED: Already autosubmitting");
+      return;
+    }
+    
+    // Проверяем: если текущий step это восстановленный step - пропускаем автосабмит
+    if (restoredStepRef.current !== null && state.step === restoredStepRef.current) {
+      console.log("🚫 AUTOSUBMIT DISABLED: Current step matches restored step:", state.step);
+      // НЕ сбрасываем ref здесь - он будет сброшен только когда step реально изменится
+      return;
+    }
+    
+    // Если step изменился на что-то другое - сбрасываем ref восстановленного step
+    if (restoredStepRef.current !== null && state.step !== restoredStepRef.current) {
+      console.log("✅ Step changed from restored", restoredStepRef.current, "to", state.step, "- clearing restored step ref");
+      restoredStepRef.current = null; // теперь можно автосабмитить
+    }
+    
+    const finishAutoSubmit = () => {
+      console.log("✅ AUTOSUBMIT FINISHED");
+      isAutoSubmittingRef.current = false;
+    };
+    
     if (_.get(params, "general.autosubmit") == "always" && autoSubmitStep !== state.step) {
       console.log("AUTOSUBMIT!")
       setAutoSubminStep(state.step)
-      submitOnState(undefined, true, undefined, true)
+      isAutoSubmittingRef.current = true;
+      submitOnState(finishAutoSubmit, true, undefined, true)
     }
     if (_.get(params, "general.autosubmit") == "steps"
       && _.includes(_.get(params, "general.autosubmit_steps").split(","), state.step
         && autoSubmitStep !== state.step)) {
       console.log("AUTOSUBMIT!")
       setAutoSubminStep(state.step)
-      submitOnState(undefined, true, undefined, true, undefined, { state: state })
+      isAutoSubmittingRef.current = true;
+      submitOnState(finishAutoSubmit, true, undefined, true, undefined, { state: state })
     }
   }, [state, submitOnState])
 
