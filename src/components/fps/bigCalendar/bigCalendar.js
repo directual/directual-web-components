@@ -4,8 +4,8 @@ import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 import moment from 'moment';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
-import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
+// import 'react-big-calendar/lib/css/react-big-calendar.css';
+// import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 
 const CustomToolbar = (toolbar) => {
   const goToBack = () => {
