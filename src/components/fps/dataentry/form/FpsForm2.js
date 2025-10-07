@@ -214,7 +214,10 @@ export default function FpsForm2(props) {
         // console.log("🔌 Cancelling pending debounced submits");
         
         // Отменяем все pending debounced submits чтобы они не перезаписали сокетное обновление
-        submitDebounced.cancel();
+        // Но только если это не автосабмит - автосабмит должен выполниться после сокетного обновления
+        if (!autoSubmit) {
+          submitDebouncedRef.current.cancel();
+        }
         
         isSocketUpdateRef.current = true; // устанавливаем флаг что это обновление от сокета
         setModel(newModel)
@@ -726,14 +729,33 @@ export default function FpsForm2(props) {
   }, [data, fields, params, model, extendedModel, state, modelIsChanged, templateState, callEndpoint, gatherDefaults, template, setModel, setExtendedModel, setOriginalModel, setOriginalExtendedModel, setState, setLoading, refreshOptions, handleRoute, dict, lang]) // Добавил все необходимые зависимости
 
   // DEBOUNCED ФУНКЦИИ - определяются ПОСЛЕ submit
-  const submitOnModel = debounce(submit, 1400);
-  const submitOnState = debounce(submit, 1400);
-  const submitDebounced = useCallback(debounce((...args) => {
+  const submitOnModelRef = useRef(debounce(submit, 1400));
+  const submitOnStateRef = useRef(debounce(submit, 1400));
+  const submitDebouncedRef = useRef(debounce((finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData, actionReq, setActionError, resetModel, currentModel, newExtendedModel) => {
     console.log("⏰ DEBOUNCED SUBMIT EXECUTING");
     console.log("⏰ Model at execution time:", modelRef.current);
-    console.log("⏰ Args:", args);
-    submit(...args);
-  }, 1000), [submit]); // Теперь submit доступен
+    console.log("⏰ Args:", { finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData, actionReq, setActionError, resetModel, currentModel, newExtendedModel });
+    console.log("⏰ Current submit function:", submit);
+    submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData, actionReq, setActionError, resetModel, currentModel, newExtendedModel);
+  }, 1000));
+
+  // Обновляем рефы когда submit функция меняется
+  useEffect(() => {
+    submitOnModelRef.current = debounce(submit, 1400);
+    submitOnStateRef.current = debounce(submit, 1400);
+    submitDebouncedRef.current = debounce((finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData, actionReq, setActionError, resetModel, currentModel, newExtendedModel) => {
+      console.log("⏰ DEBOUNCED SUBMIT EXECUTING");
+      console.log("⏰ Model at execution time:", modelRef.current);
+      console.log("⏰ Args:", { finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData, actionReq, setActionError, resetModel, currentModel, newExtendedModel });
+      console.log("⏰ Current submit function:", submit);
+      submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData, actionReq, setActionError, resetModel, currentModel, newExtendedModel);
+    }, 1000);
+  }, [submit]);
+
+  // Алиасы для обратной совместимости
+  const submitOnModel = submitOnModelRef.current;
+  const submitOnState = submitOnStateRef.current;
+  const submitDebounced = submitDebouncedRef.current;
 
   // AUTOSUBMIT ON MODEL - ПОСЛЕ определения submitDebounced
   useEffect(() => {
@@ -761,7 +783,22 @@ export default function FpsForm2(props) {
         });
         if (send) {
           console.log("📤 Calling submitDebounced (specific fields)");
-          submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, false, modelRef.current, extendedModel);
+          console.log("📤 submitDebounced function:", submitDebounced);
+          console.log("📤 Current model:", modelRef.current);
+          console.log("📤 Extended model:", extendedModel);
+          submitDebounced(
+            undefined, // finish
+            true,      // submitKeepModel
+            undefined, // targetStep
+            true,      // autoSubmit
+            undefined, // submitMapping
+            undefined, // newData
+            undefined, // actionReq
+            undefined, // setActionError
+            false,     // resetModel
+            modelRef.current, // currentModel
+            extendedModel     // newExtendedModel
+          );
         }
       } else {
         let send = false;
@@ -773,7 +810,22 @@ export default function FpsForm2(props) {
         }
         if (send) {
           console.log("📤 Calling submitDebounced (all fields)");
-          submitDebounced(undefined, true, undefined, true, undefined, undefined, undefined, undefined, false, modelRef.current, extendedModel);
+          console.log("📤 submitDebounced function:", submitDebounced);
+          console.log("📤 Current model:", modelRef.current);
+          console.log("📤 Extended model:", extendedModel);
+          submitDebounced(
+            undefined, // finish
+            true,      // submitKeepModel
+            undefined, // targetStep
+            true,      // autoSubmit
+            undefined, // submitMapping
+            undefined, // newData
+            undefined, // actionReq
+            undefined, // setActionError
+            false,     // resetModel
+            modelRef.current, // currentModel
+            extendedModel     // newExtendedModel
+          );
         }
       }
     }
@@ -782,11 +834,12 @@ export default function FpsForm2(props) {
   // Clean up on unmount - отменяем все debounced функции
   useEffect(() => {
     return () => {
-      submitDebounced.cancel();
-      submitOnModel.cancel();
-      submitOnState.cancel();
+      console.log("🧹 CLEANING UP DEBOUNCED FUNCTIONS ON UNMOUNT");
+      submitDebouncedRef.current.cancel();
+      submitOnModelRef.current.cancel();
+      submitOnStateRef.current.cancel();
     };
-  }, [submitDebounced]);
+  }, []); // Пустой массив зависимостей - очищаем только при unmount
 
   // AUTOSUBMIT ON STATE
   useEffect(() => {
@@ -1284,7 +1337,7 @@ function RenderStep(props) {
     )
   }
 
-  return <>{(currentStep.elements || [])
+  return <React.Fragment>{(currentStep.elements || [])
     //.filter(element => !checkHidden(element) && !checkIfAllInputsHidden(element))
     .map(element => <FormElement
       {...props}
@@ -1474,7 +1527,7 @@ function RenderStep(props) {
           )
         }}
         key={element.id} />)}
-  </>
+  </React.Fragment>
 }
 
 FpsForm2.propTypes = {
