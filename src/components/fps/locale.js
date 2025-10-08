@@ -113,7 +113,15 @@ export const dict = {
         paging: {
             total: "Total"
         },
-        noOptions: "No options"
+        noOptions: "No options",
+        bigCalendar: {
+            save: "Save",
+            today: "Today",
+            month: "Month",
+            week: "Week",
+            day: "Day",
+            agenda: "Agenda"
+        }
     },
 
 
@@ -230,7 +238,15 @@ export const dict = {
         paging: {
             total: "Gesamt"
         },
-        noOptions: "keine Optionen"
+        noOptions: "keine Optionen",
+        bigCalendar: {
+            save: "Speichern",
+            today: "Heute",
+            month: "Monat",
+            week: "Woche",
+            day: "Tag",
+            agenda: "Agenda"
+        }
     },
 
 
@@ -347,7 +363,15 @@ export const dict = {
         paging: {
             total: "Total"
         },
-        noOptions: "sin opciones"
+        noOptions: "sin opciones",
+        bigCalendar: {
+            save: "Guardar",
+            today: "Hoy",
+            month: "Mes",
+            week: "Semana",
+            day: "Día",
+            agenda: "Agenda"
+        }
     },
 
 
@@ -464,7 +488,15 @@ export const dict = {
         paging: {
             total: "Total"
         },
-        noOptions: "pas d'options"
+        noOptions: "pas d'options",
+        bigCalendar: {
+            save: "Enregistrer",
+            today: "Aujourd'hui",
+            month: "Mois",
+            week: "Semaine",
+            day: "Jour",
+            agenda: "Agenda"
+        }
     },
 
 
@@ -581,7 +613,15 @@ export const dict = {
         paging: {
             total: "Всего"
         },
-        noOptions: "Нет доступных опций"
+        noOptions: "Нет доступных опций",
+        bigCalendar: {
+            save: "Сохранить",
+            today: "Сегодня",
+            month: "Месяц",
+            week: "Неделя",
+            day: "День",
+            agenda: "Agenda"
+        }
     },
 
     JPN: {
@@ -697,7 +737,15 @@ export const dict = {
         paging: {
             total: "合計"
         },
-        noOptions: "オプションなし"
+        noOptions: "オプションなし",
+        bigCalendar: {
+            save: "保存",
+            today: "今日",
+            month: "月",
+            week: "週",
+            day: "日",
+            agenda: "Agenda"
+        }
     },
 
     POR: {
@@ -812,7 +860,15 @@ export const dict = {
         "paging": {
             "total": "Total"
         },
-        noOptions: "Sem opções"
+        noOptions: "Sem opções",
+        bigCalendar: {
+            save: "Salvar",
+            today: "Hoje",
+            month: "Mês",
+            week: "Semana",
+            day: "Dia",
+            agenda: "Agenda"
+        }
     },
 
     IND: {
@@ -927,7 +983,15 @@ export const dict = {
         paging: {
             total: "कुल"
         },
-        noOptions: "कोई विकल्प नहीं"
+        noOptions: "कोई विकल्प नहीं",
+        bigCalendar: {
+            save: "सहेजें",
+            today: "आज",
+            month: "महीना",
+            week: "सप्ताह",
+            day: "दिन",
+            agenda: "Agenda"
+        }
     },
 
     KOR: {
@@ -1042,6 +1106,14 @@ export const dict = {
         "paging": {
             "total": "총계"
         },
-        "noOptions": "옵션이 없습니다"
+        "noOptions": "옵션이 없습니다",
+        bigCalendar: {
+            save: "저장",
+            today: "오늘",
+            month: "월",
+            week: "주",
+            day: "일",
+            agenda: "Agenda"
+        }
     }
 }

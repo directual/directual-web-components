@@ -1,25 +1,26 @@
-// Переменные для кастомизации
-@primary-color: #3174ad;
-@primary-dark: #265985;
-@border-color: #ddd;
-@off-range-color: #999999;
-@off-range-bg: #e6e6e6;
-@today-bg: #eaf6ff;
-@header-bg: #fff;
-@event-bg: @primary-color;
-@event-selected-bg: @primary-dark;
-@text-color: #373a3c;
+// Переменные для кастомизации через CSS custom properties
+// Теперь календарь адаптируется под тему приложения, ебать-копать! 🎨
+@primary-color: var(--layout-accent, #058efc);
+@primary-dark: var(--layout-accent-hover, #0062bd);
+@border-color: var(--table-borders, rgba(0, 0, 0, 0.12));
+@off-range-color: var(--form-placeholder-disabled, #999999);
+@off-range-bg: var(--form-field-bgr-disabled, #cccccc);
+@today-bg: var(--button-dropdown-hover-bgr, rgba(5, 142, 252, 0.05));
+@header-bg: var(--layout-secondary-bgr, #ffffff);
+@event-bg: var(--layout-accent, #058efc);
+@event-selected-bg: var(--layout-accent-hover, #0062bd);
+@text-color: var(--layout-text, #333333);
 @overlay-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
 @event-shadow: -1px 1px 5px 0px rgba(51, 51, 51, 0.5);
-@btn-active-bg: #e6e6e6;
-@btn-border: #ccc;
-@time-indicator-color: #74ad31;
+@btn-active-bg: var(--button-hover-bgr, #ffffff);
+@btn-border: var(--button-border, #8e8e8e);
+@time-indicator-color: var(--label, #26be99);
 @selection-bg: rgba(0, 0, 0, 0.5);
-@selected-cell-bg: rgba(0, 0, 0, 0.1);
+@selected-cell-bg: var(--table-raw-hover, rgba(5, 142, 252, 0.05));
 
 // Основной контейнер календаря
 .rbc_calendar {
-            box-sizing: border-box;
+    box-sizing: border-box;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -138,126 +139,159 @@
     }
 
     // ======================
-    // ТУЛБАР (навигация)
+    // ТУЛБАР (навигация) - ВЫПИЛИВАЕМ ДЕФОЛТНЫЕ СТИЛИ И ДЕЛАЕМ СВОИ! 🔥💀
     // ======================
 
-    :global(.rbc-toolbar) {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 10px;
-        font-size: 16px;
+    // Общие стили тулбара - нахуй дефолтные стили календаря!
+    .customToolbar {
+        // Переопределяем ВСЕ стили тулбара календаря
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        margin-bottom: 20px !important;
+        padding: 12px 0px !important;
+        background: var(--layout-secondary-bgr, #ffffff) !important;
+        border-radius: 8px !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+        gap: 12px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        font-size: 16px !important;
 
+        // Красивый лейбл с месяцем/периодом
         :global(.rbc-toolbar-label) {
-            flex-grow: 1;
-            padding: 0 10px;
-            text-align: center;
+            flex: 1 !important;
+            padding: 0 20px !important;
+            text-align: center !important;
+            font-size: 20px !important;
+            font-weight: 600 !important;
+            color: var(--layout-text, #333333) !important;
+            letter-spacing: 0.3px !important;
+            min-width: 200px !important;
         }
 
-        button {
-            color: @text-color;
-            display: inline-block;
-            margin: 0;
-            text-align: center;
-            vertical-align: middle;
-            background: none;
-            background-image: none;
-            border: 1px solid @btn-border;
-            padding: 0.375rem 1rem;
-            border-radius: 4px;
-            line-height: normal;
-            white-space: nowrap;
-            transition: all 0.2s ease;
-
-            &:active,
-            &:global(.rbc-active) {
-                background-image: none;
-                box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-                background-color: @btn-active-bg;
-                border-color: darken(@btn-border, 15%);
-
-                &:hover,
-                &:focus {
-                    color: @text-color;
-                    background-color: darken(@btn-active-bg, 8%);
-                    border-color: darken(@btn-border, 30%);
-                }
+        // Убираем ебучие дефолтные стили для btn-group
+        :global(.rbc-btn-group) {
+            display: flex !important;
+            align-items: center !important;
+            white-space: normal !important;
+            
+            // Убираем дефолтные отступы между кнопками
+            > button,
+            > :global(.FPS_BUTTON) {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
             }
 
-            &:focus {
-                color: @text-color;
-                background-color: @btn-active-bg;
-                border-color: darken(@btn-border, 15%);
-                outline: none;
-            }
-
-            &:hover {
-                color: @text-color;
-                cursor: pointer;
-                background-color: @btn-active-bg;
-                border-color: darken(@btn-border, 15%);
+            // Убираем дефолтные округления на кнопках
+            > button:first-child:not(:last-child),
+            > button:last-child:not(:first-child),
+            > button:not(:first-child):not(:last-child) {
+                border-radius: var(--border-radius) !important;
             }
         }
     }
 
-    // Группы кнопок
-    :global(.rbc-btn-group) {
-        display: inline-block;
-        white-space: nowrap;
+    // Группа навигационных кнопок (Today + стрелки)
+    .navGroup {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+    }
 
-        > button {
-            &:first-child:not(:last-child) {
-                border-top-right-radius: 0;
-                border-bottom-right-radius: 0;
-            }
+    // Обертка для круглых кнопок со стрелками
+    .arrowButtons {
+        display: flex !important;
+        gap: 4px !important;
+    }
 
-            &:last-child:not(:first-child) {
-                border-top-left-radius: 0;
-                border-bottom-left-radius: 0;
-            }
-
-            &:not(:first-child):not(:last-child) {
-                border-radius: 0;
-            }
+    // Круглые кнопки со стрелками - НАХУЙ ВСЁ, БУДЬ КРУГЛЫМ! 🔥💀
+    .arrowBtn {
+        // Главное - КРУГЛЫЙ border-radius
+        border-radius: 50% !important;
+        
+        // Размеры (через пропсы, но на всякий случай)
+        width: 40px !important;
+        min-width: 40px !important;
+        max-width: 40px !important;
+        height: 40px !important;
+        min-height: 40px !important;
+        max-height: 40px !important;
+        
+        // Центровка
+        padding: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        
+        // Иконка по центру, без отступов
+        &:before {
+            margin: 0 !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
         }
 
-        button + button {
-            margin-left: -1px;
+        // НАХУЙ не меняй размеры при hover/active!
+        &:hover:not(:global(.disabled)) {
+            width: 40px !important;
+            height: 40px !important;
+            padding: 0 !important;
+            border-radius: 50% !important;
         }
 
-        + :global(.rbc-btn-group),
-        + button {
-            margin-left: 10px;
+        &:active:not(:global(.disabled)) {
+            width: 40px !important;
+            height: 40px !important;
+            padding: 0 !important;
+            border-radius: 50% !important;
         }
     }
 
-    // RTL для групп кнопок
-    :global(.rbc-rtl .rbc-btn-group) {
-        > button {
-            &:first-child:not(:last-child) {
-                border-radius: 4px;
-                border-top-left-radius: 0;
-                border-bottom-left-radius: 0;
-            }
-
-            &:last-child:not(:first-child) {
-                border-radius: 4px;
-                border-top-right-radius: 0;
-                border-bottom-right-radius: 0;
-            }
+    // Группа выбора вида (ебучий селект, центрируйся блять!)
+    .viewGroup {
+        display: flex !important;
+        align-items: center !important;
+        
+        // Селект внутри - выравниваем нахуй по центру
+        :global(.FPS_INPUT) {
+            margin: 0 !important;
+            align-self: center !important;
         }
-
-        button + button {
-            margin-left: 0;
-            margin-right: -1px;
+        
+        // Если там div обертка
+        > div {
+            display: flex !important;
+            align-items: center !important;
+            margin: 0 !important;
         }
     }
 
-    // Адаптив для тулбара
+    // Группа с кнопкой Save
+    .saveGroup {
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    // Адаптив для мобилки
     @media (max-width: 767px) {
-        :global(.rbc-toolbar) {
-            flex-direction: column;
+        .customToolbar {
+            flex-direction: column !important;
+            gap: 12px !important;
+
+            :global(.rbc-toolbar-label) {
+                order: -1 !important;
+                min-width: auto !important;
+                width: 100% !important;
+                font-size: 18px !important;
+            }
+
+            .navGroup,
+            .viewGroup,
+            .saveGroup {
+                width: 100% !important;
+                justify-content: center !important;
+            }
         }
     }
 
@@ -493,8 +527,8 @@
     :global(.rbc-overlay) {
         position: absolute;
         z-index: 5;
-        border: 1px solid lighten(@border-color, 5%);
-        background-color: #fff;
+        border: 1px solid @border-color;
+        background-color: var(--layout-secondary-bgr, #fff);
         box-shadow: @overlay-shadow;
         padding: 10px;
 
@@ -504,7 +538,7 @@
     }
 
     :global(.rbc-overlay-header) {
-        border-bottom: 1px solid lighten(@border-color, 5%);
+        border-bottom: 1px solid @border-color;
         margin: -10px -10px 5px -10px;
         padding: 2px 10px;
     }
@@ -889,7 +923,7 @@
 
         &:hover {
             background-color: @primary-dark !important;
-            border-color: darken(@primary-dark, 10%) !important;
+            border-color: @primary-dark !important;
         }
     }
 }

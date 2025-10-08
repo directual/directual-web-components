@@ -1,5 +1,8 @@
 import React, { useEffect, useMemo, useState, useCallback } from 'react';
-import { Calendar, momentLocalizer, Views } from 'react-big-calendar';
+import Button from '../button/button';
+import Input from '../dataentry/input/input';
+import { dict } from '../locale';
+import { Calendar, momentLocalizer } from 'react-big-calendar';
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 import moment from 'moment';
 import _ from 'lodash';
@@ -9,11 +12,26 @@ import styles from './bigCalendar.module.css';
 const localizer = momentLocalizer(moment);
 const DnDCalendar = withDragAndDrop(Calendar);
 
+const cultures = {
+    ENG: 'en-GB',
+    GER: 'de-DE',
+    ESP: 'es-ES',
+    FRA: 'fr-FR',
+    RUS: 'ru-RU',
+    JPN: 'ja-JP',
+    POR: 'pt-PT',
+    IND: 'id-ID',
+    KOR: 'ko-KR'
+};
+
 export default function BigCalendar(props) {
-    const { data, auth, locale, callEndpoint } = props;
+    const { data, auth, locale, callEndpoint, handleModalRoute } = props;
+    const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG';
+    const culture = cultures[lang];
     const [state, setState] = useState({
         events: [],
-        backEvents: []
+        backEvents: [],
+        currentView: 'month'
     });
 
     // Нормализация дат - приводим любой формат к Date объекту
@@ -47,7 +65,8 @@ export default function BigCalendar(props) {
         const rawEvents = _.get(data, "__data__.sl_events", []);
         setState({
             events: _.filter(rawEvents, (event) => event.mode === 'event').map(normalizeEvent),
-            backEvents: _.filter(rawEvents, (event) => event.mode === 'background').map(normalizeEvent)
+            backEvents: _.filter(rawEvents, (event) => event.mode === 'background').map(normalizeEvent),
+            currentView: 'month'
         });
     }, [data]);
 
@@ -106,7 +125,7 @@ export default function BigCalendar(props) {
 
     const handleSave = () => {
         callEndpoint && callEndpoint(
-            _.get(data, "__data__._api_.sl_actions"),
+            _.get(data, "__data__.sl_actions"),
             "POST",
             { 
                 events: state.events.map(serializeEvent), 
@@ -139,45 +158,44 @@ export default function BigCalendar(props) {
     
         const onViewChange = (view) => {
             toolbar.onView(view);
+            setState(prevState => ({
+                ...prevState,
+                currentView: view
+            }));
         };
     
         return (
-            <div className="rbc-toolbar">
-                <span className="rbc-btn-group">
-                    <button type="button" onClick={goToBack}>
-                        Back
-                    </button>
-                    <button type="button" onClick={goToCurrent}>
-                        Today
-                    </button>
-                    <button type="button" onClick={goToNext}>
-                        Next
-                    </button>
+            <div className={`rbc-toolbar ${styles.customToolbar || ''}`}>
+                <span className={`rbc-btn-group ${styles.navGroup || ''}`}>
+                    <Button onClick={goToCurrent}>
+                        {dict[lang]['bigCalendar']['today']}
+                    </Button>
+                    <div className={styles.arrowButtons || ''}>
+                        <Button 
+                            className={styles.arrowBtn || ''} 
+                            icon="arrowLeft" 
+                            onClick={goToBack}
+                            width={40}
+                            height={40}
+                        />
+                        <Button 
+                            className={styles.arrowBtn || ''} 
+                            icon="arrowRight" 
+                            onClick={goToNext}
+                            width={40}
+                            height={40}
+                        />
+                    </div>
                 </span>
     
                 <span className="rbc-toolbar-label">{label()}</span>
     
-                <span className="rbc-btn-group">
-                    {toolbar.views.map((view) => (
-                        <button
-                            key={view}
-                            type="button"
-                            className={toolbar.view === view ? 'rbc-active' : ''}
-                            onClick={() => onViewChange(view)}
-                        >
-                            {view}
-                        </button>
-                    ))}
+                <span className={`rbc-btn-group ${styles.viewGroup || ''}`}>
+                    <Input type="select" defaultValue={state.currentView} options={toolbar.views.map((view) => ({ key: view, value: dict[lang]['bigCalendar'][view] }))} onChange={onViewChange} />
                 </span>
     
-                <span className="rbc-btn-group">
-                    <button
-                        type="button"
-                        className="calendar__save-button"
-                        onClick={handleSave}
-                    >
-                    Save
-                    </button>
+                <span className={`rbc-btn-group ${styles.saveGroup || ''}`}>
+                    <Button accent icon="save" onClick={handleSave}>{dict[lang]['bigCalendar']['save']}</Button>
                 </span>
             </div>
         );
@@ -191,7 +209,7 @@ export default function BigCalendar(props) {
                     toolbar: CustomToolbar
                 }}
                 defaultDate={defaultDate}
-                defaultView='month'
+                defaultView={state.currentView}
                 events={state.events}
                 backgroundEvents={state.backEvents}
                 localizer={localizer}
@@ -203,8 +221,7 @@ export default function BigCalendar(props) {
                 onSelectSlot={handleSelectSlot}
                 selectable
                 scrollToTime={scrollToTime}
-                //culture={data.locale ? data.locale : "en"}
-                culture="ru-RU"
+                culture={culture}
                 style={{ height: '100vh' }}
             />
         </div>

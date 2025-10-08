@@ -49,7 +49,7 @@ const CalendarData =
 export const Regular = {
     args: {
         data: CalendarData,
-        locale: {},
+        locale: 'RUS',
         auth: {}
     }
 }
