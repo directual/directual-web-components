@@ -1056,9 +1056,8 @@ function Card(props) {
     // Обработчик кликов по элементам с data-action-type
     useEffect(() => {
         const handleDataActionClick = (e) => {
-            e.stopPropagation()
             const target = e.target.closest('[data-action-type]')
-            if (!target) return
+            if (!target) return // если не data-action элемент, пропускаем событие дальше
             
             e.preventDefault()
             e.stopPropagation()
