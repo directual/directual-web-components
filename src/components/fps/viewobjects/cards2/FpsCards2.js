@@ -1035,6 +1035,7 @@ function Card(props) {
     const [description, setDescription] = useState("")
     const [cardBody, setCardBody] = useState("")
     const [cardLoading, setCardLoading] = useState(true)
+    const [isInitialLoad, setIsInitialLoad] = useState(true) // флаг первой загрузки
 
     const favoritesOn = _.get(data, "params.card_type_dir.favoritesOn", false)
     const favoritesIconOn = _.get(data, "params.card_type_dir.favoritesIconOn") || "starFill"
@@ -1141,6 +1142,7 @@ function Card(props) {
         // если используется front-end templating, не ждем загрузку данных
         if (templatingEngine == 'front' || dir_templatingEngine == 'front') {
             setCardLoading(false);
+            setIsInitialLoad(false);
             return;
         }
 
@@ -1152,7 +1154,10 @@ function Card(props) {
         };
 
         const loadCardData = async () => {
-            setCardLoading(true);
+            // Показываем скелетон только при первой загрузке, фоновые обновления без скелетона
+            if (isInitialLoad) {
+                setCardLoading(true);
+            }
             try {
                 await Promise.all([
                     fetchData(field_description, setDescription),
@@ -1162,11 +1167,12 @@ function Card(props) {
                 console.error('Error loading card data:', error);
             } finally {
                 setCardLoading(false);
+                setIsInitialLoad(false); // после первой загрузки больше не первая
             }
         };
 
         loadCardData();
-    }, [])
+    }, [object]) // добавили object в dependencies для фонового обновления при сокет-апдейтах
 
     const changeQuantity = (count) => {
         callEndpointPOST(_.get(data, "sl"), { id: object.id, [field_quantity]: count })
