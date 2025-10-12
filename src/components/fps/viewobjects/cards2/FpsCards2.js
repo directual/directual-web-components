@@ -209,7 +209,8 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         updatePageInUrl(lastPageNumber);
     };
 
-    const checkHidden = (element, debug, reverse, model) => {
+    // Используем function declaration для hoisting
+    function checkHidden(element, debug, reverse, model) {
 
         // console.log("checkHidden")
         // console.log(element)
@@ -568,8 +569,8 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
     }
 
     // edit object from card
-
-    const callEndpointPOST = (endpoint, body, finish) => {
+    // Используем function declaration для hoisting - функция может быть вызвана до объявления
+    function callEndpointPOST(endpoint, body, finish) {
         console.log('===> calling endpoint POST /' + endpoint)
         console.log(body)
         // добавляем httpParams к параметрам запроса
@@ -632,7 +633,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         )
     }
 
-    const callEndpointGET = (endpoint, params, finish) => {
+    function callEndpointGET(endpoint, params, finish) {
         console.log('===> calling endpoint GET /' + endpoint)
         // добавляем httpParams к параметрам запроса
         const httpParams = _.get(data, "params.httpParams") || _.get(data, "httpParams") || {}
