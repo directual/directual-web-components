@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import PropTypes from 'prop-types';
 import styles from './cards2.module.css'
 import icon from './../../../../icons/fps-cards.svg'
@@ -100,6 +100,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
     const [loading, setLoading] = useState(false)
     const [initialLoading, setInitialLoading] = useState(debug ? false : true) // в дебаг режиме сразу не показываем скелетон
     const isFirstRender = useRef(true)
+    const cardsContainerRef = useRef(null) // Ref для event delegation
 
     const updatePageInUrl = (newPage) => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -434,6 +435,96 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
 
         return result
     }
+
+    // Единый обработчик data-action кликов (event delegation для оптимизации)
+    const handleDataActionClick = useCallback((e) => {
+        const target = e.target.closest('[data-action-type]')
+        if (!target) return // если не data-action элемент, пропускаем
+        
+        const cardElement = target.closest('[data-card-id]')
+        if (!cardElement) return // если клик не внутри карточки
+        
+        const cardId = cardElement.getAttribute('data-card-id')
+        const object = objects.find(obj => obj.id === cardId)
+        if (!object) return
+        
+        e.preventDefault()
+        e.stopPropagation()
+        
+        const actionType = target.getAttribute('data-action-type')
+        const actionData = target.getAttribute('data-action-data')
+        
+        console.log('Data action clicked:', actionType, actionData)
+        
+        const actionsSettings = _.get(data, "params.actions", [])
+        
+        // Обрабатываем разные типы действий
+        switch (actionType) {
+            case 'action':
+                if (!actionData) {
+                    console.warn('data-action-data not specified for action')
+                    return
+                }
+                
+                const actionSettings = _.find(actionsSettings, { name: actionData }) || _.find(actionsSettings, { id: actionData })
+                if (!actionSettings) {
+                    console.warn('Action not found in actionsSettings:', actionData)
+                    return
+                }
+                
+                console.log('Executing action:', actionData, actionSettings)
+                
+                const transformObject = array => _.reduce(array, (result, item) => {
+                    if (!array || array.length == 0) return {};
+                    const { field, value } = item;
+                    result[field] = template(value, object);
+                    return result;
+                }, {});
+
+                if ((_.get(actionSettings, "actionType") == "endpoint" || !_.get(actionSettings, "actionType")) && actionSettings.endpoint) {
+                    let payload = transformObject(actionSettings.mapping)
+                    console.log('Calling action endpoint:', actionSettings.endpoint, 'with payload:', payload)
+                    callEndpointPOST(actionSettings.endpoint, payload, (result) => {
+                        console.log('Action result:', result)
+                    })
+                }
+                break
+                
+            case 'route':
+                if (!actionData) {
+                    console.warn('data-action-data not specified for route action')
+                    return
+                }
+                const routePath = template(actionData, object)
+                console.log('Navigating to route:', routePath)
+                handleRoute && handleRoute(routePath)(e)
+                break
+                
+            case 'modal':
+                if (!actionData) {
+                    console.warn('data-action-data not specified for modal action')
+                    return
+                }
+                const modalPath = template(actionData, object)
+                console.log('Opening modal:', modalPath)
+                handleModalRoute && handleModalRoute(modalPath)(e)
+                break
+                
+            default:
+                console.warn('Unknown data-action-type:', actionType)
+        }
+    }, [objects, data, callEndpointPOST, handleRoute, handleModalRoute])
+
+    // useEffect для установки единого обработчика событий (event delegation)
+    useEffect(() => {
+        const container = cardsContainerRef.current
+        if (container) {
+            container.addEventListener('click', handleDataActionClick)
+            return () => {
+                container.removeEventListener('click', handleDataActionClick)
+            }
+        }
+    }, [handleDataActionClick])
 
     // grid settings
     const breakPoints = {
@@ -842,7 +933,9 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         </Hint>}
 
         {/* CSS GRID */}
-        {cardsLayout == "grid" && <div className={`FPS_CARDS2__WRAPPER LAYOUT_grid
+        {cardsLayout == "grid" && <div 
+            ref={cardsContainerRef}
+            className={`FPS_CARDS2__WRAPPER LAYOUT_grid
             ${styles.cards2_wrapper} 
             ${styles.layout_grid}`}
             style={{
@@ -899,7 +992,9 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         </div>}
 
         {/* FLEX LAYOUT */}
-        {cardsLayout == "flex" && <div className={`FPS_CARDS2__WRAPPER LAYOUT_flex
+        {cardsLayout == "flex" && <div 
+            ref={cardsContainerRef}
+            className={`FPS_CARDS2__WRAPPER LAYOUT_flex
             ${styles.cards2_wrapper} 
             ${styles.layout_flex}`}
             style={{
@@ -1001,12 +1096,10 @@ function CardWrapper(props) {
     )
 }
 
-function Card(props) {
+// Мемоизируем Card компонент для предотвращения лишних ререндеров
+const Card = React.memo((props) => {
 
     const { object, auth, checkHidden, data, lang, favoritesField, addToFavorites, favLoading, templateEngine, handleRoute, handleModalRoute, favorites, callEndpointPOST, callEndpointGET, context } = props
-    
-    // Ref для обработки кликов по data-action элементам
-    const cardRef = useRef(null)
 
     const cardType = _.get(data, "params.card_layout_type")
     const html_type_content = _.get(data, "params.html_type_content")
@@ -1053,89 +1146,6 @@ function Card(props) {
     const routingPath = _.get(data, "params.routing_where", '')
 
     const model = { ...object, WebUser: { ...auth, ...{ id: auth.user } } }
-
-    // Обработчик кликов по элементам с data-action-type
-    useEffect(() => {
-        const handleDataActionClick = (e) => {
-            const target = e.target.closest('[data-action-type]')
-            if (!target) return // если не data-action элемент, пропускаем событие дальше
-            
-            e.preventDefault()
-            e.stopPropagation()
-            
-            const actionType = target.getAttribute('data-action-type')
-            const actionData = target.getAttribute('data-action-data')
-            
-            console.log('Data action clicked:', actionType, actionData)
-            
-            // Обрабатываем разные типы действий
-            switch (actionType) {
-                case 'action':
-                    if (!actionData) {
-                        console.warn('data-action-data not specified for action')
-                        return
-                    }
-                    
-                    // Ищем экшон в настройках
-                    const actionSettings = _.find(actionsSettings, { name: actionData }) || _.find(actionsSettings, { id: actionData })
-                    if (!actionSettings) {
-                        console.warn('Action not found in actionsSettings:', actionData)
-                        return
-                    }
-                    
-                    console.log('Executing action:', actionData, actionSettings)
-                    
-                    // Выполняем экшон как в CardAction
-                    const transformObject = array => _.reduce(array, (result, item) => {
-                        if (!array || array.length == 0) return {};
-                        const { field, value } = item;
-                        result[field] = template(value, object);
-                        return result;
-                    }, {});
-
-                    if ((_.get(actionSettings, "actionType") == "endpoint" || !_.get(actionSettings, "actionType")) && actionSettings.endpoint) {
-                        let payload = transformObject(actionSettings.mapping)
-                        
-                        console.log('Calling action endpoint:', actionSettings.endpoint, 'with payload:', payload)
-                        callEndpointPOST(actionSettings.endpoint, payload, (result) => {
-                            console.log('Action result:', result)
-                        })
-                    }
-                    break
-                    
-                case 'route':
-                    if (!actionData) {
-                        console.warn('data-action-data not specified for route action')
-                        return
-                    }
-                    const routePath = template(actionData, object)
-                    console.log('Navigating to route:', routePath)
-                    handleRoute && handleRoute(routePath)(e)
-                    break
-                    
-                case 'modal':
-                    if (!actionData) {
-                        console.warn('data-action-data not specified for modal action')
-                        return
-                    }
-                    const modalPath = template(actionData, object)
-                    console.log('Opening modal:', modalPath)
-                    handleModalRoute && handleModalRoute(modalPath)(e)
-                    break
-                    
-                default:
-                    console.warn('Unknown data-action-type:', actionType)
-            }
-        }
-        
-        const cardElement = cardRef.current
-        if (cardElement) {
-            cardElement.addEventListener('click', handleDataActionClick)
-            return () => {
-                cardElement.removeEventListener('click', handleDataActionClick)
-            }
-        }
-    }, [object, callEndpointPOST, handleRoute, handleModalRoute, actionsSettings, cardBody, description])
 
     useEffect(() => {
 
@@ -1252,7 +1262,7 @@ function Card(props) {
     }
 
     if (cardType == "regular") return <a
-        ref={cardRef}
+        data-card-id={object.id}
         className={`Cards2_typeRegular ${styles.cards2_typeRegular}`}
         style={{
             flexDirection: flexDirection
@@ -1340,7 +1350,7 @@ function Card(props) {
     </a>
 
     if (cardType == "custom") return <a
-        ref={cardRef}
+        data-card-id={object.id}
         className={`Cards2_typeRegular ${styles.cards2_typeRegular}`}
         style={{
             minHeight: card_min_height,
@@ -1375,7 +1385,16 @@ function Card(props) {
     return <div >
         —
     </div>
-}
+}, (prevProps, nextProps) => {
+    // Кастомная функция сравнения для React.memo
+    // Возвращаем true если пропсы равны (компонент НЕ должен обновляться)
+    return (
+        prevProps.object === nextProps.object &&
+        prevProps.favLoading === nextProps.favLoading &&
+        prevProps.favorites === nextProps.favorites &&
+        _.isEqual(prevProps.object, nextProps.object) // глубокое сравнение на всякий случай
+    )
+})
 
 function CardActions(props) {
     const { actionsSettings, actionsLayout, checkHidden, callEndpointPOST, object, context, actionsArray, data } = props
@@ -1395,6 +1414,16 @@ function CardAction(props) {
     const label = action._action_label // || settings.name
     const [isClicked, setIsClicked] = useState(false)
     const [localLoading, setLocalLoading] = useState(false)
+
+    // Мемоизируем результаты checkHidden для оптимизации - функция тяжелая, вызывается много раз
+    const hiddenResult = useMemo(() => {
+        if (!action._conditionalView) return { isHidden: false };
+        return {
+            isHidden: checkHidden(action, false, false, model),
+            isHiddenDebug: checkHidden(action, false, true, model),
+            debugInfo: checkHidden(action, true, true, model)
+        };
+    }, [action, model, checkHidden]);
 
     const handleClick = e => {
         // console.log("performAction")
@@ -1433,7 +1462,7 @@ function CardAction(props) {
         height={action._action_button_size == "small" ? 32 : 48}
         small={action._action_button_size == "small"}
         disabled={action._conditionalView &&
-            !checkHidden(action, false, false, model) &&
+            !hiddenResult.isHidden &&
             action._action_conditional_disable_or_hide == "disable"}
         loading={localLoading}
         tooltip={action._action_addTooltip && action._action_addTooltip_text}
@@ -1443,24 +1472,24 @@ function CardAction(props) {
     //TODO: userDebug
 
     if (action._conditionalView &&
-        !checkHidden(action, false, false, model)
+        !hiddenResult.isHidden
         && (!debugConditions)
         && action._action_conditional_disable_or_hide !== "disable"
     ) { button = <React.Fragment></React.Fragment> }
 
     if (debugConditions) {
         return <div className={`${action._conditionalView && debugConditions ? styles.debugConditions : ""}
-        ${action._conditionalView && !checkHidden(action, false, true, model) && debugConditions ?
+        ${action._conditionalView && !hiddenResult.isHiddenDebug && debugConditions ?
                 styles.hideDebug : ""}
         `}>
             {button}
             {action._conditionalView && debugConditions && <div className={styles.condDebugDetails}>
                 <code>
                     <p>{action._action_conditional_disable_or_hide == "disable" ? "disable button" : "hide button"} if:</p>
-                    {checkHidden(action, true, true, model).name && <p style={{ lineHeight: 1, marginBottom: 10 }}><b>{checkHidden(action, true, true, model).name}</b></p>}
-                    <pre style={{ whiteSpace: 'wrap', fontSize: 14 }}>{checkHidden(action, true, true, model).conditions}</pre>
-                    <p>Result: <b>{!checkHidden(action, false, true, model) ? "true" : "false"}</b></p>
-                    <pre style={{ whiteSpace: 'wrap', fontSize: 14 }}>{checkHidden(action, true, true, model).result}</pre>
+                    {hiddenResult.debugInfo.name && <p style={{ lineHeight: 1, marginBottom: 10 }}><b>{hiddenResult.debugInfo.name}</b></p>}
+                    <pre style={{ whiteSpace: 'wrap', fontSize: 14 }}>{hiddenResult.debugInfo.conditions}</pre>
+                    <p>Result: <b>{!hiddenResult.isHiddenDebug ? "true" : "false"}</b></p>
+                    <pre style={{ whiteSpace: 'wrap', fontSize: 14 }}>{hiddenResult.debugInfo.result}</pre>
                 </code>
             </div>}
         </div>
