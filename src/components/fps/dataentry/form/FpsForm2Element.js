@@ -327,6 +327,7 @@ function ElementText(props) {
     // Обработчик кликов по элементам с data-action-type в тексте
     useEffect(() => {
         const handleDataActionClick = (e) => {
+            e.stopPropagation()
             const target = e.target.closest('[data-action-type]')
             if (!target) return
             
