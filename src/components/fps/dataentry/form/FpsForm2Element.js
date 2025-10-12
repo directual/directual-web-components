@@ -405,7 +405,7 @@ function ElementText(props) {
                 textElement.removeEventListener('click', handleDataActionClick)
             }
         }
-    }, [extendedModel, state, callEndpointPOST, handleRoute, handleModalRoute, actionsSettings, template])
+    }, [extendedModel, state, callEndpointPOST, handleRoute, handleModalRoute, actionsSettings, template, templatedText])
 
     useEffect(() => {
         const fetchData = async (payload, setValue) => {

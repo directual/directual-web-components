@@ -1134,7 +1134,7 @@ function Card(props) {
                 cardElement.removeEventListener('click', handleDataActionClick)
             }
         }
-    }, [object, callEndpointPOST, handleRoute, handleModalRoute, actionsSettings])
+    }, [object, callEndpointPOST, handleRoute, handleModalRoute, actionsSettings, cardBody, description])
 
     useEffect(() => {
 
