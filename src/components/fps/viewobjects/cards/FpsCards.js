@@ -546,7 +546,7 @@ FpsCards.defaultProps = {
 
 FpsCards.settings = {
     icon: icon,
-    name: 'Cards view',
+    name: 'Cards view (Legacy)',
     sysName: 'FpsCards',
     form: [
         { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },

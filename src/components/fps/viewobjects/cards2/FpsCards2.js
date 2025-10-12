@@ -1056,7 +1056,7 @@ function Card(props) {
     // Обработчик кликов по элементам с data-action-type
     useEffect(() => {
         const handleDataActionClick = (e) => {
-            e.stopPropagation
+            e.stopPropagation()
             const target = e.target.closest('[data-action-type]')
             if (!target) return
             
@@ -1534,7 +1534,7 @@ FpsCards2.defaultProps = {
 
 FpsCards2.settings = {
     icon: icon,
-    name: 'Cards view (2025)',
+name: 'Cards view',
     sysName: 'FpsCards2',
     isLegacy: false,
     isMarketplace: false,
