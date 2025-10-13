@@ -71,7 +71,7 @@ export default function FpsChat(props) {
 
     useEffect(() => {
         if (state.full) {
-            refreshChats(!firstLoading, refreshMessages());
+            refreshChats(!firstLoading, () => refreshMessages());
         } else {
             refreshMessages();
         }
@@ -213,7 +213,7 @@ export default function FpsChat(props) {
                     if (result == 'error') {
                         setState((prevState) => ({ ...prevState, messages: [] }));
                     } else {
-                        setState((prevState) => ({ ...prevState, messages: _.reverse(data) }));
+                        setState((prevState) => ({ ...prevState, messages: [...data].reverse() }));
                     }
                 },
                 { signal: abortControllerRef.current.signal }

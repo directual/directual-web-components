@@ -198,7 +198,7 @@ export default function Input(props) {
     // Force reset when forceReset prop changes
     useEffect(() => {
         if (props.forceReset) {
-            console.log("Force reset triggered");
+            // console.log("Force reset triggered");
             setValue(props.defaultValue || props.value);
             setDefVal(props.defaultValue || props.value);
             isTyping.current = false;
@@ -295,7 +295,7 @@ export default function Input(props) {
             
             // Если пользователь печатает или поле в фокусе, не обновляем значение извне
             if (isTyping.current || (inputEl.current && inputEl.current === document.activeElement)) { 
-                console.log("User is typing or field is focused, ignoring external defaultValue change")
+                // console.log("User is typing or field is focused, ignoring external defaultValue change")
                 return;
             }
             
