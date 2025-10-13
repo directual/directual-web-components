@@ -50,9 +50,10 @@ export default function FpsChat(props) {
     const [globalLoading, setGlobalLoading] = useState(false);
 
     const [actionLoading, setActionLoading] = useState("");
+    const compact = _.get(data, "params.chat_format") === 'compact';
 
     const [state, setState] = useState({
-        full: _.get(data, "params.chat_format") !== 'compact' && _.get(data, "params.sl_chats"),
+        full: true, // _.get(data, "params.chat_format") !== 'compact' && _.get(data, "params.sl_chats"),
         chats: [],
         hidePanel: false,
         messages: [],
@@ -91,13 +92,17 @@ export default function FpsChat(props) {
             setTimeout(() => {
                 setChatsLoading(false);
                 setFirstLoading(true);
+                const data = [
+                    { id: "1", title: "<p>First chat</p><div>test test test test test test teeeeeeetttttttttteeeeeeeees</div>", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
+                    { id: "2", title: "<p>Second chat</p>", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
+                    { id: "3", title: "Third chat", reply_buttons: '{ "buttons": [{"text": "button1", "type": "text", "callback_data": "callback1"}, {"text": "button1", "type": "text", "callback_data": "callback1"}, {"text": "button1", "type": "text", "callback_data": "callback1"}, {"text": "button1", "type": "text", "callback_data": "callback1"}] }', image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
+                ]
+                if (compact) {
+                    chooseChat(data[0].id);
+                }
                 setState((prevState) => ({
                     ...prevState,
-                    chats: [
-                        { id: "1", title: "<p>First chat</p><div>test test test test test test teeeeeeetttttttttteeeeeeeees</div>", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
-                        { id: "2", title: "<p>Second chat</p>", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
-                        { id: "3", title: "Third chat", reply_buttons: '{ "buttons": [{"text": "button1", "type": "text", "callback_data": "callback1"}, {"text": "button1", "type": "text", "callback_data": "callback1"}, {"text": "button1", "type": "text", "callback_data": "callback1"}, {"text": "button1", "type": "text", "callback_data": "callback1"}] }', image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
-                    ]
+                    chats: data
                 }));
             }, 1500);
 
@@ -118,6 +123,9 @@ export default function FpsChat(props) {
                             ...prevState,
                             chats: data
                         }));
+                        if (compact) {
+                            chooseChat(data[0].id);
+                        }
                     }
                     finish && finish();
                 },
@@ -230,9 +238,12 @@ export default function FpsChat(props) {
         setState({ ...state, chatID: chatID });
     };
 
-    const fakeSend = (currentChat) => {
+    const fakeSend = (currentChat, body) => {
         setActionLoading("");
         console.log("fake send message")
+        console.log(body)
+
+        // ОБНУЛЯАЕМ ТЕКСТ И АТТАЧМЕНТ
         const newMessage = _.cloneDeep(message);
         _.set(newMessage, `${currentChat}.msg`, "");
         _.set(newMessage, `${currentChat}.attachment`, "");
@@ -247,15 +258,17 @@ export default function FpsChat(props) {
         const currentChat = state.chatID + "";
         if (!endpoint) return;
         if (action == "send") {
+            console.log("send")
+            console.log(body)
             setActionLoading("send");
             const body = {
-                [_.get(data, "params.actions.textField")]: message[`${currentChat}`].msg,
+                [_.get(data, "params.actions.textField")]: _.get(message, `${currentChat}.msg`),
                 [_.get(data, "params.actions.chatLinkField")]: currentChat,
                 [_.get(data, "params.actions.actionTypeField")]: action,
-                [_.get(data, "params.actions.attachmentsField")]: message[`${currentChat}`].attachment
+                [_.get(data, "params.actions.attachmentsField")]: _.get(message, `${currentChat}.attachment`)
             };
             debug ?
-                fakeSend(currentChat)
+                fakeSend(currentChat, body)
                 :
                 callEndpoint && callEndpoint(
                     endpoint,
@@ -369,7 +382,7 @@ export default function FpsChat(props) {
         <div className={`${styles.chat} FPS_CHAT`}
             style={{ height: isFullHeight ? maxFullHeight - 3 : 'auto' }}
         >
-            {(!isMobile || showContacts) && <Contacts
+            {(!isMobile || showContacts) && !compact && <Contacts
                 chooseChat={chooseChat}
                 globalLoading={globalLoading}
                 {...props}
@@ -651,7 +664,7 @@ function ChatInput(props) {
                     onChange={value => editMessage(value, _.get(message, `${state.chatID}.attachment`))}
                     placeholder={dict[locale].chat.typeMessage}
                 />
-                <div className={`icon icon-clip ${styles.chat_input_attach}`} onClick={e => setAddFile(!addFile)} />
+                {/* <div className={`icon icon-clip ${styles.chat_input_attach}`} onClick={e => setAddFile(!addFile)} /> */}
                 {isMobile ? <Button accent icon='bubble' loading={actionLoading == "send"}
                     disabled={!_.get(message, `${state.chatID}.msg`) && !_.get(message, `${state.chatID}.attachment`)}
                     onClick={() => performAction("send")} />

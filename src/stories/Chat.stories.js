@@ -33,13 +33,15 @@ const chatData = {
                   "type": "personal",
                   "imageSize": 50,
                   "imageField": "image",
-                  "title": "<b>{{title}}</b><br />\n<span class=\"noWrap\">{{context.title}}</span>"
+                  "title": "<b>{{title}}</b><br />\n<span class=\"noWrap\">{{context.title}}</span>",
+                  "layout": "default",
+                  "html": ""
               }
           ],
           "chatTitle": "LIA: ИИ-ассистент",
           "useReplyButtons": true,
           "replyButtonsField": "buttons",
-          "hideSearchBar": true
+          "hideSearchBar": false
       },
       "messages": {
           "userIDField": "user_id",
@@ -54,24 +56,11 @@ const chatData = {
           "attachmentsField": "attachments",
           "actionTypeField": "action_type",
           "chatLinkField": "chat_id",
-          "otherActions": [
-              {
-                  "id": "action_1757512724663",
-                  "name": "Новое обращение",
-                  "actionIcon": "plus",
-                  "actionPlace": "contacts_button",
-                  "actionType": "new_chat"
-              },
-              {
-                  "id": "action_1757512757030",
-                  "name": "Удалить диалог",
-                  "actionIcon": "delete",
-                  "actionType": "delete"
-              }
-          ]
+          "otherActions": []
       },
-      "defaultChatPanelWith": 400,
-      "maxChatPanelWith": 800
+      "defaultChatPanelWith": 300,
+      "maxChatPanelWith": 800,
+      "chat_format": "compact"
   },
   "tableTitle": null,
   "actions": [],
