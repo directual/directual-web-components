@@ -258,15 +258,15 @@ export default function FpsChat(props) {
         const currentChat = state.chatID + "";
         if (!endpoint) return;
         if (action == "send") {
-            console.log("send")
-            console.log(body)
-            setActionLoading("send");
             const body = {
                 [_.get(data, "params.actions.textField")]: _.get(message, `${currentChat}.msg`),
                 [_.get(data, "params.actions.chatLinkField")]: currentChat,
                 [_.get(data, "params.actions.actionTypeField")]: action,
                 [_.get(data, "params.actions.attachmentsField")]: _.get(message, `${currentChat}.attachment`)
             };
+            console.log("send")
+            console.log(body)
+            setActionLoading("send");
             debug ?
                 fakeSend(currentChat, body)
                 :
