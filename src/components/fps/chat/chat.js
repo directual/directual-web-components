@@ -41,7 +41,7 @@ export default function FpsChat(props) {
 
     // console.log("currentBP = " + currentBP)
 
-    const debug = true
+    const debug = false
 
     const [firstLoading, setFirstLoading] = useState(false);
     const [chatsLoading, setChatsLoading] = useState(false);
@@ -97,13 +97,13 @@ export default function FpsChat(props) {
                     { id: "1", title: "<p>First chat</p><div>test test test test test test teeeeeeetttttttttteeeeeeeees</div>", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
                     { id: "2", title: "<p>Second chat</p>", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
                 ]
-                if (compact) {
-                    chooseChat(data[0].id);
-                }
                 setState((prevState) => ({
                     ...prevState,
                     chats: data
                 }));
+                if (compact) {
+                    chooseChat(data[0].id);
+                }
             }, 1500);
 
         !debug &&
