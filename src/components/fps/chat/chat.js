@@ -39,8 +39,6 @@ export default function FpsChat(props) {
 
     const user = auth.user;
 
-    // console.log("currentBP = " + currentBP)
-
     const debug = false
 
     const [firstLoading, setFirstLoading] = useState(false);
@@ -53,7 +51,7 @@ export default function FpsChat(props) {
     const compact = _.get(data, "params.chat_format") === 'compact';
 
     const [state, setState] = useState({
-        full: true, // _.get(data, "params.chat_format") !== 'compact' && _.get(data, "params.sl_chats"),
+        full: true, // по умолчанию раскрыто
         chats: [],
         hidePanel: false,
         messages: [],
@@ -81,6 +79,13 @@ export default function FpsChat(props) {
         if ((state.full && state.chatID) || !state.full) { refreshMessages(); }
     }, [state.chatID]);
 
+    // Автовыбор первого чата в compact режиме
+    useEffect(() => {
+        if (compact && state.chats.length > 0 && !state.chatID) {
+            chooseChat(state.chats[0].id);
+        }
+    }, [compact, state.chats, state.chatID]);
+
     function refreshChats(skipLoading, finish) {
         // console.log("CHATS REFRESH");
         setChatsLoading(skipLoading);
@@ -101,9 +106,6 @@ export default function FpsChat(props) {
                     ...prevState,
                     chats: data
                 }));
-                if (compact) {
-                    chooseChat(data[0].id);
-                }
             }, 1500);
 
         !debug &&
@@ -123,9 +125,6 @@ export default function FpsChat(props) {
                             ...prevState,
                             chats: data
                         }));
-                        if (compact) {
-                            chooseChat(data[0].id);
-                        }
                     }
                     finish && finish();
                 },
@@ -229,7 +228,7 @@ export default function FpsChat(props) {
     };
 
     const chooseChat = (chatID) => {
-        setState({ ...state, chatID: chatID });
+        setState(prevState => ({ ...prevState, chatID: chatID }));
     };
 
     const fakeSend = (currentChat, body) => {
@@ -347,6 +346,16 @@ export default function FpsChat(props) {
     const replyButtons = _.get(replyButtonsData, "buttons", [])
     const replyCombineMode = _.get(replyButtonsData, "combine", false)
 
+    // Отладочное логирование для compact режима
+    if (compact) {
+        console.log("DEBUG FpsChat compact mode:");
+        console.log("- state.chatID:", state.chatID);
+        console.log("- state.chats.length:", state.chats.length);
+        console.log("- selectedChat:", selectedChat);
+        console.log("- replyButtonsData:", replyButtonsData);
+        console.log("- replyButtons:", replyButtons);
+    }
+
     const renderReplyButtons = () => {
         return <ActionPanel margin={{ top: 6, bottom: 6, left: 6, right: 6 }}>
             {replyButtons.map(button => {
@@ -372,7 +381,6 @@ export default function FpsChat(props) {
         }
     }, [state.chatID]);
 
-    //console.log("replyButtons", replyButtons)
 
     return (
         <div className={`${styles.chat} FPS_CHAT`}
