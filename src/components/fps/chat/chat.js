@@ -41,7 +41,7 @@ export default function FpsChat(props) {
 
     // console.log("currentBP = " + currentBP)
 
-    const debug = false
+    const debug = true
 
     const [firstLoading, setFirstLoading] = useState(false);
     const [chatsLoading, setChatsLoading] = useState(false);
@@ -93,9 +93,9 @@ export default function FpsChat(props) {
                 setChatsLoading(false);
                 setFirstLoading(true);
                 const data = [
+                    { id: "3", title: "Third chat", buttons: '{ "combine": true, "buttons": [{"text": "button1", "type": "text", "callback_data": "callback1"}, {"text": "button1", "type": "text", "callback_data": "callback1"}, {"text": "button1", "type": "text", "callback_data": "callback1"}, {"text": "button1", "type": "text", "callback_data": "callback1"}] }', image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
                     { id: "1", title: "<p>First chat</p><div>test test test test test test teeeeeeetttttttttteeeeeeeees</div>", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
                     { id: "2", title: "<p>Second chat</p>", image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
-                    { id: "3", title: "Third chat", reply_buttons: '{ "buttons": [{"text": "button1", "type": "text", "callback_data": "callback1"}, {"text": "button1", "type": "text", "callback_data": "callback1"}, {"text": "button1", "type": "text", "callback_data": "callback1"}, {"text": "button1", "type": "text", "callback_data": "callback1"}] }', image: "https://api.directual.com/fileUploaded/basic-template/5fe98a71-196e-4f0d-98cb-be3ee8968fbf.jpg" },
                 ]
                 if (compact) {
                     chooseChat(data[0].id);
@@ -146,16 +146,10 @@ export default function FpsChat(props) {
                     ...prevState,
                     messages: [
                         {
-                            "text": `# Здарова заебал`,
+                            "text": `Здарова`,
                             "chat_id": "1",
                             "author_id": "1",
                             "id": "4641f494-d026-4053-bbc2-3219659c4d1c"
-                        },
-                        {
-                            "text": "<h1>как дела ебать</h1>",
-                            "author_id": "2",
-                            "chat_id": "2",
-                            "id": "701a5bc2-5de8-49ce-b6be-9bd6679d5dd1"
                         },
                         {
                             "text": "как дела",
@@ -184,13 +178,13 @@ export default function FpsChat(props) {
                             "id": "701a5-9bd6679d5dd1"
                         },
                         {
-                            "text": "Здарова заебал",
+                            "text": "Здарова",
                             "chat_id": "1",
                             "author_id": "1",
                             "id": "4641f492-3219659c4d1c"
                         },
                         {
-                            "text": "Здарова заебал",
+                            "text": "Здарова",
                             "chat_id": "1",
                             "author_id": "1",
                             "id": "4641f494-d026-4053-bbc2c4d1c"
@@ -348,8 +342,10 @@ export default function FpsChat(props) {
     // формируем заголовок чата:
     const selectedChat = _.find(state.chats, { id: _.get(state, "chatID") }) || {}
     const chatTitle = sanitizedHTML(template(_.get(data, "params.chats.chatTitle"), selectedChat))
-    const replyButtons = (_.get(data, "params.chats.useReplyButtons") ? _.get(selectedChat, _.get(data, "params.chats.replyButtonsField")) : null) ?
-        _.get(parseJSON(_.get(selectedChat, _.get(data, "params.chats.replyButtonsField"))), "buttons", []) : []
+    const replyButtonsData = (_.get(data, "params.chats.useReplyButtons") ? _.get(selectedChat, _.get(data, "params.chats.replyButtonsField")) : null) ?
+        parseJSON(_.get(selectedChat, _.get(data, "params.chats.replyButtonsField"))) : null
+    const replyButtons = _.get(replyButtonsData, "buttons", [])
+    const replyCombineMode = _.get(replyButtonsData, "combine", false)
 
     const renderReplyButtons = () => {
         return <ActionPanel margin={{ top: 6, bottom: 6, left: 6, right: 6 }}>
@@ -398,6 +394,7 @@ export default function FpsChat(props) {
                 chatTitle={chatTitle}
                 state={state}
                 replyButtons={replyButtons}
+                replyCombineMode={replyCombineMode}
                 renderReplyButtons={renderReplyButtons}
                 setShowContacts={setShowContacts}
                 showContacts={showContacts}
@@ -550,7 +547,7 @@ function Contact(props) {
 
 function ChatMessages(props) {
     const { scrollableDivRef, data, actionLoading, chatTitle, chooseChat,
-        performAction, scrollToBottom, chatID, state, user, message, editMessage, onHidePanel, socket, isMobile, setShowContacts, showContacts, replyButtons, renderReplyButtons } = props;
+        performAction, scrollToBottom, chatID, state, user, message, editMessage, onHidePanel, socket, isMobile, setShowContacts, showContacts, replyButtons, replyCombineMode, renderReplyButtons } = props;
 
     useEffect(() => {
         scrollToBottom();
@@ -614,12 +611,22 @@ function ChatMessages(props) {
                             author={template(`{{${fields.userIDField}}}`, text) == user}
                         />)}
                     </div>
-                    {replyButtons.length > 0 ?
-                        renderReplyButtons()
-                        :
+                    {replyButtons.length > 0 ? (
+                        replyCombineMode ? (
+                            <React.Fragment>
+                                {renderReplyButtons()}
+                                <ChatInput {...props} performAction={performAction}
+                                    message={message} editMessage={editMessage}
+                                    actionLoading={actionLoading} />
+                            </React.Fragment>
+                        ) : (
+                            renderReplyButtons()
+                        )
+                    ) : (
                         <ChatInput {...props} performAction={performAction}
                             message={message} editMessage={editMessage}
-                            actionLoading={actionLoading} />}
+                            actionLoading={actionLoading} />
+                    )}
                 </React.Fragment> : <div className={styles.chat_messages_blank} >
                     <SomethingWentWrong icon="bubble" />
                 </div>}
