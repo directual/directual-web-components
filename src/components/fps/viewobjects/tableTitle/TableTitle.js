@@ -21,16 +21,17 @@ const SafeInnerHTML = ({ html, label = 'unknown', ...props }) => {
 
 export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters, onFilter, currentDQL, currentSort,
     chartFilters, displayChartFilters, updateChartFilters, chartLines, clearChartFilters, callEndpoint,
-    onSearch, loading, searchValue, currentBP, displayFilters, lang, dict, performFiltering, params, urlKey }) {
+    onSearch, loading, searchValue, currentBP, displayFilters, lang, dict, performFiltering, params, urlKey, headers }) {
     const [showSearch, setShowSearch] = useState(search)
     //const [showFilters, setShowFilters] = useState(false)
 
-    const fields = _.get(params, 'data.readFields') || []
+    // Получаем список полей из params.data.readFields или из headers (fallback для FpsCards2)
+    const fields = _.get(params, 'data.readFields') || headers || []
 
     const fieldOptions = fields.map(i => {
         return {
-            key: i.fieldSysName,
-            value: i.name && i.name != ' ' ? i.name : i.fieldSysName
+            key: i.fieldSysName || i.sysName,
+            value: i.name && i.name != ' ' ? i.name : (i.fieldSysName || i.sysName)
         }
     })
 

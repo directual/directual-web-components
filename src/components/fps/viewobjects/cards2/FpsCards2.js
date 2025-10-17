@@ -822,6 +822,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
             displayFilters={_.get(data.params, 'filterParams.isFiltering') || _.get(data.params, 'filterParams.isSorting')}
             performFiltering={dqlService}
             urlKey={comp_ID}
+            headers={data.headers}
             // performFiltering={dql => console.log(dql)}
             callEndpoint={(endpoint, params, finish, setOptions, setError) => {
                 const transformedArray = (inputArray, visibleNames) => _.map(inputArray, (item) => {
