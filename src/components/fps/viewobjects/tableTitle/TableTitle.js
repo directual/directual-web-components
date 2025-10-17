@@ -114,14 +114,18 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
         if (!urlKey || typeof window === 'undefined') return null;
         
         const urlParams = new URLSearchParams(window.location.search);
-        const dqlParam = urlParams.get(`dql_${urlKey}`);
+        const filtersParam = urlParams.get(`filters_${urlKey}`);
         const sortParam = urlParams.get(`sort_${urlKey}`);
         
         let result = {};
         
-        // Парсим DQL из URL
-        if (dqlParam) {
-            result.dql = dqlParam;
+        // Парсим filters (JSON) из URL
+        if (filtersParam) {
+            try {
+                result.filters = JSON.parse(decodeURIComponent(filtersParam));
+            } catch (e) {
+                console.error('Failed to parse filters from URL:', e);
+            }
         }
         
         // Парсим sort из URL
@@ -134,16 +138,22 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
     };
 
     // Функция для сохранения фильтров в URL
-    const saveFiltersToUrl = (dql, sort) => {
+    const saveFiltersToUrl = (filtersObj, sort) => {
         if (!urlKey || typeof window === 'undefined') return;
         
         const urlParams = new URLSearchParams(window.location.search);
         
-        // Сохраняем DQL
-        if (dql && dql.trim()) {
-            urlParams.set(`dql_${urlKey}`, dql);
+        // Очищаем старый dql_ параметр если он есть (миграция со старой версии)
+        urlParams.delete(`dql_${urlKey}`);
+        
+        // Сохраняем filters как JSON (только если есть хоть один фильтр)
+        const hasFilters = filtersObj && Object.keys(filtersObj).length > 0 && 
+            Object.keys(filtersObj).some(key => filtersObj[key].value || filtersObj[key].valueFrom || filtersObj[key].valueTo);
+        
+        if (hasFilters) {
+            urlParams.set(`filters_${urlKey}`, encodeURIComponent(JSON.stringify(filtersObj)));
         } else {
-            urlParams.delete(`dql_${urlKey}`);
+            urlParams.delete(`filters_${urlKey}`);
         }
         
         // Сохраняем sort
@@ -164,10 +174,12 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
         const urlFilters = getFiltersFromUrl();
         
         if (urlFilters) {
+            if (urlFilters.filters) {
+                initialFilters.filters = urlFilters.filters;
+            }
             if (urlFilters.sort) {
                 initialFilters.sort = urlFilters.sort;
             }
-            // DQL обрабатывается отдельно через openAI стейт
         }
         // Если в URL нет данных, пробуем currentSort из пропсов
         else if (currentSort) {
@@ -193,8 +205,8 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
     }
 
     const getInitialOpenAI = () => {
-        const urlFilters = getFiltersFromUrl();
-        return (urlFilters && urlFilters.dql) || currentDQL || '';
+        // OpenAI не восстанавливается из URL (т.к. это отдельный режим фильтрации)
+        return currentDQL || '';
     };
 
     const [filters, setFilters] = useState(initializeFiltersFromCurrent)
@@ -206,12 +218,14 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
         if (!isInitialized && urlKey) {
             const urlFilters = getFiltersFromUrl();
             if (urlFilters) {
-                const dqlToApply = urlFilters.dql || '';
+                const filtersToApply = urlFilters.filters || {};
                 const sortToApply = urlFilters.sort || {};
                 
                 // Применяем фильтры через performFiltering
-                if (dqlToApply || sortToApply.field) {
-                    performFiltering(dqlToApply, sortToApply);
+                const hasFilters = Object.keys(filtersToApply).length > 0;
+                if (hasFilters || sortToApply.field) {
+                    const dql = composeDQL(filtersToApply);
+                    performFiltering(dql, sortToApply);
                 }
             }
             setIsInitialized(true);
@@ -222,8 +236,10 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
         const dqlToSave = openAI ? openAI : composeDQL(saveFilters.filters);
         performFiltering(dqlToSave, saveFilters.sort)
         setFilters(saveFilters)
-        // Сохраняем в URL если включено
-        saveFiltersToUrl(dqlToSave, saveFilters.sort)
+        // Сохраняем в URL если включено (только обычные фильтры, не openAI)
+        if (!openAI) {
+            saveFiltersToUrl(saveFilters.filters, saveFilters.sort)
+        }
     }
 
 
@@ -233,8 +249,11 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
         setOpenAI(dql)
         const dqlWithPrefix = dql ? ">> " + dql : '';
         performFiltering(dqlWithPrefix, filters.sort)
-        // Сохраняем в URL если включено
-        saveFiltersToUrl(dqlWithPrefix, filters.sort)
+        // OpenAI фильтры не сохраняем в URL (это отдельный режим)
+        // Если OpenAI пустой, очищаем URL
+        if (!dql) {
+            saveFiltersToUrl({}, filters.sort)
+        }
         //setFilters(saveFilters)
     }
 
@@ -242,7 +261,7 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
         saveFilters({ ...defaultFilters })
         saveAIFilters('')
         // Очищаем URL
-        saveFiltersToUrl('', {})
+        saveFiltersToUrl({}, {})
     }
 
     function composeDQL(filters) {
