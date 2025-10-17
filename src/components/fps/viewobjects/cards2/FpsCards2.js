@@ -91,7 +91,12 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
     const getSortFromUrl = () => {
         const urlParams = new URLSearchParams(window.location.search);
         const savedSort = urlParams.get(`sort_${comp_ID}`);
-        return savedSort || "";
+        // Парсим строку "field:direction" в объект { field, direction }
+        if (savedSort && savedSort.includes(':')) {
+            const [field, direction] = savedSort.split(':');
+            return { field, direction };
+        }
+        return {};
     };
 
     const [page, setPage] = useState(getPageFromUrl);
@@ -121,7 +126,15 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
 
     const updateSortInUrl = (newSort) => {
         const urlParams = new URLSearchParams(window.location.search);
-        const sortString = typeof newSort === 'string' ? newSort : (newSort ? String(newSort) : '');
+        let sortString = '';
+        
+        // Конвертируем объект { field, direction } в строку "field:direction"
+        if (typeof newSort === 'object' && newSort && newSort.field) {
+            sortString = `${newSort.field}:${newSort.direction || 'asc'}`;
+        } else if (typeof newSort === 'string') {
+            sortString = newSort;
+        }
+        
         if (sortString && sortString.trim()) {
             urlParams.set(`sort_${comp_ID}`, sortString);
         } else {
@@ -702,11 +715,13 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
     function refresh(dql, sort) {
         if (data && data.sl) {
             setPageLoading(true)
+            // Конвертируем объект sort в строку для API
+            const sortString = sort && sort.field ? `${sort.field}:${sort.direction || 'asc'}` : '';
             callEndpointGET(data.sl, {
                 pageSize: data.pageSize || 10,
                 page: page,
                 dql: dql,
-                sort: sort
+                sort: sortString
             }, (result, data) => {
                 // console.log("PAGINATION RESULT")
                 // console.log(result)
@@ -755,11 +770,13 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
             console.log("Loading initial dql from URL: " + urlDql)
             console.log("Loading initial sort from URL: " + urlSort)
             setPageLoading(true)
+            // Конвертируем объект sort в строку для API
+            const urlSortString = urlSort && urlSort.field ? `${urlSort.field}:${urlSort.direction || 'asc'}` : '';
             callEndpointGET(data.sl, {
                 pageSize: data.pageSize || 10,
                 page: urlPage,
                 dql: urlDql,
-                sort: urlSort
+                sort: urlSortString
             }, (result, data) => {
                 // console.log("INITIAL PAGE LOAD RESULT")
                 // console.log(result)
@@ -791,11 +808,13 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         if (data && data.sl) {
             console.log("Socket changed, updating data in background...")
             // обновляем данные БЕЗ лоадеров
+            // Конвертируем объект sort в строку для API
+            const sortString = sort && sort.field ? `${sort.field}:${sort.direction || 'asc'}` : '';
             callEndpointGET(data.sl, {
                 pageSize: data.pageSize || 10,
                 page: page,
                 dql: dql,
-                sort: sort
+                sort: sortString
             }, (result, responseData) => {
                 console.log("Background update completed")
                 const dataInfo = _.get(responseData, "result.data", {})

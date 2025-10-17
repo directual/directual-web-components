@@ -113,13 +113,21 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
         let initialFilters = { ...defaultFilters }
         
         // Парсим currentSort если он есть
-        if (currentSort && typeof currentSort === 'string' && currentSort.trim()) {
-            // Предполагаем формат типа "fieldName:asc" или "fieldName:desc"
-            const sortParts = currentSort.split(':')
-            if (sortParts.length === 2) {
+        if (currentSort) {
+            if (typeof currentSort === 'string' && currentSort.trim()) {
+                // Предполагаем формат типа "fieldName:asc" или "fieldName:desc"
+                const sortParts = currentSort.split(':')
+                if (sortParts.length === 2) {
+                    initialFilters.sort = {
+                        field: sortParts[0],
+                        direction: sortParts[1]
+                    }
+                }
+            } else if (typeof currentSort === 'object' && currentSort.field) {
+                // Если это уже объект с field и direction (как в FpsCards)
                 initialFilters.sort = {
-                    field: sortParts[0],
-                    direction: sortParts[1]
+                    field: currentSort.field,
+                    direction: currentSort.direction
                 }
             }
         }
