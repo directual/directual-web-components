@@ -21,7 +21,7 @@ const SafeInnerHTML = ({ html, label = 'unknown', ...props }) => {
 
 export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters, onFilter, currentDQL, currentSort,
     chartFilters, displayChartFilters, updateChartFilters, chartLines, clearChartFilters, callEndpoint,
-    onSearch, loading, searchValue, currentBP, displayFilters, lang, dict, performFiltering, params }) {
+    onSearch, loading, searchValue, currentBP, displayFilters, lang, dict, performFiltering, params, urlKey }) {
     const [showSearch, setShowSearch] = useState(search)
     //const [showFilters, setShowFilters] = useState(false)
 
@@ -64,6 +64,7 @@ export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters,
                             fieldOptions={fieldOptions}
                             currentDQL={currentDQL}
                             currentSort={currentSort}
+                            urlKey={urlKey}
                         />}
 
                     {/* ==== old filters ==== */}
@@ -97,7 +98,7 @@ export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters,
 }
 
 function NewFilters({ tableFilters, performFiltering, lang, dict, loading, fieldOptions, alignRight, currentBP, tableTitle,
-    chartFilters, displayChartFilters, updateChartFilters, displayFilters, chartLines, clearChartFilters, callEndpoint, currentDQL, currentSort }) {
+    chartFilters, displayChartFilters, updateChartFilters, displayFilters, chartLines, clearChartFilters, callEndpoint, currentDQL, currentSort, urlKey }) {
 
 
     const defaultFilters = {
@@ -108,12 +109,68 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
         filters: {}
     }
 
-    // Функция для инициализации фильтров из текущих значений
+    // Функция для чтения фильтров из URL
+    const getFiltersFromUrl = () => {
+        if (!urlKey || typeof window === 'undefined') return null;
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const dqlParam = urlParams.get(`dql_${urlKey}`);
+        const sortParam = urlParams.get(`sort_${urlKey}`);
+        
+        let result = {};
+        
+        // Парсим DQL из URL
+        if (dqlParam) {
+            result.dql = dqlParam;
+        }
+        
+        // Парсим sort из URL
+        if (sortParam && sortParam.includes(':')) {
+            const [field, direction] = sortParam.split(':');
+            result.sort = { field, direction };
+        }
+        
+        return Object.keys(result).length > 0 ? result : null;
+    };
+
+    // Функция для сохранения фильтров в URL
+    const saveFiltersToUrl = (dql, sort) => {
+        if (!urlKey || typeof window === 'undefined') return;
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // Сохраняем DQL
+        if (dql && dql.trim()) {
+            urlParams.set(`dql_${urlKey}`, dql);
+        } else {
+            urlParams.delete(`dql_${urlKey}`);
+        }
+        
+        // Сохраняем sort
+        if (sort && sort.field) {
+            urlParams.set(`sort_${urlKey}`, `${sort.field}:${sort.direction || 'asc'}`);
+        } else {
+            urlParams.delete(`sort_${urlKey}`);
+        }
+        
+        window.history.replaceState({}, '', `${window.location.pathname}?${urlParams.toString()}`);
+    };
+
+    // Функция для инициализации фильтров из текущих значений или URL
     const initializeFiltersFromCurrent = () => {
         let initialFilters = { ...defaultFilters }
         
-        // Парсим currentSort если он есть
-        if (currentSort) {
+        // Сначала пробуем загрузить из URL
+        const urlFilters = getFiltersFromUrl();
+        
+        if (urlFilters) {
+            if (urlFilters.sort) {
+                initialFilters.sort = urlFilters.sort;
+            }
+            // DQL обрабатывается отдельно через openAI стейт
+        }
+        // Если в URL нет данных, пробуем currentSort из пропсов
+        else if (currentSort) {
             if (typeof currentSort === 'string' && currentSort.trim()) {
                 // Предполагаем формат типа "fieldName:asc" или "fieldName:desc"
                 const sortParts = currentSort.split(':')
@@ -135,19 +192,38 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
         return initialFilters
     }
 
-    const [filters, setFilters] = useState(initializeFiltersFromCurrent)
-    const [openAI, setOpenAI] = useState(currentDQL || '')
+    const getInitialOpenAI = () => {
+        const urlFilters = getFiltersFromUrl();
+        return (urlFilters && urlFilters.dql) || currentDQL || '';
+    };
 
-    // Обновляем стейт при изменении currentDQL или currentSort
+    const [filters, setFilters] = useState(initializeFiltersFromCurrent)
+    const [openAI, setOpenAI] = useState(getInitialOpenAI)
+    const [isInitialized, setIsInitialized] = useState(false)
+
+    // Применяем фильтры из URL при первом рендере
     useEffect(() => {
-        const newFilters = initializeFiltersFromCurrent()
-        setFilters(newFilters)
-        setOpenAI(currentDQL || '')
-    }, [currentDQL, currentSort])
+        if (!isInitialized && urlKey) {
+            const urlFilters = getFiltersFromUrl();
+            if (urlFilters) {
+                const dqlToApply = urlFilters.dql || '';
+                const sortToApply = urlFilters.sort || {};
+                
+                // Применяем фильтры через performFiltering
+                if (dqlToApply || sortToApply.field) {
+                    performFiltering(dqlToApply, sortToApply);
+                }
+            }
+            setIsInitialized(true);
+        }
+    }, [isInitialized, urlKey]);
 
     const saveFilters = (saveFilters) => {
-        performFiltering(openAI ? openAI : composeDQL(saveFilters.filters), saveFilters.sort)
+        const dqlToSave = openAI ? openAI : composeDQL(saveFilters.filters);
+        performFiltering(dqlToSave, saveFilters.sort)
         setFilters(saveFilters)
+        // Сохраняем в URL если включено
+        saveFiltersToUrl(dqlToSave, saveFilters.sort)
     }
 
 
@@ -155,14 +231,18 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
         console.log("saveAIFilters")
         console.log(dql)
         setOpenAI(dql)
-        dql ? dql = ">> " + dql : ''
-        performFiltering(dql, filters.sort)
+        const dqlWithPrefix = dql ? ">> " + dql : '';
+        performFiltering(dqlWithPrefix, filters.sort)
+        // Сохраняем в URL если включено
+        saveFiltersToUrl(dqlWithPrefix, filters.sort)
         //setFilters(saveFilters)
     }
 
     const clearFilters = () => {
         saveFilters({ ...defaultFilters })
         saveAIFilters('')
+        // Очищаем URL
+        saveFiltersToUrl('', {})
     }
 
     function composeDQL(filters) {

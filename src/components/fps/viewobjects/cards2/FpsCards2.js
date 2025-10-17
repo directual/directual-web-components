@@ -82,26 +82,9 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         return savedPage ? Number(savedPage) : 0;
     };
 
-    const getDqlFromUrl = () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const savedDql = urlParams.get(`dql_${comp_ID}`);
-        return savedDql || "";
-    };
-
-    const getSortFromUrl = () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const savedSort = urlParams.get(`sort_${comp_ID}`);
-        // Парсим строку "field:direction" в объект { field, direction }
-        if (savedSort && savedSort.includes(':')) {
-            const [field, direction] = savedSort.split(':');
-            return { field, direction };
-        }
-        return {};
-    };
-
     const [page, setPage] = useState(getPageFromUrl);
-    const [dql, setDQL] = useState(getDqlFromUrl);
-    const [sort, setSort] = useState(getSortFromUrl);
+    const [dql, setDQL] = useState('');
+    const [sort, setSort] = useState({});
     const [loading, setLoading] = useState(false)
     const [initialLoading, setInitialLoading] = useState(debug ? false : true) // в дебаг режиме сразу не показываем скелетон
     const isFirstRender = useRef(true)
@@ -110,36 +93,6 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
     const updatePageInUrl = (newPage) => {
         const urlParams = new URLSearchParams(window.location.search);
         urlParams.set(`page_${comp_ID}`, newPage);
-        window.history.replaceState({}, '', `${window.location.pathname}?${urlParams.toString()}`);
-    };
-
-    const updateDqlInUrl = (newDql) => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const dqlString = typeof newDql === 'string' ? newDql : (newDql ? String(newDql) : '');
-        if (dqlString && dqlString.trim()) {
-            urlParams.set(`dql_${comp_ID}`, dqlString);
-        } else {
-            urlParams.delete(`dql_${comp_ID}`);
-        }
-        window.history.replaceState({}, '', `${window.location.pathname}?${urlParams.toString()}`);
-    };
-
-    const updateSortInUrl = (newSort) => {
-        const urlParams = new URLSearchParams(window.location.search);
-        let sortString = '';
-        
-        // Конвертируем объект { field, direction } в строку "field:direction"
-        if (typeof newSort === 'object' && newSort && newSort.field) {
-            sortString = `${newSort.field}:${newSort.direction || 'asc'}`;
-        } else if (typeof newSort === 'string') {
-            sortString = newSort;
-        }
-        
-        if (sortString && sortString.trim()) {
-            urlParams.set(`sort_${comp_ID}`, sortString);
-        } else {
-            urlParams.delete(`sort_${comp_ID}`);
-        }
         window.history.replaceState({}, '', `${window.location.pathname}?${urlParams.toString()}`);
     };
 
@@ -185,10 +138,6 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         // Сохраняем в стейт
         setDQL(dql)
         setSort(sort)
-        
-        // Сохраняем в URL
-        updateDqlInUrl(dql)
-        updateSortInUrl(sort)
         
         if (page == 0) { refresh(dql, sort) } else { setPage(0) }
     }
@@ -763,20 +712,14 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         }
 
         const urlPage = getPageFromUrl() || 0;
-        const urlDql = getDqlFromUrl();
-        const urlSort = getSortFromUrl();
         if (data && data.sl) { // в любом случае загружаем данные, чтобы достать dataInfo
             console.log("Loading initial page from URL: " + urlPage)
-            console.log("Loading initial dql from URL: " + urlDql)
-            console.log("Loading initial sort from URL: " + urlSort)
             setPageLoading(true)
-            // Конвертируем объект sort в строку для API
-            const urlSortString = urlSort && urlSort.field ? `${urlSort.field}:${urlSort.direction || 'asc'}` : '';
             callEndpointGET(data.sl, {
                 pageSize: data.pageSize || 10,
                 page: urlPage,
-                dql: urlDql,
-                sort: urlSortString
+                dql: '',
+                sort: ''
             }, (result, data) => {
                 // console.log("INITIAL PAGE LOAD RESULT")
                 // console.log(result)
@@ -860,9 +803,8 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         {(objects.length > 0 || initialLoading || pageLoading) && <TableTitle
             tableFilters={_.get(data.params, 'filterParams') || {}}
             displayFilters={_.get(data.params, 'filterParams.isFiltering') || _.get(data.params, 'filterParams.isSorting')}
-            currentDQL={dql}
-            currentSort={sort}
             performFiltering={dqlService}
+            urlKey={comp_ID}
             // performFiltering={dql => console.log(dql)}
             callEndpoint={(endpoint, params, finish, setOptions, setError) => {
                 const transformedArray = (inputArray, visibleNames) => _.map(inputArray, (item) => {
