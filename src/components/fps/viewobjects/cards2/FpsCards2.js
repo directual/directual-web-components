@@ -711,7 +711,23 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
             return;
         }
 
+        // Проверяем есть ли фильтры в URL
+        const hasFiltersInUrl = () => {
+            if (!comp_ID || typeof window === 'undefined') return false;
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.has(`filters_${comp_ID}`) || urlParams.has(`sort_${comp_ID}`);
+        };
+
         const urlPage = getPageFromUrl() || 0;
+        
+        // Если есть фильтры в URL, пропускаем первый запрос
+        // TableTitle сам применит фильтры через performFiltering
+        if (hasFiltersInUrl()) {
+            console.log("Filters found in URL, skipping initial load - TableTitle will handle it")
+            setInitialLoading(false)
+            return;
+        }
+        
         if (data && data.sl) { // в любом случае загружаем данные, чтобы достать dataInfo
             console.log("Loading initial page from URL: " + urlPage)
             setPageLoading(true)
@@ -800,7 +816,8 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
             renderNoData()
         }
 
-        {(objects.length > 0 || initialLoading || pageLoading) && <TableTitle
+        {/* Показываем фильтры если есть объекты, идёт загрузка, или есть активные фильтры */}
+        {(objects.length > 0 || initialLoading || pageLoading || dql || sort.field) && <TableTitle
             tableFilters={_.get(data.params, 'filterParams') || {}}
             displayFilters={_.get(data.params, 'filterParams.isFiltering') || _.get(data.params, 'filterParams.isSorting')}
             performFiltering={dqlService}
