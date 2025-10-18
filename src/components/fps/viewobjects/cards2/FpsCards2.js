@@ -816,13 +816,15 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
             renderNoData()
         }
 
-        {/* Показываем фильтры если есть объекты, идёт загрузка, или есть активные фильтры */}
-        {(objects.length > 0 || initialLoading || pageLoading || dql || sort.field) && <TableTitle
+        {/* Показываем фильтры если есть объекты, идёт загрузка, есть активные фильтры, или включены кастомные фильтры */}
+        {(objects.length > 0 || initialLoading || pageLoading || dql || sort.field || _.get(data.params, 'filterParams.filteringSortingLayout') === 'custom') && <TableTitle
             tableFilters={_.get(data.params, 'filterParams') || {}}
             displayFilters={_.get(data.params, 'filterParams.isFiltering') || _.get(data.params, 'filterParams.isSorting')}
             performFiltering={dqlService}
             urlKey={comp_ID}
             headers={data.headers}
+            customHTMLfilters={_.get(data.params, 'filterParams.filteringSortingLayout') === 'custom'}
+            customHTMLfiltersContent={_.get(data.params, 'filterParams.filteringSortingLayoutHTML')}
             // performFiltering={dql => console.log(dql)}
             callEndpoint={(endpoint, params, finish, setOptions, setError) => {
                 const transformedArray = (inputArray, visibleNames) => _.map(inputArray, (item) => {
@@ -1556,6 +1558,22 @@ name: 'Cards view',
         { name: 'Select API-endpoint', sysName: 'sl', type: 'api-endpoint' },
         { name: 'Page size', sysName: 'pageSize', type: 'number' },
         { name: 'Default HTTP request params', sysName: 'httpParams', type: 'httpParams' },
+        { 
+            name: 'Filtering & Sorting Layout', 
+            sysName: 'filteringSortingLayout', 
+            type: 'select',
+            options: [
+                { value: 'default', label: 'Default filters' },
+                { value: 'custom', label: 'Custom HTML filters' }
+            ]
+        },
+        { 
+            name: 'Custom HTML Filters Content', 
+            sysName: 'filteringSortingLayoutHTML', 
+            type: 'textarea',
+            rows: 10,
+            placeholder: 'Enter your custom HTML/CSS/JS for filters...'
+        },
         { name: 'Component comment', sysName: 'comment', type: 'comment' },
     ]
 }

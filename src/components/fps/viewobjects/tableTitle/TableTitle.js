@@ -21,7 +21,10 @@ const SafeInnerHTML = ({ html, label = 'unknown', ...props }) => {
 
 export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters, onFilter, currentDQL, currentSort,
     chartFilters, displayChartFilters, updateChartFilters, chartLines, clearChartFilters, callEndpoint,
-    onSearch, loading, searchValue, currentBP, displayFilters, lang, dict, performFiltering, params, urlKey, headers }) {
+    onSearch, loading, searchValue, currentBP, displayFilters, lang, dict, performFiltering, params, urlKey, headers,
+    customHTMLfilters = false, customHTMLfiltersContent = null,
+}) {
+
     const [showSearch, setShowSearch] = useState(search)
     //const [showFilters, setShowFilters] = useState(false)
 
@@ -35,7 +38,69 @@ export function TableTitle({ tableQuickSearch, search, tableTitle, tableFilters,
         }
     })
 
+    // Инициализация API для кастомных фильтров
+    useEffect(() => {
+        if (customHTMLfilters) {
+            // Создаем глобальный API для юзерского кода
+            window.DirectualFilter = {
+                // Стартовые данные (текущий фильтр, список полей для возможной фильтрации)
+                props: {
+                    currentFilter: currentDQL || '',
+                    currentSort: currentSort || null,
+                    fields: fieldOptions,
+                    lang: lang,
+                    dict: dict[lang] || {}
+                },
+                
+                // Юзерский код вызывает это при каждом изменении фильтра
+                emit: (dqlValue, sortOptions) => {
+                    console.log('🔥 Custom filter emitted:', { dql: dqlValue, sort: sortOptions });
+                    
+                    // Определяем сортировку - либо переданная, либо текущая
+                    let sortToApply = {};
+                    
+                    if (sortOptions) {
+                        // Если передана сортировка из кастомного фильтра
+                        if (typeof sortOptions === 'string' && sortOptions.includes(':')) {
+                            const [field, direction] = sortOptions.split(':');
+                            sortToApply = { field, direction };
+                        } else if (typeof sortOptions === 'object' && sortOptions.field) {
+                            sortToApply = sortOptions;
+                        }
+                    } else {
+                        // Сохраняем текущую сортировку если новая не передана
+                        if (typeof currentSort === 'string' && currentSort.includes(':')) {
+                            const [field, direction] = currentSort.split(':');
+                            sortToApply = { field, direction };
+                        } else if (typeof currentSort === 'object' && currentSort.field) {
+                            sortToApply = currentSort;
+                        }
+                    }
+                    
+                    // Фильтр подхватываем (в формате dql) и шлем выше в performFiltering, не нарушая контракта!
+                    performFiltering(dqlValue || '', sortToApply);
+                }
+            };
+
+            // Cleanup при размонтировании компонента
+            return () => {
+                if (window.DirectualFilter) {
+                    delete window.DirectualFilter;
+                }
+            };
+        }
+    }, [customHTMLfilters, currentDQL, fieldOptions, lang, dict, currentSort, performFiltering]);
+
     //currentBP = 'mobile'
+
+    // Если customHTMLfilters = true, то показываем custom HTML фильтры
+    if (customHTMLfilters) {
+        if (customHTMLfiltersContent) {
+            return <SafeInnerHTML html={customHTMLfiltersContent} allowRerender={true} />
+        } else {
+            return <div>No custom HTML filters content</div>
+        }
+    }
 
     return (
         <React.Fragment>
@@ -113,13 +178,13 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
     // Функция для чтения фильтров из URL
     const getFiltersFromUrl = () => {
         if (!urlKey || typeof window === 'undefined') return null;
-        
+
         const urlParams = new URLSearchParams(window.location.search);
         const filtersParam = urlParams.get(`filters_${urlKey}`);
         const sortParam = urlParams.get(`sort_${urlKey}`);
-        
+
         let result = {};
-        
+
         // Парсим filters (JSON) из URL
         if (filtersParam) {
             try {
@@ -128,52 +193,52 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
                 console.error('Failed to parse filters from URL:', e);
             }
         }
-        
+
         // Парсим sort из URL
         if (sortParam && sortParam.includes(':')) {
             const [field, direction] = sortParam.split(':');
             result.sort = { field, direction };
         }
-        
+
         return Object.keys(result).length > 0 ? result : null;
     };
 
     // Функция для сохранения фильтров в URL
     const saveFiltersToUrl = (filtersObj, sort) => {
         if (!urlKey || typeof window === 'undefined') return;
-        
+
         const urlParams = new URLSearchParams(window.location.search);
-        
+
         // Очищаем старый dql_ параметр если он есть (миграция со старой версии)
         urlParams.delete(`dql_${urlKey}`);
-        
+
         // Сохраняем filters как JSON (только если есть хоть один фильтр)
-        const hasFilters = filtersObj && Object.keys(filtersObj).length > 0 && 
+        const hasFilters = filtersObj && Object.keys(filtersObj).length > 0 &&
             Object.keys(filtersObj).some(key => filtersObj[key].value || filtersObj[key].valueFrom || filtersObj[key].valueTo);
-        
+
         if (hasFilters) {
             urlParams.set(`filters_${urlKey}`, encodeURIComponent(JSON.stringify(filtersObj)));
         } else {
             urlParams.delete(`filters_${urlKey}`);
         }
-        
+
         // Сохраняем sort
         if (sort && sort.field) {
             urlParams.set(`sort_${urlKey}`, `${sort.field}:${sort.direction || 'asc'}`);
         } else {
             urlParams.delete(`sort_${urlKey}`);
         }
-        
+
         window.history.replaceState({}, '', `${window.location.pathname}?${urlParams.toString()}`);
     };
 
     // Функция для инициализации фильтров из текущих значений или URL
     const initializeFiltersFromCurrent = () => {
         let initialFilters = { ...defaultFilters }
-        
+
         // Сначала пробуем загрузить из URL
         const urlFilters = getFiltersFromUrl();
-        
+
         if (urlFilters) {
             if (urlFilters.filters) {
                 initialFilters.filters = urlFilters.filters;
@@ -201,7 +266,7 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
                 }
             }
         }
-        
+
         return initialFilters
     }
 
@@ -221,7 +286,7 @@ function NewFilters({ tableFilters, performFiltering, lang, dict, loading, field
             if (urlFilters) {
                 const filtersToApply = urlFilters.filters || {};
                 const sortToApply = urlFilters.sort || {};
-                
+
                 // Применяем фильтры через performFiltering
                 const hasFilters = Object.keys(filtersToApply).length > 0;
                 if (hasFilters || sortToApply.field) {

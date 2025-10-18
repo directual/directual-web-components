@@ -951,10 +951,10 @@ let exampleTableShipiga = {
 
 let exampleTable = {
     "sl": "newRoadMap",
-    "pageSize": "24",
+    "pageSize": "12",
     "headerField": null,
     "params": {
-        "comp_ID": "imsQp",
+        "comp_ID": "mq3O5",
         "cards_layout": "grid",
         "flex_layout__width": 251,
         "flex_layout__gap": 23,
@@ -962,7 +962,7 @@ let exampleTable = {
             "showObjCount": true,
             "allowPagination": true
         },
-        "cards_title": "Backlog!",
+        "cards_title": "Custom filter",
         "grid_layout__gap": 15,
         "card_layout_type": "regular",
         "card_border_radius": 12,
@@ -995,8 +995,8 @@ let exampleTable = {
                 "formatOptions": {},
                 "name": "Inner ID"
             },
-            "isFiltering": true,
-            "isSorting": true,
+            "isFiltering": false,
+            "isSorting": false,
             "filterFields": {
                 "description": {
                     "active": true,
@@ -1056,7 +1056,9 @@ let exampleTable = {
                         }
                     ]
                 }
-            }
+            },
+            "filteringSortingLayout": "custom",
+            "filteringSortingLayoutHTML": "<div style=\"padding: 20px; border: 1px solid #ddd; border-radius: 8px;\">\n    <h4>Custom Filters</h4>\n    \n    <!-- Text Search -->\n    <div style=\"margin-bottom: 15px;\">\n        <label>Search Text:</label>\n        <input type=\"text\" id=\"textSearch\" placeholder=\"Enter search term...\">\n        <button onclick=\"applyTextFilter()\">Apply</button>\n    </div>\n    \n    <!-- Numeric Range -->\n    <div style=\"margin-bottom: 15px;\">\n        <label>Number Range:</label>\n        <input type=\"number\" id=\"minNumber\" placeholder=\"Min\">\n        <input type=\"number\" id=\"maxNumber\" placeholder=\"Max\">\n        <button onclick=\"applyNumberFilter()\">Filter</button>\n    </div>\n    \n    <!-- Sorting -->\n    <div style=\"margin-bottom: 15px;\">\n        <label>Sort by:</label>\n        <select id=\"sortField\">\n            <option value=\"\">No sorting</option>\n            <option value=\"fieldName\">Field Name</option>\n            <option value=\"numberField\">Number Field</option>\n        </select>\n        <select id=\"sortDirection\">\n            <option value=\"asc\">Ascending</option>\n            <option value=\"desc\">Descending</option>\n        </select>\n        <button onclick=\"applySorting()\">Sort</button>\n    </div>\n    \n    <!-- Actions -->\n    <button onclick=\"clearFilters()\">Clear All</button>\n</div>\n\n<script>\nfunction applyTextFilter() {\n    const value = document.getElementById('textSearch').value;\n    if (value) {\n        const dql = \"'fieldName' like '\" + value + \"'\";\n        const currentSort = getCurrentSort();\n        window.DirectualFilter.emit(dql, currentSort);\n    }\n}\n\nfunction applyNumberFilter() {\n    const min = document.getElementById('minNumber').value;\n    const max = document.getElementById('maxNumber').value;\n    \n    let conditions = [];\n    if (min) conditions.push(\"'numberField' >= '\" + min + \"'\");\n    if (max) conditions.push(\"'numberField' <= '\" + max + \"'\");\n    \n    const dql = conditions.join(' AND ');\n    const currentSort = getCurrentSort();\n    window.DirectualFilter.emit(dql, currentSort);\n}\n\nfunction applySorting() {\n    const field = document.getElementById('sortField').value;\n    const direction = document.getElementById('sortDirection').value;\n    \n    if (field) {\n        const sortOptions = { field: field, direction: direction };\n        const currentFilter = getCurrentFilter();\n        window.DirectualFilter.emit(currentFilter, sortOptions);\n    }\n}\n\nfunction getCurrentSort() {\n    const field = document.getElementById('sortField').value;\n    const direction = document.getElementById('sortDirection').value;\n    return field ? { field: field, direction: direction } : null;\n}\n\nfunction getCurrentFilter() {\n    const text = document.getElementById('textSearch').value;\n    const min = document.getElementById('minNumber').value;\n    const max = document.getElementById('maxNumber').value;\n    \n    let conditions = [];\n    if (text) conditions.push(\"'fieldName' like '\" + text + \"'\");\n    if (min) conditions.push(\"'numberField' >= '\" + min + \"'\");\n    if (max) conditions.push(\"'numberField' <= '\" + max + \"'\");\n    \n    return conditions.join(' AND ');\n}\n\nfunction clearFilters() {\n    document.getElementById('textSearch').value = '';\n    document.getElementById('minNumber').value = '';\n    document.getElementById('maxNumber').value = '';\n    document.getElementById('sortField').value = '';\n    window.DirectualFilter.emit('', null);\n}\n\n// Initialize on load\nsetTimeout(() => {\n    console.log('Available fields:', window.DirectualFilter.props.fields);\n}, 100);\n</script>"
         },
         "card_type_dir": {
             "body": "<div class=\"feature-container\" style=\"border-color:#{{color}};\">\n  <span class=\"feature-type-label\" style=\"color:#{{color}};\">{{feature_type}}</span>\n  <!-- Upvote -->\n  <label class=\"upvote-btn\" tabindex=\"0\"\n         data-action-type=\"action\" \n         data-action-data=\"upvote\"\n         >\n    <input type=\"checkbox\" />\n    <div class=\"upvote-arrow\"></div>\n    <span class=\"upvote-count\">{{votes}}</span>\n  </label>\n\n  <code class=\"feature-code\">{{feature_id}}</code><br>\n  <div>\n    <b class=\"feature-title\">{{title}}</b>\n    <div class=\"tags-container\">\n      {{#tags}}\n      <div class=\"tag-item\" style=\"background-color:{{color}}; color:{{color_text}};\">{{id}}</div>\n      {{/tags}}\n    </div>\n  </div>\n</div>",
@@ -1993,86 +1995,6 @@ let exampleTable = {
         },
         {
             "votes": 11,
-            "description": "With auto-logging-in",
-            "tags": [
-                {
-                    "color": "#00A8F0",
-                    "color_text": "rgba(255,255,255,.8)",
-                    "id": "web-pages"
-                }
-            ],
-            "feature_id": "PLT-266",
-            "color": "57bf97",
-            "user_id": {
-                "lastName": "Ershov",
-                "firstName": "Pavel",
-                "id": "pavel@directual.com"
-            },
-            "date_updated": 1710500343000,
-            "feature_type": "feature",
-            "id": "c8012055-0d2a-41ac-b7d0-35e2b34aec53",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1634772726000,
-            "votes_ids": [
-                {
-                    "firstName": "Egor",
-                    "lastName": "Baev",
-                    "id": "artosiris@gmail.com"
-                },
-                {
-                    "firstName": "Dimitry",
-                    "lastName": "Novozhilov",
-                    "id": "novozhilov@code-word.ru"
-                },
-                {
-                    "lastName": "Pearson",
-                    "firstName": "Lloyd",
-                    "id": "lloydpearson@packagecues.com"
-                },
-                {
-                    "lastName": "N",
-                    "firstName": "Kamil",
-                    "id": "kamil@leverall.com"
-                },
-                {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                {
-                    "firstName": "Renato",
-                    "lastName": "Pinto",
-                    "id": "renato.casa.corre@gmail.com"
-                },
-                {
-                    "lastName": "Mihailov",
-                    "firstName": "Mike",
-                    "id": "edueduedoo@gmail.com"
-                },
-                {
-                    "lastName": "Титов",
-                    "firstName": "Олег",
-                    "id": "easylife9525@gmail.com"
-                },
-                {
-                    "id": "ilan@ezcell.ca"
-                },
-                {
-                    "id": "lindamacdonalde@gmail.com"
-                },
-                {
-                    "firstName": "JOHNLY",
-                    "lastName": "NARAG",
-                    "id": "johnly_s_narag@yahoo.com"
-                }
-            ],
-            "title": "\"Magic link\" to app",
-            "progress_value": 0
-        },
-        {
-            "votes": 11,
             "description": "- XML sitemap\n- robots.txt\n- canonical URLs\n- Schema.org Open Graph\n- 404\n- htaccess\n- Meta: Title, description, Keywords, Content-Type\n- Alt for pictures\n\n[SEO checklist](https://dminhvu.com/nextjs-seo)",
             "tags": [
                 {
@@ -2154,38 +2076,34 @@ let exampleTable = {
         },
         {
             "votes": 11,
-            "description": "When a structure becomes big with hundreds of parameters it usually makes it difficult to manage and to find in scenario parameter we need. Usually a lot of parameters with time become unused. The easiest way to fix this problem but not to broke old scenarios and other structures, connected with our unused parameters is to allow user to hide it both in structures and scenarios, something like adding them to archive from which we can drop them back any time we want.   ",
+            "description": "Copy pages in Web-pages",
             "tags": [
                 {
-                    "color": "#0BBAB5",
-                    "color_text": "rgba(0,0,0,.5)",
-                    "id": "database"
+                    "color": "#00A8F0",
+                    "color_text": "rgba(255,255,255,.8)",
+                    "id": "web-pages"
                 }
             ],
-            "feature_id": "PLT-281",
+            "feature_id": "PLT-215",
             "color": "57bf97",
             "user_id": {
-                "firstName": "Artem",
-                "lastName": "Laptev",
-                "id": "artemlaptev7@gmail.com"
+                "firstName": "Vladimir",
+                "lastName": "Stepanenko",
+                "id": "vgstepanenko@gmail.com"
             },
             "date_updated": 1670519011000,
             "feature_type": "feature",
-            "id": "4dee093a-d6b6-461c-997c-7bce76b93027",
+            "id": "67b93ec9-cff1-4870-8d92-42a4a53e60d9",
+            "progress": "{\"firstValue\":0}",
             "dev_status": {
                 "status": "Backlog"
             },
-            "date_added": 1637408122000,
+            "date_added": 1628176984000,
             "votes_ids": [
                 {
                     "firstName": "Egor",
                     "lastName": "Baev",
                     "id": "artosiris@gmail.com"
-                },
-                {
-                    "firstName": "Dimitry",
-                    "lastName": "Novozhilov",
-                    "id": "novozhilov@code-word.ru"
                 },
                 {
                     "firstName": "Joses",
@@ -2198,19 +2116,20 @@ let exampleTable = {
                     "id": "jonichols@me.com"
                 },
                 {
-                    "lastName": "O'Hara",
-                    "firstName": "Andrew",
-                    "id": "andrewohara111@gmail.com"
-                },
-                {
-                    "firstName": "Anton",
-                    "lastName": "Sidorov",
-                    "id": "a@preencipium.com"
-                },
-                {
                     "firstName": "Max",
                     "lastName": "Lykov",
                     "id": "mxf@mail.ru"
+                },
+                {
+                    "lastName": "Goncharov",
+                    "firstName": "Pavel",
+                    "id": "office@ingros.ru"
+                },
+                {
+                    "id": "victorblan@gmail.com"
+                },
+                {
+                    "id": "lykovmaxim@gmail.com"
                 },
                 {
                     "lastName": "Ershov",
@@ -2218,10 +2137,12 @@ let exampleTable = {
                     "id": "pavel@directual.com"
                 },
                 {
-                    "id": "sergey.azarov@gmail.com"
+                    "lastName": "Gaisin",
+                    "firstName": "Ruslan",
+                    "id": "rusgaisin@gmail.com"
                 },
                 {
-                    "id": "lindamacdonalde@gmail.com"
+                    "id": "trustpropsonline@gmail.com"
                 },
                 {
                     "firstName": "JOHNLY",
@@ -2229,7 +2150,7 @@ let exampleTable = {
                     "id": "johnly_s_narag@yahoo.com"
                 }
             ],
-            "title": "hide unused fields",
+            "title": "Copy page on portal",
             "progress_value": 0
         },
         {
@@ -2320,6 +2241,86 @@ let exampleTable = {
         },
         {
             "votes": 11,
+            "description": "When a structure becomes big with hundreds of parameters it usually makes it difficult to manage and to find in scenario parameter we need. Usually a lot of parameters with time become unused. The easiest way to fix this problem but not to broke old scenarios and other structures, connected with our unused parameters is to allow user to hide it both in structures and scenarios, something like adding them to archive from which we can drop them back any time we want.   ",
+            "tags": [
+                {
+                    "color": "#0BBAB5",
+                    "color_text": "rgba(0,0,0,.5)",
+                    "id": "database"
+                }
+            ],
+            "feature_id": "PLT-281",
+            "color": "57bf97",
+            "user_id": {
+                "firstName": "Artem",
+                "lastName": "Laptev",
+                "id": "artemlaptev7@gmail.com"
+            },
+            "date_updated": 1670519011000,
+            "feature_type": "feature",
+            "id": "4dee093a-d6b6-461c-997c-7bce76b93027",
+            "dev_status": {
+                "status": "Backlog"
+            },
+            "date_added": 1637408122000,
+            "votes_ids": [
+                {
+                    "firstName": "Egor",
+                    "lastName": "Baev",
+                    "id": "artosiris@gmail.com"
+                },
+                {
+                    "firstName": "Dimitry",
+                    "lastName": "Novozhilov",
+                    "id": "novozhilov@code-word.ru"
+                },
+                {
+                    "firstName": "Joses",
+                    "lastName": "Saumaitoga",
+                    "id": "josesjjs@tpg.com.au"
+                },
+                {
+                    "lastName": "Nichols",
+                    "firstName": "Joanne",
+                    "id": "jonichols@me.com"
+                },
+                {
+                    "lastName": "O'Hara",
+                    "firstName": "Andrew",
+                    "id": "andrewohara111@gmail.com"
+                },
+                {
+                    "firstName": "Anton",
+                    "lastName": "Sidorov",
+                    "id": "a@preencipium.com"
+                },
+                {
+                    "firstName": "Max",
+                    "lastName": "Lykov",
+                    "id": "mxf@mail.ru"
+                },
+                {
+                    "lastName": "Ershov",
+                    "firstName": "Pavel",
+                    "id": "pavel@directual.com"
+                },
+                {
+                    "id": "sergey.azarov@gmail.com"
+                },
+                {
+                    "id": "lindamacdonalde@gmail.com"
+                },
+                {
+                    "firstName": "JOHNLY",
+                    "lastName": "NARAG",
+                    "id": "johnly_s_narag@yahoo.com"
+                }
+            ],
+            "title": "hide unused fields",
+            "progress_value": 0
+        },
+        {
+            "votes": 11,
             "description": "- Custom fields\n- Edit Sign in page\n- If there is only one sign in method, show the button in the menu\n- Sync scenario under the hood",
             "tags": [
                 {
@@ -2399,7 +2400,7 @@ let exampleTable = {
         },
         {
             "votes": 11,
-            "description": "Copy pages in Web-pages",
+            "description": "With auto-logging-in",
             "tags": [
                 {
                     "color": "#00A8F0",
@@ -2407,21 +2408,20 @@ let exampleTable = {
                     "id": "web-pages"
                 }
             ],
-            "feature_id": "PLT-215",
+            "feature_id": "PLT-266",
             "color": "57bf97",
             "user_id": {
-                "firstName": "Vladimir",
-                "lastName": "Stepanenko",
-                "id": "vgstepanenko@gmail.com"
+                "lastName": "Ershov",
+                "firstName": "Pavel",
+                "id": "pavel@directual.com"
             },
-            "date_updated": 1670519011000,
+            "date_updated": 1710500343000,
             "feature_type": "feature",
-            "id": "67b93ec9-cff1-4870-8d92-42a4a53e60d9",
-            "progress": "{\"firstValue\":0}",
+            "id": "c8012055-0d2a-41ac-b7d0-35e2b34aec53",
             "dev_status": {
                 "status": "Backlog"
             },
-            "date_added": 1628176984000,
+            "date_added": 1634772726000,
             "votes_ids": [
                 {
                     "firstName": "Egor",
@@ -2429,30 +2429,19 @@ let exampleTable = {
                     "id": "artosiris@gmail.com"
                 },
                 {
-                    "firstName": "Joses",
-                    "lastName": "Saumaitoga",
-                    "id": "josesjjs@tpg.com.au"
+                    "firstName": "Dimitry",
+                    "lastName": "Novozhilov",
+                    "id": "novozhilov@code-word.ru"
                 },
                 {
-                    "lastName": "Nichols",
-                    "firstName": "Joanne",
-                    "id": "jonichols@me.com"
+                    "lastName": "Pearson",
+                    "firstName": "Lloyd",
+                    "id": "lloydpearson@packagecues.com"
                 },
                 {
-                    "firstName": "Max",
-                    "lastName": "Lykov",
-                    "id": "mxf@mail.ru"
-                },
-                {
-                    "lastName": "Goncharov",
-                    "firstName": "Pavel",
-                    "id": "office@ingros.ru"
-                },
-                {
-                    "id": "victorblan@gmail.com"
-                },
-                {
-                    "id": "lykovmaxim@gmail.com"
+                    "lastName": "N",
+                    "firstName": "Kamil",
+                    "id": "kamil@leverall.com"
                 },
                 {
                     "lastName": "Ershov",
@@ -2460,12 +2449,25 @@ let exampleTable = {
                     "id": "pavel@directual.com"
                 },
                 {
-                    "lastName": "Gaisin",
-                    "firstName": "Ruslan",
-                    "id": "rusgaisin@gmail.com"
+                    "firstName": "Renato",
+                    "lastName": "Pinto",
+                    "id": "renato.casa.corre@gmail.com"
                 },
                 {
-                    "id": "trustpropsonline@gmail.com"
+                    "lastName": "Mihailov",
+                    "firstName": "Mike",
+                    "id": "edueduedoo@gmail.com"
+                },
+                {
+                    "lastName": "Титов",
+                    "firstName": "Олег",
+                    "id": "easylife9525@gmail.com"
+                },
+                {
+                    "id": "ilan@ezcell.ca"
+                },
+                {
+                    "id": "lindamacdonalde@gmail.com"
                 },
                 {
                     "firstName": "JOHNLY",
@@ -2473,7 +2475,7 @@ let exampleTable = {
                     "id": "johnly_s_narag@yahoo.com"
                 }
             ],
-            "title": "Copy page on portal",
+            "title": "\"Magic link\" to app",
             "progress_value": 0
         },
         {
@@ -2626,129 +2628,6 @@ let exampleTable = {
         },
         {
             "votes": 7,
-            "description": "Subtask for **PLT-114**",
-            "tags": [
-                {
-                    "color": "#00A8F0",
-                    "color_text": "rgba(255,255,255,.8)",
-                    "id": "web-pages"
-                }
-            ],
-            "feature_id": "PLT-257",
-            "color": "57bf97",
-            "user_id": {
-                "lastName": "Ershov",
-                "firstName": "Pavel",
-                "id": "pavel@directual.com"
-            },
-            "date_updated": 1670519010000,
-            "feature_type": "feature",
-            "id": "d75f9f17-fb96-43a8-a26a-aad0896716a3",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1633204879000,
-            "votes_ids": [
-                {
-                    "lastName": "Goncharov",
-                    "firstName": "Pavel",
-                    "id": "pavel@goncharov.me"
-                },
-                {
-                    "firstName": "Max",
-                    "lastName": "Lykov",
-                    "id": "mxf@mail.ru"
-                },
-                {
-                    "id": "8256055@gmail.com"
-                },
-                {
-                    "id": "kolgtim@gmail.com"
-                },
-                {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                {
-                    "firstName": "Antwan",
-                    "lastName": "Carr",
-                    "id": "unlabeledlifestyle@gmail.com"
-                },
-                {
-                    "firstName": "JOHNLY",
-                    "lastName": "NARAG",
-                    "id": "johnly_s_narag@yahoo.com"
-                }
-            ],
-            "title": "arrayLink view — Comments",
-            "progress_value": 0
-        },
-        {
-            "votes": 7,
-            "description": "Marketplace for:\n\n1. Plugins [PLT-403](https://dev.directual.app/open-pipeline?comp_1621102227881_id=6607c12a-c8fa-4deb-b3f8-b052766e6989)\n2. Templates [PLT-433](https://dev.directual.app/?comp_1621102227881_id=579aae82-6388-48f7-9100-580888113b41)\n3. Certified experts [PLT-389](https://dev.directual.app/?comp_1621102227881_id=e09aced4-9acc-4d04-8530-ac45b20c3299)",
-            "tags": [
-                {
-                    "color": "#A1C8F4",
-                    "color_text": "rgba(0,0,0,.5)",
-                    "id": "general issues"
-                }
-            ],
-            "feature_id": "PLT-366",
-            "color": "57bf97",
-            "user_id": {
-                "lastName": "Ershov",
-                "firstName": "Pavel",
-                "id": "pavel@directual.com"
-            },
-            "date_updated": 1716295575000,
-            "feature_type": "feature",
-            "id": "bc48d3ca-1c63-4253-99a6-71a20b0971e4",
-            "progress": "{\"firstValue\":70}",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1675815334000,
-            "votes_ids": [
-                {
-                    "lastName": "Online",
-                    "firstName": "Bisapco",
-                    "id": "atr.service.msk@gmail.com"
-                },
-                {
-                    "lastName": "H",
-                    "firstName": "Alejandro",
-                    "id": "digitalgebo@gmail.com"
-                },
-                {
-                    "firstName": "Joses",
-                    "lastName": "Saumaitoga",
-                    "id": "josesjjs@tpg.com.au"
-                },
-                {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                {
-                    "firstName": "Renato",
-                    "lastName": "Pinto",
-                    "id": "renato.casa.corre@gmail.com"
-                },
-                {
-                    "id": "trustpropsonline@gmail.com"
-                },
-                {
-                    "firstName": "JOHNLY",
-                    "lastName": "NARAG",
-                    "id": "johnly_s_narag@yahoo.com"
-                }
-            ],
-            "title": "Marketplace",
-            "progress_value": 70
-        },
-        {
-            "votes": 7,
             "description": "Fast import from Airtable",
             "feature_id": "PLT-182",
             "color": "57bf97",
@@ -2799,534 +2678,9 @@ let exampleTable = {
             ],
             "title": "Import from Airtable",
             "progress_value": 0
-        },
-        {
-            "votes": 7,
-            "description": "Create Integromat app",
-            "tags": [
-                {
-                    "color_text": "rgba(0,0,0,.5)",
-                    "color": "#ACFF80",
-                    "id": "integrations"
-                }
-            ],
-            "feature_id": "PLT-183",
-            "color": "57bf97",
-            "user_id": {
-                "lastName": "Ershov",
-                "firstName": "Pavel",
-                "id": "pavel@directual.com"
-            },
-            "date_updated": 1670519010000,
-            "feature_type": "feature",
-            "id": "595e9e01-1538-4169-a9a2-4632ee7e1625",
-            "progress": "{\"firstValue\":0}",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1626367713000,
-            "votes_ids": [
-                {
-                    "firstName": "Roman",
-                    "lastName": "Tkachev",
-                    "id": "tkachev.rb@gmail.com"
-                },
-                {
-                    "id": "subrtt@gmail.com"
-                },
-                {
-                    "firstName": "Efim",
-                    "lastName": "Maisak",
-                    "id": "coldnaked@gmail.com"
-                },
-                {
-                    "id": "kolgtim@gmail.com"
-                },
-                {
-                    "firstName": "Thomas",
-                    "lastName": "Omaley",
-                    "id": "thomasomaley1964@gmail.com"
-                },
-                {
-                    "id": "trustpropsonline@gmail.com"
-                },
-                {
-                    "firstName": "JOHNLY",
-                    "lastName": "NARAG",
-                    "id": "johnly_s_narag@yahoo.com"
-                }
-            ],
-            "title": "Make (ex-Integromat) app",
-            "progress_value": 0
-        },
-        {
-            "votes": 6,
-            "description": "We need a quick search inside the structure and the object. When the structure contains dozens of fields, there is no possibility, except for the search built into the browser, to go directly to the desired field by its name or value. At the same time, the search built into the browser does not give the correct result due to the specific layout of the backend page. It is even more difficult to find something with the new way of viewing the object in the pop-up window.",
-            "tags": [
-                {
-                    "color": "#0BBAB5",
-                    "color_text": "rgba(0,0,0,.5)",
-                    "id": "database"
-                }
-            ],
-            "feature_id": "PLT-245",
-            "color": "57bf97",
-            "user_id": {
-                "firstName": "Egor",
-                "lastName": "Baev",
-                "id": "artosiris@gmail.com"
-            },
-            "date_updated": 1670519010000,
-            "feature_type": "feature",
-            "id": "60a6f99f-1531-4b61-a326-1bb9f1902653",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1631736409000,
-            "votes_ids": [
-                {
-                    "firstName": "Egor",
-                    "lastName": "Baev",
-                    "id": "artosiris@gmail.com"
-                },
-                {
-                    "id": "av.volgin@gmail.com"
-                },
-                {
-                    "lastName": "N",
-                    "firstName": "Kamil",
-                    "id": "kamil@leverall.com"
-                },
-                {
-                    "id": "sergey.azarov@gmail.com"
-                },
-                {
-                    "lastName": "Gaisin",
-                    "firstName": "Ruslan",
-                    "id": "rusgaisin@gmail.com"
-                },
-                {
-                    "firstName": "JOHNLY",
-                    "lastName": "NARAG",
-                    "id": "johnly_s_narag@yahoo.com"
-                }
-            ],
-            "title": "Quick search in structure",
-            "progress_value": 0
-        },
-        {
-            "votes": 6,
-            "description": "[BNB](https://www.bnbchain.org/ru/smartChain)",
-            "tags": [
-                {
-                    "color": "#81C995",
-                    "color_text": "rgba(0,0,0,.5)",
-                    "id": "web3"
-                }
-            ],
-            "feature_id": "PLT-367",
-            "color": "57bf97",
-            "user_id": {
-                "lastName": "Ershov",
-                "firstName": "Pavel",
-                "id": "pavel@directual.com"
-            },
-            "date_updated": 1675816781000,
-            "feature_type": "feature",
-            "id": "d34711b9-3515-4d47-b43f-e23c199dfef0",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1675816769000,
-            "votes_ids": [
-                {
-                    "firstName": "Joses",
-                    "lastName": "Saumaitoga",
-                    "id": "josesjjs@tpg.com.au"
-                },
-                {
-                    "lastName": "Pearson",
-                    "firstName": "Lloyd",
-                    "id": "lloydpearson@packagecues.com"
-                },
-                {
-                    "lastName": "Gaisin",
-                    "firstName": "Ruslan",
-                    "id": "rusgaisin@gmail.com"
-                },
-                {
-                    "firstName": "Hao",
-                    "lastName": "Ngo",
-                    "id": "hao.ngolv@gmail.com"
-                },
-                {
-                    "id": "trustpropsonline@gmail.com"
-                },
-                {
-                    "firstName": "JOHNLY",
-                    "lastName": "NARAG",
-                    "id": "johnly_s_narag@yahoo.com"
-                }
-            ],
-            "title": "Binance Smart Chain integration",
-            "progress_value": 0
-        },
-        {
-            "votes": 6,
-            "description": "From a sandbox to production",
-            "tags": [
-                {
-                    "color_text": "rgba(0,0,0,.5)",
-                    "color": "#C6A7F5",
-                    "id": "team plans"
-                }
-            ],
-            "feature_id": "PLT-189",
-            "color": "57bf97",
-            "user_id": {
-                "lastName": "Ershov",
-                "firstName": "Pavel",
-                "id": "pavel@directual.com"
-            },
-            "date_updated": 1672077579000,
-            "feature_type": "feature",
-            "id": "a5656aae-2054-40dc-87dd-1b2e2885db2d",
-            "progress": "{\"firstValue\":20}",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1627206804000,
-            "votes_ids": [
-                {
-                    "id": "dave@tomorrowready.com"
-                },
-                {
-                    "firstName": "Vladimir",
-                    "lastName": "Stepanenko",
-                    "id": "vgstepanenko@gmail.com"
-                },
-                {
-                    "firstName": "Kent Lucky",
-                    "lastName": "Buhawe",
-                    "id": "kent@luckykeniks.com"
-                },
-                {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                {
-                    "firstName": "Renato",
-                    "lastName": "Pinto",
-                    "id": "renato.casa.corre@gmail.com"
-                },
-                {
-                    "firstName": "JOHNLY",
-                    "lastName": "NARAG",
-                    "id": "johnly_s_narag@yahoo.com"
-                }
-            ],
-            "title": "Team plans. App delivering to a client",
-            "progress_value": 20
-        },
-        {
-            "votes": 5,
-            "description": "Quick search in linked fields in actions",
-            "tags": [],
-            "feature_id": "PLT-159",
-            "color": "57bf97",
-            "user_id": {
-                "firstName": "Max",
-                "lastName": "Lykov",
-                "id": "mxf@mail.ru"
-            },
-            "date_updated": 1699261903000,
-            "feature_type": "feature",
-            "id": "bcb02da3-3cf4-4331-835a-2bf7cc084cc7",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1622125946000,
-            "votes_ids": [
-                {
-                    "lastName": "Online",
-                    "firstName": "Bisapco",
-                    "id": "atr.service.msk@gmail.com"
-                },
-                {
-                    "firstName": "Dimitry",
-                    "lastName": "Novozhilov",
-                    "id": "novozhilov@code-word.ru"
-                },
-                {
-                    "lastName": "O'Hara",
-                    "firstName": "Andrew",
-                    "id": "andrewohara111@gmail.com"
-                },
-                {
-                    "firstName": "Max",
-                    "lastName": "Lykov",
-                    "id": "mxf@mail.ru"
-                },
-                {
-                    "lastName": "Bogomazova",
-                    "firstName": "Oksana",
-                    "id": "oksana.bogomazova@gmail.com"
-                }
-            ],
-            "title": "Dropdowns in actions for link fields",
-            "progress_value": 0
-        },
-        {
-            "votes": 5,
-            "description": "Affiliate link cloaking works by keeping website visitors from seeing the affiliate links provided by the vendor you sell for.\n\nWhen a reader clicks on your affiliate link, they get redirected to your affiliate’s website through a process called “link rewriting.”\n\nBecause of that, your visitors will increase your commissions without your having to constantly and consistently push them to do so.",
-            "feature_id": "PLT-347",
-            "color": "57bf97",
-            "user_id": {
-                "lastName": "Ershov",
-                "firstName": "Pavel",
-                "id": "pavel@directual.com"
-            },
-            "date_updated": 1670519010000,
-            "feature_type": "feature",
-            "id": "aaad47a0-8c12-4f96-8ccb-b0ef6f81855d",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1669671253000,
-            "votes_ids": [
-                {
-                    "firstName": "Joses",
-                    "lastName": "Saumaitoga",
-                    "id": "josesjjs@tpg.com.au"
-                },
-                {
-                    "lastName": "Pearson",
-                    "firstName": "Lloyd",
-                    "id": "lloydpearson@packagecues.com"
-                },
-                {
-                    "firstName": "Thomas",
-                    "lastName": "Omaley",
-                    "id": "thomasomaley1964@gmail.com"
-                },
-                {
-                    "id": "trustpropsonline@gmail.com"
-                },
-                {
-                    "firstName": "JOHNLY",
-                    "lastName": "NARAG",
-                    "id": "johnly_s_narag@yahoo.com"
-                }
-            ],
-            "title": "Affiliate Link Cloaking",
-            "progress_value": 0
-        },
-        {
-            "votes": 5,
-            "description": "- [PLT-213](https://dev.directual.app/?comp_1621102227881_id=1eea1819-226c-46a9-850c-49815c51d7bd) Icons and webmanifest\n- Service worker",
-            "tags": [
-                {
-                    "color": "#00A8F0",
-                    "color_text": "rgba(255,255,255,.8)",
-                    "id": "web-pages"
-                },
-                {
-                    "color": "#A1C8F4",
-                    "color_text": "rgba(0,0,0,.5)",
-                    "id": "general issues"
-                }
-            ],
-            "feature_id": "PLT-300",
-            "color": "57bf97",
-            "user_id": {
-                "firstName": "Max",
-                "lastName": "Lykov",
-                "id": "mxf@mail.ru"
-            },
-            "date_updated": 1693751745000,
-            "feature_type": "feature",
-            "id": "31925607-39a4-44fe-b797-9afd319853ed",
-            "progress": "{\"firstValue\":0}",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1642079275000,
-            "votes_ids": [
-                {
-                    "firstName": "Max",
-                    "lastName": "Lykov",
-                    "id": "mxf@mail.ru"
-                },
-                {
-                    "lastName": "Pearson",
-                    "firstName": "Lloyd",
-                    "id": "lloydpearson@packagecues.com"
-                },
-                {
-                    "id": "lykovmaxim@gmail.com"
-                },
-                {
-                    "firstName": "Renato",
-                    "lastName": "Pinto",
-                    "id": "renato.casa.corre@gmail.com"
-                },
-                {
-                    "firstName": "Peter",
-                    "lastName": "Goudswaard",
-                    "id": "peterg@paramountdigitalsecurity.com"
-                }
-            ],
-            "title": "PWA support",
-            "progress_value": 0
-        },
-        {
-            "votes": 4,
-            "description": "Turn on 2-factor authentication for a web-portal (using scenarios with SMS/email/Telegram plugin)",
-            "tags": [
-                {
-                    "color": "#00A8F0",
-                    "color_text": "rgba(255,255,255,.8)",
-                    "id": "web-pages"
-                }
-            ],
-            "feature_id": "PLT-236",
-            "color": "57bf97",
-            "user_id": {
-                "lastName": "Nazarov",
-                "firstName": "Oleg",
-                "id": "olegnazarov@hotmail.com"
-            },
-            "date_updated": 1670519010000,
-            "feature_type": "feature",
-            "id": "d2783c62-b8b8-4000-91d3-4b85baa4c333",
-            "progress": "{\"firstValue\":0}",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1629759014000,
-            "votes_ids": [
-                {
-                    "lastName": "Nazarov",
-                    "firstName": "Oleg",
-                    "id": "olegnazarov@hotmail.com"
-                },
-                {
-                    "lastName": "Pearson",
-                    "firstName": "Lloyd",
-                    "id": "lloydpearson@packagecues.com"
-                },
-                {
-                    "id": "trustpropsonline@gmail.com"
-                },
-                {
-                    "firstName": "Peter",
-                    "lastName": "Goudswaard",
-                    "id": "peterg@paramountdigitalsecurity.com"
-                }
-            ],
-            "title": "Two-factor authentication for Web-portal",
-            "progress_value": 0
-        },
-        {
-            "votes": 4,
-            "description": "Direct link to object Card",
-            "tags": [
-                {
-                    "color": "#00A8F0",
-                    "color_text": "rgba(255,255,255,.8)",
-                    "id": "web-pages"
-                }
-            ],
-            "feature_id": "PLT-259",
-            "color": "57bf97",
-            "user_id": {
-                "lastName": "Ershov",
-                "firstName": "Pavel",
-                "id": "pavel@directual.com"
-            },
-            "date_updated": 1670519010000,
-            "feature_type": "feature",
-            "id": "220720a0-63bc-4c39-979e-ad1d07c96d74",
-            "progress": "{\"firstValue\":30}",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1633205085000,
-            "votes_ids": [
-                {
-                    "firstName": "Egor",
-                    "lastName": "Baev",
-                    "id": "artosiris@gmail.com"
-                },
-                {
-                    "lastName": "Pearson",
-                    "firstName": "Lloyd",
-                    "id": "lloydpearson@packagecues.com"
-                },
-                {
-                    "firstName": "JOHNLY",
-                    "lastName": "NARAG",
-                    "id": "johnly_s_narag@yahoo.com"
-                },
-                {
-                    "firstName": "Joses",
-                    "lastName": "Saumaitoga",
-                    "id": "josesjjs@tpg.com.au"
-                }
-            ],
-            "title": "Save Cards/Table parameters in URL + direct link to Card",
-            "progress_value": 30
-        },
-        {
-            "votes": 4,
-            "description": "Add the option to close the window after editing the fields when clicking the button \"Save changes\"",
-            "tags": [
-                {
-                    "color": "#00A8F0",
-                    "color_text": "rgba(255,255,255,.8)",
-                    "id": "web-pages"
-                }
-            ],
-            "feature_id": "PLT-260",
-            "color": "57bf97",
-            "user_id": {
-                "firstName": "Yurii",
-                "lastName": "Ruban",
-                "id": "verstku@gmail.com"
-            },
-            "date_updated": 1670519010000,
-            "feature_type": "feature",
-            "id": "0fed87d6-4eae-4b35-918d-6e1e2feedbc2",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1633349194000,
-            "votes_ids": [
-                {
-                    "firstName": "Yurii",
-                    "lastName": "Ruban",
-                    "id": "verstku@gmail.com"
-                },
-                {
-                    "lastName": "Online",
-                    "firstName": "Bisapco",
-                    "id": "atr.service.msk@gmail.com"
-                },
-                {
-                    "firstName": "JOHNLY",
-                    "lastName": "NARAG",
-                    "id": "johnly_s_narag@yahoo.com"
-                },
-                {
-                    "id": "mf.alexander@gmail.com"
-                }
-            ],
-            "title": "Add the option to close the window after editing the fields",
-            "progress_value": 0
         }
     ],
-    "totalPages": 3,
+    "totalPages": 6,
     "pageNumber": 0,
     "error": null,
     "fieldScheme": [
@@ -3442,7 +2796,6 @@ let exampleTable = {
             "changedBy": 1,
             "_settings": null,
             "_nativeIndexSettings": null,
-            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "name": "Username (login)",
@@ -3471,6 +2824,7 @@ let exampleTable = {
                 "json": false,
                 "array": false
             },
+            "objectIDSysName": "id",
             "folderId": null
         },
         "1385610": {
@@ -3494,7 +2848,6 @@ let exampleTable = {
             "changedBy": 1,
             "_settings": null,
             "_nativeIndexSettings": null,
-            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "name": "id",
@@ -3523,6 +2876,7 @@ let exampleTable = {
                 "json": false,
                 "array": false
             },
+            "objectIDSysName": "id",
             "folderId": 33625685
         },
         "1385613": {
@@ -3533,7 +2887,7 @@ let exampleTable = {
             "dateCreated": "2021-05-12T15:14:45Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"status\",\"name\":\"Status\",\"dataType\":\"string\",\"id\":\"23221620832490508\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false}]",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"status\",\"dataType\":\"string\",\"name\":\"Status\",\"id\":\"23221620832490508\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@who\",\"dataType\":\"string\",\"name\":\"who changed\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@dateCreated\",\"dataType\":\"date\",\"name\":\"date created\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@dateChanged\",\"dataType\":\"date\",\"name\":\"date changed\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false}]",
             "jsonGroupSettings": null,
             "jsonViewIdSettings": "[{\"sysName\":\"status\"}]",
             "jsonSettings": null,
@@ -3546,7 +2900,6 @@ let exampleTable = {
             "changedBy": 1,
             "_settings": null,
             "_nativeIndexSettings": null,
-            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "name": "id",
@@ -3575,6 +2928,7 @@ let exampleTable = {
                 "json": false,
                 "array": false
             },
+            "objectIDSysName": "id",
             "folderId": 33625685
         },
         "1386924": {
@@ -3585,7 +2939,7 @@ let exampleTable = {
             "dateCreated": "2021-05-19T07:32:38Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"color\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"36801751108901500\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"color_text\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"42251751109783628\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false}]",
+            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"color\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"36801751108901500\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"color_text\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"42251751109783628\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false}]",
             "jsonGroupSettings": null,
             "jsonViewIdSettings": "[{\"sysName\":\"id\"}]",
             "jsonSettings": null,
@@ -3598,7 +2952,6 @@ let exampleTable = {
             "changedBy": 1,
             "_settings": null,
             "_nativeIndexSettings": null,
-            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
                 "name": "id",
@@ -3627,6 +2980,7 @@ let exampleTable = {
                 "json": false,
                 "array": false
             },
+            "objectIDSysName": "id",
             "folderId": 33625685
         }
     },
@@ -3669,115 +3023,14 @@ export const Regular = {
   },
 };
 
-export const WithDataActions = {
+// Story с кастомными фильтрами для карточек
+export const CustomHTMLFilters = {
   args: {
-    data: {
-      "sl": "All_products",
-      "pageSize": "30", 
-      "headerField": null,
-      "params": {
-        "comp_ID": "DataActions",
-        "cards_layout": "grid",
-        "card_layout_type": "regular",
-        "card_type_dir": {
-          "image_height": 200,
-          "body": `
-            <div style="padding: 12px;">
-              <h3>{{name}}</h3>
-              <p>{{description}}</p>
-              
-              <!-- Кнопка для вызова экшона -->
-              <button data-action-type="action" 
-                      data-action-data="like_action"
-                      style="background: #007bff; color: white; border: none; padding: 8px 16px; border-radius: 4px; margin: 4px;">
-                👍 Лайк
-              </button>
-              
-              <!-- Ссылка для перехода на страницу -->
-              <a data-action-type="route" 
-                 data-action-data="/profile/{{id}}"
-                 style="display: inline-block; background: #28a745; color: white; text-decoration: none; padding: 8px 16px; border-radius: 4px; margin: 4px;">
-                👤 Профиль
-              </a>
-              
-              <!-- Кнопка для открытия модального окна -->
-              <span data-action-type="modal" 
-                    data-action-data="/edit/{{id}}"
-                    style="display: inline-block; background: #ffc107; color: black; padding: 8px 16px; border-radius: 4px; margin: 4px; cursor: pointer;">
-                ✏️ Редактировать
-              </span>
-            </div>
-          `,
-          "image": "{{photo}}",
-          "image_border_radius": 8,
-          "image_padding": 0,
-          "paraTemplateEngine": "front"
-        },
-        "card_min_height": 50,
-        "grid_layout__wideDesktop": 3,
-        "grid_layout__desktop": 2,
-        "card_padding": 12,
-        "card_border": 1,
-        "general": {
-          "allowPagination": false
-        },
-        "actions": [
-          {
-            "id": "like_action",
-            "name": "like_action", 
-            "actionType": "endpoint",
-            "endpoint": "/api/like",
-            "mapping": [
-              {"field": "objectId", "value": "{{id}}"},
-              {"field": "action", "value": "like"}
-            ]
-          },
-          {
-            "id": "share_action",
-            "name": "share_action",
-            "actionType": "endpoint", 
-            "endpoint": "/api/share",
-            "mapping": [
-              {"field": "objectId", "value": "{{id}}"},
-              {"field": "action", "value": "share"}
-            ]
-          }
-        ]
-      },
-      "data": [
-        {
-          "id": "1",
-          "name": "Карточка с data-action",
-          "description": "Эта карточка демонстрирует работу с data-action элементами",
-          "photo": "https://via.placeholder.com/300x200/4CAF50/white?text=Card+1"
-        },
-        {
-          "id": "2", 
-          "name": "Вторая карточка",
-          "description": "Еще один пример интерактивной карточки",
-          "photo": "https://via.placeholder.com/300x200/2196F3/white?text=Card+2"
-        },
-        {
-          "id": "3",
-          "name": "Третья карточка", 
-          "description": "И еще одна карточка для демонстрации",
-          "photo": "https://via.placeholder.com/300x200/FF9800/white?text=Card+3"
-        }
-      ]
-    },
-    callEndpoint: (endpoint, method, body, params, callback) => {
-      console.log('Mock callEndpoint:', { endpoint, method, body, params });
-      setTimeout(() => callback('ok', 'Success'), 500);
-    },
-    handleRoute: (path) => (e) => {
-      console.log('Mock handleRoute:', path);
-      alert(`Переход на: ${path}`);
-    },
-    handleModalRoute: (path) => (e) => {
-      console.log('Mock handleModalRoute:', path);
-      alert(`Открыть модальное окно: ${path}`);
-    },
-    auth: { user: "123", name: "Test User" },
+    data: exampleTable,
+    auth: authExample,
+    locale: 'ENG',
+    onChange: value => console.log(value),
+    handleRoute: value => e => console.log("route => " + value),
     debug: true
   },
 };
