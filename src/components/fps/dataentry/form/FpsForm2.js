@@ -268,6 +268,32 @@ export default function FpsForm2(props) {
       _action_conditionals_and_or = _.get(_.find(_cond_lib, { id: _.get(element, "_action_conditionals_manual_list") }), "_action_conditionals_and_or") || _action_conditionals_and_or
     }
 
+    // Логика для many_from_list - собираем условия из нескольких элементов библиотеки
+    if (_.get(element, "_action_conditionals_manual") == "many_from_list" &&
+      _.get(element, "_action_conditionals_many_conditions") &&
+      _.get(element, "_action_conditionals_many_conditions").length > 0) {
+      const _cond_lib = _.get(data, "params._condition_library")
+      const conditionIds = _.get(element, "_action_conditionals_many_conditions") || []
+      _action_conditionals_and_or = _.get(element, "_action_conditionals_many_and_or") || "AND"
+      
+      // Собираем все условия из библиотеки в один массив
+      let allConditions = []
+      let names = []
+      conditionIds.forEach(condId => {
+        const foundCondition = _.find(_cond_lib, { id: condId })
+        if (foundCondition) {
+          const conditions = _.get(foundCondition, "_conditions") || []
+          allConditions = [...allConditions, ...conditions]
+          const title = _.get(foundCondition, "title")
+          if (title) names.push(title)
+        }
+      })
+      
+      _conditions = allConditions
+      // Формируем название для дебаг режима: "Condition1 AND Condition2"
+      _name = names.length > 0 ? names.join(` ${_action_conditionals_and_or} `) : ""
+    }
+
     const checkHiddenCondition = (element) => {
       let isHidden = false
       let details = ""

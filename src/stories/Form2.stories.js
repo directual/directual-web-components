@@ -18,265 +18,277 @@ export default {
 
 
 let exampleForm = {
-        "sl": "f",
-        "pageSize": "10",
-        "headerField": null,
-        "params": {
-            "steps": [
-                {
-                    "id": "default_step",
-                    "sysName": "default step",
-                    "elements": [
-                        {
-                            "id": "elmnt_1759836006565",
-                            "type": "steps",
-                            "_formSteps": {
-                                "stepsOrder": [
-                                    "default step",
-                                    "2",
-                                    "submitted"
-                                ],
-                                "settings": {
-                                    "steps": {
-                                        "2": true,
-                                        "default step": true,
-                                        "submitted": true
-                                    }
-                                },
-                                "stepSettings": {
-                                    "default step": {
-                                        "title": "1"
-                                    }
-                                }
+    "sl": "form",
+    "pageSize": "10",
+    "headerField": null,
+    "params": {
+        "steps": [
+            {
+                "id": "default_step",
+                "sysName": "default step",
+                "elements": [
+                    {
+                        "id": "elmnt_1760781959944",
+                        "type": "text",
+                        "paraText": "Ун дос трес я достану свинорез",
+                        "_conditionalView": true,
+                        "_action_conditionals_manual": "many_from_list",
+                        "_action_conditionals_many_conditions": [
+                            "condition_1760782086837",
+                            "condition_1760782156146"
+                        ],
+                        "_action_conditionals_many_and_or": "AND",
+                        "_conditions": [
+                            {
+                                "id": "condition_1760784027839"
+                            },
+                            {
+                                "id": "condition_1760784029461"
                             }
-                        },
-                        {
-                            "id": "elmnt_1759835888683",
-                            "type": "input",
-                            "_input_fields": [
-                                {
-                                    "id": "17598358909110.0122334311122142421332341",
-                                    "_field": "hello"
-                                }
-                            ]
-                        },
-                        {
-                            "id": "elmnt_1759835912753",
-                            "type": "submit"
-                        }
-                    ],
-                    "sectionVisibility": "always"
-                },
-                {
-                    "id": "step_submitted",
-                    "sysName": "submitted",
-                    "elements": [
-                        {
-                            "id": "elmnt_1712052683797",
-                            "type": "hint",
-                            "hintColor": "ok",
-                            "hintTitle": "Спасибо!",
-                            "hintText": "Отправлено"
-                        }
-                    ]
-                },
-                {
-                    "id": "step_1759836029315",
-                    "sysName": "2"
-                }
-            ],
-            "general": {
-                "edittingOn": true,
-                "saveState": true,
-                "saveStateTo": "state",
-                "restoreState": true,
-                "showModel": true,
-                "showState": true,
-                "autosubmit": "always"
+                        ]
+                    }
+                ]
             },
-            "state": {
-                "step": "default step",
-                "popup": null,
-                "loading": "false"
-            },
-            "form_title": "form"
+            {
+                "id": "step_submitted",
+                "sysName": "submitted",
+                "elements": [
+                    {
+                        "id": "elmnt_1712052683797",
+                        "type": "hint",
+                        "hintColor": "ok",
+                        "hintTitle": "Спасибо!",
+                        "hintText": "Отправлено"
+                    }
+                ]
+            }
+        ],
+        "general": {
+            "showModel": false,
+            "showAuthModel": true,
+            "debugConditions": true
         },
-        "tableTitle": null,
-        "actions": [],
-        "headers": [
+        "_condition_library": [
             {
-                "sysName": "id",
-                "name": "id",
-                "dataType": "id",
-                "id": "0",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 0,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "array": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false
+                "id": "condition_1760782086837",
+                "_conditionalView": true,
+                "title": "роль admin",
+                "_conditions": [
+                    {
+                        "id": "condition_1760782146265",
+                        "_conditionalView_field": "WebUser.role",
+                        "_conditionalView_operator": "contains",
+                        "_conditionalView_value": "admin"
+                    }
+                ]
             },
             {
-                "sysName": "state",
-                "name": "",
-                "dataType": "json",
-                "id": "60821759835847371",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "array": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": true,
-                "indexExists": false
+                "id": "condition_1760782156146",
+                "_conditionalView": true,
+                "title": "роль moderator + id pavel",
+                "_conditions": [
+                    {
+                        "id": "condition_1760782177047",
+                        "_conditionalView_field": "WebUser.role",
+                        "_conditionalView_operator": "contains",
+                        "_conditionalView_value": "moderator"
+                    },
+                    {
+                        "id": "condition_1760782178004",
+                        "_conditionalView_field": "WebUser.id",
+                        "_conditionalView_operator": "==",
+                        "_conditionalView_value": "pavel"
+                    }
+                ]
+            }
+        ],
+        "state": {
+            "step": "default step",
+            "popup": null,
+            "loading": "false"
+        }
+    },
+    "tableTitle": null,
+    "actions": [],
+    "headers": [
+        {
+            "sysName": "id",
+            "name": "id",
+            "dataType": "id",
+            "id": "0",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "indexExists": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
+        },
+        {
+            "sysName": "autosubmit",
+            "name": "",
+            "dataType": "link",
+            "id": "20231757518842944",
+            "link": "linked",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "indexExists": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
+        },
+        {
+            "sysName": "counter",
+            "name": "",
+            "dataType": "number",
+            "id": "50951757518832563",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "indexExists": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
+        },
+        {
+            "sysName": "autosubmit2",
+            "name": "",
+            "dataType": "string",
+            "id": "92431757530264175",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "indexExists": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
+        }
+    ],
+    "data": [
+        {
+            "counter": 1,
+            "autosubmit2": "321",
+            "autosubmit": {
+                "condition": "show",
+                "id": "1"
             },
-            {
-                "sysName": "hello",
-                "name": "",
-                "dataType": "string",
-                "id": "84511759835849670",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 2,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "array": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": false,
-                "indexExists": false
-            }
-        ],
-        "data": [
-            {
-                "state": "{\n   \"step\": \"2\",\n   \"popup\": null,\n   \"loading\": \"false\"\n}",
-                "hello": "foo bar1",
-                "id": "baa7b24e-a84b-47eb-888d-e248f95cc21c"
-            }
-        ],
-        "totalPages": 1,
-        "pageNumber": 0,
-        "error": null,
-        "fieldScheme": [
-            [
-                "id",
-                99423741
-            ],
-            [
-                "state",
-                99423741
-            ],
-            [
-                "hello",
-                99423741
-            ]
-        ],
-        "writeFields": [
+            "id": "1"
+        }
+    ],
+    "totalPages": 1,
+    "pageNumber": 0,
+    "error": null,
+    "fieldScheme": [
+        [
             "id",
-            "hello",
-            "state"
+            99415483
         ],
-        "structures": {
-            "99423741": {
-                "networkID": 34443,
-                "sysName": "form",
-                "name": "form",
-                "id": 99423741,
-                "dateCreated": "2025-10-07T11:17:20Z",
-                "hidden": false,
-                "dateHidden": null,
-                "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false},{\"sysName\":\"state\",\"name\":\"\",\"dataType\":\"json\",\"id\":\"60821759835847371\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"indexExists\":false},{\"sysName\":\"hello\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"84511759835849670\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false}]",
-                "jsonGroupSettings": null,
-                "jsonViewIdSettings": null,
-                "jsonSettings": null,
-                "jsonNativeIndexSettings": null,
-                "indexEnabled": true,
-                "lastIndexUpdate": 0,
-                "indexName": "",
-                "dateChanged": "2025-10-07T11:17:35Z",
-                "createBy": 1,
-                "changedBy": 1,
-                "_settings": null,
-                "_nativeIndexSettings": null,
-                "objectIDSysName": "id",
-                "innerIDField": {
-                    "sysName": "id",
-                    "name": "id",
-                    "dataType": "id",
-                    "id": "0",
-                    "link": "",
-                    "group": "0",
-                    "tags": "",
-                    "indexing": false,
-                    "ordering": false,
-                    "description": null,
-                    "weight": null,
-                    "order": 0,
-                    "linkIndexFieldSysName": [],
-                    "defaultValue": "",
-                    "constraints": null,
-                    "synthetic": false,
-                    "format": null,
-                    "formatOptions": {},
-                    "groupName": null,
-                    "array": false,
-                    "linkOrArrayLinkType": false,
-                    "linkType": false,
-                    "arrayLink": false,
-                    "typeVariable": {},
-                    "json": false,
-                    "indexExists": false
-                },
-                "folderId": null
-            }
-        },
-        "isSuccessWrite": false,
-        "writeError": null,
-        "writeResponse": null,
-        "fileds": [
-            {
+        [
+            "autosubmit.id",
+            99415484
+        ],
+        [
+            "autosubmit.condition",
+            99415484
+        ],
+        [
+            "counter",
+            99415483
+        ],
+        [
+            "autosubmit2",
+            99415483
+        ]
+    ],
+    "writeFields": [
+        "id",
+        "autosubmit",
+        "counter",
+        "autosubmit2"
+    ],
+    "structures": {
+        "99415483": {
+            "networkID": 34148,
+            "sysName": "form",
+            "name": "form",
+            "id": 99415483,
+            "dateCreated": "2025-09-10T14:43:08Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"autosubmit\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"20231757518842944\",\"link\":\"linked\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"counter\",\"name\":\"\",\"dataType\":\"number\",\"id\":\"50951757518832563\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"autosubmit2\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"92431757530264175\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": null,
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2025-09-10T18:51:17Z",
+            "createBy": 21,
+            "changedBy": 21,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "innerIDField": {
                 "sysName": "id",
                 "name": "id",
                 "dataType": "id",
@@ -296,19 +308,43 @@ let exampleForm = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "array": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "typeVariable": {},
                 "json": false,
-                "indexExists": false
+                "array": false
             },
-            {
-                "sysName": "hello",
-                "name": "",
-                "dataType": "string",
-                "id": "84511759835849670",
+            "objectIDSysName": "id",
+            "folderId": null
+        },
+        "99415484": {
+            "networkID": 34148,
+            "sysName": "linked",
+            "name": "linked",
+            "id": 99415484,
+            "dateCreated": "2025-09-10T14:43:19Z",
+            "hidden": false,
+            "dateHidden": null,
+            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"condition\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"71061757518888915\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false}]",
+            "jsonGroupSettings": null,
+            "jsonViewIdSettings": null,
+            "jsonSettings": null,
+            "jsonNativeIndexSettings": null,
+            "indexEnabled": true,
+            "lastIndexUpdate": 0,
+            "indexName": "",
+            "dateChanged": "2025-09-10T15:41:35Z",
+            "createBy": 21,
+            "changedBy": 21,
+            "_settings": null,
+            "_nativeIndexSettings": null,
+            "innerIDField": {
+                "sysName": "id",
+                "name": "id",
+                "dataType": "id",
+                "id": "0",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -316,7 +352,7 @@ let exampleForm = {
                 "ordering": false,
                 "description": null,
                 "weight": null,
-                "order": 2,
+                "order": 0,
                 "linkIndexFieldSysName": [],
                 "defaultValue": "",
                 "constraints": null,
@@ -324,50 +360,142 @@ let exampleForm = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "array": false,
+                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "typeVariable": {},
                 "json": false,
-                "indexExists": false
+                "array": false
             },
-            {
-                "sysName": "state",
-                "name": "",
-                "dataType": "json",
-                "id": "60821759835847371",
-                "link": "",
-                "group": "0",
-                "tags": "",
-                "indexing": false,
-                "ordering": false,
-                "description": null,
-                "weight": null,
-                "order": 1,
-                "linkIndexFieldSysName": [],
-                "defaultValue": "",
-                "constraints": null,
-                "synthetic": false,
-                "format": null,
-                "formatOptions": {},
-                "groupName": null,
-                "array": false,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
-                "typeVariable": {},
-                "json": true,
-                "indexExists": false
-            }
-        ],
-        "quickSearch": "",
-        "httpParams": {},
-        "cardCustomHtml": null,
-        "cardCustomLayout": {},
-        "comment": "",
-        "response": false
-    }
+            "objectIDSysName": "id",
+            "folderId": null
+        }
+    },
+    "isSuccessWrite": false,
+    "writeError": null,
+    "writeResponse": null,
+    "fileds": [
+        {
+            "sysName": "id",
+            "name": "id",
+            "dataType": "id",
+            "id": "0",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "indexExists": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
+        },
+        {
+            "sysName": "autosubmit",
+            "name": "",
+            "dataType": "link",
+            "id": "20231757518842944",
+            "link": "linked",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "indexExists": false,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
+        },
+        {
+            "sysName": "counter",
+            "name": "",
+            "dataType": "number",
+            "id": "50951757518832563",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "indexExists": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
+        },
+        {
+            "sysName": "autosubmit2",
+            "name": "",
+            "dataType": "string",
+            "id": "92431757530264175",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "indexExists": false,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "array": false
+        }
+    ],
+    "quickSearch": "",
+    "httpParams": {},
+    "cardCustomHtml": null,
+    "cardCustomLayout": {},
+    "comment": "",
+    "response": false
+}
 
 let authExample = {
     "empl_who_delegated_ids": "",
