@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useMemo } from "react"
 import styles from './form2.module.css'
 import { FormSection } from "./FpsForm"
 import InnerHTML from 'dangerously-set-html-content'
@@ -14,13 +14,13 @@ import Hint from '../../hint/hint'
 import { Tags } from '../../tags/Tags'
 import { debounce } from 'lodash'
 
-export function FpsForm2Input(props) {
+function FpsForm2InputComponent(props) {
     const { field, template, dict, userDebug, lang, loading, params, editModel, callEndpoint, model, data, state, locale, checkHidden } = props
 
     const fieldInfo = _.find(_.get(data, "fileds"), { sysName: field._field }) || {}
     const type = `${fieldInfo.dataType}${fieldInfo.format ? `_${fieldInfo.format}` : ''}`
 
-    const debouncedCallEndpint = debounce(callEndpoint, 200);
+    const debouncedCallEndpint = useMemo(() => debounce(callEndpoint, 200), [callEndpoint]);
 
     // console.log('field', field)
     // console.log('fieldInfo', fieldInfo)
@@ -95,6 +95,9 @@ export function FpsForm2Input(props) {
     </div>
 }
 
+// Мемоизируем компонент для предотвращения ненужных ререндеров
+export const FpsForm2Input = React.memo(FpsForm2InputComponent)
+
 function FieldDQL(props) {
     const { field, locale, fields, lang, template, model, state, onChange, fieldInfo, code, disabled } = props
     const basicProps = { onChange, locale, lang, disabled }
@@ -116,7 +119,7 @@ export function FpsForm2HiddenInput(props) {
     const fieldInfo = _.find(_.get(data, "fileds"), { sysName: field._field }) || {}
     const type = `${fieldInfo.dataType}${fieldInfo.format ? `_${fieldInfo.format}` : ''}`
 
-    const debouncedCallEndpint = debounce(callEndpoint, 300);
+    const debouncedCallEndpint = useMemo(() => debounce(callEndpoint, 300), [callEndpoint]);
     let comp = <FieldText {...props} fieldInfo={fieldInfo} />
 
     switch (type) {
@@ -168,12 +171,13 @@ function FieldText(props) {
     const defaultDebounce = 0
     const debounceTime = _.get(field, "_field_set_debounce") ? _.get(field, "_field_debounce_value", defaultDebounce) : defaultDebounce
     const cx = null
-    const debouncedOnChange = debounce(onChangeHandler, debounceTime)
 
     function onChangeHandler(value) {
         clearTimeout(cx);
         onChange(value)
     }
+
+    const debouncedOnChange = useMemo(() => debounce(onChangeHandler, debounceTime), [debounceTime, onChange])
 
     const parseJson = json => {
         if (!json) return []

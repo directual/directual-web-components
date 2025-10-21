@@ -14,7 +14,7 @@ import FormSteps from './FormSteps'
 import _ from 'lodash'
 import ElementArray from './FpsForm2arrayLink'
 
-export default function FormElement(props) {
+function FormElementComponent(props) {
     const { element, template, params, checkHidden, userDebug, hidden, setModel, handleModalRoute } = props
 
     let render
@@ -51,7 +51,7 @@ export default function FormElement(props) {
             break;
     }
 
-    console.log("element", element)
+    // console.log("element", element) // ОПТИМИЗАЦИЯ: убрал из рендера
 
     return <div style={hidden && !(_.get(params, "general.debugConditions") && userDebug) ? { display: 'none' } : {}} className={`${styles.elementWrapper} D_FPS_FORM2_ELEMENT_WRAPPER`}>
         <div className={`${(element._conditionalView && _.get(params, "general.debugConditions") && userDebug)
@@ -72,6 +72,9 @@ export default function FormElement(props) {
         </div>
     </div>
 }
+
+// Мемоизируем FormElement для предотвращения ненужных ререндеров
+export default React.memo(FormElementComponent)
 
 function ElementSteps(props) {
     const { element, template, state } = props
