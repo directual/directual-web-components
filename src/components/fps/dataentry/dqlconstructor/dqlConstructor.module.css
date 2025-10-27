@@ -65,7 +65,7 @@
 .dqlConstructor_line {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
     gap: 8px;
     margin-bottom: 8px;
     padding: 8px;
@@ -75,8 +75,12 @@
 }
 
 .dqlConstructor_line > div {
-    flex: 1;
+    flex: 1 1 0;
     min-width: 0;
+}
+
+.dqlConstructor_line > button {
+    flex: 0 0 auto;
 }
 
 @media (max-width: 768px) {
@@ -151,4 +155,96 @@
 
 .radio_option.or {
     color: #eca83b;
+}
+
+/* Кнопка настроек */
+.settingsButton {
+    min-width: unset !important;
+    padding: 8px !important;
+    background: transparent !important;
+    border: none !important;
+    color: #999 !important;
+    transition: all 0.2s ease;
+}
+
+.settingsButton:hover {
+    color: #666 !important;
+    background: rgba(0, 0, 0, 0.04) !important;
+}
+
+.settingsButton:active,
+.settingsButton.active {
+    color: #57bf97 !important;
+    background: rgba(87, 191, 151, 0.1) !important;
+}
+
+/* Попап настроек */
+.settingsPopup {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 4px);
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 8px;
+    z-index: 1000;
+    min-width: 160px;
+    animation: fadeIn 0.15s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Опции в попапе */
+.settingsOptions {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.settingsOption {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: background 0.15s ease;
+    user-select: none;
+}
+
+.settingsOption:hover {
+    background: #f5f5f5;
+}
+
+.settingsOption input[type="radio"] {
+    margin: 0;
+    cursor: pointer;
+}
+
+.settingsOption span {
+    font-size: 13px;
+    color: #333;
+    font-weight: 500;
+}
+
+.settingsOption input[type="radio"]:checked + span {
+    color: #57bf97;
+}
+
+/* Подсказка с датой */
+.dateHint {
+    font-size: 11px;
+    color: #666;
+    font-style: italic;
+    margin-top: 2px;
 }

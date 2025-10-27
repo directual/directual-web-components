@@ -72,6 +72,18 @@ const testFields = [
         "vars": "global"
       },
       {
+        "sysName": "date",
+        "name": "date",
+        "dataType": "date",
+        "link": ""
+      },
+      {
+        "sysName": "price",
+        "name": "price",
+        "dataType": "number",
+        "link": ""
+      },
+      {
         "sysName": "ContextVar",
         "name": "Context Variables (3)",
         "dataType": "link",
