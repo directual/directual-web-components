@@ -59,10 +59,12 @@ export default function FpsForm2(props) {
   const [model, setModel] = useState({ ...composeInitialModel() })
   const modelRef = useRef(model);
   const [extendedModel, setExtendedModel] = useState({ ...composeInitialModel() }) // тут было gatherDefaults
+  const extendedModelRef = useRef(extendedModel);
   const [originalModel, setOriginalModel] = useState({ ...composeInitialModel() }) // тут было gatherDefaults
   const [originalExtendedModel, setOriginalExtendedModel] = useState({ ...composeInitialModel() }) // тут было gatherDefaults
   const previousModel = usePrevious(model);
   const [state, setState] = useState(_.get(data, "params.state") || defaultState)
+  const stateRef = useRef(state);
   const previousState = usePrevious(state);
   const transformedState = {
     FormState: state, WebUser: { ...auth, ...{ id: auth.user } }
@@ -94,6 +96,14 @@ export default function FpsForm2(props) {
   useEffect(() => {
     modelRef.current = model;
   }, [model]);
+
+  useEffect(() => {
+    stateRef.current = state;
+  }, [state]);
+
+  useEffect(() => {
+    extendedModelRef.current = extendedModel;
+  }, [extendedModel]);
 
   const [autoSubmitStep, setAutoSubminStep] = useState(state.step)
 
@@ -542,15 +552,15 @@ export default function FpsForm2(props) {
     // console.log("💾 currentModel:", currentModel);
     // console.log("extendedModel inside submit")
     // console.log(newExtendedModel)
-    newExtendedModel = newExtendedModel || extendedModel
+    newExtendedModel = newExtendedModel || extendedModelRef.current
 
-    if (!currentModel) { currentModel = model }
+    if (!currentModel) { currentModel = modelRef.current }
     clearTimeout(cx);
 
     newData = newData || {}
 
     let localModel = { ...currentModel, ...newData.model }
-    let localState = { ...templateState(state, localModel), ...newData.state }
+    let localState = { ...templateState(stateRef.current, localModel), ...newData.state }
 
     //setState({ ...templateState(state,localModel), _submitError: "" })
     let modelToSend = {}
@@ -633,7 +643,7 @@ export default function FpsForm2(props) {
         return fieldName ? '"' + fieldName + '"' : '"' + i + '"'
       })
       const errMessage = dict[lang].form.emptyRequired + emptyFields.join(", ")
-      setState({ ...templateState(state, localModel), _submitError: errMessage })
+      setState({ ...templateState(stateRef.current, localModel), _submitError: errMessage })
       finish && finish(true)
       return;
     }
@@ -755,13 +765,13 @@ export default function FpsForm2(props) {
           setOriginalModel(modelUpdate)
           setOriginalExtendedModel(extendedModelUpdate)
         } else {
-          setState({ ...state, _apiError: data.msg })
+          setState({ ...stateRef.current, _apiError: data.msg })
           setLoading(false)
           finish && finish(true)
         }
       }
     )
-  }, [data, fields, params, model, extendedModel, state, modelIsChanged, templateState, callEndpoint, gatherDefaults, template, setModel, setExtendedModel, setOriginalModel, setOriginalExtendedModel, setState, setLoading, refreshOptions, handleRoute, dict, lang]) // Добавил все необходимые зависимости
+  }, [data, fields, params, modelIsChanged, templateState, callEndpoint, gatherDefaults, template, setModel, setExtendedModel, setOriginalModel, setOriginalExtendedModel, setState, setLoading, refreshOptions, handleRoute, dict, lang])
 
   // DEBOUNCED ФУНКЦИИ - определяются ПОСЛЕ submit
   const submitOnModelRef = useRef(debounce(submit, 1400));
@@ -774,6 +784,11 @@ export default function FpsForm2(props) {
 
   // Обновляем рефы когда submit функция меняется
   useEffect(() => {
+    // Отменяем старые pending вызовы перед пересозданием
+    submitOnModelRef.current.cancel();
+    submitOnStateRef.current.cancel();
+    submitDebouncedRef.current.cancel();
+    
     submitOnModelRef.current = debounce(submit, 1400);
     submitOnStateRef.current = debounce(submit, 1400);
     submitDebouncedRef.current = debounce((finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData, actionReq, setActionError, resetModel, currentModel, newExtendedModel) => {
