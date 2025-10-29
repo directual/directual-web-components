@@ -320,14 +320,138 @@ function ElementSubheader(props) {
 }
 
 function ElementText(props) {
-    const { element, template, templateEngine, dict, lang, extendedModel, state, data, callEndpointPOST, handleRoute, handleModalRoute, auth } = props;
+    const { element, template, templateEngine, dict, lang, extendedModel, state, data, callEndpointPOST, handleRoute, handleModalRoute, auth,
+        onSubmit, setState, setExtendedModel, setModel, model, originalModel, originalExtendedModel } = props;
 
     const textRef = useRef(null)
     const actionsSettings = _.get(data, "params.actions", [])
+    const fields = _.get(data, "fileds")
     const apiTemplate = element.paraTemplateEngine === 'api';
+    const [loading, setLoading] = useState(false)
 
     // Use state for templatedText and include state and extendedModel in the dependencies
     const [templatedText, setTemplatedText] = useState(apiTemplate ? (dict[lang].loading || "loading...") : template(element.paraText, state));
+
+    // Хелперы для трансформации (как в ElementAction)
+    const transformObject = array => _.reduce(array, (result, item) => {
+        if (!array || array.length == 0) return {};
+        const { field, value } = item;
+        result[field] = template(value, true);
+        return result;
+    }, {});
+
+    const transformState = (array, type) => _.reduce(array, (result, item) => {
+        if (!array || array.length == 0) return {};
+        const { field, value } = item;
+        if (field.substring(0, 9) == "FormState" && type == "state") {
+            result[field.substring(10)] = template(value);
+        }
+        if (field.substring(0, 9) !== "FormState" && type == "model") {
+            result[field] = template(value);
+        }
+        return result;
+    }, {});
+
+    // performAction - полная копия логики из ElementAction
+    const performAction = (action, finish) => {
+        console.log("performAction")
+        console.log(action)
+
+        var copyModel = { ...model }
+        var copyState = { ...state }
+        var copyExtendedModel = { ...extendedModel }
+
+        if (action.discardModel) {
+            copyModel = originalModel
+            setModel(originalModel)
+            copyExtendedModel = originalExtendedModel
+            setExtendedModel(originalExtendedModel)
+        }
+
+        if (_.get(action, "actionType") == "state" || _.get(action, "actionType") == "endpoint_state" || !_.get(action, "actionType")) {
+            const payloadState = transformState(action.stateMapping, "state")
+            const payloadModel = transformState(action.stateMapping, "model")
+            copyState = { ...copyState, ...payloadState }
+            copyModel = { ...copyModel, ...payloadModel }
+            copyExtendedModel = { ...copyExtendedModel, ...payloadModel }
+
+            if (action.actionSubmit && _.get(action, "actionType") !== "endpoint_state") {
+                setLoading(true)
+                onSubmit(
+                    (res) => {
+                        setLoading(false);
+                        finish && finish(true);
+                    },
+                    true,
+                    undefined,
+                    true,
+                    undefined,
+                    { state: copyState, model: { ...model, ...payloadModel } },
+                    false, // actionFormat._action_standardRequired - для data-action не используем
+                    err => {
+                        err && finish && finish(false);
+                        setLoading(false)
+                    },
+                    action.resetModel
+                )
+            } else {
+                setState(copyState)
+                if (action.resetModel) {
+                    copyModel = {}
+                    copyExtendedModel = {}
+                    setModel({})
+                    setExtendedModel({})
+                } else {
+                    setModel(copyModel)
+                    setExtendedModel(copyExtendedModel)
+                }
+                setLoading(false)
+            }
+        }
+
+        if ((_.get(action, "actionType") == "endpoint" || _.get(action, "actionType") == "endpoint_state" || !_.get(action, "actionType")) && action.endpoint) {
+            let payload = transformObject(action.mapping)
+            if (action.sendModel) {
+                payload = { ...copyModel, ...payload }
+            }
+            setLoading(true)
+            if (action.actionSubmit) {
+                console.log("onSubmit")
+                onSubmit(
+                    (res) => {
+                        console.log("finish onSubmit", res)
+                        console.log("payload => " + action.endpoint)
+                        console.log(payload)
+                        callEndpointPOST(action.endpoint, payload, (result) => {
+                            setLoading(false)
+                            finish && finish(true)
+                            console.log("result => " + action.endpoint)
+                            console.log(result)
+                        })
+                    },
+                    true,
+                    undefined,
+                    true,
+                    undefined,
+                    { state: copyState, model: copyModel },
+                    false, // actionFormat._action_standardRequired
+                    err => {
+                        err && finish && finish(false);
+                        setLoading(false)
+                    },
+                    action.resetModel)
+            } else {
+                console.log("payload => " + action.endpoint)
+                console.log(payload)
+                callEndpointPOST(action.endpoint, payload, (result) => {
+                    setLoading(false)
+                    finish && finish(true);
+                    console.log("result => " + action.endpoint)
+                    console.log(result)
+                })
+            }
+        }
+    }
 
     // Обработчик кликов по элементам с data-action-type в тексте
     useEffect(() => {
@@ -360,22 +484,10 @@ function ElementText(props) {
                     
                     console.log('Executing form text element action:', actionData, actionSettings)
                     
-                    // Выполняем экшон
-                    const transformObject = array => _.reduce(array, (result, item) => {
-                        if (!array || array.length == 0) return {};
-                        const { field, value } = item;
-                        result[field] = template(value, true);
-                        return result;
-                    }, {});
-
-                    if ((_.get(actionSettings, "actionType") == "endpoint" || !_.get(actionSettings, "actionType")) && actionSettings.endpoint) {
-                        let payload = transformObject(actionSettings.mapping)
-                        
-                        console.log('Calling form text element action endpoint:', actionSettings.endpoint, 'with payload:', payload)
-                        callEndpointPOST && callEndpointPOST(actionSettings.endpoint, payload, (result) => {
-                            console.log('Form text element action result:', result)
-                        })
-                    }
+                    // Выполняем экшон через performAction (как в ElementAction)
+                    performAction(actionSettings, (success) => {
+                        console.log('Form text element action finished:', success)
+                    })
                     break
                     
                 case 'route':
@@ -410,7 +522,7 @@ function ElementText(props) {
                 textElement.removeEventListener('click', handleDataActionClick)
             }
         }
-    }, [extendedModel, state, callEndpointPOST, handleRoute, handleModalRoute, actionsSettings, template, templatedText])
+    }, [extendedModel, state, callEndpointPOST, handleRoute, handleModalRoute, actionsSettings, template, templatedText, model, setState, setModel, setExtendedModel, onSubmit, originalModel, originalExtendedModel])
 
     useEffect(() => {
         const fetchData = async (payload, setValue) => {
