@@ -82,8 +82,6 @@ export default function FpsForm2(props) {
   const isSocketUpdateRef = useRef(false); // ref для отслеживания обновлений от сокета
   const restoredStepRef = useRef(null); // храним step при восстановлении state из поля
   const isAutoSubmittingRef = useRef(false); // флаг что прямо сейчас идёт автосабмит
-  const submitCounterRef = useRef(0); // счетчик всех submit'ов для предотвращения race condition
-  const lastCompletedSubmitRef = useRef(0); // ID последнего успешно завершенного submit'а
 
   // console.log(model)
   // console.log(originalModel)
@@ -563,12 +561,12 @@ export default function FpsForm2(props) {
     if (autoSubmit) {
       console.log("🔒 AUTOSUBMIT STARTED - setting lock (isAutoSubmittingRef.current = true)");
       isAutoSubmittingRef.current = true;
+      
+      // Включаем лоадинг если настройка активна
+      if (_.get(params, "general.showLoadingIndicatorOnAutosubmit")) {
+        setState(prevState => ({ ...prevState, loading: "true" }));
+      }
     }
-    
-    // Инкрементируем счетчик submit'ов для отслеживания race condition
-    submitCounterRef.current += 1;
-    const currentSubmitId = submitCounterRef.current;
-    console.log("🆔 Submit ID assigned:", currentSubmitId, "(autoSubmit:", autoSubmit + ")");
 
     // console.log("💾 SUBMIT FUNCTION CALLED");
     // console.log("💾 autoSubmit:", autoSubmit);
@@ -632,6 +630,10 @@ export default function FpsForm2(props) {
       setLoading(false)
       // Сбрасываем флаг асинхронно, чтобы избежать гонки с useEffect
       if (autoSubmit) {
+        // Выключаем лоадинг если был включен
+        if (_.get(params, "general.showLoadingIndicatorOnAutosubmit")) {
+          setState(prevState => ({ ...prevState, loading: "false" }));
+        }
         queueMicrotask(() => {
           console.log("🔓 Lock released (model not changed)");
           isAutoSubmittingRef.current = false;
@@ -673,7 +675,13 @@ export default function FpsForm2(props) {
         return fieldName ? '"' + fieldName + '"' : '"' + i + '"'
       })
       const errMessage = dict[lang].form.emptyRequired + emptyFields.join(", ")
-      setState({ ...templateState(stateRef.current, localModel), _submitError: errMessage })
+      
+      // Выключаем лоадинг если был включен
+      const validationErrorState = autoSubmit && _.get(params, "general.showLoadingIndicatorOnAutosubmit")
+        ? { ...templateState(stateRef.current, localModel), _submitError: errMessage, loading: "false" }
+        : { ...templateState(stateRef.current, localModel), _submitError: errMessage };
+      
+      setState(validationErrorState)
       // Сбрасываем флаг асинхронно, чтобы избежать гонки с useEffect
       if (autoSubmit) {
         queueMicrotask(() => {
@@ -696,6 +704,12 @@ export default function FpsForm2(props) {
       // console.log("actionError")
       // console.log(actionError)
       setActionError && setActionError(actionError)
+      
+      // Выключаем лоадинг если был включен
+      if (autoSubmit && _.get(params, "general.showLoadingIndicatorOnAutosubmit")) {
+        setState(prevState => ({ ...prevState, loading: "false" }));
+      }
+      
       // Сбрасываем флаг асинхронно, чтобы избежать гонки с useEffect
       if (autoSubmit) {
         queueMicrotask(() => {
@@ -727,31 +741,6 @@ export default function FpsForm2(props) {
       (result, data) => {
         setActionError && setActionError(actionError)
         if (result == "ok") {
-          // КРИТИЧЕСКАЯ ПРОВЕРКА: если уже был запущен новый submit - не перетираем модель старым ответом
-          if (currentSubmitId < submitCounterRef.current) {
-            console.log("⚠️ SKIPPING MODEL UPDATE from outdated submit");
-            console.log("   Response submit ID:", currentSubmitId);
-            console.log("   Current submit counter:", submitCounterRef.current);
-            console.log("   This response is STALE - model was changed after this submit was sent");
-            
-            lastCompletedSubmitRef.current = currentSubmitId;
-            setLoading(false);
-            
-            // Сбрасываем флаг автосабмита асинхронно
-            if (autoSubmit) {
-              queueMicrotask(() => {
-                console.log("🔓 Lock released (stale response)");
-                isAutoSubmittingRef.current = false;
-              });
-            }
-            
-            finish && finish(data);
-            return; // НЕ обновляем model/state/extendedModel
-          }
-          
-          console.log("✅ Processing submit response ID:", currentSubmitId, "- this is the LATEST submit");
-          lastCompletedSubmitRef.current = currentSubmitId;
-          
           let saveState = { ...localState }
           let stateUpdate = {}
           let modelUpdate = {}
@@ -814,8 +803,14 @@ export default function FpsForm2(props) {
 
           finish && finish(data)
           let extendedModelUpdate = { ...newExtendedModel, ...apiResponseData }
+          
+          // Выключаем лоадинг после обработки ответа, не перезатирая stateUpdate из API
+          const finalStateUpdate = autoSubmit && _.get(params, "general.showLoadingIndicatorOnAutosubmit") 
+            ? { ...saveState, ...stateUpdate, loading: "false" }
+            : { ...saveState, ...stateUpdate };
+          
           autoSubmit ?
-            setState({ ...saveState, ...stateUpdate })
+            setState(finalStateUpdate)
             : setState({ ...saveState, step: targetStep || "submitted", ...stateUpdate })
           if (submitKeepModel && !resetModel) {
             modelUpdate = { ...model, ...modelToSend, ...modelUpdate };
@@ -844,7 +839,12 @@ export default function FpsForm2(props) {
             });
           }
         } else {
-          setState({ ...stateRef.current, _apiError: data.msg })
+          // Выключаем лоадинг при ошибке
+          const errorStateUpdate = autoSubmit && _.get(params, "general.showLoadingIndicatorOnAutosubmit")
+            ? { ...stateRef.current, _apiError: data.msg, loading: "false" }
+            : { ...stateRef.current, _apiError: data.msg };
+          
+          setState(errorStateUpdate)
           setLoading(false)
           // Сбрасываем флаг автосабмита асинхронно даже при ошибке
           if (autoSubmit) {
@@ -1303,8 +1303,14 @@ export default function FpsForm2(props) {
   if (!initialized) return <Loader />
 
   return <div className={`${styles.formWrapper} D_FPS_FORM2_WRAPPER`}
-    style={{ maxWidth }}
+    style={{ maxWidth, position: 'relative' }}
   >
+    {/* Оверлей загрузки - хуярит весь UI к хуям когда loading === "true" */}
+    {state.loading === "true" && (
+      <div className={styles.loadingOverlay}>
+        <Loader>{dict[lang].loading}</Loader>
+      </div>
+    )}
 
     {/* POPUP */}
     {state.popup && <FpsFormPopup
