@@ -61,6 +61,7 @@ export default function FpsForm2(props) {
   const [extendedModel, setExtendedModel] = useState({ ...composeInitialModel() }) // тут было gatherDefaults
   const extendedModelRef = useRef(extendedModel);
   const [originalModel, setOriginalModel] = useState({ ...composeInitialModel() }) // тут было gatherDefaults
+  const originalModelRef = useRef(originalModel);
   const [originalExtendedModel, setOriginalExtendedModel] = useState({ ...composeInitialModel() }) // тут было gatherDefaults
   const previousModel = usePrevious(model);
   const [state, setState] = useState(_.get(data, "params.state") || defaultState)
@@ -104,6 +105,10 @@ export default function FpsForm2(props) {
   useEffect(() => {
     extendedModelRef.current = extendedModel;
   }, [extendedModel]);
+
+  useEffect(() => {
+    originalModelRef.current = originalModel;
+  }, [originalModel]);
 
   const [autoSubmitStep, setAutoSubminStep] = useState(state.step)
 
@@ -891,6 +896,22 @@ export default function FpsForm2(props) {
           }
         });
         if (send) {
+          // КРИТИЧЕСКАЯ ПРОВЕРКА: если изменения вернули модель к оригиналу - не автосабмитим
+          const fieldsChanged = _.get(params, "general.autosubmit_model");
+          let reallyDifferentFromOriginal = false;
+          fieldsChanged.forEach(field => {
+            if (!_.isEqual(_.get(model, field), _.get(originalModelRef.current, field))) {
+              reallyDifferentFromOriginal = true;
+            }
+          });
+          
+          if (!reallyDifferentFromOriginal) {
+            console.log("🔕 Model changed but matches originalModel - skipping autosubmit to prevent loop");
+            console.log("   model fields:", fieldsChanged.map(f => _.get(model, f)));
+            console.log("   original fields:", fieldsChanged.map(f => _.get(originalModelRef.current, f)));
+            return;
+          }
+          
           console.log("📤📤📤 SCHEDULING submitDebounced (specific fields) - will execute in 1000ms");
           console.log("   Current isAutoSubmittingRef.current:", isAutoSubmittingRef.current);
           submitDebounced(
@@ -916,6 +937,14 @@ export default function FpsForm2(props) {
           send = true; 
         }
         if (send) {
+          // КРИТИЧЕСКАЯ ПРОВЕРКА: если модель равна оригиналу - не автосабмитим
+          if (_.isEqual(model, originalModelRef.current)) {
+            console.log("🔕 Model changed but matches originalModel - skipping autosubmit to prevent loop");
+            console.log("   model:", model);
+            console.log("   originalModel:", originalModelRef.current);
+            return;
+          }
+          
           console.log("📤📤📤 SCHEDULING submitDebounced (all fields) - will execute in 1000ms");
           console.log("   Current isAutoSubmittingRef.current:", isAutoSubmittingRef.current);
           submitDebounced(
