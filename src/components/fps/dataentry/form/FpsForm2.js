@@ -238,15 +238,9 @@ export default function FpsForm2(props) {
       if (_.get(params, "general.restoreState") && _.get(params, "general.saveStateTo")) {
         const restoredState = parseJson(newModel[_.get(params, "general.saveStateTo")])
         saveSate = { ...saveSate, ...restoredState }
-        // Блокируем автосабмит на восстановленный step
+        // Блокируем автосабмит на восстановленный step через restoredStepRef
         restoredStepRef.current = restoredState.step
-        isAutoSubmittingRef.current = true; // блокируем автосабмит
         console.log("📥 STATE RESTORED from field, step:", restoredState.step, "- blocking autosubmit")
-        // Через небольшую задержку разблокируем, чтобы пропустить все реактивные обновления
-        setTimeout(() => {
-          console.log("🔓 UNBLOCKING autosubmit after state restore");
-          isAutoSubmittingRef.current = false;
-        }, 100);
       }
       setState(saveSate)
       setInitialized(true)
@@ -547,6 +541,18 @@ export default function FpsForm2(props) {
   const submit = useCallback((finish, submitKeepModel, targetStep, autoSubmit, submitMapping = [], newData,
     actionReq, setActionError, resetModel, currentModel, newExtendedModel) => {
 
+    // Блокируем параллельные автосабмиты - предотвращаем цикл
+    if (autoSubmit && isAutoSubmittingRef.current) {
+      console.log("🚫 SUBMIT BLOCKED: autosubmit already in progress");
+      finish && finish(false);
+      return;
+    }
+    
+    if (autoSubmit) {
+      console.log("🔒 AUTOSUBMIT STARTED - setting lock");
+      isAutoSubmittingRef.current = true;
+    }
+
     // console.log("💾 SUBMIT FUNCTION CALLED");
     // console.log("💾 autoSubmit:", autoSubmit);
     // console.log("💾 currentModel:", currentModel);
@@ -607,6 +613,10 @@ export default function FpsForm2(props) {
       //setState({ ...state, _submitError: "" })
       console.log('Model is not changed. Submit does not submit anything')
       setLoading(false)
+      // Сбрасываем флаг если был установлен (хотя для !autoSubmit не должен быть)
+      if (autoSubmit) {
+        isAutoSubmittingRef.current = false;
+      }
       finish && finish(false)
       return;
     }
@@ -644,6 +654,10 @@ export default function FpsForm2(props) {
       })
       const errMessage = dict[lang].form.emptyRequired + emptyFields.join(", ")
       setState({ ...templateState(stateRef.current, localModel), _submitError: errMessage })
+      // Сбрасываем флаг при ошибке валидации (хотя для !autoSubmit не должен быть)
+      if (autoSubmit) {
+        isAutoSubmittingRef.current = false;
+      }
       finish && finish(true)
       return;
     }
@@ -659,6 +673,10 @@ export default function FpsForm2(props) {
       // console.log("actionError")
       // console.log(actionError)
       setActionError && setActionError(actionError)
+      // Сбрасываем флаг при ошибке action
+      if (autoSubmit) {
+        isAutoSubmittingRef.current = false;
+      }
       return;
     }
 
@@ -764,9 +782,19 @@ export default function FpsForm2(props) {
           setExtendedModel(extendedModelUpdate)
           setOriginalModel(modelUpdate)
           setOriginalExtendedModel(extendedModelUpdate)
+          // Сбрасываем флаг автосабмита после успешного завершения
+          if (autoSubmit) {
+            console.log("🔓 AUTOSUBMIT FINISHED (success) - releasing lock");
+            isAutoSubmittingRef.current = false;
+          }
         } else {
           setState({ ...stateRef.current, _apiError: data.msg })
           setLoading(false)
+          // Сбрасываем флаг автосабмита даже при ошибке
+          if (autoSubmit) {
+            console.log("🔓 AUTOSUBMIT FINISHED (error) - releasing lock");
+            isAutoSubmittingRef.current = false;
+          }
           finish && finish(true)
         }
       }
@@ -887,12 +915,6 @@ export default function FpsForm2(props) {
       setTimeout(() => setHighlightState(false), 300)
     }
     
-    // Блокируем автосабмит если уже идёт автосабмит
-    if (isAutoSubmittingRef.current) {
-      console.log("🚫 AUTOSUBMIT DISABLED: Already autosubmitting");
-      return;
-    }
-    
     // Проверяем: если текущий step это восстановленный step - пропускаем автосабмит
     if (restoredStepRef.current !== null && state.step === restoredStepRef.current) {
       console.log("🚫 AUTOSUBMIT DISABLED: Current step matches restored step:", state.step);
@@ -906,24 +928,17 @@ export default function FpsForm2(props) {
       restoredStepRef.current = null; // теперь можно автосабмитить
     }
     
-    const finishAutoSubmit = () => {
-      console.log("✅ AUTOSUBMIT FINISHED");
-      isAutoSubmittingRef.current = false;
-    };
-    
     if (_.get(params, "general.autosubmit") == "always" && autoSubmitStep !== state.step) {
       console.log("AUTOSUBMIT!")
       setAutoSubminStep(state.step)
-      isAutoSubmittingRef.current = true;
-      submitOnState(finishAutoSubmit, true, undefined, true)
+      submitOnState(undefined, true, undefined, true)
     }
     if (_.get(params, "general.autosubmit") == "steps"
       && _.includes(_.get(params, "general.autosubmit_steps").split(","), state.step
         && autoSubmitStep !== state.step)) {
       console.log("AUTOSUBMIT!")
       setAutoSubminStep(state.step)
-      isAutoSubmittingRef.current = true;
-      submitOnState(finishAutoSubmit, true, undefined, true, undefined, { state: state })
+      submitOnState(undefined, true, undefined, true, undefined, { state: state })
     }
   }, [state, submitOnState])
 
