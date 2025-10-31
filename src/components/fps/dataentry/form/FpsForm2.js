@@ -537,18 +537,14 @@ export default function FpsForm2(props) {
   const submit = useCallback((finish, submitKeepModel, targetStep, autoSubmit, submitMapping = [], newData,
     actionReq, setActionError, resetModel, currentModel, newExtendedModel) => {
 
-    console.log("📝 SUBMIT CALLED: autoSubmit =", autoSubmit, "isAutoSubmittingRef =", isAutoSubmittingRef.current);
-
     // Блокируем параллельные автосабмиты - предотвращаем цикл
     if (autoSubmit && isAutoSubmittingRef.current) {
-      console.log("❌ BLOCKED: already autosubmitting");
       finish && finish(false);
       return;
     }
     
     if (autoSubmit) {
       isAutoSubmittingRef.current = true;
-      console.log("🔄 AUTOSUBMIT detected, showLoadingIndicatorOnAutosubmit =", _.get(params, "general.showLoadingIndicatorOnAutosubmit"));
     }
 
     newExtendedModel = newExtendedModel || extendedModelRef.current
@@ -607,7 +603,6 @@ export default function FpsForm2(props) {
       if (autoSubmit) {
         // Выключаем лоадинг если был включен
         if (_.get(params, "general.showLoadingIndicatorOnAutosubmit")) {
-          console.log("🔴 Model not changed, setting state.loading = false");
           setState(prevState => ({ ...prevState, loading: "false" }));
         }
         queueMicrotask(() => {
@@ -656,10 +651,6 @@ export default function FpsForm2(props) {
         ? { ...templateState(stateRef.current, localModel), _submitError: errMessage, loading: "false" }
         : { ...templateState(stateRef.current, localModel), _submitError: errMessage };
       
-      if (autoSubmit && _.get(params, "general.showLoadingIndicatorOnAutosubmit")) {
-        console.log("🔴 Validation error, setting state.loading = false");
-      }
-      
       setState(validationErrorState)
       // Сбрасываем флаг асинхронно, чтобы избежать гонки с useEffect
       if (autoSubmit) {
@@ -683,7 +674,6 @@ export default function FpsForm2(props) {
       
       // Выключаем лоадинг если был включен
       if (autoSubmit && _.get(params, "general.showLoadingIndicatorOnAutosubmit")) {
-        console.log("🔴 Action error, setting state.loading = false");
         setState(prevState => ({ ...prevState, loading: "false" }));
       }
       
@@ -761,11 +751,6 @@ export default function FpsForm2(props) {
             ? { ...saveState, ...stateUpdate, loading: "false" }
             : { ...saveState, ...stateUpdate };
           
-          if (autoSubmit && _.get(params, "general.showLoadingIndicatorOnAutosubmit")) {
-            console.log("🟢 Submit success, setting state.loading = false");
-            console.log("   stateUpdate from API:", stateUpdate);
-          }
-          
           autoSubmit ?
             setState(finalStateUpdate)
             : setState({ ...saveState, step: targetStep || "submitted", ...stateUpdate })
@@ -794,10 +779,6 @@ export default function FpsForm2(props) {
             ? { ...stateRef.current, _apiError: data.msg, loading: "false" }
             : { ...stateRef.current, _apiError: data.msg };
           
-          if (autoSubmit && _.get(params, "general.showLoadingIndicatorOnAutosubmit")) {
-            console.log("🔴 API error, setting state.loading = false");
-          }
-          
           setState(errorStateUpdate)
           setLoading(false)
           // Сбрасываем флаг автосабмита асинхронно даже при ошибке
@@ -816,7 +797,6 @@ export default function FpsForm2(props) {
   const submitOnModelRef = useRef(debounce(submit, 1400));
   const submitOnStateRef = useRef(debounce(submit, 1400));
   const submitDebouncedRef = useRef(debounce((finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData, actionReq, setActionError, resetModel, currentModel, newExtendedModel) => {
-    console.log("⏰ DEBOUNCED AUTOSUBMIT EXECUTING NOW (after 1000ms)");
     submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData, actionReq, setActionError, resetModel, currentModel, newExtendedModel);
   }, 1000));
 
@@ -830,7 +810,6 @@ export default function FpsForm2(props) {
     submitOnModelRef.current = debounce(submit, 1400);
     submitOnStateRef.current = debounce(submit, 1400);
     submitDebouncedRef.current = debounce((finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData, actionReq, setActionError, resetModel, currentModel, newExtendedModel) => {
-      console.log("⏰ DEBOUNCED AUTOSUBMIT EXECUTING NOW (after 1000ms)");
       submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData, actionReq, setActionError, resetModel, currentModel, newExtendedModel);
     }, 1000);
   }, [submit]);
@@ -842,19 +821,13 @@ export default function FpsForm2(props) {
 
   // AUTOSUBMIT ON MODEL - ПОСЛЕ определения submitDebounced
   useEffect(() => {
-    console.log("🔄 useEffect[model] triggered");
-    console.log("   autosubmit setting:", _.get(params, "general.autosubmit"));
-    console.log("   isAutoSubmittingRef.current:", isAutoSubmittingRef.current);
-    
     // ПЕРВАЯ ПРОВЕРКА - блокируем планирование новых автосабмитов если уже идет автосабмит
     if (isAutoSubmittingRef.current) {
-      console.log("❌ Blocked: already autosubmitting");
       return;
     }
     
     // Проверяем настройку disableSubmitOnSocket - если включена и это обновление от сокета, то не делаем автосабмит
     if (_.get(params, "general.disableSubmitOnSocket") && isSocketUpdateRef.current) {
-      console.log("❌ Blocked: socket update");
       isSocketUpdateRef.current = false; // сбрасываем флаг после обработки
       return;
     }
@@ -875,8 +848,6 @@ export default function FpsForm2(props) {
           }
         });
         if (send) {
-          console.log("✅ Model fields changed:", changedFields);
-          
           // КРИТИЧЕСКАЯ ПРОВЕРКА: если изменения вернули модель к оригиналу - не автосабмитим
           const fieldsChanged = _.get(params, "general.autosubmit_model");
           let reallyDifferentFromOriginal = false;
@@ -887,17 +858,14 @@ export default function FpsForm2(props) {
           });
           
           if (!reallyDifferentFromOriginal) {
-            console.log("❌ Blocked: model equals original");
             return;
           }
           
           // ВКЛЮЧАЕМ ЛОАДИНГ СРАЗУ, не дожидаясь debounce!
           if (_.get(params, "general.showLoadingIndicatorOnAutosubmit")) {
-            console.log("🔵 Setting loading = true IMMEDIATELY (before debounce)");
             setState(prevState => ({ ...prevState, loading: "true" }));
           }
           
-          console.log("🚀 SCHEDULING DEBOUNCED AUTOSUBMIT (1000ms delay)");
           submitDebounced(
             undefined, // finish
             true,      // submitKeepModel
@@ -915,23 +883,19 @@ export default function FpsForm2(props) {
       } else {
         let send = false;
         if (!_.isEqual(previousModel, model)) { 
-          console.log("✅ Model changed (all fields)");
           send = true; 
         }
         if (send) {
           // КРИТИЧЕСКАЯ ПРОВЕРКА: если модель равна оригиналу - не автосабмитим
           if (_.isEqual(model, originalModelRef.current)) {
-            console.log("❌ Blocked: model equals original");
             return;
           }
           
           // ВКЛЮЧАЕМ ЛОАДИНГ СРАЗУ, не дожидаясь debounce!
           if (_.get(params, "general.showLoadingIndicatorOnAutosubmit")) {
-            console.log("🔵 Setting loading = true IMMEDIATELY (before debounce)");
             setState(prevState => ({ ...prevState, loading: "true" }));
           }
           
-          console.log("🚀 SCHEDULING DEBOUNCED AUTOSUBMIT (1000ms delay)");
           submitDebounced(
             undefined, // finish
             true,      // submitKeepModel
@@ -993,11 +957,6 @@ export default function FpsForm2(props) {
       setLoading(false)
     }
   }, [data.error, data.response])
-
-  // Мониторинг state.loading
-  useEffect(() => {
-    console.log("💡 state.loading CHANGED to:", state.loading);
-  }, [state.loading])
 
   function flatternModel(m) {
     const flatternObject = a => {
@@ -1253,9 +1212,6 @@ export default function FpsForm2(props) {
   )
 
   if (!initialized) return <Loader />
-
-  // Логи для отслеживания loading
-  console.log("🎨 RENDER: state.loading =", state.loading, "showLoadingIndicatorOnAutosubmit =", _.get(params, "general.showLoadingIndicatorOnAutosubmit"));
 
   return <div className={`${styles.formWrapper} D_FPS_FORM2_WRAPPER`}
     style={{ maxWidth, position: 'relative' }}
