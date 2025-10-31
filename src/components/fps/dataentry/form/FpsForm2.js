@@ -541,6 +541,11 @@ export default function FpsForm2(props) {
   const submit = useCallback((finish, submitKeepModel, targetStep, autoSubmit, submitMapping = [], newData,
     actionReq, setActionError, resetModel, currentModel, newExtendedModel) => {
 
+    console.log("📥 SUBMIT FUNCTION CALLED");
+    console.log("   autoSubmit:", autoSubmit);
+    console.log("   isAutoSubmittingRef.current:", isAutoSubmittingRef.current);
+    console.log("   currentModel:", currentModel);
+
     // Блокируем параллельные автосабмиты - предотвращаем цикл
     if (autoSubmit && isAutoSubmittingRef.current) {
       console.log("🚫 SUBMIT BLOCKED: autosubmit already in progress");
@@ -549,7 +554,7 @@ export default function FpsForm2(props) {
     }
     
     if (autoSubmit) {
-      console.log("🔒 AUTOSUBMIT STARTED - setting lock");
+      console.log("🔒 AUTOSUBMIT STARTED - setting lock (isAutoSubmittingRef.current = true)");
       isAutoSubmittingRef.current = true;
     }
 
@@ -787,15 +792,17 @@ export default function FpsForm2(props) {
           // console.log(modelUpdate)
           // console.log("final extendedModelUpdate")
           // console.log(extendedModelUpdate)
+          console.log("🔄 SETTING MODEL after successful submit");
+          console.log("   New modelUpdate:", modelUpdate);
           setModel(modelUpdate)
           setExtendedModel(extendedModelUpdate)
           setOriginalModel(modelUpdate)
           setOriginalExtendedModel(extendedModelUpdate)
           // Сбрасываем флаг автосабмита асинхронно после всех обновлений состояния
           if (autoSubmit) {
-            console.log("🔓 AUTOSUBMIT FINISHED (success) - scheduling lock release");
+            console.log("🔓 AUTOSUBMIT FINISHED (success) - scheduling lock release via queueMicrotask");
             queueMicrotask(() => {
-              console.log("🔓 Lock released");
+              console.log("🔓🔓🔓 Lock released NOW (isAutoSubmittingRef.current = false)");
               isAutoSubmittingRef.current = false;
             });
           }
@@ -835,8 +842,10 @@ export default function FpsForm2(props) {
     submitOnModelRef.current = debounce(submit, 1400);
     submitOnStateRef.current = debounce(submit, 1400);
     submitDebouncedRef.current = debounce((finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData, actionReq, setActionError, resetModel, currentModel, newExtendedModel) => {
-      console.log("⏰ DEBOUNCED SUBMIT EXECUTING");
-      console.log("⏰ Current submit function:", submit);
+      console.log("⏰ DEBOUNCED SUBMIT EXECUTING (after 1000ms delay)");
+      console.log("   autoSubmit:", autoSubmit);
+      console.log("   isAutoSubmittingRef.current BEFORE submit:", isAutoSubmittingRef.current);
+      console.log("   currentModel:", currentModel);
       submit(finish, submitKeepModel, targetStep, autoSubmit, submitMapping, newData, actionReq, setActionError, resetModel, currentModel, newExtendedModel);
     }, 1000);
   }, [submit]);
@@ -848,6 +857,11 @@ export default function FpsForm2(props) {
 
   // AUTOSUBMIT ON MODEL - ПОСЛЕ определения submitDebounced
   useEffect(() => {
+    console.log("🔵 useEffect[model] FIRED");
+    console.log("   isAutoSubmittingRef.current:", isAutoSubmittingRef.current);
+    console.log("   model:", model);
+    console.log("   previousModel:", previousModel);
+    
     // ПЕРВАЯ ПРОВЕРКА - блокируем планирование новых автосабмитов если уже идет автосабмит
     if (isAutoSubmittingRef.current) {
       console.log("🚫 AUTOSUBMIT BLOCKED IN useEffect: Already autosubmitting, skipping debounce call");
@@ -877,7 +891,8 @@ export default function FpsForm2(props) {
           }
         });
         if (send) {
-          console.log("📤 Calling submitDebounced (specific fields)");
+          console.log("📤📤📤 SCHEDULING submitDebounced (specific fields) - will execute in 1000ms");
+          console.log("   Current isAutoSubmittingRef.current:", isAutoSubmittingRef.current);
           submitDebounced(
             undefined, // finish
             true,      // submitKeepModel
@@ -901,7 +916,8 @@ export default function FpsForm2(props) {
           send = true; 
         }
         if (send) {
-          console.log("📤 Calling submitDebounced (all fields)");
+          console.log("📤📤📤 SCHEDULING submitDebounced (all fields) - will execute in 1000ms");
+          console.log("   Current isAutoSubmittingRef.current:", isAutoSubmittingRef.current);
           submitDebounced(
             undefined, // finish
             true,      // submitKeepModel
