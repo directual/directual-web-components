@@ -82,6 +82,8 @@ export default function FpsForm2(props) {
   const isSocketUpdateRef = useRef(false); // ref для отслеживания обновлений от сокета
   const restoredStepRef = useRef(null); // храним step при восстановлении state из поля
   const isAutoSubmittingRef = useRef(false); // флаг что прямо сейчас идёт автосабмит
+  const submitCounterRef = useRef(0); // счетчик всех submit'ов для предотвращения race condition
+  const lastCompletedSubmitRef = useRef(0); // ID последнего успешно завершенного submit'а
 
   // console.log(model)
   // console.log(originalModel)
@@ -562,6 +564,11 @@ export default function FpsForm2(props) {
       console.log("🔒 AUTOSUBMIT STARTED - setting lock (isAutoSubmittingRef.current = true)");
       isAutoSubmittingRef.current = true;
     }
+    
+    // Инкрементируем счетчик submit'ов для отслеживания race condition
+    submitCounterRef.current += 1;
+    const currentSubmitId = submitCounterRef.current;
+    console.log("🆔 Submit ID assigned:", currentSubmitId, "(autoSubmit:", autoSubmit + ")");
 
     // console.log("💾 SUBMIT FUNCTION CALLED");
     // console.log("💾 autoSubmit:", autoSubmit);
@@ -720,6 +727,31 @@ export default function FpsForm2(props) {
       (result, data) => {
         setActionError && setActionError(actionError)
         if (result == "ok") {
+          // КРИТИЧЕСКАЯ ПРОВЕРКА: если уже был запущен новый submit - не перетираем модель старым ответом
+          if (currentSubmitId < submitCounterRef.current) {
+            console.log("⚠️ SKIPPING MODEL UPDATE from outdated submit");
+            console.log("   Response submit ID:", currentSubmitId);
+            console.log("   Current submit counter:", submitCounterRef.current);
+            console.log("   This response is STALE - model was changed after this submit was sent");
+            
+            lastCompletedSubmitRef.current = currentSubmitId;
+            setLoading(false);
+            
+            // Сбрасываем флаг автосабмита асинхронно
+            if (autoSubmit) {
+              queueMicrotask(() => {
+                console.log("🔓 Lock released (stale response)");
+                isAutoSubmittingRef.current = false;
+              });
+            }
+            
+            finish && finish(data);
+            return; // НЕ обновляем model/state/extendedModel
+          }
+          
+          console.log("✅ Processing submit response ID:", currentSubmitId, "- this is the LATEST submit");
+          lastCompletedSubmitRef.current = currentSubmitId;
+          
           let saveState = { ...localState }
           let stateUpdate = {}
           let modelUpdate = {}
