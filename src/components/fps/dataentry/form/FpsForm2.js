@@ -548,24 +548,7 @@ export default function FpsForm2(props) {
     
     if (autoSubmit) {
       isAutoSubmittingRef.current = true;
-      
-      // Включаем лоадинг если настройка активна
-      const showLoadingIndicator = _.get(params, "general.showLoadingIndicatorOnAutosubmit");
-      console.log("🔄 AUTOSUBMIT detected");
-      console.log("   showLoadingIndicatorOnAutosubmit =", showLoadingIndicator);
-      console.log("   Current state.loading =", stateRef.current.loading);
-      
-      if (showLoadingIndicator) {
-        console.log("🔵 CALLING setState to set loading = true");
-        setState(prevState => {
-          console.log("   prevState =", prevState);
-          const newState = { ...prevState, loading: "true" };
-          console.log("   newState =", newState);
-          return newState;
-        });
-      } else {
-        console.log("⚠️ showLoadingIndicatorOnAutosubmit is FALSE, skipping loading");
-      }
+      console.log("🔄 AUTOSUBMIT detected, showLoadingIndicatorOnAutosubmit =", _.get(params, "general.showLoadingIndicatorOnAutosubmit"));
     }
 
     newExtendedModel = newExtendedModel || extendedModelRef.current
@@ -714,6 +697,14 @@ export default function FpsForm2(props) {
     }
 
     localState._submitError = ""
+    
+    // Сохраняем loading если это автосабмит с индикатором
+    if (autoSubmit && _.get(params, "general.showLoadingIndicatorOnAutosubmit")) {
+      localState.loading = "true"
+      console.log("🔵 Added loading: true to localState");
+    }
+    
+    console.log("📤 Calling setState with localState:", localState);
     setState({ ...localState })
     setLoading(true)
 
