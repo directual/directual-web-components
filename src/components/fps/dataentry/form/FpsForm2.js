@@ -697,14 +697,6 @@ export default function FpsForm2(props) {
     }
 
     localState._submitError = ""
-    
-    // Сохраняем loading если это автосабмит с индикатором
-    if (autoSubmit && _.get(params, "general.showLoadingIndicatorOnAutosubmit")) {
-      localState.loading = "true"
-      console.log("🔵 Added loading: true to localState");
-    }
-    
-    console.log("📤 Calling setState with localState:", localState);
     setState({ ...localState })
     setLoading(true)
 
@@ -899,6 +891,12 @@ export default function FpsForm2(props) {
             return;
           }
           
+          // ВКЛЮЧАЕМ ЛОАДИНГ СРАЗУ, не дожидаясь debounce!
+          if (_.get(params, "general.showLoadingIndicatorOnAutosubmit")) {
+            console.log("🔵 Setting loading = true IMMEDIATELY (before debounce)");
+            setState(prevState => ({ ...prevState, loading: "true" }));
+          }
+          
           console.log("🚀 SCHEDULING DEBOUNCED AUTOSUBMIT (1000ms delay)");
           submitDebounced(
             undefined, // finish
@@ -925,6 +923,12 @@ export default function FpsForm2(props) {
           if (_.isEqual(model, originalModelRef.current)) {
             console.log("❌ Blocked: model equals original");
             return;
+          }
+          
+          // ВКЛЮЧАЕМ ЛОАДИНГ СРАЗУ, не дожидаясь debounce!
+          if (_.get(params, "general.showLoadingIndicatorOnAutosubmit")) {
+            console.log("🔵 Setting loading = true IMMEDIATELY (before debounce)");
+            setState(prevState => ({ ...prevState, loading: "true" }));
           }
           
           console.log("🚀 SCHEDULING DEBOUNCED AUTOSUBMIT (1000ms delay)");
