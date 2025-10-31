@@ -848,6 +848,12 @@ export default function FpsForm2(props) {
 
   // AUTOSUBMIT ON MODEL - ПОСЛЕ определения submitDebounced
   useEffect(() => {
+    // ПЕРВАЯ ПРОВЕРКА - блокируем планирование новых автосабмитов если уже идет автосабмит
+    if (isAutoSubmittingRef.current) {
+      console.log("🚫 AUTOSUBMIT BLOCKED IN useEffect: Already autosubmitting, skipping debounce call");
+      return;
+    }
+    
     // Проверяем настройку disableSubmitOnSocket - если включена и это обновление от сокета, то не делаем автосабмит
     if (_.get(params, "general.disableSubmitOnSocket") && isSocketUpdateRef.current) {
       console.log("🚫 AUTOSUBMIT DISABLED: Socket update detected and disableSubmitOnSocket is enabled");
