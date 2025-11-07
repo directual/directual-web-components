@@ -231,17 +231,32 @@ export default function FpsForm2(props) {
         setOriginalModel(newModel)
       }
       setOriginalExtendedModel(newExtendedModel)
-      saveSate = { ...saveSate, ...templateState(_.get(data, "params.state"), newModel) }
+      
+      console.log('[SOCKET/RESTORE LOG] === НАЧАЛО СОКЕТНОГО ОБНОВЛЕНИЯ ===');
+      console.log('[SOCKET/RESTORE LOG] текущий state ДО перезаписи:', JSON.parse(JSON.stringify(state)));
+      console.log('[SOCKET/RESTORE LOG] saveSate перед templateState:', JSON.parse(JSON.stringify(saveSate)));
+      
+      const templatedState = templateState(_.get(data, "params.state"), newModel);
+      console.log('[SOCKET/RESTORE LOG] params.state:', _.get(data, "params.state"));
+      console.log('[SOCKET/RESTORE LOG] templateState вернул:', JSON.parse(JSON.stringify(templatedState)));
+      
+      saveSate = { ...saveSate, ...templatedState }
+      console.log('[SOCKET/RESTORE LOG] saveSate после templateState:', JSON.parse(JSON.stringify(saveSate)));
+      
       // RESTORE STATE:
       if (_.get(params, "general.restoreState") && _.get(params, "general.saveStateTo")) {
-        const restoredState = parseJson(newModel[_.get(params, "general.saveStateTo")])
-        console.log('[SOCKET/RESTORE LOG] Восстанавливаем state из поля:', _.get(params, "general.saveStateTo"));
-        console.log('[SOCKET/RESTORE LOG] restoredState:', JSON.parse(JSON.stringify(restoredState)));
+        const fieldName = _.get(params, "general.saveStateTo");
+        const fieldValue = newModel[fieldName];
+        console.log('[SOCKET/RESTORE LOG] Восстанавливаем state из поля:', fieldName);
+        console.log('[SOCKET/RESTORE LOG] Значение поля:', fieldValue);
+        const restoredState = parseJson(fieldValue);
+        console.log('[SOCKET/RESTORE LOG] restoredState (распарсенный):', JSON.parse(JSON.stringify(restoredState)));
         saveSate = { ...saveSate, ...restoredState }
         // Блокируем автосабмит на восстановленный step через restoredStepRef
         restoredStepRef.current = restoredState.step
       }
-      console.log('[SOCKET/RESTORE LOG] setState вызывается с:', JSON.parse(JSON.stringify(saveSate)));
+      console.log('[SOCKET/RESTORE LOG] ИТОГОВЫЙ setState с:', JSON.parse(JSON.stringify(saveSate)));
+      console.log('[SOCKET/RESTORE LOG] === КОНЕЦ СОКЕТНОГО ОБНОВЛЕНИЯ ===');
       setState(saveSate)
       setInitialized(true)
     }
