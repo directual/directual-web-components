@@ -99,6 +99,7 @@ export default function FpsForm2(props) {
   }, [model]);
 
   useEffect(() => {
+    console.log('[STATE CHANGE LOG] state изменился на:', JSON.parse(JSON.stringify(state)));
     stateRef.current = state;
   }, [state]);
 
@@ -234,10 +235,13 @@ export default function FpsForm2(props) {
       // RESTORE STATE:
       if (_.get(params, "general.restoreState") && _.get(params, "general.saveStateTo")) {
         const restoredState = parseJson(newModel[_.get(params, "general.saveStateTo")])
+        console.log('[SOCKET/RESTORE LOG] Восстанавливаем state из поля:', _.get(params, "general.saveStateTo"));
+        console.log('[SOCKET/RESTORE LOG] restoredState:', JSON.parse(JSON.stringify(restoredState)));
         saveSate = { ...saveSate, ...restoredState }
         // Блокируем автосабмит на восстановленный step через restoredStepRef
         restoredStepRef.current = restoredState.step
       }
+      console.log('[SOCKET/RESTORE LOG] setState вызывается с:', JSON.parse(JSON.stringify(saveSate)));
       setState(saveSate)
       setInitialized(true)
     }
@@ -539,11 +543,15 @@ export default function FpsForm2(props) {
 
     // Блокируем параллельные автосабмиты - предотвращаем цикл
     if (autoSubmit && isAutoSubmittingRef.current) {
+      console.log('[AUTOSUBMIT LOG] Заблокирован параллельный автосабмит');
       finish && finish(false);
       return;
     }
     
     if (autoSubmit) {
+      console.log('[AUTOSUBMIT LOG] === НАЧАЛО АВТОСАБМИТА ===');
+      console.log('[AUTOSUBMIT LOG] state ДО сабмита:', JSON.parse(JSON.stringify(stateRef.current)));
+      console.log('[AUTOSUBMIT LOG] model:', JSON.parse(JSON.stringify(currentModel || modelRef.current)));
       isAutoSubmittingRef.current = true;
     }
 
@@ -687,6 +695,9 @@ export default function FpsForm2(props) {
     }
 
     localState._submitError = ""
+    if (autoSubmit) {
+      console.log('[AUTOSUBMIT LOG] Устанавливаем state перед отправкой:', JSON.parse(JSON.stringify(localState)));
+    }
     setState({ ...localState })
     setLoading(true)
 
@@ -751,9 +762,15 @@ export default function FpsForm2(props) {
             ? { ...saveState, ...stateUpdate, loading: "false" }
             : { ...saveState, ...stateUpdate };
           
-          autoSubmit ?
+          if (autoSubmit) {
+            console.log('[AUTOSUBMIT LOG] API ответил успешно');
+            console.log('[AUTOSUBMIT LOG] saveState:', JSON.parse(JSON.stringify(saveState)));
+            console.log('[AUTOSUBMIT LOG] stateUpdate из API:', JSON.parse(JSON.stringify(stateUpdate)));
+            console.log('[AUTOSUBMIT LOG] finalStateUpdate (что ставим в setState):', JSON.parse(JSON.stringify(finalStateUpdate)));
             setState(finalStateUpdate)
-            : setState({ ...saveState, step: targetStep || "submitted", ...stateUpdate })
+          } else {
+            setState({ ...saveState, step: targetStep || "submitted", ...stateUpdate })
+          }
           if (submitKeepModel && !resetModel) {
             modelUpdate = { ...model, ...modelToSend, ...modelUpdate };
             extendedModelUpdate = { ...extendedModelUpdate, ...modelUpdate }
@@ -769,6 +786,8 @@ export default function FpsForm2(props) {
           setOriginalExtendedModel(extendedModelUpdate)
           // Сбрасываем флаг автосабмита асинхронно после всех обновлений состояния
           if (autoSubmit) {
+            console.log('[AUTOSUBMIT LOG] modelUpdate:', JSON.parse(JSON.stringify(modelUpdate)));
+            console.log('[AUTOSUBMIT LOG] === КОНЕЦ АВТОСАБМИТА (успех) ===');
             queueMicrotask(() => {
               isAutoSubmittingRef.current = false;
             });
@@ -823,17 +842,20 @@ export default function FpsForm2(props) {
   useEffect(() => {
     // ПЕРВАЯ ПРОВЕРКА - блокируем планирование новых автосабмитов если уже идет автосабмит
     if (isAutoSubmittingRef.current) {
+      console.log('[AUTOSUBMIT LOG] useEffect(model): пропускаем, т.к. идет автосабмит');
       return;
     }
     
     // Проверяем настройку disableSubmitOnSocket - если включена и это обновление от сокета, то не делаем автосабмит
     if (_.get(params, "general.disableSubmitOnSocket") && isSocketUpdateRef.current) {
+      console.log('[AUTOSUBMIT LOG] useEffect(model): пропускаем из-за сокетного обновления');
       isSocketUpdateRef.current = false; // сбрасываем флаг после обработки
       return;
     }
     
     // Сбрасываем флаг сокетного обновления в любом случае
     if (isSocketUpdateRef.current) {
+      console.log('[AUTOSUBMIT LOG] useEffect(model): сброс флага isSocketUpdateRef');
       isSocketUpdateRef.current = false;
     }
     
@@ -866,6 +888,9 @@ export default function FpsForm2(props) {
             setState(prevState => ({ ...prevState, loading: "true" }));
           }
           
+          console.log('[AUTOSUBMIT LOG] useEffect(model): планируем дебаунсированный автосабмит, измененные поля:', changedFields);
+          console.log('[AUTOSUBMIT LOG] useEffect(model): текущий state:', JSON.parse(JSON.stringify(stateRef.current)));
+          
           submitDebounced(
             undefined, // finish
             true,      // submitKeepModel
@@ -895,6 +920,9 @@ export default function FpsForm2(props) {
           if (_.get(params, "general.showLoadingIndicatorOnAutosubmit")) {
             setState(prevState => ({ ...prevState, loading: "true" }));
           }
+          
+          console.log('[AUTOSUBMIT LOG] useEffect(model): планируем дебаунсированный автосабмит (все поля)');
+          console.log('[AUTOSUBMIT LOG] useEffect(model): текущий state:', JSON.parse(JSON.stringify(stateRef.current)));
           
           submitDebounced(
             undefined, // finish
