@@ -236,10 +236,11 @@ export default function FpsForm2(props) {
       console.log('[SOCKET/RESTORE LOG] текущий state ДО перезаписи:', JSON.parse(JSON.stringify(state)));
       console.log('[SOCKET/RESTORE LOG] saveSate перед templateState:', JSON.parse(JSON.stringify(saveSate)));
       
-      // Если state отличается от дефолтного - сохраняем его вместо применения params.state
+      // Если это первая инициализация - применяем templateState
+      // Если state отличается от дефолтного И это не первая инициализация - сохраняем текущий state
       const currentStateIsNotDefault = !_.isEqual(state, defaultState);
       
-      if (currentStateIsNotDefault) {
+      if (currentStateIsNotDefault && initialized) {
         console.log('[SOCKET/RESTORE LOG] State был изменен пользователем, сохраняем текущий state');
         // Берем текущий state вместо params.state
         saveSate = { ...state }
