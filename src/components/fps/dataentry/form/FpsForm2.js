@@ -865,8 +865,8 @@ export default function FpsForm2(props) {
   // ============= PUBLIC API для кастомных функций =============
   // Прокидываем API в window для доступа из внешнего кода
   useEffect(() => {
-    // Используем короткий componentId вместо системного id
-    const componentId = _.get(data, 'componentId') || id;
+    // Используем короткий ID из params.comp_ID
+    const componentId = _.get(data, 'params.comp_ID') || id;
     if (!componentId) return;
     
     // Инициализируем глобальный объект если его нет
