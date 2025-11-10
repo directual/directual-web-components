@@ -749,7 +749,10 @@ export function NewMainMenu(props) {
                                 handleRoute(route)(e)
                             }
                             }
-                            handleModalRoute={props.handleModalRoute}
+                            handleModalRoute={props.handleModalRoute ? (route => e => {
+                                hideMMhandler(e)
+                                props.handleModalRoute(route)(e)
+                            }) : undefined}
                             menuConfig={menuConfig}
                             hideGroups={hideGroups} />
                     )}
@@ -903,7 +906,10 @@ export function NewMainMenu(props) {
                             handleRoute(route)(e)
                         }
                         }
-                        handleModalRoute={props.handleModalRoute}
+                        handleModalRoute={props.handleModalRoute ? (route => e => {
+                            hideMMhandler(e)
+                            props.handleModalRoute(route)(e)
+                        }) : undefined}
                         custom_labels={custom_labels}
                         compactMode={compactMode}
                         currentRoute={props.currentRoute}
@@ -1271,8 +1277,15 @@ function NewMainMenuItem({ item, auth, menuPadding, menuCompactWidth,
         onClick={e => {
             if (menuItem.linkToType !== 'external') {
                 // Проверяем флаг openInModalWindow для конкретного элемента
+                console.log('Menu item clicked:', {
+                    name: name,
+                    openInModalWindow: menuItem.openInModalWindow,
+                    hasHandleModalRoute: !!handleModalRoute,
+                    linkToPage: menuItem.linkToPage
+                })
                 const useModal = menuItem.openInModalWindow && handleModalRoute
                 const handler = useModal ? handleModalRoute : handleRoute
+                console.log('Using modal route:', useModal)
                 handler(menuItem.linkToPage)(e)
                 e.preventDefault()
             }
