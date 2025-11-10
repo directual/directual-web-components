@@ -941,6 +941,59 @@ export default function FpsForm2(props) {
         );
       },
       
+      // Вызов action по ID или имени (базовая реализация)
+      callAction: (actionIdOrName, callback) => {
+        const actions = _.get(data, "params.actions") || [];
+        const action = _.find(actions, a => a.id === actionIdOrName || a.name === actionIdOrName);
+        
+        if (!action) {
+          console.error(`Action "${actionIdOrName}" not found`);
+          callback && callback(false);
+          return;
+        }
+        
+        // Простая реализация для базовых action types
+        if (action.actionType === 'state' || !action.actionType) {
+          // State mapping
+          const stateUpdate = {};
+          const modelUpdate = {};
+          
+          (action.stateMapping || []).forEach(item => {
+            const field = item.field;
+            const value = template(item.value);
+            
+            if (field.startsWith('FormState.')) {
+              stateUpdate[field.substring(10)] = value;
+            } else {
+              modelUpdate[field] = value;
+            }
+          });
+          
+          setState(prev => ({ ...prev, ...stateUpdate }));
+          setModel(prev => ({ ...prev, ...modelUpdate }));
+          setExtendedModel(prev => ({ ...prev, ...modelUpdate }));
+          
+          callback && callback(true);
+        } else if (action.actionType === 'endpoint' && action.endpoint && callEndpoint) {
+          // Endpoint call
+          const payload = {};
+          (action.mapping || []).forEach(item => {
+            payload[item.field] = template(item.value);
+          });
+          
+          if (action.sendModel) {
+            Object.assign(payload, modelRef.current);
+          }
+          
+          callEndpoint(action.endpoint, "POST", payload, undefined, (result) => {
+            callback && callback(result === "ok");
+          });
+        } else {
+          console.warn(`Action type "${action.actionType}" не поддерживается через API. Используй UI кнопку.`);
+          callback && callback(false);
+        }
+      },
+      
       // Refresh options (для полей с динамическими опциями)
       refreshOptions: () => {
         setRefresh(refresh + 1);
