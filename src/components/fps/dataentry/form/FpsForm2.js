@@ -865,15 +865,17 @@ export default function FpsForm2(props) {
   // ============= PUBLIC API для кастомных функций =============
   // Прокидываем API в window для доступа из внешнего кода
   useEffect(() => {
-    if (!id) return;
+    // Используем короткий componentId вместо системного id
+    const componentId = _.get(data, 'componentId') || id;
+    if (!componentId) return;
     
     // Инициализируем глобальный объект если его нет
     if (!window.FpsForm2_API) {
       window.FpsForm2_API = {};
     }
     
-    // Регистрируем API для этой конкретной формы по ID
-    window.FpsForm2_API[id] = {
+    // Регистрируем API для этой конкретной формы по короткому ID
+    window.FpsForm2_API[componentId] = {
       // Получение данных
       getModel: () => modelRef.current,
       getExtendedModel: () => extendedModelRef.current,
@@ -947,11 +949,11 @@ export default function FpsForm2(props) {
     
     // Cleanup при unmount
     return () => {
-      if (window.FpsForm2_API && window.FpsForm2_API[id]) {
-        delete window.FpsForm2_API[id];
+      if (window.FpsForm2_API && window.FpsForm2_API[componentId]) {
+        delete window.FpsForm2_API[componentId];
       }
     };
-  }, [id, refresh, submit]);
+  }, [data, id, refresh, submit]);
   // =============================================================
 
   // AUTOSUBMIT ON MODEL - ПОСЛЕ определения submitDebounced
