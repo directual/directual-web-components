@@ -46,6 +46,12 @@ function DropDown(props) {
 export default function MainMenu(props) {
     const [showMM, setShowMM] = useState(false)
     const [showBackdrop, setShowBackdrop] = useState(false)
+
+    const { handleModalRoute } = props;
+    // Проверяем настройку открытия в модалке
+    const openInModal = _.get(props, 'menuConfig.fpsMainMenu.openInModalWindow')
+    const routeHandler = openInModal && handleModalRoute ? handleModalRoute : props.handleRoute
+
     const hideMM = () => {
         setShowBackdrop(false);
         setShowMM(false)
@@ -83,7 +89,7 @@ export default function MainMenu(props) {
                                         key={ddItem.name}
                                         onClick={e => {
                                             hideMM();
-                                            props.handleRoute(ddItem.route)(e)
+                                            routeHandler(ddItem.route)(e)
                                         }}
                                         className={`${styles.itemHor} ${props.currentRoute == ddItem.route && styles.active} 
                                     ${ddItem.disabled && styles.disabled} icon ${ddItem.icon ? `icon-${ddItem.icon}` : `icon-forward`}`}>
@@ -100,7 +106,7 @@ export default function MainMenu(props) {
                             key={item.name}
                             onClick={e => {
                                 hideMM();
-                                props.handleRoute(item.route)(e)
+                                routeHandler(item.route)(e)
                             }}
                             className={`${styles.itemHor} ${props.currentRoute == item.route && styles.active} 
                             ${item.disabled && styles.disabled} icon ${item.icon ? `icon-${item.icon}` : `icon-forward`}`}>
@@ -120,7 +126,7 @@ export default function MainMenu(props) {
                             ${props.profileButton.icon && `${styles.icon} icon icon-${props.profileButton.icon}`}
                             `}
                                 onClick={e => {
-                                    props.handleRoute('/profile')(e)
+                                    routeHandler('/profile')(e)
                                 }}>
                                 {props.profileButton.link}
                             </div>
@@ -131,7 +137,7 @@ export default function MainMenu(props) {
                         ${props.logInButton.icon && `${styles.icon} icon icon-${props.logInButton.icon}`}
                         ${styles.accent}`}
                             onClick={e => {
-                                props.handleRoute('/signin')(e)
+                                routeHandler('/signin')(e)
                             }}>
                             {props.logInButton.link}
                         </div>}
@@ -156,7 +162,7 @@ export default function MainMenu(props) {
                             key={item.name}
                             onClick={e => {
                                 hideMM();
-                                props.handleRoute(item.route)(e)
+                                routeHandler(item.route)(e)
                             }}
                             className={`${styles.item} ${props.currentRoute == item.route && styles.active} 
                                 ${item.disabled && styles.disabled} icon ${item.icon ? `icon-${item.icon}` : `icon-forward`}`}>
@@ -179,7 +185,7 @@ export default function MainMenu(props) {
                                     style={{ marginRight: 6 }}
                                     onClick={e => {
                                         hideMM();
-                                        props.handleRoute('/profile')(e)
+                                        routeHandler('/profile')(e)
                                     }}>
                                     {props.profileButton.link}
                                 </div>
@@ -195,7 +201,7 @@ export default function MainMenu(props) {
                                     `}
                                 onClick={e => {
                                     hideMM();
-                                    props.handleRoute('/signin')(e)
+                                    routeHandler('/signin')(e)
                                 }}>
                                 {props.logInButton.link}
                             </div>
@@ -210,6 +216,9 @@ export function NewMobileTabs(props) {
 
     const mobileMenu = props.mobileMenu || { children: [] }
     const menuConfig = props.menuConfig || {}
+    
+    // Проверяем настройку открытия в модалке
+    const openInModal = _.get(menuConfig, "fpsMainMenu.openInModalWindow")
 
     const tabsPadding = _.get(menuConfig, "rootMobileMenu.tabsPadding") == 0 ? 0 :
         _.get(menuConfig, "rootMobileMenu.tabsPadding") || 10
@@ -236,6 +245,8 @@ export function NewMobileTabs(props) {
                 auth={props.auth}
                 mobileTitlesSize={mobileTitlesSize}
                 handleRoute={props.handleRoute}
+                handleModalRoute={props.handleModalRoute}
+                openInModal={openInModal}
                 tabsInnerPadding={tabsInnerPadding}
                 key={tab.id}
                 custom_labels={props.custom_labels}
@@ -251,8 +262,11 @@ export function NewMobileTabs(props) {
 function MobileTab(props) {
 
     const { tabsInnerPadding, tabConfig, currentRoute, mobileTitlesSize,
-        custom_labels, auth, handleRoute, tabsPadding } = props
+        custom_labels, auth, handleRoute, handleModalRoute, openInModal, tabsPadding } = props
 
+    // Используем модальный роутинг если настройка включена
+    const routeHandler = openInModal && handleModalRoute ? handleModalRoute : handleRoute
+    
     const name = tabConfig.name || ""
     const iconType = tabConfig.iconType || 'no_icon'
 
@@ -299,7 +313,7 @@ function MobileTab(props) {
             { padding: `${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px` }}
         onClick={e => {
             e.preventDefault()
-            handleRoute(tabConfig.linkToPage)(e)
+            routeHandler(tabConfig.linkToPage)(e)
         }}
         href={tabConfig.linkToType !== 'external' ? null : tabConfig.linkToURL}
         target={tabConfig.linkToURLNewWindow && tabConfig.linkToType == 'external' ? '_blank' : ''}
@@ -308,7 +322,7 @@ function MobileTab(props) {
         {iconType == 'directual_icon' && tabConfig.menuDirectualIconSet && <React.Fragment>
             <div className={`icon veryLarge icon-${tabConfig.menuDirectualIconSet}`} />
         </React.Fragment>}
-        
+
         {/* Remix icon: */}
         {iconType == "remix_icon" && tabConfig.menuRemixIcon &&
             <div className={`${styles.customIcon} D_MainMenu_Item_customIcon`}>
@@ -427,7 +441,7 @@ export function NewMainMenu(props) {
     // =========================
 
     const handleRoute = props.handleRoute
-
+    
     // GENERAL MENU SETTINGS
     const menuConfig = props.menuConfig || {}
     const mainMenu = props.mainMenu || { children: [] }
@@ -436,6 +450,10 @@ export function NewMainMenu(props) {
     const showUserButtons = props.showUserButtons
 
     const custom_labels = props.custom_labels || {}
+    
+    // Проверяем настройку открытия в модалке
+    const openInModal = _.get(menuConfig, "fpsMainMenu.openInModalWindow")
+    const routeHandler = openInModal && props.handleModalRoute ? props.handleModalRoute : handleRoute
 
     // MENU LAYOUT
     const isHorizontal = props.horizontal || _.get(menuConfig, "rootMenu.menuPosition") == 'top'
@@ -566,7 +584,7 @@ export function NewMainMenu(props) {
                     <React.Fragment>
                         {logoOption == 'ai' ?
                             <div
-                                onClick={handleRoute("/")}
+                                onClick={routeHandler("/")}
                                 style={{
                                     width: logoSize.height,
                                     height: logoSize.height,
@@ -576,7 +594,7 @@ export function NewMainMenu(props) {
                                 dangerouslySetInnerHTML={{ __html: _.get(menuConfig, "rootMenu.generatedSmallLogo") }} />
                             :
                             <div
-                                onClick={handleRoute("/")}
+                                onClick={routeHandler("/")}
                                 style={{
                                     backgroundImage: `url(${smallLogoURL})`,
                                     backgroundPosition: 'center center',
@@ -591,7 +609,7 @@ export function NewMainMenu(props) {
                     <React.Fragment>
                         {logoOption == 'ai' ?
                             <div
-                                onClick={handleRoute("/")}
+                                onClick={routeHandler("/")}
                                 style={{
                                     width: logoSize.width,
                                     height: logoSize.height,
@@ -601,7 +619,7 @@ export function NewMainMenu(props) {
                                 dangerouslySetInnerHTML={{ __html: _.get(menuConfig, "rootMenu.generatedLogo") }} />
                             :
                             largeLogoURL ? <div
-                                onClick={handleRoute("/")}
+                                onClick={routeHandler("/")}
                                 style={{
                                     backgroundImage: `url(${largeLogoURL})`,
                                     backgroundPosition: 'center center',
@@ -611,7 +629,7 @@ export function NewMainMenu(props) {
                                     height: logoSize.height
                                 }} /> :
                                 <div
-                                    onClick={handleRoute("/")}
+                                    onClick={routeHandler("/")}
                                     style={{
                                         width: logoSize.width,
                                         height: logoSize.height,
@@ -636,7 +654,7 @@ export function NewMainMenu(props) {
                     rightSide={leftSide}
                     handleRoute={route => e => {
                         hideMMhandler()
-                        handleRoute(route)()
+                        routeHandler(route)()
                     }}
                     mobileHeader
                     compactMode={true}
@@ -672,7 +690,7 @@ export function NewMainMenu(props) {
                     {logoOption == 'ai' ?
                         <a onClick={e => {
                             e.preventDefault()
-                            handleRoute("/")(e)
+                            routeHandler("/")(e)
                         }}>
                             <div style={{
                                 width: logoSize.width,
@@ -684,7 +702,7 @@ export function NewMainMenu(props) {
                             {largeLogoURL ?
                                 <a onClick={e => {
                                     e.preventDefault()
-                                    handleRoute("/")(e)
+                                    routeHandler("/")(e)
                                 }}
                                     className={`${styles.newLogo} D_MainMenu_Logo`}
                                     style={{
@@ -697,7 +715,7 @@ export function NewMainMenu(props) {
                                     }} /> :
                                 <a onClick={e => {
                                     e.preventDefault()
-                                    handleRoute("/")(e)
+                                    routeHandler("/")(e)
                                 }}
                                     style={{
                                         width: compactMode ? logoSize.height : logoSize.width,
@@ -715,10 +733,10 @@ export function NewMainMenu(props) {
                 <div className={`${styles.newList} D_MainMenu_List 
                 ${sideMenuAlign == 'right' ? styles.alignRight :
                         sideMenuAlign == 'center' ? styles.alignCenter : ''}`}
-                        style={{
-                            gap: horMenuMargin
-                        }}
-                        >
+                    style={{
+                        gap: horMenuMargin
+                    }}
+                >
                     {(mainMenu.children || []).map(item =>
                         <NewMainMenuItem
                             item={item}
@@ -730,7 +748,7 @@ export function NewMainMenu(props) {
                             currentRoute={props.currentRoute}
                             handleRoute={route => e => {
                                 hideMMhandler(e)
-                                handleRoute(route)(e)
+                                routeHandler(route)(e)
                             }
                             }
                             menuConfig={menuConfig}
@@ -744,7 +762,7 @@ export function NewMainMenu(props) {
                     dict={dict[lang]}
                     handleRoute={route => e => {
                         hideMMhandler()
-                        handleRoute(route)()
+                        routeHandler(route)()
                     }}
                     compactMode={compactMode}
                     logOut={handleLogOut}
@@ -792,7 +810,7 @@ export function NewMainMenu(props) {
                         {logoOption == 'ai' ?
                             <div className={styles.cursorPointer} onClick={e => {
                                 hideMMhandler()
-                                handleRoute("/")()
+                                routeHandler("/")()
                             }}>
                                 <div style={{
                                     width: logoSize.height,
@@ -805,7 +823,7 @@ export function NewMainMenu(props) {
                             :
                             <div onClick={e => {
                                 hideMMhandler()
-                                handleRoute("/")()
+                                routeHandler("/")()
                             }}
                                 className={`${styles.newLogo} D_MainMenu_Logo ${styles.cursorPointer}`}
                                 style={{
@@ -828,7 +846,7 @@ export function NewMainMenu(props) {
                         {logoOption == 'ai' ?
                             <div className={styles.cursorPointer} onClick={e => {
                                 hideMMhandler()
-                                handleRoute("/")()
+                                routeHandler("/")()
                             }}>
                                 <div style={{
                                     width: logoSize.width,
@@ -842,7 +860,7 @@ export function NewMainMenu(props) {
                                 {largeLogoURL ?
                                     <div onClick={e => {
                                         hideMMhandler()
-                                        handleRoute("/")()
+                                        routeHandler("/")()
                                     }}
                                         className={`${styles.newLogo} D_MainMenu_Logo ${styles.cursorPointer}`}
                                         style={{
@@ -855,7 +873,7 @@ export function NewMainMenu(props) {
                                         }} /> :
                                     <div onClick={e => {
                                         hideMMhandler()
-                                        handleRoute("/")()
+                                        routeHandler("/")()
                                     }}
                                         style={{
                                             width: compactMode ? logoSize.height : logoSize.width,
@@ -883,7 +901,7 @@ export function NewMainMenu(props) {
                         menuPadding={menuPadding}
                         handleRoute={route => e => {
                             hideMMhandler(e)
-                            handleRoute(route)(e)
+                            routeHandler(route)(e)
                         }
                         }
                         custom_labels={custom_labels}
@@ -900,7 +918,7 @@ export function NewMainMenu(props) {
                 horizontal
                 handleRoute={route => e => {
                     hideMMhandler()
-                    handleRoute(route)()
+                    routeHandler(route)()
                 }}
                 compactMode={compactMode}
                 logOut={handleLogOut}
