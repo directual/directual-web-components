@@ -116,6 +116,98 @@ export default function FpsForm2(props) {
   const cx = null
   //const debouncedCallEndpint = debounce(callEndpoint, 700);
 
+  // ============= PUBLIC API для кастомных функций =============
+  // Прокидываем API в window для доступа из внешнего кода
+  useEffect(() => {
+    if (!id) return;
+    
+    // Инициализируем глобальный объект если его нет
+    if (!window.FpsForm2_API) {
+      window.FpsForm2_API = {};
+    }
+    
+    // Регистрируем API для этой конкретной формы по ID
+    window.FpsForm2_API[id] = {
+      // Получение данных
+      getModel: () => modelRef.current,
+      getExtendedModel: () => extendedModelRef.current,
+      getState: () => stateRef.current,
+      getOriginalModel: () => originalModelRef.current,
+      
+      // Изменение model (один field)
+      editModel: (field, value) => {
+        const copyModel = _.cloneDeep(modelRef.current);
+        _.set(copyModel, field, value);
+        setModel(copyModel);
+        
+        const copyExtendedModel = _.cloneDeep(extendedModelRef.current);
+        _.set(copyExtendedModel, field, value);
+        setExtendedModel(copyExtendedModel);
+      },
+      
+      // Изменение всего model целиком (merge)
+      setModel: (newModelData) => {
+        const mergedModel = { ...modelRef.current, ...newModelData };
+        setModel(mergedModel);
+        
+        const mergedExtendedModel = { ...extendedModelRef.current, ...newModelData };
+        setExtendedModel(mergedExtendedModel);
+      },
+      
+      // Замена model полностью
+      replaceModel: (newModel) => {
+        setModel(newModel);
+        setExtendedModel(newModel);
+      },
+      
+      // Изменение state (один field)
+      editState: (field, value) => {
+        const copyState = _.cloneDeep(stateRef.current);
+        _.set(copyState, field, value);
+        setState(copyState);
+      },
+      
+      // Изменение state целиком (merge)
+      setState: (newStateData) => {
+        const mergedState = { ...stateRef.current, ...newStateData };
+        setState(mergedState);
+      },
+      
+      // Замена state полностью
+      replaceState: (newState) => {
+        setState(newState);
+      },
+      
+      // Сабмит формы программно
+      submit: (options = {}) => {
+        submit(
+          options.finish,
+          options.submitKeepModel !== false, // по умолчанию true
+          options.targetStep,
+          options.autoSubmit || false,
+          options.submitMapping,
+          options.newData,
+          options.actionReq,
+          options.setActionError,
+          options.resetModel || false
+        );
+      },
+      
+      // Refresh options (для полей с динамическими опциями)
+      refreshOptions: () => {
+        setRefresh(refresh + 1);
+      }
+    };
+    
+    // Cleanup при unmount
+    return () => {
+      if (window.FpsForm2_API && window.FpsForm2_API[id]) {
+        delete window.FpsForm2_API[id];
+      }
+    };
+  }, [id, refresh, submit]);
+  // =============================================================
+
   // Пока временно убираю использование debounced функций из useEffect'ов
 
   const parseJson = json => {
