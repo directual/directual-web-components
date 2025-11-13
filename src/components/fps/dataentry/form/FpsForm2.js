@@ -941,7 +941,7 @@ export default function FpsForm2(props) {
         );
       },
       
-      // Вызов action по ID или имени (базовая реализация)
+      // Вызов action по ID или имени (полная реализация)
       callAction: (actionIdOrName, callback) => {
         const actions = _.get(data, "params.actions") || [];
         const action = _.find(actions, a => a.id === actionIdOrName || a.name === actionIdOrName);
@@ -952,45 +952,139 @@ export default function FpsForm2(props) {
           return;
         }
         
-        // Простая реализация для базовых action types
-        if (action.actionType === 'state' || !action.actionType) {
-          // State mapping
-          const stateUpdate = {};
-          const modelUpdate = {};
+        console.log('performAction (API)', action);
+        
+        // Helper functions
+        const transformObject = array => _.reduce(array, (result, item) => {
+          if (!array || array.length === 0) return {};
+          const { field, value } = item;
+          result[field] = template(value, true);
+          return result;
+        }, {});
+        
+        const transformState = (array, type) => _.reduce(array, (result, item) => {
+          if (!array || array.length === 0) return {};
+          const { field, value } = item;
+          if (field.substring(0, 9) === "FormState" && type === "state") {
+            result[field.substring(10)] = template(value);
+          }
+          if (field.substring(0, 9) !== "FormState" && type === "model") {
+            result[field] = template(value);
+          }
+          return result;
+        }, {});
+        
+        // Get current state
+        let copyModel = { ...modelRef.current };
+        let copyState = { ...stateRef.current };
+        let copyExtendedModel = { ...extendedModelRef.current };
+        
+        // Discard model
+        if (action.discardModel) {
+          copyModel = originalModelRef.current;
+          copyExtendedModel = originalExtendedModel;
+          setModel(originalModelRef.current);
+          setExtendedModel(originalExtendedModel);
+        }
+        
+        // STATE or ENDPOINT_STATE actions
+        if (_.get(action, "actionType") === "state" || _.get(action, "actionType") === "endpoint_state" || !_.get(action, "actionType")) {
+          const payloadState = transformState(action.stateMapping, "state");
+          const payloadModel = transformState(action.stateMapping, "model");
+          copyState = { ...copyState, ...payloadState };
+          copyModel = { ...copyModel, ...payloadModel };
+          copyExtendedModel = { ...copyExtendedModel, ...payloadModel };
           
-          (action.stateMapping || []).forEach(item => {
-            const field = item.field;
-            const value = template(item.value);
-            
-            if (field.startsWith('FormState.')) {
-              stateUpdate[field.substring(10)] = value;
+          if (action.actionSubmit && _.get(action, "actionType") !== "endpoint_state") {
+            // Submit with state action
+            submit(
+              (res) => {
+                callback && callback(true, res);
+              },
+              true, // submitKeepModel
+              undefined, // targetStep
+              true, // autoSubmit
+              undefined, // submitMapping
+              { state: copyState, model: { ...modelRef.current, ...payloadModel } },
+              undefined, // actionReq
+              (err) => {
+                console.error('Action submit error:', err);
+                callback && callback(false, err);
+              },
+              action.resetModel // resetModel
+            );
+          } else {
+            setState(copyState);
+            if (action.resetModel) {
+              copyModel = {};
+              copyExtendedModel = {};
+              setModel({});
+              setExtendedModel({});
             } else {
-              modelUpdate[field] = value;
+              setModel(copyModel);
+              setExtendedModel(copyExtendedModel);
             }
-          });
-          
-          setState(prev => ({ ...prev, ...stateUpdate }));
-          setModel(prev => ({ ...prev, ...modelUpdate }));
-          setExtendedModel(prev => ({ ...prev, ...modelUpdate }));
-          
-          callback && callback(true);
-        } else if (action.actionType === 'endpoint' && action.endpoint && callEndpoint) {
-          // Endpoint call
-          const payload = {};
-          (action.mapping || []).forEach(item => {
-            payload[item.field] = template(item.value);
-          });
-          
+            callback && callback(true);
+          }
+        }
+        
+        // ENDPOINT or ENDPOINT_STATE actions
+        if ((_.get(action, "actionType") === "endpoint" || _.get(action, "actionType") === "endpoint_state" || !_.get(action, "actionType")) && action.endpoint) {
+          let payload = transformObject(action.mapping);
           if (action.sendModel) {
-            Object.assign(payload, modelRef.current);
+            payload = { ...copyModel, ...payload };
           }
           
-          callEndpoint(action.endpoint, "POST", payload, undefined, (result) => {
-            callback && callback(result === "ok");
-          });
-        } else {
-          console.warn(`Action type "${action.actionType}" не поддерживается через API. Используй UI кнопку.`);
-          callback && callback(false);
+          if (action.actionSubmit) {
+            // Submit first, then call endpoint
+            submit(
+              (res) => {
+                console.log("finish onSubmit", res);
+                console.log("payload => " + action.endpoint);
+                console.log(payload);
+                
+                // Call endpoint after submit
+                callEndpoint(
+                  action.endpoint,
+                  "POST",
+                  payload,
+                  undefined,
+                  (result, responseData) => {
+                    console.log("result => " + action.endpoint);
+                    console.log(result);
+                    callback && callback(result === "ok", responseData);
+                  }
+                );
+              },
+              true, // submitKeepModel
+              undefined, // targetStep
+              true, // autoSubmit
+              undefined, // submitMapping
+              { state: copyState, model: copyModel },
+              undefined, // actionReq
+              (err) => {
+                console.error('Action submit error:', err);
+                callback && callback(false, err);
+              },
+              action.resetModel // resetModel
+            );
+          } else {
+            // Call endpoint directly
+            console.log("payload => " + action.endpoint);
+            console.log(payload);
+            
+            callEndpoint(
+              action.endpoint,
+              "POST",
+              payload,
+              undefined,
+              (result, responseData) => {
+                console.log("result => " + action.endpoint);
+                console.log(result);
+                callback && callback(result === "ok", responseData);
+              }
+            );
+          }
         }
       },
       
