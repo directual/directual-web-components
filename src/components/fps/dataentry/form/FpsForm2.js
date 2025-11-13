@@ -954,11 +954,48 @@ export default function FpsForm2(props) {
         
         console.log('performAction (API)', action);
         
+        // Get current state FIRST
+        let copyModel = { ...modelRef.current };
+        let copyState = { ...stateRef.current };
+        let copyExtendedModel = { ...extendedModelRef.current };
+        
+        console.log('📊 copyModel в начале callAction:', copyModel);
+        
+        // Локальная версия template - принимает модель как параметр
+        const localTemplate = (input, currentModel, currentExtModel, currentState) => {
+          if (!input || input === "{{undefined}}" || input === "{{null}}") return "";
+          
+          // Используем переданные параметры, не замыкание
+          let templateData = { ...defaultExtModel, ...currentModel, ...currentExtModel, ...currentState };
+          
+          const replaceNullWithEmptyString = obj => _.mapValues(obj, value => value === null ? "" : value);
+          _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
+          if (!templateData) return "";
+          
+          templateData = replaceNullWithEmptyString(templateData);
+          
+          // Простая конвертация чисел в строки
+          templateData = _.mapValues(templateData, value => {
+            if (typeof value === 'number') return value.toString();
+            return value;
+          });
+          
+          try {
+            const result = _.template(input, {
+              interpolate: /{{([\s\S]+?)}}/g
+            })(templateData);
+            return result;
+          } catch (error) {
+            console.warn("template error in callAction:", error);
+            return '';
+          }
+        };
+        
         // Helper functions
         const transformObject = array => _.reduce(array, (result, item) => {
           if (!array || array.length === 0) return {};
           const { field, value } = item;
-          const templatedValue = template(value, true);
+          const templatedValue = localTemplate(value, copyModel, copyExtendedModel, copyState);
           console.log(`  Mapping: ${field} = "${value}" → "${templatedValue}"`);
           result[field] = templatedValue;
           return result;
@@ -968,18 +1005,13 @@ export default function FpsForm2(props) {
           if (!array || array.length === 0) return {};
           const { field, value } = item;
           if (field.substring(0, 9) === "FormState" && type === "state") {
-            result[field.substring(10)] = template(value);
+            result[field.substring(10)] = localTemplate(value, copyModel, copyExtendedModel, copyState);
           }
           if (field.substring(0, 9) !== "FormState" && type === "model") {
-            result[field] = template(value);
+            result[field] = localTemplate(value, copyModel, copyExtendedModel, copyState);
           }
           return result;
         }, {});
-        
-        // Get current state
-        let copyModel = { ...modelRef.current };
-        let copyState = { ...stateRef.current };
-        let copyExtendedModel = { ...extendedModelRef.current };
         
         // Discard model
         if (action.discardModel) {
