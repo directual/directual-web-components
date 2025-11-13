@@ -958,7 +958,9 @@ export default function FpsForm2(props) {
         const transformObject = array => _.reduce(array, (result, item) => {
           if (!array || array.length === 0) return {};
           const { field, value } = item;
-          result[field] = template(value, true);
+          const templatedValue = template(value, true);
+          console.log(`  Mapping: ${field} = "${value}" → "${templatedValue}"`);
+          result[field] = templatedValue;
           return result;
         }, {});
         
@@ -1100,7 +1102,7 @@ export default function FpsForm2(props) {
         delete window.FpsForm2_API[componentId];
       }
     };
-  }, [data, id, refresh, submit]);
+  }, [data, id, refresh, submit, template, callEndpoint]);
   // =============================================================
 
   // AUTOSUBMIT ON MODEL - ПОСЛЕ определения submitDebounced
