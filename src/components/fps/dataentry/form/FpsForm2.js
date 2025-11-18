@@ -236,21 +236,13 @@ export default function FpsForm2(props) {
       console.log('[SOCKET/RESTORE LOG] текущий state ДО перезаписи:', JSON.parse(JSON.stringify(state)));
       console.log('[SOCKET/RESTORE LOG] saveSate перед templateState:', JSON.parse(JSON.stringify(saveSate)));
       
-      // Если это первая инициализация - применяем templateState
-      // Если state отличается от дефолтного И это не первая инициализация - сохраняем текущий state
-      const currentStateIsNotDefault = !_.isEqual(state, defaultState);
-      
-      if (currentStateIsNotDefault && initialized) {
-        console.log('[SOCKET/RESTORE LOG] State был изменен пользователем, сохраняем текущий state');
-        // Берем текущий state вместо params.state
-        saveSate = { ...state }
-      } else {
-        const templatedState = templateState(_.get(data, "params.state"), newModel);
-        console.log('[SOCKET/RESTORE LOG] params.state:', _.get(data, "params.state"));
-        console.log('[SOCKET/RESTORE LOG] templateState вернул:', JSON.parse(JSON.stringify(templatedState)));
-        saveSate = { ...saveSate, ...templatedState }
-        console.log('[SOCKET/RESTORE LOG] saveSate после templateState:', JSON.parse(JSON.stringify(saveSate)));
-      }
+      // ВСЕГДА применяем templateState при обновлении модели
+      // Это обеспечивает синхронизацию state с моделью через шаблоны типа {{status}}
+      const templatedState = templateState(_.get(data, "params.state"), newModel);
+      console.log('[SOCKET/RESTORE LOG] params.state:', _.get(data, "params.state"));
+      console.log('[SOCKET/RESTORE LOG] templateState вернул:', JSON.parse(JSON.stringify(templatedState)));
+      saveSate = { ...saveSate, ...templatedState }
+      console.log('[SOCKET/RESTORE LOG] saveSate после templateState:', JSON.parse(JSON.stringify(saveSate)));
       
       // RESTORE STATE:
       if (_.get(params, "general.restoreState") && _.get(params, "general.saveStateTo")) {
