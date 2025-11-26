@@ -357,7 +357,7 @@ function FilePreview({ fileUrl, onDelete, edit, disabled }) {
             {getResolution(fileUrl)}
         </div>
         <div className={styles.fileUrl}>
-            <a href={fileUrl} target="_blank">{fileUrl}</a>
+            <a href={fileUrl + '?download=true'} target="_blank">{fileUrl}</a>
         </div>
         {edit && !disabled && <div className={`${styles.delete} icon icon-delete`} onClick={onDelete} />}
     </div>
