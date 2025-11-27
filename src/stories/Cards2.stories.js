@@ -950,435 +950,168 @@ let exampleTableShipiga = {
 }
 
 let exampleTable = {
-    "sl": "newRoadMap",
-    "pageSize": "12",
+    "sl": "show_user_portfilio_for_agent",
+    "pageSize": "10",
     "headerField": null,
     "params": {
-        "comp_ID": "mq3O5",
+        "comp_ID": "8ZpLN",
         "cards_layout": "grid",
-        "flex_layout__width": 251,
-        "flex_layout__gap": 23,
+        "grid_layout__wideDesktop": 6,
+        "grid_layout__desktop": 4,
+        "grid_layout__tablet": 2,
+        "card_layout_type": "custom",
+        "html_type_content": "<div class=\"card2\">\n  <div class=\"card2-header\">\n    <img src=\"{{main_photo}}\" alt=\"Фото объекта\">\n    <span class=\"badge orange\" id=\"{{id}}_status\"></span>\n  </div>\n  <div class=\"card2-content\">\n    <h2>{{gk_name}}</h2>\n    <p>{{adress}}</p>\n    <div class=\"details\">\n      <p><span>Тип:</span> {{object_type.type}}<span id='{{id}}_subtype'></span></p>\n      <p><span>Площадь:</span> {{square}} кв.м.</p>\n      <p><span>Дата покупки:</span> <span class=\"date_purchase\" id=\"{{id}}\"></span></p>\n      <p><span>Стоимость покупки:</span> <h1 class=\"money\" id=\"{{id}}_price\"></h1></p>\n    </div>\n  </div>\n</div>\n\n<script>\n  waitForElement(\"{{id}}\", function() {\n    \n    // ============ ОБРАБОТКА SUBTYPE ============\n    const validIds = [\n        \"545710d1-32ad-4814-a4ec-6c6b6a6455e6\",\n        \"45b30217-cd9b-407c-8036-e3728bdc3bb6\",\n        \"9a267ad8-decc-4958-b34f-4d3d3b9d444f\",\n        \"8f0a9189-b266-4057-a547-9da1f8e1f920\"\n    ];\n\n    let objectId = \"{{object_type.id}}\";\n    objectId = objectId.replace(/^\"|\"$/g, '');\n\n    const subtypeElement = document.getElementById('{{id}}_subtype');\n    if (subtypeElement) {\n        subtypeElement.textContent = validIds.includes(objectId) ? ` ({{object_subtype.type}})` : '';\n    }\n    \n    //устанавливаем статус объекту\n    if (\"{{completed}}\" === \"true\") {\n    \t\tdocument.getElementById('{{id}}_status').textContent = 'Сдан';\n        document.getElementById('{{id}}_status').className = 'badge completed';\n    } \n  else if (\"{{completed}}\" === \"\") {\n    \t\tdocument.getElementById('{{id}}_status').textContent = '-';\n    }\n\t\telse\n    {\n      \tdocument.getElementById('{{id}}_status').textContent = getQuarterYearRoman('{{completion_date}}');\n   }\n   \n   // Форматирование даты\n    document.getElementById(\"{{id}}\").innerHTML = getDayMonth(\"{{date_of_purchase}}\");\n    \n    // Форматирование в рублях\n    if ({{purchase_price}} == \"\" || {{purchase_price}} == null) {\n      document.getElementById('{{id}}_price').textContent = \"-\";\n    } \n    else {  \n    \tdocument.getElementById('{{id}}_price').textContent = new Intl.NumberFormat('ru-RU', {\n            minimumFractionDigits: 0\n        }).format('{{purchase_price}}');\n    }  \n}); \n</script>",
         "general": {
-            "showObjCount": true,
-            "allowPagination": true
+            "allowPagination": true,
+            "showObjCount": false,
+            "allowChangePageSize": true
         },
-        "cards_title": "Custom filter",
-        "grid_layout__gap": 15,
-        "card_layout_type": "regular",
-        "card_border_radius": 12,
-        "html_type_content": "Привет нахуй",
         "card_border": 0,
-        "card_min_height": 120,
         "card_padding": 0,
-        "filteringOn": true,
+        "card_border_radius": 12,
+        "grid_layout__gap": 8,
         "filterParams": {
-            "dev_status": {
-                "active": true,
-                "dataType": "link",
-                "format": "",
-                "formatOptions": {},
-                "name": "Development status",
-                "textsearch": "endpoint",
-                "endpoint": "dd"
-            },
-            "title": {
-                "active": true,
-                "dataType": "string",
-                "format": "",
-                "formatOptions": {},
-                "name": "Feature title"
-            },
-            "feature_id": {
-                "active": true,
-                "dataType": "string",
-                "format": "",
-                "formatOptions": {},
-                "name": "Inner ID"
-            },
-            "isFiltering": false,
             "isSorting": false,
+            "isFiltering": false,
             "filterFields": {
-                "description": {
-                    "active": true,
+                "date_of_purchase": {
+                    "active": false,
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "dateLocale": "en-gb",
+                        "booleanOptions": [
+                            "True",
+                            "False"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "DD/MM/Y",
+                        "timeFormat": "",
+                        "isUTC": "false"
+                    },
+                    "name": "Дата покупки"
+                },
+                "adress": {
+                    "active": false,
                     "dataType": "string",
-                    "format": "markdown",
-                    "formatOptions": {},
-                    "name": "Feature description"
-                },
-                "dev_status": {
-                    "active": true,
-                    "dataType": "link",
                     "format": "",
                     "formatOptions": {},
-                    "name": "Development status",
-                    "textsearch": "choice",
-                    "linkDirectory": [
-                        {
-                            "id": "planned",
-                            "text": "Backlog"
-                        },
-                        {
-                            "id": "released",
-                            "text": "Released"
-                        },
-                        {
-                            "id": "under_development",
-                            "text": "Under development"
-                        },
-                        {
-                            "id": "nearest_plans",
-                            "text": "Planned"
-                        }
-                    ]
+                    "name": "Адрес"
                 },
-                "feature_id": {
-                    "active": true,
+                "object_type": {
+                    "active": false,
                     "dataType": "string",
                     "format": "",
                     "formatOptions": {},
-                    "name": "Inner ID"
+                    "name": "Тип объекта"
                 },
-                "feature_type": {
-                    "active": true,
-                    "dataType": "link",
+                "gk_name": {
+                    "active": false,
+                    "dataType": "string",
                     "format": "",
                     "formatOptions": {},
-                    "name": "Feature type",
-                    "textsearch": "choice",
-                    "linkDirectory": [
-                        {
-                            "id": "feature",
-                            "text": "feature"
+                    "name": "ЖК"
+                },
+                "is_archive": {
+                    "active": true,
+                    "dataType": "boolean",
+                    "format": "",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
                         },
-                        {
-                            "id": "bug",
-                            "text": "bug"
-                        }
-                    ]
+                        "dateLocale": "en-gb",
+                        "booleanOptions": [
+                            "Архив",
+                            "Действующий"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "DD/MM/Y",
+                        "timeFormat": " HH:mm",
+                        "isUTC": "false"
+                    },
+                    "name": "is_archive"
                 }
             },
             "filteringSortingLayout": "custom",
-            "filteringSortingLayoutHTML": "<div style=\"padding: 20px; border: 1px solid #ddd; border-radius: 8px;\">\n    <h4>Custom Filters</h4>\n    \n    <!-- Text Search -->\n    <div style=\"margin-bottom: 15px;\">\n        <label>Search Text:</label>\n        <input type=\"text\" id=\"textSearch\" placeholder=\"Enter search term...\">\n        <button onclick=\"applyTextFilter()\">Apply</button>\n    </div>\n    \n    <!-- Numeric Range -->\n    <div style=\"margin-bottom: 15px;\">\n        <label>Number Range:</label>\n        <input type=\"number\" id=\"minNumber\" placeholder=\"Min\">\n        <input type=\"number\" id=\"maxNumber\" placeholder=\"Max\">\n        <button onclick=\"applyNumberFilter()\">Filter</button>\n    </div>\n    \n    <!-- Sorting -->\n    <div style=\"margin-bottom: 15px;\">\n        <label>Sort by:</label>\n        <select id=\"sortField\">\n            <option value=\"\">No sorting</option>\n            <option value=\"fieldName\">Field Name</option>\n            <option value=\"numberField\">Number Field</option>\n        </select>\n        <select id=\"sortDirection\">\n            <option value=\"asc\">Ascending</option>\n            <option value=\"desc\">Descending</option>\n        </select>\n        <button onclick=\"applySorting()\">Sort</button>\n    </div>\n    \n    <!-- Actions -->\n    <button onclick=\"clearFilters()\">Clear All</button>\n</div>\n\n<script>\nfunction applyTextFilter() {\n    const value = document.getElementById('textSearch').value;\n    if (value) {\n        const dql = \"'fieldName' like '\" + value + \"'\";\n        const currentSort = getCurrentSort();\n        window.DirectualFilter.emit(dql, currentSort);\n    }\n}\n\nfunction applyNumberFilter() {\n    const min = document.getElementById('minNumber').value;\n    const max = document.getElementById('maxNumber').value;\n    \n    let conditions = [];\n    if (min) conditions.push(\"'numberField' >= '\" + min + \"'\");\n    if (max) conditions.push(\"'numberField' <= '\" + max + \"'\");\n    \n    const dql = conditions.join(' AND ');\n    const currentSort = getCurrentSort();\n    window.DirectualFilter.emit(dql, currentSort);\n}\n\nfunction applySorting() {\n    const field = document.getElementById('sortField').value;\n    const direction = document.getElementById('sortDirection').value;\n    \n    if (field) {\n        const sortOptions = { field: field, direction: direction };\n        const currentFilter = getCurrentFilter();\n        window.DirectualFilter.emit(currentFilter, sortOptions);\n    }\n}\n\nfunction getCurrentSort() {\n    const field = document.getElementById('sortField').value;\n    const direction = document.getElementById('sortDirection').value;\n    return field ? { field: field, direction: direction } : null;\n}\n\nfunction getCurrentFilter() {\n    const text = document.getElementById('textSearch').value;\n    const min = document.getElementById('minNumber').value;\n    const max = document.getElementById('maxNumber').value;\n    \n    let conditions = [];\n    if (text) conditions.push(\"'fieldName' like '\" + text + \"'\");\n    if (min) conditions.push(\"'numberField' >= '\" + min + \"'\");\n    if (max) conditions.push(\"'numberField' <= '\" + max + \"'\");\n    \n    return conditions.join(' AND ');\n}\n\nfunction clearFilters() {\n    document.getElementById('textSearch').value = '';\n    document.getElementById('minNumber').value = '';\n    document.getElementById('maxNumber').value = '';\n    document.getElementById('sortField').value = '';\n    window.DirectualFilter.emit('', null);\n}\n\n// Initialize on load\nsetTimeout(() => {\n    console.log('Available fields:', window.DirectualFilter.props.fields);\n}, 100);\n</script>"
+            "filteringSortingLayoutHTML": "<div></div>"
         },
-        "card_type_dir": {
-            "body": "<div class=\"feature-container\" style=\"border-color:#{{color}};\">\n  <span class=\"feature-type-label\" style=\"color:#{{color}};\">{{feature_type}}</span>\n  <!-- Upvote -->\n  <label class=\"upvote-btn\" tabindex=\"0\"\n         data-action-type=\"action\" \n         data-action-data=\"upvote\"\n         >\n    <input type=\"checkbox\" />\n    <div class=\"upvote-arrow\"></div>\n    <span class=\"upvote-count\">{{votes}}</span>\n  </label>\n\n  <code class=\"feature-code\">{{feature_id}}</code><br>\n  <div>\n    <b class=\"feature-title\">{{title}}</b>\n    <div class=\"tags-container\">\n      {{#tags}}\n      <div class=\"tag-item\" style=\"background-color:{{color}}; color:{{color_text}};\">{{id}}</div>\n      {{/tags}}\n    </div>\n  </div>\n</div>",
-            "image_position": "no_image",
-            "actionsOn": true,
-            "_actions": [
-                {
-                    "id": "action_1753284728122",
-                    "_conditionalView": true,
-                    "_conditions": [
-                        {
-                            "id": "condition_1753284733984",
-                            "_conditionalView_field": "WebUser.role",
-                            "_conditionalView_operator": "notContains",
-                            "_conditionalView_value": "god"
-                        }
-                    ],
-                    "action_id": "action_1753284701822",
-                    "_action_label": "Release!",
-                    "_action_button_size": "small",
-                    "_action_icon": "arrowRightMany",
-                    "_action_button_type": "accent",
-                    "_action_conditionals_manual": "manual",
-                    "_action_conditional_disable_or_hide": "hide"
-                }
-            ],
-            "_actionsDebug": {
-                "debugConditions": false
-            },
-            "paraTemplateEngine": "api"
-        },
-        "routing": "modal",
-        "routing_where": "/roadmap/{{feature_id}}",
         "actions": [
             {
-                "id": "action_1753284701822",
-                "name": "Release!",
+                "id": "action_1757928893951",
+                "name": "delete",
                 "actionType": "endpoint",
-                "endpoint": "postAdminAction",
+                "endpoint": "delete_obj_user",
                 "mapping": [
                     {
-                        "id": "mapping_1753284713577",
-                        "field": "action",
-                        "value": "release!"
+                        "id": "mapping_1757928919231",
+                        "field": "deleted",
+                        "value": "true"
                     },
                     {
-                        "id": "mapping_1753284966223",
-                        "field": "feature_id",
-                        "value": "{{id}}"
-                    }
-                ]
-            },
-            {
-                "id": "action_1759926523909",
-                "name": "upvote",
-                "actionType": "endpoint",
-                "endpoint": "upvote",
-                "mapping": [
-                    {
-                        "id": "mapping_1759926547835",
-                        "field": "feature",
+                        "id": "mapping_1757928935784",
+                        "field": "id",
                         "value": "{{id}}"
                     }
                 ]
             }
-        ]
+        ],
+        "routing": "redirect",
+        "card_type_dir": {
+            "actionsOn": false,
+            "_actions": [
+                {
+                    "id": "action_1757929094351",
+                    "action_id": "action_1757928893951",
+                    "_action_icon": "close",
+                    "_action_button_size": "small"
+                }
+            ],
+            "actionsLayout": "line",
+            "paraTemplateEngine": "front",
+            "image": "{{}}",
+            "body": "{{gk_name}}",
+            "image_border_radius": 10,
+            "image_height": 100
+        },
+        "routing_where": "/objects-agent/{{id}}",
+        "flex_layout__width": 350,
+        "paraTemplateEngine": "api"
     },
     "tableTitle": null,
     "actions": [],
     "headers": [
-        {
-            "sysName": "color",
-            "name": "Card color",
-            "dataType": "string",
-            "id": "61881621017200362",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 9,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": "color",
-            "formatOptions": {},
-            "groupName": null,
-            "indexExists": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "date_added",
-            "name": "Date added",
-            "dataType": "date",
-            "id": "68351620832123660",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 2,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "D MMMM, Y",
-                "timeFormat": "",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "indexExists": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "date_updated",
-            "name": "Date updated",
-            "dataType": "date",
-            "id": "74581670507990970",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 3,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {
-                "customOptionLabel": "My option",
-                "keyValue": {
-                    "key": "key",
-                    "value": "value",
-                    "button": "One more"
-                },
-                "dateLocale": "en-gb",
-                "booleanOptions": [
-                    "True",
-                    "False"
-                ],
-                "validWeekDays": {
-                    "mon": true,
-                    "thu": true,
-                    "tue": true,
-                    "sun": true,
-                    "fri": true,
-                    "sat": true,
-                    "wed": true
-                },
-                "customOptionPlaceholder": "Describe your option",
-                "range": {},
-                "customOptionType": "textarea",
-                "dateFormat": "D MMMM, Y",
-                "timeFormat": "",
-                "isUTC": "false"
-            },
-            "groupName": null,
-            "indexExists": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "description",
-            "name": "Feature description",
-            "dataType": "string",
-            "id": "77031620832091108",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 1,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": "markdown",
-            "formatOptions": {},
-            "groupName": null,
-            "indexExists": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "dev_status",
-            "name": "Development status",
-            "dataType": "link",
-            "id": "85621620832330584",
-            "link": "development_status",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 8,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "indexExists": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "feature_id",
-            "name": "Inner ID",
-            "dataType": "string",
-            "id": "23601621342083348",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 11,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "indexExists": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "feature_type",
-            "name": "Feature type",
-            "dataType": "link",
-            "id": "55371621030232780",
-            "link": "feature_type",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 10,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "indexExists": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
         {
             "sysName": "id",
             "name": "id",
@@ -1399,19 +1132,19 @@ let exampleTable = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
             "json": false,
+            "indexExists": false,
             "array": false
         },
         {
-            "sysName": "progress",
-            "name": "Progress",
-            "dataType": "json",
-            "id": "68751622642385874",
+            "sysName": "documents",
+            "name": "Документы",
+            "dataType": "file",
+            "id": "32551756816168510",
             "link": "",
             "group": "0",
             "tags": "",
@@ -1419,12 +1152,40 @@ let exampleTable = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 16,
+            "order": 24,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
             "synthetic": false,
-            "format": "slider",
+            "format": "multipleFiles",
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "is_archive",
+            "name": "",
+            "dataType": "boolean",
+            "id": "89771756816087858",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 23,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
             "formatOptions": {
                 "customOptionLabel": "My option",
                 "keyValue": {
@@ -1432,11 +1193,10 @@ let exampleTable = {
                     "value": "value",
                     "button": "One more"
                 },
-                "unitName": "%",
                 "dateLocale": "en-gb",
                 "booleanOptions": [
-                    "True",
-                    "False"
+                    "Архив",
+                    "Действующий"
                 ],
                 "validWeekDays": {
                     "mon": true,
@@ -1448,198 +1208,26 @@ let exampleTable = {
                     "wed": true
                 },
                 "customOptionPlaceholder": "Describe your option",
-                "range": {
-                    "min": 0,
-                    "max": 100,
-                    "step": 5
-                },
+                "range": {},
                 "customOptionType": "textarea",
                 "dateFormat": "DD/MM/Y",
                 "timeFormat": " HH:mm",
                 "isUTC": "false"
             },
             "groupName": null,
-            "indexExists": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": true,
-            "array": false
-        },
-        {
-            "sysName": "tags",
-            "name": "Tags",
-            "dataType": "arrayLink",
-            "id": "67851621409605492",
-            "link": "tags",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 15,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "indexExists": false,
-            "linkOrArrayLinkType": true,
-            "linkType": false,
-            "arrayLink": true,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "title",
-            "name": "Feature title",
-            "dataType": "string",
-            "id": "79031620832091734",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 0,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
             "json": false,
-            "array": false
-        },
-        {
-            "sysName": "user_id",
-            "name": "Who suggested",
-            "dataType": "link",
-            "id": "59421620832153105",
-            "link": "WebUser",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 4,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
             "indexExists": false,
-            "linkOrArrayLinkType": true,
-            "linkType": true,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
             "array": false
         },
         {
-            "sysName": "votes",
-            "name": "Number of upvotes",
-            "dataType": "number",
-            "id": "68061620832170304",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 5,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": "positiveNum",
-            "formatOptions": {},
-            "groupName": null,
-            "indexExists": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "votes_ids",
-            "name": "Who upvoted",
-            "dataType": "arrayLink",
-            "id": "14001620832180875",
-            "link": "WebUser",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 6,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "indexExists": false,
-            "linkOrArrayLinkType": true,
-            "linkType": false,
-            "arrayLink": true,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "progress_value",
-            "name": "",
-            "dataType": "decimal",
-            "id": "96111752753166071",
-            "link": "",
-            "group": "0",
-            "tags": "",
-            "indexing": false,
-            "ordering": false,
-            "description": null,
-            "weight": null,
-            "order": 17,
-            "linkIndexFieldSysName": [],
-            "defaultValue": "",
-            "constraints": null,
-            "synthetic": false,
-            "format": null,
-            "formatOptions": {},
-            "groupName": null,
-            "indexExists": false,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
-            "typeVariable": {},
-            "json": false,
-            "array": false
-        },
-        {
-            "sysName": "release_date",
-            "name": "Release date",
+            "sysName": "insurancedate",
+            "name": "Дата страховки",
             "dataType": "date",
-            "id": "71651621345011532",
+            "id": "46501756815628790",
             "link": "",
             "group": "0",
             "tags": "",
@@ -1647,7 +1235,7 @@ let exampleTable = {
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 13,
+            "order": 22,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
@@ -1677,1130 +1265,1414 @@ let exampleTable = {
                 "customOptionPlaceholder": "Describe your option",
                 "range": {},
                 "customOptionType": "textarea",
-                "dateFormat": "D MMMM, Y",
+                "dateFormat": "DD/MM/Y",
                 "timeFormat": "",
                 "isUTC": "false"
             },
             "groupName": null,
-            "indexExists": false,
             "linkOrArrayLinkType": false,
             "linkType": false,
             "arrayLink": false,
             "typeVariable": {},
             "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "rental_income",
+            "name": "Доход от аренды",
+            "dataType": "decimal",
+            "id": "90211756815606545",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 21,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: '₽num',\n    blocks: {\n      num: {\n        mask: Number,\n        thousandsSeparator: ' '\n      }\n    }\n  }",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "remaining_debt",
+            "name": "Оставшийся долг",
+            "dataType": "decimal",
+            "id": "85401756815547437",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 20,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "payment_per_month",
+            "name": "Платеж в месяц",
+            "dataType": "decimal",
+            "id": "62701756815507205",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 19,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: '₽num',\n    blocks: {\n      num: {\n        mask: Number,\n        thousandsSeparator: ' '\n      }\n    }\n  }",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "term_years",
+            "name": "Срок (лет)",
+            "dataType": "number",
+            "id": "13321756815473790",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 18,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "positiveNum",
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "terms",
+            "name": "Условия",
+            "dataType": "decimal",
+            "id": "28471756815444105",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 17,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n                mask: '%num',\n                blocks: {\n                    num: {\n                        mask: Number,\n                        thousandsSeparator: ' ',\n                        min: 0,\n                        max: 100,\n                        scale: 2,\n                        radix: '.',\n                        padFractionalZeros: true,\n                        normalizeZeros: true\n                    }\n                }\n            }",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "down_payment_amount",
+            "name": "Сумма первоначального взноса",
+            "dataType": "decimal",
+            "id": "52301756815370560",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 16,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: '₽num',\n    blocks: {\n      num: {\n        mask: Number,\n        thousandsSeparator: ' '\n      }\n    }\n  }",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "price_per_sqm",
+            "name": "Цена за кв. м.",
+            "dataType": "decimal",
+            "id": "67621756815349642",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 15,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: '₽num',\n    blocks: {\n      num: {\n        mask: Number,\n        thousandsSeparator: ' '\n      }\n    }\n  }",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "finishing",
+            "name": "Отделка",
+            "dataType": "string",
+            "id": "94101756815241340",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 14,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOption": false,
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false",
+                "multipleChoice": [
+                    {
+                        "value": "Черновая отделка",
+                        "label": "Черновая отделка"
+                    },
+                    {
+                        "value": "Предчистовая отделка",
+                        "label": "Предчистовая отделка"
+                    },
+                    {
+                        "value": "Чистовая отделка",
+                        "label": "Чистовая отделка"
+                    },
+                    {
+                        "value": "Готовый ремонт и меблировка",
+                        "label": "Готовый ремонт и меблировка"
+                    }
+                ]
+            },
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "floors_total",
+            "name": "Всего этажей",
+            "dataType": "number",
+            "id": "50231756815220504",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 13,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "positiveNum",
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "floor",
+            "name": "Этаж",
+            "dataType": "number",
+            "id": "68421756815178606",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 12,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "positiveNum",
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "number_of_rooms",
+            "name": "Комнат",
+            "dataType": "number",
+            "id": "93891756815129619",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 11,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "positiveNum",
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "photo",
+            "name": "Фотографии",
+            "dataType": "file",
+            "id": "86951756815082575",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 10,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "multipleImages",
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "maxFiles": 10,
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "purchase_price",
+            "name": "Цена покупки",
+            "dataType": "decimal",
+            "id": "99071756814830139",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 9,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: '₽num',\n    blocks: {\n      num: {\n        mask: Number,\n        thousandsSeparator: ' '\n      }\n    }\n  }",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "date_of_purchase",
+            "name": "Дата покупки",
+            "dataType": "date",
+            "id": "54291756814786285",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 8,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": "",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "square",
+            "name": "Площадь",
+            "dataType": "decimal",
+            "id": "64731756814752401",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 7,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "completion_date",
+            "name": "Срок сдачи",
+            "dataType": "date",
+            "id": "72731756814474307",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 5,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-us",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "MM/Y",
+                "timeFormat": "",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "object_type",
+            "name": "Тип объекта",
+            "dataType": "link",
+            "id": "57021756814445057",
+            "link": "type_realty",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "adress",
+            "name": "Адрес",
+            "dataType": "string",
+            "id": "83931756814413589",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 2,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "gk_name",
+            "name": "ЖК",
+            "dataType": "string",
+            "id": "82231756814378434",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "main_photo",
+            "name": "",
+            "dataType": "file",
+            "id": "38031757961657365",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 26,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": "image",
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "market_value",
+            "name": "Рыночная стоимость",
+            "dataType": "decimal",
+            "id": "57461758016850214",
+            "link": "",
+            "group": "1758016840898",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: '₽num',\n    blocks: {\n      num: {\n        mask: Number,\n        thousandsSeparator: ' '\n      }\n    }\n  }",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "repair",
+            "name": "Ремонт",
+            "dataType": "string",
+            "id": "18721758116458503",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 30,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "income_potential",
+            "name": "Потенциал дохода",
+            "dataType": "decimal",
+            "id": "50731758116567652",
+            "link": "",
+            "group": "1758016840898",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "imask": "{\n    mask: '₽num',\n    blocks: {\n      num: {\n        mask: Number,\n        thousandsSeparator: ' '\n      }\n    }\n  }",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "user_id",
+            "name": "Клиент",
+            "dataType": "link",
+            "id": "95051757444241067",
+            "link": "WebUser",
+            "group": "1762758671349",
+            "tags": "",
+            "indexing": true,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 3,
+            "linkIndexFieldSysName": [
+                "agent",
+                "id"
+            ],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": true,
+            "array": false
+        },
+        {
+            "sysName": "invested",
+            "name": "Суммарно вложено",
+            "dataType": "decimal",
+            "id": "39011758644656224",
+            "link": "",
+            "group": "1758022281226",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 5,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "completed",
+            "name": "Статус",
+            "dataType": "boolean",
+            "id": "45001756814639529",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 6,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "Сдан",
+                    "Идет строительство"
+                ],
+                "hideStandardBooleanIcons": true,
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": " HH:mm",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "linkOrArrayLinkType": false,
+            "linkType": false,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
+            "array": false
+        },
+        {
+            "sysName": "object_subtype",
+            "name": "Подтип объекта",
+            "dataType": "link",
+            "id": "74401762715124954",
+            "link": "subtype_realty",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "linkOrArrayLinkType": true,
+            "linkType": true,
+            "arrayLink": false,
+            "typeVariable": {},
+            "json": false,
+            "indexExists": false,
             "array": false
         }
     ],
     "data": [
         {
-            "votes": 17,
-            "description": "Option to restrict any access to files on Directual for non-authorised users",
-            "tags": [
-                {
-                    "color": "#0BBAB5",
-                    "color_text": "rgba(0,0,0,.5)",
-                    "id": "database"
-                }
+            "payment_per_month": 35000,
+            "market_value": 7800000,
+            "down_payment_amount": 2100000,
+            "completion_date": 1764536400000,
+            "remaining_debt": 7560000,
+            "photo": [
+                "https://api.directual.com/fileUploaded/dev-altera/web/d9f44310-c9db-4a8d-9b7e-5797470d0118.png",
+                "https://api.directual.com/fileUploaded/dev-altera/web/0113bca6-74ea-4fff-98de-32400b6f329e.png",
+                "https://api.directual.com/fileUploaded/dev-altera/web/d9e3976e-d792-4c8b-a9cb-cb732fbd8e43.png",
+                "https://api.directual.com/fileUploaded/dev-altera/web/53eb5ce4-f91b-4ce8-b2fd-1da12d958df6.png"
             ],
-            "feature_id": "PLT-177",
-            "color": "57bf97",
+            "date_of_purchase": 1761944400000,
+            "adress": "Республика Татарстан (Татарстан), Казань, улица Парижской Коммуны, 12",
+            "term_years": 18,
+            "finishing": "Готовый ремонт и меблировка",
+            "object_type": {
+                "id": "af0924ed-6cf0-4305-9c08-0c6ebdff8055",
+                "type": "Квартира"
+            },
+            "gk_name": "Атмосфера",
+            "floors_total": 12,
             "user_id": {
-                "lastName": "Ershov",
-                "firstName": "Pavel",
-                "id": "pavel@directual.com"
+                "debt": 7560000,
+                "payments_per_month": 35000,
+                "rented_count": 1,
+                "market_portfolio_value": 7800000,
+                "objects_count": 1,
+                "total_portfolio_value": 7600000,
+                "id": "89872243815",
+                "sum_square": 36,
+                "rental_income": 40000,
+                "invested": 2100000
             },
-            "date_updated": 1670519010000,
-            "feature_type": "feature",
-            "id": "3874bd01-38af-4d0c-a04f-5eb999733d4f",
-            "progress": "{\"firstValue\":0}",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1625253351000,
-            "votes_ids": [
-                {
-                    "firstName": "Egor",
-                    "lastName": "Baev",
-                    "id": "artosiris@gmail.com"
-                },
-                {
-                    "id": "dave@tomorrowready.com"
-                },
-                {
-                    "firstName": "Mathew",
-                    "lastName": "Tusa",
-                    "id": "mobileactionim@gmail.com"
-                },
-                {
-                    "lastName": "H",
-                    "firstName": "Alejandro",
-                    "id": "digitalgebo@gmail.com"
-                },
-                {
-                    "firstName": "Dimitry",
-                    "lastName": "Novozhilov",
-                    "id": "novozhilov@code-word.ru"
-                },
-                {
-                    "firstName": "Vladimir",
-                    "lastName": "Stepanenko",
-                    "id": "vgstepanenko@gmail.com"
-                },
-                {
-                    "firstName": "A",
-                    "lastName": "A",
-                    "id": "admin@agdigitals.com"
-                },
-                {
-                    "firstName": "Roman",
-                    "lastName": "Tkachev",
-                    "id": "tkachev.rb@gmail.com"
-                },
-                {
-                    "lastName": "Pearson",
-                    "firstName": "Lloyd",
-                    "id": "lloydpearson@packagecues.com"
-                },
-                {
-                    "lastName": "N",
-                    "firstName": "Kamil",
-                    "id": "kamil@leverall.com"
-                },
-                {
-                    "firstName": "titouan",
-                    "lastName": "albouy",
-                    "id": "titouan@akatek.io"
-                },
-                {
-                    "firstName": "VISHAL",
-                    "lastName": "SETHI",
-                    "id": "vs301991@gmail.com"
-                },
-                {
-                    "firstName": "Elise",
-                    "lastName": "Boonstra-Legerstee",
-                    "id": "elise.legerstee@gmail.com"
-                },
-                {
-                    "firstName": "Thomas",
-                    "lastName": "Omaley",
-                    "id": "thomasomaley1964@gmail.com"
-                },
-                {
-                    "id": "trustpropsonline@gmail.com"
-                },
-                {
-                    "id": "lindamacdonalde@gmail.com"
-                },
-                {
-                    "firstName": "JOHNLY",
-                    "lastName": "NARAG",
-                    "id": "johnly_s_narag@yahoo.com"
-                }
-            ],
-            "title": "Restrict access to files ",
-            "progress_value": 0
-        },
-        {
-            "votes": 16,
-            "description": "from the table row",
-            "tags": [
-                {
-                    "color": "#00A8F0",
-                    "color_text": "rgba(255,255,255,.8)",
-                    "id": "web-pages"
-                }
-            ],
-            "feature_id": "PLT-107",
-            "color": "57bf97",
-            "user_id": {
-                "lastName": "Ershov",
-                "firstName": "Pavel",
-                "id": "pavel@directual.com"
-            },
-            "date_updated": 1674056358000,
-            "feature_type": "feature",
-            "id": "bcfb59c9-235d-4d4a-96d9-07c73ec20124",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1621374197000,
-            "votes_ids": [
-                {
-                    "firstName": "Egor",
-                    "lastName": "Baev",
-                    "id": "artosiris@gmail.com"
-                },
-                {
-                    "lastName": "Nazarov",
-                    "firstName": "Oleg",
-                    "id": "olegnazarov@hotmail.com"
-                },
-                {
-                    "id": "mf.alexander@gmail.com"
-                },
-                {
-                    "firstName": "Dimitry",
-                    "lastName": "Novozhilov",
-                    "id": "novozhilov@code-word.ru"
-                },
-                {
-                    "firstName": "Vladimir",
-                    "lastName": "Stepanenko",
-                    "id": "vgstepanenko@gmail.com"
-                },
-                {
-                    "firstName": "Roman",
-                    "lastName": "Tkachev",
-                    "id": "tkachev.rb@gmail.com"
-                },
-                {
-                    "id": "hamelmesfin@gmail.com"
-                },
-                {
-                    "id": "av.volgin@gmail.com"
-                },
-                {
-                    "firstName": "Aleksandra",
-                    "lastName": "Kalina",
-                    "id": "aleksandra.kalina@lamoda.ru"
-                },
-                {
-                    "lastName": "Goncharov",
-                    "firstName": "Pavel",
-                    "id": "pavel@goncharov.me"
-                },
-                {
-                    "lastName": "Khokhlov",
-                    "firstName": "Alexey",
-                    "id": "alexhohlov89@gmail.com"
-                },
-                {
-                    "firstName": "Max",
-                    "lastName": "Lykov",
-                    "id": "mxf@mail.ru"
-                },
-                {
-                    "id": "lykovmaxim@gmail.com"
-                },
-                {
-                    "id": "trustpropsonline@gmail.com"
-                },
-                {
-                    "lastName": "Титов",
-                    "firstName": "Олег",
-                    "id": "easylife9525@gmail.com"
-                },
-                {
-                    "firstName": "JOHNLY",
-                    "lastName": "NARAG",
-                    "id": "johnly_s_narag@yahoo.com"
-                }
-            ],
-            "title": "Actions in Table",
-            "progress_value": 0
-        },
-        {
-            "votes": 13,
-            "description": "As of today, arrayLink is displayed as a simple list. It would be great to have:\n\n- Comments\n- ✅ Sorted list (in prod)\n- Cards\n- ✅ Table (in prod)\n- ✅ Shopping cart (in prod)\n- Calendar",
-            "tags": [
-                {
-                    "color": "#00A8F0",
-                    "color_text": "rgba(255,255,255,.8)",
-                    "id": "web-pages"
-                }
-            ],
-            "feature_id": "PLT-114",
-            "color": "57bf97",
-            "user_id": {
-                "lastName": "Ershov",
-                "firstName": "Pavel",
-                "id": "pavel@directual.com"
-            },
-            "date_updated": 1670519010000,
-            "feature_type": "feature",
-            "id": "db3ce173-737a-4b9b-9872-f9c5d090f015",
-            "progress": "{\"firstValue\":40}",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1621374947000,
-            "votes_ids": [
-                {
-                    "firstName": "Egor",
-                    "lastName": "Baev",
-                    "id": "artosiris@gmail.com"
-                },
-                {
-                    "firstName": "Dimitry",
-                    "lastName": "Novozhilov",
-                    "id": "novozhilov@code-word.ru"
-                },
-                {
-                    "lastName": "Reyes",
-                    "firstName": "Cathy",
-                    "id": "iamcathyreyes@yahoo.com"
-                },
-                {
-                    "firstName": "Vladimir",
-                    "lastName": "Stepanenko",
-                    "id": "vgstepanenko@gmail.com"
-                },
-                {
-                    "firstName": "Aleksandra",
-                    "lastName": "Kalina",
-                    "id": "aleksandra.kalina@lamoda.ru"
-                },
-                {
-                    "firstName": "Do",
-                    "lastName": "Do",
-                    "id": "dodo@inboxbear.com"
-                },
-                {
-                    "lastName": "Goncharov",
-                    "firstName": "Pavel",
-                    "id": "pavel@goncharov.me"
-                },
-                {
-                    "firstName": "Max",
-                    "lastName": "Lykov",
-                    "id": "mxf@mail.ru"
-                },
-                {
-                    "firstName": "Efim",
-                    "lastName": "Maisak",
-                    "id": "coldnaked@gmail.com"
-                },
-                {
-                    "id": "kolgtim@gmail.com"
-                },
-                {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                {
-                    "firstName": "Renato",
-                    "lastName": "Pinto",
-                    "id": "renato.casa.corre@gmail.com"
-                },
-                {
-                    "firstName": "JOHNLY",
-                    "lastName": "NARAG",
-                    "id": "johnly_s_narag@yahoo.com"
-                }
-            ],
-            "title": "Sophisticated view for arrayLinks on object cards",
-            "progress_value": 40
-        },
-        {
-            "votes": 11,
-            "description": "- XML sitemap\n- robots.txt\n- canonical URLs\n- Schema.org Open Graph\n- 404\n- htaccess\n- Meta: Title, description, Keywords, Content-Type\n- Alt for pictures\n\n[SEO checklist](https://dminhvu.com/nextjs-seo)",
-            "tags": [
-                {
-                    "color": "#00A8F0",
-                    "color_text": "rgba(255,255,255,.8)",
-                    "id": "web-pages"
-                }
-            ],
-            "feature_id": "PLT-304",
-            "color": "57bf97",
-            "user_id": {
-                "lastName": "Ershov",
-                "firstName": "Pavel",
-                "id": "pavel@directual.com"
-            },
-            "date_updated": 1711715915000,
-            "feature_type": "feature",
-            "id": "014091fa-909b-4657-b309-5be994ec1e4c",
-            "progress": "{\"firstValue\":0}",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1643554566000,
-            "votes_ids": [
-                {
-                    "firstName": "Egor",
-                    "lastName": "Baev",
-                    "id": "artosiris@gmail.com"
-                },
-                {
-                    "lastName": "Online",
-                    "firstName": "Bisapco",
-                    "id": "atr.service.msk@gmail.com"
-                },
-                {
-                    "firstName": "Dimitry",
-                    "lastName": "Novozhilov",
-                    "id": "novozhilov@code-word.ru"
-                },
-                {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@ershov.org"
-                },
-                {
-                    "firstName": "Joses",
-                    "lastName": "Saumaitoga",
-                    "id": "josesjjs@tpg.com.au"
-                },
-                {
-                    "lastName": "Goncharov",
-                    "firstName": "Pavel",
-                    "id": "pavel@goncharov.me"
-                },
-                {
-                    "lastName": "N",
-                    "firstName": "Kamil",
-                    "id": "kamil@leverall.com"
-                },
-                {
-                    "firstName": "Otto",
-                    "lastName": "Baumann",
-                    "id": "ob@it-setup.dk"
-                },
-                {
-                    "id": "sergey.azarov@gmail.com"
-                },
-                {
-                    "id": "trustpropsonline@gmail.com"
-                },
-                {
-                    "firstName": "JOHNLY",
-                    "lastName": "NARAG",
-                    "id": "johnly_s_narag@yahoo.com"
-                }
-            ],
-            "title": "SEO-related features",
-            "progress_value": 0
-        },
-        {
-            "votes": 11,
-            "description": "Copy pages in Web-pages",
-            "tags": [
-                {
-                    "color": "#00A8F0",
-                    "color_text": "rgba(255,255,255,.8)",
-                    "id": "web-pages"
-                }
-            ],
-            "feature_id": "PLT-215",
-            "color": "57bf97",
-            "user_id": {
-                "firstName": "Vladimir",
-                "lastName": "Stepanenko",
-                "id": "vgstepanenko@gmail.com"
-            },
-            "date_updated": 1670519011000,
-            "feature_type": "feature",
-            "id": "67b93ec9-cff1-4870-8d92-42a4a53e60d9",
-            "progress": "{\"firstValue\":0}",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1628176984000,
-            "votes_ids": [
-                {
-                    "firstName": "Egor",
-                    "lastName": "Baev",
-                    "id": "artosiris@gmail.com"
-                },
-                {
-                    "firstName": "Joses",
-                    "lastName": "Saumaitoga",
-                    "id": "josesjjs@tpg.com.au"
-                },
-                {
-                    "lastName": "Nichols",
-                    "firstName": "Joanne",
-                    "id": "jonichols@me.com"
-                },
-                {
-                    "firstName": "Max",
-                    "lastName": "Lykov",
-                    "id": "mxf@mail.ru"
-                },
-                {
-                    "lastName": "Goncharov",
-                    "firstName": "Pavel",
-                    "id": "office@ingros.ru"
-                },
-                {
-                    "id": "victorblan@gmail.com"
-                },
-                {
-                    "id": "lykovmaxim@gmail.com"
-                },
-                {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                {
-                    "lastName": "Gaisin",
-                    "firstName": "Ruslan",
-                    "id": "rusgaisin@gmail.com"
-                },
-                {
-                    "id": "trustpropsonline@gmail.com"
-                },
-                {
-                    "firstName": "JOHNLY",
-                    "lastName": "NARAG",
-                    "id": "johnly_s_narag@yahoo.com"
-                }
-            ],
-            "title": "Copy page on portal",
-            "progress_value": 0
-        },
-        {
-            "votes": 11,
-            "description": "Add \"not in array\" filter in condition cube and in api filter section. Ideally add 2 new options: \n1. object is NOT in array\n2. array does NOT contain all\n2. array does NOT contain any",
-            "tags": [
-                {
-                    "color_text": "rgba(0,0,0,.5)",
-                    "color": "#F28B82",
-                    "id": "scenarios"
-                },
-                {
-                    "color_text": "rgba(0,0,0,.5)",
-                    "color": "#FDD663",
-                    "id": "api-builder"
-                }
-            ],
-            "feature_id": "PLT-120",
-            "color": "57bf97",
-            "user_id": {
-                "lastName": "Dolgov",
-                "firstName": "Nikita",
-                "id": "n.dolgov@directual.com"
-            },
-            "date_updated": 1692696268000,
-            "feature_type": "feature",
-            "id": "7d8635da-2738-44cf-b4b7-1d509611f8ed",
-            "progress": "{\"firstValue\":0}",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1621377697000,
-            "votes_ids": [
-                {
-                    "firstName": "Egor",
-                    "lastName": "Baev",
-                    "id": "artosiris@gmail.com"
-                },
-                {
-                    "firstName": "Dimitry",
-                    "lastName": "Novozhilov",
-                    "id": "novozhilov@code-word.ru"
-                },
-                {
-                    "lastName": "Ermolaev",
-                    "firstName": "Timur",
-                    "id": "ermolaev@code-word.ru"
-                },
-                {
-                    "firstName": "Anton",
-                    "lastName": "Sidorov",
-                    "id": "a@preencipium.com"
-                },
-                {
-                    "firstName": "Max",
-                    "lastName": "Lykov",
-                    "id": "mxf@mail.ru"
-                },
-                {
-                    "id": "drammichd@gmail.com"
-                },
-                {
-                    "id": "kolgtim@gmail.com"
-                },
-                {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                {
-                    "lastName": "Титов",
-                    "firstName": "Олег",
-                    "id": "easylife9525@gmail.com"
-                },
-                {
-                    "firstName": "JOHNLY",
-                    "lastName": "NARAG",
-                    "id": "johnly_s_narag@yahoo.com"
-                },
-                {
-                    "lastName": "Dolgov",
-                    "firstName": "Nikita",
-                    "id": "n.dolgov@directual.com"
-                }
-            ],
-            "title": "Add NOT-filters for arrays",
-            "progress_value": 0
-        },
-        {
-            "votes": 11,
-            "description": "When a structure becomes big with hundreds of parameters it usually makes it difficult to manage and to find in scenario parameter we need. Usually a lot of parameters with time become unused. The easiest way to fix this problem but not to broke old scenarios and other structures, connected with our unused parameters is to allow user to hide it both in structures and scenarios, something like adding them to archive from which we can drop them back any time we want.   ",
-            "tags": [
-                {
-                    "color": "#0BBAB5",
-                    "color_text": "rgba(0,0,0,.5)",
-                    "id": "database"
-                }
-            ],
-            "feature_id": "PLT-281",
-            "color": "57bf97",
-            "user_id": {
-                "firstName": "Artem",
-                "lastName": "Laptev",
-                "id": "artemlaptev7@gmail.com"
-            },
-            "date_updated": 1670519011000,
-            "feature_type": "feature",
-            "id": "4dee093a-d6b6-461c-997c-7bce76b93027",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1637408122000,
-            "votes_ids": [
-                {
-                    "firstName": "Egor",
-                    "lastName": "Baev",
-                    "id": "artosiris@gmail.com"
-                },
-                {
-                    "firstName": "Dimitry",
-                    "lastName": "Novozhilov",
-                    "id": "novozhilov@code-word.ru"
-                },
-                {
-                    "firstName": "Joses",
-                    "lastName": "Saumaitoga",
-                    "id": "josesjjs@tpg.com.au"
-                },
-                {
-                    "lastName": "Nichols",
-                    "firstName": "Joanne",
-                    "id": "jonichols@me.com"
-                },
-                {
-                    "lastName": "O'Hara",
-                    "firstName": "Andrew",
-                    "id": "andrewohara111@gmail.com"
-                },
-                {
-                    "firstName": "Anton",
-                    "lastName": "Sidorov",
-                    "id": "a@preencipium.com"
-                },
-                {
-                    "firstName": "Max",
-                    "lastName": "Lykov",
-                    "id": "mxf@mail.ru"
-                },
-                {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                {
-                    "id": "sergey.azarov@gmail.com"
-                },
-                {
-                    "id": "lindamacdonalde@gmail.com"
-                },
-                {
-                    "firstName": "JOHNLY",
-                    "lastName": "NARAG",
-                    "id": "johnly_s_narag@yahoo.com"
-                }
-            ],
-            "title": "hide unused fields",
-            "progress_value": 0
-        },
-        {
-            "votes": 11,
-            "description": "- Custom fields\n- Edit Sign in page\n- If there is only one sign in method, show the button in the menu\n- Sync scenario under the hood",
-            "tags": [
-                {
-                    "color": "#00A8F0",
-                    "color_text": "rgba(255,255,255,.8)",
-                    "id": "web-pages"
-                }
-            ],
-            "feature_id": "PLT-321",
-            "color": "57bf97",
-            "user_id": {
-                "lastName": "Ershov",
-                "firstName": "Pavel",
-                "id": "pavel@directual.com"
-            },
-            "date_updated": 1679934103000,
-            "feature_type": "feature",
-            "id": "3b69de70-1c09-4d37-ac59-a11d071996c1",
-            "progress": "{\"firstValue\":0}",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1653668903000,
-            "votes_ids": [
-                {
-                    "firstName": "Anton",
-                    "lastName": "Romaniuk",
-                    "id": "eddress@yandex.ru"
-                },
-                {
-                    "lastName": "Online",
-                    "firstName": "Bisapco",
-                    "id": "atr.service.msk@gmail.com"
-                },
-                {
-                    "id": "zhgenty@gmail.com"
-                },
-                {
-                    "lastName": "D",
-                    "firstName": "Vadim",
-                    "id": "logicunit@gmail.com"
-                },
-                {
-                    "lastName": "Khokhlov",
-                    "firstName": "Alexey",
-                    "id": "alexhohlov89@gmail.com"
-                },
-                {
-                    "lastName": "Goncharov",
-                    "firstName": "Pavel",
-                    "id": "office@ingros.ru"
-                },
-                {
-                    "id": "mrjackfeliciano@gmail.com"
-                },
-                {
-                    "id": "viktor.iwan@doxadigital.com"
-                },
-                {
-                    "lastName": "Титов",
-                    "firstName": "Олег",
-                    "id": "easylife9525@gmail.com"
-                },
-                {
-                    "firstName": "Mark",
-                    "lastName": "Vokes",
-                    "id": "mark@concept2commerce.com"
-                },
-                {
-                    "firstName": "JOHNLY",
-                    "lastName": "NARAG",
-                    "id": "johnly_s_narag@yahoo.com"
-                }
-            ],
-            "title": "Refactor Sign Up",
-            "progress_value": 0
-        },
-        {
-            "votes": 11,
-            "description": "With auto-logging-in",
-            "tags": [
-                {
-                    "color": "#00A8F0",
-                    "color_text": "rgba(255,255,255,.8)",
-                    "id": "web-pages"
-                }
-            ],
-            "feature_id": "PLT-266",
-            "color": "57bf97",
-            "user_id": {
-                "lastName": "Ershov",
-                "firstName": "Pavel",
-                "id": "pavel@directual.com"
-            },
-            "date_updated": 1710500343000,
-            "feature_type": "feature",
-            "id": "c8012055-0d2a-41ac-b7d0-35e2b34aec53",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1634772726000,
-            "votes_ids": [
-                {
-                    "firstName": "Egor",
-                    "lastName": "Baev",
-                    "id": "artosiris@gmail.com"
-                },
-                {
-                    "firstName": "Dimitry",
-                    "lastName": "Novozhilov",
-                    "id": "novozhilov@code-word.ru"
-                },
-                {
-                    "lastName": "Pearson",
-                    "firstName": "Lloyd",
-                    "id": "lloydpearson@packagecues.com"
-                },
-                {
-                    "lastName": "N",
-                    "firstName": "Kamil",
-                    "id": "kamil@leverall.com"
-                },
-                {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                {
-                    "firstName": "Renato",
-                    "lastName": "Pinto",
-                    "id": "renato.casa.corre@gmail.com"
-                },
-                {
-                    "lastName": "Mihailov",
-                    "firstName": "Mike",
-                    "id": "edueduedoo@gmail.com"
-                },
-                {
-                    "lastName": "Титов",
-                    "firstName": "Олег",
-                    "id": "easylife9525@gmail.com"
-                },
-                {
-                    "id": "ilan@ezcell.ca"
-                },
-                {
-                    "id": "lindamacdonalde@gmail.com"
-                },
-                {
-                    "firstName": "JOHNLY",
-                    "lastName": "NARAG",
-                    "id": "johnly_s_narag@yahoo.com"
-                }
-            ],
-            "title": "\"Magic link\" to app",
-            "progress_value": 0
-        },
-        {
-            "votes": 10,
-            "description": "Two-step import of CSV/XLS\n\n### Step 1\nFields aliases, with quick structure editing.\n\n### Step 2\nImport itself\n\nP.S. Webflow has similar mechanism of CSV import.\n\nPlus:\n- import from Airtable\n- import from Google Sheets\n- import from popular CRMs\n- Listeners on SQL databases",
-            "tags": [
-                {
-                    "color": "#0BBAB5",
-                    "color_text": "rgba(0,0,0,.5)",
-                    "id": "database"
-                }
-            ],
-            "feature_id": "PLT-102",
-            "color": "57bf97",
-            "user_id": {
-                "lastName": "Ershov",
-                "firstName": "Pavel",
-                "id": "pavel@directual.com"
-            },
-            "date_updated": 1731529807000,
-            "feature_type": "feature",
-            "id": "b5ca7520-f1d3-48da-af26-0cdacab94757",
-            "progress": "{\"firstValue\":40}",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1621373725000,
-            "votes_ids": [
-                {
-                    "firstName": "Egor",
-                    "lastName": "Baev",
-                    "id": "artosiris@gmail.com"
-                },
-                {
-                    "firstName": "Roman",
-                    "lastName": "Tkachev",
-                    "id": "tkachev.rb@gmail.com"
-                },
-                {
-                    "lastName": "Nichols",
-                    "firstName": "Joanne",
-                    "id": "jonichols@me.com"
-                },
-                {
-                    "lastName": "Pearson",
-                    "firstName": "Lloyd",
-                    "id": "lloydpearson@packagecues.com"
-                },
-                {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                {
-                    "firstName": "Elise",
-                    "lastName": "Boonstra-Legerstee",
-                    "id": "elise.legerstee@gmail.com"
-                },
-                {
-                    "firstName": "Renato",
-                    "lastName": "Pinto",
-                    "id": "renato.casa.corre@gmail.com"
-                },
-                {
-                    "lastName": "Grimalsky",
-                    "firstName": "Slava",
-                    "id": "itareo@gmail.com"
-                },
-                {
-                    "id": "lindamacdonalde@gmail.com"
-                },
-                {
-                    "firstName": "JOHNLY",
-                    "lastName": "NARAG",
-                    "id": "johnly_s_narag@yahoo.com"
-                }
-            ],
-            "title": "Import updating",
-            "progress_value": 40
-        },
-        {
-            "votes": 9,
-            "description": "Add a setting in \"Sent text message\" mode to choose the keyboard layout: vertical or horizontal",
-            "tags": [
-                {
-                    "color_text": "rgba(0,0,0,.5)",
-                    "color": "#F28B82",
-                    "id": "scenarios"
-                }
-            ],
-            "feature_id": "PLT-228",
-            "color": "57bf97",
-            "user_id": {
-                "lastName": "Ershov",
-                "firstName": "Pavel",
-                "id": "pavel@directual.com"
-            },
-            "date_updated": 1670519011000,
-            "feature_type": "feature",
-            "id": "5cd1b1d3-2e29-4df5-94e9-c1aedb16043a",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1629374375000,
-            "votes_ids": [
-                {
-                    "lastName": "Leonov",
-                    "firstName": "Alexey",
-                    "id": "alex@yolki24.ru"
-                },
-                {
-                    "firstName": "Joses",
-                    "lastName": "Saumaitoga",
-                    "id": "josesjjs@tpg.com.au"
-                },
-                {
-                    "firstName": "Max",
-                    "lastName": "Lykov",
-                    "id": "mxf@mail.ru"
-                },
-                {
-                    "id": "lykovmaxim@gmail.com"
-                },
-                {
-                    "lastName": "Ershov",
-                    "firstName": "Pavel",
-                    "id": "pavel@directual.com"
-                },
-                {
-                    "id": "sergey.azarov@gmail.com"
-                },
-                {
-                    "firstName": "Thomas",
-                    "lastName": "Omaley",
-                    "id": "thomasomaley1964@gmail.com"
-                },
-                {
-                    "firstName": "Hao",
-                    "lastName": "Ngo",
-                    "id": "hao.ngolv@gmail.com"
-                },
-                {
-                    "firstName": "JOHNLY",
-                    "lastName": "NARAG",
-                    "id": "johnly_s_narag@yahoo.com"
-                }
-            ],
-            "title": "Telegram step – vertical/horizontal keyboard",
-            "progress_value": 0
-        },
-        {
-            "votes": 7,
-            "description": "Fast import from Airtable",
-            "feature_id": "PLT-182",
-            "color": "57bf97",
-            "user_id": {
-                "lastName": "Ershov",
-                "firstName": "Pavel",
-                "id": "pavel@directual.com"
-            },
-            "date_updated": 1670519010000,
-            "feature_type": "feature",
-            "id": "e54e9618-65ed-4c6b-ae65-028efa41de25",
-            "dev_status": {
-                "status": "Backlog"
-            },
-            "date_added": 1626367475000,
-            "votes_ids": [
-                {
-                    "firstName": "Roman",
-                    "lastName": "Tkachev",
-                    "id": "tkachev.rb@gmail.com"
-                },
-                {
-                    "id": "subrtt@gmail.com"
-                },
-                {
-                    "firstName": "Do",
-                    "lastName": "Do",
-                    "id": "dodo@inboxbear.com"
-                },
-                {
-                    "firstName": "Ken",
-                    "lastName": "Lyle",
-                    "id": "kenlyle@gmail.com"
-                },
-                {
-                    "firstName": "Thomas",
-                    "lastName": "Omaley",
-                    "id": "thomasomaley1964@gmail.com"
-                },
-                {
-                    "id": "trustpropsonline@gmail.com"
-                },
-                {
-                    "firstName": "JOHNLY",
-                    "lastName": "NARAG",
-                    "id": "johnly_s_narag@yahoo.com"
-                }
-            ],
-            "title": "Import from Airtable",
-            "progress_value": 0
+            "square": 36,
+            "repair": "Современный стиль",
+            "id": "cbffec17-4c33-48db-a316-2342c01c12c2",
+            "insurancedate": 1759266000000,
+            "number_of_rooms": 1,
+            "completed": false,
+            "floor": 7,
+            "purchase_price": 7600000,
+            "rental_income": 40000,
+            "terms": 21.5,
+            "invested": 2100000,
+            "main_photo": "https://api.directual.com/fileUploaded/dev-altera/web/d9f44310-c9db-4a8d-9b7e-5797470d0118.png",
+            "price_per_sqm": 211111.111111
         }
     ],
-    "totalPages": 6,
+    "totalPages": 1,
     "pageNumber": 0,
     "error": null,
     "fieldScheme": [
         [
-            "color",
-            1385610
-        ],
-        [
-            "date_added",
-            1385610
-        ],
-        [
-            "date_updated",
-            1385610
-        ],
-        [
-            "description",
-            1385610
-        ],
-        [
-            "dev_status.status",
-            1385613
-        ],
-        [
-            "feature_id",
-            1385610
-        ],
-        [
-            "feature_type",
-            1385610
-        ],
-        [
             "id",
-            1385610
+            99425352
         ],
         [
-            "progress",
-            1385610
+            "documents",
+            99425352
         ],
         [
-            "tags.id",
-            1386924
+            "is_archive",
+            99425352
         ],
         [
-            "tags.color_text",
-            1386924
+            "insurancedate",
+            99425352
         ],
         [
-            "tags.color",
-            1386924
+            "rental_income",
+            99425352
         ],
         [
-            "title",
-            1385610
+            "remaining_debt",
+            99425352
         ],
         [
-            "user_id.firstName",
-            1385542
+            "payment_per_month",
+            99425352
+        ],
+        [
+            "term_years",
+            99425352
+        ],
+        [
+            "terms",
+            99425352
+        ],
+        [
+            "down_payment_amount",
+            99425352
+        ],
+        [
+            "price_per_sqm",
+            99425352
+        ],
+        [
+            "finishing",
+            99425352
+        ],
+        [
+            "floors_total",
+            99425352
+        ],
+        [
+            "floor",
+            99425352
+        ],
+        [
+            "number_of_rooms",
+            99425352
+        ],
+        [
+            "photo",
+            99425352
+        ],
+        [
+            "purchase_price",
+            99425352
+        ],
+        [
+            "date_of_purchase",
+            99425352
+        ],
+        [
+            "square",
+            99425352
+        ],
+        [
+            "completion_date",
+            99425352
+        ],
+        [
+            "object_type.type",
+            99429859
+        ],
+        [
+            "object_type.id",
+            99429859
+        ],
+        [
+            "adress",
+            99425352
+        ],
+        [
+            "gk_name",
+            99425352
+        ],
+        [
+            "main_photo",
+            99425352
+        ],
+        [
+            "market_value",
+            99425352
+        ],
+        [
+            "repair",
+            99425352
+        ],
+        [
+            "income_potential",
+            99425352
         ],
         [
             "user_id.id",
-            1385542
+            99424199
         ],
         [
-            "user_id.lastName",
-            1385542
+            "user_id.rental_income",
+            99424199
         ],
         [
-            "votes",
-            1385610
+            "user_id.earned_archive",
+            99424199
         ],
         [
-            "votes_ids.firstName",
-            1385542
+            "user_id.total_portfolio_value",
+            99424199
         ],
         [
-            "votes_ids.id",
-            1385542
+            "user_id.market_portfolio_value",
+            99424199
         ],
         [
-            "votes_ids.lastName",
-            1385542
+            "user_id.invested",
+            99424199
         ],
         [
-            "progress_value",
-            1385610
+            "user_id.payments_per_month",
+            99424199
         ],
         [
-            "release_date",
-            1385610
+            "user_id.debt",
+            99424199
+        ],
+        [
+            "user_id.rented_count",
+            99424199
+        ],
+        [
+            "user_id.objects_count",
+            99424199
+        ],
+        [
+            "user_id.sum_square",
+            99424199
+        ],
+        [
+            "invested",
+            99425352
+        ],
+        [
+            "completed",
+            99425352
+        ],
+        [
+            "object_subtype.id",
+            99429860
+        ],
+        [
+            "object_subtype.type",
+            99429860
         ]
     ],
     "writeFields": [],
     "structures": {
-        "1385542": {
-            "networkID": 6829,
+        "99424199": {
+            "networkID": 34461,
             "sysName": "WebUser",
             "name": "App users",
-            "id": 1385542,
-            "dateCreated": "2021-05-14T21:02:45Z",
+            "id": 99424199,
+            "dateCreated": "2025-10-10T08:10:35Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"dateLastActivity\",\"name\":\"dateLastActivity\",\"dataType\":\"string\",\"id\":\"8\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"dateCreated\",\"name\":\"dateCreated\",\"dataType\":\"string\",\"id\":\"11\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"isAuthorization\",\"name\":\"isAuthorization\",\"dataType\":\"boolean\",\"id\":\"7\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"request_counter\",\"name\":\"\",\"dataType\":\"json\",\"id\":\"26481752759056266\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"array\":false},{\"sysName\":\"phone\",\"name\":\"Phone\",\"dataType\":\"string\",\"id\":\"10\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"email\",\"name\":\"Email\",\"dataType\":\"string\",\"id\":\"9\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"userpic\",\"name\":\"User pic\",\"dataType\":\"file\",\"id\":\"1\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":\"Contacts\",\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"id\",\"name\":\"Username (login)\",\"dataType\":\"id\",\"id\":\"13\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"role\",\"name\":\"Roles\",\"dataType\":\"string\",\"id\":\"6\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"password\",\"name\":\"Password (hash)\",\"dataType\":\"string\",\"id\":\"12\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"firstName\",\"name\":\"First name\",\"dataType\":\"string\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"lastName\",\"name\":\"Last name\",\"dataType\":\"string\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"gender\",\"name\":\"Gender\",\"dataType\":\"string\",\"id\":\"3\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"date_registered\",\"name\":\"Date registered on Dev\",\"dataType\":\"date\",\"id\":\"14451621029358812\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"isBlocked\",\"name\":\"Block user\",\"dataType\":\"boolean\",\"id\":\"2\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"code\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"51351621027822811\",\"link\":\"\",\"group\":\"1621027815164\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"isEmailConfirmed\",\"name\":\"Email confirmed\",\"dataType\":\"boolean\",\"id\":\"60111621027825496\",\"link\":\"\",\"group\":\"1621027815164\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"balance\",\"name\":\"Account balance\",\"dataType\":\"decimal\",\"id\":\"81481754134113259\",\"link\":\"\",\"group\":\"1754134105862\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"array\":false},{\"sysName\":\"transaction_ids\",\"name\":\"\",\"dataType\":\"arrayLink\",\"id\":\"63381754134242079\",\"link\":\"transactions\",\"group\":\"1754134105862\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"array\":false}]",
-            "jsonGroupSettings": "[{\"name\":\"Contacts\",\"id\":-502807437,\"order\":0},{\"name\":\"System fields\",\"id\":-1776115286,\"order\":1},{\"name\":\"Email confirmation\",\"id\":1621027815164,\"order\":2},{\"name\":\"BILLING\",\"id\":1754134105862,\"order\":3}]",
-            "jsonViewIdSettings": "[{\"sysName\":\"firstName\"},{\"sysName\":\"lastName\"}]",
-            "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
+            "jsonObject": "[{\"sysName\":\"dateLastActivity\",\"name\":\"dateLastActivity\",\"dataType\":\"string\",\"id\":\"10\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"dateCreated\",\"name\":\"dateCreated\",\"dataType\":\"string\",\"id\":\"13\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isAuthorization\",\"name\":\"isAuthorization\",\"dataType\":\"boolean\",\"id\":\"9\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"notifications_counter\",\"name\":\"Notifications Counter\",\"dataType\":\"string\",\"id\":\"1\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"custom_labels\",\"name\":\"Custom labels\",\"dataType\":\"json\",\"id\":\"2\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"referal_registration\",\"name\":\"Реферальная ссылка\",\"dataType\":\"json\",\"id\":\"50281764142027636\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"telegram\",\"name\":\"Telegram\",\"dataType\":\"string\",\"id\":\"94981759323328772\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"notification_type\",\"name\":\"Способ оповещения\",\"dataType\":\"string\",\"id\":\"69691759326638399\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"phone\",\"name\":\"Телефон\",\"dataType\":\"string\",\"id\":\"12\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"email\",\"name\":\"Email\",\"dataType\":\"string\",\"id\":\"11\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"userpic\",\"name\":\"User pic\",\"dataType\":\"file\",\"id\":\"3\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":\"Contacts\",\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"id\",\"name\":\"Username (login)\",\"dataType\":\"id\",\"id\":\"15\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"role\",\"name\":\"Roles\",\"dataType\":\"array\",\"id\":\"8\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":true},{\"sysName\":\"password\",\"name\":\"Password (hash)\",\"dataType\":\"string\",\"id\":\"14\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"firstName\",\"name\":\"Имя\",\"dataType\":\"string\",\"id\":\"7\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"lastName\",\"name\":\"Фамилия\",\"dataType\":\"string\",\"id\":\"6\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"gender\",\"name\":\"Gender\",\"dataType\":\"string\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"isBlocked\",\"name\":\"Block user\",\"dataType\":\"boolean\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"fatherName\",\"name\":\"Отчество\",\"dataType\":\"string\",\"id\":\"43791759323115100\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"offer_signed_date\",\"name\":\"Дата подписания публичной оферты\",\"dataType\":\"date\",\"id\":\"36481759339313256\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"agent\",\"name\":\"Агенты\",\"dataType\":\"arrayLink\",\"id\":\"74481760705763300\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"secret\",\"name\":\"Secret\",\"dataType\":\"string\",\"id\":\"15751756840351674\",\"link\":\"\",\"group\":\"1756840338934\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"notif_Email\",\"name\":\"Оповещение по email\",\"dataType\":\"boolean\",\"id\":\"24281756841922586\",\"link\":\"\",\"group\":\"1756841910106\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"notif_tg\",\"name\":\"Оповещение в telegram\",\"dataType\":\"boolean\",\"id\":\"18061756841950002\",\"link\":\"\",\"group\":\"1756841910106\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Да\",\"Нет\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"notifications_count\",\"name\":\"\",\"dataType\":\"number\",\"id\":\"34391759396254509\",\"link\":\"\",\"group\":\"1756841910106\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"View\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"47621757359258171\",\"link\":\"\",\"group\":\"1757359140620\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"system_status\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"98541757403098870\",\"link\":\"\",\"group\":\"1757359140620\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"choise_obj_application\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"74831759235959446\",\"link\":\"real_estate_objects\",\"group\":\"1757359140620\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"choise_application_bool\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"52551759236401066\",\"link\":\"\",\"group\":\"1757359140620\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"selected_user_for_agent\",\"name\":\"Клиент\",\"dataType\":\"link\",\"id\":\"65111761738890100\",\"link\":\"WebUser\",\"group\":\"1757359140620\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"selected_user_for_agnet_FIO\",\"name\":\"ФИО\",\"dataType\":\"string\",\"id\":\"30141761743730164\",\"link\":\"\",\"group\":\"1757359140620\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"application_agent_form\",\"name\":\"\",\"dataType\":\"json\",\"id\":\"10711761744476819\",\"link\":\"\",\"group\":\"1757359140620\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"objects_count\",\"name\":\"Количество объектов\",\"dataType\":\"number\",\"id\":\"14661758013570867\",\"link\":\"\",\"group\":\"1758013543847\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"total_portfolio_value\",\"name\":\"Общая стоимость портфеля\",\"dataType\":\"decimal\",\"id\":\"64201758013715392\",\"link\":\"\",\"group\":\"1758013543847\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"market_portfolio_value\",\"name\":\"Рыночная стоимость портфеля\",\"dataType\":\"decimal\",\"id\":\"39061758013724685\",\"link\":\"\",\"group\":\"1758013543847\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"invested\",\"name\":\"Вложено\",\"dataType\":\"decimal\",\"id\":\"65291758013946623\",\"link\":\"\",\"group\":\"1758013543847\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n    mask: '₽num',\\n    blocks: {\\n      num: {\\n        mask: Number,\\n        thousandsSeparator: ' '\\n      }\\n    }\\n  }\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"payments_per_month\",\"name\":\"Платежей в месяц\",\"dataType\":\"decimal\",\"id\":\"44921758013974704\",\"link\":\"\",\"group\":\"1758013543847\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"debt\",\"name\":\"Долг\",\"dataType\":\"decimal\",\"id\":\"93741758014022408\",\"link\":\"\",\"group\":\"1758013543847\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"earned_archive\",\"name\":\"Сколько заработано (архив)\",\"dataType\":\"decimal\",\"id\":\"79571758014057185\",\"link\":\"\",\"group\":\"1758013543847\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"rental_income\",\"name\":\"Доход от аренды\",\"dataType\":\"decimal\",\"id\":\"81961758023642015\",\"link\":\"\",\"group\":\"1758013543847\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"rented_count\",\"name\":\"Сколько в аренде\",\"dataType\":\"number\",\"id\":\"75181758356440489\",\"link\":\"\",\"group\":\"1758013543847\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"sum_square\",\"name\":\"Общая площадь\",\"dataType\":\"decimal\",\"id\":\"48421758641468898\",\"link\":\"\",\"group\":\"1758013543847\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"down_payment\",\"name\":\"Первоначальный взнос\",\"dataType\":\"decimal\",\"id\":\"31341760684518483\",\"link\":\"\",\"group\":\"1758016720667\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n    mask: '₽num',\\n    blocks: {\\n      num: {\\n        mask: Number,\\n        thousandsSeparator: ' '\\n      }\\n    }\\n  }\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"mat_capital\",\"name\":\"Материнский капитал\",\"dataType\":\"decimal\",\"id\":\"66071760684669136\",\"link\":\"\",\"group\":\"1758016720667\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n    mask: '₽num',\\n    blocks: {\\n      num: {\\n        mask: Number,\\n        thousandsSeparator: ' '\\n      }\\n    }\\n  }\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"mortgage_type\",\"name\":\"Тип ипотеки\",\"dataType\":\"string\",\"id\":\"23191760684751253\",\"link\":\"\",\"group\":\"1758016720667\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"goal\",\"name\":\"Цель\",\"dataType\":\"string\",\"id\":\"57331760684769450\",\"link\":\"\",\"group\":\"1758016720667\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"client_type\",\"name\":\"Тип клиента\",\"dataType\":\"string\",\"id\":\"51551760684787372\",\"link\":\"\",\"group\":\"1758016720667\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"last_contact\",\"name\":\"Последний контакт\",\"dataType\":\"date\",\"id\":\"74381760684818351\",\"link\":\"\",\"group\":\"1758016720667\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"comment\",\"name\":\"Комментарий\",\"dataType\":\"string\",\"id\":\"16001760707374363\",\"link\":\"\",\"group\":\"1758016720667\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"source\",\"name\":\"Источник\",\"dataType\":\"string\",\"id\":\"96871760784918277\",\"link\":\"\",\"group\":\"1758016720667\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"all_applications\",\"name\":\"Все заявки\",\"dataType\":\"number\",\"id\":\"63381761567136108\",\"link\":\"\",\"group\":\"1758016720667\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"active_applications\",\"name\":\"Активные заявки\",\"dataType\":\"number\",\"id\":\"86471761567157457\",\"link\":\"\",\"group\":\"1758016720667\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"closed_applications\",\"name\":\"Закрытые заявки\",\"dataType\":\"number\",\"id\":\"10861761567172239\",\"link\":\"\",\"group\":\"1758016720667\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"last_month_applications\",\"name\":\"Заявки за месяц\",\"dataType\":\"number\",\"id\":\"63901761567189156\",\"link\":\"\",\"group\":\"1758016720667\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"all_clients\",\"name\":\"Всего клиентов\",\"dataType\":\"number\",\"id\":\"29941763570992990\",\"link\":\"\",\"group\":\"1758016720667\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"registered_clients\",\"name\":\"Зарегистрировано\",\"dataType\":\"number\",\"id\":\"78691763570997663\",\"link\":\"\",\"group\":\"1758016720667\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"choise_mailing\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"97061762096623720\",\"link\":\"\",\"group\":\"1762095483243\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"clients_mailing\",\"name\":\"Адресаты\",\"dataType\":\"arrayLink\",\"id\":\"46291762096708838\",\"link\":\"clients_agents\",\"group\":\"1762095483243\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"all_mailings\",\"name\":\"Всего\",\"dataType\":\"number\",\"id\":\"56971762105744911\",\"link\":\"\",\"group\":\"1762095483243\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"sented_mailings\",\"name\":\"Отправлено\",\"dataType\":\"number\",\"id\":\"36701762105754015\",\"link\":\"\",\"group\":\"1762095483243\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"scheduled_mailings\",\"name\":\"Запланировано\",\"dataType\":\"number\",\"id\":\"43731762105761792\",\"link\":\"\",\"group\":\"1762095483243\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"selected_mortgage\",\"name\":\"Лучшее предложение(переменная)\",\"dataType\":\"link\",\"id\":\"84991763361295334\",\"link\":\"mortgage\",\"group\":\"1763361269118\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"selected_mortgage_standart\",\"name\":\"Стандартное предложение(переменная)\",\"dataType\":\"link\",\"id\":\"90141763361305385\",\"link\":\"mortgage\",\"group\":\"1763361269118\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"array_selected_best_deals\",\"name\":\"Лучшие предложения \",\"dataType\":\"arrayLink\",\"id\":\"61691763451533000\",\"link\":\"best_deals\",\"group\":\"1763361269118\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":false,\"arrayLink\":true,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false}]",
+            "jsonGroupSettings": "[{\"id\":1756841910106,\"name\":\"Notification\",\"order\":3},{\"id\":1757359140620,\"name\":\"Settings\",\"order\":4},{\"id\":1758016720667,\"name\":\"Agent Filled\",\"order\":6},{\"id\":1758013543847,\"name\":\"Portfolio indicators\",\"order\":5},{\"id\":-1776115286,\"name\":\"System fields\",\"order\":1},{\"id\":1763361269118,\"name\":\"Agent Best Deals Form\",\"order\":8},{\"id\":1762095483243,\"name\":\"Agent Mailing Form (role Agent)\",\"order\":7},{\"id\":1756840338934,\"name\":\"Password restored\",\"order\":2},{\"id\":-502807437,\"name\":\"Contacts\",\"order\":0}]",
+            "jsonViewIdSettings": "[]",
+            "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false,\"onlinePriority\":false}",
             "jsonNativeIndexSettings": null,
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2025-08-02T20:51:02Z",
+            "dateChanged": "2025-11-26T10:00:55Z",
             "createBy": 0,
-            "changedBy": 1,
+            "changedBy": 29295,
             "_settings": null,
             "_nativeIndexSettings": null,
             "innerIDField": {
                 "sysName": "id",
                 "name": "Username (login)",
                 "dataType": "id",
-                "id": "13",
+                "id": "15",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -2816,36 +2688,36 @@ let exampleTable = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "typeVariable": {},
                 "json": false,
+                "indexExists": false,
                 "array": false
             },
             "objectIDSysName": "id",
             "folderId": null
         },
-        "1385610": {
-            "networkID": 6829,
-            "sysName": "Features",
-            "name": "Feature requests and Bug reports",
-            "id": 1385610,
-            "dateCreated": "2021-05-12T15:06:56Z",
+        "99425352": {
+            "networkID": 34461,
+            "sysName": "real_estate_objects",
+            "name": "Real estate objects",
+            "id": 99425352,
+            "dateCreated": "2025-09-02T11:58:54Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"votes_ids\",\"name\":\"Who upvoted\",\"dataType\":\"arrayLink\",\"id\":\"14001620832180875\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"feature_id\",\"name\":\"Inner ID\",\"dataType\":\"string\",\"id\":\"23601621342083348\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"subscriber_ids\",\"name\":\"Subscribers\",\"dataType\":\"arrayLink\",\"id\":\"26751621348189191\",\"link\":\"WebUser\",\"group\":\"1621348185318\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"status\",\"name\":\"Request status\",\"dataType\":\"link\",\"id\":\"40251620832303364\",\"link\":\"request_status\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"release_id\",\"name\":\"Release\",\"dataType\":\"link\",\"id\":\"40791621408746909\",\"link\":\"Releases\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"feature_type\",\"name\":\"Feature type\",\"dataType\":\"link\",\"id\":\"55371621030232780\",\"link\":\"feature_type\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"user_id\",\"name\":\"Who suggested\",\"dataType\":\"link\",\"id\":\"59421620832153105\",\"link\":\"WebUser\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"screenshots\",\"name\":\"Screenshots or Screencast\",\"dataType\":\"file\",\"id\":\"61091637158867177\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"multipleFiles\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"color\",\"name\":\"Card color\",\"dataType\":\"string\",\"id\":\"61881621017200362\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"tags\",\"name\":\"Tags\",\"dataType\":\"arrayLink\",\"id\":\"67851621409605492\",\"link\":\"tags\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"votes\",\"name\":\"Number of upvotes\",\"dataType\":\"number\",\"id\":\"68061620832170304\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"date_added\",\"name\":\"Date added\",\"dataType\":\"date\",\"id\":\"68351620832123660\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"D MMMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"progress\",\"name\":\"Progress\",\"dataType\":\"json\",\"id\":\"68751622642385874\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"slider\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"unitName\":\"%\",\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{\"min\":0,\"max\":100,\"step\":5},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"release_date\",\"name\":\"Release date\",\"dataType\":\"date\",\"id\":\"71651621345011532\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"D MMMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"decline_reason\",\"name\":\"Reason of decline\",\"dataType\":\"string\",\"id\":\"73671621342083940\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"date_updated\",\"name\":\"Date updated\",\"dataType\":\"date\",\"id\":\"74581670507990970\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"D MMMM, Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"description\",\"name\":\"Feature description\",\"dataType\":\"string\",\"id\":\"77031620832091108\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":\"markdown\",\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"title\",\"name\":\"Feature title\",\"dataType\":\"string\",\"id\":\"79031620832091734\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"dev_status\",\"name\":\"Development status\",\"dataType\":\"link\",\"id\":\"85621620832330584\",\"link\":\"development_status\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":false,\"linkType\":true,\"indexExists\":false,\"array\":false},{\"sysName\":\"progress_value\",\"name\":\"\",\"dataType\":\"decimal\",\"id\":\"96111752753166071\",\"link\":\"\",\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false}]",
-            "jsonGroupSettings": "[{\"name\":\"Subscriptions\",\"id\":1621348185318,\"order\":0}]",
-            "jsonViewIdSettings": "[{\"sysName\":\"feature_id\"},{\"sysName\":\"title\"}]",
+            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"term_years\",\"name\":\"Срок (лет)\",\"dataType\":\"number\",\"id\":\"13321756815473790\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":18,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"email\",\"name\":\"Email\",\"dataType\":\"string\",\"id\":\"16281762758802625\",\"link\":\"\",\"group\":\"1762758671349\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"email\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"object_status\",\"name\":\"Статус объекта\",\"dataType\":\"string\",\"id\":\"17311760869416536\",\"link\":\"\",\"group\":\"1760869394952\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"repair\",\"name\":\"Ремонт\",\"dataType\":\"string\",\"id\":\"18721758116458503\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":30,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"selling_profitability\",\"name\":\"Рентабельность продажи\",\"dataType\":\"decimal\",\"id\":\"25021758024287934\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":29,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n    mask: '₽num',\\n    blocks: {\\n      num: {\\n        mask: Number,\\n        thousandsSeparator: ' '\\n      }\\n    }\\n  }\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"city\",\"name\":\"Город\",\"dataType\":\"string\",\"id\":\"27871762850469205\",\"link\":\"\",\"group\":\"1762850605460\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"terms\",\"name\":\"Условия\",\"dataType\":\"decimal\",\"id\":\"28471756815444105\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":17,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n                mask: '%num',\\n                blocks: {\\n                    num: {\\n                        mask: Number,\\n                        thousandsSeparator: ' ',\\n                        min: 0,\\n                        max: 100,\\n                        scale: 2,\\n                        radix: '.',\\n                        padFractionalZeros: true,\\n                        normalizeZeros: true\\n                    }\\n                }\\n            }\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"documents\",\"name\":\"Документы\",\"dataType\":\"file\",\"id\":\"32551756816168510\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":24,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"multipleFiles\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"sum_paid\",\"name\":\"Суммарно оплачено по ипотеке\",\"dataType\":\"decimal\",\"id\":\"32851758022363280\",\"link\":\"\",\"group\":\"1758022281226\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n    mask: '₽num',\\n    blocks: {\\n      num: {\\n        mask: Number,\\n        thousandsSeparator: ' '\\n      }\\n    }\\n  }\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"selling_date\",\"name\":\"Дата продажи\",\"dataType\":\"date\",\"id\":\"33001758023975180\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":28,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"MM/Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"phone\",\"name\":\"Телефон\",\"dataType\":\"string\",\"id\":\"34971762758766976\",\"link\":\"\",\"group\":\"1762758671349\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"phone\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"main_photo\",\"name\":\"\",\"dataType\":\"file\",\"id\":\"38031757961657365\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":26,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"invested\",\"name\":\"Суммарно вложено\",\"dataType\":\"decimal\",\"id\":\"39011758644656224\",\"link\":\"\",\"group\":\"1758022281226\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"agency\",\"name\":\"Агенство\",\"dataType\":\"string\",\"id\":\"39661760869499017\",\"link\":\"\",\"group\":\"1760869394952\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"percent_paid\",\"name\":\"Уплачено процентов\",\"dataType\":\"decimal\",\"id\":\"43041758629497187\",\"link\":\"\",\"group\":\"1758022281226\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"month_paid\",\"name\":\"Месяцев оплачено\",\"dataType\":\"number\",\"id\":\"44611758022293526\",\"link\":\"\",\"group\":\"1758022281226\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"completed\",\"name\":\"Статус\",\"dataType\":\"boolean\",\"id\":\"45001756814639529\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Сдан\",\"Идет строительство\"],\"hideStandardBooleanIcons\":true,\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"insurancedate\",\"name\":\"Дата страховки\",\"dataType\":\"date\",\"id\":\"46501756815628790\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":22,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"type_rental\",\"name\":\"Тип недвижимости\",\"dataType\":\"string\",\"id\":\"48201762850538808\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":31,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"fio\",\"name\":\"ФИО\",\"dataType\":\"string\",\"id\":\"49681762758742208\",\"link\":\"\",\"group\":\"1762758671349\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"floors_total\",\"name\":\"Всего этажей\",\"dataType\":\"number\",\"id\":\"50231756815220504\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"income_potential\",\"name\":\"Потенциал дохода\",\"dataType\":\"decimal\",\"id\":\"50731758116567652\",\"link\":\"\",\"group\":\"1758016840898\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n    mask: '₽num',\\n    blocks: {\\n      num: {\\n        mask: Number,\\n        thousandsSeparator: ' '\\n      }\\n    }\\n  }\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"down_payment_amount\",\"name\":\"Сумма первоначального взноса\",\"dataType\":\"decimal\",\"id\":\"52301756815370560\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":16,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n    mask: '₽num',\\n    blocks: {\\n      num: {\\n        mask: Number,\\n        thousandsSeparator: ' '\\n      }\\n    }\\n  }\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"metro\",\"name\":\"Метро\",\"dataType\":\"string\",\"id\":\"53031762850460126\",\"link\":\"\",\"group\":\"1762850605460\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"date_of_purchase\",\"name\":\"Дата покупки\",\"dataType\":\"date\",\"id\":\"54291756814786285\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"object_type\",\"name\":\"Тип объекта\",\"dataType\":\"link\",\"id\":\"57021756814445057\",\"link\":\"type_realty\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"market_value\",\"name\":\"Рыночная стоимость\",\"dataType\":\"decimal\",\"id\":\"57461758016850214\",\"link\":\"\",\"group\":\"1758016840898\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n    mask: '₽num',\\n    blocks: {\\n      num: {\\n        mask: Number,\\n        thousandsSeparator: ' '\\n      }\\n    }\\n  }\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"maturity_date\",\"name\":\"Дата погашения\",\"dataType\":\"date\",\"id\":\"57601758645463598\",\"link\":\"\",\"group\":\"1758022281226\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"district\",\"name\":\"Район\",\"dataType\":\"string\",\"id\":\"58641762850583436\",\"link\":\"\",\"group\":\"1762850605460\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"adress_street\",\"name\":\"Адрес\",\"dataType\":\"string\",\"id\":\"58901762850472214\",\"link\":\"\",\"group\":\"1762850605460\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"payment_per_month\",\"name\":\"Платеж в месяц\",\"dataType\":\"decimal\",\"id\":\"62701756815507205\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":19,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n    mask: '₽num',\\n    blocks: {\\n      num: {\\n        mask: Number,\\n        thousandsSeparator: ' '\\n      }\\n    }\\n  }\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"remains_paid\",\"name\":\"Осталось оплатить по ипотеке\",\"dataType\":\"decimal\",\"id\":\"64511758031597604\",\"link\":\"\",\"group\":\"1758022281226\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n    mask: '₽num',\\n    blocks: {\\n      num: {\\n        mask: Number,\\n        thousandsSeparator: ' '\\n      }\\n    }\\n  }\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"square\",\"name\":\"Площадь\",\"dataType\":\"decimal\",\"id\":\"64731756814752401\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"price_per_sqm\",\"name\":\"Цена за кв. м.\",\"dataType\":\"decimal\",\"id\":\"67621756815349642\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":15,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n    mask: '₽num',\\n    blocks: {\\n      num: {\\n        mask: Number,\\n        thousandsSeparator: ' '\\n      }\\n    }\\n  }\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"floor\",\"name\":\"Этаж\",\"dataType\":\"number\",\"id\":\"68421756815178606\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":12,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"completion_date\",\"name\":\"Срок сдачи\",\"dataType\":\"date\",\"id\":\"72731756814474307\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-us\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"MM/Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"object_subtype\",\"name\":\"Подтип объекта\",\"dataType\":\"link\",\"id\":\"74401762715124954\",\"link\":\"subtype_realty\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"selling_price\",\"name\":\"Цена продажи\",\"dataType\":\"decimal\",\"id\":\"77131758023936909\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":27,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n    mask: '₽num',\\n    blocks: {\\n      num: {\\n        mask: Number,\\n        thousandsSeparator: ' '\\n      }\\n    }\\n  }\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"planing\",\"name\":\"Планировка\",\"dataType\":\"file\",\"id\":\"77921762863401849\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":34,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"multipleImages\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"transaction_type\",\"name\":\"Тип сделки\",\"dataType\":\"string\",\"id\":\"79041762850885920\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":32,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"gk_name\",\"name\":\"ЖК\",\"dataType\":\"string\",\"id\":\"82231756814378434\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"id_obj\",\"name\":\"ID объекта\",\"dataType\":\"string\",\"id\":\"83171762855136277\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":33,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"adress\",\"name\":\"Адрес\",\"dataType\":\"string\",\"id\":\"83931756814413589\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"remaining_debt\",\"name\":\"Оставшийся долг\",\"dataType\":\"decimal\",\"id\":\"85401756815547437\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":20,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"remains_paid_month\",\"name\":\"Осталось оплатить месяцев\",\"dataType\":\"number\",\"id\":\"86501758468837631\",\"link\":\"\",\"group\":\"1758022281226\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"photo\",\"name\":\"Фотографии\",\"dataType\":\"file\",\"id\":\"86951756815082575\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":10,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"multipleImages\",\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"maxFiles\":10,\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"is_archive\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"89771756816087858\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":23,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"Архив\",\"Действующий\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"rental_income\",\"name\":\"Доход от аренды\",\"dataType\":\"decimal\",\"id\":\"90211756815606545\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":21,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n    mask: '₽num',\\n    blocks: {\\n      num: {\\n        mask: Number,\\n        thousandsSeparator: ' '\\n      }\\n    }\\n  }\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"number_of_rooms\",\"name\":\"Комнат\",\"dataType\":\"number\",\"id\":\"93891756815129619\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":11,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"positiveNum\",\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"finishing\",\"name\":\"Отделка\",\"dataType\":\"string\",\"id\":\"94101756815241340\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":14,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOption\":false,\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"isUTC\":\"false\",\"multipleChoice\":[{\"value\":\"Черновая отделка\",\"label\":\"Черновая отделка\"},{\"value\":\"Предчистовая отделка\",\"label\":\"Предчистовая отделка\"},{\"value\":\"Чистовая отделка\",\"label\":\"Чистовая отделка\"},{\"value\":\"Готовый ремонт и меблировка\",\"label\":\"Готовый ремонт и меблировка\"}]},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"user_id\",\"name\":\"Клиент\",\"dataType\":\"link\",\"id\":\"95051757444241067\",\"link\":\"WebUser\",\"group\":\"1762758671349\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[\"agent\",\"id\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":true,\"array\":false},{\"sysName\":\"deleted\",\"name\":\"\",\"dataType\":\"boolean\",\"id\":\"97981757928839336\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":25,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"user_created\",\"name\":\"Создатель\",\"dataType\":\"link\",\"id\":\"98091762757163054\",\"link\":\"WebUser\",\"group\":\"1760869394952\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"purchase_price\",\"name\":\"Цена покупки\",\"dataType\":\"decimal\",\"id\":\"99071756814830139\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\" HH:mm\",\"imask\":\"{\\n    mask: '₽num',\\n    blocks: {\\n      num: {\\n        mask: Number,\\n        thousandsSeparator: ' '\\n      }\\n    }\\n  }\",\"isUTC\":\"false\"},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false}]",
+            "jsonGroupSettings": "[{\"id\":1758016840898,\"name\":\"Agent Filled\",\"order\":1},{\"id\":1760869394952,\"name\":\"Agent fields\",\"order\":3},{\"id\":1762850605460,\"name\":\"Заполняется автоматом  Яндекс\",\"order\":0},{\"id\":1758022281226,\"name\":\"System\",\"order\":2},{\"id\":1762758671349,\"name\":\"Данные клиента \",\"order\":4}]",
+            "jsonViewIdSettings": null,
             "jsonSettings": null,
             "jsonNativeIndexSettings": null,
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2025-07-17T11:52:59Z",
-            "createBy": 1,
-            "changedBy": 1,
+            "dateChanged": "2025-11-11T12:17:18Z",
+            "createBy": 29295,
+            "changedBy": 29295,
             "_settings": null,
             "_nativeIndexSettings": null,
             "innerIDField": {
@@ -2868,36 +2740,36 @@ let exampleTable = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "typeVariable": {},
                 "json": false,
+                "indexExists": false,
                 "array": false
             },
             "objectIDSysName": "id",
-            "folderId": 33625685
+            "folderId": 33869199
         },
-        "1385613": {
-            "networkID": 6829,
-            "sysName": "development_status",
-            "name": "development_status",
-            "id": 1385613,
-            "dateCreated": "2021-05-12T15:14:45Z",
+        "99429859": {
+            "networkID": 34461,
+            "sysName": "type_realty",
+            "name": "Тип недвижимости",
+            "id": 99429859,
+            "dateCreated": "2025-11-09T17:20:29Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"status\",\"dataType\":\"string\",\"name\":\"Status\",\"id\":\"23221620832490508\",\"link\":null,\"group\":\"0\",\"tags\":null,\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":null,\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":null,\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@who\",\"dataType\":\"string\",\"name\":\"who changed\",\"id\":\"-1\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@dateCreated\",\"dataType\":\"date\",\"name\":\"date created\",\"id\":\"-2\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false},{\"sysName\":\"@dateChanged\",\"dataType\":\"date\",\"name\":\"date changed\",\"id\":\"-3\",\"link\":\"\",\"group\":\"\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":null,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"indexExists\":false,\"typeVariable\":{},\"arrayLink\":false,\"json\":false,\"linkOrArrayLinkType\":false,\"linkType\":false}]",
+            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"color\",\"name\":\"Цвет\",\"dataType\":\"string\",\"id\":\"12821762708844993\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"type\",\"name\":\"Тип недвижимости\",\"dataType\":\"string\",\"id\":\"24581762708835424\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"parent_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"80711762708997441\",\"link\":\"type_realty\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":true,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false}]",
             "jsonGroupSettings": null,
-            "jsonViewIdSettings": "[{\"sysName\":\"status\"}]",
+            "jsonViewIdSettings": null,
             "jsonSettings": null,
             "jsonNativeIndexSettings": null,
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2021-05-12T15:14:59Z",
-            "createBy": 1,
-            "changedBy": 1,
+            "dateChanged": "2025-11-09T17:40:03Z",
+            "createBy": 29295,
+            "changedBy": 29295,
             "_settings": null,
             "_nativeIndexSettings": null,
             "innerIDField": {
@@ -2920,36 +2792,36 @@ let exampleTable = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "typeVariable": {},
                 "json": false,
+                "indexExists": false,
                 "array": false
             },
             "objectIDSysName": "id",
-            "folderId": 33625685
+            "folderId": 33870920
         },
-        "1386924": {
-            "networkID": 6829,
-            "sysName": "tags",
-            "name": "tags",
-            "id": 1386924,
-            "dateCreated": "2021-05-19T07:32:38Z",
+        "99429860": {
+            "networkID": 34461,
+            "sysName": "subtype_realty",
+            "name": "Подтипы недвижимости",
+            "id": 99429860,
+            "dateCreated": "2025-11-09T19:08:14Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"id\",\"dataType\":\"id\",\"name\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"color\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"36801751108901500\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"color_text\",\"dataType\":\"string\",\"name\":\"\",\"id\":\"42251751109783628\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false,\"array\":false}]",
+            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"type\",\"name\":\"Тип недвижимости\",\"dataType\":\"string\",\"id\":\"24581762708835424\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"color\",\"name\":\"Цвет\",\"dataType\":\"string\",\"id\":\"12821762708844993\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"color\",\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":false,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false},{\"sysName\":\"parent_id\",\"name\":\"\",\"dataType\":\"link\",\"id\":\"80711762708997441\",\"link\":\"type_realty\",\"group\":\"0\",\"tags\":\"\",\"indexing\":true,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[\"id\"],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"indexExists\":true,\"linkOrArrayLinkType\":true,\"linkType\":true,\"arrayLink\":false,\"typeVariable\":{},\"json\":false}]",
             "jsonGroupSettings": null,
-            "jsonViewIdSettings": "[{\"sysName\":\"id\"}]",
+            "jsonViewIdSettings": null,
             "jsonSettings": null,
             "jsonNativeIndexSettings": null,
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2025-06-28T11:23:11Z",
-            "createBy": 1,
-            "changedBy": 1,
+            "dateChanged": "2025-11-09T19:09:12Z",
+            "createBy": 29295,
+            "changedBy": 29295,
             "_settings": null,
             "_nativeIndexSettings": null,
             "innerIDField": {
@@ -2972,16 +2844,16 @@ let exampleTable = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "indexExists": false,
                 "linkOrArrayLinkType": false,
                 "linkType": false,
                 "arrayLink": false,
                 "typeVariable": {},
                 "json": false,
+                "indexExists": false,
                 "array": false
             },
             "objectIDSysName": "id",
-            "folderId": 33625685
+            "folderId": 33870920
         }
     },
     "isSuccessWrite": false,
@@ -2989,12 +2861,10 @@ let exampleTable = {
     "writeResponse": null,
     "fileds": [],
     "quickSearch": "",
-    "httpParams": {
-        "status": "planned"
-    },
+    "httpParams": {},
     "cardCustomHtml": null,
     "cardCustomLayout": {},
-    "comment": "Backlog",
+    "comment": "",
     "response": false
 }
 

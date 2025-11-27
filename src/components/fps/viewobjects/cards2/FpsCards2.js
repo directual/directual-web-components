@@ -1085,7 +1085,10 @@ const Card = React.memo((props) => {
 
     const cardType = _.get(data, "params.card_layout_type")
     const html_type_content = _.get(data, "params.html_type_content")
-    const templatingEngine = _.get(data, "params.paraTemplateEngine")
+    // Для custom карточек движок берем из params.paraTemplateEngine, для regular из card_type_dir
+    const templatingEngine = cardType == "custom" 
+        ? _.get(data, "params.paraTemplateEngine", "api")
+        : _.get(data, "params.card_type_dir.paraTemplateEngine", "api")
     const card_padding = _.get(data, "params.card_padding", 12)
     const card_min_height = _.get(data, "params.card_min_height") || "120px" // изменил с "none" на конкретную высоту
     const card_border = _.get(data, "params.card_border", 1)
@@ -1132,7 +1135,12 @@ const Card = React.memo((props) => {
     useEffect(() => {
 
         // если используется front-end templating, не ждем загрузку данных
-        if (templatingEngine == 'front' || dir_templatingEngine == 'front') {
+        // Для custom проверяем templatingEngine, для regular - dir_templatingEngine
+        const useFrontTemplating = cardType == "custom" 
+            ? templatingEngine == 'front' 
+            : dir_templatingEngine == 'front'
+            
+        if (useFrontTemplating) {
             setCardLoading(false);
             setIsInitialLoad(false);
             return;
