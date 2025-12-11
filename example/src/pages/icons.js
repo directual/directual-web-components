@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {
-    Input } from 'directual-web-components'
-import 'directual-web-components/dist/index.css'
+    Input } from 'directual-web-components-v2'
+import 'directual-web-components-v2/dist/index.css'
 import styles from './iconsPage.module.css'
 
 export default function IconsPage() {

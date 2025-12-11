@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FpsCards, FpsForm, Tree, Button, TabsPane } from 'directual-web-components'
+import { FpsCards, FpsForm, Tree, Button, TabsPane } from 'directual-web-components-v2'
 
 
 export default function LayoutPage() {

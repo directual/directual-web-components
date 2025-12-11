@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Input, InputGroup, Button, StructureField } from 'directual-web-components'
+import { Input, InputGroup, Button, StructureField } from 'directual-web-components-v2'
 import moment from 'moment'
 
 export default function PlatformPage() {

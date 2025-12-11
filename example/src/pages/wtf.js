@@ -1,8 +1,8 @@
 import React from 'react'
 import {
     Article, CodeSnippet
-} from 'directual-web-components'
-import 'directual-web-components/dist/index.css'
+} from 'directual-web-components-v2'
+import 'directual-web-components-v2/dist/index.css'
 
 export default function WhatIsIt() {
     return (
@@ -47,8 +47,8 @@ export default function WhatIsIt() {
             <p>Example of usage:</p>
             <CodeSnippet expanded code={`import React from 'react'
 
-import { Button } from 'directual-web-components'
-import 'directual-web-components/dist/index.css'
+import { Button } from 'directual-web-components-v2'
+import 'directual-web-components-v2/dist/index.css'
 
 export function Example() {
 return
