@@ -4,7 +4,7 @@
   "description": "fps components",
   "author": "Directual",
   "license": "MIT",
-  "repository": "directual/directual-web-components",
+  "repository": "directual-js/directual-web-components",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
