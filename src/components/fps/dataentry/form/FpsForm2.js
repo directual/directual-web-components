@@ -789,7 +789,7 @@ export default function FpsForm2(props) {
           }
           if (submitKeepModel && !resetModel) {
             modelUpdate = { ...model, ...modelToSend, ...modelUpdate };
-            extendedModelUpdate = { ...extendedModelUpdate, ...modelUpdate }
+            // extendedModelUpdate уже заполнен данными из API (строка 774), не перезатираем его плоской моделью
           } else if (resetModel) {
             // При resetModel сбрасываем модель в пустой объект
             modelUpdate = {}
@@ -1193,7 +1193,7 @@ export default function FpsForm2(props) {
             undefined, // setActionError
             false,     // resetModel
             modelRef.current, // currentModel
-            extendedModel     // newExtendedModel
+            extendedModelRef.current     // newExtendedModel - используем ref для актуального значения
           );
         }
       } else {
@@ -1226,7 +1226,7 @@ export default function FpsForm2(props) {
             undefined, // setActionError
             false,     // resetModel
             modelRef.current, // currentModel
-            extendedModel     // newExtendedModel
+            extendedModelRef.current     // newExtendedModel - используем ref для актуального значения
           );
         }
       }
