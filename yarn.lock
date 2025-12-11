@@ -9279,9 +9279,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"directual-web-components@workspace:.":
+"directual-web-components-v2@workspace:.":
   version: 0.0.0-use.local
-  resolution: "directual-web-components@workspace:."
+  resolution: "directual-web-components-v2@workspace:."
   dependencies:
     "@babel/plugin-proposal-private-property-in-object": "npm:^7.21.11"
     "@babel/runtime": "npm:^7.15.4"
