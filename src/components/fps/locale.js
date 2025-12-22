@@ -37,7 +37,9 @@ export const dict = {
             assignedToMe: "Assigned to me",
             assignedTo: "Assigned to",
             taskResolved: "Task is resolved",
-            resolveTask: "Resolve task"
+            resolveTask: "Resolve task",
+            edit: "Edit",
+            save: "Save"
         },
         sortField: 'Sort field',
         error: 'Error',
@@ -539,7 +541,9 @@ export const dict = {
             assignedToMe: "Назначено на меня",
             assignedTo: "Назначено на",
             taskResolved: "Задача закрыта",
-            resolveTask: "Закрыть задачу"
+            resolveTask: "Закрыть задачу",
+            edit: "Редактировать",
+            save: "Сохранить"
         },
         success: 'Успех',
         "auth": {

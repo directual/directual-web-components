@@ -62,6 +62,7 @@ export default function Comments(props) {
 
     const allowAttachment = _.includes(data.writeFields, _.get(data, "params._fileField"))
     const allowSend = _.includes(data.writeFields, _.get(data, "params._textField"))
+    const allowEdit = _.get(data, "params.general.allowEdit")
 
     return <div className={`${styles.comments} FPS_COMMENTS`}>
         <CommentsHeader header={dict[lang].comments.comments} counter={(comments || []).length} {...props} />
@@ -79,6 +80,7 @@ export default function Comments(props) {
                     sendComment={sendComment}
                     lang={lang}
                     allowSend={allowSend}
+                    allowEdit={allowEdit}
                     loading={loading}
                     allowAttachment={allowAttachment}
                     comments={comments}
@@ -89,9 +91,17 @@ export default function Comments(props) {
 }
 
 function Comment(props) {
-    const { comment, auth, lang, data, comments, parent, allowSend, sendComment } = props
+    const { comment, auth, lang, data, comments, parent, allowSend, allowEdit, sendComment } = props
 
     const [addReply, setAddReply] = useState(false)
+    const [isEditing, setIsEditing] = useState(false)
+    const [editText, setEditText] = useState("")
+
+    // инициализируем editText при загрузке или изменении текста комментария
+    useEffect(() => {
+        const commentText = _.get(comment, _.get(data, "params._textField"))
+        setEditText(commentText || "")
+    }, [_.get(comment, _.get(data, "params._textField"))])
 
     // форматируем дату для карточки (если есть) в соответствии с formatOptions
     const formatDate = (value, formatOptions) => {
@@ -119,6 +129,9 @@ function Comment(props) {
         return str;
     }
 
+    // console.log("=== commentAuthor ===")
+    // console.log(commentAuthor)
+
     const [localLoading, setLocalLoading] = useState(false)
 
     let name = `${_.get(commentAuthor, "firstName", "")} ${_.get(commentAuthor, "lastName", "")}`
@@ -128,6 +141,10 @@ function Comment(props) {
 
     const isAssignedToMe = (_.get(auth, "user") == _.get(comment, _.get(data, "params.assignmentOn_assignee")) ||
         _.get(auth, "user") == _.get(comment, _.get(data, "params.assignmentOn_assignee") + ".id")) &&
+        _.get(auth, "isAuth")
+
+    const isAuthor = (_.get(auth, "user") == _.get(comment, _.get(data, "params._userField")) ||
+        _.get(auth, "user") == _.get(comment, _.get(data, "params._userField") + ".id")) &&
         _.get(auth, "isAuth")
 
     const assigneName = isTask ?
@@ -148,6 +165,22 @@ function Comment(props) {
         _.set(payload, _.get(data, "params.assignmentOn_bool"), true)
         _.get(data, "params.assignmentOn_dateClosed") && _.set(payload, _.get(data, "params.assignmentOn_dateClosed"), moment().toISOString())
         sendComment(payload, () => setLocalLoading(false), true)
+    }
+
+    const saveEdit = () => {
+        if (!comment.id) return;
+        setLocalLoading(true)
+        let payload = { id: comment.id }
+        _.set(payload, _.get(data, "params._textField"), editText)
+        sendComment(payload, () => {
+            setLocalLoading(false)
+            setIsEditing(false)
+        }, true)
+    }
+
+    const cancelEdit = () => {
+        setEditText(commentText)
+        setIsEditing(false)
     }
 
     return <div>
@@ -183,9 +216,35 @@ function Comment(props) {
                         {formatDate(commentDate, formatCommentDate)}
                     </div>
                 </div>
-                <div className={styles.commentBodyText}>
-                    {commentText}
-                </div>
+                {isEditing ? (
+                    <div className={styles.commentBodyText}>
+                        <Input 
+                            type='textarea'
+                            defaultValue={editText}
+                            onChange={setEditText}
+                            rows='auto' 
+                        />
+                        <div style={{ marginTop: '8px', display: 'flex', gap: '8px' }}>
+                            <Button 
+                                loading={localLoading}
+                                onClick={saveEdit}
+                                small 
+                                height={32}
+                                accent
+                                disabled={!editText}
+                            >{dict[lang].comments.save}</Button>
+                            <Button 
+                                onClick={cancelEdit}
+                                small 
+                                height={32}
+                            >{dict[lang].comments.cancel}</Button>
+                        </div>
+                    </div>
+                ) : (
+                    <div className={styles.commentBodyText}>
+                        {commentText}
+                    </div>
+                )}
                 {commentAttachment && commentAttachment.length > 0 &&
                     commentAttachment.map(file => {
                         const fileName = file.split("/")[file.split("/").length - 1]
@@ -194,8 +253,9 @@ function Comment(props) {
                                 className={`icon icon-clip small ${styles.commentFileLink}`}>{fileName}</a>
                         </div>
                     })}
-                {_.includes(data.writeFields, _.get(data, "params._replyField")) && allowSend && <div className={styles.commentBodyFooter}>
-                    <div onClick={e => setAddReply(true)} className={`icon icon-bubble small ${styles.commentReplyButton}`}>{dict[lang].comments.reply}</div>
+                {!isEditing && (_.includes(data.writeFields, _.get(data, "params._replyField")) && allowSend || allowEdit && isAuthor) && <div className={styles.commentBodyFooter}>
+                    {_.includes(data.writeFields, _.get(data, "params._replyField")) && allowSend && <div onClick={e => setAddReply(true)} className={`icon icon-bubble small ${styles.commentReplyButton}`}>{dict[lang].comments.reply}</div>}
+                    {allowEdit && isAuthor && <div onClick={e => setIsEditing(true)} className={`icon icon-edit small ${styles.commentReplyButton}`}>{dict[lang].comments.edit}</div>}
                 </div>}
             </div>
         </div>
