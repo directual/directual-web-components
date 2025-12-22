@@ -60,6 +60,18 @@ export default function Comments(props) {
         )
     }
 
+    // обновляем текст коммента локально без запроса на бэк
+    function updateCommentText(commentId, newText) {
+        const textField = _.get(data, "params._textField")
+        setComments(prevComments => 
+            prevComments.map(comment => 
+                comment.id === commentId 
+                    ? { ...comment, [textField]: newText }
+                    : comment
+            )
+        )
+    }
+
     const allowAttachment = _.includes(data.writeFields, _.get(data, "params._fileField"))
     const allowSend = _.includes(data.writeFields, _.get(data, "params._textField"))
     const allowEdit = _.get(data, "params.general.allowEdit")
@@ -78,6 +90,7 @@ export default function Comments(props) {
                 .filter(comment => !_.get(comment, _.get(data, "params._replyField")) || _.get(comment, _.get(data, "params._replyField")) == 'root')
                 .map(comment => <Comment {...props}
                     sendComment={sendComment}
+                    updateCommentText={updateCommentText}
                     lang={lang}
                     allowSend={allowSend}
                     allowEdit={allowEdit}
@@ -91,7 +104,7 @@ export default function Comments(props) {
 }
 
 function Comment(props) {
-    const { comment, auth, lang, data, comments, parent, allowSend, allowEdit, sendComment } = props
+    const { comment, auth, lang, data, comments, parent, allowSend, allowEdit, sendComment, updateCommentText } = props
 
     const [addReply, setAddReply] = useState(false)
     const [isEditing, setIsEditing] = useState(false)
@@ -170,12 +183,13 @@ function Comment(props) {
     const saveEdit = () => {
         if (!comment.id) return;
         setLocalLoading(true)
+        // мгновенно обновляем UI
+        updateCommentText(comment.id, editText)
+        setIsEditing(false)
+        // и шлём на бэк
         let payload = { id: comment.id }
         _.set(payload, _.get(data, "params._textField"), editText)
-        sendComment(payload, () => {
-            setLocalLoading(false)
-            setIsEditing(false)
-        }, true)
+        sendComment(payload, () => setLocalLoading(false), true)
     }
 
     const cancelEdit = () => {
@@ -226,7 +240,6 @@ function Comment(props) {
                         />
                         <div style={{ marginTop: '8px', display: 'flex', gap: '8px' }}>
                             <Button 
-                                loading={localLoading}
                                 onClick={saveEdit}
                                 small 
                                 height={32}
