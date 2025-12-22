@@ -226,38 +226,30 @@ export default function FpsForm2(props) {
         // Отменяем все pending debounced submits чтобы они не перезаписали сокетное обновление
         submitDebouncedRef.current.cancel();
         
+        console.log('[SOCKET MODEL LOG] === МОДЕЛЬ ОБНОВЛЕНА СОКЕТОМ ===');
+        console.log('[SOCKET MODEL LOG] Старая модель:', JSON.parse(JSON.stringify(model)));
+        console.log('[SOCKET MODEL LOG] Новая модель:', JSON.parse(JSON.stringify(newModel)));
+        
         isSocketUpdateRef.current = true; // устанавливаем флаг что это обновление от сокета
         setModel(newModel)
         setOriginalModel(newModel)
       }
       setOriginalExtendedModel(newExtendedModel)
       
-      console.log('[SOCKET/RESTORE LOG] === НАЧАЛО СОКЕТНОГО ОБНОВЛЕНИЯ ===');
-      console.log('[SOCKET/RESTORE LOG] текущий state ДО перезаписи:', JSON.parse(JSON.stringify(state)));
-      console.log('[SOCKET/RESTORE LOG] saveSate перед templateState:', JSON.parse(JSON.stringify(saveSate)));
-      
       // ВСЕГДА применяем templateState при обновлении модели
       // Это обеспечивает синхронизацию state с моделью через шаблоны типа {{status}}
       const templatedState = templateState(_.get(data, "params.state"), newModel);
-      console.log('[SOCKET/RESTORE LOG] params.state:', _.get(data, "params.state"));
-      console.log('[SOCKET/RESTORE LOG] templateState вернул:', JSON.parse(JSON.stringify(templatedState)));
       saveSate = { ...saveSate, ...templatedState }
-      console.log('[SOCKET/RESTORE LOG] saveSate после templateState:', JSON.parse(JSON.stringify(saveSate)));
       
       // RESTORE STATE:
       if (_.get(params, "general.restoreState") && _.get(params, "general.saveStateTo")) {
         const fieldName = _.get(params, "general.saveStateTo");
         const fieldValue = newModel[fieldName];
-        console.log('[SOCKET/RESTORE LOG] Восстанавливаем state из поля:', fieldName);
-        console.log('[SOCKET/RESTORE LOG] Значение поля:', fieldValue);
         const restoredState = parseJson(fieldValue);
-        console.log('[SOCKET/RESTORE LOG] restoredState (распарсенный):', JSON.parse(JSON.stringify(restoredState)));
         saveSate = { ...saveSate, ...restoredState }
         // Блокируем автосабмит на восстановленный step через restoredStepRef
         restoredStepRef.current = restoredState.step
       }
-      console.log('[SOCKET/RESTORE LOG] ИТОГОВЫЙ setState с:', JSON.parse(JSON.stringify(saveSate)));
-      console.log('[SOCKET/RESTORE LOG] === КОНЕЦ СОКЕТНОГО ОБНОВЛЕНИЯ ===');
       setState(saveSate)
       setInitialized(true)
     }
@@ -559,15 +551,15 @@ export default function FpsForm2(props) {
 
     // Блокируем параллельные автосабмиты - предотвращаем цикл
     if (autoSubmit && isAutoSubmittingRef.current) {
-      console.log('[AUTOSUBMIT LOG] Заблокирован параллельный автосабмит');
+      // console.log('[AUTOSUBMIT LOG] Заблокирован параллельный автосабмит');
       finish && finish(false);
       return;
     }
     
     if (autoSubmit) {
-      console.log('[AUTOSUBMIT LOG] === НАЧАЛО АВТОСАБМИТА ===');
-      console.log('[AUTOSUBMIT LOG] state ДО сабмита:', JSON.parse(JSON.stringify(stateRef.current)));
-      console.log('[AUTOSUBMIT LOG] model:', JSON.parse(JSON.stringify(currentModel || modelRef.current)));
+      // console.log('[AUTOSUBMIT LOG] === НАЧАЛО АВТОСАБМИТА ===');
+      // console.log('[AUTOSUBMIT LOG] state ДО сабмита:', JSON.parse(JSON.stringify(stateRef.current)));
+      // console.log('[AUTOSUBMIT LOG] model:', JSON.parse(JSON.stringify(currentModel || modelRef.current)));
       isAutoSubmittingRef.current = true;
     }
 
