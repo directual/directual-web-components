@@ -87,6 +87,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute, cal
     const [pageLoading, setPageLoading] = useState(false);
     const [dataInfo, setDataInfo] = useState({});
     const isFirstRender = useRef(true);
+    const isRestoringFromUrl = useRef(false);
 
     // Функция для GET-запросов к API
     function callEndpointGET(endpoint, params, finish) {
@@ -144,6 +145,13 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute, cal
         // Старая логика для совместимости
         setCurrentDQL(dqlParam)
         setCurrentSort(sortParam)
+        
+        // Если восстанавливаем из URL - данные уже загружены, просто обновляем стейт
+        if (isRestoringFromUrl.current) {
+            console.log('Restoring filters from URL, skipping refresh')
+            isRestoringFromUrl.current = false
+            return
+        }
         
         // Если на первой странице - рефрешим сразу, иначе сбрасываем на 0
         if (page == 0) { 
@@ -445,29 +453,77 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute, cal
         refresh(dql, sort)
     }, [page])
 
-    // Initial load - проверяем фильтры в URL и загружаем данные
+    // Initial load - загружаем данные с учётом page, filters, sort из URL
     useEffect(() => {
-        const hasFiltersInUrl = () => {
-            if (!comp_ID || typeof window === 'undefined') return false;
+        // Читаем параметры из URL
+        const getFiltersFromUrl = () => {
+            if (!comp_ID || typeof window === 'undefined') return { dql: '', sort: {} };
             const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.has(`filters_${comp_ID}`) || urlParams.has(`sort_${comp_ID}`);
+            const filtersParam = urlParams.get(`filters_${comp_ID}`);
+            const sortParam = urlParams.get(`sort_${comp_ID}`);
+            
+            let urlDql = '';
+            let urlSort = {};
+            
+            // Парсим filters и конвертируем в DQL
+            if (filtersParam) {
+                try {
+                    const filters = JSON.parse(decodeURIComponent(filtersParam));
+                    // Простая конвертация filters в DQL
+                    const dqlParts = Object.keys(filters).filter(key => {
+                        return filters[key].value || filters[key].valueFrom || filters[key].valueTo;
+                    }).map(key => {
+                        const f = filters[key];
+                        if (f.type === 'string' || f.type === 'boolean') {
+                            return `('${key}' like '${f.value}')`;
+                        }
+                        if (f.type === 'multiOptions' && f.value) {
+                            return '(' + Object.keys(f.value).map(v => `('${key}' like '${v}')`).join(' OR ') + ')';
+                        }
+                        if (f.type === 'date' || f.type === 'number') {
+                            const parts = [];
+                            if (f.valueFrom) parts.push(`('${key}' >= '${f.valueFrom}')`);
+                            if (f.valueTo) parts.push(`('${key}' <= '${f.valueTo}')`);
+                            return parts.join(' AND ');
+                        }
+                        return '';
+                    }).filter(Boolean);
+                    urlDql = dqlParts.join(' AND ');
+                } catch (e) {
+                    console.error('Failed to parse filters from URL:', e);
+                }
+            }
+            
+            // Парсим sort
+            if (sortParam && sortParam.includes(':')) {
+                const [field, direction] = sortParam.split(':');
+                urlSort = { field, direction };
+            }
+            
+            return { dql: urlDql, sort: urlSort };
         };
         
-        if (hasFiltersInUrl()) {
-            // TableTitle сам применит фильтры через performFiltering
-            console.log("Filters found in URL, skipping initial load - TableTitle will handle it")
-            return;
+        const urlPage = getPageFromUrl() || 0;
+        const { dql: urlDql, sort: urlSort } = getFiltersFromUrl();
+        
+        // Если есть фильтры в URL - устанавливаем флаг
+        if (urlDql || urlSort.field) {
+            isRestoringFromUrl.current = true;
+            setDQL(urlDql);
+            setSort(urlSort);
+            setCurrentDQL(urlDql);
+            setCurrentSort(urlSort);
         }
         
-        const urlPage = getPageFromUrl() || 0;
         if (currentData && currentData.sl) {
-            console.log("Loading initial page from URL: " + urlPage)
+            console.log("Loading initial data from URL: page=" + urlPage + ", dql=" + urlDql)
             setPageLoading(true)
+            const sortString = urlSort && urlSort.field ? `${urlSort.field}:${urlSort.direction || 'asc'}` : '';
             callEndpointGET(currentData.sl, {
                 pageSize: currentData.pageSize || 10,
                 page: urlPage,
-                dql: '',
-                sort: ''
+                dql: urlDql,
+                sort: sortString
             }, (result, responseData) => {
                 const newDataInfo = _.get(responseData, "result.data", {})
                 if (newDataInfo && newDataInfo.content) delete newDataInfo.content

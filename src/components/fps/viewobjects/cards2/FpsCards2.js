@@ -88,6 +88,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
     const [loading, setLoading] = useState(false)
     const [initialLoading, setInitialLoading] = useState(debug ? false : true) // в дебаг режиме сразу не показываем скелетон
     const isFirstRender = useRef(true)
+    const isRestoringFromUrl = useRef(false)
     const cardsContainerRef = useRef(null) // Ref для event delegation
 
     const updatePageInUrl = (newPage) => {
@@ -138,6 +139,13 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         // Сохраняем в стейт
         setDQL(dql)
         setSort(sort)
+        
+        // Если восстанавливаем из URL - данные уже загружены, просто обновляем стейт
+        if (isRestoringFromUrl.current) {
+            console.log('Restoring filters from URL, skipping refresh')
+            isRestoringFromUrl.current = false
+            return
+        }
         
         if (page == 0) { refresh(dql, sort) } else { setPage(0) }
     }
@@ -703,7 +711,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         refresh(dql, sort) // передаем текущие dql и sort при пагинации
     }, [page, debug]) // добавляем debug в dependencies
 
-    // INITIAL PAGE LOAD - check URL for page parameter on mount
+    // INITIAL PAGE LOAD - загружаем данные с учётом page, filters, sort из URL
     useEffect(() => {
         if (debug) {
             // в дебаг режиме не загружаем данные, используем то что пришло в props
@@ -711,48 +719,87 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
             return;
         }
 
-        // Проверяем есть ли фильтры в URL
-        const hasFiltersInUrl = () => {
-            if (!comp_ID || typeof window === 'undefined') return false;
+        // Читаем параметры из URL
+        const getFiltersFromUrl = () => {
+            if (!comp_ID || typeof window === 'undefined') return { dql: '', sort: {} };
             const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.has(`filters_${comp_ID}`) || urlParams.has(`sort_${comp_ID}`);
+            const filtersParam = urlParams.get(`filters_${comp_ID}`);
+            const sortParam = urlParams.get(`sort_${comp_ID}`);
+            
+            let urlDql = '';
+            let urlSort = {};
+            
+            // Парсим filters и конвертируем в DQL
+            if (filtersParam) {
+                try {
+                    const filters = JSON.parse(decodeURIComponent(filtersParam));
+                    // Простая конвертация filters в DQL
+                    const dqlParts = Object.keys(filters).filter(key => {
+                        return filters[key].value || filters[key].valueFrom || filters[key].valueTo;
+                    }).map(key => {
+                        const f = filters[key];
+                        if (f.type === 'string' || f.type === 'boolean') {
+                            return `('${key}' like '${f.value}')`;
+                        }
+                        if (f.type === 'multiOptions' && f.value) {
+                            return '(' + Object.keys(f.value).map(v => `('${key}' like '${v}')`).join(' OR ') + ')';
+                        }
+                        if (f.type === 'date' || f.type === 'number') {
+                            const parts = [];
+                            if (f.valueFrom) parts.push(`('${key}' >= '${f.valueFrom}')`);
+                            if (f.valueTo) parts.push(`('${key}' <= '${f.valueTo}')`);
+                            return parts.join(' AND ');
+                        }
+                        return '';
+                    }).filter(Boolean);
+                    urlDql = dqlParts.join(' AND ');
+                } catch (e) {
+                    console.error('Failed to parse filters from URL:', e);
+                }
+            }
+            
+            // Парсим sort
+            if (sortParam && sortParam.includes(':')) {
+                const [field, direction] = sortParam.split(':');
+                urlSort = { field, direction };
+            }
+            
+            return { dql: urlDql, sort: urlSort };
         };
 
         const urlPage = getPageFromUrl() || 0;
+        const { dql: urlDql, sort: urlSort } = getFiltersFromUrl();
         
-        // Если есть фильтры в URL, пропускаем первый запрос
-        // TableTitle сам применит фильтры через performFiltering
-        if (hasFiltersInUrl()) {
-            console.log("Filters found in URL, skipping initial load - TableTitle will handle it")
-            setInitialLoading(false)
-            return;
+        // Если есть фильтры в URL - устанавливаем флаг
+        if (urlDql || urlSort.field) {
+            isRestoringFromUrl.current = true;
+            setDQL(urlDql);
+            setSort(urlSort);
         }
         
-        if (data && data.sl) { // в любом случае загружаем данные, чтобы достать dataInfo
-            console.log("Loading initial page from URL: " + urlPage)
+        if (data && data.sl) {
+            console.log("Loading initial data from URL: page=" + urlPage + ", dql=" + urlDql)
             setPageLoading(true)
+            const sortString = urlSort && urlSort.field ? `${urlSort.field}:${urlSort.direction || 'asc'}` : '';
             callEndpointGET(data.sl, {
                 pageSize: data.pageSize || 10,
                 page: urlPage,
-                dql: '',
-                sort: ''
-            }, (result, data) => {
-                // console.log("INITIAL PAGE LOAD RESULT")
-                // console.log(result)
-                // console.log(data)
-                const dataInfo = _.get(data, "result.data", {})
-                if (dataInfo && dataInfo.content) {
-                    delete dataInfo.content
+                dql: urlDql,
+                sort: sortString
+            }, (result, responseData) => {
+                const newDataInfo = _.get(responseData, "result.data", {})
+                if (newDataInfo && newDataInfo.content) {
+                    delete newDataInfo.content
                 }
-                setDataInfo(dataInfo)
+                setDataInfo(newDataInfo)
                 setObjects(result)
                 setPageLoading(false)
-                setInitialLoading(false) // отключаем показ скелетонов после первой загрузки
+                setInitialLoading(false)
             })
         } else {
-            setInitialLoading(false) // если нет sl, то скелетоны не нужны
+            setInitialLoading(false)
         }
-    }, [debug]) // добавляем debug в dependencies
+    }, [debug])
 
     // SOCKET UPDATES - фоновое обновление при изменении socket
     useEffect(() => {
