@@ -4,7 +4,7 @@ import Backdrop from '../../backdrop/backdrop'
 import { Table } from './table'
 import { ObjectCard } from '../objectCard/objectCard'
 import { TableTitle } from '../tableTitle/TableTitle'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { ComponentWrapper } from '../../wrapper/wrapper'
 import moment from 'moment'
 import { Paging } from '../paging/paging'
@@ -62,16 +62,96 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute, cal
     const totalPages = currentData.totalPages || 0
     const currentPage = currentData.pageNumber || 0
 
-    function performFiltering(dql, sort) {
+    // Новая логика пагинации и фильтрации через callEndpoint
+    const comp_ID = _.get(currentData, "params.comp_ID") || id
+
+    const getPageFromUrl = () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const savedPage = urlParams.get(`page_${comp_ID}`);
+        return savedPage ? Number(savedPage) : 0;
+    };
+
+    const updatePageInUrl = (newPage) => {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (newPage > 0) {
+            urlParams.set(`page_${comp_ID}`, newPage);
+        } else {
+            urlParams.delete(`page_${comp_ID}`);
+        }
+        window.history.replaceState({}, '', `${window.location.pathname}?${urlParams.toString()}`);
+    };
+
+    const [page, setPageState] = useState(getPageFromUrl);
+    const [dql, setDQL] = useState('');
+    const [sort, setSort] = useState({});
+    const [pageLoading, setPageLoading] = useState(false);
+    const [dataInfo, setDataInfo] = useState({});
+    const isFirstRender = useRef(true);
+
+    // Функция для GET-запросов к API
+    function callEndpointGET(endpoint, params, finish) {
+        console.log('===> calling endpoint GET /' + endpoint)
+        const httpParams = _.get(currentData, "params.httpParams") || _.get(currentData, "httpParams") || {}
+        const requestParams = { ...httpParams, ...params }
+
+        callEndpoint && callEndpoint(
+            endpoint,
+            "GET",
+            undefined,
+            requestParams,
+            (result, content, json, data) => {
+                if (result == "ok") {
+                    finish && finish(content, data)
+                } else {
+                    finish && finish([])
+                }
+            }
+        )
+    }
+
+    // Новая функция refresh через callEndpoint
+    function refresh(dqlParam, sortParam) {
+        if (currentData && currentData.sl) {
+            setPageLoading(true)
+            const sortString = sortParam && sortParam.field ? `${sortParam.field}:${sortParam.direction || 'asc'}` : '';
+            callEndpointGET(currentData.sl, {
+                pageSize: currentData.pageSize || 10,
+                page: page,
+                dql: dqlParam,
+                sort: sortString
+            }, (result, responseData) => {
+                const newDataInfo = _.get(responseData, "result.data", {})
+                if (newDataInfo && newDataInfo.content) delete newDataInfo.content
+                setDataInfo(newDataInfo)
+                setCardsData(result)
+                setPageLoading(false)
+                setLoading(false)
+            })
+        }
+    }
+
+    function performFiltering(dqlParam, sortParam) {
         clearTimeout(cx);
         console.log('=== F I L T E R I N G ! ===')
-        console.log(dql)
-        setCurrentDQL(dql)
-        setCurrentSort(sort)
+        console.log(dqlParam)
         console.log('=== S O R T I N G ! ===')
-        console.log(sort)
-        const page = 0 // dql || _.get(sort,'field') ? currentPage : 0
-        sendMsg({ dql, sort }, null, { page })
+        console.log(sortParam)
+        
+        // Сохраняем в стейт
+        setDQL(dqlParam)
+        setSort(sortParam)
+        
+        // Старая логика для совместимости
+        setCurrentDQL(dqlParam)
+        setCurrentSort(sortParam)
+        
+        // Если на первой странице - рефрешим сразу, иначе сбрасываем на 0
+        if (page == 0) { 
+            refresh(dqlParam, sortParam) 
+        } else { 
+            setPageState(0)
+            updatePageInUrl(0)
+        }
     }
 
     useEffect(() => {
@@ -130,43 +210,36 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute, cal
         clearTimeout(cx);
         if (value) {
             setSearchValue(value)
-            !currentDQL && !page && removeUrlParam(id + '_page')
             const fieldsDQL = currentData.headers && currentData.headers.map(i => i.sysName);
             const requestDQL = fieldsDQL.map(i => "'" + i + "'" + ' like ' + "'" + value + "'").join(' OR ')
             setCurrentDQL(requestDQL)
-            //addUrlParam({ key: id + '_dql', value: value })
             sendMsg({ dql: requestDQL }, null, { page: page || 0 })
         } else {
             setSearchValue('')
             setCurrentDQL('')
-            removeUrlParam(id + '_dql')
-            removeUrlParam(id + '_page')
             sendMsg({ dql: '' }, null, { page: 0 })
         }
     }
 
-    const refresh = (skipLoading) => {
-        console.log("refresh")
+    // Старая функция refresh для совместимости с autoRefresh
+    const oldRefresh = (skipLoading) => {
+        console.log("oldRefresh")
         console.log(skipLoading)
         !skipLoading && setLoading(true)
         !skipLoading && setCurrentDQL('')
         !skipLoading && setCurrentSort({})
         !skipLoading && setSearchValue('')
         onEvent({ dql: '', page: currentPage, _id: id })
-        !skipLoading && removeUrlParam(id + '_dql')
     }
 
     const [lazyLoadingHandler, setLazyLoadingHandler] = useState(false)
 
-    function setPage(page) {
-        if (_.get(currentData, "params.lazyLoading")) { setLazyLoadingHandler(true) }
-        let prom = onEvent({ dql: currentDQL, sort: currentSort, _id: id }, { page: page }, { reqParam1: "true" })
-        page !== 0 ? addUrlParam({ key: id + '_page', value: page }) : removeUrlParam(id + '_page')
-        if (prom && prom.finally) {
-            prom.finally(() => {
-                setLoading(false)
-            })
+    function setPage(newPage) {
+        if (_.get(currentData, "params.lazyLoading")) { 
+            setLazyLoadingHandler(true) 
         }
+        setPageState(newPage)
+        updatePageInUrl(newPage)
     }
 
     const submit = (model) => {
@@ -362,6 +435,49 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute, cal
         }
     }, [showObject])
 
+    // useEffect для пагинации - вызывает refresh при изменении page
+    useEffect(() => {
+        if (isFirstRender.current) {
+            isFirstRender.current = false;
+            return;
+        }
+        console.log("page => " + page)
+        refresh(dql, sort)
+    }, [page])
+
+    // Initial load - проверяем фильтры в URL и загружаем данные
+    useEffect(() => {
+        const hasFiltersInUrl = () => {
+            if (!comp_ID || typeof window === 'undefined') return false;
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.has(`filters_${comp_ID}`) || urlParams.has(`sort_${comp_ID}`);
+        };
+        
+        if (hasFiltersInUrl()) {
+            // TableTitle сам применит фильтры через performFiltering
+            console.log("Filters found in URL, skipping initial load - TableTitle will handle it")
+            return;
+        }
+        
+        const urlPage = getPageFromUrl() || 0;
+        if (currentData && currentData.sl) {
+            console.log("Loading initial page from URL: " + urlPage)
+            setPageLoading(true)
+            callEndpointGET(currentData.sl, {
+                pageSize: currentData.pageSize || 10,
+                page: urlPage,
+                dql: '',
+                sort: ''
+            }, (result, responseData) => {
+                const newDataInfo = _.get(responseData, "result.data", {})
+                if (newDataInfo && newDataInfo.content) delete newDataInfo.content
+                setDataInfo(newDataInfo)
+                setCardsData(result)
+                setPageLoading(false)
+            })
+        }
+    }, [])
+
     const params = (currentData || {}).params || {}
 
     const { hideExpandTD, autoRefresh, largeFont } = params
@@ -374,10 +490,10 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute, cal
         const interval = setInterval(() => {
             count++
             console.log('autoRefresh rerender № ' + count);
-            refresh(true)
+            refresh(dql, sort)
         }, autoRefreshPeriod);
         return () => clearInterval(interval);
-    }, []);
+    }, [dql, sort]);
 
     if (!currentData || currentData == {} || !currentData.params) { return <div /> }
 
@@ -402,7 +518,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute, cal
                             lang={lang}
                             auth={auth}
                             firstCard
-                            refresh={refresh}
+                            refresh={() => refresh(dql, sort)}
                             checkActionCond={(cond, obj) => checkActionCond(edenrichConds(cond, obj))}
                             shareble
                             executeAction={submitAction}
@@ -501,6 +617,8 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute, cal
                 dict={dict}
                 lang={lang}
                 onFilter={() => { }}
+                urlKey={comp_ID}
+                headers={currentData.headers}
             />
             <Table
                 currentBP={currentBP}
@@ -561,13 +679,13 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute, cal
                 <div className={styles.pagination}>
                     <Paging
                         setPage={setPage}
-                        pageSize={pageSize}
+                        pageSize={_.get(dataInfo, 'pageable.pageSize', pageSize)}
                         dict={dict}
                         lang={lang}
-                        totalPages={totalPages}
-                        currentPage={currentPage}
+                        totalPages={Math.max(1, Math.ceil(_.get(dataInfo, 'total', 0) / _.get(dataInfo, 'pageable.pageSize', pageSize)))}
+                        currentPage={_.get(dataInfo, 'pageable.page', page)}
                         setLoading={setLoading}
-                        loading={loading}
+                        loading={pageLoading || loading}
                     />
                 </div>}
         </ComponentWrapper>
