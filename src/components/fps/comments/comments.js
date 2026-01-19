@@ -40,10 +40,38 @@ export default function Comments(props) {
         // console.log(comment)
         !local && setLoading(true)
         const endpoint = _.get(data, "sl")
+        
+        // Обогащаем payload кастомными полями из маппинга
+        const customMapping = _.get(data, "params.customMapping") || []
+        const enrichedComment = { ...comment }
+        
+        if (customMapping.length > 0) {
+            customMapping.forEach(mapping => {
+                const target = _.get(mapping, 'target')
+                const value = _.get(mapping, 'value')
+                
+                // Пропускаем пустые значения
+                if (target && value !== undefined && value !== '') {
+                    // Предупреждаем о перезаписи существующих полей
+                    if (enrichedComment.hasOwnProperty(target)) {
+                        console.warn(`Custom mapping overrides fixed field: ${target}`)
+                    }
+                    
+                    // Конвертация типов данных
+                    let convertedValue = value
+                    if (value === 'true') convertedValue = true
+                    else if (value === 'false') convertedValue = false
+                    else if (!isNaN(value) && value !== '') convertedValue = Number(value)
+                    
+                    enrichedComment[target] = convertedValue
+                }
+            })
+        }
+        
         callEndpoint && callEndpoint(
             endpoint,
             "POST",
-            comment,
+            enrichedComment,
             undefined,
             (result, data) => {
                 if (result == "ok") {
