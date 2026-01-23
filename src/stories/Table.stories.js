@@ -17,82 +17,266 @@ export default {
 };
 
 let exampleTable = {
-    "sl": "darta",
-    "pageSize": "10",
+    "sl": "users",
+    "pageSize": "20",
     "headerField": null,
     "params": {
-        "cardListLayout": "grid",
-        "cardHeaderComment": "",
-        "deleteField": "",
-        "cardBodyText": "",
-        "cardImage": false,
-        "cardImageField": "",
-        "cardImageType": "none",
-        "cardImageSize": 100,
-        "objectView": {},
         "data": {
             "readFields": [
+                {
+                    "fieldSysName": "code",
+                    "fetch": [],
+                    "sysName": "code",
+                    "name": "",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "date_registered",
+                    "fetch": [],
+                    "sysName": "date_registered",
+                    "name": "Date registered on Dev",
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "dateLocale": "en-gb",
+                        "booleanOptions": [
+                            "True",
+                            "False"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "DD/MM/Y",
+                        "timeFormat": "",
+                        "isUTC": "false"
+                    },
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "firstName",
+                    "fetch": [],
+                    "sysName": "firstName",
+                    "name": "First name",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
                 {
                     "fieldSysName": "id",
                     "fetch": [],
                     "sysName": "id",
-                    "name": "id",
+                    "name": "Username (login)",
                     "dataType": "id",
                     "format": "",
                     "formatOptions": {},
                     "link": ""
                 },
                 {
-                    "fieldSysName": "number",
+                    "fieldSysName": "isEmailConfirmed",
                     "fetch": [],
-                    "sysName": "number",
-                    "name": "",
-                    "dataType": "number",
+                    "sysName": "isEmailConfirmed",
+                    "name": "Email confirmed",
+                    "dataType": "boolean",
                     "format": "",
                     "formatOptions": {},
                     "link": ""
                 },
                 {
-                    "fieldSysName": "text",
+                    "fieldSysName": "lastName",
                     "fetch": [],
-                    "sysName": "text",
-                    "name": "TEXT",
+                    "sysName": "lastName",
+                    "name": "Last name",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "role",
+                    "fetch": [],
+                    "sysName": "role",
+                    "name": "Roles",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "html",
+                    "fetch": [],
+                    "sysName": "html",
+                    "name": "",
+                    "dataType": "string",
+                    "format": "html",
+                    "formatOptions": {},
+                    "link": ""
+                }
+            ],
+            "writeFields": [
+                {
+                    "fieldSysName": "firstName",
+                    "fetch": [],
+                    "sysName": "firstName",
+                    "name": "First name",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "id",
+                    "fetch": [],
+                    "sysName": "id",
+                    "name": "Username (login)",
+                    "dataType": "id",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "lastName",
+                    "fetch": [],
+                    "sysName": "lastName",
+                    "name": "Last name",
                     "dataType": "string",
                     "format": "",
                     "formatOptions": {},
                     "link": ""
                 }
             ],
-            "writeFields": [],
             "fields": {
+                "code": {
+                    "id": "code",
+                    "content": "",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "date_registered": {
+                    "id": "date_registered",
+                    "content": "Date registered on Dev",
+                    "type": "field",
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "dateLocale": "en-gb",
+                        "booleanOptions": [
+                            "True",
+                            "False"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "DD/MM/Y",
+                        "timeFormat": "",
+                        "isUTC": "false"
+                    },
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "firstName": {
+                    "id": "firstName",
+                    "content": "First name",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
                 "id": {
                     "id": "id",
-                    "content": "id",
+                    "content": "Username (login)",
                     "type": "field",
                     "dataType": "id",
                     "format": "",
                     "formatOptions": {},
+                    "write": true,
                     "read": true,
                     "link": "",
                     "actions": []
                 },
-                "number": {
-                    "id": "number",
-                    "content": "",
+                "isEmailConfirmed": {
+                    "id": "isEmailConfirmed",
+                    "content": "Email confirmed",
                     "type": "field",
-                    "dataType": "number",
+                    "dataType": "boolean",
                     "format": "",
                     "formatOptions": {},
                     "read": true,
                     "link": "",
                     "actions": []
                 },
-                "text": {
-                    "id": "text",
-                    "content": "TEXT",
+                "lastName": {
+                    "id": "lastName",
+                    "content": "Last name",
                     "type": "field",
                     "dataType": "string",
                     "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "role": {
+                    "id": "role",
+                    "content": "Roles",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": "",
+                    "actions": []
+                },
+                "html": {
+                    "id": "html",
+                    "content": "",
+                    "type": "field",
+                    "dataType": "string",
+                    "format": "html",
                     "formatOptions": {},
                     "read": true,
                     "link": "",
@@ -100,23 +284,56 @@ let exampleTable = {
                 }
             },
             "fieldParams": {
-                "id": {
-                    "include": false,
-                    "disableEditing": true,
-                    "fileImageFormat": "square",
-                    "quickSearch": false,
-                    "fileImageSize": 200,
-                    "clickable": false
-                },
-                "number": {
+                "code": {
                     "include": true,
-                    "disableEditing": false,
                     "fileImageFormat": "square",
                     "quickSearch": false,
                     "fileImageSize": 200,
                     "clickable": false
                 },
-                "text": {
+                "firstName": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "id": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "isEmailConfirmed": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "lastName": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "role": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "date_registered": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "quickSearch": false,
+                    "fileImageSize": 200,
+                    "clickable": false
+                },
+                "html": {
                     "include": true,
                     "disableEditing": false,
                     "fileImageFormat": "square",
@@ -131,8 +348,13 @@ let exampleTable = {
                     "title": "New section",
                     "fieldIds": [
                         "id",
-                        "number",
-                        "text"
+                        "role",
+                        "firstName",
+                        "lastName",
+                        "isEmailConfirmed",
+                        "code",
+                        "date_registered",
+                        "html"
                     ]
                 }
             },
@@ -142,23 +364,56 @@ let exampleTable = {
             "actions": []
         },
         "fields": {
-            "id": {
-                "include": false,
-                "disableEditing": true,
-                "fileImageFormat": "square",
-                "quickSearch": false,
-                "fileImageSize": 200,
-                "clickable": false
-            },
-            "number": {
+            "code": {
                 "include": true,
-                "disableEditing": false,
                 "fileImageFormat": "square",
                 "quickSearch": false,
                 "fileImageSize": 200,
                 "clickable": false
             },
-            "text": {
+            "firstName": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "id": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "isEmailConfirmed": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "lastName": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "role": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "date_registered": {
+                "include": true,
+                "fileImageFormat": "square",
+                "quickSearch": false,
+                "fileImageSize": 200,
+                "clickable": false
+            },
+            "html": {
                 "include": true,
                 "disableEditing": false,
                 "fileImageFormat": "square",
@@ -170,84 +425,286 @@ let exampleTable = {
         "tableParams": {
             "readFields": [
                 {
+                    "fieldSysName": "code",
+                    "fetch": [],
+                    "sysName": "code",
+                    "name": "",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "date_registered",
+                    "fetch": [],
+                    "sysName": "date_registered",
+                    "name": "Date registered on Dev",
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "dateLocale": "en-gb",
+                        "booleanOptions": [
+                            "True",
+                            "False"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "DD/MM/Y",
+                        "timeFormat": "",
+                        "isUTC": "false"
+                    },
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "firstName",
+                    "fetch": [],
+                    "sysName": "firstName",
+                    "name": "First name",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
                     "fieldSysName": "id",
                     "fetch": [],
                     "sysName": "id",
-                    "name": "id",
+                    "name": "Username (login)",
                     "dataType": "id",
                     "format": "",
                     "formatOptions": {},
                     "link": ""
                 },
                 {
-                    "fieldSysName": "number",
+                    "fieldSysName": "isEmailConfirmed",
                     "fetch": [],
-                    "sysName": "number",
-                    "name": "",
-                    "dataType": "number",
+                    "sysName": "isEmailConfirmed",
+                    "name": "Email confirmed",
+                    "dataType": "boolean",
                     "format": "",
                     "formatOptions": {},
                     "link": ""
                 },
                 {
-                    "fieldSysName": "text",
+                    "fieldSysName": "lastName",
                     "fetch": [],
-                    "sysName": "text",
-                    "name": "TEXT",
+                    "sysName": "lastName",
+                    "name": "Last name",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "role",
+                    "fetch": [],
+                    "sysName": "role",
+                    "name": "Roles",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "html",
+                    "fetch": [],
+                    "sysName": "html",
+                    "name": "",
+                    "dataType": "string",
+                    "format": "html",
+                    "formatOptions": {},
+                    "link": ""
+                }
+            ],
+            "writeFields": [
+                {
+                    "fieldSysName": "firstName",
+                    "fetch": [],
+                    "sysName": "firstName",
+                    "name": "First name",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "id",
+                    "fetch": [],
+                    "sysName": "id",
+                    "name": "Username (login)",
+                    "dataType": "id",
+                    "format": "",
+                    "formatOptions": {},
+                    "link": ""
+                },
+                {
+                    "fieldSysName": "lastName",
+                    "fetch": [],
+                    "sysName": "lastName",
+                    "name": "Last name",
                     "dataType": "string",
                     "format": "",
                     "formatOptions": {},
                     "link": ""
                 }
             ],
-            "writeFields": [],
             "fields": {
+                "code": {
+                    "id": "code",
+                    "content": "",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": ""
+                },
+                "date_registered": {
+                    "id": "date_registered",
+                    "content": "Date registered on Dev",
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "dateLocale": "en-gb",
+                        "booleanOptions": [
+                            "True",
+                            "False"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "DD/MM/Y",
+                        "timeFormat": "",
+                        "isUTC": "false"
+                    },
+                    "read": true,
+                    "link": ""
+                },
+                "firstName": {
+                    "id": "firstName",
+                    "content": "First name",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": ""
+                },
                 "id": {
                     "id": "id",
-                    "content": "id",
+                    "content": "Username (login)",
                     "dataType": "id",
                     "format": "",
                     "formatOptions": {},
+                    "write": true,
                     "read": true,
                     "link": ""
                 },
-                "number": {
-                    "id": "number",
-                    "content": "",
-                    "dataType": "number",
+                "isEmailConfirmed": {
+                    "id": "isEmailConfirmed",
+                    "content": "Email confirmed",
+                    "dataType": "boolean",
                     "format": "",
                     "formatOptions": {},
                     "read": true,
                     "link": ""
                 },
-                "text": {
-                    "id": "text",
-                    "content": "TEXT",
+                "lastName": {
+                    "id": "lastName",
+                    "content": "Last name",
                     "dataType": "string",
                     "format": "",
+                    "formatOptions": {},
+                    "write": true,
+                    "read": true,
+                    "link": ""
+                },
+                "role": {
+                    "id": "role",
+                    "content": "Roles",
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "read": true,
+                    "link": ""
+                },
+                "html": {
+                    "id": "html",
+                    "content": "",
+                    "dataType": "string",
+                    "format": "html",
                     "formatOptions": {},
                     "read": true,
                     "link": ""
                 }
             },
             "fieldParams": {
+                "code": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "fileImageSize": 80
+                },
+                "firstName": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "fileImageSize": 80
+                },
                 "id": {
                     "include": true,
                     "fileImageFormat": "square",
-                    "fileImageSize": 80,
-                    "colorCode": false,
-                    "colorFormat": "square",
-                    "colorSize": 40
+                    "fileImageSize": 80
                 },
-                "number": {
+                "isEmailConfirmed": {
                     "include": true,
                     "fileImageFormat": "square",
-                    "fileImageSize": 80,
-                    "colorCode": false,
-                    "colorFormat": "square",
-                    "colorSize": 40
+                    "fileImageSize": 80
                 },
-                "text": {
+                "lastName": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "fileImageSize": 80
+                },
+                "role": {
+                    "include": false,
+                    "fileImageFormat": "square",
+                    "fileImageSize": 80
+                },
+                "date_registered": {
+                    "include": true,
+                    "fileImageFormat": "square",
+                    "fileImageSize": 80
+                },
+                "html": {
                     "include": true,
                     "fileImageFormat": "square",
                     "fileImageSize": 80,
@@ -258,19 +715,197 @@ let exampleTable = {
             },
             "fieldOrder": [
                 "id",
-                "text",
-                "number"
+                "firstName",
+                "lastName",
+                "html",
+                "isEmailConfirmed",
+                "role",
+                "code",
+                "date_registered"
             ]
-        }
+        },
+        "filterParams": {
+            "isSorting": true,
+            "isFiltering": true,
+            "filterFields": {
+                "date_registered": {
+                    "active": true,
+                    "dataType": "date",
+                    "format": "",
+                    "formatOptions": {
+                        "customOptionLabel": "My option",
+                        "keyValue": {
+                            "key": "key",
+                            "value": "value",
+                            "button": "One more"
+                        },
+                        "dateLocale": "en-gb",
+                        "booleanOptions": [
+                            "True",
+                            "False"
+                        ],
+                        "validWeekDays": {
+                            "mon": true,
+                            "thu": true,
+                            "tue": true,
+                            "sun": true,
+                            "fri": true,
+                            "sat": true,
+                            "wed": true
+                        },
+                        "customOptionPlaceholder": "Describe your option",
+                        "range": {},
+                        "customOptionType": "textarea",
+                        "dateFormat": "DD/MM/Y",
+                        "timeFormat": "",
+                        "isUTC": "false"
+                    },
+                    "name": "Date registered on Dev"
+                },
+                "firstName": {
+                    "active": true,
+                    "dataType": "string",
+                    "format": "",
+                    "formatOptions": {},
+                    "name": "First name"
+                },
+                "id": {
+                    "active": false,
+                    "dataType": "id",
+                    "format": "",
+                    "formatOptions": {},
+                    "name": "Username (login)"
+                },
+                "isEmailConfirmed": {
+                    "active": true,
+                    "dataType": "boolean",
+                    "format": "",
+                    "formatOptions": {},
+                    "name": "Email confirmed"
+                }
+            }
+        },
+        "lazyLoading": true
     },
     "tableTitle": "",
     "actions": [],
     "headers": [
         {
+            "sysName": "code",
+            "name": "",
+            "dataType": "string",
+            "id": "51351621027822811",
+            "link": "",
+            "group": "1621027815164",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "date_registered",
+            "name": "Date registered on Dev",
+            "dataType": "date",
+            "id": "14451621029358812",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 6,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {
+                "customOptionLabel": "My option",
+                "keyValue": {
+                    "key": "key",
+                    "value": "value",
+                    "button": "One more"
+                },
+                "dateLocale": "en-gb",
+                "booleanOptions": [
+                    "True",
+                    "False"
+                ],
+                "validWeekDays": {
+                    "mon": true,
+                    "thu": true,
+                    "tue": true,
+                    "sun": true,
+                    "fri": true,
+                    "sat": true,
+                    "wed": true
+                },
+                "customOptionPlaceholder": "Describe your option",
+                "range": {},
+                "customOptionType": "textarea",
+                "dateFormat": "DD/MM/Y",
+                "timeFormat": "",
+                "isUTC": "false"
+            },
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "firstName",
+            "name": "First name",
+            "dataType": "string",
+            "id": "5",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "indexExists": false
+        },
+        {
             "sysName": "id",
-            "name": "id",
+            "name": "Username (login)",
             "dataType": "id",
-            "id": "0",
+            "id": "13",
             "link": "",
             "group": "0",
             "tags": "",
@@ -286,19 +921,75 @@ let exampleTable = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
+            "array": false,
             "typeVariable": {},
             "json": false,
-            "indexExists": false,
-            "array": false
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "indexExists": false
         },
         {
-            "sysName": "number",
-            "name": "",
-            "dataType": "number",
-            "id": "53021759423491996",
+            "sysName": "isEmailConfirmed",
+            "name": "Email confirmed",
+            "dataType": "boolean",
+            "id": "60111621027825496",
+            "link": "",
+            "group": "1621027815164",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 1,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "lastName",
+            "name": "Last name",
+            "dataType": "string",
+            "id": "4",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 5,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "role",
+            "name": "Roles",
+            "dataType": "string",
+            "id": "6",
             "link": "",
             "group": "0",
             "tags": "",
@@ -314,95 +1005,286 @@ let exampleTable = {
             "format": null,
             "formatOptions": {},
             "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
+            "array": false,
             "typeVariable": {},
             "json": false,
-            "indexExists": false,
-            "array": false
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "indexExists": false
         },
         {
-            "sysName": "text",
-            "name": "TEXT",
+            "sysName": "html",
+            "name": "",
             "dataType": "string",
-            "id": "92661759423487062",
+            "id": "66441769161691317",
             "link": "",
-            "group": "0",
+            "group": "1621027815164",
             "tags": "",
             "indexing": false,
             "ordering": false,
             "description": null,
             "weight": null,
-            "order": 1,
+            "order": 2,
             "linkIndexFieldSysName": [],
             "defaultValue": "",
             "constraints": null,
             "synthetic": false,
-            "format": null,
+            "format": "html",
             "formatOptions": {},
             "groupName": null,
-            "linkOrArrayLinkType": false,
-            "linkType": false,
-            "arrayLink": false,
+            "array": false,
             "typeVariable": {},
             "json": false,
-            "indexExists": false,
-            "array": false
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "indexExists": false
         }
     ],
     "data": [
         {
-            "number": 5,
-            "text": "Возможность при мерже создавать какие-то пакеты по-умолчанию для переноса, чтобы кажый раз не набивать по 100 сценариев, эндпоинтов, таблиц вручную (большой риск что-то потерять)",
-            "id": "ab68fc23-7b2d-401c-8485-8944f844601a"
+            "role": "god,confirmed",
+            "code": "8e7e5",
+            "lastName": "Ershov",
+            "firstName": "Pavel",
+            "id": "pavel@directual.com",
+            "isEmailConfirmed": true,
+            "html": "<h2>ОГОНЬ ПО БЛЯДСКОМУ ХУТОРУ!</h2>",
+            "date_registered": 1621040334000
+        },
+        {
+            "role": "notConfirmed,god",
+            "lastName": "Navalikhin",
+            "firstName": "Nikita",
+            "id": "nikita@directual.com",
+            "isEmailConfirmed": false,
+            "date_registered": 1621356846000
+        },
+        {
+            "role": "confirmed",
+            "code": "0ba29",
+            "lastName": "Dolgov",
+            "firstName": "Nikita",
+            "id": "n.dolgov@directual.com",
+            "isEmailConfirmed": true,
+            "date_registered": 1621375669000
+        },
+        {
+            "role": "confirmed",
+            "code": "e5414",
+            "lastName": "Lykov",
+            "firstName": "Max",
+            "id": "mxf@mail.ru",
+            "isEmailConfirmed": true,
+            "date_registered": 1621376473000
+        },
+        {
+            "role": "confirmed",
+            "code": "740e1",
+            "lastName": "Novozhilov",
+            "firstName": "Dimitry",
+            "id": "novozhilov@code-word.ru",
+            "isEmailConfirmed": true,
+            "date_registered": 1621380215000
+        },
+        {
+            "role": "notConfirmed",
+            "lastName": "Mozer",
+            "firstName": "Anna",
+            "id": "annmozer116@gmail.com",
+            "isEmailConfirmed": false,
+            "date_registered": 1621422342000
+        },
+        {
+            "role": "confirmed",
+            "code": "cd48d",
+            "lastName": "Maisak",
+            "firstName": "Efim",
+            "id": "coldnaked@gmail.com",
+            "isEmailConfirmed": true,
+            "date_registered": 1621460006000
+        },
+        {
+            "role": "notConfirmed",
+            "lastName": "Kumswa",
+            "firstName": "Nanfa",
+            "id": "nanfa@availsys.com",
+            "isEmailConfirmed": false,
+            "date_registered": 1621517309000
+        },
+        {
+            "role": "confirmed",
+            "code": "be903",
+            "lastName": "Novoseltsev",
+            "firstName": "Vladimir",
+            "id": "xtrms@yandex.ru",
+            "isEmailConfirmed": true,
+            "date_registered": 1621531581000
+        },
+        {
+            "role": "notConfirmed",
+            "lastName": "Novikov",
+            "firstName": "Valentin",
+            "id": "novikov84@gmail.com",
+            "isEmailConfirmed": false,
+            "date_registered": 1621634931000
+        },
+        {
+            "role": "confirmed",
+            "code": "0d48c",
+            "lastName": "Udalov",
+            "firstName": "YURI",
+            "id": "udalov66@gmail.com",
+            "isEmailConfirmed": true,
+            "date_registered": 1621635560000
+        },
+        {
+            "role": "notConfirmed",
+            "lastName": "Boyko",
+            "firstName": "Vladislav",
+            "id": "for.work.vboyko@yandex.ru",
+            "isEmailConfirmed": false,
+            "date_registered": 1621949901000
+        },
+        {
+            "role": "confirmed",
+            "code": "e9b64",
+            "lastName": "Baev",
+            "firstName": "Egor",
+            "id": "artosiris@gmail.com",
+            "isEmailConfirmed": true,
+            "date_registered": 1622138250000
+        },
+        {
+            "role": "notConfirmed",
+            "lastName": "nickolaev",
+            "firstName": "nickolay",
+            "id": "nickolaevnv@gmail.com",
+            "isEmailConfirmed": false,
+            "date_registered": 1622230567000
+        },
+        {
+            "role": "notConfirmed",
+            "lastName": "Shahbandaryan",
+            "firstName": "David",
+            "id": "d.shahbandaryan@bsl.dev",
+            "isEmailConfirmed": false,
+            "date_registered": 1622557391000
+        },
+        {
+            "role": "notConfirmed",
+            "lastName": "Vernikovsky",
+            "firstName": "Dmitry",
+            "id": "dmitry.vernikovsky@gmail.com",
+            "isEmailConfirmed": false,
+            "date_registered": 1622633437000
+        },
+        {
+            "role": "notConfirmed",
+            "lastName": "Malak",
+            "firstName": "Max",
+            "id": "max@edugram.com",
+            "isEmailConfirmed": false,
+            "date_registered": 1623760905000
+        },
+        {
+            "role": "confirmed",
+            "code": "f11d2",
+            "lastName": "Tkachev",
+            "firstName": "Roman",
+            "id": "tkachev.rb@gmail.com",
+            "isEmailConfirmed": true,
+            "date_registered": 1625225335000
+        },
+        {
+            "role": "confirmed",
+            "code": "350e4",
+            "lastName": "Stepanenko",
+            "firstName": "Vladimir",
+            "id": "vgstepanenko@gmail.com",
+            "isEmailConfirmed": true,
+            "date_registered": 1626509029000
+        },
+        {
+            "role": "notConfirmed",
+            "lastName": "Ruban",
+            "firstName": "Yurii",
+            "id": "verstku@gmail.com",
+            "isEmailConfirmed": false,
+            "date_registered": 1626953472000
         }
     ],
-    "totalPages": 1,
+    "totalPages": 13,
     "pageNumber": 0,
     "error": null,
     "fieldScheme": [
         [
+            "code",
+            1385542
+        ],
+        [
+            "date_registered",
+            1385542
+        ],
+        [
+            "firstName",
+            1385542
+        ],
+        [
             "id",
-            99422458
+            1385542
         ],
         [
-            "number",
-            99422458
+            "isEmailConfirmed",
+            1385542
         ],
         [
-            "text",
-            99422458
+            "lastName",
+            1385542
+        ],
+        [
+            "role",
+            1385542
+        ],
+        [
+            "html",
+            1385542
         ]
     ],
-    "writeFields": [],
+    "writeFields": [
+        "firstName",
+        "id",
+        "lastName"
+    ],
     "structures": {
-        "99422458": {
-            "networkID": 34396,
-            "sysName": "data",
-            "name": "data",
-            "id": 99422458,
-            "dateCreated": "2025-10-02T16:44:43Z",
+        "1385542": {
+            "networkID": 6829,
+            "sysName": "WebUser",
+            "name": "App users",
+            "id": 1385542,
+            "dateCreated": "2021-05-14T21:02:45Z",
             "hidden": false,
             "dateHidden": null,
-            "jsonObject": "[{\"sysName\":\"id\",\"name\":\"id\",\"dataType\":\"id\",\"id\":\"0\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"number\",\"name\":\"\",\"dataType\":\"number\",\"id\":\"53021759423491996\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false},{\"sysName\":\"text\",\"name\":\"TEXT\",\"dataType\":\"string\",\"id\":\"92661759423487062\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"linkOrArrayLinkType\":false,\"linkType\":false,\"arrayLink\":false,\"typeVariable\":{},\"json\":false,\"indexExists\":false,\"array\":false}]",
-            "jsonGroupSettings": null,
-            "jsonViewIdSettings": null,
-            "jsonSettings": null,
+            "jsonObject": "[{\"sysName\":\"userpic\",\"name\":\"User pic\",\"dataType\":\"file\",\"id\":\"1\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":13,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"image\",\"formatOptions\":{},\"groupName\":\"Contacts\",\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"phone\",\"name\":\"Phone\",\"dataType\":\"string\",\"id\":\"10\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":8,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"dateCreated\",\"name\":\"dateCreated\",\"dataType\":\"string\",\"id\":\"11\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"password\",\"name\":\"Password (hash)\",\"dataType\":\"string\",\"id\":\"12\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"id\",\"name\":\"Username (login)\",\"dataType\":\"id\",\"id\":\"13\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"date_registered\",\"name\":\"Date registered on Dev\",\"dataType\":\"date\",\"id\":\"14451621029358812\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{\"customOptionLabel\":\"My option\",\"keyValue\":{\"key\":\"key\",\"value\":\"value\",\"button\":\"One more\"},\"dateLocale\":\"en-gb\",\"booleanOptions\":[\"True\",\"False\"],\"validWeekDays\":{\"mon\":true,\"thu\":true,\"tue\":true,\"sun\":true,\"fri\":true,\"sat\":true,\"wed\":true},\"customOptionPlaceholder\":\"Describe your option\",\"range\":{},\"customOptionType\":\"textarea\",\"dateFormat\":\"DD/MM/Y\",\"timeFormat\":\"\",\"isUTC\":\"false\"},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"isBlocked\",\"name\":\"Block user\",\"dataType\":\"boolean\",\"id\":\"2\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":7,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"request_counter\",\"name\":\"\",\"dataType\":\"json\",\"id\":\"26481752759056266\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":3,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":true,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"gender\",\"name\":\"Gender\",\"dataType\":\"string\",\"id\":\"3\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":6,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"lastName\",\"name\":\"Last name\",\"dataType\":\"string\",\"id\":\"4\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":5,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"firstName\",\"name\":\"First name\",\"dataType\":\"string\",\"id\":\"5\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":4,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"code\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"51351621027822811\",\"link\":\"\",\"group\":\"1621027815164\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"role\",\"name\":\"Roles\",\"dataType\":\"string\",\"id\":\"6\",\"link\":\"\",\"group\":\"0\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"isEmailConfirmed\",\"name\":\"Email confirmed\",\"dataType\":\"boolean\",\"id\":\"60111621027825496\",\"link\":\"\",\"group\":\"1621027815164\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"transaction_ids\",\"name\":\"\",\"dataType\":\"arrayLink\",\"id\":\"63381754134242079\",\"link\":\"transactions\",\"group\":\"1754134105862\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":1,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":true,\"arrayLink\":true,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"html\",\"name\":\"\",\"dataType\":\"string\",\"id\":\"66441769161691317\",\"link\":\"\",\"group\":\"1621027815164\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":\"html\",\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"isAuthorization\",\"name\":\"isAuthorization\",\"dataType\":\"boolean\",\"id\":\"7\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":2,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"dateLastActivity\",\"name\":\"dateLastActivity\",\"dataType\":\"string\",\"id\":\"8\",\"link\":\"\",\"group\":\"-1776115286\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"System fields\",\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"balance\",\"name\":\"Account balance\",\"dataType\":\"decimal\",\"id\":\"81481754134113259\",\"link\":\"\",\"group\":\"1754134105862\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":0,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":null,\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false},{\"sysName\":\"email\",\"name\":\"Email\",\"dataType\":\"string\",\"id\":\"9\",\"link\":\"\",\"group\":\"-502807437\",\"tags\":\"\",\"indexing\":false,\"ordering\":false,\"description\":null,\"weight\":null,\"order\":9,\"linkIndexFieldSysName\":[],\"defaultValue\":\"\",\"constraints\":null,\"synthetic\":false,\"format\":null,\"formatOptions\":{},\"groupName\":\"Contacts\",\"array\":false,\"typeVariable\":{},\"json\":false,\"linkOrArrayLinkType\":false,\"arrayLink\":false,\"linkType\":false,\"indexExists\":false}]",
+            "jsonGroupSettings": "[{\"name\":\"Contacts\",\"id\":-502807437,\"order\":0},{\"name\":\"System fields\",\"id\":-1776115286,\"order\":1},{\"name\":\"Email confirmation\",\"id\":1621027815164,\"order\":2},{\"name\":\"BILLING\",\"id\":1754134105862,\"order\":3}]",
+            "jsonViewIdSettings": "[{\"sysName\":\"firstName\"},{\"sysName\":\"lastName\"}]",
+            "jsonSettings": "{\"inMemory\":false,\"isCacheable\":false,\"timeCache\":0,\"indexEnabled\":true,\"lowPriority\":false}",
             "jsonNativeIndexSettings": null,
             "indexEnabled": true,
             "lastIndexUpdate": 0,
             "indexName": "",
-            "dateChanged": "2025-10-02T16:44:59Z",
-            "createBy": 3527,
-            "changedBy": 3527,
+            "dateChanged": "2026-01-23T09:48:17Z",
+            "createBy": 0,
+            "changedBy": 1,
             "_settings": null,
             "_nativeIndexSettings": null,
+            "objectIDSysName": "id",
             "innerIDField": {
                 "sysName": "id",
-                "name": "id",
+                "name": "Username (login)",
                 "dataType": "id",
-                "id": "0",
+                "id": "13",
                 "link": "",
                 "group": "0",
                 "tags": "",
@@ -418,23 +1300,107 @@ let exampleTable = {
                 "format": null,
                 "formatOptions": {},
                 "groupName": null,
-                "linkOrArrayLinkType": false,
-                "linkType": false,
-                "arrayLink": false,
+                "array": false,
                 "typeVariable": {},
                 "json": false,
-                "indexExists": false,
-                "array": false
+                "linkOrArrayLinkType": false,
+                "arrayLink": false,
+                "linkType": false,
+                "indexExists": false
             },
-            "objectIDSysName": "id",
             "folderId": null
         }
     },
     "isSuccessWrite": false,
     "writeError": null,
     "writeResponse": null,
-    "fileds": [],
-    "quickSearch": "false",
+    "fileds": [
+        {
+            "sysName": "firstName",
+            "name": "First name",
+            "dataType": "string",
+            "id": "5",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 4,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "id",
+            "name": "Username (login)",
+            "dataType": "id",
+            "id": "13",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 0,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "indexExists": false
+        },
+        {
+            "sysName": "lastName",
+            "name": "Last name",
+            "dataType": "string",
+            "id": "4",
+            "link": "",
+            "group": "0",
+            "tags": "",
+            "indexing": false,
+            "ordering": false,
+            "description": null,
+            "weight": null,
+            "order": 5,
+            "linkIndexFieldSysName": [],
+            "defaultValue": "",
+            "constraints": null,
+            "synthetic": false,
+            "format": null,
+            "formatOptions": {},
+            "groupName": null,
+            "array": false,
+            "typeVariable": {},
+            "json": false,
+            "linkOrArrayLinkType": false,
+            "arrayLink": false,
+            "linkType": false,
+            "indexExists": false
+        }
+    ],
+    "quickSearch": "true",
     "httpParams": {},
     "cardCustomHtml": null,
     "cardCustomLayout": {},

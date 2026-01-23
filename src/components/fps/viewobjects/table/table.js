@@ -8,6 +8,15 @@ import moment from 'moment'
 import Loader from '../../loader/loader'
 import _ from 'lodash'
 import { Tooltip } from 'react-tooltip'
+import InnerHTML from 'dangerously-set-html-content'
+import DOMPurify from 'dompurify'
+
+// Функция для безопасной санитизации HTML
+function sanitizedHTML(inputHTML) {
+    return DOMPurify.sanitize(inputHTML, {
+        USE_PROFILES: { html: true },
+    });
+}
 
 // Create an editable cell renderer
 const EditableCell = ({
@@ -204,6 +213,13 @@ const EditableCell = ({
         } else {
             return <a target="_blank" href={value}>{value}</a>
         }
+    }
+
+    // HTML content
+    if (fieldDetails[id].format == 'html' && value) {
+        return <div className={styles.notEditableValue}>
+            <InnerHTML allowRerender={true} html={sanitizedHTML(value)} />
+        </div>
     }
 
     // link:

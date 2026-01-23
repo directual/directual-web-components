@@ -26,6 +26,7 @@
 .cards2_typeRegular,
 .cards2_typeRegular:hover {
   position: relative;
+  display: block;
   display: flex;
   align-items: stretch;
   justify-content: stretch;
