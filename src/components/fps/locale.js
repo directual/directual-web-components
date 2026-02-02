@@ -117,7 +117,8 @@ export const dict = {
         },
         noOptions: "No options",
         bigCalendar: {
-            save: "Save",
+            new: "New Event",
+            save: "Save Changes",
             today: "Today",
             month: "Month",
             week: "Week",

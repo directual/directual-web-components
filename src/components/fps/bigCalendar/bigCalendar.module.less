@@ -1,5 +1,4 @@
 // Переменные для кастомизации через CSS custom properties
-// Теперь календарь адаптируется под тему приложения, ебать-копать! 🎨
 @primary-color: var(--layout-accent, #058efc);
 @primary-dark: var(--layout-accent-hover, #0062bd);
 @border-color: var(--table-borders, rgba(0, 0, 0, 0.12));
@@ -19,632 +18,305 @@
 @selected-cell-bg: var(--table-raw-hover, rgba(5, 142, 252, 0.05));
 
 // Основной контейнер календаря
+.calendar_wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+// Подсветка сегодняшнего дня
+:global(.rbc-today) {
+    background-color: @today-bg;
+}
+
+.calendar_header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+}
+
+.customToolbar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+    background: var(--layout-secondary-bgr, #ffffff);
+    border-radius: 8px;
+    
+    // Лейбл с датой - растягивается и выравнивается слева
+    :global(.rbc-toolbar-label) {
+        flex: 1;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--layout-text, #333333);
+        margin-left: 8px;
+        font-weight: bold;
+    }
+    
+    // Группы кнопок
+    :global(.rbc-btn-group) {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+}
+
+// Навигационная группа (Сегодня + стрелки)
+.navGroup {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+// Обертка для стрелок
+.arrowButtons {
+    display: flex;
+    gap: 4px;
+}
+
+// Круглые кнопки со стрелками
+.arrowBtn {
+    border-radius: 50% !important;
+    width: 40px !important;
+    min-width: 40px !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+// Группа с селектом вида
+.viewGroup {
+    display: flex;
+    align-items: center;
+}
+
+.viewInput {
+    margin-bottom: 0 !important;
+}
+
+// Группа с кнопками действий
+.saveGroup {
+    display: flex;
+    align-items: center;
+}
+
 .rbc_calendar {
     box-sizing: border-box;
     height: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction: column;    
 
-    // Наследование box-sizing для всех вложенных элементов
     *,
     *:before,
     *:after {
         box-sizing: inherit;
     }
 
-    // ======================
-    // УТИЛИТАРНЫЕ КЛАССЫ
-    // ======================
-    
-    :global(.rbc-m-b-negative-3) {
-        margin-bottom: -3px;
-    }
-
-    :global(.rbc-h-full) {
-        height: 100%;
-    }
-
-    :global(.rbc-abs-full) {
-        overflow: hidden;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-    }
-
-    :global(.rbc-ellipsis) {
-        display: block;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    // RTL поддержка
-    :global(.rbc-rtl) {
-        direction: rtl;
-    }
-
-    // ======================
-    // КНОПКИ
-    // ======================
-
-    :global(.rbc-btn) {
-        color: inherit;
-        font: inherit;
-        margin: 0;
-    }
-
-    :global(button.rbc-btn) {
-        overflow: visible;
-        text-transform: none;
-        appearance: button;
-        cursor: pointer;
-
-        &[disabled] {
-            cursor: not-allowed;
-        }
-    }
-
-    :global(button.rbc-input::-moz-focus-inner) {
-        border: 0;
-        padding: 0;
-    }
-
-    :global(.rbc-button-link) {
-        color: inherit;
-        background: none;
-        margin: 0;
-        padding: 0;
-        border: none;
-        cursor: pointer;
-        user-select: text;
-    }
-
-    // ======================
-    // ХЕДЕР (дни недели)
-    // ======================
-
-    :global(.rbc-header) {
-        overflow: hidden;
-        flex: 1 0 0%;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        padding: 0 3px;
-        text-align: center;
-        vertical-align: middle;
-        font-weight: bold;
-        font-size: 90%;
-        min-height: 0;
-        border-bottom: 1px solid @border-color;
-
-        + :global(.rbc-header) {
-            border-left: 1px solid @border-color;
-        }
-
-        > a,
-        > a:active,
-        > a:visited {
-            color: inherit;
-            text-decoration: none;
-        }
-    }
-
-    :global(.rbc-rtl .rbc-header) {
-        + :global(.rbc-header) {
-            border-left-width: 0;
-            border-right: 1px solid @border-color;
-        }
-    }
-
-    // ======================
-    // ТУЛБАР (навигация) - ВЫПИЛИВАЕМ ДЕФОЛТНЫЕ СТИЛИ И ДЕЛАЕМ СВОИ! 🔥💀
-    // ======================
-
-    // Общие стили тулбара - нахуй дефолтные стили календаря!
-    .customToolbar {
-        // Переопределяем ВСЕ стили тулбара календаря
-        display: flex !important;
-        flex-wrap: wrap !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        margin-bottom: 20px !important;
-        padding: 12px 0px !important;
-        background: var(--layout-secondary-bgr, #ffffff) !important;
-        border-radius: 8px !important;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
-        gap: 12px !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-        font-size: 16px !important;
-
-        // Красивый лейбл с месяцем/периодом
-        :global(.rbc-toolbar-label) {
-            flex: 1 !important;
-            padding: 0 20px !important;
-            text-align: center !important;
-            font-size: 20px !important;
-            font-weight: 600 !important;
-            color: var(--layout-text, #333333) !important;
-            letter-spacing: 0.3px !important;
-            min-width: 200px !important;
-        }
-
-        // Убираем ебучие дефолтные стили для btn-group
-        :global(.rbc-btn-group) {
-            display: flex !important;
-            align-items: center !important;
-            white-space: normal !important;
-            
-            // Убираем дефолтные отступы между кнопками
-            > button,
-            > :global(.FPS_BUTTON) {
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-            }
-
-            // Убираем дефолтные округления на кнопках
-            > button:first-child:not(:last-child),
-            > button:last-child:not(:first-child),
-            > button:not(:first-child):not(:last-child) {
-                border-radius: var(--border-radius) !important;
-            }
-        }
-    }
-
-    // Группа навигационных кнопок (Today + стрелки)
-    .navGroup {
-        display: flex !important;
-        align-items: center !important;
-        gap: 8px !important;
-    }
-
-    // Обертка для круглых кнопок со стрелками
-    .arrowButtons {
-        display: flex !important;
-        gap: 4px !important;
-    }
-
-    // Круглые кнопки со стрелками - НАХУЙ ВСЁ, БУДЬ КРУГЛЫМ! 🔥💀
-    .arrowBtn {
-        // Главное - КРУГЛЫЙ border-radius
-        border-radius: 50% !important;
-        
-        // Размеры (через пропсы, но на всякий случай)
-        width: 40px !important;
-        min-width: 40px !important;
-        max-width: 40px !important;
-        height: 40px !important;
-        min-height: 40px !important;
-        max-height: 40px !important;
-        
-        // Центровка
-        padding: 0 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        
-        // Иконка по центру, без отступов
-        &:before {
-            margin: 0 !important;
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-        }
-
-        // НАХУЙ не меняй размеры при hover/active!
-        &:hover:not(:global(.disabled)) {
-            width: 40px !important;
-            height: 40px !important;
-            padding: 0 !important;
-            border-radius: 50% !important;
-        }
-
-        &:active:not(:global(.disabled)) {
-            width: 40px !important;
-            height: 40px !important;
-            padding: 0 !important;
-            border-radius: 50% !important;
-        }
-    }
-
-    // Группа выбора вида (ебучий селект, центрируйся блять!)
-    .viewGroup {
-        display: flex !important;
-        align-items: center !important;
-        
-        // Селект внутри - выравниваем нахуй по центру
-        :global(.FPS_INPUT) {
-            margin: 0 !important;
-            align-self: center !important;
-        }
-        
-        // Если там div обертка
-        > div {
-            display: flex !important;
-            align-items: center !important;
-            margin: 0 !important;
-        }
-    }
-
-    // Группа с кнопкой Save
-    .saveGroup {
-        display: flex !important;
-        align-items: center !important;
-    }
-
-    // Адаптив для мобилки
-    @media (max-width: 767px) {
-        .customToolbar {
-            flex-direction: column !important;
-            gap: 12px !important;
-
-            :global(.rbc-toolbar-label) {
-                order: -1 !important;
-                min-width: auto !important;
-                width: 100% !important;
-                font-size: 18px !important;
-            }
-
-            .navGroup,
-            .viewGroup,
-            .saveGroup {
-                width: 100% !important;
-                justify-content: center !important;
-            }
-        }
-    }
-
-    // ======================
-    // ДНИ И ЯЧЕЙКИ
-    // ======================
-
-    :global(.rbc-off-range) {
-        color: @off-range-color;
-    }
-
-    :global(.rbc-off-range-bg) {
-        background: @off-range-bg;
-    }
-
-    :global(.rbc-today) {
-        background-color: @today-bg;
-    }
-
-    :global(.rbc-selected-cell) {
-        background-color: @selected-cell-bg;
-    }
-
-    // ======================
-    // СОБЫТИЯ
-    // ======================
-
-    :global(.rbc-event) {
-        border: none;
-        box-sizing: border-box;
-        box-shadow: none;
-        margin: 0;
-        padding: 2px 5px;
-        background-color: @event-bg;
-        border-radius: 5px;
-        color: #fff;
-        cursor: pointer;
-        width: 100%;
-        text-align: left;
-
-        &:global(.rbc-selected) {
-            background-color: @event-selected-bg;
-        }
-
-        &:focus {
-            outline: 5px auto #3b99fc;
-        }
-    }
-
-    :global(.rbc-slot-selecting .rbc-event) {
-        cursor: inherit;
-        pointer-events: none;
-    }
-
-    :global(.rbc-event-label) {
-        font-size: 80%;
-        display: block;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    :global(.rbc-event-overlaps) {
-        box-shadow: @event-shadow;
-    }
-
-    :global(.rbc-event-continues-prior) {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-    }
-
-    :global(.rbc-event-continues-after) {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-    }
-
-    :global(.rbc-event-continues-earlier) {
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-    }
-
-    :global(.rbc-event-continues-later) {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-    }
-
-    // ======================
-    // СТРОКИ И КОНТЕНТ
-    // ======================
-
-    :global(.rbc-row) {
-        display: flex;
-        flex-direction: row;
-    }
-
-    :global(.rbc-row-content) {
-        position: relative;
-        user-select: none;
-        z-index: 4;
-    }
-
-    :global(.rbc-row-content-scrollable) {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-
-        :global(.rbc-row-content-scroll-container) {
-            height: 100%;
-            overflow-y: scroll;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-
-            &::-webkit-scrollbar {
-                display: none;
-            }
-        }
-    }
-
-    :global(.rbc-row-segment) {
-        padding: 0 1px 1px 1px;
-
-        :global(.rbc-event-content) {
-            display: block;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-    }
-
-    :global(.rbc-row-bg) {
-        display: flex;
-        flex-direction: row;
-        flex: 1 0 0;
-        overflow: hidden;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        right: 1px;
-    }
-
-    :global(.rbc-show-more) {
-        display: block;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        background-color: rgba(255, 255, 255, 0.3);
-        z-index: 4;
-        font-weight: bold;
-        font-size: 85%;
-        height: auto;
-        line-height: normal;
-        color: @primary-color;
-
-        &:hover,
-        &:focus {
-            color: @primary-dark;
-        }
-    }
-
-    // ======================
-    // MONTH VIEW
-    // ======================
-
     :global(.rbc-month-view) {
         position: relative;
-        border: 1px solid @border-color;
+        border: 1px solid #ddd;
         display: flex;
         flex-direction: column;
         flex: 1 0 0;
         width: 100%;
         user-select: none;
-        height: 100%;
-    }
-
-    :global(.rbc-month-header) {
-        display: flex;
-        flex-direction: row;
-    }
-
-    :global(.rbc-month-row) {
-        display: flex;
-        position: relative;
-        flex-direction: column;
-        flex: 1 0 0;
-        flex-basis: 0px;
-        overflow: hidden;
+        -webkit-user-select: none;
         height: 100%;
 
-        + :global(.rbc-month-row) {
-            border-top: 1px solid @border-color;
+        :global(.rbc-month-header) {
+            display: flex;
+            flex-direction: row;
         }
-    }
-
-    :global(.rbc-date-cell) {
-        flex: 1 1 0;
-        min-width: 0;
-        padding-right: 5px;
-        text-align: right;
-
-        &:global(.rbc-now) {
+    
+        :global(.rbc-header) {
+            height: 40px;
+            overflow: hidden;
+            flex: 1 0 0%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding: 0 3px;
+            text-align: center;
+            vertical-align: middle;
             font-weight: bold;
+            font-size: 100%;
+            min-height: 0;
+            align-content: center;
+            border-bottom: 1px solid #ddd;
         }
-
-        > a,
-        > a:active,
-        > a:visited {
-            color: inherit;
-            text-decoration: none;
+    
+        :global(.rbc-header+.rbc-header) {
+            border-left: 1px solid #ddd;
         }
-    }
-
-    :global(.rbc-day-bg) {
-        flex: 1 0 0%;
-
-        + :global(.rbc-day-bg) {
-            border-left: 1px solid @border-color;
+    
+        // ЗАЛУПА С САМОЙ СТРОКОЙ ДНЕЙ НЕДЕЛИ - БЕСПОЛЕЗНАЯ
+    
+        :global(.rbc-month-row) {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            flex: 1 0 0;
+            flex-basis: 0px;
+            overflow: hidden;
+            height: 100%;
         }
-    }
-
-    :global(.rbc-rtl .rbc-day-bg) {
-        + :global(.rbc-day-bg) {
-            border-left-width: 0;
-            border-right: 1px solid @border-color;
+    
+        :global(.rbc-month-row+.rbc-month-row) {
+            border-top: 1px solid #ddd;
         }
-    }
-
-    // ======================
-    // OVERLAY (попап с событиями)
-    // ======================
-
-    :global(.rbc-overlay) {
-        position: absolute;
-        z-index: 5;
-        border: 1px solid @border-color;
-        background-color: var(--layout-secondary-bgr, #fff);
-        box-shadow: @overlay-shadow;
-        padding: 10px;
-
-        > * + * {
-            margin-top: 1px;
+    
+        :global(.rbc-row-bg) {
+            display: flex;
+            flex-direction: row;
+            flex: 1 0 0;
+            overflow: hidden;
+            right: 1px;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
         }
-    }
+        
+        :global(.rbc-abs-full),
+        :global(.rbc-row-bg) {
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    
+        :global(.rbc-day-bg) {
+            flex: 1 0 0%;
+        }
+    
+        :global(.rbc-off-range-bg) {
+            background: #e6e6e6;
+        }
+    
+        :global(.rbc-day-bg+.rbc-day-bg) {
+            border-left: 1px solid #ddd;
+        }
+    
+        :global(.rbc-row-content) {
+            position: relative;
+            user-select: none;
+            -webkit-user-select: none;
+            z-index: 4;
 
-    :global(.rbc-overlay-header) {
-        border-bottom: 1px solid @border-color;
-        margin: -10px -10px 5px -10px;
-        padding: 2px 10px;
-    }
-
-    // ======================
-    // AGENDA VIEW
-    // ======================
-
-    :global(.rbc-agenda-view) {
-        display: flex;
-        flex-direction: column;
-        flex: 1 0 0;
-        overflow: auto;
-
-        :global(table.rbc-agenda-table) {
-            width: 100%;
-            border: 1px solid @border-color;
-            border-spacing: 0;
-            border-collapse: collapse;
-
-            tbody > tr > td {
-                padding: 5px 10px;
-                vertical-align: top;
-
-                + td {
-                    border-left: 1px solid @border-color;
+            :global(.rbc-addons-dnd-row-body) {
+                :global(.rbc-row) {
+                    min-height: 0px !important;
                 }
             }
-
-            :global(.rbc-agenda-time-cell) {
-                padding-left: 15px;
-                padding-right: 15px;
-                text-transform: lowercase;
-            }
-
-            tbody > tr + tr {
-                border-top: 1px solid @border-color;
-            }
-
-            thead > tr > th {
-                padding: 3px 5px;
-                text-align: left;
-                border-bottom: 1px solid @border-color;
-            }
+        }
+    
+        :global(.rbc-row) {
+            display: flex;
+            flex-direction: row;
+        }
+    
+        :global(.rbc-date-cell) {
+            flex: 1 1 0;
+            min-width: 0;
+            padding-top: 4px;
+            padding-left: 4px;
+            text-align: left;
+        }
+    
+        :global(.rbc-off-range) {
+            color: #999;
+        }
+    
+        :global(.rbc-button-link) {
+            color: inherit;
+            background: none;
+            margin: 0;
+            padding: 0;
+            border: none;
+            cursor: pointer;
+            user-select: text;
+            font-weight: bold;
+            font-size: 14px;
+        }
+    
+        // КОНТЕНТ В ЯЧЕЙКАХ 
+        :global(.rbc-row-segment) {
+            padding: 0 1px 1px 1px;
+        }
+    
+        :global(.rbc-event),
+        :global(.rbc-day-slot .rbc-background-event) {
+            border: none;
+            box-sizing: border-box;
+            box-shadow: none;
+            margin: 0;
+            padding: 2px 5px;
+            background-color: #3174ad;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+        }
+    
+        // Выделение при drag по ячейкам (выбор слота)
+        :global(.rbc-slot-selection) {
+            z-index: 10;
+            position: absolute;
+            background-color: @selection-bg; // Полупрозрачный черный
+            color: white;
+            font-size: 75%;
+            width: 100%;
+            padding: 3px;
+        }
+        
+        // Выбранная ячейка (одиночный клик)
+        :global(.rbc-selected-cell) {
+            background-color: @selected-cell-bg; // Легкая подсветка accent цветом
+        }
+        
+        // Во время выбора (курсор move)
+        :global(.rbc-slot-selecting) {
+            cursor: move;
+        }
+    
+        :global(.rbc-slot-selecting) {
+            cursor: move;
         }
     }
-
-    :global(.rbc-rtl .rbc-agenda-view) {
-        :global(table.rbc-agenda-table) {
-            tbody > tr > td + td {
-                border-left-width: 0;
-                border-right: 1px solid @border-color;
-            }
-
-            thead > tr > th {
-                text-align: right;
-            }
-        }
-    }
-
-    :global(.rbc-agenda-time-cell) {
-        text-transform: lowercase;
-        white-space: nowrap;
-
-        :global(.rbc-continues-after):after {
-            content: " »";
-        }
-
-        :global(.rbc-continues-prior):before {
-            content: "« ";
-        }
-    }
-
-    :global(.rbc-agenda-date-cell) {
-        white-space: nowrap;
-    }
-
-    :global(.rbc-agenda-event-cell) {
-        width: 100%;
-    }
-
-    // ======================
-    // TIME VIEW (день/неделя)
-    // ======================
 
     :global(.rbc-time-view) {
         display: flex;
         flex-direction: column;
         flex: 1;
         width: 100%;
-        border: 1px solid @border-color;
+        border: 1px solid #ddd;
         min-height: 0;
 
-        :global(.rbc-time-gutter) {
-            white-space: nowrap;
-            text-align: right;
+        // Применяется ко всем .rbc-row внутри .rbc-time-view
+        // Убираем min-height, чтобы область allday схлопывалась, когда нет событий
+        :global(.rbc-row) {
+            box-sizing: border-box;
+            min-height: 0;
         }
-
+        // Ячейки "на весь день"
         :global(.rbc-allday-cell) {
             box-sizing: content-box;
             width: 100%;
-            height: 100%;
+
             position: relative;
 
             + :global(.rbc-allday-cell) {
-                border-left: 1px solid @border-color;
+                border-left: 1px solid #ddd;
             }
         }
 
@@ -653,91 +325,201 @@
             z-index: 4;
         }
 
-        :global(.rbc-row) {
+        // События в области "на весь день" - как в месячном виде
+        :global(.rbc-row-segment) {
+            padding: 0 1px 1px 1px;
+        }
+
+        :global(.rbc-event),
+        :global(.rbc-background-event) {
+            border: none;
             box-sizing: border-box;
-            min-height: 20px;
+            box-shadow: none;
+            margin: 0;
+            padding: 2px 4px;
+            background-color: #3174ad;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
         }
     }
 
+    // .rbc-time-header - отдельный блок (может быть внутри .rbc-time-view или где-то ещё)
     :global(.rbc-time-header) {
         display: flex;
         flex: 0 0 auto;
         flex-direction: row;
 
-        &:global(.rbc-overflowing) {
-            border-right: 1px solid @border-color;
+        :global(.rbc-label) {
+            padding: 0 5px;
         }
 
-        > :global(.rbc-row):first-child {
-            border-bottom: 1px solid @border-color;
-        }
+        :global(.rbc-time-header-content) {
+            flex: 1;
+            display: flex;
+            min-width: 0;
+            flex-direction: column;
+            border-left: 1px solid #ddd;
 
-        > :global(.rbc-row.rbc-row-resource) {
-            border-bottom: 1px solid @border-color;
-        }
-    }
+            :global(.rbc-row) {
+                display: flex;
+                flex-direction: row;
 
-    :global(.rbc-rtl .rbc-time-header.rbc-overflowing) {
-        border-right-width: 0;
-        border-left: 1px solid @border-color;
-    }
+                :global(.rbc-header) {
+                    overflow: hidden;
+                    flex: 1 0 0%;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    padding: 8px 3px;
+                    text-align: center;
+                    vertical-align: middle;
+                    font-weight: bold;
+                    font-size: 90%;
+                    min-height: 0;
+                    align-content: center;
 
-    :global(.rbc-time-header-cell-single-day) {
-        display: none;
-    }
+                    :global(.rbc-button-link) {
+                        color: inherit;
+                        background: none;
+                        margin: 0;
+                        padding: 0;
+                        border: none;
+                        cursor: pointer;
+                        user-select: text;
+                    }
+                }
 
-    :global(.rbc-time-header-content) {
-        flex: 1;
-        display: flex;
-        min-width: 0;
-        flex-direction: column;
-        border-left: 1px solid @border-color;
-
-        + :global(.rbc-time-header-content) {
-            margin-left: -1px;
-        }
-
-        > :global(.rbc-row.rbc-row-resource) {
-            border-bottom: 1px solid @border-color;
-            flex-shrink: 0;
-        }
-    }
-
-    :global(.rbc-rtl .rbc-time-header-content) {
-        border-left-width: 0;
-        border-right: 1px solid @border-color;
-    }
-
-    :global(.rbc-time-content) {
-        display: flex;
-        flex: 1 0 0%;
-        align-items: flex-start;
-        width: 100%;
-        border-top: 2px solid @border-color;
-        overflow-y: auto;
-        position: relative;
-
-        > :global(.rbc-time-gutter) {
-            flex: none;
-        }
-
-        > * + * > * {
-            border-left: 1px solid @border-color;
-        }
-
-        > :global(.rbc-day-slot) {
-            width: 100%;
-            user-select: none;
+                // Вертикальные разделители между заголовками дней
+                :global(.rbc-header + .rbc-header) {
+                    border-left: 1px solid #ddd;
+                }
+            }
         }
     }
 
-    :global(.rbc-rtl .rbc-time-content) {
-        > * + * > * {
-            border-left-width: 0;
-            border-right: 1px solid @border-color;
+    :global(.rbc-time-header .rbc-overflowing) {
+        border-right: 1px solid #ddd;
+    }
+
+    // === СТИЛИ ДЛЯ ДНЕВНОГО/НЕДЕЛЬНОГО ВИДА ===
+    // .rbc-day-slot - контейнер для событий в time-view (неделя, день)
+    :global {
+        .rbc-day-slot {
+            position: relative;
+
+            .rbc-events-container {
+                bottom: 0;
+                left: 0;
+                position: absolute;
+                right: 0;
+                margin-right: 10px;
+                top: 0;
+            }
+
+            // События в дневном/недельном виде
+            .rbc-event,
+            .rbc-background-event {
+                border: 1px solid #265985;
+                display: flex;
+                max-height: 100%;
+                min-height: 20px;
+                flex-flow: column wrap;
+                align-items: flex-start;
+                overflow: hidden;
+                position: absolute;
+                box-sizing: border-box;
+                margin: 0;
+                padding: 2px 5px;
+                background-color: #3174ad;
+                border-radius: 5px;
+                color: #fff;
+                cursor: pointer;
+                text-align: left;
+            }
+
+            .rbc-background-event {
+                opacity: 0.75;
+            }
+
+            .rbc-event-label {
+                flex: none;
+                padding-right: 5px;
+                width: auto;
+            }
+
+            .rbc-event-content {
+                width: 100%;
+                flex: 1 1 0;
+                word-wrap: break-word;
+                line-height: 1;
+                height: 100%;
+                min-height: 1em;
+            }
+
+            .rbc-time-slot {
+                border-top: 1px solid #f7f7f7;
+            }
         }
     }
 
+    // === ОБЩИЕ СТИЛИ СОБЫТИЙ (для всех видов) ===
+    // Выбранное событие
+    :global(.rbc-event.rbc-selected),
+    :global(.rbc-day-slot .rbc-selected.rbc-background-event) {
+        background-color: @event-selected-bg; // Темнее основного цвета
+    }
+
+    // Фокус на событии
+    :global(.rbc-event:focus),
+    :global(.rbc-day-slot .rbc-background-event:focus) {
+        outline: 5px auto #3b99fc;
+    }
+
+    // Лейбл события
+    :global(.rbc-event-label) {
+        font-size: 80%;
+    }
+
+    // События с перекрытием (тень)
+    :global(.rbc-event-overlaps) {
+        box-shadow: @event-shadow;
+    }
+
+    // События которые продолжаются до предыдущего дня
+    :global(.rbc-event-continues-prior) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    // События которые продолжаются на следующий день
+    :global(.rbc-event-continues-after) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    // События которые начались раньше (в week/day view)
+    :global(.rbc-event-continues-earlier) {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    // События которые продолжаются позже (в week/day view)
+    :global(.rbc-event-continues-later) {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    // Во время выбора слота (drag) - события неактивны
+    :global(.rbc-slot-selecting .rbc-event),
+    :global(.rbc-slot-selecting .rbc-day-slot .rbc-background-event),
+    :global(.rbc-day-slot .rbc-slot-selecting .rbc-background-event) {
+        cursor: inherit;
+        pointer-events: none;
+    }
+
+    // Таймслоты и временные колонки
     :global(.rbc-time-column) {
         display: flex;
         flex-direction: column;
@@ -749,74 +531,13 @@
     }
 
     :global(.rbc-timeslot-group) {
-        border-bottom: 1px solid @border-color;
+        border-bottom: 1px solid #ddd;
         min-height: 40px;
         display: flex;
         flex-flow: column nowrap;
     }
 
-    :global(.rbc-time-gutter),
-    :global(.rbc-header-gutter) {
-        flex: none;
-    }
-
-    :global(.rbc-label) {
-        padding: 0 5px;
-    }
-
-    :global(.rbc-day-slot) {
-        position: relative;
-
-        :global(.rbc-events-container) {
-            bottom: 0;
-            left: 0;
-            position: absolute;
-            right: 0;
-            margin-right: 10px;
-            top: 0;
-
-            &:global(.rbc-rtl) {
-                left: 10px;
-                right: 0;
-            }
-        }
-
-        :global(.rbc-event),
-        :global(.rbc-background-event) {
-            border: 1px solid @primary-dark;
-            display: flex;
-            max-height: 100%;
-            min-height: 20px;
-            flex-flow: column wrap;
-            align-items: flex-start;
-            overflow: hidden;
-            position: absolute;
-        }
-
-        :global(.rbc-background-event) {
-            opacity: 0.75;
-        }
-
-        :global(.rbc-event-label) {
-            flex: none;
-            padding-right: 5px;
-            width: auto;
-        }
-
-        :global(.rbc-event-content) {
-            width: 100%;
-            flex: 1 1 0;
-            word-wrap: break-word;
-            line-height: 1;
-            height: 100%;
-            min-height: 1em;
-        }
-
-        :global(.rbc-time-slot) {
-            border-top: 1px solid #f7f7f7;
-        }
-    }
-
+    // Временные слоты
     :global(.rbc-time-slot) {
         flex: 1 0 0;
 
@@ -825,32 +546,51 @@
         }
     }
 
+    // Заголовок дня (дата в week view)
     :global(.rbc-day-header) {
         text-align: center;
     }
 
-    // ======================
-    // SELECTION (выбор слотов)
-    // ======================
+    :global(.rbc-time-gutter),
+    :global(.rbc-header-gutter) {
+        flex: none;
+    }
 
-    :global(.rbc-slot-selection) {
-        z-index: 10;
-        position: absolute;
-        background-color: @selection-bg;
-        color: white;
-        font-size: 75%;
+    // Стили для time-gutter (колонка с временем слева)
+    :global(.rbc-time-view .rbc-time-gutter) {
+        white-space: nowrap;
+        text-align: right;
+    }
+
+    :global(.rbc-label) {
+        padding: 0 5px;
+    }
+
+    // Контент временного вида
+    :global(.rbc-time-content) {
+        display: flex;
+        flex: 1 0 0%;
+        align-items: flex-start;
         width: 100%;
-        padding: 3px;
+        border-top: 2px solid #ddd;
+        overflow-y: auto;
+        position: relative;
+
+        > :global(.rbc-time-gutter) {
+            flex: none;
+        }
+
+        > * + * > * {
+            border-left: 1px solid #ddd;
+        }
+
+        > :global(.rbc-day-slot) {
+            width: 100%;
+            user-select: none;
+        }
     }
 
-    :global(.rbc-slot-selecting) {
-        cursor: move;
-    }
-
-    // ======================
-    // ИНДИКАТОР ТЕКУЩЕГО ВРЕМЕНИ
-    // ======================
-
+    // Текущее время (красная линия)
     :global(.rbc-current-time-indicator) {
         position: absolute;
         z-index: 3;
@@ -861,69 +601,142 @@
         pointer-events: none;
     }
 
-    // ======================
-    // RESOURCES (ресурсы)
-    // ======================
-
-    :global(.rbc-time-view-resources) {
-        :global(.rbc-time-gutter),
-        :global(.rbc-time-header-gutter) {
-            position: sticky;
-            left: 0;
-            background-color: white;
-            border-right: 1px solid @border-color;
+    // Слот выбора в time view
+    :global(.rbc-time-view) {
+        :global(.rbc-slot-selection) {
             z-index: 10;
-            margin-right: -1px;
+            position: absolute;
+            background-color: @selection-bg;
+            color: white;
+            font-size: 75%;
+            width: 100%;
+            padding: 3px;
         }
 
-        :global(.rbc-time-header) {
-            overflow: hidden;
-        }
-
-        :global(.rbc-time-header-content) {
-            min-width: auto;
-            flex: 1 0 0;
-            flex-basis: 0px;
-        }
-
-        :global(.rbc-time-header-cell-single-day) {
-            display: none;
-        }
-
-        :global(.rbc-day-slot) {
-            min-width: 140px;
-        }
-
-        :global(.rbc-header),
-        :global(.rbc-day-bg) {
-            width: 140px;
-            flex: 1 1 0;
-            flex-basis: 0px;
+        :global(.rbc-slot-selecting) {
+            cursor: move;
         }
     }
+}
 
-    :global(.rbc-resource-grouping.rbc-time-header-content) {
-        display: flex;
-        flex-direction: column;
+// ЕБАНЫЙ ПОПАП КАЛЕНДАРЯ
+// ======================
+// OVERLAY (POPUP) - ГЛОБАЛЬНО, НАХУЙ!
+// ======================
+:global(.rbc-overlay) {
+    position: absolute !important;
+    z-index: 9999 !important;
+    border: 1px solid @border-color;
+    background-color: var(--layout-secondary-bgr, #fff) !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25) !important;
+    padding: 10px !important;
+    border-radius: 4px;
+    min-width: 200px;
 
-        :global(.rbc-row .rbc-header) {
-            width: 141px;
-        }
+    :global(.rbc-event),
+    :global(.rbc-day-slot .rbc-background-event) {
+        border: none;
+        box-sizing: border-box;
+        box-shadow: none;
+        margin: 0;
+        padding: 2px 5px;
+        background-color: #3174ad;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
     }
 
-    // ======================
-    // КАСТОМНАЯ КНОПКА SAVE
-    // ======================
+    :global(.rbc-event+ .rbc-event) {
+        margin-top: 2px;
+    }
 
-    :global(.calendar__save-button) {
-        background-color: @primary-color !important;
-        color: white !important;
-        border-color: @primary-dark !important;
-        font-weight: 600;
+    :global(.rbc-row-segment) {
+        padding: 1px 1px 1px 1px;
+    }
+}
 
-        &:hover {
-            background-color: @primary-dark !important;
-            border-color: @primary-dark !important;
+// Заголовок overlay
+:global(.rbc-overlay-header) {
+    border-bottom: 1px solid @border-color;
+    margin: -10px -10px 5px -10px;
+    padding: 2px 10px;
+    font-weight: 600;
+}
+
+// События которые продолжаются на следующий день
+:global(.rbc-event-continues-after) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+// === AGENDA VIEW (СПИСОК СОБЫТИЙ) ===
+:global(.rbc-agenda-view) {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 0;
+    overflow: auto;
+
+    table:global(.rbc-agenda-table) {
+        width: 100%;
+        border: 1px solid #ddd;
+        border-spacing: 0;
+        border-collapse: collapse;
+
+        // Ячейки таблицы
+        tbody > tr > td {
+            padding: 10px 15px; // Увеличил с 5px 10px для большей высоты строк
+            vertical-align: middle; // Поменял с top на middle для центрирования
+        }
+
+        // Ячейка со временем
+        :global(.rbc-agenda-time-cell) {
+            padding-left: 20px;
+            padding-right: 20px;
+            text-transform: lowercase;
+        }
+
+        // Разделители между колонками
+        tbody > tr > td + td {
+            border-left: 1px solid #ddd;
+        }
+
+        // Разделители между строками
+        tbody > tr + tr {
+            border-top: 1px solid #ddd;
+        }
+
+        // Заголовки таблицы
+        thead > tr > th {
+            padding: 3px 5px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
         }
     }
+}
+
+// Ячейка со временем (общая)
+:global(.rbc-agenda-time-cell) {
+    text-transform: lowercase;
+
+    // Индикатор продолжения события
+    :global(.rbc-continues-after):after {
+        content: " »";
+    }
+
+    :global(.rbc-continues-prior):before {
+        content: "« ";
+    }
+}
+
+// Ячейки с датой и временем (без переноса)
+:global(.rbc-agenda-date-cell),
+:global(.rbc-agenda-time-cell) {
+    white-space: nowrap;
+}
+
+// Ячейка с событием (на всю ширину)
+:global(.rbc-agenda-event-cell) {
+    width: 100%;
 }
