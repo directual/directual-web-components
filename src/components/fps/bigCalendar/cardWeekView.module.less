@@ -1,0 +1,322 @@
+// =============================================
+// Переменные — из CSS custom properties темы
+// =============================================
+@primary:           var(--layout-accent, #058efc);
+@primary-hover:     var(--layout-accent-hover, #0062bd);
+@text:              var(--layout-text, #333333);
+@text-secondary:    var(--form-placeholder-disabled, #999);
+@bg:                var(--layout-secondary-bgr, #fff);
+@border:            var(--table-borders, rgba(0, 0, 0, 0.12));
+@highlight:         var(--button-dropdown-hover-bgr, rgba(5, 142, 252, 0.05));
+@accent-light:      var(--table-raw-hover, rgba(5, 142, 252, 0.05));
+@danger:            var(--hint-error, #ff525b);
+@card-bg:           var(--cards-bgr, #fff);
+@card-border:       var(--cards-border, #aaa);
+@card-hover-border: var(--cards-hover-border, #aaa);
+
+// =============================================
+// Сетка недели — горизонтальные колонки
+// =============================================
+.cardWeekGrid {
+    display: flex;
+    gap: 0;
+    width: 100%;
+    min-height: 300px;
+    border: 1px solid @border;
+    border-radius: 8px;
+    overflow: hidden;
+    background: @bg;
+}
+
+// =============================================
+// Колонка дня
+// =============================================
+.dayColumn {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid @border;
+
+    &:last-child {
+        border-right: none;
+    }
+}
+
+.dayColumnToday {
+    background: @highlight;
+}
+
+// Выходной / праздник — приглушённый фон
+.dayColumnHoliday {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+// =============================================
+// Шапка дня
+// =============================================
+.dayHeader {
+    padding: 12px 8px;
+    border-bottom: 1px solid @border;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    text-align: center;
+
+    &:hover {
+        background: @accent-light;
+    }
+}
+
+.dayHeaderToday {
+    background: @accent-light;
+}
+
+// Заголовок выходного — красный текст дня
+.dayHeaderHoliday {
+    .dayOfWeek {
+        color: @danger;
+    }
+}
+
+.dayName {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.dayOfWeek {
+    font-weight: 700;
+    font-size: 14px;
+    color: @text;
+    text-transform: capitalize;
+}
+
+.dayDate {
+    font-weight: 400;
+    font-size: 13px;
+    color: @text-secondary;
+}
+
+// Статистика — бейдж + слоты
+.dayStats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    margin-bottom: 2px;
+}
+
+.counterBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    background: @primary;
+    color: white;
+    border-radius: 11px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1;
+}
+
+.counterBadgeEmpty {
+    background: @text-secondary;
+    opacity: 0.5;
+}
+
+// Бейдж при переполнении (больше слотов чем лимит)
+.counterBadgeOverflow {
+    background: @danger;
+}
+
+.counterSlots {
+    font-size: 12px;
+    color: @text-secondary;
+    font-weight: 500;
+}
+
+.dayOccupancy {
+    font-size: 11px;
+    color: @text-secondary;
+    line-height: 1.3;
+}
+
+// =============================================
+// Список карточек (Droppable зона)
+// =============================================
+.eventsList {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px;
+    overflow-y: auto;
+    min-height: 60px;
+    transition: background 0.15s ease;
+}
+
+// Подсветка зоны при наведении с карточкой
+.eventsListDragOver {
+    background: @accent-light;
+    border-radius: 0 0 8px 8px;
+}
+
+// =============================================
+// Карточка события
+// =============================================
+.eventCard {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: @card-bg;
+    border: 1px solid @border;
+    border-radius: 10px;
+    cursor: grab;
+    transition: all 0.2s ease;
+    user-select: none;
+
+    &:hover {
+        border-color: @primary;
+        box-shadow: 0 2px 8px rgba(5, 142, 252, 0.15);
+        transform: translateY(-1px);
+    }
+
+    &:active {
+        cursor: grabbing;
+    }
+}
+
+// Карточка overflow — ивент сверх лимита слотов
+.eventCardOverflow {
+    border-color: @danger;
+
+    &:hover {
+        border-color: @danger;
+        box-shadow: 0 2px 8px rgba(255, 82, 91, 0.2);
+    }
+
+    .avatar {
+        background: rgba(255, 82, 91, 0.1);
+        color: @danger;
+    }
+
+    .eventArrow {
+        color: @danger;
+    }
+}
+
+// Карточка inactive — не прошёл условие
+.eventCardInactive {
+    opacity: 0.6;
+
+    .avatar {
+        background: rgba(0, 0, 0, 0.06);
+        color: @text-secondary;
+    }
+
+    .eventArrow {
+        color: @text-secondary;
+    }
+}
+
+// =============================================
+// Точка-индикатор статуса на карточке
+// =============================================
+.statusDot {
+    flex-shrink: 0;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.statusDotActive {
+    color: @primary !important;
+}
+
+.statusDotOverflow {
+    color: @danger !important;
+}
+
+.statusDotInactive {
+    color: @text-secondary !important;
+    opacity: 0.5;
+}
+
+// Карточка в процессе перетаскивания
+.eventCardDragging {
+    border-color: @primary;
+    box-shadow: 0 8px 24px rgba(5, 142, 252, 0.25);
+    transform: rotate(2deg) scale(1.02);
+    opacity: 0.9;
+}
+
+// Аватар — круг с первой буквой имени
+.avatar {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: @accent-light;
+    color: @primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1;
+}
+
+// Картинка аватара — вписывается в круг
+.avatarImg {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+// Инфо о событии
+.eventInfo {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.eventTitle {
+    font-weight: 600;
+    font-size: 13px;
+    color: @text;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+}
+
+.eventRole {
+    font-size: 11px;
+    color: @text-secondary;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+}
+
+// Стрелка справа
+.eventArrow {
+    flex-shrink: 0;
+    color: @primary;
+    font-size: 20px;
+    line-height: 1;
+    opacity: 0.4;
+    transition: opacity 0.15s ease;
+    font-weight: 300;
+
+    .eventCard:hover & {
+        opacity: 1;
+    }
+}

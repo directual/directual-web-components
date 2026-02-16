@@ -4,30 +4,89 @@
   background-color: #ffffff;
   border-radius: 8px;
 }
+/* Лоадер */
+.tableLoadingOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 10;
+}
+.tableLoader {
+  background-color: var(--layout-main-bgr);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 :global(.rbc-today) {
   background-color: var(--button-dropdown-hover-bgr, rgba(5, 142, 252, 0.05));
 }
 .calendar_header {
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 16px;
+  gap: 16px;
+  padding: 16px 0;
+}
+.calendar_icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--layout-accent, #058efc);
+  border-radius: 12px;
+}
+.calendar_icon :global(.icon) {
+  color: var(--layout-accent, #058efc) !important;
+}
+.calendar_icon :global(.icon):before {
+  font-size: 24px;
+  color: var(--layout-accent, #058efc) !important;
+}
+.calendar_header_content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+.calendar_title {
+  margin: 0;
+  padding: 0;
+}
+.calendar_title h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--layout-text, #333333);
+  line-height: 1.3;
+}
+.calendar_description {
+  font-size: 14px;
+  color: var(--form-placeholder-disabled, #999);
+  line-height: 1.4;
+  margin: 0;
 }
 .customToolbar {
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 16px 0;
+  padding: 0 0 16px;
   background: var(--layout-secondary-bgr, #ffffff);
   border-radius: 8px;
 }
 .customToolbar :global(.rbc-toolbar-label) {
   flex: 1;
-  text-align: center;
-  font-size: 24px;
+  text-align: left !important;
+  font-size: 20px;
   font-weight: 600;
   color: var(--layout-text, #333333);
-  margin-left: 8px;
   font-weight: bold;
 }
 .customToolbar :global(.rbc-btn-group) {

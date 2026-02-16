@@ -1,0 +1,233 @@
+.cardWeekGrid {
+  display: flex;
+  gap: 0;
+  width: 100%;
+  min-height: 300px;
+  border: 1px solid var(--table-borders, rgba(0, 0, 0, 0.12));
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--layout-secondary-bgr, #fff);
+}
+.dayColumn {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--table-borders, rgba(0, 0, 0, 0.12));
+}
+.dayColumn:last-child {
+  border-right: none;
+}
+.dayColumnToday {
+  background: var(--button-dropdown-hover-bgr, rgba(5, 142, 252, 0.05));
+}
+.dayColumnHoliday {
+  background: rgba(0, 0, 0, 0.02);
+}
+.dayHeader {
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--table-borders, rgba(0, 0, 0, 0.12));
+  cursor: pointer;
+  transition: background 0.15s ease;
+  text-align: center;
+}
+.dayHeader:hover {
+  background: var(--table-raw-hover, rgba(5, 142, 252, 0.05));
+}
+.dayHeaderToday {
+  background: var(--table-raw-hover, rgba(5, 142, 252, 0.05));
+}
+.dayHeaderHoliday .dayOfWeek {
+  color: var(--hint-error, #ff525b);
+}
+.dayName {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+.dayOfWeek {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--layout-text, #333333);
+  text-transform: capitalize;
+}
+.dayDate {
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--form-placeholder-disabled, #999);
+}
+.dayStats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  margin-bottom: 2px;
+}
+.counterBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  background: var(--layout-accent, #058efc);
+  color: white;
+  border-radius: 11px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1;
+}
+.counterBadgeEmpty {
+  background: var(--form-placeholder-disabled, #999);
+  opacity: 0.5;
+}
+.counterBadgeOverflow {
+  background: var(--hint-error, #ff525b);
+}
+.counterSlots {
+  font-size: 12px;
+  color: var(--form-placeholder-disabled, #999);
+  font-weight: 500;
+}
+.dayOccupancy {
+  font-size: 11px;
+  color: var(--form-placeholder-disabled, #999);
+  line-height: 1.3;
+}
+.eventsList {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  overflow-y: auto;
+  min-height: 60px;
+  transition: background 0.15s ease;
+}
+.eventsListDragOver {
+  background: var(--table-raw-hover, rgba(5, 142, 252, 0.05));
+  border-radius: 0 0 8px 8px;
+}
+.eventCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--cards-bgr, #fff);
+  border: 1px solid var(--table-borders, rgba(0, 0, 0, 0.12));
+  border-radius: 10px;
+  cursor: grab;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.eventCard:hover {
+  border-color: var(--layout-accent, #058efc);
+  box-shadow: 0 2px 8px rgba(5, 142, 252, 0.15);
+  transform: translateY(-1px);
+}
+.eventCard:active {
+  cursor: grabbing;
+}
+.eventCardOverflow {
+  border-color: var(--hint-error, #ff525b);
+}
+.eventCardOverflow:hover {
+  border-color: var(--hint-error, #ff525b);
+  box-shadow: 0 2px 8px rgba(255, 82, 91, 0.2);
+}
+.eventCardOverflow .avatar {
+  background: rgba(255, 82, 91, 0.1);
+  color: var(--hint-error, #ff525b);
+}
+.eventCardOverflow .eventArrow {
+  color: var(--hint-error, #ff525b);
+}
+.eventCardInactive {
+  opacity: 0.6;
+}
+.eventCardInactive .avatar {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--form-placeholder-disabled, #999);
+}
+.eventCardInactive .eventArrow {
+  color: var(--form-placeholder-disabled, #999);
+}
+.statusDot {
+  flex-shrink: 0;
+  font-size: 14px;
+  line-height: 1;
+}
+.statusDotActive {
+  color: var(--layout-accent, #058efc) !important;
+}
+.statusDotOverflow {
+  color: var(--hint-error, #ff525b) !important;
+}
+.statusDotInactive {
+  color: var(--form-placeholder-disabled, #999) !important;
+  opacity: 0.5;
+}
+.eventCardDragging {
+  border-color: var(--layout-accent, #058efc);
+  box-shadow: 0 8px 24px rgba(5, 142, 252, 0.25);
+  transform: rotate(2deg) scale(1.02);
+  opacity: 0.9;
+}
+.avatar {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--table-raw-hover, rgba(5, 142, 252, 0.05));
+  color: var(--layout-accent, #058efc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1;
+}
+.avatarImg {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.eventInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.eventTitle {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--layout-text, #333333);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+.eventRole {
+  font-size: 11px;
+  color: var(--form-placeholder-disabled, #999);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+.eventArrow {
+  flex-shrink: 0;
+  color: var(--layout-accent, #058efc);
+  font-size: 20px;
+  line-height: 1;
+  opacity: 0.4;
+  transition: opacity 0.15s ease;
+  font-weight: 300;
+}
+.eventCard:hover .eventArrow {
+  opacity: 1;
+}

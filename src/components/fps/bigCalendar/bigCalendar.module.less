@@ -1,21 +1,24 @@
-// Переменные для кастомизации через CSS custom properties
-@primary-color: var(--layout-accent, #058efc);
-@primary-dark: var(--layout-accent-hover, #0062bd);
-@border-color: var(--table-borders, rgba(0, 0, 0, 0.12));
-@off-range-color: var(--form-placeholder-disabled, #999999);
-@off-range-bg: var(--form-field-bgr-disabled, #cccccc);
-@today-bg: var(--button-dropdown-hover-bgr, rgba(5, 142, 252, 0.05));
-@header-bg: var(--layout-secondary-bgr, #ffffff);
-@event-bg: var(--layout-accent, #058efc);
-@event-selected-bg: var(--layout-accent-hover, #0062bd);
-@text-color: var(--layout-text, #333333);
-@overlay-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
-@event-shadow: -1px 1px 5px 0px rgba(51, 51, 51, 0.5);
-@btn-active-bg: var(--button-hover-bgr, #ffffff);
-@btn-border: var(--button-border, #8e8e8e);
-@time-indicator-color: var(--label, #26be99);
-@selection-bg: rgba(0, 0, 0, 0.5);
-@selected-cell-bg: var(--table-raw-hover, rgba(5, 142, 252, 0.05));
+// =============================================
+// Переменные — из CSS custom properties темы
+// =============================================
+@primary:           var(--layout-accent, #058efc);
+@primary-hover:     var(--layout-accent-hover, #0062bd);
+@text:              var(--layout-text, #333333);
+@text-secondary:    var(--form-placeholder-disabled, #999);
+@bg:                var(--layout-secondary-bgr, #fff);
+@bg-disabled:       var(--form-field-bgr-disabled, #ccc);
+@border:            var(--table-borders, rgba(0, 0, 0, 0.12));
+@highlight:         var(--button-dropdown-hover-bgr, rgba(5, 142, 252, 0.05));
+@accent-light:      var(--table-raw-hover, rgba(5, 142, 252, 0.05));
+@danger:            var(--hint-error, #ff525b);
+@indicator:         var(--label, #26be99);
+@btn-active-bg:     var(--button-hover-bgr, #fff);
+@btn-border:        var(--button-border, #8e8e8e);
+
+// Статичные (не из темы)
+@overlay-shadow:    0 5px 15px rgba(0, 0, 0, 0.25);
+@event-shadow:      -1px 1px 5px 0px rgba(51, 51, 51, 0.5);
+@selection-bg:      rgba(0, 0, 0, 0.5);
 
 // Основной контейнер календаря
 .calendar_wrapper {
@@ -25,34 +28,103 @@
     border-radius: 8px;
 }
 
+/* Лоадер */
+.tableLoadingOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 10;
+  }
+  
+.tableLoader {
+    background-color: var(--layout-main-bgr);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
 // Подсветка сегодняшнего дня
 :global(.rbc-today) {
-    background-color: @today-bg;
+    background-color: @highlight;
 }
 
 .calendar_header {
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 16px;
+    gap: 16px;
+    padding: 16px 0;
+}
+
+.calendar_icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: 2px solid @primary;
+    border-radius: 12px;
+    
+    // Иконка календаря — primary цвет
+    :global(.icon) {
+        color: @primary !important;
+        
+        &:before {
+            font-size: 24px;
+            color: @primary !important;
+        }
+    }
+}
+
+.calendar_header_content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.calendar_title {
+    margin: 0;
+    padding: 0;
+    
+    h2 {
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        font-weight: 700;
+        color: @text;
+        line-height: 1.3;
+    }
+}
+
+.calendar_description {
+    font-size: 14px;
+    color: @text-secondary;
+    line-height: 1.4;
+    margin: 0;
 }
 
 .customToolbar {
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 16px 0;
+    padding: 0 0 16px;
     background: var(--layout-secondary-bgr, #ffffff);
     border-radius: 8px;
     
     // Лейбл с датой - растягивается и выравнивается слева
     :global(.rbc-toolbar-label) {
         flex: 1;
-        text-align: center;
-        font-size: 24px;
+        text-align: left !important;
+        font-size: 20px;
         font-weight: 600;
         color: var(--layout-text, #333333);
-        margin-left: 8px;
         font-weight: bold;
     }
     
@@ -281,7 +353,7 @@
         
         // Выбранная ячейка (одиночный клик)
         :global(.rbc-selected-cell) {
-            background-color: @selected-cell-bg; // Легкая подсветка accent цветом
+            background-color: @accent-light; // Легкая подсветка accent цветом
         }
         
         // Во время выбора (курсор move)
@@ -468,7 +540,7 @@
     // Выбранное событие
     :global(.rbc-event.rbc-selected),
     :global(.rbc-day-slot .rbc-selected.rbc-background-event) {
-        background-color: @event-selected-bg; // Темнее основного цвета
+        background-color: @primary-hover; // Темнее основного цвета
     }
 
     // Фокус на событии
@@ -597,7 +669,7 @@
         left: 0;
         right: 0;
         height: 1px;
-        background-color: @time-indicator-color;
+        background-color: @indicator;
         pointer-events: none;
     }
 
@@ -626,7 +698,7 @@
 :global(.rbc-overlay) {
     position: absolute !important;
     z-index: 9999 !important;
-    border: 1px solid @border-color;
+    border: 1px solid @border;
     background-color: var(--layout-secondary-bgr, #fff) !important;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25) !important;
     padding: 10px !important;
@@ -659,7 +731,7 @@
 
 // Заголовок overlay
 :global(.rbc-overlay-header) {
-    border-bottom: 1px solid @border-color;
+    border-bottom: 1px solid @border;
     margin: -10px -10px 5px -10px;
     padding: 2px 10px;
     font-weight: 600;

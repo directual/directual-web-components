@@ -120,10 +120,13 @@ export const dict = {
             new: "New Event",
             save: "Save Changes",
             today: "Today",
+            prevWeek: "← Week",
+            nextWeek: "Week →",
             month: "Month",
             week: "Week",
             day: "Day",
-            agenda: "Agenda"
+            agenda: "Agenda",
+            card_week: "Cards"
         }
     },
 
@@ -245,10 +248,13 @@ export const dict = {
         bigCalendar: {
             save: "Speichern",
             today: "Heute",
+            prevWeek: "← Woche",
+            nextWeek: "Woche →",
             month: "Monat",
             week: "Woche",
             day: "Tag",
-            agenda: "Agenda"
+            agenda: "Agenda",
+            card_week: "Karten"
         }
     },
 
@@ -370,10 +376,13 @@ export const dict = {
         bigCalendar: {
             save: "Guardar",
             today: "Hoy",
+            prevWeek: "← Semana",
+            nextWeek: "Semana →",
             month: "Mes",
             week: "Semana",
             day: "Día",
-            agenda: "Agenda"
+            agenda: "Agenda",
+            card_week: "Tarjetas"
         }
     },
 
@@ -495,10 +504,13 @@ export const dict = {
         bigCalendar: {
             save: "Enregistrer",
             today: "Aujourd'hui",
+            prevWeek: "← Semaine",
+            nextWeek: "Semaine →",
             month: "Mois",
             week: "Semaine",
             day: "Jour",
-            agenda: "Agenda"
+            agenda: "Agenda",
+            card_week: "Cartes"
         }
     },
 
@@ -622,10 +634,13 @@ export const dict = {
         bigCalendar: {
             save: "Сохранить",
             today: "Сегодня",
+            prevWeek: "← Неделя",
+            nextWeek: "Неделя →",
             month: "Месяц",
             week: "Неделя",
             day: "День",
-            agenda: "Agenda"
+            agenda: "Agenda",
+            card_week: "Карточки"
         }
     },
 
@@ -746,10 +761,13 @@ export const dict = {
         bigCalendar: {
             save: "保存",
             today: "今日",
+            prevWeek: "← 週",
+            nextWeek: "週 →",
             month: "月",
             week: "週",
             day: "日",
-            agenda: "Agenda"
+            agenda: "Agenda",
+            card_week: "カード"
         }
     },
 
@@ -869,10 +887,13 @@ export const dict = {
         bigCalendar: {
             save: "Salvar",
             today: "Hoje",
+            prevWeek: "← Semana",
+            nextWeek: "Semana →",
             month: "Mês",
             week: "Semana",
             day: "Dia",
-            agenda: "Agenda"
+            agenda: "Agenda",
+            card_week: "Cartões"
         }
     },
 
@@ -992,10 +1013,13 @@ export const dict = {
         bigCalendar: {
             save: "सहेजें",
             today: "आज",
+            prevWeek: "← सप्ताह",
+            nextWeek: "सप्ताह →",
             month: "महीना",
             week: "सप्ताह",
             day: "दिन",
-            agenda: "Agenda"
+            agenda: "Agenda",
+            card_week: "कार्ड"
         }
     },
 
@@ -1115,10 +1139,13 @@ export const dict = {
         bigCalendar: {
             save: "저장",
             today: "오늘",
+            prevWeek: "← 주",
+            nextWeek: "주 →",
             month: "월",
             week: "주",
             day: "일",
-            agenda: "Agenda"
+            agenda: "Agenda",
+            card_week: "카드"
         }
     }
 }
