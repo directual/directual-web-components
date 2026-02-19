@@ -9,7 +9,7 @@ import styles from './cardWeekView.module.css';
 // active  — прошёл условие, в рамках слотов (синяя точка)
 // overflow — прошёл условие, но сверх лимита (красная точка + красная карточка)
 // inactive — не прошёл условие (серая точка)
-const EventCard = ({ event, onSelect, provided, isDragging, status = 'active' }) => {
+const EventCard = ({ event, onSelect, provided, isDragging,  status = 'active', primaryColor = '', dangerColor = '', showAvatar = true, showDotInCardWeek = true }) => {
     const firstLetter = (event.title || 'U')[0].toUpperCase();
 
     const cardClassName = [
@@ -34,14 +34,17 @@ const EventCard = ({ event, onSelect, provided, isDragging, status = 'active' })
             className={cardClassName}
             onClick={(e) => onSelect && onSelect(event, e)}
             title={event.title}
+            style={{ '--custom-primary-color': primaryColor || 'var(--layout-accent, #058efc)' , '--custom-danger-color': dangerColor || 'var(--hint-error, #ff525b)' }}
         >
-            <div className={dotClassName}>●</div>
-            <div className={styles.avatar}>
-                {event.avatarUrl
-                    ? <img src={event.avatarUrl} alt="" className={styles.avatarImg} />
-                    : firstLetter
-                }
-            </div>
+            {showDotInCardWeek && <div className={dotClassName}>●</div>}
+            {showAvatar && (
+                <div className={styles.avatar}>
+                    {event.avatarUrl
+                        ? <img src={event.avatarUrl} alt="" className={styles.avatarImg} />
+                        : firstLetter
+                    }
+                </div>
+            )}
             <div className={styles.eventInfo}>
                 <div className={styles.eventTitle}>{event.title}</div>
                 {(event.description || event.role) && (
@@ -70,6 +73,10 @@ const CardWeekView = ({
     cardWeekDragEnabled = true,
     cardWeekOnEventDrop,
     onEventDrop,
+    showAvatar = true,
+    showDotInCardWeek = true,
+    primaryColor = '',
+    dangerColor = '',
     // Функция проверки "активности" ивента (для счётчика n/slots)
     // Если null — все ивенты считаются активными
     isEventActive = null,
@@ -235,16 +242,13 @@ const CardWeekView = ({
                             {day.format('DD.MM')}
                         </span>
                     </div>
-                    <div className={styles.dayStats}>
+                    <div className={styles.dayStats} style={{ '--custom-primary-color': primaryColor || 'var(--layout-accent, #058efc)' , '--custom-danger-color': dangerColor || 'var(--hint-error, #ff525b)' }}>
                         <span className={badgeClass}>
                             {activeCount}
                         </span>
                         <span className={styles.counterSlots}>
                             / {slotsForDay}
                         </span>
-                    </div>
-                    <div className={styles.dayOccupancy}>
-                        {activeCount}/{slotsForDay} занято
                     </div>
                 </div>
 
@@ -269,7 +273,11 @@ const CardWeekView = ({
                                                 status={status}
                                                 onSelect={onSelectEvent}
                                                 provided={provided}
+                                                showAvatar={showAvatar}
+                                                showDotInCardWeek={showDotInCardWeek}
                                                 isDragging={snapshot.isDragging}
+                                                primaryColor={primaryColor}
+                                                dangerColor={dangerColor}
                                             />
                                         )}
                                     </Draggable>
@@ -286,8 +294,12 @@ const CardWeekView = ({
                                 event={event}
                                 status={status}
                                 onSelect={onSelectEvent}
+                                showAvatar={showAvatar}
+                                showDotInCardWeek={showDotInCardWeek}
                                 provided={{ innerRef: () => {}, draggableProps: {}, dragHandleProps: {} }}
                                 isDragging={false}
+                                primaryColor={primaryColor}
+                                dangerColor={dangerColor}
                             />
                         ))}
                     </div>

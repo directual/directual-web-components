@@ -29,7 +29,7 @@ const cultures = {
 
 export default function BigCalendar(props) {
     const { data, auth, locale, callEndpoint, handleModalRoute } = props;
-    console.log("props: \n\n ".concat(JSON.stringify(data)));
+    console.log("props: \n\n ".concat(JSON.stringify(_.get(data, "params", ""))));
     const [loading, setLoading] = useState(false);
 
     const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG';
@@ -54,10 +54,12 @@ export default function BigCalendar(props) {
 
     // --- Фильтрация ---
     const [dql, setDQL] = useState('');
+    const [sort, setSort] = useState({});
 
     // Колбэк фильтрации — сохраняет dql/sort в стейт
     function performFiltering(newDql, newSort) {
         setDQL(prev => prev === (newDql || '') ? prev : (newDql || ''));
+        setSort(prev => _.isEqual(prev, newSort) ? prev : newSort);
     }
 
     // Дебаунс-обёртка, чтоб не долбить API на каждый символ
@@ -86,6 +88,8 @@ export default function BigCalendar(props) {
     const showResize = _.get(data, "params.general.onResize", true);
     const showNewEventButton = _.get(data, "params.general.showNewEventButton", true);
     const mappingFields = _.get(data, "params.mapping", {});
+    const showAvatar = _.get(data, "params.general.showAvatar", true);
+    const showDotInCardWeek = _.get(data, "params.general.showDotInCardWeek", true);
     
     // --- view: настройки видов ---
     const hideViewSelector = _.get(data, "params.view.hideViewSelector", false);
@@ -114,6 +118,9 @@ export default function BigCalendar(props) {
     const mapping_slots = _.get(data, "params.conditions.cardWeek.mapping.slots", "");
     const mapping_isHoliday = _.get(data, "params.conditions.cardWeek.mapping.isHoliday", "");
     const mapping_note = _.get(data, "params.conditions.cardWeek.mapping.note", "");
+
+    const primaryColor = _.get(data, "params.conditions.cardWeek.primaryColor", '');
+    const dangerColor = _.get(data, "params.conditions.cardWeek.dangerColor", '');
 
     // --- actions: экшены ---
     const actionsSettings = _.get(data, "params.actions", []);
@@ -254,7 +261,7 @@ export default function BigCalendar(props) {
                 title: event[mappingFields.titleField],
                 description: event[mappingFields.descriptionField],
                 author: event[mappingFields.userField],
-                avatarUrl: _.get(event, `${(mappingFields.userField).replace('{{', '').replace('}}', '')}.userpic`, '')
+                avatarUrl: showAvatar && _.get(event, `${(mappingFields.userField)}.userpic`, '{{}}').replace('{{', '').replace('}}', '')
             }
         });
         const validEvents = _.filter(events, isValidEvent);
@@ -647,7 +654,7 @@ export default function BigCalendar(props) {
                                 }}
                             />
                         </div>                         
-                    )}  
+                    )}
                 </div>
             </div>
         );
@@ -667,6 +674,10 @@ export default function BigCalendar(props) {
                 showWeekends={showWeekends}
                 cardWeekDragEnabled={showDragAndDrop}
                 cardWeekOnEventDrop={setEventChange}
+                showAvatar={showAvatar}
+                showDotInCardWeek={showDotInCardWeek}
+                primaryColor={primaryColor}
+                dangerColor={dangerColor}
                 // Условие "активности" ивента для счётчика n/slots
                 isEventActive={conditionOne
                     ? (event) => evaluateCondition(conditionOne, event)

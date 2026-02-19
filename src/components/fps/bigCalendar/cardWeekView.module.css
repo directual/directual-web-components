@@ -38,7 +38,7 @@
   background: var(--table-raw-hover, rgba(5, 142, 252, 0.05));
 }
 .dayHeaderHoliday .dayOfWeek {
-  color: var(--hint-error, #ff525b);
+  color: var(--custom-danger-color, var(--hint-error, #ff525b));
 }
 .dayName {
   display: flex;
@@ -72,7 +72,7 @@
   min-width: 22px;
   height: 22px;
   padding: 0 6px;
-  background: var(--layout-accent, #058efc);
+  background: var(--custom-primary-color, var(--layout-accent, #058efc));
   color: white;
   border-radius: 11px;
   font-weight: 600;
@@ -84,7 +84,7 @@
   opacity: 0.5;
 }
 .counterBadgeOverflow {
-  background: var(--hint-error, #ff525b);
+  background: var(--custom-danger-color, var(--hint-error, #ff525b));
 }
 .counterSlots {
   font-size: 12px;
@@ -123,7 +123,7 @@
   user-select: none;
 }
 .eventCard:hover {
-  border-color: var(--layout-accent, #058efc);
+  border-color: var(--custom-primary-color, var(--layout-accent, #058efc));
   box-shadow: 0 2px 8px rgba(5, 142, 252, 0.15);
   transform: translateY(-1px);
 }
@@ -131,18 +131,18 @@
   cursor: grabbing;
 }
 .eventCardOverflow {
-  border-color: var(--hint-error, #ff525b);
+  border-color: var(--custom-danger-color, var(--hint-error, #ff525b));
 }
 .eventCardOverflow:hover {
-  border-color: var(--hint-error, #ff525b);
+  border-color: var(--custom-danger-color, var(--hint-error, #ff525b));
   box-shadow: 0 2px 8px rgba(255, 82, 91, 0.2);
 }
 .eventCardOverflow .avatar {
   background: rgba(255, 82, 91, 0.1);
-  color: var(--hint-error, #ff525b);
+  color: var(--custom-danger-color, var(--hint-error, #ff525b));
 }
 .eventCardOverflow .eventArrow {
-  color: var(--hint-error, #ff525b);
+  color: var(--custom-danger-color, var(--hint-error, #ff525b));
 }
 .eventCardInactive {
   opacity: 0.6;
@@ -160,17 +160,17 @@
   line-height: 1;
 }
 .statusDotActive {
-  color: var(--layout-accent, #058efc) !important;
+  color: var(--custom-primary-color, var(--layout-accent, #058efc)) !important;
 }
 .statusDotOverflow {
-  color: var(--hint-error, #ff525b) !important;
+  color: var(--custom-danger-color, var(--hint-error, #ff525b)) !important;
 }
 .statusDotInactive {
   color: var(--form-placeholder-disabled, #999) !important;
   opacity: 0.5;
 }
 .eventCardDragging {
-  border-color: var(--layout-accent, #058efc);
+  border-color: var(--custom-primary-color, var(--layout-accent, #058efc));
   box-shadow: 0 8px 24px rgba(5, 142, 252, 0.25);
   transform: rotate(2deg) scale(1.02);
   opacity: 0.9;
@@ -181,7 +181,7 @@
   height: 36px;
   border-radius: 50%;
   background: var(--table-raw-hover, rgba(5, 142, 252, 0.05));
-  color: var(--layout-accent, #058efc);
+  color: var(--custom-primary-color, var(--layout-accent, #058efc));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -221,7 +221,7 @@
 }
 .eventArrow {
   flex-shrink: 0;
-  color: var(--layout-accent, #058efc);
+  color: var(--custom-primary-color, var(--layout-accent, #058efc));
   font-size: 20px;
   line-height: 1;
   opacity: 0.4;
