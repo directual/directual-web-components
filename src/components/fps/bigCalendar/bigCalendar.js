@@ -11,6 +11,7 @@ import styles from './bigCalendar.module.css';
 import CardWeekView from './CardWeekView';
 import { TableTitle } from '../viewobjects/tableTitle/TableTitle';
 import Loader from '../../fps/loader/loader';
+import * as Datetime from 'react-datetime';
 
 const localizer = momentLocalizer(moment);
 const DnDCalendar = withDragAndDrop(Calendar);
@@ -52,6 +53,8 @@ export default function BigCalendar(props) {
     // --- Правила слотов (расписание дней) ---
     const [slotRules, setSlotRules] = useState(null);
 
+    const [selectedDate, setSelectedDate] = useState(null);
+
     // --- Фильтрация ---
     const [dql, setDQL] = useState('');
     const [sort, setSort] = useState({});
@@ -65,9 +68,31 @@ export default function BigCalendar(props) {
     // Дебаунс-обёртка, чтоб не долбить API на каждый символ
     const dqlService = useMemo(() => _.debounce(performFiltering, 600), []);
 
-    const [visibleRange, setVisibleRange] = useState({ 
-        start: moment().startOf('month').toDate(), 
-        end: moment().endOf('month').toDate() 
+    const [visibleRange, setVisibleRange] = useState(() => {
+        if (currentView === 'month') {
+            return {
+                start: moment().startOf('month').toDate(),
+                end: moment().endOf('month').toDate()
+            };
+        }
+        if (currentView === 'week') {
+            return {
+                start: moment().startOf('week').toDate(),
+                end: moment().endOf('week').toDate()
+            };
+        }
+        if (currentView === 'day') {
+            return {
+                start: moment().startOf('day').toDate(),
+                end: moment().endOf('day').toDate()
+            };
+        }
+        if (currentView === 'card_week') {
+            return {
+                start: moment().startOf('week').toDate(),
+                end: moment().endOf('week').toDate()
+            };
+        }
     });
 
     const { defaultDate, scrollToTime } = useMemo(() => ({
@@ -273,33 +298,6 @@ export default function BigCalendar(props) {
         !hasChanges && setOriginalData({ backEvents, frontEvents });
     };
 
-    const setVisibleRangeByDefault = () => {
-        if (currentView === 'month') {
-            setVisibleRange({
-                start: moment().startOf('month').toDate(),
-                end: moment().endOf('month').toDate()
-            });
-        }
-        if (currentView === 'week') {
-            setVisibleRange({
-                start: moment().startOf('week').toDate(),
-                end: moment().endOf('week').toDate()
-            });
-        }
-        if (currentView === 'day') {
-            setVisibleRange({
-                start: moment().startOf('day').toDate(),
-                end: moment().endOf('day').toDate()
-            });
-        }
-        if (currentView === 'card_week') {
-            setVisibleRange({
-                start: moment().startOf('week').toDate(),
-                end: moment().endOf('week').toDate()
-            });
-        }
-    };
-
     const createDqlStringMain = () => {
         const dqlParts = [];
 
@@ -322,11 +320,7 @@ export default function BigCalendar(props) {
 
     const getEventsFromAPI = () => {
         if (!sl) return;
-        
-        if (!visibleRange.start || !visibleRange.end) {
-            setVisibleRangeByDefault();
-        }
-    
+            
         setLoading(true);
         
         // Загружаем правила слотов, если они не загружены и есть endpoint
@@ -519,6 +513,11 @@ export default function BigCalendar(props) {
         const goToCurrent = () => {
             toolbar.onNavigate('TODAY');
         };
+
+        const goToDate = (date) => {
+            toolbar.onNavigate('DATE', date);
+            setSelectedDate(date);
+        };
     
         const label = () => {
             return toolbar.label;
@@ -564,14 +563,33 @@ export default function BigCalendar(props) {
                     <div className={`${styles.customToolbar || ''}`}>
                         <span className={`rbc-btn-group ${styles.navGroup || ''}`}>
                             <Button onClick={goToBack}>
-                                {'← ' + (dict[lang]['bigCalendar'][currentView === 'card_week' ? 'week' : currentView] || '')}
+                                {/* {'← ' + (dict[lang]['bigCalendar'][currentView === 'card_week' ? 'week' : currentView] || '')} */}
+                                <span style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>←</span>
                             </Button>
                             <Button onClick={goToCurrent}>
                                 {dict[lang]['bigCalendar']['today']}
                             </Button>
                             <Button onClick={goToNext}>
-                                {(dict[lang]['bigCalendar'][currentView === 'card_week' ? 'week' : currentView] || '') + ' →'}
+                                {/* {(dict[lang]['bigCalendar'][currentView === 'card_week' ? 'week' : currentView] || '') + ' →'} */}
+                                <span style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>→</span>
                             </Button>
+                            <Datetime
+                                locale={culture.split('-')[0] || 'en'}
+                                closeOnSelect={true}
+                                onChange={value => { goToDate(value && value.toDate()) }}
+                                renderInput={(props, openCalendar) => {
+                                    return (
+                                        <div className={styles.datePicker} 
+                                            onClick={e => {
+                                                e.stopPropagation()
+                                                openCalendar(e)
+                                            }}
+                                        >
+                                            <span className={`icon icon-calendar`} />
+                                        </div>
+                                    )
+                                }}
+                            />
                         </span> 
                         <span className="rbc-toolbar-label">{label()}</span>  
                         {
@@ -678,6 +696,7 @@ export default function BigCalendar(props) {
                 showDotInCardWeek={showDotInCardWeek}
                 primaryColor={primaryColor}
                 dangerColor={dangerColor}
+                loading={loading}
                 // Условие "активности" ивента для счётчика n/slots
                 isEventActive={conditionOne
                     ? (event) => evaluateCondition(conditionOne, event)
@@ -690,7 +709,7 @@ export default function BigCalendar(props) {
         Wrapper.navigate = CardWeekView.navigate;
         Wrapper.range = CardWeekView.range;
         return Wrapper;
-    }, [dailySlots, showWeekends, showDragAndDrop, conditionOne, slotRules, getSlotsForDay]);
+    }, [dailySlots, showWeekends, showDragAndDrop, conditionOne, slotRules, getSlotsForDay, loading]);
 
     // Регистрируем виды — только те, что разрешены в availableViews
     const allViews = useMemo(() => ({

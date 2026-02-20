@@ -92,12 +92,10 @@
 .customToolbar :global(.rbc-btn-group) {
   display: flex;
   align-items: center;
-  gap: 8px;
 }
 .navGroup {
   display: flex;
   align-items: center;
-  gap: 8px;
 }
 .arrowButtons {
   display: flex;
@@ -120,6 +118,26 @@
 }
 .viewInput {
   margin-bottom: 0 !important;
+  min-height: 48px !important;
+}
+.datePicker {
+  display: flex;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  height: 48px;
+  justify-content: center;
+  align-items: center;
+  padding: 1px 8px;
+  text-decoration: none;
+  font-size: 32px;
+  color: var(--layout-text, #333333);
+  border: solid 1px var(--button-border);
+  border-radius: var(--border-radius);
+  background-color: var(--layout-secondary-bgr, #fff);
+  cursor: pointer;
+  outline: none;
 }
 .saveGroup {
   display: flex;

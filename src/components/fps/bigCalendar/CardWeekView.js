@@ -4,11 +4,56 @@ import { Navigate } from 'react-big-calendar';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import styles from './cardWeekView.module.css';
 
+// ============ СКЕЛЕТОН КОМПОНЕНТ ============
+const CardWeekSkeleton = ({ daysCount = 7, showAvatar = true, showDotInCardWeek = true }) => {
+    // Используем useMemo для стабильных случайных чисел
+    const skeletonCounts = useMemo(() => {
+        return Array.from({ length: daysCount }).map(() => 
+            Math.floor(Math.random() * 3) + 2
+        );
+    }, [daysCount]);
 
-// status: 'active' | 'overflow' | 'inactive'
-// active  — прошёл условие, в рамках слотов (синяя точка)
-// overflow — прошёл условие, но сверх лимита (красная точка + красная карточка)
-// inactive — не прошёл условие (серая точка)
+    return (
+        <div className={styles.cardWeekGrid}>
+            {Array.from({ length: daysCount }).map((_, dayIndex) => (
+                <div key={dayIndex} className={`${styles.dayColumn} ${styles.skeletonColumn}`}>
+                    {/* Шапка дня-скелетон */}
+                    <div className={`${styles.dayHeader} ${styles.skeletonHeader}`}>
+                        <div className={styles.dayName}>
+                            <div className={styles.skeletonDayOfWeek} />
+                            <div className={styles.skeletonDayDate} />
+                        </div>
+                        <div className={styles.dayStats}>
+                            {/* <div className={`${styles.counterBadge} ${styles.skeletonBadge}`} /> */}
+                            <div className={styles.skeletonSlots} />
+                        </div>
+                    </div>
+
+                    {/* Список карточек-скелетонов */}
+                    <div className={styles.eventsList}>
+                        {Array.from({ length: skeletonCounts[dayIndex] }).map((_, eventIndex) => (
+                            <div key={eventIndex} className={`${styles.eventCard} ${styles.skeletonCard}`}>
+                                {showDotInCardWeek && (
+                                    <div className={`${styles.statusDot} ${styles.skeletonDot}`}>●</div>
+                                )}
+                                {showAvatar && (
+                                    <div className={`${styles.avatar} ${styles.skeletonAvatar}`} />
+                                )}
+                                <div className={styles.eventInfo}>
+                                    <div className={`${styles.eventTitle} ${styles.skeletonTitle}`} />
+                                    <div className={`${styles.eventRole} ${styles.skeletonRole}`} />
+                                </div>
+                                <div className={`${styles.eventArrow} ${styles.skeletonArrow}`}>›</div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
+};
+
+// ============ КАРТОЧКА СОБЫТИЯ ============
 const EventCard = ({ event, onSelect, provided, isDragging,  status = 'active', primaryColor = '', dangerColor = '', showAvatar = true, showDotInCardWeek = true }) => {
     const firstLetter = (event.title || 'U')[0].toUpperCase();
 
@@ -58,6 +103,7 @@ const EventCard = ({ event, onSelect, provided, isDragging,  status = 'active', 
     );
 };
 
+// ============ ОСНОВНОЙ КОМПОНЕНТ ============
 const CardWeekView = ({
     date,
     events,
@@ -65,7 +111,7 @@ const CardWeekView = ({
     onSelectSlot,
     localizer,
     culture,
-    // Кастомные пропсы — пробрасываются через замыкание в bigCalendar.js
+    // Кастомные пропсы
     dailySlots = 15,
     getSlotsForDay,
     showNewEventButton = true,
@@ -77,8 +123,7 @@ const CardWeekView = ({
     showDotInCardWeek = true,
     primaryColor = '',
     dangerColor = '',
-    // Функция проверки "активности" ивента (для счётчика n/slots)
-    // Если null — все ивенты считаются активными
+    loading = false, // <-- Пропс для загрузки
     isEventActive = null,
     ...rest
 }) => {
@@ -98,6 +143,9 @@ const CardWeekView = ({
 
     // Группируем события по дням
     const eventsByDay = useMemo(() => {
+        // Если загружаемся - возвращаем пустой объект
+        if (loading) return {};
+        
         const map = {};
         weekDays.forEach(day => {
             const key = day.format('YYYY-MM-DD');
@@ -108,7 +156,6 @@ const CardWeekView = ({
             const eventStart = moment(event.start);
             const eventEnd = moment(event.end);
 
-            // Событие может занимать несколько дней — показываем во всех
             weekDays.forEach(day => {
                 const dayStart = moment(day).startOf('day');
                 const dayEnd = moment(day).endOf('day');
@@ -121,13 +168,13 @@ const CardWeekView = ({
         });
 
         return map;
-    }, [events, weekDays]);
+    }, [events, weekDays, loading]);
 
     const isToday = (day) => moment(day).isSame(moment(), 'day');
 
-    // Клик по пустому пространству дня — создание нового события
+    // Клик по пустому пространству дня
     const handleDayClick = (day) => {
-        if (onSelectSlot && showNewEventButton) {
+        if (onSelectSlot && showNewEventButton && !loading) { // <-- Не даём кликать во время загрузки
             onSelectSlot({
                 start: moment(day).startOf('day').toDate(),
                 end: moment(day).add(1, 'day').endOf('day').toDate(),
@@ -136,43 +183,50 @@ const CardWeekView = ({
         }
     };
 
-    // DnD: событие перетащили из одного дня в другой
+    // DnD
     const handleDragEnd = useCallback((result) => {
+        if (loading) return; // <-- Не даём перетаскивать во время загрузки
+        
         const { destination, source, draggableId } = result;
 
-        // Если бросили вне зоны или на то же место — ничего не делаем
         if (!destination) return;
         if (destination.droppableId === source.droppableId && destination.index === source.index) return;
 
-        // Находим событие по id
         const event = (events || []).find(e => String(e.id) === draggableId);
         if (!event) return;
 
-        // Считаем разницу в днях между исходным и целевым днем
         const sourceDay = moment(source.droppableId);
         const destDay = moment(destination.droppableId);
         const daysDiff = destDay.diff(sourceDay, 'days');
 
-        if (daysDiff === 0) return; // Перетащили внутри того же дня — не трогаем
+        if (daysDiff === 0) return;
 
-        // Новые даты: сдвигаем start и end на разницу дней
         const newStart = moment(event.start).add(daysDiff, 'days').toDate();
         const newEnd = moment(event.end).add(daysDiff, 'days').toDate();
 
-        // Вызываем тот же колбек что и стандартный DnD календаря
         if (handleEventDrop) {
             handleEventDrop({ event, start: newStart, end: newEnd });
         }
-    }, [events, handleEventDrop]);
+    }, [events, handleEventDrop, loading]);
 
-    // Рендер колонки дня (шапка + карточки)
+    // ============ РЕНДЕР ============
+    // Если загружаемся - показываем скелетон
+    if (loading) {
+        return (
+            <CardWeekSkeleton 
+                daysCount={daysCount}
+                showAvatar={showAvatar}
+                showDotInCardWeek={showDotInCardWeek}
+            />
+        );
+    }
+
+    // Рендер колонки дня
     const renderDayColumn = (day) => {
         const key = day.format('YYYY-MM-DD');
         const dayEvents = eventsByDay[key] || [];
         const today = isToday(day);
 
-        // Получаем слоты/праздник/заметку для конкретного дня
-        // Если getSlotsForDay не пришла — фоллбэк на глобальный dailySlots
         const daySlotInfo = getSlotsForDay
             ? getSlotsForDay(day)
             : { slots: dailySlots, isHoliday: false, note: '' };
@@ -180,9 +234,6 @@ const CardWeekView = ({
         const isDayHoliday = daySlotInfo.isHoliday;
         const dayNote = daySlotInfo.note;
 
-        // Вычисляем статус каждого ивента:
-        // 1. Проверяем isEventActive (условие из params)
-        // 2. Считаем активных — первые slotsForDay = active, остальные = overflow
         let activeIndex = 0;
         const eventsWithStatus = dayEvents.map(event => {
             const isActive = isEventActive ? isEventActive(event) : true;
@@ -196,7 +247,6 @@ const CardWeekView = ({
             return { event, status };
         });
 
-        // Красные (overflow) всегда первые, остальные — в порядке из API
         eventsWithStatus.sort((a, b) => {
             if (a.status === 'overflow' && b.status !== 'overflow') return -1;
             if (a.status !== 'overflow' && b.status === 'overflow') return 1;
@@ -206,14 +256,12 @@ const CardWeekView = ({
         const activeCount = eventsWithStatus.filter(e => e.status !== 'inactive').length;
         const isOverflow = activeCount > slotsForDay;
 
-        // Класс бейджа: пустой / переполнен / норм
         const badgeClass = [
             styles.counterBadge,
             activeCount === 0 ? styles.counterBadgeEmpty : '',
             isOverflow ? styles.counterBadgeOverflow : '',
         ].filter(Boolean).join(' ');
 
-        // Класс колонки: сегодня / праздник
         const columnClass = [
             styles.dayColumn,
             today ? styles.dayColumnToday : '',
@@ -228,7 +276,6 @@ const CardWeekView = ({
 
         return (
             <div key={key} className={columnClass}>
-                {/* Шапка дня */}
                 <div
                     className={headerClass}
                     onClick={() => handleDayClick(day)}
@@ -252,7 +299,6 @@ const CardWeekView = ({
                     </div>
                 </div>
 
-                {/* Список карточек — с DnD или без */}
                 {dragEnabled ? (
                     <Droppable droppableId={key}>
                         {(provided, snapshot) => (
@@ -308,7 +354,6 @@ const CardWeekView = ({
         );
     };
 
-    // Если DnD включен — оборачиваем в DragDropContext
     const grid = (
         <div className={styles.cardWeekGrid}>
             {weekDays.map(renderDayColumn)}
@@ -320,16 +365,13 @@ const CardWeekView = ({
         : grid;
 };
 
-// === Статические методы для react-big-calendar ===
-
-// Заголовок в тулбаре (лейбл с датой)
+// Статические методы
 CardWeekView.title = (date, { localizer }) => {
     const start = moment(date).startOf('isoWeek');
     const end = moment(date).endOf('isoWeek');
     return start.format('DD.MM') + ' - ' + end.format('DD.MM');
 };
 
-// Навигация (prev/next/today)
 CardWeekView.navigate = (date, action) => {
     switch (action) {
         case Navigate.PREVIOUS:
@@ -343,7 +385,6 @@ CardWeekView.navigate = (date, action) => {
     }
 };
 
-// Диапазон видимых дат (для загрузки данных)
 CardWeekView.range = (date) => {
     const start = moment(date).startOf('isoWeek');
     return Array.from({ length: 7 }, (_, i) =>

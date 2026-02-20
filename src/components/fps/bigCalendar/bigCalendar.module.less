@@ -132,7 +132,6 @@
     :global(.rbc-btn-group) {
         display: flex;
         align-items: center;
-        gap: 8px;
     }
 }
 
@@ -140,7 +139,6 @@
 .navGroup {
     display: flex;
     align-items: center;
-    gap: 8px;
 }
 
 // Обертка для стрелок
@@ -170,6 +168,27 @@
 
 .viewInput {
     margin-bottom: 0 !important;
+    min-height: 48px !important;
+}
+
+.datePicker {
+    display: flex;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    padding: 1px 8px;
+    text-decoration: none;
+    font-size: 32px;
+    color: @text;
+    border: solid 1px var(--button-border);
+    border-radius: var(--border-radius);
+    background-color: @bg;
+    cursor: pointer;
+    outline: none;
 }
 
 // Группа с кнопками действий

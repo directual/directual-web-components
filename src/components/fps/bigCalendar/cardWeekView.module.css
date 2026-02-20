@@ -1,3 +1,281 @@
+@keyframes skeletonWave {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+@keyframes skeletonPulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.skeletonBase {
+  position: relative;
+  background-color: var(--skeleton-bg, rgba(0, 0, 0, 0.06));
+  overflow: hidden;
+  border-radius: 4px;
+}
+.skeletonBase::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3) 50%, transparent);
+  transform: translateX(-100%);
+  animation: skeletonWave 1.8s ease-in-out infinite;
+  pointer-events: none;
+}
+.skeletonPulse {
+  position: relative;
+  background-color: var(--skeleton-bg, rgba(0, 0, 0, 0.06));
+  animation: skeletonPulse 1.5s ease-in-out infinite;
+}
+.skeletonColumn {
+  pointer-events: none;
+}
+.skeletonHeader {
+  background: transparent;
+  cursor: default;
+}
+.skeletonHeader:hover {
+  background: transparent;
+}
+.skeletonDayOfWeek {
+  width: 40px;
+  height: 16px;
+  position: relative;
+  background-color: var(--skeleton-bg, rgba(0, 0, 0, 0.06));
+  overflow: hidden;
+  border-radius: 4px;
+}
+.skeletonDayOfWeek::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3) 50%, transparent);
+  transform: translateX(-100%);
+  animation: skeletonWave 1.8s ease-in-out infinite;
+  pointer-events: none;
+}
+.skeletonDayDate {
+  width: 50px;
+  height: 14px;
+  position: relative;
+  background-color: var(--skeleton-bg, rgba(0, 0, 0, 0.06));
+  overflow: hidden;
+  border-radius: 4px;
+}
+.skeletonDayDate::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3) 50%, transparent);
+  transform: translateX(-100%);
+  animation: skeletonWave 1.8s ease-in-out infinite;
+  pointer-events: none;
+}
+.skeletonBadge {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  background-color: var(--skeleton-bg, rgba(0, 0, 0, 0.06));
+  overflow: hidden;
+  border-radius: 4px;
+  border-radius: 11px;
+  border: none;
+}
+.skeletonBadge::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3) 50%, transparent);
+  transform: translateX(-100%);
+  animation: skeletonWave 1.8s ease-in-out infinite;
+  pointer-events: none;
+}
+.skeletonSlots {
+  width: 40px;
+  height: 14px;
+  position: relative;
+  background-color: var(--skeleton-bg, rgba(0, 0, 0, 0.06));
+  overflow: hidden;
+  border-radius: 4px;
+  margin-left: 4px;
+}
+.skeletonSlots::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3) 50%, transparent);
+  transform: translateX(-100%);
+  animation: skeletonWave 1.8s ease-in-out infinite;
+  pointer-events: none;
+}
+.skeletonDot {
+  color: var(--skeleton-dot, rgba(0, 0, 0, 0.15)) !important;
+  animation: skeletonPulse 1.5s ease-in-out infinite;
+}
+.skeletonAvatar {
+  width: 36px;
+  height: 36px;
+  position: relative;
+  background-color: var(--skeleton-bg, rgba(0, 0, 0, 0.06));
+  overflow: hidden;
+  border-radius: 4px;
+  border-radius: 50%;
+}
+.skeletonAvatar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3) 50%, transparent);
+  transform: translateX(-100%);
+  animation: skeletonWave 1.8s ease-in-out infinite;
+  pointer-events: none;
+}
+.skeletonTitle {
+  width: 100%;
+  height: 14px;
+  position: relative;
+  background-color: var(--skeleton-bg, rgba(0, 0, 0, 0.06));
+  overflow: hidden;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+.skeletonTitle::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3) 50%, transparent);
+  transform: translateX(-100%);
+  animation: skeletonWave 1.8s ease-in-out infinite;
+  pointer-events: none;
+}
+.skeletonRole {
+  width: 70%;
+  height: 12px;
+  position: relative;
+  background-color: var(--skeleton-bg, rgba(0, 0, 0, 0.06));
+  overflow: hidden;
+  border-radius: 4px;
+}
+.skeletonRole::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3) 50%, transparent);
+  transform: translateX(-100%);
+  animation: skeletonWave 1.8s ease-in-out infinite;
+  pointer-events: none;
+}
+.skeletonArrow {
+  color: var(--skeleton-arrow, rgba(0, 0, 0, 0.15)) !important;
+  animation: skeletonPulse 1.5s ease-in-out infinite;
+  font-size: 20px;
+  line-height: 1;
+}
+.skeletonWrapper {
+  animation: fadeIn 0.2s ease-out;
+}
+.contentWrapper {
+  animation: fadeIn 0.3s ease-out;
+}
+.fadeOut {
+  animation: fadeOut 0.2s ease-out forwards;
+}
+.fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+.skeletonContainer {
+  position: relative;
+}
+.loadingProgress {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(5, 142, 252, 0.1);
+  overflow: hidden;
+  border-radius: 1px;
+}
+.loadingProgressBar {
+  height: 100%;
+  background: var(--custom-primary-color, var(--layout-accent, #058efc));
+  width: 0%;
+  transition: width 0.1s linear;
+  animation: progressPulse 1s ease-in-out infinite;
+}
+@keyframes progressPulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+.loadingTimer {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  font-size: 12px;
+  color: var(--form-placeholder-disabled, #999);
+  background: var(--layout-secondary-bgr, #fff);
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--table-borders, rgba(0, 0, 0, 0.12));
+  z-index: 10;
+}
 .cardWeekGrid {
   display: flex;
   gap: 0;
