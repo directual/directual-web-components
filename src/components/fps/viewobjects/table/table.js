@@ -433,12 +433,6 @@ function ReactTable({ auth, columns, params, hideExpandTD, data, largeFont, upda
 
                         colorRow = colorRow == 'default' ? colorRow : (colorRow[0] == '#' || colorRow[0] == 'r') ? colorRow : '#' + colorRow
                         
-                        console.log("== ReactTable auth ===")
-                        console.log(JSON.stringify(auth));
-                        console.log("== ReactTable conditionLibrary ===")
-                        console.log(JSON.stringify(conditionLibrary));
-                        console.log("== ReactTable row.original ===")
-                        console.log(JSON.stringify(row.original));
                         // Вычисляем условные классы для строки на основе _condition_library
                         const conditionalClasses = evaluateRowConditions(conditionLibrary, row.original, auth);
                         
