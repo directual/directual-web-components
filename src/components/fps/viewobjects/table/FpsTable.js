@@ -677,6 +677,7 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute, cal
                 headers={currentData.headers}
             />
             <Table
+                auth={auth}
                 currentBP={currentBP}
                 data={currentData}
                 cardsData={cardsData}
@@ -716,7 +717,6 @@ function FpsTable({ auth, data, onEvent, id, currentBP, locale, handleRoute, cal
                 }}
                 // onExpand={val => { setShowObject(val) }}
                 //setPage={page => { sendMsg(null, null, { page: page }) }}
-                auth={auth}
                 submitAction={submitAction}
                 id={id}
                 loading={loading}
