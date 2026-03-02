@@ -252,6 +252,13 @@ function ElementAction(props) {
                 console.log("onSubmit")
                 onSubmit(
                     (res) => {
+                        // res === false означает что submit был заблокирован (параллельный autosubmit)
+                        // или завершился с ошибкой — не вызываем action endpoint в таком случае
+                        if (res === false) {
+                            setLoading(false)
+                            finish && finish(false)
+                            return
+                        }
                         console.log("finish onSubmit", res)
                         console.log("payload => " + action.endpoint)
                         console.log(payload)
@@ -419,6 +426,12 @@ function ElementText(props) {
                 console.log("onSubmit")
                 onSubmit(
                     (res) => {
+                        // res === false означает что submit был заблокирован или завершился с ошибкой
+                        if (res === false) {
+                            setLoading(false)
+                            finish && finish(false)
+                            return
+                        }
                         console.log("finish onSubmit", res)
                         console.log("payload => " + action.endpoint)
                         console.log(payload)
