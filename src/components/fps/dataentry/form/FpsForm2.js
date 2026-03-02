@@ -229,16 +229,29 @@ export default function FpsForm2(props) {
         })
       })
 
-      if (!_.isEqual(newModel, model)) {
+      if (!_.isEqual(newModel, originalModelRef.current)) {
         // Отменяем все pending debounced submits чтобы они не перезаписали сокетное обновление
         submitDebouncedRef.current.cancel();
-        
-        console.log('[SOCKET MODEL LOG] === МОДЕЛЬ ОБНОВЛЕНА СОКЕТОМ ===');
-        console.log('[SOCKET MODEL LOG] Старая модель:', JSON.parse(JSON.stringify(model)));
-        console.log('[SOCKET MODEL LOG] Новая модель:', JSON.parse(JSON.stringify(newModel)));
-        
+
+        // Не затираем поля, которые пользователь изменил но ещё не сохранил.
+        // originalModelRef — это то, что пришло с сервера при последней загрузке/сохранении.
+        // Разница между model и originalModel — несохранённые изменения пользователя.
+        const userChangedFields = Object.keys(model).filter(
+          key => !_.isEqual(model[key], originalModelRef.current[key])
+        )
+        const mergedModel = { ...newModel }
+        userChangedFields.forEach(key => {
+          mergedModel[key] = model[key]
+        })
+
+        console.log('[SOCKET MODEL LOG] === СОКЕТ: ОБНОВЛЕНИЕ МОДЕЛИ ===');
+        console.log('[SOCKET MODEL LOG] Серверная модель:', JSON.parse(JSON.stringify(newModel)));
+        console.log('[SOCKET MODEL LOG] Изменённые пользователем поля (сохранены):', userChangedFields);
+        console.log('[SOCKET MODEL LOG] Итоговая модель:', JSON.parse(JSON.stringify(mergedModel)));
+
         isSocketUpdateRef.current = true; // устанавливаем флаг что это обновление от сокета
-        setModel(newModel)
+        setModel(mergedModel)
+        // originalModel обновляем целиком — это актуальная правда сервера
         setOriginalModel(newModel)
       }
       setOriginalExtendedModel(newExtendedModel)
