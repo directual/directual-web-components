@@ -21,6 +21,7 @@ import { IMaskInput } from 'react-imask';
 import { debounce } from 'lodash'
 import Slider2 from '../slider/slider2';
 import DqlConstructor from '../dqlconstructor/dqlConstructor'
+import JsonInput from './jsonInput'
 
 export function InputGroup(props) {
     return (
@@ -192,6 +193,10 @@ export default function Input(props) {
     const [showColor, setShowColor] = useState(false)
     const lang = props.locale ? props.locale.length == 3 ? props.locale : 'ENG' : 'ENG'
     const pickerRef = useRef(null);
+    const debouncedTypingReset = useRef(debounce((val) => {
+        isTyping.current = false;
+        setDefVal(val);
+    }, 800)).current;
 
     const tooltipId = "tooltip_" + Math.floor(Math.random() * 1000000000)
 
@@ -225,29 +230,6 @@ export default function Input(props) {
         // ((!value || (value && value.length == 0)) && (value != 0) && props.required) ?
         //     setWarningMesg({ type: 'error', msg: 'This field is required' }) :
         //     !props.error && setWarningMesg({});
-    }
-
-    const checkJsonValue = (e, v) => {
-        // console.log('checkJsonValue')
-        // console.log(v)
-        // console.log(e)
-        let parseJSON = {}
-        const val = v || value
-        if (val) {
-            try {
-                parseJSON = JSON.parse(val)
-                setValue(JSON.stringify(parseJSON, null, 3));
-                e && setLines(countLines(e.target || e, JSON.stringify(parseJSON, null, 3)))
-                setWarningMesg({ type: 'ok', msg: 'Valid JSON' })
-                props.isValid && props.isValid(true)
-            } catch {
-                console.log('Error in parsing JSON');
-                setWarningMesg({ type: 'error', msg: 'Invalid JSON' })
-                props.isValid && props.isValid(false)
-                e && setLines(val && typeof val == 'string' ? (val.match(/\n/g) || []).length + 1 : 1)
-            }
-        }
-        !val && setWarningMesg({});
     }
 
     const copyValue = value => {
@@ -304,9 +286,6 @@ export default function Input(props) {
             setValue(props.defaultValue); 
             setDefVal(props.defaultValue);
             setLines(countLines(inputEl.current, props.defaultValue))
-        }
-        if (props.type == 'json' && inputEl.current) {
-            checkJsonValue(inputEl.current, props.defaultValue)
         }
     }, [props.defaultValue, isControlled])
 
@@ -382,15 +361,8 @@ export default function Input(props) {
     function submit(val) {
         setValue(val);
         props.onChange && props.onChange(val);
-        isTyping.current = true; // Mark that the user is typing
-        
-        // Debounced function to reset isTyping and update defVal
-        const debouncedUpdate = debounce(() => {
-            isTyping.current = false; // User has stopped typing
-            setDefVal(val); // Update defVal
-        }, 800); // Increased debounce interval for better reliability
-    
-        debouncedUpdate();
+        isTyping.current = true;
+        debouncedTypingReset(val);
     
         props.type == 'select' && props.required && value != defVal && checkValue();
         props.type == 'icon' && props.required && value != defVal && checkValue();
@@ -434,65 +406,62 @@ export default function Input(props) {
         inputEl.current && (props.reFocus || props.reFocus === 0) && inputEl.current.focus();
     }, [props.reFocus])
 
-    // Кэш для стабильной ширины каждой textarea (устойчив к изменениям viewport)
-    const textareaWidthCache = new WeakMap();
-    
+    // Стабильные ref-ы для countLines — без утечек и пересоздания
+    const textareaWidthCacheRef = useRef(new WeakMap());
+    const countLinesBufferRef = useRef(null);
+
+    useEffect(() => {
+        return () => {
+            if (countLinesBufferRef.current && countLinesBufferRef.current.parentNode) {
+                countLinesBufferRef.current.parentNode.removeChild(countLinesBufferRef.current);
+                countLinesBufferRef.current = null;
+            }
+        };
+    }, []);
+
     function countLines(textarea, text) {
-        // console.log('counting lines...')
-        // console.log(textarea)
-        // console.log(text)
         if (!textarea || !textarea.constructor || textarea.constructor.name != 'HTMLTextAreaElement') {
-            // console.log('not a textarea');
             return;
         }
-        let _buffer;
-        if (_buffer == null) {
-            _buffer = document.createElement('textarea');
-            _buffer.style.border = 'none';
-            _buffer.style.height = '0';
-            _buffer.style.overflow = 'hidden';
-            _buffer.style.padding = '0';
-            _buffer.style.position = 'absolute';
-            _buffer.style.left = '0';
-            _buffer.style.top = '0';
-            _buffer.style.zIndex = '-1';
-            document.body.appendChild(_buffer);
+
+        if (!countLinesBufferRef.current) {
+            const buf = document.createElement('textarea');
+            buf.style.border = 'none';
+            buf.style.height = '0';
+            buf.style.overflow = 'hidden';
+            buf.style.padding = '0';
+            buf.style.position = 'absolute';
+            buf.style.left = '0';
+            buf.style.top = '0';
+            buf.style.zIndex = '-1';
+            document.body.appendChild(buf);
+            countLinesBufferRef.current = buf;
         }
+        const _buffer = countLinesBufferRef.current;
 
         var cs = window.getComputedStyle(textarea);
         var pl = parseInt(cs.paddingLeft);
         var pr = parseInt(cs.paddingRight);
         var lh = parseInt(cs.lineHeight);
 
-        // [cs.lineHeight] may return 'normal', which means line height = font size.
         if (isNaN(lh)) lh = parseInt(cs.fontSize) + 3;
 
-        // Получаем текущую ширину контента
         const currentContentWidth = textarea.clientWidth - pl - pr;
-        
-        // Получаем кэшированную стабильную ширину или инициализируем новую
-        let cachedWidth = textareaWidthCache.get(textarea);
-        
+        const widthCache = textareaWidthCacheRef.current;
+
+        let cachedWidth = widthCache.get(textarea);
         if (cachedWidth === undefined) {
-            // Первый вызов - кэшируем текущую ширину как стабильную
             cachedWidth = currentContentWidth;
-            textareaWidthCache.set(textarea, cachedWidth);
+            widthCache.set(textarea, cachedWidth);
         } else {
-            // Проверяем разницу с кэшированной шириной
             const widthDiff = Math.abs(currentContentWidth - cachedWidth);
-            
             if (widthDiff >= 20) {
-                // Значительное изменение ширины - обновляем кэш
                 cachedWidth = currentContentWidth;
-                textareaWidthCache.set(textarea, cachedWidth);
+                widthCache.set(textarea, cachedWidth);
             }
-            // Мелкие изменения (< 20px) игнорируем, используем кэшированную ширину
         }
 
-        // Используем стабильную кэшированную ширину вместо динамической
         _buffer.style.width = cachedWidth + 'px';
-
-        // Copy text properties.
         _buffer.style.font = cs.font;
         _buffer.style.letterSpacing = cs.letterSpacing;
         _buffer.style.whiteSpace = cs.whiteSpace;
@@ -500,12 +469,10 @@ export default function Input(props) {
         _buffer.style.wordSpacing = cs.wordSpacing;
         _buffer.style.wordWrap = cs.wordWrap;
 
-        // Copy value.
         _buffer.value = typeof text == "undefined" ? textarea.value : text;
 
         var result = Math.round(_buffer.scrollHeight / lh);
         if (result == 0) result = 1;
-        // console.log(result)
         return result;
     }
 
@@ -928,33 +895,16 @@ export default function Input(props) {
             }
 
             {props.type == 'json' &&
-                <div className={styles.field_wrapper}>
-                    <textarea
-                        autoFocus={props.autoFocus}
-                        ref={inputEl}
-                        disabled={props.disabled}
-                        className={`
-                        ${styles.field}
-                        ${props.disabled && styles.disabled}
-                        ${styles.code}
-                        ${warningMsg.type && styles[warningMsg.type]}`}
-                        type="text"
-                        rows={props.rows == 'auto' ? lines : (props.rows || 1)}
-                        onChange={e => {
-                            setLines(countLines(e.target));
-                            handleChange(e.target.value)
-                        }}
-                        value={value}
-                        onBlur={e => checkJsonValue(e)}
-                        placeholder={`${props.placeholder ? props.placeholder : ''}`}
-                    />
-                    {value && !props.copy && !props.disabled &&
-                        <div className={`${styles.clear} icon icon-close`}
-                            onClick={clearValue}></div>}
-                    {value && props.copy &&
-                        <div className={`${styles.clear} icon icon-copy`}
-                            onClick={value => copyValue(value)}></div>}
-                </div>}
+                <JsonInput
+                    defaultValue={props.defaultValue || props.value}
+                    onChange={val => submit(val)}
+                    disabled={props.disabled}
+                    rows={props.rows}
+                    placeholder={props.placeholder}
+                    autoFocus={props.autoFocus}
+                    isValid={props.isValid}
+                    copy={props.copy}
+                />}
 
             {props.type == 'textarea' &&
                 <div className={styles.field_wrapper}>

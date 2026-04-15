@@ -330,6 +330,31 @@ a.checkbox_clearOption {
 .input_label_tooltip .tooltip:hover {
   opacity: 1;
 }
+.input_wrapper .json_toolbar {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  display: flex;
+  gap: 2px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.input_wrapper .field_wrapper:hover .json_toolbar {
+  opacity: 1;
+}
+.input_wrapper .json_toolbar_btn {
+  cursor: pointer;
+  opacity: 0.4;
+  padding: 4px;
+  border-radius: var(--border-radius);
+  font-size: var(--text-very-small-size);
+  line-height: 1;
+  user-select: none;
+  transition: opacity 0.15s;
+}
+.input_wrapper .json_toolbar_btn:hover {
+  opacity: 0.9;
+}
 :global .react-tooltip {
   z-index: 1000;
 }

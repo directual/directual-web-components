@@ -6,7 +6,6 @@ import { ComponentWrapper } from './wrapper/wrapper'
 import Article from './article/article'
 import Input from './dataentry/input/input'
 import InnerHTML from 'dangerously-set-html-content'
-import _ from 'lodash'
 
 export default function FpsHtml(props) {
 
@@ -39,7 +38,7 @@ export default function FpsHtml(props) {
 
   // Регистрируем API в window для доступа из внешнего кода
   useEffect(() => {
-    const componentId = _.get(data, 'params.comp_ID') || id
+    const componentId = (data && data.comp_ID) || id
     if (!componentId) return
 
     if (!window.FpsHtml_API) {
@@ -92,7 +91,6 @@ FpsHtml.settings = {
   name: "HTML code",
   sysName: 'FpsHtml',
   form: [
-    { name: 'Comp ID', sysName: 'comp_ID', type: 'string' },
     { name: "Enter your HTML-code", sysName: "html", type: "html-SLenriched" },
     { name: 'Apply template engine', sysName: 'withTemplate', type: 'boolean' },
     { name: 'API-endpoint (optional)', sysName: 'sl', type: 'api-endpoint' },
@@ -118,7 +116,6 @@ FpsMarkdown.settings = {
   name: "Markdown text",
   sysName: 'FpsMarkdown',
   form: [
-    { name: 'Comp ID', sysName: 'comp_ID', type: 'string' },
     { name: "Enter your text", sysName: "markdown", type: "markdown-SLenriched" },
     { name: 'Apply template engine', sysName: 'withTemplate', type: 'boolean' },
     { name: 'API-endpoint (optional)', sysName: 'sl', type: 'api-endpoint' },
