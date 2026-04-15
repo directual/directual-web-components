@@ -19,12 +19,12 @@ export default function JsonInput({
     const isFocused = useRef(false)
     const prevDefaultValue = useRef(defaultValue)
 
-    // --- Автовысота через scrollHeight ---
+    // height: auto !important в CSS перебивает inline height, поэтому используем min-height
     const adjustHeight = useCallback(() => {
         const el = textareaRef.current
         if (!el || rows !== 'auto') return
-        el.style.height = 'auto'
-        el.style.height = el.scrollHeight + 'px'
+        el.style.minHeight = '0'
+        el.style.minHeight = el.scrollHeight + 'px'
     }, [rows])
 
     useEffect(() => {
@@ -219,26 +219,25 @@ export default function JsonInput({
                 value={value}
                 placeholder={placeholder || ''}
             />
-            <div className={styles.json_toolbar}>
-                {value && !disabled && !copy &&
-                    <div
-                        className={`${styles.json_toolbar_btn} icon icon-close`}
-                        title="Clear"
-                        onClick={handleClear}
-                    />}
-                {value && copy &&
-                    <div
-                        className={`${styles.json_toolbar_btn} icon icon-copy`}
-                        title="Copy"
-                        onClick={handleCopy}
-                    />}
-                {value && !disabled &&
+            {value && !disabled &&
+                <div className={styles.json_toolbar}>
                     <div
                         className={`${styles.json_toolbar_btn} icon icon-code`}
                         title="Format JSON"
                         onClick={handleFormat}
-                    />}
-            </div>
+                    />
+                    {copy &&
+                        <div
+                            className={`${styles.json_toolbar_btn} icon icon-copy`}
+                            title="Copy"
+                            onClick={handleCopy}
+                        />}
+                    <div
+                        className={`${styles.json_toolbar_btn} icon icon-close`}
+                        title="Clear"
+                        onClick={handleClear}
+                    />
+                </div>}
             {warningMsg.msg &&
                 <div className={`${styles.status} ${styles[warningMsg.type]}`}>{warningMsg.msg}</div>}
         </div>
