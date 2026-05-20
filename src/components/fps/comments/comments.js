@@ -21,6 +21,9 @@ export default function Comments(props) {
     const { auth, data, callEndpoint, onEvent, id, locale, handleRoute } = props
     const lang = locale ? locale.length == 3 ? locale : 'ENG' : 'ENG'
 
+    const buttonTexts = _.get(data, "params.buttonTexts") || {}
+    const t = (key, fallback) => buttonTexts[key] || fallback
+
     // console.log("=== comments data ===")
     // console.log(data)
 
@@ -40,10 +43,38 @@ export default function Comments(props) {
         // console.log(comment)
         !local && setLoading(true)
         const endpoint = _.get(data, "sl")
+        
+        // Обогащаем payload кастомными полями из маппинга
+        const customMapping = _.get(data, "params.customMapping") || []
+        const enrichedComment = { ...comment }
+        
+        if (customMapping.length > 0) {
+            customMapping.forEach(mapping => {
+                const target = _.get(mapping, 'target')
+                const value = _.get(mapping, 'value')
+                
+                // Пропускаем пустые значения
+                if (target && value !== undefined && value !== '') {
+                    // Предупреждаем о перезаписи существующих полей
+                    if (enrichedComment.hasOwnProperty(target)) {
+                        console.warn(`Custom mapping overrides fixed field: ${target}`)
+                    }
+                    
+                    // Конвертация типов данных
+                    let convertedValue = value
+                    if (value === 'true') convertedValue = true
+                    else if (value === 'false') convertedValue = false
+                    else if (!isNaN(value) && value !== '') convertedValue = Number(value)
+                    
+                    enrichedComment[target] = convertedValue
+                }
+            })
+        }
+        
         callEndpoint && callEndpoint(
             endpoint,
             "POST",
-            comment,
+            enrichedComment,
             undefined,
             (result, data) => {
                 if (result == "ok") {
@@ -60,13 +91,27 @@ export default function Comments(props) {
         )
     }
 
+    // обновляем текст коммента локально без запроса на бэк
+    function updateCommentText(commentId, newText) {
+        const textField = _.get(data, "params._textField")
+        setComments(prevComments => 
+            prevComments.map(comment => 
+                comment.id === commentId 
+                    ? { ...comment, [textField]: newText }
+                    : comment
+            )
+        )
+    }
+
     const allowAttachment = _.includes(data.writeFields, _.get(data, "params._fileField"))
     const allowSend = _.includes(data.writeFields, _.get(data, "params._textField"))
+    const allowEdit = _.get(data, "params.general.allowEdit")
 
     return <div className={`${styles.comments} FPS_COMMENTS`}>
-        <CommentsHeader header={dict[lang].comments.comments} counter={(comments || []).length} {...props} />
+        <CommentsHeader header={t('headerText', dict[lang].comments.comments)} counter={(comments || []).length} {...props} />
         {allowSend && <AddComment
             {...props}
+            t={t}
             lang={lang}
             loading={loading}
             sendComment={sendComment}
@@ -76,9 +121,12 @@ export default function Comments(props) {
             {comments
                 .filter(comment => !_.get(comment, _.get(data, "params._replyField")) || _.get(comment, _.get(data, "params._replyField")) == 'root')
                 .map(comment => <Comment {...props}
+                    t={t}
                     sendComment={sendComment}
+                    updateCommentText={updateCommentText}
                     lang={lang}
                     allowSend={allowSend}
+                    allowEdit={allowEdit}
                     loading={loading}
                     allowAttachment={allowAttachment}
                     comments={comments}
@@ -89,9 +137,17 @@ export default function Comments(props) {
 }
 
 function Comment(props) {
-    const { comment, auth, lang, data, comments, parent, allowSend, sendComment } = props
+    const { comment, auth, lang, data, comments, parent, allowSend, allowEdit, sendComment, updateCommentText, t } = props
 
     const [addReply, setAddReply] = useState(false)
+    const [isEditing, setIsEditing] = useState(false)
+    const [editText, setEditText] = useState("")
+
+    // инициализируем editText при загрузке или изменении текста комментария
+    useEffect(() => {
+        const commentText = _.get(comment, _.get(data, "params._textField"))
+        setEditText(commentText || "")
+    }, [_.get(comment, _.get(data, "params._textField"))])
 
     // форматируем дату для карточки (если есть) в соответствии с formatOptions
     const formatDate = (value, formatOptions) => {
@@ -119,6 +175,9 @@ function Comment(props) {
         return str;
     }
 
+    // console.log("=== commentAuthor ===")
+    // console.log(commentAuthor)
+
     const [localLoading, setLocalLoading] = useState(false)
 
     let name = `${_.get(commentAuthor, "firstName", "")} ${_.get(commentAuthor, "lastName", "")}`
@@ -128,6 +187,10 @@ function Comment(props) {
 
     const isAssignedToMe = (_.get(auth, "user") == _.get(comment, _.get(data, "params.assignmentOn_assignee")) ||
         _.get(auth, "user") == _.get(comment, _.get(data, "params.assignmentOn_assignee") + ".id")) &&
+        _.get(auth, "isAuth")
+
+    const isAuthor = (_.get(auth, "user") == _.get(comment, _.get(data, "params._userField")) ||
+        _.get(auth, "user") == _.get(comment, _.get(data, "params._userField") + ".id")) &&
         _.get(auth, "isAuth")
 
     const assigneName = isTask ?
@@ -150,6 +213,23 @@ function Comment(props) {
         sendComment(payload, () => setLocalLoading(false), true)
     }
 
+    const saveEdit = () => {
+        if (!comment.id) return;
+        setLocalLoading(true)
+        // мгновенно обновляем UI
+        updateCommentText(comment.id, editText)
+        setIsEditing(false)
+        // и шлём на бэк
+        let payload = { id: comment.id }
+        _.set(payload, _.get(data, "params._textField"), editText)
+        sendComment(payload, () => setLocalLoading(false), true)
+    }
+
+    const cancelEdit = () => {
+        setEditText(commentText)
+        setIsEditing(false)
+    }
+
     return <div>
 
         <div className={`${styles.commentWrapper} FPS_COMMENT_WRAPPER`}>
@@ -157,12 +237,12 @@ function Comment(props) {
                 {isAssignedToMe ? <span>{dict[lang].comments.assignedToMe}</span>
                     : <span>{dict[lang].comments.assignedTo} <b>{assigneName}</b></span>}
                 {isResoled ?
-                    <span className='icon icon-done'>{dict[lang].comments.taskResolved} {formatDate(resolvedDate, formatResolvedDate)}</span> :
+                    <span className='icon icon-done'>{t('taskResolvedText', dict[lang].comments.taskResolved)} {formatDate(resolvedDate, formatResolvedDate)}</span> :
                     isAssignedToMe ? <Button
                         loading={localLoading}
                         onClick={resolveTask}
                         small height={32}
-                        icon='done'>{dict[lang].comments.resolveTask}</Button> : ''}
+                        icon='done'>{t('resolveTaskText', dict[lang].comments.resolveTask)}</Button> : ''}
             </div>}
             {/* <div className={styles.commentVote}>
                 <div className={styles.commentVoteUp}>+</div>
@@ -183,9 +263,34 @@ function Comment(props) {
                         {formatDate(commentDate, formatCommentDate)}
                     </div>
                 </div>
-                <div className={styles.commentBodyText}>
-                    {commentText}
-                </div>
+                {isEditing ? (
+                    <div className={styles.commentBodyText}>
+                        <Input 
+                            type='textarea'
+                            defaultValue={editText}
+                            onChange={setEditText}
+                            rows='auto' 
+                        />
+                        <div style={{ marginTop: '8px', display: 'flex', gap: '8px' }}>
+                            <Button 
+                                onClick={saveEdit}
+                                small 
+                                height={32}
+                                accent
+                                disabled={!editText}
+                            >{t('saveText', dict[lang].comments.save)}</Button>
+                            <Button 
+                                onClick={cancelEdit}
+                                small 
+                                height={32}
+                            >{t('cancelText', dict[lang].comments.cancel)}</Button>
+                        </div>
+                    </div>
+                ) : (
+                    <div className={styles.commentBodyText}>
+                        {commentText}
+                    </div>
+                )}
                 {commentAttachment && commentAttachment.length > 0 &&
                     commentAttachment.map(file => {
                         const fileName = file.split("/")[file.split("/").length - 1]
@@ -194,8 +299,9 @@ function Comment(props) {
                                 className={`icon icon-clip small ${styles.commentFileLink}`}>{fileName}</a>
                         </div>
                     })}
-                {_.includes(data.writeFields, _.get(data, "params._replyField")) && allowSend && <div className={styles.commentBodyFooter}>
-                    <div onClick={e => setAddReply(true)} className={`icon icon-bubble small ${styles.commentReplyButton}`}>{dict[lang].comments.reply}</div>
+                {!isEditing && (_.includes(data.writeFields, _.get(data, "params._replyField")) && allowSend || allowEdit && isAuthor) && <div className={styles.commentBodyFooter}>
+                    {_.includes(data.writeFields, _.get(data, "params._replyField")) && allowSend && <div onClick={e => setAddReply(true)} className={`icon icon-bubble small ${styles.commentReplyButton}`}>{t('replyText', dict[lang].comments.reply)}</div>}
+                    {allowEdit && isAuthor && <div onClick={e => setIsEditing(true)} className={`icon icon-edit small ${styles.commentReplyButton}`}>{t('editText', dict[lang].comments.edit)}</div>}
                 </div>}
             </div>
         </div>
@@ -222,7 +328,7 @@ function CommentsHeader(props) {
 
 function AddComment(props) {
 
-    const { locale, onCancel, lang, header, roles, callEndpoint, allowAttachment, sendComment, parentID, data, loading } = props
+    const { locale, onCancel, lang, header, roles, callEndpoint, allowAttachment, sendComment, parentID, data, loading, t } = props
 
     const rolesExample = [
         { key: 'admin', value: 'Admin' },
@@ -262,13 +368,13 @@ function AddComment(props) {
         setTimeout(() => setIsSent(false), 5000)
     }
 
-    if (isSent) return <Hint margin={{ top: 0, bottom: 0 }} ok>{dict[lang].comments.submitted}</Hint>
+    if (isSent) return <Hint margin={{ top: 0, bottom: 0 }} ok>{t('submittedText', dict[lang].comments.submitted)}</Hint>
 
     return <div className={styles.commentsAdd}>
         <Input label={header} type='textarea'
             defaultValue={comment[_.get(data, "params._textField")]}
             onChange={setCommentField(_.get(data, "params._textField"))}
-            rows='auto' placeholder={dict[lang].comments.write} />
+            rows='auto' placeholder={t('placeholderText', dict[lang].comments.write)} />
         <div className={styles.commentsAdditionslControls}>
             {addFile && allowAttachment && <FileUpload
                 locale={locale}
@@ -373,8 +479,8 @@ function AddComment(props) {
             {_.get(data, "params.assignmentOn") && <div className={`icon icon-checkbox ${styles.commentActions} ${showAssignTo ? styles.active : ''}`} onClick={e => setShowAssignTo(!showAssignTo)} />}
             <Button loading={loading}
                 disabled={!comment[_.get(data, "params._fileField")] && !comment[_.get(data, "params._textField")]}
-                accent icon="bubble" onClick={() => sendComment(comment, finish)}>{dict[lang].comments.send}</Button>
-            {onCancel && <Button onClick={onCancel}>{dict[lang].comments.cancel}</Button>}
+                accent icon="bubble" onClick={() => sendComment(comment, finish)}>{t('sendText', dict[lang].comments.send)}</Button>
+            {onCancel && <Button onClick={onCancel}>{t('cancelText', dict[lang].comments.cancel)}</Button>}
         </div>
     </div>
 }

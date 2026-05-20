@@ -52,6 +52,22 @@ const SafeInnerHTML = ({ html, label = 'unknown', ...props }) => {
     return <InnerHTML {...props} html={html} />;
 };
 
+/** API иногда отдаёт result.data: null — lodash.get не подставляет default */
+const stripDataInfoContent = (responseData) => {
+    const dataInfo = _.get(responseData, "result.data", {}) || {}
+    if (dataInfo.content) {
+        delete dataInfo.content
+    }
+    return dataInfo
+}
+
+const normalizeObjectsList = (result) => {
+    if (!Array.isArray(result)) {
+        return []
+    }
+    return result.filter(Boolean)
+}
+
 function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templateEngine, id, currentBP, locale, handleRoute, debug, handleModalRoute }) {
 
     // console.log("== FpsCards2 data ===")
@@ -69,9 +85,6 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
     const card_border_radius = _.get(data, "params.card_border_radius")
     const sl = _.get(data, "sl")
 
-    const cx = null
-    const dqlService = debounce(performFiltering, 600);
-
     const comp_ID = _.get(data, "params.comp_ID")
 
     const [error, setError] = useState("")
@@ -83,12 +96,18 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
     };
 
     const [page, setPage] = useState(getPageFromUrl);
+    const [pageSizeOverride, setPageSizeOverride] = useState(null)
+    const pageSize = pageSizeOverride || data.pageSize || 10
     const [dql, setDQL] = useState('');
     const [sort, setSort] = useState({});
     const [loading, setLoading] = useState(false)
-    const [initialLoading, setInitialLoading] = useState(debug ? false : true) // в дебаг режиме сразу не показываем скелетон
+    const [initialLoading, setInitialLoading] = useState(debug ? false : true)
     const isFirstRender = useRef(true)
-    const cardsContainerRef = useRef(null) // Ref для event delegation
+    const isRestoringFromUrl = useRef(false)
+    const cardsContainerRef = useRef(null)
+    const refreshSeqRef = useRef(0)
+
+    const dqlService = useMemo(() => debounce(performFiltering, 600), [])
 
     const updatePageInUrl = (newPage) => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -129,7 +148,6 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
     }
 
     function performFiltering(dql, sort) {
-        clearTimeout(cx);
         console.log('=== F I L T E R I N G ! ===')
         console.log(dql)
         console.log('=== S O R T I N G ! ===')
@@ -139,37 +157,15 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         setDQL(dql)
         setSort(sort)
         
+        // Если восстанавливаем из URL - данные уже загружены, просто обновляем стейт
+        if (isRestoringFromUrl.current) {
+            console.log('Restoring filters from URL, skipping refresh')
+            isRestoringFromUrl.current = false
+            return
+        }
+        
         if (page == 0) { refresh(dql, sort) } else { setPage(0) }
     }
-
-    const nextPage = () => {
-        setPage(prevPage => {
-            const newPage = prevPage + 1;
-            updatePageInUrl(newPage);
-            return newPage;
-        });
-    };
-
-    const prevPage = () => {
-        setPage(prevPage => {
-            const newPage = Math.max(prevPage - 1, 0);
-            updatePageInUrl(newPage);
-            return newPage;
-        });
-    };
-
-    const firstPage = () => {
-        setPage(0);
-        updatePageInUrl(0);
-    };
-
-    const lastPage = () => {
-        const pageSize = _.get(dataInfo, 'pageable.pageSize', data.pageSize || 10);
-        const totalPages = Math.max(1, Math.ceil(_.get(dataInfo, 'total', 0) / pageSize));
-        const lastPageNumber = Math.max(0, totalPages - 1);
-        setPage(lastPageNumber);
-        updatePageInUrl(lastPageNumber);
-    };
 
     // Используем function declaration для hoisting
     function checkHidden(element, debug, reverse, model) {
@@ -504,10 +500,6 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
 
     // функция для рендера скелетонов
     const renderSkeletons = (isFlexLayout = false) => {
-        // для pageLoading берем размер из dataInfo, для initialLoading из data
-        const pageSize = pageLoading
-            ? _.get(dataInfo, 'pageable.pageSize', data.pageSize || 10)
-            : data.pageSize || 10
         const card_min_height = _.get(data, "params.card_min_height") || "120px"
 
         return Array(pageSize).fill(null).map((_, index) => (
@@ -651,6 +643,35 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         }
     )
 
+    const totalObjects = _.get(dataInfo, 'total', 0)
+    const totalPages = Math.max(1, Math.ceil(totalObjects / pageSize))
+
+    const nextPage = () => {
+        setPage(prevPage => {
+            const newPage = Math.min(prevPage + 1, totalPages - 1);
+            updatePageInUrl(newPage);
+            return newPage;
+        });
+    };
+
+    const prevPage = () => {
+        setPage(prevPage => {
+            const newPage = Math.max(prevPage - 1, 0);
+            updatePageInUrl(newPage);
+            return newPage;
+        });
+    };
+
+    const firstPage = () => {
+        setPage(0);
+        updatePageInUrl(0);
+    };
+
+    const lastPage = () => {
+        const lastPageNumber = Math.max(0, totalPages - 1);
+        setPage(lastPageNumber);
+        updatePageInUrl(lastPageNumber);
+    };
 
     // FAVORITES
     useEffect(() => {
@@ -661,26 +682,21 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
         })
     }, [])
 
-    function refresh(dql, sort) {
+    function refresh(dql, sort, overridePage) {
         if (data && data.sl) {
             setPageLoading(true)
-            // Конвертируем объект sort в строку для API
+            const seq = ++refreshSeqRef.current
             const sortString = sort && sort.field ? `${sort.field}:${sort.direction || 'asc'}` : '';
+            const requestPage = overridePage !== undefined ? overridePage : page
             callEndpointGET(data.sl, {
-                pageSize: data.pageSize || 10,
-                page: page,
+                pageSize: pageSize,
+                page: requestPage,
                 dql: dql,
                 sort: sortString
-            }, (result, data) => {
-                // console.log("PAGINATION RESULT")
-                // console.log(result)
-                // console.log(data)
-                const dataInfo = _.get(data, "result.data", {})
-                if (dataInfo && dataInfo.content) {
-                    delete dataInfo.content
-                }
-                setDataInfo(dataInfo)
-                setObjects(result)
+            }, (result, responseData) => {
+                if (seq !== refreshSeqRef.current) return
+                setDataInfo(stripDataInfoContent(responseData))
+                setObjects(normalizeObjectsList(result))
                 setPageLoading(false)
             })
         }
@@ -689,7 +705,6 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
     // PAGINATION
     useEffect(() => {
         if (debug) {
-            // в дебаг режиме не делаем пагинацию
             console.log("Cards2 Debug mode: pagination disabled")
             return;
         }
@@ -699,11 +714,11 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
             return;
         }
 
-        console.log("page => " + page)
-        refresh(dql, sort) // передаем текущие dql и sort при пагинации
-    }, [page, debug]) // добавляем debug в dependencies
+        console.log("page => " + page + ", pageSize => " + pageSize)
+        refresh(dql, sort)
+    }, [page, pageSize, debug])
 
-    // INITIAL PAGE LOAD - check URL for page parameter on mount
+    // INITIAL PAGE LOAD - загружаем данные с учётом page, filters, sort из URL
     useEffect(() => {
         if (debug) {
             // в дебаг режиме не загружаем данные, используем то что пришло в props
@@ -711,48 +726,85 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
             return;
         }
 
-        // Проверяем есть ли фильтры в URL
-        const hasFiltersInUrl = () => {
-            if (!comp_ID || typeof window === 'undefined') return false;
+        // Читаем параметры из URL
+        const getFiltersFromUrl = () => {
+            if (!comp_ID || typeof window === 'undefined') return { dql: '', sort: {} };
             const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.has(`filters_${comp_ID}`) || urlParams.has(`sort_${comp_ID}`);
+            const filtersParam = urlParams.get(`filters_${comp_ID}`);
+            const sortParam = urlParams.get(`sort_${comp_ID}`);
+            
+            let urlDql = '';
+            let urlSort = {};
+            
+            // Парсим filters и конвертируем в DQL
+            if (filtersParam) {
+                try {
+                    const filters = JSON.parse(decodeURIComponent(filtersParam));
+                    // Простая конвертация filters в DQL
+                    const dqlParts = Object.keys(filters).filter(key => {
+                        return filters[key].value || filters[key].valueFrom || filters[key].valueTo;
+                    }).map(key => {
+                        const f = filters[key];
+                        if (f.type === 'string' || f.type === 'boolean') {
+                            return `('${key}' like '${f.value}')`;
+                        }
+                        if (f.type === 'multiOptions' && f.value) {
+                            return '(' + Object.keys(f.value).map(v => `('${key}' like '${v}')`).join(' OR ') + ')';
+                        }
+                        if (f.type === 'date' || f.type === 'number') {
+                            const parts = [];
+                            if (f.valueFrom) parts.push(`('${key}' >= '${f.valueFrom}')`);
+                            if (f.valueTo) parts.push(`('${key}' <= '${f.valueTo}')`);
+                            return parts.join(' AND ');
+                        }
+                        return '';
+                    }).filter(Boolean);
+                    urlDql = dqlParts.join(' AND ');
+                } catch (e) {
+                    console.error('Failed to parse filters from URL:', e);
+                }
+            }
+            
+            // Парсим sort
+            if (sortParam && sortParam.includes(':')) {
+                const [field, direction] = sortParam.split(':');
+                urlSort = { field, direction };
+            }
+            
+            return { dql: urlDql, sort: urlSort };
         };
 
         const urlPage = getPageFromUrl() || 0;
+        const { dql: urlDql, sort: urlSort } = getFiltersFromUrl();
         
-        // Если есть фильтры в URL, пропускаем первый запрос
-        // TableTitle сам применит фильтры через performFiltering
-        if (hasFiltersInUrl()) {
-            console.log("Filters found in URL, skipping initial load - TableTitle will handle it")
-            setInitialLoading(false)
-            return;
+        // Если есть фильтры в URL - устанавливаем флаг
+        if (urlDql || urlSort.field) {
+            isRestoringFromUrl.current = true;
+            setDQL(urlDql);
+            setSort(urlSort);
         }
         
-        if (data && data.sl) { // в любом случае загружаем данные, чтобы достать dataInfo
-            console.log("Loading initial page from URL: " + urlPage)
+        if (data && data.sl) {
+            console.log("Loading initial data from URL: page=" + urlPage + ", dql=" + urlDql)
             setPageLoading(true)
+            const seq = ++refreshSeqRef.current
+            const sortString = urlSort && urlSort.field ? `${urlSort.field}:${urlSort.direction || 'asc'}` : '';
             callEndpointGET(data.sl, {
-                pageSize: data.pageSize || 10,
+                pageSize: pageSize,
                 page: urlPage,
-                dql: '',
-                sort: ''
-            }, (result, data) => {
-                // console.log("INITIAL PAGE LOAD RESULT")
-                // console.log(result)
-                // console.log(data)
-                const dataInfo = _.get(data, "result.data", {})
-                if (dataInfo && dataInfo.content) {
-                    delete dataInfo.content
-                }
-                setDataInfo(dataInfo)
-                setObjects(result)
+                dql: urlDql,
+                sort: sortString
+            }, (result, responseData) => {
+                if (seq !== refreshSeqRef.current) return
+                setDataInfo(stripDataInfoContent(responseData))
+                setObjects(normalizeObjectsList(result))
                 setPageLoading(false)
-                setInitialLoading(false) // отключаем показ скелетонов после первой загрузки
+                setInitialLoading(false)
             })
         } else {
-            setInitialLoading(false) // если нет sl, то скелетоны не нужны
+            setInitialLoading(false)
         }
-    }, [debug]) // добавляем debug в dependencies
+    }, [debug])
 
     // SOCKET UPDATES - фоновое обновление при изменении socket
     useEffect(() => {
@@ -766,23 +818,18 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
 
         if (data && data.sl) {
             console.log("Socket changed, updating data in background...")
-            // обновляем данные БЕЗ лоадеров
-            // Конвертируем объект sort в строку для API
+            const seq = ++refreshSeqRef.current
             const sortString = sort && sort.field ? `${sort.field}:${sort.direction || 'asc'}` : '';
             callEndpointGET(data.sl, {
-                pageSize: data.pageSize || 10,
+                pageSize: pageSize,
                 page: page,
                 dql: dql,
                 sort: sortString
             }, (result, responseData) => {
+                if (seq !== refreshSeqRef.current) return
                 console.log("Background update completed")
-                const dataInfo = _.get(responseData, "result.data", {})
-                if (dataInfo && dataInfo.content) {
-                    delete dataInfo.content
-                }
-                setDataInfo(dataInfo)
-                setObjects(result)
-                // НЕ обновляем initialLoading и pageLoading - это фоновое обновление
+                setDataInfo(stripDataInfoContent(responseData))
+                setObjects(normalizeObjectsList(result))
             })
         }
     }, [socket, debug]) // добавляем debug в dependencies
@@ -827,7 +874,10 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
             customHTMLfiltersContent={_.get(data.params, 'filterParams.filteringSortingLayoutHTML')}
             // performFiltering={dql => console.log(dql)}
             callEndpoint={(endpoint, params, finish, setOptions, setError) => {
-                const transformedArray = (inputArray, visibleNames) => _.map(inputArray, (item) => {
+                const transformedArray = (inputArray, visibleNames) => _.compact(_.map(inputArray || [], (item) => {
+                    if (!item) {
+                        return null
+                    }
                     const parseJson = json => {
                         if (!json) return {}
                         let parsedJson = {}
@@ -853,7 +903,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
                         image: _.get(rest, "userpic") || _.get(rest, "image") || _.get(rest, "picture") || _.get(rest, "photo"),
                         description: description,
                     };
-                });
+                }));
                 //fake request
                 // setTimeout(() => {
                 //     const data = [
@@ -926,7 +976,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
             }}
         >
             {(initialLoading || pageLoading) ? renderSkeletons() : objects
-                .filter(object => !!_.get(object, field_quantity, 1)) // filter items with quantity == 0
+                .filter(object => object && !!_.get(object, field_quantity, 1)) // filter items with quantity == 0
                 .map(object => <CardWrapper
                     key={object.id}
                     data={data}
@@ -984,7 +1034,7 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
             }}
         >
             {(initialLoading || pageLoading) ? renderSkeletons(true) : objects
-                .filter(object => !!_.get(object, field_quantity, 1)) // filter items with quantity == 0
+                .filter(object => object && !!_.get(object, field_quantity, 1)) // filter items with quantity == 0
                 .map(object => <CardWrapper
                     key={object.id}
                     data={data}
@@ -1034,17 +1084,16 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
 
         {/* Показываем пагинацию только если allowPagination === true */}
         {_.get(data, 'params.general.allowPagination') === true && <NewPaging
-            totalObjects={_.get(dataInfo, 'total', 0)}
-            objectsPerPage={_.get(dataInfo, 'pageable.pageSize', data.pageSize || 10)}
+            totalObjects={totalObjects}
+            objectsPerPage={pageSize}
             showPageSizeDropdown={true}
             onPageSizeChange={(newPageSize) => {
-                // Сбрасываем на первую страницу при изменении размера страницы
-                console.log("onPageSizeChange")
-                console.log("newPageSize:", newPageSize)
-                // Здесь можно добавить логику для обновления pageSize в data
+                setPageSizeOverride(newPageSize)
+                setPage(0)
+                updatePageInUrl(0)
             }}
-            currentPage={_.get(dataInfo, 'pageable.page', 0)}
-            totalPages={Math.max(1, Math.ceil(_.get(dataInfo, 'total', 0) / _.get(dataInfo, 'pageable.pageSize', data.pageSize || 10)))}
+            currentPage={page}
+            totalPages={totalPages}
             nextPage={nextPage}
             dataInfo={dataInfo}
             prevPage={prevPage}
@@ -1178,7 +1227,6 @@ const Card = React.memo((props) => {
         callEndpointPOST(_.get(data, "sl"), { id: object.id, [field_quantity]: count })
     }
 
-    const cx = null
     const onChangeQuantity = debounce(changeQuantity, 500);
 
     const isFavorite = _.some(favorites, { [favoritesField]: object.id })

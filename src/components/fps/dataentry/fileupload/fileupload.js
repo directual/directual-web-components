@@ -31,7 +31,7 @@ export default function FileUpload(props) {
         // console.log(string)
         // console.log(typeof string)
         if (!string) return []
-        if (typeof string == 'string ') { return string.split(",") }
+        if (typeof string == 'string') { return string.split(",") }
         else {
             return string
         }
@@ -330,9 +330,45 @@ function ShowImage({ imageUrl, swipe, swipable, close, lang }) {
 }
 
 function ImagePreview({ imageUrl, onDelete, openImage, edit, disabled }) {
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(false)
+    const [retryCount, setRetryCount] = useState(0)
+    const maxRetries = 3
+
+    // Retry логика — если картинка не загрузилась, пробуем ещё раз (бэк мог не успеть)
+    const handleError = () => {
+        if (retryCount < maxRetries) {
+            setTimeout(() => {
+                setRetryCount(retryCount + 1)
+                setError(false)
+                setLoading(true)
+            }, 1000) // ждём секунду перед повтором
+        } else {
+            setLoading(false)
+            setError(true)
+        }
+    }
+
+    // Сбрасываем состояние при смене URL
+    useEffect(() => {
+        setLoading(true)
+        setError(false)
+        setRetryCount(0)
+    }, [imageUrl])
+
     return <div className={styles.imagePreview}>
-        <img src={imageUrl}
-            onClick={() => openImage()}
+        {loading && <div className={styles.imageLoading}>
+            <span className="icon icon-loading" />
+        </div>}
+        {error && <div className={styles.imageError}>
+            <span className="icon icon-warning" />
+        </div>}
+        <img 
+            src={retryCount > 0 ? `${imageUrl}${imageUrl.includes('?') ? '&' : '?'}retry=${retryCount}` : imageUrl}
+            onClick={() => !error && openImage()}
+            onLoad={() => setLoading(false)}
+            onError={handleError}
+            style={{ display: loading || error ? 'none' : 'block' }}
         />
         {edit && !disabled && <div className={`icon icon-close ${styles.deleteImage}`}
             onClick={e => {

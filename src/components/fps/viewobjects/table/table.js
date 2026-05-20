@@ -8,6 +8,16 @@ import moment from 'moment'
 import Loader from '../../loader/loader'
 import _ from 'lodash'
 import { Tooltip } from 'react-tooltip'
+import InnerHTML from 'dangerously-set-html-content'
+import DOMPurify from 'dompurify'
+import { evaluateRowConditions } from './rowConditions'
+
+// Функция для безопасной санитизации HTML
+function sanitizedHTML(inputHTML) {
+    return DOMPurify.sanitize(inputHTML, {
+        USE_PROFILES: { html: true },
+    });
+}
 
 // Create an editable cell renderer
 const EditableCell = ({
@@ -206,6 +216,13 @@ const EditableCell = ({
         }
     }
 
+    // HTML content
+    if (fieldDetails[id].format == 'html' && value) {
+        return <div className={styles.notEditableValue}>
+            <InnerHTML allowRerender={true} html={sanitizedHTML(value)} />
+        </div>
+    }
+
     // link:
     if (fieldDetails[id].dataType == 'link') {
         const displayValue = typeof value == 'object' ? getLinkName(id, value) : value
@@ -345,8 +362,7 @@ const defaultColumn = {
     Cell: EditableCell
 }
 
-function ReactTable({ columns, params, hideExpandTD, data, largeFont, updateMyData, fieldDetails, tableParams, skipPageReset, getLinkName, onExpand, getExpandHref }) {
-
+function ReactTable({ auth, columns, params, hideExpandTD, data, largeFont, updateMyData, fieldDetails, tableParams, skipPageReset, getLinkName, onExpand, getExpandHref, conditionLibrary }) {
     const {
         getTableProps,
         getTableBodyProps,
@@ -416,10 +432,15 @@ function ReactTable({ columns, params, hideExpandTD, data, largeFont, updateMyDa
                             isColorRow.row.values[isColorRow.column.id] : 'default' : 'default'
 
                         colorRow = colorRow == 'default' ? colorRow : (colorRow[0] == '#' || colorRow[0] == 'r') ? colorRow : '#' + colorRow
+                        
+                        // Вычисляем условные классы для строки на основе _condition_library
+                        const conditionalClasses = evaluateRowConditions(conditionLibrary, row.original, auth);
+                        
                         const key = _.get(row, 'original.id') || row.id
                         return (
                             <tr
                                 key={key}
+                                className={conditionalClasses}
                                 onDoubleClick={() => onExpand(row.original)}
                                 style={colorRow == 'default' ? {} :
                                     {
@@ -669,6 +690,7 @@ export function Table({
         </div>}
         <div className={loading ? styles.backGroundBlur : ''}>
             <ReactTable
+                auth={auth}
                 columns={columns}
                 data={tableData}
                 params={params}
@@ -681,6 +703,7 @@ export function Table({
                 onExpand={onExpand}
                 getExpandHref={getExpandHref}
                 tableParams={tableParams.fieldParams}
+                conditionLibrary={_.get(data, "params._condition_library", [])}
             />
         </div>
     </div>

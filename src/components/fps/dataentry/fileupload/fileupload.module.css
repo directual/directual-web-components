@@ -176,6 +176,28 @@
 .imageList .imagePreview .deleteImage:hover {
   opacity: 0.9;
 }
+/* Loading/error состояния для превью */
+.imageList .imagePreview .imageLoading,
+.imageList .imagePreview .imageError {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--form-field-bgr, #f5f5f5);
+  border-radius: var(--border-radius, 4px);
+  border: 1px dashed var(--form-field-border, #ddd);
+}
+.imageList .imagePreview .imageLoading {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+.imageList .imagePreview .imageError {
+  opacity: 0.5;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
 .showImage {
   z-index: 201;
   position: fixed;

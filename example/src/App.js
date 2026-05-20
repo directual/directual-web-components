@@ -3,8 +3,8 @@ import {
     FpsCards, FpsForm, MainMenu, NewMainMenu, FpsTable, FpsTheme,
     FpsWrapper, ContentWrapper, SignIn, Media, CodeSnippet, Chart,
     Dnd, Profile, TabsPane, Stopwatch, Button, SignUp, RestorePass, FpsKanban, FpsChart, NewMobileTabs
-} from 'directual-web-components'
-import 'directual-web-components/dist/index.css'
+} from 'directual-web-components-v2'
+import 'directual-web-components-v2/dist/index.css'
 import {
     BrowserRouter as Router,
     Switch,

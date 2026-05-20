@@ -161,6 +161,7 @@
 .comments .commentWrapper .commentBodyFooter .commentReplyButton {
   font-size: var(--text-small-size);
   opacity: 0.5;
+  margin-right: 10px;
   transition: 0.5s;
   cursor: pointer;
 }

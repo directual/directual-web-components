@@ -82,6 +82,8 @@ export default function FpsForm2(props) {
   const isSocketUpdateRef = useRef(false); // ref для отслеживания обновлений от сокета
   const restoredStepRef = useRef(null); // храним step при восстановлении state из поля
   const isAutoSubmittingRef = useRef(false); // флаг что прямо сейчас идёт автосабмит
+  // ID объекта при инициализации формы — стабильный якорь, не меняется при коррупции model.id
+  const initialObjectIdRef = useRef(edditingOn ? _.get(data, "data[0].id") : null);
 
   // console.log(model)
   // console.log(originalModel)
@@ -171,9 +173,13 @@ export default function FpsForm2(props) {
   // process Socket.io update
   useEffect(() => {
 
-    // костыль под баг сокетов с левыми данными
-    if (_.get(model, "id") && _.get(data, "data[0].id") && _.get(model, "id") !== _.get(data, "data[0].id")) {
-      // хуйня пришла
+    // Защита от сокетных апдейтов для чужих объектов.
+    // Используем initialObjectIdRef вместо model.id — он стабильный и не зависит от коррупции модели.
+    // Старый guard по model.id пробивался при пустом id (после resetModel) и блокировал правильные
+    // апдейты если id модели был испорчен ответом action-эндпоинта.
+    const _incomingId = _.get(data, "data[0].id");
+    if (initialObjectIdRef.current && _incomingId && initialObjectIdRef.current !== _incomingId) {
+      console.warn('[SOCKET GUARD] Отклонён апдейт для чужого объекта:', _incomingId, '(наш:', initialObjectIdRef.current + ')');
       return;
     }
 
@@ -211,7 +217,8 @@ export default function FpsForm2(props) {
         ...convertedBools
       }
       setExtendedModel(newExtendedModel)
-      let saveSate = { ...state }
+      // stateRef.current вместо state — избегаем stale closure (state не в dependency array)
+      let saveSate = { ...stateRef.current }
       const newModel = ({
         //...model,  //чтобы старое затиралось
         ...flatternModel({
@@ -222,42 +229,47 @@ export default function FpsForm2(props) {
         })
       })
 
-      if (!_.isEqual(newModel, model)) {
+      if (!_.isEqual(newModel, originalModelRef.current)) {
         // Отменяем все pending debounced submits чтобы они не перезаписали сокетное обновление
         submitDebouncedRef.current.cancel();
-        
+
+        // Не затираем поля, которые пользователь изменил но ещё не сохранил.
+        // originalModelRef — это то, что пришло с сервера при последней загрузке/сохранении.
+        // Разница между model и originalModel — несохранённые изменения пользователя.
+        const userChangedFields = Object.keys(model).filter(
+          key => !_.isEqual(model[key], originalModelRef.current[key])
+        )
+        const mergedModel = { ...newModel }
+        userChangedFields.forEach(key => {
+          mergedModel[key] = model[key]
+        })
+
+        console.log('[SOCKET MODEL LOG] === СОКЕТ: ОБНОВЛЕНИЕ МОДЕЛИ ===');
+        console.log('[SOCKET MODEL LOG] Серверная модель:', JSON.parse(JSON.stringify(newModel)));
+        console.log('[SOCKET MODEL LOG] Изменённые пользователем поля (сохранены):', userChangedFields);
+        console.log('[SOCKET MODEL LOG] Итоговая модель:', JSON.parse(JSON.stringify(mergedModel)));
+
         isSocketUpdateRef.current = true; // устанавливаем флаг что это обновление от сокета
-        setModel(newModel)
+        setModel(mergedModel)
+        // originalModel обновляем целиком — это актуальная правда сервера
         setOriginalModel(newModel)
       }
       setOriginalExtendedModel(newExtendedModel)
       
-      console.log('[SOCKET/RESTORE LOG] === НАЧАЛО СОКЕТНОГО ОБНОВЛЕНИЯ ===');
-      console.log('[SOCKET/RESTORE LOG] текущий state ДО перезаписи:', JSON.parse(JSON.stringify(state)));
-      console.log('[SOCKET/RESTORE LOG] saveSate перед templateState:', JSON.parse(JSON.stringify(saveSate)));
-      
       // ВСЕГДА применяем templateState при обновлении модели
       // Это обеспечивает синхронизацию state с моделью через шаблоны типа {{status}}
       const templatedState = templateState(_.get(data, "params.state"), newModel);
-      console.log('[SOCKET/RESTORE LOG] params.state:', _.get(data, "params.state"));
-      console.log('[SOCKET/RESTORE LOG] templateState вернул:', JSON.parse(JSON.stringify(templatedState)));
       saveSate = { ...saveSate, ...templatedState }
-      console.log('[SOCKET/RESTORE LOG] saveSate после templateState:', JSON.parse(JSON.stringify(saveSate)));
       
       // RESTORE STATE:
       if (_.get(params, "general.restoreState") && _.get(params, "general.saveStateTo")) {
         const fieldName = _.get(params, "general.saveStateTo");
         const fieldValue = newModel[fieldName];
-        console.log('[SOCKET/RESTORE LOG] Восстанавливаем state из поля:', fieldName);
-        console.log('[SOCKET/RESTORE LOG] Значение поля:', fieldValue);
         const restoredState = parseJson(fieldValue);
-        console.log('[SOCKET/RESTORE LOG] restoredState (распарсенный):', JSON.parse(JSON.stringify(restoredState)));
         saveSate = { ...saveSate, ...restoredState }
         // Блокируем автосабмит на восстановленный step через restoredStepRef
         restoredStepRef.current = restoredState.step
       }
-      console.log('[SOCKET/RESTORE LOG] ИТОГОВЫЙ setState с:', JSON.parse(JSON.stringify(saveSate)));
-      console.log('[SOCKET/RESTORE LOG] === КОНЕЦ СОКЕТНОГО ОБНОВЛЕНИЯ ===');
       setState(saveSate)
       setInitialized(true)
     }
@@ -559,15 +571,15 @@ export default function FpsForm2(props) {
 
     // Блокируем параллельные автосабмиты - предотвращаем цикл
     if (autoSubmit && isAutoSubmittingRef.current) {
-      console.log('[AUTOSUBMIT LOG] Заблокирован параллельный автосабмит');
+      // console.log('[AUTOSUBMIT LOG] Заблокирован параллельный автосабмит');
       finish && finish(false);
       return;
     }
     
     if (autoSubmit) {
-      console.log('[AUTOSUBMIT LOG] === НАЧАЛО АВТОСАБМИТА ===');
-      console.log('[AUTOSUBMIT LOG] state ДО сабмита:', JSON.parse(JSON.stringify(stateRef.current)));
-      console.log('[AUTOSUBMIT LOG] model:', JSON.parse(JSON.stringify(currentModel || modelRef.current)));
+      // console.log('[AUTOSUBMIT LOG] === НАЧАЛО АВТОСАБМИТА ===');
+      // console.log('[AUTOSUBMIT LOG] state ДО сабмита:', JSON.parse(JSON.stringify(stateRef.current)));
+      // console.log('[AUTOSUBMIT LOG] model:', JSON.parse(JSON.stringify(currentModel || modelRef.current)));
       isAutoSubmittingRef.current = true;
     }
 
@@ -714,6 +726,12 @@ export default function FpsForm2(props) {
     if (autoSubmit) {
       console.log('[AUTOSUBMIT LOG] Устанавливаем state перед отправкой:', JSON.parse(JSON.stringify(localState)));
     }
+
+    // Диагностический лог: предупреждаем если id в модели отличается от initialObjectId
+    if (localModel.id && initialObjectIdRef.current && localModel.id !== initialObjectIdRef.current) {
+      console.error('[SUBMIT ID MISMATCH] id в модели:', localModel.id, '!= initialObjectId:', initialObjectIdRef.current, '— возможна подмена объекта!', JSON.parse(JSON.stringify(localModel)));
+    }
+
     setState({ ...localState })
     setLoading(true)
 
@@ -788,7 +806,8 @@ export default function FpsForm2(props) {
             setState({ ...saveState, step: targetStep || "submitted", ...stateUpdate })
           }
           if (submitKeepModel && !resetModel) {
-            modelUpdate = { ...model, ...modelToSend, ...modelUpdate };
+            // currentModel вместо stale model из замыкания useCallback (model не в deps array)
+            modelUpdate = { ...currentModel, ...modelToSend, ...modelUpdate };
             // extendedModelUpdate уже заполнен данными из API (строка 774), не перезатираем его плоской моделью
           } else if (resetModel) {
             // При resetModel сбрасываем модель в пустой объект
@@ -1571,6 +1590,10 @@ export default function FpsForm2(props) {
               currentStep={currentStep}
               refreshOptions={refreshOptions}
               model={model}
+              modelRef={modelRef}
+              extendedModelRef={extendedModelRef}
+              stateRef={stateRef}
+              edditingOn={edditingOn}
               checkHidden={checkHidden}
               dict={dict}
               extendedModel={extendedModel}
@@ -1653,6 +1676,10 @@ export default function FpsForm2(props) {
             refreshOptions={refreshOptions}
             currentStep={currentStep}
             model={model}
+            modelRef={modelRef}
+            extendedModelRef={extendedModelRef}
+            stateRef={stateRef}
+            edditingOn={edditingOn}
             userDebug={userDebug}
             setOriginalModel={setOriginalModel}
             originalExtendedModel={originalExtendedModel}
@@ -1686,7 +1713,8 @@ export default function FpsForm2(props) {
 
 function RenderStep(props) {
   const { auth, data, callEndpoint, onEvent, id, handleRoute, currentStep, templateState, checkIfAllInputsHidden, editModel, editModelAL, originalModel,
-    model, checkHidden, userDebug, dict, locale, state, refreshOptions, refresh, extendedModel, setOriginalModel, originalExtendedModel, setOriginalExtendedModel, setExtendedModel, loading, template, setState, lang, submit, params, setModel } = props
+    model, modelRef, extendedModelRef, stateRef, edditingOn,
+    checkHidden, userDebug, dict, locale, state, refreshOptions, refresh, extendedModel, setOriginalModel, originalExtendedModel, setOriginalExtendedModel, setExtendedModel, loading, template, setState, lang, submit, params, setModel } = props
 
 
   const callEndpointPOST = (endpoint, body, finish, ignoreResponse = false) => {
@@ -1701,25 +1729,44 @@ function RenderStep(props) {
             if (ignoreResponse) return
             try {
               const response = JSON.parse(content)
+
+              // Используем актуальные значения из refs, а не stale closure из рендера
+              const currentModel = (modelRef && modelRef.current) || model
+              const currentExtendedModel = (extendedModelRef && extendedModelRef.current) || extendedModel
+              const currentState = (stateRef && stateRef.current) || state
+
               // update state
               if (!isEmpty(_.get(response, "state"))) {
                 const stateUpdate = _.get(response, "state")
-                setState({ ...state, ...stateUpdate })
+                setState({ ...currentState, ...stateUpdate })
               }
-            // update model/object
+            // update model/object — защищаем id от перезаписи при редактировании существующего объекта
             if (!isEmpty(_.get(response, "object"))) {
-              const modelUpdate = _.get(response, "object")
-              setModel({ ...model, ...modelUpdate })
-              setOriginalModel({ ...model, ...modelUpdate })
-              setOriginalExtendedModel({ ...extendedModel, ...modelUpdate })
-              // setExtendedModel({ ...extendedModel, ...modelUpdate })
+              let modelUpdate = _.get(response, "object")
+              if (edditingOn && currentModel.id) {
+                // не даём ответу action-эндпоинта подменить id редактируемого объекта
+                if (modelUpdate.id && modelUpdate.id !== currentModel.id) {
+                  console.warn('[callEndpointPOST] Отклонена попытка подмены id модели:', currentModel.id, '->', modelUpdate.id);
+                }
+                modelUpdate = { ...modelUpdate, id: currentModel.id }
+              }
+              setModel({ ...currentModel, ...modelUpdate })
+              setOriginalModel({ ...currentModel, ...modelUpdate })
+              setOriginalExtendedModel({ ...currentExtendedModel, ...modelUpdate })
+              // setExtendedModel({ ...currentExtendedModel, ...modelUpdate })
             }
             if (!isEmpty(_.get(response, "model"))) {
-              const modelUpdate = _.get(response, "model")
-              setModel({ ...model, ...modelUpdate })
-              setOriginalModel({ ...model, ...modelUpdate })
-              setOriginalExtendedModel({ ...extendedModel, ...modelUpdate })
-              // setExtendedModel({ ...extendedModel, ...modelUpdate })
+              let modelUpdate = _.get(response, "model")
+              if (edditingOn && currentModel.id) {
+                if (modelUpdate.id && modelUpdate.id !== currentModel.id) {
+                  console.warn('[callEndpointPOST] Отклонена попытка подмены id модели:', currentModel.id, '->', modelUpdate.id);
+                }
+                modelUpdate = { ...modelUpdate, id: currentModel.id }
+              }
+              setModel({ ...currentModel, ...modelUpdate })
+              setOriginalModel({ ...currentModel, ...modelUpdate })
+              setOriginalExtendedModel({ ...currentExtendedModel, ...modelUpdate })
+              // setExtendedModel({ ...currentExtendedModel, ...modelUpdate })
             }
             if (!isEmpty(_.get(response, "redirect")) &&
               !isEmpty(_.get(response, "redirect.target"))) {

@@ -1,10 +1,10 @@
 {
   "name": "directual-web-components-v2",
-  "version": "3.11.321",
+  "version": "3.12.2",
   "description": "fps components",
   "author": "Directual",
   "license": "MIT",
-  "repository": "directual-js/directual-web-components-v2",
+  "repository": "directual/directual-web-components",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",

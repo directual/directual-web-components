@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import {
     Button, Input, InputGroup, ComponentDetails, CodeSnippet, FileUpload,
     Checkbox, Markdown, DropFiles, Colorpicker, FpsMap
-} from 'directual-web-components'
-import 'directual-web-components/dist/index.css'
+} from 'directual-web-components-v2'
+import 'directual-web-components-v2/dist/index.css'
 
 
 

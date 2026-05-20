@@ -2,16 +2,16 @@
 
 [Directual.design](http://directual.design)
 
-# directual-web-components
+# directual-web-components-v2
 
 > Directual Design components
 
-[![NPM](https://img.shields.io/npm/v/directual-web-components.svg)](https://www.npmjs.com/package/directual-web-components) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/directual-web-components-v2.svg)](https://www.npmjs.com/package/directual-web-components-v2) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install --save directual-web-components
+npm install --save directual-web-components-v2
 ```
 
 ## Usage
@@ -19,8 +19,8 @@ npm install --save directual-web-components
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'directual-web-components'
-import 'directual-web-components/dist/index.css'
+import MyComponent from 'directual-web-components-v2'
+import 'directual-web-components-v2/dist/index.css'
 
 class Example extends Component {
   render() {

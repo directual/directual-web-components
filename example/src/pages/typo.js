@@ -1,8 +1,8 @@
 import React from 'react'
 import {
     Hint, Loader, CodeSnippet, Button, Tags
-} from 'directual-web-components'
-import 'directual-web-components/dist/index.css'
+} from 'directual-web-components-v2'
+import 'directual-web-components-v2/dist/index.css'
 
 export default function TypoPage() {
 
