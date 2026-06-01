@@ -694,10 +694,11 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
                 dql: dql,
                 sort: sortString
             }, (result, responseData) => {
+                // флаг гасим всегда, чтобы скелетон не залип, даже если ответ устарел
+                setPageLoading(false)
                 if (seq !== refreshSeqRef.current) return
                 setDataInfo(stripDataInfoContent(responseData))
                 setObjects(normalizeObjectsList(result))
-                setPageLoading(false)
             })
         }
     }
@@ -795,11 +796,12 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
                 dql: urlDql,
                 sort: sortString
             }, (result, responseData) => {
+                // флаги гасим всегда — иначе при устаревшем ответе скелетон залипает навсегда
+                setPageLoading(false)
+                setInitialLoading(false)
                 if (seq !== refreshSeqRef.current) return
                 setDataInfo(stripDataInfoContent(responseData))
                 setObjects(normalizeObjectsList(result))
-                setPageLoading(false)
-                setInitialLoading(false)
             })
         } else {
             setInitialLoading(false)
@@ -818,7 +820,8 @@ function FpsCards2({ auth, data, onEvent, socket, callEndpoint, context, templat
 
         if (data && data.sl) {
             console.log("Socket changed, updating data in background...")
-            const seq = ++refreshSeqRef.current
+            // фоновое обновление НЕ бьёт счётчик гонок — иначе аннулирует in-flight инициалку/пагинацию
+            const seq = refreshSeqRef.current
             const sortString = sort && sort.field ? `${sort.field}:${sort.direction || 'asc'}` : '';
             callEndpointGET(data.sl, {
                 pageSize: pageSize,
